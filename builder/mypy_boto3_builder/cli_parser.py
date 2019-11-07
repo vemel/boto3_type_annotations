@@ -42,6 +42,6 @@ def get_cli_parser() -> argparse.ArgumentParser:
         metavar="SERVICE_NAME",
         help="List of AWS services, by default ",
         type=get_service_name,
-        default=[ServiceName.items()],
+        default=ServiceName.items(),
     )
     return parser
