@@ -1,6 +1,7 @@
-from typing import Dict
 from datetime import datetime
+from typing import Dict
 from typing import Optional
+
 from botocore.waiter import Waiter
 
 

@@ -166,7 +166,19 @@ def write_client(client: Client, config: Config):
 
 
 def write_import_statements(file_object, types: Set[type]):
-    file_object.write("\n".join(list(create_import_statements(types))))
+    builtin_import_strings = []
+    boto_import_strings = []
+    for import_string in create_import_statements(types):
+        if import_string.startswith('from boto'):
+            boto_import_strings.append(import_string)
+        else:
+            builtin_import_strings.append(import_string)
+    builtin_import_strings.sort()
+    boto_import_strings.sort()
+    for import_string in builtin_import_strings:
+        file_object.write(f'{import_string}\n')
+    for import_string in boto_import_strings:
+        file_object.write(f'{import_string}\n')
 
 
 def write_methods(

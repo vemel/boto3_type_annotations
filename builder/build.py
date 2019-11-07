@@ -32,15 +32,11 @@ def load(path: str, session_: Session) -> Config:
     )
 
 
-def build(session: Session, config: Config):
-    write_services(session, config)
-
-
 def main():
     if len(argv) < 2:
         raise ValueError("Missing config path.")
     session = Session()
-    build(session, load(argv[1], session))
+    write_services(session, load(argv[1], session))
 
 
 if __name__ == "__main__":

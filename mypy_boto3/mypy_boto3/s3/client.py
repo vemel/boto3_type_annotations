@@ -1,12 +1,13 @@
+from datetime import datetime
 from typing import Callable
-from boto3.s3.transfer import TransferConfig
 from typing import Dict
-from botocore.client import BaseClient
 from typing import IO
 from typing import List
-from datetime import datetime
 from typing import Optional
 from typing import Union
+from boto3.s3.transfer import TransferConfig
+from botocore.client import BaseClient
+
 
 
 class Client(BaseClient):

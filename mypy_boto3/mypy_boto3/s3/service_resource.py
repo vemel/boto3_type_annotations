@@ -1,14 +1,15 @@
-from typing import Callable
-from boto3.resources.base import ServiceResource
-from boto3.s3.transfer import TransferConfig
-from boto3.resources.collection import ResourceCollection
-from typing import Dict
-from typing import List
-from botocore.client import BaseClient
-from typing import IO
 from datetime import datetime
+from typing import Callable
+from typing import Dict
+from typing import IO
+from typing import List
 from typing import Optional
 from typing import Union
+from boto3.resources.base import ServiceResource
+from boto3.resources.collection import ResourceCollection
+from boto3.s3.transfer import TransferConfig
+from botocore.client import BaseClient
+
 
 class ServiceResource(base.ServiceResource):
     buckets: 'buckets'
