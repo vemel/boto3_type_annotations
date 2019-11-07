@@ -1,8 +1,67 @@
-from typing import List, Optional, Set
+from abc import abstractmethod
+from typing import List, Set, Union, Tuple, Optional
 from dataclasses import dataclass
 from pathlib import Path
 
-from mypy_boto3_builder.type_defs import TypeAnnotation
+
+class FakeAnnotation:
+    @property
+    def __name__(self) -> str:
+        return str(self)
+
+    @abstractmethod
+    def get_import_statement(self, module_name: str) -> str:
+        pass
+
+
+TypeAnnotation = Union[FakeAnnotation, type, str, None]
+
+
+@dataclass
+class InternalImport(FakeAnnotation):
+    name: str
+    service_name: str
+    module_name: str = "service_resource"
+
+    def __hash__(self) -> int:
+        return hash(f"{self.scope}.{self.name}")
+
+    def __str__(self) -> str:
+        return f"{self.scope}.{self.name}"
+
+    @property
+    def scope(self) -> str:
+        return f"{self.service_name}_{self.module_name}_scope"
+
+    def get_import_statement(self, module_name: str) -> str:
+        return f"import {module_name}.{self.service_name}.{self.module_name} as {self.scope}"
+
+
+@dataclass
+class AnnotationWrapper(FakeAnnotation):
+    parent: type
+    children: Tuple[TypeAnnotation, ...] = ()
+
+    def __hash__(self) -> int:
+        return hash(f"{self.parent}.{self.children}")
+
+    def __str__(self) -> str:
+        if getattr(self.parent, "__name__", None):
+            return getattr(self.parent, "__name__")
+        if hasattr(self.parent, "_name"):
+            return getattr(self.parent, "_name") or "Union"
+        if self.parent == Union:
+            return "Union"
+        if self.parent == Optional:
+            return "Optional"
+        return self.parent.__class__.__name__
+
+    @property
+    def __args__(self):
+        return self.children
+
+    def get_import_statement(self, module_name: str) -> str:
+        return f"from typing import {self}"
 
 
 @dataclass
@@ -46,6 +105,7 @@ class Method:
         for argument in self.arguments:
             types.update(argument.get_types())
         types.add(self.return_type)
+
         return types
 
 
@@ -76,6 +136,7 @@ class TypeCollector:
 @dataclass
 class Collection(TypeCollector):
     name: str
+    type: InternalImport
     methods: List[Method]
 
 

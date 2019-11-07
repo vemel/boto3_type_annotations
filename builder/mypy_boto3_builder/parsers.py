@@ -29,9 +29,10 @@ from mypy_boto3_builder.structures import (
     Paginator,
     ServicePaginator,
     Config,
+    TypeAnnotation,
+    InternalImport,
 )
-from mypy_boto3_builder.type_map import TYPE_MAP_REVERSED
-from mypy_boto3_builder.type_defs import TypeAnnotation
+from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 
 
@@ -93,7 +94,7 @@ def parse_clients(session: Session, config: Config) -> Generator[Client, None, N
     for service_name in session.get_available_services():
         if service_name not in config.services:
             continue
-        logger.debug(f"Parsing: {service_name}")
+        logger.debug(f"Parsing Client {service_name}")
         client = session.client(service_name)
         yield Client(
             service_name, list(parse_methods(get_instance_public_methods(client)))
@@ -105,8 +106,11 @@ def parse_collections(
 ) -> Generator[Collection, None, None]:
     for collection in resource.meta.resource_model.collections:
         yield Collection(
-            collection.name,
-            list(
+            name=collection.name,
+            type=InternalImport(
+                name=collection.name, service_name=resource.meta.service_name,
+            ),
+            methods=list(
                 parse_methods(
                     get_instance_public_methods(getattr(resource, collection.name))
                 )
@@ -162,7 +166,7 @@ def parse_service_resources(
         if resource_name not in config.services:
             continue
         service_resource = session.resource(resource_name)
-        logger.debug(f"Parsing: {resource_name}")
+        logger.debug(f"Parsing ServiceResource {resource_name}")
         yield ServiceResource(
             resource_name,
             list(parse_methods(get_instance_public_methods(service_resource))),
@@ -178,7 +182,7 @@ def parse_service_resources(
 
 def parse_type_from_str(type_str: str) -> TypeAnnotation:
     try:
-        return TYPE_MAP_REVERSED[type_str]
+        return TYPE_MAP[type_str]
     except KeyError:
         raise ValueError(f"Unknown type: {type_str}")
 
@@ -191,7 +195,7 @@ def parse_service_waiters(
             continue
         client = session.client(service_name)
         if client.waiter_names:
-            logger.debug(f"Parsing: {service_name}")
+            logger.debug(f"Parsing ServiceWaiter {service_name}")
             yield ServiceWaiter(service_name, list(parse_waiters(client)))
 
 
@@ -218,7 +222,7 @@ def parse_service_paginators(
 
         session_session = session._session  # pylint: disable=protected-access
         service_paginator_model = session_session.get_paginator_model(service_name)
-        logger.debug(f"Parsing: {service_name}")
+        logger.debug(f"Parsing ServicePaginator {service_name}")
         yield ServicePaginator(
             service_name, list(parse_paginators(client, service_paginator_model))
         )

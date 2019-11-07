@@ -1,7 +1,7 @@
 import builtins
 import re
 from collections import defaultdict
-from inspect import getmodule
+import inspect
 from keyword import kwlist
 from pathlib import Path
 from typing import IO, Set, Union, List, Generator, Dict, Optional, Any, Tuple
@@ -26,9 +26,10 @@ from mypy_boto3_builder.structures import (
     ServiceWaiter,
     ServicePaginator,
     Config,
+    TypeAnnotation,
+    FakeAnnotation,
 )
 from mypy_boto3_builder.logger import get_logger
-from mypy_boto3_builder.type_defs import TypeAnnotation
 
 
 logger = get_logger()
@@ -76,18 +77,6 @@ def clean_doc(doc: str) -> str:
     return "\n".join(preamble + parameters)
 
 
-def create_import_statements(types: Set[TypeAnnotation]) -> Set[str]:
-    result: Set[str] = set()
-    for type_annotation in types:
-        module = getmodule(type_annotation)
-        if module != builtins and module is not None:
-            result.add(
-                f"from {module.__name__} import {normalize_type_name(type_annotation)}"
-            )
-
-    return result
-
-
 def create_module_directory(config: Config):
     module_path = config.output / config.module_name
     module_path.mkdir(exist_ok=True)
@@ -122,7 +111,7 @@ def normalize_type_name(
     if isinstance(type_annotation, str):
         return type_annotation
 
-    name = type_annotation.__class__.__name__
+    name = str(type_annotation)
     if hasattr(type_annotation, "_name"):
         name = getattr(type_annotation, "_name") or "Union"
     if getattr(type_annotation, "__name__", None):
@@ -165,9 +154,15 @@ def write_client(client: Client, config: Config):
     file_path = normalized_module_path / "client.py"
     logger.debug(f"Writing: {client.name} to {file_path.relative_to(Path.cwd())}")
     with open(file_path, "w") as file_object:
-        types = {Optional, BaseClient, Union}
-        types.update(client.get_types())
-        write_import_statements(file_object, types)
+        types = client.get_types()
+        types.add(BaseClient)
+
+        for import_line in generate_import_statements(
+            types, module_name=config.module_name,
+        ):
+            file_object.write(f"{import_line}\n")
+
+        file_object.write("\n")
         file_object.write(f"\n\n\nclass Client(BaseClient):")
         write_methods(client.methods, file_object, include_doc=config.with_docs)
 
@@ -179,25 +174,54 @@ def write_client(client: Client, config: Config):
     ]
 
 
-def write_import_statements(
-    file_object, types: Set[TypeAnnotation], import_strings: Tuple[str, ...] = ()
-):
-    builtin_import_strings: List[str] = []
-    boto_import_strings: List[str] = []
-    import_statements = create_import_statements(types)
+def generate_import_statements(
+    types: Set[TypeAnnotation], module_name: str, import_strings: Tuple[str, ...] = (),
+) -> Generator[str, None, None]:
+    builtin_import_strings: Set[str] = set()
+    boto_import_strings: Set[str] = set()
+    local_import_strings: Set[str] = set()
+
+    import_statements: Set[str] = set()
+    for type_annotation in types:
+        if isinstance(type_annotation, FakeAnnotation):
+            import_statements.add(type_annotation.get_import_statement(module_name))
+            continue
+
+        parent_module = inspect.getmodule(type_annotation)
+        if parent_module is None or parent_module == builtins:
+            continue
+
+        parent_module_name = parent_module.__name__
+        import_statements.add(
+            f"from {parent_module_name} import {normalize_type_name(type_annotation)}"
+        )
+
     import_statements.update(import_strings)
 
     for import_string in import_statements:
         if import_string.startswith("from boto"):
-            boto_import_strings.append(import_string)
+            boto_import_strings.add(import_string)
+        elif import_string.startswith(f"import {module_name}"):
+            local_import_strings.add(import_string)
         else:
-            builtin_import_strings.append(import_string)
+            builtin_import_strings.add(import_string)
 
-    file_object.write("from __future__ import annotations\n\n")
-    for import_string in sorted(builtin_import_strings):
-        file_object.write(f"{import_string}\n")
-    for import_string in sorted(boto_import_strings):
-        file_object.write(f"{import_string}\n")
+    yield "from __future__ import annotations"
+    yield ""
+    if builtin_import_strings:
+        yield "# builtin imports"
+        for import_string in sorted(builtin_import_strings):
+            yield import_string
+        yield ""
+    if boto_import_strings:
+        yield "# boto3 imports"
+        for import_string in sorted(boto_import_strings):
+            yield import_string
+        yield ""
+    if local_import_strings:
+        yield "# local imports"
+        for import_string in sorted(local_import_strings):
+            yield import_string
 
 
 def write_methods(
@@ -231,7 +255,9 @@ def write_method(
         file_object.write(f"        {argument_fmt},\n")
     file_object.write("    )")
     if method.return_type:
-        file_object.write(f" -> {normalize_type_name(method.return_type)}")
+        file_object.write(
+            f" -> {normalize_type_name(method.return_type, render_args=True)}"
+        )
     file_object.write(":\n")
     if include_doc:
         file_object.write('        """\n')
@@ -256,16 +282,18 @@ def write_service_resource(
     )
 
     with open(file_path, "w") as file_object:
-        types = {List, Dict, ResourceCollection, Optional, Union}
+        types = {List, Dict, ResourceCollection, Union}
         types.update(service_resource.get_types())
-        write_import_statements(
-            file_object,
+        for import_line in generate_import_statements(
             types,
+            module_name=config.module_name,
             import_strings=(
                 "from boto3.resources.base import ServiceResource as Boto3ServiceResource",
             ),
-        )
+        ):
+            file_object.write(f"{import_line}\n")
 
+        file_object.write("\n")
         write_resource(
             service_resource, "ServiceResource", file_object, config.with_docs
         )
@@ -317,14 +345,17 @@ def write_resource(
 
     file_object.write(f"\n\nclass {name}(Boto3ServiceResource):")
     attributes = resource.attributes
-    attributes += [Attribute(c.name, f"'{c.name}'") for c in resource.collections]
+    attributes += [Attribute(c.name, c.type) for c in resource.collections]
     write_attributes(attributes, file_object)
     file_object.write("\n")
     write_methods(resource.methods, file_object, include_doc=with_docs)
 
 
 def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[Dict]:
-    defined_objects = []
+    defined_objects: List[Dict] = []
+    if not service_waiter.waiters:
+        return defined_objects
+
     normalized_module_name = normalize_module_name(service_waiter.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
     if normalized_module_path.exists() and not normalized_module_path.is_dir():
@@ -336,30 +367,38 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
         f"Writing: {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
     )
 
-    if service_waiter.waiters:
-        with open(file_path, "w") as file_object:
-            types: Set[TypeAnnotation] = set()
-            for waiter in service_waiter.waiters:
-                types = types.union(waiter.get_types())
-            write_import_statements(file_object, types)
-            file_object.write("\nfrom botocore.waiter import Waiter\n")
-            for waiter in service_waiter.waiters:
-                file_object.write(f"\n\nclass {waiter.name}(Waiter):")
-                write_methods(waiter.methods, file_object, include_doc=config.with_docs)
-                defined_objects.append(
-                    {
-                        "import_statement": (
-                            f"from {config.module_name}.{normalized_module_name}.waiter "
-                            f"import {waiter.name}"
-                        ),
-                        "name": waiter.name,
-                    }
-                )
+    with open(file_path, "w") as file_object:
+        types = service_waiter.get_types()
+        for import_line in generate_import_statements(
+            types,
+            module_name=config.module_name,
+            import_strings=("from botocore.waiter import Waiter",),
+        ):
+            file_object.write(f"{import_line}\n")
+
+        file_object.write("\n")
+        for waiter in service_waiter.waiters:
+            file_object.write(f"\n\nclass {waiter.name}(Waiter):")
+            write_methods(waiter.methods, file_object, include_doc=config.with_docs)
+            defined_objects.append(
+                {
+                    "import_statement": (
+                        f"from {config.module_name}.{normalized_module_name}.waiter "
+                        f"import {waiter.name}"
+                    ),
+                    "name": waiter.name,
+                }
+            )
     return defined_objects
 
 
-def write_service_paginator(service_paginator: ServicePaginator, config: Config):
-    defined_objects = []
+def write_service_paginator(
+    service_paginator: ServicePaginator, config: Config
+) -> List[Dict]:
+    defined_objects: List[Dict] = []
+    if not service_paginator.paginators:
+        return defined_objects
+
     normalized_module_name = normalize_module_name(service_paginator.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
     if normalized_module_path.exists() and not normalized_module_path.is_dir():
@@ -368,25 +407,27 @@ def write_service_paginator(service_paginator: ServicePaginator, config: Config)
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "paginator.py"
 
-    if service_paginator.paginators:
-        with open(file_path, "w") as file_object:
-            types: Set[TypeAnnotation] = set()
-            for paginator in service_paginator.paginators:
-                types = types.union(paginator.get_types())
-            write_import_statements(file_object, types)
-            file_object.write("\nfrom botocore.paginate import Paginator\n")
-            for paginator in service_paginator.paginators:
-                file_object.write(f"\n\nclass {paginator.name}(Paginator):")
-                write_methods(
-                    paginator.methods, file_object, include_doc=config.with_docs
-                )
-                defined_objects.append(
-                    {
-                        "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                        f".paginator import {paginator.name}",
-                        "name": paginator.name,
-                    }
-                )
+    with open(file_path, "w") as file_object:
+        types = service_paginator.get_types()
+
+        for import_line in generate_import_statements(
+            types,
+            module_name=config.module_name,
+            import_strings=("from botocore.paginate import Paginator",),
+        ):
+            file_object.write(f"{import_line}\n")
+
+        file_object.write("\n")
+        for paginator in service_paginator.paginators:
+            file_object.write(f"\n\nclass {paginator.name}(Paginator):")
+            write_methods(paginator.methods, file_object, include_doc=config.with_docs)
+            defined_objects.append(
+                {
+                    "import_statement": f"from {config.module_name}.{normalized_module_name}"
+                    f".paginator import {paginator.name}",
+                    "name": paginator.name,
+                }
+            )
     return defined_objects
 
 
@@ -419,13 +460,13 @@ def write_init_files(init_files: Dict[str, List], config: Config):
 
 
 def write_service_paginators(session: Session, config: Config):
-    logger.info("Writing Service Paginators")
+    logger.info("Writing ServicePaginators")
     for service_paginator in parse_service_paginators(session, config):
         write_service_paginator(service_paginator, config)
 
 
 def write_service_waiters(session: Session, config: Config):
-    logger.info("Writing Waiters")
+    logger.info("Writing ServiceWaiters")
     for service_waiter in parse_service_waiters(session, config):
         write_service_waiter(service_waiter, config)
 
@@ -433,7 +474,7 @@ def write_service_waiters(session: Session, config: Config):
 def write_service_resources(
     init_files: Dict, session: Session, config: Config
 ) -> Dict[str, List]:
-    logger.info("Writing Service Resources")
+    logger.info("Writing ServiceResources")
     for service_resource in parse_service_resources(session, config):
         init_files[service_resource.name] += write_service_resource(
             service_resource, config
