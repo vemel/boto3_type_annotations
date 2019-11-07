@@ -14,7 +14,7 @@ setup(
     name="mypy-boto3-builder",
     version=version,
     packages=find_packages(),
-    url="https://github.com/vemel/boto3_type_annotations",
+    url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
