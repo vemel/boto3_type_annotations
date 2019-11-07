@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6f8b926ebbf37c8ebcfe6c904b37b8110fa7aec055067795012baa6f52aa0373"
+            "sha256": "766d07c7dcc65fa48b154442e5d517ce33bfa34eb0f8a7aab9746c66647971c3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,7 +18,7 @@
     "default": {
         "mypy-boto3": {
             "editable": true,
-            "path": "./mypy_boto3"
+            "path": "./mypy_boto3_output"
         },
         "mypy-boto3-builder": {
             "editable": true,

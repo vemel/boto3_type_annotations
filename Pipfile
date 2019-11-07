@@ -18,7 +18,7 @@ docstring-parser = "==0.3"
 vulture = "==1.1"
 
 [packages]
-mypy_boto3 = {path = "./mypy_boto3",editable = true}
+mypy_boto3 = {path = "./mypy_boto3_output",editable = true}
 mypy_boto3_builder = {path = "./builder",editable = true}
 
 [requires]

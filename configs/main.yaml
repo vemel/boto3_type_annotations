@@ -7,6 +7,3 @@ with_paginators: true
 with_waiters: true
 package_name: mypy_boto3
 module_name: mypy_boto3
-version: 0.1.0
-readme: "../README.md"
-license: "../LICENSE"

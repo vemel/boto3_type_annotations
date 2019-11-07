@@ -2,7 +2,7 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-from version import __version__ as version
+from mypy_boto3_builder.version import __version__ as version
 
 
 ROOT_PATH = Path(__file__).parent
@@ -35,5 +35,7 @@ setup(
     ),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    entry_points={"console_scripts": ["mypy_boto3_builder = main:main"]},
+    entry_points={
+        "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
+    },
 )
