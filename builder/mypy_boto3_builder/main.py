@@ -35,7 +35,7 @@ def main() -> None:
     if args.format:
         logger.info("Applying black formatting")
         for service_name in args.services:
-            service_path = module_path / service_name
+            service_path = module_path / service_name.name
             for source_path in service_path.glob("**/*.py"):
                 black_result = black.format_file_in_place(
                     source_path,
