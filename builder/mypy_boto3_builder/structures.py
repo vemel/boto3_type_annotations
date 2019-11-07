@@ -1,7 +1,68 @@
-from abc import abstractmethod
-from typing import List, Set, Union, Tuple, Optional
+from __future__ import annotations
+
+from typing import List, Set, Union, Tuple, Optional, Any
 from dataclasses import dataclass
 from pathlib import Path
+
+
+class ImportString:
+    def __init__(self, import_string: str) -> None:
+        self.parts = import_string.split(".")
+
+    def __str__(self) -> str:
+        return ".".join(self.parts)
+
+    def __hash__(self) -> int:
+        return hash(str(self))
+
+    def __eq__(self, other: Any) -> bool:
+        return str(self) == str(other)
+
+    def __gt__(self, other: Any) -> bool:
+        return str(self) > str(other)
+
+    def startswith(self, other: ImportString) -> bool:
+        for part_index, part in enumerate(other.parts):
+            try:
+                self_part = self.parts[part_index]
+            except IndexError:
+                return False
+
+            if self_part != part:
+                return False
+
+        return True
+
+
+@dataclass
+class ImportRecord:
+    source: ImportString
+    name: str = ""
+    alias: str = ""
+
+    def __str__(self) -> str:
+        if self.name and self.alias:
+            return f"from {self.source} import {self.name} as {self.alias}"
+        if self.name:
+            return f"from {self.source} import {self.name}"
+        if self.alias:
+            return f"import {self.source} as {self.alias}"
+        return f"import {self.source}"
+
+    def __hash__(self) -> int:
+        return hash(str(self))
+
+    def __eq__(self, other: Any) -> bool:
+        return str(self) == str(other)
+
+    def __gt__(self, other: Any) -> bool:
+        if isinstance(other, ImportRecord):
+            return self.source > other.source
+
+        return str(self) > str(other)
+
+    def render(self) -> str:
+        return str(self)
 
 
 class FakeAnnotation:
@@ -9,9 +70,8 @@ class FakeAnnotation:
     def __name__(self) -> str:
         return str(self)
 
-    @abstractmethod
-    def get_import_statement(self, module_name: str) -> str:
-        pass
+    def get_import_record(self, module_name: str) -> ImportRecord:
+        return ImportRecord(source=ImportString(module_name), name=str(self))
 
 
 TypeAnnotation = Union[FakeAnnotation, type, str, None]
@@ -33,8 +93,9 @@ class InternalImport(FakeAnnotation):
     def scope(self) -> str:
         return f"{self.service_name}_{self.module_name}_scope"
 
-    def get_import_statement(self, module_name: str) -> str:
-        return f"import {module_name}.{self.service_name}.{self.module_name} as {self.scope}"
+    def get_import_record(self, module_name: str) -> ImportRecord:
+        source = ImportString(f"{module_name}.{self.service_name}.{self.module_name}")
+        return ImportRecord(source=source, alias=self.scope)
 
 
 @dataclass
@@ -60,8 +121,8 @@ class AnnotationWrapper(FakeAnnotation):
     def __args__(self):
         return self.children
 
-    def get_import_statement(self, module_name: str) -> str:
-        return f"from typing import {self}"
+    def get_import_record(self, _module_name: str) -> ImportRecord:
+        return ImportRecord(source=ImportString("typing"), name=str(self))
 
 
 @dataclass

@@ -4,7 +4,7 @@ from collections import defaultdict
 import inspect
 from keyword import kwlist
 from pathlib import Path
-from typing import IO, Set, Union, List, Generator, Dict, Optional, Any, Tuple
+from typing import IO, Set, Union, List, Generator, Dict, Optional, Any, Iterable
 
 from boto3.resources.collection import ResourceCollection
 from boto3.session import Session
@@ -28,6 +28,8 @@ from mypy_boto3_builder.structures import (
     Config,
     TypeAnnotation,
     FakeAnnotation,
+    ImportString,
+    ImportRecord,
 )
 from mypy_boto3_builder.logger import get_logger
 
@@ -176,16 +178,18 @@ def write_client(client: Client, config: Config):
 
 
 def generate_import_statements(
-    types: Set[TypeAnnotation], module_name: str, import_strings: Tuple[str, ...] = (),
+    types: Set[TypeAnnotation],
+    module_name: str,
+    import_records: Iterable[ImportRecord] = (),
 ) -> Generator[str, None, None]:
-    builtin_import_strings: Set[str] = set()
-    boto_import_strings: Set[str] = set()
-    local_import_strings: Set[str] = set()
+    builtin_import_strings: Set[ImportRecord] = set()
+    boto_import_strings: Set[ImportRecord] = set()
+    local_import_strings: Set[ImportRecord] = set()
 
-    import_statements: Set[str] = set()
+    import_statements: Set[ImportRecord] = set()
     for type_annotation in types:
         if isinstance(type_annotation, FakeAnnotation):
-            import_statements.add(type_annotation.get_import_statement(module_name))
+            import_statements.add(type_annotation.get_import_record(module_name))
             continue
 
         parent_module = inspect.getmodule(type_annotation)
@@ -194,15 +198,23 @@ def generate_import_statements(
 
         parent_module_name = parent_module.__name__
         import_statements.add(
-            f"from {parent_module_name} import {normalize_type_name(type_annotation)}"
+            ImportRecord(
+                source=ImportString(parent_module_name),
+                name=normalize_type_name(type_annotation),
+            )
         )
 
-    import_statements.update(import_strings)
+    import_statements.update(import_records)
 
+    boto3_import_string = ImportString("boto3")
+    botocore_import_string = ImportString("botocore")
+    local_import_string = ImportString(module_name)
     for import_string in import_statements:
-        if import_string.startswith("from boto"):
+        if import_string.source.startswith(boto3_import_string):
             boto_import_strings.add(import_string)
-        elif import_string.startswith(f"import {module_name}"):
+        elif import_string.source.startswith(botocore_import_string):
+            boto_import_strings.add(import_string)
+        elif import_string.source.startswith(local_import_string):
             local_import_strings.add(import_string)
         else:
             builtin_import_strings.add(import_string)
@@ -212,17 +224,17 @@ def generate_import_statements(
     if builtin_import_strings:
         yield "# builtin imports"
         for import_string in sorted(builtin_import_strings):
-            yield import_string
+            yield import_string.render()
         yield ""
     if boto_import_strings:
         yield "# boto3 imports"
         for import_string in sorted(boto_import_strings):
-            yield import_string
+            yield import_string.render()
         yield ""
     if local_import_strings:
         yield "# local imports"
         for import_string in sorted(local_import_strings):
-            yield import_string
+            yield import_string.render()
         yield ""
 
 
@@ -293,9 +305,13 @@ def write_service_resource(
         for import_line in generate_import_statements(
             types,
             module_name=config.module_name,
-            import_strings=(
-                "from boto3.resources.base import ServiceResource as Boto3ServiceResource",
-            ),
+            import_records=[
+                ImportRecord(
+                    source=ImportString("boto3.resources.base"),
+                    name="ServiceResource",
+                    alias="Boto3ServiceResource",
+                ),
+            ],
         ):
             file_object.write(f"{import_line}\n")
 
@@ -398,7 +414,9 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
         for import_line in generate_import_statements(
             types,
             module_name=config.module_name,
-            import_strings=("from botocore.waiter import Waiter",),
+            import_records=[
+                ImportRecord(source=ImportString("botocore.waiter"), name="Waiter",),
+            ],
         ):
             file_object.write(f"{import_line}\n")
 
@@ -442,7 +460,11 @@ def write_service_paginator(
         for import_line in generate_import_statements(
             types,
             module_name=config.module_name,
-            import_strings=("from botocore.paginate import Paginator",),
+            import_records=[
+                ImportRecord(
+                    source=ImportString("botocore.paginate"), name="Paginator",
+                ),
+            ],
         ):
             file_object.write(f"{import_line}\n")
 
