@@ -223,6 +223,7 @@ def generate_import_statements(
         yield "# local imports"
         for import_string in sorted(local_import_strings):
             yield import_string
+        yield ""
 
 
 def generate_methods(
@@ -370,7 +371,6 @@ def write_resource(
             file_object.write("\n")
         file_object.write("\n")
     if resource.methods:
-        file_object.write("\n")
         for line in generate_methods(resource.methods, include_doc=with_docs):
             file_object.write(line)
             file_object.write("\n")
@@ -448,7 +448,7 @@ def write_service_paginator(
 
         file_object.write("\n")
         for paginator in service_paginator.paginators:
-            file_object.write(f"\n\nclass {paginator.name}(Paginator):\n")
+            file_object.write(f"class {paginator.name}(Paginator):\n")
             for line in generate_methods(
                 paginator.methods, include_doc=config.with_docs
             ):
