@@ -1,5 +1,6 @@
 import argparse
 from pathlib import Path
+from typing import List
 
 from boto3.session import Session
 import black
@@ -7,6 +8,7 @@ import black
 from mypy_boto3_builder.writers import write_services
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.structures import Config
 
 
 def absolute_path(path: str) -> Path:
@@ -44,7 +46,7 @@ def get_cli_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main():
+def main() -> None:
     parser = get_cli_parser()
     args = parser.parse_args()
     if args.version:
@@ -55,7 +57,7 @@ def main():
     session = Session()
     available_services = session.get_available_services()
 
-    selected_services = []
+    selected_services: List[str] = []
     for service_name in args.services:
         if service_name == "all":
             selected_services.extend(available_services)
@@ -67,7 +69,15 @@ def main():
 
     args.services = selected_services
 
-    write_services(session, args)
+    write_services(
+        session,
+        Config(
+            services=args.services,
+            with_docs=args.with_docs,
+            module_name=args.module_name,
+            output=args.output,
+        ),
+    )
 
     module_path = args.output / args.module_name
 

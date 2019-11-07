@@ -43,7 +43,7 @@ def add_indentation_to_docstring(docstring: str, levels: int) -> str:
 
 
 def clean_doc(doc: str) -> str:
-    def append_line(section: List[str], next_line: str):
+    def append_line(section: List[str], next_line: str) -> None:
         section.append(next_line.replace("'", "\\'").replace('"', '\\"').rstrip())
 
     parameters: List[str] = []
@@ -79,7 +79,7 @@ def clean_doc(doc: str) -> str:
     return "\n".join(preamble + parameters)
 
 
-def create_module_directory(config: Config):
+def create_module_directory(config: Config) -> None:
     module_path = config.output / config.module_name
     module_path.mkdir(exist_ok=True)
 
@@ -87,7 +87,7 @@ def create_module_directory(config: Config):
     init_path.write_text("\n")
 
 
-def format_arguments(method) -> Generator[str, None, None]:
+def format_arguments(method: Method) -> Generator[str, None, None]:
     arguments = sorted(method.arguments, key=lambda m: m.required, reverse=True)
     for argument in arguments:
         default = ""
@@ -144,7 +144,7 @@ def generate_attributes(attributes: List[Attribute]) -> Generator[str, None, Non
         yield f"    {attribute.name}: {normalize_type_name(attribute.type)}"
 
 
-def write_client(client: Client, config: Config):
+def write_client(client: Client, config: Config) -> List[Dict]:
     normalized_module_name = normalize_module_name(client.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
     if normalized_module_path.exists() and not normalized_module_path.is_dir():
@@ -358,7 +358,9 @@ def write_service_resource(
     return defined_objects
 
 
-def write_collection(collection: Collection, file_object: IO, with_docs: bool = False):
+def write_collection(
+    collection: Collection, file_object: IO, with_docs: bool = False
+) -> None:
     file_object.write(f"class {collection.name}(ResourceCollection):\n")
     for line in generate_methods(
         collection.methods,
@@ -376,7 +378,7 @@ def write_resource(
     name: str,
     file_object: IO,
     with_docs: bool = False,
-):
+) -> None:
 
     file_object.write(f"class {name}(Boto3ServiceResource):\n")
     attributes = resource.attributes
@@ -487,7 +489,7 @@ def write_service_paginator(
     return defined_objects
 
 
-def write_services(session: Session, config: Config):
+def write_services(session: Session, config: Config) -> None:
     create_module_directory(config)
     init_files: Dict[str, List[Any]] = defaultdict(list)
 
@@ -498,7 +500,7 @@ def write_services(session: Session, config: Config):
     write_init_files(init_files, config)
 
 
-def write_init_files(init_files: Dict[str, List], config: Config):
+def write_init_files(init_files: Dict[str, List], config: Config) -> None:
     for module, imports in init_files.items():
         if imports:
             file_path = (
@@ -515,13 +517,13 @@ def write_init_files(init_files: Dict[str, List], config: Config):
                 file_object.write(f"\n\n__all__ = (\n{all_objects}\n)\n")
 
 
-def write_service_paginators(session: Session, config: Config):
+def write_service_paginators(session: Session, config: Config) -> None:
     logger.info("Writing ServicePaginators")
     for service_paginator in parse_service_paginators(session, config):
         write_service_paginator(service_paginator, config)
 
 
-def write_service_waiters(session: Session, config: Config):
+def write_service_waiters(session: Session, config: Config) -> None:
     logger.info("Writing ServiceWaiters")
     for service_waiter in parse_service_waiters(session, config):
         write_service_waiter(service_waiter, config)

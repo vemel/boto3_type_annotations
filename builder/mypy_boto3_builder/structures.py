@@ -74,7 +74,7 @@ class FakeAnnotation:
         return ImportRecord(source=ImportString(module_name), name=str(self))
 
 
-TypeAnnotation = Union[FakeAnnotation, type, str, None]
+TypeAnnotation = Union[FakeAnnotation, type, str]
 
 
 @dataclass
@@ -118,7 +118,7 @@ class AnnotationWrapper(FakeAnnotation):
         return self.parent.__class__.__name__
 
     @property
-    def __args__(self):
+    def __args__(self) -> Tuple[TypeAnnotation, ...]:
         return self.children
 
     def get_import_record(self, _module_name: str) -> ImportRecord:

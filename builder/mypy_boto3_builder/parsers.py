@@ -1,6 +1,6 @@
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator
+from typing import List, Dict, Generator, Any
 
 import boto3
 from boto3.docs.utils import is_resource_action
@@ -39,7 +39,7 @@ from mypy_boto3_builder.logger import get_logger
 logger = get_logger()
 
 
-def get_resource_public_actions(resource_class):
+def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
     resource_class_members = inspect.getmembers(resource_class)
     resource_methods = {}
     for name, member in resource_class_members:
@@ -51,19 +51,20 @@ def get_resource_public_actions(resource_class):
 
 
 def manually_set_method(name: str) -> Method:
-    methods = {
-        "create_tags": Method(
+    if name == "create_tags":
+        return Method(
             "create_tags",
             [
                 Argument("DryRun", bool, False),
-                Argument("Resources", "List[str]", True),
-                Argument("Tags", List, True),
+                Argument("Resources", List[Any], True),
+                Argument("Tags", List[Any], True),
             ],
             "",
-            None,
+            "None",
         )
-    }
-    return methods.get(name, Method(name, [], "", None))
+
+    logger.warning(f"Unknown method: {name}")
+    return Method(name, [], "", "None")
 
 
 def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
@@ -74,7 +75,7 @@ def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
     for arg in parsed_doc.params:
         yield Argument(
             arg.arg_name,
-            types_map.get(arg.arg_name, None),
+            types_map[arg.arg_name],
             arg.description.startswith("**[REQUIRED]**"),
         )
 
@@ -142,7 +143,7 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
             )
 
 
-def parse_resource(resource: Boto3ServiceResource):
+def parse_resource(resource: Boto3ServiceResource) -> Resource:
     return Resource(
         resource.__class__.__name__.split(".")[1],
         list(parse_methods(get_resource_public_actions(resource.__class__))),
@@ -156,7 +157,7 @@ def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
         if docstring_meta.args[0] == "rtype":
             return parse_type_from_str(docstring_meta.description)
 
-    return None
+    return "None"
 
 
 def parse_service_resources(
