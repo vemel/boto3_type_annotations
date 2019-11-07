@@ -3,11 +3,15 @@ from pathlib import Path
 
 import yaml
 from boto3.session import Session
+import black
 
 from structures import Config
 from writers import write_services
 from version import __version__ as version
 from logger import get_logger
+
+
+ROOT_PATH = Path(__file__).absolute().parent.parent
 
 
 def get_cli_parser() -> argparse.ArgumentParser:
@@ -18,7 +22,10 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "-d", "--debug", action="store_true", help="Show debug messages"
     )
     parser.add_argument(
-        "-v", "--version", action="store_true", help="Show pacakge version"
+        "-v", "--version", action="store_true", help="Show package version"
+    )
+    parser.add_argument(
+        "-f", "--format", action="store_true", help="Format output with black"
     )
     parser.add_argument(
         "config",
@@ -58,9 +65,25 @@ def main():
         print(version)
         return
 
-    get_logger(verbose=args.debug)
+    logger = get_logger(verbose=args.debug)
     session = Session()
-    write_services(session, load(args.config, session))
+    config = load(args.config, session)
+    write_services(session, config)
+
+    module_path = ROOT_PATH / config.package_name / config.module_name
+
+    logger.info("Applying black formatting")
+    for service_name in config.services:
+        service_path = module_path / service_name
+        for source_path in service_path.glob("**/*.py"):
+            black_result = black.format_file_in_place(
+                source_path,
+                fast=False,
+                mode=black.FileMode(),
+                write_back=black.WriteBack.YES,
+            )
+            if black_result:
+                logger.debug(f"Reformatted {source_path.relative_to(ROOT_PATH)}")
 
 
 if __name__ == "__main__":
