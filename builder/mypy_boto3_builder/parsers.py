@@ -1,6 +1,6 @@
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator, Any
+from typing import List, Dict, Generator, Any, Optional
 
 import boto3
 from boto3.docs.utils import is_resource_action
@@ -28,7 +28,6 @@ from mypy_boto3_builder.structures import (
     ServiceWaiter,
     Paginator,
     ServicePaginator,
-    Config,
     TypeAnnotation,
     InternalImport,
 )
@@ -91,15 +90,11 @@ def parse_attributes(
             yield Attribute(name, parse_type_from_str(attribute[1].type_name))
 
 
-def parse_clients(session: Session, config: Config) -> Generator[Client, None, None]:
-    for service_name in session.get_available_services():
-        if service_name not in config.services:
-            continue
-        logger.debug(f"Parsing Client {service_name}")
-        client = session.client(service_name)
-        yield Client(
-            service_name, list(parse_methods(get_instance_public_methods(client)))
-        )
+def parse_client(session: Session, service_name: str) -> Client:
+    client = session.client(service_name)
+    return Client(
+        service_name, list(parse_methods(get_instance_public_methods(client)))
+    )
 
 
 def parse_collections(
@@ -160,25 +155,19 @@ def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
     return "None"
 
 
-def parse_service_resources(
-    session: Session, config: Config
-) -> Generator[ServiceResource, None, None]:
-    for resource_name in session.get_available_resources():
-        if resource_name not in config.services:
-            continue
-        service_resource = session.resource(resource_name)
-        logger.debug(f"Parsing ServiceResource {resource_name}")
-        yield ServiceResource(
-            resource_name,
-            list(parse_methods(get_instance_public_methods(service_resource))),
-            list(parse_attributes(service_resource))
-            + list(parse_identifiers(service_resource)),
-            list(parse_collections(service_resource)),
-            [
-                parse_resource(resource)
-                for resource in retrieve_sub_resources(session, service_resource)
-            ],
-        )
+def parse_service_resource(session: Session, service_name: str) -> ServiceResource:
+    service_resource = session.resource(service_name)
+    return ServiceResource(
+        service_name,
+        list(parse_methods(get_instance_public_methods(service_resource))),
+        list(parse_attributes(service_resource))
+        + list(parse_identifiers(service_resource)),
+        list(parse_collections(service_resource)),
+        [
+            parse_resource(resource)
+            for resource in retrieve_sub_resources(session, service_resource)
+        ],
+    )
 
 
 def parse_type_from_str(type_str: str) -> TypeAnnotation:
@@ -189,15 +178,12 @@ def parse_type_from_str(type_str: str) -> TypeAnnotation:
 
 
 def parse_service_waiters(
-    session: Session, config: Config
+    session: Session, service_name: str
 ) -> Generator[ServiceWaiter, None, None]:
-    for service_name in session.get_available_services():
-        if service_name not in config.services:
-            continue
-        client = session.client(service_name)
-        if client.waiter_names:
-            logger.debug(f"Parsing ServiceWaiter {service_name}")
-            yield ServiceWaiter(service_name, list(parse_waiters(client)))
+    client = session.client(service_name)
+    if client.waiter_names:
+        logger.debug(f"Parsing ServiceWaiter {service_name}")
+        yield ServiceWaiter(service_name, list(parse_waiters(client)))
 
 
 def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
@@ -208,25 +194,21 @@ def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
         )
 
 
-def parse_service_paginators(
-    session: Session, config: Config
-) -> Generator[ServicePaginator, None, None]:
-    for service_name in session.get_available_services():
-        if service_name not in config.services:
-            continue
+def parse_service_paginator(
+    session: Session, service_name: str
+) -> Optional[ServicePaginator]:
+    session_loader = session._loader  # pylint: disable=protected-access
+    if service_name not in session_loader.list_available_services("paginators-1"):
+        return None
 
-        session_loader = session._loader  # pylint: disable=protected-access
-        if service_name not in session_loader.list_available_services("paginators-1"):
-            continue
+    client = session.client(service_name)
 
-        client = session.client(service_name)
-
-        session_session = session._session  # pylint: disable=protected-access
-        service_paginator_model = session_session.get_paginator_model(service_name)
-        logger.debug(f"Parsing ServicePaginator {service_name}")
-        yield ServicePaginator(
-            service_name, list(parse_paginators(client, service_paginator_model))
-        )
+    session_session = session._session  # pylint: disable=protected-access
+    service_paginator_model = session_session.get_paginator_model(service_name)
+    logger.debug(f"Parsing ServicePaginator {service_name}")
+    return ServicePaginator(
+        service_name, list(parse_paginators(client, service_paginator_model))
+    )
 
 
 def parse_paginators(

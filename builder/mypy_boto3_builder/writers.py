@@ -4,17 +4,17 @@ from collections import defaultdict
 import inspect
 from keyword import kwlist
 from pathlib import Path
-from typing import IO, Set, Union, List, Generator, Dict, Optional, Any, Iterable
+from typing import IO, Set, Union, List, Generator, Dict, Optional, Iterable
 
 from boto3.resources.collection import ResourceCollection
 from boto3.session import Session
 from botocore.client import BaseClient
 
 from mypy_boto3_builder.parsers import (
-    parse_service_resources,
-    parse_clients,
+    parse_service_resource,
+    parse_client,
     parse_service_waiters,
-    parse_service_paginators,
+    parse_service_paginator,
 )
 from mypy_boto3_builder.structures import (
     Method,
@@ -152,7 +152,7 @@ def write_client(client: Client, config: Config) -> List[Dict]:
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "client.py"
-    logger.debug(f"Writing: {client.name} to {file_path.relative_to(Path.cwd())}")
+    logger.debug(f"Writing {client.name} to {file_path.relative_to(Path.cwd())}")
     with open(file_path, "w") as file_object:
         types = client.get_types()
         types.add(BaseClient)
@@ -233,6 +233,7 @@ def generate_import_statements(
         yield ""
     if local_import_strings:
         yield "# local imports"
+        yield "# pylint: disable=import-self"
         for import_string in sorted(local_import_strings):
             yield import_string.render()
         yield ""
@@ -265,10 +266,17 @@ def generate_method(
 ) -> Generator[str, None, None]:
     if decorator:
         yield decorator
+    yield "# pylint: disable=arguments-differ"
     yield f"def {method.name}("
-    yield f"    {first_arg},"
-    for argument_fmt in format_arguments(method):
-        yield f"    {argument_fmt},"
+    formatted_arguments = [first_arg]
+    for formatted_argument in format_arguments(method):
+        formatted_arguments.append(formatted_argument)
+
+    for argument_index, formatted_argument in enumerate(formatted_arguments):
+        comma = ","
+        if argument_index == len(formatted_arguments) - 1:
+            comma = ""
+        yield f"    {formatted_argument}{comma}"
     if method.return_type:
         yield f") -> {normalize_type_name(method.return_type, render_args=True)}:"
     else:
@@ -284,10 +292,7 @@ def generate_method(
     yield f"    {method_body}"
 
 
-def write_service_resource(
-    service_resource: ServiceResource, config: Config
-) -> List[Dict]:
-    defined_objects = []
+def write_service_resource(service_resource: ServiceResource, config: Config) -> None:
     normalized_module_name = normalize_module_name(service_resource.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
     if normalized_module_path.exists() and not normalized_module_path.is_dir():
@@ -296,11 +301,11 @@ def write_service_resource(
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "service_resource.py"
     logger.debug(
-        f"Writing: {service_resource.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing {service_resource.name} to {file_path.relative_to(Path.cwd())}"
     )
 
     with open(file_path, "w") as file_object:
-        types = {List, Dict, ResourceCollection, Union}
+        types = {ResourceCollection}
         types.update(service_resource.get_types())
         for import_line in generate_import_statements(
             types,
@@ -319,43 +324,22 @@ def write_service_resource(
         write_resource(
             service_resource, "ServiceResource", file_object, config.with_docs
         )
-        defined_objects.append(
-            {
-                "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                f".service_resource import ServiceResource",
-                "name": "ServiceResource",
-            }
-        )
         for resource in service_resource.sub_resources:
             write_resource(resource, resource.name, file_object, config.with_docs)
-            defined_objects.append(
-                {
-                    "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                    f".service_resource import {resource.name}",
-                    "name": resource.name,
-                }
-            )
+
+        added_collection_names: Set[str] = set()
         for collection in service_resource.collections:
+            if collection.name in added_collection_names:
+                continue
+            added_collection_names.add(collection.name)
             write_collection(collection, file_object, config.with_docs)
-            defined_objects.append(
-                {
-                    "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                    f".service_resource import {collection.name}",
-                    "name": collection.name,
-                }
-            )
 
         for resource in service_resource.sub_resources:
             for collection in resource.collections:
+                if collection.name in added_collection_names:
+                    continue
+                added_collection_names.add(collection.name)
                 write_collection(collection, file_object, config.with_docs)
-                defined_objects.append(
-                    {
-                        "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                        f".service_resource import {collection.name}",
-                        "name": collection.name,
-                    }
-                )
-    return defined_objects
 
 
 def write_collection(
@@ -370,7 +354,6 @@ def write_collection(
     ):
         file_object.write(line)
         file_object.write("\n")
-    file_object.write("\n")
 
 
 def write_resource(
@@ -392,13 +375,11 @@ def write_resource(
         for line in generate_methods(resource.methods, include_doc=with_docs):
             file_object.write(line)
             file_object.write("\n")
-    file_object.write("\n")
 
 
-def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[Dict]:
-    defined_objects: List[Dict] = []
+def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> None:
     if not service_waiter.waiters:
-        return defined_objects
+        return
 
     normalized_module_name = normalize_module_name(service_waiter.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
@@ -408,7 +389,7 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "waiter.py"
     logger.debug(
-        f"Writing: {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
     )
 
     with open(file_path, "w") as file_object:
@@ -429,24 +410,13 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
                 file_object.write("\n")
 
             file_object.write("\n")
-            defined_objects.append(
-                {
-                    "import_statement": (
-                        f"from {config.module_name}.{normalized_module_name}.waiter "
-                        f"import {waiter.name}"
-                    ),
-                    "name": waiter.name,
-                }
-            )
-    return defined_objects
 
 
 def write_service_paginator(
     service_paginator: ServicePaginator, config: Config
-) -> List[Dict]:
-    defined_objects: List[Dict] = []
+) -> None:
     if not service_paginator.paginators:
-        return defined_objects
+        return
 
     normalized_module_name = normalize_module_name(service_paginator.name)
     normalized_module_path = config.output / config.module_name / normalized_module_name
@@ -479,71 +449,60 @@ def write_service_paginator(
                 file_object.write(line)
                 file_object.write("\n")
             file_object.write("\n")
-            defined_objects.append(
-                {
-                    "import_statement": f"from {config.module_name}.{normalized_module_name}"
-                    f".paginator import {paginator.name}",
-                    "name": paginator.name,
-                }
-            )
-    return defined_objects
 
 
 def write_services(session: Session, config: Config) -> None:
     create_module_directory(config)
-    init_files: Dict[str, List[Any]] = defaultdict(list)
+    init_import_records: Dict[str, Set[ImportRecord]] = defaultdict(set)
 
-    init_files = write_clients(init_files, session, config)
-    init_files = write_service_resources(init_files, session, config)
-    write_service_waiters(session, config)
-    write_service_paginators(session, config)
-    write_init_files(init_files, config)
-
-
-def write_init_files(init_files: Dict[str, List], config: Config) -> None:
-    for module, imports in init_files.items():
-        if imports:
-            file_path = (
-                config.output
-                / config.module_name
-                / normalize_module_name(module)
-                / "__init__.py"
-            )
-            with open(file_path, "w") as file_object:
-                file_object.write(
-                    "\n".join([i.get("import_statement") for i in imports])
-                )
-                all_objects = ",\n".join(f'    \'{i.get("name")}\'' for i in imports)
-                file_object.write(f"\n\n__all__ = (\n{all_objects}\n)\n")
-
-
-def write_service_paginators(session: Session, config: Config) -> None:
-    logger.info("Writing ServicePaginators")
-    for service_paginator in parse_service_paginators(session, config):
-        write_service_paginator(service_paginator, config)
-
-
-def write_service_waiters(session: Session, config: Config) -> None:
-    logger.info("Writing ServiceWaiters")
-    for service_waiter in parse_service_waiters(session, config):
-        write_service_waiter(service_waiter, config)
-
-
-def write_service_resources(
-    init_files: Dict, session: Session, config: Config
-) -> Dict[str, List]:
-    logger.info("Writing ServiceResources")
-    for service_resource in parse_service_resources(session, config):
-        init_files[service_resource.name] += write_service_resource(
-            service_resource, config
-        )
-    return init_files
-
-
-def write_clients(
-    init_files: Dict, session: Session, config: Config
-) -> Dict[str, List]:
     logger.info("Writing Clients")
-    for client in parse_clients(session, config):
-        init_files[client.name] += write_client(client, config)
-    return init_files
+    for service_name in config.services:
+        logger.debug(f"Parsing Client {service_name}")
+        client = parse_client(session, service_name)
+        write_client(client, config)
+        init_import_records[client.normalized_name].update(
+            client.get_import_records(config.module_name)
+        )
+
+    logger.info("Writing ServiceResources")
+    for service_name in config.services:
+        logger.debug(f"Parsing ServiceResource {service_name}")
+        service_resource = parse_service_resource(session, service_name)
+        write_service_resource(service_resource, config)
+        init_import_records[service_resource.normalized_name].update(
+            service_resource.get_import_records(config.module_name)
+        )
+
+    logger.info("Writing ServiceWaiters")
+    for service_name in config.services:
+        for service_waiter in parse_service_waiters(session, service_name):
+            write_service_waiter(service_waiter, config)
+
+    logger.info("Writing ServicePaginators")
+    for service_name in config.services:
+        service_paginator = parse_service_paginator(session, service_name)
+        if service_paginator is not None:
+            write_service_paginator(service_paginator, config)
+
+    logger.info("Writing __init__ files")
+    for service_name, import_records in init_import_records.items():
+        file_path = config.output / config.module_name / service_name / "__init__.py"
+        logger.info(f"Writing {file_path.relative_to(Path.cwd())}")
+        write_init_file(file_path, import_records, service_name)
+
+
+def write_init_file(
+    file_path: Path, import_records: Set[ImportRecord], service_name: str
+) -> None:
+    with open(file_path, "w") as file_object:
+        file_object.write(f""""Main file for {service_name}"\n\n""")
+        if not import_records:
+            return
+        for import_record in sorted(import_records):
+            file_object.write(f"{import_record}\n")
+
+        file_object.write("\n__all__ = (\n")
+        for import_record in sorted(import_records):
+            file_object.write(f"    '{import_record.name}',\n")
+        file_object.write(")\n")
+

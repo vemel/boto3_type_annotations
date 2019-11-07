@@ -4,6 +4,8 @@ from typing import List, Set, Union, Tuple, Optional, Any
 from dataclasses import dataclass
 from pathlib import Path
 
+from mypy_boto3_builder.constants import RESERVED_NAMES
+
 
 class ImportString:
     def __init__(self, import_string: str) -> None:
@@ -170,28 +172,22 @@ class Method:
         return types
 
 
+@dataclass
 class TypeCollector:
+    name: str
+
+    @property
+    def normalized_name(self) -> str:
+        name = self.name.replace("-", "_")
+        if name in RESERVED_NAMES:
+            name = f"{name}_"
+        return name
+
     def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
-        if hasattr(self, "methods"):
-            for method in getattr(self, "methods"):
-                types.update(method.get_types())
-        if hasattr(self, "attributes"):
-            for attribute in getattr(self, "attributes"):
-                types.update(attribute.get_types())
-        if hasattr(self, "sub_resources"):
-            for sub_resource in getattr(self, "sub_resources"):
-                types.update(sub_resource.get_types())
-        if hasattr(self, "collections"):
-            for collection in getattr(self, "collections"):
-                types.update(collection.get_types())
-        if hasattr(self, "waiters"):
-            for waiter in getattr(self, "waiters"):
-                types.update(waiter.get_types())
-        if hasattr(self, "paginators"):
-            for paginator in getattr(self, "paginators"):
-                types.update(paginator.get_types())
-        return types
+        raise TypeError("TypeCollector cannot collect types")
+
+    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+        raise TypeError("TypeCollector cannot collect import records")
 
 
 @dataclass
@@ -199,6 +195,13 @@ class Collection(TypeCollector):
     name: str
     type: InternalImport
     methods: List[Method]
+
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        types.add(self.type)
+        for method in self.methods:
+            types.update(method.get_types())
+        return types
 
 
 @dataclass
@@ -208,17 +211,39 @@ class Resource(TypeCollector):
     attributes: List[Attribute]
     collections: List[Collection]
 
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for method in self.methods:
+            types.update(method.get_types())
+        for attribute in self.attributes:
+            types.update(attribute.get_types())
+        for collection in self.collections:
+            types.update(collection.get_types())
+        return types
+
 
 @dataclass
 class Waiter(TypeCollector):
     name: str
     methods: List[Method]
 
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for method in self.methods:
+            types.update(method.get_types())
+        return types
+
 
 @dataclass
 class Paginator(TypeCollector):
     name: str
     methods: List[Method]
+
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for method in self.methods:
+            types.update(method.get_types())
+        return types
 
 
 @dataclass
@@ -229,11 +254,49 @@ class ServiceResource(TypeCollector):
     collections: List[Collection]
     sub_resources: List[Resource]
 
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for method in self.methods:
+            types.update(method.get_types())
+        for attribute in self.attributes:
+            types.update(attribute.get_types())
+        for collection in self.collections:
+            types.update(collection.get_types())
+        for sub_resource in self.sub_resources:
+            types.update(sub_resource.get_types())
+        return types
+
+    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+        import_records: Set[ImportRecord] = set()
+        source = ImportString(f"{module_name}.{self.normalized_name}.service_resource")
+
+        import_records.add(ImportRecord(source, "ServiceResource"))
+        for resource in self.sub_resources:
+            import_records.add(ImportRecord(source, resource.name))
+
+        for collection in self.collections:
+            import_records.add(ImportRecord(source, collection.name))
+
+        for resource in self.sub_resources:
+            for collection in resource.collections:
+                import_records.add(ImportRecord(source, collection.name))
+        return import_records
+
 
 @dataclass
 class Client(TypeCollector):
     name: str
     methods: List[Method]
+
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for method in self.methods:
+            types.update(method.get_types())
+        return types
+
+    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+        source = ImportString(f"{module_name}.{self.normalized_name}.client")
+        return {ImportRecord(source, "Client")}
 
 
 @dataclass
@@ -241,11 +304,41 @@ class ServiceWaiter(TypeCollector):
     name: str
     waiters: List[Waiter]
 
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for waiter in self.waiters:
+            types.update(waiter.get_types())
+        return types
+
+    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+        import_records: Set[ImportRecord] = set()
+        source = ImportString(f"{module_name}.{self.normalized_name}.waiter")
+
+        for waiter in self.waiters:
+            import_records.add(ImportRecord(source, waiter.name))
+
+        return import_records
+
 
 @dataclass
 class ServicePaginator(TypeCollector):
     name: str
     paginators: List[Paginator]
+
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
+        for paginator in self.paginators:
+            types.update(paginator.get_types())
+        return types
+
+    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+        import_records: Set[ImportRecord] = set()
+        source = ImportString(f"{module_name}.{self.normalized_name}.paginator")
+
+        for paginator in self.paginators:
+            import_records.add(ImportRecord(source, paginator.name))
+
+        return import_records
 
 
 @dataclass
