@@ -32,6 +32,7 @@ from mypy_boto3_builder.structures import (
     ImportRecord,
 )
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.nice_path import NicePath
 
 
 logger = get_logger()
@@ -152,9 +153,7 @@ def write_client(client: Client, config: Config) -> List[Dict]:
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "client.py"
-    logger.debug(
-        f"Writing client for {client.name} to {file_path.relative_to(Path.cwd())}"
-    )
+    logger.debug(f"Writing client for {client.name} to {NicePath(file_path)}")
     with open(file_path, "w") as file_object:
         types = client.get_types()
         types.add(BaseClient)
@@ -303,7 +302,7 @@ def write_service_resource(service_resource: ServiceResource, config: Config) ->
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "service_resource.py"
     logger.debug(
-        f"Writing ServiceResource for {service_resource.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing ServiceResource for {service_resource.name} to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -391,7 +390,7 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> None:
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "waiter.py"
     logger.debug(
-        f"Writing ServiceWaiter for {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing ServiceWaiter for {service_waiter.name} to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -428,7 +427,7 @@ def write_service_paginator(
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "paginator.py"
     logger.debug(
-        f"Writing {service_paginator.name} ServicePaginator to {file_path.relative_to(Path.cwd())}"
+        f"Writing {service_paginator.name} ServicePaginator to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -495,7 +494,7 @@ def write_services(session: Session, config: Config) -> None:
     logger.info("Writing __init__ files")
     for service_name, import_records in init_import_records.items():
         file_path = config.output / config.module_name / service_name / "__init__.py"
-        logger.info(f"Writing {file_path.relative_to(Path.cwd())}")
+        logger.info(f"Writing {NicePath(file_path)}")
         write_init_file(file_path, import_records, service_name)
 
 

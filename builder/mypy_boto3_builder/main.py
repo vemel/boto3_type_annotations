@@ -9,6 +9,7 @@ from mypy_boto3_builder.writers import write_services
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.structures import Config
+from mypy_boto3_builder.nice_path import NicePath
 
 
 def absolute_path(path: str) -> Path:
@@ -93,7 +94,7 @@ def main() -> None:
                     write_back=black.WriteBack.YES,
                 )
                 if black_result:
-                    logger.debug(f"Reformatted {source_path.relative_to(Path.cwd())}")
+                    logger.debug(f"Reformatted {NicePath(source_path)}")
 
 
 if __name__ == "__main__":
