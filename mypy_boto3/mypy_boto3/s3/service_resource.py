@@ -1,17 +1,20 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Any
 from typing import Callable
 from typing import Dict
 from typing import IO
 from typing import List
 from typing import Optional
 from typing import Union
-from boto3.resources.base import ServiceResource
+from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
 
 
-class ServiceResource(base.ServiceResource):
+class ServiceResource(Boto3ServiceResource):
     buckets: 'buckets'
 
     def Bucket(
@@ -113,7 +116,7 @@ class ServiceResource(base.ServiceResource):
         object_key: Optional[str] = None,
         multipart_upload_id: Optional[str] = None,
         part_number: Optional[str] = None,
-    ) -> 'MultipartUploadPart':
+    ) -> MultipartUploadPart:
         pass
 
 
@@ -154,7 +157,7 @@ class ServiceResource(base.ServiceResource):
         self,
         Bucket: str,
         ACL: Optional[str] = None,
-        CreateBucketConfiguration: Optional[Dict] = None,
+        CreateBucketConfiguration: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -167,12 +170,12 @@ class ServiceResource(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
 
-class Bucket(base.ServiceResource):
+class Bucket(Boto3ServiceResource):
     creation_date: datetime
     name: str
     multipart_uploads: 'multipart_uploads'
@@ -181,10 +184,10 @@ class Bucket(base.ServiceResource):
 
     def copy(
         self,
-        CopySource: Optional[Dict] = None,
+        CopySource: Optional[Dict[str, Any]] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         SourceClient: Optional[BaseClient] = None,
         Config: Optional[TransferConfig] = None,
     ):
@@ -194,7 +197,7 @@ class Bucket(base.ServiceResource):
     def create(
         self,
         ACL: Optional[str] = None,
-        CreateBucketConfiguration: Optional[Dict] = None,
+        CreateBucketConfiguration: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -213,7 +216,7 @@ class Bucket(base.ServiceResource):
 
     def delete_objects(
         self,
-        Delete: Dict,
+        Delete: Dict[str, Any],
         MFA: Optional[str] = None,
         RequestPayer: Optional[str] = None,
         BypassGovernanceRetention: Optional[bool] = None,
@@ -225,8 +228,8 @@ class Bucket(base.ServiceResource):
         self,
         Key: Optional[str] = None,
         Filename: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -234,10 +237,10 @@ class Bucket(base.ServiceResource):
 
     def download_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
+        Fileobj: Optional[Union[Any]] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -245,7 +248,7 @@ class Bucket(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -272,7 +275,7 @@ class Bucket(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -294,8 +297,8 @@ class Bucket(base.ServiceResource):
         self,
         Filename: Optional[str] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -303,10 +306,10 @@ class Bucket(base.ServiceResource):
 
     def upload_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
+        Fileobj: Optional[Union[Any]] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -325,14 +328,14 @@ class Bucket(base.ServiceResource):
 
 
 
-class BucketAcl(base.ServiceResource):
+class BucketAcl(Boto3ServiceResource):
     owner: Dict
     grants: List
     bucket_name: str
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -345,7 +348,7 @@ class BucketAcl(base.ServiceResource):
     def put(
         self,
         ACL: Optional[str] = None,
-        AccessControlPolicy: Optional[Dict] = None,
+        AccessControlPolicy: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -362,7 +365,7 @@ class BucketAcl(base.ServiceResource):
 
 
 
-class BucketCors(base.ServiceResource):
+class BucketCors(Boto3ServiceResource):
     cors_rules: List
     bucket_name: str
 
@@ -374,7 +377,7 @@ class BucketCors(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -386,7 +389,7 @@ class BucketCors(base.ServiceResource):
 
     def put(
         self,
-        CORSConfiguration: Dict,
+        CORSConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -398,7 +401,7 @@ class BucketCors(base.ServiceResource):
 
 
 
-class BucketLifecycle(base.ServiceResource):
+class BucketLifecycle(Boto3ServiceResource):
     rules: List
     bucket_name: str
 
@@ -410,7 +413,7 @@ class BucketLifecycle(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -422,7 +425,7 @@ class BucketLifecycle(base.ServiceResource):
 
     def put(
         self,
-        LifecycleConfiguration: Optional[Dict] = None,
+        LifecycleConfiguration: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -434,7 +437,7 @@ class BucketLifecycle(base.ServiceResource):
 
 
 
-class BucketLifecycleConfiguration(base.ServiceResource):
+class BucketLifecycleConfiguration(Boto3ServiceResource):
     rules: List
     bucket_name: str
 
@@ -446,7 +449,7 @@ class BucketLifecycleConfiguration(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -458,7 +461,7 @@ class BucketLifecycleConfiguration(base.ServiceResource):
 
     def put(
         self,
-        LifecycleConfiguration: Optional[Dict] = None,
+        LifecycleConfiguration: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -470,13 +473,13 @@ class BucketLifecycleConfiguration(base.ServiceResource):
 
 
 
-class BucketLogging(base.ServiceResource):
+class BucketLogging(Boto3ServiceResource):
     logging_enabled: Dict
     bucket_name: str
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -488,7 +491,7 @@ class BucketLogging(base.ServiceResource):
 
     def put(
         self,
-        BucketLoggingStatus: Dict,
+        BucketLoggingStatus: Dict[str, Any],
     ):
         pass
 
@@ -500,7 +503,7 @@ class BucketLogging(base.ServiceResource):
 
 
 
-class BucketNotification(base.ServiceResource):
+class BucketNotification(Boto3ServiceResource):
     topic_configurations: List
     queue_configurations: List
     lambda_function_configurations: List
@@ -508,7 +511,7 @@ class BucketNotification(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -520,7 +523,7 @@ class BucketNotification(base.ServiceResource):
 
     def put(
         self,
-        NotificationConfiguration: Dict,
+        NotificationConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -532,7 +535,7 @@ class BucketNotification(base.ServiceResource):
 
 
 
-class BucketPolicy(base.ServiceResource):
+class BucketPolicy(Boto3ServiceResource):
     policy: str
     bucket_name: str
 
@@ -544,7 +547,7 @@ class BucketPolicy(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -569,13 +572,13 @@ class BucketPolicy(base.ServiceResource):
 
 
 
-class BucketRequestPayment(base.ServiceResource):
+class BucketRequestPayment(Boto3ServiceResource):
     payer: str
     bucket_name: str
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -587,7 +590,7 @@ class BucketRequestPayment(base.ServiceResource):
 
     def put(
         self,
-        RequestPaymentConfiguration: Dict,
+        RequestPaymentConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -599,7 +602,7 @@ class BucketRequestPayment(base.ServiceResource):
 
 
 
-class BucketTagging(base.ServiceResource):
+class BucketTagging(Boto3ServiceResource):
     tag_set: List
     bucket_name: str
 
@@ -611,7 +614,7 @@ class BucketTagging(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -623,7 +626,7 @@ class BucketTagging(base.ServiceResource):
 
     def put(
         self,
-        Tagging: Dict,
+        Tagging: Dict[str, Any],
     ):
         pass
 
@@ -635,7 +638,7 @@ class BucketTagging(base.ServiceResource):
 
 
 
-class BucketVersioning(base.ServiceResource):
+class BucketVersioning(Boto3ServiceResource):
     status: str
     mfa_delete: str
     bucket_name: str
@@ -649,7 +652,7 @@ class BucketVersioning(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -661,7 +664,7 @@ class BucketVersioning(base.ServiceResource):
 
     def put(
         self,
-        VersioningConfiguration: Dict,
+        VersioningConfiguration: Dict[str, Any],
         MFA: Optional[str] = None,
     ):
         pass
@@ -681,7 +684,7 @@ class BucketVersioning(base.ServiceResource):
 
 
 
-class BucketWebsite(base.ServiceResource):
+class BucketWebsite(Boto3ServiceResource):
     redirect_all_requests_to: Dict
     index_document: Dict
     error_document: Dict
@@ -696,7 +699,7 @@ class BucketWebsite(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -708,7 +711,7 @@ class BucketWebsite(base.ServiceResource):
 
     def put(
         self,
-        WebsiteConfiguration: Dict,
+        WebsiteConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -720,7 +723,7 @@ class BucketWebsite(base.ServiceResource):
 
 
 
-class MultipartUpload(base.ServiceResource):
+class MultipartUpload(Boto3ServiceResource):
     upload_id: str
     key: str
     initiated: datetime
@@ -741,7 +744,7 @@ class MultipartUpload(base.ServiceResource):
 
     def complete(
         self,
-        MultipartUpload: Optional[Dict] = None,
+        MultipartUpload: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
     ) -> 'Object':
         pass
@@ -749,12 +752,12 @@ class MultipartUpload(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
 
-class MultipartUploadPart(base.ServiceResource):
+class MultipartUploadPart(Boto3ServiceResource):
     last_modified: datetime
     e_tag: str
     size: int
@@ -765,7 +768,7 @@ class MultipartUploadPart(base.ServiceResource):
 
     def copy_from(
         self,
-        CopySource: Union[str, Dict],
+        CopySource: Union[str, Dict[KT, VT]],
         CopySourceIfMatch: Optional[str] = None,
         CopySourceIfModifiedSince: Optional[datetime] = None,
         CopySourceIfNoneMatch: Optional[str] = None,
@@ -784,7 +787,7 @@ class MultipartUploadPart(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -802,7 +805,7 @@ class MultipartUploadPart(base.ServiceResource):
 
 
 
-class Object(base.ServiceResource):
+class Object(Boto3ServiceResource):
     delete_marker: bool
     accept_ranges: str
     expiration: str
@@ -836,9 +839,9 @@ class Object(base.ServiceResource):
 
     def copy(
         self,
-        CopySource: Optional[Dict] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        CopySource: Optional[Dict[str, Any]] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         SourceClient: Optional[BaseClient] = None,
         Config: Optional[TransferConfig] = None,
     ):
@@ -847,7 +850,7 @@ class Object(base.ServiceResource):
 
     def copy_from(
         self,
-        CopySource: Union[str, Dict],
+        CopySource: Union[str, Dict[KT, VT]],
         ACL: Optional[str] = None,
         CacheControl: Optional[str] = None,
         ContentDisposition: Optional[str] = None,
@@ -863,7 +866,7 @@ class Object(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         MetadataDirective: Optional[str] = None,
         TaggingDirective: Optional[str] = None,
         ServerSideEncryption: Optional[str] = None,
@@ -899,8 +902,8 @@ class Object(base.ServiceResource):
     def download_file(
         self,
         Filename: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -908,9 +911,9 @@ class Object(base.ServiceResource):
 
     def download_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        Fileobj: Optional[Union[Any]] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -941,7 +944,7 @@ class Object(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -958,7 +961,7 @@ class Object(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -998,7 +1001,7 @@ class Object(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -1025,7 +1028,7 @@ class Object(base.ServiceResource):
     def restore_object(
         self,
         VersionId: Optional[str] = None,
-        RestoreRequest: Optional[Dict] = None,
+        RestoreRequest: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
     ) -> Dict:
         pass
@@ -1034,8 +1037,8 @@ class Object(base.ServiceResource):
     def upload_file(
         self,
         Filename: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -1043,9 +1046,9 @@ class Object(base.ServiceResource):
 
     def upload_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        Fileobj: Optional[Union[Any]] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -1086,7 +1089,7 @@ class Object(base.ServiceResource):
 
 
 
-class ObjectAcl(base.ServiceResource):
+class ObjectAcl(Boto3ServiceResource):
     owner: Dict
     grants: List
     request_charged: str
@@ -1095,7 +1098,7 @@ class ObjectAcl(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -1108,7 +1111,7 @@ class ObjectAcl(base.ServiceResource):
     def put(
         self,
         ACL: Optional[str] = None,
-        AccessControlPolicy: Optional[Dict] = None,
+        AccessControlPolicy: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -1127,7 +1130,7 @@ class ObjectAcl(base.ServiceResource):
 
 
 
-class ObjectSummary(base.ServiceResource):
+class ObjectSummary(Boto3ServiceResource):
     last_modified: datetime
     e_tag: str
     size: int
@@ -1138,7 +1141,7 @@ class ObjectSummary(base.ServiceResource):
 
     def copy_from(
         self,
-        CopySource: Union[str, Dict],
+        CopySource: Union[str, Dict[KT, VT]],
         ACL: Optional[str] = None,
         CacheControl: Optional[str] = None,
         ContentDisposition: Optional[str] = None,
@@ -1154,7 +1157,7 @@ class ObjectSummary(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         MetadataDirective: Optional[str] = None,
         TaggingDirective: Optional[str] = None,
         ServerSideEncryption: Optional[str] = None,
@@ -1212,7 +1215,7 @@ class ObjectSummary(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 
@@ -1229,7 +1232,7 @@ class ObjectSummary(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -1269,7 +1272,7 @@ class ObjectSummary(base.ServiceResource):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -1290,7 +1293,7 @@ class ObjectSummary(base.ServiceResource):
     def restore_object(
         self,
         VersionId: Optional[str] = None,
-        RestoreRequest: Optional[Dict] = None,
+        RestoreRequest: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
     ) -> Dict:
         pass
@@ -1331,7 +1334,7 @@ class ObjectSummary(base.ServiceResource):
 
 
 
-class ObjectVersion(base.ServiceResource):
+class ObjectVersion(Boto3ServiceResource):
     e_tag: str
     size: int
     storage_class: str
@@ -1377,7 +1380,7 @@ class ObjectVersion(base.ServiceResource):
 
     def get_available_subresources(
         self,
-    ) -> List[str]:
+    ) -> List:
         pass
 
 

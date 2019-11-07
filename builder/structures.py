@@ -1,5 +1,7 @@
-from typing import List, Union, Tuple, Optional
+from typing import List, Union, Tuple, Optional, Set
 from dataclasses import dataclass
+
+from type_map import TypeAnnotation
 
 
 @dataclass
@@ -20,19 +22,17 @@ class Attribute:
 @dataclass
 class Argument:
     name: str
-    type: Union[type, Tuple, str]
+    type: TypeAnnotation
     required: bool
-    types = set()
 
-    def get_types(self):
-        types = set()
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
         if not self.required:
             types.add(Optional)
-        if not isinstance(self.type, tuple):
-            types.add(self.type)
-        else:
-            for t in self.type:
-                types.add(t)
+        types.add(self.type)
+        if hasattr(self.type, "__args__"):
+            for arg in self.type.__args__:
+                types.add(arg)
         return types
 
 
@@ -43,16 +43,16 @@ class Method:
     docstring: str
     return_type: Union[type, Tuple, str]
 
-    def get_types(self):
-        types = set()
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
         for argument in self.arguments:
             types.update(argument.get_types())
         return types
 
 
 class TypeCollector:
-    def get_types(self):
-        types = set()
+    def get_types(self) -> Set[TypeAnnotation]:
+        types: Set[TypeAnnotation] = set()
         if hasattr(self, "methods"):
             for method in getattr(self, "methods"):
                 types.update(method.get_types())

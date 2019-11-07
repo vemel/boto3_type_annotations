@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Any
 from typing import Dict
 from typing import Optional
 
@@ -9,7 +12,7 @@ class BucketExists(Waiter):
     def wait(
         self,
         Bucket: str,
-        WaiterConfig: Optional[Dict] = None,
+        WaiterConfig: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -19,7 +22,7 @@ class BucketNotExists(Waiter):
     def wait(
         self,
         Bucket: str,
-        WaiterConfig: Optional[Dict] = None,
+        WaiterConfig: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -41,7 +44,7 @@ class ObjectExists(Waiter):
         SSECustomerKeyMD5: Optional[str] = None,
         RequestPayer: Optional[str] = None,
         PartNumber: Optional[int] = None,
-        WaiterConfig: Optional[Dict] = None,
+        WaiterConfig: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -63,7 +66,7 @@ class ObjectNotExists(Waiter):
         SSECustomerKeyMD5: Optional[str] = None,
         RequestPayer: Optional[str] = None,
         PartNumber: Optional[int] = None,
-        WaiterConfig: Optional[Dict] = None,
+        WaiterConfig: Optional[Dict[str, Any]] = None,
     ):
         pass
 

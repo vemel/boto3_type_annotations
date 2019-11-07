@@ -1,4 +1,3 @@
-from os.path import dirname, abspath
 from sys import argv
 
 import yaml
@@ -11,17 +10,16 @@ from writers import write_services
 def load(path: str, session_: Session) -> Config:
     with open(path, "r") as f:
         file_contents = yaml.safe_load(f)
+
+    available_services = session_.get_available_services()
     if file_contents.get("services") == "all":
-        file_contents["services"] = session_.get_available_services()
-    if not all(
-        (
-            service in session_.get_available_services()
-            for service in file_contents.get("services")
-        )
-    ):
-        raise ValueError("Invalid service name.")
+        file_contents["services"] = available_services
+    for service in file_contents.get("services"):
+        if service not in available_services:
+            raise ValueError(f"Unknown service name: {service}")
+
     return Config(
-        file_contents.get("services", session_.get_available_services()),
+        file_contents.get("services", available_services),
         file_contents.get("with_docs", False),
         file_contents.get("with_clients", True),
         file_contents.get("with_service_resources", True),

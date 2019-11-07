@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+from typing import Any
 from typing import Dict
 from typing import Optional
 
@@ -11,7 +14,7 @@ class ListMultipartUploads(Paginator):
         Delimiter: Optional[str] = None,
         EncodingType: Optional[str] = None,
         Prefix: Optional[str] = None,
-        PaginationConfig: Optional[Dict] = None,
+        PaginationConfig: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 
@@ -24,7 +27,7 @@ class ListObjectVersions(Paginator):
         Delimiter: Optional[str] = None,
         EncodingType: Optional[str] = None,
         Prefix: Optional[str] = None,
-        PaginationConfig: Optional[Dict] = None,
+        PaginationConfig: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 
@@ -38,7 +41,7 @@ class ListObjects(Paginator):
         EncodingType: Optional[str] = None,
         Prefix: Optional[str] = None,
         RequestPayer: Optional[str] = None,
-        PaginationConfig: Optional[Dict] = None,
+        PaginationConfig: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 
@@ -54,7 +57,7 @@ class ListObjectsV2(Paginator):
         FetchOwner: Optional[bool] = None,
         StartAfter: Optional[str] = None,
         RequestPayer: Optional[str] = None,
-        PaginationConfig: Optional[Dict] = None,
+        PaginationConfig: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 
@@ -67,7 +70,7 @@ class ListParts(Paginator):
         Key: str,
         UploadId: str,
         RequestPayer: Optional[str] = None,
-        PaginationConfig: Optional[Dict] = None,
+        PaginationConfig: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 

@@ -1,6 +1,6 @@
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator, Tuple, Union, Set
+from typing import List, Dict, Generator, Tuple, Union, Optional
 
 import boto3
 from boto3.docs.utils import is_resource_action
@@ -13,7 +13,7 @@ from botocore.docs.method import get_instance_public_methods
 from botocore.exceptions import UnknownServiceError
 from botocore.paginate import PaginatorModel
 from docstring_parser import parse
-from docstring_parser.parser.common import DocstringMeta
+from docstring_parser.parser.common import DocstringMeta, Docstring
 
 from structures import (
     Argument,
@@ -29,7 +29,11 @@ from structures import (
     ServicePaginator,
     Config,
 )
-from type_map import TYPE_MAP
+from type_map import TYPE_MAP_REVERSED
+from logger import get_logger
+
+
+logger = get_logger(__name__)
 
 
 def get_resource_public_actions(resource_class):
@@ -59,17 +63,15 @@ def manually_set_method(name: str) -> Method:
     return methods.get(name, Method(name, [], None, None))
 
 
-def parse_argument_type(arg_name: str, meta: List) -> Union[type, Tuple, str]:
-    return next(
-        filter(lambda m: m.args[0] == "type" and m.args[1] == arg_name, meta)
-    ).description
-
-
-def parse_arguments(parsed_doc) -> Generator[Argument, None, None]:
+def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
+    types_map = {}
+    for meta_item in parsed_doc.meta:
+        if meta_item.args[0] == "type":
+            types_map[meta_item.args[1]] = parse_type_from_str(meta_item.description)
     for arg in parsed_doc.params:
         yield Argument(
             arg.arg_name,
-            parse_type_from_str(parse_argument_type(arg.arg_name, parsed_doc.meta)),
+            types_map.get(arg.arg_name, None),
             arg.description.startswith("**[REQUIRED]**"),
         )
 
@@ -85,37 +87,15 @@ def parse_attributes(
             yield Attribute(name, parse_type_from_str(attribute[1].type_name))
 
 
-def parse_attribute_types(resource: Boto3ServiceResource) -> Set[str]:
-    types = set()
-    service_model = resource.meta.client.meta.service_model
-    if resource.meta.resource_model.shape:
-        shape = service_model.shape_for(resource.meta.resource_model.shape)
-        attributes = resource.meta.resource_model.get_attributes(shape)
-        for attribute in attributes.values():
-            types.add(attribute[1].type_name)
-    return types
-
-
 def parse_clients(session: Session, config: Config) -> Generator[Client, None, None]:
-    for name in [
-        service
-        for service in session.get_available_services()
-        if service in config.services
-    ]:
-        print(f"Parsing: {name}")
-        client = session.client(name)
-        yield Client(name, list(parse_methods(get_instance_public_methods(client))))
-
-
-def parse_client_types(session: Session) -> Set[str]:
-    types = set()
-    for name in session.get_available_services():
-        print(f"Parsing: {name}")
-        client = session.client(name)
-        types = types.union(
-            types.union(parse_method_types(get_instance_public_methods(client)))
+    for service_name in session.get_available_services():
+        if service_name not in config.services:
+            continue
+        logger.debug(f"Parsing: {service_name}")
+        client = session.client(service_name)
+        yield Client(
+            service_name, list(parse_methods(get_instance_public_methods(client)))
         )
-    return types
 
 
 def parse_collections(
@@ -144,7 +124,7 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
     for name, method in public_methods.items():
         doc = getdoc(method)
         if doc is None:
-            print("Docless method: ", name)
+            logger.debug(f"Docless method: {name}")
             yield manually_set_method(name)
         else:
             parsed_doc = parse(doc.replace("::", ""))
@@ -156,17 +136,6 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
             )
 
 
-def parse_method_types(public_methods: Dict) -> Set[str]:
-    types = set()
-    for method in public_methods.values():
-        doc = getdoc(method)
-        parsed_doc = parse(doc.replace("::", ""))
-        for arg in parsed_doc.params:
-            types.add(parse_argument_type(arg.arg_name, parsed_doc.meta))
-        types.add(parse_return_type(parsed_doc.meta))
-    return types
-
-
 def parse_resource(resource: Boto3ServiceResource):
     return Resource(
         resource.__class__.__name__.split(".")[1],
@@ -176,28 +145,22 @@ def parse_resource(resource: Boto3ServiceResource):
     )
 
 
-def parse_return_type(meta: List[DocstringMeta]) -> Union[str, None]:
-    return_type = None
-    if any([m.args[0] == "rtype" for m in meta]):
-        try:
-            return_type = parse_type_from_str(
-                next(filter(lambda m: m.args[0] == "rtype", meta)).description
-            )
-        except StopIteration:
-            print(next(filter(lambda m: m.args[0] == "rtype", meta)).description)
-    return return_type
+def parse_return_type(meta: List[DocstringMeta]) -> Optional[str]:
+    for docstring_meta in meta:
+        if docstring_meta.args[0] == "rtype":
+            return parse_type_from_str(docstring_meta.description)
+
+    return None
 
 
 def parse_service_resources(
     session: Session, config: Config
 ) -> Generator[ServiceResource, None, None]:
-    for resource_name in [
-        service
-        for service in session.get_available_resources()
-        if service in config.services
-    ]:
+    for resource_name in session.get_available_resources():
+        if resource_name not in config.services:
+            continue
         service_resource = session.resource(resource_name)
-        print(f"Parsing: {resource_name}")
+        logger.debug(f"Parsing: {resource_name}")
         yield ServiceResource(
             resource_name,
             list(parse_methods(get_instance_public_methods(service_resource))),
@@ -211,52 +174,23 @@ def parse_service_resources(
         )
 
 
-def parse_service_resource_types(session: Session) -> Set[str]:
-    types = set()
-    for resource_name in session.get_available_resources():
-        service_resource = session.resource(resource_name)
-        types = types.union(
-            parse_method_types(get_resource_public_actions(service_resource))
-        )
-        types = types.union(parse_attribute_types(service_resource))
-        for collection in service_resource.meta.resource_model.collections:
-            types = types.union(
-                parse_method_types(
-                    get_instance_public_methods(
-                        getattr(service_resource, collection.name)
-                    )
-                )
-            )
-        for resource in retrieve_sub_resources(session, service_resource):
-            types = types.union(
-                parse_method_types(get_resource_public_actions(resource.__class__))
-            )
-            types = types.union(parse_attribute_types(resource))
-            for collection in resource.meta.resource_model.collections:
-                types = types.union(
-                    parse_method_types(
-                        get_instance_public_methods(getattr(resource, collection.name))
-                    )
-                )
-    return types
-
-
 def parse_type_from_str(type_str: str) -> Union[type, Tuple, str]:
-    return next(filter(lambda item: type_str in item[1], TYPE_MAP.items()))[0]
+    try:
+        return TYPE_MAP_REVERSED[type_str]
+    except KeyError:
+        raise ValueError(f"Unknown type: {type_str}")
 
 
 def parse_service_waiters(
     session: Session, config: Config
 ) -> Generator[ServiceWaiter, None, None]:
-    for name in [
-        service
-        for service in session.get_available_services()
-        if service in config.services
-    ]:
-        client = session.client(name)
+    for service_name in session.get_available_services():
+        if service_name not in config.services:
+            continue
+        client = session.client(service_name)
         if client.waiter_names:
-            print(f"Parsing: {name}")
-            yield ServiceWaiter(name, list(parse_waiters(client)))
+            logger.debug(f"Parsing: {service_name}")
+            yield ServiceWaiter(service_name, list(parse_waiters(client)))
 
 
 def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
@@ -270,18 +204,18 @@ def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
 def parse_service_paginators(
     session: Session, config: Config
 ) -> Generator[ServicePaginator, None, None]:
-    for name in [
-        service
-        for service in session.get_available_services()
-        if service in config.services
-    ]:
-        client = session.client(name)
-        if name in session._loader.list_available_services("paginators-1"):
-            service_paginator_model = session._session.get_paginator_model(name)
-            print(f"Parsing: {name}")
-            yield ServicePaginator(
-                name, list(parse_paginators(client, service_paginator_model))
-            )
+    for service_name in session.get_available_services():
+        if service_name not in config.services:
+            continue
+        if service_name not in session._loader.list_available_services("paginators-1"):
+            continue
+
+        client = session.client(service_name)
+        service_paginator_model = session._session.get_paginator_model(service_name)
+        logger.debug(f"Parsing: {service_name}")
+        yield ServicePaginator(
+            service_name, list(parse_paginators(client, service_paginator_model))
+        )
 
 
 def parse_paginators(
@@ -296,7 +230,7 @@ def parse_paginators(
 
 
 def retrieve_sub_resources(
-    session, resource
+    session: Session, resource: Resource
 ) -> Generator[Boto3ServiceResource, None, None]:
     loader = session._session.get_component("data_loader")
     json_resource_model = loader.load_service_model(

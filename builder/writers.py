@@ -4,10 +4,8 @@ from collections import defaultdict
 from inspect import getmodule
 from keyword import kwlist
 from pathlib import Path
-import shutil
-from typing import IO, Set, Union, Tuple, List, Generator, Dict, Optional
+from typing import IO, Set, Union, List, Generator, Dict, Optional, Any, Tuple
 
-from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
 from boto3.session import Session
 from botocore.client import BaseClient
@@ -29,9 +27,12 @@ from structures import (
     ServicePaginator,
     Config,
 )
+from logger import get_logger
+from type_map import TypeAnnotation
 
 
 ROOT_PATH = Path(__file__).absolute().parent.parent
+logger = get_logger(__name__)
 
 
 def add_indentation_to_docstring(docstring: str, levels: int) -> str:
@@ -40,10 +41,10 @@ def add_indentation_to_docstring(docstring: str, levels: int) -> str:
 
 
 def clean_doc(doc: str) -> str:
-    def append_line(section: List, next_line: str):
+    def append_line(section: List[str], next_line: str):
         section.append(next_line.replace("'", "\\'").replace('"', '\\"').rstrip())
 
-    parameters = []
+    parameters: List[str] = []
     preamble = []
     indices_to_remove = []
     parameter_regex = re.compile("^:(.*[a-zA-Z]):")
@@ -79,10 +80,16 @@ def clean_doc(doc: str) -> str:
     return "\n".join(preamble + parameters)
 
 
-def create_import_statements(types: Set[type]) -> Generator[str, None, None]:
-    for _type in types:
-        if getmodule(_type) != builtins and getmodule(_type) is not None:
-            yield f"from {normalize_type_name(getmodule(_type))} import {normalize_type_name(_type)}"
+def create_import_statements(types: Set[type]) -> Set[str]:
+    result: Set[str] = set()
+    for type_annotation in types:
+        module = getmodule(type_annotation)
+        if module != builtins and module is not None:
+            result.add(
+                f"from {normalize_type_name(module)} import {normalize_type_name(type_annotation)}"
+            )
+
+    return result
 
 
 def create_module_directory(config: Config):
@@ -90,9 +97,6 @@ def create_module_directory(config: Config):
     package_path.mkdir(exist_ok=True)
 
     module_path = package_path / config.module_name
-    if module_path.exists():
-        shutil.rmtree(module_path)
-
     module_path.mkdir(exist_ok=True)
 
     init_path = module_path / "__init__.py"
@@ -100,13 +104,15 @@ def create_module_directory(config: Config):
 
 
 def format_arguments(method) -> Generator[str, None, None]:
-    for argument in sorted(method.arguments, key=lambda m: m.required, reverse=True):
-        type_name = normalize_type_name(argument.type)
+    arguments = sorted(method.arguments, key=lambda m: m.required, reverse=True)
+    for argument in arguments:
+        type_repr = normalize_type_name(argument.type, render_args=True)
         default = ""
         if not argument.required:
-            type_name = f"Optional[{type_name}]"
+            type_repr = f"Optional[{type_repr}]"
             default = " = None"
-        yield f"{argument.name}: {type_name}{default}"
+
+        yield f"{argument.name}: {type_repr}{default}"
 
 
 def normalize_module_name(name: str) -> str:
@@ -116,20 +122,33 @@ def normalize_module_name(name: str) -> str:
     return name
 
 
-def normalize_type_name(type_: Union[type, Tuple, str]):
-    if isinstance(type_, tuple):
-        return f'Union[{", ".join([normalize_type_name(t) for t in type_])}]'
-    if isinstance(type_, str):
-        return type_
-    if type_ == Union:
-        return "Union"
-    if type_ == Optional:
-        return "Optional"
+def normalize_type_name(
+    type_annotation: TypeAnnotation, render_args: bool = False
+) -> str:
+    if isinstance(type_annotation, str):
+        return type_annotation
 
-    if hasattr(type_, "__name__"):
-        return type_.__name__
+    name = type_annotation.__class__.__name__
+    if hasattr(type_annotation, "_name"):
+        name = getattr(type_annotation, "_name") or "Union"
+    if getattr(type_annotation, "__name__", None):
+        name = type_annotation.__name__
+    if type_annotation == Union:
+        name = "Union"
+    if type_annotation == Optional:
+        name = "Optional"
+    if type_annotation == Ellipsis:
+        name = "..."
+    if name == "NoneType":
+        name = "None"
 
-    return getattr(type_, "_name", "Any")
+    args_rendered = []
+    if render_args and hasattr(type_annotation, "__args__"):
+        for arg in type_annotation.__args__:
+            args_rendered.append(normalize_type_name(arg, render_args=True))
+        return f'{name}[{", ".join(args_rendered)}]'
+
+    return name
 
 
 def write_attributes(attributes: List[Attribute], file_object: IO):
@@ -140,7 +159,7 @@ def write_attributes(attributes: List[Attribute], file_object: IO):
 
 
 def write_client(client: Client, config: Config):
-    print(f"Writing: {client.name}")
+    logger.debug(f"Writing: {client.name}")
     normalized_module_name = normalize_module_name(client.name)
     normalized_module_path = (
         ROOT_PATH / config.package_name / config.module_name / normalized_module_name
@@ -165,20 +184,25 @@ def write_client(client: Client, config: Config):
     ]
 
 
-def write_import_statements(file_object, types: Set[type]):
-    builtin_import_strings = []
-    boto_import_strings = []
-    for import_string in create_import_statements(types):
-        if import_string.startswith('from boto'):
+def write_import_statements(
+    file_object, types: Set[type], import_strings: Tuple[str] = ()
+):
+    builtin_import_strings: List[str] = []
+    boto_import_strings: List[str] = []
+    import_statements = create_import_statements(types)
+    import_statements.update(import_strings)
+
+    for import_string in import_statements:
+        if import_string.startswith("from boto"):
             boto_import_strings.append(import_string)
         else:
             builtin_import_strings.append(import_string)
-    builtin_import_strings.sort()
-    boto_import_strings.sort()
-    for import_string in builtin_import_strings:
-        file_object.write(f'{import_string}\n')
-    for import_string in boto_import_strings:
-        file_object.write(f'{import_string}\n')
+
+    file_object.write("from __future__ import annotations\n\n")
+    for import_string in sorted(builtin_import_strings):
+        file_object.write(f"{import_string}\n")
+    for import_string in sorted(boto_import_strings):
+        file_object.write(f"{import_string}\n")
 
 
 def write_methods(
@@ -225,7 +249,7 @@ def write_service_resource(
     service_resource: ServiceResource, config: Config
 ) -> List[Dict]:
 
-    print(f"Writing: {service_resource.name}")
+    logger.debug(f"Writing: {service_resource.name}")
     defined_objects = []
     normalized_module_name = normalize_module_name(service_resource.name)
     normalized_module_path = (
@@ -237,9 +261,16 @@ def write_service_resource(
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "service_resource.py"
     with open(file_path, "w") as file_object:
-        types = {List, Dict, ResourceCollection, Optional, Union, Boto3ServiceResource}
+        types = {List, Dict, ResourceCollection, Optional, Union}
         types.update(service_resource.get_types())
-        write_import_statements(file_object, types)
+        write_import_statements(
+            file_object,
+            types,
+            import_strings=(
+                "from boto3.resources.base import ServiceResource as Boto3ServiceResource",
+            ),
+        )
+
         write_resource(
             service_resource, "ServiceResource", file_object, config.with_docs
         )
@@ -289,7 +320,7 @@ def write_resource(
     with_docs: bool = False,
 ):
 
-    file_object.write(f"\n\nclass {name}(base.ServiceResource):")
+    file_object.write(f"\n\nclass {name}(Boto3ServiceResource):")
     attributes = resource.attributes
     attributes += [Attribute(c.name, f"'{c.name}'") for c in resource.collections]
     write_attributes(attributes, file_object)
@@ -299,7 +330,7 @@ def write_resource(
 
 def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[Dict]:
     defined_objects = []
-    print(f"Writing: {service_waiter.name}")
+    logger.debug(f"Writing: {service_waiter.name}")
     normalized_module_name = normalize_module_name(service_waiter.name)
     normalized_module_path = (
         ROOT_PATH / config.package_name / config.module_name / normalized_module_name
@@ -367,7 +398,7 @@ def write_service_paginator(service_paginator: ServicePaginator, config: Config)
 
 def write_services(session: Session, config: Config):
     create_module_directory(config)
-    init_files = defaultdict(list)
+    init_files: Dict[str, List[Any]] = defaultdict(list)
 
     if config.with_clients:
         init_files = write_clients(init_files, session, config)
@@ -399,13 +430,13 @@ def write_init_files(init_files: Dict[str, List], config: Config):
 
 
 def write_service_paginators(session: Session, config: Config):
-    print("\n\nWriting Clients\n\n")
+    logger.info("Writing Clients")
     for service_paginator in parse_service_paginators(session, config):
         write_service_paginator(service_paginator, config)
 
 
 def write_service_waiters(session: Session, config: Config):
-    print("\n\nWriting Waiters\n\n")
+    logger.info("Writing Waiters")
     for service_waiter in parse_service_waiters(session, config):
         write_service_waiter(service_waiter, config)
 
@@ -413,7 +444,7 @@ def write_service_waiters(session: Session, config: Config):
 def write_service_resources(
     init_files: Dict, session: Session, config: Config
 ) -> Dict[str, List]:
-    print("\n\nWriting Service Resources\n\n")
+    logger.info("Writing Service Resources")
     for service_resource in parse_service_resources(session, config):
         init_files[service_resource.name] += write_service_resource(
             service_resource, config
@@ -424,7 +455,7 @@ def write_service_resources(
 def write_clients(
     init_files: Dict, session: Session, config: Config
 ) -> Dict[str, List]:
-    print("\n\nWriting Clients\n\n")
+    logger.info("Writing Clients")
     for client in parse_clients(session, config):
         init_files[client.name] += write_client(client, config)
     return init_files

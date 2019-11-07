@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from datetime import datetime
+from typing import Any
 from typing import Callable
 from typing import Dict
 from typing import IO
@@ -33,7 +36,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         UploadId: str,
-        MultipartUpload: Optional[Dict] = None,
+        MultipartUpload: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
     ) -> Dict:
         pass
@@ -41,11 +44,11 @@ class Client(BaseClient):
 
     def copy(
         self,
-        CopySource: Optional[Dict] = None,
+        CopySource: Optional[Dict[str, Any]] = None,
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         SourceClient: Optional[BaseClient] = None,
         Config: Optional[TransferConfig] = None,
     ):
@@ -55,7 +58,7 @@ class Client(BaseClient):
     def copy_object(
         self,
         Bucket: str,
-        CopySource: Union[str, Dict],
+        CopySource: Union[str, Dict[KT, VT]],
         Key: str,
         ACL: Optional[str] = None,
         CacheControl: Optional[str] = None,
@@ -72,7 +75,7 @@ class Client(BaseClient):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         MetadataDirective: Optional[str] = None,
         TaggingDirective: Optional[str] = None,
         ServerSideEncryption: Optional[str] = None,
@@ -99,7 +102,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         ACL: Optional[str] = None,
-        CreateBucketConfiguration: Optional[Dict] = None,
+        CreateBucketConfiguration: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -125,7 +128,7 @@ class Client(BaseClient):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -247,7 +250,7 @@ class Client(BaseClient):
     def delete_objects(
         self,
         Bucket: str,
-        Delete: Dict,
+        Delete: Dict[str, Any],
         MFA: Optional[str] = None,
         RequestPayer: Optional[str] = None,
         BypassGovernanceRetention: Optional[bool] = None,
@@ -267,8 +270,8 @@ class Client(BaseClient):
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
         Filename: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -276,11 +279,11 @@ class Client(BaseClient):
 
     def download_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
+        Fileobj: Optional[Union[Any]] = None,
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -290,8 +293,8 @@ class Client(BaseClient):
         self,
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
-        Fields: Optional[Dict] = None,
-        Conditions: Optional[List] = None,
+        Fields: Optional[Dict[str, Any]] = None,
+        Conditions: Optional[List[Any]] = None,
         ExpiresIn: Optional[int] = None,
     ) -> Dict:
         pass
@@ -300,7 +303,7 @@ class Client(BaseClient):
     def generate_presigned_url(
         self,
         ClientMethod: Optional[str] = None,
-        Params: Optional[Dict] = None,
+        Params: Optional[Dict[str, Any]] = None,
         ExpiresIn: Optional[int] = None,
         HttpMethod: Optional[str] = None,
     ):
@@ -676,7 +679,7 @@ class Client(BaseClient):
     def put_bucket_accelerate_configuration(
         self,
         Bucket: str,
-        AccelerateConfiguration: Dict,
+        AccelerateConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -685,7 +688,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         ACL: Optional[str] = None,
-        AccessControlPolicy: Optional[Dict] = None,
+        AccessControlPolicy: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -699,7 +702,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Id: str,
-        AnalyticsConfiguration: Dict,
+        AnalyticsConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -707,7 +710,7 @@ class Client(BaseClient):
     def put_bucket_cors(
         self,
         Bucket: str,
-        CORSConfiguration: Dict,
+        CORSConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -715,7 +718,7 @@ class Client(BaseClient):
     def put_bucket_encryption(
         self,
         Bucket: str,
-        ServerSideEncryptionConfiguration: Dict,
+        ServerSideEncryptionConfiguration: Dict[str, Any],
         ContentMD5: Optional[str] = None,
     ):
         pass
@@ -725,7 +728,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Id: str,
-        InventoryConfiguration: Dict,
+        InventoryConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -733,7 +736,7 @@ class Client(BaseClient):
     def put_bucket_lifecycle(
         self,
         Bucket: str,
-        LifecycleConfiguration: Optional[Dict] = None,
+        LifecycleConfiguration: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -741,7 +744,7 @@ class Client(BaseClient):
     def put_bucket_lifecycle_configuration(
         self,
         Bucket: str,
-        LifecycleConfiguration: Optional[Dict] = None,
+        LifecycleConfiguration: Optional[Dict[str, Any]] = None,
     ):
         pass
 
@@ -749,7 +752,7 @@ class Client(BaseClient):
     def put_bucket_logging(
         self,
         Bucket: str,
-        BucketLoggingStatus: Dict,
+        BucketLoggingStatus: Dict[str, Any],
     ):
         pass
 
@@ -758,7 +761,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Id: str,
-        MetricsConfiguration: Dict,
+        MetricsConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -766,7 +769,7 @@ class Client(BaseClient):
     def put_bucket_notification(
         self,
         Bucket: str,
-        NotificationConfiguration: Dict,
+        NotificationConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -774,7 +777,7 @@ class Client(BaseClient):
     def put_bucket_notification_configuration(
         self,
         Bucket: str,
-        NotificationConfiguration: Dict,
+        NotificationConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -791,7 +794,7 @@ class Client(BaseClient):
     def put_bucket_replication(
         self,
         Bucket: str,
-        ReplicationConfiguration: Dict,
+        ReplicationConfiguration: Dict[str, Any],
         Token: Optional[str] = None,
     ):
         pass
@@ -800,7 +803,7 @@ class Client(BaseClient):
     def put_bucket_request_payment(
         self,
         Bucket: str,
-        RequestPaymentConfiguration: Dict,
+        RequestPaymentConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -808,7 +811,7 @@ class Client(BaseClient):
     def put_bucket_tagging(
         self,
         Bucket: str,
-        Tagging: Dict,
+        Tagging: Dict[str, Any],
     ):
         pass
 
@@ -816,7 +819,7 @@ class Client(BaseClient):
     def put_bucket_versioning(
         self,
         Bucket: str,
-        VersioningConfiguration: Dict,
+        VersioningConfiguration: Dict[str, Any],
         MFA: Optional[str] = None,
     ):
         pass
@@ -825,7 +828,7 @@ class Client(BaseClient):
     def put_bucket_website(
         self,
         Bucket: str,
-        WebsiteConfiguration: Dict,
+        WebsiteConfiguration: Dict[str, Any],
     ):
         pass
 
@@ -848,7 +851,7 @@ class Client(BaseClient):
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
         GrantWriteACP: Optional[str] = None,
-        Metadata: Optional[Dict] = None,
+        Metadata: Optional[Dict[str, Any]] = None,
         ServerSideEncryption: Optional[str] = None,
         StorageClass: Optional[str] = None,
         WebsiteRedirectLocation: Optional[str] = None,
@@ -871,7 +874,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ACL: Optional[str] = None,
-        AccessControlPolicy: Optional[Dict] = None,
+        AccessControlPolicy: Optional[Dict[str, Any]] = None,
         GrantFullControl: Optional[str] = None,
         GrantRead: Optional[str] = None,
         GrantReadACP: Optional[str] = None,
@@ -887,7 +890,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Key: str,
-        LegalHold: Optional[Dict] = None,
+        LegalHold: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
         VersionId: Optional[str] = None,
         ContentMD5: Optional[str] = None,
@@ -898,7 +901,7 @@ class Client(BaseClient):
     def put_object_lock_configuration(
         self,
         Bucket: str,
-        ObjectLockConfiguration: Optional[Dict] = None,
+        ObjectLockConfiguration: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
         Token: Optional[str] = None,
         ContentMD5: Optional[str] = None,
@@ -910,7 +913,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Key: str,
-        Retention: Optional[Dict] = None,
+        Retention: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
         VersionId: Optional[str] = None,
         BypassGovernanceRetention: Optional[bool] = None,
@@ -923,7 +926,7 @@ class Client(BaseClient):
         self,
         Bucket: str,
         Key: str,
-        Tagging: Dict,
+        Tagging: Dict[str, Any],
         VersionId: Optional[str] = None,
         ContentMD5: Optional[str] = None,
     ) -> Dict:
@@ -933,7 +936,7 @@ class Client(BaseClient):
     def put_public_access_block(
         self,
         Bucket: str,
-        PublicAccessBlockConfiguration: Dict,
+        PublicAccessBlockConfiguration: Dict[str, Any],
         ContentMD5: Optional[str] = None,
     ):
         pass
@@ -944,7 +947,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         VersionId: Optional[str] = None,
-        RestoreRequest: Optional[Dict] = None,
+        RestoreRequest: Optional[Dict[str, Any]] = None,
         RequestPayer: Optional[str] = None,
     ) -> Dict:
         pass
@@ -956,13 +959,13 @@ class Client(BaseClient):
         Key: str,
         Expression: str,
         ExpressionType: str,
-        InputSerialization: Dict,
-        OutputSerialization: Dict,
+        InputSerialization: Dict[str, Any],
+        OutputSerialization: Dict[str, Any],
         SSECustomerAlgorithm: Optional[str] = None,
         SSECustomerKey: Optional[str] = None,
         SSECustomerKeyMD5: Optional[str] = None,
-        RequestProgress: Optional[Dict] = None,
-        ScanRange: Optional[Dict] = None,
+        RequestProgress: Optional[Dict[str, Any]] = None,
+        ScanRange: Optional[Dict[str, Any]] = None,
     ) -> Dict:
         pass
 
@@ -972,8 +975,8 @@ class Client(BaseClient):
         Filename: Optional[str] = None,
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -981,11 +984,11 @@ class Client(BaseClient):
 
     def upload_fileobj(
         self,
-        Fileobj: Optional[IO] = None,
+        Fileobj: Optional[Union[Any]] = None,
         Bucket: Optional[str] = None,
         Key: Optional[str] = None,
-        ExtraArgs: Optional[Dict] = None,
-        Callback: Optional[Callable] = None,
+        ExtraArgs: Optional[Dict[str, Any]] = None,
+        Callback: Optional[Callable[..., Any]] = None,
         Config: Optional[TransferConfig] = None,
     ):
         pass
@@ -1011,7 +1014,7 @@ class Client(BaseClient):
     def upload_part_copy(
         self,
         Bucket: str,
-        CopySource: Union[str, Dict],
+        CopySource: Union[str, Dict[KT, VT]],
         Key: str,
         PartNumber: int,
         UploadId: str,
