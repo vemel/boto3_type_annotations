@@ -139,6 +139,9 @@ def normalize_type_name(
     if name == "NoneType":
         name = "None"
 
+    if str(type_annotation).startswith("~"):
+        name = "Any"
+
     args_rendered = []
     if render_args and hasattr(type_annotation, "__args__"):
         for arg in type_annotation.__args__:
@@ -156,7 +159,6 @@ def write_attributes(attributes: List[Attribute], file_object: IO):
 
 
 def write_client(client: Client, config: Config):
-    logger.debug(f"Writing: {client.name}")
     normalized_module_name = normalize_module_name(client.name)
     normalized_module_path = (
         ROOT_PATH / config.package_name / config.module_name / normalized_module_name
@@ -166,6 +168,7 @@ def write_client(client: Client, config: Config):
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "client.py"
+    logger.debug(f"Writing: {client.name} to {file_path.relative_to(ROOT_PATH)}")
     with open(file_path, "w") as file_object:
         types = {Optional, BaseClient, Union}
         types.update(client.get_types())
@@ -245,8 +248,6 @@ def write_method(
 def write_service_resource(
     service_resource: ServiceResource, config: Config
 ) -> List[Dict]:
-
-    logger.debug(f"Writing: {service_resource.name}")
     defined_objects = []
     normalized_module_name = normalize_module_name(service_resource.name)
     normalized_module_path = (
@@ -257,6 +258,10 @@ def write_service_resource(
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "service_resource.py"
+    logger.debug(
+        f"Writing: {service_resource.name} to {file_path.relative_to(ROOT_PATH)}"
+    )
+
     with open(file_path, "w") as file_object:
         types = {List, Dict, ResourceCollection, Optional, Union}
         types.update(service_resource.get_types())
@@ -327,7 +332,6 @@ def write_resource(
 
 def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[Dict]:
     defined_objects = []
-    logger.debug(f"Writing: {service_waiter.name}")
     normalized_module_name = normalize_module_name(service_waiter.name)
     normalized_module_path = (
         ROOT_PATH / config.package_name / config.module_name / normalized_module_name
@@ -337,6 +341,10 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "waiter.py"
+    logger.debug(
+        f"Writing: {service_waiter.name} to {file_path.relative_to(ROOT_PATH)}"
+    )
+
     if service_waiter.waiters:
         with open(file_path, "w") as file_object:
             types: Set[TypeAnnotation] = set()
