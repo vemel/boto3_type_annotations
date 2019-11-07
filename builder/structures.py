@@ -1,4 +1,4 @@
-from typing import List, Union, Tuple, Optional, Set
+from typing import List, Optional, Set
 from dataclasses import dataclass
 
 from type_map import TypeAnnotation
@@ -7,15 +7,14 @@ from type_map import TypeAnnotation
 @dataclass
 class Attribute:
     name: str
-    type: Union[type, Tuple, str]
+    type: TypeAnnotation
 
-    def get_types(self):
+    def get_types(self) -> Set[TypeAnnotation]:
         types = set()
-        if not isinstance(self.type, tuple):
-            types.add(self.type)
-        else:
-            for t in self.type:
-                types.add(t)
+        types.add(self.type)
+        if hasattr(self.type, "__args__"):
+            for arg in self.type.__args__:
+                types.add(arg)
         return types
 
 
@@ -41,12 +40,13 @@ class Method:
     name: str
     arguments: List[Argument]
     docstring: str
-    return_type: Union[type, Tuple, str]
+    return_type: TypeAnnotation
 
     def get_types(self) -> Set[TypeAnnotation]:
         types: Set[TypeAnnotation] = set()
         for argument in self.arguments:
             types.update(argument.get_types())
+        types.add(self.return_type)
         return types
 
 
