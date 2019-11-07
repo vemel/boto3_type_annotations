@@ -155,8 +155,13 @@ def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
     return "None"
 
 
-def parse_service_resource(session: Session, service_name: str) -> ServiceResource:
-    service_resource = session.resource(service_name)
+def parse_service_resource(
+    session: Session, service_name: str
+) -> Optional[ServiceResource]:
+    try:
+        service_resource = session.resource(service_name)
+    except boto3.exceptions.ResourceNotExistsError:
+        return None
     return ServiceResource(
         service_name,
         list(parse_methods(get_instance_public_methods(service_resource))),

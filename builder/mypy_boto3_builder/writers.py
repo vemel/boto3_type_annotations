@@ -472,6 +472,10 @@ def write_services(session: Session, config: Config) -> None:
     for service_name in config.services:
         logger.debug(f"Parsing {service_name} ServiceResource")
         service_resource = parse_service_resource(session, service_name)
+        if service_resource is None:
+            logger.debug(f"Skipping {service_name} ServiceResource")
+            continue
+
         write_service_resource(service_resource, config)
         init_import_records[service_resource.normalized_name].update(
             service_resource.get_import_records(config.module_name)
@@ -481,15 +485,21 @@ def write_services(session: Session, config: Config) -> None:
     for service_name in config.services:
         logger.debug(f"Parsing {service_name} ServiceWaiter")
         service_waiter = parse_service_waiter(session, service_name)
-        if service_waiter is not None:
-            write_service_waiter(service_waiter, config)
+        if service_waiter is None:
+            logger.debug(f"Skipping {service_name} ServiceWaiter")
+            continue
+
+        write_service_waiter(service_waiter, config)
 
     logger.info("Writing ServicePaginators")
     for service_name in config.services:
         logger.debug(f"Parsing {service_name} ServicePaginator")
         service_paginator = parse_service_paginator(session, service_name)
-        if service_paginator is not None:
-            write_service_paginator(service_paginator, config)
+        if service_paginator is None:
+            logger.debug(f"Skipping {service_name} ServicePaginator")
+            continue
+
+        write_service_paginator(service_paginator, config)
 
     logger.info("Writing __init__ files")
     for service_name, import_records in init_import_records.items():
