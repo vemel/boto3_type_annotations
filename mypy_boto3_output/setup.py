@@ -1,11 +1,13 @@
 from setuptools import setup, find_packages
 
+from mypy_boto3_output.version import __version__ as version
+
 with open("../README.md", "r") as f:
     long_description = f.read()
 
 setup(
     name="mypy-boto3",
-    version="0.1.0",
+    version=version,
     packages=find_packages(),
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
