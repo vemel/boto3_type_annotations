@@ -1,11 +1,18 @@
+from pathlib import Path
+
 from setuptools import setup, find_packages
 
-with open("../README.md", "r") as f:
-    long_description = f.read()
+from version import __version__ as version
+
+
+ROOT_PATH = Path(__file__).parent
+README_PATH = ROOT_PATH.parent / "README.md"
+
+long_description = README_PATH.read_text()
 
 setup(
     name="mypy-boto3-builder",
-    version="0.1.0",
+    version=version,
     packages=find_packages(),
     url="https://github.com/vemel/boto3_type_annotations",
     license="MIT License",
@@ -28,5 +35,5 @@ setup(
     ),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    entry_points={"console_scripts": ["mypy_boto3_builder = build:main"]},
+    entry_points={"console_scripts": ["mypy_boto3_builder = main:main"]},
 )

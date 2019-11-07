@@ -14,8 +14,8 @@ rope = "==0.14.0"
 astroid = "==2.3.2"
 pyyaml = "==5.1.2"
 boto3 = "==1.10.11"
-docstring-parser = "*"
-vulture = "*"
+docstring-parser = "==0.3"
+vulture = "==1.1"
 
 [packages]
 mypy_boto3 = {path = "./mypy_boto3",editable = true}

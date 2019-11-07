@@ -32,7 +32,7 @@ from type_map import TypeAnnotation
 
 
 ROOT_PATH = Path(__file__).absolute().parent.parent
-logger = get_logger(__name__)
+logger = get_logger()
 
 
 def add_indentation_to_docstring(docstring: str, levels: int) -> str:
@@ -66,12 +66,9 @@ def clean_doc(doc: str) -> str:
     for i in reversed(indices_to_remove):
         del lines[i]
     for i, line in enumerate(lines):
-        if (
-            "::" == line.strip()
-            or line.strip().startswith("**")
-            and line.strip().endswith("**")
-        ):
-            lines[i] = line.strip()
+        line = line.strip()
+        if line == "::" or (line.startswith("**") and line.endswith("**")):
+            lines[i] = line
     for line in lines:
         if line.strip():
             if line.strip().startswith("**") and line.strip().endswith("**"):
@@ -185,7 +182,7 @@ def write_client(client: Client, config: Config):
 
 
 def write_import_statements(
-    file_object, types: Set[type], import_strings: Tuple[str] = ()
+    file_object, types: Set[type], import_strings: Tuple[str, ...] = ()
 ):
     builtin_import_strings: List[str] = []
     boto_import_strings: List[str] = []
@@ -342,7 +339,7 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
     file_path = normalized_module_path / "waiter.py"
     if service_waiter.waiters:
         with open(file_path, "w") as file_object:
-            types = set()
+            types: Set[TypeAnnotation] = set()
             for waiter in service_waiter.waiters:
                 types = types.union(waiter.get_types())
             write_import_statements(file_object, types)
@@ -376,7 +373,7 @@ def write_service_paginator(service_paginator: ServicePaginator, config: Config)
 
     if service_paginator.paginators:
         with open(file_path, "w") as file_object:
-            types = set()
+            types: Set[TypeAnnotation] = set()
             for paginator in service_paginator.paginators:
                 types = types.union(paginator.get_types())
             write_import_statements(file_object, types)
@@ -430,7 +427,7 @@ def write_init_files(init_files: Dict[str, List], config: Config):
 
 
 def write_service_paginators(session: Session, config: Config):
-    logger.info("Writing Clients")
+    logger.info("Writing Service Paginators")
     for service_paginator in parse_service_paginators(session, config):
         write_service_paginator(service_paginator, config)
 

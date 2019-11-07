@@ -1,6 +1,6 @@
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator, Tuple, Union, Optional
+from typing import List, Dict, Generator, Tuple, Union
 
 import boto3
 from boto3.docs.utils import is_resource_action
@@ -29,11 +29,11 @@ from structures import (
     ServicePaginator,
     Config,
 )
-from type_map import TYPE_MAP_REVERSED
+from type_map import TYPE_MAP_REVERSED, TypeAnnotation
 from logger import get_logger
 
 
-logger = get_logger(__name__)
+logger = get_logger()
 
 
 def get_resource_public_actions(resource_class):
@@ -145,7 +145,7 @@ def parse_resource(resource: Boto3ServiceResource):
     )
 
 
-def parse_return_type(meta: List[DocstringMeta]) -> Optional[str]:
+def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
     for docstring_meta in meta:
         if docstring_meta.args[0] == "rtype":
             return parse_type_from_str(docstring_meta.description)
@@ -207,11 +207,15 @@ def parse_service_paginators(
     for service_name in session.get_available_services():
         if service_name not in config.services:
             continue
-        if service_name not in session._loader.list_available_services("paginators-1"):
+
+        session_loader = session._loader  # pylint: disable=protected-access
+        if service_name not in session_loader.list_available_services("paginators-1"):
             continue
 
         client = session.client(service_name)
-        service_paginator_model = session._session.get_paginator_model(service_name)
+
+        session_session = session._session  # pylint: disable=protected-access
+        service_paginator_model = session_session.get_paginator_model(service_name)
         logger.debug(f"Parsing: {service_name}")
         yield ServicePaginator(
             service_name, list(parse_paginators(client, service_paginator_model))
@@ -221,10 +225,14 @@ def parse_service_paginators(
 def parse_paginators(
     client: BaseClient, service_paginator_model: PaginatorModel
 ) -> Generator[Paginator, None, None]:
-    for paginator_name in sorted(service_paginator_model._paginator_config):
+    paginator_config = (
+        service_paginator_model._paginator_config  # pylint: disable=protected-access
+    )
+    for paginator_name in sorted(paginator_config):
         paginator = client.get_paginator(xform_name(paginator_name))
+        paginator_model = paginator._model  # pylint: disable=protected-access
         yield Paginator(
-            paginator._model.name,
+            paginator_model.name,
             list(parse_methods(get_instance_public_methods(paginator))),
         )
 
@@ -232,13 +240,14 @@ def parse_paginators(
 def retrieve_sub_resources(
     session: Session, resource: Resource
 ) -> Generator[Boto3ServiceResource, None, None]:
-    loader = session._session.get_component("data_loader")
+    session_session = session._session  # pylint: disable=protected-access
+    loader = session_session.get_component("data_loader")
     json_resource_model = loader.load_service_model(
         resource.meta.service_name, "resources-1"
     )
     service_model = resource.meta.client.meta.service_model
     try:
-        service_waiter_model = session._session.get_waiter_model(
+        service_waiter_model = session_session.get_waiter_model(
             service_model.service_name
         )
     except UnknownServiceError:
