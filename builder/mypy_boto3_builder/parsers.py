@@ -60,11 +60,11 @@ def manually_set_method(name: str) -> Method:
                 Argument("Tags", List[Any], True),
             ],
             "",
-            "None",
+            type(None),
         )
 
     logger.warning(f"Unknown method: {name}")
-    return Method(name, [], "", "None")
+    return Method(name, [], "", type(None))
 
 
 def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
@@ -105,7 +105,8 @@ def parse_collections(
         yield Collection(
             name=collection.name,
             type=InternalImport(
-                name=collection.name, service_name=resource.meta.service_name,
+                name=collection.name,
+                service_name=ServiceName(resource.meta.service_name),
             ),
             methods=list(
                 parse_methods(
@@ -153,7 +154,7 @@ def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
         if docstring_meta.args[0] == "rtype":
             return parse_type_from_str(docstring_meta.description)
 
-    return "None"
+    return type(None)
 
 
 def parse_service_resource(

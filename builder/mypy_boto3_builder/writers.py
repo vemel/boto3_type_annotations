@@ -104,9 +104,6 @@ def format_arguments(method: Method) -> Generator[str, None, None]:
 def normalize_type_name(
     type_annotation: TypeAnnotation, render_args: bool = False
 ) -> str:
-    if isinstance(type_annotation, str):
-        return type_annotation
-
     name = str(type_annotation)
     if hasattr(type_annotation, "_name"):
         name = getattr(type_annotation, "_name") or "Union"
@@ -235,6 +232,7 @@ def generate_methods(
     include_doc: bool = False,
 ) -> Generator[str, None, None]:
     for method in methods:
+        yield ""
         for line in generate_method(
             method, method_body, first_arg, decorator, include_doc
         ):
@@ -242,7 +240,6 @@ def generate_methods(
                 yield f"    {line}"
             else:
                 yield ""
-        yield ""
 
 
 def generate_method(
@@ -309,11 +306,12 @@ def write_service_resource(service_resource: ServiceResource, config: Config) ->
         ):
             file_object.write(f"{import_line}\n")
 
-        file_object.write("\n")
+        file_object.write("\n\n")
         write_resource(
             service_resource, "ServiceResource", file_object, config.with_docs
         )
         for resource in service_resource.sub_resources:
+            file_object.write("\n\n")
             write_resource(resource, resource.name, file_object, config.with_docs)
 
         added_collection_names: Set[str] = set()
@@ -321,6 +319,7 @@ def write_service_resource(service_resource: ServiceResource, config: Config) ->
             if collection.name in added_collection_names:
                 continue
             added_collection_names.add(collection.name)
+            file_object.write("\n\n")
             write_collection(collection, file_object, config.with_docs)
 
         for resource in service_resource.sub_resources:
@@ -328,6 +327,7 @@ def write_service_resource(service_resource: ServiceResource, config: Config) ->
                 if collection.name in added_collection_names:
                     continue
                 added_collection_names.add(collection.name)
+                file_object.write("\n\n")
                 write_collection(collection, file_object, config.with_docs)
 
 
@@ -354,12 +354,14 @@ def write_resource(
 
     file_object.write(f"class {name}(Boto3ServiceResource):\n")
     attributes = resource.attributes
-    attributes += [Attribute(c.name, c.type) for c in resource.collections]
+    for collection in resource.collections:
+        attributes.append(Attribute(collection.name, collection.type))
+
     if attributes:
         for line in generate_attributes(attributes):
             file_object.write(line)
             file_object.write("\n")
-        file_object.write("\n")
+
     if resource.methods:
         for line in generate_methods(resource.methods, include_doc=with_docs):
             file_object.write(line)
@@ -494,7 +496,7 @@ def write_services(session: Session, config: Config) -> None:
         file_path = (
             config.output / config.module_name / service_name.name / "__init__.py"
         )
-        logger.info(f"Writing {NicePath(file_path)}")
+        logger.debug(f"Writing {NicePath(file_path)}")
         write_init_file(file_path, import_records, service_name)
 
 

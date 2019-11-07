@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Callable, IO, List, Dict, Union, Any
 
 from boto3.resources.collection import ResourceCollection
+from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
@@ -12,6 +13,7 @@ from mypy_boto3_builder.structures import (
     InternalImport,
     AnnotationWrapper,
 )
+from mypy_boto3_builder.service_name import ServiceName
 
 TYPE_MAP: Dict[str, TypeAnnotation] = {
     "bytes": bytes,
@@ -43,206 +45,388 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     "str or dict": Union[str, Dict],
     "list(string)": List[str],
     "list of str": List[str],
-    "None": "None",
-    ":py:class:`ec2.NetworkAcl`": "'NetworkAcl'",
-    ":py:class:`EC2.NetworkAcl`": "'NetworkAcl'",
-    "list(:py:class:`ec2.InternetGateway`)": "List['InternetGateway']",
-    ":py:class:`iam.UserPolicy`": "'UserPolicy'",
-    ":py:class:`IAM.UserPolicy`": "'UserPolicy'",
-    "list(:py:class:`iam.VirtualMfaDevice`)": "List['VirtualMfaDevice']",
-    "list(:py:class:`ec2.Image`)": "List['Image']",
-    "list(:py:class:`cloudwatch.Alarm`)": "List['Alarm']",
-    "list(:py:class:`opsworks.Layer`)": "List['Layer']",
-    ":py:class:`iam.GroupPolicy`": "'GroupPolicy'",
-    ":py:class:`IAM.GroupPolicy`": "'GroupPolicy'",
-    "list(:py:class:`iam.SigningCertificate`)": "List['SigningCertificate']",
-    "list(:py:class:`ec2.Volume`)": "List['Volume']",
-    "list(:py:class:`ec2.VpcPeeringConnection`)": "List['VpcPeeringConnection']",
-    ":py:class:`ec2.Subnet`": "'Subnet'",
-    ":py:class:`EC2.Subnet`": "'Subnet'",
-    "list(:py:class:`iam.ServerCertificate`)": "List['ServerCertificate']",
-    "list(:py:class:`ec2.VpcAddress`)": "List['VpcAddress']",
-    ":py:class:`sns.PlatformEndpoint`": "'PlatformEndpoint'",
-    ":py:class:`SNS.PlatformEndpoint`": "'PlatformEndpoint'",
-    ":py:class:`s3.MultipartUpload`": InternalImport("MultipartUpload", "s3"),
-    ":py:class:`glacier.MultipartUpload`": "'MultipartUpload'",
-    ":py:class:`Glacier.MultipartUpload`": "'MultipartUpload'",
-    ":py:class:`S3.MultipartUpload`": InternalImport("MultipartUpload", "s3"),
-    "list(:py:class:`ec2.Subnet`)": "List['Subnet']",
-    ":py:class:`opsworks.Layer`": "'Layer'",
-    ":py:class:`OpsWorks.Layer`": "'Layer'",
-    "list(:py:class:`iam.MfaDevice`)": "List['MfaDevice']",
-    "list(:py:class:`glacier.Job`)": "List['Job']",
-    "list(:py:class:`iam.RolePolicy`)": "List['RolePolicy']",
-    "list(:py:class:`iam.InstanceProfile`)": "List['InstanceProfile']",
-    "list(:py:class:`ec2.Instance`)": "List['Instance']",
-    ":py:class:`glacier.Vault`": "'Vault'",
-    ":py:class:`Glacier.Vault`": "'Vault'",
-    ":py:class:`ec2.SecurityGroup`": "'SecurityGroup'",
-    ":py:class:`EC2.SecurityGroup`": "'SecurityGroup'",
-    ":py:class:`ec2.RouteTable`": "'RouteTable'",
-    ":py:class:`EC2.RouteTable`": "'RouteTable'",
-    "list(:py:class:`dynamodb.Table`)": "List['Table']",
-    "list(:py:class:`ec2.Snapshot`)": "List['Snapshot']",
-    "list(:py:class:`sqs.Message`)": "List['Message']",
-    "list(:py:class:`iam.Role`)": "List['Role']",
-    ":py:class:`glacier.Job`": "'Job'",
-    ":py:class:`Glacier.Job`": "'Job'",
-    "list(:py:class:`cloudwatch.Metric`)": "List['Metric']",
-    "list(:py:class:`iam.Policy`)": "List['Policy']",
-    "list(:py:class:`ec2.ClassicAddress`)": "List['ClassicAddress']",
-    "list(:py:class:`iam.User`)": "List['User']",
-    "list(:py:class:`iam.GroupPolicy`)": "List['GroupPolicy']",
-    "list(:py:class:`iam.PolicyVersion`)": "List['PolicyVersion']",
-    "list(:py:class:`sns.Topic`)": "List['Topic']",
-    ":py:class:`iam.LoginProfile`": "'LoginProfile'",
-    ":py:class:`IAM.LoginProfile`": "'LoginProfile'",
-    "list(:py:class:`iam.UserPolicy`)": "List['UserPolicy']",
-    "list(:py:class:`cloudformation.Event`)": "List['Event']",
-    ":py:class:`cloudformation.Event`": "'Event'",
-    ":py:class:`CloudFormation.Event`": "'Event'",
+    "None": type(None),
+    ":py:class:`ec2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
+    ":py:class:`EC2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
+    "list(:py:class:`ec2.InternetGateway`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("InternetGateway", ServiceName.ec2),),
+    ),
+    ":py:class:`iam.UserPolicy`": InternalImport("UserPolicy", ServiceName.iam),
+    ":py:class:`IAM.UserPolicy`": InternalImport("UserPolicy", ServiceName.iam),
+    "list(:py:class:`iam.VirtualMfaDevice`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("VirtualMfaDevice", ServiceName.iam),),
+    ),
+    "list(:py:class:`ec2.Image`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Image", ServiceName.ec2),),
+    ),
+    "list(:py:class:`cloudwatch.Alarm`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Alarm", ServiceName.cloudwatch),),
+    ),
+    "list(:py:class:`opsworks.Layer`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Layer", ServiceName.opsworks),),
+    ),
+    ":py:class:`iam.GroupPolicy`": InternalImport("GroupPolicy", ServiceName.iam),
+    ":py:class:`IAM.GroupPolicy`": InternalImport("GroupPolicy", ServiceName.iam),
+    "list(:py:class:`iam.SigningCertificate`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("SigningCertificate", ServiceName.iam),),
+    ),
+    "list(:py:class:`ec2.Volume`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Volume", ServiceName.ec2),),
+    ),
+    "list(:py:class:`ec2.VpcPeeringConnection`)": AnnotationWrapper(
+        parent=List,
+        children=(InternalImport("VpcPeeringConnection", ServiceName.ec2),),
+    ),
+    ":py:class:`ec2.Subnet`": InternalImport("Subnet", ServiceName.ec2),
+    ":py:class:`EC2.Subnet`": InternalImport("Subnet", ServiceName.ec2),
+    "list(:py:class:`iam.ServerCertificate`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("ServerCertificate", ServiceName.iam),),
+    ),
+    "list(:py:class:`ec2.VpcAddress`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("VpcAddress", ServiceName.ec2),),
+    ),
+    ":py:class:`sns.PlatformEndpoint`": InternalImport(
+        "PlatformEndpoint", ServiceName.sns
+    ),
+    ":py:class:`SNS.PlatformEndpoint`": InternalImport(
+        "PlatformEndpoint", ServiceName.sns
+    ),
+    ":py:class:`s3.MultipartUpload`": InternalImport("MultipartUpload", ServiceName.s3),
+    ":py:class:`glacier.MultipartUpload`": InternalImport(
+        "MultipartUpload", ServiceName.glacier
+    ),
+    ":py:class:`Glacier.MultipartUpload`": InternalImport(
+        "MultipartUpload", ServiceName.glacier
+    ),
+    ":py:class:`S3.MultipartUpload`": InternalImport("MultipartUpload", ServiceName.s3),
+    "list(:py:class:`ec2.Subnet`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Subnet", ServiceName.ec2),),
+    ),
+    ":py:class:`opsworks.Layer`": InternalImport("Layer", ServiceName.opsworks),
+    ":py:class:`OpsWorks.Layer`": InternalImport("Layer", ServiceName.opsworks),
+    "list(:py:class:`iam.MfaDevice`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("MfaDevice", ServiceName.iam),),
+    ),
+    "list(:py:class:`glacier.Job`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Job", ServiceName.glacier),),
+    ),
+    "list(:py:class:`iam.RolePolicy`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("RolePolicy", ServiceName.iam),),
+    ),
+    "list(:py:class:`iam.InstanceProfile`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("InstanceProfile", ServiceName.iam),),
+    ),
+    "list(:py:class:`ec2.Instance`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Instance", ServiceName.ec2),),
+    ),
+    ":py:class:`glacier.Vault`": InternalImport("Vault", ServiceName.glacier),
+    ":py:class:`Glacier.Vault`": InternalImport("Vault", ServiceName.glacier),
+    ":py:class:`ec2.SecurityGroup`": InternalImport("SecurityGroup", ServiceName.ec2),
+    ":py:class:`EC2.SecurityGroup`": InternalImport("SecurityGroup", ServiceName.ec2),
+    ":py:class:`ec2.RouteTable`": InternalImport("RouteTable", ServiceName.ec2),
+    ":py:class:`EC2.RouteTable`": InternalImport("RouteTable", ServiceName.ec2),
+    "list(:py:class:`dynamodb.Table`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Table", ServiceName.dynamodb),),
+    ),
+    "list(:py:class:`ec2.Snapshot`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Snapshot", ServiceName.ec2),),
+    ),
+    "list(:py:class:`sqs.Message`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Message", ServiceName.sqs),),
+    ),
+    "list(:py:class:`iam.Role`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Role", ServiceName.iam),),
+    ),
+    ":py:class:`glacier.Job`": InternalImport("Job", ServiceName.glacier),
+    ":py:class:`Glacier.Job`": InternalImport("Job", ServiceName.glacier),
+    "list(:py:class:`cloudwatch.Metric`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Metric", ServiceName.cloudwatch),),
+    ),
+    "list(:py:class:`iam.Policy`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Policy", ServiceName.iam),),
+    ),
+    "list(:py:class:`ec2.ClassicAddress`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("ClassicAddress", ServiceName.ec2),),
+    ),
+    "list(:py:class:`iam.User`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("User", ServiceName.iam),),
+    ),
+    "list(:py:class:`iam.GroupPolicy`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("GroupPolicy", ServiceName.iam),),
+    ),
+    "list(:py:class:`iam.PolicyVersion`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("PolicyVersion", ServiceName.iam),),
+    ),
+    "list(:py:class:`sns.Topic`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Topic", ServiceName.sns),),
+    ),
+    ":py:class:`iam.LoginProfile`": InternalImport("LoginProfile", ServiceName.iam),
+    ":py:class:`IAM.LoginProfile`": InternalImport("LoginProfile", ServiceName.iam),
+    "list(:py:class:`iam.UserPolicy`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("UserPolicy", ServiceName.iam),),
+    ),
+    "list(:py:class:`cloudformation.Event`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Event", ServiceName.cloudformation),),
+    ),
+    ":py:class:`cloudformation.Event`": InternalImport(
+        "Event", ServiceName.cloudformation
+    ),
+    ":py:class:`CloudFormation.Event`": InternalImport(
+        "Event", ServiceName.cloudformation
+    ),
     "list(:py:class:`s3.MultipartUpload`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MultipartUpload", "s3"),),
+        parent=List, children=(InternalImport("MultipartUpload", ServiceName.s3),),
     ),
-    "list(:py:class:`glacier.MultipartUpload`)": "List['MultipartUpload']",
-    "list(:py:class:`sns.Subscription`)": "List['Subscription']",
-    ":py:class:`iam.PolicyVersion`": "'PolicyVersion'",
-    ":py:class:`IAM.PolicyVersion`": "'PolicyVersion'",
-    "list(:py:class:`~boto3.resources.base.ServiceResource`)": "List[Boto3ServiceResource]",
-    "list(:py:class:`ec2.NetworkInterface`)": "List['NetworkInterface']",
+    "list(:py:class:`glacier.MultipartUpload`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("MultipartUpload", ServiceName.glacier),),
+    ),
+    "list(:py:class:`sns.Subscription`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Subscription", ServiceName.sns),),
+    ),
+    ":py:class:`iam.PolicyVersion`": InternalImport("PolicyVersion", ServiceName.iam),
+    ":py:class:`IAM.PolicyVersion`": InternalImport("PolicyVersion", ServiceName.iam),
+    "list(:py:class:`~boto3.resources.base.ServiceResource`)": List[
+        Boto3ServiceResource
+    ],
+    "list(:py:class:`ec2.NetworkInterface`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("NetworkInterface", ServiceName.ec2),),
+    ),
     "list(:py:class:`s3.ObjectVersion`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ObjectVersion", "s3"),),
+        parent=List, children=(InternalImport("ObjectVersion", ServiceName.s3),),
     ),
-    "list(:py:class:`ec2.SecurityGroup`)": "List['SecurityGroup']",
-    "list(:py:class:`sqs.Queue`)": "List['Queue']",
-    "list(:py:class:`ec2.PlacementGroup`)": "List['PlacementGroup']",
-    "list(:py:class:`ec2.Vpc`)": "List['Vpc']",
-    "list(:py:class:`ec2.RouteTable`)": "List['RouteTable']",
-    "list(:py:class:`glacier.Vault`)": "List['Vault']",
-    "list(:py:class:`iam.Group`)": "List['Group']",
-    ":py:class:`iam.Group`": "List['Group']",
-    ":py:class:`ec2.Image`": "'Image'",
-    ":py:class:`EC2.Image`": "'Image'",
-    ":py:class:`ec2.Route`": "'Route'",
-    ":py:class:`EC2.Route`": "'Route'",
-    ":py:class:`ec2.VpcPeeringConnection`": "'VpcPeeringConnection'",
-    ":py:class:`EC2.VpcPeeringConnection`": "'VpcPeeringConnection'",
-    "list(:py:class:`cloudformation.Stack`)": "List['Stack']",
-    "list(:py:class:`opsworks.Stack`)": "List['Stack']",
-    ":py:class:`iam.MfaDevice`": "'MfaDevice'",
-    ":py:class:`IAM.MfaDevice`": "'MfaDevice'",
+    "list(:py:class:`ec2.SecurityGroup`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("SecurityGroup", ServiceName.ec2),),
+    ),
+    "list(:py:class:`sqs.Queue`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Queue", ServiceName.sqs),),
+    ),
+    "list(:py:class:`ec2.PlacementGroup`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("PlacementGroup", ServiceName.ec2),),
+    ),
+    "list(:py:class:`ec2.Vpc`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Vpc", ServiceName.ec2),),
+    ),
+    "list(:py:class:`ec2.RouteTable`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("RouteTable", ServiceName.ec2),),
+    ),
+    "list(:py:class:`glacier.Vault`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Vault", ServiceName.glacier),),
+    ),
+    "list(:py:class:`iam.Group`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Group", ServiceName.iam),),
+    ),
+    ":py:class:`iam.Group`": AnnotationWrapper(
+        parent=List, children=(InternalImport("Group", ServiceName.iam),),
+    ),
+    ":py:class:`ec2.Image`": InternalImport("Image", ServiceName.ec2),
+    ":py:class:`EC2.Image`": InternalImport("Image", ServiceName.ec2),
+    ":py:class:`ec2.Route`": InternalImport("Route", ServiceName.ec2),
+    ":py:class:`EC2.Route`": InternalImport("Route", ServiceName.ec2),
+    ":py:class:`ec2.VpcPeeringConnection`": InternalImport(
+        "VpcPeeringConnection", ServiceName.ec2
+    ),
+    ":py:class:`EC2.VpcPeeringConnection`": InternalImport(
+        "VpcPeeringConnection", ServiceName.ec2
+    ),
+    "list(:py:class:`cloudformation.Stack`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Stack", ServiceName.cloudformation),),
+    ),
+    "list(:py:class:`opsworks.Stack`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Stack", ServiceName.opsworks),),
+    ),
+    ":py:class:`iam.MfaDevice`": InternalImport("MfaDevice", ServiceName.iam),
+    ":py:class:`IAM.MfaDevice`": InternalImport("MfaDevice", ServiceName.iam),
     "list(:py:class:`s3.Bucket`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Bucket", "s3"),),
+        parent=List, children=(InternalImport("Bucket", ServiceName.s3),),
     ),
-    "list(:py:class:`sns.PlatformEndpoint`)": "List['PlatformEndpoint']",
-    ":py:class:`ec2.Snapshot`": "'Snapshot'",
-    ":py:class:`EC2.Snapshot`": "'Snapshot'",
-    "list(:py:class:`ec2.DhcpOptions`)": "List['DhcpOptions']",
-    "list(:py:class:`ec2.NetworkAcl`)": "List['NetworkAcl']",
-    "list(:py:class:`ec2.KeyPairInfo`)": "List['KeyPairInfo']",
-    "list(:py:class:`cloudformation.StackResourceSummary`)": "List['StackResourceSummary']",
-    ":py:class:`dynamodb.Table`": "'Table'",
-    ":py:class:`DynamoDB.Table`": "'Table'",
-    ":py:class:`iam.AccessKeyPair`": "'AccessKeyPair'",
-    ":py:class:`IAM.AccessKeyPair`": "'AccessKeyPair'",
-    "list(:py:class:`iam.SamlProvider`)": "List['SamlProvider']",
-    ":py:class:`glacier.Archive`": "'Archive'",
-    ":py:class:`Glacier.Archive`": "'Archive'",
-    ":py:class:`ec2.NetworkInterface`": "'NetworkInterface'",
-    ":py:class:`EC2.NetworkInterface`": "'NetworkInterface'",
-    "list(:py:class:`iam.AccessKey`)": "List['AccessKey']",
-    ":py:class:`sns.Subscription`": "'Subscription'",
-    ":py:class:`SNS.Subscription`": "'Subscription'",
+    "list(:py:class:`sns.PlatformEndpoint`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("PlatformEndpoint", ServiceName.sns),),
+    ),
+    ":py:class:`ec2.Snapshot`": InternalImport("Snapshot", ServiceName.ec2),
+    ":py:class:`EC2.Snapshot`": InternalImport("Snapshot", ServiceName.ec2),
+    "list(:py:class:`ec2.DhcpOptions`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("DhcpOptions", ServiceName.ec2),),
+    ),
+    "list(:py:class:`ec2.NetworkAcl`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("NetworkAcl", ServiceName.ec2),),
+    ),
+    "list(:py:class:`ec2.KeyPairInfo`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("KeyPairInfo", ServiceName.ec2),),
+    ),
+    "list(:py:class:`cloudformation.StackResourceSummary`)": AnnotationWrapper(
+        parent=List,
+        children=(InternalImport("StackResourceSummary", ServiceName.cloudformation),),
+    ),
+    ":py:class:`dynamodb.Table`": InternalImport("Table", ServiceName.dynamodb),
+    ":py:class:`DynamoDB.Table`": InternalImport("Table", ServiceName.dynamodb),
+    ":py:class:`iam.AccessKeyPair`": InternalImport("AccessKeyPair", ServiceName.iam),
+    ":py:class:`IAM.AccessKeyPair`": InternalImport("AccessKeyPair", ServiceName.iam),
+    "list(:py:class:`iam.SamlProvider`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("SamlProvider", ServiceName.iam),),
+    ),
+    ":py:class:`glacier.Archive`": InternalImport("Archive", ServiceName.glacier),
+    ":py:class:`Glacier.Archive`": InternalImport("Archive", ServiceName.glacier),
+    ":py:class:`ec2.NetworkInterface`": InternalImport(
+        "NetworkInterface", ServiceName.ec2
+    ),
+    ":py:class:`EC2.NetworkInterface`": InternalImport(
+        "NetworkInterface", ServiceName.ec2
+    ),
+    "list(:py:class:`iam.AccessKey`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("AccessKey", ServiceName.iam),),
+    ),
+    ":py:class:`sns.Subscription`": InternalImport("Subscription", ServiceName.sns),
+    ":py:class:`SNS.Subscription`": InternalImport("Subscription", ServiceName.sns),
     "list(:py:class:`s3.MultipartUploadPart`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MultipartUploadPart", "s3"),),
+        parent=List, children=(InternalImport("MultipartUploadPart", ServiceName.s3),),
     ),
-    ":py:class:`iam.ServerCertificate`": "'ServerCertificate'",
-    ":py:class:`IAM.ServerCertificate`": "'ServerCertificate'",
-    "list(:py:class:`ec2.Tag`)": "List['Tag']",
-    ":py:class:`cloudwatch.Alarm`": "'Alarm'",
-    ":py:class:`CloudWatch.Alarm`": "'Alarm'",
-    ":py:class:`EC2.PlacementGroup`": "'PlacementGroup'",
-    ":py:class:`ec2.PlacementGroup`": "'PlacementGroup'",
-    ":py:class:`EC2.Vpc`": "'Vpc'",
-    ":py:class:`ec2.Vpc`": "'Vpc'",
-    ":py:class:`S3.BucketVersioning`": "'BucketVersioning'",
-    ":py:class:`IAM.User`": "'User'",
-    ":py:class:`iam.User`": "'User'",
-    ":py:class:`sns.Topic`": "'Topic'",
-    ":py:class:`SNS.Topic`": "'Topic'",
-    ":py:class:`iam.Policy`": "'Policy'",
-    ":py:class:`IAM.Policy`": "'Policy'",
-    ":py:class:`S3.BucketCors`": InternalImport("BucketCors", "s3"),
-    ":py:class:`OpsWorks.Stack`": "'Stack'",
-    ":py:class:`CloudFormation.Stack`": "'Stack'",
-    ":py:class:`opsworks.Stack`": "'Stack'",
-    ":py:class:`cloudformation.Stack`": "'Stack'",
-    ":py:class:`IAM.SigningCertificate`": "'SigningCertificate'",
-    ":py:class:`iam.SigningCertificate`": "'SigningCertificate'",
-    ":py:class:`S3.ObjectVersion`": InternalImport("ObjectVersion", "s3"),
-    ":py:class:`S3.BucketPolicy`": InternalImport("BucketPolicy", "s3"),
-    ":py:class:`EC2.RouteTableAssociation`": "'RouteTableAssociation'",
-    ":py:class:`ec2.RouteTableAssociation`": "'RouteTableAssociation'",
-    ":py:class:`IAM.RolePolicy`": "'RolePolicy'",
-    ":py:class:`IAM.CurrentUser`": "'CurrentUser'",
-    ":py:class:`EC2.InternetGateway`": "'InternetGateway'",
-    ":py:class:`ec2.InternetGateway`": "'InternetGateway'",
-    ":py:class:`sns.PlatformApplication`": "'PlatformApplication'",
-    ":py:class:`SNS.PlatformApplication`": "'PlatformApplication'",
-    ":py:class:`CloudWatch.Metric`": "'Metric'",
-    ":py:class:`IAM.Group`": "'Group'",
-    ":py:class:`OpsWorks.StackSummary`": "'StackSummary'",
-    ":py:class:`IAM.AssumeRolePolicy`": "'AssumeRolePolicy'",
-    ":py:class:`S3.Object`": InternalImport("Object", "s3"),
-    ":py:class:`s3.Object`": InternalImport("Object", "s3"),
-    ":py:class:`CloudFormation.StackResourceSummary`": "'StackResourceSummary'",
-    ":py:class:`S3.BucketWebsite`": InternalImport("BucketWebsite", "s3"),
-    ":py:class:`SQS.Queue`": "'Queue'",
-    ":py:class:`sqs.Queue`": "'Queue'",
-    ":py:class:`S3.MultipartUploadPart`": InternalImport("MultipartUploadPart", "s3"),
-    ":py:class:`ec2.KeyPairInfo`": "'KeyPairInfo'",
-    ":py:class:`EC2.KeyPairInfo`": "'KeyPairInfo'",
-    ":py:class:`iam.InstanceProfile`": "'InstanceProfile'",
-    ":py:class:`IAM.InstanceProfile`": "'InstanceProfile'",
-    ":py:class:`IAM.AccessKey`": "'AccessKey'",
-    ":py:class:`IAM.SamlProvider`": "'SamlProvider'",
-    ":py:class:`iam.SamlProvider`": "'SamlProvider'",
-    ":py:class:`EC2.Tag`": "'Tag'",
+    ":py:class:`iam.ServerCertificate`": InternalImport(
+        "ServerCertificate", ServiceName.iam
+    ),
+    ":py:class:`IAM.ServerCertificate`": InternalImport(
+        "ServerCertificate", ServiceName.iam
+    ),
+    "list(:py:class:`ec2.Tag`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("Tag", ServiceName.ec2),),
+    ),
+    ":py:class:`cloudwatch.Alarm`": InternalImport("Alarm", ServiceName.cloudwatch),
+    ":py:class:`CloudWatch.Alarm`": InternalImport("Alarm", ServiceName.cloudwatch),
+    ":py:class:`EC2.PlacementGroup`": InternalImport("PlacementGroup", ServiceName.ec2),
+    ":py:class:`ec2.PlacementGroup`": InternalImport("PlacementGroup", ServiceName.ec2),
+    ":py:class:`EC2.Vpc`": InternalImport("Vpc", ServiceName.ec2),
+    ":py:class:`ec2.Vpc`": InternalImport("Vpc", ServiceName.ec2),
+    ":py:class:`S3.BucketVersioning`": InternalImport(
+        "BucketVersioning", ServiceName.s3
+    ),
+    ":py:class:`IAM.User`": InternalImport("User", ServiceName.iam),
+    ":py:class:`iam.User`": InternalImport("User", ServiceName.iam),
+    ":py:class:`sns.Topic`": InternalImport("Topic", ServiceName.sns),
+    ":py:class:`SNS.Topic`": InternalImport("Topic", ServiceName.sns),
+    ":py:class:`iam.Policy`": InternalImport("Policy", ServiceName.iam),
+    ":py:class:`IAM.Policy`": InternalImport("Policy", ServiceName.iam),
+    ":py:class:`S3.BucketCors`": InternalImport("BucketCors", ServiceName.s3),
+    ":py:class:`OpsWorks.Stack`": InternalImport("Stack", ServiceName.opsworks),
+    ":py:class:`CloudFormation.Stack`": InternalImport(
+        "Stack", ServiceName.cloudformation
+    ),
+    ":py:class:`opsworks.Stack`": InternalImport("Stack", ServiceName.opsworks),
+    ":py:class:`cloudformation.Stack`": InternalImport(
+        "Stack", ServiceName.cloudformation
+    ),
+    ":py:class:`IAM.SigningCertificate`": InternalImport(
+        "SigningCertificate", ServiceName.iam
+    ),
+    ":py:class:`iam.SigningCertificate`": InternalImport(
+        "SigningCertificate", ServiceName.iam
+    ),
+    ":py:class:`S3.ObjectVersion`": InternalImport("ObjectVersion", ServiceName.s3),
+    ":py:class:`S3.BucketPolicy`": InternalImport("BucketPolicy", ServiceName.s3),
+    ":py:class:`EC2.RouteTableAssociation`": InternalImport(
+        "RouteTableAssociation", ServiceName.ec2
+    ),
+    ":py:class:`ec2.RouteTableAssociation`": InternalImport(
+        "RouteTableAssociation", ServiceName.ec2
+    ),
+    ":py:class:`IAM.RolePolicy`": InternalImport("RolePolicy", ServiceName.iam),
+    ":py:class:`IAM.CurrentUser`": InternalImport("CurrentUser", ServiceName.iam),
+    ":py:class:`EC2.InternetGateway`": InternalImport(
+        "InternetGateway", ServiceName.ec2
+    ),
+    ":py:class:`ec2.InternetGateway`": InternalImport(
+        "InternetGateway", ServiceName.ec2
+    ),
+    ":py:class:`sns.PlatformApplication`": InternalImport(
+        "PlatformApplication", ServiceName.sns
+    ),
+    ":py:class:`SNS.PlatformApplication`": InternalImport(
+        "PlatformApplication", ServiceName.sns
+    ),
+    ":py:class:`CloudWatch.Metric`": InternalImport("Metric", ServiceName.cloudwatch),
+    ":py:class:`IAM.Group`": InternalImport("Group", ServiceName.iam),
+    ":py:class:`OpsWorks.StackSummary`": InternalImport(
+        "StackSummary", ServiceName.opsworks
+    ),
+    ":py:class:`IAM.AssumeRolePolicy`": InternalImport(
+        "AssumeRolePolicy", ServiceName.iam
+    ),
+    ":py:class:`S3.Object`": InternalImport("Object", ServiceName.s3),
+    ":py:class:`s3.Object`": InternalImport("Object", ServiceName.s3),
+    ":py:class:`CloudFormation.StackResourceSummary`": InternalImport(
+        "StackResourceSummary", ServiceName.cloudformation
+    ),
+    ":py:class:`S3.BucketWebsite`": InternalImport("BucketWebsite", ServiceName.s3),
+    ":py:class:`SQS.Queue`": InternalImport("Queue", ServiceName.sqs),
+    ":py:class:`sqs.Queue`": InternalImport("Queue", ServiceName.sqs),
+    ":py:class:`S3.MultipartUploadPart`": InternalImport(
+        "MultipartUploadPart", ServiceName.s3
+    ),
+    ":py:class:`ec2.KeyPairInfo`": InternalImport("KeyPairInfo", ServiceName.ec2),
+    ":py:class:`EC2.KeyPairInfo`": InternalImport("KeyPairInfo", ServiceName.ec2),
+    ":py:class:`iam.InstanceProfile`": InternalImport(
+        "InstanceProfile", ServiceName.iam
+    ),
+    ":py:class:`IAM.InstanceProfile`": InternalImport(
+        "InstanceProfile", ServiceName.iam
+    ),
+    ":py:class:`IAM.AccessKey`": InternalImport("AccessKey", ServiceName.iam),
+    ":py:class:`IAM.SamlProvider`": InternalImport("SamlProvider", ServiceName.iam),
+    ":py:class:`iam.SamlProvider`": InternalImport("SamlProvider", ServiceName.iam),
+    ":py:class:`EC2.Tag`": InternalImport("Tag", ServiceName.ec2),
     ":py:class:`S3.BucketLifecycleConfiguration`": InternalImport(
-        "BucketLifecycleConfiguration", "s3"
+        "BucketLifecycleConfiguration", ServiceName.s3
     ),
-    ":py:class:`iam.AccountPasswordPolicy`": "'AccountPasswordPolicy'",
-    ":py:class:`IAM.AccountPasswordPolicy`": "'AccountPasswordPolicy'",
-    ":py:class:`S3.BucketNotification`": "'BucketNotification'",
-    ":py:class:`CloudFormation.StackResource`": "'StackResource'",
-    ":py:class:`EC2.Instance`": "'Instance'",
-    ":py:class:`S3.BucketTagging`": InternalImport("BucketTagging", "s3"),
-    ":py:class:`IAM.AccountSummary`": "'AccountSummary'",
-    ":py:class:`EC2.Volume`": "'Volume'",
-    ":py:class:`ec2.Volume`": "'Volume'",
-    ":py:class:`SQS.Message`": "'Message'",
-    ":py:class:`ec2.KeyPair`": "'KeyPair'",
-    ":py:class:`S3.BucketAcl`": InternalImport("BucketAcl", "s3"),
-    ":py:class:`S3.BucketRequestPayment`": InternalImport("BucketRequestPayment", "s3"),
-    ":py:class:`IAM.Role`": "'Role'",
-    ":py:class:`iam.Role`": "'Role'",
-    ":py:class:`IAM.VirtualMfaDevice`": "'VirtualMfaDevice'",
-    ":py:class:`iam.VirtualMfaDevice`": "'VirtualMfaDevice'",
-    ":py:class:`Glacier.Account`": "'Account'",
-    ":py:class:`S3.BucketLifecycle`": InternalImport("BucketLifecycle", "s3"),
-    ":py:class:`EC2.DhcpOptions`": "'DhcpOptions'",
-    ":py:class:`ec2.DhcpOptions`": "'DhcpOptions'",
-    ":py:class:`S3.BucketLogging`": InternalImport("BucketLogging", "s3"),
-    ":py:class:`Glacier.Notification`": "'Notification'",
-    ":py:class:`EC2.ClassicAddress`": "'ClassicAddress'",
-    ":py:class:`s3.Bucket`": InternalImport("Bucket", "s3"),
-    ":py:class:`S3.Bucket`": InternalImport("Bucket", "s3"),
-    ":py:class:`EC2.VpcAddress`": "'VpcAddress'",
-    ":py:class:`S3.ObjectSummary`": InternalImport("ObjectSummary", "s3"),
-    ":py:class:`EC2.NetworkInterfaceAssociation`": "'NetworkInterfaceAssociation'",
-    ":py:class:`S3.ObjectAcl`": InternalImport("ObjectAcl", "s3"),
-    "list(:py:class:`sns.PlatformApplication`)": "List['PlatformApplication']",
+    ":py:class:`iam.AccountPasswordPolicy`": InternalImport(
+        "AccountPasswordPolicy", ServiceName.iam
+    ),
+    ":py:class:`IAM.AccountPasswordPolicy`": InternalImport(
+        "AccountPasswordPolicy", ServiceName.iam
+    ),
+    ":py:class:`S3.BucketNotification`": InternalImport(
+        "BucketNotification", ServiceName.s3
+    ),
+    ":py:class:`CloudFormation.StackResource`": InternalImport(
+        "StackResource", ServiceName.cloudformation
+    ),
+    ":py:class:`EC2.Instance`": InternalImport("Instance", ServiceName.ec2),
+    ":py:class:`S3.BucketTagging`": InternalImport("BucketTagging", ServiceName.s3),
+    ":py:class:`IAM.AccountSummary`": InternalImport("AccountSummary", ServiceName.iam),
+    ":py:class:`EC2.Volume`": InternalImport("Volume", ServiceName.ec2),
+    ":py:class:`ec2.Volume`": InternalImport("Volume", ServiceName.ec2),
+    ":py:class:`SQS.Message`": InternalImport("Message", ServiceName.sqs),
+    ":py:class:`ec2.KeyPair`": InternalImport("KeyPair", ServiceName.ec2),
+    ":py:class:`S3.BucketAcl`": InternalImport("BucketAcl", ServiceName.s3),
+    ":py:class:`S3.BucketRequestPayment`": InternalImport(
+        "BucketRequestPayment", ServiceName.s3
+    ),
+    ":py:class:`IAM.Role`": InternalImport("Role", ServiceName.iam),
+    ":py:class:`iam.Role`": InternalImport("Role", ServiceName.iam),
+    ":py:class:`IAM.VirtualMfaDevice`": InternalImport(
+        "VirtualMfaDevice", ServiceName.iam
+    ),
+    ":py:class:`iam.VirtualMfaDevice`": InternalImport(
+        "VirtualMfaDevice", ServiceName.iam
+    ),
+    ":py:class:`Glacier.Account`": InternalImport("Account", ServiceName.glacier),
+    ":py:class:`S3.BucketLifecycle`": InternalImport("BucketLifecycle", ServiceName.s3),
+    ":py:class:`EC2.DhcpOptions`": InternalImport("DhcpOptions", ServiceName.ec2),
+    ":py:class:`ec2.DhcpOptions`": InternalImport("DhcpOptions", ServiceName.ec2),
+    ":py:class:`S3.BucketLogging`": InternalImport("BucketLogging", ServiceName.s3),
+    ":py:class:`Glacier.Notification`": InternalImport(
+        "Notification", ServiceName.glacier
+    ),
+    ":py:class:`EC2.ClassicAddress`": InternalImport("ClassicAddress", ServiceName.ec2),
+    ":py:class:`s3.Bucket`": InternalImport("Bucket", ServiceName.s3),
+    ":py:class:`S3.Bucket`": InternalImport("Bucket", ServiceName.s3),
+    ":py:class:`EC2.VpcAddress`": InternalImport("VpcAddress", ServiceName.ec2),
+    ":py:class:`S3.ObjectSummary`": InternalImport("ObjectSummary", ServiceName.s3),
+    ":py:class:`EC2.NetworkInterfaceAssociation`": InternalImport(
+        "NetworkInterfaceAssociation", ServiceName.ec2
+    ),
+    ":py:class:`S3.ObjectAcl`": InternalImport("ObjectAcl", ServiceName.s3),
+    "list(:py:class:`sns.PlatformApplication`)": AnnotationWrapper(
+        parent=List, children=(InternalImport("PlatformApplication", ServiceName.sns),),
+    ),
     "list(:py:class:`s3.ObjectSummary`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ObjectSummary", "s3"),),
+        parent=List, children=(InternalImport("ObjectSummary", ServiceName.s3),),
     ),
 }

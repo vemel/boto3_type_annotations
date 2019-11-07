@@ -76,13 +76,13 @@ class FakeAnnotation:
         return ImportRecord(source=ImportString(module_name), name=str(self))
 
 
-TypeAnnotation = Union[FakeAnnotation, type, str]
+TypeAnnotation = Union[FakeAnnotation, type]
 
 
 @dataclass
 class InternalImport(FakeAnnotation):
     name: str
-    service_name: str
+    service_name: ServiceName
     module_name: str = "service_resource"
 
     def __hash__(self) -> int:
@@ -93,10 +93,12 @@ class InternalImport(FakeAnnotation):
 
     @property
     def scope(self) -> str:
-        return f"{self.service_name}_{self.module_name}_scope"
+        return f"{self.service_name.value}_{self.module_name}_scope"
 
     def get_import_record(self, module_name: str) -> ImportRecord:
-        source = ImportString(f"{module_name}.{self.service_name}.{self.module_name}")
+        source = ImportString(
+            f"{module_name}.{self.service_name.name}.{self.module_name}"
+        )
         return ImportRecord(source=source, alias=self.scope)
 
 
