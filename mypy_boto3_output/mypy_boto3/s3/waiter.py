@@ -1,33 +1,31 @@
 from __future__ import annotations
 
+# builtin imports
 from datetime import datetime
-from typing import Any
 from typing import Dict
+from typing import Any
 
+# boto3 imports
 from botocore.waiter import Waiter
 
 
 class BucketExists(Waiter):
-    def wait(
-        self,
-        Bucket: str,
-        WaiterConfig: Dict[str, Any] = None,
-    ):
-        pass
 
+    # pylint: disable=arguments-differ
+    def wait(self, Bucket: str, WaiterConfig: Dict[str, Any] = None) -> None:
+        pass
 
 
 class BucketNotExists(Waiter):
-    def wait(
-        self,
-        Bucket: str,
-        WaiterConfig: Dict[str, Any] = None,
-    ):
-        pass
 
+    # pylint: disable=arguments-differ
+    def wait(self, Bucket: str, WaiterConfig: Dict[str, Any] = None) -> None:
+        pass
 
 
 class ObjectExists(Waiter):
+
+    # pylint: disable=arguments-differ
     def wait(
         self,
         Bucket: str,
@@ -44,12 +42,13 @@ class ObjectExists(Waiter):
         RequestPayer: str = None,
         PartNumber: int = None,
         WaiterConfig: Dict[str, Any] = None,
-    ):
+    ) -> None:
         pass
-
 
 
 class ObjectNotExists(Waiter):
+
+    # pylint: disable=arguments-differ
     def wait(
         self,
         Bucket: str,
@@ -66,6 +65,5 @@ class ObjectNotExists(Waiter):
         RequestPayer: str = None,
         PartNumber: int = None,
         WaiterConfig: Dict[str, Any] = None,
-    ):
+    ) -> None:
         pass
-

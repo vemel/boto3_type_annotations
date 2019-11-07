@@ -1,12 +1,16 @@
 from __future__ import annotations
 
-from typing import Any
+# builtin imports
 from typing import Dict
+from typing import Any
 
+# boto3 imports
 from botocore.paginate import Paginator
 
 
 class ListMultipartUploads(Paginator):
+
+    # pylint: disable=arguments-differ
     def paginate(
         self,
         Bucket: str,
@@ -14,12 +18,13 @@ class ListMultipartUploads(Paginator):
         EncodingType: str = None,
         Prefix: str = None,
         PaginationConfig: Dict[str, Any] = None,
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         pass
-
 
 
 class ListObjectVersions(Paginator):
+
+    # pylint: disable=arguments-differ
     def paginate(
         self,
         Bucket: str,
@@ -27,12 +32,13 @@ class ListObjectVersions(Paginator):
         EncodingType: str = None,
         Prefix: str = None,
         PaginationConfig: Dict[str, Any] = None,
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         pass
 
 
-
 class ListObjects(Paginator):
+
+    # pylint: disable=arguments-differ
     def paginate(
         self,
         Bucket: str,
@@ -41,12 +47,13 @@ class ListObjects(Paginator):
         Prefix: str = None,
         RequestPayer: str = None,
         PaginationConfig: Dict[str, Any] = None,
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         pass
 
 
-
 class ListObjectsV2(Paginator):
+
+    # pylint: disable=arguments-differ
     def paginate(
         self,
         Bucket: str,
@@ -57,12 +64,13 @@ class ListObjectsV2(Paginator):
         StartAfter: str = None,
         RequestPayer: str = None,
         PaginationConfig: Dict[str, Any] = None,
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         pass
 
 
-
 class ListParts(Paginator):
+
+    # pylint: disable=arguments-differ
     def paginate(
         self,
         Bucket: str,
@@ -70,6 +78,5 @@ class ListParts(Paginator):
         UploadId: str,
         RequestPayer: str = None,
         PaginationConfig: Dict[str, Any] = None,
-    ) -> Dict:
+    ) -> Dict[str, Any]:
         pass
-
