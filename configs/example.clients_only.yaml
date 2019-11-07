@@ -4,8 +4,8 @@ with_clients: true
 with_service_resources: false
 with_paginators: false
 with_waiters: false
-package_name: boto3_type_annotations_clients
-module_name: boto3_type_annotations
-version: 0.3.0
+package_name: mypy_boto3_clients
+module_name: mypy_boto3
+version: 0.1.0
 readme: "../README.md"
 license: "../LICENSE"

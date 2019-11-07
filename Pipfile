@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "==19.10b0"
+codecov = "==2.0.15"
+mypy = "==0.740"
+pylint = "==2.4.3"
+pytest = "==5.2.2"
+pytest-cov = "==2.8.1"
+rope = "==0.14.0"
+astroid = "==2.3.2"
+pyyaml = "==5.1.2"
+boto3 = "==1.10.11"
+docstring-parser = "*"
+
+[packages]
+mypy_boto3 = {path = "./mypy_boto3",editable = true}
+mypy_boto3_builder = {path = "./builder",editable = true}
+
+[requires]
+python_version = "3.7"
