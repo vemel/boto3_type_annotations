@@ -137,11 +137,9 @@ def normalize_type_name(
     return name
 
 
-def write_attributes(attributes: List[Attribute], file_object: IO):
+def generate_attributes(attributes: List[Attribute]) -> Generator[str, None, None]:
     for attribute in attributes:
-        file_object.write(
-            f"\n    {attribute.name}: {normalize_type_name(attribute.type)}"
-        )
+        yield f"    {attribute.name}: {normalize_type_name(attribute.type)}"
 
 
 def write_client(client: Client, config: Config):
@@ -163,8 +161,11 @@ def write_client(client: Client, config: Config):
             file_object.write(f"{import_line}\n")
 
         file_object.write("\n")
-        file_object.write(f"\n\n\nclass Client(BaseClient):")
-        write_methods(client.methods, file_object, include_doc=config.with_docs)
+        file_object.write(f"class Client(BaseClient):\n")
+        for line in generate_methods(client.methods, include_doc=config.with_docs):
+            file_object.write(line)
+            file_object.write("\n")
+        file_object.write("\n")
 
     return [
         {
@@ -224,46 +225,50 @@ def generate_import_statements(
             yield import_string
 
 
-def write_methods(
+def generate_methods(
     methods: List[Method],
-    file_object: IO,
     method_body: str = "pass",
     first_arg: str = "self",
     decorator: str = None,
     include_doc: bool = False,
-):
+) -> Generator[str, None, None]:
     for method in methods:
-        write_method(
-            method, file_object, method_body, first_arg, decorator, include_doc
-        )
+        for line in generate_method(
+            method, method_body, first_arg, decorator, include_doc
+        ):
+            if line.strip():
+                yield f"    {line}"
+            else:
+                yield ""
+        yield ""
 
 
-def write_method(
+def generate_method(
     method: Method,
-    file_object: IO,
     method_body: str = "pass",
     first_arg: str = "self",
     decorator: str = None,
     include_doc: bool = False,
-):
-    file_object.write("\n")
+) -> Generator[str, None, None]:
     if decorator:
-        file_object.write(f"    {decorator}\n")
-    file_object.write(f"    def {method.name}(\n")
-    file_object.write(f"        {first_arg},\n")
+        yield decorator
+    yield f"def {method.name}("
+    yield f"    {first_arg},"
     for argument_fmt in format_arguments(method):
-        file_object.write(f"        {argument_fmt},\n")
-    file_object.write("    )")
+        yield f"    {argument_fmt},"
     if method.return_type:
-        file_object.write(
-            f" -> {normalize_type_name(method.return_type, render_args=True)}"
-        )
-    file_object.write(":\n")
+        yield f") -> {normalize_type_name(method.return_type, render_args=True)}:"
+    else:
+        yield "):"
+
     if include_doc:
-        file_object.write('        """\n')
-        file_object.write(add_indentation_to_docstring(clean_doc(method.docstring), 2))
-        file_object.write('\n        """\n')
-    file_object.write(f"        {method_body}\n\n")
+        docstring = clean_doc(method.docstring)
+        if docstring:
+            yield '    """'
+            for line in clean_doc(method.docstring).split("\n"):
+                yield f"    {line}"
+            yield '    """'
+    yield f"    {method_body}"
 
 
 def write_service_resource(
@@ -322,18 +327,31 @@ def write_service_resource(
                     "name": collection.name,
                 }
             )
+
+        for resource in service_resource.sub_resources:
+            for collection in resource.collections:
+                write_collection(collection, file_object, config.with_docs)
+                defined_objects.append(
+                    {
+                        "import_statement": f"from {config.module_name}.{normalized_module_name}"
+                        f".service_resource import {collection.name}",
+                        "name": collection.name,
+                    }
+                )
     return defined_objects
 
 
 def write_collection(collection: Collection, file_object: IO, with_docs: bool = False):
-    file_object.write(f"\n\nclass {collection.name}(ResourceCollection):")
-    write_methods(
+    file_object.write(f"class {collection.name}(ResourceCollection):\n")
+    for line in generate_methods(
         collection.methods,
-        file_object,
         first_arg="cls",
         decorator="@classmethod",
         include_doc=with_docs,
-    )
+    ):
+        file_object.write(line)
+        file_object.write("\n")
+    file_object.write("\n")
 
 
 def write_resource(
@@ -343,12 +361,20 @@ def write_resource(
     with_docs: bool = False,
 ):
 
-    file_object.write(f"\n\nclass {name}(Boto3ServiceResource):")
+    file_object.write(f"class {name}(Boto3ServiceResource):\n")
     attributes = resource.attributes
     attributes += [Attribute(c.name, c.type) for c in resource.collections]
-    write_attributes(attributes, file_object)
+    if attributes:
+        for line in generate_attributes(attributes):
+            file_object.write(line)
+            file_object.write("\n")
+        file_object.write("\n")
+    if resource.methods:
+        file_object.write("\n")
+        for line in generate_methods(resource.methods, include_doc=with_docs):
+            file_object.write(line)
+            file_object.write("\n")
     file_object.write("\n")
-    write_methods(resource.methods, file_object, include_doc=with_docs)
 
 
 def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[Dict]:
@@ -376,10 +402,13 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> List[
         ):
             file_object.write(f"{import_line}\n")
 
-        file_object.write("\n")
         for waiter in service_waiter.waiters:
-            file_object.write(f"\n\nclass {waiter.name}(Waiter):")
-            write_methods(waiter.methods, file_object, include_doc=config.with_docs)
+            file_object.write(f"class {waiter.name}(Waiter):\n")
+            for line in generate_methods(waiter.methods, include_doc=config.with_docs):
+                file_object.write(line)
+                file_object.write("\n")
+
+            file_object.write("\n")
             defined_objects.append(
                 {
                     "import_statement": (
@@ -419,8 +448,13 @@ def write_service_paginator(
 
         file_object.write("\n")
         for paginator in service_paginator.paginators:
-            file_object.write(f"\n\nclass {paginator.name}(Paginator):")
-            write_methods(paginator.methods, file_object, include_doc=config.with_docs)
+            file_object.write(f"\n\nclass {paginator.name}(Paginator):\n")
+            for line in generate_methods(
+                paginator.methods, include_doc=config.with_docs
+            ):
+                file_object.write(line)
+                file_object.write("\n")
+            file_object.write("\n")
             defined_objects.append(
                 {
                     "import_statement": f"from {config.module_name}.{normalized_module_name}"
