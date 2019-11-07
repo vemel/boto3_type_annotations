@@ -177,13 +177,14 @@ def parse_type_from_str(type_str: str) -> TypeAnnotation:
         raise ValueError(f"Unknown type: {type_str}")
 
 
-def parse_service_waiters(
+def parse_service_waiter(
     session: Session, service_name: str
-) -> Generator[ServiceWaiter, None, None]:
+) -> Optional[ServiceWaiter]:
     client = session.client(service_name)
-    if client.waiter_names:
-        logger.debug(f"Parsing ServiceWaiter {service_name}")
-        yield ServiceWaiter(service_name, list(parse_waiters(client)))
+    if not client.waiter_names:
+        return None
+
+    return ServiceWaiter(service_name, list(parse_waiters(client)))
 
 
 def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
@@ -205,7 +206,6 @@ def parse_service_paginator(
 
     session_session = session._session  # pylint: disable=protected-access
     service_paginator_model = session_session.get_paginator_model(service_name)
-    logger.debug(f"Parsing ServicePaginator {service_name}")
     return ServicePaginator(
         service_name, list(parse_paginators(client, service_paginator_model))
     )

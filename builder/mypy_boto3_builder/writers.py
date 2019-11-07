@@ -13,7 +13,7 @@ from botocore.client import BaseClient
 from mypy_boto3_builder.parsers import (
     parse_service_resource,
     parse_client,
-    parse_service_waiters,
+    parse_service_waiter,
     parse_service_paginator,
 )
 from mypy_boto3_builder.structures import (
@@ -152,7 +152,9 @@ def write_client(client: Client, config: Config) -> List[Dict]:
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "client.py"
-    logger.debug(f"Writing {client.name} to {file_path.relative_to(Path.cwd())}")
+    logger.debug(
+        f"Writing client for {client.name} to {file_path.relative_to(Path.cwd())}"
+    )
     with open(file_path, "w") as file_object:
         types = client.get_types()
         types.add(BaseClient)
@@ -301,7 +303,7 @@ def write_service_resource(service_resource: ServiceResource, config: Config) ->
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "service_resource.py"
     logger.debug(
-        f"Writing {service_resource.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing ServiceResource for {service_resource.name} to {file_path.relative_to(Path.cwd())}"
     )
 
     with open(file_path, "w") as file_object:
@@ -389,7 +391,7 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> None:
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "waiter.py"
     logger.debug(
-        f"Writing {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
+        f"Writing ServiceWaiter for {service_waiter.name} to {file_path.relative_to(Path.cwd())}"
     )
 
     with open(file_path, "w") as file_object:
@@ -425,6 +427,9 @@ def write_service_paginator(
 
     normalized_module_path.mkdir(exist_ok=True)
     file_path = normalized_module_path / "paginator.py"
+    logger.debug(
+        f"Writing {service_paginator.name} ServicePaginator to {file_path.relative_to(Path.cwd())}"
+    )
 
     with open(file_path, "w") as file_object:
         types = service_paginator.get_types()
@@ -457,7 +462,7 @@ def write_services(session: Session, config: Config) -> None:
 
     logger.info("Writing Clients")
     for service_name in config.services:
-        logger.debug(f"Parsing Client {service_name}")
+        logger.debug(f"Parsing {service_name} Client")
         client = parse_client(session, service_name)
         write_client(client, config)
         init_import_records[client.normalized_name].update(
@@ -466,7 +471,7 @@ def write_services(session: Session, config: Config) -> None:
 
     logger.info("Writing ServiceResources")
     for service_name in config.services:
-        logger.debug(f"Parsing ServiceResource {service_name}")
+        logger.debug(f"Parsing {service_name} ServiceResource")
         service_resource = parse_service_resource(session, service_name)
         write_service_resource(service_resource, config)
         init_import_records[service_resource.normalized_name].update(
@@ -475,11 +480,14 @@ def write_services(session: Session, config: Config) -> None:
 
     logger.info("Writing ServiceWaiters")
     for service_name in config.services:
-        for service_waiter in parse_service_waiters(session, service_name):
+        logger.debug(f"Parsing {service_name} ServiceWaiter")
+        service_waiter = parse_service_waiter(session, service_name)
+        if service_waiter is not None:
             write_service_waiter(service_waiter, config)
 
     logger.info("Writing ServicePaginators")
     for service_name in config.services:
+        logger.debug(f"Parsing {service_name} ServicePaginator")
         service_paginator = parse_service_paginator(session, service_name)
         if service_paginator is not None:
             write_service_paginator(service_paginator, config)
@@ -495,7 +503,7 @@ def write_init_file(
     file_path: Path, import_records: Set[ImportRecord], service_name: str
 ) -> None:
     with open(file_path, "w") as file_object:
-        file_object.write(f""""Main file for {service_name}"\n\n""")
+        file_object.write(f""""Main interface for {service_name} service"\n\n""")
         if not import_records:
             return
         for import_record in sorted(import_records):
@@ -505,4 +513,3 @@ def write_init_file(
         for import_record in sorted(import_records):
             file_object.write(f"    '{import_record.name}',\n")
         file_object.write(")\n")
-
