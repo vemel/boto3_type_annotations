@@ -33,6 +33,7 @@ from mypy_boto3_builder.structures import (
 )
 from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.service_name import ServiceName
 
 
 logger = get_logger()
@@ -90,8 +91,8 @@ def parse_attributes(
             yield Attribute(name, parse_type_from_str(attribute[1].type_name))
 
 
-def parse_client(session: Session, service_name: str) -> Client:
-    client = session.client(service_name)
+def parse_client(session: Session, service_name: ServiceName) -> Client:
+    client = session.client(service_name.value)
     return Client(
         service_name, list(parse_methods(get_instance_public_methods(client)))
     )
@@ -156,10 +157,10 @@ def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
 
 
 def parse_service_resource(
-    session: Session, service_name: str
+    session: Session, service_name: ServiceName
 ) -> Optional[ServiceResource]:
     try:
-        service_resource = session.resource(service_name)
+        service_resource = session.resource(service_name.value)
     except boto3.exceptions.ResourceNotExistsError:
         return None
     return ServiceResource(
@@ -183,9 +184,9 @@ def parse_type_from_str(type_str: str) -> TypeAnnotation:
 
 
 def parse_service_waiter(
-    session: Session, service_name: str
+    session: Session, service_name: ServiceName
 ) -> Optional[ServiceWaiter]:
-    client = session.client(service_name)
+    client = session.client(service_name.value)
     if not client.waiter_names:
         return None
 
@@ -201,16 +202,16 @@ def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
 
 
 def parse_service_paginator(
-    session: Session, service_name: str
+    session: Session, service_name: ServiceName
 ) -> Optional[ServicePaginator]:
     session_loader = session._loader  # pylint: disable=protected-access
-    if service_name not in session_loader.list_available_services("paginators-1"):
+    if service_name.value not in session_loader.list_available_services("paginators-1"):
         return None
 
-    client = session.client(service_name)
+    client = session.client(service_name.value)
 
     session_session = session._session  # pylint: disable=protected-access
-    service_paginator_model = session_session.get_paginator_model(service_name)
+    service_paginator_model = session_session.get_paginator_model(service_name.value)
     return ServicePaginator(
         service_name, list(parse_paginators(client, service_paginator_model))
     )

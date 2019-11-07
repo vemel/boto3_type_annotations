@@ -2,7 +2,6 @@ import builtins
 import re
 from collections import defaultdict
 import inspect
-from keyword import kwlist
 from pathlib import Path
 from typing import IO, Set, Union, List, Generator, Dict, Optional, Iterable
 
@@ -33,6 +32,7 @@ from mypy_boto3_builder.structures import (
 )
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.nice_path import NicePath
+from mypy_boto3_builder.service_name import ServiceName
 
 
 logger = get_logger()
@@ -101,13 +101,6 @@ def format_arguments(method: Method) -> Generator[str, None, None]:
         yield f"{argument.name}: {type_repr}{default}"
 
 
-def normalize_module_name(name: str) -> str:
-    name = name.replace("-", "_")
-    if name in kwlist:
-        name = f"{name}_"
-    return name
-
-
 def normalize_type_name(
     type_annotation: TypeAnnotation, render_args: bool = False
 ) -> str:
@@ -145,15 +138,16 @@ def generate_attributes(attributes: List[Attribute]) -> Generator[str, None, Non
         yield f"    {attribute.name}: {normalize_type_name(attribute.type)}"
 
 
-def write_client(client: Client, config: Config) -> List[Dict]:
-    normalized_module_name = normalize_module_name(client.name)
-    normalized_module_path = config.output / config.module_name / normalized_module_name
-    if normalized_module_path.exists() and not normalized_module_path.is_dir():
-        normalized_module_path.unlink()
+def write_client(client: Client, config: Config) -> None:
+    module_path = config.output / config.module_name / client.service_name.name
+    if module_path.exists() and not module_path.is_dir():
+        module_path.unlink()
 
-    normalized_module_path.mkdir(exist_ok=True)
-    file_path = normalized_module_path / "client.py"
-    logger.debug(f"Writing client for {client.name} to {NicePath(file_path)}")
+    module_path.mkdir(exist_ok=True)
+    file_path = module_path / "client.py"
+    logger.debug(
+        f"Writing client for {client.service_name.value} to {NicePath(file_path)}"
+    )
     with open(file_path, "w") as file_object:
         types = client.get_types()
         types.add(BaseClient)
@@ -169,13 +163,6 @@ def write_client(client: Client, config: Config) -> List[Dict]:
             file_object.write(line)
             file_object.write("\n")
         file_object.write("\n")
-
-    return [
-        {
-            "import_statement": f"from {config.module_name}.{normalized_module_name}.client import Client",
-            "name": "Client",
-        }
-    ]
 
 
 def generate_import_statements(
@@ -294,15 +281,16 @@ def generate_method(
 
 
 def write_service_resource(service_resource: ServiceResource, config: Config) -> None:
-    normalized_module_name = normalize_module_name(service_resource.name)
-    normalized_module_path = config.output / config.module_name / normalized_module_name
-    if normalized_module_path.exists() and not normalized_module_path.is_dir():
-        normalized_module_path.unlink()
+    module_path = (
+        config.output / config.module_name / service_resource.service_name.name
+    )
+    if module_path.exists() and not module_path.is_dir():
+        module_path.unlink()
 
-    normalized_module_path.mkdir(exist_ok=True)
-    file_path = normalized_module_path / "service_resource.py"
+    module_path.mkdir(exist_ok=True)
+    file_path = module_path / "service_resource.py"
     logger.debug(
-        f"Writing ServiceResource for {service_resource.name} to {NicePath(file_path)}"
+        f"Writing ServiceResource for {service_resource.service_name.value} to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -382,15 +370,14 @@ def write_service_waiter(service_waiter: ServiceWaiter, config: Config) -> None:
     if not service_waiter.waiters:
         return
 
-    normalized_module_name = normalize_module_name(service_waiter.name)
-    normalized_module_path = config.output / config.module_name / normalized_module_name
-    if normalized_module_path.exists() and not normalized_module_path.is_dir():
-        normalized_module_path.unlink()
+    module_path = config.output / config.module_name / service_waiter.service_name.name
+    if module_path.exists() and not module_path.is_dir():
+        module_path.unlink()
 
-    normalized_module_path.mkdir(exist_ok=True)
-    file_path = normalized_module_path / "waiter.py"
+    module_path.mkdir(exist_ok=True)
+    file_path = module_path / "waiter.py"
     logger.debug(
-        f"Writing ServiceWaiter for {service_waiter.name} to {NicePath(file_path)}"
+        f"Writing ServiceWaiter for {service_waiter.service_name.value} to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -419,15 +406,16 @@ def write_service_paginator(
     if not service_paginator.paginators:
         return
 
-    normalized_module_name = normalize_module_name(service_paginator.name)
-    normalized_module_path = config.output / config.module_name / normalized_module_name
-    if normalized_module_path.exists() and not normalized_module_path.is_dir():
-        normalized_module_path.unlink()
+    module_path = (
+        config.output / config.module_name / service_paginator.service_name.name
+    )
+    if module_path.exists() and not module_path.is_dir():
+        module_path.unlink()
 
-    normalized_module_path.mkdir(exist_ok=True)
-    file_path = normalized_module_path / "paginator.py"
+    module_path.mkdir(exist_ok=True)
+    file_path = module_path / "paginator.py"
     logger.debug(
-        f"Writing {service_paginator.name} ServicePaginator to {NicePath(file_path)}"
+        f"Writing {service_paginator.service_name.value} ServicePaginator to {NicePath(file_path)}"
     )
 
     with open(file_path, "w") as file_object:
@@ -457,14 +445,14 @@ def write_service_paginator(
 
 def write_services(session: Session, config: Config) -> None:
     create_module_directory(config)
-    init_import_records: Dict[str, Set[ImportRecord]] = defaultdict(set)
+    init_import_records: Dict[ServiceName, Set[ImportRecord]] = defaultdict(set)
 
     logger.info("Writing Clients")
     for service_name in config.services:
         logger.debug(f"Parsing {service_name} Client")
         client = parse_client(session, service_name)
         write_client(client, config)
-        init_import_records[client.normalized_name].update(
+        init_import_records[client.service_name].update(
             client.get_import_records(config.module_name)
         )
 
@@ -477,7 +465,7 @@ def write_services(session: Session, config: Config) -> None:
             continue
 
         write_service_resource(service_resource, config)
-        init_import_records[service_resource.normalized_name].update(
+        init_import_records[service_resource.service_name].update(
             service_resource.get_import_records(config.module_name)
         )
 
@@ -503,16 +491,18 @@ def write_services(session: Session, config: Config) -> None:
 
     logger.info("Writing __init__ files")
     for service_name, import_records in init_import_records.items():
-        file_path = config.output / config.module_name / service_name / "__init__.py"
+        file_path = (
+            config.output / config.module_name / service_name.name / "__init__.py"
+        )
         logger.info(f"Writing {NicePath(file_path)}")
         write_init_file(file_path, import_records, service_name)
 
 
 def write_init_file(
-    file_path: Path, import_records: Set[ImportRecord], service_name: str
+    file_path: Path, import_records: Set[ImportRecord], service_name: ServiceName
 ) -> None:
     with open(file_path, "w") as file_object:
-        file_object.write(f""""Main interface for {service_name} service"\n\n""")
+        file_object.write(f""""Main interface for {service_name.value} service"\n\n""")
         if not import_records:
             return
         for import_record in sorted(import_records):

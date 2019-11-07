@@ -4,7 +4,7 @@ from typing import List, Set, Union, Tuple, Optional, Any
 from dataclasses import dataclass
 from pathlib import Path
 
-from mypy_boto3_builder.constants import RESERVED_NAMES
+from mypy_boto3_builder.service_name import ServiceName
 
 
 class ImportString:
@@ -174,15 +174,6 @@ class Method:
 
 @dataclass
 class TypeCollector:
-    name: str
-
-    @property
-    def normalized_name(self) -> str:
-        name = self.name.replace("-", "_")
-        if name in RESERVED_NAMES:
-            name = f"{name}_"
-        return name
-
     def get_types(self) -> Set[TypeAnnotation]:
         raise TypeError("TypeCollector cannot collect types")
 
@@ -248,7 +239,7 @@ class Paginator(TypeCollector):
 
 @dataclass
 class ServiceResource(TypeCollector):
-    name: str
+    service_name: ServiceName
     methods: List[Method]
     attributes: List[Attribute]
     collections: List[Collection]
@@ -268,7 +259,9 @@ class ServiceResource(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(f"{module_name}.{self.normalized_name}.service_resource")
+        source = ImportString(
+            f"{module_name}.{self.service_name.name}.service_resource"
+        )
 
         import_records.add(ImportRecord(source, "ServiceResource"))
         for resource in self.sub_resources:
@@ -285,7 +278,7 @@ class ServiceResource(TypeCollector):
 
 @dataclass
 class Client(TypeCollector):
-    name: str
+    service_name: ServiceName
     methods: List[Method]
 
     def get_types(self) -> Set[TypeAnnotation]:
@@ -295,13 +288,13 @@ class Client(TypeCollector):
         return types
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
-        source = ImportString(f"{module_name}.{self.normalized_name}.client")
+        source = ImportString(f"{module_name}.{self.service_name.name}.client")
         return {ImportRecord(source, "Client")}
 
 
 @dataclass
 class ServiceWaiter(TypeCollector):
-    name: str
+    service_name: ServiceName
     waiters: List[Waiter]
 
     def get_types(self) -> Set[TypeAnnotation]:
@@ -312,7 +305,7 @@ class ServiceWaiter(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(f"{module_name}.{self.normalized_name}.waiter")
+        source = ImportString(f"{module_name}.{self.service_name.name}.waiter")
 
         for waiter in self.waiters:
             import_records.add(ImportRecord(source, waiter.name))
@@ -322,7 +315,7 @@ class ServiceWaiter(TypeCollector):
 
 @dataclass
 class ServicePaginator(TypeCollector):
-    name: str
+    service_name: ServiceName
     paginators: List[Paginator]
 
     def get_types(self) -> Set[TypeAnnotation]:
@@ -333,7 +326,7 @@ class ServicePaginator(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(f"{module_name}.{self.normalized_name}.paginator")
+        source = ImportString(f"{module_name}.{self.service_name.name}.paginator")
 
         for paginator in self.paginators:
             import_records.add(ImportRecord(source, paginator.name))
@@ -343,7 +336,7 @@ class ServicePaginator(TypeCollector):
 
 @dataclass
 class Config:
-    services: List
+    services: List[ServiceName]
     with_docs: bool
     module_name: str
     output: Path
