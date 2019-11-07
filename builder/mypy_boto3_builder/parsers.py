@@ -141,11 +141,20 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
 
 
 def parse_resource(resource: Boto3ServiceResource) -> Resource:
+    name = resource.__class__.__name__.split(".", 1)[-1]
+
+    methods = list(parse_methods(get_resource_public_actions(resource.__class__)))
+
+    attributes: List[Attribute] = []
+    for attribute in parse_attributes(resource):
+        attributes.append(attribute)
+    for attribute in parse_identifiers(resource):
+        attributes.append(attribute)
+
+    collections = list(parse_collections(resource))
+
     return Resource(
-        resource.__class__.__name__.split(".")[1],
-        list(parse_methods(get_resource_public_actions(resource.__class__))),
-        list(parse_attributes(resource)) + list(parse_identifiers(resource)),
-        list(parse_collections(resource)),
+        name=name, methods=methods, attributes=attributes, collections=collections,
     )
 
 
@@ -164,16 +173,27 @@ def parse_service_resource(
         service_resource = session.resource(service_name.value)
     except boto3.exceptions.ResourceNotExistsError:
         return None
+
+    methods = list(parse_methods(get_instance_public_methods(service_resource)))
+
+    attributes: List[Attribute] = []
+    for attribute in parse_attributes(service_resource):
+        attributes.append(attribute)
+    for attribute in parse_identifiers(service_resource):
+        attributes.append(attribute)
+
+    collections = list(parse_collections(service_resource))
+
+    sub_resources = []
+    for sub_resource in retrieve_sub_resources(session, service_resource):
+        sub_resources.append(parse_resource(sub_resource))
+
     return ServiceResource(
-        service_name,
-        list(parse_methods(get_instance_public_methods(service_resource))),
-        list(parse_attributes(service_resource))
-        + list(parse_identifiers(service_resource)),
-        list(parse_collections(service_resource)),
-        [
-            parse_resource(resource)
-            for resource in retrieve_sub_resources(session, service_resource)
-        ],
+        service_name=service_name,
+        methods=methods,
+        attributes=attributes,
+        collections=collections,
+        sub_resources=sub_resources,
     )
 
 
