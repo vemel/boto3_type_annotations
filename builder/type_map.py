@@ -95,7 +95,7 @@ TYPE_MAP: Dict[TypeAnnotation, Tuple[str, ...]] = {
         ":py:class:`iam.PolicyVersion`",
         ":py:class:`IAM.PolicyVersion`",
     ),
-    "List[base.ServiceResource]": (
+    "List[Boto3ServiceResource]": (
         "list(:py:class:`~boto3.resources.base.ServiceResource`)",
     ),
     "List['NetworkInterface']": ("list(:py:class:`ec2.NetworkInterface`)",),
