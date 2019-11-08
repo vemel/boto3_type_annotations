@@ -55,13 +55,16 @@ class ImportRecord:
         return hash(str(self))
 
     def __eq__(self, other: Any) -> bool:
+        if not isinstance(other, ImportRecord):
+            raise ValueError(f"Cannot compare ImportString with {other}")
+
         return str(self) == str(other)
 
-    def __gt__(self, other: Any) -> bool:
-        if isinstance(other, ImportRecord):
-            return self.source > other.source
+    def __gt__(self, other: ImportRecord) -> bool:
+        if self.source == other.source:
+            return self.name > other.name
 
-        return str(self) > str(other)
+        return self.source > other.source
 
     def render(self) -> str:
         return str(self)
