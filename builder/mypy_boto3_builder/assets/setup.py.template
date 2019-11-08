@@ -34,4 +34,5 @@ setup(
     long_description_content_type="text/markdown",
     package_data={{"{package_name}": ["py.typed"]}},
     extras_require={extras_require},
+    zip_safe=False,
 )
