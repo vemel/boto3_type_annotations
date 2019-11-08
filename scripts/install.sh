@@ -6,8 +6,10 @@ OUTPUT_PATH=${ROOT_PATH}/mypy_boto3_output
 
 install_package() {
     cd $1
-    python setup.py develop
+    echo "Installing $1"
+
+    python setup.py develop > /dev/null
 }
 export -f install_package
 
-find ${OUTPUT_PATH} -mindepth 1 -maxdepth 1 -name "mypy_boto3_$1*" -type d -exec bash -c 'install_package "$@"' bash {} \;
+ls -d ${OUTPUT_PATH}/mypy_boto3_$1* | xargs -I % bash -c 'install_package "%"'

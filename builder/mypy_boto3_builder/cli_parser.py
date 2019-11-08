@@ -35,6 +35,9 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "--skip-master", action="store_true", help="Whether to skip master module"
     )
     parser.add_argument(
+        "--skip-services", action="store_true", help="Whether to skip service modules"
+    )
+    parser.add_argument(
         "--no-docs",
         action="store_true",
         help="Generate service modules without docs (75% less space)",

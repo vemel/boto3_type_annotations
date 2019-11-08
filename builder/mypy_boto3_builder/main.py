@@ -18,23 +18,24 @@ def main() -> None:
     args.output_path.mkdir(exist_ok=True)
     # available_services = session.get_available_services()
 
-    service_name_postfix = "" if args.no_docs else "_with_docs"
-    for service_name in args.service_names:
-        service_output_path = (
-            args.output_path
-            / f"{args.module_name}_{service_name.name}_package{service_name_postfix}"
-            / f"{args.module_name}_{service_name.name}{service_name_postfix}"
-        )
-        service_output_path.parent.mkdir(exist_ok=True)
-        service_output_path.mkdir(exist_ok=True)
-        write_service(
-            session,
-            service_name=service_name,
-            include_doc=not args.no_docs,
-            output_path=service_output_path,
-        )
-        if args.format:
-            format_path(service_output_path)
+    if not args.skip_services:
+        service_name_postfix = "" if args.no_docs else "_with_docs"
+        for service_name in args.service_names:
+            service_output_path = (
+                args.output_path
+                / f"{args.module_name}_{service_name.name}_package{service_name_postfix}"
+                / f"{args.module_name}_{service_name.name}{service_name_postfix}"
+            )
+            service_output_path.parent.mkdir(exist_ok=True)
+            service_output_path.mkdir(exist_ok=True)
+            write_service(
+                session,
+                service_name=service_name,
+                include_doc=not args.no_docs,
+                output_path=service_output_path,
+            )
+            if args.format:
+                format_path(service_output_path)
 
     if not args.skip_master:
         master_output_path = (

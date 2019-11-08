@@ -1,9 +1,13 @@
+from pathlib import Path
+
 from setuptools import setup, find_packages
 
 from {package_name}.version import __version__ as version
 
-with open("../../README.md", "r") as f:
-    long_description = f.read()
+
+ROOT_PATH = Path(__file__).parent
+
+long_description = (ROOT_PATH / 'README.md').read_text()
 
 setup(
     name="{name}",

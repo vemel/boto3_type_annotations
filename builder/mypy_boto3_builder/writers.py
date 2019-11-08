@@ -448,6 +448,10 @@ def write_master_module(
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "version.py.template", version=version)
 
+    file_path = output_path.parent / "README.md"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "master_readme_md.template")
+
     file_path = output_path.parent / "setup.py"
     logger.debug(f"Writing {NicePath(file_path)}")
     module_name_dashed = output_path.name.replace("_", "-")
@@ -516,6 +520,15 @@ def write_service_assets(service_output_path: Path, service_name: ServiceName) -
     file_path = service_output_path / "version.py"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "version.py.template", version=version)
+
+    file_path = service_output_path.parent / "README.md"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(
+        file_path,
+        "service_readme_md.template",
+        service_name=service_name.value,
+        submodule_name=service_name.name,
+    )
 
     file_path = service_output_path.parent / "setup.py"
     logger.debug(f"Writing {NicePath(file_path)}")
