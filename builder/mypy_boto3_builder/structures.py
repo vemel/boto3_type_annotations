@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import List, Set, Union, Tuple, Optional, Any
 from dataclasses import dataclass
-from pathlib import Path
 
 from mypy_boto3_builder.service_name import ServiceName
 
@@ -337,11 +336,3 @@ class ServicePaginator(TypeCollector):
             import_records.add(ImportRecord(source, paginator.name))
 
         return import_records
-
-
-@dataclass
-class Config:
-    services: List[ServiceName]
-    with_docs: bool
-    module_name: str
-    output: Path
