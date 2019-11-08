@@ -7,6 +7,7 @@ from mypy_boto3_builder.utils import render_type_annotation
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.enums import ImportRecordType
+from mypy_boto3_builder.service_name import ServiceName
 
 
 class ImportRecordRenderer:
@@ -20,13 +21,15 @@ class ImportRecordRenderer:
     ) -> None:
         self.module_import_string = ImportString(module_name)
         self.default_import_records = default_import_records
+        self.local_import_strings: Set[ImportString] = set()
 
     def _get_import_record_type(self, import_record: ImportRecord) -> ImportRecordType:
         if import_record.source.parts[0].startswith("__"):
             return ImportRecordType.magic
 
-        if import_record.source.startswith(self.module_import_string):
-            return ImportRecordType.local
+        for local_import_string in self.local_import_strings:
+            if import_record.source.startswith(local_import_string):
+                return ImportRecordType.local
 
         for boto_import_string in self.boto_import_strings:
             if import_record.source.startswith(boto_import_string):
@@ -40,7 +43,9 @@ class ImportRecordRenderer:
         if isinstance(type_annotation, FakeAnnotation):
             import_record = type_annotation.get_import_record()
             if type_annotation.is_internal:
-                return self._get_localized(import_record)
+                localized_import_record = self.get_localized(import_record)
+                self.local_import_strings.add(localized_import_record.source)
+                return localized_import_record
 
             return import_record
 
@@ -53,11 +58,14 @@ class ImportRecordRenderer:
             source=parent_module_name, name=render_type_annotation(type_annotation),
         )
 
-    def _get_localized(self, import_record: ImportRecord) -> ImportRecord:
+    def get_localized(self, import_record: ImportRecord) -> ImportRecord:
+        import_service_name = import_record.source.parts[0]
+        service_name = ServiceName.get(import_service_name)
+        source = ImportString(f"{self.module_import_string}_{service_name.name}")
+        source.parts.extend(import_record.source.parts[1:])
+
         return ImportRecord(
-            source=f"{self.module_import_string}.{import_record.source}",
-            name=import_record.name,
-            alias=import_record.alias,
+            source=source.render(), name=import_record.name, alias=import_record.alias,
         )
 
     def generate_lines(

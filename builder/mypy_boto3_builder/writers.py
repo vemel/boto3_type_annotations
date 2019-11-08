@@ -1,11 +1,11 @@
-from collections import defaultdict
 from pathlib import Path
-from typing import IO, Set, Union, List, Generator, Dict, Iterable
+from typing import IO, Set, Union, List, Generator, Dict, Iterable, Optional
 
 from boto3.resources.collection import ResourceCollection
 from boto3.session import Session
 from botocore.client import BaseClient
 
+from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.parsers import (
     parse_service_resource,
     parse_client,
@@ -27,17 +27,15 @@ from mypy_boto3_builder.import_helpers.renderer import ImportRecordRenderer
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.nice_path import NicePath
 from mypy_boto3_builder.service_name import ServiceName
-from mypy_boto3_builder.utils import render_type_annotation, clean_doc
+from mypy_boto3_builder.utils import (
+    render_type_annotation,
+    clean_doc,
+    render_template,
+    black_reformat,
+)
 
 
 logger = get_logger()
-
-
-def create_module_directory(module_path: Path) -> None:
-    module_path.mkdir(exist_ok=True)
-
-    init_path = module_path / "__init__.py"
-    init_path.write_text("\n")
 
 
 def format_arguments(method: Method) -> Generator[str, None, None]:
@@ -256,101 +254,255 @@ def write_client(
         output.write("\n")
 
 
-def write_services(
+def process_service_client(
     session: Session,
-    service_names: Iterable[ServiceName],
+    service_name: ServiceName,
+    service_output_path: Path,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
+) -> Client:
+    logger.debug(f"Parsing {service_name} Client")
+    client = parse_client(session, service_name)
+    module_output_path = service_output_path / "client.py"
+    logger.debug(
+        f"Writing Client for {service_name.value} to {NicePath(module_output_path)}"
+    )
+    write_client(client, module_output_path, import_record_renderer, with_docs)
+    return client
+
+
+def process_service_resource(
+    session: Session,
+    service_name: ServiceName,
+    service_output_path: Path,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
+) -> Optional[ServiceResource]:
+    logger.debug(f"Parsing {service_name} ServiceResource")
+    service_resource = parse_service_resource(session, service_name)
+    if service_resource is None:
+        logger.debug(f"Skipping {service_name} ServiceResource")
+        return None
+
+    module_output_path = service_output_path / "service_resource.py"
+
+    logger.debug(
+        f"Writing ServiceResource for {service_name.value} to {NicePath(module_output_path)}"
+    )
+    write_service_resource(
+        service_resource, module_output_path, import_record_renderer, with_docs,
+    )
+    return service_resource
+
+
+def process_service_waiter(
+    session: Session,
+    service_name: ServiceName,
+    service_output_path: Path,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
+) -> Optional[ServiceWaiter]:
+    logger.debug(f"Parsing {service_name} ServiceWaiter")
+    service_waiter = parse_service_waiter(session, service_name)
+    if service_waiter is None or not service_waiter.waiters:
+        logger.debug(f"Skipping {service_name} ServiceWaiter")
+        return None
+
+    module_output_path = service_output_path / "waiter.py"
+
+    logger.debug(
+        f"Writing ServiceWaiter for {service_name.value} to {NicePath(module_output_path)}"
+    )
+    write_service_waiter(
+        service_waiter, module_output_path, import_record_renderer, with_docs,
+    )
+    return service_waiter
+
+
+def process_service_paginator(
+    session: Session,
+    service_name: ServiceName,
+    service_output_path: Path,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
+) -> Optional[ServicePaginator]:
+    logger.debug(f"Parsing {service_name} ServicePaginator")
+    service_paginator = parse_service_paginator(session, service_name)
+    if service_paginator is None or not service_paginator.paginators:
+        logger.debug(f"Skipping {service_name} ServicePaginator")
+        return None
+
+    module_output_path = service_output_path / "paginator.py"
+
+    logger.debug(
+        f"Writing {service_name.value} ServicePaginator to {NicePath(module_output_path)}"
+    )
+
+    write_service_paginator(
+        service_paginator, module_output_path, import_record_renderer, with_docs,
+    )
+    return service_paginator
+
+
+def write_service(
+    session: Session,
+    service_name: ServiceName,
     output_path: Path,
     module_name: str,
     with_docs: bool,
 ) -> None:
-    create_module_directory(output_path / module_name)
-    init_import_records: Dict[ServiceName, Set[ImportRecord]] = defaultdict(set)
-    import_record_renderer = ImportRecordRenderer(
-        module_name, [ImportRecord("__future__", "annotations")]
+    default_import_records = [ImportRecord("__future__", "annotations")]
+    init_import_records: Set[ImportRecord] = set()
+    import_record_renderer = ImportRecordRenderer(module_name, default_import_records)
+
+    service_output_path = service_name.get_output_path(output_path, module_name)
+    service_output_path.parent.mkdir(exist_ok=True)
+    service_output_path.mkdir(exist_ok=True)
+
+    logger.info(f"Writing {service_name.name} service module")
+
+    client = process_service_client(
+        session, service_name, service_output_path, import_record_renderer, with_docs
+    )
+    for import_record in client.get_import_records():
+        init_import_records.add(import_record_renderer.get_localized(import_record))
+
+    service_resource = process_service_resource(
+        session, service_name, service_output_path, import_record_renderer, with_docs
+    )
+    if service_resource:
+        for import_record in service_resource.get_import_records():
+            init_import_records.add(import_record_renderer.get_localized(import_record))
+
+    process_service_waiter(
+        session, service_name, service_output_path, import_record_renderer, with_docs
     )
 
-    logger.info("Creating directories")
+    process_service_paginator(
+        session, service_name, service_output_path, import_record_renderer, with_docs
+    )
+
+    init_file_path = (
+        service_name.get_output_path(output_path, module_name) / "__init__.py"
+    )
+    logger.debug(f"Writing {NicePath(init_file_path)}")
+    write_init_file(init_file_path, init_import_records, service_name)
+
+    service_output_path = service_name.get_output_path(output_path, module_name)
+    write_service_assets(service_output_path, service_name, module_name)
+
+
+def format_path(path: Path) -> None:
+    logger.debug(f"Applying black formatting to {NicePath(path)}")
+    for source_path in path.glob("**/*.py"):
+        result = black_reformat(source_path)
+        if result:
+            logger.debug(f"Reformatted {NicePath(source_path)}")
+
+
+def write_master_module(
+    output_path: Path, module_name: str, service_names: Iterable[ServiceName],
+) -> None:
+    logger.info(f"Writing master module")
+    main_module_output_path = output_path / f"{module_name}_package" / module_name
+    logger.debug(f"Creating directory {NicePath(main_module_output_path)}")
+    main_module_output_path = output_path / f"{module_name}_package" / module_name
+    main_module_output_path.parent.mkdir(exist_ok=True)
+    main_module_output_path.mkdir(exist_ok=True)
+
+    logger.debug(f"Writing {module_name} assets")
+    file_path = main_module_output_path / "py.typed"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "py.typed.template")
+
+    file_path = main_module_output_path / "__main__.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "__main__.py.template")
+
+    file_path = main_module_output_path / "__init__.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "__init__.py.template")
+
+    file_path = main_module_output_path / "version.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "version.py.template", version=version)
+
+    file_path = main_module_output_path.parent / "setup.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    module_name_dashed = module_name.replace("_", "-")
+    extras_require: Dict[str, List[str]] = {"all": []}
     for service_name in service_names:
-        module_path = output_path / module_name / service_name.name
-        if module_path.exists() and not module_path.is_dir():
-            module_path.unlink()
+        service_install_string = f"{module_name_dashed}-{service_name.value}=={version}"
+        extras_require[service_name.value] = [service_install_string]
+        extras_require["all"].append(service_install_string)
+    write_asset(
+        file_path,
+        "setup.py.template",
+        module_name=module_name,
+        module_name_dashed=module_name_dashed,
+        extras_require=str(extras_require),
+    )
 
-        module_path.mkdir(exist_ok=True)
-
-    logger.info("Writing Clients")
     for service_name in service_names:
-        logger.debug(f"Parsing {service_name} Client")
-        client = parse_client(session, service_name)
-        module_output_path = output_path / module_name / service_name.name / "client.py"
-        logger.debug(
-            f"Writing Client for {service_name.value} to {NicePath(module_output_path)}"
-        )
-        write_client(client, module_output_path, import_record_renderer, with_docs)
+        master_service_path = main_module_output_path / service_name.name
+        master_service_path.mkdir(exist_ok=True)
+        file_path = master_service_path / "__init__.py"
 
-        init_import_records[service_name].update(client.get_import_records(module_name))
-
-    logger.info("Writing ServiceResources")
-    for service_name in service_names:
-        logger.debug(f"Parsing {service_name} ServiceResource")
-        service_resource = parse_service_resource(session, service_name)
-        if service_resource is None:
-            logger.debug(f"Skipping {service_name} ServiceResource")
-            continue
-
-        module_output_path = (
-            output_path / module_name / service_name.name / "service_resource.py"
-        )
-        logger.debug(
-            f"Writing ServiceResource for {service_name.value} to {NicePath(module_output_path)}"
-        )
-        write_service_resource(
-            service_resource, module_output_path, import_record_renderer, with_docs,
-        )
-        init_import_records[service_name].update(
-            service_resource.get_import_records(module_name)
-        )
-
-    logger.info("Writing ServiceWaiters")
-    for service_name in service_names:
-        logger.debug(f"Parsing {service_name} ServiceWaiter")
-        service_waiter = parse_service_waiter(session, service_name)
-        if service_waiter is None or not service_waiter.waiters:
-            logger.debug(f"Skipping {service_name} ServiceWaiter")
-            continue
-
-        module_output_path = output_path / module_name / service_name.name / "waiter.py"
-        logger.debug(
-            f"Writing ServiceWaiter for {service_name.value} to {NicePath(module_output_path)}"
-        )
-        write_service_waiter(
-            service_waiter, module_output_path, import_record_renderer, with_docs,
-        )
-
-    logger.info("Writing ServicePaginators")
-    for service_name in service_names:
-        logger.debug(f"Parsing {service_name} ServicePaginator")
-        service_paginator = parse_service_paginator(session, service_name)
-        if service_paginator is None or not service_paginator.paginators:
-            logger.debug(f"Skipping {service_name} ServicePaginator")
-            continue
-
-        module_output_path = (
-            output_path / module_name / service_name.name / "paginator.py"
-        )
-
-        logger.debug(
-            f"Writing {service_name.value} ServicePaginator to {NicePath(module_output_path)}"
-        )
-
-        write_service_paginator(
-            service_paginator, module_output_path, import_record_renderer, with_docs,
-        )
-
-    logger.info("Writing __init__ files")
-    for service_name, import_records in init_import_records.items():
-        file_path = output_path / module_name / service_name.name / "__init__.py"
         logger.debug(f"Writing {NicePath(file_path)}")
-        write_init_file(file_path, import_records, service_name)
+        write_asset(
+            file_path,
+            "master_service_init.template",
+            service_name=service_name.value,
+            safe_service_name=service_name.name,
+            module_name=module_name,
+        )
+
+        submodule_names = ["client", "paginator", "service_resource", "waiter"]
+        service_output_path = service_name.get_output_path(output_path, module_name)
+        for submodule_name in submodule_names:
+            if (service_output_path / f"{submodule_name}.py").exists():
+                file_path = master_service_path / f"{submodule_name}.py"
+                write_asset(
+                    file_path,
+                    "master_service_submodule.template",
+                    submodule_name=submodule_name,
+                    service_name=service_name.value,
+                    safe_service_name=service_name.name,
+                    module_name=module_name,
+                )
+
+
+def write_service_assets(
+    service_output_path: Path, service_name: ServiceName, module_name: str
+) -> None:
+    file_path = service_output_path / "py.typed"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "py.typed.template")
+
+    file_path = service_output_path / "__main__.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "__main__.py.template")
+
+    file_path = service_output_path / "version.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(file_path, "version.py.template", version=version)
+
+    file_path = service_output_path.parent / "setup.py"
+    logger.debug(f"Writing {NicePath(file_path)}")
+    write_asset(
+        file_path,
+        "service_setup.py.template",
+        service_name=service_name.value,
+        safe_service_name=service_name.name,
+        module_name=module_name,
+        module_name_dashed=module_name.replace("_", "-"),
+    )
+
+
+def write_asset(file_path: Path, template_name: str, **kwargs: str) -> None:
+    rendered = render_template(template_name, **kwargs)
+    with open(file_path, "w") as file_object:
+        file_object.write(rendered)
 
 
 def write_init_file(

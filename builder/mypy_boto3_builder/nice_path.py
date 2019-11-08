@@ -1,10 +1,9 @@
 from pathlib import Path
-from dataclasses import dataclass
 
 
-@dataclass
 class NicePath:
-    path: Path
+    def __init__(self, path: Path) -> None:
+        self.path = path
 
     def __str__(self) -> str:
         path = self.path

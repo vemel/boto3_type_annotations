@@ -20,7 +20,6 @@ handsdown = "==0.3.4"
 twine = "==2.0.0"
 
 [packages]
-mypy_boto3 = {path = "./mypy_boto3_output",editable = true}
 mypy_boto3_builder = {path = "./builder",editable = true}
 
 [requires]

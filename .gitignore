@@ -105,3 +105,5 @@ ENV/
 
 # Typing
 .mypy_cache
+
+/mypy_boto3_output

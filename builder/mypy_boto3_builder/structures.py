@@ -132,7 +132,7 @@ class TypeCollector:
         raise TypeError("TypeCollector cannot collect types")
 
     # pylint: disable=no-self-use
-    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+    def get_import_records(self) -> Set[ImportRecord]:
         raise TypeError("TypeCollector cannot collect import records")
 
 
@@ -212,9 +212,9 @@ class ServiceResource(TypeCollector):
             types.update(sub_resource.get_types())
         return types
 
-    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+    def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{module_name}.{self.service_name.name}.service_resource"
+        source = f"{self.service_name.name}.service_resource"
 
         import_records.add(ImportRecord(source, "ServiceResource"))
         for resource in self.sub_resources:
@@ -240,8 +240,8 @@ class Client(TypeCollector):
             types.update(method.get_types())
         return types
 
-    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
-        source = f"{module_name}.{self.service_name.name}.client"
+    def get_import_records(self) -> Set[ImportRecord]:
+        source = f"{self.service_name.name}.client"
         return {ImportRecord(source, "Client")}
 
 
@@ -256,9 +256,9 @@ class ServiceWaiter(TypeCollector):
             types.update(waiter.get_types())
         return types
 
-    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+    def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{module_name}.{self.service_name.name}.waiter"
+        source = f"{self.service_name.name}.waiter"
 
         for waiter in self.waiters:
             import_records.add(ImportRecord(source, waiter.name))
@@ -277,9 +277,9 @@ class ServicePaginator(TypeCollector):
             types.update(paginator.get_types())
         return types
 
-    def get_import_records(self, module_name: str) -> Set[ImportRecord]:
+    def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{module_name}.{self.service_name.name}.paginator"
+        source = f"{self.service_name.name}.paginator"
 
         for paginator in self.paginators:
             import_records.add(ImportRecord(source, paginator.name))

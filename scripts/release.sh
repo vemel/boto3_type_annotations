@@ -2,11 +2,17 @@
 set -e
 
 ROOT_PATH=$(dirname $(dirname $(realpath $0)))
-cd ${ROOT_PATH}/mypy_boto3_output
+OUTPUT_PATH=${ROOT_PATH}/mypy_boto3_output
 
-rm -rf build *.egg-info dist/*
-python setup.py sdist bdist_wheel 2>&1
+release_package() {
+    cd $1
+    rm -rf build *.egg-info dist/*
+    python setup.py sdist bdist_wheel 2>&1
 
-pipenv run twine upload dist/*
+    pipenv run twine upload dist/*
 
-rm -rf build *.egg-info dist/*
+    rm -rf build *.egg-info dist/*
+}
+export -f release_package
+
+find ${OUTPUT_PATH} -mindepth 1 -maxdepth 1 -name 'mypy_boto3_*' -type d -exec bash -c 'release_package "$@"' bash {} \;

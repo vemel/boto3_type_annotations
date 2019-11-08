@@ -1,27 +1,22 @@
-from pathlib import Path
-
 from setuptools import setup, find_packages
 
-from mypy_boto3_builder.version import __version__ as version
+from {module_name}.version import __version__ as version
 
-
-ROOT_PATH = Path(__file__).parent
-README_PATH = ROOT_PATH.parent / "README.md"
-
-long_description = README_PATH.read_text()
+with open("../../README.md", "r") as f:
+    long_description = f.read()
 
 setup(
-    name="mypy-boto3-builder",
+    name="{module_name_dashed}",
     version=version,
     packages=find_packages(),
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
-    package_data={"mypy_boto3_builder": ["mypy_boto3_builder/assets/*.template"]},
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Builder for mypy-boto3.",
-    classifiers=(
+    description="Mypy-friendly boto3 type annotations.",
+    classifiers=[
         "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
         "Environment :: Console",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
@@ -32,11 +27,11 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
-    ),
+    ],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    entry_points={
-        "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
-    },
+    package_data={{"{module_name}": ["py.typed"]}},
+    extras_require={extras_require},
 )

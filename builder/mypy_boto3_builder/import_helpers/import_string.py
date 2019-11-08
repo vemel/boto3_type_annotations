@@ -8,7 +8,7 @@ class ImportString:
         self.parts = import_string.split(".")
 
     def __str__(self) -> str:
-        return ".".join(self.parts)
+        return self.render()
 
     def __hash__(self) -> int:
         return hash(str(self))
@@ -30,3 +30,6 @@ class ImportString:
                 return False
 
         return True
+
+    def render(self) -> str:
+        return ".".join(self.parts)

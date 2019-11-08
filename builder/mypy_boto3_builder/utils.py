@@ -1,5 +1,8 @@
 import re
+from pathlib import Path
 from typing import Union, Optional, List
+
+import black
 
 from mypy_boto3_builder.structures import TypeAnnotation
 
@@ -67,3 +70,14 @@ def clean_doc(doc: str) -> str:
                 preamble.append("")
             preamble.append(line)
     return "\n".join(preamble + parameters)
+
+
+def render_template(template_name: str, **kwargs: str) -> str:
+    template_path = Path(__file__).parent / "assets" / template_name
+    return template_path.read_text().format(**kwargs)
+
+
+def black_reformat(source_path: Path) -> bool:
+    return black.format_file_in_place(
+        source_path, fast=False, mode=black.FileMode(), write_back=black.WriteBack.YES,
+    )

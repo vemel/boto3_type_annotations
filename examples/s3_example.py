@@ -1,7 +1,6 @@
 import boto3
 
 from botocore.session import Session
-
 from mypy_boto3.s3 import Client, ServiceResource
 
 
