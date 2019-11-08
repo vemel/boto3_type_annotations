@@ -2,8 +2,7 @@ import boto3
 
 from botocore.session import Session
 
-from mypy_boto3.s3.client import Client
-from mypy_boto3.s3.service_resource import ServiceResource
+from mypy_boto3.s3 import Client, ServiceResource
 
 
 def s3_resource_example() -> None:
@@ -13,7 +12,7 @@ def s3_resource_example() -> None:
     # explicitly set type to S3 ServiceResource
     resource: ServiceResource = session.resource("s3")
 
-    # autocomplete suggests function name and arguments here
+    # IDE autocomplete suggests function name and arguments here
     bucket = resource.Bucket("bucket")
 
     # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
@@ -27,7 +26,7 @@ def s3_client_example() -> None:
     # explicitly set type to S3 Client
     client: Client = boto3.client("s3")
 
-    # autocomplete suggests function name and arguemnts here
+    # IDE autocomplete suggests function name and arguemnts here
     client.create_bucket(Bucket="bucket")
 
     # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
