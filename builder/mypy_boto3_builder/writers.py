@@ -113,7 +113,7 @@ def write_service_resource(
     service_resource: ServiceResource,
     output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> None:
     with open(output_path, "w") as output:
         for import_line in import_record_renderer.generate_lines(
@@ -129,10 +129,12 @@ def write_service_resource(
             output.write(f"{import_line}\n")
 
         output.write("\n\n")
-        write_resource(service_resource, "ServiceResource", output, with_docs=with_docs)
+        write_resource(
+            service_resource, "ServiceResource", output, include_doc=include_doc
+        )
         for resource in service_resource.sub_resources:
             output.write("\n\n")
-            write_resource(resource, resource.name, output, with_docs=with_docs)
+            write_resource(resource, resource.name, output, include_doc=include_doc)
 
         added_collection_names: Set[str] = set()
         for collection in service_resource.collections:
@@ -140,7 +142,7 @@ def write_service_resource(
                 continue
             added_collection_names.add(collection.name)
             output.write("\n\n")
-            write_collection(collection, output, with_docs=with_docs)
+            write_collection(collection, output, include_doc=include_doc)
 
         for resource in service_resource.sub_resources:
             for collection in resource.collections:
@@ -148,18 +150,24 @@ def write_service_resource(
                     continue
                 added_collection_names.add(collection.name)
                 output.write("\n\n")
-                write_collection(collection, output, with_docs=with_docs)
+                write_collection(collection, output, include_doc=include_doc)
 
 
 def write_collection(
-    collection: Collection, file_object: IO, with_docs: bool = False
+    collection: Collection, file_object: IO, include_doc: bool = False
 ) -> None:
     file_object.write(f"class {collection.name}(ResourceCollection):\n")
+    if include_doc and collection.docstring:
+        file_object.write('    """\n')
+        for line in collection.docstring.split("\n"):
+            file_object.write(f"    {line}\n")
+        file_object.write('    """\n')
+
     for line in generate_methods(
         collection.methods,
         first_arg="cls",
         decorator="@classmethod",
-        include_doc=with_docs,
+        include_doc=include_doc,
     ):
         file_object.write(line)
         file_object.write("\n")
@@ -169,10 +177,17 @@ def write_resource(
     resource: Union[Resource, ServiceResource],
     name: str,
     file_object: IO,
-    with_docs: bool = False,
+    include_doc: bool = False,
 ) -> None:
 
     file_object.write(f"class {name}(Boto3ServiceResource):\n")
+
+    if include_doc and resource.docstring:
+        file_object.write('    """\n')
+        for line in resource.docstring.split("\n"):
+            file_object.write(f"    {line}\n")
+        file_object.write('    """\n')
+
     attributes = resource.attributes
     for collection in resource.collections:
         attributes.append(Attribute(collection.name, collection.type))
@@ -183,7 +198,7 @@ def write_resource(
             file_object.write("\n")
 
     if resource.methods:
-        for line in generate_methods(resource.methods, include_doc=with_docs):
+        for line in generate_methods(resource.methods, include_doc=include_doc):
             file_object.write(line)
             file_object.write("\n")
 
@@ -192,7 +207,7 @@ def write_service_waiter(
     service_waiter: ServiceWaiter,
     output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool = False,
+    include_doc: bool = False,
 ) -> None:
     with open(output_path, "w") as output:
         for import_line in import_record_renderer.generate_lines(
@@ -203,7 +218,14 @@ def write_service_waiter(
 
         for waiter in service_waiter.waiters:
             output.write(f"class {waiter.name}(Waiter):\n")
-            for line in generate_methods(waiter.methods, include_doc=with_docs):
+
+            if include_doc and waiter.docstring:
+                output.write('    """\n')
+                for line in waiter.docstring.split("\n"):
+                    output.write(f"    {line}\n")
+                output.write('    """\n')
+
+            for line in generate_methods(waiter.methods, include_doc=include_doc):
                 output.write(line)
                 output.write("\n")
 
@@ -214,7 +236,7 @@ def write_service_paginator(
     service_paginator: ServicePaginator,
     output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> None:
     with open(output_path, "w") as output:
         for import_line in import_record_renderer.generate_lines(
@@ -228,7 +250,14 @@ def write_service_paginator(
         output.write("\n")
         for paginator in service_paginator.paginators:
             output.write(f"class {paginator.name}(Paginator):\n")
-            for line in generate_methods(paginator.methods, include_doc=with_docs):
+
+            if include_doc and paginator.docstring:
+                output.write('    """\n')
+                for line in paginator.docstring.split("\n"):
+                    output.write(f"    {line}\n")
+                output.write('    """\n')
+
+            for line in generate_methods(paginator.methods, include_doc=include_doc):
                 output.write(line)
                 output.write("\n")
             output.write("\n")
@@ -238,7 +267,7 @@ def write_client(
     client: Client,
     output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> None:
     with open(output_path, "w") as output:
         for import_line in import_record_renderer.generate_lines(
@@ -248,7 +277,14 @@ def write_client(
 
         output.write("\n")
         output.write(f"class Client(BaseClient):\n")
-        for line in generate_methods(client.methods, include_doc=with_docs):
+
+        if include_doc and client.docstring:
+            output.write('    """\n')
+            for line in client.docstring.split("\n"):
+                output.write(f"    {line}\n")
+            output.write('    """\n')
+
+        for line in generate_methods(client.methods, include_doc=include_doc):
             output.write(line)
             output.write("\n")
         output.write("\n")
@@ -259,7 +295,7 @@ def process_service_client(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> Client:
     logger.debug(f"Parsing {service_name} Client")
     client = parse_client(session, service_name)
@@ -267,7 +303,7 @@ def process_service_client(
     logger.debug(
         f"Writing Client for {service_name.value} to {NicePath(module_output_path)}"
     )
-    write_client(client, module_output_path, import_record_renderer, with_docs)
+    write_client(client, module_output_path, import_record_renderer, include_doc)
     return client
 
 
@@ -276,7 +312,7 @@ def process_service_resource(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> Optional[ServiceResource]:
     logger.debug(f"Parsing {service_name} ServiceResource")
     service_resource = parse_service_resource(session, service_name)
@@ -290,7 +326,7 @@ def process_service_resource(
         f"Writing ServiceResource for {service_name.value} to {NicePath(module_output_path)}"
     )
     write_service_resource(
-        service_resource, module_output_path, import_record_renderer, with_docs,
+        service_resource, module_output_path, import_record_renderer, include_doc,
     )
     return service_resource
 
@@ -300,7 +336,7 @@ def process_service_waiter(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> Optional[ServiceWaiter]:
     logger.debug(f"Parsing {service_name} ServiceWaiter")
     service_waiter = parse_service_waiter(session, service_name)
@@ -314,7 +350,7 @@ def process_service_waiter(
         f"Writing ServiceWaiter for {service_name.value} to {NicePath(module_output_path)}"
     )
     write_service_waiter(
-        service_waiter, module_output_path, import_record_renderer, with_docs,
+        service_waiter, module_output_path, import_record_renderer, include_doc,
     )
     return service_waiter
 
@@ -324,7 +360,7 @@ def process_service_paginator(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    with_docs: bool,
+    include_doc: bool,
 ) -> Optional[ServicePaginator]:
     logger.debug(f"Parsing {service_name} ServicePaginator")
     service_paginator = parse_service_paginator(session, service_name)
@@ -339,57 +375,48 @@ def process_service_paginator(
     )
 
     write_service_paginator(
-        service_paginator, module_output_path, import_record_renderer, with_docs,
+        service_paginator, module_output_path, import_record_renderer, include_doc,
     )
     return service_paginator
 
 
 def write_service(
-    session: Session,
-    service_name: ServiceName,
-    output_path: Path,
-    module_name: str,
-    with_docs: bool,
+    session: Session, service_name: ServiceName, output_path: Path, include_doc: bool,
 ) -> None:
-    default_import_records = [ImportRecord("__future__", "annotations")]
     init_import_records: Set[ImportRecord] = set()
-    import_record_renderer = ImportRecordRenderer(module_name, default_import_records)
 
-    service_output_path = service_name.get_output_path(output_path, module_name)
-    service_output_path.parent.mkdir(exist_ok=True)
-    service_output_path.mkdir(exist_ok=True)
+    import_record_renderer = ImportRecordRenderer(
+        output_path.name, [ImportRecord("__future__", "annotations")]
+    )
 
     logger.info(f"Writing {service_name.name} service module")
 
     client = process_service_client(
-        session, service_name, service_output_path, import_record_renderer, with_docs
+        session, service_name, output_path, import_record_renderer, include_doc
     )
     for import_record in client.get_import_records():
         init_import_records.add(import_record_renderer.get_localized(import_record))
 
     service_resource = process_service_resource(
-        session, service_name, service_output_path, import_record_renderer, with_docs
+        session, service_name, output_path, import_record_renderer, include_doc
     )
     if service_resource:
         for import_record in service_resource.get_import_records():
             init_import_records.add(import_record_renderer.get_localized(import_record))
 
     process_service_waiter(
-        session, service_name, service_output_path, import_record_renderer, with_docs
+        session, service_name, output_path, import_record_renderer, include_doc
     )
 
     process_service_paginator(
-        session, service_name, service_output_path, import_record_renderer, with_docs
+        session, service_name, output_path, import_record_renderer, include_doc
     )
 
-    init_file_path = (
-        service_name.get_output_path(output_path, module_name) / "__init__.py"
-    )
+    init_file_path = output_path / "__init__.py"
     logger.debug(f"Writing {NicePath(init_file_path)}")
     write_init_file(init_file_path, init_import_records, service_name)
 
-    service_output_path = service_name.get_output_path(output_path, module_name)
-    write_service_assets(service_output_path, service_name, module_name)
+    write_service_assets(output_path, service_name)
 
 
 def format_path(path: Path) -> None:
@@ -401,50 +428,51 @@ def format_path(path: Path) -> None:
 
 
 def write_master_module(
-    output_path: Path, module_name: str, service_names: Iterable[ServiceName],
+    output_path: Path, service_names: Iterable[ServiceName],
 ) -> None:
     logger.info(f"Writing master module")
-    main_module_output_path = output_path / f"{module_name}_package" / module_name
-    logger.debug(f"Creating directory {NicePath(main_module_output_path)}")
-    main_module_output_path = output_path / f"{module_name}_package" / module_name
-    main_module_output_path.parent.mkdir(exist_ok=True)
-    main_module_output_path.mkdir(exist_ok=True)
-
-    logger.debug(f"Writing {module_name} assets")
-    file_path = main_module_output_path / "py.typed"
+    logger.debug(f"Writing assets")
+    file_path = output_path / "py.typed"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "py.typed.template")
 
-    file_path = main_module_output_path / "__main__.py"
+    file_path = output_path / "__main__.py"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "__main__.py.template")
 
-    file_path = main_module_output_path / "__init__.py"
+    file_path = output_path / "__init__.py"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "__init__.py.template")
 
-    file_path = main_module_output_path / "version.py"
+    file_path = output_path / "version.py"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "version.py.template", version=version)
 
-    file_path = main_module_output_path.parent / "setup.py"
+    file_path = output_path.parent / "setup.py"
     logger.debug(f"Writing {NicePath(file_path)}")
-    module_name_dashed = module_name.replace("_", "-")
-    extras_require: Dict[str, List[str]] = {"all": []}
+    module_name_dashed = output_path.name.replace("_", "-")
+    extras_require: Dict[str, List[str]] = {"all": [], "all-with-docs": []}
     for service_name in service_names:
         service_install_string = f"{module_name_dashed}-{service_name.value}=={version}"
+        service_include_doc_install_string = (
+            f"{module_name_dashed}-{service_name.value}=={version}"
+        )
         extras_require[service_name.value] = [service_install_string]
+        extras_require[f"{service_name.value}-with-docs"] = [
+            service_include_doc_install_string
+        ]
         extras_require["all"].append(service_install_string)
+        extras_require["all-with-docs"].append(service_include_doc_install_string)
     write_asset(
         file_path,
         "setup.py.template",
-        module_name=module_name,
-        module_name_dashed=module_name_dashed,
+        package_name=output_path.name,
+        name=module_name_dashed,
         extras_require=str(extras_require),
     )
 
     for service_name in service_names:
-        master_service_path = main_module_output_path / service_name.name
+        master_service_path = output_path / service_name.name
         master_service_path.mkdir(exist_ok=True)
         file_path = master_service_path / "__init__.py"
 
@@ -454,11 +482,15 @@ def write_master_module(
             "master_service_init.template",
             service_name=service_name.value,
             safe_service_name=service_name.name,
-            module_name=module_name,
+            module_name=output_path.name,
         )
 
         submodule_names = ["client", "paginator", "service_resource", "waiter"]
-        service_output_path = service_name.get_output_path(output_path, module_name)
+        service_output_path = (
+            output_path.parent.parent
+            / f"{output_path.name}_{service_name.name}_package"
+            / f"{output_path.name}_{service_name.name}"
+        )
         for submodule_name in submodule_names:
             if (service_output_path / f"{submodule_name}.py").exists():
                 file_path = master_service_path / f"{submodule_name}.py"
@@ -468,13 +500,11 @@ def write_master_module(
                     submodule_name=submodule_name,
                     service_name=service_name.value,
                     safe_service_name=service_name.name,
-                    module_name=module_name,
+                    module_name=output_path.name,
                 )
 
 
-def write_service_assets(
-    service_output_path: Path, service_name: ServiceName, module_name: str
-) -> None:
+def write_service_assets(service_output_path: Path, service_name: ServiceName) -> None:
     file_path = service_output_path / "py.typed"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "py.typed.template")
@@ -493,9 +523,8 @@ def write_service_assets(
         file_path,
         "service_setup.py.template",
         service_name=service_name.value,
-        safe_service_name=service_name.name,
-        module_name=module_name,
-        module_name_dashed=module_name.replace("_", "-"),
+        package_name=service_output_path.name,
+        name=service_output_path.name.replace("_", "-"),
     )
 
 

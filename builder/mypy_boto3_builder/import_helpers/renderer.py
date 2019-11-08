@@ -7,7 +7,6 @@ from mypy_boto3_builder.utils import render_type_annotation
 from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.enums import ImportRecordType
-from mypy_boto3_builder.service_name import ServiceName
 
 
 class ImportRecordRenderer:
@@ -17,9 +16,9 @@ class ImportRecordRenderer:
     )
 
     def __init__(
-        self, module_name: str, default_import_records: Iterable[ImportRecord] = ()
+        self, module_name: str, default_import_records: Iterable[ImportRecord] = (),
     ) -> None:
-        self.module_import_string = ImportString(module_name)
+        self.module_name = module_name
         self.default_import_records = default_import_records
         self.local_import_strings: Set[ImportString] = set()
 
@@ -59,9 +58,7 @@ class ImportRecordRenderer:
         )
 
     def get_localized(self, import_record: ImportRecord) -> ImportRecord:
-        import_service_name = import_record.source.parts[0]
-        service_name = ServiceName.get(import_service_name)
-        source = ImportString(f"{self.module_import_string}_{service_name.name}")
+        source = ImportString(self.module_name)
         source.parts.extend(import_record.source.parts[1:])
 
         return ImportRecord(

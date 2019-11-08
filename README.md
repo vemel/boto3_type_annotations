@@ -13,12 +13,27 @@ Mypy-friendly type annotations for boto3.
 ## Installation
 
 ```bash
-pip install mypy-boto3
+# install only `mypy_boto3.s3` for S3 service annotations
+pip install mypy-boto3[s3]
+
+# or install multiple services
+pip install mypy-boto3[s3][ec2]
+
+# or install S3 service with docs
+pip install mypy-boto3[s3-with-docs]
+
+# or install all services
+pip install mypy-boto3[all]
+
+# or even install all boto3 services annotations
+# WARNING: this will eat ~70 MB of space
+pip install mypy-boto3[all-with-docs]
 ```
 
 ### Usage
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
+- Install [boto3](https://github.com/boto/boto3)
 - Use `mypy-boto3` to annotate your code to discover errors
 
     ```python

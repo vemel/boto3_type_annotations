@@ -34,6 +34,7 @@ from mypy_boto3_builder.structures import (
 from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.utils import clean_doc
 
 
 logger = get_logger()
@@ -53,18 +54,18 @@ def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
 def manually_set_method(name: str) -> Method:
     if name == "create_tags":
         return Method(
-            "create_tags",
-            [
+            name="create_tags",
+            arguments=[
                 Argument("DryRun", bool, False),
                 Argument("Resources", List[Any], True),
                 Argument("Tags", List[Any], True),
             ],
-            "",
-            type(None),
+            docstring="",
+            return_type=type(None),
         )
 
     logger.warning(f"Unknown method: {name}")
-    return Method(name, [], "", type(None))
+    return Method(name=name, arguments=[], docstring="", return_type=type(None))
 
 
 def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
@@ -94,7 +95,9 @@ def parse_attributes(
 def parse_client(session: Session, service_name: ServiceName) -> Client:
     client = session.client(service_name.value)
     return Client(
-        service_name, list(parse_methods(get_instance_public_methods(client)))
+        service_name=service_name,
+        docstring=clean_doc(getdoc(client)),
+        methods=list(parse_methods(get_instance_public_methods(client))),
     )
 
 
@@ -104,6 +107,7 @@ def parse_collections(
     for collection in resource.meta.resource_model.collections:
         yield Collection(
             name=collection.name,
+            docstring=clean_doc(getdoc(collection)),
             type=InternalImport(
                 name=collection.name,
                 service_name=ServiceName(resource.meta.service_name),
@@ -131,12 +135,12 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
             logger.debug(f"Docless method: {name}")
             yield manually_set_method(name)
         else:
-            parsed_doc = parse(doc.replace("::", ""))
+            parsed_doc = parse(doc)
             yield Method(
-                name,
-                list(parse_arguments(parsed_doc)),
-                doc,
-                parse_return_type(parsed_doc.meta),
+                name=name,
+                arguments=list(parse_arguments(parsed_doc)),
+                docstring=clean_doc(doc),
+                return_type=parse_return_type(parsed_doc.meta),
             )
 
 
@@ -154,7 +158,11 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
     collections = list(parse_collections(resource))
 
     return Resource(
-        name=name, methods=methods, attributes=attributes, collections=collections,
+        name=name,
+        docstring=clean_doc(getdoc(resource)),
+        methods=methods,
+        attributes=attributes,
+        collections=collections,
     )
 
 
@@ -190,6 +198,7 @@ def parse_service_resource(
 
     return ServiceResource(
         service_name=service_name,
+        docstring=clean_doc(getdoc(service_resource)),
         methods=methods,
         attributes=attributes,
         collections=collections,
@@ -218,7 +227,9 @@ def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
     for waiter_name in client.waiter_names:
         waiter = client.get_waiter(waiter_name)
         yield Waiter(
-            waiter.name, list(parse_methods(get_instance_public_methods(waiter)))
+            name=waiter.name,
+            docstring=clean_doc(getdoc(waiter)),
+            methods=list(parse_methods(get_instance_public_methods(waiter))),
         )
 
 
@@ -248,8 +259,9 @@ def parse_paginators(
         paginator = client.get_paginator(xform_name(paginator_name))
         paginator_model = paginator._model  # pylint: disable=protected-access
         yield Paginator(
-            paginator_model.name,
-            list(parse_methods(get_instance_public_methods(paginator))),
+            name=paginator_model.name,
+            docstring=clean_doc(getdoc(paginator)),
+            methods=list(parse_methods(get_instance_public_methods(paginator))),
         )
 
 

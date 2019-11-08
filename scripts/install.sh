@@ -10,4 +10,4 @@ install_package() {
 }
 export -f install_package
 
-find ${OUTPUT_PATH} -mindepth 1 -maxdepth 1 -name 'mypy_boto3_*' -type d -exec bash -c 'install_package "$@"' bash {} \;
+find ${OUTPUT_PATH} -mindepth 1 -maxdepth 1 -name "mypy_boto3_$1*" -type d -exec bash -c 'install_package "$@"' bash {} \;

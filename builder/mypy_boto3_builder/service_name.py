@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import enum
 from typing import List
-from pathlib import Path
 
 
 class ServiceName(enum.Enum):
@@ -207,13 +206,6 @@ class ServiceName(enum.Enum):
     @classmethod
     def values(cls) -> List[str]:
         return [i.value for i in cls]
-
-    def get_output_path(self, output_path: Path, module_name: str) -> Path:
-        return (
-            output_path
-            / f"{module_name}_{self.value}_package"
-            / f"{module_name}_{self.name}"
-        )
 
     @classmethod
     def get(cls, service_name: str) -> ServiceName:

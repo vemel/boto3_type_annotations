@@ -139,6 +139,7 @@ class TypeCollector:
 @dataclass
 class Collection(TypeCollector):
     name: str
+    docstring: str
     type: InternalImport
     methods: List[Method]
 
@@ -153,6 +154,7 @@ class Collection(TypeCollector):
 @dataclass
 class Resource(TypeCollector):
     name: str
+    docstring: str
     methods: List[Method]
     attributes: List[Attribute]
     collections: List[Collection]
@@ -171,6 +173,7 @@ class Resource(TypeCollector):
 @dataclass
 class Waiter(TypeCollector):
     name: str
+    docstring: str
     methods: List[Method]
 
     def get_types(self) -> Set[TypeAnnotation]:
@@ -183,6 +186,7 @@ class Waiter(TypeCollector):
 @dataclass
 class Paginator(TypeCollector):
     name: str
+    docstring: str
     methods: List[Method]
 
     def get_types(self) -> Set[TypeAnnotation]:
@@ -195,6 +199,7 @@ class Paginator(TypeCollector):
 @dataclass
 class ServiceResource(TypeCollector):
     service_name: ServiceName
+    docstring: str
     methods: List[Method]
     attributes: List[Attribute]
     collections: List[Collection]
@@ -232,6 +237,7 @@ class ServiceResource(TypeCollector):
 @dataclass
 class Client(TypeCollector):
     service_name: ServiceName
+    docstring: str
     methods: List[Method]
 
     def get_types(self) -> Set[TypeAnnotation]:

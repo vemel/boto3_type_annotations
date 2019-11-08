@@ -35,7 +35,10 @@ def render_type_annotation(
     return name
 
 
-def clean_doc(doc: str) -> str:
+def clean_doc(doc: Optional[str]) -> str:
+    if doc is None:
+        return ""
+
     lines = doc.split("\n")
     result: List[str] = []
     for line in lines:

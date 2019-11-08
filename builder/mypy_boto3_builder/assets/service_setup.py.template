@@ -1,14 +1,14 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-from {module_name}_{safe_service_name}.version import __version__ as version
+from {package_name}.version import __version__ as version
 
 with open("../../README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="{module_name_dashed}-{service_name}",
+    name="{name}",
     version=version,
-    packages=["{module_name}_{safe_service_name}"],
+    packages=["{package_name}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
@@ -32,5 +32,5 @@ setup(
     ],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    package_data={{"{module_name}_{safe_service_name}": ["py.typed"]}},
+    package_data={{"{package_name}": ["py.typed"]}},
 )

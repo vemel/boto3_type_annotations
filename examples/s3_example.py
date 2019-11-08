@@ -1,3 +1,5 @@
+# install `pip install mypy_boto3[s3]`
+
 import boto3
 
 from botocore.session import Session

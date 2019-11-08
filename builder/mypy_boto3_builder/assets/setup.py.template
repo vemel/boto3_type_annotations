@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
 
-from {module_name}.version import __version__ as version
+from {package_name}.version import __version__ as version
 
 with open("../../README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="{module_name_dashed}",
+    name="{name}",
     version=version,
     packages=find_packages(),
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Mypy-friendly boto3 type annotations.",
+    description="Mypy-friendly boto3 type annotations master module.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -32,6 +32,6 @@ setup(
     ],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    package_data={{"{module_name}": ["py.typed"]}},
+    package_data={{"{package_name}": ["py.typed"]}},
     extras_require={extras_require},
 )
