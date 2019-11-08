@@ -1,91 +1,40 @@
 from __future__ import annotations
 
-from typing import List, Set, Union, Tuple, Optional, Any
+from abc import abstractmethod
+from typing import List, Set, Union, Tuple, Optional
 from dataclasses import dataclass
 
 from mypy_boto3_builder.service_name import ServiceName
-
-
-class ImportString:
-    def __init__(self, import_string: str) -> None:
-        self.parts = import_string.split(".")
-
-    def __str__(self) -> str:
-        return ".".join(self.parts)
-
-    def __hash__(self) -> int:
-        return hash(str(self))
-
-    def __eq__(self, other: Any) -> bool:
-        return str(self) == str(other)
-
-    def __gt__(self, other: Any) -> bool:
-        return str(self) > str(other)
-
-    def startswith(self, other: ImportString) -> bool:
-        for part_index, part in enumerate(other.parts):
-            try:
-                self_part = self.parts[part_index]
-            except IndexError:
-                return False
-
-            if self_part != part:
-                return False
-
-        return True
-
-
-@dataclass
-class ImportRecord:
-    source: ImportString
-    name: str = ""
-    alias: str = ""
-
-    def __str__(self) -> str:
-        if self.name and self.alias:
-            return f"from {self.source} import {self.name} as {self.alias}"
-        if self.name:
-            return f"from {self.source} import {self.name}"
-        if self.alias:
-            return f"import {self.source} as {self.alias}"
-        return f"import {self.source}"
-
-    def __hash__(self) -> int:
-        return hash(str(self))
-
-    def __eq__(self, other: Any) -> bool:
-        if not isinstance(other, ImportRecord):
-            raise ValueError(f"Cannot compare ImportString with {other}")
-
-        return str(self) == str(other)
-
-    def __gt__(self, other: ImportRecord) -> bool:
-        if self.source == other.source:
-            return self.name > other.name
-
-        return self.source > other.source
-
-    def render(self) -> str:
-        return str(self)
+from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 
 
 class FakeAnnotation:
+    is_internal = False
+
     @property
     def __name__(self) -> str:
         return str(self)
 
-    def get_import_record(self, module_name: str) -> ImportRecord:
-        return ImportRecord(source=ImportString(module_name), name=str(self))
+    @abstractmethod
+    def get_import_record(self) -> ImportRecord:
+        pass
 
 
 TypeAnnotation = Union[FakeAnnotation, type]
 
 
-@dataclass
 class InternalImport(FakeAnnotation):
-    name: str
-    service_name: ServiceName
-    module_name: str = "service_resource"
+    is_internal = True
+
+    def __init__(
+        self,
+        name: str,
+        service_name: ServiceName,
+        module_name: str = "service_resource",
+    ) -> None:
+        self.name = name
+        self.service_name = service_name
+        self.module_name = module_name
 
     def __hash__(self) -> int:
         return hash(f"{self.scope}.{self.name}")
@@ -97,17 +46,18 @@ class InternalImport(FakeAnnotation):
     def scope(self) -> str:
         return f"{self.service_name.value}_{self.module_name}_scope"
 
-    def get_import_record(self, module_name: str) -> ImportRecord:
-        source = ImportString(
-            f"{module_name}.{self.service_name.name}.{self.module_name}"
+    def get_import_record(self) -> ImportRecord:
+        return ImportRecord(
+            source=f"{self.service_name.name}.{self.module_name}", alias=self.scope
         )
-        return ImportRecord(source=source, alias=self.scope)
 
 
-@dataclass
 class AnnotationWrapper(FakeAnnotation):
-    parent: type
-    children: Tuple[TypeAnnotation, ...] = ()
+    def __init__(
+        self, parent: type, children: Tuple[TypeAnnotation, ...] = (),
+    ) -> None:
+        self.parent = parent
+        self.children = children
 
     def __hash__(self) -> int:
         return hash(f"{self.parent}.{self.children}")
@@ -127,8 +77,8 @@ class AnnotationWrapper(FakeAnnotation):
     def __args__(self) -> Tuple[TypeAnnotation, ...]:
         return self.children
 
-    def get_import_record(self, _module_name: str) -> ImportRecord:
-        return ImportRecord(source=ImportString("typing"), name=str(self))
+    def get_import_record(self) -> ImportRecord:
+        return ImportRecord(source="typing", name=str(self))
 
 
 @dataclass
@@ -176,11 +126,12 @@ class Method:
         return types
 
 
-@dataclass
 class TypeCollector:
+    # pylint: disable=no-self-use
     def get_types(self) -> Set[TypeAnnotation]:
         raise TypeError("TypeCollector cannot collect types")
 
+    # pylint: disable=no-self-use
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         raise TypeError("TypeCollector cannot collect import records")
 
@@ -263,9 +214,7 @@ class ServiceResource(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(
-            f"{module_name}.{self.service_name.name}.service_resource"
-        )
+        source = f"{module_name}.{self.service_name.name}.service_resource"
 
         import_records.add(ImportRecord(source, "ServiceResource"))
         for resource in self.sub_resources:
@@ -292,7 +241,7 @@ class Client(TypeCollector):
         return types
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
-        source = ImportString(f"{module_name}.{self.service_name.name}.client")
+        source = f"{module_name}.{self.service_name.name}.client"
         return {ImportRecord(source, "Client")}
 
 
@@ -309,7 +258,7 @@ class ServiceWaiter(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(f"{module_name}.{self.service_name.name}.waiter")
+        source = f"{module_name}.{self.service_name.name}.waiter"
 
         for waiter in self.waiters:
             import_records.add(ImportRecord(source, waiter.name))
@@ -330,7 +279,7 @@ class ServicePaginator(TypeCollector):
 
     def get_import_records(self, module_name: str) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = ImportString(f"{module_name}.{self.service_name.name}.paginator")
+        source = f"{module_name}.{self.service_name.name}.paginator"
 
         for paginator in self.paginators:
             import_records.add(ImportRecord(source, paginator.name))

@@ -1,7 +1,7 @@
-from boto3.session import Session
 from pathlib import Path
 
 import black
+from boto3.session import Session
 
 from mypy_boto3_builder.writers import write_services
 from mypy_boto3_builder.version import __version__ as version

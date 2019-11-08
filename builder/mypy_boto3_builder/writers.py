@@ -1,9 +1,6 @@
-import builtins
-import re
 from collections import defaultdict
-import inspect
 from pathlib import Path
-from typing import IO, Set, Union, List, Generator, Dict, Optional, Iterable
+from typing import IO, Set, Union, List, Generator, Dict, Iterable
 
 from boto3.resources.collection import ResourceCollection
 from boto3.session import Session
@@ -24,54 +21,16 @@ from mypy_boto3_builder.structures import (
     Collection,
     ServiceWaiter,
     ServicePaginator,
-    TypeAnnotation,
-    FakeAnnotation,
-    ImportString,
-    ImportRecord,
 )
+from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.renderer import ImportRecordRenderer
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.nice_path import NicePath
 from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.utils import render_type_annotation, clean_doc
 
 
 logger = get_logger()
-
-
-def clean_doc(doc: str) -> str:
-    def append_line(section: List[str], next_line: str) -> None:
-        section.append(next_line.replace("'", "\\'").replace('"', '\\"').rstrip())
-
-    parameters: List[str] = []
-    preamble = []
-    indices_to_remove = []
-    parameter_regex = re.compile("^:(.*[a-zA-Z]):")
-    lines = doc.split("\n")
-    for i, line in enumerate(lines):
-        if parameter_regex.search(line.strip()):
-            append_line(parameters, line)
-            indices_to_remove.append(i)
-            n = i + 1
-            while (
-                n < len(lines)
-                and not parameter_regex.search(lines[n].strip())
-                and line.strip() != ":returns:"
-            ):
-                if lines[n].strip():
-                    append_line(parameters, lines[n])
-                    indices_to_remove.append(n)
-                n += 1
-    for i in reversed(indices_to_remove):
-        del lines[i]
-    for i, line in enumerate(lines):
-        line = line.strip()
-        if line == "::" or (line.startswith("**") and line.endswith("**")):
-            lines[i] = line
-    for line in lines:
-        if line.strip():
-            if line.strip().startswith("**") and line.strip().endswith("**"):
-                preamble.append("")
-            preamble.append(line)
-    return "\n".join(preamble + parameters)
 
 
 def create_module_directory(module_path: Path) -> None:
@@ -90,104 +49,13 @@ def format_arguments(method: Method) -> Generator[str, None, None]:
             # argument_type = Optional[argument_type]
             default = " = None"
 
-        type_repr = normalize_type_name(argument_type, render_args=True)
+        type_repr = render_type_annotation(argument_type, render_args=True)
         yield f"{argument.name}: {type_repr}{default}"
-
-
-def normalize_type_name(
-    type_annotation: TypeAnnotation, render_args: bool = False
-) -> str:
-    name = str(type_annotation)
-    if hasattr(type_annotation, "_name"):
-        name = getattr(type_annotation, "_name") or "Union"
-    if getattr(type_annotation, "__name__", None):
-        name = getattr(type_annotation, "__name__")
-    if type_annotation == Union:
-        name = "Union"
-    if type_annotation == Optional:
-        name = "Optional"
-    if type_annotation == Ellipsis:
-        name = "..."
-    if name == "NoneType":
-        name = "None"
-
-    if str(type_annotation).startswith("~"):
-        name = "Any"
-
-    args_rendered = []
-    if render_args and hasattr(type_annotation, "__args__"):
-        for arg in getattr(type_annotation, "__args__"):
-            args_rendered.append(normalize_type_name(arg, render_args=True))
-        return f'{name}[{", ".join(args_rendered)}]'
-
-    return name
 
 
 def generate_attributes(attributes: List[Attribute]) -> Generator[str, None, None]:
     for attribute in attributes:
-        yield f"    {attribute.name}: {normalize_type_name(attribute.type)}"
-
-
-def generate_import_statements(
-    types: Set[TypeAnnotation],
-    module_name: str,
-    import_records: Iterable[ImportRecord] = (),
-) -> Generator[str, None, None]:
-    builtin_import_strings: Set[ImportRecord] = set()
-    boto_import_strings: Set[ImportRecord] = set()
-    local_import_strings: Set[ImportRecord] = set()
-
-    import_statements: Set[ImportRecord] = set()
-    for type_annotation in types:
-        if isinstance(type_annotation, FakeAnnotation):
-            import_statements.add(type_annotation.get_import_record(module_name))
-            continue
-
-        parent_module = inspect.getmodule(type_annotation)
-        if parent_module is None or parent_module == builtins:
-            continue
-
-        parent_module_name = parent_module.__name__
-        import_statements.add(
-            ImportRecord(
-                source=ImportString(parent_module_name),
-                name=normalize_type_name(type_annotation),
-            )
-        )
-
-    import_statements.update(import_records)
-
-    boto3_import_string = ImportString("boto3")
-    botocore_import_string = ImportString("botocore")
-    local_import_string = ImportString(module_name)
-    for import_string in import_statements:
-        if import_string.source.startswith(boto3_import_string):
-            boto_import_strings.add(import_string)
-        elif import_string.source.startswith(botocore_import_string):
-            boto_import_strings.add(import_string)
-        elif import_string.source.startswith(local_import_string):
-            local_import_strings.add(import_string)
-        else:
-            builtin_import_strings.add(import_string)
-
-    yield "from __future__ import annotations"
-    yield ""
-    if builtin_import_strings:
-        yield "# builtin imports"
-        for import_string in sorted(builtin_import_strings):
-            yield import_string.render()
-        yield ""
-    if boto_import_strings:
-        yield "# boto3 imports"
-        for import_string in sorted(boto_import_strings):
-            yield import_string.render()
-        yield ""
-    if local_import_strings:
-        yield "# local imports"
-        yield "# pylint: disable=import-self"
-        for import_string in sorted(local_import_strings):
-            yield import_string.render()
-        yield ""
+        yield f"    {attribute.name}: {render_type_annotation(attribute.type)}"
 
 
 def generate_methods(
@@ -229,7 +97,7 @@ def generate_method(
             comma = ""
         yield f"    {formatted_argument}{comma}"
     if method.return_type:
-        yield f") -> {normalize_type_name(method.return_type, render_args=True)}:"
+        yield f") -> {render_type_annotation(method.return_type, render_args=True)}:"
     else:
         yield "):"
 
@@ -237,7 +105,7 @@ def generate_method(
         docstring = clean_doc(method.docstring)
         if docstring:
             yield '    """'
-            for line in clean_doc(method.docstring).split("\n"):
+            for line in docstring.split("\n"):
                 yield f"    {line}"
             yield '    """'
     yield f"    {method_body}"
@@ -246,48 +114,43 @@ def generate_method(
 def write_service_resource(
     service_resource: ServiceResource,
     output_path: Path,
-    module_name: str,
-    with_docs: bool = False,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
 ) -> None:
-    with open(output_path, "w") as file_object:
-        types = {ResourceCollection}
-        types.update(service_resource.get_types())
-        for import_line in generate_import_statements(
-            types,
-            module_name=module_name,
+    with open(output_path, "w") as output:
+        for import_line in import_record_renderer.generate_lines(
+            type_annotations=service_resource.get_types().union({ResourceCollection}),
             import_records=[
                 ImportRecord(
-                    source=ImportString("boto3.resources.base"),
+                    source="boto3.resources.base",
                     name="ServiceResource",
                     alias="Boto3ServiceResource",
                 ),
             ],
         ):
-            file_object.write(f"{import_line}\n")
+            output.write(f"{import_line}\n")
 
-        file_object.write("\n\n")
-        write_resource(
-            service_resource, "ServiceResource", file_object, with_docs=with_docs
-        )
+        output.write("\n\n")
+        write_resource(service_resource, "ServiceResource", output, with_docs=with_docs)
         for resource in service_resource.sub_resources:
-            file_object.write("\n\n")
-            write_resource(resource, resource.name, file_object, with_docs=with_docs)
+            output.write("\n\n")
+            write_resource(resource, resource.name, output, with_docs=with_docs)
 
         added_collection_names: Set[str] = set()
         for collection in service_resource.collections:
             if collection.name in added_collection_names:
                 continue
             added_collection_names.add(collection.name)
-            file_object.write("\n\n")
-            write_collection(collection, file_object, with_docs=with_docs)
+            output.write("\n\n")
+            write_collection(collection, output, with_docs=with_docs)
 
         for resource in service_resource.sub_resources:
             for collection in resource.collections:
                 if collection.name in added_collection_names:
                     continue
                 added_collection_names.add(collection.name)
-                file_object.write("\n\n")
-                write_collection(collection, file_object, with_docs=with_docs)
+                output.write("\n\n")
+                write_collection(collection, output, with_docs=with_docs)
 
 
 def write_collection(
@@ -330,72 +193,67 @@ def write_resource(
 def write_service_waiter(
     service_waiter: ServiceWaiter,
     output_path: Path,
-    module_name: str,
+    import_record_renderer: ImportRecordRenderer,
     with_docs: bool = False,
 ) -> None:
-    with open(output_path, "w") as file_object:
-        types = service_waiter.get_types()
-        for import_line in generate_import_statements(
-            types,
-            module_name=module_name,
-            import_records=[
-                ImportRecord(source=ImportString("botocore.waiter"), name="Waiter",),
-            ],
+    with open(output_path, "w") as output:
+        for import_line in import_record_renderer.generate_lines(
+            import_records=[ImportRecord(source="botocore.waiter", name="Waiter",),],
+            type_annotations=service_waiter.get_types(),
         ):
-            file_object.write(f"{import_line}\n")
+            output.write(f"{import_line}\n")
 
         for waiter in service_waiter.waiters:
-            file_object.write(f"class {waiter.name}(Waiter):\n")
+            output.write(f"class {waiter.name}(Waiter):\n")
             for line in generate_methods(waiter.methods, include_doc=with_docs):
-                file_object.write(line)
-                file_object.write("\n")
+                output.write(line)
+                output.write("\n")
 
-            file_object.write("\n")
+            output.write("\n")
 
 
 def write_service_paginator(
     service_paginator: ServicePaginator,
     output_path: Path,
-    module_name: str,
-    with_docs: bool = False,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
 ) -> None:
-    with open(output_path, "w") as file_object:
-        types = service_paginator.get_types()
-
-        for import_line in generate_import_statements(
-            types,
-            module_name=module_name,
+    with open(output_path, "w") as output:
+        for import_line in import_record_renderer.generate_lines(
             import_records=[
-                ImportRecord(
-                    source=ImportString("botocore.paginate"), name="Paginator",
-                ),
+                ImportRecord(source="botocore.paginate", name="Paginator",),
             ],
+            type_annotations=service_paginator.get_types(),
         ):
-            file_object.write(f"{import_line}\n")
+            output.write(f"{import_line}\n")
 
-        file_object.write("\n")
+        output.write("\n")
         for paginator in service_paginator.paginators:
-            file_object.write(f"class {paginator.name}(Paginator):\n")
+            output.write(f"class {paginator.name}(Paginator):\n")
             for line in generate_methods(paginator.methods, include_doc=with_docs):
-                file_object.write(line)
-                file_object.write("\n")
-            file_object.write("\n")
+                output.write(line)
+                output.write("\n")
+            output.write("\n")
 
 
 def write_client(
-    client: Client, output_path: Path, module_name: str, with_docs: bool = False
+    client: Client,
+    output_path: Path,
+    import_record_renderer: ImportRecordRenderer,
+    with_docs: bool,
 ) -> None:
-    output = open(output_path, "w")
-    types = client.get_types().union({BaseClient})
-    for import_line in generate_import_statements(types, module_name):
-        output.write(f"{import_line}\n")
+    with open(output_path, "w") as output:
+        for import_line in import_record_renderer.generate_lines(
+            type_annotations=client.get_types().union({BaseClient}),
+        ):
+            output.write(f"{import_line}\n")
 
-    output.write("\n")
-    output.write(f"class Client(BaseClient):\n")
-    for line in generate_methods(client.methods, include_doc=with_docs):
-        output.write(line)
         output.write("\n")
-    output.write("\n")
+        output.write(f"class Client(BaseClient):\n")
+        for line in generate_methods(client.methods, include_doc=with_docs):
+            output.write(line)
+            output.write("\n")
+        output.write("\n")
 
 
 def write_services(
@@ -407,6 +265,9 @@ def write_services(
 ) -> None:
     create_module_directory(output_path / module_name)
     init_import_records: Dict[ServiceName, Set[ImportRecord]] = defaultdict(set)
+    import_record_renderer = ImportRecordRenderer(
+        module_name, [ImportRecord("__future__", "annotations")]
+    )
 
     logger.info("Creating directories")
     for service_name in service_names:
@@ -424,7 +285,7 @@ def write_services(
         logger.debug(
             f"Writing Client for {service_name.value} to {NicePath(module_output_path)}"
         )
-        write_client(client, module_output_path, module_name, with_docs=with_docs)
+        write_client(client, module_output_path, import_record_renderer, with_docs)
 
         init_import_records[service_name].update(client.get_import_records(module_name))
 
@@ -443,7 +304,7 @@ def write_services(
             f"Writing ServiceResource for {service_name.value} to {NicePath(module_output_path)}"
         )
         write_service_resource(
-            service_resource, module_output_path, module_name, with_docs=with_docs,
+            service_resource, module_output_path, import_record_renderer, with_docs,
         )
         init_import_records[service_name].update(
             service_resource.get_import_records(module_name)
@@ -462,7 +323,7 @@ def write_services(
             f"Writing ServiceWaiter for {service_name.value} to {NicePath(module_output_path)}"
         )
         write_service_waiter(
-            service_waiter, module_output_path, module_name, with_docs=with_docs
+            service_waiter, module_output_path, import_record_renderer, with_docs,
         )
 
     logger.info("Writing ServicePaginators")
@@ -482,7 +343,7 @@ def write_services(
         )
 
         write_service_paginator(
-            service_paginator, module_output_path, module_name, with_docs=with_docs,
+            service_paginator, module_output_path, import_record_renderer, with_docs,
         )
 
     logger.info("Writing __init__ files")
