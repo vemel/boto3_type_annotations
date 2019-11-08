@@ -1,17 +1,14 @@
 from __future__ import annotations
 
-# builtin imports
 from typing import Any
-from typing import List
-from typing import IO
-from typing import Union
 from typing import Dict
+from typing import IO
+from typing import List
+from typing import Union
 
-# boto3 imports
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
 
-# local imports
 # pylint: disable=import-self
 import mypy_boto3.glacier.service_resource as glacier_service_resource_scope
 

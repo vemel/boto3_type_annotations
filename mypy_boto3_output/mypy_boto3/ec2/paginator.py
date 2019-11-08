@@ -1,12 +1,10 @@
 from __future__ import annotations
 
-# builtin imports
 from datetime import datetime
 from typing import Any
-from typing import List
 from typing import Dict
+from typing import List
 
-# boto3 imports
 from botocore.paginate import Paginator
 
 

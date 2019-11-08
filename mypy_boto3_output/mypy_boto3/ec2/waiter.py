@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-# builtin imports
 from typing import Any
-from typing import List
 from typing import Dict
+from typing import List
 
-# boto3 imports
 from botocore.waiter import Waiter
 
 

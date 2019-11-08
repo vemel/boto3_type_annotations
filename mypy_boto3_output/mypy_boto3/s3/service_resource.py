@@ -1,21 +1,18 @@
 from __future__ import annotations
 
-# builtin imports
 from datetime import datetime
-from typing import Dict
-from typing import List
 from typing import Any
-from typing import Union
-from typing import IO
 from typing import Callable
+from typing import Dict
+from typing import IO
+from typing import List
+from typing import Union
 
-# boto3 imports
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
 
-# local imports
 # pylint: disable=import-self
 import mypy_boto3.s3.service_resource as s3_service_resource_scope
 
