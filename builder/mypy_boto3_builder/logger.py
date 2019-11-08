@@ -1,9 +1,8 @@
 import logging
-from typing import Text
 
 
-def get_logger(name: Text = "builder", verbose: bool = False) -> logging.Logger:
-    logger = logging.getLogger(name)
+def get_logger(verbose: bool = False) -> logging.Logger:
+    logger = logging.getLogger("mypy_boto3_builder")
     if not logger.handlers:
         stream_handler = logging.StreamHandler()
         stream_handler.setLevel(logging.INFO)
