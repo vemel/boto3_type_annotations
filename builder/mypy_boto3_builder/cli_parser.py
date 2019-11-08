@@ -34,7 +34,11 @@ def get_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--skip-master", action="store_true", help="Whether to skip master module"
     )
-    parser.add_argument("--with-docs", action="store_true", help="Add boto3 docs")
+    parser.add_argument(
+        "--no-docs",
+        action="store_true",
+        help="Generate service modules without docs (75% less space)",
+    )
     parser.add_argument(
         "output_path", metavar="OUTPUT_PATH", help="Output path", type=get_absolute_path
     )

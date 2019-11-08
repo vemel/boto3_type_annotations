@@ -1,4 +1,3 @@
-import re
 from pathlib import Path
 from typing import Union, Optional, List
 
@@ -37,39 +36,15 @@ def render_type_annotation(
 
 
 def clean_doc(doc: str) -> str:
-    parameters: List[str] = []
-    preamble = []
-    indices_to_remove = []
-    parameter_regex = re.compile("^:(.*[a-zA-Z]):")
     lines = doc.split("\n")
-    for i, line in enumerate(lines):
-        if parameter_regex.search(line.strip()):
-            parameters.append(line.replace("'", "\\'").replace('"', '\\"').rstrip())
-            indices_to_remove.append(i)
-            n = i + 1
-            while (
-                n < len(lines)
-                and not parameter_regex.search(lines[n].strip())
-                and line.strip() != ":returns:"
-            ):
-                if lines[n].strip():
-                    parameters.append(
-                        lines[n].replace("'", "\\'").replace('"', '\\"').rstrip()
-                    )
-                    indices_to_remove.append(n)
-                n += 1
-    for i in reversed(indices_to_remove):
-        del lines[i]
-    for i, line in enumerate(lines):
-        line = line.strip()
-        if line == "::" or (line.startswith("**") and line.endswith("**")):
-            lines[i] = line
+    result: List[str] = []
     for line in lines:
-        if line.strip():
-            if line.strip().startswith("**") and line.strip().endswith("**"):
-                preamble.append("")
-            preamble.append(line)
-    return "\n".join(preamble + parameters)
+        line = line.rstrip()
+        line = line.replace('"""', "'\"'")
+        if not line and result and not result[-1]:
+            continue
+        result.append(line)
+    return "\n".join(result)
 
 
 def render_template(template_name: str, **kwargs: str) -> str:

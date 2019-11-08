@@ -21,7 +21,7 @@ def main() -> None:
         write_service(
             session,
             service_name=service_name,
-            with_docs=args.with_docs,
+            with_docs=not args.no_docs,
             module_name=args.module_name,
             output_path=args.output_path,
         )
