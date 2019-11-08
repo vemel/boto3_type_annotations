@@ -10,6 +10,8 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
   - [Installation](#installation)
     - [Usage](#usage)
     - [How it works](#how-it-works)
+    - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
+    - [What's next](#whats-next)
     - [Thank you](#thank-you)
   - [mypy-boto3 Modules](MODULES.md#mypy-boto3-modules)
 
@@ -53,6 +55,21 @@ pip install mypy-boto3
 ### How it works
 
 There is also a package `mypy-boto3-builder` that builds interface files from `boto3` documentation.
+
+### Differences from boto3-type-annotations
+
+- `mypy` compatibility
+- Generated types for return values and arguments
+- Added ServiceResource sub-collections
+- Support service-specific sub-modules (in progress)
+- CLI interface for `builder`
+
+### What's next
+
+- Add `TypedDict` types for arguments and return types to check keys and values
+- Allow installation of sub-modules
+- Always include docs and support them in generated documentation
+- Modules documentation
 
 ### Thank you
 

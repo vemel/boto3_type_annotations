@@ -17,6 +17,7 @@ boto3 = "==1.10.11"
 docstring-parser = "==0.3"
 vulture = "==1.1"
 handsdown = "==0.3.4"
+twine = "==2.0.0"
 
 [packages]
 mypy_boto3 = {path = "./mypy_boto3_output",editable = true}

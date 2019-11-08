@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-from mypy_boto3_output.version import __version__ as version
+from mypy_boto3.version import __version__ as version
 
 with open("../README.md", "r") as f:
     long_description = f.read()
