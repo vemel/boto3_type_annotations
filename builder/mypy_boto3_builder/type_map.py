@@ -16,7 +16,9 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "function": TypeSubstript(
         TypeAnnotation(Callable), [TypeAnnotation(...), TypeAnnotation(Any)]
     ),
-    "botocore or boto3 Client": ExternalImport(source="botocore.client", name="BaseClient"),
+    "botocore or boto3 Client": ExternalImport(
+        source="botocore.client", name="BaseClient"
+    ),
     "datetime": TypeAnnotation(datetime),
     "timestamp": TypeAnnotation(datetime),
     "dict": TypeSubstript(
@@ -38,14 +40,18 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
         TypeAnnotation(IO), [TypeAnnotation(Any)]
     ),
     "list": TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
-    "L{botocore.paginate.Paginator}": ExternalImport(source="botocore.paginate", name="Paginator"),
-    ":py:class:`ResourceCollection`": TypeAnnotation(
-        ExternalImport(source="boto3.resources.collection", name="ResourceCollection")
+    "L{botocore.paginate.Paginator}": ExternalImport(
+        source="botocore.paginate", name="Paginator"
+    ),
+    ":py:class:`ResourceCollection`": ExternalImport(
+        source="boto3.resources.collection", name="ResourceCollection"
     ),
     "JSON serializable": TypeAnnotation(str),
     "string": TypeAnnotation(str),
     "str": TypeAnnotation(str),
-    "boto3.s3.transfer.TransferConfig": ExternalImport(source="boto3.s3.transfer", name="TransferConfig"),
+    "boto3.s3.transfer.TransferConfig": ExternalImport(
+        source="boto3.s3.transfer", name="TransferConfig"
+    ),
     "botocore.waiter.Waiter": ExternalImport(source="botocore.waiter", name="Waiter"),
     "bytes or seekable file-like object": TypeSubstript(
         TypeAnnotation(Union), [TypeAnnotation(bytes), TypeAnnotation(IO)]

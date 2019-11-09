@@ -7,6 +7,9 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 class TypeAnnotation(FakeAnnotation):
     def __init__(self, wrapped_type: Any) -> None:
+        if isinstance(wrapped_type, FakeAnnotation):
+            raise ValueError(f"Cannot wrap FakeAnnotation: {wrapped_type}")
+
         self.wrapped_type = wrapped_type
 
     def render(self) -> str:

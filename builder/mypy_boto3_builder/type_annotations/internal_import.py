@@ -1,6 +1,7 @@
 from typing import Optional
 
 from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.constants import MODULE_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
@@ -34,5 +35,6 @@ class InternalImport(FakeAnnotation):
             raise ValueError("Non-localized ImportString")
 
         return ImportRecord(
-            source=f"{self.real_service_name.name}.{self.module_name}", alias=self.scope
+            source=f"{MODULE_NAME}_{self.real_service_name.name}.{self.module_name}",
+            alias=self.scope,
         )

@@ -9,6 +9,7 @@ from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
 
 from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.constants import MODULE_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
@@ -140,11 +141,12 @@ class ServiceResource:
         for type_annotation in types:
             if isinstance(type_annotation, InternalImport):
                 type_annotation.localize(self.service_name)
+
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{self.service_name.name}.service_resource"
+        source = f"{MODULE_NAME}_{self.service_name.name}.service_resource"
 
         import_records.add(ImportRecord(source, "ServiceResource"))
         for resource in self.sub_resources:
@@ -178,7 +180,7 @@ class Client:
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:
-        source = f"{self.service_name.name}.client"
+        source = f"{MODULE_NAME}_{self.service_name.name}.client"
         return {ImportRecord(source, "Client")}
 
 
@@ -201,7 +203,7 @@ class ServiceWaiter:
 
     def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{self.service_name.name}.waiter"
+        source = f"{MODULE_NAME}_{self.service_name.name}.waiter"
 
         for waiter in self.waiters:
             import_records.add(ImportRecord(source, waiter.name))
@@ -228,7 +230,7 @@ class ServicePaginator:
 
     def get_import_records(self) -> Set[ImportRecord]:
         import_records: Set[ImportRecord] = set()
-        source = f"{self.service_name.name}.paginator"
+        source = f"{MODULE_NAME}_{self.service_name.name}.paginator"
 
         for paginator in self.paginators:
             import_records.add(ImportRecord(source, paginator.name))
