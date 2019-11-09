@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from typing import List, Set
 from dataclasses import dataclass
+from typing import List, Set, Iterable, Optional
 
 from boto3.resources.collection import ResourceCollection
 from botocore.client import BaseClient
@@ -21,9 +21,13 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 class Attribute:
     name: str
     type: FakeAnnotation
+    value: FakeAnnotation = TypeAnnotation(None)
 
     def get_types(self) -> Set[FakeAnnotation]:
         return self.type.get_types()
+
+    def render(self) -> str:
+        return f"{self.name}: {self.type.render()}"
 
 
 @dataclass
@@ -31,17 +35,31 @@ class Argument:
     name: str
     type: FakeAnnotation
     required: bool
+    default: FakeAnnotation = TypeAnnotation(None)
 
     def get_types(self) -> Set[FakeAnnotation]:
-        return self.type.get_types()
+        types = self.type.get_types()
+        if not self.required:
+            types.update(self.default.get_types())
+
+        return types
+
+    def render(self) -> str:
+        if self.required:
+            return f"{self.name}: {self.type.render()}"
+
+        return f"{self.name}: {self.type.render()} = {self.default.render()}"
 
 
 @dataclass
-class Method:
+class Function:
     name: str
     arguments: List[Argument]
     docstring: str
     return_type: FakeAnnotation
+    decorators: Iterable[str] = ()
+    body: str = "pass"
+    arguments_differ: bool = True
 
     def get_types(self) -> Set[FakeAnnotation]:
         types = self.return_type.get_types()
@@ -49,6 +67,49 @@ class Method:
             types.update(argument.get_types())
 
         return types
+
+    @property
+    def first_arg(self) -> Optional[str]:
+        return None
+
+    def render_lines(self, include_doc: bool = True) -> List[str]:
+        result: List[str] = []
+        for decorator in self.decorators:
+            result.append(f"@{decorator}")
+
+        arguments: List[str] = []
+        if self.first_arg:
+            arguments.append(self.first_arg)
+        for argument in sorted(self.arguments, key=lambda m: not m.required):
+            arguments.append(argument.render())
+
+        result.append("# pylint: disable=arguments-differ")
+        result.append(f"def {self.name}(")
+
+        for index, formatted_argument in enumerate(arguments):
+            trail = "," if index < len(arguments) - 1 else ""
+            result.append(f"    {formatted_argument}{trail}")
+
+        result.append(f") -> {self.return_type.render()}:")
+        if include_doc and self.docstring:
+            result.append('    """')
+            for line in self.docstring.split("\n"):
+                result.append(f"    {line}")
+            result.append('    """')
+        result.append(f"    {self.body}")
+        return result
+
+
+@dataclass
+class Method(Function):
+    @property
+    def first_arg(self) -> Optional[str]:
+        if "classmethod" in self.decorators:
+            return "cls"
+        if "staticmethod" in self.decorators:
+            return None
+
+        return "self"
 
 
 @dataclass

@@ -5,6 +5,7 @@
 - [mypy-boto3](../../README.md#mypy_boto3) / [Modules](../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](index.md#mypy-boto3-builder) / ServiceName
     - [ServiceName](#servicename)
         - [ServiceName().boto3_name](#servicenameboto3_name)
+        - [ServiceName().class_prefix](#servicenameclass_prefix)
         - [ServiceName().extras_name](#servicenameextras_name)
         - [ServiceName().fallback](#servicenamefallback)
         - [ServiceName().import_name](#servicenameimport_name)
@@ -31,6 +32,15 @@ class ServiceName(enum.Enum):
 ```python
 @property
 def boto3_name() -> str:
+```
+
+### ServiceName().class_prefix
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/service_name.py#L445)
+
+```python
+@property
+def class_prefix() -> str:
 ```
 
 ### ServiceName().extras_name
@@ -114,7 +124,7 @@ def values() -> List[str]:
 
 ## main
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/service_name.py#L449)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/service_name.py#L455)
 
 ```python
 def main() -> None:

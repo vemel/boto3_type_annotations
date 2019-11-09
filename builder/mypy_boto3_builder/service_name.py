@@ -440,10 +440,16 @@ class ServiceName(enum.Enum):
 
     @property
     def boto3_name(self) -> str:
-        if self.is_with_docs():
-            return str(self.value).replace(WITH_DOCS_PYPI_POSTFIX, "")
+        return self.fallback.value
 
-        return self.value
+    @property
+    def class_prefix(self) -> str:
+        import_name = self.import_name
+        if len(import_name) < 4:
+            return import_name.upper().replace('_', '')
+
+        name_parts = [i.capitalize() for i in import_name.split('_') if i]
+        return ''.join(name_parts)
 
 
 def main() -> None:

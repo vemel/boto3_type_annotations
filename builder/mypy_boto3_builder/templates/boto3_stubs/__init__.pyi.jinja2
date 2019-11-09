@@ -1,0 +1,70 @@
+# pylint: disable=unused-argument,multiple-statements
+import logging
+from typing import Optional, Any, overload, Union
+from typing_extensions import Literal
+
+from boto3.session import Session
+
+{% for service_submodule, service_name in items %}
+try:
+    from {{ module_name }}.{{ service_name.import_name }}.{{ service_submodule.import_name }} import {{ service_submodule.class_name }} as {{ service_name.class_prefix }}{{ service_submodule.class_name }}
+except ImportError:
+    {{ service_name.class_prefix }}{{ service_submodule.class_name }} = Any
+{% endfor %}
+
+__author__: str
+__version__: str
+
+DEFAULT_SESSION: Optional[Session] = None
+
+def setup_default_session(
+    aws_access_key_id: str = None,
+    aws_secret_access_key: str = None,
+    aws_session_token: str = None,
+    region_name: str = None,
+    botocore_session: str = None,
+    profile_name: str = None,
+) -> Session: ...
+def set_stream_logger(
+    name: str = "boto3", level: int = logging.DEBUG, format_string: Optional[str] = None
+) -> None: ...
+def _get_default_session() -> Session: ...
+
+class NullHandler(logging.Handler):
+    def emit(self, record: Any) -> Any:
+        pass
+
+{% for service_submodule in service_submodules %}
+{% for service_name in service_names %}
+{% if (service_submodule, service_name) in items %}
+@overload
+# pylint: disable=arguments-differ
+def {{ service_submodule.boto3_function_name }}(
+    service_name: Literal['{{ service_name.boto3_name }}'],
+    region_name: str = None,
+    api_version: str = None,
+    use_ssl: bool = None,
+    verify: Union[str, bool] = None,
+    endpoint_url: str = None,
+    aws_access_key_id: str = None,
+    aws_secret_access_key: str = None,
+    aws_session_token: str = None,
+    config: Config = None
+) -> {{ service_name.class_prefix }}{{ service_submodule.class_name }}: ...
+{% endif %}
+{% endfor %}
+@overload
+# pylint: disable=arguments-differ
+def {{ service_submodule.boto3_function_name }}(
+    service_name: str,
+    region_name: str = None,
+    api_version: str = None,
+    use_ssl: bool = None,
+    verify: Union[str, bool] = None,
+    endpoint_url: str = None,
+    aws_access_key_id: str = None,
+    aws_secret_access_key: str = None,
+    aws_session_token: str = None,
+    config: Config = None
+) -> {{ service_submodule.class_name }}: ...
+{% endfor %}

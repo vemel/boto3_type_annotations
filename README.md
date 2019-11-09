@@ -41,14 +41,12 @@ pip install mypy-boto3[all-with-docs]
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
 - Install [boto3](https://github.com/boto/boto3)
-- Use `mypy-boto3` to annotate your code to discover errors
+- Now imports from `boto3` and `boto3.session` are annotated automatically
 
 ```python
 import boto3
 
-from mypy_boto3.s3 import Client, ServiceResource
-
-client: Client = boto3.client("s3")
+client = boto3.client("s3")
 
 # IDE autocomplete suggests function name and arguments here
 client.create_bucket(Bucket="bucket")
@@ -59,8 +57,7 @@ client.get_object(Bucket="bucket")
 # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
 client.get_object(Bucket="bucket", Key=None)
 
-# explicitly set type to S3 ServiceResource
-resource: ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
+resource = boto3.Session(region_name="us-west-1").resource("s3")
 
 # IDE autocomplete suggests function name and arguments here
 bucket = resource.Bucket("bucket")

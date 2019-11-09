@@ -18,7 +18,7 @@ class TypeAnnotation(FakeAnnotation):
 
 ### TypeAnnotation().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L33)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_annotation.py#L36)
 
 ```python
 def get_import_record() -> ImportRecord:

@@ -12,4 +12,4 @@ install_package() {
 }
 export -f install_package
 
-ls -d ${OUTPUT_PATH}/mypy_boto3_$1* | xargs -I % bash -c 'install_package "%"'
+ls -d ${OUTPUT_PATH}/$1* | xargs -I % bash -c 'install_package "%"'

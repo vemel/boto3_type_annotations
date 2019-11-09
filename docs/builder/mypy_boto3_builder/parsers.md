@@ -174,6 +174,7 @@ def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
 ```python
 def retrieve_sub_resources(
     session: Session,
+    service_name: ServiceName,
     resource: Boto3ResourceMeta,
 ) -> Generator[Boto3ServiceResource, None, None]:
 ```

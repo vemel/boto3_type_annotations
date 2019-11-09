@@ -18,6 +18,7 @@ black = "==19.10b0"
 boto3 = "*"
 mypy = ">=0.740"
 docstring-parser = ">=0.3"
+jinja2 = "==2.10.3"
 mypy_boto3_builder = {path = "./builder",editable = true}
 
 [requires]

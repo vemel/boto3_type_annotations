@@ -1,27 +1,23 @@
 from pathlib import Path
 
-from setuptools import setup, find_packages
-
-from mypy_boto3_builder.version import __version__ as version
+from setuptools import setup
 
 
 ROOT_PATH = Path(__file__).absolute().parent
-README_PATH = ROOT_PATH.parent / "README.md"
 
-long_description = README_PATH.read_text()
 
 setup(
-    name="mypy-boto3-builder",
-    version=version,
-    packages=find_packages(),
+    name="{name}",
+    version="{version}",
+    packages=["{name}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
-    package_data={"mypy_boto3_builder": ["assets/*.template", "templates/**/*.jinja2"]},
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Builder for mypy-boto3.",
-    classifiers=(
+    description="Boto3 stubs powered by {master_pypi_name}.",
+    classifiers=[
         "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
         "Environment :: Console",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
@@ -32,18 +28,12 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
-    ),
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    entry_points={
-        "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
-    },
-    install_requires=[
-        "black==19.10b0",
-        "mypy>=0.740",
-        "docstring-parser==0.3",
-        "boto3",
-        "jinja2",
     ],
+    long_description=(ROOT_PATH / 'README.md').read_text(),
+    long_description_content_type="text/markdown",
+    package_data={{"{name}": ["py.typed", "__init__.pyi"]}},
+    install_requires=[f"{master_pypi_name}=={version}"],
+    zip_safe=False,
 )

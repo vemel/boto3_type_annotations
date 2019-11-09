@@ -7,7 +7,6 @@ from {package_name}.version import __version__ as version
 
 ROOT_PATH = Path(__file__).absolute().parent
 
-long_description = (ROOT_PATH / 'README.md').read_text()
 
 setup(
     name="{name}",
@@ -34,7 +33,7 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
-    long_description=long_description,
+    long_description=(ROOT_PATH / 'README.md').read_text(),
     long_description_content_type="text/markdown",
     package_data={{"{package_name}": ["py.typed"]}},
     install_requires=["mypy-boto3"],

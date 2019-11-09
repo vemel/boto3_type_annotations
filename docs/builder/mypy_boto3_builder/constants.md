@@ -11,3 +11,5 @@
 - `WITH_DOCS_POSTFIX` - Postfix for package name generated with docs: `'_with_docs'`
 - `WITH_DOCS_PYPI_POSTFIX` - Postfix for PyPI module name generated with docs: `'-with-docs'`
 - `DUMMY_REGION` - Random region to initialize services: `'us-west-2'`
+- `ASSETS_PATH` - Static file assets, format-ready: `Path(__file__).parent / 'assets'`
+- `TEMPLATES_PATH` - Jinja2 templates for boto3-stubs: `Path(__file__).parent / 'templates'`

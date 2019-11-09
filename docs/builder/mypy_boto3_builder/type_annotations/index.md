@@ -8,4 +8,5 @@
         - [FakeAnnotation](fake_annotation.md#fakeannotation)
         - [InternalImport](internal_import.md#internalimport)
         - [TypeAnnotation](type_annotation.md#typeannotation)
-        - [Type Subscript](type_subscript.md#type-subscript)
+        - [TypeLiteral](type_literal.md#typeliteral)
+        - [TypeSubscript](type_subscript.md#typesubscript)

@@ -14,6 +14,9 @@ class TypeAnnotation(FakeAnnotation):
 
     def render(self) -> str:
         type_annotation = self.wrapped_type
+        if isinstance(type_annotation, str):
+            return type_annotation
+
         name = str(type_annotation)
         if hasattr(type_annotation, "_name"):
             name = getattr(type_annotation, "_name") or "Union"

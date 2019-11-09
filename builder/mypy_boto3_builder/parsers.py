@@ -36,7 +36,7 @@ from mypy_boto3_builder.utils import clean_doc
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
-from mypy_boto3_builder.type_annotations.type_subscript import TypeSubstript
+from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 
 
 logger = get_logger()
@@ -61,12 +61,12 @@ def manually_set_method(name: str) -> Method:
                 Argument("DryRun", TypeAnnotation(bool), False),
                 Argument(
                     "Resources",
-                    TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+                    TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
                     True,
                 ),
                 Argument(
                     "Tags",
-                    TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+                    TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
                     True,
                 ),
             ],
