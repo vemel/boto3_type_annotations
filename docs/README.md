@@ -13,7 +13,6 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
     - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
     - [What's next](#whats-next)
     - [Thank you](#thank-you)
-  - [mypy-boto3 Modules](MODULES.md#mypy-boto3-modules)
 
 ## Installation
 
@@ -33,7 +32,7 @@ pip install mypy-boto3
 
     client: Client = boto3.client("s3")
 
-    # IDE autocomplete suggests function name and arguemnts here
+    # IDE autocomplete suggests function name and arguments here
     client.create_bucket(Bucket="bucket")
 
     # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"

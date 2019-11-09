@@ -27,7 +27,7 @@ def s3_client_example() -> None:
     # explicitly set type to S3 Client
     client: Client = boto3.client("s3")
 
-    # IDE autocomplete suggests function name and arguemnts here
+    # IDE autocomplete suggests function name and arguments here
     client.create_bucket(Bucket="bucket")
 
     # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"

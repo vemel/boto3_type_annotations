@@ -389,7 +389,7 @@ def write_service(
         output_path.name, [ImportRecord("__future__", "annotations")]
     )
 
-    logger.info(f"Writing {service_name.name} service module")
+    logger.info(f"Writing {service_name.value} service module")
 
     client = process_service_client(
         session, service_name, output_path, import_record_renderer, include_doc
@@ -416,8 +416,6 @@ def write_service(
     logger.debug(f"Writing {NicePath(init_file_path)}")
     write_init_file(init_file_path, init_import_records, service_name)
 
-    write_service_assets(output_path, service_name)
-
 
 def format_path(path: Path) -> None:
     logger.debug(f"Applying black formatting to {NicePath(path)}")
@@ -428,7 +426,7 @@ def format_path(path: Path) -> None:
 
 
 def write_master_module(
-    output_path: Path, service_names: Iterable[ServiceName],
+    output_path: Path, service_names: Iterable[ServiceName], setup_package_name: str
 ) -> None:
     logger.info(f"Writing master module")
     logger.debug(f"Writing assets")
@@ -454,12 +452,11 @@ def write_master_module(
 
     file_path = output_path.parent / "setup.py"
     logger.debug(f"Writing {NicePath(file_path)}")
-    module_name_dashed = output_path.name.replace("_", "-")
     extras_require: Dict[str, List[str]] = {"all": [], "all-with-docs": []}
     for service_name in service_names:
-        service_install_string = f"{module_name_dashed}-{service_name.value}"
+        service_install_string = f"{setup_package_name}-{service_name.value}"
         service_include_doc_install_string = (
-            f"{module_name_dashed}-{service_name.value}"
+            f"{setup_package_name}-{service_name.value}"
         )
         extras_require[service_name.value] = [service_install_string]
         extras_require[f"{service_name.value}-with-docs"] = [
@@ -471,7 +468,7 @@ def write_master_module(
         file_path,
         "setup.py.template",
         package_name=output_path.name,
-        name=module_name_dashed,
+        name=setup_package_name,
         extras_require=str(extras_require),
     )
 
@@ -508,7 +505,9 @@ def write_master_module(
                 )
 
 
-def write_service_assets(service_output_path: Path, service_name: ServiceName) -> None:
+def write_service_assets(
+    service_output_path: Path, service_name: ServiceName, setup_package_name: str
+) -> None:
     file_path = service_output_path / "py.typed"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "py.typed.template")
@@ -537,7 +536,7 @@ def write_service_assets(service_output_path: Path, service_name: ServiceName) -
         "service_setup.py.template",
         service_name=service_name.value,
         package_name=service_output_path.name,
-        name=service_output_path.name.replace("_", "-"),
+        name=f"{setup_package_name}",
     )
 
 

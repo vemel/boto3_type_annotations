@@ -17,7 +17,7 @@ from mypy_boto3.{submodule_name} import Client, ServiceResource
 client: Client = boto3.client("{service_name}")
 resource: ServiceResource = boto3.resource("{service_name}")
 
-# now your IDE can suggest you method and arguemnt names
+# now your IDE can suggest you method and arguments names
 # and mypy can check types
 ```
 
