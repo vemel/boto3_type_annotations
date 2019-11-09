@@ -457,9 +457,9 @@ def write_master_module(
     module_name_dashed = output_path.name.replace("_", "-")
     extras_require: Dict[str, List[str]] = {"all": [], "all-with-docs": []}
     for service_name in service_names:
-        service_install_string = f"{module_name_dashed}-{service_name.value}=={version}"
+        service_install_string = f"{module_name_dashed}-{service_name.value}"
         service_include_doc_install_string = (
-            f"{module_name_dashed}-{service_name.value}=={version}"
+            f"{module_name_dashed}-{service_name.value}"
         )
         extras_require[service_name.value] = [service_install_string]
         extras_require[f"{service_name.value}-with-docs"] = [
