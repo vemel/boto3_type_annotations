@@ -3,6 +3,8 @@ from __future__ import annotations
 import enum
 from typing import List
 
+from mypy_boto3_builder.constants import PYPI_NAME
+
 
 class ServiceName(enum.Enum):
     acm = "acm"
@@ -214,3 +216,14 @@ class ServiceName(enum.Enum):
                 return item
 
         raise ValueError(f"Unknown service name: {service_name}")
+
+
+def main() -> None:
+    for item in ServiceName.items():
+        link = f"https://pypi.org/project/{PYPI_NAME}-{item.value}/"
+        example = f"pip install {PYPI_NAME}[{item.value}]"
+        print(f"- [{item.value}]({link}): `{example}`")
+
+
+if __name__ == "__main__":
+    main()

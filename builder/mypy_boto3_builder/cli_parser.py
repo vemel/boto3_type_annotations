@@ -29,9 +29,6 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "-f", "--format", action="store_true", help="Format output with black"
     )
     parser.add_argument(
-        "-m", "--module-name", help="Output module name", default="mypy_boto3"
-    )
-    parser.add_argument(
         "--skip-master", action="store_true", help="Whether to skip master module"
     )
     parser.add_argument(

@@ -33,6 +33,7 @@ from mypy_boto3_builder.utils import (
     render_template,
     black_reformat,
 )
+from mypy_boto3_builder.constants import WITH_DOCS_PYPI_POSTFIX, PYPI_NAME, MODULE_NAME
 
 
 logger = get_logger()
@@ -426,7 +427,7 @@ def format_path(path: Path) -> None:
 
 
 def write_master_module(
-    output_path: Path, service_names: Iterable[ServiceName], setup_package_name: str
+    output_path: Path, service_names: Iterable[ServiceName]
 ) -> None:
     logger.info(f"Writing master module")
     logger.debug(f"Writing assets")
@@ -452,23 +453,28 @@ def write_master_module(
 
     file_path = output_path.parent / "setup.py"
     logger.debug(f"Writing {NicePath(file_path)}")
-    extras_require: Dict[str, List[str]] = {"all": [], "all-with-docs": []}
+    extras_require: Dict[str, List[str]] = {
+        "all": [],
+        f"all{WITH_DOCS_PYPI_POSTFIX}": [],
+    }
     for service_name in service_names:
-        service_install_string = f"{setup_package_name}-{service_name.value}"
+        service_install_string = f"{PYPI_NAME}-{service_name.value}"
         service_include_doc_install_string = (
-            f"{setup_package_name}-{service_name.value}-with-docs"
+            f"{PYPI_NAME}-{service_name.value}{WITH_DOCS_PYPI_POSTFIX}"
         )
         extras_require[service_name.value] = [service_install_string]
-        extras_require[f"{service_name.value}-with-docs"] = [
+        extras_require[f"{service_name.value}{WITH_DOCS_PYPI_POSTFIX}"] = [
             service_include_doc_install_string
         ]
         extras_require["all"].append(service_install_string)
-        extras_require["all-with-docs"].append(service_include_doc_install_string)
+        extras_require[f"all{WITH_DOCS_PYPI_POSTFIX}"].append(
+            service_include_doc_install_string
+        )
     write_asset(
         file_path,
         "setup.py.template",
-        package_name=output_path.name,
-        name=setup_package_name,
+        module_name=MODULE_NAME,
+        name=PYPI_NAME,
         extras_require=str(extras_require),
     )
 
@@ -483,7 +489,7 @@ def write_master_module(
             "master_service_init.template",
             service_name=service_name.value,
             safe_service_name=service_name.name,
-            module_name=output_path.name,
+            module_name=MODULE_NAME,
         )
 
         submodule_names = ["client", "paginator", "service_resource", "waiter"]
@@ -505,9 +511,7 @@ def write_master_module(
                 )
 
 
-def write_service_assets(
-    service_output_path: Path, service_name: ServiceName, setup_package_name: str
-) -> None:
+def write_service_assets(service_output_path: Path, service_name: ServiceName) -> None:
     file_path = service_output_path / "py.typed"
     logger.debug(f"Writing {NicePath(file_path)}")
     write_asset(file_path, "py.typed.template")
@@ -536,7 +540,7 @@ def write_service_assets(
         "service_setup.py.template",
         service_name=service_name.value,
         package_name=service_output_path.name,
-        name=f"{setup_package_name}",
+        name=f"{PYPI_NAME}-{service_name.value}",
     )
 
 

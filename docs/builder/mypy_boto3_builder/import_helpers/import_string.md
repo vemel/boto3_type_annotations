@@ -4,6 +4,7 @@
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Import Helpers](index.md#import-helpers) / ImportString
     - [ImportString](#importstring)
+        - [ImportString().render](#importstringrender)
         - [ImportString().startswith](#importstringstartswith)
 
 ## ImportString
@@ -13,6 +14,14 @@
 ```python
 class ImportString():
     def __init__(import_string: str) -> None:
+```
+
+### ImportString().render
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L34)
+
+```python
+def render() -> str:
 ```
 
 ### ImportString().startswith

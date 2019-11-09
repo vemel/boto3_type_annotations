@@ -6,6 +6,7 @@
     - Modules
         - [Module](module.md#module)
         - [Cli Parser](cli_parser.md#cli-parser)
+        - [Constants](constants.md#constants)
         - [Import Helpers](import_helpers/index.md#import-helpers)
         - [Logger](logger.md#logger)
         - [Main](main.md#main)

@@ -8,6 +8,7 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
     - [Mypy Boto3 Builder](builder/mypy_boto3_builder/index.md#mypy-boto3-builder)
         - [Module](builder/mypy_boto3_builder/module.md#module)
         - [Cli Parser](builder/mypy_boto3_builder/cli_parser.md#cli-parser)
+        - [Constants](builder/mypy_boto3_builder/constants.md#constants)
         - [Import Helpers](builder/mypy_boto3_builder/import_helpers/index.md#import-helpers)
             - [Enums](builder/mypy_boto3_builder/import_helpers/enums.md#enums)
             - [ImportRecord](builder/mypy_boto3_builder/import_helpers/import_record.md#importrecord)

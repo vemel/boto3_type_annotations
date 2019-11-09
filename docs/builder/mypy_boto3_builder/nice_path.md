@@ -7,9 +7,9 @@
 
 ## NicePath
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/nice_path.py#L5)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/nice_path.py#L4)
 
 ```python
-dataclass
 class NicePath():
+    def __init__(path: Path) -> None:
 ```

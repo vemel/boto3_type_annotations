@@ -100,7 +100,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## Client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L232)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L237)
 
 ```python
 dataclass
@@ -113,15 +113,15 @@ class Client(TypeCollector):
 
 ### Client().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L243)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L249)
 
 ```python
-def get_import_records(module_name: str) -> Set[ImportRecord]:
+def get_import_records() -> Set[ImportRecord]:
 ```
 
 ### Client().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L237)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L243)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -142,7 +142,7 @@ class Collection(TypeCollector):
 
 ### Collection().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L145)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L146)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -218,7 +218,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## Paginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L183)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L186)
 
 ```python
 dataclass
@@ -231,7 +231,7 @@ class Paginator(TypeCollector):
 
 ### Paginator().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L188)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L192)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -239,7 +239,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## Resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L153)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L154)
 
 ```python
 dataclass
@@ -252,7 +252,7 @@ class Resource(TypeCollector):
 
 ### Resource().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L160)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L162)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -260,7 +260,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## ServicePaginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L269)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L275)
 
 ```python
 dataclass
@@ -273,15 +273,15 @@ class ServicePaginator(TypeCollector):
 
 ### ServicePaginator().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L280)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L286)
 
 ```python
-def get_import_records(module_name: str) -> Set[ImportRecord]:
+def get_import_records() -> Set[ImportRecord]:
 ```
 
 ### ServicePaginator().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L274)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L280)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -289,7 +289,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## ServiceResource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L195)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L199)
 
 ```python
 dataclass
@@ -302,15 +302,15 @@ class ServiceResource(TypeCollector):
 
 ### ServiceResource().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L215)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L220)
 
 ```python
-def get_import_records(module_name: str) -> Set[ImportRecord]:
+def get_import_records() -> Set[ImportRecord]:
 ```
 
 ### ServiceResource().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L203)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L208)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -318,7 +318,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## ServiceWaiter
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L248)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L254)
 
 ```python
 dataclass
@@ -331,15 +331,15 @@ class ServiceWaiter(TypeCollector):
 
 ### ServiceWaiter().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L259)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L265)
 
 ```python
-def get_import_records(module_name: str) -> Set[ImportRecord]:
+def get_import_records() -> Set[ImportRecord]:
 ```
 
 ### ServiceWaiter().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L253)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L259)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
@@ -358,7 +358,7 @@ class TypeCollector():
 [[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L135)
 
 ```python
-def get_import_records(module_name: str) -> Set[ImportRecord]:
+def get_import_records() -> Set[ImportRecord]:
 ```
 
 ### TypeCollector().get_types
@@ -371,7 +371,7 @@ def get_types() -> Set[TypeAnnotation]:
 
 ## Waiter
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L171)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L173)
 
 ```python
 dataclass
@@ -384,7 +384,7 @@ class Waiter(TypeCollector):
 
 ### Waiter().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L176)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L179)
 
 ```python
 def get_types() -> Set[TypeAnnotation]:
