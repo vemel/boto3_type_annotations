@@ -439,7 +439,7 @@ def write_master_module(
     }
     for service_name in service_names:
         service_install_string = f"{service_name.pypi_name}=={version}"
-        extras_require[service_name.value] = [service_install_string]
+        extras_require[service_name.extras_name] = [service_install_string]
         if service_name.is_with_docs():
             extras_require[f"all{WITH_DOCS_PYPI_POSTFIX}"].append(
                 service_install_string
@@ -536,7 +536,9 @@ def write_init_file(
     file_path: Path, import_records: Set[ImportRecord], service_name: ServiceName
 ) -> None:
     with open(file_path, "w") as file_object:
-        file_object.write(f""""Main interface for {service_name.value} service"\n\n""")
+        file_object.write(
+            f""""Main interface for {service_name.boto3_name} service"\n\n"""
+        )
         if not import_records:
             return
         for import_record in sorted(import_records):
