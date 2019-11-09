@@ -14,7 +14,7 @@ handsdown = "==0.3.4"
 twine = "==2.0.0"
 
 [packages]
-black = "*"
+black = "==19.10b0"
 boto3 = "*"
 mypy = ">=0.740"
 docstring-parser = ">=0.3"
