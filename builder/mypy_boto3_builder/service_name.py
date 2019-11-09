@@ -450,7 +450,10 @@ def main() -> None:
     for item in ServiceName.items():
         link = f"https://pypi.org/project/{item.pypi_name}/"
         if item.is_with_docs():
-            description = f"Type annotations for `boto3` [{item.boto3_name}]({link}) service with included documentation."
+            description = (
+                f"Type annotations for `boto3` [{item.boto3_name}]({link})"
+                " service with included documentation."
+            )
         else:
             description = (
                 f"Type annotations for `boto3` [{item.boto3_name}]({link}) service."

@@ -1,4 +1,4 @@
-from typing import Iterable, Set, Generator, Dict, Optional
+from typing import Iterable, Set, Generator, Dict
 
 from mypy_boto3_builder.structures import FakeAnnotation
 from mypy_boto3_builder.import_helpers.import_string import ImportString
@@ -37,25 +37,20 @@ class ImportRecordRenderer:
 
         return ImportRecordType.python
 
-    def _get_import_record(
-        self, type_annotation: FakeAnnotation
-    ) -> Optional[ImportRecord]:
-        import_record = type_annotation.get_import_record()
-        return import_record
-
     def generate_lines(
         self, type_annotations: Iterable[FakeAnnotation] = (),
     ) -> Generator[str, None, None]:
-        all_import_records: Set[ImportRecord] = set()
-        all_import_records.update(
-            self.common_import_records, self._get_import_records(type_annotations),
-        )
+        import_records: Set[ImportRecord] = set()
+        for type_annotation in type_annotations:
+            import_records.add(type_annotation.get_import_record())
+
+        import_records.update(self.common_import_records)
 
         typed_import_records: Dict[ImportRecordType, Set[ImportRecord]] = {
             k: set() for k in ImportRecordType
         }
 
-        for import_record in all_import_records:
+        for import_record in import_records:
             import_record_type = self._get_import_record_type(import_record)
             typed_import_records[import_record_type].add(import_record)
 
@@ -69,12 +64,3 @@ class ImportRecordRenderer:
                     yield f"# {comment}"
                 yield import_string.render()
             yield ""
-
-    def _get_import_records(
-        self, type_annotations: Iterable[FakeAnnotation]
-    ) -> Set[ImportRecord]:
-        import_records: Set[ImportRecord] = set()
-        for type_annotation in type_annotations:
-            import_records.add(type_annotation.get_import_record())
-
-        return import_records
