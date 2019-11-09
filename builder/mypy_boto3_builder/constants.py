@@ -9,3 +9,6 @@ WITH_DOCS_POSTFIX = "_with_docs"
 
 # Postfix for PyPI module name generated with docs
 WITH_DOCS_PYPI_POSTFIX = "-with-docs"
+
+# Random region to initialize services
+DUMMY_REGION = "us-west-2"

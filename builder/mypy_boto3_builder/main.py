@@ -10,7 +10,7 @@ from mypy_boto3_builder.writers import (
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.cli_parser import get_cli_parser
-from mypy_boto3_builder.constants import MODULE_NAME
+from mypy_boto3_builder.constants import MODULE_NAME, DUMMY_REGION
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
         return
 
     get_logger(verbose=args.debug)
-    session = Session()
+    session = Session(region_name=DUMMY_REGION)
     args.output_path.mkdir(exist_ok=True)
     # available_services = session.get_available_services()
 

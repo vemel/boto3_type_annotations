@@ -20,7 +20,7 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
                 - [Main](builder/build/lib/mypy_boto3_builder/main.md#main)
                 - [NicePath](builder/build/lib/mypy_boto3_builder/nice_path.md#nicepath)
                 - [Parsers](builder/build/lib/mypy_boto3_builder/parsers.md#parsers)
-                - [ResponseParser](builder/build/lib/mypy_boto3_builder/response_parser.md#responseparser)
+                - [Response Parser](builder/build/lib/mypy_boto3_builder/response_parser.md#response-parser)
                 - [ServiceName](builder/build/lib/mypy_boto3_builder/service_name.md#servicename)
                 - [Structures](builder/build/lib/mypy_boto3_builder/structures.md#structures)
                 - [Type Annotations](builder/build/lib/mypy_boto3_builder/type_annotations/index.md#type-annotations)

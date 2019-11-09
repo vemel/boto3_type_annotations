@@ -10,3 +10,4 @@
 - `PYPI_NAME` - PyPI module name: `'mypy-boto3'`
 - `WITH_DOCS_POSTFIX` - Postfix for package name generated with docs: `'_with_docs'`
 - `WITH_DOCS_PYPI_POSTFIX` - Postfix for PyPI module name generated with docs: `'-with-docs'`
+- `DUMMY_REGION` - Random region to initialize services: `'us-west-2'`
