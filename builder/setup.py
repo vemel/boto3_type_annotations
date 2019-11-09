@@ -42,7 +42,7 @@ setup(
     install_requires=[
         "black==19.10b0",
         "mypy>=0.740",
-        "docstring-parser>=0.3",
+        "docstring-parser==0.3",
         "boto3",
     ],
 )
