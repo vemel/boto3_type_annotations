@@ -205,7 +205,7 @@ def parse_service_resource(
     collections = list(parse_collections(service_resource))
 
     sub_resources = []
-    for sub_resource in retrieve_sub_resources(session, service_resource):
+    for sub_resource in retrieve_sub_resources(session, service_name, service_resource):
         sub_resources.append(parse_resource(sub_resource))
 
     return ServiceResource(
@@ -282,18 +282,18 @@ def parse_paginators(
 
 
 def retrieve_sub_resources(
-    session: Session, resource: Boto3ResourceMeta
+    session: Session, service_name: ServiceName, resource: Boto3ResourceMeta
 ) -> Generator[Boto3ServiceResource, None, None]:
     session_session = session._session  # pylint: disable=protected-access
     loader = session_session.get_component("data_loader")
+    assert resource.meta.service_name == service_name.boto3_name
     json_resource_model = loader.load_service_model(
-        resource.meta.service_name, "resources-1"
+        service_name.boto3_name, "resources-1"
     )
     service_model = resource.meta.client.meta.service_model
+    assert service_model.service_name == service_name.boto3_name
     try:
-        service_waiter_model = session_session.get_waiter_model(
-            service_model.service_name
-        )
+        service_waiter_model = session_session.get_waiter_model(service_name.boto3_name)
     except UnknownServiceError:
         service_waiter_model = None
     for name in json_resource_model["resources"]:
@@ -302,7 +302,7 @@ def retrieve_sub_resources(
             resource_name=name,
             single_resource_json_definition=resource_model,
             service_context=ServiceContext(
-                service_name=resource.meta.service_name,
+                service_name=service_name.boto3_name,
                 resource_json_definitions=json_resource_model["resources"],
                 service_model=service_model,
                 service_waiter_model=service_waiter_model,
@@ -312,4 +312,4 @@ def retrieve_sub_resources(
         args = []
         for _ in identifiers:
             args.append("foo")
-        yield cls(*args, client=session.client(resource.meta.service_name))
+        yield cls(*args, client=session.client(service_name.boto3_name))
