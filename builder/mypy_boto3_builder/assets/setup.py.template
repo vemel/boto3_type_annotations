@@ -38,5 +38,6 @@ setup(
     long_description_content_type="text/markdown",
     package_data={{"{module_name}": ["py.typed"]}},
     extras_require={extras_require},
+    install_requires=["mypy", "boto3"],
     zip_safe=False,
 )

@@ -39,4 +39,5 @@ setup(
     entry_points={
         "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
     },
+    install_requires=["mypy>=0.740", "docstring-parser>=0.3", "boto3"],
 )
