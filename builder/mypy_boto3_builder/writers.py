@@ -521,7 +521,7 @@ def write_submodule_assets(
         "service_setup.py.template",
         boto3_name=service_name.boto3_name,
         package_name=service_name.module_name,
-        name=service_name.value,
+        name=service_name.pypi_name,
     )
 
 
