@@ -1,89 +1,98 @@
 from datetime import datetime
 from typing import Callable, IO, List, Dict, Union, Any
 
-from boto3.resources.collection import ResourceCollection
-from boto3.resources.base import ServiceResource as Boto3ServiceResource
-from boto3.s3.transfer import TransferConfig
-from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
-
-from mypy_boto3_builder.structures import (
-    TypeAnnotation,
-    InternalImport,
-    AnnotationWrapper,
-)
 from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
+from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.internal_import import InternalImport
+from mypy_boto3_builder.type_annotations.external_import import ExternalImport
+from mypy_boto3_builder.type_annotations.type_subscript import TypeSubstript
 
-TYPE_MAP: Dict[str, TypeAnnotation] = {
-    "bytes": bytes,
-    "blob": bytes,
-    "boolean": bool,
-    "function": Callable[..., Any],
-    "botocore or boto3 Client": BaseClient,
-    "datetime": datetime,
-    "timestamp": datetime,
-    "dict": Dict[str, Any],
-    "structure": Dict[str, Any],
-    "map": Dict[str, Any],
-    "float": float,
-    "double": float,
-    "int": int,
-    "integer": int,
-    "long": int,
-    "a file-like object": IO[Any],
-    "seekable file-like object": IO[Any],
-    "list": List[Any],
-    "L{botocore.paginate.Paginator}": Paginator,
-    ":py:class:`ResourceCollection`": ResourceCollection,
-    "JSON serializable": str,
-    "string": str,
-    "str": str,
-    "boto3.s3.transfer.TransferConfig": TransferConfig,
-    "botocore.waiter.Waiter": Waiter,
-    "bytes or seekable file-like object": Union[bytes, IO],
-    "str or dict": Union[str, Dict],
-    "list(string)": List[str],
-    "list of str": List[str],
-    "None": type(None),
+
+TYPE_MAP: Dict[str, FakeAnnotation] = {
+    "bytes": TypeAnnotation(bytes),
+    "blob": TypeAnnotation(bytes),
+    "boolean": TypeAnnotation(bool),
+    "function": TypeSubstript(
+        TypeAnnotation(Callable), [TypeAnnotation(...), TypeAnnotation(Any)]
+    ),
+    "botocore or boto3 Client": ExternalImport(source="botocore.client", name="BaseClient"),
+    "datetime": TypeAnnotation(datetime),
+    "timestamp": TypeAnnotation(datetime),
+    "dict": TypeSubstript(
+        TypeAnnotation(Dict), [TypeAnnotation(str), TypeAnnotation(Any)]
+    ),
+    "structure": TypeSubstript(
+        TypeAnnotation(Dict), [TypeAnnotation(str), TypeAnnotation(Any)]
+    ),
+    "map": TypeSubstript(
+        TypeAnnotation(Dict), [TypeAnnotation(str), TypeAnnotation(Any)]
+    ),
+    "float": TypeAnnotation(float),
+    "double": TypeAnnotation(float),
+    "int": TypeAnnotation(int),
+    "integer": TypeAnnotation(int),
+    "long": TypeAnnotation(int),
+    "a file-like object": TypeSubstript(TypeAnnotation(IO), [TypeAnnotation(Any)]),
+    "seekable file-like object": TypeSubstript(
+        TypeAnnotation(IO), [TypeAnnotation(Any)]
+    ),
+    "list": TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+    "L{botocore.paginate.Paginator}": ExternalImport(source="botocore.paginate", name="Paginator"),
+    ":py:class:`ResourceCollection`": TypeAnnotation(
+        ExternalImport(source="boto3.resources.collection", name="ResourceCollection")
+    ),
+    "JSON serializable": TypeAnnotation(str),
+    "string": TypeAnnotation(str),
+    "str": TypeAnnotation(str),
+    "boto3.s3.transfer.TransferConfig": ExternalImport(source="boto3.s3.transfer", name="TransferConfig"),
+    "botocore.waiter.Waiter": ExternalImport(source="botocore.waiter", name="Waiter"),
+    "bytes or seekable file-like object": TypeSubstript(
+        TypeAnnotation(Union), [TypeAnnotation(bytes), TypeAnnotation(IO)]
+    ),
+    "str or dict": TypeSubstript(
+        TypeAnnotation(Union), [TypeAnnotation(str), TypeAnnotation(Dict)]
+    ),
+    "list(string)": TypeSubstript(TypeAnnotation(List), [TypeAnnotation(str)]),
+    "list of str": TypeSubstript(TypeAnnotation(List), [TypeAnnotation(str)]),
+    "None": TypeAnnotation(None),
     ":py:class:`ec2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
     ":py:class:`EC2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
-    "list(:py:class:`ec2.InternetGateway`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("InternetGateway", ServiceName.ec2),),
+    "list(:py:class:`ec2.InternetGateway`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("InternetGateway", ServiceName.ec2)]
     ),
     ":py:class:`iam.UserPolicy`": InternalImport("UserPolicy", ServiceName.iam),
     ":py:class:`IAM.UserPolicy`": InternalImport("UserPolicy", ServiceName.iam),
-    "list(:py:class:`iam.VirtualMfaDevice`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("VirtualMfaDevice", ServiceName.iam),),
+    "list(:py:class:`iam.VirtualMfaDevice`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("VirtualMfaDevice", ServiceName.iam)]
     ),
-    "list(:py:class:`ec2.Image`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Image", ServiceName.ec2),),
+    "list(:py:class:`ec2.Image`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Image", ServiceName.ec2)]
     ),
-    "list(:py:class:`cloudwatch.Alarm`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Alarm", ServiceName.cloudwatch),),
+    "list(:py:class:`cloudwatch.Alarm`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Alarm", ServiceName.cloudwatch)]
     ),
-    "list(:py:class:`opsworks.Layer`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Layer", ServiceName.opsworks),),
+    "list(:py:class:`opsworks.Layer`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Layer", ServiceName.opsworks)]
     ),
     ":py:class:`iam.GroupPolicy`": InternalImport("GroupPolicy", ServiceName.iam),
     ":py:class:`IAM.GroupPolicy`": InternalImport("GroupPolicy", ServiceName.iam),
-    "list(:py:class:`iam.SigningCertificate`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("SigningCertificate", ServiceName.iam),),
+    "list(:py:class:`iam.SigningCertificate`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("SigningCertificate", ServiceName.iam)]
     ),
-    "list(:py:class:`ec2.Volume`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Volume", ServiceName.ec2),),
+    "list(:py:class:`ec2.Volume`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Volume", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.VpcPeeringConnection`)": AnnotationWrapper(
-        parent=List,
-        children=(InternalImport("VpcPeeringConnection", ServiceName.ec2),),
+    "list(:py:class:`ec2.VpcPeeringConnection`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("VpcPeeringConnection", ServiceName.ec2)]
     ),
     ":py:class:`ec2.Subnet`": InternalImport("Subnet", ServiceName.ec2),
     ":py:class:`EC2.Subnet`": InternalImport("Subnet", ServiceName.ec2),
-    "list(:py:class:`iam.ServerCertificate`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ServerCertificate", ServiceName.iam),),
+    "list(:py:class:`iam.ServerCertificate`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("ServerCertificate", ServiceName.iam)]
     ),
-    "list(:py:class:`ec2.VpcAddress`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("VpcAddress", ServiceName.ec2),),
+    "list(:py:class:`ec2.VpcAddress`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("VpcAddress", ServiceName.ec2)]
     ),
     ":py:class:`sns.PlatformEndpoint`": InternalImport(
         "PlatformEndpoint", ServiceName.sns
@@ -99,25 +108,25 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
         "MultipartUpload", ServiceName.glacier
     ),
     ":py:class:`S3.MultipartUpload`": InternalImport("MultipartUpload", ServiceName.s3),
-    "list(:py:class:`ec2.Subnet`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Subnet", ServiceName.ec2),),
+    "list(:py:class:`ec2.Subnet`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Subnet", ServiceName.ec2)]
     ),
     ":py:class:`opsworks.Layer`": InternalImport("Layer", ServiceName.opsworks),
     ":py:class:`OpsWorks.Layer`": InternalImport("Layer", ServiceName.opsworks),
-    "list(:py:class:`iam.MfaDevice`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MfaDevice", ServiceName.iam),),
+    "list(:py:class:`iam.MfaDevice`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("MfaDevice", ServiceName.iam)]
     ),
-    "list(:py:class:`glacier.Job`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Job", ServiceName.glacier),),
+    "list(:py:class:`glacier.Job`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Job", ServiceName.glacier)]
     ),
-    "list(:py:class:`iam.RolePolicy`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("RolePolicy", ServiceName.iam),),
+    "list(:py:class:`iam.RolePolicy`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("RolePolicy", ServiceName.iam)]
     ),
-    "list(:py:class:`iam.InstanceProfile`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("InstanceProfile", ServiceName.iam),),
+    "list(:py:class:`iam.InstanceProfile`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("InstanceProfile", ServiceName.iam)]
     ),
-    "list(:py:class:`ec2.Instance`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Instance", ServiceName.ec2),),
+    "list(:py:class:`ec2.Instance`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Instance", ServiceName.ec2)]
     ),
     ":py:class:`glacier.Vault`": InternalImport("Vault", ServiceName.glacier),
     ":py:class:`Glacier.Vault`": InternalImport("Vault", ServiceName.glacier),
@@ -125,48 +134,48 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     ":py:class:`EC2.SecurityGroup`": InternalImport("SecurityGroup", ServiceName.ec2),
     ":py:class:`ec2.RouteTable`": InternalImport("RouteTable", ServiceName.ec2),
     ":py:class:`EC2.RouteTable`": InternalImport("RouteTable", ServiceName.ec2),
-    "list(:py:class:`dynamodb.Table`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Table", ServiceName.dynamodb),),
+    "list(:py:class:`dynamodb.Table`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Table", ServiceName.dynamodb)]
     ),
-    "list(:py:class:`ec2.Snapshot`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Snapshot", ServiceName.ec2),),
+    "list(:py:class:`ec2.Snapshot`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Snapshot", ServiceName.ec2)]
     ),
-    "list(:py:class:`sqs.Message`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Message", ServiceName.sqs),),
+    "list(:py:class:`sqs.Message`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Message", ServiceName.sqs)]
     ),
-    "list(:py:class:`iam.Role`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Role", ServiceName.iam),),
+    "list(:py:class:`iam.Role`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Role", ServiceName.iam)]
     ),
     ":py:class:`glacier.Job`": InternalImport("Job", ServiceName.glacier),
     ":py:class:`Glacier.Job`": InternalImport("Job", ServiceName.glacier),
-    "list(:py:class:`cloudwatch.Metric`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Metric", ServiceName.cloudwatch),),
+    "list(:py:class:`cloudwatch.Metric`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Metric", ServiceName.cloudwatch)]
     ),
-    "list(:py:class:`iam.Policy`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Policy", ServiceName.iam),),
+    "list(:py:class:`iam.Policy`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Policy", ServiceName.iam)]
     ),
-    "list(:py:class:`ec2.ClassicAddress`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ClassicAddress", ServiceName.ec2),),
+    "list(:py:class:`ec2.ClassicAddress`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("ClassicAddress", ServiceName.ec2)]
     ),
-    "list(:py:class:`iam.User`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("User", ServiceName.iam),),
+    "list(:py:class:`iam.User`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("User", ServiceName.iam)]
     ),
-    "list(:py:class:`iam.GroupPolicy`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("GroupPolicy", ServiceName.iam),),
+    "list(:py:class:`iam.GroupPolicy`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("GroupPolicy", ServiceName.iam)]
     ),
-    "list(:py:class:`iam.PolicyVersion`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("PolicyVersion", ServiceName.iam),),
+    "list(:py:class:`iam.PolicyVersion`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("PolicyVersion", ServiceName.iam)]
     ),
-    "list(:py:class:`sns.Topic`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Topic", ServiceName.sns),),
+    "list(:py:class:`sns.Topic`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Topic", ServiceName.sns)]
     ),
     ":py:class:`iam.LoginProfile`": InternalImport("LoginProfile", ServiceName.iam),
     ":py:class:`IAM.LoginProfile`": InternalImport("LoginProfile", ServiceName.iam),
-    "list(:py:class:`iam.UserPolicy`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("UserPolicy", ServiceName.iam),),
+    "list(:py:class:`iam.UserPolicy`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("UserPolicy", ServiceName.iam)]
     ),
-    "list(:py:class:`cloudformation.Event`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Event", ServiceName.cloudformation),),
+    "list(:py:class:`cloudformation.Event`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Event", ServiceName.cloudformation)]
     ),
     ":py:class:`cloudformation.Event`": InternalImport(
         "Event", ServiceName.cloudformation
@@ -174,49 +183,56 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     ":py:class:`CloudFormation.Event`": InternalImport(
         "Event", ServiceName.cloudformation
     ),
-    "list(:py:class:`s3.MultipartUpload`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MultipartUpload", ServiceName.s3),),
+    "list(:py:class:`s3.MultipartUpload`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("MultipartUpload", ServiceName.s3)]
     ),
-    "list(:py:class:`glacier.MultipartUpload`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MultipartUpload", ServiceName.glacier),),
+    "list(:py:class:`glacier.MultipartUpload`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("MultipartUpload", ServiceName.glacier)]
     ),
-    "list(:py:class:`sns.Subscription`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Subscription", ServiceName.sns),),
+    "list(:py:class:`sns.Subscription`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Subscription", ServiceName.sns)]
     ),
     ":py:class:`iam.PolicyVersion`": InternalImport("PolicyVersion", ServiceName.iam),
     ":py:class:`IAM.PolicyVersion`": InternalImport("PolicyVersion", ServiceName.iam),
-    "list(:py:class:`~boto3.resources.base.ServiceResource`)": List[
-        Boto3ServiceResource
-    ],
-    "list(:py:class:`ec2.NetworkInterface`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("NetworkInterface", ServiceName.ec2),),
+    "list(:py:class:`~boto3.resources.base.ServiceResource`)": TypeSubstript(
+        TypeAnnotation(List),
+        [
+            ExternalImport(
+                source="boto3.resources.base",
+                name="ServiceResource",
+                alias="Boto3ServiceResource",
+            )
+        ],
     ),
-    "list(:py:class:`s3.ObjectVersion`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ObjectVersion", ServiceName.s3),),
+    "list(:py:class:`ec2.NetworkInterface`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("NetworkInterface", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.SecurityGroup`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("SecurityGroup", ServiceName.ec2),),
+    "list(:py:class:`s3.ObjectVersion`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("ObjectVersion", ServiceName.s3)]
     ),
-    "list(:py:class:`sqs.Queue`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Queue", ServiceName.sqs),),
+    "list(:py:class:`ec2.SecurityGroup`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("SecurityGroup", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.PlacementGroup`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("PlacementGroup", ServiceName.ec2),),
+    "list(:py:class:`sqs.Queue`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Queue", ServiceName.sqs)]
     ),
-    "list(:py:class:`ec2.Vpc`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Vpc", ServiceName.ec2),),
+    "list(:py:class:`ec2.PlacementGroup`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("PlacementGroup", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.RouteTable`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("RouteTable", ServiceName.ec2),),
+    "list(:py:class:`ec2.Vpc`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Vpc", ServiceName.ec2)]
     ),
-    "list(:py:class:`glacier.Vault`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Vault", ServiceName.glacier),),
+    "list(:py:class:`ec2.RouteTable`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("RouteTable", ServiceName.ec2)]
     ),
-    "list(:py:class:`iam.Group`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Group", ServiceName.iam),),
+    "list(:py:class:`glacier.Vault`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Vault", ServiceName.glacier)]
     ),
-    ":py:class:`iam.Group`": AnnotationWrapper(
-        parent=List, children=(InternalImport("Group", ServiceName.iam),),
+    "list(:py:class:`iam.Group`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Group", ServiceName.iam)]
+    ),
+    ":py:class:`iam.Group`": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Group", ServiceName.iam)]
     ),
     ":py:class:`ec2.Image`": InternalImport("Image", ServiceName.ec2),
     ":py:class:`EC2.Image`": InternalImport("Image", ServiceName.ec2),
@@ -228,41 +244,41 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     ":py:class:`EC2.VpcPeeringConnection`": InternalImport(
         "VpcPeeringConnection", ServiceName.ec2
     ),
-    "list(:py:class:`cloudformation.Stack`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Stack", ServiceName.cloudformation),),
+    "list(:py:class:`cloudformation.Stack`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Stack", ServiceName.cloudformation)]
     ),
-    "list(:py:class:`opsworks.Stack`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Stack", ServiceName.opsworks),),
+    "list(:py:class:`opsworks.Stack`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Stack", ServiceName.opsworks)]
     ),
     ":py:class:`iam.MfaDevice`": InternalImport("MfaDevice", ServiceName.iam),
     ":py:class:`IAM.MfaDevice`": InternalImport("MfaDevice", ServiceName.iam),
-    "list(:py:class:`s3.Bucket`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Bucket", ServiceName.s3),),
+    "list(:py:class:`s3.Bucket`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Bucket", ServiceName.s3)]
     ),
-    "list(:py:class:`sns.PlatformEndpoint`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("PlatformEndpoint", ServiceName.sns),),
+    "list(:py:class:`sns.PlatformEndpoint`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("PlatformEndpoint", ServiceName.sns)]
     ),
     ":py:class:`ec2.Snapshot`": InternalImport("Snapshot", ServiceName.ec2),
     ":py:class:`EC2.Snapshot`": InternalImport("Snapshot", ServiceName.ec2),
-    "list(:py:class:`ec2.DhcpOptions`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("DhcpOptions", ServiceName.ec2),),
+    "list(:py:class:`ec2.DhcpOptions`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("DhcpOptions", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.NetworkAcl`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("NetworkAcl", ServiceName.ec2),),
+    "list(:py:class:`ec2.NetworkAcl`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("NetworkAcl", ServiceName.ec2)]
     ),
-    "list(:py:class:`ec2.KeyPairInfo`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("KeyPairInfo", ServiceName.ec2),),
+    "list(:py:class:`ec2.KeyPairInfo`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("KeyPairInfo", ServiceName.ec2)]
     ),
-    "list(:py:class:`cloudformation.StackResourceSummary`)": AnnotationWrapper(
-        parent=List,
-        children=(InternalImport("StackResourceSummary", ServiceName.cloudformation),),
+    "list(:py:class:`cloudformation.StackResourceSummary`)": TypeSubstript(
+        TypeAnnotation(List),
+        [InternalImport("StackResourceSummary", ServiceName.cloudformation)],
     ),
     ":py:class:`dynamodb.Table`": InternalImport("Table", ServiceName.dynamodb),
     ":py:class:`DynamoDB.Table`": InternalImport("Table", ServiceName.dynamodb),
     ":py:class:`iam.AccessKeyPair`": InternalImport("AccessKeyPair", ServiceName.iam),
     ":py:class:`IAM.AccessKeyPair`": InternalImport("AccessKeyPair", ServiceName.iam),
-    "list(:py:class:`iam.SamlProvider`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("SamlProvider", ServiceName.iam),),
+    "list(:py:class:`iam.SamlProvider`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("SamlProvider", ServiceName.iam)]
     ),
     ":py:class:`glacier.Archive`": InternalImport("Archive", ServiceName.glacier),
     ":py:class:`Glacier.Archive`": InternalImport("Archive", ServiceName.glacier),
@@ -272,13 +288,13 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     ":py:class:`EC2.NetworkInterface`": InternalImport(
         "NetworkInterface", ServiceName.ec2
     ),
-    "list(:py:class:`iam.AccessKey`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("AccessKey", ServiceName.iam),),
+    "list(:py:class:`iam.AccessKey`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("AccessKey", ServiceName.iam)]
     ),
     ":py:class:`sns.Subscription`": InternalImport("Subscription", ServiceName.sns),
     ":py:class:`SNS.Subscription`": InternalImport("Subscription", ServiceName.sns),
-    "list(:py:class:`s3.MultipartUploadPart`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("MultipartUploadPart", ServiceName.s3),),
+    "list(:py:class:`s3.MultipartUploadPart`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("MultipartUploadPart", ServiceName.s3)]
     ),
     ":py:class:`iam.ServerCertificate`": InternalImport(
         "ServerCertificate", ServiceName.iam
@@ -286,8 +302,8 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
     ":py:class:`IAM.ServerCertificate`": InternalImport(
         "ServerCertificate", ServiceName.iam
     ),
-    "list(:py:class:`ec2.Tag`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("Tag", ServiceName.ec2),),
+    "list(:py:class:`ec2.Tag`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("Tag", ServiceName.ec2)]
     ),
     ":py:class:`cloudwatch.Alarm`": InternalImport("Alarm", ServiceName.cloudwatch),
     ":py:class:`CloudWatch.Alarm`": InternalImport("Alarm", ServiceName.cloudwatch),
@@ -423,10 +439,10 @@ TYPE_MAP: Dict[str, TypeAnnotation] = {
         "NetworkInterfaceAssociation", ServiceName.ec2
     ),
     ":py:class:`S3.ObjectAcl`": InternalImport("ObjectAcl", ServiceName.s3),
-    "list(:py:class:`sns.PlatformApplication`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("PlatformApplication", ServiceName.sns),),
+    "list(:py:class:`sns.PlatformApplication`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("PlatformApplication", ServiceName.sns)]
     ),
-    "list(:py:class:`s3.ObjectSummary`)": AnnotationWrapper(
-        parent=List, children=(InternalImport("ObjectSummary", ServiceName.s3),),
+    "list(:py:class:`s3.ObjectSummary`)": TypeSubstript(
+        TypeAnnotation(List), [InternalImport("ObjectSummary", ServiceName.s3)]
     ),
 }

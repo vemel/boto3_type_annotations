@@ -1,113 +1,38 @@
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import List, Set, Union, Tuple, Optional
+from typing import List, Set
 from dataclasses import dataclass
+
+from boto3.resources.collection import ResourceCollection
+from botocore.client import BaseClient
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
 
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
-
-
-class FakeAnnotation:
-    is_internal = False
-
-    @property
-    def __name__(self) -> str:
-        return str(self)
-
-    @abstractmethod
-    def get_import_record(self) -> ImportRecord:
-        pass
-
-
-TypeAnnotation = Union[FakeAnnotation, type]
-
-
-class InternalImport(FakeAnnotation):
-    is_internal = True
-
-    def __init__(
-        self,
-        name: str,
-        service_name: ServiceName,
-        module_name: str = "service_resource",
-    ) -> None:
-        self.name = name
-        self.service_name = service_name
-        self.module_name = module_name
-
-    def __hash__(self) -> int:
-        return hash(f"{self.scope}.{self.name}")
-
-    def __str__(self) -> str:
-        return f"{self.scope}.{self.name}"
-
-    @property
-    def scope(self) -> str:
-        return f"{self.service_name.value}_{self.module_name}_scope"
-
-    def get_import_record(self) -> ImportRecord:
-        return ImportRecord(
-            source=f"{self.service_name.name}.{self.module_name}", alias=self.scope
-        )
-
-
-class AnnotationWrapper(FakeAnnotation):
-    def __init__(
-        self, parent: type, children: Tuple[TypeAnnotation, ...] = (),
-    ) -> None:
-        self.parent = parent
-        self.children = children
-
-    def __hash__(self) -> int:
-        return hash(f"{self.parent}.{self.children}")
-
-    def __str__(self) -> str:
-        if getattr(self.parent, "__name__", None):
-            return getattr(self.parent, "__name__")
-        if hasattr(self.parent, "_name"):
-            return getattr(self.parent, "_name") or "Union"
-        if self.parent == Union:
-            return "Union"
-        if self.parent == Optional:
-            return "Optional"
-        return self.parent.__class__.__name__
-
-    @property
-    def __args__(self) -> Tuple[TypeAnnotation, ...]:
-        return self.children
-
-    def get_import_record(self) -> ImportRecord:
-        return ImportRecord(source="typing", name=str(self))
+from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
+from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.internal_import import InternalImport
+from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 
 
 @dataclass
 class Attribute:
     name: str
-    type: TypeAnnotation
+    type: FakeAnnotation
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types = set()
-        types.add(self.type)
-        if hasattr(self.type, "__args__"):
-            for arg in getattr(self.type, "__args__"):
-                types.add(arg)
-        return types
+    def get_types(self) -> Set[FakeAnnotation]:
+        return self.type.get_types()
 
 
 @dataclass
 class Argument:
     name: str
-    type: TypeAnnotation
+    type: FakeAnnotation
     required: bool
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
-        types.add(self.type)
-        if hasattr(self.type, "__args__"):
-            for arg in getattr(self.type, "__args__"):
-                types.add(arg)
-        return types
+    def get_types(self) -> Set[FakeAnnotation]:
+        return self.type.get_types()
 
 
 @dataclass
@@ -115,52 +40,40 @@ class Method:
     name: str
     arguments: List[Argument]
     docstring: str
-    return_type: TypeAnnotation
+    return_type: FakeAnnotation
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types = self.return_type.get_types()
         for argument in self.arguments:
             types.update(argument.get_types())
-        types.add(self.return_type)
 
         return types
 
 
-class TypeCollector:
-    # pylint: disable=no-self-use
-    def get_types(self) -> Set[TypeAnnotation]:
-        raise TypeError("TypeCollector cannot collect types")
-
-    # pylint: disable=no-self-use
-    def get_import_records(self) -> Set[ImportRecord]:
-        raise TypeError("TypeCollector cannot collect import records")
-
-
 @dataclass
-class Collection(TypeCollector):
+class Collection:
     name: str
     docstring: str
-    type: InternalImport
+    type: FakeAnnotation
     methods: List[Method]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
-        types.add(self.type)
+    def get_types(self) -> Set[FakeAnnotation]:
+        types = self.type.get_types()
         for method in self.methods:
             types.update(method.get_types())
         return types
 
 
 @dataclass
-class Resource(TypeCollector):
+class Resource:
     name: str
     docstring: str
     methods: List[Method]
     attributes: List[Attribute]
     collections: List[Collection]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
         for method in self.methods:
             types.update(method.get_types())
         for attribute in self.attributes:
@@ -171,33 +84,33 @@ class Resource(TypeCollector):
 
 
 @dataclass
-class Waiter(TypeCollector):
+class Waiter:
     name: str
     docstring: str
     methods: List[Method]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
         for method in self.methods:
             types.update(method.get_types())
         return types
 
 
 @dataclass
-class Paginator(TypeCollector):
+class Paginator:
     name: str
     docstring: str
     methods: List[Method]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
         for method in self.methods:
             types.update(method.get_types())
         return types
 
 
 @dataclass
-class ServiceResource(TypeCollector):
+class ServiceResource:
     service_name: ServiceName
     docstring: str
     methods: List[Method]
@@ -205,8 +118,16 @@ class ServiceResource(TypeCollector):
     collections: List[Collection]
     sub_resources: List[Resource]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
+        types.add(
+            ExternalImport(
+                source="boto3.resources.base",
+                name="ServiceResource",
+                alias="Boto3ServiceResource",
+            )
+        )
+        types.add(TypeAnnotation(ResourceCollection))
         for method in self.methods:
             types.update(method.get_types())
         for attribute in self.attributes:
@@ -215,6 +136,10 @@ class ServiceResource(TypeCollector):
             types.update(collection.get_types())
         for sub_resource in self.sub_resources:
             types.update(sub_resource.get_types())
+
+        for type_annotation in types:
+            if isinstance(type_annotation, InternalImport):
+                type_annotation.localize(self.service_name)
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:
@@ -235,15 +160,21 @@ class ServiceResource(TypeCollector):
 
 
 @dataclass
-class Client(TypeCollector):
+class Client:
     service_name: ServiceName
     docstring: str
     methods: List[Method]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
+        types.add(TypeAnnotation(BaseClient))
         for method in self.methods:
             types.update(method.get_types())
+
+        for type_annotation in types:
+            if isinstance(type_annotation, InternalImport):
+                type_annotation.localize(self.service_name)
+
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:
@@ -252,14 +183,20 @@ class Client(TypeCollector):
 
 
 @dataclass
-class ServiceWaiter(TypeCollector):
+class ServiceWaiter:
     service_name: ServiceName
     waiters: List[Waiter]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
+        types.add(TypeAnnotation(Boto3Waiter))
         for waiter in self.waiters:
             types.update(waiter.get_types())
+
+        for type_annotation in types:
+            if isinstance(type_annotation, InternalImport):
+                type_annotation.localize(self.service_name)
+
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:
@@ -273,14 +210,20 @@ class ServiceWaiter(TypeCollector):
 
 
 @dataclass
-class ServicePaginator(TypeCollector):
+class ServicePaginator:
     service_name: ServiceName
     paginators: List[Paginator]
 
-    def get_types(self) -> Set[TypeAnnotation]:
-        types: Set[TypeAnnotation] = set()
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
+        types.add(TypeAnnotation(Boto3Paginator))
         for paginator in self.paginators:
             types.update(paginator.get_types())
+
+        for type_annotation in types:
+            if isinstance(type_annotation, InternalImport):
+                type_annotation.localize(self.service_name)
+
         return types
 
     def get_import_records(self) -> Set[ImportRecord]:

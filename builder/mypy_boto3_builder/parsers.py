@@ -28,13 +28,15 @@ from mypy_boto3_builder.structures import (
     ServiceWaiter,
     Paginator,
     ServicePaginator,
-    TypeAnnotation,
-    InternalImport,
 )
 from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils import clean_doc
+from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
+from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.internal_import import InternalImport
+from mypy_boto3_builder.type_annotations.type_subscript import TypeSubstript
 
 
 logger = get_logger()
@@ -56,16 +58,26 @@ def manually_set_method(name: str) -> Method:
         return Method(
             name="create_tags",
             arguments=[
-                Argument("DryRun", bool, False),
-                Argument("Resources", List[Any], True),
-                Argument("Tags", List[Any], True),
+                Argument("DryRun", TypeAnnotation(bool), False),
+                Argument(
+                    "Resources",
+                    TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+                    True,
+                ),
+                Argument(
+                    "Tags",
+                    TypeSubstript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+                    True,
+                ),
             ],
             docstring="",
-            return_type=type(None),
+            return_type=TypeAnnotation(None),
         )
 
     logger.warning(f"Unknown method: {name}")
-    return Method(name=name, arguments=[], docstring="", return_type=type(None))
+    return Method(
+        name=name, arguments=[], docstring="", return_type=TypeAnnotation(None)
+    )
 
 
 def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
@@ -93,7 +105,7 @@ def parse_attributes(
 
 
 def parse_client(session: Session, service_name: ServiceName) -> Client:
-    client = session.client(service_name.value)
+    client = session.client(service_name.boto3_name)
     return Client(
         service_name=service_name,
         docstring=clean_doc(getdoc(client)),
@@ -166,19 +178,19 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
     )
 
 
-def parse_return_type(meta: List[DocstringMeta]) -> TypeAnnotation:
+def parse_return_type(meta: List[DocstringMeta]) -> FakeAnnotation:
     for docstring_meta in meta:
         if docstring_meta.args[0] == "rtype":
             return parse_type_from_str(docstring_meta.description)
 
-    return type(None)
+    return TypeAnnotation(None)
 
 
 def parse_service_resource(
     session: Session, service_name: ServiceName
 ) -> Optional[ServiceResource]:
     try:
-        service_resource = session.resource(service_name.value)
+        service_resource = session.resource(service_name.boto3_name)
     except boto3.exceptions.ResourceNotExistsError:
         return None
 
@@ -206,7 +218,7 @@ def parse_service_resource(
     )
 
 
-def parse_type_from_str(type_str: str) -> TypeAnnotation:
+def parse_type_from_str(type_str: str) -> FakeAnnotation:
     try:
         return TYPE_MAP[type_str]
     except KeyError:
@@ -216,7 +228,7 @@ def parse_type_from_str(type_str: str) -> TypeAnnotation:
 def parse_service_waiter(
     session: Session, service_name: ServiceName
 ) -> Optional[ServiceWaiter]:
-    client = session.client(service_name.value)
+    client = session.client(service_name.boto3_name)
     if not client.waiter_names:
         return None
 
@@ -237,13 +249,17 @@ def parse_service_paginator(
     session: Session, service_name: ServiceName
 ) -> Optional[ServicePaginator]:
     session_loader = session._loader  # pylint: disable=protected-access
-    if service_name.value not in session_loader.list_available_services("paginators-1"):
+    if service_name.boto3_name not in session_loader.list_available_services(
+        "paginators-1"
+    ):
         return None
 
-    client = session.client(service_name.value)
+    client = session.client(service_name.boto3_name)
 
     session_session = session._session  # pylint: disable=protected-access
-    service_paginator_model = session_session.get_paginator_model(service_name.value)
+    service_paginator_model = session_session.get_paginator_model(
+        service_name.boto3_name
+    )
     return ServicePaginator(
         service_name, list(parse_paginators(client, service_paginator_model))
     )

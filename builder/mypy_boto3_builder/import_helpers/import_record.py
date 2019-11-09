@@ -8,7 +8,7 @@ from mypy_boto3_builder.import_helpers.import_string import ImportString
 
 @dataclass
 class ImportRecord:
-    def __init__(self, source: str, name: str = "", alias: str = "",) -> None:
+    def __init__(self, source: str, name: str = "", alias: str = "") -> None:
         self.source = ImportString(source)
         self.name = name
         self.alias = alias
@@ -39,3 +39,6 @@ class ImportRecord:
 
     def render(self) -> str:
         return str(self)
+
+    def get_local_name(self) -> str:
+        return self.alias or self.name or self.source.render()

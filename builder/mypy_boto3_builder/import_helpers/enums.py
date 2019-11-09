@@ -5,6 +5,7 @@ from typing import List
 
 
 class ImportRecordType(enum.Enum):
+    builtins = "builtins"
     magic = "magic"
     python = "python"
     boto = "boto"

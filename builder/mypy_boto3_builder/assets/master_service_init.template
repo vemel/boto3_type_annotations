@@ -1,9 +1,9 @@
 try:
     # pylint: disable=wildcard-import, unused-wildcard-import
-    from {module_name}_{safe_service_name}_with_docs import *
+    from {service_module_name} import *
 except ImportError:
     try:
         # pylint: disable=wildcard-import, unused-wildcard-import
-        from {module_name}_{safe_service_name} import *
+        from {fallback_service_module_name} import *  # type: ignore
     except ImportError:
-        raise ImportError('Install {module_name}[{service_name}] to use {module_name}.{safe_service_name}')
+        raise ImportError('Install {module_name}[{extras_name}] to use {module_name}.{import_name}')

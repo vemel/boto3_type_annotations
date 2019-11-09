@@ -17,7 +17,7 @@ setup(
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Mypy-friendly boto3 type annotations for {service_name} service.",
+    description="Mypy-friendly boto3 type annotations for {boto3_name} service.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
