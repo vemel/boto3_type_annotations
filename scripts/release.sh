@@ -8,7 +8,7 @@ release_package() {
     echo "Releasing $1"
 
     rm -rf build *.egg-info dist/* > /dev/null
-    python setup.py sdist bdist_wheel > /dev/null
+    python setup.py build sdist bdist_wheel 1>/dev/null 2>/dev/null
     twine upload dist/* > /dev/null
     rm -rf build *.egg-info dist/* > /dev/null
 }
