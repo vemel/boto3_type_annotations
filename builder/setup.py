@@ -20,7 +20,7 @@ setup(
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
     description="Builder for mypy-boto3.",
-    classifiers=(
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
         "License :: OSI Approved :: MIT License",
@@ -32,8 +32,9 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
-    ),
+    ],
     long_description=long_description,
     long_description_content_type="text/markdown",
     entry_points={
