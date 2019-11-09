@@ -456,7 +456,7 @@ def write_master_module(
     for service_name in service_names:
         service_install_string = f"{setup_package_name}-{service_name.value}"
         service_include_doc_install_string = (
-            f"{setup_package_name}-{service_name.value}"
+            f"{setup_package_name}-{service_name.value}-with-docs"
         )
         extras_require[service_name.value] = [service_install_string]
         extras_require[f"{service_name.value}-with-docs"] = [
