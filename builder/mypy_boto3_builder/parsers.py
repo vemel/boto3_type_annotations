@@ -312,4 +312,4 @@ def retrieve_sub_resources(
         args = []
         for _ in identifiers:
             args.append("foo")
-        yield cls(*args, client=boto3.client(resource.meta.service_name))
+        yield cls(*args, client=session.client(resource.meta.service_name))
