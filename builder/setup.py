@@ -16,7 +16,7 @@ setup(
     packages=find_packages(),
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
-    package_data={"mypy_boto3_builder": ["mypy_boto3_builder/assets/*.template"]},
+    package_data={"mypy_boto3_builder": ["assets/*.template"]},
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
     description="Builder for mypy-boto3.",
@@ -39,5 +39,5 @@ setup(
     entry_points={
         "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
     },
-    install_requires=["mypy>=0.740", "docstring-parser>=0.3", "boto3"],
+    install_requires=["black", "mypy>=0.740", "docstring-parser>=0.3", "boto3"],
 )
