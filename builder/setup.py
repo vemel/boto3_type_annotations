@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 from mypy_boto3_builder.version import __version__ as version
 
 
-ROOT_PATH = Path(__file__).parent
+ROOT_PATH = Path(__file__).absolute().parent
 README_PATH = ROOT_PATH.parent / "README.md"
 
 long_description = README_PATH.read_text()
