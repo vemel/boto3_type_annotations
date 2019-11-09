@@ -1,5 +1,9 @@
 # mypy_boto3
 
+[![PyPI - Handsdown](https://img.shields.io/pypi/v/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
+[![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
+
 Mypy-friendly type annotations for boto3.
 
 - [mypy_boto3](#mypyboto3)
@@ -37,31 +41,31 @@ pip install mypy-boto3[all-with-docs]
 - Install [boto3](https://github.com/boto/boto3)
 - Use `mypy-boto3` to annotate your code to discover errors
 
-    ```python
-    import boto3
+```python
+import boto3
 
-    from mypy_boto3.s3 import Client, ServiceResource
+from mypy_boto3.s3 import Client, ServiceResource
 
-    client: Client = boto3.client("s3")
+client: Client = boto3.client("s3")
 
-    # IDE autocomplete suggests function name and arguments here
-    client.create_bucket(Bucket="bucket")
+# IDE autocomplete suggests function name and arguments here
+client.create_bucket(Bucket="bucket")
 
-    # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
-    client.get_object(Bucket="bucket")
+# (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
+client.get_object(Bucket="bucket")
 
-    # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
-    client.get_object(Bucket="bucket", Key=None)
+# (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
+client.get_object(Bucket="bucket", Key=None)
 
-    # explicitly set type to S3 ServiceResource
-    resource: ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
+# explicitly set type to S3 ServiceResource
+resource: ServiceResource = boto3.Session(region_name="us-west-1").resource("s3")
 
-    # IDE autocomplete suggests function name and arguments here
-    bucket = resource.Bucket("bucket")
+# IDE autocomplete suggests function name and arguments here
+bucket = resource.Bucket("bucket")
 
-    # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
-    bucket.upload_file(Filename="my.txt", key="my-txt")
-    ```
+# (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
+bucket.upload_file(Filename="my.txt", key="my-txt")
+```
 
 ## How it works
 
