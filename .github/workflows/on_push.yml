@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -12,16 +11,18 @@ jobs:
         python-version: [3.7]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v1
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip pylint mypy
-        python setup.py install
-    - name: Lint
-      run: |
-        pylint builder/mypy_boto3_builder
-        mypy builder/mypy_boto3_builder
+      - uses: actions/checkout@v1
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip pylint mypy
+          cd builder
+          python setup.py install
+          cd ..
+      - name: Lint
+        run: |
+          pylint builder/mypy_boto3_builder
+          mypy builder/mypy_boto3_builder

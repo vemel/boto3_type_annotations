@@ -17,16 +17,17 @@
     - [write_collection](#write_collection)
     - [write_init_file](#write_init_file)
     - [write_master_module](#write_master_module)
+    - [write_master_module_service_stub](#write_master_module_service_stub)
     - [write_resource](#write_resource)
-    - [write_service](#write_service)
-    - [write_service_assets](#write_service_assets)
     - [write_service_paginator](#write_service_paginator)
     - [write_service_resource](#write_service_resource)
     - [write_service_waiter](#write_service_waiter)
+    - [write_submodule](#write_submodule)
+    - [write_submodule_assets](#write_submodule_assets)
 
 ## format_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L42)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L41)
 
 ```python
 def format_arguments(method: Method) -> Generator[str, None, None]:
@@ -34,7 +35,7 @@ def format_arguments(method: Method) -> Generator[str, None, None]:
 
 ## format_path
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L421)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L413)
 
 ```python
 def format_path(path: Path) -> None:
@@ -42,7 +43,7 @@ def format_path(path: Path) -> None:
 
 ## generate_attributes
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L55)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L54)
 
 ```python
 def generate_attributes(
@@ -52,7 +53,7 @@ def generate_attributes(
 
 ## generate_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L78)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L77)
 
 ```python
 def generate_method(
@@ -66,7 +67,7 @@ def generate_method(
 
 ## generate_methods
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L60)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L59)
 
 ```python
 def generate_methods(
@@ -80,7 +81,7 @@ def generate_methods(
 
 ## process_service_client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L294)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L280)
 
 ```python
 def process_service_client(
@@ -88,13 +89,12 @@ def process_service_client(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    include_doc: bool,
 ) -> Client:
 ```
 
 ## process_service_paginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L359)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L353)
 
 ```python
 def process_service_paginator(
@@ -102,13 +102,12 @@ def process_service_paginator(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    include_doc: bool,
 ) -> Optional[ServicePaginator]:
 ```
 
 ## process_service_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L311)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L301)
 
 ```python
 def process_service_resource(
@@ -116,13 +115,12 @@ def process_service_resource(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    include_doc: bool,
 ) -> Optional[ServiceResource]:
 ```
 
 ## process_service_waiter
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L335)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L327)
 
 ```python
 def process_service_waiter(
@@ -130,13 +128,12 @@ def process_service_waiter(
     service_name: ServiceName,
     service_output_path: Path,
     import_record_renderer: ImportRecordRenderer,
-    include_doc: bool,
 ) -> Optional[ServiceWaiter]:
 ```
 
 ## write_asset
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L547)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L528)
 
 ```python
 def write_asset(file_path: Path, template_name: str, **kwargs: str) -> None:
@@ -144,7 +141,7 @@ def write_asset(file_path: Path, template_name: str, **kwargs: str) -> None:
 
 ## write_client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L267)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L255)
 
 ```python
 def write_client(
@@ -157,7 +154,7 @@ def write_client(
 
 ## write_collection
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L157)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L149)
 
 ```python
 def write_collection(
@@ -169,7 +166,7 @@ def write_collection(
 
 ## write_init_file
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L553)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L535)
 
 ```python
 def write_init_file(
@@ -181,7 +178,7 @@ def write_init_file(
 
 ## write_master_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L429)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L422)
 
 ```python
 def write_master_module(
@@ -190,9 +187,21 @@ def write_master_module(
 ) -> None:
 ```
 
+## write_master_module_service_stub
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L467)
+
+```python
+def write_master_module_service_stub(
+    output_path: Path,
+    service_name: ServiceName,
+    service_output_path: Path,
+) -> None:
+```
+
 ## write_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L177)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L169)
 
 ```python
 def write_resource(
@@ -203,33 +212,9 @@ def write_resource(
 ) -> None:
 ```
 
-## write_service
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L384)
-
-```python
-def write_service(
-    session: Session,
-    service_name: ServiceName,
-    output_path: Path,
-    include_doc: bool,
-) -> None:
-```
-
-## write_service_assets
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L514)
-
-```python
-def write_service_assets(
-    service_output_path: Path,
-    service_name: ServiceName,
-) -> None:
-```
-
 ## write_service_paginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L236)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L227)
 
 ```python
 def write_service_paginator(
@@ -242,7 +227,7 @@ def write_service_paginator(
 
 ## write_service_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L113)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L112)
 
 ```python
 def write_service_resource(
@@ -255,7 +240,7 @@ def write_service_resource(
 
 ## write_service_waiter
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L207)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L199)
 
 ```python
 def write_service_waiter(
@@ -263,5 +248,28 @@ def write_service_waiter(
     output_path: Path,
     import_record_renderer: ImportRecordRenderer,
     include_doc: bool = False,
+) -> None:
+```
+
+## write_submodule
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L380)
+
+```python
+def write_submodule(
+    session: Session,
+    service_name: ServiceName,
+    output_path: Path,
+) -> None:
+```
+
+## write_submodule_assets
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers.py#L501)
+
+```python
+def write_submodule_assets(
+    service_output_path: Path,
+    service_name: ServiceName,
 ) -> None:
 ```

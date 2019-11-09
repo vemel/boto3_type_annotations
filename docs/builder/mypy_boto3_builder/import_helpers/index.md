@@ -6,5 +6,5 @@
     - Modules
         - [Enums](enums.md#enums)
         - [ImportRecord](import_record.md#importrecord)
+        - [ImportRecordRenderer](import_record_renderer.md#importrecordrenderer)
         - [ImportString](import_string.md#importstring)
-        - [Renderer](renderer.md#renderer)
