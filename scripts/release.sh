@@ -15,4 +15,4 @@ release_package() {
 }
 export -f release_package
 
-ls -d ${OUTPUT_PATH}/mypy_boto3_$1* | xargs -I % -P 10 bash -c 'release_package "%"'
+ls -d ${OUTPUT_PATH}/$1* | xargs -I % -P 10 bash -c 'release_package "%"'
