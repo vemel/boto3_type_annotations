@@ -12,8 +12,8 @@ from mypy_boto3_builder.constants import TEMPLATES_PATH, ASSETS_PATH
 logger = get_logger()
 
 
-def write_asset(output_path: Path, template_path: Path, **kwargs: str) -> None:
-    template_path = ASSETS_PATH / template_path
+def write_asset(output_path: Path, template_name: str, **kwargs: str) -> None:
+    template_path = ASSETS_PATH / template_name
     logger.debug(f"Rendering {NicePath(template_path)} to {NicePath(output_path)}")
     output_path.write_text(template_path.read_text().format(**kwargs))
 

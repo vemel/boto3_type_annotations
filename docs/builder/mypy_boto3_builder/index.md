@@ -19,3 +19,4 @@
         - [Type Map](type_map.md#type-map)
         - [Utils](utils.md#utils)
         - [Version](version.md#version)
+        - [Writers](writers/index.md#writers)
