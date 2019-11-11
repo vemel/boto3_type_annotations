@@ -11,4 +11,3 @@
 - `DUMMY_REGION` - Random region to initialize services: `'us-west-2'`
 - `TEMPLATES_PATH` - Jinja2 templates for boto3-stubs: `Path(__file__).parent / 'templates'`
 - `BOTO3_STUBS_NAME` - Boto3 stubs module name: `'boto3-stubs'`
-- `README_PATH` - Jinja2 templates for boto3-stubs: `Path(__file__).parent.parent.parent / 'README.md'`

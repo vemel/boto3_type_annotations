@@ -1,9 +1,10 @@
 from pathlib import Path
+import shutil
 
-from mypy_boto3_builder.constants import README_PATH
 from mypy_boto3_builder.structures import MasterModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
+from mypy_boto3_builder.constants import TEMPLATES_PATH
 
 
 def write_master_module(master_module: MasterModule, output_path: Path) -> None:
@@ -12,7 +13,9 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> None:
         output_path / "setup.py",
         Path("master") / "setup.py.jinja2",
         module=master_module,
-        long_description=README_PATH.read_text() if README_PATH.exists() else "",
+    )
+    shutil.copy(
+        TEMPLATES_PATH / "master" / "README.md.jinja2", output_path / "README.md"
     )
     for file_name in [
         "__init__.py",

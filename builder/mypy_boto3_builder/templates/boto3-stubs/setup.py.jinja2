@@ -1,9 +1,10 @@
 from setuptools import setup
+from pathlib import Path
 
 
-LONG_DESCRIPTION = """
-{{ long_description }}
-"""
+ROOT_PATH = Path(__file__).absolute().parent
+README_PATH = ROOT_PATH / "README.md"
+LONG_DESCRIPTION = README_PATH.read_text()
 
 
 setup(
