@@ -3,9 +3,6 @@
 {% endfor -%}
 {{ 'def ' -}}{{ function.name -}}{{ '(\n' -}}
 {% filter indent(4, True) -%}
-    {% if function.first_arg -%}
-        {{ function.first_arg -}}{{ ",\n" if function.arguments else "\n" -}}
-    {% endif -%}
     {% for argument in function.arguments -%}
         {{ argument.render() -}}{{ ",\n" if not loop.last else "\n" -}}
     {% endfor -%}

@@ -145,9 +145,12 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
             logger.debug(f"Docless method: {name}")
             yield manually_set_method(name)
         else:
+            arguments = DocstringParser.get_function_arguments(method)
+            DocstringParser.enrich_arguments(doc, arguments)
+
             yield Method(
                 name=name,
-                arguments=DocstringParser.get_arguments(doc),
+                arguments=arguments,
                 docstring=clean_doc(doc),
                 return_type=DocstringParser.get_return_type(doc),
             )

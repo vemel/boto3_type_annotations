@@ -23,7 +23,6 @@ class {{ class_record.name }}({{ class_record.bases_render() }}):
     @{{ decorator }}
     {% endfor -%}
     def {{ method.name }}(
-        {% if method.first_arg -%}{{ method.first_arg }}{{ "," if method.arguments }}{% endif -%}
         {% for argument in method.arguments -%}
         {{ argument.render() }}{{ "," if not loop.last }}
         {% endfor -%}

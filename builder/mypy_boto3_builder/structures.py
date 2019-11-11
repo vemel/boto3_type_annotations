@@ -32,19 +32,31 @@ class Attribute:
 @dataclass
 class Argument:
     name: str
-    type: FakeAnnotation = TypeAnnotation(None)
+    type: Optional[FakeAnnotation] = None
     required: bool = False
-    default: FakeAnnotation = TypeAnnotation(None)
+    default: Optional[FakeAnnotation] = None
+    prefix: str = ""
 
     def get_types(self) -> Set[FakeAnnotation]:
-        types = self.type.get_types()
-        if not self.required:
+        types: Set[FakeAnnotation] = set()
+        if self.type is not None:
+            types.update(self.type.get_types())
+        if self.default is not None:
             types.update(self.default.get_types())
 
         return types
 
     def render(self) -> str:
-        if self.required:
+        if self.prefix:
+            return f"{self.prefix}{self.name}"
+
+        if self.type is None:
+            if self.default is None:
+                return self.name
+
+            return f"{self.name}={self.default.render()}"
+
+        if self.default is None:
             return f"{self.name}: {self.type.render()}"
 
         return f"{self.name}: {self.type.render()} = {self.default.render()}"
@@ -66,22 +78,10 @@ class Function:
 
         return types
 
-    @property
-    def first_arg(self) -> Optional[str]:
-        return None
-
 
 @dataclass
 class Method(Function):
-    @property
-    def first_arg(self) -> Optional[str]:
-        for decorator in self.decorators:
-            if decorator.render() == "classmethod":
-                return "cls"
-            if decorator.render() == "staticmethod":
-                return None
-
-        return "self"
+    pass
 
 
 @dataclass

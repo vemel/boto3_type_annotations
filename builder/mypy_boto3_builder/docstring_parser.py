@@ -1,5 +1,6 @@
 import re
-from typing import List, Dict
+import inspect
+from typing import List, Any
 
 from mypy_boto3_builder.structures import Argument
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -24,36 +25,74 @@ class DocstringParser:
             return cls.parse_type(match.groupdict()["type"])
         return TypeAnnotation(None)
 
+    @staticmethod
+    def _find_argument_or_append(
+        argument_name: str, arguments: List[Argument]
+    ) -> Argument:
+        for argument in arguments:
+            if argument.name == argument_name:
+                return argument
+
+        for index, argument in enumerate(arguments):
+            if argument.prefix == "*":
+                del arguments[index]
+                break
+
+        for index, argument in enumerate(arguments):
+            if argument.prefix == "**":
+                del arguments[index]
+                break
+
+        arguments.append(Argument(argument_name, default=TypeAnnotation(None)))
+        return arguments[-1]
+
     @classmethod
-    def get_arguments(cls, docstring: str) -> List[Argument]:
-        argument_map: Dict[str, Argument] = {}
+    def get_function_arguments(cls, func: Any) -> List[Argument]:
+        argspec = inspect.getfullargspec(func)
+        arguments: List[Argument] = []
+        for argument_name in argspec.args:
+            arguments.append(Argument(argument_name))
+        if argspec.defaults:
+            for index, default_value in enumerate(argspec.defaults):
+                argument_index = len(arguments) - len(argspec.defaults) + index
+                arguments[argument_index].default = TypeAnnotation(default_value)
+
+        if argspec.varargs:
+            arguments.append(Argument(argspec.varargs, prefix="*"))
+        for argument_name in argspec.kwonlyargs:
+            arguments.append(Argument(argument_name))
+        if argspec.kwonlydefaults:
+            for argument_name, default_value in argspec.kwonlydefaults:
+                for argument in arguments:
+                    if argument.name != argument_name:
+                        continue
+                    argument.default = TypeAnnotation(default_value)
+                    break
+        if argspec.varkw:
+            arguments.append(Argument(argspec.varkw, prefix="**"))
+
+        return arguments
+
+    @classmethod
+    def enrich_arguments(cls, docstring: str, arguments: List[Argument]) -> None:
         for line in docstring.splitlines():
             line = line.strip()
             if line.startswith(":param "):
                 match = cls.RE_PARAM.match(line)
                 if match:
                     argument_name = match.groupdict()["name"]
-                    if argument_name not in argument_map:
-                        argument_map[argument_name] = Argument(argument_name)
-                    argument = argument_map.get(argument_name, Argument(argument_name))
-                    argument_map[argument_name] = argument
-                    if "**[REQUIRED]**" in line:
+                    argument = cls._find_argument_or_append(argument_name, arguments)
+                    if "**[REQUIRED]**" in line or "This **must** be set." in line:
                         argument.required = True
-                    if "This **must** be set." in line:
-                        argument.required = True
+                        argument.default = None
             if line.startswith(":type "):
                 match = cls.RE_TYPE.match(line)
                 if match:
                     argument_name = match.groupdict()["name"]
-                    if argument_name not in argument_map:
-                        argument_map[argument_name] = Argument(argument_name)
-                    argument = argument_map.get(argument_name, Argument(argument_name))
-                    argument_map[argument_name] = argument
+                    argument = cls._find_argument_or_append(argument_name, arguments)
                     argument.type = cls.parse_type(match.groupdict()["type"])
 
-        result = list(argument_map.values())
-        result.sort(key=lambda x: not x.required)
-        return result
+        arguments.sort(key=lambda x: x.default is not None)
 
     @staticmethod
     def parse_type(type_str: str) -> FakeAnnotation:
