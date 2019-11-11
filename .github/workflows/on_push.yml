@@ -18,7 +18,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip pylint mypy docstring_parser black boto3 jinja2
+          python -m pip install --upgrade pip pylint mypy black boto3 jinja2
       - name: Lint
         run: |
           pylint builder/mypy_boto3_builder

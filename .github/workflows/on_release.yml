@@ -25,7 +25,8 @@ jobs:
           scripts/build.sh
       - name: Smoke test
         run: |
-          mypy mypy_boto3_output/mypy_boto3_package
+          mypy mypy_boto3_output/master_package
+          scripts/install.sh
       - name: Publish
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}

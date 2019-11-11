@@ -8,7 +8,6 @@ if [[ "$1" == "" ]]; then
     PACKAGES=${OUTPUT_PATH}/mypy_boto3_*
 fi
 
-
 for package in $PACKAGES
 do
     echo Installing $(basename ${package})
