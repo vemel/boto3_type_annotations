@@ -58,7 +58,9 @@ class DocstringParser:
                 arguments[argument_index].default = TypeAnnotation(default_value)
 
         if argspec.varargs:
-            arguments.append(Argument(argspec.varargs, prefix="*"))
+            arguments.append(
+                Argument(argspec.varargs, prefix="*", type=TypeAnnotation(Any))
+            )
         for argument_name in argspec.kwonlyargs:
             arguments.append(Argument(argument_name))
         if argspec.kwonlydefaults:
@@ -69,7 +71,9 @@ class DocstringParser:
                     argument.default = TypeAnnotation(default_value)
                     break
         if argspec.varkw:
-            arguments.append(Argument(argspec.varkw, prefix="**"))
+            arguments.append(
+                Argument(argspec.varkw, prefix="**", type=TypeAnnotation(Any))
+            )
 
         return arguments
 

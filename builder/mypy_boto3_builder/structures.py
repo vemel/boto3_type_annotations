@@ -46,21 +46,6 @@ class Argument:
 
         return types
 
-    def render(self) -> str:
-        if self.prefix:
-            return f"{self.prefix}{self.name}"
-
-        if self.type is None:
-            if self.default is None:
-                return self.name
-
-            return f"{self.name}={self.default.render()}"
-
-        if self.default is None:
-            return f"{self.name}: {self.type.render()}"
-
-        return f"{self.name}: {self.type.render()} = {self.default.render()}"
-
 
 @dataclass
 class Function:
