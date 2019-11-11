@@ -26,11 +26,31 @@ def clean_doc(doc: Optional[str]) -> str:
             indent = " " * (len(line) - len(line.lstrip()))
             line = line.strip()
             space_index = line.rfind(" ", 0, LINE_LENGTH - len(indent))
-            if space_index == -1:
-                result.append(f"{indent}{line}")
-                break
-            result.append(f"{indent}{line[:space_index].rstrip()}")
-            line = f"{indent}{line[space_index + 1 :]}"
+            if space_index != -1:
+                result.append(f"{indent}{line[:space_index].rstrip()}")
+                line = f"{indent}{line[space_index + 1 :]}"
+                continue
+
+            equals_index = line.rfind("=", 0, LINE_LENGTH - len(indent))
+            if equals_index != -1:
+                result.append(f"{indent}{line[:equals_index+1].rstrip()}")
+                line = f"{indent}    {line[equals_index + 1 :]}"
+                continue
+
+            vertical_bar_index = line.rfind("|", 0, LINE_LENGTH - len(indent))
+            if vertical_bar_index != -1:
+                result.append(f"{indent}{line[:vertical_bar_index].rstrip()}")
+                line = f"{indent}{line[vertical_bar_index :]}"
+                continue
+
+            space_index = line.find(" ", LINE_LENGTH - len(indent))
+            if space_index != -1:
+                result.append(f"{indent}{line[:space_index].rstrip()}")
+                line = f"{indent}{line[space_index + 1 :]}"
+                continue
+
+            result.append(f"{indent}{line}")
+            break
 
     return "\n".join(result)
 
