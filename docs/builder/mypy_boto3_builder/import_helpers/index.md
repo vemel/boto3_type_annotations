@@ -4,7 +4,5 @@
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / Import Helpers
     - Modules
-        - [Enums](enums.md#enums)
         - [ImportRecord](import_record.md#importrecord)
-        - [ImportRecordRenderer](import_record_renderer.md#importrecordrenderer)
         - [ImportString](import_string.md#importstring)
