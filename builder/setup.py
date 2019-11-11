@@ -17,7 +17,11 @@ setup(
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     package_data={
-        "mypy_boto3_builder": ["templates/*/*.jinja2", "templates/*/*/*.jinja2"]
+        "mypy_boto3_builder": [
+            "templates/*/*.jinja2",
+            "templates/*/*/*.jinja2",
+            "templates/*/*/*/*.jinja2",
+        ]
     },
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
