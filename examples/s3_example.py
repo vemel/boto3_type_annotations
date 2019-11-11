@@ -1,4 +1,4 @@
-# install `pip install mypy_boto3[s3]`
+# install `pip install boto3-stubs[s3]`
 
 import boto3
 
