@@ -226,13 +226,14 @@ class ServiceName(enum.Enum):
         return f"{PYPI_NAME}-{self.value}"
 
     def is_essential(self) -> bool:
-        return self.value in [
-            ServiceName.ec2.value,
-            ServiceName.rds.value,
-            ServiceName.s3.value,
-            ServiceName.lambda_.value,
-            ServiceName.sqs.value,
-            ServiceName.cloudformation.value,
+        return self in [
+            ServiceName.ec2,
+            ServiceName.rds,
+            ServiceName.s3,
+            ServiceName.lambda_,
+            ServiceName.sqs,
+            ServiceName.cloudformation,
+            ServiceName.dynamodb,
         ]
 
     @property

@@ -14,3 +14,6 @@ TEMPLATES_PATH = Path(__file__).parent / "templates"
 
 # Boto3 stubs module name
 BOTO3_STUBS_NAME = "boto3-stubs"
+
+# Jinja2 templates for boto3-stubs
+README_PATH = Path(__file__).parent.parent.parent / "README.md"

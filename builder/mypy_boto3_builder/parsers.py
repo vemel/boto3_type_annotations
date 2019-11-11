@@ -65,7 +65,6 @@ def manually_set_method(name: str) -> Method:
         return Method(
             name="create_tags",
             arguments=[
-                Argument("DryRun", TypeAnnotation(bool), False),
                 Argument(
                     "Resources",
                     TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
@@ -76,6 +75,7 @@ def manually_set_method(name: str) -> Method:
                     TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
                     True,
                 ),
+                Argument("DryRun", TypeAnnotation(bool), False),
             ],
             docstring="",
             return_type=TypeAnnotation(None),

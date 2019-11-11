@@ -44,7 +44,6 @@ def render_jinja2_template(
     output_path.write_text(
         template.render(
             version=version,
-            long_description="",
             master_pypi_name=PYPI_NAME,
             master_module_name=MODULE_NAME,
             boto3_stubs_name=BOTO3_STUBS_NAME,

@@ -70,12 +70,6 @@ class Function:
     def first_arg(self) -> Optional[str]:
         return None
 
-    def get_arguments(self) -> List[Argument]:
-        arguments: List[Argument] = []
-        for argument in sorted(self.arguments, key=lambda m: not m.required):
-            arguments.append(argument)
-        return arguments
-
 
 @dataclass
 class Method(Function):

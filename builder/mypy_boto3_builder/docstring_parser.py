@@ -39,6 +39,8 @@ class DocstringParser:
                     argument_map[argument_name] = argument
                     if "**[REQUIRED]**" in line:
                         argument.required = True
+                    if "This **must** be set" in line:
+                        argument.required = True
             if line.startswith(":type "):
                 match = cls.RE_TYPE.match(line)
                 if match:
