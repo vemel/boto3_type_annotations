@@ -10,7 +10,7 @@ fi
 
 for package in $PACKAGES
 do
-    echo Installing $(basename ${package})
+    echo Publishing $(basename ${package})
     cd ${package}
     rm -rf build *.egg-info dist/* > /dev/null
     python setup.py build sdist bdist_wheel 1>/dev/null 2>/dev/null
