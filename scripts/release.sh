@@ -15,6 +15,6 @@ release_package() {
 }
 export -f release_package
 
-ls -d ${OUTPUT_PATH}/mypy_boto3_$1* | xargs -I % -P 10 bash -c 'release_package "%"'
+ls -d ${OUTPUT_PATH}/mypy_boto3_* | xargs -I % -P 10 bash -c 'release_package "%"'
 ls -d ${OUTPUT_PATH}/master_package | xargs -I % -P 10 bash -c 'release_package "%"'
 ls -d ${OUTPUT_PATH}/boto3_stubs_package | xargs -I % -P 10 bash -c 'release_package "%"'
