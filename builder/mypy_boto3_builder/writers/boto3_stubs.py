@@ -4,7 +4,7 @@ import shutil
 from mypy_boto3_builder.structures import Boto3Module
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
-from mypy_boto3_builder.constants import TEMPLATES_PATH
+from mypy_boto3_builder.constants import TEMPLATES_PATH, BOTO3_STUBS_STATIC_PATH
 
 
 def write_boto3_stubs_module(boto3_module: Boto3Module, output_path: Path) -> None:
@@ -29,3 +29,9 @@ def write_boto3_stubs_module(boto3_module: Boto3Module, output_path: Path) -> No
             Path("boto3-stubs") / "boto3-stubs" / f"{file_name}.jinja2",
             module=boto3_module,
         )
+
+    for static_path in BOTO3_STUBS_STATIC_PATH.glob("**/*.pyi"):
+        relative_output_path = static_path.relative_to(BOTO3_STUBS_STATIC_PATH)
+        output_path = module_path / relative_output_path
+        output_path.parent.mkdir(exist_ok=True)
+        shutil.copy(static_path, output_path)

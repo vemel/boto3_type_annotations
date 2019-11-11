@@ -16,6 +16,8 @@ class TypeAnnotation(FakeAnnotation):
         type_annotation = self.wrapped_type
         if isinstance(type_annotation, str):
             return type_annotation
+        if isinstance(type_annotation, bool):
+            return str(type_annotation)
 
         name = str(type_annotation)
         if hasattr(type_annotation, "_name"):

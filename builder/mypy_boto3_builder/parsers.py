@@ -14,7 +14,6 @@ from botocore.exceptions import UnknownServiceError
 from botocore.client import BaseClient
 
 from mypy_boto3_builder.structures import (
-    Argument,
     Method,
     Client,
     Attribute,
@@ -32,7 +31,6 @@ from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils import clean_doc
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
-from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.docstring_parser import DocstringParser
 
 
@@ -58,33 +56,6 @@ def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
                 if is_resource_action(member):
                     resource_methods[name] = member
     return resource_methods
-
-
-def manually_set_method(name: str) -> Method:
-    if name == "create_tags":
-        return Method(
-            name="create_tags",
-            arguments=[
-                Argument(
-                    "Resources",
-                    TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
-                    True,
-                ),
-                Argument(
-                    "Tags",
-                    TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
-                    True,
-                ),
-                Argument("DryRun", TypeAnnotation(bool), False),
-            ],
-            docstring="",
-            return_type=TypeAnnotation(None),
-        )
-
-    logger.warning(f"Unknown method: {name}")
-    return Method(
-        name=name, arguments=[], docstring="", return_type=TypeAnnotation(None)
-    )
 
 
 def parse_attributes(
@@ -138,22 +109,25 @@ def parse_identifiers(
         yield Attribute(identifier.name, type=TypeAnnotation(str))
 
 
-def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
+def parse_methods(public_methods: Dict[str, Any]) -> Generator[Method, None, None]:
     for name, method in public_methods.items():
         doc = getdoc(method)
-        if doc is None:
-            logger.debug(f"Docless method: {name}")
-            yield manually_set_method(name)
-        else:
-            arguments = DocstringParser.get_function_arguments(method)
+        arguments = DocstringParser.get_function_arguments(method)
+        return_type = DocstringParser.NONE_ANNOTATION
+        if doc:
             DocstringParser.enrich_arguments(doc, arguments)
+            return_type = DocstringParser.get_return_type(doc)
+        else:
+            docless_arguments = DocstringParser().get_docless_method_arguments(name)
+            if docless_arguments:
+                arguments = docless_arguments
 
-            yield Method(
-                name=name,
-                arguments=arguments,
-                docstring=clean_doc(doc),
-                return_type=DocstringParser.get_return_type(doc),
-            )
+        yield Method(
+            name=name,
+            arguments=arguments,
+            docstring=clean_doc(doc),
+            return_type=return_type,
+        )
 
 
 def parse_resource(resource: Boto3ServiceResource) -> Resource:

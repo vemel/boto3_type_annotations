@@ -34,7 +34,7 @@ setup(
     ],
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    package_data={"{{ module.package_name }}": ["py.typed", "__init__.pyi", "session.pyi"]},
+    package_data={"{{ module.package_name }}": ["py.typed", "*.pyi", "*/*.pyi"]},
     install_requires=[
         "{{ master_pypi_name }}[essential]=={{ version }}",
     ],

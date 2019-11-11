@@ -33,7 +33,6 @@ class Attribute:
 class Argument:
     name: str
     type: Optional[FakeAnnotation] = None
-    required: bool = False
     default: Optional[FakeAnnotation] = None
     prefix: str = ""
 

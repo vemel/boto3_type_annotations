@@ -21,6 +21,9 @@ setup(
             "templates/*/*.jinja2",
             "templates/*/*/*.jinja2",
             "templates/*/*/*/*.jinja2",
+            "boto3_stubs_static/*.pyi",
+            "boto3_stubs_static/*/*.pyi",
+            "mypy_boto3_static/*.pyi",
         ]
     },
     author="Vlad Emelianov",

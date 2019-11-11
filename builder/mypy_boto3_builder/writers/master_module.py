@@ -4,7 +4,7 @@ import shutil
 from mypy_boto3_builder.structures import MasterModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
-from mypy_boto3_builder.constants import TEMPLATES_PATH
+from mypy_boto3_builder.constants import TEMPLATES_PATH, MYPY_BOTO3_STATIC_PATH
 
 
 def write_master_module(master_module: MasterModule, output_path: Path) -> None:
@@ -61,3 +61,13 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> None:
                 Path("master") / "master" / "service_module" / f"paginator.py.jinja2",
                 service_name=service_module.service_name,
             )
+
+    for static_path in MYPY_BOTO3_STATIC_PATH.glob("**/*.pyi"):
+        relative_output_path = static_path.relative_to(MYPY_BOTO3_STATIC_PATH)
+        output_path = (
+            module_path
+            / relative_output_path.parent
+            / f"{relative_output_path.stem}.py"
+        )
+        output_path.parent.mkdir(exist_ok=True)
+        shutil.copy(static_path, output_path)

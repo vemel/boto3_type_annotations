@@ -1,17 +1,35 @@
 import re
 import inspect
-from typing import List, Any
+from typing import List, Any, Pattern, Optional
 
 from mypy_boto3_builder.structures import Argument
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
-from mypy_boto3_builder.type_map import TYPE_MAP
+from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.type_annotations.type_def import TypeDef
+from mypy_boto3_builder.type_map import TYPE_MAP, NAMED_TYPE_MAP
+from mypy_boto3_builder.logger import get_logger
 
 
 class DocstringParser:
-    RE_PARAM = re.compile(r":param\s+(?P<name>\S+):")
-    RE_TYPE = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
-    RE_RTYPE = re.compile(r":rtype:\s+(?P<type>.+)")
+    RE_PARAM: Pattern = re.compile(r":param\s+(?P<name>\S+):")
+    RE_TYPE: Pattern = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
+    RE_RTYPE: Pattern = re.compile(r":rtype:\s+(?P<type>.+)")
+    NONE_ANNOTATION: FakeAnnotation = TypeAnnotation(None)
+
+    DEFAULT_METHOD_ARGUMENTS = {
+        "create_tags": [
+            Argument("self",),
+            Argument(
+                "Resources", TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
+            ),
+            Argument("Tags", TypeSubscript(TypeAnnotation(List), [TypeDef("Tag")]),),
+            Argument("DryRun", TypeAnnotation(bool), TypeAnnotation(False)),
+        ]
+    }
+
+    def __init__(self) -> None:
+        self.logger = get_logger()
 
     @classmethod
     def get_return_type(cls, docstring: str) -> FakeAnnotation:
@@ -45,6 +63,14 @@ class DocstringParser:
 
         arguments.append(Argument(argument_name, default=TypeAnnotation(None)))
         return arguments[-1]
+
+    def get_docless_method_arguments(
+        self, method_name: str
+    ) -> Optional[List[Argument]]:
+        if method_name not in self.DEFAULT_METHOD_ARGUMENTS:
+            self.logger.warning(f"Cannot annotate {method_name}")
+            return None
+        return self.DEFAULT_METHOD_ARGUMENTS[method_name]
 
     @classmethod
     def get_function_arguments(cls, func: Any) -> List[Argument]:
@@ -87,19 +113,25 @@ class DocstringParser:
                     argument_name = match.groupdict()["name"]
                     argument = cls._find_argument_or_append(argument_name, arguments)
                     if "**[REQUIRED]**" in line or "This **must** be set." in line:
-                        argument.required = True
                         argument.default = None
             if line.startswith(":type "):
                 match = cls.RE_TYPE.match(line)
                 if match:
                     argument_name = match.groupdict()["name"]
+                    argument_type_str = match.groupdict()["type"]
                     argument = cls._find_argument_or_append(argument_name, arguments)
-                    argument.type = cls.parse_type(match.groupdict()["type"])
+                    argument.type = cls.parse_type(argument_type_str, argument_name)
 
         arguments.sort(key=lambda x: x.default is not None)
 
     @staticmethod
-    def parse_type(type_str: str) -> FakeAnnotation:
+    def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
+        if name is not None:
+            try:
+                return NAMED_TYPE_MAP[f"{name}: {type_str}"]
+            except KeyError:
+                pass
+
         try:
             return TYPE_MAP[type_str]
         except KeyError:
