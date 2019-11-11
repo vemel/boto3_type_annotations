@@ -18,7 +18,7 @@ class FakeAnnotation():
 
 ### FakeAnnotation().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L22)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L20)
 
 ```python
 @abstractmethod
@@ -27,7 +27,7 @@ def get_import_record() -> ImportRecord:
 
 ### FakeAnnotation().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L26)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L24)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -35,7 +35,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ### FakeAnnotation().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L18)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L16)
 
 ```python
 @abstractmethod

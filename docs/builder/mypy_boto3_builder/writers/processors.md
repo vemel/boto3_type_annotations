@@ -3,59 +3,42 @@
 > Auto-generated documentation for [builder.mypy_boto3_builder.writers.processors](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py) module.
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Writers](index.md#writers) / Processors
-    - [process_service_client](#process_service_client)
-    - [process_service_paginator](#process_service_paginator)
-    - [process_service_resource](#process_service_resource)
-    - [process_service_waiter](#process_service_waiter)
+    - [process_boto3_stubs](#process_boto3_stubs)
+    - [process_master](#process_master)
+    - [process_service](#process_service)
 
-## process_service_client
+## process_boto3_stubs
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L36)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L28)
 
 ```python
-def process_service_client(
+def process_boto3_stubs(
     session: Session,
-    service_name: ServiceName,
-    service_output_path: Path,
-    import_record_renderer: ImportRecordRenderer,
-) -> Client:
+    service_names: Iterable[ServiceName],
+    output_path: Path,
+) -> Boto3Module:
 ```
 
-## process_service_paginator
+## process_master
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L109)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L39)
 
 ```python
-def process_service_paginator(
+def process_master(
     session: Session,
-    service_name: ServiceName,
-    service_output_path: Path,
-    import_record_renderer: ImportRecordRenderer,
-) -> Optional[ServicePaginator]:
+    service_names: Iterable[ServiceName],
+    output_path: Path,
+) -> MasterModule:
 ```
 
-## process_service_resource
+## process_service
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L57)
-
-```python
-def process_service_resource(
-    session: Session,
-    service_name: ServiceName,
-    service_output_path: Path,
-    import_record_renderer: ImportRecordRenderer,
-) -> Optional[ServiceResource]:
-```
-
-## process_service_waiter
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L83)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L50)
 
 ```python
-def process_service_waiter(
+def process_service(
     session: Session,
     service_name: ServiceName,
-    service_output_path: Path,
-    import_record_renderer: ImportRecordRenderer,
-) -> Optional[ServiceWaiter]:
+    output_path: Path,
+) -> ServiceModule:
 ```
