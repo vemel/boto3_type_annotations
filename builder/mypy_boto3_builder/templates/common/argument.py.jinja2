@@ -8,7 +8,7 @@
         {{ argument.default.render() -}}
     {% endif -%}
 {% else -%}
-    {% if argument.default %}
+    {% if argument.default -%}
         {{ '=' -}}
         {{ argument.default.render() -}}
     {% endif -%}
