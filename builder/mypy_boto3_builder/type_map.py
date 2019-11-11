@@ -7,14 +7,6 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
-from mypy_boto3_builder.type_annotations.type_def import TypeDef
-
-
-NAMED_TYPE_MAP: Dict[str, FakeAnnotation] = {
-    "Tags: dict": TypeSubscript(TypeAnnotation(List), [TypeDef("Tag")]),
-    "Tags: list": TypeSubscript(TypeAnnotation(List), [TypeDef("Tag")]),
-    "DryRun: bool": TypeAnnotation(False),
-}
 
 
 TYPE_MAP: Dict[str, FakeAnnotation] = {

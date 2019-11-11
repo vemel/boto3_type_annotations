@@ -7,7 +7,8 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
-from mypy_boto3_builder.type_map import TYPE_MAP, NAMED_TYPE_MAP
+from mypy_boto3_builder.type_map import TYPE_MAP
+from mypy_boto3_builder.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 
 
