@@ -3,6 +3,8 @@ from typing import Optional, List
 
 import black
 
+from mypy_boto3_builder.constants import LINE_LENGTH
+
 
 def clean_doc(doc: Optional[str]) -> str:
     if doc is None:
@@ -16,7 +18,20 @@ def clean_doc(doc: Optional[str]) -> str:
         line = line.replace("\\:", ":")
         if not line and result and not result[-1]:
             continue
-        result.append(line)
+
+        if len(line) <= LINE_LENGTH:
+            result.append(line)
+
+        while len(line) > LINE_LENGTH:
+            indent = " " * (len(line) - len(line.lstrip()))
+            line = line.strip()
+            space_index = line.rfind(" ", 0, LINE_LENGTH - len(indent))
+            if space_index == -1:
+                result.append(f"{indent}{line}")
+                break
+            result.append(f"{indent}{line[:space_index].rstrip()}")
+            line = f"{indent}{line[space_index + 1 :]}"
+
     return "\n".join(result)
 
 

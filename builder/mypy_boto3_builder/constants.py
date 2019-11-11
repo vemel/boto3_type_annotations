@@ -14,3 +14,6 @@ TEMPLATES_PATH = Path(__file__).parent / "templates"
 
 # Boto3 stubs module name
 BOTO3_STUBS_NAME = "boto3-stubs"
+
+# Max line length for boto3 docs
+LINE_LENGTH = 100
