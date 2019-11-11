@@ -7,8 +7,6 @@ from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 
 
 class FakeAnnotation:
-    is_internal = False
-
     def __hash__(self) -> int:
         return hash(self.render())
 

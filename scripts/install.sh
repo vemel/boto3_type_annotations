@@ -8,8 +8,10 @@ install_package() {
     cd $1
     echo "Installing $1"
     rm -rf build __pycache__
-    python setup.py develop > /dev/null
+    python setup.py install > /dev/null
 }
 export -f install_package
 
-ls -d ${OUTPUT_PATH}/$1* | xargs -I % bash -c 'install_package "%"'
+ls -d ${OUTPUT_PATH}/mypy_boto3_$1_package | xargs -I % bash -c 'install_package "%"'
+ls -d ${OUTPUT_PATH}/master_package | xargs -I % bash -c 'install_package "%"'
+ls -d ${OUTPUT_PATH}/boto3_stubs_package | xargs -I % bash -c 'install_package "%"'

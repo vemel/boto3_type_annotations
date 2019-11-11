@@ -4,13 +4,21 @@ from typing import Optional, Any, overload, Union
 from typing_extensions import Literal
 
 from boto3.session import Session
+from botocore.client import Client
+from botocore.service_resource import ServiceResource
 
-{% for service_submodule, service_name in items %}
+{% for service_module in module.service_modules -%}
 try:
-    from {{ module_name }}.{{ service_name.import_name }}.{{ service_submodule.import_name }} import {{ service_submodule.class_name }} as {{ service_name.class_prefix }}{{ service_submodule.class_name }}
+    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.client import Client as {{ service_module.service_name.class_prefix }}Client
 except ImportError:
-    {{ service_name.class_prefix }}{{ service_submodule.class_name }} = Any
-{% endfor %}
+    {{ service_module.service_name.class_prefix }}Client = Any
+{% if service_module.service_resource -%}
+try:
+    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.service_resource import ServiceResource as {{ service_module.service_name.class_prefix }}ServiceResource
+except ImportError:
+    {{ service_module.service_name.class_prefix }}ServiceResource = Any
+{% endif %}
+{% endfor -%}
 
 __author__: str
 __version__: str
@@ -34,13 +42,11 @@ class NullHandler(logging.Handler):
     def emit(self, record: Any) -> Any:
         pass
 
-{% for service_submodule in service_submodules %}
-{% for service_name in service_names %}
-{% if (service_submodule, service_name) in items %}
+{% for service_module in module.service_modules -%}
 @overload
 # pylint: disable=arguments-differ
-def {{ service_submodule.boto3_function_name }}(
-    service_name: Literal['{{ service_name.boto3_name }}'],
+def client(
+    service_name: Literal['{{ service_module.service_name.boto3_name }}'],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -50,13 +56,15 @@ def {{ service_submodule.boto3_function_name }}(
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
     config: Config = None
-) -> {{ service_name.class_prefix }}{{ service_submodule.class_name }}: ...
-{% endif %}
-{% endfor %}
+) -> {{ service_module.service_name.class_prefix }}Client: ...
+{% endfor -%}
+
+{% for service_module in module.service_modules -%}
+{% if service_module.service_resource -%}
 @overload
 # pylint: disable=arguments-differ
-def {{ service_submodule.boto3_function_name }}(
-    service_name: str,
+def resource(
+    service_name: Literal['{{ service_module.service_name.boto3_name }}'],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -66,5 +74,6 @@ def {{ service_submodule.boto3_function_name }}(
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
     config: Config = None
-) -> {{ service_submodule.class_name }}: ...
-{% endfor %}
+) -> {{ service_module.service_name.class_prefix }}ServiceResource: ...
+{% endif -%}
+{% endfor -%}

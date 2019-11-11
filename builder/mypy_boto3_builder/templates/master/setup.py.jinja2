@@ -1,0 +1,62 @@
+from setuptools import setup
+
+
+LONG_DESCRIPTION = """
+{{ long_description }}
+"""
+
+
+setup(
+    name="{{ master_pypi_name }}",
+    version="{{ version }}",
+    packages=[
+        "{{ master_module_name }}",
+        {% for service_name in module.service_names -%}
+        "{{ master_module_name }}.{{ service_name.import_name }}",
+        {% endfor -%}
+    ],
+    url="https://github.com/vemel/mypy_boto3",
+    license="MIT License",
+    author="Vlad Emelianov",
+    author_email="vlad.emelianov.nz@gmail.com",
+    description="Mypy-friendly boto3 type annotations master module.",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "Environment :: Console",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: CPython",
+        "Typing :: Typed",
+    ],
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type="text/markdown",
+    install_requires=["mypy", "boto3"],
+    extras_require={
+        "stubs": ["{{ boto3_stubs_name }}=={{ version }}"],
+        "essential": [
+            {% for service_name in module.service_names -%}
+            {% if service_name.is_essential() -%}
+            "{{ service_name.pypi_name }}=={{ version }}",
+            {% endif -%}
+            {% endfor -%}
+        ],
+        "all": [
+            {% for service_name in module.service_names -%}
+            "{{ service_name.pypi_name }}=={{ version }}",
+            {% endfor -%}
+        ],
+        {% for service_name in module.service_names -%}
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ version }}"],
+        {% endfor -%}
+    },
+    package_data={"{{ master_module_name }}": ["py.typed"]},
+    zip_safe=False,
+)

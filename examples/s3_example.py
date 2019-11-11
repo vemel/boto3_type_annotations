@@ -2,6 +2,8 @@
 
 import boto3
 
+from mypy_boto3_s3.client import Client
+
 
 def s3_resource_example() -> None:
     # optionally use Session type from botocore
@@ -22,7 +24,9 @@ def s3_resource_example() -> None:
 
 def s3_client_example() -> None:
     # explicitly set type to S3 Client
-    client = boto3.client("s3")
+    # client = Client()
+    # client.create_bucket()
+    client: Client = boto3.client("s3")
 
     # IDE autocomplete suggests function name and arguments here
     client.create_bucket(Bucket="bucket")

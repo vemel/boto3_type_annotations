@@ -1,0 +1,11 @@
+"Main interface for {{ module.service_name.boto3_name }} service"
+
+{% for import_record in module.get_import_records() -%}
+{{ import_record.render() }}
+{% endfor -%}
+
+__all__ = (
+    {% for import_record in module.get_import_records() -%}
+    "{{ import_record.get_local_name() }}",
+    {% endfor -%}
+)

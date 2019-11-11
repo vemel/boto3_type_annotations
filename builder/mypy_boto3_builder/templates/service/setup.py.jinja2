@@ -1,20 +1,20 @@
-from pathlib import Path
-
 from setuptools import setup
 
 
-ROOT_PATH = Path(__file__).absolute().parent
+LONG_DESCRIPTION = """
+{{ long_description }}
+"""
 
 
 setup(
-    name="{name}",
-    version="{version}",
-    packages=["{name}"],
+    name="{{ service_name.pypi_name }}",
+    version="{{ version }}",
+    packages=["{{ service_name.module_name }}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Boto3 stubs powered by {master_pypi_name}.",
+    description="Mypy-friendly boto3 type annotations for {{ service_name.boto3_name }} service.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -31,9 +31,8 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
-    long_description=(ROOT_PATH / 'README.md').read_text(),
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    package_data={{"{name}": ["py.typed", "__init__.pyi"]}},
-    install_requires=[f"{master_pypi_name}=={version}"],
+    package_data={"{{ service_name.module_name }}": ["py.typed"]},
     zip_safe=False,
 )

@@ -1,6 +1,6 @@
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator, Any, Optional
+from typing import List, Dict, Generator, Any, Optional, Iterable
 
 import boto3
 from boto3.docs.utils import is_resource_action
@@ -9,12 +9,9 @@ from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 from boto3.session import Session
 from boto3.utils import ServiceContext
 from botocore import xform_name
-from botocore.client import BaseClient
 from botocore.docs.method import get_instance_public_methods
 from botocore.exceptions import UnknownServiceError
-from botocore.paginate import PaginatorModel
-from docstring_parser import parse
-from docstring_parser.parser.common import DocstringMeta, Docstring
+from botocore.client import BaseClient
 
 from mypy_boto3_builder.structures import (
     Argument,
@@ -25,21 +22,31 @@ from mypy_boto3_builder.structures import (
     Collection,
     ServiceResource,
     Waiter,
-    ServiceWaiter,
     Paginator,
-    ServicePaginator,
+    Boto3Module,
+    ServiceModule,
+    MasterModule,
 )
-from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils import clean_doc
-from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.docstring_parser import DocstringParser
 
 
 logger = get_logger()
+
+
+def get_boto3_client(session: Session, service_name: ServiceName) -> BaseClient:
+    return session.client(service_name.boto3_name)  # type: ignore
+
+
+def get_boto3_resource(
+    session: Session, service_name: ServiceName
+) -> Boto3ServiceResource:
+    return session.resource(service_name.boto3_name)  # type: ignore
 
 
 def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
@@ -80,19 +87,6 @@ def manually_set_method(name: str) -> Method:
     )
 
 
-def parse_arguments(parsed_doc: Docstring) -> Generator[Argument, None, None]:
-    types_map = {}
-    for meta_item in parsed_doc.meta:
-        if meta_item.args[0] == "type":
-            types_map[meta_item.args[1]] = parse_type_from_str(meta_item.description)
-    for arg in parsed_doc.params:
-        yield Argument(
-            arg.arg_name,
-            types_map[arg.arg_name],
-            arg.description.startswith("**[REQUIRED]**"),
-        )
-
-
 def parse_attributes(
     resource: Boto3ServiceResource,
 ) -> Generator[Attribute, None, None]:
@@ -101,13 +95,14 @@ def parse_attributes(
         shape = service_model.shape_for(resource.meta.resource_model.shape)
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
-            yield Attribute(name, parse_type_from_str(attribute[1].type_name))
+            yield Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
 
 
 def parse_client(session: Session, service_name: ServiceName) -> Client:
-    client = session.client(service_name.boto3_name)
+    client = get_boto3_client(session, service_name)
     return Client(
         service_name=service_name,
+        boto3_client=client,
         docstring=clean_doc(getdoc(client)),
         methods=list(parse_methods(get_instance_public_methods(client))),
     )
@@ -117,6 +112,13 @@ def parse_collections(
     resource: Boto3ServiceResource,
 ) -> Generator[Collection, None, None]:
     for collection in resource.meta.resource_model.collections:
+        methods = list(
+            parse_methods(
+                get_instance_public_methods(getattr(resource, collection.name))
+            )
+        )
+        for method in methods:
+            method.decorators.append(TypeAnnotation(classmethod))
         yield Collection(
             name=collection.name,
             docstring=clean_doc(getdoc(collection)),
@@ -124,11 +126,7 @@ def parse_collections(
                 name=collection.name,
                 service_name=ServiceName(resource.meta.service_name),
             ),
-            methods=list(
-                parse_methods(
-                    get_instance_public_methods(getattr(resource, collection.name))
-                )
-            ),
+            methods=methods,
         )
 
 
@@ -137,7 +135,7 @@ def parse_identifiers(
 ) -> Generator[Attribute, None, None]:
     identifiers = resource.meta.resource_model.identifiers
     for identifier in identifiers:
-        yield Attribute(identifier.name, parse_type_from_str("string"))
+        yield Attribute(identifier.name, type=TypeAnnotation(str))
 
 
 def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
@@ -147,12 +145,11 @@ def parse_methods(public_methods: Dict) -> Generator[Method, None, None]:
             logger.debug(f"Docless method: {name}")
             yield manually_set_method(name)
         else:
-            parsed_doc = parse(doc)
             yield Method(
                 name=name,
-                arguments=list(parse_arguments(parsed_doc)),
+                arguments=DocstringParser.get_arguments(doc),
                 docstring=clean_doc(doc),
-                return_type=parse_return_type(parsed_doc.meta),
+                return_type=DocstringParser.get_return_type(doc),
             )
 
 
@@ -178,19 +175,11 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
     )
 
 
-def parse_return_type(meta: List[DocstringMeta]) -> FakeAnnotation:
-    for docstring_meta in meta:
-        if docstring_meta.args[0] == "rtype":
-            return parse_type_from_str(docstring_meta.description)
-
-    return TypeAnnotation(None)
-
-
 def parse_service_resource(
     session: Session, service_name: ServiceName
 ) -> Optional[ServiceResource]:
     try:
-        service_resource = session.resource(service_name.boto3_name)
+        service_resource = get_boto3_resource(session, service_name)
     except boto3.exceptions.ResourceNotExistsError:
         return None
 
@@ -210,75 +199,13 @@ def parse_service_resource(
 
     return ServiceResource(
         service_name=service_name,
+        boto3_service_resource=service_resource,
         docstring=clean_doc(getdoc(service_resource)),
         methods=methods,
         attributes=attributes,
         collections=collections,
         sub_resources=sub_resources,
     )
-
-
-def parse_type_from_str(type_str: str) -> FakeAnnotation:
-    try:
-        return TYPE_MAP[type_str]
-    except KeyError:
-        raise ValueError(f"Unknown type: {type_str}")
-
-
-def parse_service_waiter(
-    session: Session, service_name: ServiceName
-) -> Optional[ServiceWaiter]:
-    client = session.client(service_name.boto3_name)
-    if not client.waiter_names:
-        return None
-
-    return ServiceWaiter(service_name, list(parse_waiters(client)))
-
-
-def parse_waiters(client: BaseClient) -> Generator[Waiter, None, None]:
-    for waiter_name in client.waiter_names:
-        waiter = client.get_waiter(waiter_name)
-        yield Waiter(
-            name=waiter.name,
-            docstring=clean_doc(getdoc(waiter)),
-            methods=list(parse_methods(get_instance_public_methods(waiter))),
-        )
-
-
-def parse_service_paginator(
-    session: Session, service_name: ServiceName
-) -> Optional[ServicePaginator]:
-    session_loader = session._loader  # pylint: disable=protected-access
-    if service_name.boto3_name not in session_loader.list_available_services(
-        "paginators-1"
-    ):
-        return None
-
-    client = session.client(service_name.boto3_name)
-
-    session_session = session._session  # pylint: disable=protected-access
-    service_paginator_model = session_session.get_paginator_model(
-        service_name.boto3_name
-    )
-    return ServicePaginator(
-        service_name, list(parse_paginators(client, service_paginator_model))
-    )
-
-
-def parse_paginators(
-    client: BaseClient, service_paginator_model: PaginatorModel
-) -> Generator[Paginator, None, None]:
-    paginator_config = (
-        service_paginator_model._paginator_config  # pylint: disable=protected-access
-    )
-    for paginator_name in sorted(paginator_config):
-        paginator = client.get_paginator(xform_name(paginator_name))
-        paginator_model = paginator._model  # pylint: disable=protected-access
-        yield Paginator(
-            name=paginator_model.name,
-            docstring=clean_doc(getdoc(paginator)),
-            methods=list(parse_methods(get_instance_public_methods(paginator))),
-        )
 
 
 def retrieve_sub_resources(
@@ -298,7 +225,7 @@ def retrieve_sub_resources(
         service_waiter_model = None
     for name in json_resource_model["resources"]:
         resource_model = json_resource_model["resources"][name]
-        cls = session.resource_factory.load_from_definition(
+        resource_class = session.resource_factory.load_from_definition(
             resource_name=name,
             single_resource_json_definition=resource_model,
             service_context=ServiceContext(
@@ -308,8 +235,104 @@ def retrieve_sub_resources(
                 service_waiter_model=service_waiter_model,
             ),
         )
-        identifiers = cls.meta.resource_model.identifiers
+        identifiers = resource_class.meta.resource_model.identifiers
         args = []
         for _ in identifiers:
             args.append("foo")
-        yield cls(*args, client=session.client(service_name.boto3_name))
+        yield resource_class(*args, client=get_boto3_client(session, service_name))
+
+
+def parse_service_module(session: Session, service_name: ServiceName) -> ServiceModule:
+    client = parse_client(session, service_name)
+    result = ServiceModule(
+        service_name=service_name,
+        client=client,
+        service_resource=parse_service_resource(session, service_name),
+    )
+
+    for waiter_name in client.boto3_client.waiter_names:
+        waiter = client.boto3_client.get_waiter(waiter_name)
+        result.waiters.append(
+            Waiter(
+                name=waiter.name,
+                boto3_waiter=waiter,
+                docstring=clean_doc(getdoc(waiter)),
+                methods=list(parse_methods(get_instance_public_methods(waiter))),
+            )
+        )
+
+    session_loader = session._loader  # pylint: disable=protected-access
+    if service_name.boto3_name in session_loader.list_available_services(
+        "paginators-1"
+    ):
+        session_client = get_boto3_client(session, service_name)
+
+        botocore_session = session._session  # pylint: disable=protected-access
+        service_paginator_model = botocore_session.get_paginator_model(
+            service_name.boto3_name
+        )
+        paginator_config = (
+            service_paginator_model._paginator_config  # pylint: disable=protected-access
+        )
+        for paginator_name in sorted(paginator_config):
+            paginator = session_client.get_paginator(xform_name(paginator_name))
+            paginator_model = paginator._model  # pylint: disable=protected-access
+            result.paginators.append(
+                Paginator(
+                    name=paginator_model.name,
+                    boto3_paginator=paginator,
+                    docstring=clean_doc(getdoc(paginator)),
+                    methods=list(parse_methods(get_instance_public_methods(paginator))),
+                )
+            )
+
+    return result
+
+
+def parse_fake_service_module(
+    session: Session, service_name: ServiceName
+) -> ServiceModule:
+    result = ServiceModule(service_name=service_name, client=Client())
+
+    boto3_client = get_boto3_client(session, service_name)
+    boto3_resource: Optional[ServiceResource] = None
+    try:
+        boto3_resource = get_boto3_resource(session, service_name)
+    except boto3.exceptions.ResourceNotExistsError:
+        pass
+
+    if boto3_resource:
+        result.service_resource = ServiceResource()
+
+    if boto3_client.waiter_names:
+        result.waiters.append(Waiter("FakeWaiter"))
+
+    session_loader = session._loader  # pylint: disable=protected-access
+    if service_name.boto3_name in session_loader.list_available_services(
+        "paginators-1"
+    ):
+        result.paginators.append(Paginator("FakePaginator"))
+
+    return result
+
+
+def parse_master_module(
+    session: Session, service_names: Iterable[ServiceName]
+) -> MasterModule:
+    result = MasterModule()
+    for service_name in service_names:
+        result.service_modules.append(parse_fake_service_module(session, service_name))
+        result.service_names.append(service_name)
+
+    return result
+
+
+def parse_boto3_module(
+    session: Session, service_names: Iterable[ServiceName]
+) -> Boto3Module:
+    result = Boto3Module()
+    for service_name in service_names:
+        result.service_modules.append(parse_fake_service_module(session, service_name))
+        result.service_names.append(service_name)
+
+    return result

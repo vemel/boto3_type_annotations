@@ -16,7 +16,7 @@ setup(
     packages=find_packages(),
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
-    package_data={"mypy_boto3_builder": ["assets/*.template", "templates/**/*.jinja2"]},
+    package_data={"mypy_boto3_builder": ["templates/**/*.jinja2"]},
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
     description="Builder for mypy-boto3.",
@@ -40,11 +40,5 @@ setup(
     entry_points={
         "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
     },
-    install_requires=[
-        "black==19.10b0",
-        "mypy>=0.740",
-        "docstring-parser==0.3",
-        "boto3",
-        "jinja2",
-    ],
+    install_requires=["black==19.10b0", "mypy>=0.740", "boto3", "jinja2"],
 )

@@ -1,0 +1,6 @@
+{% for import_record in import_records|sort -%}
+    {% if not import_record.is_builtins() -%}
+        {{ import_record.render() -}}
+        {{ "\n" -}}
+    {% endif -%}
+{% endfor -%}

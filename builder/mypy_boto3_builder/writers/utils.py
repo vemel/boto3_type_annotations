@@ -1,21 +1,25 @@
 from pathlib import Path
 from typing import Any
 
-from jinja2 import Environment, FileSystemLoader
+import jinja2
 
 from mypy_boto3_builder.nice_path import NicePath
 from mypy_boto3_builder.utils import black_reformat
 from mypy_boto3_builder.logger import get_logger
-from mypy_boto3_builder.constants import TEMPLATES_PATH, ASSETS_PATH
+from mypy_boto3_builder.constants import (
+    TEMPLATES_PATH,
+    MODULE_NAME,
+    PYPI_NAME,
+    BOTO3_STUBS_NAME,
+)
+from mypy_boto3_builder.version import __version__ as version
 
 
 logger = get_logger()
-
-
-def write_asset(output_path: Path, template_name: str, **kwargs: str) -> None:
-    template_path = ASSETS_PATH / template_name
-    logger.debug(f"Rendering {NicePath(template_path)} to {NicePath(output_path)}")
-    output_path.write_text(template_path.read_text().format(**kwargs))
+jinja2_env = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(TEMPLATES_PATH.as_posix()),
+    undefined=jinja2.StrictUndefined,
+)
 
 
 def format_path(path: Path) -> None:
@@ -30,9 +34,21 @@ def format_path(path: Path) -> None:
 def render_jinja2_template(
     output_path: Path, template_path: Path, **kwargs: Any
 ) -> None:
-    env = Environment(loader=FileSystemLoader(TEMPLATES_PATH.as_posix()))
-    template = env.get_template(template_path.as_posix())
     logger.debug(
         f"Rendering {NicePath(TEMPLATES_PATH / template_path)} to {NicePath(output_path)}"
     )
-    output_path.write_text(template.render(**kwargs))
+
+    output_path.parent.parent.mkdir(exist_ok=True)
+    output_path.parent.mkdir(exist_ok=True)
+    template = jinja2_env.get_template(template_path.as_posix())
+    output_path.write_text(
+        template.render(
+            version=version,
+            long_description="",
+            master_pypi_name=PYPI_NAME,
+            master_module_name=MODULE_NAME,
+            boto3_stubs_name=BOTO3_STUBS_NAME,
+            indent=0,
+            **kwargs,
+        )
+    )

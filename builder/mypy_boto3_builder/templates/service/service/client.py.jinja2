@@ -1,0 +1,12 @@
+"Main interface for {{ module.service_name.boto3_name }} Client"
+from __future__ import annotations
+
+{% with import_records=module.client.get_required_import_records() -%}
+    {% include "common/imports.py.jinja2" with context -%}
+{% endwith -%}
+
+{{ "\n\n" -}}
+
+{% with class=module.client -%}
+    {% include "common/class.py.jinja2" with context -%}
+{% endwith -%}

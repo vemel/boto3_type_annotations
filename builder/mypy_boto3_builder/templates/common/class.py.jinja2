@@ -1,0 +1,12 @@
+class {{ class.name }}{% if class.bases %}({% for base in class.bases %}{{ base.render() }}{% endfor %}){% endif %}:
+{% filter indent(4, True) -%}
+{% for attribute in class.attributes -%}
+    {{ attribute.render() -}}
+    {{ "\n" -}}
+{% endfor -%}
+{{ "\n" if class.attributes else "" -}}
+{% for method in class.methods -%}
+    {% include "common/method.py.jinja2" with context -%}
+    {{ "\n\n" if not loop.last else "" -}}
+{% endfor -%}
+{% endfilter -%}

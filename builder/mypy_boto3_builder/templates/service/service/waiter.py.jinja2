@@ -1,0 +1,15 @@
+"Main interface for {{ module.service_name.boto3_name }} Waiters"
+from __future__ import annotations
+
+{% with import_records=module.get_waiter_required_import_records() -%}
+    {% include "common/imports.py.jinja2" with context -%}
+{% endwith -%}
+
+{{ "\n\n" -}}
+
+{% for waiter in module.waiters -%}
+    {% with class=waiter -%}
+        {% include "common/class.py.jinja2" with context -%}
+    {% endwith -%}
+    {{ "\n\n\n" if not loop.last else "\n" -}}
+{% endfor -%}

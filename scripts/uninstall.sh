@@ -12,4 +12,6 @@ uninstall_package() {
 }
 export -f uninstall_package
 
-ls -d ${OUTPUT_PATH}/$1* | xargs -I % bash -c 'uninstall_package "%"'
+ls -d ${OUTPUT_PATH}/mypy_boto3_$1_package | xargs -I % bash -c 'uninstall_package "%"'
+ls -d ${OUTPUT_PATH}/master_package | xargs -I % bash -c 'uninstall_package "%"'
+ls -d ${OUTPUT_PATH}/boto3_stubs_package | xargs -I % bash -c 'uninstall_package "%"'

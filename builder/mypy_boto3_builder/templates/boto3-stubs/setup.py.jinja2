@@ -1,21 +1,20 @@
-from pathlib import Path
-
-from setuptools import setup, find_packages
-
-from {module_name}.version import __version__ as version
+from setuptools import setup
 
 
-ROOT_PATH = Path(__file__).absolute().parent
+LONG_DESCRIPTION = """
+{{ long_description }}
+"""
+
 
 setup(
-    name="{name}",
-    version=version,
-    packages=find_packages(),
+    name="{{ module.name }}",
+    version="{{ version }}",
+    packages=["{{ module.package_name }}"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Mypy-friendly boto3 type annotations master module.",
+    description="Boto3 stubs powered by `mypy-boto3`.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -32,10 +31,21 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
-    long_description=(ROOT_PATH / 'README.md').read_text(),
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
-    package_data={{"{module_name}": ["py.typed"]}},
-    extras_require={extras_require},
-    install_requires=["mypy", "boto3", f"boto3-stubs=={{version}}"],
+    package_data={"{{ module.package_name }}": ["py.typed", "__init__.pyi", "session.pyi"]},
+    install_requires=[
+        "{{ master_pypi_name }}[essential]=={{ version }}",
+    ],
+    extras_require={
+        "all": [
+            {% for service_name in module.service_names -%}
+            "{{ service_name.pypi_name }}=={{ version }}",
+            {% endfor -%}
+        ],
+        {% for service_name in module.service_names -%}
+        "{{ service_name.extras_name }}": ["{{ service_name.pypi_name }}=={{ version }}"],
+        {% endfor -%}
+    },
     zip_safe=False,
 )

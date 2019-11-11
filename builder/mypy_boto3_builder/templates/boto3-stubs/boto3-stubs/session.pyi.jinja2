@@ -8,17 +8,25 @@ from boto3.exceptions import ResourceNotExistsError, UnknownAPIVersionError
 from boto3.resources.factory import ResourceFactory
 from botocore.credentials import Credentials
 from botocore.config import Config
-from botocore.paginator import Paginator
 from botocore.waiter import Waiter
-from botocore.loader import Loader
+from botocore.loaders import Loader
 from botocore.model import ServiceModel
+from botocore.client import BaseClient
+from boto3.resources.base import ServiceResource
 
-{% for service_submodule, service_name in items %}
+{% for service_module in module.service_modules -%}
 try:
-    from {{ module_name }}.{{ service_name.import_name }}.{{ service_submodule.import_name }} import {{ service_submodule.class_name }} as {{ service_name.class_prefix }}{{ service_submodule.class_name }}
+    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.client import Client as {{ service_module.service_name.class_prefix }}Client
 except ImportError:
-    {{ service_name.class_prefix }}{{ service_submodule.class_name }} = Any
-{% endfor %}
+    {{ service_module.service_name.class_prefix }}Client = Any
+{% if service_module.service_resource -%}
+try:
+    from {{ master_module_name }}.{{ service_module.service_name.import_name }}.service_resource import ServiceResource as {{ service_module.service_name.class_prefix }}ServiceResource
+except ImportError:
+    {{ service_module.service_name.class_prefix }}ServiceResource = Any
+{% endif %}
+{% endfor -%}
+
 
 class Session(object):
     def __init__(
@@ -56,14 +64,12 @@ class Session(object):
     def get_credentials(self) -> Credentials: ...
     def _register_default_handlers(self) -> None: ...
 
-    {% for service_submodule in service_submodules %}
-    {% for service_name in service_names %}
-    {% if (service_submodule, service_name) in items %}
+    {% for service_module in module.service_modules -%}
     @overload
     # pylint: disable=arguments-differ
-    def {{ service_submodule.boto3_function_name }}(
+    def client(
         self,
-        service_name: Literal['{{ service_name.boto3_name }}'],
+        service_name: Literal['{{ service_module.service_name.boto3_name }}'],
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -73,14 +79,16 @@ class Session(object):
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None
-    ) -> {{ service_name.class_prefix }}{{ service_submodule.class_name }}: ...
-    {% endif %}
-    {% endfor %}
+    ) -> {{ service_module.service_name.class_prefix }}Client: ...
+    {% endfor -%}
+
+    {% for service_module in module.service_modules -%}
+    {% if service_module.service_resource -%}
     @overload
     # pylint: disable=arguments-differ
-    def {{ service_submodule.boto3_function_name }}(
+    def resource(
         self,
-        service_name: str,
+        service_name: Literal['{{ service_module.service_name.boto3_name }}'],
         region_name: str = None,
         api_version: str = None,
         use_ssl: bool = None,
@@ -90,5 +98,6 @@ class Session(object):
         aws_secret_access_key: str = None,
         aws_session_token: str = None,
         config: Config = None
-    ) -> {{ service_submodule.class_name }}: ...
-    {% endfor %}
+    ) -> {{ service_module.service_name.class_prefix }}ServiceResource: ...
+    {% endif -%}
+    {% endfor -%}

@@ -35,6 +35,9 @@ def get_cli_parser() -> argparse.ArgumentParser:
         "--skip-services", action="store_true", help="Whether to skip service modules"
     )
     parser.add_argument(
+        "--skip-stubs", action="store_true", help="Whether to skip boto3 stubs"
+    )
+    parser.add_argument(
         "output_path", metavar="OUTPUT_PATH", help="Output path", type=get_absolute_path
     )
     parser.add_argument(

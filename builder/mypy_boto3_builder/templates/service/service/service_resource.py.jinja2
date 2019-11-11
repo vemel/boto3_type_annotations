@@ -1,0 +1,30 @@
+"Main interface for {{ module.service_name.boto3_name }} ServiceResource"
+from __future__ import annotations
+
+{% with import_records=module.service_resource.get_required_import_records() -%}
+    {% include "common/imports.py.jinja2" with context -%}
+{% endwith -%}
+
+{{ "\n\n" -}}
+
+{% with class=module.service_resource -%}
+    {% include "common/class.py.jinja2" with context -%}
+{% endwith -%}
+
+{{ "\n\n" -}}
+
+{% for sub_resource in module.service_resource.sub_resources -%}
+    {% with class=sub_resource -%}
+        {% include "common/class.py.jinja2" with context -%}
+    {% endwith -%}
+    {{ "\n\n\n" if not loop.last else "\n" -}}
+{% endfor -%}
+
+{{ "\n\n" if module.service_resource.sub_resources else "" -}}
+
+{% for collection in module.service_resource.get_collections() -%}
+    {% with class=collection -%}
+        {% include "common/class.py.jinja2" with context -%}
+    {% endwith -%}
+    {{ "\n\n\n" if not loop.last else "\n" -}}
+{% endfor -%}
