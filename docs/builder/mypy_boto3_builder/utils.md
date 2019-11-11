@@ -8,7 +8,7 @@
 
 ## black_reformat
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils.py#L58)
 
 ```python
 def black_reformat(source_path: Path) -> bool:
@@ -16,7 +16,7 @@ def black_reformat(source_path: Path) -> bool:
 
 ## clean_doc
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils.py#L7)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils.py#L9)
 
 ```python
 def clean_doc(doc: Optional[str]) -> str:

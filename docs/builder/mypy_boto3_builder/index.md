@@ -11,6 +11,7 @@
         - [Import Helpers](import_helpers/index.md#import-helpers)
         - [Logger](logger.md#logger)
         - [Main](main.md#main)
+        - [Named Type Map](named_type_map.md#named-type-map)
         - [NicePath](nice_path.md#nicepath)
         - [Parsers](parsers.md#parsers)
         - [Response Parser](response_parser.md#response-parser)

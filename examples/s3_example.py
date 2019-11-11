@@ -18,7 +18,7 @@ def s3_resource_example() -> None:
     # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
     bucket.upload_file(Filename="my.txt", key="my-txt")
 
-    # TODO: add TypedDict support to check key names
+    # (mypy) error: Extra key 'key' for TypedDict "S3CopySource"
     bucket.copy({"Bucket": "bucket", "key": "my-txt"}, "new-my-txt")
 
 

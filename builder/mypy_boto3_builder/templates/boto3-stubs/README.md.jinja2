@@ -78,8 +78,8 @@ There is also a package `mypy-boto3-builder` that builds interface files from `b
 ## What's next
 
 - Add `TypedDict` types for arguments and return types to check keys and values
-- Allow installation of sub-modules
-- Always include docs and support them in generated documentation
+- Completely annotate `boto3` module
+- Parse `Response syntax` statements in `boto3` docs
 
 ## Thank you
 
