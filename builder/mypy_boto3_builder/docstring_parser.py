@@ -78,6 +78,8 @@ class DocstringParser:
         argspec = inspect.getfullargspec(func)
         arguments: List[Argument] = []
         for argument_name in argspec.args:
+            if argument_name == "factory_self":
+                argument_name = "self"
             arguments.append(Argument(argument_name))
         if argspec.defaults:
             for index, default_value in enumerate(argspec.defaults):
