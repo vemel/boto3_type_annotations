@@ -21,6 +21,7 @@ def clean_doc(doc: Optional[str]) -> str:
 
         if len(line) <= LINE_LENGTH:
             result.append(line)
+            continue
 
         while len(line) > LINE_LENGTH:
             indent = " " * (len(line) - len(line.lstrip()))
@@ -51,6 +52,7 @@ def clean_doc(doc: Optional[str]) -> str:
 
             result.append(f"{indent}{line}")
             break
+        result.append(line)
 
     return "\n".join(result)
 
