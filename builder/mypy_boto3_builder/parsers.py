@@ -28,7 +28,7 @@ from mypy_boto3_builder.structures import (
 )
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.service_name import ServiceName
-from mypy_boto3_builder.utils import clean_doc
+from mypy_boto3_builder.utils import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.docstring_parser import DocstringParser
@@ -75,7 +75,7 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
         service_name=service_name,
         boto3_client=client,
         docstring=clean_doc(getdoc(client)),
-        methods=list(parse_methods(get_instance_public_methods(client))),
+        methods=parse_methods("Client", get_instance_public_methods(client)),
     )
 
 
@@ -83,10 +83,9 @@ def parse_collections(
     resource: Boto3ServiceResource,
 ) -> Generator[Collection, None, None]:
     for collection in resource.meta.resource_model.collections:
-        methods = list(
-            parse_methods(
-                get_instance_public_methods(getattr(resource, collection.name))
-            )
+        methods = parse_methods(
+            collection.name,
+            get_instance_public_methods(getattr(resource, collection.name)),
         )
         for method in methods:
             method.decorators.append(TypeAnnotation(classmethod))
@@ -109,32 +108,36 @@ def parse_identifiers(
         yield Attribute(identifier.name, type=TypeAnnotation(str))
 
 
-def parse_methods(public_methods: Dict[str, Any]) -> Generator[Method, None, None]:
-    docstring_parser = DocstringParser()
+def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Method]:
+    result: List[Method] = []
     for name, method in public_methods.items():
+        docstring_parser = DocstringParser(f"{class_name}{get_class_prefix(name)}")
         doc = getdoc(method)
         arguments = docstring_parser.get_function_arguments(method)
-        return_type = DocstringParser.NONE_ANNOTATION
+        return_type = docstring_parser.NONE_ANNOTATION
         if doc:
-            docstring_parser.enrich_arguments(method, doc, arguments)
-            return_type = DocstringParser.get_return_type(doc)
+            docstring_parser.enrich_arguments(doc, arguments)
+            return_type = docstring_parser.get_return_type(doc)
         else:
             docless_arguments = docstring_parser.get_docless_method_arguments(name)
             if docless_arguments:
                 arguments = docless_arguments
 
-        yield Method(
-            name=name,
-            arguments=arguments,
-            docstring=clean_doc(doc),
-            return_type=return_type,
+        result.append(
+            Method(
+                name=name,
+                arguments=arguments,
+                docstring=clean_doc(doc),
+                return_type=return_type,
+            )
         )
+    return result
 
 
 def parse_resource(resource: Boto3ServiceResource) -> Resource:
     name = resource.__class__.__name__.split(".", 1)[-1]
 
-    methods = list(parse_methods(get_resource_public_actions(resource.__class__)))
+    methods = parse_methods(name, get_resource_public_actions(resource.__class__))
 
     attributes: List[Attribute] = []
     for attribute in parse_attributes(resource):
@@ -161,7 +164,9 @@ def parse_service_resource(
     except boto3.exceptions.ResourceNotExistsError:
         return None
 
-    methods = list(parse_methods(get_instance_public_methods(service_resource)))
+    methods = parse_methods(
+        "ServiceResource", get_instance_public_methods(service_resource)
+    )
 
     attributes: List[Attribute] = []
     for attribute in parse_attributes(service_resource):
@@ -235,7 +240,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 name=waiter.name,
                 boto3_waiter=waiter,
                 docstring=clean_doc(getdoc(waiter)),
-                methods=list(parse_methods(get_instance_public_methods(waiter))),
+                methods=parse_methods(waiter_name, get_instance_public_methods(waiter)),
             )
         )
 
@@ -260,7 +265,9 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                     name=paginator_model.name,
                     boto3_paginator=paginator,
                     docstring=clean_doc(getdoc(paginator)),
-                    methods=list(parse_methods(get_instance_public_methods(paginator))),
+                    methods=parse_methods(
+                        paginator_name, get_instance_public_methods(paginator)
+                    ),
                 )
             )
 

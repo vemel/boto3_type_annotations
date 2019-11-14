@@ -61,3 +61,7 @@ def black_reformat(source_path: Path) -> bool:
     return black.format_file_in_place(
         source_path, fast=False, mode=black.FileMode(), write_back=black.WriteBack.YES,
     )
+
+
+def get_class_prefix(func_name: str) -> str:
+    return "".join([i.capitalize() for i in func_name.split("_")])
