@@ -4,27 +4,29 @@
     {{ ' = TypedDict("' -}}
     {{ '_Required' -}}
     {{ typed_dict.name -}}
-    {{ '", ' -}}
+    {{ '", {' -}}
     {% for child in typed_dict.get_required() -%}
+        {{ '"' -}}
         {{ child.name -}}
-        {{ '=' -}}
+        {{ '": ' -}}
         {{ child.type_annotation -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
-    {{ ")\n" -}}
+    {{ "})\n" -}}
     {{ '_Optional' -}}
     {{ typed_dict.name -}}
     {{ ' = TypedDict("' -}}
     {{ '_Optional' -}}
     {{ typed_dict.name -}}
-    {{ '", ' -}}
+    {{ '", {' -}}
     {% for child in typed_dict.get_optional() -%}
+        {{ '"' -}}
         {{ child.name -}}
-        {{ '=' -}}
+        {{ '": ' -}}
         {{ child.type_annotation -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
-    {{ ", total=False)\n" -}}
+    {{ "}, total=False)\n" -}}
 
     {{ 'class ' -}}
     {{ typed_dict.name -}}
@@ -52,13 +54,15 @@
     {{ ' = TypedDict("' -}}
     {{ '_' -}}
     {{ typed_dict.name -}}
-    {{ '", ' -}}
+    {{ '", {' -}}
     {% for child in typed_dict.children -%}
+        {{ '"' -}}
         {{ child.name -}}
-        {{ '=' -}}
+        {{ '": ' -}}
         {{ child.type_annotation -}}
         {{ ", " if not loop.last else "" -}}
     {% endfor -%}
+    {{ "}" -}}
     {% if typed_dict.has_optional() -%}
         {{ ", total=False" -}}
     {% endif -%}

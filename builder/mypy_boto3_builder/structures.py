@@ -244,10 +244,11 @@ class ServiceModule:
     typed_dicts: List[TypeTypedDict] = field(default_factory=lambda: [])
 
     def extract_typed_dicts(
-        self, type_annotations: Iterable[FakeAnnotation]
+        self,
+        type_annotations: Iterable[FakeAnnotation],
+        added: Dict[str, TypeTypedDict],
     ) -> List[TypeTypedDict]:
         result: List[TypeTypedDict] = []
-        added: Dict[str, TypeTypedDict] = {}
         for type_annotation in type_annotations:
             if not isinstance(type_annotation, TypeTypedDict):
                 continue
@@ -261,6 +262,9 @@ class ServiceModule:
                 continue
 
             added[type_annotation.name] = type_annotation
+            result.extend(
+                self.extract_typed_dicts(type_annotation.get_children_types(), added)
+            )
             result.append(type_annotation)
         return result
 
@@ -285,9 +289,13 @@ class ServiceModule:
         return result
 
     def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:
-        return ImportRecordGroup.from_import_records(
-            self.client.get_required_import_records()
-        )
+        class_import_records = self.client.get_required_import_records()
+        import_records: Set[ImportRecord] = set()
+        for import_record in class_import_records:
+            import_records.add(
+                import_record.get_external(self.service_name.module_name)
+            )
+        return ImportRecordGroup.from_import_records(import_records)
 
     def get_service_resource_required_import_record_groups(
         self,
@@ -295,35 +303,45 @@ class ServiceModule:
         if self.service_resource is None:
             return []
 
-        return ImportRecordGroup.from_import_records(
-            self.service_resource.get_required_import_records()
-        )
+        class_import_records = self.service_resource.get_required_import_records()
+        import_records: Set[ImportRecord] = set()
+        for import_record in class_import_records:
+            import_records.add(
+                import_record.get_external(self.service_name.module_name)
+            )
+        return ImportRecordGroup.from_import_records(import_records)
 
     def get_paginator_required_import_record_groups(self) -> List[ImportRecordGroup]:
-        result: Set[ImportRecord] = set()
+        import_records: Set[ImportRecord] = set()
         for paginator in self.paginators:
-            result.update(paginator.get_required_import_records())
+            for import_record in paginator.get_required_import_records():
+                import_records.add(
+                    import_record.get_external(self.service_name.module_name)
+                )
 
-        return ImportRecordGroup.from_import_records(result)
+        return ImportRecordGroup.from_import_records(import_records)
 
     def get_waiter_required_import_record_groups(self) -> List[ImportRecordGroup]:
-        result: Set[ImportRecord] = set()
+        import_records: Set[ImportRecord] = set()
         for waiter in self.waiters:
-            result.update(waiter.get_required_import_records())
+            for import_record in waiter.get_required_import_records():
+                import_records.add(
+                    import_record.get_external(self.service_name.module_name)
+                )
 
-        return ImportRecordGroup.from_import_records(result)
+        return ImportRecordGroup.from_import_records(import_records)
 
     def get_type_defs_required_import_record_groups(self) -> List[ImportRecordGroup]:
-        result: Set[ImportRecord] = set()
-        result.add(ImportRecord(source="typing_extensions", name="TypedDict"))
+        import_records: Set[ImportRecord] = set()
+        import_records.add(ImportRecord(source="typing_extensions", name="TypedDict"))
         for type_dict in self.typed_dicts:
-            for type_annotation in type_dict.get_types():
+            for type_annotation in type_dict.get_children_types():
                 import_record = type_annotation.get_import_record()
                 if import_record.is_type_defs():
                     continue
-                result.add(import_record)
+                import_records.add(import_record)
 
-        return ImportRecordGroup.from_import_records(result)
+        return ImportRecordGroup.from_import_records(import_records)
 
 
 @dataclass

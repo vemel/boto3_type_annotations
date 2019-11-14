@@ -4,6 +4,9 @@ from typing import Iterable, Set, List
 
 from mypy_boto3_builder.constants import TYPE_DEFS_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.internal_import_record import (
+    InternalImportRecord,
+)
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
@@ -32,7 +35,7 @@ class TypeTypedDict(FakeAnnotation):
         return self.name
 
     def get_import_record(self) -> ImportRecord:
-        return ImportRecord(source=TYPE_DEFS_NAME, name=self.name)
+        return InternalImportRecord(source=TYPE_DEFS_NAME, name=self.name)
 
     def get_types(self) -> Set[FakeAnnotation]:
         return {self}

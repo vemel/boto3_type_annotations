@@ -33,6 +33,7 @@ def s3_client_example() -> None:
 
     # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
     client.get_object(Bucket="bucket")
+    client.put_bucket_cors("Bucket", {})
 
     # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
     client.get_object(Bucket="bucket", Key=None)

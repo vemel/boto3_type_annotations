@@ -11,6 +11,7 @@ from mypy_boto3_builder.constants import MODULE_NAME, TYPE_DEFS_NAME
 @dataclass
 @total_ordering
 class ImportRecord:
+    _is_internal = False
     type_defs_import_string = ImportString(TYPE_DEFS_NAME)
     builtins_import_string = ImportString("builtins")
     third_party_import_strings = (
@@ -99,3 +100,9 @@ class ImportRecord:
             return True
 
         return False
+
+    def is_internal(self) -> bool:
+        return self._is_internal
+
+    def get_external(self, _module_name: str) -> ImportRecord:
+        return self

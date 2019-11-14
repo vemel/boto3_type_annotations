@@ -38,11 +38,10 @@ class DocstringParser:
         ]
     }
 
-    def __init__(self, prefix: str = "") -> None:
+    def __init__(self) -> None:
         self.logger = get_logger()
-        self.prefix = prefix
 
-    def get_return_type(self, docstring: str) -> FakeAnnotation:
+    def get_return_type(self, docstring: str, prefix: str) -> FakeAnnotation:
         lines = docstring.splitlines()
         return_type: FakeAnnotation = TypeAnnotation(None)
         for line in lines:
@@ -57,7 +56,8 @@ class DocstringParser:
         type_syntax: List[str] = []
         response_syntax_found = False
         for doc_line in lines:
-            line = doc_line.lstrip()
+            doc_line = doc_line.rstrip()
+            line = doc_line.strip()
             if "**Response Syntax**" in line:
                 response_syntax_found = True
             if not response_syntax_found:
@@ -68,7 +68,9 @@ class DocstringParser:
                 type_syntax.append(doc_line)
 
         if type_syntax:
-            return_type = self.parse_any_syntax(name="Response", lines=type_syntax,)
+            return_type = self.parse_any_syntax(
+                name="Response", lines=type_syntax, prefix=prefix
+            )
         return return_type
 
     @staticmethod
@@ -133,11 +135,14 @@ class DocstringParser:
 
         return arguments
 
-    def enrich_arguments(self, docstring: str, arguments: List[Argument]) -> None:
+    def enrich_arguments(
+        self, docstring: str, arguments: List[Argument], prefix: str
+    ) -> None:
         type_syntax: Dict[str, List[str]] = {}
         argument: Optional[Argument] = None
 
         for doc_line in docstring.splitlines():
+            doc_line = doc_line.rstrip()
             line = doc_line.strip()
             if line.startswith(":param "):
                 match = self.RE_PARAM.match(line)
@@ -175,6 +180,7 @@ class DocstringParser:
                 name=argument.name,
                 parent_type=argument.type or TypeSubscript(TypeAnnotation(Dict)),
                 lines=syntax_lines,
+                prefix=prefix,
             )
             argument.type = argument_type
 
@@ -191,12 +197,14 @@ class DocstringParser:
         except KeyError:
             raise ValueError(f"Unknown type: {type_str}")
 
-    def parse_any_syntax(self, name: str, lines: List[str]) -> FakeAnnotation:
+    def parse_any_syntax(
+        self, name: str, lines: List[str], prefix: str
+    ) -> FakeAnnotation:
         lines = IndentTrimmer.trim_lines(lines)
         for index, line in enumerate(lines):
             match = self.RE_SYNTAX_DICT_KEY.match(line)
             if match:
-                return self.parse_typed_dict_syntax(name, lines)
+                return self.parse_typed_dict_syntax(name, lines, prefix)
 
             match = self.RE_SYNTAX_TYPE.match(line)
             if match:
@@ -205,49 +213,49 @@ class DocstringParser:
                 sub_lines = lines[index + 1 :]
                 if sub_lines:
                     type_annotation = self.parse_syntax(
-                        name, type_annotation, sub_lines
+                        name, type_annotation, sub_lines, prefix=prefix,
                     )
                 return type_annotation
 
         return TypeAnnotation(Any)
 
     def parse_syntax(
-        self, name: str, parent_type: FakeAnnotation, lines: List[str]
+        self, name: str, parent_type: FakeAnnotation, lines: List[str], prefix: str
     ) -> FakeAnnotation:
         if parent_type.is_dict():
             parent_type.remove_children()
-            return self.parse_dict_syntax(name, parent_type, lines)
+            return self.parse_dict_syntax(name, parent_type, lines, prefix)
 
         if parent_type.is_list():
             parent_type.remove_children()
-        parent_type.add_child(self.parse_any_syntax(name, lines))
+        parent_type.add_child(self.parse_any_syntax(name, lines, prefix))
         return parent_type
 
     def parse_dict_syntax(
-        self, name: str, parent_type: FakeAnnotation, lines: List[str]
+        self, name: str, parent_type: FakeAnnotation, lines: List[str], prefix: str
     ) -> FakeAnnotation:
         lines = IndentTrimmer.trim_lines(lines)
         for index, line in enumerate(lines):
             match = self.RE_SYNTAX_DICT_KEY.match(line)
             if match:
-                return self.parse_typed_dict_syntax(name, lines)
+                return self.parse_typed_dict_syntax(name, lines, prefix)
 
             match = self.RE_SYNTAX_TYPE.match(line)
             if match:
                 type_str = match.groupdict()["type"]
                 parent_type.add_child(self.parse_type(type_str))
                 sub_lines = lines[index + 1 :]
-                parent_type.add_child(self.parse_any_syntax(name, sub_lines))
+                parent_type.add_child(self.parse_any_syntax(name, sub_lines, prefix))
 
         return parent_type
 
-    def parse_typed_dict_syntax(self, name: str, lines: List[str]) -> TypeTypedDict:
-        result = TypeTypedDict(f"{self.prefix}{name}TypeDef")
+    def parse_typed_dict_syntax(
+        self, name: str, lines: List[str], prefix: str
+    ) -> TypeTypedDict:
+        result = TypeTypedDict(f"{prefix}{name}TypeDef")
         lines = IndentTrimmer.trim_lines(lines)
         line_joined = "\n".join(lines)
-        result.docstring = (
-            f"Type definition for `{self.prefix}` `{name}`\n\n{line_joined}"
-        )
+        result.docstring = f"Type definition for `{prefix}` `{name}`\n\n{line_joined}"
         line_groups: List[Tuple[str, List[str]]] = []
         for line in lines:
             if line.startswith(" "):
@@ -263,31 +271,34 @@ class DocstringParser:
                 attr_required = "REQUIRED" in line or "must" in line
                 attr_type = self.parse_type(attr_type_str)
                 if sub_lines:
-                    attr_type = self.parse_syntax(attr_name, attr_type, sub_lines)
+                    attr_type = self.parse_syntax(
+                        attr_name, attr_type, sub_lines, prefix=f"{prefix}{name}",
+                    )
                 result.add_attribute(attr_name, attr_type, attr_required)
         return result
 
 
-# def main() -> None:
-#     result = DocstringParser().parse_syntax(
-#         "Test",
-#         TypeSubscript(TypeAnnotation(Dict)),
-#         [
-#             "  - **CORSRules** *(list) --* **[REQUIRED]**",
-#             "    - *(dict) --*",
-#             # "      - **AllowedHeaders** *(string) --*",
-#             "      - **AllowedMethods** *(list) --* **[REQUIRED]**",
-#             "        - *(string) --*",
-#             # "      - **AllowedOrigins** *(list) --* **[REQUIRED]**",
-#             # "        - *(string) --*",
-#             # "      - **ExposeHeaders** *(list) --*",
-#             # "        - *(string) --*",
-#             # "      - **MaxAgeSeconds** *(integer) --*",
-#         ],
-#     )
-#     # print(result.render_class())
-#     # print(result.children[0].type_annotation.children[-1].render_class())
+def main() -> None:
+    result = DocstringParser().parse_syntax(
+        "Test",
+        TypeSubscript(TypeAnnotation(Dict)),
+        [
+            "  - **CORSRules** *(list) --* **[REQUIRED]**",
+            "    - *(dict) --*",
+            "      - **AllowedMethods** *(list) --* **[REQUIRED]**",
+            "        - *(dict) --*",
+            "          - **AllowedOrigins** *(list) --* **[REQUIRED]**",
+            "            - *(string) --*",
+            # "      - **ExposeHeaders** *(list) --*",
+            # "        - *(string) --*",
+            # "      - **MaxAgeSeconds** *(integer) --*",
+        ],
+        prefix="My",
+    )
+    print(result)
+    # print(result.render_class())
+    # print(result.children[0].type_annotation.children[-1].render_class())
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

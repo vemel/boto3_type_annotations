@@ -142,15 +142,14 @@ def parse_identifiers(resource: Boto3ServiceResource,) -> List[Attribute]:
 def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Method]:
     result: List[Method] = []
     for name, method in public_methods.items():
-        docstring_parser = DocstringParser(
-            f"{get_class_prefix(class_name)}{get_class_prefix(name)}"
-        )
+        prefix = f"{get_class_prefix(class_name)}{get_class_prefix(name)}"
+        docstring_parser = DocstringParser()
         doc = getdoc(method)
         arguments = docstring_parser.get_function_arguments(method)
         return_type = docstring_parser.NONE_ANNOTATION
         if doc:
-            docstring_parser.enrich_arguments(doc, arguments)
-            return_type = docstring_parser.get_return_type(doc)
+            docstring_parser.enrich_arguments(doc, arguments, prefix)
+            return_type = docstring_parser.get_return_type(doc, prefix)
         else:
             docless_arguments = docstring_parser.get_docless_method_arguments(name)
             if docless_arguments:
@@ -305,7 +304,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 )
             )
 
-    result.typed_dicts = result.extract_typed_dicts(result.get_types())
+    result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
     return result
 
 
