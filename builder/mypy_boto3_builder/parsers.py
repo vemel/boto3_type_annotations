@@ -1,8 +1,11 @@
+"""
+Parsers for boto3 clients and resources.
+"""
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Generator, Any, Optional, Iterable
+from typing import List, Dict, Any, Optional, Iterable
 
-import boto3
+from boto3.exceptions import ResourceNotExistsError
 from boto3.docs.utils import is_resource_action
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
@@ -26,7 +29,6 @@ from mypy_boto3_builder.structures import (
     ServiceModule,
     MasterModule,
 )
-from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
@@ -34,16 +36,36 @@ from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.docstring_parser import DocstringParser
 
 
-logger = get_logger()
-
-
 def get_boto3_client(session: Session, service_name: ServiceName) -> BaseClient:
+    """
+    Get boto3 client from `session`.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- ServiceName instance.
+
+    Returns:
+        Boto3 client.
+    """
     return session.client(service_name.boto3_name)  # type: ignore
 
 
 def get_boto3_resource(
     session: Session, service_name: ServiceName
 ) -> Boto3ServiceResource:
+    """
+    Get boto3 resource from `session`.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- ServiceName instance.
+
+    Returns:
+        Boto3 resource.
+
+    Raises:
+        ResourceNotExistsError -- If service does not have ServiceResource.
+    """
     return session.resource(service_name.boto3_name)  # type: ignore
 
 
@@ -51,22 +73,29 @@ def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
     resource_class_members = inspect.getmembers(resource_class)
     resource_methods = {}
     for name, member in resource_class_members:
-        if not name.startswith("_"):
-            if not name[0].isupper():
-                if is_resource_action(member):
-                    resource_methods[name] = member
+        if name.startswith("_"):
+            continue
+
+        if name[0].isupper():
+            continue
+
+        if is_resource_action(member):
+            resource_methods[name] = member
     return resource_methods
 
 
-def parse_attributes(
-    resource: Boto3ServiceResource,
-) -> Generator[Attribute, None, None]:
+def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
+    result: List[Attribute] = []
     service_model = resource.meta.client.meta.service_model
     if resource.meta.resource_model.shape:
         shape = service_model.shape_for(resource.meta.resource_model.shape)
         attributes = resource.meta.resource_model.get_attributes(shape)
         for name, attribute in attributes.items():
-            yield Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
+            result.append(
+                Attribute(name, DocstringParser.parse_type(attribute[1].type_name))
+            )
+
+    return result
 
 
 def parse_client(session: Session, service_name: ServiceName) -> Client:
@@ -79,9 +108,8 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     )
 
 
-def parse_collections(
-    resource: Boto3ServiceResource,
-) -> Generator[Collection, None, None]:
+def parse_collections(resource: Boto3ServiceResource,) -> List[Collection]:
+    result: List[Collection] = []
     for collection in resource.meta.resource_model.collections:
         methods = parse_methods(
             collection.name,
@@ -89,23 +117,26 @@ def parse_collections(
         )
         for method in methods:
             method.decorators.append(TypeAnnotation(classmethod))
-        yield Collection(
-            name=collection.name,
-            docstring=clean_doc(getdoc(collection)),
-            type=InternalImport(
+        result.append(
+            Collection(
                 name=collection.name,
-                service_name=ServiceName(resource.meta.service_name),
-            ),
-            methods=methods,
+                docstring=clean_doc(getdoc(collection)),
+                type=InternalImport(
+                    name=collection.name,
+                    service_name=ServiceName(resource.meta.service_name),
+                ),
+                methods=methods,
+            )
         )
+    return result
 
 
-def parse_identifiers(
-    resource: Boto3ServiceResource,
-) -> Generator[Attribute, None, None]:
+def parse_identifiers(resource: Boto3ServiceResource,) -> List[Attribute]:
+    result: List[Attribute] = []
     identifiers = resource.meta.resource_model.identifiers
     for identifier in identifiers:
-        yield Attribute(identifier.name, type=TypeAnnotation(str))
+        result.append(Attribute(identifier.name, type=TypeAnnotation(str)))
+    return result
 
 
 def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Method]:
@@ -142,12 +173,10 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
     methods = parse_methods(name, get_resource_public_actions(resource.__class__))
 
     attributes: List[Attribute] = []
-    for attribute in parse_attributes(resource):
-        attributes.append(attribute)
-    for attribute in parse_identifiers(resource):
-        attributes.append(attribute)
+    attributes.extend(parse_attributes(resource))
+    attributes.extend(parse_identifiers(resource))
 
-    collections = list(parse_collections(resource))
+    collections = parse_collections(resource)
 
     return Resource(
         name=name,
@@ -163,7 +192,7 @@ def parse_service_resource(
 ) -> Optional[ServiceResource]:
     try:
         service_resource = get_boto3_resource(session, service_name)
-    except boto3.exceptions.ResourceNotExistsError:
+    except ResourceNotExistsError:
         return None
 
     methods = parse_methods(
@@ -171,15 +200,13 @@ def parse_service_resource(
     )
 
     attributes: List[Attribute] = []
-    for attribute in parse_attributes(service_resource):
-        attributes.append(attribute)
-    for attribute in parse_identifiers(service_resource):
-        attributes.append(attribute)
+    attributes.extend(parse_attributes(service_resource))
+    attributes.extend(parse_identifiers(service_resource))
 
-    collections = list(parse_collections(service_resource))
+    collections = parse_collections(service_resource)
 
-    sub_resources = []
-    for sub_resource in retrieve_sub_resources(session, service_name, service_resource):
+    sub_resources: List[Resource] = []
+    for sub_resource in parse_sub_resources(session, service_name, service_resource):
         sub_resources.append(parse_resource(sub_resource))
 
     return ServiceResource(
@@ -193,9 +220,10 @@ def parse_service_resource(
     )
 
 
-def retrieve_sub_resources(
+def parse_sub_resources(
     session: Session, service_name: ServiceName, resource: Boto3ResourceMeta
-) -> Generator[Boto3ServiceResource, None, None]:
+) -> List[Boto3ServiceResource]:
+    result: List[Boto3ServiceResource] = []
     session_session = session._session  # pylint: disable=protected-access
     loader = session_session.get_component("data_loader")
     assert resource.meta.service_name == service_name.boto3_name
@@ -224,7 +252,11 @@ def retrieve_sub_resources(
         args = []
         for _ in identifiers:
             args.append("foo")
-        yield resource_class(*args, client=get_boto3_client(session, service_name))
+        result.append(
+            resource_class(*args, client=get_boto3_client(session, service_name))
+        )
+
+    return result
 
 
 def parse_service_module(session: Session, service_name: ServiceName) -> ServiceModule:
@@ -286,7 +318,7 @@ def parse_fake_service_module(
     boto3_resource: Optional[ServiceResource] = None
     try:
         boto3_resource = get_boto3_resource(session, service_name)
-    except boto3.exceptions.ResourceNotExistsError:
+    except ResourceNotExistsError:
         pass
 
     if boto3_resource:
