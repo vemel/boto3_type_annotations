@@ -57,3 +57,8 @@ class TypeTypedDict(FakeAnnotation):
 
     def copy(self) -> TypeTypedDict:
         return TypeTypedDict(self.name, list(self.children))
+
+    def is_same(self, other: TypeTypedDict) -> bool:
+        children = [i.render() for i in self.children]
+        other_children = [i.render() for i in other.children]
+        return other_children == children

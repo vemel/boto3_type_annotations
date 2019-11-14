@@ -116,7 +116,7 @@ def parse_methods(public_methods: Dict[str, Any]) -> Generator[Method, None, Non
         arguments = docstring_parser.get_function_arguments(method)
         return_type = DocstringParser.NONE_ANNOTATION
         if doc:
-            docstring_parser.enrich_arguments(doc, arguments)
+            docstring_parser.enrich_arguments(method, doc, arguments)
             return_type = DocstringParser.get_return_type(doc)
         else:
             docless_arguments = docstring_parser.get_docless_method_arguments(name)
@@ -264,7 +264,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 )
             )
 
-    result.extract_type_defs(result.get_types())
+    result.type_defs = result.extract_type_defs(result.get_types())
     return result
 
 

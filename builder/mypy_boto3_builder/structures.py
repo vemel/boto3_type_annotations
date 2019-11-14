@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Set, Optional, Any, Iterable
+from typing import List, Set, Optional, Any, Iterable, Dict
 from typing_extensions import TypedDict
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
@@ -288,18 +288,29 @@ class ServiceModule:
     paginators: List[Paginator] = field(default_factory=lambda: [])
     type_defs: List[ClassRecord] = field(default_factory=lambda: [])
 
-    def extract_type_defs(self, type_annotations: Iterable[FakeAnnotation]) -> None:
-        added_names: Set[str] = set()
+    def extract_type_defs(
+        self, type_annotations: Iterable[FakeAnnotation]
+    ) -> List[ClassRecord]:
+        result: List[ClassRecord] = []
+        added: Dict[str, TypeTypedDict] = {}
         for type_annotation in type_annotations:
-            if (
-                isinstance(type_annotation, TypeTypedDict)
-                and type_annotation.name not in added_names
-            ):
-                added_names.add(type_annotation.name)
-                class_records = ClassRecord.from_typed_dict(type_annotation)
-                self.type_defs.extend(class_records)
-                for class_record in class_records:
-                    self.extract_type_defs(class_record.get_types())
+            if not isinstance(type_annotation, TypeTypedDict):
+                continue
+            if type_annotation.name in added:
+                try:
+                    assert added[type_annotation.name].is_same(type_annotation)
+                except AssertionError:
+                    print(type_annotation.render_class())
+                    print(added[type_annotation.name].render_class())
+                    raise ValueError(type_annotation.name)
+                continue
+
+            added[type_annotation.name] = type_annotation
+            class_records = ClassRecord.from_typed_dict(type_annotation)
+            result.extend(class_records)
+            for class_record in class_records:
+                result.extend(self.extract_type_defs(class_record.get_types()))
+        return result
 
     def get_types(self) -> Set[FakeAnnotation]:
         types: Set[FakeAnnotation] = set()

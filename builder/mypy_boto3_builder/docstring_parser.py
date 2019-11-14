@@ -115,7 +115,9 @@ class DocstringParser:
 
         return arguments
 
-    def enrich_arguments(self, docstring: str, arguments: List[Argument]) -> None:
+    def enrich_arguments(
+        self, func: Any, docstring: str, arguments: List[Argument]
+    ) -> None:
         type_syntax: Dict[str, List[str]] = {}
         argument: Optional[Argument] = None
 
@@ -154,7 +156,7 @@ class DocstringParser:
                 continue
             argument = self._find_argument_or_append(argument_name, arguments)
             argument_type = self.parse_syntax(
-                argument.name,
+                f"{func.__name__}{argument.name}",
                 argument.type or TypeSubscript(TypeAnnotation(Dict)),
                 syntax_lines,
             )
