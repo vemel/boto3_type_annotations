@@ -64,4 +64,5 @@ def black_reformat(source_path: Path) -> bool:
 
 
 def get_class_prefix(func_name: str) -> str:
-    return "".join([i.capitalize() for i in func_name.split("_")])
+    parts = [f"{i[:1].upper()}{i[1:]}" for i in func_name.split("_") if i]
+    return "".join(parts)

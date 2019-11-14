@@ -111,7 +111,9 @@ def parse_identifiers(
 def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Method]:
     result: List[Method] = []
     for name, method in public_methods.items():
-        docstring_parser = DocstringParser(f"{class_name}{get_class_prefix(name)}")
+        docstring_parser = DocstringParser(
+            f"{get_class_prefix(class_name)}{get_class_prefix(name)}"
+        )
         doc = getdoc(method)
         arguments = docstring_parser.get_function_arguments(method)
         return_type = docstring_parser.NONE_ANNOTATION
