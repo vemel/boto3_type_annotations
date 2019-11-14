@@ -18,9 +18,15 @@ class TypedDictAttribute:
 
 
 class TypeTypedDict(FakeAnnotation):
-    def __init__(self, name: str, children: Iterable[TypedDictAttribute] = ()) -> None:
+    def __init__(
+        self,
+        name: str,
+        children: Iterable[TypedDictAttribute] = (),
+        docstring: str = "",
+    ) -> None:
         self.name = name
         self.children = list(children)
+        self.docstring = docstring
 
     def render(self) -> str:
         return f"{TYPE_DEFS_NAME}.{self.name}"
@@ -56,7 +62,7 @@ class TypeTypedDict(FakeAnnotation):
         return False
 
     def copy(self) -> TypeTypedDict:
-        return TypeTypedDict(self.name, list(self.children))
+        return TypeTypedDict(self.name, list(self.children), docstring=self.docstring)
 
     def is_same(self, other: TypeTypedDict) -> bool:
         children = [i.render() for i in self.children]

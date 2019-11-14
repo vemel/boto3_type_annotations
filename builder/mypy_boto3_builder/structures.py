@@ -85,7 +85,7 @@ class ClassRecord:
             class_record = ClassRecord(
                 name=f"_{typed_dict.name}",
                 bases=[TypeAnnotation(TypedDict)],
-                docstring=f"Type definition for {typed_dict.name}",
+                docstring=typed_dict.docstring,
             )
             for attribute in typed_dict.children:
                 if attribute.required:
@@ -99,7 +99,7 @@ class ClassRecord:
                     TypeAnnotation(f"_{typed_dict.name}"),
                     TypeAnnotation(f"total=False"),
                 ],
-                docstring=f"Optional type definition for {typed_dict.name}",
+                docstring=typed_dict.docstring,
             )
             for attribute in typed_dict.children:
                 if not attribute.required:
@@ -112,7 +112,7 @@ class ClassRecord:
         class_record = ClassRecord(
             name=typed_dict.name,
             bases=[TypeAnnotation(TypedDict),],
-            docstring=f"Type definition for {typed_dict.name}",
+            docstring=typed_dict.docstring,
         )
         for attribute in typed_dict.children:
             class_record.attributes.append(

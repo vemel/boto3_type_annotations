@@ -244,6 +244,10 @@ class DocstringParser:
     def parse_typed_dict_syntax(self, name: str, lines: List[str]) -> TypeTypedDict:
         result = TypeTypedDict(f"{self.prefix}{name}TypeDef")
         lines = IndentTrimmer.trim_lines(lines)
+        line_joined = "\n".join(lines)
+        result.docstring = (
+            f"Type definition for `{self.prefix}` `{name}`\n\n{line_joined}"
+        )
         line_groups: List[Tuple[str, List[str]]] = []
         for line in lines:
             if line.startswith(" "):
