@@ -12,6 +12,7 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.constants import MODULE_NAME, BOTO3_STUBS_NAME, PYPI_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
@@ -332,21 +333,36 @@ class ServiceModule:
         result.sort()
         return result
 
-    def get_paginator_required_import_records(self) -> Set[ImportRecord]:
+    def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:
+        return ImportRecordGroup.from_import_records(
+            self.client.get_required_import_records()
+        )
+
+    def get_service_resource_required_import_record_groups(
+        self,
+    ) -> List[ImportRecordGroup]:
+        if self.service_resource is None:
+            return []
+
+        return ImportRecordGroup.from_import_records(
+            self.service_resource.get_required_import_records()
+        )
+
+    def get_paginator_required_import_record_groups(self) -> List[ImportRecordGroup]:
         result: Set[ImportRecord] = set()
         for paginator in self.paginators:
             result.update(paginator.get_required_import_records())
 
-        return result
+        return ImportRecordGroup.from_import_records(result)
 
-    def get_waiter_required_import_records(self) -> Set[ImportRecord]:
+    def get_waiter_required_import_record_groups(self) -> List[ImportRecordGroup]:
         result: Set[ImportRecord] = set()
         for waiter in self.waiters:
             result.update(waiter.get_required_import_records())
 
-        return result
+        return ImportRecordGroup.from_import_records(result)
 
-    def get_type_defs_required_import_records(self) -> Set[ImportRecord]:
+    def get_type_defs_required_import_record_groups(self) -> List[ImportRecordGroup]:
         result: Set[ImportRecord] = set()
         for type_def in self.type_defs:
             for import_record in type_def.get_required_import_records():
@@ -354,7 +370,7 @@ class ServiceModule:
                     continue
                 result.add(import_record)
 
-        return result
+        return ImportRecordGroup.from_import_records(result)
 
 
 @dataclass

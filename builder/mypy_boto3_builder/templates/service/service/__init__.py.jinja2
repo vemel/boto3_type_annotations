@@ -1,7 +1,8 @@
 "Main interface for {{ module.service_name.boto3_name }} service"
 
 {% for import_record in module.get_import_records() -%}
-{{ import_record.render() }}
+    {% include "common/import_record.py.jinja2" with context -%}
+    {{ '\n' -}}
 {% endfor -%}
 
 __all__ = (

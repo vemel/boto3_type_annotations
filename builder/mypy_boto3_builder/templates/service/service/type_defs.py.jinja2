@@ -1,8 +1,8 @@
 "Main interface for {{ module.service_name.boto3_name }} type defs"
 from __future__ import annotations
 
-{% with import_records=module.get_type_defs_required_import_records() -%}
-    {% include "common/imports.py.jinja2" with context -%}
+{% with import_record_groups=module.get_type_defs_required_import_record_groups() -%}
+    {% include "common/import_groups.py.jinja2" with context -%}
 {% endwith -%}
 
 {{ "\n\n" -}}

@@ -72,9 +72,6 @@ class ImportRecord:
 
         return self.source > other.source
 
-    def render(self) -> str:
-        return str(self)
-
     def get_local_name(self) -> str:
         return self.alias or self.name or self.source.render()
 
