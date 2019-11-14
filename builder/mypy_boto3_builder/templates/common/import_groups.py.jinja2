@@ -15,10 +15,10 @@
                     {% else -%}
                         {{ import_record.name -}}
                     {% endif -%}
-                    {{ "," if not loop.last else "" }}
+                    {{ ",\n" if not loop.last else "\n" -}}
                 {% endfor -%}
             {% endfilter -%}
-            {{ '\n)' -}}
+            {{ ')' -}}
         {% endif -%}
         {{ "\n" -}}
     {% endif -%}

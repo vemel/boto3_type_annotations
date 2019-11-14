@@ -22,7 +22,7 @@ jobs:
           cd ..
       - name: Build
         run: |
-          scripts/build.sh
+          scripts/build.sh -f
       - name: Smoke test
         run: |
           mypy mypy_boto3_output/master_package
