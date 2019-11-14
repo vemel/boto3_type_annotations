@@ -23,3 +23,19 @@ class FakeAnnotation:
 
     def get_types(self) -> Set[FakeAnnotation]:
         return {self}
+
+    def remove_children(self) -> None:
+        pass
+
+    def add_child(self, child: FakeAnnotation) -> None:
+        pass
+
+    def is_dict(self) -> bool:
+        return False
+
+    def is_list(self) -> bool:
+        return False
+
+    @abstractmethod
+    def copy(self) -> FakeAnnotation:
+        pass

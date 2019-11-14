@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing_extensions import Literal
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -16,3 +18,6 @@ class TypeLiteral(FakeAnnotation):
 
     def get_import_record(self) -> ImportRecord:
         return self.parent.get_import_record()
+
+    def copy(self) -> TypeLiteral:
+        return TypeLiteral(*self.children)

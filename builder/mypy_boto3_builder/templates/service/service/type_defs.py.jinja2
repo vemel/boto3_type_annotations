@@ -1,0 +1,15 @@
+"Main interface for {{ module.service_name.boto3_name }} type defs"
+from __future__ import annotations
+
+{% with import_records=module.get_type_defs_required_import_records() -%}
+    {% include "common/imports.py.jinja2" with context -%}
+{% endwith -%}
+
+{{ "\n\n" -}}
+
+{% for type_def in module.type_defs -%}
+    {% with class=type_def -%}
+        {% include "common/class.py.jinja2" with context -%}
+    {% endwith -%}
+    {{ "\n\n\n" if not loop.last else "\n" -}}
+{% endfor -%}

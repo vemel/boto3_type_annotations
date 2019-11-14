@@ -23,3 +23,6 @@ BOTO3_STUBS_NAME = "boto3-stubs"
 
 # Max line length for boto3 docs
 LINE_LENGTH = 100
+
+# type defs module name
+TYPE_DEFS_NAME = "type_defs"

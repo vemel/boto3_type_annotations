@@ -110,15 +110,16 @@ def parse_identifiers(
 
 
 def parse_methods(public_methods: Dict[str, Any]) -> Generator[Method, None, None]:
+    docstring_parser = DocstringParser()
     for name, method in public_methods.items():
         doc = getdoc(method)
-        arguments = DocstringParser.get_function_arguments(method)
+        arguments = docstring_parser.get_function_arguments(method)
         return_type = DocstringParser.NONE_ANNOTATION
         if doc:
-            DocstringParser.enrich_arguments(doc, arguments)
+            docstring_parser.enrich_arguments(doc, arguments)
             return_type = DocstringParser.get_return_type(doc)
         else:
-            docless_arguments = DocstringParser().get_docless_method_arguments(name)
+            docless_arguments = docstring_parser.get_docless_method_arguments(name)
             if docless_arguments:
                 arguments = docless_arguments
 
@@ -263,6 +264,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 )
             )
 
+    result.extract_type_defs(result.get_types())
     return result
 
 

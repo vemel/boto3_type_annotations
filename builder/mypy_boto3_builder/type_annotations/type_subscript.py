@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Set, Iterable
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -9,7 +11,7 @@ class TypeSubscript(FakeAnnotation):
         self, parent: FakeAnnotation, children: Iterable[FakeAnnotation] = (),
     ) -> None:
         self.parent = parent
-        self.children = children
+        self.children = list(children)
 
     def __hash__(self) -> int:
         return hash(f"{self.parent}.{self.children}")
@@ -29,3 +31,18 @@ class TypeSubscript(FakeAnnotation):
         for child in self.children:
             result.update(child.get_types())
         return result
+
+    def remove_children(self) -> None:
+        self.children.clear()
+
+    def add_child(self, child: FakeAnnotation) -> None:
+        self.children.append(child)
+
+    def is_dict(self) -> bool:
+        return self.parent.is_dict()
+
+    def is_list(self) -> bool:
+        return self.parent.is_list()
+
+    def copy(self) -> TypeSubscript:
+        return TypeSubscript(self.parent, list(self.children))

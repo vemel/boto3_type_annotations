@@ -50,3 +50,9 @@ def write_service_module(service_module: ServiceModule, output_path: Path) -> No
             Path("service") / "service" / f"waiter.py.jinja2",
             module=service_module,
         )
+    if service_module.type_defs:
+        render_jinja2_template(
+            module_path / "type_defs.py",
+            Path("service") / "service" / f"type_defs.py.jinja2",
+            module=service_module,
+        )

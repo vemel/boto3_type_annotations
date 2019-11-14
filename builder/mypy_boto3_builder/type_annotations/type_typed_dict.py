@@ -1,48 +1,59 @@
-from typing import Iterable, List
-from typing_extensions import TypedDict
+from __future__ import annotations
 
+from typing import Iterable, Set
+
+from mypy_boto3_builder.constants import TYPE_DEFS_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
-from mypy_boto3_builder.structures import ClassRecord, Attribute
+
+
+class TypedDictAttribute:
+    def __init__(self, name: str, type_annotation: FakeAnnotation, required: bool):
+        self.name = name
+        self.type_annotation = type_annotation
+        self.required = required
+
+    def render(self) -> str:
+        return f"{self.name}: {self.type_annotation.render()}"
 
 
 class TypeTypedDict(FakeAnnotation):
-    def __init__(
-        self,
-        name: str,
-        attributes: Iterable[Attribute],
-        optional: Iterable[Attribute] = (),
-    ) -> None:
+    def __init__(self, name: str, children: Iterable[TypedDictAttribute] = ()) -> None:
         self.name = name
-        self.attributes = list(attributes)
-        self.optional = list(optional)
+        self.children = list(children)
 
     def render(self) -> str:
-        return self.name
+        return f"{TYPE_DEFS_NAME}.{self.name}"
 
     def get_import_record(self) -> ImportRecord:
-        return ImportRecord(source="typing_extensions", name="TypedDict")
+        return ImportRecord(source=TYPE_DEFS_NAME)
 
-    def get_classes(self) -> List[ClassRecord]:
-        if not self.optional:
-            return [
-                ClassRecord(
-                    self.name,
-                    bases=[TypeAnnotation(TypedDict)],
-                    attributes=self.attributes,
-                )
-            ]
+    def get_types(self) -> Set[FakeAnnotation]:
+        return {self}
 
-        return [
-            ClassRecord(
-                f"_{self.name}",
-                bases=[TypeAnnotation(TypedDict)],
-                attributes=self.attributes,
-            ),
-            ClassRecord(
-                self.name,
-                bases=[TypeAnnotation(f"_{self.name}")],
-                attributes=self.optional,
-            ),
-        ]
+    def add_attribute(
+        self, name: str, type_annotation: FakeAnnotation, required: bool
+    ) -> None:
+        self.children.append(TypedDictAttribute(name, type_annotation, required))
+
+    def is_dict(self) -> bool:
+        return True
+
+    def render_class(self) -> str:
+        children = "\n".join([f"     {i.render()}" for i in self.children])
+        return f"class {self.name}:\n{children}"
+
+    def has_optional(self) -> bool:
+        for child in self.children:
+            if not child.required:
+                return True
+        return False
+
+    def has_required(self) -> bool:
+        for child in self.children:
+            if child.required:
+                return True
+        return False
+
+    def copy(self) -> TypeTypedDict:
+        return TypeTypedDict(self.name, list(self.children))

@@ -1,21 +1,30 @@
 import re
 import inspect
-from typing import List, Any, Pattern, Optional
+from typing import List, Any, Pattern, Optional, Dict, Tuple
+
 
 from mypy_boto3_builder.structures import Argument
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_map import TYPE_MAP
 from mypy_boto3_builder.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
+from mypy_boto3_builder.indent_trimmer import IndentTrimmer
 
 
 class DocstringParser:
     RE_PARAM: Pattern = re.compile(r":param\s+(?P<name>\S+):")
     RE_TYPE: Pattern = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
     RE_RTYPE: Pattern = re.compile(r":rtype:\s+(?P<type>.+)")
+
+    RE_SYNTAX_DICT_KEY: Pattern = re.compile(
+        r"\- \*\*(?P<name>\S+)\*\* \*\((?P<type>.+)\) \-\-\*"
+    )
+    RE_SYNTAX_TYPE: Pattern = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
+
     NONE_ANNOTATION: FakeAnnotation = TypeAnnotation(None)
 
     DEFAULT_METHOD_ARGUMENTS = {
@@ -106,36 +115,157 @@ class DocstringParser:
 
         return arguments
 
-    @classmethod
-    def enrich_arguments(cls, docstring: str, arguments: List[Argument]) -> None:
-        for line in docstring.splitlines():
-            line = line.strip()
+    def enrich_arguments(self, docstring: str, arguments: List[Argument]) -> None:
+        type_syntax: Dict[str, List[str]] = {}
+        argument: Optional[Argument] = None
+
+        for doc_line in docstring.splitlines():
+            line = doc_line.strip()
             if line.startswith(":param "):
-                match = cls.RE_PARAM.match(line)
+                match = self.RE_PARAM.match(line)
                 if match:
                     argument_name = match.groupdict()["name"]
-                    argument = cls._find_argument_or_append(argument_name, arguments)
+                    argument = self._find_argument_or_append(argument_name, arguments)
                     if "**[REQUIRED]**" in line or "This **must** be set." in line:
                         argument.default = None
+                continue
             if line.startswith(":type "):
-                match = cls.RE_TYPE.match(line)
+                match = self.RE_TYPE.match(line)
                 if match:
                     argument_name = match.groupdict()["name"]
                     argument_type_str = match.groupdict()["type"]
-                    argument = cls._find_argument_or_append(argument_name, arguments)
-                    argument.type = cls.parse_type(argument_type_str, argument_name)
+                    argument = self._find_argument_or_append(argument_name, arguments)
+                    argument.type = self.parse_type(argument_type_str, argument_name)
+                continue
+            if line.startswith(":rtype:"):
+                break
+            if line.startswith("- **") and argument:
+                if argument.name not in type_syntax:
+                    type_syntax[argument.name] = []
+                type_syntax[argument.name].append(doc_line)
+            if line.startswith("- *(") and argument:
+                if argument.name not in type_syntax:
+                    type_syntax[argument.name] = []
+                type_syntax[argument.name].append(doc_line)
 
         arguments.sort(key=lambda x: x.default is not None)
+        for argument_name, syntax_lines in type_syntax.items():
+            if not syntax_lines:
+                continue
+            argument = self._find_argument_or_append(argument_name, arguments)
+            argument_type = self.parse_syntax(
+                argument.name,
+                argument.type or TypeSubscript(TypeAnnotation(Dict)),
+                syntax_lines,
+            )
+            argument.type = argument_type
 
     @staticmethod
     def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
         if name is not None:
             try:
-                return NAMED_TYPE_MAP[f"{name}: {type_str}"]
+                return NAMED_TYPE_MAP[f"{name}: {type_str}"].copy()
             except KeyError:
                 pass
 
         try:
-            return TYPE_MAP[type_str]
+            return TYPE_MAP[type_str].copy()
         except KeyError:
             raise ValueError(f"Unknown type: {type_str}")
+
+    def parse_any_syntax(self, name: str, lines: List[str]) -> FakeAnnotation:
+        lines = IndentTrimmer.trim_lines(lines)
+        for index, line in enumerate(lines):
+            match = self.RE_SYNTAX_DICT_KEY.match(line)
+            if match:
+                return self.parse_typed_dict_syntax(name, lines)
+
+            match = self.RE_SYNTAX_TYPE.match(line)
+            if match:
+                type_str = match.groupdict()["type"]
+                type_annotation = self.parse_type(type_str)
+                sub_lines = lines[index + 1 :]
+                if sub_lines:
+                    type_annotation = self.parse_syntax(
+                        name, type_annotation, sub_lines
+                    )
+                return type_annotation
+
+        return TypeAnnotation(Any)
+
+    def parse_syntax(
+        self, name: str, parent_type: FakeAnnotation, lines: List[str]
+    ) -> FakeAnnotation:
+        if parent_type.is_dict():
+            parent_type.remove_children()
+            return self.parse_dict_syntax(name, parent_type, lines)
+
+        if parent_type.is_list():
+            parent_type.remove_children()
+        parent_type.add_child(self.parse_any_syntax(name, lines))
+        return parent_type
+
+    def parse_dict_syntax(
+        self, name: str, parent_type: FakeAnnotation, lines: List[str]
+    ) -> FakeAnnotation:
+        lines = IndentTrimmer.trim_lines(lines)
+        for index, line in enumerate(lines):
+            match = self.RE_SYNTAX_DICT_KEY.match(line)
+            if match:
+                return self.parse_typed_dict_syntax(name, lines)
+
+            match = self.RE_SYNTAX_TYPE.match(line)
+            if match:
+                type_str = match.groupdict()["type"]
+                parent_type.add_child(self.parse_type(type_str))
+                sub_lines = lines[index + 1 :]
+                parent_type.add_child(self.parse_any_syntax(name, sub_lines))
+
+        return parent_type
+
+    def parse_typed_dict_syntax(self, name: str, lines: List[str]) -> TypeTypedDict:
+        result = TypeTypedDict(f"{name}TypeDef")
+        lines = IndentTrimmer.trim_lines(lines)
+        line_groups: List[Tuple[str, List[str]]] = []
+        for line in lines:
+            if line.startswith(" "):
+                line_groups[-1][1].append(line)
+            else:
+                line_groups.append((line, []))
+
+        for line, sub_lines in line_groups:
+            match = self.RE_SYNTAX_DICT_KEY.match(line)
+            if match:
+                attr_name = match.groupdict()["name"]
+                attr_type_str = match.groupdict()["type"]
+                attr_required = "REQUIRED" in line or "must" in line
+                attr_type = self.parse_type(attr_type_str)
+                if sub_lines:
+                    attr_type = self.parse_syntax(attr_name, attr_type, sub_lines)
+                result.add_attribute(attr_name, attr_type, attr_required)
+        return result
+
+
+# def main() -> None:
+#     result = DocstringParser().parse_syntax(
+#         "Test",
+#         TypeSubscript(TypeAnnotation(Dict)),
+#         [
+#             "  - **CORSRules** *(list) --* **[REQUIRED]**",
+#             "    - *(dict) --*",
+#             # "      - **AllowedHeaders** *(string) --*",
+#             "      - **AllowedMethods** *(list) --* **[REQUIRED]**",
+#             "        - *(string) --*",
+#             # "      - **AllowedOrigins** *(list) --* **[REQUIRED]**",
+#             # "        - *(string) --*",
+#             # "      - **ExposeHeaders** *(list) --*",
+#             # "        - *(string) --*",
+#             # "      - **MaxAgeSeconds** *(integer) --*",
+#         ],
+#     )
+#     # print(result.render_class())
+#     # print(result.children[0].type_annotation.children[-1].render_class())
+
+
+# if __name__ == "__main__":
+#     main()

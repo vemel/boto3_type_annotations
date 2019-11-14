@@ -1,5 +1,7 @@
+from __future__ import annotations
+
 import inspect
-from typing import Union, Optional, Any
+from typing import Union, Optional, Any, Dict, List
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -39,3 +41,12 @@ class TypeAnnotation(FakeAnnotation):
         module = inspect.getmodule(self.wrapped_type)
         source = module.__name__ if module else "builtins"
         return ImportRecord(source=source, name=self.render(),)
+
+    def is_dict(self) -> bool:
+        return self.wrapped_type == Dict
+
+    def is_list(self) -> bool:
+        return self.wrapped_type == List
+
+    def copy(self) -> TypeAnnotation:
+        return TypeAnnotation(self.wrapped_type)

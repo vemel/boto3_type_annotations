@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import List, Set, Optional, Any
+from typing import List, Set, Optional, Any, Iterable
+from typing_extensions import TypedDict
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from botocore.client import BaseClient
@@ -14,6 +15,7 @@ from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
+from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 
 
 @dataclass
@@ -75,6 +77,51 @@ class ClassRecord:
     attributes: List[Attribute] = field(default_factory=lambda: [])
     bases: List[FakeAnnotation] = field(default_factory=lambda: [])
     docstring: str = ""
+
+    @classmethod
+    def from_typed_dict(cls, typed_dict: TypeTypedDict) -> List[ClassRecord]:
+        result: List[ClassRecord] = []
+        if typed_dict.has_optional() and typed_dict.has_required():
+            class_record = ClassRecord(
+                name=f"_{typed_dict.name}",
+                bases=[TypeAnnotation(TypedDict)],
+                docstring=f"Type definition for {typed_dict.name}",
+            )
+            for attribute in typed_dict.children:
+                if attribute.required:
+                    class_record.attributes.append(
+                        Attribute(attribute.name, attribute.type_annotation)
+                    )
+            result.append(class_record)
+            optional_class_record = ClassRecord(
+                name=typed_dict.name,
+                bases=[
+                    TypeAnnotation(f"_{typed_dict.name}"),
+                    TypeAnnotation(f"total=False"),
+                ],
+                docstring=f"Optional type definition for {typed_dict.name}",
+            )
+            for attribute in typed_dict.children:
+                if not attribute.required:
+                    optional_class_record.attributes.append(
+                        Attribute(attribute.name, attribute.type_annotation)
+                    )
+            result.append(optional_class_record)
+            return result
+
+        class_record = ClassRecord(
+            name=typed_dict.name,
+            bases=[TypeAnnotation(TypedDict),],
+            docstring=f"Type definition for {typed_dict.name}",
+        )
+        for attribute in typed_dict.children:
+            class_record.attributes.append(
+                Attribute(attribute.name, attribute.type_annotation)
+            )
+        if typed_dict.has_optional():
+            class_record.bases.append(TypeAnnotation("total=False"))
+        result.append(class_record)
+        return result
 
     def get_types(self) -> Set[FakeAnnotation]:
         types: Set[FakeAnnotation] = set()
@@ -239,6 +286,31 @@ class ServiceModule:
     service_resource: Optional[ServiceResource] = None
     waiters: List[Waiter] = field(default_factory=lambda: [])
     paginators: List[Paginator] = field(default_factory=lambda: [])
+    type_defs: List[ClassRecord] = field(default_factory=lambda: [])
+
+    def extract_type_defs(self, type_annotations: Iterable[FakeAnnotation]) -> None:
+        added_names: Set[str] = set()
+        for type_annotation in type_annotations:
+            if (
+                isinstance(type_annotation, TypeTypedDict)
+                and type_annotation.name not in added_names
+            ):
+                added_names.add(type_annotation.name)
+                class_records = ClassRecord.from_typed_dict(type_annotation)
+                self.type_defs.extend(class_records)
+                for class_record in class_records:
+                    self.extract_type_defs(class_record.get_types())
+
+    def get_types(self) -> Set[FakeAnnotation]:
+        types: Set[FakeAnnotation] = set()
+        types.update(self.client.get_types())
+        if self.service_resource:
+            types.update(self.service_resource.get_types())
+        for waiter in self.waiters:
+            types.update(waiter.get_types())
+        for paginator in self.paginators:
+            types.update(paginator.get_types())
+        return types
 
     def get_import_records(self) -> List[ImportRecord]:
         result: List[ImportRecord] = []
@@ -260,6 +332,13 @@ class ServiceModule:
         result: Set[ImportRecord] = set()
         for waiter in self.waiters:
             result.update(waiter.get_required_import_records())
+
+        return result
+
+    def get_type_defs_required_import_records(self) -> Set[ImportRecord]:
+        result: Set[ImportRecord] = set()
+        for type_def in self.type_defs:
+            result.update(type_def.get_required_import_records())
 
         return result
 
