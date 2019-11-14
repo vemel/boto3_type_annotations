@@ -5,12 +5,13 @@ from typing import Any
 from functools import total_ordering
 
 from mypy_boto3_builder.import_helpers.import_string import ImportString
-from mypy_boto3_builder.constants import MODULE_NAME
+from mypy_boto3_builder.constants import MODULE_NAME, TYPE_DEFS_NAME
 
 
 @dataclass
 @total_ordering
 class ImportRecord:
+    type_defs_import_string = ImportString(TYPE_DEFS_NAME)
     builtins_import_string = ImportString("builtins")
     third_party_import_strings = (
         ImportString("boto3"),
@@ -80,6 +81,9 @@ class ImportRecord:
     def is_builtins(self) -> bool:
         return self.source.startswith(self.builtins_import_string)
 
+    def is_type_defs(self) -> bool:
+        return self.source.startswith(self.type_defs_import_string)
+
     def is_third_party(self) -> bool:
         for third_party_import_string in self.third_party_import_strings:
             if self.source.startswith(third_party_import_string):
@@ -91,4 +95,10 @@ class ImportRecord:
         if not self.source:
             return False
 
-        return self.package_name.startswith(MODULE_NAME)
+        if self.package_name.startswith(MODULE_NAME):
+            return True
+
+        if self.is_type_defs():
+            return True
+
+        return False

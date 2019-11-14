@@ -29,10 +29,10 @@ class TypeTypedDict(FakeAnnotation):
         self.docstring = docstring
 
     def render(self) -> str:
-        return f"{TYPE_DEFS_NAME}.{self.name}"
+        return self.name
 
     def get_import_record(self) -> ImportRecord:
-        return ImportRecord(source=TYPE_DEFS_NAME)
+        return ImportRecord(source=TYPE_DEFS_NAME, name=self.name)
 
     def get_types(self) -> Set[FakeAnnotation]:
         return {self}

@@ -307,9 +307,9 @@ class ServiceModule:
 
             added[type_annotation.name] = type_annotation
             class_records = ClassRecord.from_typed_dict(type_annotation)
-            result.extend(class_records)
             for class_record in class_records:
                 result.extend(self.extract_type_defs(class_record.get_types()))
+            result.extend(class_records)
         return result
 
     def get_types(self) -> Set[FakeAnnotation]:
@@ -349,7 +349,10 @@ class ServiceModule:
     def get_type_defs_required_import_records(self) -> Set[ImportRecord]:
         result: Set[ImportRecord] = set()
         for type_def in self.type_defs:
-            result.update(type_def.get_required_import_records())
+            for import_record in type_def.get_required_import_records():
+                if import_record.is_type_defs():
+                    continue
+                result.add(import_record)
 
         return result
 
