@@ -7,9 +7,7 @@ from __future__ import annotations
 
 {{ "\n\n" -}}
 
-{% for type_def in module.type_defs -%}
-    {% with class=type_def -%}
-        {% include "common/class.py.jinja2" with context -%}
-    {% endwith -%}
-    {{ "\n\n\n" if not loop.last else "\n" -}}
+{% for typed_dict in module.typed_dicts -%}
+    {% include "common/typed_dict.py.jinja2" with context -%}
+    {{ "\n" -}}
 {% endfor -%}

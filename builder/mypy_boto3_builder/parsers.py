@@ -305,7 +305,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 )
             )
 
-    result.type_defs = result.extract_type_defs(result.get_types())
+    result.typed_dicts = result.extract_typed_dicts(result.get_types())
     return result
 
 

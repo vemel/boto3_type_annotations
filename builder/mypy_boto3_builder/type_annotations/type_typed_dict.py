@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterable, Set
+from typing import Iterable, Set, List
 
 from mypy_boto3_builder.constants import TYPE_DEFS_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -61,6 +61,23 @@ class TypeTypedDict(FakeAnnotation):
                 return True
         return False
 
+    def has_both(self) -> bool:
+        return self.has_required() and self.has_optional()
+
+    def get_required(self) -> List[TypedDictAttribute]:
+        result: List[TypedDictAttribute] = []
+        for child in self.children:
+            if child.required:
+                result.append(child)
+        return result
+
+    def get_optional(self) -> List[TypedDictAttribute]:
+        result: List[TypedDictAttribute] = []
+        for child in self.children:
+            if not child.required:
+                result.append(child)
+        return result
+
     def copy(self) -> TypeTypedDict:
         return TypeTypedDict(self.name, list(self.children), docstring=self.docstring)
 
@@ -68,3 +85,9 @@ class TypeTypedDict(FakeAnnotation):
         children = [i.render() for i in self.children]
         other_children = [i.render() for i in other.children]
         return other_children == children
+
+    def get_children_types(self) -> Set[FakeAnnotation]:
+        result: Set[FakeAnnotation] = set()
+        for child in self.children:
+            result.update(child.type_annotation.get_types())
+        return result

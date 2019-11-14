@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import List, Set, Optional, Any, Iterable, Dict
-from typing_extensions import TypedDict
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from botocore.client import BaseClient
@@ -78,51 +77,6 @@ class ClassRecord:
     attributes: List[Attribute] = field(default_factory=lambda: [])
     bases: List[FakeAnnotation] = field(default_factory=lambda: [])
     docstring: str = ""
-
-    @classmethod
-    def from_typed_dict(cls, typed_dict: TypeTypedDict) -> List[ClassRecord]:
-        result: List[ClassRecord] = []
-        if typed_dict.has_optional() and typed_dict.has_required():
-            class_record = ClassRecord(
-                name=f"_{typed_dict.name}",
-                bases=[TypeAnnotation(TypedDict)],
-                docstring=typed_dict.docstring,
-            )
-            for attribute in typed_dict.children:
-                if attribute.required:
-                    class_record.attributes.append(
-                        Attribute(attribute.name, attribute.type_annotation)
-                    )
-            result.append(class_record)
-            optional_class_record = ClassRecord(
-                name=typed_dict.name,
-                bases=[
-                    TypeAnnotation(f"_{typed_dict.name}"),
-                    TypeAnnotation(f"total=False"),
-                ],
-                docstring=typed_dict.docstring,
-            )
-            for attribute in typed_dict.children:
-                if not attribute.required:
-                    optional_class_record.attributes.append(
-                        Attribute(attribute.name, attribute.type_annotation)
-                    )
-            result.append(optional_class_record)
-            return result
-
-        class_record = ClassRecord(
-            name=typed_dict.name,
-            bases=[TypeAnnotation(TypedDict),],
-            docstring=typed_dict.docstring,
-        )
-        for attribute in typed_dict.children:
-            class_record.attributes.append(
-                Attribute(attribute.name, attribute.type_annotation)
-            )
-        if typed_dict.has_optional():
-            class_record.bases.append(TypeAnnotation("total=False"))
-        result.append(class_record)
-        return result
 
     def get_types(self) -> Set[FakeAnnotation]:
         types: Set[FakeAnnotation] = set()
@@ -287,12 +241,12 @@ class ServiceModule:
     service_resource: Optional[ServiceResource] = None
     waiters: List[Waiter] = field(default_factory=lambda: [])
     paginators: List[Paginator] = field(default_factory=lambda: [])
-    type_defs: List[ClassRecord] = field(default_factory=lambda: [])
+    typed_dicts: List[TypeTypedDict] = field(default_factory=lambda: [])
 
-    def extract_type_defs(
+    def extract_typed_dicts(
         self, type_annotations: Iterable[FakeAnnotation]
-    ) -> List[ClassRecord]:
-        result: List[ClassRecord] = []
+    ) -> List[TypeTypedDict]:
+        result: List[TypeTypedDict] = []
         added: Dict[str, TypeTypedDict] = {}
         for type_annotation in type_annotations:
             if not isinstance(type_annotation, TypeTypedDict):
@@ -307,10 +261,7 @@ class ServiceModule:
                 continue
 
             added[type_annotation.name] = type_annotation
-            class_records = ClassRecord.from_typed_dict(type_annotation)
-            for class_record in class_records:
-                result.extend(self.extract_type_defs(class_record.get_types()))
-            result.extend(class_records)
+            result.append(type_annotation)
         return result
 
     def get_types(self) -> Set[FakeAnnotation]:
@@ -364,8 +315,10 @@ class ServiceModule:
 
     def get_type_defs_required_import_record_groups(self) -> List[ImportRecordGroup]:
         result: Set[ImportRecord] = set()
-        for type_def in self.type_defs:
-            for import_record in type_def.get_required_import_records():
+        result.add(ImportRecord(source="typing_extensions", name="TypedDict"))
+        for type_dict in self.typed_dicts:
+            for type_annotation in type_dict.get_types():
+                import_record = type_annotation.get_import_record()
                 if import_record.is_type_defs():
                     continue
                 result.add(import_record)
