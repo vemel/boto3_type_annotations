@@ -1,3 +1,6 @@
+"""
+Wrapper for simple type annotations from this module.
+"""
 from __future__ import annotations
 
 from mypy_boto3_builder.service_name import ServiceName
@@ -6,6 +9,15 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
 class InternalImport(FakeAnnotation):
+    """
+    Wrapper for simple type annotations from this module.
+
+    Arguments:
+        name -- Import name.
+        service_name -- Service that import belongs to.
+        module_name -- Service module name.
+    """
+
     def __init__(
         self,
         name: str,

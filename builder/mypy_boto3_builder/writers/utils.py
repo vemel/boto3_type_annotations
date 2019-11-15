@@ -2,9 +2,9 @@ from pathlib import Path
 from typing import Any
 
 import jinja2
+import black
 
-from mypy_boto3_builder.nice_path import NicePath
-from mypy_boto3_builder.utils import black_reformat
+from mypy_boto3_builder.utils.nice_path import NicePath
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.constants import (
     TEMPLATES_PATH,
@@ -26,7 +26,12 @@ def format_path(path: Path) -> None:
     logger.debug(f"Applying black formatting to {NicePath(path)}")
     for source_path in path.glob("**/*.py"):
         logger.debug(f"Reformatting {NicePath(source_path)}")
-        result = black_reformat(source_path)
+        result = black.format_file_in_place(
+            source_path,
+            fast=False,
+            mode=black.FileMode(),
+            write_back=black.WriteBack.YES,
+        )
         if result:
             logger.debug(f"Reformatted {NicePath(source_path)}")
 

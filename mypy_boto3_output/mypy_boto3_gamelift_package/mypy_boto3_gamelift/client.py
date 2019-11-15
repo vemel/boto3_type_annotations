@@ -9478,7 +9478,7 @@ class Client(BaseClient):
           strings depending on the operand. String values are case sensitive and must be enclosed in single
           quotes. Special characters must be escaped. Boolean and string values can only be used with the
           comparators ``=`` and ``<>`` . For example, the following filter expression searches on
-          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\\\'s Awesome Game 1'"`` .
+          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"`` .
 
           To chain multiple conditions in a single expression, use the logical keywords ``AND`` , ``OR`` ,
           and ``NOT`` and parentheses as needed. For example: ``x AND y AND NOT z`` , ``NOT (x OR y)`` .
@@ -10378,14 +10378,14 @@ class Client(BaseClient):
           Match information on all players that are currently assigned to the game session. This
           information is used by the matchmaker to find new players and add them to the existing game.
 
-          * PlayerID, PlayerAttributes, Team -\\\\- This information is maintained in the  GameSession
+          * PlayerID, PlayerAttributes, Team -\\- This information is maintained in the  GameSession
           object, ``MatchmakerData`` property, for all players who are currently assigned to the game
           session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see
           `Match Data
           <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data>`__
           .
 
-          * LatencyInMs -\\\\- If the matchmaker uses player latency, include a latency value, in
+          * LatencyInMs -\\- If the matchmaker uses player latency, include a latency value, in
           milliseconds, for the region that the game session is currently in. Do not include latency values
           for any other region.
 

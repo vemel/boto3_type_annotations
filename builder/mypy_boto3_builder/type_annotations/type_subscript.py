@@ -1,3 +1,6 @@
+"""
+Wrapper for subscript type annotations, like `List[str]`.
+"""
 from __future__ import annotations
 
 from typing import Set, Iterable
@@ -7,6 +10,14 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
 class TypeSubscript(FakeAnnotation):
+    """
+    Wrapper for subscript type annotations, like `List[str]`.
+
+    Arguments:
+        parent -- Parent type annotation.
+        children -- Children type annotations.
+    """
+
     def __init__(
         self, parent: FakeAnnotation, children: Iterable[FakeAnnotation] = (),
     ) -> None:
@@ -17,6 +28,12 @@ class TypeSubscript(FakeAnnotation):
         return hash(f"{self.parent}.{self.children}")
 
     def render(self) -> str:
+        """
+        Render to string.
+
+        Returns:
+            A string with a valid type annotation.
+        """
         if not self.children:
             return f"{self.parent.render()}"
 

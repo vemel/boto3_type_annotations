@@ -22,14 +22,14 @@ class ClientAddTagsToResourceTagsTypeDef(_ClientAddTagsToResourceTagsTypeDef):
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -305,14 +305,14 @@ class ClientCopyDbClusterParameterGroupTagsTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -534,14 +534,14 @@ class ClientCopyDbClusterSnapshotTagsTypeDef(_ClientCopyDbClusterSnapshotTagsTyp
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -642,14 +642,14 @@ class ClientCreateDbClusterParameterGroupTagsTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -1447,14 +1447,14 @@ class ClientCreateDbClusterSnapshotTagsTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -1474,14 +1474,14 @@ class ClientCreateDbClusterTagsTypeDef(_ClientCreateDbClusterTagsTypeDef):
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -2505,14 +2505,14 @@ class ClientCreateDbInstanceTagsTypeDef(_ClientCreateDbInstanceTagsTypeDef):
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -2721,14 +2721,14 @@ class ClientCreateDbSubnetGroupTagsTypeDef(_ClientCreateDbSubnetGroupTagsTypeDef
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -9021,14 +9021,14 @@ class ClientListTagsForResourceResponseTagListTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set
       of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters
       in length and can't be prefixed with "aws:" or "rds:". The string can contain only the
       set of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -9060,14 +9060,14 @@ class ClientListTagsForResourceResponseTypeDef(
           The required name of the tag. The string value can be from 1 to 128 Unicode characters in
           length and can't be prefixed with "aws:" or "rds:". The string can contain only the set
           of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-          "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+          "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         - **Value** *(string) --*
 
           The optional value of the tag. The string value can be from 1 to 256 Unicode characters
           in length and can't be prefixed with "aws:" or "rds:". The string can contain only the
           set of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-          "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+          "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -12816,14 +12816,14 @@ class ClientRestoreDbClusterFromSnapshotTagsTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -13421,14 +13421,14 @@ class ClientRestoreDbClusterToPointInTimeTagsTypeDef(
       The required name of the tag. The string value can be from 1 to 128 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
       length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
       Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-      "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 

@@ -1,3 +1,6 @@
+"""
+CLI parser.
+"""
 import argparse
 from pathlib import Path
 
@@ -5,10 +8,28 @@ from mypy_boto3_builder.service_name import ServiceName
 
 
 def get_absolute_path(path: str) -> Path:
+    """
+    Get absolute path from a string.
+
+    Arguments:
+        path -- String containing path.
+
+    Returns:
+        Absolute path.
+    """
     return Path(path).absolute()
 
 
 def get_service_name(name: str) -> ServiceName:
+    """
+    Convert boto3 service name to ServiceName.
+
+    Arguments:
+        name -- Service name.
+
+    Raises:
+        argparse.ArgumentTypeError -- If service not found.
+    """
     try:
         return ServiceName(name)
     except ValueError:
@@ -16,6 +37,12 @@ def get_service_name(name: str) -> ServiceName:
 
 
 def get_cli_parser() -> argparse.ArgumentParser:
+    """
+    Main CLI parser for builder.
+
+    Returns:
+        Argument parser.
+    """
     parser = argparse.ArgumentParser(
         "mypy_boto3_builder", description="Builder for mypy-boto3."
     )

@@ -1,7 +1,19 @@
+"""
+Logging utils.
+"""
 import logging
 
 
 def get_logger(verbose: bool = False) -> logging.Logger:
+    """
+    Get Logger instance.
+
+    Arguments:
+        verbose -- Set log level to DEBUG.
+
+    Returns:
+        Standard Logger.
+    """
     logger = logging.getLogger("mypy_boto3_builder")
     if not logger.handlers:
         stream_handler = logging.StreamHandler()

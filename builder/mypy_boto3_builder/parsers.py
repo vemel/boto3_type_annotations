@@ -30,7 +30,7 @@ from mypy_boto3_builder.structures import (
     MasterModule,
 )
 from mypy_boto3_builder.service_name import ServiceName
-from mypy_boto3_builder.utils import clean_doc, get_class_prefix
+from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.docstring_parser import DocstringParser

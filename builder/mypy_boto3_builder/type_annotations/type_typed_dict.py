@@ -1,3 +1,6 @@
+"""
+Wrapper for `typing_extensions.TypedDict` type annotations.
+"""
 from __future__ import annotations
 
 from typing import Iterable, Set, List
@@ -11,6 +14,15 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
 class TypedDictAttribute:
+    """
+    TypedDict attribute wrapper.
+
+    Arguments:
+        name -- Attribute name.
+        type_annotation -- Attribute type annotation.
+        required -- Whether the attribute has to be set.
+    """
+
     def __init__(self, name: str, type_annotation: FakeAnnotation, required: bool):
         self.name = name
         self.type_annotation = type_annotation
@@ -21,6 +33,15 @@ class TypedDictAttribute:
 
 
 class TypeTypedDict(FakeAnnotation):
+    """
+    Wrapper for `typing_extensions.TypedDict` type annotations.
+
+    Arguments:
+        name -- Type name.
+        children -- Typed dict attributes.
+        docstring -- Docstring for render.
+    """
+
     def __init__(
         self,
         name: str,

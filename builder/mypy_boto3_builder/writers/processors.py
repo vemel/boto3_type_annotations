@@ -14,7 +14,7 @@ from mypy_boto3_builder.structures import (
     MasterModule,
     ServiceModule,
 )
-from mypy_boto3_builder.nice_path import NicePath
+from mypy_boto3_builder.utils.nice_path import NicePath
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.writers.boto3_stubs import write_boto3_stubs_module

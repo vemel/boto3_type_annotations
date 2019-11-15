@@ -1,3 +1,6 @@
+"""
+Main entrypoint for builder.
+"""
 from typing import List
 
 from boto3.session import Session
@@ -16,6 +19,9 @@ from mypy_boto3_builder.constants import MODULE_NAME, DUMMY_REGION, BOTO3_STUBS_
 
 
 def main() -> None:
+    """
+    Main entrypoint for builder.
+    """
     parser = get_cli_parser()
     args = parser.parse_args()
     if args.version:

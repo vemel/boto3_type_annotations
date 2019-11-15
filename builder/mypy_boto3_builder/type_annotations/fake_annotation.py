@@ -1,3 +1,6 @@
+"""
+Parent class for all type annotation wrappers.
+"""
 from __future__ import annotations
 
 from abc import abstractmethod
@@ -9,6 +12,10 @@ from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 
 @total_ordering
 class FakeAnnotation:
+    """
+    Parent class for all type annotation wrappers.
+    """
+
     def __hash__(self) -> int:
         return hash(self.render())
 
@@ -32,27 +39,44 @@ class FakeAnnotation:
 
     @abstractmethod
     def render(self) -> str:
-        pass
+        """
+        Render type annotation to a valid Python code for local usage.
+        """
 
     @abstractmethod
     def get_import_record(self) -> ImportRecord:
-        pass
+        """
+        Get import record required for defining type annotation.
+        """
 
     def get_types(self) -> Set[FakeAnnotation]:
+        """
+        Get all used type annotations recursively including self.
+        """
         return {self}
 
     def remove_children(self) -> None:
         pass
 
     def add_child(self, child: FakeAnnotation) -> None:
-        pass
+        """
+        Add new child to `TypeSubstript` or `TypeTypedDict` annotations.
+        """
 
     def is_dict(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation is `Dict` or `TypedDict`
+        """
         return False
 
     def is_list(self) -> bool:  # pylint: disable=no-self-use
+        """
+        Whether type annotation is `List`
+        """
         return False
 
     @abstractmethod
     def copy(self) -> FakeAnnotation:
-        pass
+        """
+        Create a copy of type annotation wrapper.
+        """

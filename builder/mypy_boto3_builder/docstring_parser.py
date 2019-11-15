@@ -1,3 +1,6 @@
+"""
+Boto3 docstring parser for arguemnts and return type annotations.
+"""
 import re
 import inspect
 from typing import List, Any, Pattern, Optional, Dict, Tuple
@@ -14,7 +17,7 @@ from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
 from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
-from mypy_boto3_builder.indent_trimmer import IndentTrimmer
+from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
 
 
 class DocstringParser:

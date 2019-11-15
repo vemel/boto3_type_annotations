@@ -7,6 +7,10 @@ from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
 
 
 class ServiceName(enum.Enum):
+    """
+    Enum with all AWS services.
+    """
+
     acm = "acm"
     acm_pca = "acm-pca"
     alexaforbusiness = "alexaforbusiness"
@@ -207,25 +211,46 @@ class ServiceName(enum.Enum):
 
     @classmethod
     def values(cls) -> List[str]:
+        """
+        Get all values - valid boto3 service names.
+
+        Returns:
+            A list of supported boto3 service names.
+        """
         return [i.value for i in cls]
 
     @property
     def module_name(self) -> str:
+        """
+        Package name for given service.
+        """
         return f"{MODULE_NAME}_{self.name}".rstrip("_")
 
     @property
     def extras_name(self) -> str:
+        """
+        Extras name for subpackage installation.
+        """
         return self.value
 
     @property
     def import_name(self) -> str:
+        """
+        Submodule name in main module.
+        """
         return self.name
 
     @property
     def pypi_name(self) -> str:
+        """
+        Name of package on PyPI.
+        """
         return f"{PYPI_NAME}-{self.value}"
 
     def is_essential(self) -> bool:
+        """
+        Whether service is essential and installed with main package by default.
+        """
         return self in [
             ServiceName.ec2,
             ServiceName.rds,
@@ -238,10 +263,16 @@ class ServiceName(enum.Enum):
 
     @property
     def boto3_name(self) -> str:
+        """
+        Boto3 service name.
+        """
         return self.value
 
     @property
     def class_prefix(self) -> str:
+        """
+        Class prefix for internal classes.
+        """
         import_name = self.import_name
         if len(import_name) < 4:
             return import_name.upper().replace("_", "")

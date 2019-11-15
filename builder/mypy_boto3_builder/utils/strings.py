@@ -1,15 +1,31 @@
+"""
+Multiple string utils collection.
+"""
 import re
-from pathlib import Path
 from typing import Optional, List
-
-import black
 
 from mypy_boto3_builder.constants import LINE_LENGTH
 
+# Regexp to replace single backslashes
 RE_BACKSLASH = re.compile(r"\\{1,2}")
 
 
 def clean_doc(doc: Optional[str]) -> str:
+    """
+    Clean docstring to be safely rendered.
+
+    - If `doc` is not set, returns an empty docstring.
+    - Returns extra empty lines.
+    - Escapes backslashes.
+    - Replace trible doublequotes with triple single quotes.
+    - Tries to fit docstring to `LINE_LENGTH`
+
+    Arguments:
+        doc -- Instance docstring.
+
+    Returns:
+        Cleaned docstring.
+    """
     if doc is None:
         return ""
 
@@ -60,12 +76,15 @@ def clean_doc(doc: Optional[str]) -> str:
     return "\n".join(result)
 
 
-def black_reformat(source_path: Path) -> bool:
-    return black.format_file_in_place(
-        source_path, fast=False, mode=black.FileMode(), write_back=black.WriteBack.YES,
-    )
-
-
 def get_class_prefix(func_name: str) -> str:
+    """
+    Get a valid Python class prefix from `func_name`.
+
+    Arguments:
+        func_name -- Any string.
+
+    Returns:
+        String with a class prefix.
+    """
     parts = [f"{i[:1].upper()}{i[1:]}" for i in func_name.split("_") if i]
     return "".join(parts)

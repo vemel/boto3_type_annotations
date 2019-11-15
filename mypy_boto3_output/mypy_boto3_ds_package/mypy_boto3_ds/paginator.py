@@ -1470,12 +1470,12 @@ class ListTagsForResource(Boto3Paginator):
                   Required name of the tag. The string value can be Unicode characters and cannot be
                   prefixed with "aws:". The string can contain only the set of Unicode letters, digits,
                   white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-                  "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
                 - **Value** *(string) --*
 
                   The optional value of the tag. The string value can be Unicode characters. The string can
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         """

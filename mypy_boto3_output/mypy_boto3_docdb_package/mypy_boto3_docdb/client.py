@@ -120,14 +120,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :returns: None
         """
@@ -346,14 +346,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -541,14 +541,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -867,14 +867,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageEncrypted: boolean
         :param StorageEncrypted:
@@ -1274,14 +1274,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1391,14 +1391,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1629,14 +1629,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type DBClusterIdentifier: string
         :param DBClusterIdentifier: **[REQUIRED]**
@@ -2110,14 +2110,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -6561,14 +6561,14 @@ class Client(BaseClient):
                   The required name of the tag. The string value can be from 1 to 128 Unicode characters in
                   length and can't be prefixed with "aws:" or "rds:". The string can contain only the set
                   of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-                  "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
                 - **Value** *(string) --*
 
                   The optional value of the tag. The string value can be from 1 to 256 Unicode characters
                   in length and can't be prefixed with "aws:" or "rds:". The string can contain only the
                   set of Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-                  "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         """
 
@@ -8705,14 +8705,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -9158,14 +9158,14 @@ class Client(BaseClient):
               The required name of the tag. The string value can be from 1 to 128 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               The optional value of the tag. The string value can be from 1 to 256 Unicode characters in
               length and can't be prefixed with "aws:" or "rds:". The string can contain only the set of
               Unicode letters, digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
-              "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:

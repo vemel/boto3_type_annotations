@@ -1,3 +1,6 @@
+"""
+Constants and paths.
+"""
 from pathlib import Path
 
 # Master module name

@@ -1,3 +1,6 @@
+"""
+Structures produced by parsers.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -20,19 +23,52 @@ from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 
 @dataclass
 class Attribute:
+    """
+    Class or module attribute.
+
+    Attributes:
+        name -- Attribute name.
+        type -- Attribute type annotation.
+        value -- Attribute value.
+    """
+
     name: str
     type: FakeAnnotation
     value: FakeAnnotation = TypeAnnotation(None)
 
     def get_types(self) -> Set[FakeAnnotation]:
+        """
+        Return all type annotations used.
+
+        Returns:
+            A set of type annotations.
+        """
         return self.type.get_types()
 
     def render(self) -> str:
+        """
+        Render arguemnt to a string.
+
+        Probably not used.
+
+        Returns:
+            A string with rendered attribute.
+        """
         return f"{self.name}: {self.type.render()}"
 
 
 @dataclass
 class Argument:
+    """
+    Method or function argument.
+
+    Attributes:
+        name -- Argument name.
+        type -- Argument type annotation.
+        value -- Default argument value.
+        prefix -- Used for starargs.
+    """
+
     name: str
     type: Optional[FakeAnnotation] = None
     default: Optional[FakeAnnotation] = None

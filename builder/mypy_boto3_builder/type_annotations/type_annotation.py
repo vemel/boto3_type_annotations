@@ -1,3 +1,6 @@
+"""
+Wrapper for simple type annotation like `str` or `Dict`.
+"""
 from __future__ import annotations
 
 import inspect
@@ -8,6 +11,13 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
 class TypeAnnotation(FakeAnnotation):
+    """
+    Wrapper for simple type annotation like `str` or `Dict`.
+
+    Arguments:
+        wrapped_type -- Original type annotation.
+    """
+
     def __init__(self, wrapped_type: Any) -> None:
         if isinstance(wrapped_type, FakeAnnotation):
             raise ValueError(f"Cannot wrap FakeAnnotation: {wrapped_type}")
