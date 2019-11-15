@@ -249,7 +249,7 @@ class ServiceModule:
         added: Dict[str, TypeTypedDict],
     ) -> List[TypeTypedDict]:
         result: List[TypeTypedDict] = []
-        for type_annotation in type_annotations:
+        for type_annotation in sorted(type_annotations):
             if not isinstance(type_annotation, TypeTypedDict):
                 continue
             if type_annotation.name in added:
