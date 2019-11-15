@@ -69,9 +69,9 @@ def get_boto3_resource(
     return session.resource(service_name.boto3_name)  # type: ignore
 
 
-def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
+def get_resource_public_methods(resource_class: Resource) -> Dict[str, FunctionType]:
     resource_class_members = inspect.getmembers(resource_class)
-    resource_methods = {}
+    resource_methods: Dict[str, FunctionType] = {}
     for name, member in resource_class_members:
         if name.startswith("_"):
             continue
@@ -181,7 +181,7 @@ def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Metho
 def parse_resource(resource: Boto3ServiceResource) -> Resource:
     name = resource.__class__.__name__.split(".", 1)[-1]
 
-    methods = parse_methods(name, get_resource_public_actions(resource.__class__))
+    methods = parse_methods(name, get_resource_public_methods(resource.__class__))
 
     attributes: List[Attribute] = []
     attributes.extend(parse_attributes(resource))
