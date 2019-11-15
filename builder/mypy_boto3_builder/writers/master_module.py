@@ -1,6 +1,8 @@
 from pathlib import Path
 import shutil
 
+from boto3 import __version__ as boto3_version
+
 from mypy_boto3_builder.structures import MasterModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
@@ -13,6 +15,7 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> None:
         output_path / "setup.py",
         Path("master") / "setup.py.jinja2",
         module=master_module,
+        boto3_version=boto3_version,
     )
     shutil.copy(
         TEMPLATES_PATH / "master" / "README.md.jinja2", output_path / "README.md"

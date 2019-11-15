@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from boto3 import __version__ as boto3_version
+
 from mypy_boto3_builder.structures import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
@@ -11,6 +13,7 @@ def write_service_module(service_module: ServiceModule, output_path: Path) -> No
         output_path / "setup.py",
         Path("service") / "setup.py.jinja2",
         service_name=service_module.service_name,
+        boto3_version=boto3_version,
     )
     render_jinja2_template(
         module_path / "__init__.py",
