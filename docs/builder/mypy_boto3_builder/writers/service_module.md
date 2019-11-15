@@ -7,7 +7,7 @@
 
 ## write_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/service_module.py#L8)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/service_module.py#L10)
 
 ```python
 def write_service_module(
