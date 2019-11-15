@@ -40,6 +40,11 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> None:
             Path("master") / "master" / "service_module" / f"client.py.jinja2",
             service_name=service_module.service_name,
         )
+        render_jinja2_template(
+            service_module_path / "type_defs.py",
+            Path("master") / "master" / "service_module" / f"type_defs.py.jinja2",
+            service_name=service_module.service_name,
+        )
         if service_module.service_resource:
             render_jinja2_template(
                 service_module_path / "service_resource.py",
