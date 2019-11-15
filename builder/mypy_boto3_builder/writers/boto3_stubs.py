@@ -6,7 +6,7 @@ from boto3 import __version__ as boto3_version
 from mypy_boto3_builder.structures import Boto3Module
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template
-from mypy_boto3_builder.constants import TEMPLATES_PATH, BOTO3_STUBS_STATIC_PATH
+from mypy_boto3_builder.constants import BOTO3_STUBS_STATIC_PATH
 
 
 def write_boto3_stubs_module(boto3_module: Boto3Module, output_path: Path) -> None:
@@ -17,8 +17,11 @@ def write_boto3_stubs_module(boto3_module: Boto3Module, output_path: Path) -> No
         module=boto3_module,
         boto3_version=boto3_version,
     )
-    shutil.copy(
-        TEMPLATES_PATH / "boto3-stubs" / "README.md.jinja2", output_path / "README.md"
+    render_jinja2_template(
+        output_path / "README.md",
+        Path("boto3-stubs") / "README.md.jinja2",
+        module=boto3_module,
+        boto3_version=boto3_version,
     )
     for file_name in [
         "py.typed",

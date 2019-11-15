@@ -9,6 +9,7 @@
         - [Attribute().get_types](#attributeget_types)
         - [Attribute().render](#attributerender)
     - [Boto3Module](#boto3module)
+        - [Boto3Module().essential_service_names](#boto3moduleessential_service_names)
     - [ClassRecord](#classrecord)
         - [ClassRecord().get_required_import_records](#classrecordget_required_import_records)
         - [ClassRecord().get_types](#classrecordget_types)
@@ -19,6 +20,7 @@
     - [Function](#function)
         - [Function().get_types](#functionget_types)
     - [MasterModule](#mastermodule)
+        - [MasterModule().essential_service_names](#mastermoduleessential_service_names)
     - [Method](#method)
     - [Paginator](#paginator)
     - [Resource](#resource)
@@ -87,6 +89,15 @@ def render() -> str:
 ```python
 dataclass
 class Boto3Module():
+```
+
+### Boto3Module().essential_service_names
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L354)
+
+```python
+@property
+def essential_service_names() -> List[ServiceName]:
 ```
 
 ## ClassRecord
@@ -175,11 +186,20 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## MasterModule
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L355)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L363)
 
 ```python
 dataclass
 class MasterModule():
+```
+
+### MasterModule().essential_service_names
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L370)
+
+```python
+@property
+def essential_service_names() -> List[ServiceName]:
 ```
 
 ## Method

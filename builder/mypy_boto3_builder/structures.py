@@ -351,6 +351,14 @@ class Boto3Module:
     service_names: List[ServiceName] = field(default_factory=lambda: [])
     service_modules: List[ServiceModule] = field(default_factory=lambda: [])
 
+    @property
+    def essential_service_names(self) -> List[ServiceName]:
+        result: List[ServiceName] = []
+        for service_name in self.service_names:
+            if service_name.is_essential():
+                result.append(service_name)
+        return result
+
 
 @dataclass
 class MasterModule:
@@ -358,3 +366,11 @@ class MasterModule:
     package_name: str = MODULE_NAME
     service_names: List[ServiceName] = field(default_factory=lambda: [])
     service_modules: List[ServiceModule] = field(default_factory=lambda: [])
+
+    @property
+    def essential_service_names(self) -> List[ServiceName]:
+        result: List[ServiceName] = []
+        for service_name in self.service_names:
+            if service_name.is_essential():
+                result.append(service_name)
+        return result

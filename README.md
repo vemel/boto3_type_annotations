@@ -4,12 +4,14 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
 
-Mypy-friendly type annotations for boto3.
+Mypy-friendly type annotations for `boto3`.
+
+Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-boto3-modules)
 
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [How it works](#how-it-works)
+  - [How to build](#how-to-build)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
   - [Thank you](#thank-you)
   - [Submodules](#submodules)
@@ -60,9 +62,42 @@ bucket = resource.Bucket("bucket")
 bucket.upload_file(Filename="my.txt", key="my-txt")
 ```
 
-## How it works
+## How to build
 
-There is also a package `mypy-boto3-builder` that builds interface files from `boto3` documentation.
+`mypy-boto3` is built for the latest version of `boto3`. If you need type annotations for another
+version of `boto3`, you can use `mypy-boto3-builder`.
+
+```bash
+# Install preferred version of `boto3`
+pip install boto3==1.10.18
+
+# Install `mypy-boto3-builder`
+cd builder
+python setup.py install
+cd ..
+
+# Set output path to any directory
+OUTPUT_PATH=`pwd`/output
+
+# Build all packages
+# You can specify required services explicitly like
+# mypy_boto3_builder ${OUTPUT_PATH} -f -s ec2 s3
+mypy_boto3_builder ${OUTPUT_PATH} -f
+
+# Install custom `mypy-boto3` service packages
+PACKAGES=${OUTPUT_PATH}/mypy_boto3_*
+for PACKAGE in $PACKAGES
+do
+    cd ${PACKAGE}
+    python setup.py install
+done
+
+# Install custom `mypy-boto3` and `boto3-stubs` packages
+cd ${OUTPUT_PATH}/master_package
+python setup.py install
+cd ${OUTPUT_PATH}/boto3_stubs_package
+python setup.py install
+```
 
 ## Differences from boto3-type-annotations
 
@@ -80,7 +115,6 @@ There is also a package `mypy-boto3-builder` that builds interface files from `b
   this package is based on top of their work
 - [black](https://github.com/psf/black) developers for awesome formatting tool
 - [mypy](https://github.com/python/mypy) for doing all dirty work for us
-
 
 ## Submodules
 
