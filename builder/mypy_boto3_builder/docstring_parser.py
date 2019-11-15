@@ -253,7 +253,7 @@ class DocstringParser:
         result.docstring = f"Type definition for `{prefix}` `{name}`\n\n{line_joined}"
         line_groups: List[Tuple[str, List[str]]] = []
         for line in lines:
-            if line.startswith(" ") or not line.strip():
+            if line_groups and (line.startswith(" ") or not line.strip()):
                 line_groups[-1][1].append(line)
             else:
                 line_groups.append((line, []))
