@@ -14,8 +14,8 @@ def clean_doc(doc: Optional[str]) -> str:
     result: List[str] = []
     for line in lines:
         line = line.rstrip()
-        line = line.replace('"""', "'\"'")
-        line = line.replace("\\:", ":")
+        line = line.replace("\\", "\\\\")
+        line = line.replace('"""', "'''")
         if not line and result and not result[-1]:
             continue
 
