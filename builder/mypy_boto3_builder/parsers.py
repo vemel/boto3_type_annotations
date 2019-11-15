@@ -4,6 +4,7 @@ Parsers for boto3 clients and resources.
 import inspect
 from inspect import getdoc
 from typing import List, Dict, Any, Optional, Iterable
+from types import FunctionType
 
 from boto3.exceptions import ResourceNotExistsError
 from boto3.docs.utils import is_resource_action
@@ -82,6 +83,21 @@ def get_resource_public_actions(resource_class: Resource) -> Dict[str, Any]:
         if is_resource_action(member):
             resource_methods[name] = member
     return resource_methods
+
+
+def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
+    class_members = inspect.getmembers(inspect_class)
+    methods: Dict[str, FunctionType] = {}
+    for name, member in class_members:
+        if name.startswith("_") and not name.startswith("__"):
+            continue
+
+        if name[0].isupper():
+            continue
+
+        methods[name] = member
+
+    return methods
 
 
 def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
