@@ -103,11 +103,10 @@ class DocstringParser:
             return None
         return self.DEFAULT_METHOD_ARGUMENTS[method_name]
 
-    @classmethod
-    def get_function_arguments(cls, func: FunctionType) -> List[Argument]:
-        func_name = func.__name__
-        argspec = inspect.getfullargspec(func)
+    @staticmethod
+    def _get_arguments_from_argspec(func: FunctionType) -> List[Argument]:
         arguments: List[Argument] = []
+        argspec = inspect.getfullargspec(func)
         for argument_name in argspec.args:
             if argument_name == "factory_self":
                 argument_name = "self"
@@ -134,6 +133,11 @@ class DocstringParser:
             arguments.append(
                 Argument(argspec.varkw, prefix="**", type=TypeAnnotation(Any))
             )
+        return arguments
+
+    def get_function_arguments(self, func: FunctionType) -> List[Argument]:
+        func_name = func.__name__
+        arguments = self._get_arguments_from_argspec(func)
 
         for argument in arguments:
             method_type = f"{func_name}: {argument.name}"
