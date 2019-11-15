@@ -11,3 +11,4 @@
         - [TypeDef](type_def.md#typedef)
         - [TypeLiteral](type_literal.md#typeliteral)
         - [TypeSubscript](type_subscript.md#typesubscript)
+        - [TypeTypedDict](type_typed_dict.md#typetypeddict)

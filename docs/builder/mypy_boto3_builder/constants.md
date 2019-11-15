@@ -14,3 +14,4 @@
 - `MYPY_BOTO3_STATIC_PATH` - Staitc *.pyi files for mypy-boto3: `Path(__file__).parent / 'mypy_boto3_static'`
 - `BOTO3_STUBS_NAME` - Boto3 stubs module name: `'boto3-stubs'`
 - `LINE_LENGTH` - Max line length for boto3 docs: `100`
+- `TYPE_DEFS_NAME` - type defs module name: `'type_defs'`

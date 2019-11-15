@@ -9,6 +9,7 @@
         - [Constants](constants.md#constants)
         - [DocstringParser](docstring_parser.md#docstringparser)
         - [Import Helpers](import_helpers/index.md#import-helpers)
+        - [IndentTrimmer](indent_trimmer.md#indenttrimmer)
         - [Logger](logger.md#logger)
         - [Main](main.md#main)
         - [Named Type Map](named_type_map.md#named-type-map)

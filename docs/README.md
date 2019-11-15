@@ -26,7 +26,7 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 
 ```bash
 # install `boto3` type annotations 
-# ec2, s3, rds, lambda, sqs, dynamo and cloudformation are ncluded by default
+# ec2, s3, rds, lambda, sqs, dynamo and cloudformation are included by default
 pip install boto3-stubs
 
 # install annotations for other service

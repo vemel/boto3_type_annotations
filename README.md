@@ -11,7 +11,6 @@ Mypy-friendly type annotations for boto3.
   - [Usage](#usage)
   - [How it works](#how-it-works)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
-  - [What's next](#whats-next)
   - [Thank you](#thank-you)
   - [Submodules](#submodules)
     - [Examples](#examples)
@@ -21,7 +20,7 @@ Mypy-friendly type annotations for boto3.
 
 ```bash
 # install `boto3` type annotations 
-# ec2, s3, rds, lambda, sqs, dynamo and cloudformation are ncluded by default
+# ec2, s3, rds, lambda, sqs, dynamo and cloudformation are included by default
 pip install boto3-stubs
 
 # install annotations for other service
@@ -73,13 +72,7 @@ There is also a package `mypy-boto3-builder` that builds interface files from `b
 - Added ServiceResource sub-collections
 - Support service-specific sub-modules
 - Modules documentation
-- Type annotations for return structures (in progress)
-
-## What's next
-
-- Add `TypedDict` types for arguments and return types to check keys and values
-- Completely annotate `boto3` module
-- Parse `Response syntax` statements in `boto3` docs
+- Type annotations for return structuress
 
 ## Thank you
 
@@ -108,7 +101,7 @@ pip install boto3-stubs[all]
 ### List of all submodules
 
 - `all` - Type annotations for all `boto3` services.
-- `essential` - Type annotations for `ec2`, `s3`, `rds`, `lambda`, `sqs`, `dynamodb` and `cloudformation` `boto3` services.
+- `essential` - Type annotations for `ec2`, `s3`, `rds`, `lambda`, `sqs`, `dynamodb` and `cloudformation` services.
 - `acm` - Type annotations for `boto3` [acm](https://pypi.org/project/mypy-boto3-acm/) service.
 - `acm-pca` - Type annotations for `boto3` [acm-pca](https://pypi.org/project/mypy-boto3-acm-pca/) service.
 - `alexaforbusiness` - Type annotations for `boto3` [alexaforbusiness](https://pypi.org/project/mypy-boto3-alexaforbusiness/) service.
