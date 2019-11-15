@@ -26,6 +26,7 @@ class DocstringParser:
     RE_SYNTAX_TYPE: Pattern = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
 
     NONE_ANNOTATION: FakeAnnotation = TypeAnnotation(None)
+    ANY_ANNOTATION: FakeAnnotation = TypeAnnotation(Any)
 
     DEFAULT_METHOD_ARGUMENTS = {
         "create_tags": [
@@ -62,15 +63,13 @@ class DocstringParser:
                 response_syntax_found = True
             if not response_syntax_found:
                 continue
-            if line.startswith("- **"):
-                type_syntax.append(doc_line)
-            if line.startswith("- *("):
-                type_syntax.append(doc_line)
+            type_syntax.append(doc_line)
 
-        if type_syntax:
-            return_type = self.parse_any_syntax(
-                name="Response", lines=type_syntax, prefix=prefix
-            )
+        syntax_return_type = self.parse_any_syntax(
+            name="Response", lines=type_syntax, prefix=prefix
+        )
+        if syntax_return_type != self.ANY_ANNOTATION:
+            return_type = syntax_return_type
         return return_type
 
     @staticmethod
@@ -162,19 +161,13 @@ class DocstringParser:
                 continue
             if line.startswith(":rtype:"):
                 break
-            if line.startswith("- **") and argument:
-                if argument.name not in type_syntax:
-                    type_syntax[argument.name] = []
-                type_syntax[argument.name].append(doc_line)
-            if line.startswith("- *(") and argument:
+            if argument:
                 if argument.name not in type_syntax:
                     type_syntax[argument.name] = []
                 type_syntax[argument.name].append(doc_line)
 
         arguments.sort(key=lambda x: x.default is not None)
         for argument_name, syntax_lines in type_syntax.items():
-            if not syntax_lines:
-                continue
             argument = self._find_argument_or_append(argument_name, arguments)
             argument_type = self.parse_syntax(
                 name=argument.name,
@@ -200,7 +193,7 @@ class DocstringParser:
     def parse_any_syntax(
         self, name: str, lines: List[str], prefix: str
     ) -> FakeAnnotation:
-        lines = IndentTrimmer.trim_lines(lines)
+        lines = IndentTrimmer.trim_lines(IndentTrimmer.trim_empty_lines(lines))
         for index, line in enumerate(lines):
             match = self.RE_SYNTAX_DICT_KEY.match(line)
             if match:
@@ -217,7 +210,7 @@ class DocstringParser:
                     )
                 return type_annotation
 
-        return TypeAnnotation(Any)
+        return self.ANY_ANNOTATION
 
     def parse_syntax(
         self, name: str, parent_type: FakeAnnotation, lines: List[str], prefix: str
@@ -226,15 +219,17 @@ class DocstringParser:
             parent_type.remove_children()
             return self.parse_dict_syntax(name, parent_type, lines, prefix)
 
-        if parent_type.is_list():
-            parent_type.remove_children()
-        parent_type.add_child(self.parse_any_syntax(name, lines, prefix))
+        child = self.parse_any_syntax(name, lines, prefix)
+        if child is not self.ANY_ANNOTATION:
+            if parent_type.is_list():
+                parent_type.remove_children()
+            parent_type.add_child(child)
         return parent_type
 
     def parse_dict_syntax(
         self, name: str, parent_type: FakeAnnotation, lines: List[str], prefix: str
     ) -> FakeAnnotation:
-        lines = IndentTrimmer.trim_lines(lines)
+        lines = IndentTrimmer.trim_lines(IndentTrimmer.trim_empty_lines(lines))
         for index, line in enumerate(lines):
             match = self.RE_SYNTAX_DICT_KEY.match(line)
             if match:
@@ -253,12 +248,12 @@ class DocstringParser:
         self, name: str, lines: List[str], prefix: str
     ) -> TypeTypedDict:
         result = TypeTypedDict(f"{prefix}{name}TypeDef")
-        lines = IndentTrimmer.trim_lines(lines)
+        lines = IndentTrimmer.trim_lines(IndentTrimmer.trim_empty_lines(lines))
         line_joined = "\n".join(lines)
         result.docstring = f"Type definition for `{prefix}` `{name}`\n\n{line_joined}"
         line_groups: List[Tuple[str, List[str]]] = []
         for line in lines:
-            if line.startswith(" "):
+            if line.startswith(" ") or not line.strip():
                 line_groups[-1][1].append(line)
             else:
                 line_groups.append((line, []))
@@ -268,7 +263,7 @@ class DocstringParser:
             if match:
                 attr_name = match.groupdict()["name"]
                 attr_type_str = match.groupdict()["type"]
-                attr_required = "REQUIRED" in line or "must" in line
+                attr_required = "REQUIRED" in line or "**must**" in line
                 attr_type = self.parse_type(attr_type_str)
                 if sub_lines:
                     attr_type = self.parse_syntax(
@@ -283,15 +278,14 @@ def main() -> None:
         "Test",
         TypeSubscript(TypeAnnotation(Dict)),
         [
-            "  - **CORSRules** *(list) --* **[REQUIRED]**",
-            "    - *(dict) --*",
-            "      - **AllowedMethods** *(list) --* **[REQUIRED]**",
-            "        - *(dict) --*",
-            "          - **AllowedOrigins** *(list) --* **[REQUIRED]**",
-            "            - *(string) --*",
-            # "      - **ExposeHeaders** *(list) --*",
-            # "        - *(string) --*",
-            # "      - **MaxAgeSeconds** *(integer) --*",
+            "- **Parts** *(list) --*",
+            "",
+            "  - *(dict) --*",
+            "",
+            "    - **ETag** *(string) --*",
+            "      Entity tag returned when the part was uploaded.",
+            "    - **PartNumber** *(integer) --*",
+            "      Part number that identifies the part. This is a positive integer between 1 and 10,000.",
         ],
         prefix="My",
     )

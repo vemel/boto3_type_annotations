@@ -16,7 +16,3 @@ class _S3CopySource(TypedDict):
 
 class S3CopySource(_S3CopySource, total=False):
     VersionId: str
-
-class S3Part(TypedDict):
-    ETag: str
-    PartNumber: int

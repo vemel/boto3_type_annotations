@@ -2,7 +2,7 @@
 Utility for removing indentation for sections and lines.
 """
 
-from typing import Iterable, Text, List
+from typing import Iterable, List
 
 
 __all__ = ["IndentTrimmer"]
@@ -14,31 +14,39 @@ class IndentTrimmer:
     """
 
     @staticmethod
-    def trim_empty_lines(text):
-        # type: (Text) -> Text
+    def trim_empty_lines(lines: List[str]) -> List[str]:
         """
         Trim empty lines in the begging and the end of the text.
 
         Examples::
 
-            text = '\\n  \\n test\\ntest2\\n \\n '
-            IndentTrimmer.trim_empty_lines(text)
-            ' test\\ntest2'
+            IndentTrimmer.trim_empty_lines([
+                '',
+                '  asd',
+                ' asd',
+                '   asd',
+                '  ',
+                '',
+            ])
+            [
+                '  asd',
+                ' asd',
+                '   asd',
+            ]
 
         Returns:
-            A stripped string.
+            Lines wih no empty lines at start and end.
         """
-        lines = text.split("\n")
-        while lines and not lines[0].strip():
-            lines.pop(0)
-        while lines and not lines[-1].strip():
-            lines.pop()
+        result = list(lines)
+        while result and not result[0].strip():
+            result.pop(0)
+        while result and not result[-1].strip():
+            result.pop()
 
-        return "\n".join(lines)
+        return result
 
     @classmethod
-    def trim_text(cls, text):
-        # type: (Text) -> Text
+    def trim_text(cls, text: str) -> str:
         """
         Trim minimum indent from each line of text.
 
@@ -57,8 +65,7 @@ class IndentTrimmer:
         return "\n".join(new_lines)
 
     @classmethod
-    def trim_lines(cls, lines):
-        # type: (Iterable[Text]) -> List[Text]
+    def trim_lines(cls, lines: Iterable[str]) -> List[str]:
         """
         Trim minimum indent from each line of text.
 
@@ -93,8 +100,7 @@ class IndentTrimmer:
         return new_lines
 
     @staticmethod
-    def trim_line(line, indent):
-        # type: (Text, int) -> Text
+    def trim_line(line: str, indent: int) -> str:
         """
         Trim indent from line if it is empty.
 
@@ -121,8 +127,7 @@ class IndentTrimmer:
         return line.lstrip()
 
     @staticmethod
-    def get_line_indent(line):
-        # type: (Text) -> int
+    def get_line_indent(line: str) -> int:
         """
         Get indent length of the line.
 
@@ -143,8 +148,7 @@ class IndentTrimmer:
         return len(line) - len(line.lstrip())
 
     @staticmethod
-    def indent_line(line, indent):
-        # type: (Text, int) -> Text
+    def indent_line(line: str, indent: int) -> str:
         """
         Indent line with givent length `indent`
 

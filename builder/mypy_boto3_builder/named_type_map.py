@@ -14,5 +14,4 @@ NAMED_TYPE_MAP: Dict[str, FakeAnnotation] = {
     "CopySource: str or dict": TypeSubscript(
         TypeAnnotation(Union), [TypeDef("S3CopySource"), TypeAnnotation(str)]
     ),
-    "MultipartUpload: dict": TypeSubscript(TypeAnnotation(List), [TypeDef("S3Part")]),
 }

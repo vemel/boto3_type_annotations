@@ -144,10 +144,11 @@ def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Metho
     for name, method in public_methods.items():
         prefix = f"{get_class_prefix(class_name)}{get_class_prefix(name)}"
         docstring_parser = DocstringParser()
-        doc = getdoc(method)
+        doc = getdoc(method) or ""
         arguments = docstring_parser.get_function_arguments(method)
         return_type = docstring_parser.NONE_ANNOTATION
         if doc:
+            doc = clean_doc(doc)
             docstring_parser.enrich_arguments(doc, arguments, prefix)
             return_type = docstring_parser.get_return_type(doc, prefix)
         else:
@@ -157,10 +158,7 @@ def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Metho
 
         result.append(
             Method(
-                name=name,
-                arguments=arguments,
-                docstring=clean_doc(doc),
-                return_type=return_type,
+                name=name, arguments=arguments, docstring=doc, return_type=return_type,
             )
         )
     return result
