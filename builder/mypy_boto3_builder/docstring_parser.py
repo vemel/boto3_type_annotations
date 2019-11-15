@@ -173,6 +173,10 @@ class DocstringParser:
                 continue
             if line.startswith(":rtype:"):
                 break
+            if line.startswith(":returns:"):
+                break
+            if line.startswith(":yields:"):
+                break
             if argument:
                 if argument.name not in type_syntax:
                     type_syntax[argument.name] = []
@@ -289,16 +293,19 @@ def main() -> None:
     result = DocstringParser().parse_syntax(
         "Test",
         TypeSubscript(TypeAnnotation(Dict)),
-        [
-            "- **Parts** *(list) --*",
-            "",
-            "  - *(dict) --*",
-            "",
-            "    - **ETag** *(string) --*",
-            "      Entity tag returned when the part was uploaded.",
-            "    - **PartNumber** *(integer) --*",
-            "      Part number that identifies the part. This is a positive integer between 1 and 10,000.",
-        ],
+        """
+          A dictionary that provides parameters to control waiting behavior.
+
+          - **Delay** *(integer) --*
+
+            The amount of time in seconds to wait between attempts. Default: 60
+
+          - **MaxAttempts** *(integer) --*
+
+            The maximum number of attempts to be made. Default: 60
+""".split(
+            "\n"
+        ),
         prefix="My",
     )
     print(result)
