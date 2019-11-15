@@ -57,7 +57,7 @@ from mypy_boto3_appsync.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -74,7 +74,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_api_key(
         self, apiId: str, description: str = None, expires: int = None
     ) -> ClientCreateApiKeyResponseTypeDef:
@@ -146,7 +146,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_data_source(
         self,
         apiId: str,
@@ -540,7 +540,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_function(
         self,
         apiId: str,
@@ -670,7 +670,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_graphql_api(
         self,
         name: str,
@@ -1124,7 +1124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resolver(
         self,
         apiId: str,
@@ -1297,7 +1297,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_type(
         self, apiId: str, definition: str, format: str
     ) -> ClientCreateTypeResponseTypeDef:
@@ -1378,7 +1378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_api_key(self, apiId: str, id: str) -> Dict[str, Any]:
         """
         Deletes an API key.
@@ -1416,7 +1416,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_data_source(self, apiId: str, name: str) -> Dict[str, Any]:
         """
         Deletes a ``DataSource`` object.
@@ -1454,7 +1454,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_function(self, apiId: str, functionId: str) -> Dict[str, Any]:
         """
         Deletes a ``Function`` .
@@ -1492,7 +1492,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_graphql_api(self, apiId: str) -> Dict[str, Any]:
         """
         Deletes a ``GraphqlApi`` object.
@@ -1524,7 +1524,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resolver(
         self, apiId: str, typeName: str, fieldName: str
     ) -> Dict[str, Any]:
@@ -1570,7 +1570,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_type(self, apiId: str, typeName: str) -> Dict[str, Any]:
         """
         Deletes a ``Type`` object.
@@ -1608,7 +1608,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1637,7 +1637,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_data_source(
         self, apiId: str, name: str
     ) -> ClientGetDataSourceResponseTypeDef:
@@ -1862,7 +1862,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_function(
         self, apiId: str, functionId: str
     ) -> ClientGetFunctionResponseTypeDef:
@@ -1952,7 +1952,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_graphql_api(self, apiId: str) -> ClientGetGraphqlApiResponseTypeDef:
         """
         Retrieves a ``GraphqlApi`` object.
@@ -2204,7 +2204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_introspection_schema(
         self, apiId: str, format: str, includeDirectives: bool = None
     ) -> Dict:
@@ -2260,7 +2260,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2281,7 +2281,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resolver(
         self, apiId: str, typeName: str, fieldName: str
     ) -> ClientGetResolverResponseTypeDef:
@@ -2392,7 +2392,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_schema_creation_status(
         self, apiId: str
     ) -> ClientGetSchemaCreationStatusResponseTypeDef:
@@ -2439,7 +2439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_type(
         self, apiId: str, typeName: str, format: str
     ) -> ClientGetTypeResponseTypeDef:
@@ -2518,7 +2518,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2531,7 +2531,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_api_keys(
         self, apiId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListApiKeysResponseTypeDef:
@@ -2655,7 +2655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_data_sources(
         self, apiId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListDataSourcesResponseTypeDef:
@@ -2900,7 +2900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_functions(
         self, apiId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListFunctionsResponseTypeDef:
@@ -3010,7 +3010,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_graphql_apis(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListGraphqlApisResponseTypeDef:
@@ -3285,7 +3285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolvers(
         self, apiId: str, typeName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListResolversResponseTypeDef:
@@ -3415,7 +3415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolvers_by_function(
         self, apiId: str, functionId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListResolversByFunctionResponseTypeDef:
@@ -3544,7 +3544,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3595,7 +3595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_types(
         self, apiId: str, format: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListTypesResponseTypeDef:
@@ -3693,7 +3693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_schema_creation(
         self, apiId: str, definition: bytes
     ) -> ClientStartSchemaCreationResponseTypeDef:
@@ -3743,7 +3743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> Dict[str, Any]:
         """
         Tags a resource with user-supplied tags.
@@ -3791,7 +3791,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Untags a resource.
@@ -3835,7 +3835,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_api_key(
         self, apiId: str, id: str, description: str = None, expires: int = None
     ) -> ClientUpdateApiKeyResponseTypeDef:
@@ -3912,7 +3912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_data_source(
         self,
         apiId: str,
@@ -4305,7 +4305,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_function(
         self,
         apiId: str,
@@ -4440,7 +4440,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_graphql_api(
         self,
         apiId: str,
@@ -4884,7 +4884,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resolver(
         self,
         apiId: str,
@@ -5050,7 +5050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_type(
         self, apiId: str, typeName: str, format: str, definition: str = None
     ) -> ClientUpdateTypeResponseTypeDef:

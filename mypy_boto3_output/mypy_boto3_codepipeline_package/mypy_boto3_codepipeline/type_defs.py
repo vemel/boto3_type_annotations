@@ -11005,6 +11005,40 @@ class ClientPutApprovalResultresultTypeDef(_ClientPutApprovalResultresultTypeDef
     """
 
 
+_RequiredClientPutJobFailureResultfailureDetailsTypeDef = TypedDict(
+    "_RequiredClientPutJobFailureResultfailureDetailsTypeDef",
+    {"type": str, "message": str},
+)
+_OptionalClientPutJobFailureResultfailureDetailsTypeDef = TypedDict(
+    "_OptionalClientPutJobFailureResultfailureDetailsTypeDef",
+    {"externalExecutionId": str},
+    total=False,
+)
+
+
+class ClientPutJobFailureResultfailureDetailsTypeDef(
+    _RequiredClientPutJobFailureResultfailureDetailsTypeDef,
+    _OptionalClientPutJobFailureResultfailureDetailsTypeDef,
+):
+    """
+    Type definition for `ClientPutJobFailureResult` `failureDetails`
+
+    The details about the failure of a job.
+
+    - **type** *(string) --* **[REQUIRED]**
+
+      The type of the failure.
+
+    - **message** *(string) --* **[REQUIRED]**
+
+      The message about the failure.
+
+    - **externalExecutionId** *(string) --*
+
+      The external ID of the run of the action that failed.
+    """
+
+
 _RequiredClientPutJobSuccessResultcurrentRevisionTypeDef = TypedDict(
     "_RequiredClientPutJobSuccessResultcurrentRevisionTypeDef",
     {"revision": str, "changeIdentifier": str},
@@ -11074,6 +11108,40 @@ class ClientPutJobSuccessResultexecutionDetailsTypeDef(
     """
 
 
+_RequiredClientPutThirdPartyJobFailureResultfailureDetailsTypeDef = TypedDict(
+    "_RequiredClientPutThirdPartyJobFailureResultfailureDetailsTypeDef",
+    {"type": str, "message": str},
+)
+_OptionalClientPutThirdPartyJobFailureResultfailureDetailsTypeDef = TypedDict(
+    "_OptionalClientPutThirdPartyJobFailureResultfailureDetailsTypeDef",
+    {"externalExecutionId": str},
+    total=False,
+)
+
+
+class ClientPutThirdPartyJobFailureResultfailureDetailsTypeDef(
+    _RequiredClientPutThirdPartyJobFailureResultfailureDetailsTypeDef,
+    _OptionalClientPutThirdPartyJobFailureResultfailureDetailsTypeDef,
+):
+    """
+    Type definition for `ClientPutThirdPartyJobFailureResult` `failureDetails`
+
+    Represents information about failure details.
+
+    - **type** *(string) --* **[REQUIRED]**
+
+      The type of the failure.
+
+    - **message** *(string) --* **[REQUIRED]**
+
+      The message about the failure.
+
+    - **externalExecutionId** *(string) --*
+
+      The external ID of the run of the action that failed.
+    """
+
+
 _RequiredClientPutThirdPartyJobSuccessResultcurrentRevisionTypeDef = TypedDict(
     "_RequiredClientPutThirdPartyJobSuccessResultcurrentRevisionTypeDef",
     {"revision": str, "changeIdentifier": str},
@@ -11110,6 +11178,37 @@ class ClientPutThirdPartyJobSuccessResultcurrentRevisionTypeDef(
     - **revisionSummary** *(string) --*
 
       The summary of the most recent revision of the artifact.
+    """
+
+
+_ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef = TypedDict(
+    "_ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef",
+    {"summary": str, "externalExecutionId": str, "percentComplete": int},
+    total=False,
+)
+
+
+class ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef(
+    _ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef
+):
+    """
+    Type definition for `ClientPutThirdPartyJobSuccessResult` `executionDetails`
+
+    The details of the actions taken and results produced on an artifact as it passes through stages
+    in the pipeline.
+
+    - **summary** *(string) --*
+
+      The summary of the current status of the actions.
+
+    - **externalExecutionId** *(string) --*
+
+      The system-generated unique ID of this action used to identify this job worker in any external
+      systems, such as AWS CodeDeploy.
+
+    - **percentComplete** *(integer) --*
+
+      The percentage of work completed on the action, represented on a scale of 0 to 100 percent.
     """
 
 

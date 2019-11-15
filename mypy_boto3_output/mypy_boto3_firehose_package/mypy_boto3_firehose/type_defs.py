@@ -2735,7 +2735,7 @@ class ClientCreateDeliveryStreamRedshiftDestinationConfigurationCopyCommandTypeD
       <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
       would apply to Kinesis Data Firehose are as follows:
 
-       ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+       ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
        using lzop.
 
        ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -3456,7 +3456,7 @@ class ClientCreateDeliveryStreamRedshiftDestinationConfigurationTypeDef(
         <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
         would apply to Kinesis Data Firehose are as follows:
 
-         ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+         ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
          using lzop.
 
          ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -7445,7 +7445,7 @@ class ClientDescribeDeliveryStreamResponseDeliveryStreamDescriptionDestinationsR
       <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
       examples that would apply to Kinesis Data Firehose are as follows:
 
-       ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+       ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
        compressed using lzop.
 
        ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -8164,7 +8164,7 @@ class ClientDescribeDeliveryStreamResponseDeliveryStreamDescriptionDestinationsR
         <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
         examples that would apply to Kinesis Data Firehose are as follows:
 
-         ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+         ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
          compressed using lzop.
 
          ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -9962,7 +9962,7 @@ class ClientDescribeDeliveryStreamResponseDeliveryStreamDescriptionDestinationsT
           <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
           examples that would apply to Kinesis Data Firehose are as follows:
 
-           ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+           ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
            compressed using lzop.
 
            ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -11455,7 +11455,7 @@ class ClientDescribeDeliveryStreamResponseDeliveryStreamDescriptionTypeDef(
               <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
               examples that would apply to Kinesis Data Firehose are as follows:
 
-               ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+               ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
                compressed using lzop.
 
                ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -12863,7 +12863,7 @@ class ClientDescribeDeliveryStreamResponseTypeDef(
                 <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
                 examples that would apply to Kinesis Data Firehose are as follows:
 
-                 ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+                 ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
                  compressed using lzop.
 
                  ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -16505,7 +16505,7 @@ class ClientUpdateDestinationRedshiftDestinationUpdateCopyCommandTypeDef(
       <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
       would apply to Kinesis Data Firehose are as follows:
 
-       ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+       ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
        using lzop.
 
        ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -17213,7 +17213,7 @@ class ClientUpdateDestinationRedshiftDestinationUpdateTypeDef(
         <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
         would apply to Kinesis Data Firehose are as follows:
 
-         ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+         ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
          using lzop.
 
          ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).

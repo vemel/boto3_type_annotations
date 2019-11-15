@@ -286,6 +286,28 @@ class ClientCreateMountTargetResponseTypeDef(_ClientCreateMountTargetResponseTyp
     """
 
 
+_ClientCreateTagsTagsTypeDef = TypedDict(
+    "_ClientCreateTagsTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientCreateTagsTagsTypeDef(_ClientCreateTagsTagsTypeDef):
+    """
+    Type definition for `ClientCreateTags` `Tags`
+
+    A tag is a key-value pair. Allowed characters are letters, white space, and numbers that can be
+    represented in UTF-8, and the following characters:``+ - = . _ : /``
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The tag key (String). The key can't start with ``aws:`` .
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value of the tag key.
+    """
+
+
 _ClientDescribeFileSystemsResponseFileSystemsSizeInBytesTypeDef = TypedDict(
     "_ClientDescribeFileSystemsResponseFileSystemsSizeInBytesTypeDef",
     {"Value": int, "Timestamp": datetime, "ValueInIA": int, "ValueInStandard": int},

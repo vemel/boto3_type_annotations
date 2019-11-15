@@ -46,7 +46,7 @@ from mypy_boto3_securityhub.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_invitation(self, MasterId: str, InvitationId: str) -> Dict[str, Any]:
         """
         Accepts the invitation to be a member account and be monitored by the Security Hub master account
@@ -86,7 +86,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_disable_standards(
         self, StandardsSubscriptionArns: List[str]
     ) -> ClientBatchDisableStandardsResponseTypeDef:
@@ -170,7 +170,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_enable_standards(
         self,
         StandardsSubscriptionRequests: List[
@@ -289,7 +289,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_import_findings(
         self, Findings: List[ClientBatchImportFindingsFindingsTypeDef]
     ) -> ClientBatchImportFindingsResponseTypeDef:
@@ -982,7 +982,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -999,7 +999,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_action_target(
         self, Name: str, Description: str, Id: str
     ) -> ClientCreateActionTargetResponseTypeDef:
@@ -1053,7 +1053,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_insight(
         self,
         Name: str,
@@ -3160,7 +3160,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_members(
         self, AccountDetails: List[ClientCreateMembersAccountDetailsTypeDef] = None
     ) -> ClientCreateMembersResponseTypeDef:
@@ -3249,7 +3249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decline_invitations(
         self, AccountIds: List[str]
     ) -> ClientDeclineInvitationsResponseTypeDef:
@@ -3312,7 +3312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_action_target(
         self, ActionTargetArn: str
     ) -> ClientDeleteActionTargetResponseTypeDef:
@@ -3354,7 +3354,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_insight(self, InsightArn: str) -> ClientDeleteInsightResponseTypeDef:
         """
         Deletes the insight specified by the ``InsightArn`` .
@@ -3393,7 +3393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_invitations(
         self, AccountIds: List[str]
     ) -> ClientDeleteInvitationsResponseTypeDef:
@@ -3456,7 +3456,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_members(
         self, AccountIds: List[str] = None
     ) -> ClientDeleteMembersResponseTypeDef:
@@ -3518,7 +3518,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_action_targets(
         self,
         ActionTargetArns: List[str] = None,
@@ -3606,7 +3606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hub(self, HubArn: str = None) -> ClientDescribeHubResponseTypeDef:
         """
         Returns details about the Hub resource in your account, including the ``HubArn`` and the time when
@@ -3651,7 +3651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_products(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeProductsResponseTypeDef:
@@ -3755,7 +3755,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_import_findings_for_product(
         self, ProductSubscriptionArn: str
     ) -> Dict[str, Any]:
@@ -3790,7 +3790,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_security_hub(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Disables Security Hub in your account only in the current Region. To disable Security Hub in all
@@ -3824,7 +3824,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_from_master_account(
         self, *args: Any, **kwargs: Any
     ) -> Dict[str, Any]:
@@ -3852,7 +3852,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_members(self, AccountIds: List[str] = None) -> Dict[str, Any]:
         """
         Disassociates the specified member accounts from the associated master account.
@@ -3888,7 +3888,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_import_findings_for_product(
         self, ProductArn: str
     ) -> ClientEnableImportFindingsForProductResponseTypeDef:
@@ -3931,7 +3931,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_security_hub(self, Tags: List[str] = None) -> Dict[str, Any]:
         """
         Enables Security Hub for your account in the current Region or the Region you specify in the
@@ -3973,7 +3973,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4002,7 +4002,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_enabled_standards(
         self,
         StandardsSubscriptionArns: List[str] = None,
@@ -4107,7 +4107,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_findings(
         self,
         Filters: ClientGetFindingsFiltersTypeDef = None,
@@ -6859,7 +6859,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_insight_results(
         self, InsightArn: str
     ) -> ClientGetInsightResultsResponseTypeDef:
@@ -6935,7 +6935,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_insights(
         self,
         InsightArns: List[str] = None,
@@ -9099,7 +9099,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_invitations_count(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetInvitationsCountResponseTypeDef:
@@ -9136,7 +9136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_master_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetMasterAccountResponseTypeDef:
@@ -9192,7 +9192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_members(self, AccountIds: List[str]) -> ClientGetMembersResponseTypeDef:
         """
         Returns the details on the Security Hub member accounts that the account IDs specify.
@@ -9295,7 +9295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -9316,7 +9316,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -9329,7 +9329,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invite_members(
         self, AccountIds: List[str] = None
     ) -> ClientInviteMembersResponseTypeDef:
@@ -9395,7 +9395,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_enabled_products_for_import(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListEnabledProductsForImportResponseTypeDef:
@@ -9455,7 +9455,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_invitations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListInvitationsResponseTypeDef:
@@ -9536,7 +9536,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_members(
         self, OnlyAssociated: bool = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientListMembersResponseTypeDef:
@@ -9637,7 +9637,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -9684,7 +9684,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Adds one or more tags to a resource.
@@ -9728,7 +9728,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from a resource.
@@ -9770,7 +9770,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_action_target(
         self, ActionTargetArn: str, Name: str = None, Description: str = None
     ) -> Dict[str, Any]:
@@ -9816,7 +9816,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_findings(
         self,
         Filters: ClientUpdateFindingsFiltersTypeDef,
@@ -11926,7 +11926,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_insight(
         self,
         InsightArn: str,

@@ -30,12 +30,13 @@ from mypy_boto3_cloudwatch.type_defs import (
     ClientPutMetricAlarmDimensionsTypeDef,
     ClientPutMetricAlarmMetricsTypeDef,
     ClientPutMetricAlarmTagsTypeDef,
+    ClientPutMetricDataMetricDataTypeDef,
     ClientTagResourceTagsTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -52,8 +53,8 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
-    def delete_alarms(self, AlarmNames: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_alarms(self, AlarmNames: List[str]) -> None:
         """
         Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an
         error, no alarms are deleted.
@@ -79,7 +80,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_anomaly_detector(
         self,
         Namespace: str,
@@ -152,7 +153,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dashboards(self, DashboardNames: List[str]) -> Dict[str, Any]:
         """
         Deletes all dashboards that you specify. You may specify up to 100 dashboards to delete. If there
@@ -189,7 +190,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_alarm_history(
         self,
         AlarmName: str = None,
@@ -306,7 +307,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_alarms(
         self,
         AlarmNames: List[str] = None,
@@ -772,7 +773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_alarms_for_metric(
         self,
         MetricName: str,
@@ -1260,7 +1261,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_anomaly_detectors(
         self,
         NextToken: str = None,
@@ -1453,8 +1454,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def disable_alarm_actions(self, AlarmNames: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def disable_alarm_actions(self, AlarmNames: List[str]) -> None:
         """
         Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm
         actions do not execute when the alarm state changes.
@@ -1480,8 +1481,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def enable_alarm_actions(self, AlarmNames: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def enable_alarm_actions(self, AlarmNames: List[str]) -> None:
         """
         Enables the actions for the specified alarms.
 
@@ -1506,7 +1507,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1535,7 +1536,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dashboard(self, DashboardName: str) -> ClientGetDashboardResponseTypeDef:
         """
         Displays the details of the dashboard that you specify.
@@ -1590,7 +1591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_metric_data(
         self,
         MetricDataQueries: List[ClientGetMetricDataMetricDataQueriesTypeDef],
@@ -2022,7 +2023,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_metric_statistics(
         self,
         Namespace: str,
@@ -2315,7 +2316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_metric_widget_image(
         self, MetricWidget: str, OutputFormat: str = None
     ) -> ClientGetMetricWidgetImageResponseTypeDef:
@@ -2411,7 +2412,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2432,7 +2433,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2445,7 +2446,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dashboards(
         self, DashboardNamePrefix: str = None, NextToken: str = None
     ) -> ClientListDashboardsResponseTypeDef:
@@ -2533,7 +2534,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_metrics(
         self,
         Namespace: str = None,
@@ -2664,7 +2665,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2726,7 +2727,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_anomaly_detector(
         self,
         Namespace: str,
@@ -2854,7 +2855,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_dashboard(
         self, DashboardName: str, DashboardBody: str
     ) -> ClientPutDashboardResponseTypeDef:
@@ -2943,7 +2944,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_metric_alarm(
         self,
         AlarmName: str,
@@ -3522,8 +3523,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_metric_data(self, Namespace: str, MetricData: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_metric_data(
+        self, Namespace: str, MetricData: List[ClientPutMetricDataMetricDataTypeDef]
+    ) -> None:
         """
         Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the
         specified metric. If the specified metric does not exist, CloudWatch creates the metric. When
@@ -3723,7 +3726,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_alarm_state(
         self,
         AlarmName: str,
@@ -3776,7 +3779,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -3849,7 +3852,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from the specified resource.

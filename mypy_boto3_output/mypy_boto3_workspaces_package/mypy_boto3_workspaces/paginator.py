@@ -24,7 +24,7 @@ from mypy_boto3_workspaces.type_defs import (
 
 
 class DescribeAccountModifications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeAccountModificationsPaginatePaginationConfigTypeDef = None,
@@ -124,7 +124,7 @@ class DescribeAccountModifications(Boto3Paginator):
 
 
 class DescribeIpGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GroupIds: List[str] = None,
@@ -244,7 +244,7 @@ class DescribeIpGroups(Boto3Paginator):
 
 
 class DescribeWorkspaceBundles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         BundleIds: List[str] = None,
@@ -388,7 +388,7 @@ class DescribeWorkspaceBundles(Boto3Paginator):
 
 
 class DescribeWorkspaceDirectories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryIds: List[str] = None,
@@ -581,7 +581,7 @@ class DescribeWorkspaceDirectories(Boto3Paginator):
 
 
 class DescribeWorkspaceImages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ImageIds: List[str] = None,
@@ -711,7 +711,7 @@ class DescribeWorkspaceImages(Boto3Paginator):
 
 
 class DescribeWorkspaces(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WorkspaceIds: List[str] = None,
@@ -949,7 +949,7 @@ class DescribeWorkspaces(Boto3Paginator):
 
 
 class DescribeWorkspacesConnectionStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WorkspaceIds: List[str] = None,
@@ -1048,7 +1048,7 @@ class DescribeWorkspacesConnectionStatus(Boto3Paginator):
 
 
 class ListAvailableManagementCidrRanges(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ManagementCidrRangeConstraint: str,

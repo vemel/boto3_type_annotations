@@ -1,13 +1,17 @@
 "Main interface for signer Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_signer.type_defs import SuccessfulSigningJobWaitWaiterConfigTypeDef
 
 
 class SuccessfulSigningJob(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, jobId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        jobId: str,
+        WaiterConfig: SuccessfulSigningJobWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`signer.Client.describe_signing_job` every 20 seconds until a successful state is
         reached. An error is returned after 25 failed checks.

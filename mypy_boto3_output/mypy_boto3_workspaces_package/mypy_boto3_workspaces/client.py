@@ -46,7 +46,7 @@ from mypy_boto3_workspaces.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_ip_groups(
         self, DirectoryId: str, GroupIds: List[str]
     ) -> Dict[str, Any]:
@@ -90,7 +90,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_ip_rules(
         self, GroupId: str, UserRules: List[ClientAuthorizeIpRulesUserRulesTypeDef]
     ) -> Dict[str, Any]:
@@ -150,7 +150,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -167,7 +167,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_workspace_image(
         self,
         Name: str,
@@ -254,7 +254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ip_group(
         self,
         GroupName: str,
@@ -361,7 +361,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, ResourceId: str, Tags: List[ClientCreateTagsTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -419,7 +419,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_workspaces(
         self, Workspaces: List[ClientCreateWorkspacesWorkspacesTypeDef]
     ) -> ClientCreateWorkspacesResponseTypeDef:
@@ -813,7 +813,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ip_group(self, GroupId: str) -> Dict[str, Any]:
         """
         Deletes the specified IP access control group.
@@ -847,7 +847,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(self, ResourceId: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes the specified tags from the specified WorkSpaces resource.
@@ -890,7 +890,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_workspace_image(self, ImageId: str) -> Dict[str, Any]:
         """
         Deletes the specified image from your account. To delete an image, you must first delete any
@@ -924,7 +924,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountResponseTypeDef:
@@ -970,7 +970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_modifications(
         self, NextToken: str = None
     ) -> ClientDescribeAccountModificationsResponseTypeDef:
@@ -1059,7 +1059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_properties(
         self, ResourceIds: List[str]
     ) -> ClientDescribeClientPropertiesResponseTypeDef:
@@ -1129,7 +1129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ip_groups(
         self, GroupIds: List[str] = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeIpGroupsResponseTypeDef:
@@ -1237,7 +1237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(self, ResourceId: str) -> ClientDescribeTagsResponseTypeDef:
         """
         Describes the specified tags for the specified WorkSpaces resource.
@@ -1294,7 +1294,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspace_bundles(
         self, BundleIds: List[str] = None, Owner: str = None, NextToken: str = None
     ) -> ClientDescribeWorkspaceBundlesResponseTypeDef:
@@ -1425,7 +1425,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspace_directories(
         self, DirectoryIds: List[str] = None, NextToken: str = None
     ) -> ClientDescribeWorkspaceDirectoriesResponseTypeDef:
@@ -1606,7 +1606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspace_images(
         self, ImageIds: List[str] = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeWorkspaceImagesResponseTypeDef:
@@ -1725,7 +1725,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspace_snapshots(
         self, WorkspaceId: str
     ) -> ClientDescribeWorkspaceSnapshotsResponseTypeDef:
@@ -1797,7 +1797,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspaces(
         self,
         WorkspaceIds: List[str] = None,
@@ -2029,7 +2029,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspaces_connection_status(
         self, WorkspaceIds: List[str] = None, NextToken: str = None
     ) -> ClientDescribeWorkspacesConnectionStatusResponseTypeDef:
@@ -2115,7 +2115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_ip_groups(
         self, DirectoryId: str, GroupIds: List[str]
     ) -> Dict[str, Any]:
@@ -2159,7 +2159,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2188,7 +2188,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2209,7 +2209,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2222,7 +2222,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_workspace_image(
         self,
         Ec2ImageId: str,
@@ -2311,7 +2311,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_available_management_cidr_ranges(
         self,
         ManagementCidrRangeConstraint: str,
@@ -2384,7 +2384,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_account(
         self,
         DedicatedTenancySupport: str = None,
@@ -2430,7 +2430,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_client_properties(
         self,
         ResourceId: str,
@@ -2480,7 +2480,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_workspace_properties(
         self,
         WorkspaceId: str,
@@ -2552,7 +2552,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_workspace_state(
         self, WorkspaceId: str, WorkspaceState: str
     ) -> Dict[str, Any]:
@@ -2597,7 +2597,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_workspaces(
         self,
         RebootWorkspaceRequests: List[
@@ -2681,7 +2681,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rebuild_workspaces(
         self,
         RebuildWorkspaceRequests: List[
@@ -2769,7 +2769,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_workspace(self, WorkspaceId: str) -> Dict[str, Any]:
         """
         Restores the specified WorkSpace to its last known healthy state.
@@ -2809,7 +2809,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_ip_rules(self, GroupId: str, UserRules: List[str]) -> Dict[str, Any]:
         """
         Removes one or more rules from the specified IP access control group.
@@ -2851,7 +2851,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_workspaces(
         self,
         StartWorkspaceRequests: List[
@@ -2934,7 +2934,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_workspaces(
         self,
         StopWorkspaceRequests: List[ClientStopWorkspacesStopWorkspaceRequestsTypeDef],
@@ -3015,7 +3015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_workspaces(
         self,
         TerminateWorkspaceRequests: List[
@@ -3102,7 +3102,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_rules_of_ip_group(
         self, GroupId: str, UserRules: List[ClientUpdateRulesOfIpGroupUserRulesTypeDef]
     ) -> Dict[str, Any]:

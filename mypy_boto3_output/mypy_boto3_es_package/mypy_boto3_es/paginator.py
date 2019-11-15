@@ -17,7 +17,7 @@ from mypy_boto3_es.type_defs import (
 
 
 class DescribeReservedElasticsearchInstanceOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedElasticsearchInstanceOfferingId: str = None,
@@ -178,7 +178,7 @@ class DescribeReservedElasticsearchInstanceOfferings(Boto3Paginator):
 
 
 class DescribeReservedElasticsearchInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedElasticsearchInstanceId: str = None,
@@ -364,7 +364,7 @@ class DescribeReservedElasticsearchInstances(Boto3Paginator):
 
 
 class GetUpgradeHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DomainName: str,
@@ -525,7 +525,7 @@ class GetUpgradeHistory(Boto3Paginator):
 
 
 class ListElasticsearchInstanceTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ElasticsearchVersion: str,
@@ -631,7 +631,7 @@ class ListElasticsearchInstanceTypes(Boto3Paginator):
 
 
 class ListElasticsearchVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListElasticsearchVersionsPaginatePaginationConfigTypeDef = None,

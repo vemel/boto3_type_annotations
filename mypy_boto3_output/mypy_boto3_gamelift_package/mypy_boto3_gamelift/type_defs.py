@@ -757,7 +757,7 @@ class ClientCreateFleetResponseFleetAttributesTypeDef(
       see more on game session logs in the `Amazon GameLift Developer Guide
       <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
       . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-      logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+      logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
       ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
       - *(string) --*
@@ -924,7 +924,7 @@ class ClientCreateFleetResponseTypeDef(_ClientCreateFleetResponseTypeDef):
         see more on game session logs in the `Amazon GameLift Developer Guide
         <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
         . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-        logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+        logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
         ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
         - *(string) --*
@@ -1020,8 +1020,8 @@ class ClientCreateFleetRuntimeConfigurationServerProcessesTypeDef(
       file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
       on instances at the root:
 
-      * Windows (for custom game builds only): ``C:\game`` . Example:
-      "``C:\game\MyGame\server.exe`` "
+      * Windows (for custom game builds only): ``C:\\game`` . Example:
+      "``C:\\game\\MyGame\\server.exe`` "
 
       * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
       "``/local/game/MyRealtimeScript.js`` "
@@ -1082,8 +1082,8 @@ class ClientCreateFleetRuntimeConfigurationTypeDef(
           file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
           on instances at the root:
 
-          * Windows (for custom game builds only): ``C:\game`` . Example:
-          "``C:\game\MyGame\server.exe`` "
+          * Windows (for custom game builds only): ``C:\\game`` . Example:
+          "``C:\\game\\MyGame\\server.exe`` "
 
           * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
           "``/local/game/MyRealtimeScript.js`` "
@@ -3496,7 +3496,7 @@ class ClientDescribeFleetAttributesResponseFleetAttributesTypeDef(
       session logs; see more on game session logs in the `Amazon GameLift Developer Guide
       <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
       . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-      logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+      logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
       ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
       - *(string) --*
@@ -3712,7 +3712,7 @@ class ClientDescribeFleetAttributesResponseTypeDef(
           session logs; see more on game session logs in the `Amazon GameLift Developer Guide
           <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
           . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-          logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+          logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
           ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
           - *(string) --*
@@ -7583,8 +7583,8 @@ class ClientDescribeRuntimeConfigurationResponseRuntimeConfigurationServerProces
       script file that contains the ``Init()`` function. Game builds and Realtime scripts are
       installed on instances at the root:
 
-      * Windows (for custom game builds only): ``C:\game`` . Example:
-      "``C:\game\MyGame\server.exe`` "
+      * Windows (for custom game builds only): ``C:\\game`` . Example:
+      "``C:\\game\\MyGame\\server.exe`` "
 
       * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
       "``/local/game/MyRealtimeScript.js`` "
@@ -7642,8 +7642,8 @@ class ClientDescribeRuntimeConfigurationResponseRuntimeConfigurationTypeDef(
           script file that contains the ``Init()`` function. Game builds and Realtime scripts are
           installed on instances at the root:
 
-          * Windows (for custom game builds only): ``C:\game`` . Example:
-          "``C:\game\MyGame\server.exe`` "
+          * Windows (for custom game builds only): ``C:\\game`` . Example:
+          "``C:\\game\\MyGame\\server.exe`` "
 
           * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
           "``/local/game/MyRealtimeScript.js`` "
@@ -7713,8 +7713,8 @@ class ClientDescribeRuntimeConfigurationResponseTypeDef(
             script file that contains the ``Init()`` function. Game builds and Realtime scripts are
             installed on instances at the root:
 
-            * Windows (for custom game builds only): ``C:\game`` . Example:
-            "``C:\game\MyGame\server.exe`` "
+            * Windows (for custom game builds only): ``C:\\game`` . Example:
+            "``C:\\game\\MyGame\\server.exe`` "
 
             * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
             "``/local/game/MyRealtimeScript.js`` "
@@ -14218,8 +14218,8 @@ class ClientUpdateRuntimeConfigurationResponseRuntimeConfigurationServerProcesse
       script file that contains the ``Init()`` function. Game builds and Realtime scripts are
       installed on instances at the root:
 
-      * Windows (for custom game builds only): ``C:\game`` . Example:
-      "``C:\game\MyGame\server.exe`` "
+      * Windows (for custom game builds only): ``C:\\game`` . Example:
+      "``C:\\game\\MyGame\\server.exe`` "
 
       * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
       "``/local/game/MyRealtimeScript.js`` "
@@ -14277,8 +14277,8 @@ class ClientUpdateRuntimeConfigurationResponseRuntimeConfigurationTypeDef(
           script file that contains the ``Init()`` function. Game builds and Realtime scripts are
           installed on instances at the root:
 
-          * Windows (for custom game builds only): ``C:\game`` . Example:
-          "``C:\game\MyGame\server.exe`` "
+          * Windows (for custom game builds only): ``C:\\game`` . Example:
+          "``C:\\game\\MyGame\\server.exe`` "
 
           * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
           "``/local/game/MyRealtimeScript.js`` "
@@ -14348,8 +14348,8 @@ class ClientUpdateRuntimeConfigurationResponseTypeDef(
             script file that contains the ``Init()`` function. Game builds and Realtime scripts are
             installed on instances at the root:
 
-            * Windows (for custom game builds only): ``C:\game`` . Example:
-            "``C:\game\MyGame\server.exe`` "
+            * Windows (for custom game builds only): ``C:\\game`` . Example:
+            "``C:\\game\\MyGame\\server.exe`` "
 
             * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
             "``/local/game/MyRealtimeScript.js`` "
@@ -14408,8 +14408,8 @@ class ClientUpdateRuntimeConfigurationRuntimeConfigurationServerProcessesTypeDef
       file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
       on instances at the root:
 
-      * Windows (for custom game builds only): ``C:\game`` . Example:
-      "``C:\game\MyGame\server.exe`` "
+      * Windows (for custom game builds only): ``C:\\game`` . Example:
+      "``C:\\game\\MyGame\\server.exe`` "
 
       * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
       "``/local/game/MyRealtimeScript.js`` "
@@ -14470,8 +14470,8 @@ class ClientUpdateRuntimeConfigurationRuntimeConfigurationTypeDef(
           file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
           on instances at the root:
 
-          * Windows (for custom game builds only): ``C:\game`` . Example:
-          "``C:\game\MyGame\server.exe`` "
+          * Windows (for custom game builds only): ``C:\\game`` . Example:
+          "``C:\\game\\MyGame\\server.exe`` "
 
           * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
           "``/local/game/MyRealtimeScript.js`` "
@@ -14979,7 +14979,7 @@ class DescribeFleetAttributesPaginateResponseFleetAttributesTypeDef(
       session logs; see more on game session logs in the `Amazon GameLift Developer Guide
       <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
       . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-      logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+      logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
       ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
       - *(string) --*
@@ -15194,7 +15194,7 @@ class DescribeFleetAttributesPaginateResponseTypeDef(
           session logs; see more on game session logs in the `Amazon GameLift Developer Guide
           <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
           . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-          logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+          logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
           ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
           - *(string) --*

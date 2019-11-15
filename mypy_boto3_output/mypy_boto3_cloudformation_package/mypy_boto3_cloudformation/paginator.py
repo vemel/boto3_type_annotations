@@ -34,7 +34,7 @@ from mypy_boto3_cloudformation.type_defs import (
 
 
 class DescribeAccountLimits(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeAccountLimitsPaginatePaginationConfigTypeDef = None,
@@ -129,7 +129,7 @@ class DescribeAccountLimits(Boto3Paginator):
 
 
 class DescribeChangeSet(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ChangeSetName: str,
@@ -392,7 +392,7 @@ class DescribeChangeSet(Boto3Paginator):
 
                   - **Type** *(string) --*
 
-                    The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                    The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                     <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                     is the only supported resource type.
 
@@ -593,7 +593,7 @@ class DescribeChangeSet(Boto3Paginator):
 
 
 class DescribeStackEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackName: str = None,
@@ -750,7 +750,7 @@ class DescribeStackEvents(Boto3Paginator):
 
 
 class DescribeStacks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackName: str = None,
@@ -993,7 +993,8 @@ class DescribeStacks(Boto3Paginator):
 
                       - **Type** *(string) --*
 
-                        The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                        The resource type of the rollback trigger. Currently,
+                        `AWS\\:\\:CloudWatch\\:\\:Alarm
                         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                         is the only supported resource type.
 
@@ -1164,7 +1165,7 @@ class DescribeStacks(Boto3Paginator):
 
 
 class ListChangeSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackName: str,
@@ -1295,7 +1296,7 @@ class ListChangeSets(Boto3Paginator):
 
 
 class ListExports(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListExportsPaginatePaginationConfigTypeDef = None
     ) -> ListExportsPaginateResponseTypeDef:
@@ -1379,7 +1380,7 @@ class ListExports(Boto3Paginator):
 
 
 class ListImports(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ExportName: str,
@@ -1451,7 +1452,7 @@ class ListImports(Boto3Paginator):
 
 
 class ListStackInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackSetName: str,
@@ -1592,7 +1593,7 @@ class ListStackInstances(Boto3Paginator):
 
 
 class ListStackResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackName: str,
@@ -1753,7 +1754,7 @@ class ListStackResources(Boto3Paginator):
 
 
 class ListStackSetOperationResults(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackSetName: str,
@@ -1917,7 +1918,7 @@ class ListStackSetOperationResults(Boto3Paginator):
 
 
 class ListStackSetOperations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackSetName: str,
@@ -2047,7 +2048,7 @@ class ListStackSetOperations(Boto3Paginator):
 
 
 class ListStackSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Status: str = None,
@@ -2146,7 +2147,7 @@ class ListStackSets(Boto3Paginator):
 
 
 class ListStacks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StackStatusFilter: List[str] = None,

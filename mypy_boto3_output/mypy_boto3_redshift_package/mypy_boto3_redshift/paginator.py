@@ -57,7 +57,7 @@ from mypy_boto3_redshift.type_defs import (
 
 
 class DescribeClusterDbRevisions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterIdentifier: str = None,
@@ -186,7 +186,7 @@ class DescribeClusterDbRevisions(Boto3Paginator):
 
 
 class DescribeClusterParameterGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ParameterGroupName: str = None,
@@ -341,7 +341,7 @@ class DescribeClusterParameterGroups(Boto3Paginator):
 
 
 class DescribeClusterParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ParameterGroupName: str,
@@ -491,7 +491,7 @@ class DescribeClusterParameters(Boto3Paginator):
 
 
 class DescribeClusterSecurityGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterSecurityGroupName: str = None,
@@ -735,7 +735,7 @@ class DescribeClusterSecurityGroups(Boto3Paginator):
 
 
 class DescribeClusterSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterIdentifier: str = None,
@@ -1175,7 +1175,7 @@ class DescribeClusterSnapshots(Boto3Paginator):
 
 
 class DescribeClusterSubnetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterSubnetGroupName: str = None,
@@ -1377,7 +1377,7 @@ class DescribeClusterSubnetGroups(Boto3Paginator):
 
 
 class DescribeClusterTracks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         MaintenanceTrackName: str = None,
@@ -1512,7 +1512,7 @@ class DescribeClusterTracks(Boto3Paginator):
 
 
 class DescribeClusterVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterVersion: str = None,
@@ -1630,7 +1630,7 @@ class DescribeClusterVersions(Boto3Paginator):
 
 
 class DescribeClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterIdentifier: str = None,
@@ -2485,7 +2485,7 @@ class DescribeClusters(Boto3Paginator):
 
 
 class DescribeDefaultClusterParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ParameterGroupFamily: str,
@@ -2639,7 +2639,7 @@ class DescribeDefaultClusterParameters(Boto3Paginator):
 
 
 class DescribeEventSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SubscriptionName: str = None,
@@ -2850,7 +2850,7 @@ class DescribeEventSubscriptions(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SourceIdentifier: str = None,
@@ -3042,7 +3042,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeHsmClientCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HsmClientCertificateIdentifier: str = None,
@@ -3193,7 +3193,7 @@ class DescribeHsmClientCertificates(Boto3Paginator):
 
 
 class DescribeHsmConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HsmConfigurationIdentifier: str = None,
@@ -3353,7 +3353,7 @@ class DescribeHsmConfigurations(Boto3Paginator):
 
 
 class DescribeNodeConfigurationOptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ActionType: str,
@@ -3505,7 +3505,7 @@ class DescribeNodeConfigurationOptions(Boto3Paginator):
 
 
 class DescribeOrderableClusterOptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterVersion: str = None,
@@ -3649,7 +3649,7 @@ class DescribeOrderableClusterOptions(Boto3Paginator):
 
 
 class DescribeReservedNodeOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedNodeOfferingId: str = None,
@@ -3794,7 +3794,7 @@ class DescribeReservedNodeOfferings(Boto3Paginator):
 
 
 class DescribeReservedNodes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedNodeId: str = None,
@@ -3973,7 +3973,7 @@ class DescribeReservedNodes(Boto3Paginator):
 
 
 class DescribeSnapshotCopyGrants(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SnapshotCopyGrantName: str = None,
@@ -4125,7 +4125,7 @@ class DescribeSnapshotCopyGrants(Boto3Paginator):
 
 
 class DescribeSnapshotSchedules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterIdentifier: str = None,
@@ -4307,7 +4307,7 @@ class DescribeSnapshotSchedules(Boto3Paginator):
 
 
 class DescribeTableRestoreStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterIdentifier: str = None,
@@ -4472,7 +4472,7 @@ class DescribeTableRestoreStatus(Boto3Paginator):
 
 
 class DescribeTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceName: str = None,
@@ -4538,7 +4538,7 @@ class DescribeTags(Boto3Paginator):
           * Snapshot copy grant
 
           For more information about Amazon Redshift resource types and constructing ARNs, go to
-          `Specifying Policy Elements: Actions, Effects, Resources, and Principals
+          `Specifying Policy Elements\\: Actions, Effects, Resources, and Principals
           <https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions>`__
           in the Amazon Redshift Cluster Management Guide.
 
@@ -4668,7 +4668,7 @@ class DescribeTags(Boto3Paginator):
 
 
 class GetReservedNodeExchangeOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedNodeId: str,

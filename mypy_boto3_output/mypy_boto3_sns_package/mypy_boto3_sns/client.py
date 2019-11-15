@@ -32,9 +32,9 @@ from mypy_boto3_sns.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
-        self, TopicArn: str, Label: str, AWSAccountId: List[str], ActionName: List[Any]
+        self, TopicArn: str, Label: str, AWSAccountId: List[str], ActionName: List[str]
     ) -> None:
         """
         Adds a statement to a topic's access control policy, granting access for the specified AWS accounts
@@ -86,7 +86,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -103,7 +103,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def check_if_phone_number_is_opted_out(
         self, phoneNumber: str
     ) -> ClientCheckIfPhoneNumberIsOptedOutResponseTypeDef:
@@ -153,7 +153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_subscription(
         self, TopicArn: str, Token: str, AuthenticateOnUnsubscribe: str = None
     ) -> ClientConfirmSubscriptionResponseTypeDef:
@@ -213,7 +213,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_application(
         self, Name: str, Platform: str, Attributes: Dict[str, str]
     ) -> ClientCreatePlatformApplicationResponseTypeDef:
@@ -300,7 +300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_endpoint(
         self,
         PlatformApplicationArn: str,
@@ -389,7 +389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_topic(
         self,
         Name: str,
@@ -398,9 +398,9 @@ class Client(BaseClient):
     ) -> ClientCreateTopicResponseTypeDef:
         """
         Creates a topic to which notifications can be published. Users can create at most 100,000 topics.
-        For more information, see `https://aws.amazon.com/sns <http://aws.amazon.com/sns/>`__ . This action
-        is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN
-        is returned without creating a new topic.
+        For more information, see `https\\://aws.amazon.com/sns <http://aws.amazon.com/sns/>`__ . This
+        action is idempotent, so if the requester already owns a topic with the specified name, that
+        topic's ARN is returned without creating a new topic.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic>`_
@@ -497,7 +497,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint(self, EndpointArn: str) -> None:
         """
         Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For
@@ -524,7 +524,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_platform_application(self, PlatformApplicationArn: str) -> None:
         """
         Deletes a platform application object for one of the supported push notification services, such as
@@ -548,7 +548,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_topic(self, TopicArn: str) -> None:
         """
         Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously
@@ -572,7 +572,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -601,7 +601,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_endpoint_attributes(
         self, EndpointArn: str
     ) -> ClientGetEndpointAttributesResponseTypeDef:
@@ -663,7 +663,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -684,7 +684,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_platform_application_attributes(
         self, PlatformApplicationArn: str
     ) -> ClientGetPlatformApplicationAttributesResponseTypeDef:
@@ -747,7 +747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sms_attributes(
         self, attributes: List[str] = None
     ) -> ClientGetSmsAttributesResponseTypeDef:
@@ -808,7 +808,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_subscription_attributes(
         self, SubscriptionArn: str
     ) -> ClientGetSubscriptionAttributesResponseTypeDef:
@@ -879,7 +879,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_topic_attributes(
         self, TopicArn: str
     ) -> ClientGetTopicAttributesResponseTypeDef:
@@ -949,7 +949,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -962,7 +962,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_endpoints_by_platform_application(
         self, PlatformApplicationArn: str, NextToken: str = None
     ) -> ClientListEndpointsByPlatformApplicationResponseTypeDef:
@@ -1050,7 +1050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_phone_numbers_opted_out(
         self, nextToken: str = None
     ) -> ClientListPhoneNumbersOptedOutResponseTypeDef:
@@ -1111,7 +1111,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_platform_applications(
         self, NextToken: str = None
     ) -> ClientListPlatformApplicationsResponseTypeDef:
@@ -1192,7 +1192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscriptions(
         self, NextToken: str = None
     ) -> ClientListSubscriptionsResponseTypeDef:
@@ -1277,7 +1277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscriptions_by_topic(
         self, TopicArn: str, NextToken: str = None
     ) -> ClientListSubscriptionsByTopicResponseTypeDef:
@@ -1368,7 +1368,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1428,7 +1428,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_topics(self, NextToken: str = None) -> ClientListTopicsResponseTypeDef:
         """
         Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If
@@ -1492,7 +1492,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def opt_in_phone_number(self, phoneNumber: str) -> Dict:
         """
         Use this request to opt in a phone number that is opted out, which enables you to resume sending
@@ -1530,7 +1530,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish(
         self,
         Message: str,
@@ -1745,7 +1745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(self, TopicArn: str, Label: str) -> None:
         """
         Removes a statement from a topic's access control policy.
@@ -1773,8 +1773,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def set_endpoint_attributes(self, EndpointArn: str, Attributes: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_endpoint_attributes(
+        self, EndpointArn: str, Attributes: Dict[str, str]
+    ) -> None:
         """
         Sets the attributes for an endpoint for a device on one of the supported push notification
         services, such as GCM and APNS. For more information, see `Using Amazon SNS Mobile Push
@@ -1820,9 +1822,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_platform_application_attributes(
-        self, PlatformApplicationArn: str, Attributes: Dict
+        self, PlatformApplicationArn: str, Attributes: Dict[str, str]
     ) -> None:
         """
         Sets the attributes of the platform application object for the supported push notification
@@ -1888,7 +1890,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_sms_attributes(self, attributes: Dict[str, str]) -> Dict:
         """
         Use this request to set the default settings for sending SMS messages and receiving daily SMS usage
@@ -2004,7 +2006,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_subscription_attributes(
         self, SubscriptionArn: str, AttributeName: str, AttributeValue: str = None
     ) -> None:
@@ -2053,7 +2055,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_topic_attributes(
         self, TopicArn: str, AttributeName: str, AttributeValue: str = None
     ) -> None:
@@ -2110,7 +2112,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def subscribe(
         self,
         TopicArn: str,
@@ -2252,7 +2254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2329,7 +2331,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unsubscribe(self, SubscriptionArn: str) -> None:
         """
         Deletes a subscription. If the subscription requires authentication for deletion, only the owner of
@@ -2357,7 +2359,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Remove tags from the specified Amazon SNS topic. For an overview, see `Amazon SNS Tags

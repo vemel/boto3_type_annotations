@@ -5,6 +5,8 @@ from datetime import datetime
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_cloudformation.service_resource as service_resource_scope
 from mypy_boto3_cloudformation.type_defs import (
     ServiceResourceCreateStackParametersTypeDef,
@@ -18,7 +20,7 @@ from mypy_boto3_cloudformation.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Event(self, id: str) -> service_resource_scope.Event:
         """
         Creates a Event resource.::
@@ -32,7 +34,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Event resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Stack(self, name: str) -> service_resource_scope.Stack:
         """
         Creates a Stack resource.::
@@ -46,7 +48,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Stack resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def StackResource(
         self, stack_name: str, logical_id: str
     ) -> service_resource_scope.StackResource:
@@ -64,7 +66,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A StackResource resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def StackResourceSummary(
         self, stack_name: str, logical_id: str
     ) -> service_resource_scope.StackResourceSummary:
@@ -82,7 +84,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A StackResourceSummary resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack(
         self,
         StackName: str,
@@ -273,7 +275,7 @@ class ServiceResource(Boto3ServiceResource):
 
               - **Type** *(string) --* **[REQUIRED]**
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -331,29 +333,29 @@ class ServiceResource(Boto3ServiceResource):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -368,9 +370,9 @@ class ServiceResource(Boto3ServiceResource):
           before actually creating the stack. If your stack template contains one or more macros, and you
           choose to create a stack directly from the processed template, without first reviewing the
           resulting changes in a change set, you must acknowledge this capability. This includes the
-          `AWS::Include
+          `AWS\\:\\:Include
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-          and `AWS::Serverless
+          and `AWS\\:\\:Serverless
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
           transforms, which are macros hosted by AWS CloudFormation. Change sets do not currently support
           nested stacks. If you want to create a stack from a stack template that contains macros *and*
@@ -503,7 +505,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Stack resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -529,7 +531,7 @@ class Event(Boto3ServiceResource):
     client_request_token: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -566,7 +568,7 @@ class Stack(Boto3ServiceResource):
     drift_information: Dict[str, Any]
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_update(self, ClientRequestToken: str = None) -> None:
         """
         Cancels an update on the specified stack. If the call completes successfully, the stack rolls back
@@ -596,7 +598,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         RetainResources: List[str] = None,
@@ -665,7 +667,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -676,7 +678,7 @@ class Stack(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudFormation.Client.describe_stacks` to update the attributes of the Stack
@@ -693,7 +695,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudFormation.Client.describe_stacks` to update the attributes of the Stack
@@ -710,7 +712,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self,
         TemplateBody: str = None,
@@ -895,29 +897,29 @@ class Stack(Boto3ServiceResource):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -932,9 +934,9 @@ class Stack(Boto3ServiceResource):
           before actually updating the stack. If your stack template contains one or more macros, and you
           choose to update a stack directly from the processed template, without first reviewing the
           resulting changes in a change set, you must acknowledge this capability. This includes the
-          `AWS::Include
+          `AWS\\:\\:Include
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-          and `AWS::Serverless
+          and `AWS\\:\\:Serverless
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
           transforms, which are macros hosted by AWS CloudFormation. Change sets do not currently support
           nested stacks. If you want to update a stack from a stack template that contains macros *and*
@@ -1022,7 +1024,7 @@ class Stack(Boto3ServiceResource):
 
               - **Type** *(string) --* **[REQUIRED]**
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -1153,7 +1155,7 @@ class StackResource(Boto3ServiceResource):
     stack_name: str
     logical_id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1164,7 +1166,7 @@ class StackResource(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudFormation.Client.describe_stack_resource` to update the attributes of the
@@ -1182,7 +1184,7 @@ class StackResource(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudFormation.Client.describe_stack_resource` to update the attributes of the
@@ -1212,7 +1214,7 @@ class StackResourceSummary(Boto3ServiceResource):
     stack_name: str
     logical_id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1236,8 +1238,7 @@ class stacks(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable of all Stack resources in the collection.
@@ -1254,8 +1255,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, StackName: str = None, NextToken: str = None
     ) -> List[service_resource_scope.Stack]:
@@ -1293,8 +1293,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1303,8 +1302,7 @@ class stacks(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable up to a specified amount of Stack resources in the collection.
@@ -1325,8 +1323,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable of all Stack resources in the collection, but limits the number of items
@@ -1348,8 +1345,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1384,8 +1380,7 @@ class events(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Event]:
         """
         Creates an iterable of all Event resources in the collection.
@@ -1402,8 +1397,7 @@ class events(ResourceCollection):
         :returns: A list of Event resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, NextToken: str = None) -> List[service_resource_scope.Event]:
         """
         Creates an iterable of all Event resources in the collection filtered by kwargs passed to method.
@@ -1426,8 +1420,7 @@ class events(ResourceCollection):
         :returns: A list of Event resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1436,8 +1429,7 @@ class events(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Event]:
         """
         Creates an iterable up to a specified amount of Event resources in the collection.
@@ -1458,8 +1450,7 @@ class events(ResourceCollection):
         :returns: A list of Event resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Event]:
         """
         Creates an iterable of all Event resources in the collection, but limits the number of items
@@ -1481,8 +1472,7 @@ class events(ResourceCollection):
         :returns: A list of Event resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1517,8 +1507,7 @@ class resource_summaries(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.StackResourceSummary]:
         """
         Creates an iterable of all StackResourceSummary resources in the collection.
@@ -1535,8 +1524,7 @@ class resource_summaries(ResourceCollection):
         :returns: A list of StackResourceSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, NextToken: str = None
     ) -> List[service_resource_scope.StackResourceSummary]:
@@ -1562,8 +1550,7 @@ class resource_summaries(ResourceCollection):
         :returns: A list of StackResourceSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1572,8 +1559,7 @@ class resource_summaries(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.StackResourceSummary]:
         """
         Creates an iterable up to a specified amount of StackResourceSummary resources in the collection.
@@ -1594,8 +1580,7 @@ class resource_summaries(ResourceCollection):
         :returns: A list of StackResourceSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(
         self, count: int
     ) -> List[service_resource_scope.StackResourceSummary]:
@@ -1619,8 +1604,7 @@ class resource_summaries(ResourceCollection):
         :returns: A list of StackResourceSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

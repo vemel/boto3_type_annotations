@@ -51,7 +51,7 @@ from mypy_boto3_ce.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -68,7 +68,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -97,7 +97,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cost_and_usage(
         self,
         TimePeriod: ClientGetCostAndUsageTimePeriodTypeDef,
@@ -524,7 +524,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cost_and_usage_with_resources(
         self,
         TimePeriod: ClientGetCostAndUsageWithResourcesTimePeriodTypeDef,
@@ -957,7 +957,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cost_forecast(
         self,
         TimePeriod: ClientGetCostForecastTimePeriodTypeDef,
@@ -1269,7 +1269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dimension_values(
         self,
         TimePeriod: ClientGetDimensionValuesTimePeriodTypeDef,
@@ -1568,7 +1568,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1589,7 +1589,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reservation_coverage(
         self,
         TimePeriod: ClientGetReservationCoverageTimePeriodTypeDef,
@@ -2207,7 +2207,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reservation_purchase_recommendation(
         self,
         Service: str,
@@ -2745,7 +2745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reservation_utilization(
         self,
         TimePeriod: ClientGetReservationUtilizationTimePeriodTypeDef,
@@ -3346,7 +3346,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_rightsizing_recommendation(
         self,
         Service: str,
@@ -3960,7 +3960,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_savings_plans_coverage(
         self,
         TimePeriod: ClientGetSavingsPlansCoverageTimePeriodTypeDef,
@@ -4332,7 +4332,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_savings_plans_purchase_recommendation(
         self,
         SavingsPlansType: str,
@@ -4633,7 +4633,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_savings_plans_utilization(
         self,
         TimePeriod: ClientGetSavingsPlansUtilizationTimePeriodTypeDef,
@@ -5063,7 +5063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_savings_plans_utilization_details(
         self,
         TimePeriod: ClientGetSavingsPlansUtilizationDetailsTimePeriodTypeDef,
@@ -5522,7 +5522,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_tags(
         self,
         TimePeriod: ClientGetTagsTimePeriodTypeDef,
@@ -5624,7 +5624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_usage_forecast(
         self,
         TimePeriod: ClientGetUsageForecastTimePeriodTypeDef,
@@ -5931,7 +5931,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.

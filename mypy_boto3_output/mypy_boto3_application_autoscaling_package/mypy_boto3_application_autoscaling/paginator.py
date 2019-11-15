@@ -16,7 +16,7 @@ from mypy_boto3_application_autoscaling.type_defs import (
 
 
 class DescribeScalableTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceNamespace: str,
@@ -325,7 +325,7 @@ class DescribeScalableTargets(Boto3Paginator):
 
 
 class DescribeScalingActivities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceNamespace: str,
@@ -622,7 +622,7 @@ class DescribeScalingActivities(Boto3Paginator):
 
 
 class DescribeScalingPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceNamespace: str,
@@ -1179,7 +1179,7 @@ class DescribeScalingPolicies(Boto3Paginator):
 
 
 class DescribeScheduledActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceNamespace: str,

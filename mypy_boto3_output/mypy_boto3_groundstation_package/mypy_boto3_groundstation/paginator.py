@@ -21,7 +21,7 @@ from mypy_boto3_groundstation.type_defs import (
 
 
 class ListConfigs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListConfigsPaginatePaginationConfigTypeDef = None
     ) -> ListConfigsPaginateResponseTypeDef:
@@ -118,7 +118,7 @@ class ListConfigs(Boto3Paginator):
 
 
 class ListContacts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         endTime: datetime,
@@ -322,7 +322,7 @@ class ListContacts(Boto3Paginator):
 
 
 class ListDataflowEndpointGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListDataflowEndpointGroupsPaginatePaginationConfigTypeDef = None,
@@ -408,7 +408,7 @@ class ListDataflowEndpointGroups(Boto3Paginator):
 
 
 class ListGroundStations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGroundStationsPaginatePaginationConfigTypeDef = None
     ) -> ListGroundStationsPaginateResponseTypeDef:
@@ -498,7 +498,7 @@ class ListGroundStations(Boto3Paginator):
 
 
 class ListMissionProfiles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListMissionProfilesPaginatePaginationConfigTypeDef = None,
@@ -594,7 +594,7 @@ class ListMissionProfiles(Boto3Paginator):
 
 
 class ListSatellites(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSatellitesPaginatePaginationConfigTypeDef = None
     ) -> ListSatellitesPaginateResponseTypeDef:

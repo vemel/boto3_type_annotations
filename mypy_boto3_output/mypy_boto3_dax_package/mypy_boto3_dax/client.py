@@ -36,7 +36,7 @@ from mypy_boto3_dax.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -53,7 +53,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self,
         ClusterName: str,
@@ -496,7 +496,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_parameter_group(
         self, ParameterGroupName: str, Description: str = None
     ) -> ClientCreateParameterGroupResponseTypeDef:
@@ -555,7 +555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subnet_group(
         self, SubnetGroupName: str, SubnetIds: List[str], Description: str = None
     ) -> ClientCreateSubnetGroupResponseTypeDef:
@@ -651,7 +651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decrease_replication_factor(
         self,
         ClusterName: str,
@@ -949,7 +949,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster(self, ClusterName: str) -> ClientDeleteClusterResponseTypeDef:
         """
         Deletes a previously provisioned DAX cluster. *DeleteCluster* deletes all associated nodes, node
@@ -1212,7 +1212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_parameter_group(
         self, ParameterGroupName: str
     ) -> ClientDeleteParameterGroupResponseTypeDef:
@@ -1254,7 +1254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subnet_group(
         self, SubnetGroupName: str
     ) -> ClientDeleteSubnetGroupResponseTypeDef:
@@ -1299,7 +1299,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_clusters(
         self,
         ClusterNames: List[str] = None,
@@ -1612,7 +1612,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_default_parameters(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeDefaultParametersResponseTypeDef:
@@ -1747,7 +1747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         SourceName: str = None,
@@ -1876,7 +1876,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_parameter_groups(
         self,
         ParameterGroupNames: List[str] = None,
@@ -1965,7 +1965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_parameters(
         self,
         ParameterGroupName: str,
@@ -2117,7 +2117,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subnet_groups(
         self,
         SubnetGroupNames: List[str] = None,
@@ -2238,7 +2238,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2267,7 +2267,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2288,7 +2288,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2301,7 +2301,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def increase_replication_factor(
         self,
         ClusterName: str,
@@ -2585,7 +2585,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceName: str, NextToken: str = None
     ) -> ClientListTagsResponseTypeDef:
@@ -2665,7 +2665,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_node(
         self, ClusterName: str, NodeId: str
     ) -> ClientRebootNodeResponseTypeDef:
@@ -2939,7 +2939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceName: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> ClientTagResourceResponseTypeDef:
@@ -3039,7 +3039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(
         self, ResourceName: str, TagKeys: List[str]
     ) -> ClientUntagResourceResponseTypeDef:
@@ -3118,7 +3118,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_cluster(
         self,
         ClusterName: str,
@@ -3432,7 +3432,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_parameter_group(
         self,
         ParameterGroupName: str,
@@ -3511,7 +3511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_subnet_group(
         self, SubnetGroupName: str, Description: str = None, SubnetIds: List[str] = None
     ) -> ClientUpdateSubnetGroupResponseTypeDef:

@@ -15,7 +15,7 @@ from mypy_boto3_fsx.type_defs import (
 
 
 class DescribeBackups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         BackupIds: List[str] = None,
@@ -516,7 +516,7 @@ class DescribeBackups(Boto3Paginator):
 
 
 class DescribeFileSystems(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FileSystemIds: List[str] = None,
@@ -885,7 +885,7 @@ class DescribeFileSystems(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceARN: str,

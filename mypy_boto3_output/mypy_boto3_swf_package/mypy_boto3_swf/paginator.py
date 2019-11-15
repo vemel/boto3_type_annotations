@@ -33,7 +33,7 @@ from mypy_boto3_swf.type_defs import (
 
 
 class GetWorkflowExecutionHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -2640,7 +2640,7 @@ class GetWorkflowExecutionHistory(Boto3Paginator):
 
 
 class ListActivityTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -2791,7 +2791,7 @@ class ListActivityTypes(Boto3Paginator):
 
 
 class ListClosedWorkflowExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -3127,7 +3127,7 @@ class ListClosedWorkflowExecutions(Boto3Paginator):
 
 
 class ListDomains(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         registrationStatus: str,
@@ -3245,7 +3245,7 @@ class ListDomains(Boto3Paginator):
 
 
 class ListOpenWorkflowExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -3530,7 +3530,7 @@ class ListOpenWorkflowExecutions(Boto3Paginator):
 
 
 class ListWorkflowTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -3682,7 +3682,7 @@ class ListWorkflowTypes(Boto3Paginator):
 
 
 class PollForDecisionTask(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domain: str,
@@ -3725,8 +3725,8 @@ class PollForDecisionTask(Boto3Paginator):
           Specifies the task list to poll for decision tasks.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
           - **name** *(string) --* **[REQUIRED]**
 

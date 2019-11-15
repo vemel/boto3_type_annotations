@@ -16273,6 +16273,307 @@ class ClientDetachPolicyPolicyReferenceTypeDef(
     """
 
 
+_ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesValueTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesValueTypeDef",
+    {
+        "StringValue": str,
+        "BinaryValue": bytes,
+        "BooleanValue": bool,
+        "NumberValue": str,
+        "DatetimeValue": datetime,
+    },
+    total=False,
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesValueTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesValueTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValues` `Value`
+
+    The value for the typed link.
+
+    - **StringValue** *(string) --*
+
+      A string data value.
+
+    - **BinaryValue** *(bytes) --*
+
+      A binary data value.
+
+    - **BooleanValue** *(boolean) --*
+
+      A Boolean data value.
+
+    - **NumberValue** *(string) --*
+
+      A number data value.
+
+    - **DatetimeValue** *(datetime) --*
+
+      A date and time value.
+    """
+
+
+_ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesTypeDef",
+    {
+        "AttributeName": str,
+        "Value": ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesValueTypeDef,
+    },
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLinkTypedLinkSpecifier` `IdentityAttributeValues`
+
+    Identifies the attribute name and value for a typed link.
+
+    - **AttributeName** *(string) --* **[REQUIRED]**
+
+      The attribute name of the typed link.
+
+    - **Value** *(dict) --* **[REQUIRED]**
+
+      The value for the typed link.
+
+      - **StringValue** *(string) --*
+
+        A string data value.
+
+      - **BinaryValue** *(bytes) --*
+
+        A binary data value.
+
+      - **BooleanValue** *(boolean) --*
+
+        A Boolean data value.
+
+      - **NumberValue** *(string) --*
+
+        A number data value.
+
+      - **DatetimeValue** *(datetime) --*
+
+        A date and time value.
+    """
+
+
+_ClientDetachTypedLinkTypedLinkSpecifierSourceObjectReferenceTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierSourceObjectReferenceTypeDef",
+    {"Selector": str},
+    total=False,
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierSourceObjectReferenceTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierSourceObjectReferenceTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLinkTypedLinkSpecifier` `SourceObjectReference`
+
+    Identifies the source object that the typed link will attach to.
+
+    - **Selector** *(string) --*
+
+      A path selector supports easy selection of an object by the parent/child links leading to it
+      from the directory root. Use the link names from each parent/child link to construct the
+      path. Path selectors start with a slash (/) and link names are separated by slashes. For more
+      information about paths, see `Access Objects
+      <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html>`__
+      . You can identify an object in one of the following ways:
+
+      * *$ObjectIdentifier* - An object identifier is an opaque string provided by Amazon Cloud
+      Directory. When creating objects, the system will provide you with the identifier of the
+      created object. An object’s identifier is immutable and no two objects will ever share the
+      same object identifier
+
+      * */some/path* - Identifies the object based on path
+
+      * *#SomeBatchReference* - Identifies the object in a batch call
+    """
+
+
+_ClientDetachTypedLinkTypedLinkSpecifierTargetObjectReferenceTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierTargetObjectReferenceTypeDef",
+    {"Selector": str},
+    total=False,
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierTargetObjectReferenceTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierTargetObjectReferenceTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLinkTypedLinkSpecifier` `TargetObjectReference`
+
+    Identifies the target object that the typed link will attach to.
+
+    - **Selector** *(string) --*
+
+      A path selector supports easy selection of an object by the parent/child links leading to it
+      from the directory root. Use the link names from each parent/child link to construct the
+      path. Path selectors start with a slash (/) and link names are separated by slashes. For more
+      information about paths, see `Access Objects
+      <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html>`__
+      . You can identify an object in one of the following ways:
+
+      * *$ObjectIdentifier* - An object identifier is an opaque string provided by Amazon Cloud
+      Directory. When creating objects, the system will provide you with the identifier of the
+      created object. An object’s identifier is immutable and no two objects will ever share the
+      same object identifier
+
+      * */some/path* - Identifies the object based on path
+
+      * *#SomeBatchReference* - Identifies the object in a batch call
+    """
+
+
+_ClientDetachTypedLinkTypedLinkSpecifierTypedLinkFacetTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierTypedLinkFacetTypeDef",
+    {"SchemaArn": str, "TypedLinkName": str},
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierTypedLinkFacetTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierTypedLinkFacetTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLinkTypedLinkSpecifier` `TypedLinkFacet`
+
+    Identifies the typed link facet that is associated with the typed link.
+
+    - **SchemaArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) that is associated with the schema. For more information, see
+      arns .
+
+    - **TypedLinkName** *(string) --* **[REQUIRED]**
+
+      The unique name of the typed link facet.
+    """
+
+
+_ClientDetachTypedLinkTypedLinkSpecifierTypeDef = TypedDict(
+    "_ClientDetachTypedLinkTypedLinkSpecifierTypeDef",
+    {
+        "TypedLinkFacet": ClientDetachTypedLinkTypedLinkSpecifierTypedLinkFacetTypeDef,
+        "SourceObjectReference": ClientDetachTypedLinkTypedLinkSpecifierSourceObjectReferenceTypeDef,
+        "TargetObjectReference": ClientDetachTypedLinkTypedLinkSpecifierTargetObjectReferenceTypeDef,
+        "IdentityAttributeValues": List[
+            ClientDetachTypedLinkTypedLinkSpecifierIdentityAttributeValuesTypeDef
+        ],
+    },
+)
+
+
+class ClientDetachTypedLinkTypedLinkSpecifierTypeDef(
+    _ClientDetachTypedLinkTypedLinkSpecifierTypeDef
+):
+    """
+    Type definition for `ClientDetachTypedLink` `TypedLinkSpecifier`
+
+    Used to accept a typed link specifier as input.
+
+    - **TypedLinkFacet** *(dict) --* **[REQUIRED]**
+
+      Identifies the typed link facet that is associated with the typed link.
+
+      - **SchemaArn** *(string) --* **[REQUIRED]**
+
+        The Amazon Resource Name (ARN) that is associated with the schema. For more information, see
+        arns .
+
+      - **TypedLinkName** *(string) --* **[REQUIRED]**
+
+        The unique name of the typed link facet.
+
+    - **SourceObjectReference** *(dict) --* **[REQUIRED]**
+
+      Identifies the source object that the typed link will attach to.
+
+      - **Selector** *(string) --*
+
+        A path selector supports easy selection of an object by the parent/child links leading to it
+        from the directory root. Use the link names from each parent/child link to construct the
+        path. Path selectors start with a slash (/) and link names are separated by slashes. For more
+        information about paths, see `Access Objects
+        <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html>`__
+        . You can identify an object in one of the following ways:
+
+        * *$ObjectIdentifier* - An object identifier is an opaque string provided by Amazon Cloud
+        Directory. When creating objects, the system will provide you with the identifier of the
+        created object. An object’s identifier is immutable and no two objects will ever share the
+        same object identifier
+
+        * */some/path* - Identifies the object based on path
+
+        * *#SomeBatchReference* - Identifies the object in a batch call
+
+    - **TargetObjectReference** *(dict) --* **[REQUIRED]**
+
+      Identifies the target object that the typed link will attach to.
+
+      - **Selector** *(string) --*
+
+        A path selector supports easy selection of an object by the parent/child links leading to it
+        from the directory root. Use the link names from each parent/child link to construct the
+        path. Path selectors start with a slash (/) and link names are separated by slashes. For more
+        information about paths, see `Access Objects
+        <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_access_objects.html>`__
+        . You can identify an object in one of the following ways:
+
+        * *$ObjectIdentifier* - An object identifier is an opaque string provided by Amazon Cloud
+        Directory. When creating objects, the system will provide you with the identifier of the
+        created object. An object’s identifier is immutable and no two objects will ever share the
+        same object identifier
+
+        * */some/path* - Identifies the object based on path
+
+        * *#SomeBatchReference* - Identifies the object in a batch call
+
+    - **IdentityAttributeValues** *(list) --* **[REQUIRED]**
+
+      Identifies the attribute value to update.
+
+      - *(dict) --*
+
+        Identifies the attribute name and value for a typed link.
+
+        - **AttributeName** *(string) --* **[REQUIRED]**
+
+          The attribute name of the typed link.
+
+        - **Value** *(dict) --* **[REQUIRED]**
+
+          The value for the typed link.
+
+          - **StringValue** *(string) --*
+
+            A string data value.
+
+          - **BinaryValue** *(bytes) --*
+
+            A binary data value.
+
+          - **BooleanValue** *(boolean) --*
+
+            A Boolean data value.
+
+          - **NumberValue** *(string) --*
+
+            A number data value.
+
+          - **DatetimeValue** *(datetime) --*
+
+            A date and time value.
+    """
+
+
 _ClientDisableDirectoryResponseTypeDef = TypedDict(
     "_ClientDisableDirectoryResponseTypeDef", {"DirectoryArn": str}, total=False
 )

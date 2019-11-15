@@ -28,7 +28,7 @@ from mypy_boto3_qldb.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -45,7 +45,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ledger(
         self,
         Name: str,
@@ -149,7 +149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ledger(self, Name: str) -> None:
         """
         Deletes a ledger and all of its contents. This action is irreversible.
@@ -176,7 +176,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_journal_s3_export(
         self, Name: str, ExportId: str
     ) -> ClientDescribeJournalS3ExportResponseTypeDef:
@@ -339,7 +339,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ledger(self, Name: str) -> ClientDescribeLedgerResponseTypeDef:
         """
         Returns information about a ledger, including its state and when it was created.
@@ -405,7 +405,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_journal_to_s3(
         self,
         Name: str,
@@ -562,7 +562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -591,7 +591,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_block(
         self,
         Name: str,
@@ -693,7 +693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_digest(self, Name: str) -> ClientGetDigestResponseTypeDef:
         """
         Returns the digest of a ledger at the latest committed block in the journal. The response includes
@@ -745,7 +745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -766,7 +766,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_revision(
         self,
         Name: str,
@@ -867,7 +867,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -880,7 +880,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_journal_s3_exports(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListJournalS3ExportsResponseTypeDef:
@@ -1062,7 +1062,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_journal_s3_exports_for_ledger(
         self, Name: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListJournalS3ExportsForLedgerResponseTypeDef:
@@ -1248,7 +1248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ledgers(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListLedgersResponseTypeDef:
@@ -1335,7 +1335,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1384,7 +1384,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Adds one or more tags to a specified Amazon QLDB resource.
@@ -1435,7 +1435,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from a specified Amazon QLDB resource. You can specify up to 50 tag keys
@@ -1480,7 +1480,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ledger(
         self, Name: str, DeletionProtection: bool = None
     ) -> ClientUpdateLedgerResponseTypeDef:

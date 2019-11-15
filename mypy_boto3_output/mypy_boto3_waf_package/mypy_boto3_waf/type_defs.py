@@ -214,7 +214,7 @@ class ClientCreateByteMatchSetResponseByteMatchSetByteMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -228,15 +228,15 @@ class ClientCreateByteMatchSetResponseByteMatchSetByteMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -492,7 +492,7 @@ class ClientCreateByteMatchSetResponseByteMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -506,15 +506,15 @@ class ClientCreateByteMatchSetResponseByteMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -767,7 +767,7 @@ class ClientCreateByteMatchSetResponseTypeDef(_ClientCreateByteMatchSetResponseT
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -781,15 +781,15 @@ class ClientCreateByteMatchSetResponseTypeDef(_ClientCreateByteMatchSetResponseT
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -1628,7 +1628,7 @@ class ClientCreateRegexMatchSetResponseRegexMatchSetRegexMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -1642,15 +1642,15 @@ class ClientCreateRegexMatchSetResponseRegexMatchSetRegexMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -1830,7 +1830,7 @@ class ClientCreateRegexMatchSetResponseRegexMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -1844,15 +1844,15 @@ class ClientCreateRegexMatchSetResponseRegexMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -2031,7 +2031,7 @@ class ClientCreateRegexMatchSetResponseTypeDef(
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -2045,15 +2045,15 @@ class ClientCreateRegexMatchSetResponseTypeDef(
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -2667,7 +2667,7 @@ class ClientCreateSizeConstraintSetResponseSizeConstraintSetSizeConstraintsTypeD
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -2681,15 +2681,15 @@ class ClientCreateSizeConstraintSetResponseSizeConstraintSetSizeConstraintsTypeD
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -2880,7 +2880,7 @@ class ClientCreateSizeConstraintSetResponseSizeConstraintSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -2894,15 +2894,15 @@ class ClientCreateSizeConstraintSetResponseSizeConstraintSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -3092,7 +3092,7 @@ class ClientCreateSizeConstraintSetResponseTypeDef(
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -3106,15 +3106,15 @@ class ClientCreateSizeConstraintSetResponseTypeDef(
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -3339,7 +3339,7 @@ class ClientCreateSqlInjectionMatchSetResponseSqlInjectionMatchSetSqlInjectionMa
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -3353,15 +3353,15 @@ class ClientCreateSqlInjectionMatchSetResponseSqlInjectionMatchSetSqlInjectionMa
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -3511,7 +3511,7 @@ class ClientCreateSqlInjectionMatchSetResponseSqlInjectionMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -3525,15 +3525,15 @@ class ClientCreateSqlInjectionMatchSetResponseSqlInjectionMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -3684,7 +3684,7 @@ class ClientCreateSqlInjectionMatchSetResponseTypeDef(
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -3698,15 +3698,15 @@ class ClientCreateSqlInjectionMatchSetResponseTypeDef(
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -4638,7 +4638,7 @@ class ClientCreateXssMatchSetResponseXssMatchSetXssMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -4652,15 +4652,15 @@ class ClientCreateXssMatchSetResponseXssMatchSetXssMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -4809,7 +4809,7 @@ class ClientCreateXssMatchSetResponseXssMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -4823,15 +4823,15 @@ class ClientCreateXssMatchSetResponseXssMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -4979,7 +4979,7 @@ class ClientCreateXssMatchSetResponseTypeDef(_ClientCreateXssMatchSetResponseTyp
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -4993,15 +4993,15 @@ class ClientCreateXssMatchSetResponseTypeDef(_ClientCreateXssMatchSetResponseTyp
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -5473,7 +5473,7 @@ class ClientGetByteMatchSetResponseByteMatchSetByteMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -5487,15 +5487,15 @@ class ClientGetByteMatchSetResponseByteMatchSetByteMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -5760,7 +5760,7 @@ class ClientGetByteMatchSetResponseByteMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -5774,15 +5774,15 @@ class ClientGetByteMatchSetResponseByteMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -6041,7 +6041,7 @@ class ClientGetByteMatchSetResponseTypeDef(_ClientGetByteMatchSetResponseTypeDef
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -6055,15 +6055,15 @@ class ClientGetByteMatchSetResponseTypeDef(_ClientGetByteMatchSetResponseTypeDef
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -7188,7 +7188,7 @@ class ClientGetRegexMatchSetResponseRegexMatchSetRegexMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -7202,15 +7202,15 @@ class ClientGetRegexMatchSetResponseRegexMatchSetRegexMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -7391,7 +7391,7 @@ class ClientGetRegexMatchSetResponseRegexMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -7405,15 +7405,15 @@ class ClientGetRegexMatchSetResponseRegexMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -7588,7 +7588,7 @@ class ClientGetRegexMatchSetResponseTypeDef(_ClientGetRegexMatchSetResponseTypeD
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -7602,15 +7602,15 @@ class ClientGetRegexMatchSetResponseTypeDef(_ClientGetRegexMatchSetResponseTypeD
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -8592,7 +8592,7 @@ class ClientGetSizeConstraintSetResponseSizeConstraintSetSizeConstraintsTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -8606,15 +8606,15 @@ class ClientGetSizeConstraintSetResponseSizeConstraintSetSizeConstraintsTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -8813,7 +8813,7 @@ class ClientGetSizeConstraintSetResponseSizeConstraintSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -8827,15 +8827,15 @@ class ClientGetSizeConstraintSetResponseSizeConstraintSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -9030,7 +9030,7 @@ class ClientGetSizeConstraintSetResponseTypeDef(
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -9044,15 +9044,15 @@ class ClientGetSizeConstraintSetResponseTypeDef(
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -9271,7 +9271,7 @@ class ClientGetSqlInjectionMatchSetResponseSqlInjectionMatchSetSqlInjectionMatch
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -9285,15 +9285,15 @@ class ClientGetSqlInjectionMatchSetResponseSqlInjectionMatchSetSqlInjectionMatch
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -9452,7 +9452,7 @@ class ClientGetSqlInjectionMatchSetResponseSqlInjectionMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -9466,15 +9466,15 @@ class ClientGetSqlInjectionMatchSetResponseSqlInjectionMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -9633,7 +9633,7 @@ class ClientGetSqlInjectionMatchSetResponseTypeDef(
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -9647,15 +9647,15 @@ class ClientGetSqlInjectionMatchSetResponseTypeDef(
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -10553,7 +10553,7 @@ class ClientGetXssMatchSetResponseXssMatchSetXssMatchTuplesTypeDef(
       command and using unusual formatting to disguise some or all of the command, use this
       option to perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -10567,15 +10567,15 @@ class ClientGetXssMatchSetResponseXssMatchSetXssMatchTuplesTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -10733,7 +10733,7 @@ class ClientGetXssMatchSetResponseXssMatchSetTypeDef(
           command and using unusual formatting to disguise some or all of the command, use this
           option to perform the following transformations:
 
-          * Delete the following characters: \ " ' ^
+          * Delete the following characters: \\ " ' ^
 
           * Delete spaces before the following characters: / (
 
@@ -10747,15 +10747,15 @@ class ClientGetXssMatchSetResponseXssMatchSetTypeDef(
 
           Use this option to replace the following characters with a space character (decimal 32):
 
-          * \f, formfeed, decimal 12
+          * \\f, formfeed, decimal 12
 
-          * \t, tab, decimal 9
+          * \\t, tab, decimal 9
 
-          * \n, newline, decimal 10
+          * \\n, newline, decimal 10
 
-          * \r, carriage return, decimal 13
+          * \\r, carriage return, decimal 13
 
-          * \v, vertical tab, decimal 11
+          * \\v, vertical tab, decimal 11
 
           * non-breaking space, decimal 160
 
@@ -10909,7 +10909,7 @@ class ClientGetXssMatchSetResponseTypeDef(_ClientGetXssMatchSetResponseTypeDef):
             command and using unusual formatting to disguise some or all of the command, use this
             option to perform the following transformations:
 
-            * Delete the following characters: \ " ' ^
+            * Delete the following characters: \\ " ' ^
 
             * Delete spaces before the following characters: / (
 
@@ -10923,15 +10923,15 @@ class ClientGetXssMatchSetResponseTypeDef(_ClientGetXssMatchSetResponseTypeDef):
 
             Use this option to replace the following characters with a space character (decimal 32):
 
-            * \f, formfeed, decimal 12
+            * \\f, formfeed, decimal 12
 
-            * \t, tab, decimal 9
+            * \\t, tab, decimal 9
 
-            * \n, newline, decimal 10
+            * \\n, newline, decimal 10
 
-            * \r, carriage return, decimal 13
+            * \\r, carriage return, decimal 13
 
-            * \v, vertical tab, decimal 11
+            * \\v, vertical tab, decimal 11
 
             * non-breaking space, decimal 160
 
@@ -13355,7 +13355,7 @@ class ClientUpdateByteMatchSetUpdatesByteMatchTupleTypeDef(
       and using unusual formatting to disguise some or all of the command, use this option to
       perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -13369,15 +13369,15 @@ class ClientUpdateByteMatchSetUpdatesByteMatchTupleTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -13609,7 +13609,7 @@ class ClientUpdateByteMatchSetUpdatesTypeDef(_ClientUpdateByteMatchSetUpdatesTyp
         and using unusual formatting to disguise some or all of the command, use this option to
         perform the following transformations:
 
-        * Delete the following characters: \ " ' ^
+        * Delete the following characters: \\ " ' ^
 
         * Delete spaces before the following characters: / (
 
@@ -13623,15 +13623,15 @@ class ClientUpdateByteMatchSetUpdatesTypeDef(_ClientUpdateByteMatchSetUpdatesTyp
 
         Use this option to replace the following characters with a space character (decimal 32):
 
-        * \f, formfeed, decimal 12
+        * \\f, formfeed, decimal 12
 
-        * \t, tab, decimal 9
+        * \\t, tab, decimal 9
 
-        * \n, newline, decimal 10
+        * \\n, newline, decimal 10
 
-        * \r, carriage return, decimal 13
+        * \\r, carriage return, decimal 13
 
-        * \v, vertical tab, decimal 11
+        * \\v, vertical tab, decimal 11
 
         * non-breaking space, decimal 160
 
@@ -14181,7 +14181,7 @@ class ClientUpdateRegexMatchSetUpdatesRegexMatchTupleTypeDef(
       and using unusual formatting to disguise some or all of the command, use this option to
       perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -14195,15 +14195,15 @@ class ClientUpdateRegexMatchSetUpdatesRegexMatchTupleTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -14344,7 +14344,7 @@ class ClientUpdateRegexMatchSetUpdatesTypeDef(_ClientUpdateRegexMatchSetUpdatesT
         and using unusual formatting to disguise some or all of the command, use this option to
         perform the following transformations:
 
-        * Delete the following characters: \ " ' ^
+        * Delete the following characters: \\ " ' ^
 
         * Delete spaces before the following characters: / (
 
@@ -14358,15 +14358,15 @@ class ClientUpdateRegexMatchSetUpdatesTypeDef(_ClientUpdateRegexMatchSetUpdatesT
 
         Use this option to replace the following characters with a space character (decimal 32):
 
-        * \f, formfeed, decimal 12
+        * \\f, formfeed, decimal 12
 
-        * \t, tab, decimal 9
+        * \\t, tab, decimal 9
 
-        * \n, newline, decimal 10
+        * \\n, newline, decimal 10
 
-        * \r, carriage return, decimal 13
+        * \\r, carriage return, decimal 13
 
-        * \v, vertical tab, decimal 11
+        * \\v, vertical tab, decimal 11
 
         * non-breaking space, decimal 160
 
@@ -15151,7 +15151,7 @@ class ClientUpdateSizeConstraintSetUpdatesSizeConstraintTypeDef(
       and using unusual formatting to disguise some or all of the command, use this option to
       perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -15165,15 +15165,15 @@ class ClientUpdateSizeConstraintSetUpdatesSizeConstraintTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -15346,7 +15346,7 @@ class ClientUpdateSizeConstraintSetUpdatesTypeDef(
         and using unusual formatting to disguise some or all of the command, use this option to
         perform the following transformations:
 
-        * Delete the following characters: \ " ' ^
+        * Delete the following characters: \\ " ' ^
 
         * Delete spaces before the following characters: / (
 
@@ -15360,15 +15360,15 @@ class ClientUpdateSizeConstraintSetUpdatesTypeDef(
 
         Use this option to replace the following characters with a space character (decimal 32):
 
-        * \f, formfeed, decimal 12
+        * \\f, formfeed, decimal 12
 
-        * \t, tab, decimal 9
+        * \\t, tab, decimal 9
 
-        * \n, newline, decimal 10
+        * \\n, newline, decimal 10
 
-        * \r, carriage return, decimal 13
+        * \\r, carriage return, decimal 13
 
-        * \v, vertical tab, decimal 11
+        * \\v, vertical tab, decimal 11
 
         * non-breaking space, decimal 160
 
@@ -15612,7 +15612,7 @@ class ClientUpdateSqlInjectionMatchSetUpdatesSqlInjectionMatchTupleTypeDef(
       and using unusual formatting to disguise some or all of the command, use this option to
       perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -15626,15 +15626,15 @@ class ClientUpdateSqlInjectionMatchSetUpdatesSqlInjectionMatchTupleTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -15766,7 +15766,7 @@ class ClientUpdateSqlInjectionMatchSetUpdatesTypeDef(
         and using unusual formatting to disguise some or all of the command, use this option to
         perform the following transformations:
 
-        * Delete the following characters: \ " ' ^
+        * Delete the following characters: \\ " ' ^
 
         * Delete spaces before the following characters: / (
 
@@ -15780,15 +15780,15 @@ class ClientUpdateSqlInjectionMatchSetUpdatesTypeDef(
 
         Use this option to replace the following characters with a space character (decimal 32):
 
-        * \f, formfeed, decimal 12
+        * \\f, formfeed, decimal 12
 
-        * \t, tab, decimal 9
+        * \\t, tab, decimal 9
 
-        * \n, newline, decimal 10
+        * \\n, newline, decimal 10
 
-        * \r, carriage return, decimal 13
+        * \\r, carriage return, decimal 13
 
-        * \v, vertical tab, decimal 11
+        * \\v, vertical tab, decimal 11
 
         * non-breaking space, decimal 160
 
@@ -16434,7 +16434,7 @@ class ClientUpdateXssMatchSetUpdatesXssMatchTupleTypeDef(
       and using unusual formatting to disguise some or all of the command, use this option to
       perform the following transformations:
 
-      * Delete the following characters: \ " ' ^
+      * Delete the following characters: \\ " ' ^
 
       * Delete spaces before the following characters: / (
 
@@ -16448,15 +16448,15 @@ class ClientUpdateXssMatchSetUpdatesXssMatchTupleTypeDef(
 
       Use this option to replace the following characters with a space character (decimal 32):
 
-      * \f, formfeed, decimal 12
+      * \\f, formfeed, decimal 12
 
-      * \t, tab, decimal 9
+      * \\t, tab, decimal 9
 
-      * \n, newline, decimal 10
+      * \\n, newline, decimal 10
 
-      * \r, carriage return, decimal 13
+      * \\r, carriage return, decimal 13
 
-      * \v, vertical tab, decimal 11
+      * \\v, vertical tab, decimal 11
 
       * non-breaking space, decimal 160
 
@@ -16586,7 +16586,7 @@ class ClientUpdateXssMatchSetUpdatesTypeDef(_ClientUpdateXssMatchSetUpdatesTypeD
         and using unusual formatting to disguise some or all of the command, use this option to
         perform the following transformations:
 
-        * Delete the following characters: \ " ' ^
+        * Delete the following characters: \\ " ' ^
 
         * Delete spaces before the following characters: / (
 
@@ -16600,15 +16600,15 @@ class ClientUpdateXssMatchSetUpdatesTypeDef(_ClientUpdateXssMatchSetUpdatesTypeD
 
         Use this option to replace the following characters with a space character (decimal 32):
 
-        * \f, formfeed, decimal 12
+        * \\f, formfeed, decimal 12
 
-        * \t, tab, decimal 9
+        * \\t, tab, decimal 9
 
-        * \n, newline, decimal 10
+        * \\n, newline, decimal 10
 
-        * \r, carriage return, decimal 13
+        * \\r, carriage return, decimal 13
 
-        * \v, vertical tab, decimal 11
+        * \\v, vertical tab, decimal 11
 
         * non-breaking space, decimal 160
 

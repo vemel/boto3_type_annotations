@@ -8,13 +8,24 @@ from boto3.resources.collection import ResourceCollection
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
 from mypy_boto3.type_defs import S3CopySource as TypeDefS3CopySource
+
+# pylint: disable=import-self
 import mypy_boto3_s3.service_resource as service_resource_scope
 from mypy_boto3_s3.type_defs import (
     BucketAclPutAccessControlPolicyTypeDef,
+    BucketCorsPutCORSConfigurationTypeDef,
     BucketCreateCreateBucketConfigurationTypeDef,
     BucketCreateResponseTypeDef,
     BucketDeleteObjectsDeleteTypeDef,
     BucketDeleteObjectsResponseTypeDef,
+    BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef,
+    BucketLifecyclePutLifecycleConfigurationTypeDef,
+    BucketLoggingPutBucketLoggingStatusTypeDef,
+    BucketNotificationPutNotificationConfigurationTypeDef,
+    BucketRequestPaymentPutRequestPaymentConfigurationTypeDef,
+    BucketTaggingPutTaggingTypeDef,
+    BucketVersioningPutVersioningConfigurationTypeDef,
+    BucketWebsitePutWebsiteConfigurationTypeDef,
     MultipartUploadAbortResponseTypeDef,
     MultipartUploadCompleteMultipartUploadTypeDef,
     MultipartUploadPartCopyFromResponseTypeDef,
@@ -43,7 +54,7 @@ from mypy_boto3_s3.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Bucket(self, name: str) -> service_resource_scope.Bucket:
         """
         Creates a Bucket resource.::
@@ -57,7 +68,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Bucket resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketAcl(self, bucket_name: str) -> service_resource_scope.BucketAcl:
         """
         Creates a BucketAcl resource.::
@@ -71,7 +82,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketAcl resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketCors(self, bucket_name: str) -> service_resource_scope.BucketCors:
         """
         Creates a BucketCors resource.::
@@ -85,7 +96,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketCors resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketLifecycle(
         self, bucket_name: str
     ) -> service_resource_scope.BucketLifecycle:
@@ -101,7 +112,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketLifecycle resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketLifecycleConfiguration(
         self, bucket_name: str
     ) -> service_resource_scope.BucketLifecycleConfiguration:
@@ -117,7 +128,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketLifecycleConfiguration resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketLogging(self, bucket_name: str) -> service_resource_scope.BucketLogging:
         """
         Creates a BucketLogging resource.::
@@ -131,7 +142,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketLogging resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketNotification(
         self, bucket_name: str
     ) -> service_resource_scope.BucketNotification:
@@ -147,7 +158,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketNotification resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketPolicy(self, bucket_name: str) -> service_resource_scope.BucketPolicy:
         """
         Creates a BucketPolicy resource.::
@@ -161,7 +172,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketRequestPayment(
         self, bucket_name: str
     ) -> service_resource_scope.BucketRequestPayment:
@@ -177,7 +188,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketRequestPayment resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketTagging(self, bucket_name: str) -> service_resource_scope.BucketTagging:
         """
         Creates a BucketTagging resource.::
@@ -191,7 +202,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketTagging resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketVersioning(
         self, bucket_name: str
     ) -> service_resource_scope.BucketVersioning:
@@ -207,7 +218,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketVersioning resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def BucketWebsite(self, bucket_name: str) -> service_resource_scope.BucketWebsite:
         """
         Creates a BucketWebsite resource.::
@@ -221,7 +232,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A BucketWebsite resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def MultipartUpload(
         self, bucket_name: str, object_key: str, id: str
     ) -> service_resource_scope.MultipartUpload:
@@ -241,7 +252,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A MultipartUpload resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def MultipartUploadPart(
         self,
         bucket_name: str,
@@ -269,7 +280,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A MultipartUploadPart resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Object(self, bucket_name: str, key: str) -> service_resource_scope.Object:
         """
         Creates a Object resource.::
@@ -285,7 +296,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Object resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ObjectAcl(
         self, bucket_name: str, object_key: str
     ) -> service_resource_scope.ObjectAcl:
@@ -303,7 +314,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A ObjectAcl resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ObjectSummary(
         self, bucket_name: str, key: str
     ) -> service_resource_scope.ObjectSummary:
@@ -321,7 +332,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A ObjectSummary resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ObjectVersion(
         self, bucket_name: str, object_key: str, id: str
     ) -> service_resource_scope.ObjectVersion:
@@ -341,7 +352,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A ObjectVersion resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_bucket(
         self,
         Bucket: str,
@@ -428,7 +439,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Bucket resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -444,7 +455,7 @@ class Bucket(Boto3ServiceResource):
     creation_date: datetime
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
         CopySource: TypeDefS3CopySource,
@@ -501,7 +512,7 @@ class Bucket(Boto3ServiceResource):
             copy.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(
         self,
         ACL: str = None,
@@ -597,7 +608,7 @@ class Bucket(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket
@@ -614,7 +625,7 @@ class Bucket(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_objects(
         self,
         Delete: BucketDeleteObjectsDeleteTypeDef,
@@ -746,7 +757,7 @@ class Bucket(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_file(
         self,
         Key: str,
@@ -787,7 +798,7 @@ class Bucket(Boto3ServiceResource):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_fileobj(
         self,
         Key: str,
@@ -833,7 +844,7 @@ class Bucket(Boto3ServiceResource):
             download.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -844,14 +855,14 @@ class Bucket(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls s3.Client.list_buckets() to update the attributes of the Bucket
         resource.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object(
         self,
         Key: str,
@@ -1102,7 +1113,7 @@ class Bucket(Boto3ServiceResource):
         :returns: Object resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_file(
         self,
         Filename: str,
@@ -1143,7 +1154,7 @@ class Bucket(Boto3ServiceResource):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_fileobj(
         self,
         Fileobj: IO[Any],
@@ -1189,7 +1200,7 @@ class Bucket(Boto3ServiceResource):
             upload.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(self, *args: Any, **kwargs: Any) -> None:
         """
         Waits until this Bucket is exists. This method calls :py:meth:`S3.Waiter.bucket_exists.wait` which
@@ -1207,7 +1218,7 @@ class Bucket(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_not_exists(self, *args: Any, **kwargs: Any) -> None:
         """
         Waits until this Bucket is not exists. This method calls
@@ -1231,7 +1242,7 @@ class BucketAcl(Boto3ServiceResource):
     grants: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1242,7 +1253,7 @@ class BucketAcl(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_acl` to update the attributes of the BucketAcl resource. Note
@@ -1258,7 +1269,7 @@ class BucketAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(
         self,
         ACL: str = None,
@@ -1382,7 +1393,7 @@ class BucketAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_acl` to update the attributes of the BucketAcl resource. Note
@@ -1403,7 +1414,7 @@ class BucketCors(Boto3ServiceResource):
     cors_rules: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the CORS configuration information set for the bucket.
@@ -1419,7 +1430,7 @@ class BucketCors(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1430,7 +1441,7 @@ class BucketCors(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_cors` to update the attributes of the BucketCors resource.
@@ -1446,8 +1457,8 @@ class BucketCors(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, CORSConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(self, CORSConfiguration: BucketCorsPutCORSConfigurationTypeDef) -> None:
         """
         Sets the CORS configuration for a bucket.
 
@@ -1526,7 +1537,7 @@ class BucketCors(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_cors` to update the attributes of the BucketCors resource.
@@ -1547,7 +1558,7 @@ class BucketLifecycle(Boto3ServiceResource):
     rules: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the lifecycle configuration from the bucket.
@@ -1563,7 +1574,7 @@ class BucketLifecycle(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1574,7 +1585,7 @@ class BucketLifecycle(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_lifecycle` to update the attributes of the BucketLifecycle
@@ -1590,8 +1601,11 @@ class BucketLifecycle(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, LifecycleConfiguration: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self,
+        LifecycleConfiguration: BucketLifecyclePutLifecycleConfigurationTypeDef = None,
+    ) -> None:
         """
         No longer used, see the PutBucketLifecycleConfiguration operation.
 
@@ -1730,7 +1744,7 @@ class BucketLifecycle(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_lifecycle` to update the attributes of the BucketLifecycle
@@ -1751,7 +1765,7 @@ class BucketLifecycleConfiguration(Boto3ServiceResource):
     rules: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the lifecycle configuration from the bucket.
@@ -1767,7 +1781,7 @@ class BucketLifecycleConfiguration(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1778,7 +1792,7 @@ class BucketLifecycleConfiguration(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_lifecycle_configuration` to update the attributes of the
@@ -1795,8 +1809,11 @@ class BucketLifecycleConfiguration(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, LifecycleConfiguration: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self,
+        LifecycleConfiguration: BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef = None,
+    ) -> None:
         """
         Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
 
@@ -1999,7 +2016,7 @@ class BucketLifecycleConfiguration(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_lifecycle_configuration` to update the attributes of the
@@ -2021,7 +2038,7 @@ class BucketLogging(Boto3ServiceResource):
     logging_enabled: Dict[str, Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2032,7 +2049,7 @@ class BucketLogging(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_logging` to update the attributes of the BucketLogging
@@ -2048,8 +2065,10 @@ class BucketLogging(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, BucketLoggingStatus: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self, BucketLoggingStatus: BucketLoggingPutBucketLoggingStatusTypeDef
+    ) -> None:
         """
         Set the logging parameters for a bucket and to specify permissions for who can view and modify the
         logging parameters. To set the logging status of a bucket, you must be the bucket owner.
@@ -2132,7 +2151,7 @@ class BucketLogging(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_logging` to update the attributes of the BucketLogging
@@ -2155,7 +2174,7 @@ class BucketNotification(Boto3ServiceResource):
     lambda_function_configurations: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2166,7 +2185,7 @@ class BucketNotification(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_notification_configuration` to update the attributes of the
@@ -2183,8 +2202,11 @@ class BucketNotification(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, NotificationConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self,
+        NotificationConfiguration: BucketNotificationPutNotificationConfigurationTypeDef,
+    ) -> None:
         """
         Enables notifications of specified events for a bucket.
 
@@ -2430,7 +2452,7 @@ class BucketNotification(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_notification_configuration` to update the attributes of the
@@ -2452,7 +2474,7 @@ class BucketPolicy(Boto3ServiceResource):
     policy: str
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the policy from the bucket.
@@ -2468,7 +2490,7 @@ class BucketPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2479,7 +2501,7 @@ class BucketPolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_policy` to update the attributes of the BucketPolicy resource.
@@ -2495,7 +2517,7 @@ class BucketPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(self, Policy: str, ConfirmRemoveSelfBucketAccess: bool = None) -> None:
         """
         Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
@@ -2524,7 +2546,7 @@ class BucketPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_policy` to update the attributes of the BucketPolicy resource.
@@ -2545,7 +2567,7 @@ class BucketRequestPayment(Boto3ServiceResource):
     payer: str
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2556,7 +2578,7 @@ class BucketRequestPayment(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_request_payment` to update the attributes of the
@@ -2573,8 +2595,11 @@ class BucketRequestPayment(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, RequestPaymentConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self,
+        RequestPaymentConfiguration: BucketRequestPaymentPutRequestPaymentConfigurationTypeDef,
+    ) -> None:
         """
         Sets the request payment configuration for a bucket. By default, the bucket owner pays for
         downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify
@@ -2603,7 +2628,7 @@ class BucketRequestPayment(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_request_payment` to update the attributes of the
@@ -2625,7 +2650,7 @@ class BucketTagging(Boto3ServiceResource):
     tag_set: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the tags from the bucket.
@@ -2641,7 +2666,7 @@ class BucketTagging(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2652,7 +2677,7 @@ class BucketTagging(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_tagging` to update the attributes of the BucketTagging
@@ -2668,8 +2693,8 @@ class BucketTagging(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, Tagging: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(self, Tagging: BucketTaggingPutTaggingTypeDef) -> None:
         """
         Sets the tags for a bucket.
 
@@ -2707,7 +2732,7 @@ class BucketTagging(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_tagging` to update the attributes of the BucketTagging
@@ -2729,7 +2754,7 @@ class BucketVersioning(Boto3ServiceResource):
     mfa_delete: str
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable(self, MFA: str = None) -> None:
         """
         Sets the versioning state of an existing bucket. To set the versioning state, you must be the
@@ -2754,7 +2779,7 @@ class BucketVersioning(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2765,7 +2790,7 @@ class BucketVersioning(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_versioning` to update the attributes of the BucketVersioning
@@ -2781,8 +2806,12 @@ class BucketVersioning(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, VersioningConfiguration: Dict, MFA: str = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self,
+        VersioningConfiguration: BucketVersioningPutVersioningConfigurationTypeDef,
+        MFA: str = None,
+    ) -> None:
         """
         Sets the versioning state of an existing bucket. To set the versioning state, you must be the
         bucket owner.
@@ -2822,7 +2851,7 @@ class BucketVersioning(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_versioning` to update the attributes of the BucketVersioning
@@ -2838,7 +2867,7 @@ class BucketVersioning(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def suspend(self, MFA: str = None) -> None:
         """
         Sets the versioning state of an existing bucket. To set the versioning state, you must be the
@@ -2871,7 +2900,7 @@ class BucketWebsite(Boto3ServiceResource):
     routing_rules: List[Any]
     bucket_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         This operation removes the website configuration from the bucket.
@@ -2887,7 +2916,7 @@ class BucketWebsite(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2898,7 +2927,7 @@ class BucketWebsite(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_website` to update the attributes of the BucketWebsite
@@ -2914,8 +2943,10 @@ class BucketWebsite(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put(self, WebsiteConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put(
+        self, WebsiteConfiguration: BucketWebsitePutWebsiteConfigurationTypeDef
+    ) -> None:
         """
         Set the website configuration for a bucket.
 
@@ -3062,7 +3093,7 @@ class BucketWebsite(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_bucket_website` to update the attributes of the BucketWebsite
@@ -3090,7 +3121,7 @@ class MultipartUpload(Boto3ServiceResource):
     object_key: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort(self, RequestPayer: str = None) -> MultipartUploadAbortResponseTypeDef:
         """
         Aborts a multipart upload.
@@ -3135,7 +3166,7 @@ class MultipartUpload(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete(
         self,
         MultipartUpload: MultipartUploadCompleteMultipartUploadTypeDef = None,
@@ -3188,7 +3219,7 @@ class MultipartUpload(Boto3ServiceResource):
         :returns: Object resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3209,7 +3240,7 @@ class MultipartUploadPart(Boto3ServiceResource):
     multipart_upload_id: str
     part_number: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
         CopySource: Union[TypeDefS3CopySource, str],
@@ -3402,7 +3433,7 @@ class MultipartUploadPart(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3413,7 +3444,7 @@ class MultipartUploadPart(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload(
         self,
         Body: Union[bytes, IO] = None,
@@ -3578,7 +3609,7 @@ class Object(Boto3ServiceResource):
     bucket_name: str
     key: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
         CopySource: TypeDefS3CopySource,
@@ -3632,7 +3663,7 @@ class Object(Boto3ServiceResource):
             copy.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
         CopySource: Union[TypeDefS3CopySource, str],
@@ -4005,7 +4036,7 @@ class Object(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         MFA: str = None,
@@ -4086,7 +4117,7 @@ class Object(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_file(
         self,
         Filename: str,
@@ -4123,7 +4154,7 @@ class Object(Boto3ServiceResource):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_fileobj(
         self,
         Fileobj: IO[Any],
@@ -4166,7 +4197,7 @@ class Object(Boto3ServiceResource):
             download.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get(
         self,
         IfMatch: str = None,
@@ -4505,7 +4536,7 @@ class Object(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -4516,7 +4547,7 @@ class Object(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_multipart_upload(
         self,
         ACL: str = None,
@@ -4741,7 +4772,7 @@ class Object(Boto3ServiceResource):
         :returns: MultipartUpload resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.head_object` to update the attributes of the Object resource. Note that
@@ -4757,7 +4788,7 @@ class Object(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(
         self,
         ACL: str = None,
@@ -5065,7 +5096,7 @@ class Object(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.head_object` to update the attributes of the Object resource. Note that
@@ -5081,7 +5112,7 @@ class Object(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_object(
         self,
         VersionId: str = None,
@@ -5456,7 +5487,7 @@ class Object(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_file(
         self,
         Filename: str,
@@ -5493,7 +5524,7 @@ class Object(Boto3ServiceResource):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_fileobj(
         self,
         Fileobj: IO[Any],
@@ -5536,7 +5567,7 @@ class Object(Boto3ServiceResource):
             upload.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         IfMatch: str = None,
@@ -5649,7 +5680,7 @@ class Object(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_not_exists(
         self,
         IfMatch: str = None,
@@ -5770,7 +5801,7 @@ class ObjectAcl(Boto3ServiceResource):
     bucket_name: str
     object_key: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -5781,7 +5812,7 @@ class ObjectAcl(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_object_acl` to update the attributes of the ObjectAcl resource. Note
@@ -5797,7 +5828,7 @@ class ObjectAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(
         self,
         ACL: str = None,
@@ -5958,7 +5989,7 @@ class ObjectAcl(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`S3.Client.get_object_acl` to update the attributes of the ObjectAcl resource. Note
@@ -5984,7 +6015,7 @@ class ObjectSummary(Boto3ServiceResource):
     bucket_name: str
     key: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
         CopySource: Union[TypeDefS3CopySource, str],
@@ -6357,7 +6388,7 @@ class ObjectSummary(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         MFA: str = None,
@@ -6438,7 +6469,7 @@ class ObjectSummary(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get(
         self,
         IfMatch: str = None,
@@ -6777,7 +6808,7 @@ class ObjectSummary(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -6788,7 +6819,7 @@ class ObjectSummary(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_multipart_upload(
         self,
         ACL: str = None,
@@ -7013,14 +7044,14 @@ class ObjectSummary(Boto3ServiceResource):
         :returns: MultipartUpload resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls s3.Client.head_object to update the attributes of the ObjectSummary
         resource.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(
         self,
         ACL: str = None,
@@ -7328,7 +7359,7 @@ class ObjectSummary(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_object(
         self,
         VersionId: str = None,
@@ -7703,7 +7734,7 @@ class ObjectSummary(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         IfMatch: str = None,
@@ -7816,7 +7847,7 @@ class ObjectSummary(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_not_exists(
         self,
         IfMatch: str = None,
@@ -7943,7 +7974,7 @@ class ObjectVersion(Boto3ServiceResource):
     object_key: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         MFA: str = None,
@@ -8017,7 +8048,7 @@ class ObjectVersion(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get(
         self,
         IfMatch: str = None,
@@ -8349,7 +8380,7 @@ class ObjectVersion(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -8360,7 +8391,7 @@ class ObjectVersion(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def head(
         self,
         IfMatch: str = None,
@@ -8650,8 +8681,7 @@ class buckets(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Bucket]:
         """
         Creates an iterable of all Bucket resources in the collection.
@@ -8668,8 +8698,7 @@ class buckets(ResourceCollection):
         :returns: A list of Bucket resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, **kwargs: Any) -> List[service_resource_scope.Bucket]:
         """
         Creates an iterable of all Bucket resources in the collection filtered by kwargs passed to method.
@@ -8686,8 +8715,7 @@ class buckets(ResourceCollection):
         :returns: A list of Bucket resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -8696,9 +8724,8 @@ class buckets(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
-    def limit(self, count) -> List[service_resource_scope.Bucket]:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Bucket]:
         """
         Creates an iterable up to a specified amount of Bucket resources in the collection.
 
@@ -8714,9 +8741,8 @@ class buckets(ResourceCollection):
         :returns: A list of Bucket resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
-    def page_size(self, count) -> List[service_resource_scope.Bucket]:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Bucket]:
         """
         Creates an iterable of all Bucket resources in the collection, but limits the number of items
         returned by each service call by the specified amount.
@@ -8733,8 +8759,7 @@ class buckets(ResourceCollection):
         :returns: A list of Bucket resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -8769,8 +8794,7 @@ class multipart_uploads(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection.
@@ -8787,8 +8811,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Delimiter: str = None,
@@ -8857,8 +8880,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -8867,8 +8889,7 @@ class multipart_uploads(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable up to a specified amount of MultipartUpload resources in the collection.
@@ -8889,8 +8910,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection, but limits the number of
@@ -8912,8 +8932,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -8948,8 +8967,7 @@ class object_versions(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.ObjectVersion]:
         """
         Creates an iterable of all ObjectVersion resources in the collection.
@@ -8966,8 +8984,7 @@ class object_versions(ResourceCollection):
         :returns: A list of ObjectVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         MFA: str = None,
@@ -9069,8 +9086,7 @@ class object_versions(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Delimiter: str = None,
@@ -9137,8 +9153,7 @@ class object_versions(ResourceCollection):
         :returns: A list of ObjectVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -9147,8 +9162,7 @@ class object_versions(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.ObjectVersion]:
         """
         Creates an iterable up to a specified amount of ObjectVersion resources in the collection.
@@ -9169,8 +9183,7 @@ class object_versions(ResourceCollection):
         :returns: A list of ObjectVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.ObjectVersion]:
         """
         Creates an iterable of all ObjectVersion resources in the collection, but limits the number of
@@ -9192,8 +9205,7 @@ class object_versions(ResourceCollection):
         :returns: A list of ObjectVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -9228,8 +9240,7 @@ class objects(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.ObjectSummary]:
         """
         Creates an iterable of all ObjectSummary resources in the collection.
@@ -9246,8 +9257,7 @@ class objects(ResourceCollection):
         :returns: A list of ObjectSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(
         self,
         MFA: str = None,
@@ -9349,8 +9359,7 @@ class objects(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Delimiter: str = None,
@@ -9418,8 +9427,7 @@ class objects(ResourceCollection):
         :returns: A list of ObjectSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -9428,8 +9436,7 @@ class objects(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.ObjectSummary]:
         """
         Creates an iterable up to a specified amount of ObjectSummary resources in the collection.
@@ -9450,8 +9457,7 @@ class objects(ResourceCollection):
         :returns: A list of ObjectSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.ObjectSummary]:
         """
         Creates an iterable of all ObjectSummary resources in the collection, but limits the number of
@@ -9473,8 +9479,7 @@ class objects(ResourceCollection):
         :returns: A list of ObjectSummary resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -9509,8 +9514,7 @@ class parts(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.MultipartUploadPart]:
         """
         Creates an iterable of all MultipartUploadPart resources in the collection.
@@ -9526,8 +9530,7 @@ class parts(ResourceCollection):
         :returns: A list of MultipartUploadPart resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         MaxParts: int = None,
@@ -9571,8 +9574,7 @@ class parts(ResourceCollection):
         :returns: A list of MultipartUploadPart resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -9581,8 +9583,7 @@ class parts(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.MultipartUploadPart]:
         """
         Creates an iterable up to a specified amount of MultipartUploadPart resources in the collection.
@@ -9602,8 +9603,7 @@ class parts(ResourceCollection):
         :returns: A list of MultipartUploadPart resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.MultipartUploadPart]:
         """
         Creates an iterable of all MultipartUploadPart resources in the collection, but limits the number
@@ -9624,8 +9624,7 @@ class parts(ResourceCollection):
         :returns: A list of MultipartUploadPart resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

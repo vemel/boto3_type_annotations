@@ -5,6 +5,8 @@ from datetime import datetime
 from typing import Any, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_cloudwatch.service_resource as service_resource_scope
 from mypy_boto3_cloudwatch.type_defs import (
     AlarmDescribeHistoryResponseTypeDef,
@@ -19,7 +21,7 @@ from mypy_boto3_cloudwatch.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Alarm(self, name: str) -> service_resource_scope.Alarm:
         """
         Creates a Alarm resource.::
@@ -33,7 +35,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Alarm resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Metric(self, namespace: str, name: str) -> service_resource_scope.Metric:
         """
         Creates a Metric resource.::
@@ -49,7 +51,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Metric resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -91,7 +93,7 @@ class Alarm(Boto3ServiceResource):
     threshold_metric_id: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an
@@ -108,7 +110,7 @@ class Alarm(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_history(
         self,
         HistoryItemType: str = None,
@@ -218,7 +220,7 @@ class Alarm(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_actions(self, *args: Any, **kwargs: Any) -> None:
         """
         Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm
@@ -235,7 +237,7 @@ class Alarm(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_actions(self, *args: Any, **kwargs: Any) -> None:
         """
         Enables the actions for the specified alarms.
@@ -251,7 +253,7 @@ class Alarm(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -262,7 +264,7 @@ class Alarm(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudWatch.Client.describe_alarms` to update the attributes of the Alarm resource.
@@ -279,7 +281,7 @@ class Alarm(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudWatch.Client.describe_alarms` to update the attributes of the Alarm resource.
@@ -296,7 +298,7 @@ class Alarm(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_state(
         self, StateValue: str, StateReason: str, StateReasonData: str = None
     ) -> None:
@@ -345,7 +347,7 @@ class Metric(Boto3ServiceResource):
     namespace: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -356,7 +358,7 @@ class Metric(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_statistics(
         self,
         StartTime: datetime,
@@ -635,7 +637,7 @@ class Metric(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudWatch.Client.list_metrics` to update the attributes of the Metric resource.
@@ -652,7 +654,7 @@ class Metric(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_alarm(
         self,
         AlarmName: str,
@@ -1213,7 +1215,7 @@ class Metric(Boto3ServiceResource):
         :returns: Alarm resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_data(self, *args: Any, **kwargs: Any) -> None:
         """
         Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the
@@ -1264,7 +1266,7 @@ class Metric(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`CloudWatch.Client.list_metrics` to update the attributes of the Metric resource.
@@ -1294,8 +1296,7 @@ class alarms(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Alarm]:
         """
         Creates an iterable of all Alarm resources in the collection.
@@ -1312,8 +1313,7 @@ class alarms(ResourceCollection):
         :returns: A list of Alarm resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an
@@ -1330,8 +1330,7 @@ class alarms(ResourceCollection):
         :returns: None
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_actions(self, *args: Any, **kwargs: Any) -> None:
         """
         Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm
@@ -1348,8 +1347,7 @@ class alarms(ResourceCollection):
         :returns: None
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_actions(self, *args: Any, **kwargs: Any) -> None:
         """
         Enables the actions for the specified alarms.
@@ -1365,8 +1363,7 @@ class alarms(ResourceCollection):
         :returns: None
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         AlarmNames: List[str] = None,
@@ -1431,8 +1428,7 @@ class alarms(ResourceCollection):
         :returns: A list of Alarm resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1441,8 +1437,7 @@ class alarms(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Alarm]:
         """
         Creates an iterable up to a specified amount of Alarm resources in the collection.
@@ -1463,8 +1458,7 @@ class alarms(ResourceCollection):
         :returns: A list of Alarm resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Alarm]:
         """
         Creates an iterable of all Alarm resources in the collection, but limits the number of items
@@ -1486,8 +1480,7 @@ class alarms(ResourceCollection):
         :returns: A list of Alarm resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1522,8 +1515,7 @@ class metrics(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Metric]:
         """
         Creates an iterable of all Metric resources in the collection.
@@ -1540,8 +1532,7 @@ class metrics(ResourceCollection):
         :returns: A list of Metric resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Namespace: str = None,
@@ -1605,8 +1596,7 @@ class metrics(ResourceCollection):
         :returns: A list of Metric resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1615,8 +1605,7 @@ class metrics(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Metric]:
         """
         Creates an iterable up to a specified amount of Metric resources in the collection.
@@ -1637,8 +1626,7 @@ class metrics(ResourceCollection):
         :returns: A list of Metric resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Metric]:
         """
         Creates an iterable of all Metric resources in the collection, but limits the number of items
@@ -1660,8 +1648,7 @@ class metrics(ResourceCollection):
         :returns: A list of Metric resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

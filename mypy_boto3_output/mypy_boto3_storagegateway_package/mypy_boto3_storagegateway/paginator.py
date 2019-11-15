@@ -25,7 +25,7 @@ from mypy_boto3_storagegateway.type_defs import (
 
 
 class DescribeTapeArchives(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TapeARNs: List[str] = None,
@@ -181,7 +181,7 @@ class DescribeTapeArchives(Boto3Paginator):
 
 
 class DescribeTapeRecoveryPoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GatewayARN: str,
@@ -297,7 +297,7 @@ class DescribeTapeRecoveryPoints(Boto3Paginator):
 
 
 class DescribeTapes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GatewayARN: str,
@@ -459,7 +459,7 @@ class DescribeTapes(Boto3Paginator):
 
 
 class DescribeVTLDevices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GatewayARN: str,
@@ -615,7 +615,7 @@ class DescribeVTLDevices(Boto3Paginator):
 
 
 class ListFileShares(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GatewayARN: str = None,
@@ -733,7 +733,7 @@ class ListFileShares(Boto3Paginator):
 
 
 class ListGateways(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGatewaysPaginatePaginationConfigTypeDef = None
     ) -> ListGatewaysPaginateResponseTypeDef:
@@ -847,7 +847,7 @@ class ListGateways(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceARN: str,
@@ -949,7 +949,7 @@ class ListTagsForResource(Boto3Paginator):
 
 
 class ListTapes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TapeARNs: List[str] = None,
@@ -1080,7 +1080,7 @@ class ListTapes(Boto3Paginator):
 
 
 class ListVolumes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GatewayARN: str = None,

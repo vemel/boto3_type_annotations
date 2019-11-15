@@ -47,7 +47,7 @@ from mypy_boto3_datasync.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -64,7 +64,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_task_execution(self, TaskExecutionArn: str) -> Dict[str, Any]:
         """
         Cancels execution of a task.
@@ -103,7 +103,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_agent(
         self,
         ActivationKey: str,
@@ -251,7 +251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_location_efs(
         self,
         EfsFilesystemArn: str,
@@ -370,7 +370,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_location_nfs(
         self,
         Subdirectory: str,
@@ -516,7 +516,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_location_s3(
         self,
         S3BucketArn: str,
@@ -633,7 +633,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_location_smb(
         self,
         Subdirectory: str,
@@ -776,7 +776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_task(
         self,
         SourceLocationArn: str,
@@ -1081,7 +1081,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_agent(self, AgentArn: str) -> Dict[str, Any]:
         """
         Deletes an agent. To specify which agent to delete, use the Amazon Resource Name (ARN) of the agent
@@ -1116,7 +1116,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_location(self, LocationArn: str) -> Dict[str, Any]:
         """
         Deletes the configuration of a location used by AWS DataSync.
@@ -1148,7 +1148,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_task(self, TaskArn: str) -> Dict[str, Any]:
         """
         Deletes a task.
@@ -1180,7 +1180,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_agent(self, AgentArn: str) -> ClientDescribeAgentResponseTypeDef:
         """
         Returns metadata such as the name, the network interfaces, and the status (that is, whether the
@@ -1293,7 +1293,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_location_efs(
         self, LocationArn: str
     ) -> ClientDescribeLocationEfsResponseTypeDef:
@@ -1371,7 +1371,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_location_nfs(
         self, LocationArn: str
     ) -> ClientDescribeLocationNfsResponseTypeDef:
@@ -1466,7 +1466,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_location_s3(
         self, LocationArn: str
     ) -> ClientDescribeLocationS3ResponseTypeDef:
@@ -1545,7 +1545,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_location_smb(
         self, LocationArn: str
     ) -> ClientDescribeLocationSmbResponseTypeDef:
@@ -1631,7 +1631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_task(self, TaskArn: str) -> ClientDescribeTaskResponseTypeDef:
         """
         Returns metadata about a task.
@@ -1935,7 +1935,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_task_execution(
         self, TaskExecutionArn: str
     ) -> ClientDescribeTaskExecutionResponseTypeDef:
@@ -2296,7 +2296,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2325,7 +2325,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2346,7 +2346,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2359,7 +2359,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_agents(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListAgentsResponseTypeDef:
@@ -2445,7 +2445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_locations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListLocationsResponseTypeDef:
@@ -2538,7 +2538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2617,7 +2617,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_task_executions(
         self, TaskArn: str = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTaskExecutionsResponseTypeDef:
@@ -2699,7 +2699,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tasks(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTasksResponseTypeDef:
@@ -2778,7 +2778,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_task_execution(
         self,
         TaskArn: str,
@@ -3023,7 +3023,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -3081,7 +3081,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, Keys: List[str]) -> Dict[str, Any]:
         """
         Removes a tag from an AWS resource.
@@ -3123,7 +3123,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_agent(self, AgentArn: str, Name: str = None) -> Dict[str, Any]:
         """
         Updates the name of an agent.
@@ -3161,7 +3161,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_task(
         self,
         TaskArn: str,

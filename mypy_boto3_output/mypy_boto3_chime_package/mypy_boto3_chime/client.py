@@ -56,6 +56,7 @@ from mypy_boto3_chime.type_defs import (
     ClientPutVoiceConnectorOriginationResponseTypeDef,
     ClientPutVoiceConnectorStreamingConfigurationResponseTypeDef,
     ClientPutVoiceConnectorStreamingConfigurationStreamingConfigurationTypeDef,
+    ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef,
     ClientPutVoiceConnectorTerminationResponseTypeDef,
     ClientPutVoiceConnectorTerminationTerminationTypeDef,
     ClientRegenerateSecurityTokenResponseTypeDef,
@@ -66,8 +67,10 @@ from mypy_boto3_chime.type_defs import (
     ClientUpdateAccountSettingsAccountSettingsTypeDef,
     ClientUpdateBotResponseTypeDef,
     ClientUpdateGlobalSettingsBusinessCallingTypeDef,
+    ClientUpdateGlobalSettingsVoiceConnectorTypeDef,
     ClientUpdatePhoneNumberResponseTypeDef,
     ClientUpdateUserResponseTypeDef,
+    ClientUpdateUserSettingsUserSettingsTypeDef,
     ClientUpdateVoiceConnectorGroupResponseTypeDef,
     ClientUpdateVoiceConnectorGroupVoiceConnectorItemsTypeDef,
     ClientUpdateVoiceConnectorResponseTypeDef,
@@ -75,7 +78,7 @@ from mypy_boto3_chime.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_phone_number_with_user(
         self, AccountId: str, UserId: str, E164PhoneNumber: str
     ) -> Dict[str, Any]:
@@ -121,7 +124,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_phone_numbers_with_voice_connector(
         self,
         VoiceConnectorId: str,
@@ -211,7 +214,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_phone_numbers_with_voice_connector_group(
         self,
         VoiceConnectorGroupId: str,
@@ -302,7 +305,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_phone_number(
         self, PhoneNumberIds: List[str]
     ) -> ClientBatchDeletePhoneNumberResponseTypeDef:
@@ -378,7 +381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_suspend_user(
         self, AccountId: str, UserIdList: List[str]
     ) -> ClientBatchSuspendUserResponseTypeDef:
@@ -471,7 +474,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_unsuspend_user(
         self, AccountId: str, UserIdList: List[str]
     ) -> ClientBatchUnsuspendUserResponseTypeDef:
@@ -558,7 +561,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_update_phone_number(
         self,
         UpdatePhoneNumberRequestItems: List[
@@ -661,7 +664,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_update_user(
         self,
         AccountId: str,
@@ -759,7 +762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -776,7 +779,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_account(self, Name: str) -> ClientCreateAccountResponseTypeDef:
         """
         Creates an Amazon Chime account under the administrator's AWS account. Only ``Team`` account types
@@ -862,7 +865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_bot(
         self, AccountId: str, DisplayName: str, Domain: str = None
     ) -> ClientCreateBotResponseTypeDef:
@@ -961,7 +964,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_phone_number_order(
         self, ProductType: str, E164PhoneNumbers: List[str]
     ) -> ClientCreatePhoneNumberOrderResponseTypeDef:
@@ -1063,7 +1066,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_voice_connector(
         self, Name: str, RequireEncryption: bool, AwsRegion: str = None
     ) -> ClientCreateVoiceConnectorResponseTypeDef:
@@ -1159,7 +1162,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_voice_connector_group(
         self,
         Name: str,
@@ -1281,7 +1284,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_account(self, AccountId: str) -> Dict[str, Any]:
         """
         Deletes the specified Amazon Chime account. You must suspend all users before deleting a ``Team``
@@ -1323,7 +1326,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_events_configuration(self, AccountId: str, BotId: str) -> None:
         """
         Deletes the events configuration that allows a bot to receive outgoing events.
@@ -1351,7 +1354,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_phone_number(self, PhoneNumberId: str) -> None:
         """
         Moves the specified phone number into the **Deletion queue** . A phone number must be disassociated
@@ -1377,7 +1380,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector(self, VoiceConnectorId: str) -> None:
         """
         Deletes the specified Amazon Chime Voice Connector. Any phone numbers associated with the Amazon
@@ -1400,7 +1403,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector_group(self, VoiceConnectorGroupId: str) -> None:
         """
         Deletes the specified Amazon Chime Voice Connector group. Any ``VoiceConnectorItems`` and phone
@@ -1423,7 +1426,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector_origination(self, VoiceConnectorId: str) -> None:
         """
         Deletes the origination settings for the specified Amazon Chime Voice Connector.
@@ -1445,7 +1448,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector_streaming_configuration(
         self, VoiceConnectorId: str
     ) -> None:
@@ -1470,7 +1473,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector_termination(self, VoiceConnectorId: str) -> None:
         """
         Deletes the termination settings for the specified Amazon Chime Voice Connector.
@@ -1492,9 +1495,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_connector_termination_credentials(
-        self, VoiceConnectorId: str, Usernames: List[Any] = None
+        self, VoiceConnectorId: str, Usernames: List[str] = None
     ) -> None:
         """
         Deletes the specified SIP credentials used by your equipment to authenticate during call
@@ -1528,7 +1531,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_phone_number_from_user(
         self, AccountId: str, UserId: str
     ) -> Dict[str, Any]:
@@ -1568,7 +1571,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_phone_numbers_from_voice_connector(
         self, VoiceConnectorId: str, E164PhoneNumbers: List[str] = None
     ) -> ClientDisassociatePhoneNumbersFromVoiceConnectorResponseTypeDef:
@@ -1648,7 +1651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_phone_numbers_from_voice_connector_group(
         self, VoiceConnectorGroupId: str, E164PhoneNumbers: List[str] = None
     ) -> ClientDisassociatePhoneNumbersFromVoiceConnectorGroupResponseTypeDef:
@@ -1728,7 +1731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1757,7 +1760,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account(self, AccountId: str) -> ClientGetAccountResponseTypeDef:
         """
         Retrieves details for the specified Amazon Chime account, such as account type and supported
@@ -1840,7 +1843,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_settings(
         self, AccountId: str
     ) -> ClientGetAccountSettingsResponseTypeDef:
@@ -1897,7 +1900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot(self, AccountId: str, BotId: str) -> ClientGetBotResponseTypeDef:
         """
         Retrieves details for the specified bot, such as bot email address, bot type, status, and display
@@ -1988,7 +1991,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_events_configuration(
         self, AccountId: str, BotId: str
     ) -> ClientGetEventsConfigurationResponseTypeDef:
@@ -2052,7 +2055,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_global_settings(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetGlobalSettingsResponseTypeDef:
@@ -2105,7 +2108,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2126,7 +2129,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_phone_number(
         self, PhoneNumberId: str
     ) -> ClientGetPhoneNumberResponseTypeDef:
@@ -2286,7 +2289,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_phone_number_order(
         self, PhoneNumberOrderId: str
     ) -> ClientGetPhoneNumberOrderResponseTypeDef:
@@ -2377,7 +2380,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_phone_number_settings(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetPhoneNumberSettingsResponseTypeDef:
@@ -2418,7 +2421,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user(self, AccountId: str, UserId: str) -> ClientGetUserResponseTypeDef:
         """
         Retrieves details for the specified user ID, such as primary email address, license type, and
@@ -2523,7 +2526,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_settings(
         self, AccountId: str, UserId: str
     ) -> ClientGetUserSettingsResponseTypeDef:
@@ -2592,7 +2595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorResponseTypeDef:
@@ -2671,7 +2674,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_group(
         self, VoiceConnectorGroupId: str
     ) -> ClientGetVoiceConnectorGroupResponseTypeDef:
@@ -2759,7 +2762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_logging_configuration(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorLoggingConfigurationResponseTypeDef:
@@ -2807,7 +2810,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_origination(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorOriginationResponseTypeDef:
@@ -2898,7 +2901,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_streaming_configuration(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorStreamingConfigurationResponseTypeDef:
@@ -2952,7 +2955,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_termination(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorTerminationResponseTypeDef:
@@ -3027,7 +3030,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_connector_termination_health(
         self, VoiceConnectorId: str
     ) -> ClientGetVoiceConnectorTerminationHealthResponseTypeDef:
@@ -3080,7 +3083,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3093,7 +3096,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invite_users(
         self, AccountId: str, UserEmailList: List[str]
     ) -> ClientInviteUsersResponseTypeDef:
@@ -3173,7 +3176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_accounts(
         self,
         Name: str = None,
@@ -3292,7 +3295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bots(
         self, AccountId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListBotsResponseTypeDef:
@@ -3403,7 +3406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_phone_number_orders(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListPhoneNumberOrdersResponseTypeDef:
@@ -3510,7 +3513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_phone_numbers(
         self,
         Status: str = None,
@@ -3720,7 +3723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self,
         AccountId: str,
@@ -3851,7 +3854,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_voice_connector_groups(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListVoiceConnectorGroupsResponseTypeDef:
@@ -3958,7 +3961,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_voice_connector_termination_credentials(
         self, VoiceConnectorId: str
     ) -> ClientListVoiceConnectorTerminationCredentialsResponseTypeDef:
@@ -4004,7 +4007,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_voice_connectors(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListVoiceConnectorsResponseTypeDef:
@@ -4100,7 +4103,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def logout_user(self, AccountId: str, UserId: str) -> Dict[str, Any]:
         """
         Logs out the specified user from all of the devices they are currently logged into.
@@ -4138,7 +4141,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_events_configuration(
         self,
         AccountId: str,
@@ -4219,7 +4222,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_voice_connector_logging_configuration(
         self,
         VoiceConnectorId: str,
@@ -4281,7 +4284,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_voice_connector_origination(
         self,
         VoiceConnectorId: str,
@@ -4430,7 +4433,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_voice_connector_streaming_configuration(
         self,
         VoiceConnectorId: str,
@@ -4503,7 +4506,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_voice_connector_termination(
         self,
         VoiceConnectorId: str,
@@ -4620,9 +4623,13 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_voice_connector_termination_credentials(
-        self, VoiceConnectorId: str, Credentials: List[Any] = None
+        self,
+        VoiceConnectorId: str,
+        Credentials: List[
+            ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef
+        ] = None,
     ) -> None:
         """
         Adds termination SIP credentials for the specified Amazon Chime Voice Connector.
@@ -4667,7 +4674,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def regenerate_security_token(
         self, AccountId: str, BotId: str
     ) -> ClientRegenerateSecurityTokenResponseTypeDef:
@@ -4761,7 +4768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_personal_pin(
         self, AccountId: str, UserId: str
     ) -> ClientResetPersonalPinResponseTypeDef:
@@ -4865,7 +4872,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_phone_number(
         self, PhoneNumberId: str
     ) -> ClientRestorePhoneNumberResponseTypeDef:
@@ -5024,7 +5031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_available_phone_numbers(
         self,
         AreaCode: str = None,
@@ -5112,7 +5119,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_account(
         self, AccountId: str, Name: str = None
     ) -> ClientUpdateAccountResponseTypeDef:
@@ -5203,7 +5210,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_account_settings(
         self,
         AccountId: str,
@@ -5261,7 +5268,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_bot(
         self, AccountId: str, BotId: str, Disabled: bool = None
     ) -> ClientUpdateBotResponseTypeDef:
@@ -5361,11 +5368,11 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_global_settings(
         self,
         BusinessCalling: ClientUpdateGlobalSettingsBusinessCallingTypeDef,
-        VoiceConnector: Dict,
+        VoiceConnector: ClientUpdateGlobalSettingsVoiceConnectorTypeDef,
     ) -> None:
         """
         Updates global settings for the administrator's AWS account, such as Amazon Chime Business Calling
@@ -5406,7 +5413,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_phone_number(
         self, PhoneNumberId: str, ProductType: str = None, CallingName: str = None
     ) -> ClientUpdatePhoneNumberResponseTypeDef:
@@ -5584,7 +5591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_phone_number_settings(self, CallingName: str) -> None:
         """
         Updates the phone number settings for the administrator's AWS account, such as the default outbound
@@ -5608,7 +5615,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self, AccountId: str, UserId: str, LicenseType: str = None
     ) -> ClientUpdateUserResponseTypeDef:
@@ -5719,9 +5726,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_settings(
-        self, AccountId: str, UserId: str, UserSettings: Dict
+        self,
+        AccountId: str,
+        UserId: str,
+        UserSettings: ClientUpdateUserSettingsUserSettingsTypeDef,
     ) -> None:
         """
         Updates the settings for the specified user, such as phone number settings.
@@ -5777,7 +5787,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_voice_connector(
         self, VoiceConnectorId: str, Name: str, RequireEncryption: bool
     ) -> ClientUpdateVoiceConnectorResponseTypeDef:
@@ -5867,7 +5877,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_voice_connector_group(
         self,
         VoiceConnectorGroupId: str,

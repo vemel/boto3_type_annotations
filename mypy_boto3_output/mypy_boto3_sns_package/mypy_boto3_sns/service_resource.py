@@ -4,6 +4,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_sns.service_resource as service_resource_scope
 from mypy_boto3_sns.type_defs import (
     PlatformEndpointPublishMessageAttributesTypeDef,
@@ -15,7 +17,7 @@ from mypy_boto3_sns.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def PlatformApplication(
         self, arn: str
     ) -> service_resource_scope.PlatformApplication:
@@ -31,7 +33,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A PlatformApplication resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def PlatformEndpoint(self, arn: str) -> service_resource_scope.PlatformEndpoint:
         """
         Creates a PlatformEndpoint resource.::
@@ -45,7 +47,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A PlatformEndpoint resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Subscription(self, arn: str) -> service_resource_scope.Subscription:
         """
         Creates a Subscription resource.::
@@ -59,7 +61,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Subscription resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Topic(self, arn: str) -> service_resource_scope.Topic:
         """
         Creates a Topic resource.::
@@ -73,7 +75,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Topic resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_application(
         self, Name: str, Platform: str, Attributes: Dict[str, str]
     ) -> service_resource_scope.PlatformApplication:
@@ -142,7 +144,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: PlatformApplication resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_topic(
         self,
         Name: str,
@@ -151,9 +153,9 @@ class ServiceResource(Boto3ServiceResource):
     ) -> service_resource_scope.Topic:
         """
         Creates a topic to which notifications can be published. Users can create at most 100,000 topics.
-        For more information, see `https://aws.amazon.com/sns <http://aws.amazon.com/sns/>`__ . This action
-        is idempotent, so if the requester already owns a topic with the specified name, that topic's ARN
-        is returned without creating a new topic.
+        For more information, see `https\\://aws.amazon.com/sns <http://aws.amazon.com/sns/>`__ . This
+        action is idempotent, so if the requester already owns a topic with the specified name, that
+        topic's ARN is returned without creating a new topic.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/CreateTopic>`_
@@ -232,7 +234,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Topic resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -248,7 +250,7 @@ class PlatformApplication(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_endpoint(
         self, Token: str, CustomUserData: str = None, Attributes: Dict[str, str] = None
     ) -> service_resource_scope.PlatformEndpoint:
@@ -309,7 +311,7 @@ class PlatformApplication(Boto3ServiceResource):
         :returns: PlatformEndpoint resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a platform application object for one of the supported push notification services, such as
@@ -327,7 +329,7 @@ class PlatformApplication(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -338,7 +340,7 @@ class PlatformApplication(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_platform_application_attributes` to update the attributes of the
@@ -355,7 +357,7 @@ class PlatformApplication(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_platform_application_attributes` to update the attributes of the
@@ -372,8 +374,8 @@ class PlatformApplication(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def set_attributes(self, Attributes: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_attributes(self, Attributes: Dict[str, str]) -> None:
         """
         Sets the attributes of the platform application object for the supported push notification
         services, such as APNS and GCM. For more information, see `Using Amazon SNS Mobile Push
@@ -437,7 +439,7 @@ class PlatformEndpoint(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For
@@ -458,7 +460,7 @@ class PlatformEndpoint(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -469,7 +471,7 @@ class PlatformEndpoint(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_endpoint_attributes` to update the attributes of the
@@ -486,7 +488,7 @@ class PlatformEndpoint(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish(
         self,
         Message: str,
@@ -695,7 +697,7 @@ class PlatformEndpoint(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_endpoint_attributes` to update the attributes of the
@@ -712,8 +714,8 @@ class PlatformEndpoint(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def set_attributes(self, Attributes: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_attributes(self, Attributes: Dict[str, str]) -> None:
         """
         Sets the attributes for an endpoint for a device on one of the supported push notification
         services, such as GCM and APNS. For more information, see `Using Amazon SNS Mobile Push
@@ -758,7 +760,7 @@ class Subscription(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a subscription. If the subscription requires authentication for deletion, only the owner of
@@ -780,7 +782,7 @@ class Subscription(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -791,7 +793,7 @@ class Subscription(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_subscription_attributes` to update the attributes of the
@@ -808,7 +810,7 @@ class Subscription(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_subscription_attributes` to update the attributes of the
@@ -825,7 +827,7 @@ class Subscription(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_attributes(self, AttributeName: str, AttributeValue: str = None) -> None:
         """
         Allows a subscription owner to set an attribute of the subscription to a new value.
@@ -871,9 +873,9 @@ class Topic(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
-        self, Label: str, AWSAccountId: List[str], ActionName: List[Any]
+        self, Label: str, AWSAccountId: List[str], ActionName: List[str]
     ) -> None:
         """
         Adds a statement to a topic's access control policy, granting access for the specified AWS accounts
@@ -919,7 +921,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_subscription(
         self, Token: str, AuthenticateOnUnsubscribe: str = None
     ) -> service_resource_scope.Subscription:
@@ -955,7 +957,7 @@ class Topic(Boto3ServiceResource):
         :returns: Subscription resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a topic and all its subscriptions. Deleting a topic might prevent some messages previously
@@ -973,7 +975,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -984,7 +986,7 @@ class Topic(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_topic_attributes` to update the attributes of the Topic resource.
@@ -1000,7 +1002,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish(
         self,
         Message: str,
@@ -1205,7 +1207,7 @@ class Topic(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SNS.Client.get_topic_attributes` to update the attributes of the Topic resource.
@@ -1221,7 +1223,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(self, Label: str) -> None:
         """
         Removes a statement from a topic's access control policy.
@@ -1243,7 +1245,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_attributes(self, AttributeName: str, AttributeValue: str = None) -> None:
         """
         Allows a topic owner to set an attribute of the topic to a new value.
@@ -1292,7 +1294,7 @@ class Topic(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def subscribe(
         self,
         Protocol: str,
@@ -1419,8 +1421,7 @@ class platform_applications(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.PlatformApplication]:
         """
         Creates an iterable of all PlatformApplication resources in the collection.
@@ -1437,8 +1438,7 @@ class platform_applications(ResourceCollection):
         :returns: A list of PlatformApplication resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, NextToken: str = None
     ) -> List[service_resource_scope.PlatformApplication]:
@@ -1465,8 +1465,7 @@ class platform_applications(ResourceCollection):
         :returns: A list of PlatformApplication resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1475,8 +1474,7 @@ class platform_applications(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.PlatformApplication]:
         """
         Creates an iterable up to a specified amount of PlatformApplication resources in the collection.
@@ -1497,8 +1495,7 @@ class platform_applications(ResourceCollection):
         :returns: A list of PlatformApplication resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.PlatformApplication]:
         """
         Creates an iterable of all PlatformApplication resources in the collection, but limits the number
@@ -1520,8 +1517,7 @@ class platform_applications(ResourceCollection):
         :returns: A list of PlatformApplication resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1556,8 +1552,7 @@ class subscriptions(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Subscription]:
         """
         Creates an iterable of all Subscription resources in the collection.
@@ -1574,8 +1569,7 @@ class subscriptions(ResourceCollection):
         :returns: A list of Subscription resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, NextToken: str = None
     ) -> List[service_resource_scope.Subscription]:
@@ -1601,8 +1595,7 @@ class subscriptions(ResourceCollection):
         :returns: A list of Subscription resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1611,8 +1604,7 @@ class subscriptions(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Subscription]:
         """
         Creates an iterable up to a specified amount of Subscription resources in the collection.
@@ -1633,8 +1625,7 @@ class subscriptions(ResourceCollection):
         :returns: A list of Subscription resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Subscription]:
         """
         Creates an iterable of all Subscription resources in the collection, but limits the number of items
@@ -1656,8 +1647,7 @@ class subscriptions(ResourceCollection):
         :returns: A list of Subscription resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1692,8 +1682,7 @@ class topics(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Topic]:
         """
         Creates an iterable of all Topic resources in the collection.
@@ -1710,8 +1699,7 @@ class topics(ResourceCollection):
         :returns: A list of Topic resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, NextToken: str = None) -> List[service_resource_scope.Topic]:
         """
         Creates an iterable of all Topic resources in the collection filtered by kwargs passed to method.
@@ -1734,8 +1722,7 @@ class topics(ResourceCollection):
         :returns: A list of Topic resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1744,8 +1731,7 @@ class topics(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Topic]:
         """
         Creates an iterable up to a specified amount of Topic resources in the collection.
@@ -1766,8 +1752,7 @@ class topics(ResourceCollection):
         :returns: A list of Topic resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Topic]:
         """
         Creates an iterable of all Topic resources in the collection, but limits the number of items
@@ -1789,8 +1774,7 @@ class topics(ResourceCollection):
         :returns: A list of Topic resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1825,8 +1809,7 @@ class endpoints(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.PlatformEndpoint]:
         """
         Creates an iterable of all PlatformEndpoint resources in the collection.
@@ -1843,8 +1826,7 @@ class endpoints(ResourceCollection):
         :returns: A list of PlatformEndpoint resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, NextToken: str = None
     ) -> List[service_resource_scope.PlatformEndpoint]:
@@ -1871,8 +1853,7 @@ class endpoints(ResourceCollection):
         :returns: A list of PlatformEndpoint resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1881,8 +1862,7 @@ class endpoints(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.PlatformEndpoint]:
         """
         Creates an iterable up to a specified amount of PlatformEndpoint resources in the collection.
@@ -1903,8 +1883,7 @@ class endpoints(ResourceCollection):
         :returns: A list of PlatformEndpoint resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.PlatformEndpoint]:
         """
         Creates an iterable of all PlatformEndpoint resources in the collection, but limits the number of
@@ -1926,8 +1905,7 @@ class endpoints(ResourceCollection):
         :returns: A list of PlatformEndpoint resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

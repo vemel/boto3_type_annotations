@@ -44,7 +44,7 @@ from mypy_boto3_kinesisanalyticsv2.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_cloud_watch_logging_option(
         self,
         ApplicationName: str,
@@ -147,7 +147,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_input(
         self,
         ApplicationName: str,
@@ -255,7 +255,7 @@ class Client(BaseClient):
 
                   To specify an earlier version of the Lambda function than the latest, include the Lambda
                   function version in the Lambda function ARN. For more information about Lambda ARNs, see
-                  `Example ARNs: AWS Lambda
+                  `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **KinesisStreamsInput** *(dict) --*
@@ -321,7 +321,7 @@ class Client(BaseClient):
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -473,7 +473,7 @@ class Client(BaseClient):
 
                         To specify an earlier version of the Lambda function than the latest, include the
                         Lambda function version in the Lambda function ARN. For more information about
-                        Lambda ARNs, see `Example ARNs: AWS Lambda
+                        Lambda ARNs, see `Example ARNs\\: AWS Lambda
                         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                     - **RoleARN** *(string) --*
@@ -560,7 +560,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --*
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --*
@@ -626,7 +626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_input_processing_configuration(
         self,
         ApplicationName: str,
@@ -693,7 +693,7 @@ class Client(BaseClient):
 
                 To specify an earlier version of the Lambda function than the latest, include the Lambda
                 function version in the Lambda function ARN. For more information about Lambda ARNs, see
-                `Example ARNs: AWS Lambda
+                `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         :rtype: dict
@@ -748,7 +748,7 @@ class Client(BaseClient):
 
                     To specify an earlier version of the Lambda function than the latest, include the
                     Lambda function version in the Lambda function ARN. For more information about Lambda
-                    ARNs, see `Example ARNs: AWS Lambda
+                    ARNs, see `Example ARNs\\: AWS Lambda
                     </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **RoleARN** *(string) --*
@@ -763,7 +763,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_output(
         self,
         ApplicationName: str,
@@ -863,7 +863,7 @@ class Client(BaseClient):
 
                 To specify an earlier version of the Lambda function than the latest, include the Lambda
                 function version in the Lambda function ARN. For more information about Lambda ARNs, see
-                `Example ARNs: AWS Lambda
+                `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -1008,7 +1008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_reference_data_source(
         self,
         ApplicationName: str,
@@ -1136,7 +1136,7 @@ class Client(BaseClient):
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -1307,7 +1307,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --*
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --*
@@ -1346,7 +1346,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -1363,7 +1363,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self,
         ApplicationName: str,
@@ -1607,7 +1607,7 @@ class Client(BaseClient):
 
                         To specify an earlier version of the Lambda function than the latest, include the
                         Lambda function version in the Lambda function ARN. For more information about
-                        Lambda ARNs, see `Example ARNs: AWS Lambda
+                        Lambda ARNs, see `Example ARNs\\: AWS Lambda
                         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **KinesisStreamsInput** *(dict) --*
@@ -1674,7 +1674,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -1754,7 +1754,7 @@ class Client(BaseClient):
 
                       To specify an earlier version of the Lambda function than the latest, include the
                       Lambda function version in the Lambda function ARN. For more information about Lambda
-                      ARNs, see `Example ARNs: AWS Lambda
+                      ARNs, see `Example ARNs\\: AWS Lambda
                       </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -1831,7 +1831,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -2350,7 +2350,7 @@ class Client(BaseClient):
 
                               To specify an earlier version of the Lambda function than the latest, include
                               the Lambda function version in the Lambda function ARN. For more information
-                              about Lambda ARNs, see `Example ARNs: AWS Lambda
+                              about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                               </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                           - **RoleARN** *(string) --*
@@ -2438,7 +2438,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*
@@ -2673,7 +2673,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*
@@ -2918,7 +2918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application_snapshot(
         self, ApplicationName: str, SnapshotName: str
     ) -> Dict[str, Any]:
@@ -2958,7 +2958,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application(
         self, ApplicationName: str, CreateTimestamp: datetime
     ) -> Dict[str, Any]:
@@ -2999,7 +2999,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_cloud_watch_logging_option(
         self,
         ApplicationName: str,
@@ -3096,7 +3096,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_input_processing_configuration(
         self, ApplicationName: str, CurrentApplicationVersionId: int, InputId: str
     ) -> ClientDeleteApplicationInputProcessingConfigurationResponseTypeDef:
@@ -3158,7 +3158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_output(
         self, ApplicationName: str, CurrentApplicationVersionId: int, OutputId: str
     ) -> ClientDeleteApplicationOutputResponseTypeDef:
@@ -3224,7 +3224,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_reference_data_source(
         self, ApplicationName: str, CurrentApplicationVersionId: int, ReferenceId: str
     ) -> ClientDeleteApplicationReferenceDataSourceResponseTypeDef:
@@ -3291,7 +3291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_snapshot(
         self,
         ApplicationName: str,
@@ -3341,7 +3341,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_application(
         self, ApplicationName: str, IncludeAdditionalDetails: bool = None
     ) -> ClientDescribeApplicationResponseTypeDef:
@@ -3663,7 +3663,7 @@ class Client(BaseClient):
 
                               To specify an earlier version of the Lambda function than the latest, include
                               the Lambda function version in the Lambda function ARN. For more information
-                              about Lambda ARNs, see `Example ARNs: AWS Lambda
+                              about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                               </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                           - **RoleARN** *(string) --*
@@ -3751,7 +3751,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*
@@ -3986,7 +3986,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*
@@ -4231,7 +4231,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_application_snapshot(
         self, ApplicationName: str, SnapshotName: str
     ) -> ClientDescribeApplicationSnapshotResponseTypeDef:
@@ -4300,7 +4300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def discover_input_schema(
         self,
         ServiceExecutionRole: str,
@@ -4402,7 +4402,7 @@ class Client(BaseClient):
 
                 To specify an earlier version of the Lambda function than the latest, include the Lambda
                 function version in the Lambda function ARN. For more information about Lambda ARNs, see
-                `Example ARNs: AWS Lambda
+                `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         :rtype: dict
@@ -4487,7 +4487,7 @@ class Client(BaseClient):
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
 
@@ -4547,7 +4547,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4576,7 +4576,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4597,7 +4597,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4610,7 +4610,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_application_snapshots(
         self, ApplicationName: str, Limit: int = None, NextToken: str = None
     ) -> ClientListApplicationSnapshotsResponseTypeDef:
@@ -4697,7 +4697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_applications(
         self, Limit: int = None, NextToken: str = None
     ) -> ClientListApplicationsResponseTypeDef:
@@ -4791,7 +4791,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -4855,7 +4855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_application(
         self,
         ApplicationName: str,
@@ -4957,7 +4957,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_application(self, ApplicationName: str) -> Dict[str, Any]:
         """
         Stops the application from processing data. You can stop an application only if it is in the
@@ -4990,7 +4990,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -5054,7 +5054,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from a Kinesis Analytics application.
@@ -5096,7 +5096,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self,
         ApplicationName: str,
@@ -5334,7 +5334,7 @@ class Client(BaseClient):
 
                         To specify an earlier version of the Lambda function than the latest, include the
                         Lambda function version in the Lambda function ARN. For more information about
-                        Lambda ARNs, see `Example ARNs: AWS Lambda
+                        Lambda ARNs, see `Example ARNs\\: AWS Lambda
                         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **KinesisStreamsInputUpdate** *(dict) --*
@@ -5391,7 +5391,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -5486,7 +5486,7 @@ class Client(BaseClient):
 
                       To specify an earlier version of the Lambda function than the latest, include the
                       Lambda function version in the Lambda function ARN. For more information about Lambda
-                      ARNs, see `Example ARNs: AWS Lambda
+                      ARNs, see `Example ARNs\\: AWS Lambda
                       </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **DestinationSchemaUpdate** *(dict) --*
@@ -5569,7 +5569,7 @@ class Client(BaseClient):
 
                         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                           delimiter.
 
                         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -6078,7 +6078,7 @@ class Client(BaseClient):
 
                               To specify an earlier version of the Lambda function than the latest, include
                               the Lambda function version in the Lambda function ARN. For more information
-                              about Lambda ARNs, see `Example ARNs: AWS Lambda
+                              about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                               </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                           - **RoleARN** *(string) --*
@@ -6166,7 +6166,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*
@@ -6401,7 +6401,7 @@ class Client(BaseClient):
 
                               - **RecordRowDelimiter** *(string) --*
 
-                                The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                                The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                                 delimiter.
 
                               - **RecordColumnDelimiter** *(string) --*

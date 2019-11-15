@@ -48,7 +48,7 @@ from mypy_boto3_amplify.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -65,7 +65,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_app(
         self,
         name: str,
@@ -539,7 +539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_branch(
         self,
         appId: str,
@@ -858,7 +858,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment(
         self, appId: str, branchName: str, fileMap: Dict[str, str] = None
     ) -> ClientCreateDeploymentResponseTypeDef:
@@ -938,7 +938,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain_association(
         self,
         appId: str,
@@ -1091,7 +1091,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_webhook(
         self, appId: str, branchName: str, description: str = None
     ) -> ClientCreateWebhookResponseTypeDef:
@@ -1182,7 +1182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app(self, appId: str) -> ClientDeleteAppResponseTypeDef:
         """
         Delete an existing Amplify App by appId.
@@ -1446,7 +1446,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_branch(
         self, appId: str, branchName: str
     ) -> ClientDeleteBranchResponseTypeDef:
@@ -1646,7 +1646,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain_association(
         self, appId: str, domainName: str
     ) -> ClientDeleteDomainAssociationResponseTypeDef:
@@ -1764,7 +1764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_job(
         self, appId: str, branchName: str, jobId: str
     ) -> ClientDeleteJobResponseTypeDef:
@@ -1862,13 +1862,13 @@ class Client(BaseClient):
 
               - **jobType** *(string) --*
 
-                Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                 "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                 WebHooks.
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_webhook(self, webhookId: str) -> ClientDeleteWebhookResponseTypeDef:
         """
         Deletes a webhook.
@@ -1945,7 +1945,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_access_logs(
         self,
         domainName: str,
@@ -2010,7 +2010,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2039,7 +2039,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_app(self, appId: str) -> ClientGetAppResponseTypeDef:
         """
         Retrieves an existing Amplify App by appId.
@@ -2301,7 +2301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_artifact_url(self, artifactId: str) -> ClientGetArtifactUrlResponseTypeDef:
         """
         Retrieves artifact info that corresponds to a artifactId.
@@ -2347,7 +2347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_branch(self, appId: str, branchName: str) -> ClientGetBranchResponseTypeDef:
         """
         Retrieves a branch for an Amplify App.
@@ -2543,7 +2543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_association(
         self, appId: str, domainName: str
     ) -> ClientGetDomainAssociationResponseTypeDef:
@@ -2663,7 +2663,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job(
         self, appId: str, branchName: str, jobId: str
     ) -> ClientGetJobResponseTypeDef:
@@ -2783,7 +2783,7 @@ class Client(BaseClient):
 
                 - **jobType** *(string) --*
 
-                  Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                  Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                   "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                   WebHooks.
 
@@ -2845,7 +2845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2866,7 +2866,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2879,7 +2879,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_webhook(self, webhookId: str) -> ClientGetWebhookResponseTypeDef:
         """
         Retrieves webhook info that corresponds to a webhookId.
@@ -2956,7 +2956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_apps(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListAppsResponseTypeDef:
@@ -3241,7 +3241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_artifacts(
         self,
         appId: str,
@@ -3337,7 +3337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_branches(
         self, appId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListBranchesResponseTypeDef:
@@ -3556,7 +3556,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domain_associations(
         self, appId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListDomainAssociationsResponseTypeDef:
@@ -3695,7 +3695,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self, appId: str, branchName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListJobsResponseTypeDef:
@@ -3807,7 +3807,7 @@ class Client(BaseClient):
 
                 - **jobType** *(string) --*
 
-                  Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                  Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                   "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                   WebHooks.
 
@@ -3818,7 +3818,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3867,7 +3867,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_webhooks(
         self, appId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListWebhooksResponseTypeDef:
@@ -3971,7 +3971,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_deployment(
         self, appId: str, branchName: str, jobId: str = None, sourceUrl: str = None
     ) -> ClientStartDeploymentResponseTypeDef:
@@ -4076,13 +4076,13 @@ class Client(BaseClient):
 
               - **jobType** *(string) --*
 
-                Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                 "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                 WebHooks.
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_job(
         self,
         appId: str,
@@ -4131,7 +4131,7 @@ class Client(BaseClient):
         :type jobType: string
         :param jobType: **[REQUIRED]**
 
-          Type for the Job. Available JobTypes are: \n "RELEASE": Start a new job with the latest change
+          Type for the Job. Available JobTypes are: \\n "RELEASE": Start a new job with the latest change
           from the specified branch. Only available for apps that have connected to a repository. "RETRY":
           Retry an existing job. JobId is required for this type of job.
 
@@ -4220,13 +4220,13 @@ class Client(BaseClient):
 
               - **jobType** *(string) --*
 
-                Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                 "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                 WebHooks.
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_job(
         self, appId: str, branchName: str, jobId: str
     ) -> ClientStopJobResponseTypeDef:
@@ -4324,13 +4324,13 @@ class Client(BaseClient):
 
               - **jobType** *(string) --*
 
-                Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                 "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                 WebHooks.
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> Dict:
         """
         Tag resource with tag key and value.
@@ -4377,7 +4377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict:
         """
         Untag resource with resourceArn.
@@ -4422,7 +4422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_app(
         self,
         appId: str,
@@ -4891,7 +4891,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_branch(
         self,
         appId: str,
@@ -5197,7 +5197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_association(
         self,
         appId: str,
@@ -5350,7 +5350,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_webhook(
         self, webhookId: str, branchName: str = None, description: str = None
     ) -> ClientUpdateWebhookResponseTypeDef:

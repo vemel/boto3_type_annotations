@@ -19,7 +19,7 @@ from mypy_boto3_sms.type_defs import (
 
 
 class GetConnectors(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetConnectorsPaginatePaginationConfigTypeDef = None
     ) -> GetConnectorsPaginateResponseTypeDef:
@@ -147,7 +147,7 @@ class GetConnectors(Boto3Paginator):
 
 
 class GetReplicationJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         replicationJobId: str = None,
@@ -457,7 +457,7 @@ class GetReplicationJobs(Boto3Paginator):
 
 
 class GetReplicationRuns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         replicationJobId: str,
@@ -850,7 +850,7 @@ class GetReplicationRuns(Boto3Paginator):
 
 
 class GetServers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         vmServerAddressList: List[GetServersPaginatevmServerAddressListTypeDef] = None,
@@ -1021,7 +1021,7 @@ class GetServers(Boto3Paginator):
 
 
 class ListApps(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         appIds: List[str] = None,

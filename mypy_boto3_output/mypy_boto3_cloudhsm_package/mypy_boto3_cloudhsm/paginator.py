@@ -13,7 +13,7 @@ from mypy_boto3_cloudhsm.type_defs import (
 
 
 class ListHapgs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListHapgsPaginatePaginationConfigTypeDef = None
     ) -> ListHapgsPaginateResponseTypeDef:
@@ -75,7 +75,7 @@ class ListHapgs(Boto3Paginator):
 
 
 class ListHsms(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListHsmsPaginatePaginationConfigTypeDef = None
     ) -> ListHsmsPaginateResponseTypeDef:
@@ -141,7 +141,7 @@ class ListHsms(Boto3Paginator):
 
 
 class ListLunaClients(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListLunaClientsPaginatePaginationConfigTypeDef = None
     ) -> ListLunaClientsPaginateResponseTypeDef:

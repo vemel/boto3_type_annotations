@@ -63,7 +63,7 @@ from mypy_boto3_robomaker.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_describe_simulation_job(
         self, jobs: List[str]
     ) -> ClientBatchDescribeSimulationJobResponseTypeDef:
@@ -509,7 +509,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -526,7 +526,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_deployment_job(self, job: str) -> Dict[str, Any]:
         """
         Cancels the specified deployment job.
@@ -558,7 +558,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_simulation_job(self, job: str) -> Dict[str, Any]:
         """
         Cancels the specified simulation job.
@@ -590,7 +590,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment_job(
         self,
         clientRequestToken: str,
@@ -970,7 +970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fleet(
         self, name: str, tags: Dict[str, str] = None
     ) -> ClientCreateFleetResponseTypeDef:
@@ -1044,7 +1044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_robot(
         self,
         name: str,
@@ -1144,7 +1144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_robot_application(
         self,
         name: str,
@@ -1325,7 +1325,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_robot_application_version(
         self, application: str, currentRevisionId: str = None
     ) -> ClientCreateRobotApplicationVersionResponseTypeDef:
@@ -1441,7 +1441,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_simulation_application(
         self,
         name: str,
@@ -1690,7 +1690,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_simulation_application_version(
         self, application: str, currentRevisionId: str = None
     ) -> ClientCreateSimulationApplicationVersionResponseTypeDef:
@@ -1838,7 +1838,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_simulation_job(
         self,
         maxJobDurationInSeconds: int,
@@ -2600,7 +2600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fleet(self, fleet: str) -> Dict[str, Any]:
         """
         Deletes a fleet.
@@ -2632,7 +2632,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_robot(self, robot: str) -> Dict[str, Any]:
         """
         Deletes a robot.
@@ -2664,7 +2664,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_robot_application(
         self, application: str, applicationVersion: str = None
     ) -> Dict[str, Any]:
@@ -2704,7 +2704,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_simulation_application(
         self, application: str, applicationVersion: str = None
     ) -> Dict[str, Any]:
@@ -2744,7 +2744,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_robot(
         self, fleet: str, robot: str
     ) -> ClientDeregisterRobotResponseTypeDef:
@@ -2796,7 +2796,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_deployment_job(
         self, job: str
     ) -> ClientDescribeDeploymentJobResponseTypeDef:
@@ -3087,7 +3087,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet(self, fleet: str) -> ClientDescribeFleetResponseTypeDef:
         """
         Describes a fleet.
@@ -3221,7 +3221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_robot(self, robot: str) -> ClientDescribeRobotResponseTypeDef:
         """
         Describes a robot.
@@ -3312,7 +3312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_robot_application(
         self, application: str, applicationVersion: str = None
     ) -> ClientDescribeRobotApplicationResponseTypeDef:
@@ -3438,7 +3438,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_simulation_application(
         self, application: str, applicationVersion: str = None
     ) -> ClientDescribeSimulationApplicationResponseTypeDef:
@@ -3596,7 +3596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_simulation_job(
         self, job: str
     ) -> ClientDescribeSimulationJobResponseTypeDef:
@@ -4064,7 +4064,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4093,7 +4093,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4114,7 +4114,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4127,7 +4127,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployment_jobs(
         self,
         filters: List[ClientListDeploymentJobsfiltersTypeDef] = None,
@@ -4379,7 +4379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_fleets(
         self,
         nextToken: str = None,
@@ -4517,7 +4517,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_robot_applications(
         self,
         versionQualifier: str = None,
@@ -4668,7 +4668,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_robots(
         self,
         nextToken: str = None,
@@ -4823,7 +4823,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_simulation_applications(
         self,
         versionQualifier: str = None,
@@ -4992,7 +4992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_simulation_jobs(
         self,
         nextToken: str = None,
@@ -5150,7 +5150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5197,7 +5197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_robot(
         self, fleet: str, robot: str
     ) -> ClientRegisterRobotResponseTypeDef:
@@ -5249,7 +5249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restart_simulation_job(self, job: str) -> Dict[str, Any]:
         """
         Restarts a running simulation job.
@@ -5281,7 +5281,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def sync_deployment_job(
         self, clientRequestToken: str, fleet: str
     ) -> ClientSyncDeploymentJobResponseTypeDef:
@@ -5521,7 +5521,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> Dict[str, Any]:
         """
         Adds or edits tags for a AWS RoboMaker resource.
@@ -5573,7 +5573,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         .. _https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html:
@@ -5621,7 +5621,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_robot_application(
         self,
         application: str,
@@ -5785,7 +5785,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_simulation_application(
         self,
         application: str,

@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_config.type_defs import (
     ClientBatchGetAggregateResourceConfigResourceIdentifiersTypeDef,
     ClientBatchGetAggregateResourceConfigResponseTypeDef,
@@ -59,10 +58,13 @@ from mypy_boto3_config.type_defs import (
     ClientPutAggregationAuthorizationResponseTypeDef,
     ClientPutAggregationAuthorizationTagsTypeDef,
     ClientPutConfigRuleConfigRuleTypeDef,
+    ClientPutConfigRuleTagsTypeDef,
     ClientPutConfigurationAggregatorAccountAggregationSourcesTypeDef,
     ClientPutConfigurationAggregatorOrganizationAggregationSourceTypeDef,
     ClientPutConfigurationAggregatorResponseTypeDef,
     ClientPutConfigurationAggregatorTagsTypeDef,
+    ClientPutConfigurationRecorderConfigurationRecorderTypeDef,
+    ClientPutDeliveryChannelDeliveryChannelTypeDef,
     ClientPutEvaluationsEvaluationsTypeDef,
     ClientPutEvaluationsResponseTypeDef,
     ClientPutOrganizationConfigRuleOrganizationCustomRuleMetadataTypeDef,
@@ -76,11 +78,12 @@ from mypy_boto3_config.type_defs import (
     ClientSelectResourceConfigResponseTypeDef,
     ClientStartRemediationExecutionResourceKeysTypeDef,
     ClientStartRemediationExecutionResponseTypeDef,
+    ClientTagResourceTagsTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_aggregate_resource_config(
         self,
         ConfigurationAggregatorName: str,
@@ -408,7 +411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_resource_config(
         self, resourceKeys: List[ClientBatchGetResourceConfigresourceKeysTypeDef]
     ) -> ClientBatchGetResourceConfigResponseTypeDef:
@@ -697,7 +700,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -714,7 +717,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_aggregation_authorization(
         self, AuthorizedAccountId: str, AuthorizedAwsRegion: str
     ) -> None:
@@ -745,7 +748,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_config_rule(self, ConfigRuleName: str) -> None:
         """
         Deletes the specified AWS Config rule and all of its evaluation results.
@@ -773,7 +776,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_aggregator(self, ConfigurationAggregatorName: str) -> None:
         """
         Deletes the specified configuration aggregator and the aggregated data associated with the
@@ -796,7 +799,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_recorder(self, ConfigurationRecorderName: str) -> None:
         """
         Deletes the configuration recorder.
@@ -827,7 +830,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_delivery_channel(self, DeliveryChannelName: str) -> None:
         """
         Deletes the delivery channel.
@@ -852,7 +855,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_evaluation_results(self, ConfigRuleName: str) -> Dict:
         """
         Deletes the evaluation results for the specified AWS Config rule. You can specify one AWS Config
@@ -889,7 +892,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_organization_config_rule(self, OrganizationConfigRuleName: str) -> None:
         """
         Deletes the specified organization config rule and all of its evaluation results from all member
@@ -915,7 +918,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_pending_aggregation_request(
         self, RequesterAccountId: str, RequesterAwsRegion: str
     ) -> None:
@@ -945,7 +948,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_remediation_configuration(
         self, ConfigRuleName: str, ResourceType: str = None
     ) -> Dict[str, Any]:
@@ -985,7 +988,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_remediation_exceptions(
         self,
         ConfigRuleName: str,
@@ -1091,7 +1094,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_retention_configuration(self, RetentionConfigurationName: str) -> None:
         """
         Deletes the retention configuration.
@@ -1113,7 +1116,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deliver_config_snapshot(
         self, deliveryChannelName: str
     ) -> ClientDeliverConfigSnapshotResponseTypeDef:
@@ -1164,7 +1167,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_aggregate_compliance_by_config_rules(
         self,
         ConfigurationAggregatorName: str,
@@ -1337,7 +1340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_aggregation_authorizations(
         self, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeAggregationAuthorizationsResponseTypeDef:
@@ -1419,7 +1422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_compliance_by_config_rule(
         self,
         ConfigRuleNames: List[str] = None,
@@ -1568,7 +1571,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_compliance_by_resource(
         self,
         ResourceType: str = None,
@@ -1740,7 +1743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_config_rule_evaluation_status(
         self,
         ConfigRuleNames: List[str] = None,
@@ -1891,7 +1894,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_config_rules(
         self, ConfigRuleNames: List[str] = None, NextToken: str = None
     ) -> ClientDescribeConfigRulesResponseTypeDef:
@@ -2177,7 +2180,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_aggregator_sources_status(
         self,
         ConfigurationAggregatorName: str,
@@ -2309,7 +2312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_aggregators(
         self,
         ConfigurationAggregatorNames: List[str] = None,
@@ -2468,7 +2471,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_recorder_status(
         self, ConfigurationRecorderNames: List[str] = None
     ) -> ClientDescribeConfigurationRecorderStatusResponseTypeDef:
@@ -2569,7 +2572,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_recorders(
         self, ConfigurationRecorderNames: List[str] = None
     ) -> ClientDescribeConfigurationRecordersResponseTypeDef:
@@ -2740,7 +2743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_delivery_channel_status(
         self, DeliveryChannelNames: List[str] = None
     ) -> ClientDescribeDeliveryChannelStatusResponseTypeDef:
@@ -2913,7 +2916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_delivery_channels(
         self, DeliveryChannelNames: List[str] = None
     ) -> ClientDescribeDeliveryChannelsResponseTypeDef:
@@ -3023,7 +3026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_organization_config_rule_statuses(
         self,
         OrganizationConfigRuleNames: List[str] = None,
@@ -3173,7 +3176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_organization_config_rules(
         self,
         OrganizationConfigRuleNames: List[str] = None,
@@ -3427,7 +3430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pending_aggregation_requests(
         self, Limit: int = None, NextToken: str = None
     ) -> ClientDescribePendingAggregationRequestsResponseTypeDef:
@@ -3500,7 +3503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_remediation_configurations(
         self, ConfigRuleNames: List[str]
     ) -> ClientDescribeRemediationConfigurationsResponseTypeDef:
@@ -3681,7 +3684,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_remediation_exceptions(
         self,
         ConfigRuleName: str,
@@ -3818,7 +3821,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_remediation_execution_status(
         self,
         ConfigRuleName: str,
@@ -4064,7 +4067,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_retention_configurations(
         self, RetentionConfigurationNames: List[str] = None, NextToken: str = None
     ) -> ClientDescribeRetentionConfigurationsResponseTypeDef:
@@ -4155,7 +4158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4184,7 +4187,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_aggregate_compliance_details_by_config_rule(
         self,
         ConfigurationAggregatorName: str,
@@ -4369,7 +4372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_aggregate_config_rule_compliance_summary(
         self,
         ConfigurationAggregatorName: str,
@@ -4530,7 +4533,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_aggregate_discovered_resource_counts(
         self,
         ConfigurationAggregatorName: str,
@@ -4695,7 +4698,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_aggregate_resource_config(
         self,
         ConfigurationAggregatorName: str,
@@ -5030,7 +5033,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compliance_details_by_config_rule(
         self,
         ConfigRuleName: str,
@@ -5184,7 +5187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compliance_details_by_resource(
         self,
         ResourceType: str,
@@ -5337,7 +5340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compliance_summary_by_config_rule(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetComplianceSummaryByConfigRuleResponseTypeDef:
@@ -5416,7 +5419,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compliance_summary_by_resource_type(
         self, ResourceTypes: List[str] = None
     ) -> ClientGetComplianceSummaryByResourceTypeResponseTypeDef:
@@ -5530,7 +5533,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_discovered_resource_counts(
         self, resourceTypes: List[str] = None, limit: int = None, nextToken: str = None
     ) -> ClientGetDiscoveredResourceCountsResponseTypeDef:
@@ -5710,7 +5713,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_organization_config_rule_detailed_status(
         self,
         OrganizationConfigRuleName: str,
@@ -5895,7 +5898,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5916,7 +5919,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_config_history(
         self,
         resourceType: str,
@@ -6296,7 +6299,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -6309,7 +6312,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aggregate_discovered_resources(
         self,
         ConfigurationAggregatorName: str,
@@ -6521,7 +6524,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_discovered_resources(
         self,
         resourceType: str,
@@ -6728,7 +6731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str, Limit: int = None, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -6813,7 +6816,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_aggregation_authorization(
         self,
         AuthorizedAccountId: str,
@@ -6912,11 +6915,11 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_config_rule(
         self,
         ConfigRule: ClientPutConfigRuleConfigRuleTypeDef,
-        Tags: List[TypeDefEC2Tag] = None,
+        Tags: List[ClientPutConfigRuleTagsTypeDef] = None,
     ) -> None:
         """
         Adds or updates an AWS Config rule for evaluating whether your AWS resources comply with your
@@ -7203,7 +7206,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_aggregator(
         self,
         ConfigurationAggregatorName: str,
@@ -7432,8 +7435,11 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def put_configuration_recorder(self, ConfigurationRecorder: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_configuration_recorder(
+        self,
+        ConfigurationRecorder: ClientPutConfigurationRecorderConfigurationRecorderTypeDef,
+    ) -> None:
         """
         Creates a new configuration recorder to record the selected resource configurations.
 
@@ -7571,8 +7577,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_delivery_channel(self, DeliveryChannel: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_delivery_channel(
+        self, DeliveryChannel: ClientPutDeliveryChannelDeliveryChannelTypeDef
+    ) -> None:
         """
         Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and
         Amazon SNS topic.
@@ -7656,7 +7664,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_evaluations(
         self,
         ResultToken: str,
@@ -7813,7 +7821,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_organization_config_rule(
         self,
         OrganizationConfigRuleName: str,
@@ -8034,7 +8042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_remediation_configurations(
         self,
         RemediationConfigurations: List[
@@ -8372,7 +8380,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_remediation_exceptions(
         self,
         ConfigRuleName: str,
@@ -8509,7 +8517,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_retention_configuration(
         self, RetentionPeriodInDays: int
     ) -> ClientPutRetentionConfigurationResponseTypeDef:
@@ -8576,7 +8584,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def select_resource_config(
         self, Expression: str, Limit: int = None, NextToken: str = None
     ) -> ClientSelectResourceConfigResponseTypeDef:
@@ -8671,7 +8679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_config_rules_evaluation(self, ConfigRuleNames: List[str] = None) -> Dict:
         """
         Runs an on-demand evaluation for the specified AWS Config rules against the last known
@@ -8739,7 +8747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_configuration_recorder(self, ConfigurationRecorderName: str) -> None:
         """
         Starts recording configurations of the AWS resources you have selected to record in your AWS
@@ -8765,7 +8773,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_remediation_execution(
         self,
         ConfigRuleName: str,
@@ -8933,7 +8941,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_configuration_recorder(self, ConfigurationRecorderName: str) -> None:
         """
         Stops recording configurations of the AWS resources you have selected to record in your AWS account.
@@ -8955,8 +8963,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Associates the specified tags to a resource with the specified resourceArn. If existing tags on a
         resource are not specified in the request parameters, they are not changed. When a resource is
@@ -9009,8 +9019,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Deletes specified tags from a resource.
 

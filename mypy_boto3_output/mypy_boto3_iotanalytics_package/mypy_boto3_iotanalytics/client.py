@@ -37,22 +37,26 @@ from mypy_boto3_iotanalytics.type_defs import (
     ClientListDatastoresResponseTypeDef,
     ClientListPipelinesResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
+    ClientPutLoggingOptionsloggingOptionsTypeDef,
     ClientRunPipelineActivityResponseTypeDef,
     ClientRunPipelineActivitypipelineActivityTypeDef,
     ClientSampleChannelDataResponseTypeDef,
     ClientStartPipelineReprocessingResponseTypeDef,
     ClientTagResourcetagsTypeDef,
     ClientUpdateChannelchannelStorageTypeDef,
+    ClientUpdateChannelretentionPeriodTypeDef,
     ClientUpdateDatasetactionsTypeDef,
     ClientUpdateDatasetcontentDeliveryRulesTypeDef,
     ClientUpdateDatasetretentionPeriodTypeDef,
     ClientUpdateDatasettriggersTypeDef,
+    ClientUpdateDatastoredatastoreStorageTypeDef,
     ClientUpdateDatastoreretentionPeriodTypeDef,
+    ClientUpdatePipelinepipelineActivitiesTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_put_message(
         self, channelName: str, messages: List[ClientBatchPutMessagemessagesTypeDef]
     ) -> ClientBatchPutMessageResponseTypeDef:
@@ -161,7 +165,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -178,7 +182,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_pipeline_reprocessing(
         self, pipelineName: str, reprocessingId: str
     ) -> Dict[str, Any]:
@@ -218,7 +222,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_channel(
         self,
         channelName: str,
@@ -369,7 +373,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset(
         self,
         datasetName: str,
@@ -801,7 +805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset_content(
         self, datasetName: str
     ) -> ClientCreateDatasetContentResponseTypeDef:
@@ -843,7 +847,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_datastore(
         self,
         datastoreName: str,
@@ -993,7 +997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_pipeline(
         self,
         pipelineName: str,
@@ -1347,7 +1351,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_channel(self, channelName: str) -> None:
         """
         Deletes the specified channel.
@@ -1369,7 +1373,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset(self, datasetName: str) -> None:
         """
         Deletes the specified data set.
@@ -1393,7 +1397,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset_content(self, datasetName: str, versionId: str = None) -> None:
         """
         Deletes the content of the specified data set.
@@ -1423,7 +1427,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_datastore(self, datastoreName: str) -> None:
         """
         Deletes the specified data store.
@@ -1445,7 +1449,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_pipeline(self, pipelineName: str) -> None:
         """
         Deletes the specified pipeline.
@@ -1467,7 +1471,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_channel(
         self, channelName: str, includeStatistics: bool = None
     ) -> ClientDescribeChannelResponseTypeDef:
@@ -1622,7 +1626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset(self, datasetName: str) -> Dict[str, Any]:
         """
         Retrieves information about a data set.
@@ -2014,7 +2018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_datastore(
         self, datastoreName: str, includeStatistics: bool = None
     ) -> ClientDescribeDatastoreResponseTypeDef:
@@ -2182,7 +2186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_logging_options(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLoggingOptionsResponseTypeDef:
@@ -2233,7 +2237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pipeline(
         self, pipelineName: str
     ) -> ClientDescribePipelineResponseTypeDef:
@@ -2594,7 +2598,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2623,7 +2627,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dataset_content(
         self, datasetName: str, versionId: str = None
     ) -> ClientGetDatasetContentResponseTypeDef:
@@ -2711,7 +2715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2732,7 +2736,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2745,7 +2749,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_channels(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListChannelsResponseTypeDef:
@@ -2861,7 +2865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataset_contents(
         self,
         datasetName: str,
@@ -2982,7 +2986,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_datasets(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListDatasetsResponseTypeDef:
@@ -3125,7 +3129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_datastores(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListDatastoresResponseTypeDef:
@@ -3241,7 +3245,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pipelines(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListPipelinesResponseTypeDef:
@@ -3344,7 +3348,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3402,8 +3406,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def put_logging_options(self, loggingOptions: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_logging_options(
+        self, loggingOptions: ClientPutLoggingOptionsloggingOptionsTypeDef
+    ) -> None:
         """
         Sets or updates the AWS IoT Analytics logging options.
 
@@ -3445,7 +3451,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def run_pipeline_activity(
         self,
         pipelineActivity: ClientRunPipelineActivitypipelineActivityTypeDef,
@@ -3770,7 +3776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def sample_channel_data(
         self,
         channelName: str,
@@ -3838,7 +3844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_pipeline_reprocessing(
         self, pipelineName: str, startTime: datetime = None, endTime: datetime = None
     ) -> ClientStartPipelineReprocessingResponseTypeDef:
@@ -3891,7 +3897,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -3949,7 +3955,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes the given tags (metadata) from the resource.
@@ -3991,12 +3997,12 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_channel(
         self,
         channelName: str,
         channelStorage: ClientUpdateChannelchannelStorageTypeDef = None,
-        retentionPeriod: Dict = None,
+        retentionPeriod: ClientUpdateChannelretentionPeriodTypeDef = None,
     ) -> None:
         """
         Updates the settings of a channel.
@@ -4079,7 +4085,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_dataset(
         self,
         datasetName: str,
@@ -4440,12 +4446,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_datastore(
         self,
         datastoreName: str,
         retentionPeriod: ClientUpdateDatastoreretentionPeriodTypeDef = None,
-        datastoreStorage: Dict = None,
+        datastoreStorage: ClientUpdateDatastoredatastoreStorageTypeDef = None,
     ) -> None:
         """
         Updates the settings of a data store.
@@ -4528,8 +4534,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def update_pipeline(self, pipelineName: str, pipelineActivities: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_pipeline(
+        self,
+        pipelineName: str,
+        pipelineActivities: List[ClientUpdatePipelinepipelineActivitiesTypeDef],
+    ) -> None:
         """
         Updates the settings of a pipeline. You must specify both a ``channel`` and a ``datastore``
         activity and, optionally, as many as 23 additional activities in the ``pipelineActivities`` array.

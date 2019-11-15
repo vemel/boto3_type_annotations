@@ -26,7 +26,7 @@ from mypy_boto3_quicksight.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -43,7 +43,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self, GroupName: str, AwsAccountId: str, Namespace: str, Description: str = None
     ) -> ClientCreateGroupResponseTypeDef:
@@ -146,7 +146,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group_membership(
         self, MemberName: str, GroupName: str, AwsAccountId: str, Namespace: str
     ) -> ClientCreateGroupMembershipResponseTypeDef:
@@ -241,7 +241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(
         self, GroupName: str, AwsAccountId: str, Namespace: str
     ) -> ClientDeleteGroupResponseTypeDef:
@@ -253,8 +253,8 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight delete-group -\-aws-account-id=111122223333 -\-namespace=default
-         -\-group-name=Sales-Management``
+         ``aws quicksight delete-group -\\-aws-account-id=111122223333 -\\-namespace=default
+         -\\-group-name=Sales-Management``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DeleteGroup>`_
@@ -308,7 +308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group_membership(
         self, MemberName: str, GroupName: str, AwsAccountId: str, Namespace: str
     ) -> ClientDeleteGroupMembershipResponseTypeDef:
@@ -385,7 +385,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(
         self, UserName: str, AwsAccountId: str, Namespace: str
     ) -> ClientDeleteUserResponseTypeDef:
@@ -453,7 +453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_by_principal_id(
         self, PrincipalId: str, AwsAccountId: str, Namespace: str
     ) -> ClientDeleteUserByPrincipalIdResponseTypeDef:
@@ -520,7 +520,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_group(
         self, GroupName: str, AwsAccountId: str, Namespace: str
     ) -> ClientDescribeGroupResponseTypeDef:
@@ -534,8 +534,8 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight describe-group -\-aws-account-id=11112222333 -\-namespace=default
-         -\-group-name=Sales``
+         ``aws quicksight describe-group -\\-aws-account-id=11112222333 -\\-namespace=default
+         -\\-group-name=Sales``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DescribeGroup>`_
@@ -615,7 +615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user(
         self, UserName: str, AwsAccountId: str, Namespace: str
     ) -> ClientDescribeUserResponseTypeDef:
@@ -726,7 +726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -755,7 +755,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dashboard_embed_url(
         self,
         AwsAccountId: str,
@@ -890,7 +890,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -911,7 +911,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -924,7 +924,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_memberships(
         self,
         GroupName: str,
@@ -943,7 +943,7 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight list-group-memberships -\-aws-account-id=111122223333 -\-namespace=default``
+         ``aws quicksight list-group-memberships -\\-aws-account-id=111122223333 -\\-namespace=default``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/ListGroupMemberships>`_
@@ -1037,7 +1037,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self,
         AwsAccountId: str,
@@ -1054,7 +1054,7 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight list-groups -\-aws-account-id=111122223333 -\-namespace=default``
+         ``aws quicksight list-groups -\\-aws-account-id=111122223333 -\\-namespace=default``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/ListGroups>`_
@@ -1153,7 +1153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_groups(
         self,
         UserName: str,
@@ -1172,8 +1172,8 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight list-user-groups -\-user-name=Pat -\-aws-account-id=111122223333
-         -\-namespace=default -\-region=us-east-1``
+         ``aws quicksight list-user-groups -\\-user-name=Pat -\\-aws-account-id=111122223333
+         -\\-namespace=default -\\-region=us-east-1``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/ListUserGroups>`_
@@ -1278,7 +1278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self,
         AwsAccountId: str,
@@ -1410,7 +1410,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_user(
         self,
         IdentityType: str,
@@ -1439,9 +1439,9 @@ class Client(BaseClient):
 
          **CLI Sample:**
 
-         ``aws quicksight register-user -\-aws-account-id=111122223333 -\-namespace=default
-         -\-email=pat@example.com -\-identity-type=IAM -\-user-role=AUTHOR
-         -\-iam-arn=arn:aws:iam::111122223333:user/Pat``
+         ``aws quicksight register-user -\\-aws-account-id=111122223333 -\\-namespace=default
+         -\\-email=pat@example.com -\\-identity-type=IAM -\\-user-role=AUTHOR
+         -\\-iam-arn=arn:aws:iam::111122223333:user/Pat``
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/RegisterUser>`_
@@ -1590,7 +1590,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(
         self, GroupName: str, AwsAccountId: str, Namespace: str, Description: str = None
     ) -> ClientUpdateGroupResponseTypeDef:
@@ -1691,7 +1691,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self, UserName: str, AwsAccountId: str, Namespace: str, Email: str, Role: str
     ) -> ClientUpdateUserResponseTypeDef:

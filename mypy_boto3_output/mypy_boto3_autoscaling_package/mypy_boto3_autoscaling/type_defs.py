@@ -1015,6 +1015,87 @@ class ClientCreateLaunchConfigurationInstanceMonitoringTypeDef(
     """
 
 
+_RequiredClientCreateOrUpdateTagsTagsTypeDef = TypedDict(
+    "_RequiredClientCreateOrUpdateTagsTagsTypeDef", {"Key": str}
+)
+_OptionalClientCreateOrUpdateTagsTagsTypeDef = TypedDict(
+    "_OptionalClientCreateOrUpdateTagsTagsTypeDef",
+    {"ResourceId": str, "ResourceType": str, "Value": str, "PropagateAtLaunch": bool},
+    total=False,
+)
+
+
+class ClientCreateOrUpdateTagsTagsTypeDef(
+    _RequiredClientCreateOrUpdateTagsTagsTypeDef,
+    _OptionalClientCreateOrUpdateTagsTagsTypeDef,
+):
+    """
+    Type definition for `ClientCreateOrUpdateTags` `Tags`
+
+    Describes a tag for an Auto Scaling group.
+
+    - **ResourceId** *(string) --*
+
+      The name of the group.
+
+    - **ResourceType** *(string) --*
+
+      The type of resource. The only supported value is ``auto-scaling-group`` .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The tag key.
+
+    - **Value** *(string) --*
+
+      The tag value.
+
+    - **PropagateAtLaunch** *(boolean) --*
+
+      Determines whether the tag is added to new instances as they are launched in the group.
+    """
+
+
+_RequiredClientDeleteTagsTagsTypeDef = TypedDict(
+    "_RequiredClientDeleteTagsTagsTypeDef", {"Key": str}
+)
+_OptionalClientDeleteTagsTagsTypeDef = TypedDict(
+    "_OptionalClientDeleteTagsTagsTypeDef",
+    {"ResourceId": str, "ResourceType": str, "Value": str, "PropagateAtLaunch": bool},
+    total=False,
+)
+
+
+class ClientDeleteTagsTagsTypeDef(
+    _RequiredClientDeleteTagsTagsTypeDef, _OptionalClientDeleteTagsTagsTypeDef
+):
+    """
+    Type definition for `ClientDeleteTags` `Tags`
+
+    Describes a tag for an Auto Scaling group.
+
+    - **ResourceId** *(string) --*
+
+      The name of the group.
+
+    - **ResourceType** *(string) --*
+
+      The type of resource. The only supported value is ``auto-scaling-group`` .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The tag key.
+
+    - **Value** *(string) --*
+
+      The tag value.
+
+    - **PropagateAtLaunch** *(boolean) --*
+
+      Determines whether the tag is added to new instances as they are launched in the group.
+    """
+
+
 _ClientDescribeAccountLimitsResponseTypeDef = TypedDict(
     "_ClientDescribeAccountLimitsResponseTypeDef",
     {

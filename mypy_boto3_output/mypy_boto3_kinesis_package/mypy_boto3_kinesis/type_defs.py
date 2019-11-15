@@ -2766,3 +2766,49 @@ class ListStreamsPaginateResponseTypeDef(_ListStreamsPaginateResponseTypeDef):
 
       A token to resume pagination.
     """
+
+
+_StreamExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_StreamExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StreamExistsWaitWaiterConfigTypeDef(_StreamExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `StreamExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 10
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 18
+    """
+
+
+_StreamNotExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_StreamNotExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StreamNotExistsWaitWaiterConfigTypeDef(_StreamNotExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `StreamNotExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 10
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 18
+    """

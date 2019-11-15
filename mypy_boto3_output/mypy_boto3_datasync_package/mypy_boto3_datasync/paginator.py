@@ -17,7 +17,7 @@ from mypy_boto3_datasync.type_defs import (
 
 
 class ListAgents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListAgentsPaginatePaginationConfigTypeDef = None
     ) -> ListAgentsPaginateResponseTypeDef:
@@ -106,7 +106,7 @@ class ListAgents(Boto3Paginator):
 
 
 class ListLocations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListLocationsPaginatePaginationConfigTypeDef = None
     ) -> ListLocationsPaginateResponseTypeDef:
@@ -206,7 +206,7 @@ class ListLocations(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,
@@ -298,7 +298,7 @@ class ListTagsForResource(Boto3Paginator):
 
 
 class ListTaskExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TaskArn: str = None,
@@ -392,7 +392,7 @@ class ListTaskExecutions(Boto3Paginator):
 
 
 class ListTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTasksPaginatePaginationConfigTypeDef = None
     ) -> ListTasksPaginateResponseTypeDef:

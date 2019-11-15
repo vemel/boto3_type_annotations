@@ -15,7 +15,7 @@ from mypy_boto3_mgh.type_defs import (
 
 
 class ListCreatedArtifacts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProgressUpdateStream: str,
@@ -112,7 +112,7 @@ class ListCreatedArtifacts(Boto3Paginator):
 
 
 class ListDiscoveredResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProgressUpdateStream: str,
@@ -208,7 +208,7 @@ class ListDiscoveredResources(Boto3Paginator):
 
 
 class ListMigrationTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceName: str = None,
@@ -318,7 +318,7 @@ class ListMigrationTasks(Boto3Paginator):
 
 
 class ListProgressUpdateStreams(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListProgressUpdateStreamsPaginatePaginationConfigTypeDef = None,

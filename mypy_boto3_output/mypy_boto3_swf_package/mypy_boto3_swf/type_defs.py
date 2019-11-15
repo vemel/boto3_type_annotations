@@ -448,6 +448,68 @@ class ClientCountPendingDecisionTaskstaskListTypeDef(
     """
 
 
+_ClientDeprecateActivityTypeactivityTypeTypeDef = TypedDict(
+    "_ClientDeprecateActivityTypeactivityTypeTypeDef", {"name": str, "version": str}
+)
+
+
+class ClientDeprecateActivityTypeactivityTypeTypeDef(
+    _ClientDeprecateActivityTypeactivityTypeTypeDef
+):
+    """
+    Type definition for `ClientDeprecateActivityType` `activityType`
+
+    The activity type to deprecate.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of this activity.
+
+      .. note::
+
+        The combination of activity type name and version must be unique within a domain.
+
+    - **version** *(string) --* **[REQUIRED]**
+
+      The version of this activity.
+
+      .. note::
+
+        The combination of activity type name and version must be unique with in a domain.
+    """
+
+
+_ClientDeprecateWorkflowTypeworkflowTypeTypeDef = TypedDict(
+    "_ClientDeprecateWorkflowTypeworkflowTypeTypeDef", {"name": str, "version": str}
+)
+
+
+class ClientDeprecateWorkflowTypeworkflowTypeTypeDef(
+    _ClientDeprecateWorkflowTypeworkflowTypeTypeDef
+):
+    """
+    Type definition for `ClientDeprecateWorkflowType` `workflowType`
+
+    The workflow type to deprecate.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the workflow type.
+
+      .. note::
+
+        The combination of workflow type name and version must be unique with in a domain.
+
+    - **version** *(string) --* **[REQUIRED]**
+
+      The version of the workflow type.
+
+      .. note::
+
+        The combination of workflow type name and version must be unique with in a domain.
+    """
+
+
 _ClientDescribeActivityTypeResponseconfigurationdefaultTaskListTypeDef = TypedDict(
     "_ClientDescribeActivityTypeResponseconfigurationdefaultTaskListTypeDef",
     {"name": str},
@@ -1641,7 +1703,7 @@ class ClientDescribeWorkflowTypeResponseconfigurationTypeDef(
         Executions of this workflow type need IAM roles to invoke Lambda functions. If you don't
         specify an IAM role when starting this workflow type, the default Lambda role is attached
         to the execution. For more information, see
-        `https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+        `https\\://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
         <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>`__ in the
         *Amazon SWF Developer Guide* .
     """
@@ -1894,7 +1956,7 @@ class ClientDescribeWorkflowTypeResponseTypeDef(
           Executions of this workflow type need IAM roles to invoke Lambda functions. If you don't
           specify an IAM role when starting this workflow type, the default Lambda role is attached
           to the execution. For more information, see
-          `https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+          `https\\://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
           <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>`__ in the
           *Amazon SWF Developer Guide* .
     """
@@ -11249,8 +11311,8 @@ class ClientPollForActivityTasktaskListTypeDef(
     Specifies the task list to poll for activity tasks.
 
     The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-    ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+    ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -19083,8 +19145,8 @@ class ClientPollForDecisionTasktaskListTypeDef(
     Specifies the task list to poll for decision tasks.
 
     The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-    ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+    ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -19131,6 +19193,35 @@ class ClientRegisterActivityTypedefaultTaskListTypeDef(
     - **name** *(string) --* **[REQUIRED]**
 
       The name of the task list.
+    """
+
+
+_RequiredClientRegisterDomaintagsTypeDef = TypedDict(
+    "_RequiredClientRegisterDomaintagsTypeDef", {"key": str}
+)
+_OptionalClientRegisterDomaintagsTypeDef = TypedDict(
+    "_OptionalClientRegisterDomaintagsTypeDef", {"value": str}, total=False
+)
+
+
+class ClientRegisterDomaintagsTypeDef(
+    _RequiredClientRegisterDomaintagsTypeDef, _OptionalClientRegisterDomaintagsTypeDef
+):
+    """
+    Type definition for `ClientRegisterDomain` `tags`
+
+    Tags are key-value pairs that can be associated with Amazon SWF state machines and activities.
+
+    Tags may only contain unicode letters, digits, whitespace, or these symbols: ``_ . : / = + -
+    @`` .
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The key of a tag.
+
+    - **value** *(string) --*
+
+      The value of a tag.
     """
 
 
@@ -19528,8 +19619,9 @@ class ClientRespondDecisionTaskCompleteddecisionsscheduleActivityTaskDecisionAtt
       specified at registration time then a fault is returned.
 
     The specified string must not start or end with whitespace. It must not contain a ``:``
-    (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-    | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+    (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+    (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+    ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -19595,8 +19687,9 @@ class ClientRespondDecisionTaskCompleteddecisionsscheduleActivityTaskDecisionAtt
       The ``activityId`` of the activity task.
 
       The specified string must not start or end with whitespace. It must not contain a ``:``
-      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-      | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+      (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+      ``arn`` .
 
     - **control** *(string) --*
 
@@ -19632,8 +19725,9 @@ class ClientRespondDecisionTaskCompleteddecisionsscheduleActivityTaskDecisionAtt
         specified at registration time then a fault is returned.
 
       The specified string must not start or end with whitespace. It must not contain a ``:``
-      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-      | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+      (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+      ``arn`` .
 
       - **name** *(string) --* **[REQUIRED]**
 
@@ -19806,8 +19900,9 @@ class ClientRespondDecisionTaskCompleteddecisionsstartChildWorkflowExecutionDeci
       task list was specified at registration time then a fault is returned.
 
     The specified string must not start or end with whitespace. It must not contain a ``:``
-    (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-    | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+    (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+    (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+    ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -19906,8 +20001,9 @@ class ClientRespondDecisionTaskCompleteddecisionsstartChildWorkflowExecutionDeci
       The ``workflowId`` of the workflow execution.
 
       The specified string must not start or end with whitespace. It must not contain a ``:``
-      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-      | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+      (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+      ``arn`` .
 
     - **control** *(string) --*
 
@@ -19944,8 +20040,9 @@ class ClientRespondDecisionTaskCompleteddecisionsstartChildWorkflowExecutionDeci
         task list was specified at registration time then a fault is returned.
 
       The specified string must not start or end with whitespace. It must not contain a ``:``
-      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-      | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+      (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+      ``arn`` .
 
       - **name** *(string) --* **[REQUIRED]**
 
@@ -20040,8 +20137,9 @@ class ClientRespondDecisionTaskCompleteddecisionsstartTimerDecisionAttributesTyp
       The unique ID of the timer.
 
       The specified string must not start or end with whitespace. It must not contain a ``:``
-      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-      | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+      (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+      (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+      ``arn`` .
 
     - **control** *(string) --*
 
@@ -20276,8 +20374,9 @@ class ClientRespondDecisionTaskCompleteddecisionsTypeDef(
         The ``activityId`` of the activity task.
 
         The specified string must not start or end with whitespace. It must not contain a ``:``
-        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-        | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+        (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+        ``arn`` .
 
       - **control** *(string) --*
 
@@ -20313,8 +20412,9 @@ class ClientRespondDecisionTaskCompleteddecisionsTypeDef(
           specified at registration time then a fault is returned.
 
         The specified string must not start or end with whitespace. It must not contain a ``:``
-        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-        | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+        (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+        ``arn`` .
 
         - **name** *(string) --* **[REQUIRED]**
 
@@ -20533,8 +20633,9 @@ class ClientRespondDecisionTaskCompleteddecisionsTypeDef(
         The unique ID of the timer.
 
         The specified string must not start or end with whitespace. It must not contain a ``:``
-        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-        | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+        (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+        ``arn`` .
 
       - **control** *(string) --*
 
@@ -20628,8 +20729,9 @@ class ClientRespondDecisionTaskCompleteddecisionsTypeDef(
         The ``workflowId`` of the workflow execution.
 
         The specified string must not start or end with whitespace. It must not contain a ``:``
-        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-        | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+        (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+        ``arn`` .
 
       - **control** *(string) --*
 
@@ -20666,8 +20768,9 @@ class ClientRespondDecisionTaskCompleteddecisionsTypeDef(
           task list was specified at registration time then a fault is returned.
 
         The specified string must not start or end with whitespace. It must not contain a ``:``
-        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-        | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+        (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+        (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+        ``arn`` .
 
         - **name** *(string) --* **[REQUIRED]**
 
@@ -20806,8 +20909,8 @@ class ClientStartWorkflowExecutiontaskListTypeDef(
       specified at registration time then a fault is returned.
 
     The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-    ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+    ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -20827,6 +20930,97 @@ class ClientStartWorkflowExecutionworkflowTypeTypeDef(
     Type definition for `ClientStartWorkflowExecution` `workflowType`
 
     The type of the workflow to start.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the workflow type.
+
+      .. note::
+
+        The combination of workflow type name and version must be unique with in a domain.
+
+    - **version** *(string) --* **[REQUIRED]**
+
+      The version of the workflow type.
+
+      .. note::
+
+        The combination of workflow type name and version must be unique with in a domain.
+    """
+
+
+_RequiredClientTagResourcetagsTypeDef = TypedDict(
+    "_RequiredClientTagResourcetagsTypeDef", {"key": str}
+)
+_OptionalClientTagResourcetagsTypeDef = TypedDict(
+    "_OptionalClientTagResourcetagsTypeDef", {"value": str}, total=False
+)
+
+
+class ClientTagResourcetagsTypeDef(
+    _RequiredClientTagResourcetagsTypeDef, _OptionalClientTagResourcetagsTypeDef
+):
+    """
+    Type definition for `ClientTagResource` `tags`
+
+    Tags are key-value pairs that can be associated with Amazon SWF state machines and activities.
+
+    Tags may only contain unicode letters, digits, whitespace, or these symbols: ``_ . : / = + -
+    @`` .
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The key of a tag.
+
+    - **value** *(string) --*
+
+      The value of a tag.
+    """
+
+
+_ClientUndeprecateActivityTypeactivityTypeTypeDef = TypedDict(
+    "_ClientUndeprecateActivityTypeactivityTypeTypeDef", {"name": str, "version": str}
+)
+
+
+class ClientUndeprecateActivityTypeactivityTypeTypeDef(
+    _ClientUndeprecateActivityTypeactivityTypeTypeDef
+):
+    """
+    Type definition for `ClientUndeprecateActivityType` `activityType`
+
+    The activity type to undeprecate.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of this activity.
+
+      .. note::
+
+        The combination of activity type name and version must be unique within a domain.
+
+    - **version** *(string) --* **[REQUIRED]**
+
+      The version of this activity.
+
+      .. note::
+
+        The combination of activity type name and version must be unique with in a domain.
+    """
+
+
+_ClientUndeprecateWorkflowTypeworkflowTypeTypeDef = TypedDict(
+    "_ClientUndeprecateWorkflowTypeworkflowTypeTypeDef", {"name": str, "version": str}
+)
+
+
+class ClientUndeprecateWorkflowTypeworkflowTypeTypeDef(
+    _ClientUndeprecateWorkflowTypeworkflowTypeTypeDef
+):
+    """
+    Type definition for `ClientUndeprecateWorkflowType` `workflowType`
+
+    The name of the domain of the deprecated workflow type.
 
     - **name** *(string) --* **[REQUIRED]**
 
@@ -37972,8 +38166,8 @@ class PollForDecisionTaskPaginatetaskListTypeDef(
     Specifies the task list to poll for decision tasks.
 
     The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-    ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+    ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+    ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
     - **name** *(string) --* **[REQUIRED]**
 

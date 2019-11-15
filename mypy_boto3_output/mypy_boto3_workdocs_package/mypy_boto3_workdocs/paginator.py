@@ -26,7 +26,7 @@ from mypy_boto3_workdocs.type_defs import (
 
 
 class DescribeActivities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AuthenticationToken: str = None,
@@ -568,7 +568,7 @@ class DescribeActivities(Boto3Paginator):
 
 
 class DescribeComments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DocumentId: str,
@@ -812,7 +812,7 @@ class DescribeComments(Boto3Paginator):
 
 
 class DescribeDocumentVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DocumentId: str,
@@ -994,7 +994,7 @@ class DescribeDocumentVersions(Boto3Paginator):
 
 
 class DescribeFolderContents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FolderId: str,
@@ -1306,7 +1306,7 @@ class DescribeFolderContents(Boto3Paginator):
 
 
 class DescribeGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SearchQuery: str,
@@ -1414,7 +1414,7 @@ class DescribeGroups(Boto3Paginator):
 
 
 class DescribeNotificationSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         OrganizationId: str,
@@ -1512,7 +1512,7 @@ class DescribeNotificationSubscriptions(Boto3Paginator):
 
 
 class DescribeResourcePermissions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceId: str,
@@ -1642,7 +1642,7 @@ class DescribeResourcePermissions(Boto3Paginator):
 
 
 class DescribeRootFolders(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AuthenticationToken: str,
@@ -1785,7 +1785,7 @@ class DescribeRootFolders(Boto3Paginator):
 
 
 class DescribeUsers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AuthenticationToken: str = None,

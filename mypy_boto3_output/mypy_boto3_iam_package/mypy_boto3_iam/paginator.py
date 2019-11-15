@@ -60,7 +60,7 @@ from mypy_boto3_iam.type_defs import (
 
 
 class GetAccountAuthorizationDetails(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filter: List[str] = None,
@@ -975,7 +975,7 @@ class GetAccountAuthorizationDetails(Boto3Paginator):
 
 
 class GetGroup(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GroupName: str,
@@ -1237,7 +1237,7 @@ class GetGroup(Boto3Paginator):
 
 
 class ListAccessKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str = None,
@@ -1358,7 +1358,7 @@ class ListAccessKeys(Boto3Paginator):
 
 
 class ListAccountAliases(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListAccountAliasesPaginatePaginationConfigTypeDef = None
     ) -> ListAccountAliasesPaginateResponseTypeDef:
@@ -1441,7 +1441,7 @@ class ListAccountAliases(Boto3Paginator):
 
 
 class ListAttachedGroupPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GroupName: str,
@@ -1484,8 +1484,8 @@ class ListAttachedGroupPolicies(Boto3Paginator):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PaginationConfig: dict
@@ -1577,7 +1577,7 @@ class ListAttachedGroupPolicies(Boto3Paginator):
 
 
 class ListAttachedRolePolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RoleName: str,
@@ -1620,8 +1620,8 @@ class ListAttachedRolePolicies(Boto3Paginator):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PaginationConfig: dict
@@ -1713,7 +1713,7 @@ class ListAttachedRolePolicies(Boto3Paginator):
 
 
 class ListAttachedUserPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str,
@@ -1756,8 +1756,8 @@ class ListAttachedUserPolicies(Boto3Paginator):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PaginationConfig: dict
@@ -1849,7 +1849,7 @@ class ListAttachedUserPolicies(Boto3Paginator):
 
 
 class ListEntitiesForPolicy(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PolicyArn: str,
@@ -1906,8 +1906,8 @@ class ListEntitiesForPolicy(Boto3Paginator):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -2066,7 +2066,7 @@ class ListEntitiesForPolicy(Boto3Paginator):
 
 
 class ListGroupPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GroupName: str,
@@ -2165,7 +2165,7 @@ class ListGroupPolicies(Boto3Paginator):
 
 
 class ListGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PathPrefix: str = None,
@@ -2199,7 +2199,7 @@ class ListGroups(Boto3Paginator):
           groups. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ )
           a string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type PaginationConfig: dict
@@ -2309,7 +2309,7 @@ class ListGroups(Boto3Paginator):
 
 
 class ListGroupsForUser(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str,
@@ -2449,7 +2449,7 @@ class ListGroupsForUser(Boto3Paginator):
 
 
 class ListInstanceProfiles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PathPrefix: str = None,
@@ -2484,7 +2484,7 @@ class ListInstanceProfiles(Boto3Paginator):
           instance profiles. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type PaginationConfig: dict
@@ -2723,7 +2723,7 @@ class ListInstanceProfiles(Boto3Paginator):
 
 
 class ListInstanceProfilesForRole(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RoleName: str,
@@ -2992,7 +2992,7 @@ class ListInstanceProfilesForRole(Boto3Paginator):
 
 
 class ListMFADevices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str = None,
@@ -3108,7 +3108,7 @@ class ListMFADevices(Boto3Paginator):
 
 
 class ListPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Scope: str = None,
@@ -3164,7 +3164,7 @@ class ListPolicies(Boto3Paginator):
           defaults to a slash (/), listing all policies. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -3332,7 +3332,7 @@ class ListPolicies(Boto3Paginator):
 
 
 class ListPolicyVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PolicyArn: str,
@@ -3475,7 +3475,7 @@ class ListPolicyVersions(Boto3Paginator):
 
 
 class ListRolePolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RoleName: str,
@@ -3570,7 +3570,7 @@ class ListRolePolicies(Boto3Paginator):
 
 
 class ListRoles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PathPrefix: str = None,
@@ -3603,8 +3603,8 @@ class ListRoles(Boto3Paginator):
           This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles.
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PaginationConfig: dict
@@ -3786,7 +3786,7 @@ class ListRoles(Boto3Paginator):
 
 
 class ListSSHPublicKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str = None,
@@ -3910,7 +3910,7 @@ class ListSSHPublicKeys(Boto3Paginator):
 
 
 class ListServerCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PathPrefix: str = None,
@@ -3944,7 +3944,7 @@ class ListServerCertificates(Boto3Paginator):
           certificates. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type PaginationConfig: dict
@@ -4054,7 +4054,7 @@ class ListServerCertificates(Boto3Paginator):
 
 
 class ListSigningCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str = None,
@@ -4181,7 +4181,7 @@ class ListSigningCertificates(Boto3Paginator):
 
 
 class ListUserPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserName: str,
@@ -4276,7 +4276,7 @@ class ListUserPolicies(Boto3Paginator):
 
 
 class ListUsers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PathPrefix: str = None,
@@ -4309,7 +4309,7 @@ class ListUsers(Boto3Paginator):
           names. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a
           string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type PaginationConfig: dict
@@ -4503,7 +4503,7 @@ class ListUsers(Boto3Paginator):
 
 
 class ListVirtualMFADevices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssignmentStatus: str = None,
@@ -4751,7 +4751,7 @@ class ListVirtualMFADevices(Boto3Paginator):
 
 
 class SimulateCustomPolicy(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PolicyInputList: List[str],
@@ -4821,13 +4821,13 @@ class SimulateCustomPolicy(Boto3Paginator):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -4871,13 +4871,13 @@ class SimulateCustomPolicy(Boto3Paginator):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type ResourceOwner: string
         :param ResourceOwner:
@@ -5281,7 +5281,7 @@ class SimulateCustomPolicy(Boto3Paginator):
 
 
 class SimulatePrincipalPolicy(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PolicySourceArn: str,
@@ -5360,13 +5360,13 @@ class SimulatePrincipalPolicy(Boto3Paginator):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -5406,13 +5406,13 @@ class SimulatePrincipalPolicy(Boto3Paginator):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type ResourceOwner: string
         :param ResourceOwner:

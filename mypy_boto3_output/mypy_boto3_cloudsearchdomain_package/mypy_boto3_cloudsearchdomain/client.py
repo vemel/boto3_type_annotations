@@ -13,7 +13,7 @@ from mypy_boto3_cloudsearchdomain.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -30,7 +30,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -59,7 +59,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -80,7 +80,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -93,7 +93,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search(
         self,
         query: str,
@@ -345,7 +345,7 @@ class Client(BaseClient):
           quotes. Disabling precedence disables the ability to control order of precedence using
           parentheses. Disabling ``near`` disables the ability to use the ~ operator to perform a sloppy
           phrase search. Disabling the ``fuzzy`` operator disables the ability to use the ~ operator to
-          perform a fuzzy search. ``escape`` disables the ability to use a backslash (``\`` ) to escape
+          perform a fuzzy search. ``escape`` disables the ability to use a backslash (``\\`` ) to escape
           special characters within the search string. Disabling whitespace is an advanced option that
           prevents the parser from tokenizing on whitespace, which can be useful for Vietnamese. (It
           prevents Vietnamese words from being split incorrectly.) For example, you could disable all
@@ -693,7 +693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def suggest(
         self, query: str, suggester: str, size: int = None
     ) -> ClientSuggestResponseTypeDef:
@@ -818,7 +818,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_documents(
         self, documents: Union[bytes, IO], contentType: str
     ) -> ClientUploadDocumentsResponseTypeDef:

@@ -43,7 +43,7 @@ from mypy_boto3_mturk.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_qualification_request(
         self, QualificationRequestId: str, IntegerValue: int = None
     ) -> Dict[str, Any]:
@@ -89,7 +89,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def approve_assignment(
         self,
         AssignmentId: str,
@@ -154,7 +154,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_qualification_with_worker(
         self,
         QualificationTypeId: str,
@@ -227,7 +227,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -244,7 +244,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_additional_assignments_for_hit(
         self,
         HITId: str,
@@ -312,7 +312,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hit(
         self,
         LifetimeInSeconds: int,
@@ -994,7 +994,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hit_type(
         self,
         AssignmentDurationInSeconds: int,
@@ -1197,7 +1197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hit_with_hit_type(
         self,
         HITTypeId: str,
@@ -1715,7 +1715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_qualification_type(
         self,
         Name: str,
@@ -1934,7 +1934,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_worker_block(self, WorkerId: str, Reason: str) -> Dict[str, Any]:
         """
         The ``CreateWorkerBlock`` operation allows you to prevent a Worker from working on your HITs. For
@@ -1975,7 +1975,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hit(self, HITId: str) -> Dict[str, Any]:
         """
         The ``DeleteHIT`` operation is used to delete HIT that is no longer needed. Only the Requester who
@@ -2025,7 +2025,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_qualification_type(self, QualificationTypeId: str) -> Dict[str, Any]:
         """
         The ``DeleteQualificationType`` deletes a Qualification type and deletes any HIT types that are
@@ -2069,7 +2069,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_worker_block(self, WorkerId: str, Reason: str = None) -> Dict[str, Any]:
         """
         The ``DeleteWorkerBlock`` operation allows you to reinstate a blocked Worker to work on your HITs.
@@ -2112,7 +2112,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_qualification_from_worker(
         self, WorkerId: str, QualificationTypeId: str, Reason: str = None
     ) -> Dict[str, Any]:
@@ -2163,7 +2163,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2192,7 +2192,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_balance(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountBalanceResponseTypeDef:
@@ -2233,7 +2233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_assignment(self, AssignmentId: str) -> ClientGetAssignmentResponseTypeDef:
         """
         The ``GetAssignment`` operation retrieves the details of the specified Assignment.
@@ -2576,7 +2576,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_file_upload_url(
         self, AssignmentId: str, QuestionIdentifier: str
     ) -> ClientGetFileUploadUrlResponseTypeDef:
@@ -2631,7 +2631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_hit(self, HITId: str) -> ClientGetHitResponseTypeDef:
         """
         The ``GetHIT`` operation retrieves the details of the specified HIT.
@@ -2894,7 +2894,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2915,7 +2915,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_qualification_score(
         self, QualificationTypeId: str, WorkerId: str
     ) -> ClientGetQualificationScoreResponseTypeDef:
@@ -3015,7 +3015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_qualification_type(
         self, QualificationTypeId: str
     ) -> ClientGetQualificationTypeResponseTypeDef:
@@ -3140,7 +3140,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3153,7 +3153,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assignments_for_hit(
         self,
         HITId: str,
@@ -3330,7 +3330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bonus_payments(
         self,
         HITId: str = None,
@@ -3442,7 +3442,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hits(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListHitsResponseTypeDef:
@@ -3734,7 +3734,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hits_for_qualification_type(
         self, QualificationTypeId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListHitsForQualificationTypeResponseTypeDef:
@@ -4034,7 +4034,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_qualification_requests(
         self,
         QualificationTypeId: str = None,
@@ -4154,7 +4154,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_qualification_types(
         self,
         MustBeRequestable: bool,
@@ -4338,7 +4338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_review_policy_results_for_hit(
         self,
         HITId: str,
@@ -4789,7 +4789,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_reviewable_hits(
         self,
         HITTypeId: str = None,
@@ -5099,7 +5099,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_worker_blocks(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListWorkerBlocksResponseTypeDef:
@@ -5176,7 +5176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_workers_with_qualification_type(
         self,
         QualificationTypeId: str,
@@ -5308,7 +5308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def notify_workers(
         self, Subject: str, MessageText: str, WorkerIds: List[str]
     ) -> ClientNotifyWorkersResponseTypeDef:
@@ -5392,7 +5392,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_assignment(
         self, AssignmentId: str, RequesterFeedback: str
     ) -> Dict[str, Any]:
@@ -5439,7 +5439,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_qualification_request(
         self, QualificationRequestId: str, Reason: str = None
     ) -> Dict[str, Any]:
@@ -5483,7 +5483,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_bonus(
         self,
         WorkerId: str,
@@ -5558,7 +5558,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_test_event_notification(
         self,
         Notification: ClientSendTestEventNotificationNotificationTypeDef,
@@ -5649,7 +5649,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_expiration_for_hit(
         self, HITId: str, ExpireAt: datetime
     ) -> Dict[str, Any]:
@@ -5690,7 +5690,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_hit_review_status(
         self, HITId: str, Revert: bool = None
     ) -> Dict[str, Any]:
@@ -5736,7 +5736,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_hit_type_of_hit(self, HITId: str, HITTypeId: str) -> Dict[str, Any]:
         """
         The ``UpdateHITTypeOfHIT`` operation allows you to change the HITType properties of a HIT. This
@@ -5776,7 +5776,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_notification_settings(
         self,
         HITTypeId: str,
@@ -5872,7 +5872,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_qualification_type(
         self,
         QualificationTypeId: str,

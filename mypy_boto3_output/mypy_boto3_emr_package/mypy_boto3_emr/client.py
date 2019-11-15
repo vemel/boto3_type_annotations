@@ -28,6 +28,8 @@ from mypy_boto3_emr.type_defs import (
     ClientListInstancesResponseTypeDef,
     ClientListSecurityConfigurationsResponseTypeDef,
     ClientListStepsResponseTypeDef,
+    ClientModifyInstanceFleetInstanceFleetTypeDef,
+    ClientModifyInstanceGroupsInstanceGroupsTypeDef,
     ClientPutAutoScalingPolicyAutoScalingPolicyTypeDef,
     ClientPutAutoScalingPolicyResponseTypeDef,
     ClientPutBlockPublicAccessConfigurationBlockPublicAccessConfigurationTypeDef,
@@ -44,7 +46,7 @@ from mypy_boto3_emr.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_instance_fleet(
         self, ClusterId: str, InstanceFleet: ClientAddInstanceFleetInstanceFleetTypeDef
     ) -> ClientAddInstanceFleetResponseTypeDef:
@@ -339,7 +341,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_instance_groups(
         self,
         InstanceGroups: List[ClientAddInstanceGroupsInstanceGroupsTypeDef],
@@ -747,7 +749,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_job_flow_steps(
         self, JobFlowId: str, Steps: List[ClientAddJobFlowStepsStepsTypeDef]
     ) -> ClientAddJobFlowStepsResponseTypeDef:
@@ -891,7 +893,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(self, ResourceId: str, Tags: List[ClientAddTagsTagsTypeDef]) -> Dict:
         """
         Adds tags to an Amazon EMR resource. Tags make it easier to associate clusters in various ways,
@@ -960,7 +962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -977,7 +979,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_steps(
         self, ClusterId: str = None, StepIds: List[str] = None
     ) -> ClientCancelStepsResponseTypeDef:
@@ -1059,7 +1061,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_configuration(
         self, Name: str, SecurityConfiguration: str
     ) -> ClientCreateSecurityConfigurationResponseTypeDef:
@@ -1115,7 +1117,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_security_configuration(self, Name: str) -> Dict[str, Any]:
         """
         Deletes a security configuration.
@@ -1147,7 +1149,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster(self, ClusterId: str) -> ClientDescribeClusterResponseTypeDef:
         """
         Provides cluster-level details including status, hardware and software configuration, VPC settings,
@@ -1428,7 +1430,7 @@ class Client(BaseClient):
                 packages installed on the cluster. Release labels are in the form ``emr-x.x.x`` , where
                 x.x.x is an Amazon EMR release version such as ``emr-5.14.0`` . For more information about
                 Amazon EMR release versions and included application versions and features, see
-                `https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+                `https\\://docs.aws.amazon.com/emr/latest/ReleaseGuide/
                 <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>`__ . The release label applies only
                 to Amazon EMR releases version 4.0 and later. Earlier versions use ``AmiVersion`` .
 
@@ -1641,7 +1643,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job_flows(
         self,
         CreatedAfter: datetime = None,
@@ -2209,7 +2211,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_security_configuration(
         self, Name: str
     ) -> ClientDescribeSecurityConfigurationResponseTypeDef:
@@ -2261,7 +2263,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_step(
         self, ClusterId: str, StepId: str
     ) -> ClientDescribeStepResponseTypeDef:
@@ -2442,7 +2444,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2471,7 +2473,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_block_public_access_configuration(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetBlockPublicAccessConfigurationResponseTypeDef:
@@ -2575,7 +2577,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2596,7 +2598,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2609,7 +2611,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bootstrap_actions(
         self, ClusterId: str, Marker: str = None
     ) -> ClientListBootstrapActionsResponseTypeDef:
@@ -2689,7 +2691,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_clusters(
         self,
         CreatedAfter: datetime = None,
@@ -2847,7 +2849,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instance_fleets(
         self, ClusterId: str, Marker: str = None
     ) -> ClientListInstanceFleetsResponseTypeDef:
@@ -3241,7 +3243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instance_groups(
         self, ClusterId: str, Marker: str = None
     ) -> ClientListInstanceGroupsResponseTypeDef:
@@ -3831,7 +3833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instances(
         self,
         ClusterId: str,
@@ -4062,7 +4064,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_security_configurations(
         self, Marker: str = None
     ) -> ClientListSecurityConfigurationsResponseTypeDef:
@@ -4128,7 +4130,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_steps(
         self,
         ClusterId: str,
@@ -4348,8 +4350,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def modify_instance_fleet(self, ClusterId: str, InstanceFleet: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def modify_instance_fleet(
+        self,
+        ClusterId: str,
+        InstanceFleet: ClientModifyInstanceFleetInstanceFleetTypeDef,
+    ) -> None:
         """
         Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified
         InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails
@@ -4401,9 +4407,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_groups(
-        self, ClusterId: str = None, InstanceGroups: List[Any] = None
+        self,
+        ClusterId: str = None,
+        InstanceGroups: List[ClientModifyInstanceGroupsInstanceGroupsTypeDef] = None,
     ) -> None:
         """
         ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group.
@@ -4545,7 +4553,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_auto_scaling_policy(
         self,
         ClusterId: str,
@@ -5033,7 +5041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_block_public_access_configuration(
         self,
         BlockPublicAccessConfiguration: ClientPutBlockPublicAccessConfigurationBlockPublicAccessConfigurationTypeDef,
@@ -5117,7 +5125,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_auto_scaling_policy(
         self, ClusterId: str, InstanceGroupId: str
     ) -> Dict[str, Any]:
@@ -5158,7 +5166,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags(self, ResourceId: str, TagKeys: List[str]) -> Dict:
         """
         Removes tags from an Amazon EMR resource. Tags make it easier to associate clusters in various
@@ -5209,7 +5217,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def run_job_flow(
         self,
         Name: str,
@@ -5549,7 +5557,7 @@ class Client(BaseClient):
           installed on the cluster. Release labels are in the form ``emr-x.x.x`` , where x.x.x is an Amazon
           EMR release version such as ``emr-5.14.0`` . For more information about Amazon EMR release
           versions and included application versions and features, see
-          `https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+          `https\\://docs.aws.amazon.com/emr/latest/ReleaseGuide/
           <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>`__ . The release label applies only to
           Amazon EMR releases version 4.0 and later. Earlier versions use ``AmiVersion`` .
 
@@ -6528,7 +6536,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_termination_protection(
         self, JobFlowIds: List[str], TerminationProtected: bool
     ) -> None:
@@ -6580,7 +6588,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_visible_to_all_users(
         self, JobFlowIds: List[str], VisibleToAllUsers: bool
     ) -> None:
@@ -6625,8 +6633,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def terminate_job_flows(self, JobFlowIds: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def terminate_job_flows(self, JobFlowIds: List[str]) -> None:
         """
         TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step
         not yet completed is canceled and the EC2 instances on which the cluster is running are stopped.

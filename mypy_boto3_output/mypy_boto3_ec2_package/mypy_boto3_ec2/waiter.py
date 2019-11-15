@@ -1,45 +1,76 @@
 "Main interface for ec2 Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_ec2.type_defs import (
     BundleTaskCompleteWaitFiltersTypeDef,
+    BundleTaskCompleteWaitWaiterConfigTypeDef,
+    ConversionTaskCancelledWaitWaiterConfigTypeDef,
+    ConversionTaskCompletedWaitWaiterConfigTypeDef,
+    ConversionTaskDeletedWaitWaiterConfigTypeDef,
     CustomerGatewayAvailableWaitFiltersTypeDef,
+    CustomerGatewayAvailableWaitWaiterConfigTypeDef,
+    ExportTaskCancelledWaitWaiterConfigTypeDef,
+    ExportTaskCompletedWaitWaiterConfigTypeDef,
     ImageAvailableWaitFiltersTypeDef,
+    ImageAvailableWaitWaiterConfigTypeDef,
     ImageExistsWaitFiltersTypeDef,
+    ImageExistsWaitWaiterConfigTypeDef,
     InstanceExistsWaitFiltersTypeDef,
+    InstanceExistsWaitWaiterConfigTypeDef,
     InstanceRunningWaitFiltersTypeDef,
+    InstanceRunningWaitWaiterConfigTypeDef,
     InstanceStatusOkWaitFiltersTypeDef,
+    InstanceStatusOkWaitWaiterConfigTypeDef,
     InstanceStoppedWaitFiltersTypeDef,
+    InstanceStoppedWaitWaiterConfigTypeDef,
     InstanceTerminatedWaitFiltersTypeDef,
+    InstanceTerminatedWaitWaiterConfigTypeDef,
     KeyPairExistsWaitFiltersTypeDef,
+    KeyPairExistsWaitWaiterConfigTypeDef,
     NatGatewayAvailableWaitFiltersTypeDef,
+    NatGatewayAvailableWaitWaiterConfigTypeDef,
     NetworkInterfaceAvailableWaitFiltersTypeDef,
+    NetworkInterfaceAvailableWaitWaiterConfigTypeDef,
+    PasswordDataAvailableWaitWaiterConfigTypeDef,
     SnapshotCompletedWaitFiltersTypeDef,
+    SnapshotCompletedWaitWaiterConfigTypeDef,
     SpotInstanceRequestFulfilledWaitFiltersTypeDef,
+    SpotInstanceRequestFulfilledWaitWaiterConfigTypeDef,
     SubnetAvailableWaitFiltersTypeDef,
+    SubnetAvailableWaitWaiterConfigTypeDef,
     SystemStatusOkWaitFiltersTypeDef,
+    SystemStatusOkWaitWaiterConfigTypeDef,
     VolumeAvailableWaitFiltersTypeDef,
+    VolumeAvailableWaitWaiterConfigTypeDef,
     VolumeDeletedWaitFiltersTypeDef,
+    VolumeDeletedWaitWaiterConfigTypeDef,
     VolumeInUseWaitFiltersTypeDef,
+    VolumeInUseWaitWaiterConfigTypeDef,
     VpcAvailableWaitFiltersTypeDef,
+    VpcAvailableWaitWaiterConfigTypeDef,
     VpcExistsWaitFiltersTypeDef,
+    VpcExistsWaitWaiterConfigTypeDef,
     VpcPeeringConnectionDeletedWaitFiltersTypeDef,
+    VpcPeeringConnectionDeletedWaitWaiterConfigTypeDef,
     VpcPeeringConnectionExistsWaitFiltersTypeDef,
+    VpcPeeringConnectionExistsWaitWaiterConfigTypeDef,
     VpnConnectionAvailableWaitFiltersTypeDef,
+    VpnConnectionAvailableWaitWaiterConfigTypeDef,
     VpnConnectionDeletedWaitFiltersTypeDef,
+    VpnConnectionDeletedWaitWaiterConfigTypeDef,
 )
 
 
 class BundleTaskComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         BundleIds: List[str] = None,
         Filters: List[BundleTaskCompleteWaitFiltersTypeDef] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: BundleTaskCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_bundle_tasks` every 15 seconds until a successful state is
@@ -166,12 +197,12 @@ class BundleTaskComplete(Boto3Waiter):
 
 
 class ConversionTaskCancelled(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ConversionTaskIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ConversionTaskCancelledWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_conversion_tasks` every 15 seconds until a successful state is
@@ -225,12 +256,12 @@ class ConversionTaskCancelled(Boto3Waiter):
 
 
 class ConversionTaskCompleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ConversionTaskIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ConversionTaskCompletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_conversion_tasks` every 15 seconds until a successful state is
@@ -284,12 +315,12 @@ class ConversionTaskCompleted(Boto3Waiter):
 
 
 class ConversionTaskDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ConversionTaskIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ConversionTaskDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_conversion_tasks` every 15 seconds until a successful state is
@@ -343,13 +374,13 @@ class ConversionTaskDeleted(Boto3Waiter):
 
 
 class CustomerGatewayAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         CustomerGatewayIds: List[str] = None,
         Filters: List[CustomerGatewayAvailableWaitFiltersTypeDef] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: CustomerGatewayAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_customer_gateways` every 15 seconds until a successful state is
@@ -475,8 +506,12 @@ class CustomerGatewayAvailable(Boto3Waiter):
 
 
 class ExportTaskCancelled(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ExportTaskIds: List[str] = None, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        ExportTaskIds: List[str] = None,
+        WaiterConfig: ExportTaskCancelledWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_export_tasks` every 15 seconds until a successful state is
         reached. An error is returned after 40 failed checks.
@@ -521,8 +556,12 @@ class ExportTaskCancelled(Boto3Waiter):
 
 
 class ExportTaskCompleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ExportTaskIds: List[str] = None, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        ExportTaskIds: List[str] = None,
+        WaiterConfig: ExportTaskCompletedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_export_tasks` every 15 seconds until a successful state is
         reached. An error is returned after 40 failed checks.
@@ -567,7 +606,7 @@ class ExportTaskCompleted(Boto3Waiter):
 
 
 class ImageAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ExecutableUsers: List[str] = None,
@@ -575,7 +614,7 @@ class ImageAvailable(Boto3Waiter):
         ImageIds: List[str] = None,
         Owners: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ImageAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_images` every 15 seconds until a successful state is reached.
@@ -778,7 +817,7 @@ class ImageAvailable(Boto3Waiter):
 
 
 class ImageExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ExecutableUsers: List[str] = None,
@@ -786,7 +825,7 @@ class ImageExists(Boto3Waiter):
         ImageIds: List[str] = None,
         Owners: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ImageExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_images` every 15 seconds until a successful state is reached.
@@ -989,7 +1028,7 @@ class ImageExists(Boto3Waiter):
 
 
 class InstanceExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[InstanceExistsWaitFiltersTypeDef] = None,
@@ -997,7 +1036,7 @@ class InstanceExists(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instances` every 5 seconds until a successful state is reached.
@@ -1335,7 +1374,7 @@ class InstanceExists(Boto3Waiter):
 
 
 class InstanceRunning(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[InstanceRunningWaitFiltersTypeDef] = None,
@@ -1343,7 +1382,7 @@ class InstanceRunning(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceRunningWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instances` every 15 seconds until a successful state is
@@ -1681,7 +1720,7 @@ class InstanceRunning(Boto3Waiter):
 
 
 class InstanceStatusOk(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[InstanceStatusOkWaitFiltersTypeDef] = None,
@@ -1690,7 +1729,7 @@ class InstanceStatusOk(Boto3Waiter):
         NextToken: str = None,
         DryRun: bool = None,
         IncludeAllInstances: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceStatusOkWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instance_status` every 15 seconds until a successful state is
@@ -1859,7 +1898,7 @@ class InstanceStatusOk(Boto3Waiter):
 
 
 class InstanceStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[InstanceStoppedWaitFiltersTypeDef] = None,
@@ -1867,7 +1906,7 @@ class InstanceStopped(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceStoppedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instances` every 15 seconds until a successful state is
@@ -2205,7 +2244,7 @@ class InstanceStopped(Boto3Waiter):
 
 
 class InstanceTerminated(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[InstanceTerminatedWaitFiltersTypeDef] = None,
@@ -2213,7 +2252,7 @@ class InstanceTerminated(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceTerminatedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instances` every 15 seconds until a successful state is
@@ -2551,13 +2590,13 @@ class InstanceTerminated(Boto3Waiter):
 
 
 class KeyPairExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[KeyPairExistsWaitFiltersTypeDef] = None,
         KeyNames: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: KeyPairExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_key_pairs` every 5 seconds until a successful state is reached.
@@ -2667,14 +2706,14 @@ class KeyPairExists(Boto3Waiter):
 
 
 class NatGatewayAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[NatGatewayAvailableWaitFiltersTypeDef] = None,
         MaxResults: int = None,
         NatGatewayIds: List[str] = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: NatGatewayAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_nat_gateways` every 15 seconds until a successful state is
@@ -2800,7 +2839,7 @@ class NatGatewayAvailable(Boto3Waiter):
 
 
 class NetworkInterfaceAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[NetworkInterfaceAvailableWaitFiltersTypeDef] = None,
@@ -2808,7 +2847,7 @@ class NetworkInterfaceAvailable(Boto3Waiter):
         NetworkInterfaceIds: List[str] = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: NetworkInterfaceAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_network_interfaces` every 20 seconds until a successful state
@@ -3020,9 +3059,12 @@ class NetworkInterfaceAvailable(Boto3Waiter):
 
 
 class PasswordDataAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, InstanceId: str, DryRun: bool = None, WaiterConfig: Dict = None
+        self,
+        InstanceId: str,
+        DryRun: bool = None,
+        WaiterConfig: PasswordDataAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.get_password_data` every 15 seconds until a successful state is reached.
@@ -3072,7 +3114,7 @@ class PasswordDataAvailable(Boto3Waiter):
 
 
 class SnapshotCompleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[SnapshotCompletedWaitFiltersTypeDef] = None,
@@ -3082,7 +3124,7 @@ class SnapshotCompleted(Boto3Waiter):
         RestorableByUserIds: List[str] = None,
         SnapshotIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: SnapshotCompletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_snapshots` every 15 seconds until a successful state is
@@ -3260,7 +3302,7 @@ class SnapshotCompleted(Boto3Waiter):
 
 
 class SpotInstanceRequestFulfilled(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[SpotInstanceRequestFulfilledWaitFiltersTypeDef] = None,
@@ -3268,7 +3310,7 @@ class SpotInstanceRequestFulfilled(Boto3Waiter):
         SpotInstanceRequestIds: List[str] = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: SpotInstanceRequestFulfilledWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_spot_instance_requests` every 15 seconds until a successful
@@ -3483,7 +3525,7 @@ class SpotInstanceRequestFulfilled(Boto3Waiter):
 
 
 class SubnetAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[SubnetAvailableWaitFiltersTypeDef] = None,
@@ -3491,7 +3533,7 @@ class SubnetAvailable(Boto3Waiter):
         DryRun: bool = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: SubnetAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_subnets` every 15 seconds until a successful state is reached.
@@ -3651,7 +3693,7 @@ class SubnetAvailable(Boto3Waiter):
 
 
 class SystemStatusOk(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[SystemStatusOkWaitFiltersTypeDef] = None,
@@ -3660,7 +3702,7 @@ class SystemStatusOk(Boto3Waiter):
         NextToken: str = None,
         DryRun: bool = None,
         IncludeAllInstances: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: SystemStatusOkWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_instance_status` every 15 seconds until a successful state is
@@ -3829,7 +3871,7 @@ class SystemStatusOk(Boto3Waiter):
 
 
 class VolumeAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VolumeAvailableWaitFiltersTypeDef] = None,
@@ -3837,7 +3879,7 @@ class VolumeAvailable(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VolumeAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_volumes` every 15 seconds until a successful state is reached.
@@ -4000,7 +4042,7 @@ class VolumeAvailable(Boto3Waiter):
 
 
 class VolumeDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VolumeDeletedWaitFiltersTypeDef] = None,
@@ -4008,7 +4050,7 @@ class VolumeDeleted(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VolumeDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_volumes` every 15 seconds until a successful state is reached.
@@ -4171,7 +4213,7 @@ class VolumeDeleted(Boto3Waiter):
 
 
 class VolumeInUse(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VolumeInUseWaitFiltersTypeDef] = None,
@@ -4179,7 +4221,7 @@ class VolumeInUse(Boto3Waiter):
         DryRun: bool = None,
         MaxResults: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VolumeInUseWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_volumes` every 15 seconds until a successful state is reached.
@@ -4342,7 +4384,7 @@ class VolumeInUse(Boto3Waiter):
 
 
 class VpcAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpcAvailableWaitFiltersTypeDef] = None,
@@ -4350,7 +4392,7 @@ class VpcAvailable(Boto3Waiter):
         DryRun: bool = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpcAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpcs` every 15 seconds until a successful state is reached. An
@@ -4505,7 +4547,7 @@ class VpcAvailable(Boto3Waiter):
 
 
 class VpcExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpcExistsWaitFiltersTypeDef] = None,
@@ -4513,7 +4555,7 @@ class VpcExists(Boto3Waiter):
         DryRun: bool = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpcExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpcs` every 1 seconds until a successful state is reached. An
@@ -4668,7 +4710,7 @@ class VpcExists(Boto3Waiter):
 
 
 class VpcPeeringConnectionDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpcPeeringConnectionDeletedWaitFiltersTypeDef] = None,
@@ -4676,7 +4718,7 @@ class VpcPeeringConnectionDeleted(Boto3Waiter):
         VpcPeeringConnectionIds: List[str] = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpcPeeringConnectionDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpc_peering_connections` every 15 seconds until a successful
@@ -4825,7 +4867,7 @@ class VpcPeeringConnectionDeleted(Boto3Waiter):
 
 
 class VpcPeeringConnectionExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpcPeeringConnectionExistsWaitFiltersTypeDef] = None,
@@ -4833,7 +4875,7 @@ class VpcPeeringConnectionExists(Boto3Waiter):
         VpcPeeringConnectionIds: List[str] = None,
         NextToken: str = None,
         MaxResults: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpcPeeringConnectionExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpc_peering_connections` every 15 seconds until a successful
@@ -4982,13 +5024,13 @@ class VpcPeeringConnectionExists(Boto3Waiter):
 
 
 class VpnConnectionAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpnConnectionAvailableWaitFiltersTypeDef] = None,
         VpnConnectionIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpnConnectionAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpn_connections` every 15 seconds until a successful state is
@@ -5123,13 +5165,13 @@ class VpnConnectionAvailable(Boto3Waiter):
 
 
 class VpnConnectionDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[VpnConnectionDeletedWaitFiltersTypeDef] = None,
         VpnConnectionIds: List[str] = None,
         DryRun: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: VpnConnectionDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`EC2.Client.describe_vpn_connections` every 15 seconds until a successful state is

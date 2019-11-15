@@ -15,7 +15,7 @@ from mypy_boto3_datapipeline.type_defs import (
 
 
 class DescribeObjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         pipelineId: str,
@@ -160,7 +160,7 @@ class DescribeObjects(Boto3Paginator):
 
 
 class ListPipelines(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPipelinesPaginatePaginationConfigTypeDef = None
     ) -> ListPipelinesPaginateResponseTypeDef:
@@ -249,7 +249,7 @@ class ListPipelines(Boto3Paginator):
 
 
 class QueryObjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         pipelineId: str,

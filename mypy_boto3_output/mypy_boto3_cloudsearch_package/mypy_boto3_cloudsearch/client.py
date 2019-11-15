@@ -42,7 +42,7 @@ from mypy_boto3_cloudsearch.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def build_suggesters(self, DomainName: str) -> ClientBuildSuggestersResponseTypeDef:
         """
         Indexes the search suggestions. For more information, see `Configuring Suggesters
@@ -104,7 +104,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -121,7 +121,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain(self, DomainName: str) -> ClientCreateDomainResponseTypeDef:
         """
         Creates a new search domain. For more information, see `Creating a Search Domain
@@ -262,7 +262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def define_analysis_scheme(
         self,
         DomainName: str,
@@ -510,7 +510,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def define_expression(
         self, DomainName: str, Expression: ClientDefineExpressionExpressionTypeDef
     ) -> ClientDefineExpressionResponseTypeDef:
@@ -646,7 +646,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def define_index_field(
         self, DomainName: str, IndexField: ClientDefineIndexFieldIndexFieldTypeDef
     ) -> ClientDefineIndexFieldResponseTypeDef:
@@ -1661,7 +1661,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def define_suggester(
         self, DomainName: str, Suggester: ClientDefineSuggesterSuggesterTypeDef
     ) -> ClientDefineSuggesterResponseTypeDef:
@@ -1844,7 +1844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_analysis_scheme(
         self, DomainName: str, AnalysisSchemeName: str
     ) -> ClientDeleteAnalysisSchemeResponseTypeDef:
@@ -2018,7 +2018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain(self, DomainName: str) -> ClientDeleteDomainResponseTypeDef:
         """
         Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot
@@ -2159,7 +2159,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_expression(
         self, DomainName: str, ExpressionName: str
     ) -> ClientDeleteExpressionResponseTypeDef:
@@ -2277,7 +2277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_index_field(
         self, DomainName: str, IndexFieldName: str
     ) -> ClientDeleteIndexFieldResponseTypeDef:
@@ -2836,7 +2836,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_suggester(
         self, DomainName: str, SuggesterName: str
     ) -> ClientDeleteSuggesterResponseTypeDef:
@@ -2976,7 +2976,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_analysis_schemes(
         self,
         DomainName: str,
@@ -3176,7 +3176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_availability_options(
         self, DomainName: str, Deployed: bool = None
     ) -> ClientDescribeAvailabilityOptionsResponseTypeDef:
@@ -3280,7 +3280,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_domain_endpoint_options(
         self, DomainName: str, Deployed: bool = None
     ) -> ClientDescribeDomainEndpointOptionsResponseTypeDef:
@@ -3393,7 +3393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_domains(
         self, DomainNames: List[str] = None
     ) -> ClientDescribeDomainsResponseTypeDef:
@@ -3553,7 +3553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_expressions(
         self, DomainName: str, ExpressionNames: List[str] = None, Deployed: bool = None
     ) -> ClientDescribeExpressionsResponseTypeDef:
@@ -3693,7 +3693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_index_fields(
         self, DomainName: str, FieldNames: List[str] = None, Deployed: bool = None
     ) -> ClientDescribeIndexFieldsResponseTypeDef:
@@ -4273,7 +4273,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scaling_parameters(
         self, DomainName: str
     ) -> ClientDescribeScalingParametersResponseTypeDef:
@@ -4391,7 +4391,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_service_access_policies(
         self, DomainName: str, Deployed: bool = None
     ) -> ClientDescribeServiceAccessPoliciesResponseTypeDef:
@@ -4498,7 +4498,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_suggesters(
         self, DomainName: str, SuggesterNames: List[str] = None, Deployed: bool = None
     ) -> ClientDescribeSuggestersResponseTypeDef:
@@ -4661,7 +4661,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4690,7 +4690,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4711,7 +4711,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4724,7 +4724,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def index_documents(self, DomainName: str) -> ClientIndexDocumentsResponseTypeDef:
         """
         Tells the search domain to start indexing its documents using the latest indexing options. This
@@ -4786,7 +4786,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domain_names(
         self, *args: Any, **kwargs: Any
     ) -> ClientListDomainNamesResponseTypeDef:
@@ -4835,7 +4835,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_availability_options(
         self, DomainName: str, MultiAZ: bool
     ) -> ClientUpdateAvailabilityOptionsResponseTypeDef:
@@ -4943,7 +4943,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_endpoint_options(
         self,
         DomainName: str,
@@ -5070,7 +5070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_scaling_parameters(
         self,
         DomainName: str,
@@ -5218,7 +5218,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service_access_policies(
         self, DomainName: str, AccessPolicies: str
     ) -> ClientUpdateServiceAccessPoliciesResponseTypeDef:

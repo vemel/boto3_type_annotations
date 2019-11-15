@@ -5,6 +5,98 @@ from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 
+_ChannelCreatedWaitWaiterConfigTypeDef = TypedDict(
+    "_ChannelCreatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ChannelCreatedWaitWaiterConfigTypeDef(_ChannelCreatedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ChannelCreatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 5
+    """
+
+
+_ChannelDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ChannelDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ChannelDeletedWaitWaiterConfigTypeDef(_ChannelDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ChannelDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
+_ChannelRunningWaitWaiterConfigTypeDef = TypedDict(
+    "_ChannelRunningWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ChannelRunningWaitWaiterConfigTypeDef(_ChannelRunningWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ChannelRunningWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
+    """
+
+
+_ChannelStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_ChannelStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ChannelStoppedWaitWaiterConfigTypeDef(_ChannelStoppedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ChannelStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 28
+    """
+
+
 _ClientBatchUpdateScheduleCreatesScheduleActionsScheduleActionSettingsHlsTimedMetadataSettingsTypeDef = TypedDict(
     "_ClientBatchUpdateScheduleCreatesScheduleActionsScheduleActionSettingsHlsTimedMetadataSettingsTypeDef",
     {"Id3": str},
@@ -5177,7 +5269,7 @@ class ClientCreateChannelEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between instances
-                      of this table in the output transport stream. A value of \"0\" writes out the
+                      of this table in the output transport stream. A value of \\"0\\" writes out the
                       PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program Clock
@@ -5194,7 +5286,7 @@ class ClientCreateChannelEncoderSettingsTypeDef(
                       hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between instances
-                      of this table in the output transport stream. A value of \"0\" writes out the
+                      of this table in the output transport stream. A value of \\"0\\" writes out the
                       PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map Table
@@ -5224,7 +5316,7 @@ class ClientCreateChannelEncoderSettingsTypeDef(
                       value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the destination
-                filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                filename. Accepts \\"Format Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment filenames.
 
@@ -9437,8 +9529,8 @@ class ClientCreateChannelResponseChannelEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                       Clock Reference value is inserted for every Packetized Elementary Stream
@@ -9454,8 +9546,8 @@ class ClientCreateChannelResponseChannelEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                       Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -9486,8 +9578,8 @@ class ClientCreateChannelResponseChannelEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format
-                Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -12002,8 +12094,8 @@ class ClientCreateChannelResponseChannelTypeDef(
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                         Clock Reference value is inserted for every Packetized Elementary Stream
@@ -12019,8 +12111,8 @@ class ClientCreateChannelResponseChannelTypeDef(
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                         Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -12051,8 +12143,8 @@ class ClientCreateChannelResponseChannelTypeDef(
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format
-                  Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -14291,8 +14383,8 @@ class ClientCreateChannelResponseTypeDef(_ClientCreateChannelResponseTypeDef):
                           - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                           - **PatInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                           Clock Reference value is inserted for every Packetized Elementary Stream
@@ -14308,8 +14400,8 @@ class ClientCreateChannelResponseTypeDef(_ClientCreateChannelResponseTypeDef):
                           decimal or hexadecimal value.
 
                           - **PmtInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                           Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -14340,8 +14432,8 @@ class ClientCreateChannelResponseTypeDef(_ClientCreateChannelResponseTypeDef):
                           hexadecimal value.
 
                     - **NameModifier** *(string) --* String concatenated to the end of the
-                    destination filename. Accepts \"Format
-                    Identifiers\":#formatIdentifierParameters.
+                    destination filename. Accepts \\"Format
+                    Identifiers\\":#formatIdentifierParameters.
 
                     - **SegmentModifier** *(string) --* String concatenated to end of segment
                     filenames.
@@ -18932,7 +19024,7 @@ class ClientDeleteChannelResponseEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -18949,7 +19041,7 @@ class ClientDeleteChannelResponseEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -18980,7 +19072,8 @@ class ClientDeleteChannelResponseEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -21457,7 +21550,7 @@ class ClientDeleteChannelResponseTypeDef(_ClientDeleteChannelResponseTypeDef):
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -21474,7 +21567,7 @@ class ClientDeleteChannelResponseTypeDef(_ClientDeleteChannelResponseTypeDef):
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -21505,7 +21598,8 @@ class ClientDeleteChannelResponseTypeDef(_ClientDeleteChannelResponseTypeDef):
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -25793,7 +25887,7 @@ class ClientDescribeChannelResponseEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -25810,7 +25904,7 @@ class ClientDescribeChannelResponseEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -25841,7 +25935,8 @@ class ClientDescribeChannelResponseEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -28318,7 +28413,7 @@ class ClientDescribeChannelResponseTypeDef(_ClientDescribeChannelResponseTypeDef
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -28335,7 +28430,7 @@ class ClientDescribeChannelResponseTypeDef(_ClientDescribeChannelResponseTypeDef
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -28366,7 +28461,8 @@ class ClientDescribeChannelResponseTypeDef(_ClientDescribeChannelResponseTypeDef
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -36045,7 +36141,7 @@ class ClientStartChannelResponseEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -36062,7 +36158,7 @@ class ClientStartChannelResponseEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -36093,7 +36189,8 @@ class ClientStartChannelResponseEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -38570,7 +38667,7 @@ class ClientStartChannelResponseTypeDef(_ClientStartChannelResponseTypeDef):
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -38587,7 +38684,7 @@ class ClientStartChannelResponseTypeDef(_ClientStartChannelResponseTypeDef):
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -38618,7 +38715,8 @@ class ClientStartChannelResponseTypeDef(_ClientStartChannelResponseTypeDef):
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -42770,7 +42868,7 @@ class ClientStopChannelResponseEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -42787,7 +42885,7 @@ class ClientStopChannelResponseEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
+                      instances of this table in the output transport stream. A value of \\"0\\"
                       writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -42818,7 +42916,8 @@ class ClientStopChannelResponseEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -45295,7 +45394,7 @@ class ClientStopChannelResponseTypeDef(_ClientStopChannelResponseTypeDef):
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -45312,7 +45411,7 @@ class ClientStopChannelResponseTypeDef(_ClientStopChannelResponseTypeDef):
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
+                        instances of this table in the output transport stream. A value of \\"0\\"
                         writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -45343,7 +45442,8 @@ class ClientStopChannelResponseTypeDef(_ClientStopChannelResponseTypeDef):
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -49423,8 +49523,8 @@ class ClientUpdateChannelClassResponseChannelEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                       Clock Reference value is inserted for every Packetized Elementary Stream
@@ -49440,8 +49540,8 @@ class ClientUpdateChannelClassResponseChannelEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                       Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -49472,8 +49572,8 @@ class ClientUpdateChannelClassResponseChannelEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format
-                Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -51988,8 +52088,8 @@ class ClientUpdateChannelClassResponseChannelTypeDef(
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                         Clock Reference value is inserted for every Packetized Elementary Stream
@@ -52005,8 +52105,8 @@ class ClientUpdateChannelClassResponseChannelTypeDef(
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                         Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -52037,8 +52137,8 @@ class ClientUpdateChannelClassResponseChannelTypeDef(
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format
-                  Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -54277,8 +54377,8 @@ class ClientUpdateChannelClassResponseTypeDef(_ClientUpdateChannelClassResponseT
                           - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                           - **PatInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                           Clock Reference value is inserted for every Packetized Elementary Stream
@@ -54294,8 +54394,8 @@ class ClientUpdateChannelClassResponseTypeDef(_ClientUpdateChannelClassResponseT
                           decimal or hexadecimal value.
 
                           - **PmtInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                           Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -54326,8 +54426,8 @@ class ClientUpdateChannelClassResponseTypeDef(_ClientUpdateChannelClassResponseT
                           hexadecimal value.
 
                     - **NameModifier** *(string) --* String concatenated to the end of the
-                    destination filename. Accepts \"Format
-                    Identifiers\":#formatIdentifierParameters.
+                    destination filename. Accepts \\"Format
+                    Identifiers\\":#formatIdentifierParameters.
 
                     - **SegmentModifier** *(string) --* String concatenated to end of segment
                     filenames.
@@ -56864,7 +56964,7 @@ class ClientUpdateChannelEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between instances
-                      of this table in the output transport stream. A value of \"0\" writes out the
+                      of this table in the output transport stream. A value of \\"0\\" writes out the
                       PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program Clock
@@ -56881,7 +56981,7 @@ class ClientUpdateChannelEncoderSettingsTypeDef(
                       hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between instances
-                      of this table in the output transport stream. A value of \"0\" writes out the
+                      of this table in the output transport stream. A value of \\"0\\" writes out the
                       PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map Table
@@ -56911,7 +57011,7 @@ class ClientUpdateChannelEncoderSettingsTypeDef(
                       value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the destination
-                filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                filename. Accepts \\"Format Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment filenames.
 
@@ -61124,8 +61224,8 @@ class ClientUpdateChannelResponseChannelEncoderSettingsTypeDef(
                       - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                       - **PatInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                       Clock Reference value is inserted for every Packetized Elementary Stream
@@ -61141,8 +61241,8 @@ class ClientUpdateChannelResponseChannelEncoderSettingsTypeDef(
                       decimal or hexadecimal value.
 
                       - **PmtInterval** *(integer) --* The number of milliseconds between
-                      instances of this table in the output transport stream. A value of \"0\"
-                      writes out the PMT once per segment file.
+                      instances of this table in the output transport stream. A value of
+                      \\"0\\" writes out the PMT once per segment file.
 
                       - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                       Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -61173,8 +61273,8 @@ class ClientUpdateChannelResponseChannelEncoderSettingsTypeDef(
                       hexadecimal value.
 
                 - **NameModifier** *(string) --* String concatenated to the end of the
-                destination filename. Accepts \"Format
-                Identifiers\":#formatIdentifierParameters.
+                destination filename. Accepts \\"Format
+                Identifiers\\":#formatIdentifierParameters.
 
                 - **SegmentModifier** *(string) --* String concatenated to end of segment
                 filenames.
@@ -63689,8 +63789,8 @@ class ClientUpdateChannelResponseChannelTypeDef(
                         - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                         - **PatInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                         Clock Reference value is inserted for every Packetized Elementary Stream
@@ -63706,8 +63806,8 @@ class ClientUpdateChannelResponseChannelTypeDef(
                         decimal or hexadecimal value.
 
                         - **PmtInterval** *(integer) --* The number of milliseconds between
-                        instances of this table in the output transport stream. A value of \"0\"
-                        writes out the PMT once per segment file.
+                        instances of this table in the output transport stream. A value of
+                        \\"0\\" writes out the PMT once per segment file.
 
                         - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                         Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -63738,8 +63838,8 @@ class ClientUpdateChannelResponseChannelTypeDef(
                         hexadecimal value.
 
                   - **NameModifier** *(string) --* String concatenated to the end of the
-                  destination filename. Accepts \"Format
-                  Identifiers\":#formatIdentifierParameters.
+                  destination filename. Accepts \\"Format
+                  Identifiers\\":#formatIdentifierParameters.
 
                   - **SegmentModifier** *(string) --* String concatenated to end of segment
                   filenames.
@@ -65978,8 +66078,8 @@ class ClientUpdateChannelResponseTypeDef(_ClientUpdateChannelResponseTypeDef):
                           - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                           - **PatInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                           Clock Reference value is inserted for every Packetized Elementary Stream
@@ -65995,8 +66095,8 @@ class ClientUpdateChannelResponseTypeDef(_ClientUpdateChannelResponseTypeDef):
                           decimal or hexadecimal value.
 
                           - **PmtInterval** *(integer) --* The number of milliseconds between
-                          instances of this table in the output transport stream. A value of \"0\"
-                          writes out the PMT once per segment file.
+                          instances of this table in the output transport stream. A value of
+                          \\"0\\" writes out the PMT once per segment file.
 
                           - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                           Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -66027,8 +66127,8 @@ class ClientUpdateChannelResponseTypeDef(_ClientUpdateChannelResponseTypeDef):
                           hexadecimal value.
 
                     - **NameModifier** *(string) --* String concatenated to the end of the
-                    destination filename. Accepts \"Format
-                    Identifiers\":#formatIdentifierParameters.
+                    destination filename. Accepts \\"Format
+                    Identifiers\\":#formatIdentifierParameters.
 
                     - **SegmentModifier** *(string) --* String concatenated to end of segment
                     filenames.

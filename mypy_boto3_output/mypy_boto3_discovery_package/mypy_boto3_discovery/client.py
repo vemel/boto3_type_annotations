@@ -39,7 +39,7 @@ from mypy_boto3_discovery.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_configuration_items_to_application(
         self, applicationConfigurationId: str, configurationIds: List[str]
     ) -> Dict[str, Any]:
@@ -84,7 +84,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_import_data(
         self, importTaskIds: List[str]
     ) -> ClientBatchDeleteImportDataResponseTypeDef:
@@ -159,7 +159,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -176,7 +176,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self, name: str, description: str = None
     ) -> ClientCreateApplicationResponseTypeDef:
@@ -223,7 +223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, configurationIds: List[str], tags: List[ClientCreateTagstagsTypeDef]
     ) -> Dict[str, Any]:
@@ -288,7 +288,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_applications(self, configurationIds: List[str]) -> Dict[str, Any]:
         """
         Deletes a list of applications and their associations with configuration items.
@@ -324,7 +324,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(
         self,
         configurationIds: List[str],
@@ -391,7 +391,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_agents(
         self,
         agentIds: List[str] = None,
@@ -592,7 +592,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configurations(
         self, configurationIds: List[str]
     ) -> ClientDescribeConfigurationsResponseTypeDef:
@@ -667,7 +667,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_continuous_exports(
         self, exportIds: List[str] = None, maxResults: int = None, nextToken: str = None
     ) -> ClientDescribeContinuousExportsResponseTypeDef:
@@ -789,7 +789,7 @@ class Client(BaseClient):
 
                   * FIREHOSE_ROLE_MISSING - The Data Exploration feature is in an error state because your
                   IAM User is missing the AWSApplicationDiscoveryServiceFirehose role. Turn on Data
-                  Exploration in Amazon Athena and try again. For more information, see `Step 3: Provide
+                  Exploration in Amazon Athena and try again. For more information, see `Step 3\\: Provide
                   Application Discovery Service Access to Non-Administrator Users by Attaching Policies
                   <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html#setting-up-user-policy>`__
                   in the Application Discovery Service User Guide.
@@ -808,7 +808,7 @@ class Client(BaseClient):
 
                   * S3_NOT_SIGNED_UP - Your account is not signed up for the Amazon S3 service. You must
                   sign up before you can use Amazon S3. You can sign up at the following URL:
-                  `https://aws.amazon.com/s3 <https://aws.amazon.com/s3>`__ .
+                  `https\\://aws.amazon.com/s3 <https://aws.amazon.com/s3>`__ .
 
                 - **s3Bucket** *(string) --*
 
@@ -842,7 +842,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_export_configurations(
         self, exportIds: List[str] = None, maxResults: int = None, nextToken: str = None
     ) -> ClientDescribeExportConfigurationsResponseTypeDef:
@@ -963,7 +963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_export_tasks(
         self,
         exportIds: List[str] = None,
@@ -1132,7 +1132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_import_tasks(
         self,
         filters: List[ClientDescribeImportTasksfiltersTypeDef] = None,
@@ -1322,7 +1322,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self,
         filters: List[ClientDescribeTagsfiltersTypeDef] = None,
@@ -1450,7 +1450,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_configuration_items_from_application(
         self, applicationConfigurationId: str, configurationIds: List[str]
     ) -> Dict[str, Any]:
@@ -1495,7 +1495,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_configurations(
         self, *args: Any, **kwargs: Any
     ) -> ClientExportConfigurationsResponseTypeDef:
@@ -1541,7 +1541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1570,7 +1570,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_discovery_summary(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetDiscoverySummaryResponseTypeDef:
@@ -1705,7 +1705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1726,7 +1726,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1739,7 +1739,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configurations(
         self,
         configurationType: str,
@@ -1894,7 +1894,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_server_neighbors(
         self,
         configurationId: str,
@@ -2016,7 +2016,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_continuous_export(
         self, *args: Any, **kwargs: Any
     ) -> ClientStartContinuousExportResponseTypeDef:
@@ -2079,7 +2079,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_data_collection_by_agent_ids(
         self, agentIds: List[str]
     ) -> ClientStartDataCollectionByAgentIdsResponseTypeDef:
@@ -2157,7 +2157,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_export_task(
         self,
         exportDataFormat: List[str] = None,
@@ -2274,7 +2274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_import_task(
         self, name: str, importUrl: str, clientRequestToken: str = None
     ) -> ClientStartImportTaskResponseTypeDef:
@@ -2289,7 +2289,7 @@ class Client(BaseClient):
 
         * Download the specially formatted comma separated value (CSV) import template, which you can find
         here:
-        `https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv
+        `https\\://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv
         <https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv>`__
         .
 
@@ -2461,7 +2461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_continuous_export(
         self, exportId: str
     ) -> ClientStopContinuousExportResponseTypeDef:
@@ -2507,7 +2507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_data_collection_by_agent_ids(
         self, agentIds: List[str]
     ) -> ClientStopDataCollectionByAgentIdsResponseTypeDef:
@@ -2580,7 +2580,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self, configurationId: str, name: str = None, description: str = None
     ) -> Dict[str, Any]:

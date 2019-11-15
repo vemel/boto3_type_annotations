@@ -67,7 +67,7 @@ from mypy_boto3_route53.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_vpc_with_hosted_zone(
         self,
         HostedZoneId: str,
@@ -186,7 +186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -203,7 +203,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_resource_record_sets(
         self, HostedZoneId: str, ChangeBatch: Dict
     ) -> ClientChangeResourceRecordSetsResponseTypeDef:
@@ -1238,7 +1238,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_tags_for_resource(
         self,
         ResourceType: str,
@@ -1347,7 +1347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_health_check(
         self,
         CallerReference: str,
@@ -2306,7 +2306,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hosted_zone(
         self,
         Name: str,
@@ -2620,7 +2620,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_query_logging_config(
         self, HostedZoneId: str, CloudWatchLogsLogGroupArn: str
     ) -> ClientCreateQueryLoggingConfigResponseTypeDef:
@@ -2799,7 +2799,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_reusable_delegation_set(
         self, CallerReference: str, HostedZoneId: str = None
     ) -> ClientCreateReusableDelegationSetResponseTypeDef:
@@ -2919,7 +2919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_policy(
         self, Name: str, Document: str, Comment: str = None
     ) -> ClientCreateTrafficPolicyResponseTypeDef:
@@ -3020,7 +3020,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_policy_instance(
         self,
         HostedZoneId: str,
@@ -3177,7 +3177,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_policy_version(
         self, Id: str, Document: str, Comment: str = None
     ) -> ClientCreateTrafficPolicyVersionResponseTypeDef:
@@ -3283,7 +3283,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_association_authorization(
         self, HostedZoneId: str, VPC: ClientCreateVpcAssociationAuthorizationVPCTypeDef
     ) -> ClientCreateVpcAssociationAuthorizationResponseTypeDef:
@@ -3379,7 +3379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_health_check(self, HealthCheckId: str) -> Dict:
         """
         Deletes a health check.
@@ -3424,7 +3424,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hosted_zone(self, Id: str) -> ClientDeleteHostedZoneResponseTypeDef:
         """
         Deletes a hosted zone.
@@ -3538,7 +3538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_query_logging_config(self, Id: str) -> Dict[str, Any]:
         """
         Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops
@@ -3575,7 +3575,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_reusable_delegation_set(self, Id: str) -> Dict:
         """
         Deletes a reusable delegation set.
@@ -3619,7 +3619,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_policy(self, Id: str, Version: int) -> Dict:
         """
         Deletes a traffic policy.
@@ -3660,7 +3660,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_policy_instance(self, Id: str) -> Dict:
         """
         Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created
@@ -3705,7 +3705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_association_authorization(
         self, HostedZoneId: str, VPC: ClientDeleteVpcAssociationAuthorizationVPCTypeDef
     ) -> Dict:
@@ -3775,7 +3775,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_vpc_from_hosted_zone(
         self,
         HostedZoneId: str,
@@ -3885,7 +3885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3914,7 +3914,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_limit(self, Type: str) -> ClientGetAccountLimitResponseTypeDef:
         """
         Gets the specified limit for the current account, for example, the maximum number of health checks
@@ -3929,7 +3929,7 @@ class Client(BaseClient):
         .. note::
 
           You can also view account limits in AWS Trusted Advisor. Sign in to the AWS Management Console
-          and open the Trusted Advisor console at `https://console.aws.amazon.com/trustedadvisor/
+          and open the Trusted Advisor console at `https\\://console.aws.amazon.com/trustedadvisor/
           <https://console.aws.amazon.com/trustedadvisor>`__ . Then choose **Service limits** in the
           navigation pane.
 
@@ -4031,7 +4031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_change(self, Id: str) -> ClientGetChangeResponseTypeDef:
         """
         Returns the current status of a change batch request. The status is one of the following values:
@@ -4107,7 +4107,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_checker_ip_ranges(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetCheckerIpRangesResponseTypeDef:
@@ -4155,7 +4155,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_geo_location(
         self,
         ContinentCode: str = None,
@@ -4279,7 +4279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_health_check(
         self, HealthCheckId: str
     ) -> ClientGetHealthCheckResponseTypeDef:
@@ -4824,7 +4824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_health_check_count(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetHealthCheckCountResponseTypeDef:
@@ -4861,7 +4861,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_health_check_last_failure_reason(
         self, HealthCheckId: str
     ) -> ClientGetHealthCheckLastFailureReasonResponseTypeDef:
@@ -4956,7 +4956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_health_check_status(
         self, HealthCheckId: str
     ) -> ClientGetHealthCheckStatusResponseTypeDef:
@@ -5050,7 +5050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_hosted_zone(self, Id: str) -> ClientGetHostedZoneResponseTypeDef:
         """
         Gets information about a specified hosted zone including the four name servers assigned to the
@@ -5212,7 +5212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_hosted_zone_count(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetHostedZoneCountResponseTypeDef:
@@ -5250,7 +5250,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_hosted_zone_limit(
         self, Type: str, HostedZoneId: str
     ) -> ClientGetHostedZoneLimitResponseTypeDef:
@@ -5338,7 +5338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5359,7 +5359,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_query_logging_config(
         self, Id: str
     ) -> ClientGetQueryLoggingConfigResponseTypeDef:
@@ -5425,7 +5425,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reusable_delegation_set(
         self, Id: str
     ) -> ClientGetReusableDelegationSetResponseTypeDef:
@@ -5491,7 +5491,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reusable_delegation_set_limit(
         self, Type: str, DelegationSetId: str
     ) -> ClientGetReusableDelegationSetLimitResponseTypeDef:
@@ -5567,7 +5567,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_traffic_policy(
         self, Id: str, Version: int
     ) -> ClientGetTrafficPolicyResponseTypeDef:
@@ -5653,7 +5653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_traffic_policy_instance(
         self, Id: str
     ) -> ClientGetTrafficPolicyInstanceResponseTypeDef:
@@ -5776,7 +5776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_traffic_policy_instance_count(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetTrafficPolicyInstanceCountResponseTypeDef:
@@ -5814,7 +5814,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5827,7 +5827,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_geo_locations(
         self,
         StartContinentCode: str = None,
@@ -5993,7 +5993,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_health_checks(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListHealthChecksResponseTypeDef:
@@ -6589,7 +6589,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hosted_zones(
         self, Marker: str = None, MaxItems: str = None, DelegationSetId: str = None
     ) -> ClientListHostedZonesResponseTypeDef:
@@ -6758,7 +6758,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hosted_zones_by_name(
         self, DNSName: str = None, HostedZoneId: str = None, MaxItems: str = None
     ) -> ClientListHostedZonesByNameResponseTypeDef:
@@ -6775,9 +6775,9 @@ class Client(BaseClient):
         If the domain name includes escape characters or Punycode, ``ListHostedZonesByName`` alphabetizes
         the domain name using the escaped or Punycoded value, which is the format that Amazon Route 53
         saves in its database. For example, to create a hosted zone for exämple.com, you specify
-        ex\344mple.com for the domain name. ``ListHostedZonesByName`` alphabetizes it as:
+        ex\\344mple.com for the domain name. ``ListHostedZonesByName`` alphabetizes it as:
 
-         ``com.ex\344mple.``
+         ``com.ex\\344mple.``
 
         The labels are reversed and alphabetized using the escaped value. For more information about valid
         domain name formats, including internationalized domain names, see `DNS Domain Name Format
@@ -6987,7 +6987,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_query_logging_configs(
         self, HostedZoneId: str = None, NextToken: str = None, MaxResults: str = None
     ) -> ClientListQueryLoggingConfigsResponseTypeDef:
@@ -7101,7 +7101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_record_sets(
         self,
         HostedZoneId: str,
@@ -8140,7 +8140,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_reusable_delegation_sets(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListReusableDelegationSetsResponseTypeDef:
@@ -8256,7 +8256,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceType: str, ResourceId: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -8369,7 +8369,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resources(
         self, ResourceType: str, ResourceIds: List[str]
     ) -> ClientListTagsForResourcesResponseTypeDef:
@@ -8492,7 +8492,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_traffic_policies(
         self, TrafficPolicyIdMarker: str = None, MaxItems: str = None
     ) -> ClientListTrafficPoliciesResponseTypeDef:
@@ -8606,7 +8606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_traffic_policy_instances(
         self,
         HostedZoneIdMarker: str = None,
@@ -8821,7 +8821,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_traffic_policy_instances_by_hosted_zone(
         self,
         HostedZoneId: str,
@@ -9020,7 +9020,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_traffic_policy_instances_by_policy(
         self,
         TrafficPolicyId: str,
@@ -9253,7 +9253,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_traffic_policy_versions(
         self, Id: str, TrafficPolicyVersionMarker: str = None, MaxItems: str = None
     ) -> ClientListTrafficPolicyVersionsResponseTypeDef:
@@ -9389,7 +9389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_vpc_association_authorizations(
         self, HostedZoneId: str, NextToken: str = None, MaxResults: str = None
     ) -> ClientListVpcAssociationAuthorizationsResponseTypeDef:
@@ -9489,7 +9489,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_dns_answer(
         self,
         HostedZoneId: str,
@@ -9639,7 +9639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_health_check(
         self,
         HealthCheckId: str,
@@ -10552,7 +10552,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_hosted_zone_comment(
         self, Id: str, Comment: str = None
     ) -> ClientUpdateHostedZoneCommentResponseTypeDef:
@@ -10668,7 +10668,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_traffic_policy_comment(
         self, Id: str, Version: int, Comment: str
     ) -> ClientUpdateTrafficPolicyCommentResponseTypeDef:
@@ -10760,7 +10760,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_traffic_policy_instance(
         self, Id: str, TTL: int, TrafficPolicyId: str, TrafficPolicyVersion: int
     ) -> ClientUpdateTrafficPolicyInstanceResponseTypeDef:

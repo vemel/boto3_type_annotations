@@ -26,7 +26,7 @@ from mypy_boto3_ds.type_defs import (
 
 
 class DescribeDirectories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryIds: List[str] = None,
@@ -494,7 +494,7 @@ class DescribeDirectories(Boto3Paginator):
 
 
 class DescribeDomainControllers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str,
@@ -634,7 +634,7 @@ class DescribeDomainControllers(Boto3Paginator):
 
 
 class DescribeSharedDirectories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         OwnerDirectoryId: str,
@@ -779,7 +779,7 @@ class DescribeSharedDirectories(Boto3Paginator):
 
 
 class DescribeSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str = None,
@@ -906,7 +906,7 @@ class DescribeSnapshots(Boto3Paginator):
 
 
 class DescribeTrusts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str = None,
@@ -1064,7 +1064,7 @@ class DescribeTrusts(Boto3Paginator):
 
 
 class ListIpRoutes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str,
@@ -1174,7 +1174,7 @@ class ListIpRoutes(Boto3Paginator):
 
 
 class ListLogSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str = None,
@@ -1272,7 +1272,7 @@ class ListLogSubscriptions(Boto3Paginator):
 
 
 class ListSchemaExtensions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryId: str,
@@ -1388,7 +1388,7 @@ class ListSchemaExtensions(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceId: str,
@@ -1470,12 +1470,12 @@ class ListTagsForResource(Boto3Paginator):
                   Required name of the tag. The string value can be Unicode characters and cannot be
                   prefixed with "aws:". The string can contain only the set of Unicode letters, digits,
                   white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-                  "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
                 - **Value** *(string) --*
 
                   The optional value of the tag. The string value can be Unicode characters. The string can
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         """

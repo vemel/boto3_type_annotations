@@ -6534,6 +6534,28 @@ class ClientListTargetsForPolicyResponseTypeDef(
     """
 
 
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    A custom key-value pair associated with a resource such as an account within your organization.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key identifier, or name, of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The string value that's associated with the key of the tag. You can set the value of a tag to
+      an empty string, but you can't set the value of a tag to null.
+    """
+
+
 _ClientUpdateOrganizationalUnitResponseOrganizationalUnitTypeDef = TypedDict(
     "_ClientUpdateOrganizationalUnitResponseOrganizationalUnitTypeDef",
     {"Id": str, "Arn": str, "Name": str},

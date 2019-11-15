@@ -20,7 +20,7 @@ from mypy_boto3_elasticbeanstalk.type_defs import (
 
 
 class DescribeApplicationVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationName: str = None,
@@ -221,7 +221,7 @@ class DescribeApplicationVersions(Boto3Paginator):
 
 
 class DescribeEnvironmentManagedActionHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         EnvironmentId: str = None,
@@ -352,7 +352,7 @@ class DescribeEnvironmentManagedActionHistory(Boto3Paginator):
 
 
 class DescribeEnvironments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationName: str = None,
@@ -716,7 +716,7 @@ class DescribeEnvironments(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationName: str = None,
@@ -914,7 +914,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class ListPlatformVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListPlatformVersionsPaginateFiltersTypeDef] = None,

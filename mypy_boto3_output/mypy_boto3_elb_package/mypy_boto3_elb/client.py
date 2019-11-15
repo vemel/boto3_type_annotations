@@ -38,7 +38,7 @@ from mypy_boto3_elb.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, LoadBalancerNames: List[str], Tags: List[ClientAddTagsTagsTypeDef]
     ) -> Dict:
@@ -110,7 +110,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_security_groups_to_load_balancer(
         self, LoadBalancerName: str, SecurityGroups: List[str]
     ) -> ClientApplySecurityGroupsToLoadBalancerResponseTypeDef:
@@ -174,7 +174,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_load_balancer_to_subnets(
         self, LoadBalancerName: str, Subnets: List[str]
     ) -> ClientAttachLoadBalancerToSubnetsResponseTypeDef:
@@ -237,7 +237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -254,7 +254,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def configure_health_check(
         self,
         LoadBalancerName: str,
@@ -397,7 +397,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_app_cookie_stickiness_policy(
         self, LoadBalancerName: str, PolicyName: str, CookieName: str
     ) -> Dict:
@@ -461,7 +461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_lb_cookie_stickiness_policy(
         self, LoadBalancerName: str, PolicyName: str, CookieExpirationPeriod: int = None
     ) -> Dict:
@@ -530,7 +530,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer(
         self,
         LoadBalancerName: str,
@@ -732,7 +732,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer_listeners(
         self,
         LoadBalancerName: str,
@@ -832,7 +832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer_policy(
         self,
         LoadBalancerName: str,
@@ -915,7 +915,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer(self, LoadBalancerName: str) -> Dict:
         """
         Deletes the specified load balancer.
@@ -958,7 +958,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer_listeners(
         self, LoadBalancerName: str, LoadBalancerPorts: List[int]
     ) -> Dict:
@@ -1006,7 +1006,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer_policy(
         self, LoadBalancerName: str, PolicyName: str
     ) -> Dict:
@@ -1050,7 +1050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_instances_from_load_balancer(
         self,
         LoadBalancerName: str,
@@ -1134,7 +1134,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_limits(
         self, Marker: str = None, PageSize: int = None
     ) -> ClientDescribeAccountLimitsResponseTypeDef:
@@ -1214,7 +1214,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_health(
         self,
         LoadBalancerName: str,
@@ -1340,7 +1340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancer_attributes(
         self, LoadBalancerName: str
     ) -> ClientDescribeLoadBalancerAttributesResponseTypeDef:
@@ -1500,7 +1500,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancer_policies(
         self, LoadBalancerName: str = None, PolicyNames: List[str] = None
     ) -> ClientDescribeLoadBalancerPoliciesResponseTypeDef:
@@ -1599,7 +1599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancer_policy_types(
         self, PolicyTypeNames: List[str] = None
     ) -> ClientDescribeLoadBalancerPolicyTypesResponseTypeDef:
@@ -1721,7 +1721,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancers(
         self,
         LoadBalancerNames: List[str] = None,
@@ -2109,7 +2109,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self, LoadBalancerNames: List[str]
     ) -> ClientDescribeTagsResponseTypeDef:
@@ -2190,7 +2190,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_load_balancer_from_subnets(
         self, LoadBalancerName: str, Subnets: List[str]
     ) -> ClientDetachLoadBalancerFromSubnetsResponseTypeDef:
@@ -2252,7 +2252,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_availability_zones_for_load_balancer(
         self, LoadBalancerName: str, AvailabilityZones: List[str]
     ) -> ClientDisableAvailabilityZonesForLoadBalancerResponseTypeDef:
@@ -2322,7 +2322,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_availability_zones_for_load_balancer(
         self, LoadBalancerName: str, AvailabilityZones: List[str]
     ) -> ClientEnableAvailabilityZonesForLoadBalancerResponseTypeDef:
@@ -2388,7 +2388,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2417,7 +2417,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2438,7 +2438,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2451,7 +2451,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_load_balancer_attributes(
         self,
         LoadBalancerName: str,
@@ -2759,7 +2759,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_instances_with_load_balancer(
         self,
         LoadBalancerName: str,
@@ -2855,7 +2855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags(
         self, LoadBalancerNames: List[str], Tags: List[ClientRemoveTagsTagsTypeDef]
     ) -> Dict:
@@ -2914,7 +2914,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_load_balancer_listener_ssl_certificate(
         self, LoadBalancerName: str, LoadBalancerPort: int, SSLCertificateId: str
     ) -> Dict:
@@ -2970,7 +2970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_load_balancer_policies_for_backend_server(
         self, LoadBalancerName: str, InstancePort: int, PolicyNames: List[str]
     ) -> Dict:
@@ -3042,7 +3042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_load_balancer_policies_of_listener(
         self, LoadBalancerName: str, LoadBalancerPort: int, PolicyNames: List[str]
     ) -> Dict:

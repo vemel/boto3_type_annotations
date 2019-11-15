@@ -22,7 +22,7 @@ from mypy_boto3_securityhub.type_defs import (
 
 
 class GetEnabledStandards(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StandardsSubscriptionArns: List[str] = None,
@@ -136,7 +136,7 @@ class GetEnabledStandards(Boto3Paginator):
 
 
 class GetFindings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: GetFindingsPaginateFiltersTypeDef = None,
@@ -2897,7 +2897,7 @@ class GetFindings(Boto3Paginator):
 
 
 class GetInsights(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InsightArns: List[str] = None,
@@ -5070,7 +5070,7 @@ class GetInsights(Boto3Paginator):
 
 
 class ListEnabledProductsForImport(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListEnabledProductsForImportPaginatePaginationConfigTypeDef = None,
@@ -5139,7 +5139,7 @@ class ListEnabledProductsForImport(Boto3Paginator):
 
 
 class ListInvitations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListInvitationsPaginatePaginationConfigTypeDef = None
     ) -> ListInvitationsPaginateResponseTypeDef:
@@ -5230,7 +5230,7 @@ class ListInvitations(Boto3Paginator):
 
 
 class ListMembers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         OnlyAssociated: bool = None,

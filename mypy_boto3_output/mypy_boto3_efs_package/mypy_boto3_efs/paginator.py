@@ -13,7 +13,7 @@ from mypy_boto3_efs.type_defs import (
 
 
 class DescribeFileSystems(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationToken: str = None,
@@ -242,7 +242,7 @@ class DescribeFileSystems(Boto3Paginator):
 
 
 class DescribeMountTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FileSystemId: str = None,
@@ -374,7 +374,7 @@ class DescribeMountTargets(Boto3Paginator):
 
 
 class DescribeTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FileSystemId: str,

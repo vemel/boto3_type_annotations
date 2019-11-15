@@ -17,7 +17,7 @@ from mypy_boto3_route53.type_defs import (
 
 
 class ListHealthChecks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListHealthChecksPaginatePaginationConfigTypeDef = None
     ) -> ListHealthChecksPaginateResponseTypeDef:
@@ -617,7 +617,7 @@ class ListHealthChecks(Boto3Paginator):
 
 
 class ListHostedZones(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DelegationSetId: str = None,
@@ -785,7 +785,7 @@ class ListHostedZones(Boto3Paginator):
 
 
 class ListQueryLoggingConfigs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HostedZoneId: str = None,
@@ -887,7 +887,7 @@ class ListQueryLoggingConfigs(Boto3Paginator):
 
 
 class ListResourceRecordSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HostedZoneId: str,
@@ -1818,7 +1818,7 @@ class ListResourceRecordSets(Boto3Paginator):
 
 
 class ListVPCAssociationAuthorizations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HostedZoneId: str,

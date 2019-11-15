@@ -1,18 +1,21 @@
 "Main interface for kinesis Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_kinesis.type_defs import (
+    StreamExistsWaitWaiterConfigTypeDef,
+    StreamNotExistsWaitWaiterConfigTypeDef,
+)
 
 
 class StreamExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StreamName: str,
         Limit: int = None,
         ExclusiveStartShardId: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: StreamExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Kinesis.Client.describe_stream` every 10 seconds until a successful state is
@@ -67,13 +70,13 @@ class StreamExists(Boto3Waiter):
 
 
 class StreamNotExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StreamName: str,
         Limit: int = None,
         ExclusiveStartShardId: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: StreamNotExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Kinesis.Client.describe_stream` every 10 seconds until a successful state is

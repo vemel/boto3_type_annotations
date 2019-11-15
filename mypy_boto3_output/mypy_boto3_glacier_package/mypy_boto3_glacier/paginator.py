@@ -15,7 +15,7 @@ from mypy_boto3_glacier.type_defs import (
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         vaultName: str,
@@ -520,7 +520,7 @@ class ListJobs(Boto3Paginator):
 
 
 class ListMultipartUploads(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         vaultName: str,
@@ -644,7 +644,7 @@ class ListMultipartUploads(Boto3Paginator):
 
 
 class ListParts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         vaultName: str,
@@ -784,7 +784,7 @@ class ListParts(Boto3Paginator):
 
 
 class ListVaults(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         accountId: str = None,

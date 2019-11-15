@@ -15,7 +15,7 @@ from mypy_boto3_machinelearning.type_defs import (
 
 
 class DescribeBatchPredictions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FilterVariable: str = None,
@@ -295,7 +295,7 @@ class DescribeBatchPredictions(Boto3Paginator):
 
 
 class DescribeDataSources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FilterVariable: str = None,
@@ -667,7 +667,7 @@ class DescribeDataSources(Boto3Paginator):
 
 
 class DescribeEvaluations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FilterVariable: str = None,
@@ -957,7 +957,7 @@ class DescribeEvaluations(Boto3Paginator):
 
 
 class DescribeMLModels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FilterVariable: str = None,

@@ -27,7 +27,7 @@ from mypy_boto3_resource_groups.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -44,7 +44,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self,
         Name: str,
@@ -239,7 +239,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(self, GroupName: str) -> ClientDeleteGroupResponseTypeDef:
         """
         Deletes a specified resource group. Deleting a resource group does not delete resources that are
@@ -295,7 +295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -324,7 +324,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group(self, GroupName: str) -> ClientGetGroupResponseTypeDef:
         """
         Returns information about a specified resource group.
@@ -379,7 +379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group_query(self, GroupName: str) -> ClientGetGroupQueryResponseTypeDef:
         """
         Returns the resource query associated with the specified resource group.
@@ -474,7 +474,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -495,7 +495,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_tags(self, Arn: str) -> ClientGetTagsResponseTypeDef:
         """
         Returns a list of tags that are associated with a resource group, specified by an ARN.
@@ -546,7 +546,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -559,7 +559,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_resources(
         self,
         GroupName: str,
@@ -707,7 +707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self,
         Filters: List[ClientListGroupsFiltersTypeDef] = None,
@@ -840,7 +840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_resources(
         self,
         ResourceQuery: ClientSearchResourcesResourceQueryTypeDef,
@@ -998,7 +998,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag(self, Arn: str, Tags: List[str]) -> ClientTagResponseTypeDef:
         """
         Adds tags to a resource group with the specified ARN. Existing tags on a resource group are not
@@ -1063,7 +1063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag(self, Arn: str, Keys: List[str]) -> ClientUntagResponseTypeDef:
         """
         Deletes specified tags from a specified resource.
@@ -1121,7 +1121,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(
         self, GroupName: str, Description: str = None
     ) -> ClientUpdateGroupResponseTypeDef:
@@ -1186,7 +1186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group_query(
         self, GroupName: str, ResourceQuery: ClientUpdateGroupQueryResourceQueryTypeDef
     ) -> ClientUpdateGroupQueryResponseTypeDef:

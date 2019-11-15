@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_redshift.type_defs import (
     ClientAcceptReservedNodeExchangeResponseTypeDef,
     ClientAuthorizeClusterSecurityGroupIngressResponseTypeDef,
@@ -36,6 +35,7 @@ from mypy_boto3_redshift.type_defs import (
     ClientCreateSnapshotCopyGrantTagsTypeDef,
     ClientCreateSnapshotScheduleResponseTypeDef,
     ClientCreateSnapshotScheduleTagsTypeDef,
+    ClientCreateTagsTagsTypeDef,
     ClientDeleteClusterResponseTypeDef,
     ClientDeleteClusterSnapshotResponseTypeDef,
     ClientDescribeAccountAttributesResponseTypeDef,
@@ -98,7 +98,7 @@ from mypy_boto3_redshift.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_reserved_node_exchange(
         self, ReservedNodeId: str, TargetReservedNodeOfferingId: str
     ) -> ClientAcceptReservedNodeExchangeResponseTypeDef:
@@ -240,7 +240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_cluster_security_group_ingress(
         self,
         ClusterSecurityGroupName: str,
@@ -453,7 +453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_snapshot_access(
         self,
         SnapshotIdentifier: str,
@@ -751,7 +751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_cluster_snapshots(
         self, Identifiers: List[ClientBatchDeleteClusterSnapshotsIdentifiersTypeDef]
     ) -> ClientBatchDeleteClusterSnapshotsResponseTypeDef:
@@ -850,7 +850,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_modify_cluster_snapshots(
         self,
         SnapshotIdentifierList: List[str],
@@ -953,7 +953,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -970,7 +970,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_resize(
         self, ClusterIdentifier: str
     ) -> ClientCancelResizeResponseTypeDef:
@@ -1124,7 +1124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_cluster_snapshot(
         self,
         SourceSnapshotIdentifier: str,
@@ -1458,7 +1458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self,
         ClusterIdentifier: str,
@@ -1648,7 +1648,7 @@ class Client(BaseClient):
           * Must contain one number.
 
           * Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double
-          quote), \, /, @, or space.
+          quote), \\, /, @, or space.
 
         :type ClusterSecurityGroups: list
         :param ClusterSecurityGroups:
@@ -2650,7 +2650,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster_parameter_group(
         self,
         ParameterGroupName: str,
@@ -2800,7 +2800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster_security_group(
         self,
         ClusterSecurityGroupName: str,
@@ -3017,7 +3017,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster_snapshot(
         self,
         SnapshotIdentifier: str,
@@ -3353,7 +3353,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster_subnet_group(
         self,
         ClusterSubnetGroupName: str,
@@ -3540,7 +3540,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_subscription(
         self,
         SubscriptionName: str,
@@ -3803,7 +3803,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hsm_client_certificate(
         self,
         HsmClientCertificateIdentifier: str,
@@ -3913,7 +3913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hsm_configuration(
         self,
         HsmConfigurationIdentifier: str,
@@ -4069,7 +4069,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot_copy_grant(
         self,
         SnapshotCopyGrantName: str,
@@ -4200,7 +4200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot_schedule(
         self,
         ScheduleDefinitions: List[str] = None,
@@ -4363,8 +4363,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def create_tags(self, ResourceName: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, ResourceName: str, Tags: List[ClientCreateTagsTagsTypeDef]
+    ) -> None:
         """
         Adds one or more tags to a specified resource.
 
@@ -4419,7 +4421,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster(
         self,
         ClusterIdentifier: str,
@@ -5267,7 +5269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster_parameter_group(self, ParameterGroupName: str) -> None:
         """
         Deletes a specified Amazon Redshift parameter group.
@@ -5299,7 +5301,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster_security_group(self, ClusterSecurityGroupName: str) -> None:
         """
         Deletes an Amazon Redshift security group.
@@ -5330,7 +5332,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster_snapshot(
         self, SnapshotIdentifier: str, SnapshotClusterIdentifier: str = None
     ) -> ClientDeleteClusterSnapshotResponseTypeDef:
@@ -5624,7 +5626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster_subnet_group(self, ClusterSubnetGroupName: str) -> None:
         """
         Deletes the specified cluster subnet group.
@@ -5646,7 +5648,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_subscription(self, SubscriptionName: str) -> None:
         """
         Deletes an Amazon Redshift event notification subscription.
@@ -5668,7 +5670,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hsm_client_certificate(
         self, HsmClientCertificateIdentifier: str
     ) -> None:
@@ -5692,7 +5694,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hsm_configuration(self, HsmConfigurationIdentifier: str) -> None:
         """
         Deletes the specified Amazon Redshift HSM configuration.
@@ -5714,7 +5716,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot_copy_grant(self, SnapshotCopyGrantName: str) -> None:
         """
         Deletes the specified snapshot copy grant.
@@ -5736,7 +5738,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot_schedule(self, ScheduleIdentifier: str) -> None:
         """
         Deletes a snapshot schedule.
@@ -5758,8 +5760,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def delete_tags(self, ResourceName: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_tags(self, ResourceName: str, TagKeys: List[str]) -> None:
         """
         Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want
         to delete the tag or tags.
@@ -5792,7 +5794,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, AttributeNames: List[str] = None
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -5866,7 +5868,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_db_revisions(
         self, ClusterIdentifier: str = None, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeClusterDbRevisionsResponseTypeDef:
@@ -5994,7 +5996,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_parameter_groups(
         self,
         ParameterGroupName: str = None,
@@ -6164,7 +6166,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_parameters(
         self,
         ParameterGroupName: str,
@@ -6324,7 +6326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_security_groups(
         self,
         ClusterSecurityGroupName: str = None,
@@ -6584,7 +6586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_snapshots(
         self,
         ClusterIdentifier: str = None,
@@ -7037,7 +7039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_subnet_groups(
         self,
         ClusterSubnetGroupName: str = None,
@@ -7249,7 +7251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_tracks(
         self,
         MaintenanceTrackName: str = None,
@@ -7375,7 +7377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_versions(
         self,
         ClusterVersion: str = None,
@@ -7497,7 +7499,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_clusters(
         self,
         ClusterIdentifier: str = None,
@@ -8367,7 +8369,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_default_cluster_parameters(
         self, ParameterGroupFamily: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeDefaultClusterParametersResponseTypeDef:
@@ -8513,7 +8515,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_categories(
         self, SourceType: str = None
     ) -> ClientDescribeEventCategoriesResponseTypeDef:
@@ -8610,7 +8612,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_subscriptions(
         self,
         SubscriptionName: str = None,
@@ -8830,7 +8832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         SourceIdentifier: str = None,
@@ -9024,7 +9026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hsm_client_certificates(
         self,
         HsmClientCertificateIdentifier: str = None,
@@ -9184,7 +9186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hsm_configurations(
         self,
         HsmConfigurationIdentifier: str = None,
@@ -9354,7 +9356,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_logging_status(
         self, ClusterIdentifier: str
     ) -> ClientDescribeLoggingStatusResponseTypeDef:
@@ -9425,7 +9427,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_node_configuration_options(
         self,
         ActionType: str,
@@ -9578,7 +9580,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_orderable_cluster_options(
         self,
         ClusterVersion: str = None,
@@ -9729,7 +9731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_node_offerings(
         self,
         ReservedNodeOfferingId: str = None,
@@ -9882,7 +9884,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_nodes(
         self, ReservedNodeId: str = None, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeReservedNodesResponseTypeDef:
@@ -10058,7 +10060,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resize(
         self, ClusterIdentifier: str
     ) -> ClientDescribeResizeResponseTypeDef:
@@ -10221,7 +10223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshot_copy_grants(
         self,
         SnapshotCopyGrantName: str = None,
@@ -10383,7 +10385,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshot_schedules(
         self,
         ClusterIdentifier: str = None,
@@ -10560,7 +10562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_storage(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeStorageResponseTypeDef:
@@ -10600,7 +10602,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_table_restore_status(
         self,
         ClusterIdentifier: str = None,
@@ -10759,7 +10761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self,
         ResourceName: str = None,
@@ -10839,7 +10841,7 @@ class Client(BaseClient):
           * Snapshot copy grant
 
           For more information about Amazon Redshift resource types and constructing ARNs, go to
-          `Specifying Policy Elements: Actions, Effects, Resources, and Principals
+          `Specifying Policy Elements\\: Actions, Effects, Resources, and Principals
           <https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions>`__
           in the Amazon Redshift Cluster Management Guide.
 
@@ -10967,7 +10969,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_logging(
         self, ClusterIdentifier: str
     ) -> ClientDisableLoggingResponseTypeDef:
@@ -11038,7 +11040,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_snapshot_copy(
         self, ClusterIdentifier: str
     ) -> ClientDisableSnapshotCopyResponseTypeDef:
@@ -11825,7 +11827,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_logging(
         self, ClusterIdentifier: str, BucketName: str, S3KeyPrefix: str = None
     ) -> ClientEnableLoggingResponseTypeDef:
@@ -11871,7 +11873,7 @@ class Client(BaseClient):
 
           * Cannot exceed 512 characters
 
-          * Cannot contain spaces( ), double quotes ("), single quotes ('), a backslash (\), or control
+          * Cannot contain spaces( ), double quotes ("), single quotes ('), a backslash (\\), or control
           characters. The hexadecimal codes for invalid characters are:
 
             * x00 to x20
@@ -11931,7 +11933,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_snapshot_copy(
         self,
         ClusterIdentifier: str,
@@ -12755,7 +12757,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -12784,7 +12786,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cluster_credentials(
         self,
         DbUser: str,
@@ -12968,7 +12970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -12989,7 +12991,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reserved_node_exchange_offerings(
         self, ReservedNodeId: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientGetReservedNodeExchangeOfferingsResponseTypeDef:
@@ -13121,7 +13123,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -13134,7 +13136,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster(
         self,
         ClusterIdentifier: str,
@@ -13310,7 +13312,7 @@ class Client(BaseClient):
           * Must contain one number.
 
           * Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double
-          quote), \, /, @, or space.
+          quote), \\, /, @, or space.
 
         :type ClusterParameterGroupName: string
         :param ClusterParameterGroupName:
@@ -14230,7 +14232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_db_revision(
         self, ClusterIdentifier: str, RevisionTarget: str
     ) -> ClientModifyClusterDbRevisionResponseTypeDef:
@@ -15018,7 +15020,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_iam_roles(
         self,
         ClusterIdentifier: str,
@@ -15824,7 +15826,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_maintenance(
         self,
         ClusterIdentifier: str,
@@ -16641,7 +16643,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_parameter_group(
         self,
         ParameterGroupName: str,
@@ -16765,7 +16767,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_snapshot(
         self,
         SnapshotIdentifier: str,
@@ -17061,7 +17063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_snapshot_schedule(
         self,
         ClusterIdentifier: str,
@@ -17100,7 +17102,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cluster_subnet_group(
         self, ClusterSubnetGroupName: str, SubnetIds: List[str], Description: str = None
     ) -> ClientModifyClusterSubnetGroupResponseTypeDef:
@@ -17246,7 +17248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_event_subscription(
         self,
         SubscriptionName: str,
@@ -17456,7 +17458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_snapshot_copy_retention_period(
         self, ClusterIdentifier: str, RetentionPeriod: int, Manual: bool = None
     ) -> ClientModifySnapshotCopyRetentionPeriodResponseTypeDef:
@@ -18273,7 +18275,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_snapshot_schedule(
         self, ScheduleIdentifier: str, ScheduleDefinitions: List[str]
     ) -> ClientModifySnapshotScheduleResponseTypeDef:
@@ -18392,7 +18394,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_reserved_node_offering(
         self, ReservedNodeOfferingId: str, NodeCount: int = None
     ) -> ClientPurchaseReservedNodeOfferingResponseTypeDef:
@@ -18544,7 +18546,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_cluster(
         self, ClusterIdentifier: str
     ) -> ClientRebootClusterResponseTypeDef:
@@ -19327,7 +19329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_cluster_parameter_group(
         self,
         ParameterGroupName: str,
@@ -19456,7 +19458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resize_cluster(
         self,
         ClusterIdentifier: str,
@@ -20281,7 +20283,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_from_cluster_snapshot(
         self,
         ClusterIdentifier: str,
@@ -21361,7 +21363,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_table_from_cluster_snapshot(
         self,
         ClusterIdentifier: str,
@@ -21537,7 +21539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_cluster_security_group_ingress(
         self,
         ClusterSecurityGroupName: str,
@@ -21741,7 +21743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_snapshot_access(
         self,
         SnapshotIdentifier: str,
@@ -22038,7 +22040,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rotate_encryption_key(
         self, ClusterIdentifier: str
     ) -> ClientRotateEncryptionKeyResponseTypeDef:

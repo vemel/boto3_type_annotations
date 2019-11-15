@@ -1,23 +1,28 @@
 "Main interface for elbv2 Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_elbv2.type_defs import (
+    LoadBalancerAvailableWaitWaiterConfigTypeDef,
+    LoadBalancerExistsWaitWaiterConfigTypeDef,
+    LoadBalancersDeletedWaitWaiterConfigTypeDef,
     TargetDeregisteredWaitTargetsTypeDef,
+    TargetDeregisteredWaitWaiterConfigTypeDef,
     TargetInServiceWaitTargetsTypeDef,
+    TargetInServiceWaitWaiterConfigTypeDef,
 )
 
 
 class LoadBalancerAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerArns: List[str] = None,
         Names: List[str] = None,
         Marker: str = None,
         PageSize: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: LoadBalancerAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancingv2.Client.describe_load_balancers` every 15 seconds until a
@@ -86,14 +91,14 @@ class LoadBalancerAvailable(Boto3Waiter):
 
 
 class LoadBalancerExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerArns: List[str] = None,
         Names: List[str] = None,
         Marker: str = None,
         PageSize: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: LoadBalancerExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancingv2.Client.describe_load_balancers` every 15 seconds until a
@@ -162,14 +167,14 @@ class LoadBalancerExists(Boto3Waiter):
 
 
 class LoadBalancersDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerArns: List[str] = None,
         Names: List[str] = None,
         Marker: str = None,
         PageSize: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: LoadBalancersDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancingv2.Client.describe_load_balancers` every 15 seconds until a
@@ -238,12 +243,12 @@ class LoadBalancersDeleted(Boto3Waiter):
 
 
 class TargetDeregistered(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         TargetGroupArn: str,
         Targets: List[TargetDeregisteredWaitTargetsTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: TargetDeregisteredWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancingv2.Client.describe_target_health` every 15 seconds until a
@@ -329,12 +334,12 @@ class TargetDeregistered(Boto3Waiter):
 
 
 class TargetInService(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         TargetGroupArn: str,
         Targets: List[TargetInServiceWaitTargetsTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: TargetInServiceWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancingv2.Client.describe_target_health` every 15 seconds until a

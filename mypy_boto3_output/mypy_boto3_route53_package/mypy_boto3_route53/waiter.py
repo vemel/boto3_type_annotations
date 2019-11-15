@@ -1,13 +1,19 @@
 "Main interface for route53 Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_route53.type_defs import (
+    ResourceRecordSetsChangedWaitWaiterConfigTypeDef,
+)
 
 
 class ResourceRecordSetsChanged(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Id: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        Id: str,
+        WaiterConfig: ResourceRecordSetsChangedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`Route53.Client.get_change` every 30 seconds until a successful state is reached. An
         error is returned after 60 failed checks.

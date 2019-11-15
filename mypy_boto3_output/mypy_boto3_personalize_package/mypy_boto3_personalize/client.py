@@ -47,7 +47,7 @@ from mypy_boto3_personalize.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -64,7 +64,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_batch_inference_job(
         self,
         jobName: str,
@@ -182,7 +182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_campaign(
         self, name: str, solutionVersionArn: str, minProvisionedTPS: int
     ) -> ClientCreateCampaignResponseTypeDef:
@@ -277,7 +277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset(
         self, name: str, schemaArn: str, datasetGroupArn: str, datasetType: str
     ) -> ClientCreateDatasetResponseTypeDef:
@@ -374,7 +374,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset_group(
         self, name: str, roleArn: str = None, kmsKeyArn: str = None
     ) -> ClientCreateDatasetGroupResponseTypeDef:
@@ -472,7 +472,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset_import_job(
         self,
         jobName: str,
@@ -572,7 +572,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_tracker(
         self, name: str, datasetGroupArn: str
     ) -> ClientCreateEventTrackerResponseTypeDef:
@@ -658,7 +658,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_schema(
         self, name: str, schema: str
     ) -> ClientCreateSchemaResponseTypeDef:
@@ -717,7 +717,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_solution(
         self,
         name: str,
@@ -1030,7 +1030,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_solution_version(
         self, solutionArn: str, trainingMode: str = None
     ) -> ClientCreateSolutionVersionResponseTypeDef:
@@ -1115,7 +1115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_campaign(self, campaignArn: str) -> None:
         """
         Removes a campaign by deleting the solution deployment. The solution that the campaign is based on
@@ -1141,7 +1141,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset(self, datasetArn: str) -> None:
         """
         Deletes a dataset. You can't delete a dataset if an associated ``DatasetImportJob`` or
@@ -1165,7 +1165,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset_group(self, datasetGroupArn: str) -> None:
         """
         Deletes a dataset group. Before you delete a dataset group, you must delete the following:
@@ -1193,7 +1193,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_tracker(self, eventTrackerArn: str) -> None:
         """
         Deletes the event tracker. Does not delete the event-interactions dataset from the associated
@@ -1216,7 +1216,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_schema(self, schemaArn: str) -> None:
         """
         Deletes a schema. Before deleting a schema, you must delete all datasets referencing the schema.
@@ -1239,7 +1239,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_solution(self, solutionArn: str) -> None:
         """
         Deletes all versions of a solution and the ``Solution`` object itself. Before deleting a solution,
@@ -1265,7 +1265,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_algorithm(
         self, algorithmArn: str
     ) -> ClientDescribeAlgorithmResponseTypeDef:
@@ -1484,7 +1484,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_batch_inference_job(
         self, batchInferenceJobArn: str
     ) -> ClientDescribeBatchInferenceJobResponseTypeDef:
@@ -1633,7 +1633,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_campaign(
         self, campaignArn: str
     ) -> ClientDescribeCampaignResponseTypeDef:
@@ -1776,7 +1776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset(self, datasetArn: str) -> ClientDescribeDatasetResponseTypeDef:
         """
         Describes the given dataset. For more information on datasets, see  CreateDataset .
@@ -1868,7 +1868,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset_group(
         self, datasetGroupArn: str
     ) -> ClientDescribeDatasetGroupResponseTypeDef:
@@ -1956,7 +1956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset_import_job(
         self, datasetImportJobArn: str
     ) -> ClientDescribeDatasetImportJobResponseTypeDef:
@@ -2068,7 +2068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_tracker(
         self, eventTrackerArn: str
     ) -> ClientDescribeEventTrackerResponseTypeDef:
@@ -2158,7 +2158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_feature_transformation(
         self, featureTransformationArn: str
     ) -> ClientDescribeFeatureTransformationResponseTypeDef:
@@ -2240,7 +2240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_recipe(self, recipeArn: str) -> ClientDescribeRecipeResponseTypeDef:
         """
         Describes a recipe.
@@ -2346,7 +2346,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_schema(self, schemaArn: str) -> ClientDescribeSchemaResponseTypeDef:
         """
         Describes a schema. For more information on schemas, see  CreateSchema .
@@ -2411,7 +2411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_solution(
         self, solutionArn: str
     ) -> ClientDescribeSolutionResponseTypeDef:
@@ -2743,7 +2743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_solution_version(
         self, solutionVersionArn: str
     ) -> ClientDescribeSolutionVersionResponseTypeDef:
@@ -3057,7 +3057,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3086,7 +3086,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3107,7 +3107,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_solution_metrics(
         self, solutionVersionArn: str
     ) -> ClientGetSolutionMetricsResponseTypeDef:
@@ -3159,7 +3159,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3172,7 +3172,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_batch_inference_jobs(
         self,
         solutionVersionArn: str = None,
@@ -3282,7 +3282,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_campaigns(
         self, solutionArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListCampaignsResponseTypeDef:
@@ -3389,7 +3389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataset_groups(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListDatasetGroupsResponseTypeDef:
@@ -3488,7 +3488,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataset_import_jobs(
         self, datasetArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListDatasetImportJobsResponseTypeDef:
@@ -3593,7 +3593,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_datasets(
         self, datasetGroupArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListDatasetsResponseTypeDef:
@@ -3706,7 +3706,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_event_trackers(
         self, datasetGroupArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListEventTrackersResponseTypeDef:
@@ -3806,7 +3806,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_recipes(
         self, recipeProvider: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListRecipesResponseTypeDef:
@@ -3899,7 +3899,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_schemas(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListSchemasResponseTypeDef:
@@ -3982,7 +3982,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_solution_versions(
         self, solutionArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListSolutionVersionsResponseTypeDef:
@@ -4081,7 +4081,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_solutions(
         self, datasetGroupArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListSolutionsResponseTypeDef:
@@ -4182,7 +4182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_campaign(
         self,
         campaignArn: str,

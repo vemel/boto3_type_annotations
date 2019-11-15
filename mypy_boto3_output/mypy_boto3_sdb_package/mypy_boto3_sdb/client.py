@@ -6,6 +6,8 @@ from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
 from mypy_boto3_sdb.type_defs import (
+    ClientBatchDeleteAttributesItemsTypeDef,
+    ClientBatchPutAttributesItemsTypeDef,
     ClientDomainMetadataResponseTypeDef,
     ClientGetAttributesResponseTypeDef,
     ClientListDomainsResponseTypeDef,
@@ -15,8 +17,10 @@ from mypy_boto3_sdb.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
-    def batch_delete_attributes(self, DomainName: str, Items: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def batch_delete_attributes(
+        self, DomainName: str, Items: List[ClientBatchDeleteAttributesItemsTypeDef]
+    ) -> None:
         """
         Performs multiple DeleteAttributes operations in a single call, which reduces round trips and
         latencies. This enables Amazon SimpleDB to optimize requests, which generally yields better
@@ -75,8 +79,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def batch_put_attributes(self, DomainName: str, Items: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def batch_put_attributes(
+        self, DomainName: str, Items: List[ClientBatchPutAttributesItemsTypeDef]
+    ) -> None:
         """
         The ``BatchPutAttributes`` operation creates or replaces attributes within one or more items. By
         using this operation, the client can perform multiple  PutAttribute operation with a single call.
@@ -170,7 +176,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -187,7 +193,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain(self, DomainName: str) -> None:
         """
         The ``CreateDomain`` operation creates a new domain. The domain name should be unique among the
@@ -197,7 +203,7 @@ class Client(BaseClient):
         The client can create up to 100 domains per account.
 
         If the client requires additional domains, go to
-        `http://aws.amazon.com/contact-us/simpledb-limit-request/
+        `http\\://aws.amazon.com/contact-us/simpledb-limit-request/
         <http://aws.amazon.com/contact-us/simpledb-limit-request/>`__ .
 
         See also: `AWS API Documentation
@@ -216,7 +222,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_attributes(
         self,
         DomainName: str,
@@ -303,7 +309,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain(self, DomainName: str) -> None:
         """
         The ``DeleteDomain`` operation deletes a domain. Any items (and their attributes) in the domain are
@@ -324,7 +330,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def domain_metadata(self, DomainName: str) -> ClientDomainMetadataResponseTypeDef:
         """
         Returns information about the domain, including when the domain was created, the number of items
@@ -382,7 +388,7 @@ class Client(BaseClient):
             seconds.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -411,7 +417,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_attributes(
         self,
         DomainName: str,
@@ -493,7 +499,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -514,7 +520,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -527,7 +533,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domains(
         self, MaxNumberOfDomains: int = None, NextToken: str = None
     ) -> ClientListDomainsResponseTypeDef:
@@ -580,7 +586,7 @@ class Client(BaseClient):
             specified ``MaxNumberOfDomains`` still available.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_attributes(
         self,
         DomainName: str,
@@ -686,7 +692,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def select(
         self, SelectExpression: str, NextToken: str = None, ConsistentRead: bool = None
     ) -> ClientSelectResponseTypeDef:

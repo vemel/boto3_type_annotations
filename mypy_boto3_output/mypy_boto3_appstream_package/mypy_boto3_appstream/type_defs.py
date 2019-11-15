@@ -12248,6 +12248,52 @@ class DescribeUsersPaginateResponseTypeDef(_DescribeUsersPaginateResponseTypeDef
     """
 
 
+_FleetStartedWaitWaiterConfigTypeDef = TypedDict(
+    "_FleetStartedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class FleetStartedWaitWaiterConfigTypeDef(_FleetStartedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `FleetStartedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_FleetStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_FleetStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class FleetStoppedWaitWaiterConfigTypeDef(_FleetStoppedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `FleetStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _ListAssociatedFleetsPaginatePaginationConfigTypeDef = TypedDict(
     "_ListAssociatedFleetsPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "StartingToken": str},

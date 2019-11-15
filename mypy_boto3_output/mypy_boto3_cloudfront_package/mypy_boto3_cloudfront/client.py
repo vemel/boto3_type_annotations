@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_cloudfront.type_defs import (
     ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
     ClientCreateCloudFrontOriginAccessIdentityResponseTypeDef,
@@ -39,6 +38,8 @@ from mypy_boto3_cloudfront.type_defs import (
     ClientListPublicKeysResponseTypeDef,
     ClientListStreamingDistributionsResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
+    ClientTagResourceTagsTypeDef,
+    ClientUntagResourceTagKeysTypeDef,
     ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
     ClientUpdateCloudFrontOriginAccessIdentityResponseTypeDef,
     ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef,
@@ -53,7 +54,7 @@ from mypy_boto3_cloudfront.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -70,7 +71,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cloud_front_origin_access_identity(
         self,
         CloudFrontOriginAccessIdentityConfig: ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
@@ -197,7 +198,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_distribution(self, DistributionConfig: Dict) -> Dict[str, Any]:
         """
         Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you
@@ -4069,7 +4070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_distribution_with_tags(
         self, DistributionConfigWithTags: Dict
     ) -> Dict[str, Any]:
@@ -7990,7 +7991,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_field_level_encryption_config(
         self,
         FieldLevelEncryptionConfig: ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef,
@@ -8285,7 +8286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_field_level_encryption_profile(
         self,
         FieldLevelEncryptionProfileConfig: ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef,
@@ -8513,7 +8514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_invalidation(
         self,
         DistributionId: str,
@@ -8677,7 +8678,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_public_key(
         self, PublicKeyConfig: ClientCreatePublicKeyPublicKeyConfigTypeDef
     ) -> ClientCreatePublicKeyResponseTypeDef:
@@ -8793,7 +8794,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_streaming_distribution(
         self,
         StreamingDistributionConfig: ClientCreateStreamingDistributionStreamingDistributionConfigTypeDef,
@@ -9284,7 +9285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_streaming_distribution_with_tags(
         self,
         StreamingDistributionConfigWithTags: ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsTypeDef,
@@ -9792,7 +9793,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cloud_front_origin_access_identity(
         self, Id: str, IfMatch: str = None
     ) -> None:
@@ -9824,7 +9825,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_distribution(self, Id: str, IfMatch: str = None) -> None:
         """
         Delete a distribution.
@@ -9853,7 +9854,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_field_level_encryption_config(
         self, Id: str, IfMatch: str = None
     ) -> None:
@@ -9884,7 +9885,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_field_level_encryption_profile(
         self, Id: str, IfMatch: str = None
     ) -> None:
@@ -9915,7 +9916,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_public_key(self, Id: str, IfMatch: str = None) -> None:
         """
         Remove a public key you previously added to CloudFront.
@@ -9944,7 +9945,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_streaming_distribution(self, Id: str, IfMatch: str = None) -> None:
         """
         Delete a streaming distribution. To delete an RTMP distribution using the CloudFront API, perform
@@ -10007,7 +10008,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -10036,7 +10037,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cloud_front_origin_access_identity(
         self, Id: str
     ) -> ClientGetCloudFrontOriginAccessIdentityResponseTypeDef:
@@ -10127,7 +10128,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cloud_front_origin_access_identity_config(
         self, Id: str
     ) -> ClientGetCloudFrontOriginAccessIdentityConfigResponseTypeDef:
@@ -10201,7 +10202,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_distribution(self, Id: str) -> Dict[str, Any]:
         """
         Get the information about a distribution.
@@ -12258,7 +12259,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_distribution_config(self, Id: str) -> Dict[str, Any]:
         """
         Get the configuration information about a distribution.
@@ -14131,7 +14132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_field_level_encryption(
         self, Id: str
     ) -> ClientGetFieldLevelEncryptionResponseTypeDef:
@@ -14307,7 +14308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_field_level_encryption_config(
         self, Id: str
     ) -> ClientGetFieldLevelEncryptionConfigResponseTypeDef:
@@ -14465,7 +14466,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_field_level_encryption_profile(
         self, Id: str
     ) -> ClientGetFieldLevelEncryptionProfileResponseTypeDef:
@@ -14608,7 +14609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_field_level_encryption_profile_config(
         self, Id: str
     ) -> ClientGetFieldLevelEncryptionProfileConfigResponseTypeDef:
@@ -14734,7 +14735,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_invalidation(
         self, DistributionId: str, Id: str
     ) -> ClientGetInvalidationResponseTypeDef:
@@ -14850,7 +14851,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -14871,7 +14872,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_public_key(self, Id: str) -> ClientGetPublicKeyResponseTypeDef:
         """
         Get the public key information.
@@ -14955,7 +14956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_public_key_config(self, Id: str) -> ClientGetPublicKeyConfigResponseTypeDef:
         """
         Return public key configuration informaation
@@ -15022,7 +15023,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_streaming_distribution(
         self, Id: str
     ) -> ClientGetStreamingDistributionResponseTypeDef:
@@ -15337,7 +15338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_streaming_distribution_config(
         self, Id: str
     ) -> ClientGetStreamingDistributionConfigResponseTypeDef:
@@ -15530,7 +15531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -15543,7 +15544,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_cloud_front_origin_access_identities(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListCloudFrontOriginAccessIdentitiesResponseTypeDef:
@@ -15659,7 +15660,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_distributions(
         self, Marker: str = None, MaxItems: str = None
     ) -> Dict[str, Any]:
@@ -17530,7 +17531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_distributions_by_web_acl_id(
         self, WebACLId: str, Marker: str = None, MaxItems: str = None
     ) -> Dict[str, Any]:
@@ -19412,7 +19413,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_field_level_encryption_configs(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListFieldLevelEncryptionConfigsResponseTypeDef:
@@ -19606,7 +19607,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_field_level_encryption_profiles(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListFieldLevelEncryptionProfilesResponseTypeDef:
@@ -19772,7 +19773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_invalidations(
         self, DistributionId: str, Marker: str = None, MaxItems: str = None
     ) -> ClientListInvalidationsResponseTypeDef:
@@ -19890,7 +19891,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_public_keys(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListPublicKeysResponseTypeDef:
@@ -19997,7 +19998,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_streaming_distributions(
         self, Marker: str = None, MaxItems: str = None
     ) -> ClientListStreamingDistributionsResponseTypeDef:
@@ -20230,7 +20231,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, Resource: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -20302,8 +20303,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, Resource: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, Resource: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Add tags to a CloudFront resource.
 
@@ -20359,8 +20362,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, Resource: str, TagKeys: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(
+        self, Resource: str, TagKeys: ClientUntagResourceTagKeysTypeDef
+    ) -> None:
         """
         Remove tags from a CloudFront resource.
 
@@ -20402,7 +20407,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_cloud_front_origin_access_identity(
         self,
         CloudFrontOriginAccessIdentityConfig: ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
@@ -20532,7 +20537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_distribution(
         self, DistributionConfig: Dict, Id: str, IfMatch: str = None
     ) -> Dict[str, Any]:
@@ -24466,7 +24471,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_field_level_encryption_config(
         self,
         FieldLevelEncryptionConfig: ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef,
@@ -24769,7 +24774,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_field_level_encryption_profile(
         self,
         FieldLevelEncryptionProfileConfig: ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef,
@@ -25005,7 +25010,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_public_key(
         self,
         PublicKeyConfig: ClientUpdatePublicKeyPublicKeyConfigTypeDef,
@@ -25130,7 +25135,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_streaming_distribution(
         self,
         StreamingDistributionConfig: ClientUpdateStreamingDistributionStreamingDistributionConfigTypeDef,

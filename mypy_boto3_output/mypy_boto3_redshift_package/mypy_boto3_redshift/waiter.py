@@ -2,13 +2,19 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
-from mypy_boto3_redshift.type_defs import SnapshotAvailableWaitSortingEntitiesTypeDef
+from mypy_boto3_redshift.type_defs import (
+    ClusterAvailableWaitWaiterConfigTypeDef,
+    ClusterDeletedWaitWaiterConfigTypeDef,
+    ClusterRestoredWaitWaiterConfigTypeDef,
+    SnapshotAvailableWaitSortingEntitiesTypeDef,
+    SnapshotAvailableWaitWaiterConfigTypeDef,
+)
 
 
 class ClusterAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ClusterIdentifier: str = None,
@@ -16,7 +22,7 @@ class ClusterAvailable(Boto3Waiter):
         Marker: str = None,
         TagKeys: List[str] = None,
         TagValues: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ClusterAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Redshift.Client.describe_clusters` every 60 seconds until a successful state is
@@ -115,7 +121,7 @@ class ClusterAvailable(Boto3Waiter):
 
 
 class ClusterDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ClusterIdentifier: str = None,
@@ -123,7 +129,7 @@ class ClusterDeleted(Boto3Waiter):
         Marker: str = None,
         TagKeys: List[str] = None,
         TagValues: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ClusterDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Redshift.Client.describe_clusters` every 60 seconds until a successful state is
@@ -222,7 +228,7 @@ class ClusterDeleted(Boto3Waiter):
 
 
 class ClusterRestored(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ClusterIdentifier: str = None,
@@ -230,7 +236,7 @@ class ClusterRestored(Boto3Waiter):
         Marker: str = None,
         TagKeys: List[str] = None,
         TagValues: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ClusterRestoredWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Redshift.Client.describe_clusters` every 60 seconds until a successful state is
@@ -329,7 +335,7 @@ class ClusterRestored(Boto3Waiter):
 
 
 class SnapshotAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ClusterIdentifier: str = None,
@@ -344,7 +350,7 @@ class SnapshotAvailable(Boto3Waiter):
         TagValues: List[str] = None,
         ClusterExists: bool = None,
         SortingEntities: List[SnapshotAvailableWaitSortingEntitiesTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: SnapshotAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Redshift.Client.describe_cluster_snapshots` every 15 seconds until a successful

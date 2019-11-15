@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_kms.type_defs import (
     ClientCancelKeyDeletionResponseTypeDef,
     ClientCreateCustomKeyStoreResponseTypeDef,
@@ -32,11 +31,12 @@ from mypy_boto3_kms.type_defs import (
     ClientListRetirableGrantsResponseTypeDef,
     ClientReEncryptResponseTypeDef,
     ClientScheduleKeyDeletionResponseTypeDef,
+    ClientTagResourceTagsTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -53,7 +53,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_key_deletion(self, KeyId: str) -> ClientCancelKeyDeletionResponseTypeDef:
         """
         Cancels the deletion of a customer master key (CMK). When this operation is successful, the CMK is
@@ -113,7 +113,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def connect_custom_key_store(self, CustomKeyStoreId: str) -> Dict[str, Any]:
         """
         Connects or reconnects a `custom key store
@@ -181,7 +181,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_alias(self, AliasName: str, TargetKeyId: str) -> None:
         """
         Creates a display name for a customer managed customer master key (CMK). You can use an alias to
@@ -240,7 +240,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_custom_key_store(
         self,
         CustomKeyStoreName: str,
@@ -338,7 +338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_grant(
         self,
         KeyId: str,
@@ -531,7 +531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_key(
         self,
         Policy: str = None,
@@ -834,7 +834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decrypt(
         self,
         CiphertextBlob: bytes,
@@ -931,7 +931,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_alias(self, AliasName: str) -> None:
         """
         Deletes the specified alias. You cannot perform this operation on an alias in a different AWS
@@ -963,7 +963,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_custom_key_store(self, CustomKeyStoreId: str) -> Dict[str, Any]:
         """
         Deletes a `custom key store
@@ -1025,7 +1025,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_imported_key_material(self, KeyId: str) -> None:
         """
         Deletes key material that you previously imported. This operation makes the specified customer
@@ -1074,7 +1074,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_custom_key_stores(
         self,
         CustomKeyStoreId: str = None,
@@ -1275,7 +1275,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_key(
         self, KeyId: str, GrantTokens: List[str] = None
     ) -> ClientDescribeKeyResponseTypeDef:
@@ -1465,7 +1465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_key(self, KeyId: str) -> None:
         """
         Sets the state of a customer master key (CMK) to disabled, thereby preventing its use for
@@ -1508,7 +1508,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_key_rotation(self, KeyId: str) -> None:
         """
         Disables `automatic rotation of the key material
@@ -1547,7 +1547,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disconnect_custom_key_store(self, CustomKeyStoreId: str) -> Dict[str, Any]:
         """
         Disconnects the `custom key store
@@ -1600,7 +1600,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_key(self, KeyId: str) -> None:
         """
         Sets the key state of a customer master key (CMK) to enabled. This allows you to use the CMK for
@@ -1638,7 +1638,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_key_rotation(self, KeyId: str) -> None:
         """
         Enables `automatic rotation of the key material
@@ -1680,7 +1680,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def encrypt(
         self,
         KeyId: str,
@@ -1806,7 +1806,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_data_key(
         self,
         KeyId: str,
@@ -1974,7 +1974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_data_key_without_plaintext(
         self,
         KeyId: str,
@@ -2109,7 +2109,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2138,7 +2138,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_random(
         self, NumberOfBytes: int = None, CustomKeyStoreId: str = None
     ) -> ClientGenerateRandomResponseTypeDef:
@@ -2198,7 +2198,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_key_policy(
         self, KeyId: str, PolicyName: str
     ) -> ClientGetKeyPolicyResponseTypeDef:
@@ -2257,7 +2257,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_key_rotation_status(
         self, KeyId: str
     ) -> ClientGetKeyRotationStatusResponseTypeDef:
@@ -2326,7 +2326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2347,7 +2347,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_parameters_for_import(
         self, KeyId: str, WrappingAlgorithm: str, WrappingKeySpec: str
     ) -> ClientGetParametersForImportResponseTypeDef:
@@ -2454,7 +2454,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2467,7 +2467,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_key_material(
         self,
         KeyId: str,
@@ -2585,7 +2585,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aliases(
         self, KeyId: str = None, Limit: int = None, Marker: str = None
     ) -> ClientListAliasesResponseTypeDef:
@@ -2697,7 +2697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_grants(
         self, KeyId: str, Limit: int = None, Marker: str = None
     ) -> ClientListGrantsResponseTypeDef:
@@ -2869,7 +2869,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_key_policies(
         self, KeyId: str, Limit: int = None, Marker: str = None
     ) -> ClientListKeyPoliciesResponseTypeDef:
@@ -2959,7 +2959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_keys(
         self, Limit: int = None, Marker: str = None
     ) -> ClientListKeysResponseTypeDef:
@@ -3040,7 +3040,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_tags(
         self, KeyId: str, Limit: int = None, Marker: str = None
     ) -> ClientListResourceTagsResponseTypeDef:
@@ -3151,7 +3151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_retirable_grants(
         self, RetiringPrincipal: str, Limit: int = None, Marker: str = None
     ) -> ClientListRetirableGrantsResponseTypeDef:
@@ -3320,7 +3320,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_key_policy(
         self,
         KeyId: str,
@@ -3414,7 +3414,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def re_encrypt(
         self,
         CiphertextBlob: bytes,
@@ -3550,7 +3550,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retire_grant(
         self, GrantToken: str = None, KeyId: str = None, GrantId: str = None
     ) -> None:
@@ -3604,7 +3604,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_grant(self, KeyId: str, GrantId: str) -> None:
         """
         Revokes the specified grant for the specified customer master key (CMK). You can revoke a grant to
@@ -3647,7 +3647,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def schedule_key_deletion(
         self, KeyId: str, PendingWindowInDays: int = None
     ) -> ClientScheduleKeyDeletionResponseTypeDef:
@@ -3743,8 +3743,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, KeyId: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, KeyId: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Adds or edits tags for a customer master key (CMK). You cannot perform this operation on a CMK in a
         different AWS account.
@@ -3821,8 +3823,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, KeyId: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, KeyId: str, TagKeys: List[str]) -> None:
         """
         Removes the specified tags from the specified customer master key (CMK). You cannot perform this
         operation on a CMK in a different AWS account.
@@ -3872,7 +3874,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_alias(self, AliasName: str, TargetKeyId: str) -> None:
         """
         Associates an existing alias with a different customer master key (CMK). Each CMK can have multiple
@@ -3934,7 +3936,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_custom_key_store(
         self,
         CustomKeyStoreId: str,
@@ -4037,7 +4039,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_key_description(self, KeyId: str, Description: str) -> None:
         """
         Updates the description of a customer master key (CMK). To see the description of a CMK, use

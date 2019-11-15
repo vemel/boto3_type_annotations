@@ -17,7 +17,7 @@ from mypy_boto3_resource_groups.type_defs import (
 
 
 class ListGroupResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GroupName: str,
@@ -172,7 +172,7 @@ class ListGroupResources(Boto3Paginator):
 
 
 class ListGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListGroupsPaginateFiltersTypeDef] = None,
@@ -314,7 +314,7 @@ class ListGroups(Boto3Paginator):
 
 
 class SearchResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceQuery: SearchResourcesPaginateResourceQueryTypeDef,

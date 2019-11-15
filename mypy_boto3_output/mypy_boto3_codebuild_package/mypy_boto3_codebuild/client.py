@@ -58,7 +58,7 @@ from mypy_boto3_codebuild.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_builds(
         self, ids: List[str]
     ) -> ClientBatchDeleteBuildsResponseTypeDef:
@@ -129,7 +129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_builds(self, ids: List[str]) -> ClientBatchGetBuildsResponseTypeDef:
         """
         Gets information about builds.
@@ -1273,7 +1273,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_projects(
         self, names: List[str]
     ) -> ClientBatchGetProjectsResponseTypeDef:
@@ -2569,7 +2569,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -2586,7 +2586,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_project(
         self,
         name: str,
@@ -4916,7 +4916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_webhook(
         self,
         projectName: str,
@@ -5203,7 +5203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_project(self, name: str) -> Dict[str, Any]:
         """
         Deletes a build project.
@@ -5235,7 +5235,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_source_credentials(
         self, arn: str
     ) -> ClientDeleteSourceCredentialsResponseTypeDef:
@@ -5276,7 +5276,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_webhook(self, projectName: str) -> Dict[str, Any]:
         """
         For an existing AWS CodeBuild build project that has its source code stored in a GitHub or
@@ -5310,7 +5310,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5339,7 +5339,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5360,7 +5360,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5373,7 +5373,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_source_credentials(
         self,
         token: str,
@@ -5449,7 +5449,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invalidate_project_cache(self, projectName: str) -> Dict[str, Any]:
         """
         Resets the cache for a project.
@@ -5481,7 +5481,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_builds(
         self, sortOrder: str = None, nextToken: str = None
     ) -> ClientListBuildsResponseTypeDef:
@@ -5547,7 +5547,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_builds_for_project(
         self, projectName: str, sortOrder: str = None, nextToken: str = None
     ) -> ClientListBuildsForProjectResponseTypeDef:
@@ -5621,7 +5621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_curated_environment_images(
         self, *args: Any, **kwargs: Any
     ) -> ClientListCuratedEnvironmentImagesResponseTypeDef:
@@ -5719,7 +5719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_projects(
         self, sortBy: str = None, sortOrder: str = None, nextToken: str = None
     ) -> ClientListProjectsResponseTypeDef:
@@ -5805,7 +5805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_source_credentials(
         self, *args: Any, **kwargs: Any
     ) -> ClientListSourceCredentialsResponseTypeDef:
@@ -5865,7 +5865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_build(
         self,
         projectName: str,
@@ -7891,7 +7891,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_build(self, id: str) -> ClientStopBuildResponseTypeDef:
         """
         Attempts to stop running a build.
@@ -9007,7 +9007,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_project(
         self,
         name: str,
@@ -11340,7 +11340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_webhook(
         self,
         projectName: str,

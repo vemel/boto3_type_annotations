@@ -15,7 +15,7 @@ from mypy_boto3_codestar.type_defs import (
 
 
 class ListProjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProjectsPaginatePaginationConfigTypeDef = None
     ) -> ListProjectsPaginateResponseTypeDef:
@@ -100,7 +100,7 @@ class ListProjects(Boto3Paginator):
 
 
 class ListResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         projectId: str,
@@ -188,7 +188,7 @@ class ListResources(Boto3Paginator):
 
 
 class ListTeamMembers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         projectId: str,
@@ -290,7 +290,7 @@ class ListTeamMembers(Boto3Paginator):
 
 
 class ListUserProfiles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListUserProfilesPaginatePaginationConfigTypeDef = None
     ) -> ListUserProfilesPaginateResponseTypeDef:

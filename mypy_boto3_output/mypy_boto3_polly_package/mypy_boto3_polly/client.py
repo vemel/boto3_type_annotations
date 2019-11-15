@@ -17,7 +17,7 @@ from mypy_boto3_polly.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -34,7 +34,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_lexicon(self, Name: str) -> Dict[str, Any]:
         """
         Deletes the specified pronunciation lexicon stored in an AWS Region. A lexicon which has been
@@ -71,7 +71,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_voices(
         self,
         Engine: str = None,
@@ -234,7 +234,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -263,7 +263,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_lexicon(self, Name: str) -> ClientGetLexiconResponseTypeDef:
         """
         Returns the content of the specified pronunciation lexicon stored in an AWS Region. For more
@@ -356,7 +356,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -377,7 +377,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_speech_synthesis_task(
         self, TaskId: str
     ) -> ClientGetSpeechSynthesisTaskResponseTypeDef:
@@ -536,7 +536,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -549,7 +549,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_lexicons(self, NextToken: str = None) -> ClientListLexiconsResponseTypeDef:
         """
         Returns a list of pronunciation lexicons stored in an AWS Region. For more information, see
@@ -649,7 +649,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_speech_synthesis_tasks(
         self, MaxResults: int = None, NextToken: str = None, Status: str = None
     ) -> ClientListSpeechSynthesisTasksResponseTypeDef:
@@ -832,7 +832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lexicon(self, Name: str, Content: str) -> Dict[str, Any]:
         """
         Stores a pronunciation lexicon in an AWS Region. If a lexicon with the same name already exists in
@@ -877,7 +877,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_speech_synthesis_task(
         self,
         OutputFormat: str,
@@ -1153,7 +1153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def synthesize_speech(
         self,
         OutputFormat: str,

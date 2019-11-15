@@ -30,7 +30,7 @@ from mypy_boto3_autoscaling.type_defs import (
 
 
 class DescribeAutoScalingGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupNames: List[str] = None,
@@ -575,7 +575,7 @@ class DescribeAutoScalingGroups(Boto3Paginator):
 
 
 class DescribeAutoScalingInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceIds: List[str] = None,
@@ -725,7 +725,7 @@ class DescribeAutoScalingInstances(Boto3Paginator):
 
 
 class DescribeLaunchConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         LaunchConfigurationNames: List[str] = None,
@@ -1108,7 +1108,7 @@ class DescribeLaunchConfigurations(Boto3Paginator):
 
 
 class DescribeLoadBalancerTargetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupName: str,
@@ -1216,7 +1216,7 @@ class DescribeLoadBalancerTargetGroups(Boto3Paginator):
 
 
 class DescribeLoadBalancers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupName: str,
@@ -1327,7 +1327,7 @@ class DescribeLoadBalancers(Boto3Paginator):
 
 
 class DescribeNotificationConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupNames: List[str] = None,
@@ -1437,7 +1437,7 @@ class DescribeNotificationConfigurations(Boto3Paginator):
 
 
 class DescribePolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupName: str = None,
@@ -1799,7 +1799,7 @@ class DescribePolicies(Boto3Paginator):
 
 
 class DescribeScalingActivities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ActivityIds: List[str] = None,
@@ -1948,7 +1948,7 @@ class DescribeScalingActivities(Boto3Paginator):
 
 
 class DescribeScheduledActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutoScalingGroupName: str = None,
@@ -2111,7 +2111,7 @@ class DescribeScheduledActions(Boto3Paginator):
 
 
 class DescribeTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeTagsPaginateFiltersTypeDef] = None,

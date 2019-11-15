@@ -11,7 +11,7 @@ from mypy_boto3_mobile.type_defs import (
 
 
 class ListBundles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListBundlesPaginatePaginationConfigTypeDef = None
     ) -> ListBundlesPaginateResponseTypeDef:
@@ -123,7 +123,7 @@ class ListBundles(Boto3Paginator):
 
 
 class ListProjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProjectsPaginatePaginationConfigTypeDef = None
     ) -> ListProjectsPaginateResponseTypeDef:

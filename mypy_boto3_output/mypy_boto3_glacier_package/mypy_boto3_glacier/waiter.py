@@ -1,14 +1,20 @@
 "Main interface for glacier Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_glacier.type_defs import (
+    VaultExistsWaitWaiterConfigTypeDef,
+    VaultNotExistsWaitWaiterConfigTypeDef,
+)
 
 
 class VaultExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, vaultName: str, accountId: str = None, WaiterConfig: Dict = None
+        self,
+        vaultName: str,
+        accountId: str = None,
+        WaiterConfig: VaultExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Glacier.Client.describe_vault` every 3 seconds until a successful state is reached.
@@ -60,9 +66,12 @@ class VaultExists(Boto3Waiter):
 
 
 class VaultNotExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, vaultName: str, accountId: str = None, WaiterConfig: Dict = None
+        self,
+        vaultName: str,
+        accountId: str = None,
+        WaiterConfig: VaultNotExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Glacier.Client.describe_vault` every 3 seconds until a successful state is reached.

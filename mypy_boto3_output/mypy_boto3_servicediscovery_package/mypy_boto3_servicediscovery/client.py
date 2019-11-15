@@ -35,7 +35,7 @@ from mypy_boto3_servicediscovery.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -52,7 +52,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_http_namespace(
         self, Name: str, CreatorRequestId: str = None, Description: str = None
     ) -> ClientCreateHttpNamespaceResponseTypeDef:
@@ -115,7 +115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_private_dns_namespace(
         self, Name: str, Vpc: str, CreatorRequestId: str = None, Description: str = None
     ) -> ClientCreatePrivateDnsNamespaceResponseTypeDef:
@@ -187,7 +187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_public_dns_namespace(
         self, Name: str, CreatorRequestId: str = None, Description: str = None
     ) -> ClientCreatePublicDnsNamespaceResponseTypeDef:
@@ -251,7 +251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_service(
         self,
         Name: str,
@@ -912,7 +912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_namespace(self, Id: str) -> ClientDeleteNamespaceResponseTypeDef:
         """
         Deletes a namespace from the current account. If the namespace still contains one or more services,
@@ -953,7 +953,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_service(self, Id: str) -> Dict[str, Any]:
         """
         Deletes a specified service. If the service still contains one or more registered instances, the
@@ -986,7 +986,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_instance(
         self, ServiceId: str, InstanceId: str
     ) -> ClientDeregisterInstanceResponseTypeDef:
@@ -1035,7 +1035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def discover_instances(
         self,
         NamespaceName: str,
@@ -1156,7 +1156,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1185,7 +1185,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance(
         self, ServiceId: str, InstanceId: str
     ) -> ClientGetInstanceResponseTypeDef:
@@ -1347,7 +1347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instances_health_status(
         self,
         ServiceId: str,
@@ -1448,7 +1448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_namespace(self, Id: str) -> ClientGetNamespaceResponseTypeDef:
         """
         Gets information about a namespace.
@@ -1562,7 +1562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_operation(self, OperationId: str) -> ClientGetOperationResponseTypeDef:
         """
         Gets information about any operation that returns an operation ID in the response, such as a
@@ -1688,7 +1688,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1709,7 +1709,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service(self, Id: str) -> ClientGetServiceResponseTypeDef:
         """
         Gets the settings for a specified service.
@@ -2056,7 +2056,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2069,7 +2069,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instances(
         self, ServiceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListInstancesResponseTypeDef:
@@ -2181,7 +2181,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_namespaces(
         self,
         NextToken: str = None,
@@ -2382,7 +2382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_operations(
         self,
         NextToken: str = None,
@@ -2559,7 +2559,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_services(
         self,
         NextToken: str = None,
@@ -3086,7 +3086,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_instance(
         self,
         ServiceId: str,
@@ -3291,7 +3291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_instance_custom_health_status(
         self, ServiceId: str, InstanceId: str, Status: str
     ) -> None:
@@ -3335,7 +3335,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service(
         self, Id: str, Service: ClientUpdateServiceServiceTypeDef
     ) -> ClientUpdateServiceResponseTypeDef:

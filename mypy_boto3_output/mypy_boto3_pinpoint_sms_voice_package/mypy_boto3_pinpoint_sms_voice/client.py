@@ -14,7 +14,7 @@ from mypy_boto3_pinpoint_sms_voice.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -31,7 +31,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set(
         self, ConfigurationSetName: str = None
     ) -> Dict[str, Any]:
@@ -64,7 +64,7 @@ class Client(BaseClient):
           - *(dict) --* CreateConfigurationSetResponse
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,
@@ -157,7 +157,7 @@ class Client(BaseClient):
           - *(dict) --* CreateConfigurationSetEventDestinationResponse
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set(self, ConfigurationSetName: str) -> Dict[str, Any]:
         """
         Deletes an existing configuration set.
@@ -187,7 +187,7 @@ class Client(BaseClient):
           - *(dict) --* DeleteConfigurationSetResponse
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set_event_destination(
         self, ConfigurationSetName: str, EventDestinationName: str
     ) -> Dict[str, Any]:
@@ -224,7 +224,7 @@ class Client(BaseClient):
           - *(dict) --* DeleteConfigurationSetEventDestinationResponse
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -253,7 +253,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_configuration_set_event_destinations(
         self, ConfigurationSetName: str
     ) -> ClientGetConfigurationSetEventDestinationsResponseTypeDef:
@@ -352,7 +352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -373,7 +373,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -386,7 +386,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_voice_message(
         self,
         CallerId: str = None,
@@ -488,7 +488,7 @@ class Client(BaseClient):
             - **MessageId** *(string) --* A unique identifier for the voice message.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,

@@ -13,7 +13,7 @@ from mypy_boto3_codebuild.type_defs import (
 
 
 class ListBuilds(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         sortOrder: str = None,
@@ -92,7 +92,7 @@ class ListBuilds(Boto3Paginator):
 
 
 class ListBuildsForProject(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         projectName: str,
@@ -179,7 +179,7 @@ class ListBuildsForProject(Boto3Paginator):
 
 
 class ListProjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         sortBy: str = None,

@@ -47,7 +47,7 @@ from mypy_boto3_sagemaker.type_defs import (
 
 
 class ListAlgorithms(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -180,7 +180,7 @@ class ListAlgorithms(Boto3Paginator):
 
 
 class ListCodeRepositories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -361,7 +361,7 @@ class ListCodeRepositories(Boto3Paginator):
 
 
 class ListCompilationJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -534,7 +534,7 @@ class ListCompilationJobs(Boto3Paginator):
 
 
 class ListEndpointConfigs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -658,7 +658,7 @@ class ListEndpointConfigs(Boto3Paginator):
 
 
 class ListEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -846,7 +846,7 @@ class ListEndpoints(Boto3Paginator):
 
 
 class ListHyperParameterTuningJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -1092,7 +1092,7 @@ class ListHyperParameterTuningJobs(Boto3Paginator):
 
 
 class ListLabelingJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -1359,7 +1359,7 @@ class ListLabelingJobs(Boto3Paginator):
 
 
 class ListLabelingJobsForWorkteam(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WorkteamArn: str,
@@ -1518,7 +1518,7 @@ class ListLabelingJobsForWorkteam(Boto3Paginator):
 
 
 class ListModelPackages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -1651,7 +1651,7 @@ class ListModelPackages(Boto3Paginator):
 
 
 class ListModels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -1775,7 +1775,7 @@ class ListModels(Boto3Paginator):
 
 
 class ListNotebookInstanceLifecycleConfigs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -1922,7 +1922,7 @@ class ListNotebookInstanceLifecycleConfigs(Boto3Paginator):
 
 
 class ListNotebookInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -2129,7 +2129,7 @@ class ListNotebookInstances(Boto3Paginator):
                   The name of a notebook instance lifecycle configuration associated with this notebook
                   instance.
 
-                  For information about notebook instance lifestyle configurations, see `Step 2.1:
+                  For information about notebook instance lifestyle configurations, see `Step 2.1\\:
                   (Optional) Customize a Notebook Instance
                   <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -2161,7 +2161,7 @@ class ListNotebookInstances(Boto3Paginator):
 
 
 class ListSubscribedWorkteams(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         NameContains: str = None,
@@ -2264,7 +2264,7 @@ class ListSubscribedWorkteams(Boto3Paginator):
 
 
 class ListTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,
@@ -2352,7 +2352,7 @@ class ListTags(Boto3Paginator):
 
 
 class ListTrainingJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -2513,7 +2513,7 @@ class ListTrainingJobs(Boto3Paginator):
 
 
 class ListTrainingJobsForHyperParameterTuningJob(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         HyperParameterTuningJobName: str,
@@ -2710,7 +2710,7 @@ class ListTrainingJobsForHyperParameterTuningJob(Boto3Paginator):
 
 
 class ListTransformJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreationTimeAfter: datetime = None,
@@ -2877,7 +2877,7 @@ class ListTransformJobs(Boto3Paginator):
 
 
 class ListWorkteams(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SortBy: str = None,
@@ -3057,7 +3057,7 @@ class ListWorkteams(Boto3Paginator):
 
 
 class Search(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Resource: str,
@@ -3709,7 +3709,7 @@ class Search(Boto3Paginator):
 
                       The registry path of the Docker image that contains the training algorithm. For
                       information about docker registry paths for built-in algorithms, see `Algorithms
-                      Provided by Amazon SageMaker: Common Parameters
+                      Provided by Amazon SageMaker\\: Common Parameters
                       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
                       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
                       ``registry/repository[@digest]`` image path formats. For more information, see `Using

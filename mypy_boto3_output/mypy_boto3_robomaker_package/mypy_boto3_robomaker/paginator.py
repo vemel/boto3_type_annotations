@@ -26,7 +26,7 @@ from mypy_boto3_robomaker.type_defs import (
 
 
 class ListDeploymentJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[ListDeploymentJobsPaginatefiltersTypeDef] = None,
@@ -275,7 +275,7 @@ class ListDeploymentJobs(Boto3Paginator):
 
 
 class ListFleets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[ListFleetsPaginatefiltersTypeDef] = None,
@@ -413,7 +413,7 @@ class ListFleets(Boto3Paginator):
 
 
 class ListRobotApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         versionQualifier: str = None,
@@ -563,7 +563,7 @@ class ListRobotApplications(Boto3Paginator):
 
 
 class ListRobots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[ListRobotsPaginatefiltersTypeDef] = None,
@@ -719,7 +719,7 @@ class ListRobots(Boto3Paginator):
 
 
 class ListSimulationApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         versionQualifier: str = None,
@@ -886,7 +886,7 @@ class ListSimulationApplications(Boto3Paginator):
 
 
 class ListSimulationJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[ListSimulationJobsPaginatefiltersTypeDef] = None,

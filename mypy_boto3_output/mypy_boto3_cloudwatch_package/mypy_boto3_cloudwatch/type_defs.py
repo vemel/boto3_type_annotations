@@ -97,6 +97,29 @@ class AlarmDescribeHistoryResponseTypeDef(_AlarmDescribeHistoryResponseTypeDef):
     """
 
 
+_AlarmExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_AlarmExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class AlarmExistsWaitWaiterConfigTypeDef(_AlarmExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `AlarmExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _AlarmsFilterDimensionsTypeDef = TypedDict(
     "_AlarmsFilterDimensionsTypeDef", {"Name": str, "Value": str}
 )
@@ -4230,6 +4253,191 @@ class ClientPutMetricAlarmTagsTypeDef(_ClientPutMetricAlarmTagsTypeDef):
     - **Value** *(string) --* **[REQUIRED]**
 
       The value for the specified tag key.
+    """
+
+
+_ClientPutMetricDataMetricDataDimensionsTypeDef = TypedDict(
+    "_ClientPutMetricDataMetricDataDimensionsTypeDef", {"Name": str, "Value": str}
+)
+
+
+class ClientPutMetricDataMetricDataDimensionsTypeDef(
+    _ClientPutMetricDataMetricDataDimensionsTypeDef
+):
+    """
+    Type definition for `ClientPutMetricDataMetricData` `Dimensions`
+
+    Expands the identity of a metric.
+
+    - **Name** *(string) --* **[REQUIRED]**
+
+      The name of the dimension.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value representing the dimension measurement.
+    """
+
+
+_ClientPutMetricDataMetricDataStatisticValuesTypeDef = TypedDict(
+    "_ClientPutMetricDataMetricDataStatisticValuesTypeDef",
+    {"SampleCount": float, "Sum": float, "Minimum": float, "Maximum": float},
+)
+
+
+class ClientPutMetricDataMetricDataStatisticValuesTypeDef(
+    _ClientPutMetricDataMetricDataStatisticValuesTypeDef
+):
+    """
+    Type definition for `ClientPutMetricDataMetricData` `StatisticValues`
+
+    The statistical values for the metric.
+
+    - **SampleCount** *(float) --* **[REQUIRED]**
+
+      The number of samples used for the statistic set.
+
+    - **Sum** *(float) --* **[REQUIRED]**
+
+      The sum of values for the sample set.
+
+    - **Minimum** *(float) --* **[REQUIRED]**
+
+      The minimum value of the sample set.
+
+    - **Maximum** *(float) --* **[REQUIRED]**
+
+      The maximum value of the sample set.
+    """
+
+
+_RequiredClientPutMetricDataMetricDataTypeDef = TypedDict(
+    "_RequiredClientPutMetricDataMetricDataTypeDef", {"MetricName": str}
+)
+_OptionalClientPutMetricDataMetricDataTypeDef = TypedDict(
+    "_OptionalClientPutMetricDataMetricDataTypeDef",
+    {
+        "Dimensions": List[ClientPutMetricDataMetricDataDimensionsTypeDef],
+        "Timestamp": datetime,
+        "Value": float,
+        "StatisticValues": ClientPutMetricDataMetricDataStatisticValuesTypeDef,
+        "Values": List[float],
+        "Counts": List[float],
+        "Unit": str,
+        "StorageResolution": int,
+    },
+    total=False,
+)
+
+
+class ClientPutMetricDataMetricDataTypeDef(
+    _RequiredClientPutMetricDataMetricDataTypeDef,
+    _OptionalClientPutMetricDataMetricDataTypeDef,
+):
+    """
+    Type definition for `ClientPutMetricData` `MetricData`
+
+    Encapsulates the information sent to either create a metric or add new values to be aggregated
+    into an existing metric.
+
+    - **MetricName** *(string) --* **[REQUIRED]**
+
+      The name of the metric.
+
+    - **Dimensions** *(list) --*
+
+      The dimensions associated with the metric.
+
+      - *(dict) --*
+
+        Expands the identity of a metric.
+
+        - **Name** *(string) --* **[REQUIRED]**
+
+          The name of the dimension.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          The value representing the dimension measurement.
+
+    - **Timestamp** *(datetime) --*
+
+      The time the metric data was received, expressed as the number of milliseconds since Jan 1,
+      1970 00:00:00 UTC.
+
+    - **Value** *(float) --*
+
+      The value for the metric.
+
+      Although the parameter accepts numbers of type Double, CloudWatch rejects values that are
+      either too small or too large. Values must be in the range of 8.515920e-109 to 1.174271e+108
+      (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for example, NaN,
+      +Infinity, -Infinity) are not supported.
+
+    - **StatisticValues** *(dict) --*
+
+      The statistical values for the metric.
+
+      - **SampleCount** *(float) --* **[REQUIRED]**
+
+        The number of samples used for the statistic set.
+
+      - **Sum** *(float) --* **[REQUIRED]**
+
+        The sum of values for the sample set.
+
+      - **Minimum** *(float) --* **[REQUIRED]**
+
+        The minimum value of the sample set.
+
+      - **Maximum** *(float) --* **[REQUIRED]**
+
+        The maximum value of the sample set.
+
+    - **Values** *(list) --*
+
+      Array of numbers representing the values for the metric during the period. Each unique value
+      is listed just once in this array, and the corresponding number in the ``Counts`` array
+      specifies the number of times that value occurred during the period. You can include up to
+      150 unique values in each ``PutMetricData`` action that specifies a ``Values`` array.
+
+      Although the ``Values`` array accepts numbers of type ``Double`` , CloudWatch rejects values
+      that are either too small or too large. Values must be in the range of 8.515920e-109 to
+      1.174271e+108 (Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values (for
+      example, NaN, +Infinity, -Infinity) are not supported.
+
+      - *(float) --*
+
+    - **Counts** *(list) --*
+
+      Array of numbers that is used along with the ``Values`` array. Each number in the ``Count``
+      array is the number of times the corresponding value in the ``Values`` array occurred during
+      the period.
+
+      If you omit the ``Counts`` array, the default of 1 is used as the value for each count. If
+      you include a ``Counts`` array, it must include the same amount of values as the ``Values``
+      array.
+
+      - *(float) --*
+
+    - **Unit** *(string) --*
+
+      When you are using a ``Put`` operation, this defines what unit you want to use when storing
+      the metric.
+
+      In a ``Get`` operation, this displays the unit that is used for the metric.
+
+    - **StorageResolution** *(integer) --*
+
+      Valid values are 1 and 60. Setting this to 1 specifies this metric as a high-resolution
+      metric, so that CloudWatch stores the metric with sub-minute resolution down to one second.
+      Setting this to 60 specifies this metric as a regular-resolution metric, which CloudWatch
+      stores at 1-minute resolution. Currently, high resolution is available only for custom
+      metrics. For more information about high-resolution metrics, see `High-Resolution Metrics
+      <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html#high-resolution-metrics>`__
+      in the *Amazon CloudWatch User Guide* .
+
+      This field is optional, if you do not specify it the default of 60 is used.
     """
 
 

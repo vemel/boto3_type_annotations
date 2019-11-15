@@ -6,6 +6,7 @@ from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
 from mypy_boto3_es.type_defs import (
+    ClientAddTagsTagListTypeDef,
     ClientCancelElasticsearchServiceSoftwareUpdateResponseTypeDef,
     ClientCreateElasticsearchDomainCognitoOptionsTypeDef,
     ClientCreateElasticsearchDomainDomainEndpointOptionsTypeDef,
@@ -46,8 +47,8 @@ from mypy_boto3_es.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
-    def add_tags(self, ARN: str, TagList: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def add_tags(self, ARN: str, TagList: List[ClientAddTagsTagListTypeDef]) -> None:
         """
         Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value
         pairs. An Elasticsearch domain may have up to 10 tags. See `Tagging Amazon Elasticsearch Service
@@ -97,7 +98,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -114,7 +115,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_elasticsearch_service_software_update(
         self, DomainName: str
     ) -> ClientCancelElasticsearchServiceSoftwareUpdateResponseTypeDef:
@@ -200,7 +201,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_elasticsearch_domain(
         self,
         DomainName: str,
@@ -1004,7 +1005,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_elasticsearch_domain(
         self, DomainName: str
     ) -> ClientDeleteElasticsearchDomainResponseTypeDef:
@@ -1476,7 +1477,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_elasticsearch_service_role(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains.
@@ -1496,7 +1497,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elasticsearch_domain(
         self, DomainName: str
     ) -> ClientDescribeElasticsearchDomainResponseTypeDef:
@@ -1968,7 +1969,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elasticsearch_domain_config(
         self, DomainName: str
     ) -> ClientDescribeElasticsearchDomainConfigResponseTypeDef:
@@ -2792,7 +2793,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elasticsearch_domains(
         self, DomainNames: List[str]
     ) -> ClientDescribeElasticsearchDomainsResponseTypeDef:
@@ -3287,7 +3288,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elasticsearch_instance_type_limits(
         self, InstanceType: str, ElasticsearchVersion: str, DomainName: str = None
     ) -> ClientDescribeElasticsearchInstanceTypeLimitsResponseTypeDef:
@@ -3519,7 +3520,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_elasticsearch_instance_offerings(
         self,
         ReservedElasticsearchInstanceOfferingId: str = None,
@@ -3671,7 +3672,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_elasticsearch_instances(
         self,
         ReservedElasticsearchInstanceId: str = None,
@@ -3848,7 +3849,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3877,7 +3878,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compatible_elasticsearch_versions(
         self, DomainName: str = None
     ) -> ClientGetCompatibleElasticsearchVersionsResponseTypeDef:
@@ -3946,7 +3947,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3967,7 +3968,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_upgrade_history(
         self, DomainName: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetUpgradeHistoryResponseTypeDef:
@@ -4115,7 +4116,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_upgrade_status(
         self, DomainName: str
     ) -> ClientGetUpgradeStatusResponseTypeDef:
@@ -4186,7 +4187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4199,7 +4200,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domain_names(
         self, *args: Any, **kwargs: Any
     ) -> ClientListDomainNamesResponseTypeDef:
@@ -4247,7 +4248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_elasticsearch_instance_types(
         self,
         ElasticsearchVersion: str,
@@ -4345,7 +4346,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_elasticsearch_versions(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListElasticsearchVersionsResponseTypeDef:
@@ -4407,7 +4408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(self, ARN: str) -> ClientListTagsResponseTypeDef:
         """
         Returns all tags for the given Elasticsearch domain.
@@ -4468,7 +4469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_reserved_elasticsearch_instance_offering(
         self,
         ReservedElasticsearchInstanceOfferingId: str,
@@ -4532,8 +4533,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def remove_tags(self, ARN: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def remove_tags(self, ARN: str, TagKeys: List[str]) -> None:
         """
         Removes the specified set of tags from the specified Elasticsearch domain.
 
@@ -4565,7 +4566,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_elasticsearch_service_software_update(
         self, DomainName: str
     ) -> ClientStartElasticsearchServiceSoftwareUpdateResponseTypeDef:
@@ -4649,7 +4650,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_elasticsearch_domain_config(
         self,
         DomainName: str,
@@ -5760,7 +5761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upgrade_elasticsearch_domain(
         self, DomainName: str, TargetVersion: str, PerformCheckOnly: bool = None
     ) -> ClientUpgradeElasticsearchDomainResponseTypeDef:

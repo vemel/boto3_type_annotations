@@ -1,7 +1,7 @@
 "Main interface for codecommit Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
@@ -71,7 +71,7 @@ from mypy_boto3_codecommit.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_describe_merge_conflicts(
         self,
         repositoryName: str,
@@ -468,7 +468,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_commits(
         self, commitIds: List[str], repositoryName: str
     ) -> ClientBatchGetCommitsResponseTypeDef:
@@ -641,7 +641,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_repositories(
         self, repositoryNames: List[str]
     ) -> ClientBatchGetRepositoriesResponseTypeDef:
@@ -761,7 +761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -778,7 +778,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_branch(
         self, repositoryName: str, branchName: str, commitId: str
     ) -> None:
@@ -819,7 +819,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_commit(
         self,
         repositoryName: str,
@@ -1088,7 +1088,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_pull_request(
         self,
         title: str,
@@ -1313,7 +1313,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_repository(
         self,
         repositoryName: str,
@@ -1444,7 +1444,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_unreferenced_merge_commit(
         self,
         repositoryName: str,
@@ -1653,7 +1653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_branch(
         self, repositoryName: str, branchName: str
     ) -> ClientDeleteBranchResponseTypeDef:
@@ -1714,7 +1714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_comment_content(
         self, commentId: str
     ) -> ClientDeleteCommentContentResponseTypeDef:
@@ -1800,7 +1800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_file(
         self,
         repositoryName: str,
@@ -1921,7 +1921,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_repository(
         self, repositoryName: str
     ) -> ClientDeleteRepositoryResponseTypeDef:
@@ -1970,7 +1970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_merge_conflicts(
         self,
         repositoryName: str,
@@ -2314,7 +2314,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pull_request_events(
         self,
         pullRequestId: str,
@@ -2535,7 +2535,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2564,7 +2564,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_blob(
         self, repositoryName: str, blobId: str
     ) -> ClientGetBlobResponseTypeDef:
@@ -2613,7 +2613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_branch(
         self, repositoryName: str = None, branchName: str = None
     ) -> ClientGetBranchResponseTypeDef:
@@ -2673,7 +2673,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_comment(self, commentId: str) -> ClientGetCommentResponseTypeDef:
         """
         Returns the content of a comment made on a change, file, or commit in a repository.
@@ -2757,7 +2757,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_comments_for_compared_commit(
         self,
         repositoryName: str,
@@ -2945,7 +2945,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_comments_for_pull_request(
         self,
         pullRequestId: str,
@@ -3150,7 +3150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_commit(
         self, repositoryName: str, commitId: str
     ) -> ClientGetCommitResponseTypeDef:
@@ -3280,7 +3280,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_differences(
         self,
         repositoryName: str,
@@ -3451,7 +3451,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_file(
         self, repositoryName: str, filePath: str, commitSpecifier: str = None
     ) -> ClientGetFileResponseTypeDef:
@@ -3541,7 +3541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_folder(
         self, repositoryName: str, folderPath: str, commitSpecifier: str = None
     ) -> ClientGetFolderResponseTypeDef:
@@ -3729,7 +3729,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_merge_commit(
         self,
         repositoryName: str,
@@ -3822,7 +3822,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_merge_conflicts(
         self,
         repositoryName: str,
@@ -4083,7 +4083,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_merge_options(
         self,
         repositoryName: str,
@@ -4181,7 +4181,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4202,7 +4202,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pull_request(
         self, pullRequestId: str
     ) -> ClientGetPullRequestResponseTypeDef:
@@ -4368,7 +4368,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_repository(self, repositoryName: str) -> ClientGetRepositoryResponseTypeDef:
         """
         Returns information about a repository.
@@ -4467,7 +4467,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_repository_triggers(
         self, repositoryName: str
     ) -> ClientGetRepositoryTriggersResponseTypeDef:
@@ -4567,7 +4567,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4580,7 +4580,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_branches(
         self, repositoryName: str, nextToken: str = None
     ) -> ClientListBranchesResponseTypeDef:
@@ -4638,7 +4638,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pull_requests(
         self,
         repositoryName: str,
@@ -4720,7 +4720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_repositories(
         self, nextToken: str = None, sortBy: str = None, order: str = None
     ) -> ClientListRepositoriesResponseTypeDef:
@@ -4801,7 +4801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str, nextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -4863,7 +4863,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_branches_by_fast_forward(
         self,
         repositoryName: str,
@@ -4933,7 +4933,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_branches_by_squash(
         self,
         repositoryName: str,
@@ -5135,7 +5135,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_branches_by_three_way(
         self,
         repositoryName: str,
@@ -5337,7 +5337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_pull_request_by_fast_forward(
         self, pullRequestId: str, repositoryName: str, sourceCommitId: str = None
     ) -> ClientMergePullRequestByFastForwardResponseTypeDef:
@@ -5519,7 +5519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_pull_request_by_squash(
         self,
         pullRequestId: str,
@@ -5836,7 +5836,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_pull_request_by_three_way(
         self,
         pullRequestId: str,
@@ -6153,7 +6153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def post_comment_for_compared_commit(
         self,
         repositoryName: str,
@@ -6347,7 +6347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def post_comment_for_pull_request(
         self,
         pullRequestId: str,
@@ -6556,7 +6556,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def post_comment_reply(
         self, inReplyTo: str, content: str, clientRequestToken: str = None
     ) -> ClientPostCommentReplyResponseTypeDef:
@@ -6659,7 +6659,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_file(
         self,
         repositoryName: str,
@@ -6782,7 +6782,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_repository_triggers(
         self,
         repositoryName: str,
@@ -6885,8 +6885,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, resourceArn: str, tags: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> None:
         """
         Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS
         CodeCommit, see `CodeCommit Resources and Operations
@@ -6922,7 +6922,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_repository_triggers(
         self,
         repositoryName: str,
@@ -7055,8 +7055,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, resourceArn: str, tagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> None:
         """
         Removes tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see
         `CodeCommit Resources and Operations
@@ -7090,7 +7090,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_comment(
         self, commentId: str, content: str
     ) -> ClientUpdateCommentResponseTypeDef:
@@ -7182,7 +7182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_default_branch(
         self, repositoryName: str, defaultBranchName: str
     ) -> None:
@@ -7217,7 +7217,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pull_request_description(
         self, pullRequestId: str, description: str
     ) -> ClientUpdatePullRequestDescriptionResponseTypeDef:
@@ -7390,7 +7390,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pull_request_status(
         self, pullRequestId: str, pullRequestStatus: str
     ) -> ClientUpdatePullRequestStatusResponseTypeDef:
@@ -7563,7 +7563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pull_request_title(
         self, pullRequestId: str, title: str
     ) -> ClientUpdatePullRequestTitleResponseTypeDef:
@@ -7735,7 +7735,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_repository_description(
         self, repositoryName: str, repositoryDescription: str = None
     ) -> None:
@@ -7773,7 +7773,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_repository_name(self, oldName: str, newName: str) -> None:
         """
         Renames a repository. The repository name must be unique across the calling AWS account. In

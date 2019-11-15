@@ -21,7 +21,7 @@ from mypy_boto3_codecommit.type_defs import (
 
 
 class DescribePullRequestEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         pullRequestId: str,
@@ -256,7 +256,7 @@ class DescribePullRequestEvents(Boto3Paginator):
 
 
 class GetCommentsForComparedCommit(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -458,7 +458,7 @@ class GetCommentsForComparedCommit(Boto3Paginator):
 
 
 class GetCommentsForPullRequest(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         pullRequestId: str,
@@ -677,7 +677,7 @@ class GetCommentsForPullRequest(Boto3Paginator):
 
 
 class GetDifferences(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -858,7 +858,7 @@ class GetDifferences(Boto3Paginator):
 
 
 class ListBranches(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -935,7 +935,7 @@ class ListBranches(Boto3Paginator):
 
 
 class ListPullRequests(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -1031,7 +1031,7 @@ class ListPullRequests(Boto3Paginator):
 
 
 class ListRepositories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         sortBy: str = None,

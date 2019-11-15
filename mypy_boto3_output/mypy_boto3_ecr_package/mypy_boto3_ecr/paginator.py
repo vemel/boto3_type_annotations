@@ -24,7 +24,7 @@ from mypy_boto3_ecr.type_defs import (
 
 
 class DescribeImageScanFindings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -244,7 +244,7 @@ class DescribeImageScanFindings(Boto3Paginator):
 
 
 class DescribeImages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -457,7 +457,7 @@ class DescribeImages(Boto3Paginator):
 
 
 class DescribeRepositories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         registryId: str = None,
@@ -601,7 +601,7 @@ class DescribeRepositories(Boto3Paginator):
 
 
 class GetLifecyclePolicyPreview(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,
@@ -796,7 +796,7 @@ class GetLifecyclePolicyPreview(Boto3Paginator):
 
 
 class ListImages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         repositoryName: str,

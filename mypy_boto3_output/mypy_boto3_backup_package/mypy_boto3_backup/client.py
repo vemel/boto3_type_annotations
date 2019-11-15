@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_backup.type_defs import (
     ClientCreateBackupPlanBackupPlanTypeDef,
     ClientCreateBackupPlanResponseTypeDef,
@@ -50,7 +49,7 @@ from mypy_boto3_backup.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -67,7 +66,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_backup_plan(
         self,
         BackupPlan: ClientCreateBackupPlanBackupPlanTypeDef,
@@ -241,7 +240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_backup_selection(
         self,
         BackupPlanId: str,
@@ -387,7 +386,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_backup_vault(
         self,
         BackupVaultName: str,
@@ -481,7 +480,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup_plan(
         self, BackupPlanId: str
     ) -> ClientDeleteBackupPlanResponseTypeDef:
@@ -543,7 +542,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup_selection(self, BackupPlanId: str, SelectionId: str) -> None:
         """
         Deletes the resource selection associated with a backup plan that is specified by the
@@ -572,7 +571,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup_vault(self, BackupVaultName: str) -> None:
         """
         Deletes the backup vault identified by its name. A vault can be deleted only if it is empty.
@@ -596,7 +595,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup_vault_access_policy(self, BackupVaultName: str) -> None:
         """
         Deletes the policy document that manages permissions on a backup vault.
@@ -620,7 +619,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup_vault_notifications(self, BackupVaultName: str) -> None:
         """
         Deletes event notifications for the specified backup vault.
@@ -644,7 +643,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_recovery_point(
         self, BackupVaultName: str, RecoveryPointArn: str
     ) -> None:
@@ -677,7 +676,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_backup_job(
         self, BackupJobId: str
     ) -> ClientDescribeBackupJobResponseTypeDef:
@@ -844,7 +843,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_backup_vault(
         self, BackupVaultName: str
     ) -> ClientDescribeBackupVaultResponseTypeDef:
@@ -919,7 +918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_protected_resource(
         self, ResourceArn: str
     ) -> ClientDescribeProtectedResourceResponseTypeDef:
@@ -976,7 +975,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_recovery_point(
         self, BackupVaultName: str, RecoveryPointArn: str
     ) -> ClientDescribeRecoveryPointResponseTypeDef:
@@ -1184,7 +1183,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_restore_job(
         self, RestoreJobId: str
     ) -> ClientDescribeRestoreJobResponseTypeDef:
@@ -1286,7 +1285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_backup_plan_template(
         self, BackupPlanId: str
     ) -> ClientExportBackupPlanTemplateResponseTypeDef:
@@ -1332,7 +1331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1361,7 +1360,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_plan(
         self, BackupPlanId: str, VersionId: str = None
     ) -> ClientGetBackupPlanResponseTypeDef:
@@ -1546,7 +1545,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_plan_from_json(
         self, BackupPlanTemplateJson: str
     ) -> ClientGetBackupPlanFromJsonResponseTypeDef:
@@ -1679,7 +1678,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_plan_from_template(
         self, BackupPlanTemplateId: str
     ) -> ClientGetBackupPlanFromTemplateResponseTypeDef:
@@ -1812,7 +1811,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_selection(
         self, BackupPlanId: str, SelectionId: str
     ) -> ClientGetBackupSelectionResponseTypeDef:
@@ -1943,7 +1942,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_vault_access_policy(
         self, BackupVaultName: str
     ) -> ClientGetBackupVaultAccessPolicyResponseTypeDef:
@@ -1999,7 +1998,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_backup_vault_notifications(
         self, BackupVaultName: str
     ) -> ClientGetBackupVaultNotificationsResponseTypeDef:
@@ -2067,7 +2066,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2088,7 +2087,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_recovery_point_restore_metadata(
         self, BackupVaultName: str, RecoveryPointArn: str
     ) -> ClientGetRecoveryPointRestoreMetadataResponseTypeDef:
@@ -2164,7 +2163,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_supported_resource_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetSupportedResourceTypesResponseTypeDef:
@@ -2213,7 +2212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2226,7 +2225,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_jobs(
         self,
         NextToken: str = None,
@@ -2478,7 +2477,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_plan_templates(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListBackupPlanTemplatesResponseTypeDef:
@@ -2552,7 +2551,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_plan_versions(
         self, BackupPlanId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListBackupPlanVersionsResponseTypeDef:
@@ -2672,7 +2671,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_plans(
         self, NextToken: str = None, MaxResults: int = None, IncludeDeleted: bool = None
     ) -> ClientListBackupPlansResponseTypeDef:
@@ -2793,7 +2792,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_selections(
         self, BackupPlanId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListBackupSelectionsResponseTypeDef:
@@ -2896,7 +2895,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backup_vaults(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListBackupVaultsResponseTypeDef:
@@ -2998,7 +2997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_protected_resources(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListProtectedResourcesResponseTypeDef:
@@ -3082,7 +3081,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_recovery_points_by_backup_vault(
         self,
         BackupVaultName: str,
@@ -3346,7 +3345,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_recovery_points_by_resource(
         self, ResourceArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListRecoveryPointsByResourceResponseTypeDef:
@@ -3454,7 +3453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_restore_jobs(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListRestoreJobsResponseTypeDef:
@@ -3583,7 +3582,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTagsResponseTypeDef:
@@ -3654,7 +3653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_backup_vault_access_policy(
         self, BackupVaultName: str, Policy: str = None
     ) -> None:
@@ -3687,9 +3686,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_backup_vault_notifications(
-        self, BackupVaultName: str, SNSTopicArn: str, BackupVaultEvents: List[Any]
+        self, BackupVaultName: str, SNSTopicArn: str, BackupVaultEvents: List[str]
     ) -> None:
         """
         Turns on notifications on a backup vault for the specified topic and events.
@@ -3731,7 +3730,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_backup_job(
         self,
         BackupVaultName: str,
@@ -3870,7 +3869,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_restore_job(
         self,
         RecoveryPointArn: str,
@@ -3965,7 +3964,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_backup_job(self, BackupJobId: str) -> None:
         """
         Attempts to cancel a job to create a one-time backup of a resource.
@@ -3987,8 +3986,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, Tags: List[str]) -> None:
         """
         Assigns a set of key-value pairs to a recovery point, backup plan, or backup vault identified by an
         Amazon Resource Name (ARN).
@@ -4024,8 +4023,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeyList: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeyList: List[str]) -> None:
         """
         Removes a set of key-value pairs from a recovery point, backup plan, or backup vault identified by
         an Amazon Resource Name (ARN)
@@ -4058,7 +4057,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_backup_plan(
         self, BackupPlanId: str, BackupPlan: ClientUpdateBackupPlanBackupPlanTypeDef
     ) -> ClientUpdateBackupPlanResponseTypeDef:
@@ -4210,7 +4209,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_recovery_point_lifecycle(
         self,
         BackupVaultName: str,

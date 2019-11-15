@@ -11,7 +11,7 @@ from mypy_boto3_kinesisanalyticsv2.type_defs import (
 
 
 class ListApplicationSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationName: str,
@@ -110,7 +110,7 @@ class ListApplicationSnapshots(Boto3Paginator):
 
 
 class ListApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListApplicationsPaginatePaginationConfigTypeDef = None
     ) -> ListApplicationsPaginateResponseTypeDef:

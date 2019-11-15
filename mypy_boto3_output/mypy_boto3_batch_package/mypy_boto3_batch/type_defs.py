@@ -1326,7 +1326,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionscontainerPropertiesTypeD
       section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
       the ``COMMAND`` parameter to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -1924,7 +1924,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionsnodePropertiesnodeRangeP
       `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
       ``COMMAND`` parameter to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -2239,7 +2239,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionsnodePropertiesnodeRangeP
         `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
         ``COMMAND`` parameter to `docker run
         <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-        `https://docs.docker.com/engine/reference/builder/#cmd
+        `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -2574,7 +2574,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionsnodePropertiesTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
             ``COMMAND`` parameter to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -2973,7 +2973,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionsTypeDef(
         section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
         the ``COMMAND`` parameter to `docker run
         <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-        `https://docs.docker.com/engine/reference/builder/#cmd
+        `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -3294,7 +3294,7 @@ class ClientDescribeJobDefinitionsResponsejobDefinitionsTypeDef(
               `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
               ``COMMAND`` parameter to `docker run
               <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-              `https://docs.docker.com/engine/reference/builder/#cmd
+              `https\\://docs.docker.com/engine/reference/builder/#cmd
               <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
               - *(string) --*
@@ -3646,7 +3646,7 @@ class ClientDescribeJobDefinitionsResponseTypeDef(
             section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
             the ``COMMAND`` parameter to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -3967,7 +3967,7 @@ class ClientDescribeJobDefinitionsResponseTypeDef(
                   `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                   ``COMMAND`` parameter to `docker run
                   <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                  `https://docs.docker.com/engine/reference/builder/#cmd
+                  `https\\://docs.docker.com/engine/reference/builder/#cmd
                   <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                   - *(string) --*
@@ -5626,7 +5626,7 @@ class ClientDescribeJobsResponsejobsnodePropertiesnodeRangePropertiescontainerTy
       `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
       ``COMMAND`` parameter to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -5941,7 +5941,7 @@ class ClientDescribeJobsResponsejobsnodePropertiesnodeRangePropertiesTypeDef(
         `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
         ``COMMAND`` parameter to `docker run
         <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-        `https://docs.docker.com/engine/reference/builder/#cmd
+        `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -6276,7 +6276,7 @@ class ClientDescribeJobsResponsejobsnodePropertiesTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
             ``COMMAND`` parameter to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -7090,7 +7090,7 @@ class ClientDescribeJobsResponsejobsTypeDef(_ClientDescribeJobsResponsejobsTypeD
               `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
               ``COMMAND`` parameter to `docker run
               <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-              `https://docs.docker.com/engine/reference/builder/#cmd
+              `https\\://docs.docker.com/engine/reference/builder/#cmd
               <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
               - *(string) --*
@@ -7877,7 +7877,7 @@ class ClientDescribeJobsResponseTypeDef(_ClientDescribeJobsResponseTypeDef):
                   `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                   ``COMMAND`` parameter to `docker run
                   <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                  `https://docs.docker.com/engine/reference/builder/#cmd
+                  `https\\://docs.docker.com/engine/reference/builder/#cmd
                   <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                   - *(string) --*
@@ -8816,7 +8816,7 @@ class ClientRegisterJobDefinitioncontainerPropertiesTypeDef(
       container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__ section of the
       `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the ``COMMAND`` parameter
       to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -9395,7 +9395,7 @@ class ClientRegisterJobDefinitionnodePropertiesnodeRangePropertiescontainerTypeD
       `Create a container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__
       section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
       ``COMMAND`` parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-      For more information, see `https://docs.docker.com/engine/reference/builder/#cmd
+      For more information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -9694,7 +9694,7 @@ class ClientRegisterJobDefinitionnodePropertiesnodeRangePropertiesTypeDef(
         `Create a container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__
         section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
         ``COMMAND`` parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-        For more information, see `https://docs.docker.com/engine/reference/builder/#cmd
+        For more information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -10013,7 +10013,7 @@ class ClientRegisterJobDefinitionnodePropertiesTypeDef(
             `Create a container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__
             section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
             ``COMMAND`` parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-            For more information, see `https://docs.docker.com/engine/reference/builder/#cmd
+            For more information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -12110,7 +12110,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionscontainerPropertiesTyp
       section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
       the ``COMMAND`` parameter to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -12708,7 +12708,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionsnodePropertiesnodeRang
       `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
       ``COMMAND`` parameter to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#cmd
+      `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
       - *(string) --*
@@ -13023,7 +13023,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionsnodePropertiesnodeRang
         `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
         ``COMMAND`` parameter to `docker run
         <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-        `https://docs.docker.com/engine/reference/builder/#cmd
+        `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -13358,7 +13358,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionsnodePropertiesTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
             ``COMMAND`` parameter to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -13757,7 +13757,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionsTypeDef(
         section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
         the ``COMMAND`` parameter to `docker run
         <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-        `https://docs.docker.com/engine/reference/builder/#cmd
+        `https\\://docs.docker.com/engine/reference/builder/#cmd
         <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
         - *(string) --*
@@ -14078,7 +14078,7 @@ class DescribeJobDefinitionsPaginateResponsejobDefinitionsTypeDef(
               `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
               ``COMMAND`` parameter to `docker run
               <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-              `https://docs.docker.com/engine/reference/builder/#cmd
+              `https\\://docs.docker.com/engine/reference/builder/#cmd
               <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
               - *(string) --*
@@ -14430,7 +14430,7 @@ class DescribeJobDefinitionsPaginateResponseTypeDef(
             section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
             the ``COMMAND`` parameter to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -14751,7 +14751,7 @@ class DescribeJobDefinitionsPaginateResponseTypeDef(
                   `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                   ``COMMAND`` parameter to `docker run
                   <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                  `https://docs.docker.com/engine/reference/builder/#cmd
+                  `https\\://docs.docker.com/engine/reference/builder/#cmd
                   <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                   - *(string) --*

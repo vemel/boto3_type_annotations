@@ -4225,6 +4225,34 @@ class ClientRemoveAttributesFromFindingsResponseTypeDef(
     """
 
 
+_RequiredClientSetTagsForResourcetagsTypeDef = TypedDict(
+    "_RequiredClientSetTagsForResourcetagsTypeDef", {"key": str}
+)
+_OptionalClientSetTagsForResourcetagsTypeDef = TypedDict(
+    "_OptionalClientSetTagsForResourcetagsTypeDef", {"value": str}, total=False
+)
+
+
+class ClientSetTagsForResourcetagsTypeDef(
+    _RequiredClientSetTagsForResourcetagsTypeDef,
+    _OptionalClientSetTagsForResourcetagsTypeDef,
+):
+    """
+    Type definition for `ClientSetTagsForResource` `tags`
+
+    A key and value pair. This data type is used as a request parameter in the  SetTagsForResource
+    action and a response element in the  ListTagsForResource action.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      A tag key.
+
+    - **value** *(string) --*
+
+      A value assigned to a tag key.
+    """
+
+
 _ClientStartAssessmentRunResponseTypeDef = TypedDict(
     "_ClientStartAssessmentRunResponseTypeDef", {"assessmentRunArn": str}, total=False
 )

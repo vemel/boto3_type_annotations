@@ -31,7 +31,7 @@ from mypy_boto3_firehose.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -48,7 +48,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_delivery_stream(
         self,
         DeliveryStreamName: str,
@@ -1077,7 +1077,7 @@ class Client(BaseClient):
               <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
               would apply to Kinesis Data Firehose are as follows:
 
-               ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+               ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
                using lzop.
 
                ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -1844,7 +1844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_delivery_stream(self, DeliveryStreamName: str) -> Dict[str, Any]:
         """
         Deletes a delivery stream and its data.
@@ -1887,7 +1887,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_delivery_stream(
         self,
         DeliveryStreamName: str,
@@ -2977,7 +2977,7 @@ class Client(BaseClient):
                         <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible
                         examples that would apply to Kinesis Data Firehose are as follows:
 
-                         ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and
+                         ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and
                          compressed using lzop.
 
                          ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).
@@ -3685,7 +3685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3714,7 +3714,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3735,7 +3735,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3748,7 +3748,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_delivery_streams(
         self,
         Limit: int = None,
@@ -3829,7 +3829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_delivery_stream(
         self,
         DeliveryStreamName: str,
@@ -3916,7 +3916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_record(
         self, DeliveryStreamName: str, Record: ClientPutRecordRecordTypeDef
     ) -> ClientPutRecordResponseTypeDef:
@@ -3938,7 +3938,7 @@ class Client(BaseClient):
 
         Kinesis Data Firehose buffers records before delivering them to the destination. To disambiguate
         the data blobs at the destination, a common solution is to use delimiters in the data, such as a
-        newline (``\n`` ) or some other character unique within the data. This allows the consumer
+        newline (``\\n`` ) or some other character unique within the data. This allows the consumer
         application to parse individual data items when reading the data from the destination.
 
         The ``PutRecord`` operation returns a ``RecordId`` , which is a unique string assigned to each
@@ -4009,7 +4009,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_record_batch(
         self, DeliveryStreamName: str, Records: List[ClientPutRecordBatchRecordsTypeDef]
     ) -> ClientPutRecordBatchResponseTypeDef:
@@ -4035,7 +4035,7 @@ class Client(BaseClient):
 
         Kinesis Data Firehose buffers records before delivering them to the destination. To disambiguate
         the data blobs at the destination, a common solution is to use delimiters in the data, such as a
-        newline (``\n`` ) or some other character unique within the data. This allows the consumer
+        newline (``\\n`` ) or some other character unique within the data. This allows the consumer
         application to parse individual data items when reading the data from the destination.
 
         The  PutRecordBatch response includes a count of failed records, ``FailedPutCount`` , and an array
@@ -4161,7 +4161,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_delivery_stream_encryption(
         self, DeliveryStreamName: str
     ) -> Dict[str, Any]:
@@ -4212,7 +4212,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_delivery_stream_encryption(
         self, DeliveryStreamName: str
     ) -> Dict[str, Any]:
@@ -4261,7 +4261,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_delivery_stream(
         self, DeliveryStreamName: str, Tags: List[ClientTagDeliveryStreamTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -4330,7 +4330,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_delivery_stream(
         self, DeliveryStreamName: str, TagKeys: List[str]
     ) -> Dict[str, Any]:
@@ -4379,7 +4379,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_destination(
         self,
         DeliveryStreamName: str,
@@ -5356,7 +5356,7 @@ class Client(BaseClient):
               <https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html>`__ . Some possible examples that
               would apply to Kinesis Data Firehose are as follows:
 
-               ``delimiter '\t' lzop;`` - fields are delimited with "\t" (TAB character) and compressed
+               ``delimiter '\\t' lzop;`` - fields are delimited with "\\t" (TAB character) and compressed
                using lzop.
 
                ``delimiter '|'`` - fields are delimited with "|" (this is the default delimiter).

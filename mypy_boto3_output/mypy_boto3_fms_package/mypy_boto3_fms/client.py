@@ -18,7 +18,7 @@ from mypy_boto3_fms.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_admin_account(self, AdminAccount: str) -> None:
         """
         Sets the AWS Firewall Manager administrator account. AWS Firewall Manager must be associated with
@@ -50,7 +50,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -67,7 +67,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notification_channel(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes an AWS Firewall Manager association with the IAM role and the Amazon Simple Notification
@@ -84,7 +84,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy(
         self, PolicyId: str, DeleteAllPolicyResources: bool = None
     ) -> None:
@@ -137,7 +137,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_admin_account(self, *args: Any, **kwargs: Any) -> None:
         """
         Disassociates the account that has been set as the AWS Firewall Manager administrator account. To
@@ -155,7 +155,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -184,7 +184,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_admin_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAdminAccountResponseTypeDef:
@@ -225,7 +225,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_compliance_detail(
         self, PolicyId: str, MemberAccount: str
     ) -> ClientGetComplianceDetailResponseTypeDef:
@@ -354,7 +354,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_notification_channel(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetNotificationChannelResponseTypeDef:
@@ -395,7 +395,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -416,7 +416,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy(self, PolicyId: str) -> Dict[str, Any]:
         """
         Returns information about the specified AWS Firewall Manager policy.
@@ -518,19 +518,19 @@ class Client(BaseClient):
                   Details about the service that are specific to the service type, in JSON format. For
                   service type ``SHIELD_ADVANCED`` , this is an empty string.
 
-                  * Example: ``WAF``    ``ManagedServiceData": "{\"type\": \"WAF\", \"ruleGroups\":
-                  [{\"id\": \"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" : {\"type\":
-                  \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}``
+                  * Example: ``WAF``    ``ManagedServiceData": "{\\"type\\": \\"WAF\\", \\"ruleGroups\\":
+                  [{\\"id\\": \\"12345678-1bcd-9012-efga-0987654321ab\\", \\"overrideAction\\" :
+                  {\\"type\\": \\"COUNT\\"}}], \\"defaultAction\\": {\\"type\\": \\"BLOCK\\"}}``
 
                   * Example: ``SECURITY_GROUPS_COMMON``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false,\"securityGroups\":[{\"id\":\"
-                  sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
-        sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_COMMON\\",\\"revertManualSecurityGroupChanges\\":false,\\"exclusiveResourceSecurityGroupManagement\\":false,\\"securityGroups\\":[{\\"id\\":\\"
+                  sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+        sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
 
                   * Example: ``SECURITY_GROUPS_CONTENT_AUDIT``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_CONTENT_AUDIT\\",\\"securityGroups\\":[{\\"id\\":\\"
                   sg-000e55995d61a06bd
-                  \"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+                  \\"}],\\"securityGroupAction\\":{\\"type\\":\\"ALLOW\\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
                     The security group action for content audit can be ``ALLOW`` or ``DENY`` . For
                     ``ALLOW`` , all in-scope security group rules must be within the allowed range of the
                     policy's security group rules. For ``DENY`` , all in-scope security group rules must
@@ -538,7 +538,7 @@ class Client(BaseClient):
                     security group.
 
                   * Example: ``SECURITY_GROUPS_USAGE_AUDIT``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"},"RemediationEnabled":false,"Resou
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_USAGE_AUDIT\\",\\"deleteUnusedSecurityGroups\\":true,\\"coalesceRedundantSecurityGroups\\":true}"},"RemediationEnabled":false,"Resou
                   rceType":"AWS::EC2::SecurityGroup"}``
 
               - **ResourceType** *(string) --*
@@ -629,7 +629,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_protection_status(
         self,
         PolicyId: str,
@@ -755,7 +755,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -768,7 +768,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_compliance_status(
         self, PolicyId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListComplianceStatusResponseTypeDef:
@@ -922,7 +922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_member_accounts(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListMemberAccountsResponseTypeDef:
@@ -991,7 +991,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListPoliciesResponseTypeDef:
@@ -1102,7 +1102,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_notification_channel(self, SnsTopicArn: str, SnsRoleName: str) -> None:
         """
         Designates the IAM role and Amazon Simple Notification Service (SNS) topic that AWS Firewall
@@ -1133,7 +1133,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_policy(self, Policy: Dict) -> Dict[str, Any]:
         """
         Creates an AWS Firewall Manager policy.
@@ -1233,26 +1233,26 @@ class Client(BaseClient):
               Details about the service that are specific to the service type, in JSON format. For service
               type ``SHIELD_ADVANCED`` , this is an empty string.
 
-              * Example: ``WAF``    ``ManagedServiceData": "{\"type\": \"WAF\", \"ruleGroups\": [{\"id\":
-              \"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" : {\"type\": \"COUNT\"}}],
-              \"defaultAction\": {\"type\": \"BLOCK\"}}``
+              * Example: ``WAF``    ``ManagedServiceData": "{\\"type\\": \\"WAF\\", \\"ruleGroups\\":
+              [{\\"id\\": \\"12345678-1bcd-9012-efga-0987654321ab\\", \\"overrideAction\\" : {\\"type\\":
+              \\"COUNT\\"}}], \\"defaultAction\\": {\\"type\\": \\"BLOCK\\"}}``
 
               * Example: ``SECURITY_GROUPS_COMMON``
-              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false,\"securityGroups\":[{\"id\":\"
-              sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
-        sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_COMMON\\",\\"revertManualSecurityGroupChanges\\":false,\\"exclusiveResourceSecurityGroupManagement\\":false,\\"securityGroups\\":[{\\"id\\":\\"
+              sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+        sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
 
               * Example: ``SECURITY_GROUPS_CONTENT_AUDIT``
-              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"
+              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_CONTENT_AUDIT\\",\\"securityGroups\\":[{\\"id\\":\\"
               sg-000e55995d61a06bd
-              \"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+              \\"}],\\"securityGroupAction\\":{\\"type\\":\\"ALLOW\\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
                 The security group action for content audit can be ``ALLOW`` or ``DENY`` . For ``ALLOW`` ,
                 all in-scope security group rules must be within the allowed range of the policy's security
                 group rules. For ``DENY`` , all in-scope security group rules must not contain a value or a
                 range that matches a rule value or range in the policy security group.
 
               * Example: ``SECURITY_GROUPS_USAGE_AUDIT``
-              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"},"RemediationEnabled":false,"Resou
+              ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_USAGE_AUDIT\\",\\"deleteUnusedSecurityGroups\\":true,\\"coalesceRedundantSecurityGroups\\":true}"},"RemediationEnabled":false,"Resou
               rceType":"AWS::EC2::SecurityGroup"}``
 
           - **ResourceType** *(string) --* **[REQUIRED]**
@@ -1419,19 +1419,19 @@ class Client(BaseClient):
                   Details about the service that are specific to the service type, in JSON format. For
                   service type ``SHIELD_ADVANCED`` , this is an empty string.
 
-                  * Example: ``WAF``    ``ManagedServiceData": "{\"type\": \"WAF\", \"ruleGroups\":
-                  [{\"id\": \"12345678-1bcd-9012-efga-0987654321ab\", \"overrideAction\" : {\"type\":
-                  \"COUNT\"}}], \"defaultAction\": {\"type\": \"BLOCK\"}}``
+                  * Example: ``WAF``    ``ManagedServiceData": "{\\"type\\": \\"WAF\\", \\"ruleGroups\\":
+                  [{\\"id\\": \\"12345678-1bcd-9012-efga-0987654321ab\\", \\"overrideAction\\" :
+                  {\\"type\\": \\"COUNT\\"}}], \\"defaultAction\\": {\\"type\\": \\"BLOCK\\"}}``
 
                   * Example: ``SECURITY_GROUPS_COMMON``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_COMMON\",\"revertManualSecurityGroupChanges\":false,\"exclusiveResourceSecurityGroupManagement\":false,\"securityGroups\":[{\"id\":\"
-                  sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
-        sg-000e55995d61a06bd\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_COMMON\\",\\"revertManualSecurityGroupChanges\\":false,\\"exclusiveResourceSecurityGroupManagement\\":false,\\"securityGroups\\":[{\\"id\\":\\"
+                  sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+        sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
 
                   * Example: ``SECURITY_GROUPS_CONTENT_AUDIT``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_CONTENT_AUDIT\",\"securityGroups\":[{\"id\":\"
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_CONTENT_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_CONTENT_AUDIT\\",\\"securityGroups\\":[{\\"id\\":\\"
                   sg-000e55995d61a06bd
-                  \"}],\"securityGroupAction\":{\"type\":\"ALLOW\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+                  \\"}],\\"securityGroupAction\\":{\\"type\\":\\"ALLOW\\"}}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
                     The security group action for content audit can be ``ALLOW`` or ``DENY`` . For
                     ``ALLOW`` , all in-scope security group rules must be within the allowed range of the
                     policy's security group rules. For ``DENY`` , all in-scope security group rules must
@@ -1439,7 +1439,7 @@ class Client(BaseClient):
                     security group.
 
                   * Example: ``SECURITY_GROUPS_USAGE_AUDIT``
-                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\"type\":\"SECURITY_GROUPS_USAGE_AUDIT\",\"deleteUnusedSecurityGroups\":true,\"coalesceRedundantSecurityGroups\":true}"},"RemediationEnabled":false,"Resou
+                  ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_USAGE_AUDIT","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_USAGE_AUDIT\\",\\"deleteUnusedSecurityGroups\\":true,\\"coalesceRedundantSecurityGroups\\":true}"},"RemediationEnabled":false,"Resou
                   rceType":"AWS::EC2::SecurityGroup"}``
 
               - **ResourceType** *(string) --*

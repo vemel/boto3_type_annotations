@@ -47,7 +47,7 @@ from mypy_boto3_pinpoint_email.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -64,7 +64,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set(
         self,
         ConfigurationSetName: str,
@@ -229,7 +229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,
@@ -412,7 +412,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dedicated_ip_pool(
         self, PoolName: str, Tags: List[ClientCreateDedicatedIpPoolTagsTypeDef] = None
     ) -> Dict:
@@ -501,7 +501,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deliverability_test_report(
         self,
         FromEmailAddress: str,
@@ -763,7 +763,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_email_identity(
         self,
         EmailIdentity: str,
@@ -932,7 +932,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set(self, ConfigurationSetName: str) -> Dict:
         """
         Delete an existing configuration set.
@@ -972,7 +972,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set_event_destination(
         self, ConfigurationSetName: str, EventDestinationName: str
     ) -> Dict:
@@ -1022,7 +1022,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dedicated_ip_pool(self, PoolName: str) -> Dict:
         """
         Delete a dedicated IP pool.
@@ -1057,7 +1057,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_email_identity(self, EmailIdentity: str) -> Dict:
         """
         Deletes an email identity that you previously verified for use with Amazon Pinpoint. An identity
@@ -1094,7 +1094,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1123,7 +1123,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account(self, *args: Any, **kwargs: Any) -> ClientGetAccountResponseTypeDef:
         """
         Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account
@@ -1221,7 +1221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_blacklist_reports(
         self, BlacklistItemNames: List[str]
     ) -> ClientGetBlacklistReportsResponseTypeDef:
@@ -1304,7 +1304,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_configuration_set(
         self, ConfigurationSetName: str
     ) -> ClientGetConfigurationSetResponseTypeDef:
@@ -1469,7 +1469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_configuration_set_event_destinations(
         self, ConfigurationSetName: str
     ) -> ClientGetConfigurationSetEventDestinationsResponseTypeDef:
@@ -1661,7 +1661,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dedicated_ip(self, Ip: str) -> ClientGetDedicatedIpResponseTypeDef:
         """
         Get information about a dedicated IP address, including the name of the dedicated IP pool that it's
@@ -1733,7 +1733,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dedicated_ips(
         self, PoolName: str = None, NextToken: str = None, PageSize: int = None
     ) -> ClientGetDedicatedIpsResponseTypeDef:
@@ -1835,7 +1835,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deliverability_dashboard_options(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetDeliverabilityDashboardOptionsResponseTypeDef:
@@ -2004,7 +2004,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deliverability_test_report(
         self, ReportId: str
     ) -> ClientGetDeliverabilityTestReportResponseTypeDef:
@@ -2232,7 +2232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_deliverability_campaign(
         self, CampaignId: str
     ) -> ClientGetDomainDeliverabilityCampaignResponseTypeDef:
@@ -2377,7 +2377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_statistics_report(
         self, Domain: str, StartDate: datetime, EndDate: datetime
     ) -> ClientGetDomainStatisticsReportResponseTypeDef:
@@ -2603,7 +2603,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_email_identity(
         self, EmailIdentity: str
     ) -> ClientGetEmailIdentityResponseTypeDef:
@@ -2810,7 +2810,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2831,7 +2831,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2844,7 +2844,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configuration_sets(
         self, NextToken: str = None, PageSize: int = None
     ) -> ClientListConfigurationSetsResponseTypeDef:
@@ -2921,7 +2921,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dedicated_ip_pools(
         self, NextToken: str = None, PageSize: int = None
     ) -> ClientListDedicatedIpPoolsResponseTypeDef:
@@ -2987,7 +2987,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deliverability_test_reports(
         self, NextToken: str = None, PageSize: int = None
     ) -> ClientListDeliverabilityTestReportsResponseTypeDef:
@@ -3093,7 +3093,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domain_deliverability_campaigns(
         self,
         StartDate: datetime,
@@ -3285,7 +3285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_email_identities(
         self, NextToken: str = None, PageSize: int = None
     ) -> ClientListEmailIdentitiesResponseTypeDef:
@@ -3381,7 +3381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3472,7 +3472,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_account_dedicated_ip_warmup_attributes(
         self, AutoWarmupEnabled: bool = None
     ) -> Dict:
@@ -3512,7 +3512,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_account_sending_attributes(self, SendingEnabled: bool = None) -> Dict:
         """
         Enable or disable the ability of your account to send email.
@@ -3553,7 +3553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_set_delivery_options(
         self,
         ConfigurationSetName: str,
@@ -3610,7 +3610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_set_reputation_options(
         self, ConfigurationSetName: str, ReputationMetricsEnabled: bool = None
     ) -> Dict:
@@ -3657,7 +3657,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_set_sending_options(
         self, ConfigurationSetName: str, SendingEnabled: bool = None
     ) -> Dict:
@@ -3703,7 +3703,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_set_tracking_options(
         self, ConfigurationSetName: str, CustomRedirectDomain: str = None
     ) -> Dict:
@@ -3748,7 +3748,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_dedicated_ip_in_pool(self, Ip: str, DestinationPoolName: str) -> Dict:
         """
         Move a dedicated IP address to an existing dedicated IP pool.
@@ -3799,7 +3799,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_dedicated_ip_warmup_attributes(
         self, Ip: str, WarmupPercentage: int
     ) -> Dict:
@@ -3840,7 +3840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_deliverability_dashboard_option(
         self,
         DashboardEnabled: bool,
@@ -3943,7 +3943,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_email_identity_dkim_attributes(
         self, EmailIdentity: str, SigningEnabled: bool = None
     ) -> Dict:
@@ -3990,7 +3990,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_email_identity_feedback_attributes(
         self, EmailIdentity: str, EmailForwardingEnabled: bool = None
     ) -> Dict:
@@ -4055,7 +4055,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_email_identity_mail_from_attributes(
         self,
         EmailIdentity: str,
@@ -4122,7 +4122,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_email(
         self,
         Destination: ClientSendEmailDestinationTypeDef,
@@ -4424,7 +4424,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -4516,7 +4516,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Remove one or more tags (keys and values) from a specified resource.
@@ -4563,7 +4563,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,

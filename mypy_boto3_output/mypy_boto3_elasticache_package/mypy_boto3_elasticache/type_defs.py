@@ -6,6 +6,56 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+_CacheClusterAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_CacheClusterAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class CacheClusterAvailableWaitWaiterConfigTypeDef(
+    _CacheClusterAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `CacheClusterAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_CacheClusterDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_CacheClusterDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class CacheClusterDeletedWaitWaiterConfigTypeDef(
+    _CacheClusterDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `CacheClusterDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _ClientAddTagsToResourceResponseTagListTypeDef = TypedDict(
     "_ClientAddTagsToResourceResponseTagListTypeDef",
     {"Key": str, "Value": str},
@@ -28262,4 +28312,54 @@ class DescribeUpdateActionsPaginateServiceUpdateTimeRangeTypeDef(
     - **EndTime** *(datetime) --*
 
       The end time of the time range filter
+    """
+
+
+_ReplicationGroupAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationGroupAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationGroupAvailableWaitWaiterConfigTypeDef(
+    _ReplicationGroupAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationGroupAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_ReplicationGroupDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationGroupDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationGroupDeletedWaitWaiterConfigTypeDef(
+    _ReplicationGroupDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationGroupDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """

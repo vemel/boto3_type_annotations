@@ -143,7 +143,7 @@ from mypy_boto3_lightsail.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_static_ip(
         self, staticIpName: str
     ) -> ClientAllocateStaticIpResponseTypeDef:
@@ -285,7 +285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_disk(
         self, diskName: str, instanceName: str, diskPath: str
     ) -> ClientAttachDiskResponseTypeDef:
@@ -445,7 +445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_instances_to_load_balancer(
         self, loadBalancerName: str, instanceNames: List[str]
     ) -> ClientAttachInstancesToLoadBalancerResponseTypeDef:
@@ -611,7 +611,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_load_balancer_tls_certificate(
         self, loadBalancerName: str, certificateName: str
     ) -> ClientAttachLoadBalancerTlsCertificateResponseTypeDef:
@@ -774,7 +774,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_static_ip(
         self, staticIpName: str, instanceName: str
     ) -> ClientAttachStaticIpResponseTypeDef:
@@ -922,7 +922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -939,7 +939,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def close_instance_public_ports(
         self, portInfo: ClientCloseInstancePublicPortsportInfoTypeDef, instanceName: str
     ) -> ClientCloseInstancePublicPortsResponseTypeDef:
@@ -1101,7 +1101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_snapshot(
         self,
         targetSnapshotName: str,
@@ -1334,7 +1334,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cloud_formation_stack(
         self, instances: List[ClientCreateCloudFormationStackinstancesTypeDef]
     ) -> ClientCreateCloudFormationStackResponseTypeDef:
@@ -1540,7 +1540,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_disk(
         self,
         diskName: str,
@@ -1787,7 +1787,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_disk_from_snapshot(
         self,
         diskName: str,
@@ -2104,7 +2104,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_disk_snapshot(
         self,
         diskSnapshotName: str,
@@ -2330,7 +2330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain(
         self, domainName: str, tags: List[ClientCreateDomaintagsTypeDef] = None
     ) -> ClientCreateDomainResponseTypeDef:
@@ -2509,7 +2509,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain_entry(
         self, domainName: str, domainEntry: ClientCreateDomainEntrydomainEntryTypeDef
     ) -> ClientCreateDomainEntryResponseTypeDef:
@@ -2721,7 +2721,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance_snapshot(
         self,
         instanceSnapshotName: str,
@@ -2913,7 +2913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instances(
         self,
         instanceNames: List[str],
@@ -3214,7 +3214,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instances_from_snapshot(
         self,
         instanceNames: List[str],
@@ -3591,7 +3591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_key_pair(
         self, keyPairName: str, tags: List[ClientCreateKeyPairtagsTypeDef] = None
     ) -> ClientCreateKeyPairResponseTypeDef:
@@ -3869,7 +3869,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer(
         self,
         loadBalancerName: str,
@@ -4106,7 +4106,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer_tls_certificate(
         self,
         loadBalancerName: str,
@@ -4324,7 +4324,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_relational_database(
         self,
         relationalDatabaseName: str,
@@ -4442,7 +4442,7 @@ class Client(BaseClient):
         :param masterUserPassword:
 
           The password for the master user of your new database. The password can include any printable
-          ASCII character except "/", '"', or "@".
+          ASCII character except "/", ''', or "@".
 
           Constraints: Must contain 8 to 41 characters.
 
@@ -4645,7 +4645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_relational_database_from_snapshot(
         self,
         relationalDatabaseName: str,
@@ -4918,7 +4918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_relational_database_snapshot(
         self,
         relationalDatabaseName: str,
@@ -5115,7 +5115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_auto_snapshot(
         self, resourceName: str, date: str
     ) -> ClientDeleteAutoSnapshotResponseTypeDef:
@@ -5265,7 +5265,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_disk(
         self, diskName: str, forceDeleteAddOns: bool = None
     ) -> ClientDeleteDiskResponseTypeDef:
@@ -5423,7 +5423,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_disk_snapshot(
         self, diskSnapshotName: str
     ) -> ClientDeleteDiskSnapshotResponseTypeDef:
@@ -5577,7 +5577,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain(self, domainName: str) -> ClientDeleteDomainResponseTypeDef:
         """
         Deletes the specified domain recordset and all of its domain records.
@@ -5715,7 +5715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain_entry(
         self, domainName: str, domainEntry: ClientDeleteDomainEntrydomainEntryTypeDef
     ) -> ClientDeleteDomainEntryResponseTypeDef:
@@ -5926,7 +5926,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_instance(
         self, instanceName: str, forceDeleteAddOns: bool = None
     ) -> ClientDeleteInstanceResponseTypeDef:
@@ -6080,7 +6080,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_instance_snapshot(
         self, instanceSnapshotName: str
     ) -> ClientDeleteInstanceSnapshotResponseTypeDef:
@@ -6229,7 +6229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_key_pair(self, keyPairName: str) -> ClientDeleteKeyPairResponseTypeDef:
         """
         Deletes a specific SSH key pair.
@@ -6367,7 +6367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_known_host_keys(
         self, instanceName: str
     ) -> ClientDeleteKnownHostKeysResponseTypeDef:
@@ -6520,7 +6520,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer(
         self, loadBalancerName: str
     ) -> ClientDeleteLoadBalancerResponseTypeDef:
@@ -6670,7 +6670,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer_tls_certificate(
         self, loadBalancerName: str, certificateName: str, force: bool = None
     ) -> ClientDeleteLoadBalancerTlsCertificateResponseTypeDef:
@@ -6834,7 +6834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_relational_database(
         self,
         relationalDatabaseName: str,
@@ -7016,7 +7016,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_relational_database_snapshot(
         self, relationalDatabaseSnapshotName: str
     ) -> ClientDeleteRelationalDatabaseSnapshotResponseTypeDef:
@@ -7164,7 +7164,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_disk(self, diskName: str) -> ClientDetachDiskResponseTypeDef:
         """
         Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file
@@ -7311,7 +7311,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_instances_from_load_balancer(
         self, loadBalancerName: str, instanceNames: List[str]
     ) -> ClientDetachInstancesFromLoadBalancerResponseTypeDef:
@@ -7473,7 +7473,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_static_ip(
         self, staticIpName: str
     ) -> ClientDetachStaticIpResponseTypeDef:
@@ -7616,7 +7616,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_add_on(
         self, addOnType: str, resourceName: str
     ) -> ClientDisableAddOnResponseTypeDef:
@@ -7767,7 +7767,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_default_key_pair(
         self, *args: Any, **kwargs: Any
     ) -> ClientDownloadDefaultKeyPairResponseTypeDef:
@@ -7807,7 +7807,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_add_on(
         self, resourceName: str, addOnRequest: ClientEnableAddOnaddOnRequestTypeDef
     ) -> ClientEnableAddOnResponseTypeDef:
@@ -7985,7 +7985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_snapshot(
         self, sourceSnapshotName: str
     ) -> ClientExportSnapshotResponseTypeDef:
@@ -8145,7 +8145,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -8174,7 +8174,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_active_names(
         self, pageToken: str = None
     ) -> ClientGetActiveNamesResponseTypeDef:
@@ -8224,7 +8224,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_auto_snapshots(
         self, resourceName: str
     ) -> ClientGetAutoSnapshotsResponseTypeDef:
@@ -8328,7 +8328,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_blueprints(
         self, includeInactive: bool = None, pageToken: str = None
     ) -> ClientGetBlueprintsResponseTypeDef:
@@ -8463,7 +8463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bundles(
         self, includeInactive: bool = None, pageToken: str = None
     ) -> ClientGetBundlesResponseTypeDef:
@@ -8589,7 +8589,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cloud_formation_stack_records(
         self, pageToken: str = None
     ) -> ClientGetCloudFormationStackRecordsResponseTypeDef:
@@ -8748,7 +8748,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_disk(self, diskName: str) -> ClientGetDiskResponseTypeDef:
         """
         Returns information about a specific block storage disk.
@@ -8967,7 +8967,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_disk_snapshot(
         self, diskSnapshotName: str
     ) -> ClientGetDiskSnapshotResponseTypeDef:
@@ -9133,7 +9133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_disk_snapshots(
         self, pageToken: str = None
     ) -> ClientGetDiskSnapshotsResponseTypeDef:
@@ -9316,7 +9316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_disks(self, pageToken: str = None) -> ClientGetDisksResponseTypeDef:
         """
         Returns information about all block storage disks in your AWS account and region.
@@ -9553,7 +9553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain(self, domainName: str) -> ClientGetDomainResponseTypeDef:
         """
         Returns information about a specific domain recordset.
@@ -9752,7 +9752,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domains(self, pageToken: str = None) -> ClientGetDomainsResponseTypeDef:
         """
         Returns a list of all domains in the user's account.
@@ -9965,7 +9965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_export_snapshot_records(
         self, pageToken: str = None
     ) -> ClientGetExportSnapshotRecordsResponseTypeDef:
@@ -10183,7 +10183,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance(self, instanceName: str) -> ClientGetInstanceResponseTypeDef:
         """
         Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
@@ -10698,7 +10698,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_access_details(
         self, instanceName: str, protocol: str = None
     ) -> Dict[str, Any]:
@@ -10910,7 +10910,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_metric_data(
         self,
         instanceName: str,
@@ -11060,7 +11060,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_port_states(
         self, instanceName: str
     ) -> ClientGetInstancePortStatesResponseTypeDef:
@@ -11143,7 +11143,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_snapshot(
         self, instanceSnapshotName: str
     ) -> ClientGetInstanceSnapshotResponseTypeDef:
@@ -11508,7 +11508,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_snapshots(
         self, pageToken: str = None
     ) -> ClientGetInstanceSnapshotsResponseTypeDef:
@@ -11886,7 +11886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_state(
         self, instanceName: str
     ) -> ClientGetInstanceStateResponseTypeDef:
@@ -11938,7 +11938,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instances(self, pageToken: str = None) -> ClientGetInstancesResponseTypeDef:
         """
         Returns information about all Amazon Lightsail virtual private servers, or *instances* .
@@ -12467,7 +12467,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_key_pair(self, keyPairName: str) -> ClientGetKeyPairResponseTypeDef:
         """
         Returns information about a specific key pair.
@@ -12595,7 +12595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_key_pairs(self, pageToken: str = None) -> ClientGetKeyPairsResponseTypeDef:
         """
         Returns information about all key pairs in the user's account.
@@ -12736,7 +12736,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_load_balancer(
         self, loadBalancerName: str
     ) -> ClientGetLoadBalancerResponseTypeDef:
@@ -13015,7 +13015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_load_balancer_metric_data(
         self,
         loadBalancerName: str,
@@ -13298,7 +13298,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_load_balancer_tls_certificates(
         self, loadBalancerName: str
     ) -> ClientGetLoadBalancerTlsCertificatesResponseTypeDef:
@@ -13630,7 +13630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_load_balancers(
         self, pageToken: str = None
     ) -> ClientGetLoadBalancersResponseTypeDef:
@@ -13925,7 +13925,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_operation(self, operationId: str) -> ClientGetOperationResponseTypeDef:
         """
         Returns information about a specific operation. Operations include events such as when you create
@@ -14059,7 +14059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_operations(
         self, pageToken: str = None
     ) -> ClientGetOperationsResponseTypeDef:
@@ -14211,7 +14211,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_operations_for_resource(
         self, resourceName: str, pageToken: str = None
     ) -> ClientGetOperationsForResourceResponseTypeDef:
@@ -14377,7 +14377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -14398,7 +14398,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_regions(
         self,
         includeAvailabilityZones: bool = None,
@@ -14525,7 +14525,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database(
         self, relationalDatabaseName: str
     ) -> ClientGetRelationalDatabaseResponseTypeDef:
@@ -14811,7 +14811,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_blueprints(
         self, pageToken: str = None
     ) -> ClientGetRelationalDatabaseBlueprintsResponseTypeDef:
@@ -14901,7 +14901,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_bundles(
         self, pageToken: str = None
     ) -> ClientGetRelationalDatabaseBundlesResponseTypeDef:
@@ -15005,7 +15005,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_events(
         self,
         relationalDatabaseName: str,
@@ -15104,7 +15104,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_log_events(
         self,
         relationalDatabaseName: str,
@@ -15233,7 +15233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_log_streams(
         self, relationalDatabaseName: str
     ) -> ClientGetRelationalDatabaseLogStreamsResponseTypeDef:
@@ -15278,7 +15278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_master_user_password(
         self, relationalDatabaseName: str, passwordVersion: str = None
     ) -> ClientGetRelationalDatabaseMasterUserPasswordResponseTypeDef:
@@ -15342,7 +15342,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_metric_data(
         self,
         relationalDatabaseName: str,
@@ -15505,7 +15505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_parameters(
         self, relationalDatabaseName: str, pageToken: str = None
     ) -> ClientGetRelationalDatabaseParametersResponseTypeDef:
@@ -15612,7 +15612,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_snapshot(
         self, relationalDatabaseSnapshotName: str
     ) -> ClientGetRelationalDatabaseSnapshotResponseTypeDef:
@@ -15777,7 +15777,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_database_snapshots(
         self, pageToken: str = None
     ) -> ClientGetRelationalDatabaseSnapshotsResponseTypeDef:
@@ -15957,7 +15957,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_relational_databases(
         self, pageToken: str = None
     ) -> ClientGetRelationalDatabasesResponseTypeDef:
@@ -16257,7 +16257,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_static_ip(self, staticIpName: str) -> ClientGetStaticIpResponseTypeDef:
         """
         Returns information about a specific static IP.
@@ -16363,7 +16363,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_static_ips(
         self, pageToken: str = None
     ) -> ClientGetStaticIpsResponseTypeDef:
@@ -16483,7 +16483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -16496,7 +16496,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_key_pair(
         self, keyPairName: str, publicKeyBase64: str
     ) -> ClientImportKeyPairResponseTypeDef:
@@ -16636,7 +16636,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def is_vpc_peered(
         self, *args: Any, **kwargs: Any
     ) -> ClientIsVpcPeeredResponseTypeDef:
@@ -16671,7 +16671,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def open_instance_public_ports(
         self, portInfo: ClientOpenInstancePublicPortsportInfoTypeDef, instanceName: str
     ) -> ClientOpenInstancePublicPortsResponseTypeDef:
@@ -16833,7 +16833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def peer_vpc(self, *args: Any, **kwargs: Any) -> ClientPeerVpcResponseTypeDef:
         """
         Tries to peer the Lightsail VPC with the user's default VPC.
@@ -16959,7 +16959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_instance_public_ports(
         self,
         portInfos: List[ClientPutInstancePublicPortsportInfosTypeDef],
@@ -17130,7 +17130,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_instance(self, instanceName: str) -> ClientRebootInstanceResponseTypeDef:
         """
         Restarts a specific instance.
@@ -17275,7 +17275,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_relational_database(
         self, relationalDatabaseName: str
     ) -> ClientRebootRelationalDatabaseResponseTypeDef:
@@ -17423,7 +17423,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def release_static_ip(
         self, staticIpName: str
     ) -> ClientReleaseStaticIpResponseTypeDef:
@@ -17565,7 +17565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_instance(self, instanceName: str) -> ClientStartInstanceResponseTypeDef:
         """
         Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the
@@ -17718,7 +17718,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_relational_database(
         self, relationalDatabaseName: str
     ) -> ClientStartRelationalDatabaseResponseTypeDef:
@@ -17867,7 +17867,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_instance(
         self, instanceName: str, force: bool = None
     ) -> ClientStopInstanceResponseTypeDef:
@@ -18033,7 +18033,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_relational_database(
         self, relationalDatabaseName: str, relationalDatabaseSnapshotName: str = None
     ) -> ClientStopRelationalDatabaseResponseTypeDef:
@@ -18187,7 +18187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self,
         resourceName: str,
@@ -18379,7 +18379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unpeer_vpc(self, *args: Any, **kwargs: Any) -> ClientUnpeerVpcResponseTypeDef:
         """
         Attempts to unpeer the Lightsail VPC from the user's default VPC.
@@ -18505,7 +18505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(
         self, resourceName: str, tagKeys: List[str], resourceArn: str = None
     ) -> ClientUntagResourceResponseTypeDef:
@@ -18669,7 +18669,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_entry(
         self, domainName: str, domainEntry: ClientUpdateDomainEntrydomainEntryTypeDef
     ) -> ClientUpdateDomainEntryResponseTypeDef:
@@ -18887,7 +18887,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_load_balancer_attribute(
         self, loadBalancerName: str, attributeName: str, attributeValue: str
     ) -> ClientUpdateLoadBalancerAttributeResponseTypeDef:
@@ -19048,7 +19048,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_relational_database(
         self,
         relationalDatabaseName: str,
@@ -19099,7 +19099,7 @@ class Client(BaseClient):
         :param masterUserPassword:
 
           The password for the master user of your database. The password can include any printable ASCII
-          character except "/", '"', or "@".
+          character except "/", ''', or "@".
 
           Constraints: Must contain 8 to 41 characters.
 
@@ -19301,7 +19301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_relational_database_parameters(
         self,
         relationalDatabaseName: str,

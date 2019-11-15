@@ -28,7 +28,7 @@ from mypy_boto3_stepfunctions.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -45,7 +45,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_activity(
         self, name: str, tags: List[ClientCreateActivitytagsTypeDef] = None
     ) -> ClientCreateActivityResponseTypeDef:
@@ -100,7 +100,7 @@ class Client(BaseClient):
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -163,7 +163,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_state_machine(
         self,
         name: str,
@@ -221,7 +221,7 @@ class Client(BaseClient):
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -295,7 +295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_activity(self, activityArn: str) -> Dict[str, Any]:
         """
         Deletes an activity.
@@ -327,7 +327,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_state_machine(self, stateMachineArn: str) -> Dict[str, Any]:
         """
         Deletes a state machine. This is an asynchronous operation: It sets the state machine's status to
@@ -365,7 +365,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_activity(
         self, activityArn: str
     ) -> ClientDescribeActivityResponseTypeDef:
@@ -423,7 +423,7 @@ class Client(BaseClient):
 
               * wildcard characters ``? *``
 
-              * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+              * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
               * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -433,7 +433,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_execution(
         self, executionArn: str
     ) -> ClientDescribeExecutionResponseTypeDef:
@@ -500,7 +500,7 @@ class Client(BaseClient):
 
               * wildcard characters ``? *``
 
-              * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+              * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
               * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -531,7 +531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_state_machine(
         self, stateMachineArn: str
     ) -> ClientDescribeStateMachineResponseTypeDef:
@@ -592,7 +592,7 @@ class Client(BaseClient):
 
               * wildcard characters ``? *``
 
-              * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+              * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
               * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -617,7 +617,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_state_machine_for_execution(
         self, executionArn: str
     ) -> ClientDescribeStateMachineForExecutionResponseTypeDef:
@@ -686,7 +686,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -715,7 +715,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_activity_task(
         self, activityArn: str, workerName: str = None
     ) -> ClientGetActivityTaskResponseTypeDef:
@@ -786,7 +786,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_execution_history(
         self,
         executionArn: str,
@@ -1480,7 +1480,7 @@ class Client(BaseClient):
 
                     * wildcard characters ``? *``
 
-                    * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                    * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                     * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -1498,7 +1498,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1519,7 +1519,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1532,7 +1532,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_activities(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListActivitiesResponseTypeDef:
@@ -1622,7 +1622,7 @@ class Client(BaseClient):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -1640,7 +1640,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_executions(
         self,
         stateMachineArn: str,
@@ -1754,7 +1754,7 @@ class Client(BaseClient):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -1780,7 +1780,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_state_machines(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListStateMachinesResponseTypeDef:
@@ -1868,7 +1868,7 @@ class Client(BaseClient):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -1886,7 +1886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1955,7 +1955,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_task_failure(
         self, taskToken: str, error: str = None, cause: str = None
     ) -> Dict[str, Any]:
@@ -2006,7 +2006,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_task_heartbeat(self, taskToken: str) -> Dict[str, Any]:
         """
         Used by activity workers and task states using the `callback
@@ -2058,7 +2058,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_task_success(self, taskToken: str, output: str) -> Dict[str, Any]:
         """
         Used by activity workers and task states using the `callback
@@ -2101,7 +2101,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_execution(
         self, stateMachineArn: str, name: str = None, input: str = None
     ) -> ClientStartExecutionResponseTypeDef:
@@ -2147,7 +2147,7 @@ class Client(BaseClient):
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2156,7 +2156,7 @@ class Client(BaseClient):
 
           The string that contains the JSON input data for the execution, for example:
 
-           ``"input": "{\"first_name\" : \"test\"}"``
+           ``"input": "{\\"first_name\\" : \\"test\\"}"``
 
           .. note::
 
@@ -2188,7 +2188,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_execution(
         self, executionArn: str, error: str = None, cause: str = None
     ) -> ClientStopExecutionResponseTypeDef:
@@ -2241,7 +2241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2317,7 +2317,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Remove a tag from a Step Functions resource
@@ -2359,7 +2359,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_state_machine(
         self, stateMachineArn: str, definition: str = None, roleArn: str = None
     ) -> ClientUpdateStateMachineResponseTypeDef:

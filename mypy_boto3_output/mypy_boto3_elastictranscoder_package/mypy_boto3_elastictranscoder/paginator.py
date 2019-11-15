@@ -15,7 +15,7 @@ from mypy_boto3_elastictranscoder.type_defs import (
 
 
 class ListJobsByPipeline(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PipelineId: str,
@@ -3209,7 +3209,7 @@ class ListJobsByPipeline(Boto3Paginator):
 
 
 class ListJobsByStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Status: str,
@@ -6405,7 +6405,7 @@ class ListJobsByStatus(Boto3Paginator):
 
 
 class ListPipelines(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Ascending: str = None,
@@ -6890,7 +6890,7 @@ class ListPipelines(Boto3Paginator):
 
 
 class ListPresets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Ascending: str = None,

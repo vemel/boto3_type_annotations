@@ -13,7 +13,7 @@ from mypy_boto3_polly.type_defs import (
 
 
 class DescribeVoices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Engine: str = None,
@@ -173,7 +173,7 @@ class DescribeVoices(Boto3Paginator):
 
 
 class ListLexicons(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListLexiconsPaginatePaginationConfigTypeDef = None
     ) -> ListLexiconsPaginateResponseTypeDef:
@@ -284,7 +284,7 @@ class ListLexicons(Boto3Paginator):
 
 
 class ListSpeechSynthesisTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Status: str = None,

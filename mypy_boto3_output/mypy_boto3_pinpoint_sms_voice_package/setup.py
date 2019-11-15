@@ -8,7 +8,7 @@ See [mypy_boto3](https://pypi.org/project/mypy-boto3/) for more info.
 
 setup(
     name="mypy-boto3-pinpoint-sms-voice",
-    version="0.2.1",
+    version="0.2.2",
     packages=["mypy_boto3_pinpoint_sms_voice"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",

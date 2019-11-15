@@ -61,6 +61,7 @@ from mypy_boto3_codedeploy.type_defs import (
     ClientListOnPremisesInstancestagFiltersTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientPutLifecycleEventHookExecutionStatusResponseTypeDef,
+    ClientRegisterApplicationRevisionrevisionTypeDef,
     ClientRemoveTagsFromOnPremisesInstancestagsTypeDef,
     ClientStopDeploymentResponseTypeDef,
     ClientTagResourceTagsTypeDef,
@@ -80,11 +81,11 @@ from mypy_boto3_codedeploy.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_on_premises_instances(
         self,
         tags: List[ClientAddTagsToOnPremisesInstancestagsTypeDef],
-        instanceNames: List[Any],
+        instanceNames: List[str],
     ) -> None:
         """
         Adds tags to on-premises instances.
@@ -136,7 +137,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_application_revisions(
         self,
         applicationName: str,
@@ -500,7 +501,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_applications(
         self, applicationNames: List[str]
     ) -> ClientBatchGetApplicationsResponseTypeDef:
@@ -588,7 +589,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_deployment_groups(
         self, applicationName: str, deploymentGroupNames: List[str]
     ) -> ClientBatchGetDeploymentGroupsResponseTypeDef:
@@ -1419,7 +1420,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_deployment_instances(
         self, deploymentId: str, instanceIds: List[str]
     ) -> ClientBatchGetDeploymentInstancesResponseTypeDef:
@@ -1626,7 +1627,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_deployment_targets(
         self, deploymentId: str = None, targetIds: List[str] = None
     ) -> ClientBatchGetDeploymentTargetsResponseTypeDef:
@@ -2208,7 +2209,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_deployments(
         self, deploymentIds: List[str]
     ) -> ClientBatchGetDeploymentsResponseTypeDef:
@@ -3143,7 +3144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_on_premises_instances(
         self, instanceNames: List[str]
     ) -> ClientBatchGetOnPremisesInstancesResponseTypeDef:
@@ -3252,7 +3253,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -3269,7 +3270,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def continue_deployment(
         self, deploymentId: str = None, deploymentWaitType: str = None
     ) -> None:
@@ -3305,7 +3306,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self,
         applicationName: str,
@@ -3381,7 +3382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment(
         self,
         applicationName: str,
@@ -3750,7 +3751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment_config(
         self,
         deploymentConfigName: str,
@@ -3913,7 +3914,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment_group(
         self,
         applicationName: str,
@@ -4563,7 +4564,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application(self, applicationName: str) -> None:
         """
         Deletes an application.
@@ -4585,7 +4586,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_deployment_config(self, deploymentConfigName: str) -> None:
         """
         Deletes a deployment configuration.
@@ -4612,7 +4613,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_deployment_group(
         self, applicationName: str, deploymentGroupName: str
     ) -> ClientDeleteDeploymentGroupResponseTypeDef:
@@ -4682,7 +4683,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_git_hub_account_token(
         self, tokenName: str = None
     ) -> ClientDeleteGitHubAccountTokenResponseTypeDef:
@@ -4725,7 +4726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_on_premises_instance(self, instanceName: str) -> None:
         """
         Deregisters an on-premises instance.
@@ -4747,7 +4748,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4776,7 +4777,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application(
         self, applicationName: str
     ) -> ClientGetApplicationResponseTypeDef:
@@ -4851,7 +4852,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application_revision(
         self,
         applicationName: str,
@@ -5185,7 +5186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment(self, deploymentId: str) -> ClientGetDeploymentResponseTypeDef:
         """
         Gets information about a deployment.
@@ -6104,7 +6105,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment_config(
         self, deploymentConfigName: str
     ) -> ClientGetDeploymentConfigResponseTypeDef:
@@ -6263,7 +6264,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment_group(
         self, applicationName: str, deploymentGroupName: str
     ) -> ClientGetDeploymentGroupResponseTypeDef:
@@ -7071,7 +7072,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment_instance(
         self, deploymentId: str, instanceId: str
     ) -> ClientGetDeploymentInstanceResponseTypeDef:
@@ -7255,7 +7256,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment_target(
         self, deploymentId: str = None, targetId: str = None
     ) -> ClientGetDeploymentTargetResponseTypeDef:
@@ -7794,7 +7795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_on_premises_instance(
         self, instanceName: str
     ) -> ClientGetOnPremisesInstanceResponseTypeDef:
@@ -7891,7 +7892,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -7912,7 +7913,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -7925,7 +7926,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_application_revisions(
         self,
         applicationName: str,
@@ -8173,7 +8174,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_applications(
         self, nextToken: str = None
     ) -> ClientListApplicationsResponseTypeDef:
@@ -8227,7 +8228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployment_configs(
         self, nextToken: str = None
     ) -> ClientListDeploymentConfigsResponseTypeDef:
@@ -8283,7 +8284,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployment_groups(
         self, applicationName: str, nextToken: str = None
     ) -> ClientListDeploymentGroupsResponseTypeDef:
@@ -8349,7 +8350,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployment_instances(
         self,
         deploymentId: str,
@@ -8459,7 +8460,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployment_targets(
         self,
         deploymentId: str = None,
@@ -8542,7 +8543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployments(
         self,
         applicationName: str = None,
@@ -8671,7 +8672,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_git_hub_account_token_names(
         self, nextToken: str = None
     ) -> ClientListGitHubAccountTokenNamesResponseTypeDef:
@@ -8725,7 +8726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_on_premises_instances(
         self,
         registrationStatus: str = None,
@@ -8831,7 +8832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -8906,7 +8907,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lifecycle_event_hook_execution_status(
         self,
         deploymentId: str = None,
@@ -8968,9 +8969,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_application_revision(
-        self, applicationName: str, revision: Dict, description: str = None
+        self,
+        applicationName: str,
+        revision: ClientRegisterApplicationRevisionrevisionTypeDef,
+        description: str = None,
     ) -> None:
         """
         Registers with AWS CodeDeploy a revision for the specified application.
@@ -9125,7 +9129,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_on_premises_instance(
         self, instanceName: str, iamSessionArn: str = None, iamUserArn: str = None
     ) -> None:
@@ -9166,11 +9170,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_on_premises_instances(
         self,
         tags: List[ClientRemoveTagsFromOnPremisesInstancestagsTypeDef],
-        instanceNames: List[Any],
+        instanceNames: List[str],
     ) -> None:
         """
         Removes one or more tags from one or more on-premises instances.
@@ -9219,7 +9223,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def skip_wait_time_for_instance_termination(self, deploymentId: str = None) -> None:
         """
         In a blue/green deployment, overrides any specified wait time and starts terminating instances
@@ -9248,7 +9252,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_deployment(
         self, deploymentId: str, autoRollbackEnabled: bool = None
     ) -> ClientStopDeploymentResponseTypeDef:
@@ -9307,7 +9311,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -9366,7 +9370,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Disassociates a resource from a list of tags. The resource is identified by the ``ResourceArn``
@@ -9411,7 +9415,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self, applicationName: str = None, newApplicationName: str = None
     ) -> None:
@@ -9441,7 +9445,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_deployment_group(
         self,
         applicationName: str,

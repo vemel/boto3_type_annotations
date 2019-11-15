@@ -195,8 +195,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonEntereventsactions
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -510,8 +510,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonEntereventsactions
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -659,8 +659,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonEntereventsTypeDef
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -811,8 +811,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonEnterTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -864,8 +864,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonExiteventsactionsf
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1179,8 +1179,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonExiteventsactionsT
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1328,8 +1328,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonExiteventsTypeDef(
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1481,8 +1481,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonExitTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1534,8 +1534,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputeventsactions
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1849,8 +1849,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputeventsactions
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -1998,8 +1998,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputeventsTypeDef
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -2051,8 +2051,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -2366,8 +2366,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -2514,8 +2514,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
 
     - **nextState** *(string) --* **[REQUIRED]**
 
@@ -2673,8 +2673,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
 
     - **transitionEvents** *(list) --*
 
@@ -2804,8 +2804,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesonInputTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
 
         - **nextState** *(string) --* **[REQUIRED]**
 
@@ -2973,8 +2973,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
       - **transitionEvents** *(list) --*
 
@@ -3104,8 +3104,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
           - **nextState** *(string) --* **[REQUIRED]**
 
@@ -3243,8 +3243,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
     - **onExit** *(dict) --*
 
@@ -3379,8 +3379,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -3545,8 +3545,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
           - **transitionEvents** *(list) --*
 
@@ -3676,8 +3676,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
               - **nextState** *(string) --* **[REQUIRED]**
 
@@ -3815,8 +3815,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
         - **onExit** *(dict) --*
 
@@ -3951,8 +3951,8 @@ class ClientCreateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
     - **initialStateName** *(string) --* **[REQUIRED]**
 
@@ -4276,8 +4276,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the
-      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -4596,8 +4596,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the
-        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -4744,8 +4744,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the
-            Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-            '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+            Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+            '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -4899,8 +4899,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the
-                Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -4949,8 +4949,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the
-      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -5269,8 +5269,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the
-        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -5417,8 +5417,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the
-            Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-            '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+            Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+            '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -5573,8 +5573,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the
-                Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -5623,8 +5623,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the
-      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -5943,8 +5943,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the
-        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -6091,8 +6091,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the
-            Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-            '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+            Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+            '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -6141,8 +6141,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the
-      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -6461,8 +6461,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the
-        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -6609,8 +6609,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the
-            Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-            '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+            Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+            '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
     - **nextState** *(string) --*
 
@@ -6771,8 +6771,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the
-                Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
     - **transitionEvents** *(list) --*
 
@@ -6904,8 +6904,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the
-                Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
         - **nextState** *(string) --*
 
@@ -7072,8 +7072,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the
-                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
       - **transitionEvents** *(list) --*
 
@@ -7205,8 +7205,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the
-                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
           - **nextState** *(string) --*
 
@@ -7347,8 +7347,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the
-                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
     - **onExit** *(dict) --*
 
@@ -7486,8 +7486,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionsta
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the
-                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -7658,8 +7658,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionTyp
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the
-                      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
           - **transitionEvents** *(list) --*
 
@@ -7791,8 +7791,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionTyp
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the
-                      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
               - **nextState** *(string) --*
 
@@ -7933,8 +7933,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionTyp
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the
-                      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
         - **onExit** *(dict) --*
 
@@ -8072,8 +8072,8 @@ class ClientDescribeDetectorModelResponsedetectorModeldetectorModelDefinitionTyp
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the
-                      Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                      '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                      Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                      '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
     - **initialStateName** *(string) --*
 
@@ -8250,8 +8250,8 @@ class ClientDescribeDetectorModelResponsedetectorModelTypeDef(
                       - **separator** *(string) --*
 
                         A character separator that is used to separate records written to the
-                        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
             - **transitionEvents** *(list) --*
 
@@ -8383,8 +8383,8 @@ class ClientDescribeDetectorModelResponsedetectorModelTypeDef(
                       - **separator** *(string) --*
 
                         A character separator that is used to separate records written to the
-                        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                 - **nextState** *(string) --*
 
@@ -8525,8 +8525,8 @@ class ClientDescribeDetectorModelResponsedetectorModelTypeDef(
                       - **separator** *(string) --*
 
                         A character separator that is used to separate records written to the
-                        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
           - **onExit** *(dict) --*
 
@@ -8664,8 +8664,8 @@ class ClientDescribeDetectorModelResponsedetectorModelTypeDef(
                       - **separator** *(string) --*
 
                         A character separator that is used to separate records written to the
-                        Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                        '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                        Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                        '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
       - **initialStateName** *(string) --*
 
@@ -8891,8 +8891,8 @@ class ClientDescribeDetectorModelResponseTypeDef(
                         - **separator** *(string) --*
 
                           A character separator that is used to separate records written to the
-                          Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                          '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                          Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                          '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
               - **transitionEvents** *(list) --*
 
@@ -9024,8 +9024,8 @@ class ClientDescribeDetectorModelResponseTypeDef(
                         - **separator** *(string) --*
 
                           A character separator that is used to separate records written to the
-                          Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                          '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                          Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                          '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                   - **nextState** *(string) --*
 
@@ -9166,8 +9166,8 @@ class ClientDescribeDetectorModelResponseTypeDef(
                         - **separator** *(string) --*
 
                           A character separator that is used to separate records written to the
-                          Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                          '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                          Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                          '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
             - **onExit** *(dict) --*
 
@@ -9305,8 +9305,8 @@ class ClientDescribeDetectorModelResponseTypeDef(
                         - **separator** *(string) --*
 
                           A character separator that is used to separate records written to the
-                          Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                          '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                          Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                          '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
         - **initialStateName** *(string) --*
 
@@ -10134,6 +10134,95 @@ class ClientListTagsForResourceResponseTypeDef(
     """
 
 
+_RequiredClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef = TypedDict(
+    "_RequiredClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef",
+    {"detectorModelName": str},
+)
+_OptionalClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef = TypedDict(
+    "_OptionalClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef",
+    {"keyValue": str},
+    total=False,
+)
+
+
+class ClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef(
+    _RequiredClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef,
+    _OptionalClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef,
+):
+    """
+    Type definition for `ClientPutLoggingOptionsloggingOptions` `detectorDebugOptions`
+
+    The detector model and the specific detectors (instances) for which the logging level is
+    given.
+
+    - **detectorModelName** *(string) --* **[REQUIRED]**
+
+      The name of the detector model.
+
+    - **keyValue** *(string) --*
+
+      The value of the input attribute key used to create the detector (the instance of the
+      detector model).
+    """
+
+
+_RequiredClientPutLoggingOptionsloggingOptionsTypeDef = TypedDict(
+    "_RequiredClientPutLoggingOptionsloggingOptionsTypeDef",
+    {"roleArn": str, "level": str, "enabled": bool},
+)
+_OptionalClientPutLoggingOptionsloggingOptionsTypeDef = TypedDict(
+    "_OptionalClientPutLoggingOptionsloggingOptionsTypeDef",
+    {
+        "detectorDebugOptions": List[
+            ClientPutLoggingOptionsloggingOptionsdetectorDebugOptionsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientPutLoggingOptionsloggingOptionsTypeDef(
+    _RequiredClientPutLoggingOptionsloggingOptionsTypeDef,
+    _OptionalClientPutLoggingOptionsloggingOptionsTypeDef,
+):
+    """
+    Type definition for `ClientPutLoggingOptions` `loggingOptions`
+
+    The new values of the AWS IoT Events logging options.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants permission to AWS IoT Events to perform logging.
+
+    - **level** *(string) --* **[REQUIRED]**
+
+      The logging level.
+
+    - **enabled** *(boolean) --* **[REQUIRED]**
+
+      If TRUE, logging is enabled for AWS IoT Events.
+
+    - **detectorDebugOptions** *(list) --*
+
+      Information that identifies those detector models and their detectors (instances) for which the
+      logging level is given.
+
+      - *(dict) --*
+
+        The detector model and the specific detectors (instances) for which the logging level is
+        given.
+
+        - **detectorModelName** *(string) --* **[REQUIRED]**
+
+          The name of the detector model.
+
+        - **keyValue** *(string) --*
+
+          The value of the input attribute key used to create the detector (the instance of the
+          detector model).
+    """
+
+
 _ClientTagResourcetagsTypeDef = TypedDict(
     "_ClientTagResourcetagsTypeDef", {"key": str, "value": str}
 )
@@ -10344,8 +10433,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonEntereventsactions
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -10659,8 +10748,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonEntereventsactions
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -10808,8 +10897,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonEntereventsTypeDef
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -10960,8 +11049,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonEnterTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11013,8 +11102,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonExiteventsactionsf
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11328,8 +11417,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonExiteventsactionsT
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11477,8 +11566,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonExiteventsTypeDef(
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11630,8 +11719,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonExitTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11683,8 +11772,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputeventsactions
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -11998,8 +12087,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputeventsactions
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -12147,8 +12236,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputeventsTypeDef
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -12200,8 +12289,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
     - **separator** *(string) --*
 
       A character separator that is used to separate records written to the Kinesis
-      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-      '\r\n' (Windows newline), ',' (comma).
+      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+      '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -12515,8 +12604,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
       - **separator** *(string) --*
 
         A character separator that is used to separate records written to the Kinesis
-        Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-        '\r\n' (Windows newline), ',' (comma).
+        Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+        '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -12663,8 +12752,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputtransitionEve
           - **separator** *(string) --*
 
             A character separator that is used to separate records written to the Kinesis
-            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-            '\r\n' (Windows newline), ',' (comma).
+            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+            '\\r\\n' (Windows newline), ',' (comma).
 
     - **nextState** *(string) --* **[REQUIRED]**
 
@@ -12822,8 +12911,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
 
     - **transitionEvents** *(list) --*
 
@@ -12953,8 +13042,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesonInputTypeDef(
               - **separator** *(string) --*
 
                 A character separator that is used to separate records written to the Kinesis
-                Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                '\r\n' (Windows newline), ',' (comma).
+                Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                '\\r\\n' (Windows newline), ',' (comma).
 
         - **nextState** *(string) --* **[REQUIRED]**
 
@@ -13122,8 +13211,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
       - **transitionEvents** *(list) --*
 
@@ -13253,8 +13342,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
           - **nextState** *(string) --* **[REQUIRED]**
 
@@ -13392,8 +13481,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
 
     - **onExit** *(dict) --*
 
@@ -13528,8 +13617,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionstatesTypeDef(
                 - **separator** *(string) --*
 
                   A character separator that is used to separate records written to the Kinesis
-                  Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                  '\r\n' (Windows newline), ',' (comma).
+                  Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                  '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -13694,8 +13783,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
           - **transitionEvents** *(list) --*
 
@@ -13825,8 +13914,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
               - **nextState** *(string) --* **[REQUIRED]**
 
@@ -13964,8 +14053,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
         - **onExit** *(dict) --*
 
@@ -14100,8 +14189,8 @@ class ClientUpdateDetectorModeldetectorModelDefinitionTypeDef(
                     - **separator** *(string) --*
 
                       A character separator that is used to separate records written to the Kinesis
-                      Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                      '\r\n' (Windows newline), ',' (comma).
+                      Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                      '\\r\\n' (Windows newline), ',' (comma).
 
     - **initialStateName** *(string) --* **[REQUIRED]**
 

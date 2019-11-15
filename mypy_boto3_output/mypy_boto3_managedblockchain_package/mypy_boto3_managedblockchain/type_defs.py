@@ -30,7 +30,7 @@ class ClientCreateMemberMemberConfigurationFrameworkConfigurationFabricTypeDef(
       The password for the member's initial administrative user. The ``AdminPassword`` must be at
       least eight characters long and no more than 32 characters. It must contain at least one
       uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-      double quote(“), forward slash(/), backward slash(\), @, or a space.
+      double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 
@@ -65,7 +65,7 @@ class ClientCreateMemberMemberConfigurationFrameworkConfigurationTypeDef(
         The password for the member's initial administrative user. The ``AdminPassword`` must be at
         least eight characters long and no more than 32 characters. It must contain at least one
         uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-        double quote(“), forward slash(/), backward slash(\), @, or a space.
+        double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 
@@ -118,7 +118,7 @@ class ClientCreateMemberMemberConfigurationTypeDef(
           The password for the member's initial administrative user. The ``AdminPassword`` must be at
           least eight characters long and no more than 32 characters. It must contain at least one
           uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-          double quote(“), forward slash(/), backward slash(\), @, or a space.
+          double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 
@@ -209,7 +209,7 @@ class ClientCreateNetworkMemberConfigurationFrameworkConfigurationFabricTypeDef(
       The password for the member's initial administrative user. The ``AdminPassword`` must be at
       least eight characters long and no more than 32 characters. It must contain at least one
       uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-      double quote(“), forward slash(/), backward slash(\), @, or a space.
+      double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 
@@ -244,7 +244,7 @@ class ClientCreateNetworkMemberConfigurationFrameworkConfigurationTypeDef(
         The password for the member's initial administrative user. The ``AdminPassword`` must be at
         least eight characters long and no more than 32 characters. It must contain at least one
         uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-        double quote(“), forward slash(/), backward slash(\), @, or a space.
+        double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 
@@ -297,7 +297,7 @@ class ClientCreateNetworkMemberConfigurationTypeDef(
           The password for the member's initial administrative user. The ``AdminPassword`` must be at
           least eight characters long and no more than 32 characters. It must contain at least one
           uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-          double quote(“), forward slash(/), backward slash(\), @, or a space.
+          double quote(“), forward slash(/), backward slash(\\), @, or a space.
     """
 
 

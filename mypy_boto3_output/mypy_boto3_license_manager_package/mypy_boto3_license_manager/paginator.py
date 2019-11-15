@@ -21,7 +21,7 @@ from mypy_boto3_license_manager.type_defs import (
 
 
 class ListAssociationsForLicenseConfiguration(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         LicenseConfigurationArn: str,
@@ -123,7 +123,7 @@ class ListAssociationsForLicenseConfiguration(Boto3Paginator):
 
 
 class ListLicenseConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         LicenseConfigurationArns: List[str] = None,
@@ -344,7 +344,7 @@ class ListLicenseConfigurations(Boto3Paginator):
 
 
 class ListLicenseSpecificationsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,
@@ -429,7 +429,7 @@ class ListLicenseSpecificationsForResource(Boto3Paginator):
 
 
 class ListResourceInventory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListResourceInventoryPaginateFiltersTypeDef] = None,
@@ -560,7 +560,7 @@ class ListResourceInventory(Boto3Paginator):
 
 
 class ListUsageForLicenseConfiguration(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         LicenseConfigurationArn: str,

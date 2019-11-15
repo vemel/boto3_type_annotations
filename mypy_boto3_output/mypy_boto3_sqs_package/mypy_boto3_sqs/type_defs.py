@@ -1084,7 +1084,7 @@ class ClientSendMessageBatchEntriesTypeDef(
 
       The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
       contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-      (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+      (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
       For best practices of using ``MessageDeduplicationId`` , see `Using the
       MessageDeduplicationId Property
@@ -1110,7 +1110,7 @@ class ClientSendMessageBatchEntriesTypeDef(
       ``MessageGroupId`` .
 
       The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-      punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+      punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
       For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
       <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__
@@ -2303,7 +2303,7 @@ class QueueSendMessagesEntriesTypeDef(
 
       The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
       contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-      (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+      (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
       For best practices of using ``MessageDeduplicationId`` , see `Using the
       MessageDeduplicationId Property
@@ -2329,7 +2329,7 @@ class QueueSendMessagesEntriesTypeDef(
       ``MessageGroupId`` .
 
       The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-      punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+      punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
       For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
       <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__

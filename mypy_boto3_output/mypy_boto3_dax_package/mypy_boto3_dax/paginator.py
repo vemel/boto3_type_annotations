@@ -23,7 +23,7 @@ from mypy_boto3_dax.type_defs import (
 
 
 class DescribeClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterNames: List[str] = None,
@@ -327,7 +327,7 @@ class DescribeClusters(Boto3Paginator):
 
 
 class DescribeDefaultParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeDefaultParametersPaginatePaginationConfigTypeDef = None,
@@ -468,7 +468,7 @@ class DescribeDefaultParameters(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SourceName: str = None,
@@ -596,7 +596,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeParameterGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ParameterGroupNames: List[str] = None,
@@ -688,7 +688,7 @@ class DescribeParameterGroups(Boto3Paginator):
 
 
 class DescribeParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ParameterGroupName: str,
@@ -844,7 +844,7 @@ class DescribeParameters(Boto3Paginator):
 
 
 class DescribeSubnetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SubnetGroupNames: List[str] = None,
@@ -968,7 +968,7 @@ class DescribeSubnetGroups(Boto3Paginator):
 
 
 class ListTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceName: str,

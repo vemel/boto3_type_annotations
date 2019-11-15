@@ -1,13 +1,17 @@
 "Main interface for codedeploy Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_codedeploy.type_defs import DeploymentSuccessfulWaitWaiterConfigTypeDef
 
 
 class DeploymentSuccessful(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, deploymentId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        deploymentId: str,
+        WaiterConfig: DeploymentSuccessfulWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`CodeDeploy.Client.get_deployment` every 15 seconds until a successful state is
         reached. An error is returned after 120 failed checks.

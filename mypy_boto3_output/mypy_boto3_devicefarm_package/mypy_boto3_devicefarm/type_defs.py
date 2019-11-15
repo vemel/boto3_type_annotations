@@ -23,7 +23,7 @@ class ClientCreateDevicePoolResponsedevicePoolrulesTypeDef(
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -176,7 +176,7 @@ class ClientCreateDevicePoolResponsedevicePoolTypeDef(
 
         - **attribute** *(string) --*
 
-          The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+          The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
           The supported operators for each attribute are provided in the following list.
 
@@ -334,7 +334,7 @@ class ClientCreateDevicePoolResponseTypeDef(_ClientCreateDevicePoolResponseTypeD
 
           - **attribute** *(string) --*
 
-            The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+            The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
             The supported operators for each attribute are provided in the following list.
 
@@ -458,7 +458,7 @@ class ClientCreateDevicePoolrulesTypeDef(_ClientCreateDevicePoolrulesTypeDef):
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -5171,7 +5171,7 @@ class ClientGetDevicePoolResponsedevicePoolrulesTypeDef(
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -5324,7 +5324,7 @@ class ClientGetDevicePoolResponsedevicePoolTypeDef(
 
         - **attribute** *(string) --*
 
-          The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+          The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
           The supported operators for each attribute are provided in the following list.
 
@@ -5482,7 +5482,7 @@ class ClientGetDevicePoolResponseTypeDef(_ClientGetDevicePoolResponseTypeDef):
 
           - **attribute** *(string) --*
 
-            The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+            The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
             The supported operators for each attribute are provided in the following list.
 
@@ -13174,7 +13174,7 @@ class ClientListDevicePoolsResponsedevicePoolsrulesTypeDef(
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -13328,7 +13328,7 @@ class ClientListDevicePoolsResponsedevicePoolsTypeDef(
 
         - **attribute** *(string) --*
 
-          The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+          The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
           The supported operators for each attribute are provided in the following list.
 
@@ -13494,7 +13494,7 @@ class ClientListDevicePoolsResponseTypeDef(_ClientListDevicePoolsResponseTypeDef
 
             - **attribute** *(string) --*
 
-              The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+              The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
               The supported operators for each attribute are provided in the following list.
 
@@ -30092,7 +30092,7 @@ class ClientUpdateDevicePoolResponsedevicePoolrulesTypeDef(
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -30245,7 +30245,7 @@ class ClientUpdateDevicePoolResponsedevicePoolTypeDef(
 
         - **attribute** *(string) --*
 
-          The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+          The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
           The supported operators for each attribute are provided in the following list.
 
@@ -30403,7 +30403,7 @@ class ClientUpdateDevicePoolResponseTypeDef(_ClientUpdateDevicePoolResponseTypeD
 
           - **attribute** *(string) --*
 
-            The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+            The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
             The supported operators for each attribute are provided in the following list.
 
@@ -30527,7 +30527,7 @@ class ClientUpdateDevicePoolrulesTypeDef(_ClientUpdateDevicePoolrulesTypeDef):
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -32469,7 +32469,7 @@ class ListDevicePoolsPaginateResponsedevicePoolsrulesTypeDef(
 
     - **attribute** *(string) --*
 
-      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
       The supported operators for each attribute are provided in the following list.
 
@@ -32623,7 +32623,7 @@ class ListDevicePoolsPaginateResponsedevicePoolsTypeDef(
 
         - **attribute** *(string) --*
 
-          The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+          The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
           The supported operators for each attribute are provided in the following list.
 
@@ -32789,7 +32789,7 @@ class ListDevicePoolsPaginateResponseTypeDef(_ListDevicePoolsPaginateResponseTyp
 
             - **attribute** *(string) --*
 
-              The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+              The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
               The supported operators for each attribute are provided in the following list.
 

@@ -23,7 +23,7 @@ from mypy_boto3_mediapackage_vod.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -40,7 +40,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_asset(
         self,
         Id: str,
@@ -127,7 +127,7 @@ class Client(BaseClient):
             - **SourceRoleArn** *(string) --* The IAM role_arn used to access the source S3 bucket.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_packaging_configuration(
         self,
         Id: str,
@@ -794,7 +794,7 @@ class Client(BaseClient):
             - **PackagingGroupId** *(string) --* The ID of a PackagingGroup.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_packaging_group(
         self, Id: str
     ) -> ClientCreatePackagingGroupResponseTypeDef:
@@ -833,7 +833,7 @@ class Client(BaseClient):
             - **Id** *(string) --* The ID of the PackagingGroup.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_asset(self, Id: str) -> Dict[str, Any]:
         """
         Deletes an existing MediaPackage VOD Asset resource.
@@ -863,7 +863,7 @@ class Client(BaseClient):
           - *(dict) --* The MediaPackage VOD Asset resource has been deleted.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_packaging_configuration(self, Id: str) -> Dict[str, Any]:
         """
         Deletes a MediaPackage VOD PackagingConfiguration resource.
@@ -893,7 +893,7 @@ class Client(BaseClient):
           - *(dict) --* The MediaPackage VOD PackagingConfiguration resource has been deleted.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_packaging_group(self, Id: str) -> Dict[str, Any]:
         """
         Deletes a MediaPackage VOD PackagingGroup resource.
@@ -923,7 +923,7 @@ class Client(BaseClient):
           - *(dict) --* The MediaPackage VOD PackagingGroup resource has been deleted.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_asset(self, Id: str) -> ClientDescribeAssetResponseTypeDef:
         """
         Returns a description of a MediaPackage VOD Asset resource.
@@ -987,7 +987,7 @@ class Client(BaseClient):
             - **SourceRoleArn** *(string) --* The IAM role_arn used to access the source S3 bucket.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_packaging_configuration(
         self, Id: str
     ) -> ClientDescribePackagingConfigurationResponseTypeDef:
@@ -1341,7 +1341,7 @@ class Client(BaseClient):
             - **PackagingGroupId** *(string) --* The ID of a PackagingGroup.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_packaging_group(
         self, Id: str
     ) -> ClientDescribePackagingGroupResponseTypeDef:
@@ -1380,7 +1380,7 @@ class Client(BaseClient):
             - **Id** *(string) --* The ID of the PackagingGroup.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1409,7 +1409,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1430,7 +1430,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1443,7 +1443,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assets(
         self,
         MaxResults: int = None,
@@ -1517,7 +1517,7 @@ class Client(BaseClient):
             collection.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_packaging_configurations(
         self,
         MaxResults: int = None,
@@ -1898,7 +1898,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_packaging_groups(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListPackagingGroupsResponseTypeDef:

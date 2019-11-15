@@ -94,7 +94,7 @@ from mypy_boto3_gamelift.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_match(
         self, TicketId: str, PlayerIds: List[str], AcceptanceType: str
     ) -> Dict[str, Any]:
@@ -184,7 +184,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -201,7 +201,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_alias(
         self,
         Name: str,
@@ -373,7 +373,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_build(
         self,
         Name: str = None,
@@ -631,7 +631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fleet(
         self,
         Name: str,
@@ -941,8 +941,8 @@ class Client(BaseClient):
                 file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
                 on instances at the root:
 
-                * Windows (for custom game builds only): ``C:\game`` . Example:
-                "``C:\game\MyGame\server.exe`` "
+                * Windows (for custom game builds only): ``C:\\game`` . Example:
+                "``C:\\game\\MyGame\\server.exe`` "
 
                 * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
                 "``/local/game/MyRealtimeScript.js`` "
@@ -1182,7 +1182,7 @@ class Client(BaseClient):
                 see more on game session logs in the `Amazon GameLift Developer Guide
                 <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
                 . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-                logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+                logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
                 ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
                 - *(string) --*
@@ -1247,7 +1247,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_game_session(
         self,
         MaximumPlayerSessionCount: int,
@@ -1569,7 +1569,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_game_session_queue(
         self,
         Name: str,
@@ -1825,7 +1825,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_matchmaking_configuration(
         self,
         Name: str,
@@ -2179,7 +2179,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_matchmaking_rule_set(
         self, Name: str, RuleSetBody: str
     ) -> ClientCreateMatchmakingRuleSetResponseTypeDef:
@@ -2287,7 +2287,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_player_session(
         self, GameSessionId: str, PlayerId: str, PlayerData: str = None
     ) -> ClientCreatePlayerSessionResponseTypeDef:
@@ -2439,7 +2439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_player_sessions(
         self,
         GameSessionId: str,
@@ -2634,7 +2634,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_script(
         self,
         Name: str = None,
@@ -2837,7 +2837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_peering_authorization(
         self, GameLiftAwsAccountId: str, PeerVpcId: str
     ) -> ClientCreateVpcPeeringAuthorizationResponseTypeDef:
@@ -2959,7 +2959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_peering_connection(
         self, FleetId: str, PeerVpcAwsAccountId: str, PeerVpcId: str
     ) -> Dict[str, Any]:
@@ -3042,7 +3042,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_alias(self, AliasId: str) -> None:
         """
         Deletes an alias. This action removes all record of the alias. Game clients attempting to access a
@@ -3078,7 +3078,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_build(self, BuildId: str) -> None:
         """
         Deletes a build. This action permanently deletes the build record and any uploaded build files.
@@ -3120,7 +3120,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fleet(self, FleetId: str) -> None:
         """
         Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired
@@ -3195,7 +3195,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_game_session_queue(self, Name: str) -> Dict[str, Any]:
         """
         Deletes a game session queue. This action means that any  StartGameSessionPlacement requests that
@@ -3237,7 +3237,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_matchmaking_configuration(self, Name: str) -> Dict[str, Any]:
         """
         Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration
@@ -3289,7 +3289,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_matchmaking_rule_set(self, Name: str) -> Dict:
         """
         Deletes an existing matchmaking rule set. To delete the rule set, provide the rule set name. Rule
@@ -3349,7 +3349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_scaling_policy(self, Name: str, FleetId: str) -> None:
         """
         Deletes a fleet scaling policy. This action means that the policy is no longer in force and removes
@@ -3402,7 +3402,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_script(self, ScriptId: str) -> None:
         """
         Deletes a Realtime script. This action permanently deletes the script record. If script files were
@@ -3447,7 +3447,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_peering_authorization(
         self, GameLiftAwsAccountId: str, PeerVpcId: str
     ) -> Dict[str, Any]:
@@ -3505,7 +3505,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_peering_connection(
         self, FleetId: str, VpcPeeringConnectionId: str
     ) -> Dict[str, Any]:
@@ -3565,7 +3565,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_alias(self, AliasId: str) -> ClientDescribeAliasResponseTypeDef:
         """
         Retrieves properties for an alias. This operation returns all alias metadata and settings. To get
@@ -3685,7 +3685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_build(self, BuildId: str) -> ClientDescribeBuildResponseTypeDef:
         """
         Retrieves properties for a build. To request a build record, specify a build ID. If successful, an
@@ -3796,7 +3796,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ec2_instance_limits(
         self, EC2InstanceType: str = None
     ) -> ClientDescribeEc2InstanceLimitsResponseTypeDef:
@@ -3941,7 +3941,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_attributes(
         self, FleetIds: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeFleetAttributesResponseTypeDef:
@@ -4233,7 +4233,7 @@ class Client(BaseClient):
                   session logs; see more on game session logs in the `Amazon GameLift Developer Guide
                   <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
                   . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-                  logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+                  logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
                   ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
                   - *(string) --*
@@ -4303,7 +4303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_capacity(
         self, FleetIds: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeFleetCapacityResponseTypeDef:
@@ -4542,7 +4542,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_events(
         self,
         FleetId: str,
@@ -4771,7 +4771,7 @@ class Client(BaseClient):
                   detail. A common reason for peering failure is that the two VPCs have overlapping CIDR
                   blocks of IPv4 addresses. To resolve this, change the CIDR block for the VPC in your AWS
                   account. For more information on VPC peering failures, see
-                  `https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
+                  `https\\://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
                   <https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html>`__
         <https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html>`__
 
@@ -4818,7 +4818,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_port_settings(
         self, FleetId: str
     ) -> ClientDescribeFleetPortSettingsResponseTypeDef:
@@ -4945,7 +4945,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_utilization(
         self, FleetIds: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeFleetUtilizationResponseTypeDef:
@@ -5142,7 +5142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_game_session_details(
         self,
         FleetId: str = None,
@@ -5416,7 +5416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_game_session_placement(
         self, PlacementId: str
     ) -> ClientDescribeGameSessionPlacementResponseTypeDef:
@@ -5695,7 +5695,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_game_session_queues(
         self, Names: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeGameSessionQueuesResponseTypeDef:
@@ -5897,7 +5897,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_game_sessions(
         self,
         FleetId: str = None,
@@ -6184,7 +6184,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instances(
         self,
         FleetId: str,
@@ -6332,7 +6332,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_matchmaking(
         self, TicketIds: List[str]
     ) -> ClientDescribeMatchmakingResponseTypeDef:
@@ -6652,7 +6652,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_matchmaking_configurations(
         self,
         Names: List[str] = None,
@@ -6895,7 +6895,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_matchmaking_rule_sets(
         self, Names: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeMatchmakingRuleSetsResponseTypeDef:
@@ -7042,7 +7042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_player_sessions(
         self,
         GameSessionId: str = None,
@@ -7266,7 +7266,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_runtime_configuration(
         self, FleetId: str
     ) -> ClientDescribeRuntimeConfigurationResponseTypeDef:
@@ -7384,8 +7384,8 @@ class Client(BaseClient):
                     script file that contains the ``Init()`` function. Game builds and Realtime scripts are
                     installed on instances at the root:
 
-                    * Windows (for custom game builds only): ``C:\game`` . Example:
-                    "``C:\game\MyGame\server.exe`` "
+                    * Windows (for custom game builds only): ``C:\\game`` . Example:
+                    "``C:\\game\\MyGame\\server.exe`` "
 
                     * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
                     "``/local/game/MyRealtimeScript.js`` "
@@ -7413,7 +7413,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scaling_policies(
         self,
         FleetId: str,
@@ -7702,7 +7702,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_script(self, ScriptId: str) -> ClientDescribeScriptResponseTypeDef:
         """
         Retrieves properties for a Realtime script.
@@ -7822,7 +7822,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_peering_authorizations(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeVpcPeeringAuthorizationsResponseTypeDef:
@@ -7924,7 +7924,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_peering_connections(
         self, FleetId: str = None
     ) -> ClientDescribeVpcPeeringConnectionsResponseTypeDef:
@@ -8059,7 +8059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -8088,7 +8088,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_game_session_log_url(
         self, GameSessionId: str
     ) -> ClientGetGameSessionLogUrlResponseTypeDef:
@@ -8161,7 +8161,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_access(
         self, FleetId: str, InstanceId: str
     ) -> ClientGetInstanceAccessResponseTypeDef:
@@ -8267,7 +8267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -8288,7 +8288,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -8301,7 +8301,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aliases(
         self,
         RoutingStrategyType: str = None,
@@ -8483,7 +8483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_builds(
         self, Status: str = None, Limit: int = None, NextToken: str = None
     ) -> ClientListBuildsResponseTypeDef:
@@ -8651,7 +8651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_fleets(
         self,
         BuildId: str = None,
@@ -8783,7 +8783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_scripts(
         self, Limit: int = None, NextToken: str = None
     ) -> ClientListScriptsResponseTypeDef:
@@ -8936,7 +8936,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_scaling_policy(
         self,
         Name: str,
@@ -9189,7 +9189,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_upload_credentials(
         self, BuildId: str
     ) -> ClientRequestUploadCredentialsResponseTypeDef:
@@ -9302,7 +9302,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resolve_alias(self, AliasId: str) -> ClientResolveAliasResponseTypeDef:
         """
         Retrieves the fleet ID that a specified alias is currently pointing to.
@@ -9355,7 +9355,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_game_sessions(
         self,
         FleetId: str = None,
@@ -9478,7 +9478,7 @@ class Client(BaseClient):
           strings depending on the operand. String values are case sensitive and must be enclosed in single
           quotes. Special characters must be escaped. Boolean and string values can only be used with the
           comparators ``=`` and ``<>`` . For example, the following filter expression searches on
-          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"`` .
+          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\\\'s Awesome Game 1'"`` .
 
           To chain multiple conditions in a single expression, use the logical keywords ``AND`` , ``OR`` ,
           and ``NOT`` and parentheses as needed. For example: ``x AND y AND NOT z`` , ``NOT (x OR y)`` .
@@ -9723,7 +9723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_fleet_actions(self, FleetId: str, Actions: List[str]) -> Dict[str, Any]:
         """
         Resumes activity on a fleet that was suspended with  StopFleetActions . Currently, this operation
@@ -9816,7 +9816,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_game_session_placement(
         self,
         PlacementId: str,
@@ -10267,7 +10267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_match_backfill(
         self,
         ConfigurationName: str,
@@ -10378,14 +10378,14 @@ class Client(BaseClient):
           Match information on all players that are currently assigned to the game session. This
           information is used by the matchmaker to find new players and add them to the existing game.
 
-          * PlayerID, PlayerAttributes, Team -\\- This information is maintained in the  GameSession
+          * PlayerID, PlayerAttributes, Team -\\\\- This information is maintained in the  GameSession
           object, ``MatchmakerData`` property, for all players who are currently assigned to the game
           session. The matchmaker data is in JSON syntax, formatted as a string. For more details, see
           `Match Data
           <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data>`__
           .
 
-          * LatencyInMs -\\- If the matchmaker uses player latency, include a latency value, in
+          * LatencyInMs -\\\\- If the matchmaker uses player latency, include a latency value, in
           milliseconds, for the region that the game session is currently in. Do not include latency values
           for any other region.
 
@@ -10715,7 +10715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_matchmaking(
         self,
         ConfigurationName: str,
@@ -11175,7 +11175,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_fleet_actions(self, FleetId: str, Actions: List[str]) -> Dict[str, Any]:
         """
         Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling
@@ -11270,7 +11270,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_game_session_placement(
         self, PlacementId: str
     ) -> ClientStopGameSessionPlacementResponseTypeDef:
@@ -11549,7 +11549,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_matchmaking(self, TicketId: str) -> Dict[str, Any]:
         """
         Cancels a matchmaking ticket or match backfill ticket that is currently being processed. To stop
@@ -11610,7 +11610,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_alias(
         self,
         AliasId: str,
@@ -11777,7 +11777,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_build(
         self, BuildId: str, Name: str = None, Version: str = None
     ) -> ClientUpdateBuildResponseTypeDef:
@@ -11903,7 +11903,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_fleet_attributes(
         self,
         FleetId: str,
@@ -12055,7 +12055,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_fleet_capacity(
         self,
         FleetId: str,
@@ -12178,7 +12178,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_fleet_port_settings(
         self,
         FleetId: str,
@@ -12359,7 +12359,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_game_session(
         self,
         GameSessionId: str,
@@ -12594,7 +12594,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_game_session_queue(
         self,
         Name: str,
@@ -12827,7 +12827,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_matchmaking_configuration(
         self,
         Name: str,
@@ -13166,7 +13166,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_runtime_configuration(
         self,
         FleetId: str,
@@ -13287,8 +13287,8 @@ class Client(BaseClient):
                 file that contains the ``Init()`` function. Game builds and Realtime scripts are installed
                 on instances at the root:
 
-                * Windows (for custom game builds only): ``C:\game`` . Example:
-                "``C:\game\MyGame\server.exe`` "
+                * Windows (for custom game builds only): ``C:\\game`` . Example:
+                "``C:\\game\\MyGame\\server.exe`` "
 
                 * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
                 "``/local/game/MyRealtimeScript.js`` "
@@ -13364,8 +13364,8 @@ class Client(BaseClient):
                     script file that contains the ``Init()`` function. Game builds and Realtime scripts are
                     installed on instances at the root:
 
-                    * Windows (for custom game builds only): ``C:\game`` . Example:
-                    "``C:\game\MyGame\server.exe`` "
+                    * Windows (for custom game builds only): ``C:\\game`` . Example:
+                    "``C:\\game\\MyGame\\server.exe`` "
 
                     * Linux: ``/local/game`` . Examples: "``/local/game/MyGame/server.exe`` " or
                     "``/local/game/MyRealtimeScript.js`` "
@@ -13393,7 +13393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_script(
         self,
         ScriptId: str,
@@ -13590,7 +13590,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def validate_matchmaking_rule_set(
         self, RuleSetBody: str
     ) -> ClientValidateMatchmakingRuleSetResponseTypeDef:

@@ -39,7 +39,7 @@ class ClientDescribeObjectResponseTypeDef(_ClientDescribeObjectResponseTypeDef):
 
       An optional ``CacheControl`` header that allows the caller to control the object's cache
       behavior. Headers can be passed in as specified in the HTTP at
-      `https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+      `https\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
       <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
       Headers with a custom user-defined value are also accepted.
@@ -77,7 +77,7 @@ class ClientGetObjectResponseTypeDef(_ClientGetObjectResponseTypeDef):
 
       An optional ``CacheControl`` header that allows the caller to control the object's cache
       behavior. Headers can be passed in as specified in the HTTP spec at
-      `https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+      `https\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
       <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
       Headers with a custom user-defined value are also accepted.

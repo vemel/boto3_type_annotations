@@ -13,7 +13,7 @@ from mypy_boto3_rekognition.type_defs import (
 
 
 class ListCollections(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListCollectionsPaginatePaginationConfigTypeDef = None
     ) -> ListCollectionsPaginateResponseTypeDef:
@@ -91,7 +91,7 @@ class ListCollections(Boto3Paginator):
 
 
 class ListFaces(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CollectionId: str,
@@ -223,7 +223,7 @@ class ListFaces(Boto3Paginator):
 
 
 class ListStreamProcessors(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListStreamProcessorsPaginatePaginationConfigTypeDef = None,

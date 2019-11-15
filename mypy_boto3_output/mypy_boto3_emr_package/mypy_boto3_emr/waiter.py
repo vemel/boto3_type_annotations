@@ -1,13 +1,19 @@
 "Main interface for emr Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_emr.type_defs import (
+    ClusterRunningWaitWaiterConfigTypeDef,
+    ClusterTerminatedWaitWaiterConfigTypeDef,
+    StepCompleteWaitWaiterConfigTypeDef,
+)
 
 
 class ClusterRunning(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ClusterId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, ClusterId: str, WaiterConfig: ClusterRunningWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`EMR.Client.describe_cluster` every 30 seconds until a successful state is reached.
         An error is returned after 60 failed checks.
@@ -48,8 +54,12 @@ class ClusterRunning(Boto3Waiter):
 
 
 class ClusterTerminated(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ClusterId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        ClusterId: str,
+        WaiterConfig: ClusterTerminatedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`EMR.Client.describe_cluster` every 30 seconds until a successful state is reached.
         An error is returned after 60 failed checks.
@@ -90,8 +100,13 @@ class ClusterTerminated(Boto3Waiter):
 
 
 class StepComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ClusterId: str, StepId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        ClusterId: str,
+        StepId: str,
+        WaiterConfig: StepCompleteWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`EMR.Client.describe_step` every 30 seconds until a successful state is reached. An
         error is returned after 60 failed checks.

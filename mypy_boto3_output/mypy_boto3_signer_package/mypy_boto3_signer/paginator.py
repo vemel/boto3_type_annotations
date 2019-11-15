@@ -13,7 +13,7 @@ from mypy_boto3_signer.type_defs import (
 
 
 class ListSigningJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         status: str = None,
@@ -187,7 +187,7 @@ class ListSigningJobs(Boto3Paginator):
 
 
 class ListSigningPlatforms(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         category: str = None,
@@ -382,7 +382,7 @@ class ListSigningPlatforms(Boto3Paginator):
 
 
 class ListSigningProfiles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         includeCanceled: bool = None,

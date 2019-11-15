@@ -15,7 +15,7 @@ from mypy_boto3_cloudfront.type_defs import (
 
 
 class ListCloudFrontOriginAccessIdentities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListCloudFrontOriginAccessIdentitiesPaginatePaginationConfigTypeDef = None,
@@ -150,7 +150,7 @@ class ListCloudFrontOriginAccessIdentities(Boto3Paginator):
 
 
 class ListDistributions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDistributionsPaginatePaginationConfigTypeDef = None
     ) -> Dict[str, Any]:
@@ -2039,7 +2039,7 @@ class ListDistributions(Boto3Paginator):
 
 
 class ListInvalidations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DistributionId: str,
@@ -2175,7 +2175,7 @@ class ListInvalidations(Boto3Paginator):
 
 
 class ListStreamingDistributions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListStreamingDistributionsPaginatePaginationConfigTypeDef = None,

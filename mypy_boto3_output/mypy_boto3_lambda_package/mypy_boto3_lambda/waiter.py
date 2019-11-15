@@ -1,14 +1,17 @@
 "Main interface for lambda Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_lambda.type_defs import FunctionExistsWaitWaiterConfigTypeDef
 
 
 class FunctionExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, FunctionName: str, Qualifier: str = None, WaiterConfig: Dict = None
+        self,
+        FunctionName: str,
+        Qualifier: str = None,
+        WaiterConfig: FunctionExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`Lambda.Client.get_function` every 1 seconds until a successful state is reached. An

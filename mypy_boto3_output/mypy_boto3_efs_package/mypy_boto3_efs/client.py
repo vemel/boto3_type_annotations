@@ -1,15 +1,15 @@
 "Main interface for efs Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_efs.type_defs import (
     ClientCreateFileSystemResponseTypeDef,
     ClientCreateFileSystemTagsTypeDef,
     ClientCreateMountTargetResponseTypeDef,
+    ClientCreateTagsTagsTypeDef,
     ClientDescribeFileSystemsResponseTypeDef,
     ClientDescribeLifecycleConfigurationResponseTypeDef,
     ClientDescribeMountTargetSecurityGroupsResponseTypeDef,
@@ -22,7 +22,7 @@ from mypy_boto3_efs.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -39,7 +39,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_file_system(
         self,
         CreationToken: str,
@@ -86,13 +86,13 @@ class Client(BaseClient):
         the ``maxIO`` performance mode can scale to higher levels of aggregate throughput and operations
         per second with a tradeoff of slightly higher latencies for most file operations. The performance
         mode can't be changed after the file system has been created. For more information, see `Amazon
-        EFS: Performance Modes
+        EFS\\: Performance Modes
         <https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html>`__ .
 
         After the file system is fully created, Amazon EFS sets its lifecycle state to ``available`` , at
         which point you can create one or more mount targets for the file system in your VPC. For more
         information, see  CreateMountTarget . You mount your Amazon EFS file system on an EC2 instances in
-        your VPC by using the mount target. For more information, see `Amazon EFS: How it Works
+        your VPC by using the mount target. For more information, see `Amazon EFS\\: How it Works
         <https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html>`__ .
 
         This operation requires permissions for the ``elasticfilesystem:CreateFileSystem`` action.
@@ -352,7 +352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_mount_target(
         self,
         FileSystemId: str,
@@ -368,7 +368,7 @@ class Client(BaseClient):
         within a given Availability Zone share a single mount target for a given file system. If you have
         multiple subnets in an Availability Zone, you create a mount target in one of the subnets. EC2
         instances do not need to be in the same subnet as the mount target in order to access their file
-        system. For more information, see `Amazon EFS: How it Works
+        system. For more information, see `Amazon EFS\\: How it Works
         <https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html>`__ .
 
         In the request, you also specify a file system ID for which you are creating the mount target and
@@ -388,7 +388,7 @@ class Client(BaseClient):
         and an ``IpAddress`` . You use this IP address when mounting the file system in an EC2 instance.
         You can also use the mount target's DNS name when mounting the file system. The EC2 instance on
         which you mount the file system by using the mount target can resolve the mount target's DNS name
-        to its IP address. For more information, see `How it Works: Implementation Overview
+        to its IP address. For more information, see `How it Works\\: Implementation Overview
         <https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html#how-it-works-implementation>`__ .
 
         Note that you can create mount targets for a file system in only one VPC, and there can be only one
@@ -540,8 +540,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def create_tags(self, FileSystemId: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, FileSystemId: str, Tags: List[ClientCreateTagsTagsTypeDef]
+    ) -> None:
         """
         Creates or overwrites tags associated with a file system. Each tag is a key-value pair. If a tag
         key specified in the request already exists on the file system, this operation overwrites its value
@@ -592,7 +594,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_file_system(self, FileSystemId: str) -> None:
         """
         Deletes a file system, permanently severing access to its contents. Upon return, the file system no
@@ -627,7 +629,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_mount_target(self, MountTargetId: str) -> None:
         """
         Deletes the specified mount target.
@@ -672,8 +674,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def delete_tags(self, FileSystemId: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_tags(self, FileSystemId: str, TagKeys: List[str]) -> None:
         """
         Deletes the specified tags from a file system. If the ``DeleteTags`` request includes a tag key
         that doesn't exist, Amazon EFS ignores it and doesn't cause an error. For more information about
@@ -710,7 +712,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_file_systems(
         self,
         MaxItems: int = None,
@@ -947,7 +949,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_lifecycle_configuration(
         self, FileSystemId: str
     ) -> ClientDescribeLifecycleConfigurationResponseTypeDef:
@@ -1012,7 +1014,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_mount_target_security_groups(
         self, MountTargetId: str
     ) -> ClientDescribeMountTargetSecurityGroupsResponseTypeDef:
@@ -1066,7 +1068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_mount_targets(
         self,
         MaxItems: int = None,
@@ -1195,7 +1197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self, FileSystemId: str, MaxItems: int = None, Marker: str = None
     ) -> ClientDescribeTagsResponseTypeDef:
@@ -1285,7 +1287,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1314,7 +1316,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1335,7 +1337,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1348,9 +1350,9 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_mount_target_security_groups(
-        self, MountTargetId: str, SecurityGroups: List[Any] = None
+        self, MountTargetId: str, SecurityGroups: List[str] = None
     ) -> None:
         """
         Modifies the set of security groups in effect for a mount target.
@@ -1395,7 +1397,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lifecycle_configuration(
         self,
         FileSystemId: str,
@@ -1505,7 +1507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_file_system(
         self,
         FileSystemId: str,

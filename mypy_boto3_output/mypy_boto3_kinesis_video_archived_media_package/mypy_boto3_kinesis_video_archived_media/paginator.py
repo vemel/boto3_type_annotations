@@ -10,7 +10,7 @@ from mypy_boto3_kinesis_video_archived_media.type_defs import (
 
 
 class ListFragments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StreamName: str,

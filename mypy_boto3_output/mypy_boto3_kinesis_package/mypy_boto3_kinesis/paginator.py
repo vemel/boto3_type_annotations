@@ -16,7 +16,7 @@ from mypy_boto3_kinesis.type_defs import (
 
 
 class DescribeStream(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StreamName: str,
@@ -277,7 +277,7 @@ class DescribeStream(Boto3Paginator):
 
 
 class ListShards(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StreamName: str = None,
@@ -434,7 +434,7 @@ class ListShards(Boto3Paginator):
 
 
 class ListStreamConsumers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StreamARN: str,
@@ -551,7 +551,7 @@ class ListStreamConsumers(Boto3Paginator):
 
 
 class ListStreams(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListStreamsPaginatePaginationConfigTypeDef = None
     ) -> ListStreamsPaginateResponseTypeDef:

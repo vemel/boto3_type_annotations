@@ -3726,3 +3726,26 @@ class DescribeServersPaginateResponseTypeDef(_DescribeServersPaginateResponseTyp
 
           The ARN of the server.
     """
+
+
+_NodeAssociatedWaitWaiterConfigTypeDef = TypedDict(
+    "_NodeAssociatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NodeAssociatedWaitWaiterConfigTypeDef(_NodeAssociatedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `NodeAssociatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 15
+    """

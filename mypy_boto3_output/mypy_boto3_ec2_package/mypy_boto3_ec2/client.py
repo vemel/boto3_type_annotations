@@ -2,11 +2,10 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_ec2.type_defs import (
     ClientAcceptReservedInstancesExchangeQuoteResponseTypeDef,
     ClientAcceptReservedInstancesExchangeQuoteTargetConfigurationsTypeDef,
@@ -102,6 +101,7 @@ from mypy_boto3_ec2.type_defs import (
     ClientCreateSnapshotsTagSpecificationsTypeDef,
     ClientCreateSpotDatafeedSubscriptionResponseTypeDef,
     ClientCreateSubnetResponseTypeDef,
+    ClientCreateTagsTagsTypeDef,
     ClientCreateTrafficMirrorFilterResponseTypeDef,
     ClientCreateTrafficMirrorFilterRuleDestinationPortRangeTypeDef,
     ClientCreateTrafficMirrorFilterRuleResponseTypeDef,
@@ -141,6 +141,7 @@ from mypy_boto3_ec2.type_defs import (
     ClientDeleteNatGatewayResponseTypeDef,
     ClientDeleteNetworkInterfacePermissionResponseTypeDef,
     ClientDeleteQueuedReservedInstancesResponseTypeDef,
+    ClientDeleteTagsTagsTypeDef,
     ClientDeleteTrafficMirrorFilterResponseTypeDef,
     ClientDeleteTrafficMirrorFilterRuleResponseTypeDef,
     ClientDeleteTrafficMirrorSessionResponseTypeDef,
@@ -413,6 +414,7 @@ from mypy_boto3_ec2.type_defs import (
     ClientModifyLaunchTemplateResponseTypeDef,
     ClientModifyNetworkInterfaceAttributeAttachmentTypeDef,
     ClientModifyNetworkInterfaceAttributeDescriptionTypeDef,
+    ClientModifyNetworkInterfaceAttributeSourceDestCheckTypeDef,
     ClientModifyReservedInstancesResponseTypeDef,
     ClientModifyReservedInstancesTargetConfigurationsTypeDef,
     ClientModifySnapshotAttributeCreateVolumePermissionTypeDef,
@@ -510,7 +512,7 @@ from mypy_boto3_ec2.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_reserved_instances_exchange_quote(
         self,
         ReservedInstanceIds: List[str],
@@ -597,7 +599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_transit_gateway_vpc_attachment(
         self, TransitGatewayAttachmentId: str, DryRun: bool = None
     ) -> ClientAcceptTransitGatewayVpcAttachmentResponseTypeDef:
@@ -736,7 +738,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_vpc_endpoint_connections(
         self, ServiceId: str, VpcEndpointIds: List[str], DryRun: bool = None
     ) -> ClientAcceptVpcEndpointConnectionsResponseTypeDef:
@@ -823,7 +825,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_vpc_peering_connection(
         self, DryRun: bool = None, VpcPeeringConnectionId: str = None
     ) -> ClientAcceptVpcPeeringConnectionResponseTypeDef:
@@ -1104,7 +1106,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def advertise_byoip_cidr(
         self, Cidr: str, DryRun: bool = None
     ) -> ClientAdvertiseByoipCidrResponseTypeDef:
@@ -1191,7 +1193,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_address(
         self,
         Domain: str = None,
@@ -1298,7 +1300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_hosts(
         self,
         AvailabilityZone: str,
@@ -1459,7 +1461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_security_groups_to_client_vpn_target_network(
         self,
         ClientVpnEndpointId: str,
@@ -1535,7 +1537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assign_ipv6_addresses(
         self,
         NetworkInterfaceId: str,
@@ -1613,7 +1615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assign_private_ip_addresses(
         self,
         NetworkInterfaceId: str,
@@ -1720,7 +1722,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_address(
         self,
         AllocationId: str = None,
@@ -1842,7 +1844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_client_vpn_target_network(
         self,
         ClientVpnEndpointId: str,
@@ -1931,7 +1933,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_dhcp_options(
         self, DhcpOptionsId: str, VpcId: str, DryRun: bool = None
     ) -> None:
@@ -1980,7 +1982,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_iam_instance_profile(
         self,
         IamInstanceProfile: ClientAssociateIamInstanceProfileIamInstanceProfileTypeDef,
@@ -2078,7 +2080,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_route_table(
         self, RouteTableId: str, SubnetId: str, DryRun: bool = None
     ) -> ClientAssociateRouteTableResponseTypeDef:
@@ -2140,7 +2142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_subnet_cidr_block(
         self, Ipv6CidrBlock: str, SubnetId: str
     ) -> ClientAssociateSubnetCidrBlockResponseTypeDef:
@@ -2221,7 +2223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_transit_gateway_route_table(
         self,
         TransitGatewayRouteTableId: str,
@@ -2306,7 +2308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_vpc_cidr_block(
         self,
         VpcId: str,
@@ -2435,7 +2437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_classic_link_vpc(
         self, Groups: List[str], InstanceId: str, VpcId: str, DryRun: bool = None
     ) -> ClientAttachClassicLinkVpcResponseTypeDef:
@@ -2509,7 +2511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_internet_gateway(
         self, InternetGatewayId: str, VpcId: str, DryRun: bool = None
     ) -> None:
@@ -2549,7 +2551,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_network_interface(
         self,
         DeviceIndex: int,
@@ -2616,7 +2618,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_volume(
         self, Device: str, InstanceId: str, VolumeId: str, DryRun: bool = None
     ) -> ClientAttachVolumeResponseTypeDef:
@@ -2729,7 +2731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_vpn_gateway(
         self, VpcId: str, VpnGatewayId: str, DryRun: bool = None
     ) -> ClientAttachVpnGatewayResponseTypeDef:
@@ -2802,7 +2804,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_client_vpn_ingress(
         self,
         ClientVpnEndpointId: str,
@@ -2906,7 +2908,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_security_group_egress(
         self,
         GroupId: str,
@@ -3178,7 +3180,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_security_group_ingress(
         self,
         CidrIp: str = None,
@@ -3490,7 +3492,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def bundle_instance(
         self,
         InstanceId: str,
@@ -3500,8 +3502,8 @@ class Client(BaseClient):
         """
         Bundles an Amazon instance store-backed Windows instance.
 
-        During bundling, only the root device volume (C:\) is bundled. Data on other instance store volumes
-        is not preserved.
+        During bundling, only the root device volume (C:\\) is bundled. Data on other instance store
+        volumes is not preserved.
 
         .. note::
 
@@ -3694,7 +3696,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -3711,7 +3713,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_bundle_task(
         self, BundleId: str, DryRun: bool = None
     ) -> ClientCancelBundleTaskResponseTypeDef:
@@ -3853,7 +3855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_capacity_reservation(
         self, CapacityReservationId: str, DryRun: bool = None
     ) -> ClientCancelCapacityReservationResponseTypeDef:
@@ -3908,7 +3910,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_conversion_task(
         self, ConversionTaskId: str, DryRun: bool = None, ReasonMessage: str = None
     ) -> None:
@@ -3952,7 +3954,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_export_task(self, ExportTaskId: str) -> None:
         """
         Cancels an active export task. The request removes all artifacts of the export, including any
@@ -3976,7 +3978,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_import_task(
         self, CancelReason: str = None, DryRun: bool = None, ImportTaskId: str = None
     ) -> ClientCancelImportTaskResponseTypeDef:
@@ -4041,7 +4043,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_reserved_instances_listing(
         self, ReservedInstancesListingId: str
     ) -> ClientCancelReservedInstancesListingResponseTypeDef:
@@ -4226,7 +4228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_spot_fleet_requests(
         self,
         SpotFleetRequestIds: List[str],
@@ -4357,7 +4359,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_spot_instance_requests(
         self, SpotInstanceRequestIds: List[str], DryRun: bool = None
     ) -> ClientCancelSpotInstanceRequestsResponseTypeDef:
@@ -4434,7 +4436,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_product_instance(
         self, InstanceId: str, ProductCode: str, DryRun: bool = None
     ) -> ClientConfirmProductInstanceResponseTypeDef:
@@ -4498,7 +4500,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_fpga_image(
         self,
         SourceFpgaImageId: str,
@@ -4579,7 +4581,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_image(
         self,
         Name: str,
@@ -4710,7 +4712,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_snapshot(
         self,
         SourceRegion: str,
@@ -4864,7 +4866,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_capacity_reservation(
         self,
         InstanceType: str,
@@ -5290,7 +5292,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_client_vpn_endpoint(
         self,
         ClientCidrBlock: str,
@@ -5589,7 +5591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_client_vpn_route(
         self,
         ClientVpnEndpointId: str,
@@ -5695,7 +5697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_customer_gateway(
         self,
         BgpAsn: int,
@@ -5856,7 +5858,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_default_subnet(
         self, AvailabilityZone: str, DryRun: bool = None
     ) -> ClientCreateDefaultSubnetResponseTypeDef:
@@ -6040,7 +6042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_default_vpc(
         self, DryRun: bool = None
     ) -> ClientCreateDefaultVpcResponseTypeDef:
@@ -6239,7 +6241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dhcp_options(
         self,
         DhcpConfigurations: List[ClientCreateDhcpOptionsDhcpConfigurationsTypeDef],
@@ -6411,7 +6413,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_egress_only_internet_gateway(
         self, VpcId: str, ClientToken: str = None, DryRun: bool = None
     ) -> ClientCreateEgressOnlyInternetGatewayResponseTypeDef:
@@ -6505,7 +6507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fleet(
         self,
         LaunchTemplateConfigs: List[ClientCreateFleetLaunchTemplateConfigsTypeDef],
@@ -7376,7 +7378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_flow_logs(
         self,
         ResourceIds: List[str],
@@ -7584,7 +7586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fpga_image(
         self,
         InputStorageLocation: ClientCreateFpgaImageInputStorageLocationTypeDef,
@@ -7761,7 +7763,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_image(
         self,
         InstanceId: str,
@@ -7982,7 +7984,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance_export_task(
         self,
         InstanceId: str,
@@ -8140,7 +8142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_internet_gateway(
         self, DryRun: bool = None
     ) -> ClientCreateInternetGatewayResponseTypeDef:
@@ -8250,7 +8252,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_key_pair(
         self, KeyName: str, DryRun: bool = None
     ) -> ClientCreateKeyPairResponseTypeDef:
@@ -8326,7 +8328,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_launch_template(
         self,
         LaunchTemplateName: str,
@@ -9192,7 +9194,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_launch_template_version(
         self,
         LaunchTemplateData: ClientCreateLaunchTemplateVersionLaunchTemplateDataTypeDef,
@@ -10579,7 +10581,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_nat_gateway(
         self, AllocationId: str, SubnetId: str, ClientToken: str = None
     ) -> ClientCreateNatGatewayResponseTypeDef:
@@ -10826,7 +10828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_acl(
         self, VpcId: str, DryRun: bool = None
     ) -> ClientCreateNetworkAclResponseTypeDef:
@@ -11031,7 +11033,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_acl_entry(
         self,
         Egress: bool,
@@ -11170,7 +11172,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_interface(
         self,
         SubnetId: str,
@@ -11609,7 +11611,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_interface_permission(
         self,
         NetworkInterfaceId: str,
@@ -11728,7 +11730,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_placement_group(
         self,
         DryRun: bool = None,
@@ -11789,7 +11791,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_reserved_instances_listing(
         self,
         ClientToken: str,
@@ -12044,7 +12046,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route(
         self,
         RouteTableId: str,
@@ -12180,7 +12182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route_table(
         self, VpcId: str, DryRun: bool = None
     ) -> ClientCreateRouteTableResponseTypeDef:
@@ -12413,7 +12415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_group(
         self, Description: str, GroupName: str, VpcId: str = None, DryRun: bool = None
     ) -> ClientCreateSecurityGroupResponseTypeDef:
@@ -12509,7 +12511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self,
         VolumeId: str,
@@ -12758,7 +12760,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshots(
         self,
         InstanceSpecification: ClientCreateSnapshotsInstanceSpecificationTypeDef,
@@ -12979,7 +12981,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_spot_datafeed_subscription(
         self, Bucket: str, DryRun: bool = None, Prefix: str = None
     ) -> ClientCreateSpotDatafeedSubscriptionResponseTypeDef:
@@ -13076,7 +13078,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subnet(
         self,
         CidrBlock: str,
@@ -13317,9 +13319,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
-        self, Resources: List[str], Tags: List[TypeDefEC2Tag], DryRun: bool = None
+        self,
+        Resources: List[str],
+        Tags: List[ClientCreateTagsTagsTypeDef],
+        DryRun: bool = None,
     ) -> None:
         """
         Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources. Each
@@ -13394,7 +13399,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_mirror_filter(
         self,
         Description: str = None,
@@ -13762,7 +13767,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_mirror_filter_rule(
         self,
         TrafficMirrorFilterId: str,
@@ -14003,7 +14008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_mirror_session(
         self,
         NetworkInterfaceId: str,
@@ -14282,7 +14287,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_traffic_mirror_target(
         self,
         NetworkInterfaceId: str = None,
@@ -14497,7 +14502,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transit_gateway(
         self,
         Description: str = None,
@@ -14779,7 +14784,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transit_gateway_route(
         self,
         DestinationCidrBlock: str,
@@ -14895,7 +14900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transit_gateway_route_table(
         self,
         TransitGatewayId: str,
@@ -15069,7 +15074,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transit_gateway_vpc_attachment(
         self,
         TransitGatewayId: str,
@@ -15314,7 +15319,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_volume(
         self,
         AvailabilityZone: str,
@@ -15675,7 +15680,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc(
         self,
         CidrBlock: str,
@@ -15913,7 +15918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_endpoint(
         self,
         VpcId: str,
@@ -16227,7 +16232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_endpoint_connection_notification(
         self,
         ConnectionNotificationArn: str,
@@ -16365,7 +16370,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_endpoint_service_configuration(
         self,
         NetworkLoadBalancerArns: List[str],
@@ -16554,7 +16559,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_peering_connection(
         self,
         DryRun: bool = None,
@@ -16876,7 +16881,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpn_connection(
         self,
         CustomerGatewayId: str,
@@ -17566,7 +17571,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpn_connection_route(
         self, DestinationCidrBlock: str, VpnConnectionId: str
     ) -> None:
@@ -17602,7 +17607,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpn_gateway(
         self,
         Type: str,
@@ -17755,7 +17760,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_client_vpn_endpoint(
         self, ClientVpnEndpointId: str, DryRun: bool = None
     ) -> ClientDeleteClientVpnEndpointResponseTypeDef:
@@ -17828,7 +17833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_client_vpn_route(
         self,
         ClientVpnEndpointId: str,
@@ -17907,7 +17912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_customer_gateway(
         self, CustomerGatewayId: str, DryRun: bool = None
     ) -> None:
@@ -17940,7 +17945,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dhcp_options(self, DhcpOptionsId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you
@@ -17972,7 +17977,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_egress_only_internet_gateway(
         self, EgressOnlyInternetGatewayId: str, DryRun: bool = None
     ) -> ClientDeleteEgressOnlyInternetGatewayResponseTypeDef:
@@ -18021,7 +18026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fleets(
         self, FleetIds: List[str], TerminateInstances: bool, DryRun: bool = None
     ) -> ClientDeleteFleetsResponseTypeDef:
@@ -18146,7 +18151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_flow_logs(
         self, FlowLogIds: List[str], DryRun: bool = None
     ) -> ClientDeleteFlowLogsResponseTypeDef:
@@ -18229,7 +18234,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fpga_image(
         self, FpgaImageId: str, DryRun: bool = None
     ) -> ClientDeleteFpgaImageResponseTypeDef:
@@ -18278,7 +18283,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_internet_gateway(
         self, InternetGatewayId: str, DryRun: bool = None
     ) -> None:
@@ -18311,7 +18316,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_key_pair(self, KeyName: str, DryRun: bool = None) -> None:
         """
         Deletes the specified key pair, by removing the public key from Amazon EC2.
@@ -18341,7 +18346,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_launch_template(
         self,
         DryRun: bool = None,
@@ -18460,7 +18465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_launch_template_versions(
         self,
         Versions: List[str],
@@ -18602,7 +18607,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_nat_gateway(
         self, NatGatewayId: str
     ) -> ClientDeleteNatGatewayResponseTypeDef:
@@ -18645,7 +18650,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_network_acl(self, NetworkAclId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets.
@@ -18676,7 +18681,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_network_acl_entry(
         self, Egress: bool, NetworkAclId: str, RuleNumber: int, DryRun: bool = None
     ) -> None:
@@ -18720,7 +18725,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_network_interface(
         self, NetworkInterfaceId: str, DryRun: bool = None
     ) -> None:
@@ -18753,7 +18758,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_network_interface_permission(
         self, NetworkInterfacePermissionId: str, Force: bool = None, DryRun: bool = None
     ) -> ClientDeleteNetworkInterfacePermissionResponseTypeDef:
@@ -18813,7 +18818,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_placement_group(self, GroupName: str, DryRun: bool = None) -> None:
         """
         Deletes the specified placement group. You must terminate all instances in the placement group
@@ -18846,7 +18851,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_queued_reserved_instances(
         self, ReservedInstancesIds: List[str], DryRun: bool = None
     ) -> ClientDeleteQueuedReservedInstancesResponseTypeDef:
@@ -18946,7 +18951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_route(
         self,
         RouteTableId: str,
@@ -18996,7 +19001,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_route_table(self, RouteTableId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified route table. You must disassociate the route table from any subnets before
@@ -19027,7 +19032,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_security_group(
         self, GroupId: str = None, GroupName: str = None, DryRun: bool = None
     ) -> None:
@@ -19070,7 +19075,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot(self, SnapshotId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified snapshot.
@@ -19113,7 +19118,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_spot_datafeed_subscription(self, DryRun: bool = None) -> None:
         """
         Deletes the data feed for Spot Instances.
@@ -19137,7 +19142,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subnet(self, SubnetId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified subnet. You must terminate all running instances in the subnet before you can
@@ -19168,12 +19173,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(
         self,
         Resources: List[str],
         DryRun: bool = None,
-        Tags: List[TypeDefEC2Tag] = None,
+        Tags: List[ClientDeleteTagsTagsTypeDef] = None,
     ) -> None:
         """
         Deletes the specified set of tags from the specified set of resources.
@@ -19247,7 +19252,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_mirror_filter(
         self, TrafficMirrorFilterId: str, DryRun: bool = None
     ) -> ClientDeleteTrafficMirrorFilterResponseTypeDef:
@@ -19298,7 +19303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_mirror_filter_rule(
         self, TrafficMirrorFilterRuleId: str, DryRun: bool = None
     ) -> ClientDeleteTrafficMirrorFilterRuleResponseTypeDef:
@@ -19347,7 +19352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_mirror_session(
         self, TrafficMirrorSessionId: str, DryRun: bool = None
     ) -> ClientDeleteTrafficMirrorSessionResponseTypeDef:
@@ -19396,7 +19401,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_traffic_mirror_target(
         self, TrafficMirrorTargetId: str, DryRun: bool = None
     ) -> ClientDeleteTrafficMirrorTargetResponseTypeDef:
@@ -19447,7 +19452,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_transit_gateway(
         self, TransitGatewayId: str, DryRun: bool = None
     ) -> ClientDeleteTransitGatewayResponseTypeDef:
@@ -19604,7 +19609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_transit_gateway_route(
         self,
         TransitGatewayRouteTableId: str,
@@ -19705,7 +19710,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_transit_gateway_route_table(
         self, TransitGatewayRouteTableId: str, DryRun: bool = None
     ) -> ClientDeleteTransitGatewayRouteTableResponseTypeDef:
@@ -19814,7 +19819,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_transit_gateway_vpc_attachment(
         self, TransitGatewayAttachmentId: str, DryRun: bool = None
     ) -> ClientDeleteTransitGatewayVpcAttachmentResponseTypeDef:
@@ -19949,7 +19954,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_volume(self, VolumeId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified EBS volume. The volume must be in the ``available`` state (not attached to an
@@ -19986,7 +19991,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc(self, VpcId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified VPC. You must detach or delete all gateways and resources that are associated
@@ -20019,7 +20024,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_endpoint_connection_notifications(
         self, ConnectionNotificationIds: List[str], DryRun: bool = None
     ) -> ClientDeleteVpcEndpointConnectionNotificationsResponseTypeDef:
@@ -20100,7 +20105,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_endpoint_service_configurations(
         self, ServiceIds: List[str], DryRun: bool = None
     ) -> ClientDeleteVpcEndpointServiceConfigurationsResponseTypeDef:
@@ -20183,7 +20188,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_endpoints(
         self, VpcEndpointIds: List[str], DryRun: bool = None
     ) -> ClientDeleteVpcEndpointsResponseTypeDef:
@@ -20268,7 +20273,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpc_peering_connection(
         self, VpcPeeringConnectionId: str, DryRun: bool = None
     ) -> ClientDeleteVpcPeeringConnectionResponseTypeDef:
@@ -20320,7 +20325,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpn_connection(self, VpnConnectionId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified VPN connection.
@@ -20357,7 +20362,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpn_connection_route(
         self, DestinationCidrBlock: str, VpnConnectionId: str
     ) -> None:
@@ -20389,7 +20394,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpn_gateway(self, VpnGatewayId: str, DryRun: bool = None) -> None:
         """
         Deletes the specified virtual private gateway. We recommend that before you delete a virtual
@@ -20422,7 +20427,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deprovision_byoip_cidr(
         self, Cidr: str, DryRun: bool = None
     ) -> ClientDeprovisionByoipCidrResponseTypeDef:
@@ -20499,7 +20504,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_image(self, ImageId: str, DryRun: bool = None) -> None:
         """
         Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new
@@ -20536,7 +20541,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, AttributeNames: List[str] = None, DryRun: bool = None
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -20634,7 +20639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_addresses(
         self,
         Filters: List[ClientDescribeAddressesFiltersTypeDef] = None,
@@ -20866,7 +20871,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_aggregate_id_format(
         self, DryRun: bool = None
     ) -> ClientDescribeAggregateIdFormatResponseTypeDef:
@@ -20952,7 +20957,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_availability_zones(
         self,
         Filters: List[ClientDescribeAvailabilityZonesFiltersTypeDef] = None,
@@ -21131,7 +21136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_bundle_tasks(
         self,
         BundleIds: List[str] = None,
@@ -21365,7 +21370,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_byoip_cidrs(
         self, MaxResults: int, DryRun: bool = None, NextToken: str = None
     ) -> ClientDescribeByoipCidrsResponseTypeDef:
@@ -21460,7 +21465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_capacity_reservations(
         self,
         CapacityReservationIds: List[str] = None,
@@ -21761,7 +21766,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_classic_link_instances(
         self,
         Filters: List[ClientDescribeClassicLinkInstancesFiltersTypeDef] = None,
@@ -21974,7 +21979,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_vpn_authorization_rules(
         self,
         ClientVpnEndpointId: str,
@@ -22146,7 +22151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_vpn_connections(
         self,
         ClientVpnEndpointId: str,
@@ -22355,7 +22360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_vpn_endpoints(
         self,
         ClientVpnEndpointIds: List[str] = None,
@@ -22697,7 +22702,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_vpn_routes(
         self,
         ClientVpnEndpointId: str,
@@ -22876,7 +22881,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_client_vpn_target_networks(
         self,
         ClientVpnEndpointId: str,
@@ -23064,7 +23069,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_conversion_tasks(
         self, ConversionTaskIds: List[str] = None, DryRun: bool = None
     ) -> ClientDescribeConversionTasksResponseTypeDef:
@@ -23358,7 +23363,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_customer_gateways(
         self,
         CustomerGatewayIds: List[str] = None,
@@ -23557,7 +23562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dhcp_options(
         self,
         DhcpOptionsIds: List[str] = None,
@@ -23785,7 +23790,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_egress_only_internet_gateways(
         self,
         DryRun: bool = None,
@@ -23897,7 +23902,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elastic_gpus(
         self,
         ElasticGpuIds: List[str] = None,
@@ -24088,7 +24093,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_export_image_tasks(
         self,
         DryRun: bool = None,
@@ -24269,7 +24274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_export_tasks(
         self, ExportTaskIds: List[str] = None
     ) -> ClientDescribeExportTasksResponseTypeDef:
@@ -24385,7 +24390,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_history(
         self,
         FleetId: str,
@@ -24591,7 +24596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_instances(
         self,
         FleetId: str,
@@ -24750,7 +24755,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleets(
         self,
         DryRun: bool = None,
@@ -25699,7 +25704,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_flow_logs(
         self,
         DryRun: bool = None,
@@ -25919,7 +25924,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fpga_image_attribute(
         self, FpgaImageId: str, Attribute: str, DryRun: bool = None
     ) -> ClientDescribeFpgaImageAttributeResponseTypeDef:
@@ -26034,7 +26039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fpga_images(
         self,
         DryRun: bool = None,
@@ -26362,7 +26367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_host_reservation_offerings(
         self,
         Filters: List[ClientDescribeHostReservationOfferingsFiltersTypeDef] = None,
@@ -26550,7 +26555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_host_reservations(
         self,
         Filters: List[ClientDescribeHostReservationsFiltersTypeDef] = None,
@@ -26792,7 +26797,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hosts(
         self,
         Filters: List[ClientDescribeHostsFiltersTypeDef] = None,
@@ -27105,7 +27110,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_iam_instance_profile_associations(
         self,
         AssociationIds: List[str] = None,
@@ -27273,7 +27278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_id_format(
         self, Resource: str = None
     ) -> ClientDescribeIdFormatResponseTypeDef:
@@ -27362,7 +27367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_identity_id_format(
         self, PrincipalArn: str, Resource: str = None
     ) -> ClientDescribeIdentityIdFormatResponseTypeDef:
@@ -27456,7 +27461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_image_attribute(
         self, Attribute: str, ImageId: str, DryRun: bool = None
     ) -> ClientDescribeImageAttributeResponseTypeDef:
@@ -27743,7 +27748,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_images(
         self,
         ExecutableUsers: List[str] = None,
@@ -28309,7 +28314,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_import_image_tasks(
         self,
         DryRun: bool = None,
@@ -28582,7 +28587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_import_snapshot_tasks(
         self,
         DryRun: bool = None,
@@ -28800,7 +28805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_attribute(
         self, Attribute: str, InstanceId: str, DryRun: bool = None
     ) -> ClientDescribeInstanceAttributeResponseTypeDef:
@@ -29079,7 +29084,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_credit_specifications(
         self,
         DryRun: bool = None,
@@ -29252,7 +29257,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_status(
         self,
         Filters: List[ClientDescribeInstanceStatusFiltersTypeDef] = None,
@@ -29640,7 +29645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instances(
         self,
         Filters: List[ClientDescribeInstancesFiltersTypeDef] = None,
@@ -30912,7 +30917,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_internet_gateways(
         self,
         Filters: List[ClientDescribeInternetGatewaysFiltersTypeDef] = None,
@@ -31127,7 +31132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_key_pairs(
         self,
         Filters: List[ClientDescribeKeyPairsFiltersTypeDef] = None,
@@ -31262,7 +31267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_launch_template_versions(
         self,
         DryRun: bool = None,
@@ -32071,7 +32076,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_launch_templates(
         self,
         DryRun: bool = None,
@@ -32286,7 +32291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_moving_addresses(
         self,
         Filters: List[ClientDescribeMovingAddressesFiltersTypeDef] = None,
@@ -32440,7 +32445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_nat_gateways(
         self,
         Filters: List[ClientDescribeNatGatewaysFiltersTypeDef] = None,
@@ -32759,7 +32764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_network_acls(
         self,
         Filters: List[ClientDescribeNetworkAclsFiltersTypeDef] = None,
@@ -33090,7 +33095,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_network_interface_attribute(
         self, NetworkInterfaceId: str, Attribute: str = None, DryRun: bool = None
     ) -> ClientDescribeNetworkInterfaceAttributeResponseTypeDef:
@@ -33232,7 +33237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_network_interface_permissions(
         self,
         NetworkInterfacePermissionIds: List[str] = None,
@@ -33411,7 +33416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_network_interfaces(
         self,
         Filters: List[ClientDescribeNetworkInterfacesFiltersTypeDef] = None,
@@ -33913,7 +33918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_placement_groups(
         self,
         Filters: List[ClientDescribePlacementGroupsFiltersTypeDef] = None,
@@ -34057,7 +34062,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_prefix_lists(
         self,
         DryRun: bool = None,
@@ -34218,7 +34223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_principal_id_format(
         self,
         DryRun: bool = None,
@@ -34355,7 +34360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_public_ipv4_pools(
         self, PoolIds: List[str] = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribePublicIpv4PoolsResponseTypeDef:
@@ -34478,7 +34483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_regions(
         self,
         Filters: List[ClientDescribeRegionsFiltersTypeDef] = None,
@@ -34629,7 +34634,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_instances(
         self,
         Filters: List[ClientDescribeReservedInstancesFiltersTypeDef] = None,
@@ -34987,7 +34992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_instances_listings(
         self,
         Filters: List[ClientDescribeReservedInstancesListingsFiltersTypeDef] = None,
@@ -35254,7 +35259,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_instances_modifications(
         self,
         Filters: List[
@@ -35580,7 +35585,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_instances_offerings(
         self,
         AvailabilityZone: str = None,
@@ -36053,7 +36058,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_route_tables(
         self,
         Filters: List[ClientDescribeRouteTablesFiltersTypeDef] = None,
@@ -36434,7 +36439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scheduled_instance_availability(
         self,
         FirstSlotStartTimeRange: ClientDescribeScheduledInstanceAvailabilityFirstSlotStartTimeRangeTypeDef,
@@ -36752,7 +36757,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scheduled_instances(
         self,
         DryRun: bool = None,
@@ -37022,7 +37027,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_security_group_references(
         self, GroupId: List[str], DryRun: bool = None
     ) -> ClientDescribeSecurityGroupReferencesResponseTypeDef:
@@ -37098,7 +37103,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_security_groups(
         self,
         Filters: List[ClientDescribeSecurityGroupsFiltersTypeDef] = None,
@@ -37741,7 +37746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshot_attribute(
         self, Attribute: str, SnapshotId: str, DryRun: bool = None
     ) -> ClientDescribeSnapshotAttributeResponseTypeDef:
@@ -37848,7 +37853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshots(
         self,
         Filters: List[ClientDescribeSnapshotsFiltersTypeDef] = None,
@@ -38192,7 +38197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_datafeed_subscription(
         self, DryRun: bool = None
     ) -> ClientDescribeSpotDatafeedSubscriptionResponseTypeDef:
@@ -38276,7 +38281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_fleet_instances(
         self,
         SpotFleetRequestId: str,
@@ -38385,7 +38390,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_fleet_request_history(
         self,
         SpotFleetRequestId: str,
@@ -38607,7 +38612,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_fleet_requests(
         self,
         DryRun: bool = None,
@@ -39666,7 +39671,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_instance_requests(
         self,
         Filters: List[ClientDescribeSpotInstanceRequestsFiltersTypeDef] = None,
@@ -40540,7 +40545,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_spot_price_history(
         self,
         Filters: List[ClientDescribeSpotPriceHistoryFiltersTypeDef] = None,
@@ -40849,7 +40854,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stale_security_groups(
         self,
         VpcId: str,
@@ -41174,7 +41179,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subnets(
         self,
         Filters: List[ClientDescribeSubnetsFiltersTypeDef] = None,
@@ -41485,7 +41490,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self,
         DryRun: bool = None,
@@ -41656,7 +41661,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_traffic_mirror_filters(
         self,
         TrafficMirrorFilterIds: List[str] = None,
@@ -42023,7 +42028,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_traffic_mirror_sessions(
         self,
         TrafficMirrorSessionIds: List[str] = None,
@@ -42257,7 +42262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_traffic_mirror_targets(
         self,
         TrafficMirrorTargetIds: List[str] = None,
@@ -42460,7 +42465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_transit_gateway_attachments(
         self,
         TransitGatewayAttachmentIds: List[str] = None,
@@ -42704,7 +42709,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_transit_gateway_route_tables(
         self,
         TransitGatewayRouteTableIds: List[str] = None,
@@ -42911,7 +42916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_transit_gateway_vpc_attachments(
         self,
         TransitGatewayAttachmentIds: List[str] = None,
@@ -43141,7 +43146,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_transit_gateways(
         self,
         TransitGatewayIds: List[str] = None,
@@ -43411,7 +43416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_volume_attribute(
         self, Attribute: str, VolumeId: str, DryRun: bool = None
     ) -> ClientDescribeVolumeAttributeResponseTypeDef:
@@ -43506,7 +43511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_volume_status(
         self,
         Filters: List[ClientDescribeVolumeStatusFiltersTypeDef] = None,
@@ -43823,7 +43828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_volumes(
         self,
         Filters: List[ClientDescribeVolumesFiltersTypeDef] = None,
@@ -44152,7 +44157,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_volumes_modifications(
         self,
         DryRun: bool = None,
@@ -44361,7 +44366,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_attribute(
         self, Attribute: str, VpcId: str, DryRun: bool = None
     ) -> ClientDescribeVpcAttributeResponseTypeDef:
@@ -44442,7 +44447,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_classic_link(
         self,
         Filters: List[ClientDescribeVpcClassicLinkFiltersTypeDef] = None,
@@ -44604,7 +44609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_classic_link_dns_support(
         self, MaxResults: int = None, NextToken: str = None, VpcIds: List[str] = None
     ) -> ClientDescribeVpcClassicLinkDnsSupportResponseTypeDef:
@@ -44690,7 +44695,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoint_connection_notifications(
         self,
         DryRun: bool = None,
@@ -44875,7 +44880,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoint_connections(
         self,
         DryRun: bool = None,
@@ -45068,7 +45073,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoint_service_configurations(
         self,
         DryRun: bool = None,
@@ -45325,7 +45330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoint_service_permissions(
         self,
         ServiceId: str,
@@ -45473,7 +45478,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoint_services(
         self,
         DryRun: bool = None,
@@ -45730,7 +45735,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_endpoints(
         self,
         DryRun: bool = None,
@@ -46037,7 +46042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpc_peering_connections(
         self,
         Filters: List[ClientDescribeVpcPeeringConnectionsFiltersTypeDef] = None,
@@ -46429,7 +46434,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpcs(
         self,
         Filters: List[ClientDescribeVpcsFiltersTypeDef] = None,
@@ -46745,7 +46750,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpn_connections(
         self,
         Filters: List[ClientDescribeVpnConnectionsFiltersTypeDef] = None,
@@ -47229,7 +47234,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vpn_gateways(
         self,
         Filters: List[ClientDescribeVpnGatewaysFiltersTypeDef] = None,
@@ -47451,7 +47456,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_classic_link_vpc(
         self, InstanceId: str, VpcId: str, DryRun: bool = None
     ) -> ClientDetachClassicLinkVpcResponseTypeDef:
@@ -47508,7 +47513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_internet_gateway(
         self, InternetGatewayId: str, VpcId: str, DryRun: bool = None
     ) -> None:
@@ -47547,7 +47552,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_network_interface(
         self, AttachmentId: str, DryRun: bool = None, Force: bool = None
     ) -> None:
@@ -47600,7 +47605,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_volume(
         self,
         VolumeId: str,
@@ -47715,7 +47720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_vpn_gateway(
         self, VpcId: str, VpnGatewayId: str, DryRun: bool = None
     ) -> None:
@@ -47759,7 +47764,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_ebs_encryption_by_default(
         self, DryRun: bool = None
     ) -> ClientDisableEbsEncryptionByDefaultResponseTypeDef:
@@ -47811,7 +47816,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_transit_gateway_route_table_propagation(
         self,
         TransitGatewayRouteTableId: str,
@@ -47897,7 +47902,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_vgw_route_propagation(self, GatewayId: str, RouteTableId: str) -> None:
         """
         Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a
@@ -47926,7 +47931,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_vpc_classic_link(
         self, VpcId: str, DryRun: bool = None
     ) -> ClientDisableVpcClassicLinkResponseTypeDef:
@@ -47976,7 +47981,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_vpc_classic_link_dns_support(
         self, VpcId: str = None
     ) -> ClientDisableVpcClassicLinkDnsSupportResponseTypeDef:
@@ -48021,7 +48026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_address(
         self, AssociationId: str = None, PublicIp: str = None, DryRun: bool = None
     ) -> None:
@@ -48067,7 +48072,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_client_vpn_target_network(
         self, ClientVpnEndpointId: str, AssociationId: str, DryRun: bool = None
     ) -> ClientDisassociateClientVpnTargetNetworkResponseTypeDef:
@@ -48148,7 +48153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_iam_instance_profile(
         self, AssociationId: str
     ) -> ClientDisassociateIamInstanceProfileResponseTypeDef:
@@ -48228,7 +48233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_route_table(self, AssociationId: str, DryRun: bool = None) -> None:
         """
         Disassociates a subnet from a route table.
@@ -48263,7 +48268,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_subnet_cidr_block(
         self, AssociationId: str
     ) -> ClientDisassociateSubnetCidrBlockResponseTypeDef:
@@ -48339,7 +48344,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_transit_gateway_route_table(
         self,
         TransitGatewayRouteTableId: str,
@@ -48423,7 +48428,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_vpc_cidr_block(
         self, AssociationId: str
     ) -> ClientDisassociateVpcCidrBlockResponseTypeDef:
@@ -48535,7 +48540,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_ebs_encryption_by_default(
         self, DryRun: bool = None
     ) -> ClientEnableEbsEncryptionByDefaultResponseTypeDef:
@@ -48594,7 +48599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_transit_gateway_route_table_propagation(
         self,
         TransitGatewayRouteTableId: str,
@@ -48678,7 +48683,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_vgw_route_propagation(self, GatewayId: str, RouteTableId: str) -> None:
         """
         Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
@@ -48708,7 +48713,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_volume_io(self, VolumeId: str, DryRun: bool = None) -> None:
         """
         Enables I/O operations for a volume that had I/O operations disabled because the data on the volume
@@ -48739,7 +48744,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_vpc_classic_link(
         self, VpcId: str, DryRun: bool = None
     ) -> ClientEnableVpcClassicLinkResponseTypeDef:
@@ -48794,7 +48799,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_vpc_classic_link_dns_support(
         self, VpcId: str = None
     ) -> ClientEnableVpcClassicLinkDnsSupportResponseTypeDef:
@@ -48840,7 +48845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_client_vpn_client_certificate_revocation_list(
         self, ClientVpnEndpointId: str, DryRun: bool = None
     ) -> ClientExportClientVpnClientCertificateRevocationListResponseTypeDef:
@@ -48906,7 +48911,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_client_vpn_client_configuration(
         self, ClientVpnEndpointId: str, DryRun: bool = None
     ) -> ClientExportClientVpnClientConfigurationResponseTypeDef:
@@ -48957,7 +48962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_image(
         self,
         DiskImageFormat: str,
@@ -49114,7 +49119,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_transit_gateway_routes(
         self,
         TransitGatewayRouteTableId: str,
@@ -49248,7 +49253,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -49277,7 +49282,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_capacity_reservation_usage(
         self,
         CapacityReservationId: str,
@@ -49413,7 +49418,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_console_output(
         self, InstanceId: str, DryRun: bool = None, Latest: bool = None
     ) -> ClientGetConsoleOutputResponseTypeDef:
@@ -49496,7 +49501,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_console_screenshot(
         self, InstanceId: str, DryRun: bool = None, WakeUp: bool = None
     ) -> ClientGetConsoleScreenshotResponseTypeDef:
@@ -49559,7 +49564,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ebs_default_kms_key_id(
         self, DryRun: bool = None
     ) -> ClientGetEbsDefaultKmsKeyIdResponseTypeDef:
@@ -49608,7 +49613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ebs_encryption_by_default(
         self, DryRun: bool = None
     ) -> ClientGetEbsEncryptionByDefaultResponseTypeDef:
@@ -49655,7 +49660,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_host_reservation_purchase_preview(
         self, HostIdSet: List[str], OfferingId: str
     ) -> ClientGetHostReservationPurchasePreviewResponseTypeDef:
@@ -49779,7 +49784,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_launch_template_data(
         self, InstanceId: str, DryRun: bool = None
     ) -> ClientGetLaunchTemplateDataResponseTypeDef:
@@ -50406,7 +50411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -50427,7 +50432,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_password_data(
         self, InstanceId: str, DryRun: bool = None
     ) -> ClientGetPasswordDataResponseTypeDef:
@@ -50504,7 +50509,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reserved_instances_exchange_quote(
         self,
         ReservedInstanceIds: List[str],
@@ -50747,7 +50752,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_transit_gateway_attachment_propagations(
         self,
         TransitGatewayAttachmentId: str,
@@ -50891,7 +50896,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_transit_gateway_route_table_associations(
         self,
         TransitGatewayRouteTableId: str,
@@ -51049,7 +51054,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_transit_gateway_route_table_propagations(
         self,
         TransitGatewayRouteTableId: str,
@@ -51207,7 +51212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -51220,7 +51225,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_client_vpn_client_certificate_revocation_list(
         self,
         ClientVpnEndpointId: str,
@@ -51285,7 +51290,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_image(
         self,
         Architecture: str = None,
@@ -51653,7 +51658,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_instance(
         self,
         Platform: str,
@@ -52175,7 +52180,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_key_pair(
         self, KeyName: str, PublicKeyMaterial: bytes, DryRun: bool = None
     ) -> ClientImportKeyPairResponseTypeDef:
@@ -52243,7 +52248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_snapshot(
         self,
         ClientData: ClientImportSnapshotClientDataTypeDef = None,
@@ -52498,7 +52503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_volume(
         self,
         AvailabilityZone: str,
@@ -52835,7 +52840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_capacity_reservation(
         self,
         CapacityReservationId: str,
@@ -52927,7 +52932,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_client_vpn_endpoint(
         self,
         ClientVpnEndpointId: str,
@@ -53066,7 +53071,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_ebs_default_kms_key_id(
         self, KmsKeyId: str, DryRun: bool = None
     ) -> ClientModifyEbsDefaultKmsKeyIdResponseTypeDef:
@@ -53143,7 +53148,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_fleet(
         self,
         FleetId: str,
@@ -53255,7 +53260,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_fpga_image_attribute(
         self,
         FpgaImageId: str,
@@ -53480,7 +53485,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_hosts(
         self, HostIds: List[str], AutoPlacement: str = None, HostRecovery: str = None
     ) -> ClientModifyHostsResponseTypeDef:
@@ -53582,7 +53587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_id_format(self, Resource: str, UseLongIds: bool) -> None:
         """
         Modifies the ID format for the specified resource on a per-Region basis. You can specify that
@@ -53641,7 +53646,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_identity_id_format(
         self, PrincipalArn: str, Resource: str, UseLongIds: bool
     ) -> None:
@@ -53710,7 +53715,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_image_attribute(
         self,
         ImageId: str,
@@ -53876,7 +53881,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_attribute(
         self,
         InstanceId: str,
@@ -54160,7 +54165,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_capacity_reservation_attributes(
         self,
         InstanceId: str,
@@ -54244,7 +54249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_credit_specification(
         self,
         InstanceCreditSpecifications: List[
@@ -54377,7 +54382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_event_start_time(
         self,
         InstanceId: str,
@@ -54478,7 +54483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_instance_placement(
         self,
         InstanceId: str,
@@ -54579,7 +54584,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_launch_template(
         self,
         DryRun: bool = None,
@@ -54718,7 +54723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_network_interface_attribute(
         self,
         NetworkInterfaceId: str,
@@ -54726,7 +54731,7 @@ class Client(BaseClient):
         Description: ClientModifyNetworkInterfaceAttributeDescriptionTypeDef = None,
         DryRun: bool = None,
         Groups: List[str] = None,
-        SourceDestCheck: Dict = None,
+        SourceDestCheck: ClientModifyNetworkInterfaceAttributeSourceDestCheckTypeDef = None,
     ) -> None:
         """
         Modifies the specified network interface attribute. You can specify only one attribute at a time.
@@ -54815,7 +54820,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_reserved_instances(
         self,
         ReservedInstancesIds: List[str],
@@ -54970,7 +54975,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_snapshot_attribute(
         self,
         SnapshotId: str,
@@ -55104,7 +55109,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_spot_fleet_request(
         self,
         SpotFleetRequestId: str,
@@ -55195,7 +55200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_subnet_attribute(
         self,
         SubnetId: str,
@@ -55253,7 +55258,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_traffic_mirror_filter_network_services(
         self,
         TrafficMirrorFilterId: str,
@@ -55562,7 +55567,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_traffic_mirror_filter_rule(
         self,
         TrafficMirrorFilterRuleId: str,
@@ -55792,7 +55797,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_traffic_mirror_session(
         self,
         TrafficMirrorSessionId: str,
@@ -55987,7 +55992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_transit_gateway_vpc_attachment(
         self,
         TransitGatewayAttachmentId: str,
@@ -56164,7 +56169,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_volume(
         self,
         VolumeId: str,
@@ -56344,7 +56349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_volume_attribute(
         self,
         VolumeId: str,
@@ -56399,7 +56404,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_attribute(
         self,
         VpcId: str,
@@ -56461,7 +56466,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_endpoint(
         self,
         VpcEndpointId: str,
@@ -56604,7 +56609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_endpoint_connection_notification(
         self,
         ConnectionNotificationId: str,
@@ -56675,7 +56680,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_endpoint_service_configuration(
         self,
         ServiceId: str,
@@ -56758,7 +56763,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_endpoint_service_permissions(
         self,
         ServiceId: str,
@@ -56840,7 +56845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_peering_connection_options(
         self,
         VpcPeeringConnectionId: str,
@@ -57005,7 +57010,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpc_tenancy(
         self, VpcId: str, InstanceTenancy: str, DryRun: bool = None
     ) -> ClientModifyVpcTenancyResponseTypeDef:
@@ -57070,7 +57075,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpn_connection(
         self,
         VpnConnectionId: str,
@@ -57514,7 +57519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpn_tunnel_certificate(
         self, VpnConnectionId: str, VpnTunnelOutsideIpAddress: str, DryRun: bool = None
     ) -> ClientModifyVpnTunnelCertificateResponseTypeDef:
@@ -57904,7 +57909,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_vpn_tunnel_options(
         self,
         VpnConnectionId: str,
@@ -58539,7 +58544,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def monitor_instances(
         self, InstanceIds: List[str], DryRun: bool = None
     ) -> ClientMonitorInstancesResponseTypeDef:
@@ -58621,7 +58626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def move_address_to_vpc(
         self, PublicIp: str, DryRun: bool = None
     ) -> ClientMoveAddressToVpcResponseTypeDef:
@@ -58680,7 +58685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def provision_byoip_cidr(
         self,
         Cidr: str,
@@ -58796,7 +58801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_host_reservation(
         self,
         HostIdSet: List[str],
@@ -58954,7 +58959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_reserved_instances_offering(
         self,
         InstanceCount: int,
@@ -59057,7 +59062,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_scheduled_instances(
         self,
         PurchaseRequests: List[ClientPurchaseScheduledInstancesPurchaseRequestsTypeDef],
@@ -59260,7 +59265,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_instances(self, InstanceIds: List[str], DryRun: bool = None) -> None:
         """
         Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
@@ -59302,7 +59307,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_image(
         self,
         Name: str,
@@ -59621,7 +59626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_transit_gateway_vpc_attachment(
         self, TransitGatewayAttachmentId: str, DryRun: bool = None
     ) -> ClientRejectTransitGatewayVpcAttachmentResponseTypeDef:
@@ -59760,7 +59765,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_vpc_endpoint_connections(
         self, ServiceId: str, VpcEndpointIds: List[str], DryRun: bool = None
     ) -> ClientRejectVpcEndpointConnectionsResponseTypeDef:
@@ -59847,7 +59852,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_vpc_peering_connection(
         self, VpcPeeringConnectionId: str, DryRun: bool = None
     ) -> ClientRejectVpcPeeringConnectionResponseTypeDef:
@@ -59899,7 +59904,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def release_address(
         self, AllocationId: str = None, PublicIp: str = None, DryRun: bool = None
     ) -> None:
@@ -59952,7 +59957,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def release_hosts(self, HostIds: List[str]) -> ClientReleaseHostsResponseTypeDef:
         """
         When you no longer want to use an On-Demand Dedicated Host it can be released. On-Demand billing is
@@ -60041,7 +60046,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_iam_instance_profile_association(
         self,
         IamInstanceProfile: ClientReplaceIamInstanceProfileAssociationIamInstanceProfileTypeDef,
@@ -60142,7 +60147,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_network_acl_association(
         self, AssociationId: str, NetworkAclId: str, DryRun: bool = None
     ) -> ClientReplaceNetworkAclAssociationResponseTypeDef:
@@ -60202,7 +60207,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_network_acl_entry(
         self,
         Egress: bool,
@@ -60326,7 +60331,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_route(
         self,
         RouteTableId: str,
@@ -60431,7 +60436,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_route_table_association(
         self, AssociationId: str, RouteTableId: str, DryRun: bool = None
     ) -> ClientReplaceRouteTableAssociationResponseTypeDef:
@@ -60494,7 +60499,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_transit_gateway_route(
         self,
         DestinationCidrBlock: str,
@@ -60610,7 +60615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def report_instance_status(
         self,
         Instances: List[str],
@@ -60715,7 +60720,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_spot_fleet(
         self,
         SpotFleetRequestConfig: ClientRequestSpotFleetSpotFleetRequestConfigTypeDef,
@@ -61692,7 +61697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_spot_instances(
         self,
         AvailabilityZoneGroup: str = None,
@@ -62946,7 +62951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_ebs_default_kms_key_id(
         self, DryRun: bool = None
     ) -> ClientResetEbsDefaultKmsKeyIdResponseTypeDef:
@@ -62995,7 +63000,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_fpga_image_attribute(
         self, FpgaImageId: str, DryRun: bool = None, Attribute: str = None
     ) -> ClientResetFpgaImageAttributeResponseTypeDef:
@@ -63051,7 +63056,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_image_attribute(
         self, Attribute: str, ImageId: str, DryRun: bool = None
     ) -> None:
@@ -63093,7 +63098,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_instance_attribute(
         self, Attribute: str, InstanceId: str, DryRun: bool = None
     ) -> None:
@@ -63147,7 +63152,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_network_interface_attribute(
         self, NetworkInterfaceId: str, DryRun: bool = None, SourceDestCheck: str = None
     ) -> None:
@@ -63185,7 +63190,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_snapshot_attribute(
         self, Attribute: str, SnapshotId: str, DryRun: bool = None
     ) -> None:
@@ -63228,7 +63233,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_address_to_classic(
         self, PublicIp: str, DryRun: bool = None
     ) -> ClientRestoreAddressToClassicResponseTypeDef:
@@ -63284,7 +63289,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_client_vpn_ingress(
         self,
         ClientVpnEndpointId: str,
@@ -63367,7 +63372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_security_group_egress(
         self,
         GroupId: str,
@@ -63634,7 +63639,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_security_group_ingress(
         self,
         CidrIp: str = None,
@@ -63930,7 +63935,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def run_instances(
         self,
         MaxCount: int,
@@ -65880,7 +65885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def run_scheduled_instances(
         self,
         LaunchSpecification: ClientRunScheduledInstancesLaunchSpecificationTypeDef,
@@ -66274,7 +66279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_transit_gateway_routes(
         self,
         TransitGatewayRouteTableId: str,
@@ -66458,7 +66463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_diagnostic_interrupt(self, InstanceId: str, DryRun: bool = None) -> None:
         """
         Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a *kernel panic* (on
@@ -66504,7 +66509,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_instances(
         self, InstanceIds: List[str], AdditionalInfo: str = None, DryRun: bool = None
     ) -> ClientStartInstancesResponseTypeDef:
@@ -66677,7 +66682,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_instances(
         self,
         InstanceIds: List[str],
@@ -66891,7 +66896,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_client_vpn_connections(
         self,
         ClientVpnEndpointId: str,
@@ -67013,7 +67018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_instances(
         self, InstanceIds: List[str], DryRun: bool = None
     ) -> ClientTerminateInstancesResponseTypeDef:
@@ -67184,7 +67189,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unassign_ipv6_addresses(
         self, Ipv6Addresses: List[str], NetworkInterfaceId: str
     ) -> ClientUnassignIpv6AddressesResponseTypeDef:
@@ -67244,9 +67249,9 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unassign_private_ip_addresses(
-        self, NetworkInterfaceId: str, PrivateIpAddresses: List[Any]
+        self, NetworkInterfaceId: str, PrivateIpAddresses: List[str]
     ) -> None:
         """
         Unassigns one or more secondary private IP addresses from a network interface.
@@ -67279,7 +67284,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unmonitor_instances(
         self, InstanceIds: List[str], DryRun: bool = None
     ) -> ClientUnmonitorInstancesResponseTypeDef:
@@ -67359,7 +67364,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_security_group_rule_descriptions_egress(
         self,
         IpPermissions: List[
@@ -67606,7 +67611,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_security_group_rule_descriptions_ingress(
         self,
         IpPermissions: List[
@@ -67854,7 +67859,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def withdraw_byoip_cidr(
         self, Cidr: str, DryRun: bool = None
     ) -> ClientWithdrawByoipCidrResponseTypeDef:

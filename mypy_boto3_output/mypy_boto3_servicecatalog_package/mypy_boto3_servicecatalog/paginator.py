@@ -45,7 +45,7 @@ from mypy_boto3_servicecatalog.type_defs import (
 
 
 class ListAcceptedPortfolioShares(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -177,7 +177,7 @@ class ListAcceptedPortfolioShares(Boto3Paginator):
 
 
 class ListConstraintsForPortfolio(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PortfolioId: str,
@@ -308,7 +308,7 @@ class ListConstraintsForPortfolio(Boto3Paginator):
 
 
 class ListLaunchPaths(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProductId: str,
@@ -467,7 +467,7 @@ class ListLaunchPaths(Boto3Paginator):
 
 
 class ListOrganizationPortfolioAccess(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PortfolioId: str,
@@ -588,7 +588,7 @@ class ListOrganizationPortfolioAccess(Boto3Paginator):
 
 
 class ListPortfolios(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -707,7 +707,7 @@ class ListPortfolios(Boto3Paginator):
 
 
 class ListPortfoliosForProduct(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProductId: str,
@@ -833,7 +833,7 @@ class ListPortfoliosForProduct(Boto3Paginator):
 
 
 class ListPrincipalsForPortfolio(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PortfolioId: str,
@@ -939,7 +939,7 @@ class ListPrincipalsForPortfolio(Boto3Paginator):
 
 
 class ListProvisionedProductPlans(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -1089,7 +1089,7 @@ class ListProvisionedProductPlans(Boto3Paginator):
 
 
 class ListProvisioningArtifactsForServiceAction(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceActionId: str,
@@ -1287,7 +1287,7 @@ class ListProvisioningArtifactsForServiceAction(Boto3Paginator):
 
 
 class ListRecordHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -1540,7 +1540,7 @@ class ListRecordHistory(Boto3Paginator):
 
 
 class ListResourcesForTagOption(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TagOptionId: str,
@@ -1659,7 +1659,7 @@ class ListResourcesForTagOption(Boto3Paginator):
 
 
 class ListServiceActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -1769,7 +1769,7 @@ class ListServiceActions(Boto3Paginator):
 
 
 class ListServiceActionsForProvisioningArtifact(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProductId: str,
@@ -1894,7 +1894,7 @@ class ListServiceActionsForProvisioningArtifact(Boto3Paginator):
 
 
 class ListTagOptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: ListTagOptionsPaginateFiltersTypeDef = None,
@@ -2013,7 +2013,7 @@ class ListTagOptions(Boto3Paginator):
 
 
 class ScanProvisionedProducts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,
@@ -2202,7 +2202,7 @@ class ScanProvisionedProducts(Boto3Paginator):
 
 
 class SearchProductsAsAdmin(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AcceptLanguage: str = None,

@@ -136,8 +136,10 @@ from mypy_boto3_iot.type_defs import (
     ClientRegisterCaCertificateregistrationConfigTypeDef,
     ClientRegisterCertificateResponseTypeDef,
     ClientRegisterThingResponseTypeDef,
+    ClientReplaceTopicRuletopicRulePayloadTypeDef,
     ClientSearchIndexResponseTypeDef,
     ClientSetDefaultAuthorizerResponseTypeDef,
+    ClientSetLoggingOptionsloggingOptionsPayloadTypeDef,
     ClientSetV2LoggingLevellogTargetTypeDef,
     ClientStartAuditMitigationActionsTaskResponseTypeDef,
     ClientStartAuditMitigationActionsTasktargetTypeDef,
@@ -162,6 +164,7 @@ from mypy_boto3_iot.type_defs import (
     ClientUpdateJobabortConfigTypeDef,
     ClientUpdateJobjobExecutionsRolloutConfigTypeDef,
     ClientUpdateJobpresignedUrlConfigTypeDef,
+    ClientUpdateJobtimeoutConfigTypeDef,
     ClientUpdateMitigationActionResponseTypeDef,
     ClientUpdateMitigationActionactionParamsTypeDef,
     ClientUpdateRoleAliasResponseTypeDef,
@@ -180,7 +183,7 @@ from mypy_boto3_iot.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_certificate_transfer(
         self, certificateId: str, setAsActive: bool = None
     ) -> None:
@@ -212,7 +215,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_thing_to_billing_group(
         self,
         billingGroupName: str = None,
@@ -268,7 +271,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_thing_to_thing_group(
         self,
         thingGroupName: str = None,
@@ -333,7 +336,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_targets_with_job(
         self, targets: List[str], jobId: str, comment: str = None
     ) -> ClientAssociateTargetsWithJobResponseTypeDef:
@@ -406,7 +409,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, policyName: str, target: str) -> None:
         """
         Attaches a policy to the specified target.
@@ -436,7 +439,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_principal_policy(self, policyName: str, principal: str) -> None:
         """
         Attaches the specified policy to the specified principal (certificate or other credential).
@@ -472,7 +475,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_security_profile(
         self, securityProfileName: str, securityProfileTargetArn: str
     ) -> Dict[str, Any]:
@@ -513,7 +516,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_thing_principal(self, thingName: str, principal: str) -> Dict:
         """
         Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM
@@ -556,7 +559,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -573,7 +576,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_audit_mitigation_actions_task(self, taskId: str) -> Dict[str, Any]:
         """
         Cancels a mitigation action task that is in progress. If the task is not in progress, an
@@ -606,7 +609,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_audit_task(self, taskId: str) -> Dict[str, Any]:
         """
         Cancels an audit that is in progress. The audit can be either scheduled or on-demand. If the audit
@@ -639,7 +642,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_certificate_transfer(self, certificateId: str) -> None:
         """
         Cancels a pending transfer for the specified certificate.
@@ -669,7 +672,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_job(
         self,
         jobId: str,
@@ -747,14 +750,14 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_job_execution(
         self,
         jobId: str,
         thingName: str,
         force: bool = None,
         expectedVersion: int = None,
-        statusDetails: Dict = None,
+        statusDetails: Dict[str, str] = None,
     ) -> None:
         """
         Cancels the execution of a job for a given thing.
@@ -818,7 +821,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def clear_default_authorizer(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Clears the default authorizer.
@@ -844,7 +847,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_authorizer(
         self,
         authorizerName: str,
@@ -926,7 +929,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_billing_group(
         self,
         billingGroupName: str,
@@ -1015,7 +1018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_certificate_from_csr(
         self, certificateSigningRequest: str, setAsActive: bool = None
     ) -> ClientCreateCertificateFromCsrResponseTypeDef:
@@ -1110,7 +1113,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dynamic_thing_group(
         self,
         thingGroupName: str,
@@ -1172,7 +1175,7 @@ class Client(BaseClient):
 
               A JSON string containing up to three key-value pair in JSON format. For example:
 
-               ``{\"attributes\":{\"string1\":\"string2\"}}``
+               ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
               - *(string) --*
 
@@ -1278,7 +1281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_job(
         self,
         jobId: str,
@@ -1548,7 +1551,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_keys_and_certificate(
         self, setAsActive: bool = None
     ) -> ClientCreateKeysAndCertificateResponseTypeDef:
@@ -1621,7 +1624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_mitigation_action(
         self,
         actionName: str,
@@ -1799,7 +1802,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ota_update(
         self,
         otaUpdateId: str,
@@ -2133,7 +2136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self, policyName: str, policyDocument: str
     ) -> ClientCreatePolicyResponseTypeDef:
@@ -2201,7 +2204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy_version(
         self, policyName: str, policyDocument: str, setAsDefault: bool = None
     ) -> ClientCreatePolicyVersionResponseTypeDef:
@@ -2280,7 +2283,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_role_alias(
         self, roleAlias: str, roleArn: str, credentialDurationSeconds: int = None
     ) -> ClientCreateRoleAliasResponseTypeDef:
@@ -2339,7 +2342,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_scheduled_audit(
         self,
         frequency: str,
@@ -2449,7 +2452,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_profile(
         self,
         securityProfileName: str,
@@ -2679,7 +2682,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stream(
         self,
         streamId: str,
@@ -2816,7 +2819,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_thing(
         self,
         thingName: str,
@@ -2868,13 +2871,13 @@ class Client(BaseClient):
           The attribute payload, which consists of up to three name/value pairs in a JSON document. For
           example:
 
-           ``{\"attributes\":{\"string1\":\"string2\"}}``
+           ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
           - **attributes** *(dict) --*
 
             A JSON string containing up to three key-value pair in JSON format. For example:
 
-             ``{\"attributes\":{\"string1\":\"string2\"}}``
+             ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
             - *(string) --*
 
@@ -2928,7 +2931,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_thing_group(
         self,
         thingGroupName: str,
@@ -2997,7 +3000,7 @@ class Client(BaseClient):
 
               A JSON string containing up to three key-value pair in JSON format. For example:
 
-               ``{\"attributes\":{\"string1\":\"string2\"}}``
+               ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
               - *(string) --*
 
@@ -3061,7 +3064,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_thing_type(
         self,
         thingTypeName: str,
@@ -3162,7 +3165,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_topic_rule(
         self,
         ruleName: str,
@@ -3507,7 +3510,7 @@ class Client(BaseClient):
                   "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
                   the payload should be parsed and relevant platform-specific bits of the payload should be
                   extracted. To read more about SNS message formats, see
-                  `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                  `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                   <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
                   documentation.
 
@@ -3597,7 +3600,7 @@ class Client(BaseClient):
                 - **separator** *(string) --*
 
                   A character separator that will be used to separate records written to the Firehose
-                  stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+                  stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
                   (comma).
 
               - **cloudwatchMetric** *(dict) --*
@@ -3851,7 +3854,7 @@ class Client(BaseClient):
                 "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
                 the payload should be parsed and relevant platform-specific bits of the payload should be
                 extracted. To read more about SNS message formats, see
-                `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                 <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
                 documentation.
 
@@ -3941,7 +3944,7 @@ class Client(BaseClient):
               - **separator** *(string) --*
 
                 A character separator that will be used to separate records written to the Firehose stream.
-                Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
             - **cloudwatchMetric** *(dict) --*
 
@@ -4103,7 +4106,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_account_audit_configuration(
         self, deleteScheduledAudits: bool = None
     ) -> Dict[str, Any]:
@@ -4138,7 +4141,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_authorizer(self, authorizerName: str) -> Dict[str, Any]:
         """
         Deletes an authorizer.
@@ -4170,7 +4173,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_billing_group(
         self, billingGroupName: str, expectedVersion: int = None
     ) -> Dict[str, Any]:
@@ -4212,7 +4215,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ca_certificate(self, certificateId: str) -> Dict:
         """
         Deletes a registered CA certificate.
@@ -4248,7 +4251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_certificate(self, certificateId: str, forceDelete: bool = None) -> None:
         """
         Deletes the specified certificate.
@@ -4280,7 +4283,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dynamic_thing_group(
         self, thingGroupName: str, expectedVersion: int = None
     ) -> Dict[str, Any]:
@@ -4320,7 +4323,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_job(self, jobId: str, force: bool = None) -> None:
         """
         Deletes a job and its related job executions.
@@ -4368,7 +4371,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_job_execution(
         self, jobId: str, thingName: str, executionNumber: int, force: bool = None
     ) -> None:
@@ -4422,7 +4425,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_mitigation_action(self, actionName: str) -> Dict[str, Any]:
         """
         Deletes a defined mitigation action from your AWS account.
@@ -4454,7 +4457,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ota_update(
         self,
         otaUpdateId: str,
@@ -4505,7 +4508,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy(self, policyName: str) -> None:
         """
         Deletes the specified policy.
@@ -4535,7 +4538,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy_version(self, policyName: str, policyVersionId: str) -> None:
         """
         Deletes the specified version of the specified policy. You cannot delete the default version of a
@@ -4565,7 +4568,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_registration_code(self, *args: Any, **kwargs: Any) -> Dict:
         """
         Deletes a CA certificate registration code.
@@ -4594,7 +4597,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_role_alias(self, roleAlias: str) -> Dict[str, Any]:
         """
         Deletes a role alias
@@ -4626,7 +4629,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_scheduled_audit(self, scheduledAuditName: str) -> Dict[str, Any]:
         """
         Deletes a scheduled audit.
@@ -4658,7 +4661,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_security_profile(
         self, securityProfileName: str, expectedVersion: int = None
     ) -> Dict[str, Any]:
@@ -4700,7 +4703,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stream(self, streamId: str) -> Dict[str, Any]:
         """
         Deletes a stream.
@@ -4732,7 +4735,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_thing(self, thingName: str, expectedVersion: int = None) -> Dict:
         """
         Deletes the specified thing. Returns successfully with no error if the deletion is successful or
@@ -4776,7 +4779,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_thing_group(
         self, thingGroupName: str, expectedVersion: int = None
     ) -> Dict[str, Any]:
@@ -4816,7 +4819,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_thing_type(self, thingTypeName: str) -> Dict:
         """
         Deletes the specified thing type. You cannot delete a thing type if it has things associated with
@@ -4854,7 +4857,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_topic_rule(self, ruleName: str) -> None:
         """
         Deletes the rule.
@@ -4876,7 +4879,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_v2_logging_level(self, targetType: str, targetName: str) -> None:
         """
         Deletes a logging level.
@@ -4904,7 +4907,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deprecate_thing_type(
         self, thingTypeName: str, undoDeprecate: bool = None
     ) -> Dict:
@@ -4948,7 +4951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_audit_configuration(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountAuditConfigurationResponseTypeDef:
@@ -5039,7 +5042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_audit_finding(
         self, findingId: str
     ) -> ClientDescribeAuditFindingResponseTypeDef:
@@ -5272,7 +5275,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_audit_mitigation_actions_task(
         self, taskId: str
     ) -> ClientDescribeAuditMitigationActionsTaskResponseTypeDef:
@@ -5559,7 +5562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_audit_task(
         self, taskId: str
     ) -> ClientDescribeAuditTaskResponseTypeDef:
@@ -5710,7 +5713,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_authorizer(
         self, authorizerName: str
     ) -> ClientDescribeAuthorizerResponseTypeDef:
@@ -5799,7 +5802,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_billing_group(
         self, billingGroupName: str
     ) -> ClientDescribeBillingGroupResponseTypeDef:
@@ -5877,7 +5880,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ca_certificate(
         self, certificateId: str
     ) -> ClientDescribeCaCertificateResponseTypeDef:
@@ -6004,7 +6007,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificate(
         self, certificateId: str
     ) -> ClientDescribeCertificateResponseTypeDef:
@@ -6152,7 +6155,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_default_authorizer(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeDefaultAuthorizerResponseTypeDef:
@@ -6235,7 +6238,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoint(
         self, endpointType: str = None
     ) -> ClientDescribeEndpointResponseTypeDef:
@@ -6287,7 +6290,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_configurations(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeEventConfigurationsResponseTypeDef:
@@ -6346,7 +6349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_index(self, indexName: str) -> ClientDescribeIndexResponseTypeDef:
         """
         Describes a search index.
@@ -6405,7 +6408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job(self, jobId: str) -> ClientDescribeJobResponseTypeDef:
         """
         Describes a job.
@@ -6707,7 +6710,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job_execution(
         self, jobId: str, thingName: str, executionNumber: int = None
     ) -> ClientDescribeJobExecutionResponseTypeDef:
@@ -6839,7 +6842,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_mitigation_action(
         self, actionName: str
     ) -> ClientDescribeMitigationActionResponseTypeDef:
@@ -7009,7 +7012,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_role_alias(
         self, roleAlias: str
     ) -> ClientDescribeRoleAliasResponseTypeDef:
@@ -7086,7 +7089,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scheduled_audit(
         self, scheduledAuditName: str
     ) -> ClientDescribeScheduledAuditResponseTypeDef:
@@ -7167,7 +7170,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_security_profile(
         self, securityProfileName: str
     ) -> ClientDescribeSecurityProfileResponseTypeDef:
@@ -7382,7 +7385,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stream(self, streamId: str) -> ClientDescribeStreamResponseTypeDef:
         """
         Gets information about a stream.
@@ -7495,7 +7498,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_thing(self, thingName: str) -> ClientDescribeThingResponseTypeDef:
         """
         Gets information about the specified thing.
@@ -7583,7 +7586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_thing_group(
         self, thingGroupName: str
     ) -> ClientDescribeThingGroupResponseTypeDef:
@@ -7676,7 +7679,7 @@ class Client(BaseClient):
 
                   A JSON string containing up to three key-value pair in JSON format. For example:
 
-                   ``{\"attributes\":{\"string1\":\"string2\"}}``
+                   ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
                   - *(string) --*
 
@@ -7740,7 +7743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_thing_registration_task(
         self, taskId: str
     ) -> ClientDescribeThingRegistrationTaskResponseTypeDef:
@@ -7836,7 +7839,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_thing_type(
         self, thingTypeName: str
     ) -> ClientDescribeThingTypeResponseTypeDef:
@@ -7934,7 +7937,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(self, policyName: str, target: str) -> None:
         """
         Detaches a policy from the specified target.
@@ -7962,7 +7965,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_principal_policy(self, policyName: str, principal: str) -> None:
         """
         Removes the specified policy from the specified certificate.
@@ -8000,7 +8003,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_security_profile(
         self, securityProfileName: str, securityProfileTargetArn: str
     ) -> Dict[str, Any]:
@@ -8040,7 +8043,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_thing_principal(self, thingName: str, principal: str) -> Dict:
         """
         Detaches the specified principal from the specified thing. A principal can be X.509 certificates,
@@ -8087,7 +8090,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_topic_rule(self, ruleName: str) -> None:
         """
         Disables the rule.
@@ -8109,7 +8112,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_topic_rule(self, ruleName: str) -> None:
         """
         Enables the rule.
@@ -8131,7 +8134,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -8160,7 +8163,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cardinality(
         self,
         queryString: str,
@@ -8223,7 +8226,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_effective_policies(
         self,
         principal: str = None,
@@ -8302,7 +8305,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_indexing_configuration(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetIndexingConfigurationResponseTypeDef:
@@ -8460,7 +8463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_document(self, jobId: str) -> ClientGetJobDocumentResponseTypeDef:
         """
         Gets a job document.
@@ -8499,7 +8502,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_logging_options(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetLoggingOptionsResponseTypeDef:
@@ -8543,7 +8546,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ota_update(self, otaUpdateId: str) -> ClientGetOtaUpdateResponseTypeDef:
         """
         Gets an OTA update.
@@ -8864,7 +8867,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -8885,7 +8888,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_percentiles(
         self,
         queryString: str,
@@ -8978,7 +8981,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy(self, policyName: str) -> ClientGetPolicyResponseTypeDef:
         """
         Gets information about the specified policy with the policy document of the default version.
@@ -9049,7 +9052,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy_version(
         self, policyName: str, policyVersionId: str
     ) -> ClientGetPolicyVersionResponseTypeDef:
@@ -9133,7 +9136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_registration_code(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetRegistrationCodeResponseTypeDef:
@@ -9170,7 +9173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_statistics(
         self,
         queryString: str,
@@ -9278,7 +9281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_topic_rule(self, ruleName: str) -> ClientGetTopicRuleResponseTypeDef:
         """
         Gets information about the rule.
@@ -9645,7 +9648,7 @@ class Client(BaseClient):
                       and "RAW". The default value of the attribute is "RAW". SNS uses this setting to
                       determine if the payload should be parsed and relevant platform-specific bits of the
                       payload should be extracted. To read more about SNS message formats, see
-                      `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                       <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
                       official documentation.
 
@@ -9735,8 +9738,8 @@ class Client(BaseClient):
                     - **separator** *(string) --*
 
                       A character separator that will be used to separate records written to the Firehose
-                      stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
-                      (comma).
+                      stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
+                      ',' (comma).
 
                   - **cloudwatchMetric** *(dict) --*
 
@@ -9990,7 +9993,7 @@ class Client(BaseClient):
                     "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine
                     if the payload should be parsed and relevant platform-specific bits of the payload
                     should be extracted. To read more about SNS message formats, see
-                    `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                    `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                     <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
                     official documentation.
 
@@ -10080,7 +10083,7 @@ class Client(BaseClient):
                   - **separator** *(string) --*
 
                     A character separator that will be used to separate records written to the Firehose
-                    stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+                    stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
                     (comma).
 
                 - **cloudwatchMetric** *(dict) --*
@@ -10230,7 +10233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_v2_logging_options(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetV2LoggingOptionsResponseTypeDef:
@@ -10275,7 +10278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -10288,7 +10291,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_active_violations(
         self,
         thingName: str = None,
@@ -10526,7 +10529,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attached_policies(
         self,
         target: str,
@@ -10611,7 +10614,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_audit_findings(
         self,
         taskId: str = None,
@@ -10943,7 +10946,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_audit_mitigation_actions_executions(
         self,
         taskId: str,
@@ -11074,7 +11077,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_audit_mitigation_actions_tasks(
         self,
         startTime: datetime,
@@ -11187,7 +11190,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_audit_tasks(
         self,
         startTime: datetime,
@@ -11295,7 +11298,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_authorizers(
         self,
         pageSize: int = None,
@@ -11380,7 +11383,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_billing_groups(
         self,
         nextToken: str = None,
@@ -11458,7 +11461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ca_certificates(
         self, pageSize: int = None, marker: str = None, ascendingOrder: bool = None
     ) -> ClientListCaCertificatesResponseTypeDef:
@@ -11550,7 +11553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_certificates(
         self, pageSize: int = None, marker: str = None, ascendingOrder: bool = None
     ) -> ClientListCertificatesResponseTypeDef:
@@ -11646,7 +11649,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_certificates_by_ca(
         self,
         caCertificateId: str,
@@ -11750,7 +11753,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_indices(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListIndicesResponseTypeDef:
@@ -11806,7 +11809,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_job_executions_for_job(
         self,
         jobId: str,
@@ -11922,7 +11925,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_job_executions_for_thing(
         self,
         thingName: str,
@@ -12038,7 +12041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self,
         status: str = None,
@@ -12174,7 +12177,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_mitigation_actions(
         self, actionType: str = None, maxResults: int = None, nextToken: str = None
     ) -> ClientListMitigationActionsResponseTypeDef:
@@ -12257,7 +12260,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ota_updates(
         self, maxResults: int = None, nextToken: str = None, otaUpdateStatus: str = None
     ) -> ClientListOtaUpdatesResponseTypeDef:
@@ -12337,7 +12340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_outgoing_certificates(
         self, pageSize: int = None, marker: str = None, ascendingOrder: bool = None
     ) -> ClientListOutgoingCertificatesResponseTypeDef:
@@ -12435,7 +12438,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies(
         self, marker: str = None, pageSize: int = None, ascendingOrder: bool = None
     ) -> ClientListPoliciesResponseTypeDef:
@@ -12512,7 +12515,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policy_principals(
         self,
         policyName: str,
@@ -12593,7 +12596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policy_versions(
         self, policyName: str
     ) -> ClientListPolicyVersionsResponseTypeDef:
@@ -12658,7 +12661,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_principal_policies(
         self,
         principal: str,
@@ -12755,7 +12758,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_principal_things(
         self, principal: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListPrincipalThingsResponseTypeDef:
@@ -12820,7 +12823,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_role_aliases(
         self, pageSize: int = None, marker: str = None, ascendingOrder: bool = None
     ) -> ClientListRoleAliasesResponseTypeDef:
@@ -12882,7 +12885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_scheduled_audits(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListScheduledAuditsResponseTypeDef:
@@ -12970,7 +12973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_security_profiles(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListSecurityProfilesResponseTypeDef:
@@ -13041,7 +13044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_security_profiles_for_target(
         self,
         securityProfileTargetArn: str,
@@ -13144,7 +13147,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_streams(
         self, maxResults: int = None, nextToken: str = None, ascendingOrder: bool = None
     ) -> ClientListStreamsResponseTypeDef:
@@ -13229,7 +13232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str, nextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -13298,7 +13301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_targets_for_policy(
         self, policyName: str, marker: str = None, pageSize: int = None
     ) -> ClientListTargetsForPolicyResponseTypeDef:
@@ -13360,7 +13363,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_targets_for_security_profile(
         self, securityProfileName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListTargetsForSecurityProfileResponseTypeDef:
@@ -13431,7 +13434,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_groups(
         self,
         nextToken: str = None,
@@ -13523,7 +13526,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_groups_for_thing(
         self, thingName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListThingGroupsForThingResponseTypeDef:
@@ -13598,7 +13601,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_principals(
         self, thingName: str
     ) -> ClientListThingPrincipalsResponseTypeDef:
@@ -13646,7 +13649,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_registration_task_reports(
         self,
         taskId: str,
@@ -13723,7 +13726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_registration_tasks(
         self, nextToken: str = None, maxResults: int = None, status: str = None
     ) -> ClientListThingRegistrationTasksResponseTypeDef:
@@ -13785,7 +13788,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_thing_types(
         self, nextToken: str = None, maxResults: int = None, thingTypeName: str = None
     ) -> ClientListThingTypesResponseTypeDef:
@@ -13906,7 +13909,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_things(
         self,
         nextToken: str = None,
@@ -14024,7 +14027,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_things_in_billing_group(
         self, billingGroupName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListThingsInBillingGroupResponseTypeDef:
@@ -14086,7 +14089,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_things_in_thing_group(
         self,
         thingGroupName: str,
@@ -14158,7 +14161,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_topic_rules(
         self,
         topic: str = None,
@@ -14260,7 +14263,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_v2_logging_levels(
         self, targetType: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListV2LoggingLevelsResponseTypeDef:
@@ -14346,7 +14349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_violation_events(
         self,
         startTime: datetime,
@@ -14601,7 +14604,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_ca_certificate(
         self,
         caCertificate: str,
@@ -14694,7 +14697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_certificate(
         self,
         certificatePem: str,
@@ -14767,7 +14770,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_thing(
         self, templateBody: str, parameters: Dict[str, str] = None
     ) -> ClientRegisterThingResponseTypeDef:
@@ -14839,7 +14842,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_certificate_transfer(
         self, certificateId: str, rejectReason: str = None
     ) -> None:
@@ -14875,7 +14878,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_thing_from_billing_group(
         self,
         billingGroupName: str = None,
@@ -14931,7 +14934,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_thing_from_thing_group(
         self,
         thingGroupName: str = None,
@@ -14987,8 +14990,12 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
-    def replace_topic_rule(self, ruleName: str, topicRulePayload: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def replace_topic_rule(
+        self,
+        ruleName: str,
+        topicRulePayload: ClientReplaceTopicRuletopicRulePayloadTypeDef,
+    ) -> None:
         """
         Replaces the rule. You must specify all parameters for the new rule. Creating rules is an
         administrator-level action. Any user who has permission to create rules will be able to access data
@@ -15327,7 +15334,7 @@ class Client(BaseClient):
                   "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
                   the payload should be parsed and relevant platform-specific bits of the payload should be
                   extracted. To read more about SNS message formats, see
-                  `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                  `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                   <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
                   documentation.
 
@@ -15417,7 +15424,7 @@ class Client(BaseClient):
                 - **separator** *(string) --*
 
                   A character separator that will be used to separate records written to the Firehose
-                  stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+                  stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
                   (comma).
 
               - **cloudwatchMetric** *(dict) --*
@@ -15671,7 +15678,7 @@ class Client(BaseClient):
                 "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
                 the payload should be parsed and relevant platform-specific bits of the payload should be
                 extracted. To read more about SNS message formats, see
-                `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+                `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
                 <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
                 documentation.
 
@@ -15761,7 +15768,7 @@ class Client(BaseClient):
               - **separator** *(string) --*
 
                 A character separator that will be used to separate records written to the Firehose stream.
-                Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
             - **cloudwatchMetric** *(dict) --*
 
@@ -15910,7 +15917,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_index(
         self,
         queryString: str,
@@ -16096,7 +16103,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_default_authorizer(
         self, authorizerName: str
     ) -> ClientSetDefaultAuthorizerResponseTypeDef:
@@ -16143,7 +16150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_default_policy_version(self, policyName: str, policyVersionId: str) -> None:
         """
         Sets the specified version of the specified policy as the policy's default (operative) version.
@@ -16173,8 +16180,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def set_logging_options(self, loggingOptionsPayload: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_logging_options(
+        self, loggingOptionsPayload: ClientSetLoggingOptionsloggingOptionsPayloadTypeDef
+    ) -> None:
         """
         Sets the logging options.
 
@@ -16208,7 +16217,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_v2_logging_level(
         self, logTarget: ClientSetV2LoggingLevellogTargetTypeDef, logLevel: str
     ) -> None:
@@ -16249,7 +16258,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_v2_logging_options(
         self,
         roleArn: str = None,
@@ -16288,7 +16297,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_audit_mitigation_actions_task(
         self,
         taskId: str,
@@ -16410,7 +16419,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_on_demand_audit_task(
         self, targetCheckNames: List[str]
     ) -> ClientStartOnDemandAuditTaskResponseTypeDef:
@@ -16462,7 +16471,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_thing_registration_task(
         self, templateBody: str, inputFileBucket: str, inputFileKey: str, roleArn: str
     ) -> ClientStartThingRegistrationTaskResponseTypeDef:
@@ -16522,7 +16531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_thing_registration_task(self, taskId: str) -> Dict[str, Any]:
         """
         Cancels a bulk thing provisioning task.
@@ -16554,7 +16563,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -16612,7 +16621,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_authorization(
         self,
         authInfos: List[ClientTestAuthorizationauthInfosTypeDef],
@@ -16859,7 +16868,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_invoke_authorizer(
         self, authorizerName: str, token: str, tokenSignature: str
     ) -> ClientTestInvokeAuthorizerResponseTypeDef:
@@ -16937,7 +16946,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def transfer_certificate(
         self, certificateId: str, targetAwsAccount: str, transferMessage: str = None
     ) -> ClientTransferCertificateResponseTypeDef:
@@ -17003,7 +17012,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes the given tags (metadata) from the resource.
@@ -17045,7 +17054,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_account_audit_configuration(
         self,
         roleArn: str = None,
@@ -17154,7 +17163,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_authorizer(
         self,
         authorizerName: str,
@@ -17235,7 +17244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_billing_group(
         self,
         billingGroupName: str,
@@ -17299,7 +17308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ca_certificate(
         self,
         certificateId: str,
@@ -17365,7 +17374,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_certificate(self, certificateId: str, newStatus: str) -> None:
         """
         Updates the status of the specified certificate. This operation is idempotent.
@@ -17404,7 +17413,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_dynamic_thing_group(
         self,
         thingGroupName: str,
@@ -17461,7 +17470,7 @@ class Client(BaseClient):
 
               A JSON string containing up to three key-value pair in JSON format. For example:
 
-               ``{\"attributes\":{\"string1\":\"string2\"}}``
+               ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
               - *(string) --*
 
@@ -17527,7 +17536,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_event_configurations(
         self,
         eventConfigurations: Dict[
@@ -17578,7 +17587,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_indexing_configuration(
         self,
         thingIndexingConfiguration: ClientUpdateIndexingConfigurationthingIndexingConfigurationTypeDef = None,
@@ -17738,7 +17747,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_job(
         self,
         jobId: str,
@@ -17746,7 +17755,7 @@ class Client(BaseClient):
         presignedUrlConfig: ClientUpdateJobpresignedUrlConfigTypeDef = None,
         jobExecutionsRolloutConfig: ClientUpdateJobjobExecutionsRolloutConfigTypeDef = None,
         abortConfig: ClientUpdateJobabortConfigTypeDef = None,
-        timeoutConfig: Dict = None,
+        timeoutConfig: ClientUpdateJobtimeoutConfigTypeDef = None,
     ) -> None:
         """
         Updates supported fields of the specified job.
@@ -17908,7 +17917,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_mitigation_action(
         self,
         actionName: str,
@@ -18062,7 +18071,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_role_alias(
         self, roleAlias: str, roleArn: str = None, credentialDurationSeconds: int = None
     ) -> ClientUpdateRoleAliasResponseTypeDef:
@@ -18120,7 +18129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_scheduled_audit(
         self,
         scheduledAuditName: str,
@@ -18206,7 +18215,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_security_profile(
         self,
         securityProfileName: str,
@@ -18611,7 +18620,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stream(
         self,
         streamId: str,
@@ -18722,7 +18731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_thing(
         self,
         thingName: str,
@@ -18767,7 +18776,7 @@ class Client(BaseClient):
 
           A list of thing attributes, a JSON string containing name-value pairs. For example:
 
-           ``{\"attributes\":{\"name1\":\"value2\"}}``
+           ``{\\"attributes\\":{\\"name1\\":\\"value2\\"}}``
 
           This data is used to add new attributes or update existing attributes.
 
@@ -18775,7 +18784,7 @@ class Client(BaseClient):
 
             A JSON string containing up to three key-value pair in JSON format. For example:
 
-             ``{\"attributes\":{\"string1\":\"string2\"}}``
+             ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
             - *(string) --*
 
@@ -18820,7 +18829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_thing_group(
         self,
         thingGroupName: str,
@@ -18871,7 +18880,7 @@ class Client(BaseClient):
 
               A JSON string containing up to three key-value pair in JSON format. For example:
 
-               ``{\"attributes\":{\"string1\":\"string2\"}}``
+               ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
               - *(string) --*
 
@@ -18914,7 +18923,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_thing_groups_for_thing(
         self,
         thingName: str = None,
@@ -18980,7 +18989,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def validate_security_profile_behaviors(
         self, behaviors: List[ClientValidateSecurityProfileBehaviorsbehaviorsTypeDef]
     ) -> ClientValidateSecurityProfileBehaviorsResponseTypeDef:

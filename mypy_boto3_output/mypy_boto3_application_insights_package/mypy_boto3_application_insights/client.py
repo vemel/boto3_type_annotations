@@ -23,7 +23,7 @@ from mypy_boto3_application_insights.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -40,7 +40,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self,
         ResourceGroupName: str,
@@ -126,7 +126,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_component(
         self, ResourceGroupName: str, ComponentName: str, ResourceList: List[str]
     ) -> Dict[str, Any]:
@@ -176,7 +176,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application(self, ResourceGroupName: str) -> Dict[str, Any]:
         """
         Removes the specified application from monitoring. Does not delete the application.
@@ -208,7 +208,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_component(
         self, ResourceGroupName: str, ComponentName: str
     ) -> Dict[str, Any]:
@@ -249,7 +249,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_application(
         self, ResourceGroupName: str
     ) -> ClientDescribeApplicationResponseTypeDef:
@@ -319,7 +319,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_component(
         self, ResourceGroupName: str, ComponentName: str
     ) -> ClientDescribeComponentResponseTypeDef:
@@ -398,7 +398,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_component_configuration(
         self, ResourceGroupName: str, ComponentName: str
     ) -> ClientDescribeComponentConfigurationResponseTypeDef:
@@ -458,7 +458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_component_configuration_recommendation(
         self, ResourceGroupName: str, ComponentName: str, Tier: str
     ) -> ClientDescribeComponentConfigurationRecommendationResponseTypeDef:
@@ -514,7 +514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_observation(
         self, ObservationId: str
     ) -> ClientDescribeObservationResponseTypeDef:
@@ -621,7 +621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_problem(self, ProblemId: str) -> ClientDescribeProblemResponseTypeDef:
         """
         Describes an application problem.
@@ -717,7 +717,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_problem_observations(
         self, ProblemId: str
     ) -> ClientDescribeProblemObservationsResponseTypeDef:
@@ -837,7 +837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -866,7 +866,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -887,7 +887,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -900,7 +900,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_applications(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListApplicationsResponseTypeDef:
@@ -989,7 +989,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_components(
         self, ResourceGroupName: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListComponentsResponseTypeDef:
@@ -1077,7 +1077,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_problems(
         self,
         ResourceGroupName: str = None,
@@ -1219,7 +1219,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self,
         ResourceGroupName: str,
@@ -1312,7 +1312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_component(
         self,
         ResourceGroupName: str,
@@ -1372,7 +1372,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_component_configuration(
         self,
         ResourceGroupName: str,

@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_organizations.type_defs import (
     ClientAcceptHandshakeResponseTypeDef,
     ClientCancelHandshakeResponseTypeDef,
@@ -42,13 +41,14 @@ from mypy_boto3_organizations.type_defs import (
     ClientListRootsResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientListTargetsForPolicyResponseTypeDef,
+    ClientTagResourceTagsTypeDef,
     ClientUpdateOrganizationalUnitResponseTypeDef,
     ClientUpdatePolicyResponseTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_handshake(
         self, HandshakeId: str
     ) -> ClientAcceptHandshakeResponseTypeDef:
@@ -267,7 +267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, PolicyId: str, TargetId: str) -> None:
         """
         Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy
@@ -346,7 +346,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -363,7 +363,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_handshake(
         self, HandshakeId: str
     ) -> ClientCancelHandshakeResponseTypeDef:
@@ -566,7 +566,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_account(
         self,
         Email: str,
@@ -684,7 +684,7 @@ class Client(BaseClient):
           For more information about how to use this role to access the member account, see `Accessing and
           Administering the Member Accounts in Your Organization
           <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role>`__
-          in the *AWS Organizations User Guide* , and steps 2 and 3 in `Tutorial: Delegate Access Across
+          in the *AWS Organizations User Guide* , and steps 2 and 3 in `Tutorial\\: Delegate Access Across
           AWS Accounts Using IAM Roles
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html>`__ in
           the *IAM User Guide.*
@@ -802,7 +802,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_gov_cloud_account(
         self,
         Email: str,
@@ -956,8 +956,8 @@ class Client(BaseClient):
           For more information about how to use this role to access the member account, see `Accessing and
           Administering the Member Accounts in Your Organization
           <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role>`__
-          in the *AWS Organizations User Guide* and steps 2 and 3 in `Tutorial: Delegate Access Across AWS
-          Accounts Using IAM Roles
+          in the *AWS Organizations User Guide* and steps 2 and 3 in `Tutorial\\: Delegate Access Across
+          AWS Accounts Using IAM Roles
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html>`__ in
           the *IAM User Guide.*
 
@@ -1068,7 +1068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_organization(
         self, FeatureSet: str = None
     ) -> ClientCreateOrganizationResponseTypeDef:
@@ -1221,7 +1221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_organizational_unit(
         self, ParentId: str, Name: str
     ) -> ClientCreateOrganizationalUnitResponseTypeDef:
@@ -1315,7 +1315,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self, Content: str, Description: str, Name: str, Type: str
     ) -> ClientCreatePolicyResponseTypeDef:
@@ -1448,7 +1448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decline_handshake(
         self, HandshakeId: str
     ) -> ClientDeclineHandshakeResponseTypeDef:
@@ -1653,7 +1653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_organization(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the organization. You can delete an organization only by using credentials from the master
@@ -1670,7 +1670,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_organizational_unit(self, OrganizationalUnitId: str) -> None:
         """
         Deletes an organizational unit (OU) from a root or another OU. You must first remove all accounts
@@ -1701,7 +1701,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy(self, PolicyId: str) -> None:
         """
         Deletes the specified policy from your organization. Before you perform this operation, you must
@@ -1730,7 +1730,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account(self, AccountId: str) -> ClientDescribeAccountResponseTypeDef:
         """
         Retrieves AWS Organizations-related information about the specified account.
@@ -1825,7 +1825,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_create_account_status(
         self, CreateAccountRequestId: str
     ) -> ClientDescribeCreateAccountStatusResponseTypeDef:
@@ -1941,7 +1941,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_handshake(
         self, HandshakeId: str
     ) -> ClientDescribeHandshakeResponseTypeDef:
@@ -2144,7 +2144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_organization(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeOrganizationResponseTypeDef:
@@ -2274,7 +2274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_organizational_unit(
         self, OrganizationalUnitId: str
     ) -> ClientDescribeOrganizationalUnitResponseTypeDef:
@@ -2352,7 +2352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_policy(self, PolicyId: str) -> ClientDescribePolicyResponseTypeDef:
         """
         Retrieves information about a policy.
@@ -2451,7 +2451,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(self, PolicyId: str, TargetId: str) -> None:
         """
         Detaches a policy from a target root, organizational unit (OU), or account. If the policy being
@@ -2512,7 +2512,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_aws_service_access(self, ServicePrincipal: str) -> None:
         """
         Disables the integration of an AWS service (the service that is specified by ``ServicePrincipal`` )
@@ -2561,7 +2561,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_policy_type(
         self, RootId: str, PolicyType: str
     ) -> ClientDisablePolicyTypeResponseTypeDef:
@@ -2685,7 +2685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_all_features(
         self, *args: Any, **kwargs: Any
     ) -> ClientEnableAllFeaturesResponseTypeDef:
@@ -2901,7 +2901,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_aws_service_access(self, ServicePrincipal: str) -> None:
         """
         Enables the integration of an AWS service (the service that is specified by ``ServicePrincipal`` )
@@ -2948,7 +2948,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_policy_type(
         self, RootId: str, PolicyType: str
     ) -> ClientEnablePolicyTypeResponseTypeDef:
@@ -3068,7 +3068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3097,7 +3097,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3118,7 +3118,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3131,7 +3131,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invite_account_to_organization(
         self, Target: ClientInviteAccountToOrganizationTargetTypeDef, Notes: str = None
     ) -> ClientInviteAccountToOrganizationResponseTypeDef:
@@ -3377,7 +3377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def leave_organization(self, *args: Any, **kwargs: Any) -> None:
         """
         Removes a member account from its parent organization. This version of the operation is performed
@@ -3420,7 +3420,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_accounts(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListAccountsResponseTypeDef:
@@ -3549,7 +3549,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_accounts_for_parent(
         self, ParentId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListAccountsForParentResponseTypeDef:
@@ -3687,7 +3687,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aws_service_access_for_organization(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListAwsServiceAccessForOrganizationResponseTypeDef:
@@ -3782,7 +3782,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_children(
         self,
         ParentId: str,
@@ -3907,7 +3907,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_create_account_status(
         self, States: List[str] = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientListCreateAccountStatusResponseTypeDef:
@@ -4068,7 +4068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_handshakes_for_account(
         self,
         Filter: ClientListHandshakesForAccountFilterTypeDef = None,
@@ -4341,7 +4341,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_handshakes_for_organization(
         self,
         Filter: ClientListHandshakesForOrganizationFilterTypeDef = None,
@@ -4616,7 +4616,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_organizational_units_for_parent(
         self, ParentId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListOrganizationalUnitsForParentResponseTypeDef:
@@ -4741,7 +4741,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_parents(
         self, ChildId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListParentsResponseTypeDef:
@@ -4863,7 +4863,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies(
         self, Filter: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListPoliciesResponseTypeDef:
@@ -4992,7 +4992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies_for_target(
         self, TargetId: str, Filter: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListPoliciesForTargetResponseTypeDef:
@@ -5139,7 +5139,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_roots(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListRootsResponseTypeDef:
@@ -5286,7 +5286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceId: str, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5366,7 +5366,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_targets_for_policy(
         self, PolicyId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTargetsForPolicyResponseTypeDef:
@@ -5496,7 +5496,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def move_account(
         self, AccountId: str, SourceParentId: str, DestinationParentId: str
     ) -> None:
@@ -5558,7 +5558,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_account_from_organization(self, AccountId: str) -> None:
         """
         Removes the specified account from the organization.
@@ -5606,8 +5606,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceId: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, ResourceId: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Adds one or more tags to the specified resource.
 
@@ -5657,8 +5659,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceId: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceId: str, TagKeys: List[str]) -> None:
         """
         Removes a tag from the specified resource.
 
@@ -5693,7 +5695,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_organizational_unit(
         self, OrganizationalUnitId: str, Name: str = None
     ) -> ClientUpdateOrganizationalUnitResponseTypeDef:
@@ -5781,7 +5783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_policy(
         self,
         PolicyId: str,

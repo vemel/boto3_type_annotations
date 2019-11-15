@@ -2786,7 +2786,7 @@ class ClientCreateRuleConditionsQueryStringConfigTypeDef(
       string is 128 characters. The comparison is case insensitive. The following wildcard
       characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
       character). To search for a literal '*' or '?' character in a query string, you must escape
-      these characters in ``Values`` using a '\' character.
+      these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if one of
       them is found in the query string.
@@ -2977,7 +2977,7 @@ class ClientCreateRuleConditionsTypeDef(_ClientCreateRuleConditionsTypeDef):
         string is 128 characters. The comparison is case insensitive. The following wildcard
         characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
         character). To search for a literal '*' or '?' character in a query string, you must escape
-        these characters in ``Values`` using a '\' character.
+        these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if one of
         them is found in the query string.
@@ -3709,7 +3709,7 @@ class ClientCreateRuleResponseRulesConditionsQueryStringConfigTypeDef(
       of each string is 128 characters. The comparison is case insensitive. The following
       wildcard characters are supported: * (matches 0 or more characters) and ? (matches
       exactly 1 character). To search for a literal '*' or '?' character in a query
-      string, you must escape these characters in ``Values`` using a '\' character.
+      string, you must escape these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if
       one of them is found in the query string.
@@ -3907,7 +3907,7 @@ class ClientCreateRuleResponseRulesConditionsTypeDef(
         of each string is 128 characters. The comparison is case insensitive. The following
         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
         exactly 1 character). To search for a literal '*' or '?' character in a query
-        string, you must escape these characters in ``Values`` using a '\' character.
+        string, you must escape these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if
         one of them is found in the query string.
@@ -4123,7 +4123,7 @@ class ClientCreateRuleResponseRulesTypeDef(_ClientCreateRuleResponseRulesTypeDef
             of each string is 128 characters. The comparison is case insensitive. The following
             wildcard characters are supported: * (matches 0 or more characters) and ? (matches
             exactly 1 character). To search for a literal '*' or '?' character in a query
-            string, you must escape these characters in ``Values`` using a '\' character.
+            string, you must escape these characters in ``Values`` using a '\\' character.
 
             If you specify multiple key/value pairs or values, the condition is satisfied if
             one of them is found in the query string.
@@ -4555,7 +4555,7 @@ class ClientCreateRuleResponseTypeDef(_ClientCreateRuleResponseTypeDef):
                 of each string is 128 characters. The comparison is case insensitive. The following
                 wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                 exactly 1 character). To search for a literal '*' or '?' character in a query
-                string, you must escape these characters in ``Values`` using a '\' character.
+                string, you must escape these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if
                 one of them is found in the query string.
@@ -7554,7 +7554,7 @@ class ClientDescribeRulesResponseRulesConditionsQueryStringConfigTypeDef(
       of each string is 128 characters. The comparison is case insensitive. The following
       wildcard characters are supported: * (matches 0 or more characters) and ? (matches
       exactly 1 character). To search for a literal '*' or '?' character in a query
-      string, you must escape these characters in ``Values`` using a '\' character.
+      string, you must escape these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if
       one of them is found in the query string.
@@ -7752,7 +7752,7 @@ class ClientDescribeRulesResponseRulesConditionsTypeDef(
         of each string is 128 characters. The comparison is case insensitive. The following
         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
         exactly 1 character). To search for a literal '*' or '?' character in a query
-        string, you must escape these characters in ``Values`` using a '\' character.
+        string, you must escape these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if
         one of them is found in the query string.
@@ -7968,7 +7968,7 @@ class ClientDescribeRulesResponseRulesTypeDef(_ClientDescribeRulesResponseRulesT
             of each string is 128 characters. The comparison is case insensitive. The following
             wildcard characters are supported: * (matches 0 or more characters) and ? (matches
             exactly 1 character). To search for a literal '*' or '?' character in a query
-            string, you must escape these characters in ``Values`` using a '\' character.
+            string, you must escape these characters in ``Values`` using a '\\' character.
 
             If you specify multiple key/value pairs or values, the condition is satisfied if
             one of them is found in the query string.
@@ -8400,7 +8400,7 @@ class ClientDescribeRulesResponseTypeDef(_ClientDescribeRulesResponseTypeDef):
                 of each string is 128 characters. The comparison is case insensitive. The following
                 wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                 exactly 1 character). To search for a literal '*' or '?' character in a query
-                string, you must escape these characters in ``Values`` using a '\' character.
+                string, you must escape these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if
                 one of them is found in the query string.
@@ -12168,7 +12168,7 @@ class ClientModifyRuleConditionsQueryStringConfigTypeDef(
       string is 128 characters. The comparison is case insensitive. The following wildcard
       characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
       character). To search for a literal '*' or '?' character in a query string, you must escape
-      these characters in ``Values`` using a '\' character.
+      these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if one of
       them is found in the query string.
@@ -12359,7 +12359,7 @@ class ClientModifyRuleConditionsTypeDef(_ClientModifyRuleConditionsTypeDef):
         string is 128 characters. The comparison is case insensitive. The following wildcard
         characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
         character). To search for a literal '*' or '?' character in a query string, you must escape
-        these characters in ``Values`` using a '\' character.
+        these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if one of
         them is found in the query string.
@@ -13091,7 +13091,7 @@ class ClientModifyRuleResponseRulesConditionsQueryStringConfigTypeDef(
       of each string is 128 characters. The comparison is case insensitive. The following
       wildcard characters are supported: * (matches 0 or more characters) and ? (matches
       exactly 1 character). To search for a literal '*' or '?' character in a query
-      string, you must escape these characters in ``Values`` using a '\' character.
+      string, you must escape these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if
       one of them is found in the query string.
@@ -13289,7 +13289,7 @@ class ClientModifyRuleResponseRulesConditionsTypeDef(
         of each string is 128 characters. The comparison is case insensitive. The following
         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
         exactly 1 character). To search for a literal '*' or '?' character in a query
-        string, you must escape these characters in ``Values`` using a '\' character.
+        string, you must escape these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if
         one of them is found in the query string.
@@ -13505,7 +13505,7 @@ class ClientModifyRuleResponseRulesTypeDef(_ClientModifyRuleResponseRulesTypeDef
             of each string is 128 characters. The comparison is case insensitive. The following
             wildcard characters are supported: * (matches 0 or more characters) and ? (matches
             exactly 1 character). To search for a literal '*' or '?' character in a query
-            string, you must escape these characters in ``Values`` using a '\' character.
+            string, you must escape these characters in ``Values`` using a '\\' character.
 
             If you specify multiple key/value pairs or values, the condition is satisfied if
             one of them is found in the query string.
@@ -13937,7 +13937,7 @@ class ClientModifyRuleResponseTypeDef(_ClientModifyRuleResponseTypeDef):
                 of each string is 128 characters. The comparison is case insensitive. The following
                 wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                 exactly 1 character). To search for a literal '*' or '?' character in a query
-                string, you must escape these characters in ``Values`` using a '\' character.
+                string, you must escape these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if
                 one of them is found in the query string.
@@ -15445,7 +15445,7 @@ class ClientSetRulePrioritiesResponseRulesConditionsQueryStringConfigTypeDef(
       of each string is 128 characters. The comparison is case insensitive. The following
       wildcard characters are supported: * (matches 0 or more characters) and ? (matches
       exactly 1 character). To search for a literal '*' or '?' character in a query
-      string, you must escape these characters in ``Values`` using a '\' character.
+      string, you must escape these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if
       one of them is found in the query string.
@@ -15643,7 +15643,7 @@ class ClientSetRulePrioritiesResponseRulesConditionsTypeDef(
         of each string is 128 characters. The comparison is case insensitive. The following
         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
         exactly 1 character). To search for a literal '*' or '?' character in a query
-        string, you must escape these characters in ``Values`` using a '\' character.
+        string, you must escape these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if
         one of them is found in the query string.
@@ -15861,7 +15861,7 @@ class ClientSetRulePrioritiesResponseRulesTypeDef(
             of each string is 128 characters. The comparison is case insensitive. The following
             wildcard characters are supported: * (matches 0 or more characters) and ? (matches
             exactly 1 character). To search for a literal '*' or '?' character in a query
-            string, you must escape these characters in ``Values`` using a '\' character.
+            string, you must escape these characters in ``Values`` using a '\\' character.
 
             If you specify multiple key/value pairs or values, the condition is satisfied if
             one of them is found in the query string.
@@ -16293,7 +16293,7 @@ class ClientSetRulePrioritiesResponseTypeDef(_ClientSetRulePrioritiesResponseTyp
                 of each string is 128 characters. The comparison is case insensitive. The following
                 wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                 exactly 1 character). To search for a literal '*' or '?' character in a query
-                string, you must escape these characters in ``Values`` using a '\' character.
+                string, you must escape these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if
                 one of them is found in the query string.
@@ -19197,7 +19197,7 @@ class DescribeRulesPaginateResponseRulesConditionsQueryStringConfigTypeDef(
       of each string is 128 characters. The comparison is case insensitive. The following
       wildcard characters are supported: * (matches 0 or more characters) and ? (matches
       exactly 1 character). To search for a literal '*' or '?' character in a query
-      string, you must escape these characters in ``Values`` using a '\' character.
+      string, you must escape these characters in ``Values`` using a '\\' character.
 
       If you specify multiple key/value pairs or values, the condition is satisfied if
       one of them is found in the query string.
@@ -19395,7 +19395,7 @@ class DescribeRulesPaginateResponseRulesConditionsTypeDef(
         of each string is 128 characters. The comparison is case insensitive. The following
         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
         exactly 1 character). To search for a literal '*' or '?' character in a query
-        string, you must escape these characters in ``Values`` using a '\' character.
+        string, you must escape these characters in ``Values`` using a '\\' character.
 
         If you specify multiple key/value pairs or values, the condition is satisfied if
         one of them is found in the query string.
@@ -19613,7 +19613,7 @@ class DescribeRulesPaginateResponseRulesTypeDef(
             of each string is 128 characters. The comparison is case insensitive. The following
             wildcard characters are supported: * (matches 0 or more characters) and ? (matches
             exactly 1 character). To search for a literal '*' or '?' character in a query
-            string, you must escape these characters in ``Values`` using a '\' character.
+            string, you must escape these characters in ``Values`` using a '\\' character.
 
             If you specify multiple key/value pairs or values, the condition is satisfied if
             one of them is found in the query string.
@@ -20045,7 +20045,7 @@ class DescribeRulesPaginateResponseTypeDef(_DescribeRulesPaginateResponseTypeDef
                 of each string is 128 characters. The comparison is case insensitive. The following
                 wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                 exactly 1 character). To search for a literal '*' or '?' character in a query
-                string, you must escape these characters in ``Values`` using a '\' character.
+                string, you must escape these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if
                 one of them is found in the query string.
@@ -20763,6 +20763,81 @@ class DescribeTargetGroupsPaginateResponseTypeDef(
     """
 
 
+_LoadBalancerAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_LoadBalancerAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class LoadBalancerAvailableWaitWaiterConfigTypeDef(
+    _LoadBalancerAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `LoadBalancerAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_LoadBalancerExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_LoadBalancerExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class LoadBalancerExistsWaitWaiterConfigTypeDef(
+    _LoadBalancerExistsWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `LoadBalancerExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_LoadBalancersDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_LoadBalancersDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class LoadBalancersDeletedWaitWaiterConfigTypeDef(
+    _LoadBalancersDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `LoadBalancersDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _RequiredTargetDeregisteredWaitTargetsTypeDef = TypedDict(
     "_RequiredTargetDeregisteredWaitTargetsTypeDef", {"Id": str}
 )
@@ -20812,6 +20887,31 @@ class TargetDeregisteredWaitTargetsTypeDef(
     """
 
 
+_TargetDeregisteredWaitWaiterConfigTypeDef = TypedDict(
+    "_TargetDeregisteredWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TargetDeregisteredWaitWaiterConfigTypeDef(
+    _TargetDeregisteredWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `TargetDeregisteredWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _RequiredTargetInServiceWaitTargetsTypeDef = TypedDict(
     "_RequiredTargetInServiceWaitTargetsTypeDef", {"Id": str}
 )
@@ -20858,4 +20958,27 @@ class TargetInServiceWaitTargetsTypeDef(
 
       If the target type is ``lambda`` , this parameter is optional and the only supported value is
       ``all`` .
+    """
+
+
+_TargetInServiceWaitWaiterConfigTypeDef = TypedDict(
+    "_TargetInServiceWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TargetInServiceWaitWaiterConfigTypeDef(_TargetInServiceWaitWaiterConfigTypeDef):
+    """
+    Type definition for `TargetInServiceWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """

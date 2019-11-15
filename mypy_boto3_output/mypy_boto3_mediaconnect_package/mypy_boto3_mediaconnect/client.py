@@ -32,7 +32,7 @@ from mypy_boto3_mediaconnect.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_flow_outputs(
         self, FlowArn: str, Outputs: List[ClientAddFlowOutputsOutputsTypeDef]
     ) -> ClientAddFlowOutputsResponseTypeDef:
@@ -286,7 +286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -303,7 +303,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_flow(
         self,
         Name: str,
@@ -952,7 +952,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_flow(self, FlowArn: str) -> ClientDeleteFlowResponseTypeDef:
         """
         Deletes a flow. Before you can delete a flow, you must stop the flow.
@@ -989,7 +989,7 @@ class Client(BaseClient):
             - **Status** *(string) --* The status of the flow when the DeleteFlow process begins.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_flow(self, FlowArn: str) -> ClientDescribeFlowResponseTypeDef:
         """
         Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as
@@ -1379,7 +1379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1408,7 +1408,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1429,7 +1429,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1442,7 +1442,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def grant_flow_entitlements(
         self,
         Entitlements: List[ClientGrantFlowEntitlementsEntitlementsTypeDef],
@@ -1635,7 +1635,7 @@ class Client(BaseClient):
             - **FlowArn** *(string) --* The ARN of the flow that these entitlements were granted to.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_entitlements(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListEntitlementsResponseTypeDef:
@@ -1707,7 +1707,7 @@ class Client(BaseClient):
             value.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_flows(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListFlowsResponseTypeDef:
@@ -1788,7 +1788,7 @@ class Client(BaseClient):
             you can submit the ListFlows request a second time and specify the NextToken value.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1833,7 +1833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_flow_output(
         self, FlowArn: str, OutputArn: str
     ) -> ClientRemoveFlowOutputResponseTypeDef:
@@ -1879,7 +1879,7 @@ class Client(BaseClient):
             - **OutputArn** *(string) --* The ARN of the output that was removed.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_flow_entitlement(
         self, EntitlementArn: str, FlowArn: str
     ) -> ClientRevokeFlowEntitlementResponseTypeDef:
@@ -1923,7 +1923,7 @@ class Client(BaseClient):
             - **FlowArn** *(string) --* The ARN of the flow that the entitlement was revoked from.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_flow(self, FlowArn: str) -> ClientStartFlowResponseTypeDef:
         """
         Starts a flow.
@@ -1960,7 +1960,7 @@ class Client(BaseClient):
             - **Status** *(string) --* The status of the flow when the StartFlow process begins.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_flow(self, FlowArn: str) -> ClientStopFlowResponseTypeDef:
         """
         Stops a flow.
@@ -1997,7 +1997,7 @@ class Client(BaseClient):
             - **Status** *(string) --* The status of the flow when the StopFlow process begins.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
         """
         Associates the specified tags to a resource with the specified resourceArn. If existing tags on a
@@ -2031,8 +2031,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Deletes specified tags from a resource.
 
@@ -2060,7 +2060,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_flow_entitlement(
         self,
         EntitlementArn: str,
@@ -2243,7 +2243,7 @@ class Client(BaseClient):
             - **FlowArn** *(string) --* The ARN of the flow that this entitlement was granted on.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_flow_output(
         self,
         FlowArn: str,
@@ -2503,7 +2503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_flow_source(
         self,
         FlowArn: str,

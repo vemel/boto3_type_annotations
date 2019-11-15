@@ -17,7 +17,7 @@ from mypy_boto3_snowball.type_defs import (
 
 
 class DescribeAddresses(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: DescribeAddressesPaginatePaginationConfigTypeDef = None
     ) -> DescribeAddressesPaginateResponseTypeDef:
@@ -163,7 +163,7 @@ class DescribeAddresses(Boto3Paginator):
 
 
 class ListClusterJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,
@@ -290,7 +290,7 @@ class ListClusterJobs(Boto3Paginator):
 
 
 class ListClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListClustersPaginatePaginationConfigTypeDef = None
     ) -> ListClustersPaginateResponseTypeDef:
@@ -385,7 +385,7 @@ class ListClusters(Boto3Paginator):
 
 
 class ListCompatibleImages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListCompatibleImagesPaginatePaginationConfigTypeDef = None,
@@ -470,7 +470,7 @@ class ListCompatibleImages(Boto3Paginator):
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListJobsPaginatePaginationConfigTypeDef = None
     ) -> ListJobsPaginateResponseTypeDef:

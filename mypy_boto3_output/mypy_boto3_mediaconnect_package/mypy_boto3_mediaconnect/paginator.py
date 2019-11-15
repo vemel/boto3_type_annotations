@@ -11,7 +11,7 @@ from mypy_boto3_mediaconnect.type_defs import (
 
 
 class ListEntitlements(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListEntitlementsPaginatePaginationConfigTypeDef = None
     ) -> ListEntitlementsPaginateResponseTypeDef:
@@ -89,7 +89,7 @@ class ListEntitlements(Boto3Paginator):
 
 
 class ListFlows(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListFlowsPaginatePaginationConfigTypeDef = None
     ) -> ListFlowsPaginateResponseTypeDef:

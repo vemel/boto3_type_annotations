@@ -293,30 +293,30 @@ class ClientCreateApplicationResponseVersionTypeDef(
       and CAPABILITY_AUTO_EXPAND.
 
       The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-      `AWS::IAM::Group
+      `AWS\\:\\:IAM\\:\\:Group
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-      , `AWS::IAM::InstanceProfile
+      , `AWS\\:\\:IAM\\:\\:InstanceProfile
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-      , `AWS::IAM::Policy
+      , `AWS\\:\\:IAM\\:\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , and `AWS::IAM::Role
+      , and `AWS\\:\\:IAM\\:\\:Role
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
       . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
       CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
       specify CAPABILITY_NAMED_IAM.
 
       The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-      `AWS::Lambda::Permission
+      `AWS\\:\\:Lambda\\:\\:Permission
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-      , `AWS::IAM:Policy
+      , `AWS\\:\\:IAM\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , `AWS::ApplicationAutoScaling::ScalingPolicy
+      , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-      , `AWS::S3::BucketPolicy
+      , `AWS\\:\\:S3\\:\\:BucketPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-      , `AWS::SQS::QueuePolicy
+      , `AWS\\:\\:SQS\\:\\:QueuePolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-      , and `AWS::SNS::TopicPolicy
+      , and `AWS\\:\\:SNS\\:\\:TopicPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
       .
 
@@ -340,7 +340,7 @@ class ClientCreateApplicationResponseVersionTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeArchiveUrl** *(string) --*
 
@@ -418,7 +418,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
       - *(string) --*
 
@@ -434,7 +434,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\-]+";
+      Pattern: "[a-zA-Z0-9\\\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -580,30 +580,30 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
         and CAPABILITY_AUTO_EXPAND.
 
         The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-        `AWS::IAM::Group
+        `AWS\\:\\:IAM\\:\\:Group
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-        , `AWS::IAM::InstanceProfile
+        , `AWS\\:\\:IAM\\:\\:InstanceProfile
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-        , `AWS::IAM::Policy
+        , `AWS\\:\\:IAM\\:\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , and `AWS::IAM::Role
+        , and `AWS\\:\\:IAM\\:\\:Role
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
         . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
         CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
         specify CAPABILITY_NAMED_IAM.
 
         The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-        `AWS::Lambda::Permission
+        `AWS\\:\\:Lambda\\:\\:Permission
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-        , `AWS::IAM:Policy
+        , `AWS\\:\\:IAM\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , `AWS::ApplicationAutoScaling::ScalingPolicy
+        , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-        , `AWS::S3::BucketPolicy
+        , `AWS\\:\\:S3\\:\\:BucketPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-        , `AWS::SQS::QueuePolicy
+        , `AWS\\:\\:SQS\\:\\:QueuePolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-        , and `AWS::SNS::TopicPolicy
+        , and `AWS\\:\\:SNS\\:\\:TopicPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
         .
 
@@ -627,7 +627,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
         The semantic version of the application:
 
-         `https://semver.org/ <https://semver.org/>`__
+         `https\\://semver.org/ <https://semver.org/>`__
 
       - **SourceCodeArchiveUrl** *(string) --*
 
@@ -930,30 +930,30 @@ class ClientCreateApplicationVersionResponseTypeDef(
       and CAPABILITY_AUTO_EXPAND.
 
       The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-      `AWS::IAM::Group
+      `AWS\\:\\:IAM\\:\\:Group
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-      , `AWS::IAM::InstanceProfile
+      , `AWS\\:\\:IAM\\:\\:InstanceProfile
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-      , `AWS::IAM::Policy
+      , `AWS\\:\\:IAM\\:\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , and `AWS::IAM::Role
+      , and `AWS\\:\\:IAM\\:\\:Role
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
       . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
       CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
       specify CAPABILITY_NAMED_IAM.
 
       The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-      `AWS::Lambda::Permission
+      `AWS\\:\\:Lambda\\:\\:Permission
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-      , `AWS::IAM:Policy
+      , `AWS\\:\\:IAM\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , `AWS::ApplicationAutoScaling::ScalingPolicy
+      , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-      , `AWS::S3::BucketPolicy
+      , `AWS\\:\\:S3\\:\\:BucketPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-      , `AWS::SQS::QueuePolicy
+      , `AWS\\:\\:SQS\\:\\:QueuePolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-      , and `AWS::SNS::TopicPolicy
+      , and `AWS\\:\\:SNS\\:\\:TopicPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
       .
 
@@ -977,7 +977,7 @@ class ClientCreateApplicationVersionResponseTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeArchiveUrl** *(string) --*
 
@@ -1053,7 +1053,7 @@ class ClientCreateCloudFormationChangeSetResponseTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **StackId** *(string) --*
 
@@ -1216,7 +1216,7 @@ class ClientCreateCloudFormationTemplateResponseTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **Status** *(string) --*
 
@@ -1228,7 +1228,7 @@ class ClientCreateCloudFormationTemplateResponseTypeDef(
 
       The UUID returned by CreateCloudFormationTemplate.
 
-      Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+      Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
     - **TemplateUrl** *(string) --*
 
@@ -1602,30 +1602,30 @@ class ClientGetApplicationResponseVersionTypeDef(
       and CAPABILITY_AUTO_EXPAND.
 
       The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-      `AWS::IAM::Group
+      `AWS\\:\\:IAM\\:\\:Group
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-      , `AWS::IAM::InstanceProfile
+      , `AWS\\:\\:IAM\\:\\:InstanceProfile
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-      , `AWS::IAM::Policy
+      , `AWS\\:\\:IAM\\:\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , and `AWS::IAM::Role
+      , and `AWS\\:\\:IAM\\:\\:Role
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
       . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
       CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
       specify CAPABILITY_NAMED_IAM.
 
       The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-      `AWS::Lambda::Permission
+      `AWS\\:\\:Lambda\\:\\:Permission
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-      , `AWS::IAM:Policy
+      , `AWS\\:\\:IAM\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , `AWS::ApplicationAutoScaling::ScalingPolicy
+      , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-      , `AWS::S3::BucketPolicy
+      , `AWS\\:\\:S3\\:\\:BucketPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-      , `AWS::SQS::QueuePolicy
+      , `AWS\\:\\:SQS\\:\\:QueuePolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-      , and `AWS::SNS::TopicPolicy
+      , and `AWS\\:\\:SNS\\:\\:TopicPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
       .
 
@@ -1649,7 +1649,7 @@ class ClientGetApplicationResponseVersionTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeArchiveUrl** *(string) --*
 
@@ -1727,7 +1727,7 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
       - *(string) --*
 
@@ -1743,7 +1743,7 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\-]+";
+      Pattern: "[a-zA-Z0-9\\\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -1889,30 +1889,30 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
         and CAPABILITY_AUTO_EXPAND.
 
         The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-        `AWS::IAM::Group
+        `AWS\\:\\:IAM\\:\\:Group
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-        , `AWS::IAM::InstanceProfile
+        , `AWS\\:\\:IAM\\:\\:InstanceProfile
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-        , `AWS::IAM::Policy
+        , `AWS\\:\\:IAM\\:\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , and `AWS::IAM::Role
+        , and `AWS\\:\\:IAM\\:\\:Role
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
         . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
         CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
         specify CAPABILITY_NAMED_IAM.
 
         The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-        `AWS::Lambda::Permission
+        `AWS\\:\\:Lambda\\:\\:Permission
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-        , `AWS::IAM:Policy
+        , `AWS\\:\\:IAM\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , `AWS::ApplicationAutoScaling::ScalingPolicy
+        , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-        , `AWS::S3::BucketPolicy
+        , `AWS\\:\\:S3\\:\\:BucketPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-        , `AWS::SQS::QueuePolicy
+        , `AWS\\:\\:SQS\\:\\:QueuePolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-        , and `AWS::SNS::TopicPolicy
+        , and `AWS\\:\\:SNS\\:\\:TopicPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
         .
 
@@ -1936,7 +1936,7 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
 
         The semantic version of the application:
 
-         `https://semver.org/ <https://semver.org/>`__
+         `https\\://semver.org/ <https://semver.org/>`__
 
       - **SourceCodeArchiveUrl** *(string) --*
 
@@ -1995,7 +1995,7 @@ class ClientGetCloudFormationTemplateResponseTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **Status** *(string) --*
 
@@ -2007,7 +2007,7 @@ class ClientGetCloudFormationTemplateResponseTypeDef(
 
       The UUID returned by CreateCloudFormationTemplate.
 
-      Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+      Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
     - **TemplateUrl** *(string) --*
 
@@ -2114,7 +2114,7 @@ class ClientListApplicationVersionsResponseVersionsTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeUrl** *(string) --*
 
@@ -2165,7 +2165,7 @@ class ClientListApplicationVersionsResponseTypeDef(
 
           The semantic version of the application:
 
-           `https://semver.org/ <https://semver.org/>`__
+           `https\\://semver.org/ <https://semver.org/>`__
 
         - **SourceCodeUrl** *(string) --*
 
@@ -2231,7 +2231,7 @@ class ClientListApplicationsResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
       - *(string) --*
 
@@ -2241,11 +2241,11 @@ class ClientListApplicationsResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\-]+";
+      Pattern: "[a-zA-Z0-9\\\\-]+";
 
     - **SpdxLicenseId** *(string) --*
 
-      A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+      A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
     """
 
 
@@ -2306,7 +2306,7 @@ class ClientListApplicationsResponseTypeDef(_ClientListApplicationsResponseTypeD
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
           - *(string) --*
 
@@ -2316,11 +2316,11 @@ class ClientListApplicationsResponseTypeDef(_ClientListApplicationsResponseTypeD
 
           Minimum length=1. Maximum length=140
 
-          Pattern: "[a-zA-Z0-9\\-]+";
+          Pattern: "[a-zA-Z0-9\\\\-]+";
 
         - **SpdxLicenseId** *(string) --*
 
-          A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+          A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
 
     - **NextToken** *(string) --*
 
@@ -2734,30 +2734,30 @@ class ClientUpdateApplicationResponseVersionTypeDef(
       and CAPABILITY_AUTO_EXPAND.
 
       The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-      `AWS::IAM::Group
+      `AWS\\:\\:IAM\\:\\:Group
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-      , `AWS::IAM::InstanceProfile
+      , `AWS\\:\\:IAM\\:\\:InstanceProfile
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-      , `AWS::IAM::Policy
+      , `AWS\\:\\:IAM\\:\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , and `AWS::IAM::Role
+      , and `AWS\\:\\:IAM\\:\\:Role
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
       . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
       CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
       specify CAPABILITY_NAMED_IAM.
 
       The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-      `AWS::Lambda::Permission
+      `AWS\\:\\:Lambda\\:\\:Permission
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-      , `AWS::IAM:Policy
+      , `AWS\\:\\:IAM\\:Policy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-      , `AWS::ApplicationAutoScaling::ScalingPolicy
+      , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-      , `AWS::S3::BucketPolicy
+      , `AWS\\:\\:S3\\:\\:BucketPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-      , `AWS::SQS::QueuePolicy
+      , `AWS\\:\\:SQS\\:\\:QueuePolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-      , and `AWS::SNS::TopicPolicy
+      , and `AWS\\:\\:SNS\\:\\:TopicPolicy
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
       .
 
@@ -2781,7 +2781,7 @@ class ClientUpdateApplicationResponseVersionTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeArchiveUrl** *(string) --*
 
@@ -2859,7 +2859,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
       - *(string) --*
 
@@ -2875,7 +2875,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\-]+";
+      Pattern: "[a-zA-Z0-9\\\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -3021,30 +3021,30 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
         and CAPABILITY_AUTO_EXPAND.
 
         The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-        `AWS::IAM::Group
+        `AWS\\:\\:IAM\\:\\:Group
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-        , `AWS::IAM::InstanceProfile
+        , `AWS\\:\\:IAM\\:\\:InstanceProfile
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-        , `AWS::IAM::Policy
+        , `AWS\\:\\:IAM\\:\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , and `AWS::IAM::Role
+        , and `AWS\\:\\:IAM\\:\\:Role
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
         . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
         CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
         specify CAPABILITY_NAMED_IAM.
 
         The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-        `AWS::Lambda::Permission
+        `AWS\\:\\:Lambda\\:\\:Permission
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-        , `AWS::IAM:Policy
+        , `AWS\\:\\:IAM\\:Policy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-        , `AWS::ApplicationAutoScaling::ScalingPolicy
+        , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-        , `AWS::S3::BucketPolicy
+        , `AWS\\:\\:S3\\:\\:BucketPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-        , `AWS::SQS::QueuePolicy
+        , `AWS\\:\\:SQS\\:\\:QueuePolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-        , and `AWS::SNS::TopicPolicy
+        , and `AWS\\:\\:SNS\\:\\:TopicPolicy
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
         .
 
@@ -3068,7 +3068,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
         The semantic version of the application:
 
-         `https://semver.org/ <https://semver.org/>`__
+         `https\\://semver.org/ <https://semver.org/>`__
 
       - **SourceCodeArchiveUrl** *(string) --*
 
@@ -3246,7 +3246,7 @@ class ListApplicationVersionsPaginateResponseVersionsTypeDef(
 
       The semantic version of the application:
 
-       `https://semver.org/ <https://semver.org/>`__
+       `https\\://semver.org/ <https://semver.org/>`__
 
     - **SourceCodeUrl** *(string) --*
 
@@ -3290,7 +3290,7 @@ class ListApplicationVersionsPaginateResponseTypeDef(
 
           The semantic version of the application:
 
-           `https://semver.org/ <https://semver.org/>`__
+           `https\\://semver.org/ <https://semver.org/>`__
 
         - **SourceCodeUrl** *(string) --*
 
@@ -3388,7 +3388,7 @@ class ListApplicationsPaginateResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
       - *(string) --*
 
@@ -3398,11 +3398,11 @@ class ListApplicationsPaginateResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\-]+";
+      Pattern: "[a-zA-Z0-9\\\\-]+";
 
     - **SpdxLicenseId** *(string) --*
 
-      A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+      A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
     """
 
 
@@ -3460,7 +3460,7 @@ class ListApplicationsPaginateResponseTypeDef(_ListApplicationsPaginateResponseT
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
           - *(string) --*
 
@@ -3470,9 +3470,9 @@ class ListApplicationsPaginateResponseTypeDef(_ListApplicationsPaginateResponseT
 
           Minimum length=1. Maximum length=140
 
-          Pattern: "[a-zA-Z0-9\\-]+";
+          Pattern: "[a-zA-Z0-9\\\\-]+";
 
         - **SpdxLicenseId** *(string) --*
 
-          A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+          A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
     """

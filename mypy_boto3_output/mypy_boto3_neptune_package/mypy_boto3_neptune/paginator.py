@@ -51,7 +51,7 @@ from mypy_boto3_neptune.type_defs import (
 
 
 class DescribeDBClusterParameterGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBClusterParameterGroupName: str = None,
@@ -190,7 +190,7 @@ class DescribeDBClusterParameterGroups(Boto3Paginator):
 
 
 class DescribeDBClusterParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBClusterParameterGroupName: str,
@@ -364,7 +364,7 @@ class DescribeDBClusterParameters(Boto3Paginator):
 
 
 class DescribeDBClusterSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBClusterIdentifier: str = None,
@@ -656,7 +656,7 @@ class DescribeDBClusterSnapshots(Boto3Paginator):
 
 
 class DescribeDBClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBClusterIdentifier: str = None,
@@ -1085,7 +1085,7 @@ class DescribeDBClusters(Boto3Paginator):
 
 
 class DescribeDBEngineVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Engine: str = None,
@@ -1383,7 +1383,7 @@ class DescribeDBEngineVersions(Boto3Paginator):
 
 
 class DescribeDBInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBInstanceIdentifier: str = None,
@@ -2117,7 +2117,7 @@ class DescribeDBInstances(Boto3Paginator):
 
 
 class DescribeDBParameterGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBParameterGroupName: str = None,
@@ -2255,7 +2255,7 @@ class DescribeDBParameterGroups(Boto3Paginator):
 
 
 class DescribeDBParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBParameterGroupName: str,
@@ -2432,7 +2432,7 @@ class DescribeDBParameters(Boto3Paginator):
 
 
 class DescribeDBSubnetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBSubnetGroupName: str = None,
@@ -2605,7 +2605,7 @@ class DescribeDBSubnetGroups(Boto3Paginator):
 
 
 class DescribeEngineDefaultParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DBParameterGroupFamily: str,
@@ -2787,7 +2787,7 @@ class DescribeEngineDefaultParameters(Boto3Paginator):
 
 
 class DescribeEventSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SubscriptionName: str = None,
@@ -2966,7 +2966,7 @@ class DescribeEventSubscriptions(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SourceIdentifier: str = None,
@@ -3179,7 +3179,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeOrderableDBInstanceOptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Engine: str,
@@ -3438,7 +3438,7 @@ class DescribeOrderableDBInstanceOptions(Boto3Paginator):
 
 
 class DescribePendingMaintenanceActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceIdentifier: str = None,

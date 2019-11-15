@@ -1,7 +1,7 @@
 "Main interface for logs Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
@@ -24,6 +24,7 @@ from mypy_boto3_logs.type_defs import (
     ClientPutDestinationResponseTypeDef,
     ClientPutLogEventsResponseTypeDef,
     ClientPutLogEventslogEventsTypeDef,
+    ClientPutMetricFiltermetricTransformationsTypeDef,
     ClientPutResourcePolicyResponseTypeDef,
     ClientStartQueryResponseTypeDef,
     ClientStopQueryResponseTypeDef,
@@ -32,7 +33,7 @@ from mypy_boto3_logs.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_kms_key(self, logGroupName: str, kmsKeyId: str) -> None:
         """
         Associates the specified AWS Key Management Service (AWS KMS) customer master key (CMK) with the
@@ -74,7 +75,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -91,7 +92,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_export_task(self, taskId: str) -> None:
         """
         Cancels the specified export task.
@@ -115,7 +116,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_export_task(
         self,
         logGroupName: str,
@@ -217,9 +218,9 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_log_group(
-        self, logGroupName: str, kmsKeyId: str = None, tags: Dict = None
+        self, logGroupName: str, kmsKeyId: str = None, tags: Dict[str, str] = None
     ) -> None:
         """
         Creates a log group with the specified name.
@@ -280,7 +281,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_log_stream(self, logGroupName: str, logStreamName: str) -> None:
         """
         Creates a log stream for the specified log group.
@@ -318,7 +319,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_destination(self, destinationName: str) -> None:
         """
         Deletes the specified destination, and eventually disables all the subscription filters that
@@ -341,7 +342,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_log_group(self, logGroupName: str) -> None:
         """
         Deletes the specified log group and permanently deletes all the archived log events associated with
@@ -364,7 +365,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_log_stream(self, logGroupName: str, logStreamName: str) -> None:
         """
         Deletes the specified log stream and permanently deletes all the archived log events associated
@@ -393,7 +394,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_metric_filter(self, logGroupName: str, filterName: str) -> None:
         """
         Deletes the specified metric filter.
@@ -421,7 +422,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_policy(self, policyName: str = None) -> None:
         """
         Deletes a resource policy from this account. This revokes the access of the identities in that
@@ -444,7 +445,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_retention_policy(self, logGroupName: str) -> None:
         """
         Deletes the specified retention policy.
@@ -468,7 +469,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subscription_filter(self, logGroupName: str, filterName: str) -> None:
         """
         Deletes the specified subscription filter.
@@ -496,7 +497,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_destinations(
         self,
         DestinationNamePrefix: str = None,
@@ -597,7 +598,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_export_tasks(
         self,
         taskId: str = None,
@@ -745,7 +746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_log_groups(
         self, logGroupNamePrefix: str = None, nextToken: str = None, limit: int = None
     ) -> ClientDescribeLogGroupsResponseTypeDef:
@@ -848,7 +849,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_log_streams(
         self,
         logGroupName: str,
@@ -1002,7 +1003,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_metric_filters(
         self,
         logGroupName: str = None,
@@ -1152,7 +1153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_queries(
         self,
         logGroupName: str = None,
@@ -1257,7 +1258,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource_policies(
         self, nextToken: str = None, limit: int = None
     ) -> ClientDescribeResourcePoliciesResponseTypeDef:
@@ -1332,7 +1333,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subscription_filters(
         self,
         logGroupName: str,
@@ -1445,7 +1446,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_kms_key(self, logGroupName: str) -> None:
         """
         Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from
@@ -1474,7 +1475,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter_log_events(
         self,
         logGroupName: str,
@@ -1663,7 +1664,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1692,7 +1693,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_log_events(
         self,
         logGroupName: str,
@@ -1826,7 +1827,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_log_group_fields(
         self, logGroupName: str, time: int = None
     ) -> ClientGetLogGroupFieldsResponseTypeDef:
@@ -1903,7 +1904,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_log_record(
         self, logRecordPointer: str
     ) -> ClientGetLogRecordResponseTypeDef:
@@ -1957,7 +1958,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1978,7 +1979,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_query_results(self, queryId: str) -> ClientGetQueryResultsResponseTypeDef:
         """
         Returns the results from the specified query.
@@ -2083,7 +2084,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2096,7 +2097,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_log_group(
         self, logGroupName: str
     ) -> ClientListTagsLogGroupResponseTypeDef:
@@ -2143,7 +2144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_destination(
         self, destinationName: str, targetArn: str, roleArn: str
     ) -> ClientPutDestinationResponseTypeDef:
@@ -2239,7 +2240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_destination_policy(self, destinationName: str, accessPolicy: str) -> None:
         """
         Creates or updates an access policy associated with an existing destination. An access policy is an
@@ -2270,7 +2271,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_log_events(
         self,
         logGroupName: str,
@@ -2404,13 +2405,13 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_metric_filter(
         self,
         logGroupName: str,
         filterName: str,
         filterPattern: str,
-        metricTransformations: List[Any],
+        metricTransformations: List[ClientPutMetricFiltermetricTransformationsTypeDef],
     ) -> None:
         """
         Creates or updates a metric filter and associates it with the specified log group. Metric filters
@@ -2481,7 +2482,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_resource_policy(
         self, policyName: str = None, policyDocument: str = None
     ) -> ClientPutResourcePolicyResponseTypeDef:
@@ -2555,7 +2556,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_retention_policy(self, logGroupName: str, retentionInDays: int) -> None:
         """
         Sets the retention of the specified log group. A retention policy allows you to configure the
@@ -2585,7 +2586,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_subscription_filter(
         self,
         logGroupName: str,
@@ -2683,7 +2684,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_query(
         self,
         startTime: int,
@@ -2782,7 +2783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_query(self, queryId: str) -> ClientStopQueryResponseTypeDef:
         """
         Stops a CloudWatch Logs Insights query that is in progress. If the query has already ended, the
@@ -2823,8 +2824,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_log_group(self, logGroupName: str, tags: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_log_group(self, logGroupName: str, tags: Dict[str, str]) -> None:
         """
         Adds or updates the specified tags for the specified log group.
 
@@ -2863,7 +2864,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_metric_filter(
         self, filterPattern: str, logEventMessages: List[str]
     ) -> ClientTestMetricFilterResponseTypeDef:
@@ -2945,8 +2946,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def untag_log_group(self, logGroupName: str, tags: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_log_group(self, logGroupName: str, tags: List[str]) -> None:
         """
         Removes the specified tags from the specified log group.
 

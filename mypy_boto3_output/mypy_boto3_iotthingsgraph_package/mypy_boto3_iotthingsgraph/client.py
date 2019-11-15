@@ -50,7 +50,7 @@ from mypy_boto3_iotthingsgraph.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_entity_to_thing(
         self, thingName: str, entityId: str, namespaceVersion: int = None
     ) -> Dict[str, Any]:
@@ -103,7 +103,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -120,7 +120,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_flow_template(
         self,
         definition: ClientCreateFlowTemplatedefinitionTypeDef,
@@ -206,7 +206,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_system_instance(
         self,
         definition: ClientCreateSystemInstancedefinitionTypeDef,
@@ -402,7 +402,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_system_template(
         self,
         definition: ClientCreateSystemTemplatedefinitionTypeDef,
@@ -486,7 +486,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_flow_template(self, id: str) -> Dict[str, Any]:
         """
         Deletes a workflow. Any new system or deployment that contains this workflow will fail to update or
@@ -524,7 +524,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_namespace(
         self, *args: Any, **kwargs: Any
     ) -> ClientDeleteNamespaceResponseTypeDef:
@@ -565,7 +565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_system_instance(self, id: str = None) -> Dict[str, Any]:
         """
         Deletes a system instance. Only system instances that have never been deployed, or that have been
@@ -600,7 +600,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_system_template(self, id: str) -> Dict[str, Any]:
         """
         Deletes a system. New deployments can't contain the system after its deletion. Existing deployments
@@ -638,7 +638,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deploy_system_instance(
         self, id: str = None
     ) -> ClientDeploySystemInstanceResponseTypeDef:
@@ -751,7 +751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deprecate_flow_template(self, id: str) -> Dict[str, Any]:
         """
         Deprecates the specified workflow. This action marks the workflow for deletion. Deprecated flows
@@ -788,7 +788,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deprecate_system_template(self, id: str) -> Dict[str, Any]:
         """
         Deprecates the specified system.
@@ -824,7 +824,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_namespace(
         self, namespaceName: str = None
     ) -> ClientDescribeNamespaceResponseTypeDef:
@@ -885,7 +885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def dissociate_entity_from_thing(
         self, thingName: str, entityType: str
     ) -> Dict[str, Any]:
@@ -929,7 +929,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -958,7 +958,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_entities(
         self, ids: List[str], namespaceVersion: int = None
     ) -> ClientGetEntitiesResponseTypeDef:
@@ -1079,7 +1079,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_flow_template(
         self, id: str, revisionNumber: int = None
     ) -> ClientGetFlowTemplateResponseTypeDef:
@@ -1180,7 +1180,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_flow_template_revisions(
         self, id: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetFlowTemplateRevisionsResponseTypeDef:
@@ -1271,7 +1271,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_namespace_deletion_status(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetNamespaceDeletionStatusResponseTypeDef:
@@ -1326,7 +1326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1347,7 +1347,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_system_instance(self, id: str) -> ClientGetSystemInstanceResponseTypeDef:
         """
         Gets a system instance.
@@ -1519,7 +1519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_system_template(
         self, id: str, revisionNumber: int = None
     ) -> ClientGetSystemTemplateResponseTypeDef:
@@ -1619,7 +1619,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_system_template_revisions(
         self, id: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetSystemTemplateRevisionsResponseTypeDef:
@@ -1710,7 +1710,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_upload_status(self, uploadId: str) -> ClientGetUploadStatusResponseTypeDef:
         """
         Gets the status of the specified upload.
@@ -1784,7 +1784,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1797,7 +1797,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_flow_execution_messages(
         self, flowExecutionId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListFlowExecutionMessagesResponseTypeDef:
@@ -1888,7 +1888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str, maxResults: int = None, nextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1965,7 +1965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_entities(
         self,
         entityTypes: List[str],
@@ -2124,7 +2124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_flow_executions(
         self,
         systemInstanceId: str,
@@ -2244,7 +2244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_flow_templates(
         self,
         filters: List[ClientSearchFlowTemplatesfiltersTypeDef] = None,
@@ -2354,7 +2354,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_system_instances(
         self,
         filters: List[ClientSearchSystemInstancesfiltersTypeDef] = None,
@@ -2497,7 +2497,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_system_templates(
         self,
         filters: List[ClientSearchSystemTemplatesfiltersTypeDef] = None,
@@ -2609,7 +2609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_things(
         self,
         entityId: str,
@@ -2705,7 +2705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2764,7 +2764,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def undeploy_system_instance(
         self, id: str = None
     ) -> ClientUndeploySystemInstanceResponseTypeDef:
@@ -2854,7 +2854,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes a tag from the specified resource.
@@ -2902,7 +2902,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_flow_template(
         self,
         id: str,
@@ -3000,7 +3000,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_system_template(
         self,
         id: str,
@@ -3095,7 +3095,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_entity_definitions(
         self,
         document: ClientUploadEntityDefinitionsdocumentTypeDef = None,

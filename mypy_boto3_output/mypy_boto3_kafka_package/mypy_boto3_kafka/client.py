@@ -1,11 +1,10 @@
 "Main interface for kafka Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_kafka.type_defs import (
     ClientCreateClusterBrokerNodeGroupInfoTypeDef,
     ClientCreateClusterClientAuthenticationTypeDef,
@@ -34,7 +33,7 @@ from mypy_boto3_kafka.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -51,7 +50,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self,
         BrokerNodeGroupInfo: ClientCreateClusterBrokerNodeGroupInfoTypeDef,
@@ -292,7 +291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration(
         self,
         KafkaVersions: List[str],
@@ -394,7 +393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster(
         self, ClusterArn: str, CurrentVersion: str = None
     ) -> ClientDeleteClusterResponseTypeDef:
@@ -448,7 +447,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster(self, ClusterArn: str) -> ClientDescribeClusterResponseTypeDef:
         """
         Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the
@@ -706,7 +705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster_operation(
         self, ClusterOperationArn: str
     ) -> ClientDescribeClusterOperationResponseTypeDef:
@@ -901,7 +900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration(
         self, Arn: str
     ) -> ClientDescribeConfigurationResponseTypeDef:
@@ -990,7 +989,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_revision(
         self, Arn: str, Revision: int
     ) -> ClientDescribeConfigurationRevisionResponseTypeDef:
@@ -1062,7 +1061,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1091,7 +1090,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bootstrap_brokers(
         self, ClusterArn: str
     ) -> ClientGetBootstrapBrokersResponseTypeDef:
@@ -1139,7 +1138,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1160,7 +1159,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1173,7 +1172,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_cluster_operations(
         self, ClusterArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListClusterOperationsResponseTypeDef:
@@ -1394,7 +1393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_clusters(
         self,
         ClusterNameFilter: str = None,
@@ -1685,7 +1684,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configuration_revisions(
         self, Arn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListConfigurationRevisionsResponseTypeDef:
@@ -1770,7 +1769,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configurations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListConfigurationsResponseTypeDef:
@@ -1887,7 +1886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_nodes(
         self, ClusterArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListNodesResponseTypeDef:
@@ -2072,7 +2071,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2122,8 +2121,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, Tags: List[str]) -> None:
         """
         Adds tags to the specified MSK resource.
 
@@ -2157,8 +2156,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes the tags associated with the keys that are provided in the query.
 
@@ -2201,7 +2200,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_broker_count(
         self, ClusterArn: str, CurrentVersion: str, TargetNumberOfBrokerNodes: int
     ) -> ClientUpdateBrokerCountResponseTypeDef:
@@ -2262,7 +2261,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_broker_storage(
         self,
         ClusterArn: str,
@@ -2345,7 +2344,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_cluster_configuration(
         self,
         ClusterArn: str,

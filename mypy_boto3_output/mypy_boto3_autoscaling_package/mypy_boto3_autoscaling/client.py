@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_autoscaling.type_defs import (
     ClientBatchDeleteScheduledActionResponseTypeDef,
     ClientBatchPutScheduledUpdateGroupActionResponseTypeDef,
@@ -17,6 +16,8 @@ from mypy_boto3_autoscaling.type_defs import (
     ClientCreateAutoScalingGroupTagsTypeDef,
     ClientCreateLaunchConfigurationBlockDeviceMappingsTypeDef,
     ClientCreateLaunchConfigurationInstanceMonitoringTypeDef,
+    ClientCreateOrUpdateTagsTagsTypeDef,
+    ClientDeleteTagsTagsTypeDef,
     ClientDescribeAccountLimitsResponseTypeDef,
     ClientDescribeAdjustmentTypesResponseTypeDef,
     ClientDescribeAutoScalingGroupsResponseTypeDef,
@@ -49,7 +50,7 @@ from mypy_boto3_autoscaling.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_instances(
         self, AutoScalingGroupName: str, InstanceIds: List[str] = None
     ) -> None:
@@ -95,7 +96,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_load_balancer_target_groups(
         self, AutoScalingGroupName: str, TargetGroupARNs: List[str]
     ) -> Dict[str, Any]:
@@ -148,7 +149,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_load_balancers(
         self, AutoScalingGroupName: str, LoadBalancerNames: List[str]
     ) -> Dict[str, Any]:
@@ -202,7 +203,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_scheduled_action(
         self, AutoScalingGroupName: str, ScheduledActionNames: List[str]
     ) -> ClientBatchDeleteScheduledActionResponseTypeDef:
@@ -275,7 +276,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_put_scheduled_update_group_action(
         self,
         AutoScalingGroupName: str,
@@ -412,7 +413,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -429,7 +430,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_lifecycle_action(
         self,
         LifecycleHookName: str,
@@ -515,7 +516,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_auto_scaling_group(
         self,
         AutoScalingGroupName: str,
@@ -1079,7 +1080,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_launch_configuration(
         self,
         LaunchConfigurationName: str,
@@ -1488,8 +1489,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def create_or_update_tags(self, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_or_update_tags(
+        self, Tags: List[ClientCreateOrUpdateTagsTagsTypeDef]
+    ) -> None:
         """
         Creates or updates tags for the specified Auto Scaling group.
 
@@ -1549,7 +1552,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_auto_scaling_group(
         self, AutoScalingGroupName: str, ForceDelete: bool = None
     ) -> None:
@@ -1594,7 +1597,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_launch_configuration(self, LaunchConfigurationName: str) -> None:
         """
         Deletes the specified launch configuration.
@@ -1619,7 +1622,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_lifecycle_hook(
         self, LifecycleHookName: str, AutoScalingGroupName: str
     ) -> Dict[str, Any]:
@@ -1662,7 +1665,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notification_configuration(
         self, AutoScalingGroupName: str, TopicARN: str
     ) -> None:
@@ -1692,7 +1695,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy(self, PolicyName: str, AutoScalingGroupName: str = None) -> None:
         """
         Deletes the specified scaling policy.
@@ -1727,7 +1730,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_scheduled_action(
         self, AutoScalingGroupName: str, ScheduledActionName: str
     ) -> None:
@@ -1757,8 +1760,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def delete_tags(self, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_tags(self, Tags: List[ClientDeleteTagsTagsTypeDef]) -> None:
         """
         Deletes the specified tags.
 
@@ -1811,7 +1814,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_limits(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountLimitsResponseTypeDef:
@@ -1867,7 +1870,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_adjustment_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAdjustmentTypesResponseTypeDef:
@@ -1915,7 +1918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_auto_scaling_groups(
         self,
         AutoScalingGroupNames: List[str] = None,
@@ -2453,7 +2456,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_auto_scaling_instances(
         self,
         InstanceIds: List[str] = None,
@@ -2596,7 +2599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_auto_scaling_notification_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAutoScalingNotificationTypesResponseTypeDef:
@@ -2636,7 +2639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_launch_configurations(
         self,
         LaunchConfigurationNames: List[str] = None,
@@ -3012,7 +3015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_lifecycle_hook_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLifecycleHookTypesResponseTypeDef:
@@ -3057,7 +3060,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_lifecycle_hooks(
         self, AutoScalingGroupName: str, LifecycleHookNames: List[str] = None
     ) -> ClientDescribeLifecycleHooksResponseTypeDef:
@@ -3178,7 +3181,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancer_target_groups(
         self, AutoScalingGroupName: str, NextToken: str = None, MaxRecords: int = None
     ) -> ClientDescribeLoadBalancerTargetGroupsResponseTypeDef:
@@ -3276,7 +3279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancers(
         self, AutoScalingGroupName: str, NextToken: str = None, MaxRecords: int = None
     ) -> ClientDescribeLoadBalancersResponseTypeDef:
@@ -3380,7 +3383,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_metric_collection_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeMetricCollectionTypesResponseTypeDef:
@@ -3463,7 +3466,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_notification_configurations(
         self,
         AutoScalingGroupNames: List[str] = None,
@@ -3566,7 +3569,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_policies(
         self,
         AutoScalingGroupName: str = None,
@@ -3921,7 +3924,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scaling_activities(
         self,
         ActivityIds: List[str] = None,
@@ -4063,7 +4066,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scaling_process_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeScalingProcessTypesResponseTypeDef:
@@ -4130,7 +4133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_scheduled_actions(
         self,
         AutoScalingGroupName: str = None,
@@ -4288,7 +4291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self,
         Filters: List[ClientDescribeTagsFiltersTypeDef] = None,
@@ -4415,7 +4418,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_termination_policy_types(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeTerminationPolicyTypesResponseTypeDef:
@@ -4460,7 +4463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_instances(
         self,
         AutoScalingGroupName: str,
@@ -4596,7 +4599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_load_balancer_target_groups(
         self, AutoScalingGroupName: str, TargetGroupARNs: List[str]
     ) -> Dict[str, Any]:
@@ -4640,7 +4643,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_load_balancers(
         self, AutoScalingGroupName: str, LoadBalancerNames: List[str]
     ) -> Dict[str, Any]:
@@ -4691,9 +4694,9 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_metrics_collection(
-        self, AutoScalingGroupName: str, Metrics: List[Any] = None
+        self, AutoScalingGroupName: str, Metrics: List[str] = None
     ) -> None:
         """
         Disables group metrics for the specified Auto Scaling group.
@@ -4741,7 +4744,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_metrics_collection(
         self, AutoScalingGroupName: str, Granularity: str, Metrics: List[str] = None
     ) -> None:
@@ -4800,7 +4803,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enter_standby(
         self,
         AutoScalingGroupName: str,
@@ -4927,7 +4930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def execute_policy(
         self,
         PolicyName: str,
@@ -5000,7 +5003,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def exit_standby(
         self, AutoScalingGroupName: str, InstanceIds: List[str] = None
     ) -> ClientExitStandbyResponseTypeDef:
@@ -5117,7 +5120,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5146,7 +5149,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5167,7 +5170,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5180,7 +5183,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lifecycle_hook(
         self,
         LifecycleHookName: str,
@@ -5326,9 +5329,9 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_notification_configuration(
-        self, AutoScalingGroupName: str, TopicARN: str, NotificationTypes: List[Any]
+        self, AutoScalingGroupName: str, TopicARN: str, NotificationTypes: List[str]
     ) -> None:
         """
         Configures an Auto Scaling group to send notifications when specified events take place.
@@ -5376,7 +5379,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_scaling_policy(
         self,
         AutoScalingGroupName: str,
@@ -5734,7 +5737,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_scheduled_update_group_action(
         self,
         AutoScalingGroupName: str,
@@ -5833,7 +5836,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def record_lifecycle_action_heartbeat(
         self,
         LifecycleHookName: str,
@@ -5913,9 +5916,9 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resume_processes(
-        self, AutoScalingGroupName: str, ScalingProcesses: List[Any] = None
+        self, AutoScalingGroupName: str, ScalingProcesses: List[str] = None
     ) -> None:
         """
         Resumes the specified suspended automatic scaling processes, or all suspended process, for the
@@ -5968,7 +5971,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_desired_capacity(
         self,
         AutoScalingGroupName: str,
@@ -6013,7 +6016,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_instance_health(
         self, InstanceId: str, HealthStatus: str, ShouldRespectGracePeriod: bool = None
     ) -> None:
@@ -6059,7 +6062,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_instance_protection(
         self,
         InstanceIds: List[str],
@@ -6118,9 +6121,9 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def suspend_processes(
-        self, AutoScalingGroupName: str, ScalingProcesses: List[Any] = None
+        self, AutoScalingGroupName: str, ScalingProcesses: List[str] = None
     ) -> None:
         """
         Suspends the specified automatic scaling processes, or all processes, for the specified Auto
@@ -6178,7 +6181,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_instance_in_auto_scaling_group(
         self, InstanceId: str, ShouldDecrementDesiredCapacity: bool
     ) -> ClientTerminateInstanceInAutoScalingGroupResponseTypeDef:
@@ -6282,7 +6285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_auto_scaling_group(
         self,
         AutoScalingGroupName: str,

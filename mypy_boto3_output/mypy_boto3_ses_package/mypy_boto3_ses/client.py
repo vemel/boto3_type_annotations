@@ -63,7 +63,7 @@ from mypy_boto3_ses.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -80,7 +80,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def clone_receipt_rule_set(
         self, RuleSetName: str, OriginalRuleSetName: str
     ) -> Dict:
@@ -136,7 +136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set(
         self, ConfigurationSet: ClientCreateConfigurationSetConfigurationSetTypeDef
     ) -> Dict:
@@ -189,7 +189,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,
@@ -365,7 +365,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_set_tracking_options(
         self,
         ConfigurationSetName: str,
@@ -429,7 +429,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_custom_verification_email_template(
         self,
         TemplateName: str,
@@ -502,7 +502,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_receipt_filter(
         self, Filter: ClientCreateReceiptFilterFilterTypeDef
     ) -> Dict:
@@ -578,7 +578,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_receipt_rule(
         self,
         RuleSetName: str,
@@ -881,7 +881,8 @@ class Client(BaseClient):
 
                 - **HeaderValue** *(string) --* **[REQUIRED]**
 
-                  Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+                  Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+                  "\\n").
 
               - **SNSAction** *(dict) --*
 
@@ -922,7 +923,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_receipt_rule_set(self, RuleSetName: str) -> Dict:
         """
         Creates an empty receipt rule set.
@@ -969,7 +970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_template(
         self, Template: ClientCreateTemplateTemplateTypeDef
     ) -> Dict[str, Any]:
@@ -1029,7 +1030,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set(self, ConfigurationSetName: str) -> Dict:
         """
         Deletes a configuration set. Configuration sets enable you to publish email sending events. For
@@ -1068,7 +1069,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set_event_destination(
         self, ConfigurationSetName: str, EventDestinationName: str
     ) -> Dict:
@@ -1116,7 +1117,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_set_tracking_options(
         self, ConfigurationSetName: str
     ) -> Dict:
@@ -1165,7 +1166,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_custom_verification_email_template(self, TemplateName: str) -> None:
         """
         Deletes an existing custom verification email template.
@@ -1194,7 +1195,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_identity(self, Identity: str) -> Dict:
         """
         Deletes the specified identity (an email address or a domain) from the list of verified identities.
@@ -1231,7 +1232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_identity_policy(self, Identity: str, PolicyName: str) -> Dict:
         """
         Deletes the specified sending authorization policy for the given identity (an email address or a
@@ -1289,7 +1290,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_receipt_filter(self, FilterName: str) -> Dict:
         """
         Deletes the specified IP address filter.
@@ -1330,7 +1331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_receipt_rule(self, RuleSetName: str, RuleName: str) -> Dict:
         """
         Deletes the specified receipt rule.
@@ -1377,7 +1378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_receipt_rule_set(self, RuleSetName: str) -> Dict:
         """
         Deletes the specified receipt rule set and all of the receipt rules it contains.
@@ -1422,7 +1423,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_template(self, TemplateName: str) -> Dict[str, Any]:
         """
         Deletes an email template.
@@ -1456,7 +1457,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_verified_email_address(self, EmailAddress: str) -> None:
         """
         Deprecated. Use the ``DeleteIdentity`` operation to delete email addresses and domains.
@@ -1478,7 +1479,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_active_receipt_rule_set(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeActiveReceiptRuleSetResponseTypeDef:
@@ -1827,8 +1828,8 @@ class Client(BaseClient):
 
                       - **HeaderValue** *(string) --*
 
-                        Must be less than 2048 characters, and must not contain newline characters ("\r" or
-                        "\n").
+                        Must be less than 2048 characters, and must not contain newline characters ("\\r"
+                        or "\\n").
 
                     - **SNSAction** *(dict) --*
 
@@ -1855,7 +1856,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_set(
         self,
         ConfigurationSetName: str,
@@ -2135,7 +2136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_receipt_rule(
         self, RuleSetName: str, RuleName: str
     ) -> ClientDescribeReceiptRuleResponseTypeDef:
@@ -2457,8 +2458,8 @@ class Client(BaseClient):
 
                     - **HeaderValue** *(string) --*
 
-                      Must be less than 2048 characters, and must not contain newline characters ("\r" or
-                      "\n").
+                      Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+                      "\\n").
 
                   - **SNSAction** *(dict) --*
 
@@ -2485,7 +2486,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_receipt_rule_set(
         self, RuleSetName: str
     ) -> ClientDescribeReceiptRuleSetResponseTypeDef:
@@ -2841,8 +2842,8 @@ class Client(BaseClient):
 
                       - **HeaderValue** *(string) --*
 
-                        Must be less than 2048 characters, and must not contain newline characters ("\r" or
-                        "\n").
+                        Must be less than 2048 characters, and must not contain newline characters ("\\r"
+                        or "\\n").
 
                     - **SNSAction** *(dict) --*
 
@@ -2869,7 +2870,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2898,7 +2899,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_sending_enabled(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountSendingEnabledResponseTypeDef:
@@ -2939,7 +2940,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_custom_verification_email_template(
         self, TemplateName: str
     ) -> ClientGetCustomVerificationEmailTemplateResponseTypeDef:
@@ -3016,7 +3017,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_dkim_attributes(
         self, Identities: List[str]
     ) -> ClientGetIdentityDkimAttributesResponseTypeDef:
@@ -3124,7 +3125,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_mail_from_domain_attributes(
         self, Identities: List[str]
     ) -> ClientGetIdentityMailFromDomainAttributesResponseTypeDef:
@@ -3211,7 +3212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_notification_attributes(
         self, Identities: List[str]
     ) -> ClientGetIdentityNotificationAttributesResponseTypeDef:
@@ -3329,7 +3330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_policies(
         self, Identity: str, PolicyNames: List[str]
     ) -> ClientGetIdentityPoliciesResponseTypeDef:
@@ -3407,7 +3408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_verification_attributes(
         self, Identities: List[str]
     ) -> ClientGetIdentityVerificationAttributesResponseTypeDef:
@@ -3492,7 +3493,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3513,7 +3514,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_send_quota(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetSendQuotaResponseTypeDef:
@@ -3569,7 +3570,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_send_statistics(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetSendStatisticsResponseTypeDef:
@@ -3644,7 +3645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_template(self, TemplateName: str) -> ClientGetTemplateResponseTypeDef:
         """
         Displays the template object (which includes the Subject line, HTML part and text part) for the
@@ -3708,7 +3709,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3721,7 +3722,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configuration_sets(
         self, NextToken: str = None, MaxItems: int = None
     ) -> ClientListConfigurationSetsResponseTypeDef:
@@ -3812,7 +3813,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_custom_verification_email_templates(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListCustomVerificationEmailTemplatesResponseTypeDef:
@@ -3912,7 +3913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_identities(
         self, IdentityType: str = None, NextToken: str = None, MaxItems: int = None
     ) -> ClientListIdentitiesResponseTypeDef:
@@ -3981,7 +3982,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_identity_policies(
         self, Identity: str
     ) -> ClientListIdentityPoliciesResponseTypeDef:
@@ -4046,7 +4047,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_receipt_filters(
         self, *args: Any, **kwargs: Any
     ) -> ClientListReceiptFiltersResponseTypeDef:
@@ -4134,7 +4135,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_receipt_rule_sets(
         self, NextToken: str = None
     ) -> ClientListReceiptRuleSetsResponseTypeDef:
@@ -4225,7 +4226,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_templates(
         self, NextToken: str = None, MaxItems: int = None
     ) -> ClientListTemplatesResponseTypeDef:
@@ -4301,7 +4302,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_verified_email_addresses(
         self, *args: Any, **kwargs: Any
     ) -> ClientListVerifiedEmailAddressesResponseTypeDef:
@@ -4343,7 +4344,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_configuration_set_delivery_options(
         self,
         ConfigurationSetName: str,
@@ -4398,7 +4399,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_identity_policy(self, Identity: str, PolicyName: str, Policy: str) -> Dict:
         """
         Adds or updates a sending authorization policy for the specified identity (an email address or a
@@ -4468,7 +4469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reorder_receipt_rule_set(self, RuleSetName: str, RuleNames: List[str]) -> Dict:
         """
         Reorders the receipt rules within a receipt rule set.
@@ -4524,7 +4525,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_bounce(
         self,
         OriginalMessageId: str,
@@ -4645,7 +4646,7 @@ class Client(BaseClient):
               - **Value** *(string) --* **[REQUIRED]**
 
                 The value of the header to add. Must be less than 2048 characters, and must not contain
-                newline characters ("\r" or "\n").
+                newline characters ("\\r" or "\\n").
 
         :type BouncedRecipientInfoList: list
         :param BouncedRecipientInfoList: **[REQUIRED]**
@@ -4743,7 +4744,7 @@ class Client(BaseClient):
                   - **Value** *(string) --* **[REQUIRED]**
 
                     The value of the header to add. Must be less than 2048 characters, and must not contain
-                    newline characters ("\r" or "\n").
+                    newline characters ("\\r" or "\\n").
 
         :type BounceSenderArn: string
         :param BounceSenderArn:
@@ -4776,7 +4777,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_bulk_templated_email(
         self,
         Source: str,
@@ -5176,7 +5177,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_custom_verification_email(
         self, EmailAddress: str, TemplateName: str, ConfigurationSetName: str = None
     ) -> ClientSendCustomVerificationEmailResponseTypeDef:
@@ -5241,7 +5242,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_email(
         self,
         Source: str,
@@ -5546,7 +5547,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_raw_email(
         self,
         RawMessage: ClientSendRawEmailRawMessageTypeDef,
@@ -5868,7 +5869,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_templated_email(
         self,
         Source: str,
@@ -6137,7 +6138,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_active_receipt_rule_set(self, RuleSetName: str = None) -> Dict:
         """
         Sets the specified receipt rule set as the active receipt rule set.
@@ -6184,7 +6185,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_dkim_enabled(self, Identity: str, DkimEnabled: bool) -> Dict:
         """
         Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM signing is
@@ -6242,7 +6243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_feedback_forwarding_enabled(
         self, Identity: str, ForwardingEnabled: bool
     ) -> Dict:
@@ -6302,7 +6303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_headers_in_notifications_enabled(
         self, Identity: str, NotificationType: str, Enabled: bool
     ) -> Dict:
@@ -6366,7 +6367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_mail_from_domain(
         self, Identity: str, MailFromDomain: str = None, BehaviorOnMXFailure: str = None
     ) -> Dict:
@@ -6437,7 +6438,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_notification_topic(
         self, Identity: str, NotificationType: str, SnsTopic: str = None
     ) -> Dict:
@@ -6504,7 +6505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_receipt_rule_position(
         self, RuleSetName: str, RuleName: str, After: str = None
     ) -> Dict:
@@ -6559,7 +6560,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_render_template(
         self, TemplateName: str, TemplateData: str
     ) -> ClientTestRenderTemplateResponseTypeDef:
@@ -6612,7 +6613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_account_sending_enabled(self, Enabled: bool = None) -> None:
         """
         Enables or disables email sending across your entire Amazon SES account in the current AWS Region.
@@ -6640,7 +6641,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_event_destination(
         self,
         ConfigurationSetName: str,
@@ -6815,7 +6816,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_reputation_metrics_enabled(
         self, ConfigurationSetName: str, Enabled: bool
     ) -> None:
@@ -6852,7 +6853,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_sending_enabled(
         self, ConfigurationSetName: str, Enabled: bool
     ) -> None:
@@ -6887,7 +6888,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_set_tracking_options(
         self,
         ConfigurationSetName: str,
@@ -6951,7 +6952,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_custom_verification_email_template(
         self,
         TemplateName: str,
@@ -7024,7 +7025,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_receipt_rule(
         self, RuleSetName: str, Rule: ClientUpdateReceiptRuleRuleTypeDef
     ) -> Dict:
@@ -7317,7 +7318,8 @@ class Client(BaseClient):
 
                 - **HeaderValue** *(string) --* **[REQUIRED]**
 
-                  Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+                  Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+                  "\\n").
 
               - **SNSAction** *(dict) --*
 
@@ -7358,7 +7360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_template(
         self, Template: ClientUpdateTemplateTemplateTypeDef
     ) -> Dict[str, Any]:
@@ -7418,7 +7420,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_domain_dkim(self, Domain: str) -> ClientVerifyDomainDkimResponseTypeDef:
         """
         Returns a set of DKIM tokens for a domain identity.
@@ -7504,7 +7506,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_domain_identity(
         self, Domain: str
     ) -> ClientVerifyDomainIdentityResponseTypeDef:
@@ -7561,7 +7563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_email_address(self, EmailAddress: str) -> None:
         """
         Deprecated. Use the ``VerifyEmailIdentity`` operation to verify a new email address.
@@ -7583,7 +7585,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_email_identity(self, EmailAddress: str) -> Dict:
         """
         Adds an email address to the list of identities for your Amazon SES account in the current AWS

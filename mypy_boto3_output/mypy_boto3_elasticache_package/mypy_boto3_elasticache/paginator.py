@@ -37,7 +37,7 @@ from mypy_boto3_elasticache.type_defs import (
 
 
 class DescribeCacheClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheClusterId: str = None,
@@ -596,7 +596,7 @@ class DescribeCacheClusters(Boto3Paginator):
 
 
 class DescribeCacheEngineVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Engine: str = None,
@@ -745,7 +745,7 @@ class DescribeCacheEngineVersions(Boto3Paginator):
 
 
 class DescribeCacheParameterGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheParameterGroupName: str = None,
@@ -850,7 +850,7 @@ class DescribeCacheParameterGroups(Boto3Paginator):
 
 
 class DescribeCacheParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheParameterGroupName: str,
@@ -1074,7 +1074,7 @@ class DescribeCacheParameters(Boto3Paginator):
 
 
 class DescribeCacheSecurityGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheSecurityGroupName: str = None,
@@ -1208,7 +1208,7 @@ class DescribeCacheSecurityGroups(Boto3Paginator):
 
 
 class DescribeCacheSubnetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheSubnetGroupName: str = None,
@@ -1342,7 +1342,7 @@ class DescribeCacheSubnetGroups(Boto3Paginator):
 
 
 class DescribeEngineDefaultParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CacheParameterGroupFamily: str,
@@ -1582,7 +1582,7 @@ class DescribeEngineDefaultParameters(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SourceIdentifier: str = None,
@@ -1726,7 +1726,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeReplicationGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReplicationGroupId: str = None,
@@ -2126,7 +2126,7 @@ class DescribeReplicationGroups(Boto3Paginator):
 
 
 class DescribeReservedCacheNodes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedCacheNodeId: str = None,
@@ -2431,7 +2431,7 @@ class DescribeReservedCacheNodes(Boto3Paginator):
 
 
 class DescribeReservedCacheNodesOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReservedCacheNodesOfferingId: str = None,
@@ -2702,7 +2702,7 @@ class DescribeReservedCacheNodesOfferings(Boto3Paginator):
 
 
 class DescribeServiceUpdates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceUpdateName: str = None,
@@ -2861,7 +2861,7 @@ class DescribeServiceUpdates(Boto3Paginator):
 
 
 class DescribeSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReplicationGroupId: str = None,
@@ -3275,7 +3275,7 @@ class DescribeSnapshots(Boto3Paginator):
 
 
 class DescribeUpdateActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceUpdateName: str = None,

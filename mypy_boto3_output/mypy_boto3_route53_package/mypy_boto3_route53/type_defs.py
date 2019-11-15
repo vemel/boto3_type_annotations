@@ -14248,3 +14248,28 @@ class ListVPCAssociationAuthorizationsPaginateResponseTypeDef(
 
           (Private hosted zones only) The ID of an Amazon VPC.
     """
+
+
+_ResourceRecordSetsChangedWaitWaiterConfigTypeDef = TypedDict(
+    "_ResourceRecordSetsChangedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ResourceRecordSetsChangedWaitWaiterConfigTypeDef(
+    _ResourceRecordSetsChangedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ResourceRecordSetsChangedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """

@@ -13,7 +13,7 @@ from mypy_boto3_mediapackage.type_defs import (
 
 
 class ListChannels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListChannelsPaginatePaginationConfigTypeDef = None
     ) -> ListChannelsPaginateResponseTypeDef:
@@ -123,7 +123,7 @@ class ListChannels(Boto3Paginator):
 
 
 class ListHarvestJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         IncludeChannelId: str = None,
@@ -246,7 +246,7 @@ class ListHarvestJobs(Boto3Paginator):
 
 
 class ListOriginEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ChannelId: str = None,

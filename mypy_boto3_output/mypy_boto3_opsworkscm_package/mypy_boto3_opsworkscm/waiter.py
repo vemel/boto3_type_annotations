@@ -1,17 +1,17 @@
 "Main interface for opsworkscm Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_opsworkscm.type_defs import NodeAssociatedWaitWaiterConfigTypeDef
 
 
 class NodeAssociated(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         NodeAssociationStatusToken: str,
         ServerName: str,
-        WaiterConfig: Dict = None,
+        WaiterConfig: NodeAssociatedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorksCM.Client.describe_node_association_status` every 15 seconds until a

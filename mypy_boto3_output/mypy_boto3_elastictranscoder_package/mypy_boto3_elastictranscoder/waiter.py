@@ -1,13 +1,15 @@
 "Main interface for elastictranscoder Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_elastictranscoder.type_defs import JobCompleteWaitWaiterConfigTypeDef
 
 
 class JobComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Id: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, Id: str, WaiterConfig: JobCompleteWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`ElasticTranscoder.Client.read_job` every 30 seconds until a successful state is
         reached. An error is returned after 120 failed checks.

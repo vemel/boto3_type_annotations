@@ -13,7 +13,7 @@ from mypy_boto3_events.type_defs import (
 
 
 class ListRuleNamesByTarget(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TargetArn: str,
@@ -96,7 +96,7 @@ class ListRuleNamesByTarget(Boto3Paginator):
 
 
 class ListRules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         NamePrefix: str = None,
@@ -231,7 +231,7 @@ class ListRules(Boto3Paginator):
 
 
 class ListTargetsByRule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Rule: str,
@@ -459,7 +459,7 @@ class ListTargetsByRule(Boto3Paginator):
 
                      ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-                     ``"InputTemplate": "<instance> is in state \"<status>\""``
+                     ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
                      ``}``
 

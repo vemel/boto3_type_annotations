@@ -94,7 +94,7 @@ from mypy_boto3_greengrass.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_role_to_group(
         self, GroupId: str, RoleArn: str
     ) -> ClientAssociateRoleToGroupResponseTypeDef:
@@ -138,7 +138,7 @@ class Client(BaseClient):
             was associated with the group.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_service_role_to_account(
         self, RoleArn: str
     ) -> ClientAssociateServiceRoleToAccountResponseTypeDef:
@@ -176,7 +176,7 @@ class Client(BaseClient):
             - **AssociatedAt** *(string) --* The time when the service role was associated with the account.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -193,7 +193,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_connector_definition(
         self,
         AmznClientToken: str = None,
@@ -301,7 +301,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_connector_definition_version(
         self,
         ConnectorDefinitionId: str,
@@ -382,7 +382,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_core_definition(
         self,
         AmznClientToken: str = None,
@@ -488,7 +488,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_core_definition_version(
         self,
         CoreDefinitionId: str,
@@ -567,7 +567,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment(
         self,
         DeploymentType: str,
@@ -629,7 +629,7 @@ class Client(BaseClient):
             - **DeploymentId** *(string) --* The ID of the deployment.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_device_definition(
         self,
         AmznClientToken: str = None,
@@ -734,7 +734,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_device_definition_version(
         self,
         DeviceDefinitionId: str,
@@ -812,7 +812,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_function_definition(
         self,
         AmznClientToken: str = None,
@@ -1035,7 +1035,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_function_definition_version(
         self,
         FunctionDefinitionId: str,
@@ -1230,7 +1230,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self,
         AmznClientToken: str = None,
@@ -1341,7 +1341,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group_certificate_authority(
         self, GroupId: str, AmznClientToken: str = None
     ) -> ClientCreateGroupCertificateAuthorityResponseTypeDef:
@@ -1381,7 +1381,7 @@ class Client(BaseClient):
             - **GroupCertificateAuthorityArn** *(string) --* The ARN of the group certificate authority.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group_version(
         self,
         GroupId: str,
@@ -1469,7 +1469,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_logger_definition(
         self,
         AmznClientToken: str = None,
@@ -1576,7 +1576,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_logger_definition_version(
         self,
         LoggerDefinitionId: str,
@@ -1656,7 +1656,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource_definition(
         self,
         AmznClientToken: str = None,
@@ -1853,7 +1853,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource_definition_version(
         self,
         ResourceDefinitionId: str,
@@ -2022,7 +2022,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_software_update_job(
         self,
         S3UrlSignerRole: str,
@@ -2108,7 +2108,7 @@ class Client(BaseClient):
             devices after the update.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subscription_definition(
         self,
         AmznClientToken: str = None,
@@ -2215,7 +2215,7 @@ class Client(BaseClient):
             - **Name** *(string) --* The name of the definition.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subscription_definition_version(
         self,
         SubscriptionDefinitionId: str,
@@ -2298,7 +2298,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The unique ID of the version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_connector_definition(self, ConnectorDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a connector definition.
@@ -2328,7 +2328,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_core_definition(self, CoreDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a core definition.
@@ -2358,7 +2358,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_device_definition(self, DeviceDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a device definition.
@@ -2388,7 +2388,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_function_definition(self, FunctionDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a Lambda function definition.
@@ -2418,7 +2418,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(self, GroupId: str) -> Dict[str, Any]:
         """
         Deletes a group.
@@ -2448,7 +2448,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_logger_definition(self, LoggerDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a logger definition.
@@ -2478,7 +2478,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_definition(self, ResourceDefinitionId: str) -> Dict[str, Any]:
         """
         Deletes a resource definition.
@@ -2508,7 +2508,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subscription_definition(
         self, SubscriptionDefinitionId: str
     ) -> Dict[str, Any]:
@@ -2540,7 +2540,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_role_from_group(
         self, GroupId: str
     ) -> ClientDisassociateRoleFromGroupResponseTypeDef:
@@ -2577,7 +2577,7 @@ class Client(BaseClient):
             was disassociated from the group.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_service_role_from_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientDisassociateServiceRoleFromAccountResponseTypeDef:
@@ -2610,7 +2610,7 @@ class Client(BaseClient):
             account.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2639,7 +2639,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_associated_role(
         self, GroupId: str
     ) -> ClientGetAssociatedRoleResponseTypeDef:
@@ -2678,7 +2678,7 @@ class Client(BaseClient):
             - **RoleArn** *(string) --* The ARN of the role that is associated with the group.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bulk_deployment_status(
         self, BulkDeploymentId: str
     ) -> ClientGetBulkDeploymentStatusResponseTypeDef:
@@ -2764,7 +2764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connectivity_info(
         self, ThingName: str
     ) -> ClientGetConnectivityInfoResponseTypeDef:
@@ -2821,7 +2821,7 @@ class Client(BaseClient):
             - **Message** *(string) --* A message about the connectivity info request.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connector_definition(
         self, ConnectorDefinitionId: str
     ) -> ClientGetConnectorDefinitionResponseTypeDef:
@@ -2888,7 +2888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connector_definition_version(
         self,
         ConnectorDefinitionId: str,
@@ -2988,7 +2988,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the connector definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_core_definition(
         self, CoreDefinitionId: str
     ) -> ClientGetCoreDefinitionResponseTypeDef:
@@ -3055,7 +3055,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_core_definition_version(
         self, CoreDefinitionId: str, CoreDefinitionVersionId: str
     ) -> ClientGetCoreDefinitionVersionResponseTypeDef:
@@ -3140,7 +3140,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the core definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment_status(
         self, DeploymentId: str, GroupId: str
     ) -> ClientGetDeploymentStatusResponseTypeDef:
@@ -3205,7 +3205,7 @@ class Client(BaseClient):
             status was updated.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_definition(
         self, DeviceDefinitionId: str
     ) -> ClientGetDeviceDefinitionResponseTypeDef:
@@ -3272,7 +3272,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_definition_version(
         self,
         DeviceDefinitionId: str,
@@ -3365,7 +3365,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the device definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_function_definition(
         self, FunctionDefinitionId: str
     ) -> ClientGetFunctionDefinitionResponseTypeDef:
@@ -3433,7 +3433,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_function_definition_version(
         self,
         FunctionDefinitionId: str,
@@ -3650,7 +3650,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the function definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group(self, GroupId: str) -> ClientGetGroupResponseTypeDef:
         """
         Retrieves information about a group.
@@ -3715,7 +3715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group_certificate_authority(
         self, CertificateAuthorityId: str, GroupId: str
     ) -> ClientGetGroupCertificateAuthorityResponseTypeDef:
@@ -3763,7 +3763,7 @@ class Client(BaseClient):
             - **PemEncodedCertificate** *(string) --* The PEM encoded certificate for the group.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group_certificate_configuration(
         self, GroupId: str
     ) -> ClientGetGroupCertificateConfigurationResponseTypeDef:
@@ -3807,7 +3807,7 @@ class Client(BaseClient):
             - **GroupId** *(string) --* The ID of the group certificate configuration.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group_version(
         self, GroupId: str, GroupVersionId: str
     ) -> ClientGetGroupVersionResponseTypeDef:
@@ -3893,7 +3893,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The ID of the group version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_logger_definition(
         self, LoggerDefinitionId: str
     ) -> ClientGetLoggerDefinitionResponseTypeDef:
@@ -3960,7 +3960,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_logger_definition_version(
         self,
         LoggerDefinitionId: str,
@@ -4052,7 +4052,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the logger definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4073,7 +4073,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_definition(
         self, ResourceDefinitionId: str
     ) -> ClientGetResourceDefinitionResponseTypeDef:
@@ -4140,7 +4140,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_definition_version(
         self, ResourceDefinitionId: str, ResourceDefinitionVersionId: str
     ) -> ClientGetResourceDefinitionVersionResponseTypeDef:
@@ -4317,7 +4317,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the resource definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_role_for_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetServiceRoleForAccountResponseTypeDef:
@@ -4352,7 +4352,7 @@ class Client(BaseClient):
             - **RoleArn** *(string) --* The ARN of the role which is associated with the account.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_subscription_definition(
         self, SubscriptionDefinitionId: str
     ) -> ClientGetSubscriptionDefinitionResponseTypeDef:
@@ -4419,7 +4419,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_subscription_definition_version(
         self,
         SubscriptionDefinitionId: str,
@@ -4515,7 +4515,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The version of the subscription definition version.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4528,7 +4528,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bulk_deployment_detailed_reports(
         self, BulkDeploymentId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListBulkDeploymentDetailedReportsResponseTypeDef:
@@ -4621,7 +4621,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bulk_deployments(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListBulkDeploymentsResponseTypeDef:
@@ -4681,7 +4681,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_connector_definition_versions(
         self, ConnectorDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListConnectorDefinitionVersionsResponseTypeDef:
@@ -4751,7 +4751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_connector_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListConnectorDefinitionsResponseTypeDef:
@@ -4835,7 +4835,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_core_definition_versions(
         self, CoreDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListCoreDefinitionVersionsResponseTypeDef:
@@ -4903,7 +4903,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_core_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListCoreDefinitionsResponseTypeDef:
@@ -4987,7 +4987,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_deployments(
         self, GroupId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListDeploymentsResponseTypeDef:
@@ -5058,7 +5058,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_device_definition_versions(
         self, DeviceDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListDeviceDefinitionVersionsResponseTypeDef:
@@ -5126,7 +5126,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_device_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListDeviceDefinitionsResponseTypeDef:
@@ -5210,7 +5210,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_function_definition_versions(
         self, FunctionDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListFunctionDefinitionVersionsResponseTypeDef:
@@ -5278,7 +5278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_function_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> Dict:
@@ -5363,7 +5363,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_certificate_authorities(
         self, GroupId: str
     ) -> ClientListGroupCertificateAuthoritiesResponseTypeDef:
@@ -5414,7 +5414,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_versions(
         self, GroupId: str, MaxResults: str = None, NextToken: str = None
     ) -> Dict:
@@ -5483,7 +5483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListGroupsResponseTypeDef:
@@ -5557,7 +5557,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_logger_definition_versions(
         self, LoggerDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListLoggerDefinitionVersionsResponseTypeDef:
@@ -5625,7 +5625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_logger_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListLoggerDefinitionsResponseTypeDef:
@@ -5709,7 +5709,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_definition_versions(
         self, ResourceDefinitionId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientListResourceDefinitionVersionsResponseTypeDef:
@@ -5777,7 +5777,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListResourceDefinitionsResponseTypeDef:
@@ -5861,7 +5861,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscription_definition_versions(
         self,
         SubscriptionDefinitionId: str,
@@ -5932,7 +5932,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscription_definitions(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientListSubscriptionDefinitionsResponseTypeDef:
@@ -6016,7 +6016,7 @@ class Client(BaseClient):
             no additional results.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -6059,7 +6059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_deployments(
         self, GroupId: str, AmznClientToken: str = None, Force: bool = None
     ) -> ClientResetDeploymentsResponseTypeDef:
@@ -6106,7 +6106,7 @@ class Client(BaseClient):
             - **DeploymentId** *(string) --* The ID of the deployment.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_bulk_deployment(
         self,
         ExecutionRoleArn: str,
@@ -6178,7 +6178,7 @@ class Client(BaseClient):
             - **BulkDeploymentId** *(string) --* The ID of the bulk deployment.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_bulk_deployment(self, BulkDeploymentId: str) -> Dict[str, Any]:
         """
         Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the
@@ -6211,8 +6211,8 @@ class Client(BaseClient):
           - *(dict) --* Success. The bulk deployment is being stopped.
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, tags: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, tags: Dict[str, str] = None) -> None:
         """
         Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition',
         'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
@@ -6243,8 +6243,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Remove resource tags from a Greengrass Resource.
 
@@ -6271,7 +6271,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_connectivity_info(
         self,
         ThingName: str,
@@ -6337,7 +6337,7 @@ class Client(BaseClient):
             - **Version** *(string) --* The new version of the connectivity info.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_connector_definition(
         self, ConnectorDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6373,7 +6373,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_core_definition(
         self, CoreDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6409,7 +6409,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_definition(
         self, DeviceDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6445,7 +6445,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_function_definition(
         self, FunctionDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6481,7 +6481,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(self, GroupId: str, Name: str = None) -> Dict[str, Any]:
         """
         Updates a group.
@@ -6515,7 +6515,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group_certificate_configuration(
         self, GroupId: str, CertificateExpiryInMilliseconds: str = None
     ) -> ClientUpdateGroupCertificateConfigurationResponseTypeDef:
@@ -6565,7 +6565,7 @@ class Client(BaseClient):
             - **GroupId** *(string) --* The ID of the group certificate configuration.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_logger_definition(
         self, LoggerDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6601,7 +6601,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resource_definition(
         self, ResourceDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:
@@ -6637,7 +6637,7 @@ class Client(BaseClient):
           - *(dict) --* success
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_subscription_definition(
         self, SubscriptionDefinitionId: str, Name: str = None
     ) -> Dict[str, Any]:

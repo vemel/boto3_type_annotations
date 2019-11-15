@@ -11,7 +11,7 @@ from mypy_boto3_iot1click_projects.type_defs import (
 
 
 class ListPlacements(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         projectName: str,
@@ -115,7 +115,7 @@ class ListPlacements(Boto3Paginator):
 
 
 class ListProjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProjectsPaginatePaginationConfigTypeDef = None
     ) -> ListProjectsPaginateResponseTypeDef:

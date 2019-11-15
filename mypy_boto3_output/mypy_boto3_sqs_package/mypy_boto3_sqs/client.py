@@ -1,11 +1,10 @@
 "Main interface for sqs Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_sqs.type_defs import (
     ClientChangeMessageVisibilityBatchEntriesTypeDef,
     ClientChangeMessageVisibilityBatchResponseTypeDef,
@@ -27,9 +26,9 @@ from mypy_boto3_sqs.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
-        self, QueueUrl: str, Label: str, AWSAccountIds: List[str], Actions: List[Any]
+        self, QueueUrl: str, Label: str, AWSAccountIds: List[str], Actions: List[str]
     ) -> None:
         """
         Adds a permission to a queue for a specific `principal
@@ -132,7 +131,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -149,7 +148,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_message_visibility(
         self, QueueUrl: str, ReceiptHandle: str, VisibilityTimeout: int
     ) -> None:
@@ -239,7 +238,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_message_visibility_batch(
         self,
         QueueUrl: str,
@@ -393,7 +392,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_queue(
         self,
         QueueName: str,
@@ -654,7 +653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_message(self, QueueUrl: str, ReceiptHandle: str) -> None:
         """
         Deletes the specified message from the specified queue. To select the message to delete, use the
@@ -702,7 +701,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_message_batch(
         self, QueueUrl: str, Entries: List[ClientDeleteMessageBatchEntriesTypeDef]
     ) -> ClientDeleteMessageBatchResponseTypeDef:
@@ -833,7 +832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_queue(self, QueueUrl: str) -> None:
         """
         Deletes the queue specified by the ``QueueUrl`` , regardless of the queue's contents. If the
@@ -877,7 +876,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -906,7 +905,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -927,7 +926,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_queue_attributes(
         self, QueueUrl: str, AttributeNames: List[str] = None
     ) -> ClientGetQueueAttributesResponseTypeDef:
@@ -1098,7 +1097,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_queue_url(
         self, QueueName: str, QueueOwnerAWSAccountId: str = None
     ) -> ClientGetQueueUrlResponseTypeDef:
@@ -1159,7 +1158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1172,7 +1171,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dead_letter_source_queues(
         self, QueueUrl: str
     ) -> ClientListDeadLetterSourceQueuesResponseTypeDef:
@@ -1227,7 +1226,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_queue_tags(self, QueueUrl: str) -> ClientListQueueTagsResponseTypeDef:
         """
         List all cost allocation tags added to the specified Amazon SQS queue. For an overview, see
@@ -1282,7 +1281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_queues(
         self, QueueNamePrefix: str = None
     ) -> ClientListQueuesResponseTypeDef:
@@ -1341,7 +1340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purge_queue(self, QueueUrl: str) -> None:
         """
         Deletes the messages in a queue specified by the ``QueueURL`` parameter.
@@ -1378,7 +1377,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def receive_message(
         self,
         QueueUrl: str,
@@ -1593,7 +1592,7 @@ class Client(BaseClient):
 
           The length of ``ReceiveRequestAttemptId`` is 128 characters. ``ReceiveRequestAttemptId`` can
           contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-          (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+          (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
           For best practices of using ``ReceiveRequestAttemptId`` , see `Using the ReceiveRequestAttemptId
           Request Parameter
@@ -1755,7 +1754,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(self, QueueUrl: str, Label: str) -> None:
         """
         Revokes any permissions in the queue policy that matches the specified ``Label`` parameter.
@@ -1798,7 +1797,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_message(
         self,
         QueueUrl: str,
@@ -2055,7 +2054,7 @@ class Client(BaseClient):
 
           The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
           contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-          (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+          (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
           For best practices of using ``MessageDeduplicationId`` , see `Using the MessageDeduplicationId
           Property
@@ -2082,7 +2081,7 @@ class Client(BaseClient):
           ``MessageGroupId`` .
 
           The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-          punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+          punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
           For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
           <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__
@@ -2150,7 +2149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_message_batch(
         self, QueueUrl: str, Entries: List[ClientSendMessageBatchEntriesTypeDef]
     ) -> ClientSendMessageBatchResponseTypeDef:
@@ -2430,7 +2429,7 @@ class Client(BaseClient):
 
               The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
               contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-              (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+              (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
               For best practices of using ``MessageDeduplicationId`` , see `Using the
               MessageDeduplicationId Property
@@ -2456,7 +2455,7 @@ class Client(BaseClient):
               ``MessageGroupId`` .
 
               The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-              punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+              punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
               For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
               <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__
@@ -2573,8 +2572,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def set_queue_attributes(self, QueueUrl: str, Attributes: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_queue_attributes(self, QueueUrl: str, Attributes: Dict[str, str]) -> None:
         """
         Sets the value of one or more queue attributes. When you change a queue's attributes, the change
         can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system.
@@ -2725,8 +2724,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_queue(self, QueueUrl: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_queue(self, QueueUrl: str, Tags: List[str]) -> None:
         """
         Add cost allocation tags to the specified Amazon SQS queue. For an overview, see `Tagging Your
         Amazon SQS Queues
@@ -2782,8 +2781,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_queue(self, QueueUrl: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_queue(self, QueueUrl: str, TagKeys: List[str]) -> None:
         """
         Remove cost allocation tags from the specified Amazon SQS queue. For an overview, see `Tagging Your
         Amazon SQS Queues

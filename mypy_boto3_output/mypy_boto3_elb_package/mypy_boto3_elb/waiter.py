@@ -1,22 +1,25 @@
 "Main interface for elb Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_elb.type_defs import (
     AnyInstanceInServiceWaitInstancesTypeDef,
+    AnyInstanceInServiceWaitWaiterConfigTypeDef,
     InstanceDeregisteredWaitInstancesTypeDef,
+    InstanceDeregisteredWaitWaiterConfigTypeDef,
     InstanceInServiceWaitInstancesTypeDef,
+    InstanceInServiceWaitWaiterConfigTypeDef,
 )
 
 
 class AnyInstanceInService(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerName: str,
         Instances: List[AnyInstanceInServiceWaitInstancesTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: AnyInstanceInServiceWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancing.Client.describe_instance_health` every 15 seconds until a
@@ -76,12 +79,12 @@ class AnyInstanceInService(Boto3Waiter):
 
 
 class InstanceDeregistered(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerName: str,
         Instances: List[InstanceDeregisteredWaitInstancesTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceDeregisteredWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancing.Client.describe_instance_health` every 15 seconds until a
@@ -141,12 +144,12 @@ class InstanceDeregistered(Boto3Waiter):
 
 
 class InstanceInService(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         LoadBalancerName: str,
         Instances: List[InstanceInServiceWaitInstancesTypeDef] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceInServiceWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElasticLoadBalancing.Client.describe_instance_health` every 15 seconds until a

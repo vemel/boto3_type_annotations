@@ -35,7 +35,7 @@ from mypy_boto3_batch.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -52,7 +52,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_job(self, jobId: str, reason: str) -> Dict[str, Any]:
         """
         Cancels a job in an AWS Batch job queue. Jobs that are in the ``SUBMITTED`` , ``PENDING`` , or
@@ -95,7 +95,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_compute_environment(
         self,
         computeEnvironmentName: str,
@@ -394,7 +394,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_job_queue(
         self,
         jobQueueName: str,
@@ -496,7 +496,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_compute_environment(self, computeEnvironment: str) -> Dict[str, Any]:
         """
         Deletes an AWS Batch compute environment.
@@ -532,7 +532,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_job_queue(self, jobQueue: str) -> Dict[str, Any]:
         """
         Deletes the specified job queue. You must first disable submissions for a queue with the
@@ -568,7 +568,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_job_definition(self, jobDefinition: str) -> Dict[str, Any]:
         """
         Deregisters an AWS Batch job definition.
@@ -601,7 +601,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_compute_environments(
         self,
         computeEnvironments: List[str] = None,
@@ -925,7 +925,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job_definitions(
         self,
         jobDefinitions: List[str] = None,
@@ -1263,7 +1263,7 @@ class Client(BaseClient):
                     section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
                     the ``COMMAND`` parameter to `docker run
                     <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                    `https://docs.docker.com/engine/reference/builder/#cmd
+                    `https\\://docs.docker.com/engine/reference/builder/#cmd
                     <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                     - *(string) --*
@@ -1584,7 +1584,7 @@ class Client(BaseClient):
                           `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                           ``COMMAND`` parameter to `docker run
                           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                          `https://docs.docker.com/engine/reference/builder/#cmd
+                          `https\\://docs.docker.com/engine/reference/builder/#cmd
                           <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                           - *(string) --*
@@ -1812,7 +1812,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job_queues(
         self, jobQueues: List[str] = None, maxResults: int = None, nextToken: str = None
     ) -> ClientDescribeJobQueuesResponseTypeDef:
@@ -1955,7 +1955,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_jobs(self, jobs: List[str]) -> ClientDescribeJobsResponseTypeDef:
         """
         Describes a list of AWS Batch jobs.
@@ -2713,7 +2713,7 @@ class Client(BaseClient):
                           `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                           ``COMMAND`` parameter to `docker run
                           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                          `https://docs.docker.com/engine/reference/builder/#cmd
+                          `https\\://docs.docker.com/engine/reference/builder/#cmd
                           <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                           - *(string) --*
@@ -2965,7 +2965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2994,7 +2994,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3015,7 +3015,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3028,7 +3028,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self,
         jobQueue: str = None,
@@ -3244,7 +3244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_job_definition(
         self,
         jobDefinitionName: str,
@@ -3484,7 +3484,7 @@ class Client(BaseClient):
             container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__ section of the
             `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the ``COMMAND`` parameter
             to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#cmd
+            `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
             - *(string) --*
@@ -3781,7 +3781,7 @@ class Client(BaseClient):
                   `Create a container <https://docs.docker.com/engine/api/v1.23/#create-a-container>`__
                   section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                   ``COMMAND`` parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-                  For more information, see `https://docs.docker.com/engine/reference/builder/#cmd
+                  For more information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
                   <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                   - *(string) --*
@@ -4048,7 +4048,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def submit_job(
         self,
         jobName: str,
@@ -4445,7 +4445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_job(self, jobId: str, reason: str) -> Dict[str, Any]:
         """
         Terminates a job in a job queue. Jobs that are in the ``STARTING`` or ``RUNNING`` state are
@@ -4487,7 +4487,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_compute_environment(
         self,
         computeEnvironment: str,
@@ -4586,7 +4586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_job_queue(
         self,
         jobQueue: str,

@@ -37,7 +37,7 @@ from mypy_boto3_groundstation.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -54,7 +54,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_contact(self, contactId: str) -> ClientCancelContactResponseTypeDef:
         """
         Cancels a contact with a specified contact ID.
@@ -93,7 +93,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_config(
         self,
         configData: ClientCreateConfigconfigDataTypeDef,
@@ -383,7 +383,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataflow_endpoint_group(
         self,
         endpointDetails: List[ClientCreateDataflowEndpointGroupendpointDetailsTypeDef],
@@ -513,7 +513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_mission_profile(
         self,
         dataflowEdges: List[List[str]],
@@ -618,7 +618,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_config(
         self, configId: str, configType: str
     ) -> ClientDeleteConfigResponseTypeDef:
@@ -679,7 +679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataflow_endpoint_group(
         self, dataflowEndpointGroupId: str
     ) -> ClientDeleteDataflowEndpointGroupResponseTypeDef:
@@ -720,7 +720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_mission_profile(
         self, missionProfileId: str
     ) -> ClientDeleteMissionProfileResponseTypeDef:
@@ -761,7 +761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_contact(self, contactId: str) -> ClientDescribeContactResponseTypeDef:
         """
         Describes an existing contact.
@@ -876,7 +876,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -905,7 +905,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_config(
         self, configId: str, configType: str
     ) -> ClientGetConfigResponseTypeDef:
@@ -1204,7 +1204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dataflow_endpoint_group(
         self, dataflowEndpointGroupId: str
     ) -> ClientGetDataflowEndpointGroupResponseTypeDef:
@@ -1335,7 +1335,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_minute_usage(
         self, month: int, year: int
     ) -> ClientGetMinuteUsageResponseTypeDef:
@@ -1403,7 +1403,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_mission_profile(
         self, missionProfileId: str
     ) -> ClientGetMissionProfileResponseTypeDef:
@@ -1507,7 +1507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1528,7 +1528,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_satellite(self, satelliteId: str) -> ClientGetSatelliteResponseTypeDef:
         """
         Returns a satellite.
@@ -1598,7 +1598,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1611,7 +1611,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configs(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListConfigsResponseTypeDef:
@@ -1694,7 +1694,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_contacts(
         self,
         endTime: datetime,
@@ -1888,7 +1888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataflow_endpoint_groups(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListDataflowEndpointGroupsResponseTypeDef:
@@ -1959,7 +1959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ground_stations(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListGroundStationsResponseTypeDef:
@@ -2033,7 +2033,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_mission_profiles(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListMissionProfilesResponseTypeDef:
@@ -2114,7 +2114,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_satellites(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListSatellitesResponseTypeDef:
@@ -2188,7 +2188,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2235,7 +2235,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reserve_contact(
         self,
         endTime: datetime,
@@ -2318,7 +2318,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: Dict[str, str] = None
     ) -> Dict[str, Any]:
@@ -2365,7 +2365,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Deassigns a resource tag.
@@ -2408,7 +2408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_config(
         self,
         configData: ClientUpdateConfigconfigDataTypeDef,
@@ -2702,7 +2702,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_mission_profile(
         self,
         missionProfileId: str,

@@ -160,7 +160,7 @@ class ClientAddApplicationInputInputInputProcessingConfigurationInputLambdaProce
 
         To specify an earlier version of the Lambda function than the latest, include the Lambda
         function version in the Lambda function ARN. For more information about Lambda ARNs, see
-        `Example ARNs: AWS Lambda
+        `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -196,7 +196,7 @@ class ClientAddApplicationInputInputInputProcessingConfigurationTypeDef(
 
           To specify an earlier version of the Lambda function than the latest, include the Lambda
           function version in the Lambda function ARN. For more information about Lambda ARNs, see
-          `Example ARNs: AWS Lambda
+          `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -257,7 +257,7 @@ class ClientAddApplicationInputInputInputSchemaRecordFormatMappingParametersCSVM
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -323,7 +323,7 @@ class ClientAddApplicationInputInputInputSchemaRecordFormatMappingParametersType
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -380,7 +380,7 @@ class ClientAddApplicationInputInputInputSchemaRecordFormatTypeDef(
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -447,7 +447,7 @@ class ClientAddApplicationInputInputInputSchemaTypeDef(
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -579,7 +579,7 @@ class ClientAddApplicationInputInputTypeDef(
 
             To specify an earlier version of the Lambda function than the latest, include the Lambda
             function version in the Lambda function ARN. For more information about Lambda ARNs, see
-            `Example ARNs: AWS Lambda
+            `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **KinesisStreamsInput** *(dict) --*
@@ -645,7 +645,7 @@ class ClientAddApplicationInputInputTypeDef(
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -706,7 +706,7 @@ class ClientAddApplicationInputProcessingConfigurationInputProcessingConfigurati
 
         To specify an earlier version of the Lambda function than the latest, include the Lambda
         function version in the Lambda function ARN. For more information about Lambda ARNs, see
-        `Example ARNs: AWS Lambda
+        `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -740,7 +740,7 @@ class ClientAddApplicationInputProcessingConfigurationInputProcessingConfigurati
 
           To specify an earlier version of the Lambda function than the latest, include the Lambda
           function version in the Lambda function ARN. For more information about Lambda ARNs, see
-          `Example ARNs: AWS Lambda
+          `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -768,7 +768,7 @@ class ClientAddApplicationInputProcessingConfigurationResponseInputProcessingCon
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about Lambda
-        ARNs, see `Example ARNs: AWS Lambda
+        ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **RoleARN** *(string) --*
@@ -813,7 +813,7 @@ class ClientAddApplicationInputProcessingConfigurationResponseInputProcessingCon
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about Lambda
-          ARNs, see `Example ARNs: AWS Lambda
+          ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
       - **RoleARN** *(string) --*
@@ -876,7 +876,7 @@ class ClientAddApplicationInputProcessingConfigurationResponseTypeDef(
 
             To specify an earlier version of the Lambda function than the latest, include the
             Lambda function version in the Lambda function ARN. For more information about Lambda
-            ARNs, see `Example ARNs: AWS Lambda
+            ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **RoleARN** *(string) --*
@@ -937,7 +937,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputProcessingConfigura
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about
-        Lambda ARNs, see `Example ARNs: AWS Lambda
+        Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **RoleARN** *(string) --*
@@ -983,7 +983,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputProcessingConfigura
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about
-          Lambda ARNs, see `Example ARNs: AWS Lambda
+          Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
       - **RoleARN** *(string) --*
@@ -1050,7 +1050,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputSchemaRecordFormatM
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -1119,7 +1119,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputSchemaRecordFormatM
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -1174,7 +1174,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputSchemaRecordFormatT
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -1237,7 +1237,7 @@ class ClientAddApplicationInputResponseInputDescriptionsInputSchemaTypeDef(
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -1430,7 +1430,7 @@ class ClientAddApplicationInputResponseInputDescriptionsTypeDef(
 
             To specify an earlier version of the Lambda function than the latest, include the
             Lambda function version in the Lambda function ARN. For more information about
-            Lambda ARNs, see `Example ARNs: AWS Lambda
+            Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **RoleARN** *(string) --*
@@ -1517,7 +1517,7 @@ class ClientAddApplicationInputResponseInputDescriptionsTypeDef(
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -1652,7 +1652,7 @@ class ClientAddApplicationInputResponseTypeDef(
 
                 To specify an earlier version of the Lambda function than the latest, include the
                 Lambda function version in the Lambda function ARN. For more information about
-                Lambda ARNs, see `Example ARNs: AWS Lambda
+                Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
             - **RoleARN** *(string) --*
@@ -1739,7 +1739,7 @@ class ClientAddApplicationInputResponseTypeDef(
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -1885,7 +1885,7 @@ class ClientAddApplicationOutputOutputLambdaOutputTypeDef(
 
         To specify an earlier version of the Lambda function than the latest, include the Lambda
         function version in the Lambda function ARN. For more information about Lambda ARNs, see
-        `Example ARNs: AWS Lambda
+        `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -1952,7 +1952,7 @@ class ClientAddApplicationOutputOutputTypeDef(
 
           To specify an earlier version of the Lambda function than the latest, include the Lambda
           function version in the Lambda function ARN. For more information about Lambda ARNs, see
-          `Example ARNs: AWS Lambda
+          `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -2357,7 +2357,7 @@ class ClientAddApplicationReferenceDataSourceReferenceDataSourceReferenceSchemaR
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -2423,7 +2423,7 @@ class ClientAddApplicationReferenceDataSourceReferenceDataSourceReferenceSchemaR
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -2480,7 +2480,7 @@ class ClientAddApplicationReferenceDataSourceReferenceDataSourceReferenceSchemaR
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -2545,7 +2545,7 @@ class ClientAddApplicationReferenceDataSourceReferenceDataSourceReferenceSchemaT
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -2690,7 +2690,7 @@ class ClientAddApplicationReferenceDataSourceReferenceDataSourceTypeDef(
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
 
@@ -2780,7 +2780,7 @@ class ClientAddApplicationReferenceDataSourceResponseReferenceDataSourceDescript
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -2849,7 +2849,7 @@ class ClientAddApplicationReferenceDataSourceResponseReferenceDataSourceDescript
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -2904,7 +2904,7 @@ class ClientAddApplicationReferenceDataSourceResponseReferenceDataSourceDescript
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -2967,7 +2967,7 @@ class ClientAddApplicationReferenceDataSourceResponseReferenceDataSourceDescript
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -3132,7 +3132,7 @@ class ClientAddApplicationReferenceDataSourceResponseReferenceDataSourceDescript
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -3277,7 +3277,7 @@ class ClientAddApplicationReferenceDataSourceResponseTypeDef(
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -3814,7 +3814,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about
-        Lambda ARNs, see `Example ARNs: AWS Lambda
+        Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -3850,7 +3850,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about
-          Lambda ARNs, see `Example ARNs: AWS Lambda
+          Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -3911,7 +3911,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -3979,7 +3979,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4038,7 +4038,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4107,7 +4107,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4244,7 +4244,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
             To specify an earlier version of the Lambda function than the latest, include the
             Lambda function version in the Lambda function ARN. For more information about
-            Lambda ARNs, see `Example ARNs: AWS Lambda
+            Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **KinesisStreamsInput** *(dict) --*
@@ -4311,7 +4311,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4432,7 +4432,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about Lambda
-        ARNs, see `Example ARNs: AWS Lambda
+        ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -4499,7 +4499,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about Lambda
-          ARNs, see `Example ARNs: AWS Lambda
+          ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -4568,7 +4568,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4636,7 +4636,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4695,7 +4695,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4762,7 +4762,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -4910,7 +4910,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -5010,7 +5010,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
                 To specify an earlier version of the Lambda function than the latest, include the
                 Lambda function version in the Lambda function ARN. For more information about
-                Lambda ARNs, see `Example ARNs: AWS Lambda
+                Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **KinesisStreamsInput** *(dict) --*
@@ -5077,7 +5077,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
                 - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -5157,7 +5157,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
               To specify an earlier version of the Lambda function than the latest, include the
               Lambda function version in the Lambda function ARN. For more information about Lambda
-              ARNs, see `Example ARNs: AWS Lambda
+              ARNs, see `Example ARNs\\: AWS Lambda
               </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -5234,7 +5234,7 @@ class ClientCreateApplicationApplicationConfigurationSqlApplicationConfiguration
 
                 - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -5340,7 +5340,7 @@ class ClientCreateApplicationApplicationConfigurationTypeDef(
 
                   To specify an earlier version of the Lambda function than the latest, include the
                   Lambda function version in the Lambda function ARN. For more information about
-                  Lambda ARNs, see `Example ARNs: AWS Lambda
+                  Lambda ARNs, see `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **KinesisStreamsInput** *(dict) --*
@@ -5407,7 +5407,7 @@ class ClientCreateApplicationApplicationConfigurationTypeDef(
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -5487,7 +5487,7 @@ class ClientCreateApplicationApplicationConfigurationTypeDef(
 
                 To specify an earlier version of the Lambda function than the latest, include the
                 Lambda function version in the Lambda function ARN. For more information about Lambda
-                ARNs, see `Example ARNs: AWS Lambda
+                ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **DestinationSchema** *(dict) --* **[REQUIRED]**
@@ -5564,7 +5564,7 @@ class ClientCreateApplicationApplicationConfigurationTypeDef(
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -6332,7 +6332,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         To specify an earlier version of the Lambda function than the latest, include
         the Lambda function version in the Lambda function ARN. For more information
-        about Lambda ARNs, see `Example ARNs: AWS Lambda
+        about Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **RoleARN** *(string) --*
@@ -6379,7 +6379,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           To specify an earlier version of the Lambda function than the latest, include
           the Lambda function version in the Lambda function ARN. For more information
-          about Lambda ARNs, see `Example ARNs: AWS Lambda
+          about Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
       - **RoleARN** *(string) --*
@@ -6448,7 +6448,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -6517,7 +6517,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -6572,7 +6572,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -6635,7 +6635,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -6833,7 +6833,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             To specify an earlier version of the Lambda function than the latest, include
             the Lambda function version in the Lambda function ARN. For more information
-            about Lambda ARNs, see `Example ARNs: AWS Lambda
+            about Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **RoleARN** *(string) --*
@@ -6921,7 +6921,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -7266,7 +7266,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -7335,7 +7335,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -7390,7 +7390,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -7453,7 +7453,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -7623,7 +7623,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -7735,7 +7735,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 To specify an earlier version of the Lambda function than the latest, include
                 the Lambda function version in the Lambda function ARN. For more information
-                about Lambda ARNs, see `Example ARNs: AWS Lambda
+                about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
             - **RoleARN** *(string) --*
@@ -7823,7 +7823,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -8058,7 +8058,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -8171,7 +8171,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   To specify an earlier version of the Lambda function than the latest, include
                   the Lambda function version in the Lambda function ARN. For more information
-                  about Lambda ARNs, see `Example ARNs: AWS Lambda
+                  about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
               - **RoleARN** *(string) --*
@@ -8259,7 +8259,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -8494,7 +8494,7 @@ class ClientCreateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -8869,7 +8869,7 @@ class ClientCreateApplicationResponseApplicationDetailTypeDef(
 
                     To specify an earlier version of the Lambda function than the latest, include
                     the Lambda function version in the Lambda function ARN. For more information
-                    about Lambda ARNs, see `Example ARNs: AWS Lambda
+                    about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                     </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **RoleARN** *(string) --*
@@ -8957,7 +8957,7 @@ class ClientCreateApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -9192,7 +9192,7 @@ class ClientCreateApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -9544,7 +9544,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
                       To specify an earlier version of the Lambda function than the latest, include
                       the Lambda function version in the Lambda function ARN. For more information
-                      about Lambda ARNs, see `Example ARNs: AWS Lambda
+                      about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                       </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                   - **RoleARN** *(string) --*
@@ -9632,7 +9632,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*
@@ -9867,7 +9867,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*
@@ -10864,7 +10864,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
         To specify an earlier version of the Lambda function than the latest, include
         the Lambda function version in the Lambda function ARN. For more information
-        about Lambda ARNs, see `Example ARNs: AWS Lambda
+        about Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **RoleARN** *(string) --*
@@ -10911,7 +10911,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
           To specify an earlier version of the Lambda function than the latest, include
           the Lambda function version in the Lambda function ARN. For more information
-          about Lambda ARNs, see `Example ARNs: AWS Lambda
+          about Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
       - **RoleARN** *(string) --*
@@ -10980,7 +10980,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -11049,7 +11049,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -11104,7 +11104,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -11167,7 +11167,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -11365,7 +11365,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
             To specify an earlier version of the Lambda function than the latest, include
             the Lambda function version in the Lambda function ARN. For more information
-            about Lambda ARNs, see `Example ARNs: AWS Lambda
+            about Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **RoleARN** *(string) --*
@@ -11453,7 +11453,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -11798,7 +11798,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -11867,7 +11867,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -11922,7 +11922,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -11985,7 +11985,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -12155,7 +12155,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -12267,7 +12267,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                 To specify an earlier version of the Lambda function than the latest, include
                 the Lambda function version in the Lambda function ARN. For more information
-                about Lambda ARNs, see `Example ARNs: AWS Lambda
+                about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
             - **RoleARN** *(string) --*
@@ -12355,7 +12355,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -12590,7 +12590,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -12703,7 +12703,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                   To specify an earlier version of the Lambda function than the latest, include
                   the Lambda function version in the Lambda function ARN. For more information
-                  about Lambda ARNs, see `Example ARNs: AWS Lambda
+                  about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
               - **RoleARN** *(string) --*
@@ -12791,7 +12791,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -13026,7 +13026,7 @@ class ClientDescribeApplicationResponseApplicationDetailApplicationConfiguration
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -13401,7 +13401,7 @@ class ClientDescribeApplicationResponseApplicationDetailTypeDef(
 
                     To specify an earlier version of the Lambda function than the latest, include
                     the Lambda function version in the Lambda function ARN. For more information
-                    about Lambda ARNs, see `Example ARNs: AWS Lambda
+                    about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                     </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **RoleARN** *(string) --*
@@ -13489,7 +13489,7 @@ class ClientDescribeApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -13724,7 +13724,7 @@ class ClientDescribeApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -14078,7 +14078,7 @@ class ClientDescribeApplicationResponseTypeDef(
 
                       To specify an earlier version of the Lambda function than the latest, include
                       the Lambda function version in the Lambda function ARN. For more information
-                      about Lambda ARNs, see `Example ARNs: AWS Lambda
+                      about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                       </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                   - **RoleARN** *(string) --*
@@ -14166,7 +14166,7 @@ class ClientDescribeApplicationResponseTypeDef(
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*
@@ -14401,7 +14401,7 @@ class ClientDescribeApplicationResponseTypeDef(
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*
@@ -14744,7 +14744,7 @@ class ClientDiscoverInputSchemaInputProcessingConfigurationInputLambdaProcessorT
 
         To specify an earlier version of the Lambda function than the latest, include the Lambda
         function version in the Lambda function ARN. For more information about Lambda ARNs, see
-        `Example ARNs: AWS Lambda
+        `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -14779,7 +14779,7 @@ class ClientDiscoverInputSchemaInputProcessingConfigurationTypeDef(
 
           To specify an earlier version of the Lambda function than the latest, include the Lambda
           function version in the Lambda function ARN. For more information about Lambda ARNs, see
-          `Example ARNs: AWS Lambda
+          `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -14867,7 +14867,7 @@ class ClientDiscoverInputSchemaResponseInputSchemaRecordFormatMappingParametersC
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
 
@@ -14934,7 +14934,7 @@ class ClientDiscoverInputSchemaResponseInputSchemaRecordFormatMappingParametersT
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
 
@@ -14987,7 +14987,7 @@ class ClientDiscoverInputSchemaResponseInputSchemaRecordFormatTypeDef(
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
 
@@ -15049,7 +15049,7 @@ class ClientDiscoverInputSchemaResponseInputSchemaTypeDef(
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
 
@@ -15141,7 +15141,7 @@ class ClientDiscoverInputSchemaResponseTypeDef(
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row delimiter.
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
 
@@ -16139,7 +16139,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about
-        Lambda ARNs, see `Example ARNs: AWS Lambda
+        Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -16173,7 +16173,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about
-          Lambda ARNs, see `Example ARNs: AWS Lambda
+          Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -16234,7 +16234,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16302,7 +16302,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16361,7 +16361,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16424,7 +16424,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16560,7 +16560,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
             To specify an earlier version of the Lambda function than the latest, include the
             Lambda function version in the Lambda function ARN. For more information about
-            Lambda ARNs, see `Example ARNs: AWS Lambda
+            Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **KinesisStreamsInputUpdate** *(dict) --*
@@ -16617,7 +16617,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16749,7 +16749,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
         To specify an earlier version of the Lambda function than the latest, include the
         Lambda function version in the Lambda function ARN. For more information about Lambda
-        ARNs, see `Example ARNs: AWS Lambda
+        ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
     """
 
@@ -16819,7 +16819,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
           To specify an earlier version of the Lambda function than the latest, include the
           Lambda function version in the Lambda function ARN. For more information about Lambda
-          ARNs, see `Example ARNs: AWS Lambda
+          ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **DestinationSchemaUpdate** *(dict) --*
@@ -16888,7 +16888,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
     - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -16956,7 +16956,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
       - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17015,7 +17015,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
         - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17082,7 +17082,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
           - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17235,7 +17235,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
             - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17334,7 +17334,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
                 To specify an earlier version of the Lambda function than the latest, include the
                 Lambda function version in the Lambda function ARN. For more information about
-                Lambda ARNs, see `Example ARNs: AWS Lambda
+                Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **KinesisStreamsInputUpdate** *(dict) --*
@@ -17391,7 +17391,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
                 - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17486,7 +17486,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
               To specify an earlier version of the Lambda function than the latest, include the
               Lambda function version in the Lambda function ARN. For more information about Lambda
-              ARNs, see `Example ARNs: AWS Lambda
+              ARNs, see `Example ARNs\\: AWS Lambda
               </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **DestinationSchemaUpdate** *(dict) --*
@@ -17569,7 +17569,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateSqlApplicationConfigu
 
                 - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17668,7 +17668,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateTypeDef(
 
                   To specify an earlier version of the Lambda function than the latest, include the
                   Lambda function version in the Lambda function ARN. For more information about
-                  Lambda ARNs, see `Example ARNs: AWS Lambda
+                  Lambda ARNs, see `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **KinesisStreamsInputUpdate** *(dict) --*
@@ -17725,7 +17725,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateTypeDef(
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -17820,7 +17820,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateTypeDef(
 
                 To specify an earlier version of the Lambda function than the latest, include the
                 Lambda function version in the Lambda function ARN. For more information about Lambda
-                ARNs, see `Example ARNs: AWS Lambda
+                ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
           - **DestinationSchemaUpdate** *(dict) --*
@@ -17903,7 +17903,7 @@ class ClientUpdateApplicationApplicationConfigurationUpdateTypeDef(
 
                   - **RecordRowDelimiter** *(string) --* **[REQUIRED]**
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --* **[REQUIRED]**
@@ -18672,7 +18672,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         To specify an earlier version of the Lambda function than the latest, include
         the Lambda function version in the Lambda function ARN. For more information
-        about Lambda ARNs, see `Example ARNs: AWS Lambda
+        about Lambda ARNs, see `Example ARNs\\: AWS Lambda
         </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
     - **RoleARN** *(string) --*
@@ -18719,7 +18719,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           To specify an earlier version of the Lambda function than the latest, include
           the Lambda function version in the Lambda function ARN. For more information
-          about Lambda ARNs, see `Example ARNs: AWS Lambda
+          about Lambda ARNs, see `Example ARNs\\: AWS Lambda
           </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
       - **RoleARN** *(string) --*
@@ -18788,7 +18788,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -18857,7 +18857,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -18912,7 +18912,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -18975,7 +18975,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -19173,7 +19173,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             To specify an earlier version of the Lambda function than the latest, include
             the Lambda function version in the Lambda function ARN. For more information
-            about Lambda ARNs, see `Example ARNs: AWS Lambda
+            about Lambda ARNs, see `Example ARNs\\: AWS Lambda
             </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
         - **RoleARN** *(string) --*
@@ -19261,7 +19261,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -19606,7 +19606,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
     - **RecordRowDelimiter** *(string) --*
 
-      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
       delimiter.
 
     - **RecordColumnDelimiter** *(string) --*
@@ -19675,7 +19675,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
       - **RecordRowDelimiter** *(string) --*
 
-        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
         delimiter.
 
       - **RecordColumnDelimiter** *(string) --*
@@ -19730,7 +19730,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
         - **RecordRowDelimiter** *(string) --*
 
-          The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+          The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
           delimiter.
 
         - **RecordColumnDelimiter** *(string) --*
@@ -19793,7 +19793,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
           - **RecordRowDelimiter** *(string) --*
 
-            The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+            The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
             delimiter.
 
           - **RecordColumnDelimiter** *(string) --*
@@ -19963,7 +19963,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
             - **RecordRowDelimiter** *(string) --*
 
-              The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+              The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
               delimiter.
 
             - **RecordColumnDelimiter** *(string) --*
@@ -20075,7 +20075,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 To specify an earlier version of the Lambda function than the latest, include
                 the Lambda function version in the Lambda function ARN. For more information
-                about Lambda ARNs, see `Example ARNs: AWS Lambda
+                about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                 </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
             - **RoleARN** *(string) --*
@@ -20163,7 +20163,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -20398,7 +20398,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                 - **RecordRowDelimiter** *(string) --*
 
-                  The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                  The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                   delimiter.
 
                 - **RecordColumnDelimiter** *(string) --*
@@ -20511,7 +20511,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   To specify an earlier version of the Lambda function than the latest, include
                   the Lambda function version in the Lambda function ARN. For more information
-                  about Lambda ARNs, see `Example ARNs: AWS Lambda
+                  about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                   </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
               - **RoleARN** *(string) --*
@@ -20599,7 +20599,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -20834,7 +20834,7 @@ class ClientUpdateApplicationResponseApplicationDetailApplicationConfigurationDe
 
                   - **RecordRowDelimiter** *(string) --*
 
-                    The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                    The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                     delimiter.
 
                   - **RecordColumnDelimiter** *(string) --*
@@ -21208,7 +21208,7 @@ class ClientUpdateApplicationResponseApplicationDetailTypeDef(
 
                     To specify an earlier version of the Lambda function than the latest, include
                     the Lambda function version in the Lambda function ARN. For more information
-                    about Lambda ARNs, see `Example ARNs: AWS Lambda
+                    about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                     </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                 - **RoleARN** *(string) --*
@@ -21296,7 +21296,7 @@ class ClientUpdateApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -21531,7 +21531,7 @@ class ClientUpdateApplicationResponseApplicationDetailTypeDef(
 
                     - **RecordRowDelimiter** *(string) --*
 
-                      The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                      The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                       delimiter.
 
                     - **RecordColumnDelimiter** *(string) --*
@@ -21882,7 +21882,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
                       To specify an earlier version of the Lambda function than the latest, include
                       the Lambda function version in the Lambda function ARN. For more information
-                      about Lambda ARNs, see `Example ARNs: AWS Lambda
+                      about Lambda ARNs, see `Example ARNs\\: AWS Lambda
                       </general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-lambda>`__
 
                   - **RoleARN** *(string) --*
@@ -21970,7 +21970,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*
@@ -22205,7 +22205,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
                       - **RecordRowDelimiter** *(string) --*
 
-                        The row delimiter. For example, in a CSV format, *'\n'* is the typical row
+                        The row delimiter. For example, in a CSV format, *'\\n'* is the typical row
                         delimiter.
 
                       - **RecordColumnDelimiter** *(string) --*

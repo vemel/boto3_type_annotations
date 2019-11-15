@@ -22,7 +22,7 @@ from mypy_boto3_sts.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assume_role(
         self,
         RoleArn: str,
@@ -222,8 +222,8 @@ class Client(BaseClient):
 
           The plain text that you use for both inline and managed session policies shouldn't exceed 2048
           characters. The JSON policy characters can be any ASCII character from the space character to the
-          end of the valid character list (\u0020 through \u00FF). It can also include the tab (\u0009),
-          linefeed (\u000A), and carriage return (\u000D) characters.
+          end of the valid character list (\\u0020 through \\u00FF). It can also include the tab (\\u0009),
+          linefeed (\\u000A), and carriage return (\\u000D) characters.
 
           .. note::
 
@@ -380,7 +380,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assume_role_with_saml(
         self,
         RoleArn: str,
@@ -566,8 +566,8 @@ class Client(BaseClient):
 
           The plain text that you use for both inline and managed session policies shouldn't exceed 2048
           characters. The JSON policy characters can be any ASCII character from the space character to the
-          end of the valid character list (\u0020 through \u00FF). It can also include the tab (\u0009),
-          linefeed (\u000A), and carriage return (\u000D) characters.
+          end of the valid character list (\\u0020 through \\u00FF). It can also include the tab (\\u0009),
+          linefeed (\\u000A), and carriage return (\\u000D) characters.
 
           .. note::
 
@@ -719,7 +719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assume_role_with_web_identity(
         self,
         RoleArn: str,
@@ -943,8 +943,8 @@ class Client(BaseClient):
 
           The plain text that you use for both inline and managed session policies shouldn't exceed 2048
           characters. The JSON policy characters can be any ASCII character from the space character to the
-          end of the valid character list (\u0020 through \u00FF). It can also include the tab (\u0009),
-          linefeed (\u000A), and carriage return (\u000D) characters.
+          end of the valid character list (\\u0020 through \\u00FF). It can also include the tab (\\u0009),
+          linefeed (\\u000A), and carriage return (\\u000D) characters.
 
           .. note::
 
@@ -1083,7 +1083,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -1100,7 +1100,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decode_authorization_message(
         self, EncodedMessage: str
     ) -> ClientDecodeAuthorizationMessageResponseTypeDef:
@@ -1176,7 +1176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1205,7 +1205,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_access_key_info(
         self, AccessKeyId: str
     ) -> ClientGetAccessKeyInfoResponseTypeDef:
@@ -1269,7 +1269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_caller_identity(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetCallerIdentityResponseTypeDef:
@@ -1282,7 +1282,7 @@ class Client(BaseClient):
           IAM user or role that explicitly denies access to the ``sts:GetCallerIdentity`` action, you can
           still perform this operation. Permissions are not required because the same information is
           returned when an IAM user or role is denied access. To view an example response, see `I Am Not
-          Authorized to Perform: iam:DeleteVirtualMFADevice
+          Authorized to Perform\\: iam\\:DeleteVirtualMFADevice
           <https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa>`__
           .
 
@@ -1331,7 +1331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_federation_token(
         self,
         Name: str,
@@ -1454,8 +1454,8 @@ class Client(BaseClient):
 
           The plain text that you use for both inline and managed session policies shouldn't exceed 2048
           characters. The JSON policy characters can be any ASCII character from the space character to the
-          end of the valid character list (\u0020 through \u00FF). It can also include the tab (\u0009),
-          linefeed (\u000A), and carriage return (\u000D) characters.
+          end of the valid character list (\\u0020 through \\u00FF). It can also include the tab (\\u0009),
+          linefeed (\\u000A), and carriage return (\\u000D) characters.
 
           .. note::
 
@@ -1600,7 +1600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1621,7 +1621,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_session_token(
         self,
         DurationSeconds: int = None,
@@ -1773,7 +1773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.

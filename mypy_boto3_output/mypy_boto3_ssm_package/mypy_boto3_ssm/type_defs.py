@@ -11901,7 +11901,7 @@ class ClientDescribePatchGroupsResponseTypeDef(
 
       Each entry in the array contains:
 
-      PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)
+      PatchGroup: string (between 1 and 256 characters, Regex: ^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$)
 
       PatchBaselineIdentity: A PatchBaselineIdentity element.
 
@@ -36756,7 +36756,7 @@ class DescribePatchGroupsPaginateResponseTypeDef(
 
       Each entry in the array contains:
 
-      PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)
+      PatchGroup: string (between 1 and 256 characters, Regex: ^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$)
 
       PatchBaselineIdentity: A PatchBaselineIdentity element.
 

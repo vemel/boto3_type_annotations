@@ -32,7 +32,7 @@ from mypy_boto3_budgets.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -49,7 +49,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_budget(
         self,
         AccountId: str,
@@ -157,8 +157,8 @@ class Client(BaseClient):
 
           - **BudgetName** *(string) --* **[REQUIRED]**
 
-            The name of a budget. The name must be unique within an account. The ``:`` and ``\`` characters
-            aren't allowed in ``BudgetName`` .
+            The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
+            characters aren't allowed in ``BudgetName`` .
 
           - **BudgetLimit** *(dict) --*
 
@@ -505,7 +505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_notification(
         self,
         AccountId: str,
@@ -624,7 +624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subscriber(
         self,
         AccountId: str,
@@ -730,7 +730,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_budget(self, AccountId: str, BudgetName: str) -> Dict:
         """
         Deletes a budget. You can delete your budget at any time.
@@ -776,7 +776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notification(
         self,
         AccountId: str,
@@ -864,7 +864,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subscriber(
         self,
         AccountId: str,
@@ -972,7 +972,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_budget(
         self, AccountId: str, BudgetName: str
     ) -> ClientDescribeBudgetResponseTypeDef:
@@ -1077,7 +1077,7 @@ class Client(BaseClient):
 
               - **BudgetName** *(string) --*
 
-                The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+                The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
                 characters aren't allowed in ``BudgetName`` .
 
               - **BudgetLimit** *(dict) --*
@@ -1342,7 +1342,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_budget_performance_history(
         self,
         AccountId: str,
@@ -1379,7 +1379,7 @@ class Client(BaseClient):
         :type BudgetName: string
         :param BudgetName: **[REQUIRED]**
 
-          A string that represents the budget name. The ":" and "\" characters aren't allowed.
+          A string that represents the budget name. The ":" and "\\" characters aren't allowed.
 
         :type TimePeriod: dict
         :param TimePeriod:
@@ -1482,7 +1482,7 @@ class Client(BaseClient):
 
               - **BudgetName** *(string) --*
 
-                A string that represents the budget name. The ":" and "\" characters aren't allowed.
+                A string that represents the budget name. The ":" and "\\" characters aren't allowed.
 
               - **BudgetType** *(string) --*
 
@@ -1647,7 +1647,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_budgets(
         self, AccountId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeBudgetsResponseTypeDef:
@@ -1773,7 +1773,7 @@ class Client(BaseClient):
 
                 - **BudgetName** *(string) --*
 
-                  The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+                  The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
                   characters aren't allowed in ``BudgetName`` .
 
                 - **BudgetLimit** *(dict) --*
@@ -2045,7 +2045,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_notifications_for_budget(
         self,
         AccountId: str,
@@ -2171,7 +2171,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subscribers_for_notification(
         self,
         AccountId: str,
@@ -2309,7 +2309,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2338,7 +2338,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2359,7 +2359,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2372,7 +2372,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_budget(
         self, AccountId: str, NewBudget: ClientUpdateBudgetNewBudgetTypeDef
     ) -> Dict:
@@ -2460,8 +2460,8 @@ class Client(BaseClient):
 
           - **BudgetName** *(string) --* **[REQUIRED]**
 
-            The name of a budget. The name must be unique within an account. The ``:`` and ``\`` characters
-            aren't allowed in ``BudgetName`` .
+            The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
+            characters aren't allowed in ``BudgetName`` .
 
           - **BudgetLimit** *(dict) --*
 
@@ -2739,7 +2739,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_notification(
         self,
         AccountId: str,
@@ -2862,7 +2862,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_subscriber(
         self,
         AccountId: str,

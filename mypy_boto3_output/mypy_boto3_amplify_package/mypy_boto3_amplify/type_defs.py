@@ -2409,7 +2409,7 @@ class ClientDeleteJobResponsejobSummaryTypeDef(
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -2466,7 +2466,7 @@ class ClientDeleteJobResponseTypeDef(_ClientDeleteJobResponseTypeDef):
 
       - **jobType** *(string) --*
 
-        Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+        Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
         "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
         WebHooks.
     """
@@ -3780,7 +3780,7 @@ class ClientGetJobResponsejobsummaryTypeDef(_ClientGetJobResponsejobsummaryTypeD
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -3840,7 +3840,7 @@ class ClientGetJobResponsejobTypeDef(_ClientGetJobResponsejobTypeDef):
 
       - **jobType** *(string) --*
 
-        Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+        Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
         "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
         WebHooks.
 
@@ -3953,7 +3953,7 @@ class ClientGetJobResponseTypeDef(_ClientGetJobResponseTypeDef):
 
         - **jobType** *(string) --*
 
-          Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+          Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
           "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
           WebHooks.
 
@@ -5309,7 +5309,7 @@ class ClientListJobsResponsejobSummariesTypeDef(
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -5370,7 +5370,7 @@ class ClientListJobsResponseTypeDef(_ClientListJobsResponseTypeDef):
 
         - **jobType** *(string) --*
 
-          Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+          Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
           "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
           WebHooks.
 
@@ -5572,7 +5572,7 @@ class ClientStartDeploymentResponsejobSummaryTypeDef(
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -5629,7 +5629,7 @@ class ClientStartDeploymentResponseTypeDef(_ClientStartDeploymentResponseTypeDef
 
       - **jobType** *(string) --*
 
-        Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+        Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
         "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
         WebHooks.
     """
@@ -5692,7 +5692,7 @@ class ClientStartJobResponsejobSummaryTypeDef(_ClientStartJobResponsejobSummaryT
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -5749,7 +5749,7 @@ class ClientStartJobResponseTypeDef(_ClientStartJobResponseTypeDef):
 
       - **jobType** *(string) --*
 
-        Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+        Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
         "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
         WebHooks.
     """
@@ -5812,7 +5812,7 @@ class ClientStopJobResponsejobSummaryTypeDef(_ClientStopJobResponsejobSummaryTyp
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -5869,7 +5869,7 @@ class ClientStopJobResponseTypeDef(_ClientStopJobResponseTypeDef):
 
       - **jobType** *(string) --*
 
-        Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+        Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
         "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
         WebHooks.
     """
@@ -8401,7 +8401,7 @@ class ListJobsPaginateResponsejobSummariesTypeDef(
 
     - **jobType** *(string) --*
 
-      Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+      Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
       "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
       WebHooks.
     """
@@ -8465,7 +8465,7 @@ class ListJobsPaginateResponseTypeDef(_ListJobsPaginateResponseTypeDef):
 
         - **jobType** *(string) --*
 
-          Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+          Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
           "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
           WebHooks.
 

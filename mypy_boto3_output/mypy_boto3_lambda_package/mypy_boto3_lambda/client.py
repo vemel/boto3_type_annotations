@@ -6,7 +6,6 @@ from typing import Any, Dict, IO, List, Union
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_lambda.type_defs import (
     ClientAddLayerVersionPermissionResponseTypeDef,
     ClientAddPermissionResponseTypeDef,
@@ -55,7 +54,7 @@ from mypy_boto3_lambda.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_layer_version_permission(
         self,
         LayerName: str,
@@ -151,7 +150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
         self,
         FunctionName: str,
@@ -283,7 +282,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -300,7 +299,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_alias(
         self,
         FunctionName: str,
@@ -443,7 +442,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_source_mapping(
         self,
         EventSourceArn: str,
@@ -604,7 +603,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_function(
         self,
         FunctionName: str,
@@ -1066,7 +1065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_alias(self, FunctionName: str, Name: str) -> None:
         """
         Deletes a Lambda function `alias
@@ -1106,7 +1105,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_source_mapping(
         self, UUID: str
     ) -> ClientDeleteEventSourceMappingResponseTypeDef:
@@ -1191,7 +1190,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_function(self, FunctionName: str, Qualifier: str = None) -> None:
         """
         Deletes a Lambda function. To delete a specific function version, use the ``Qualifier`` parameter.
@@ -1236,7 +1235,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_function_concurrency(self, FunctionName: str) -> None:
         """
         Removes a concurrent execution limit from a function.
@@ -1269,7 +1268,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_layer_version(self, LayerName: str, VersionNumber: int) -> None:
         """
         Deletes a version of an `AWS Lambda layer
@@ -1300,7 +1299,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1329,7 +1328,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_settings(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountSettingsResponseTypeDef:
@@ -1410,7 +1409,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_alias(self, FunctionName: str, Name: str) -> ClientGetAliasResponseTypeDef:
         """
         Returns details about a Lambda function `alias
@@ -1509,7 +1508,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_event_source_mapping(
         self, UUID: str
     ) -> ClientGetEventSourceMappingResponseTypeDef:
@@ -1593,7 +1592,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_function(
         self, FunctionName: str, Qualifier: str = None
     ) -> ClientGetFunctionResponseTypeDef:
@@ -1884,7 +1883,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_function_configuration(
         self, FunctionName: str, Qualifier: str = None
     ) -> ClientGetFunctionConfigurationResponseTypeDef:
@@ -2132,7 +2131,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_layer_version(
         self, LayerName: str, VersionNumber: int
     ) -> ClientGetLayerVersionResponseTypeDef:
@@ -2239,7 +2238,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_layer_version_by_arn(
         self, Arn: str
     ) -> ClientGetLayerVersionByArnResponseTypeDef:
@@ -2340,7 +2339,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_layer_version_policy(
         self, LayerName: str, VersionNumber: int
     ) -> ClientGetLayerVersionPolicyResponseTypeDef:
@@ -2394,7 +2393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2415,7 +2414,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy(
         self, FunctionName: str, Qualifier: str = None
     ) -> ClientGetPolicyResponseTypeDef:
@@ -2481,7 +2480,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2494,7 +2493,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invoke(
         self,
         FunctionName: str,
@@ -2652,7 +2651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invoke_async(
         self, FunctionName: str, InvokeArgs: Union[bytes, IO]
     ) -> ClientInvokeAsyncResponseTypeDef:
@@ -2721,7 +2720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aliases(
         self,
         FunctionName: str,
@@ -2854,7 +2853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_event_source_mappings(
         self,
         EventSourceArn: str = None,
@@ -2996,7 +2995,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_functions(
         self,
         MasterRegion: str = None,
@@ -3266,7 +3265,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_layer_versions(
         self,
         LayerName: str,
@@ -3386,7 +3385,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_layers(
         self, CompatibleRuntime: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListLayersResponseTypeDef:
@@ -3512,7 +3511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(self, Resource: str) -> ClientListTagsResponseTypeDef:
         """
         Returns a function's `tags <https://docs.aws.amazon.com/lambda/latest/dg/tagging.html>`__ . You can
@@ -3558,7 +3557,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_versions_by_function(
         self, FunctionName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListVersionsByFunctionResponseTypeDef:
@@ -3825,7 +3824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish_layer_version(
         self,
         LayerName: str,
@@ -3994,7 +3993,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish_version(
         self,
         FunctionName: str,
@@ -4264,7 +4263,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_function_concurrency(
         self, FunctionName: str, ReservedConcurrentExecutions: int
     ) -> ClientPutFunctionConcurrencyResponseTypeDef:
@@ -4335,7 +4334,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_layer_version_permission(
         self,
         LayerName: str,
@@ -4384,7 +4383,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(
         self,
         FunctionName: str,
@@ -4444,8 +4443,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, Resource: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, Resource: str, Tags: List[str]) -> None:
         """
         Adds `tags <https://docs.aws.amazon.com/lambda/latest/dg/tagging.html>`__ to a function.
 
@@ -4478,8 +4477,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, Resource: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, Resource: str, TagKeys: List[str]) -> None:
         """
         Removes `tags <https://docs.aws.amazon.com/lambda/latest/dg/tagging.html>`__ from a function.
 
@@ -4510,7 +4509,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_alias(
         self,
         FunctionName: str,
@@ -4656,7 +4655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_event_source_mapping(
         self,
         UUID: str,
@@ -4786,7 +4785,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_function_code(
         self,
         FunctionName: str,
@@ -5084,7 +5083,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_function_configuration(
         self,
         FunctionName: str,

@@ -34,7 +34,7 @@ from mypy_boto3_xray.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_traces(
         self, TraceIds: List[str], NextToken: str = None
     ) -> ClientBatchGetTracesResponseTypeDef:
@@ -147,7 +147,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -164,7 +164,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self, GroupName: str, FilterExpression: str = None
     ) -> ClientCreateGroupResponseTypeDef:
@@ -229,7 +229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_sampling_rule(
         self, SamplingRule: ClientCreateSamplingRuleSamplingRuleTypeDef
     ) -> ClientCreateSamplingRuleResponseTypeDef:
@@ -439,7 +439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(
         self, GroupName: str = None, GroupARN: str = None
     ) -> Dict[str, Any]:
@@ -479,7 +479,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_sampling_rule(
         self, RuleName: str = None, RuleARN: str = None
     ) -> ClientDeleteSamplingRuleResponseTypeDef:
@@ -616,7 +616,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -645,7 +645,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_encryption_config(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetEncryptionConfigResponseTypeDef:
@@ -698,7 +698,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group(
         self, GroupName: str = None, GroupARN: str = None
     ) -> ClientGetGroupResponseTypeDef:
@@ -762,7 +762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_groups(self, NextToken: str = None) -> ClientGetGroupsResponseTypeDef:
         """
         Retrieves all active group details.
@@ -828,7 +828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -849,7 +849,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sampling_rules(
         self, NextToken: str = None
     ) -> ClientGetSamplingRulesResponseTypeDef:
@@ -991,7 +991,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sampling_statistic_summaries(
         self, NextToken: str = None
     ) -> ClientGetSamplingStatisticSummariesResponseTypeDef:
@@ -1070,7 +1070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sampling_targets(
         self,
         SamplingStatisticsDocuments: List[
@@ -1221,7 +1221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_graph(
         self,
         StartTime: datetime,
@@ -1626,7 +1626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_time_series_service_statistics(
         self,
         StartTime: datetime,
@@ -1874,7 +1874,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_trace_graph(
         self, TraceIds: List[str], NextToken: str = None
     ) -> ClientGetTraceGraphResponseTypeDef:
@@ -2241,7 +2241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_trace_summaries(
         self,
         StartTime: datetime,
@@ -2946,7 +2946,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2959,7 +2959,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_encryption_config(
         self, Type: str, KeyId: str = None
     ) -> ClientPutEncryptionConfigResponseTypeDef:
@@ -3035,7 +3035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_telemetry_records(
         self,
         TelemetryRecords: List[ClientPutTelemetryRecordsTelemetryRecordsTypeDef],
@@ -3125,7 +3125,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_trace_segments(
         self, TraceSegmentDocuments: List[str]
     ) -> ClientPutTraceSegmentsResponseTypeDef:
@@ -3233,7 +3233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(
         self, GroupName: str = None, GroupARN: str = None, FilterExpression: str = None
     ) -> ClientUpdateGroupResponseTypeDef:
@@ -3303,7 +3303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_sampling_rule(
         self, SamplingRuleUpdate: ClientUpdateSamplingRuleSamplingRuleUpdateTypeDef
     ) -> ClientUpdateSamplingRuleResponseTypeDef:

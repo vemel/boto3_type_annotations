@@ -11,7 +11,7 @@ from mypy_boto3_acm.type_defs import (
 
 
 class ListCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CertificateStatuses: List[str] = None,

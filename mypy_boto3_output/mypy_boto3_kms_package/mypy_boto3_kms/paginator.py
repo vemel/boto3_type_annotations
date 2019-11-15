@@ -15,7 +15,7 @@ from mypy_boto3_kms.type_defs import (
 
 
 class ListAliases(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         KeyId: str = None,
@@ -124,7 +124,7 @@ class ListAliases(Boto3Paginator):
 
 
 class ListGrants(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         KeyId: str,
@@ -304,7 +304,7 @@ class ListGrants(Boto3Paginator):
 
 
 class ListKeyPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         KeyId: str,
@@ -401,7 +401,7 @@ class ListKeyPolicies(Boto3Paginator):
 
 
 class ListKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListKeysPaginatePaginationConfigTypeDef = None
     ) -> ListKeysPaginateResponseTypeDef:

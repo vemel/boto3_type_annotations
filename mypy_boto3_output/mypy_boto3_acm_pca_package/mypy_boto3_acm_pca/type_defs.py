@@ -6,6 +6,81 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+_AuditReportCreatedWaitWaiterConfigTypeDef = TypedDict(
+    "_AuditReportCreatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class AuditReportCreatedWaitWaiterConfigTypeDef(
+    _AuditReportCreatedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `AuditReportCreatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef = TypedDict(
+    "_CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef(
+    _CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `CertificateAuthorityCsrCreatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_CertificateIssuedWaitWaiterConfigTypeDef = TypedDict(
+    "_CertificateIssuedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class CertificateIssuedWaitWaiterConfigTypeDef(
+    _CertificateIssuedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `CertificateIssuedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ClientCreateCertificateAuthorityAuditReportResponseTypeDef = TypedDict(
     "_ClientCreateCertificateAuthorityAuditReportResponseTypeDef",
     {"AuditReportId": str, "S3Key": str},
@@ -2018,6 +2093,66 @@ class ClientListTagsResponseTypeDef(_ClientListTagsResponseTypeDef):
 
       When the list is truncated, this value is present and should be used for the **NextToken**
       parameter in a subsequent pagination request.
+    """
+
+
+_RequiredClientTagCertificateAuthorityTagsTypeDef = TypedDict(
+    "_RequiredClientTagCertificateAuthorityTagsTypeDef", {"Key": str}
+)
+_OptionalClientTagCertificateAuthorityTagsTypeDef = TypedDict(
+    "_OptionalClientTagCertificateAuthorityTagsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientTagCertificateAuthorityTagsTypeDef(
+    _RequiredClientTagCertificateAuthorityTagsTypeDef,
+    _OptionalClientTagCertificateAuthorityTagsTypeDef,
+):
+    """
+    Type definition for `ClientTagCertificateAuthority` `Tags`
+
+    Tags are labels that you can use to identify and organize your private CAs. Each tag consists
+    of a key and an optional value. You can associate up to 50 tags with a private CA. To add one
+    or more tags to a private CA, call the  TagCertificateAuthority action. To remove a tag, call
+    the  UntagCertificateAuthority action.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Key (name) of the tag.
+
+    - **Value** *(string) --*
+
+      Value of the tag.
+    """
+
+
+_RequiredClientUntagCertificateAuthorityTagsTypeDef = TypedDict(
+    "_RequiredClientUntagCertificateAuthorityTagsTypeDef", {"Key": str}
+)
+_OptionalClientUntagCertificateAuthorityTagsTypeDef = TypedDict(
+    "_OptionalClientUntagCertificateAuthorityTagsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientUntagCertificateAuthorityTagsTypeDef(
+    _RequiredClientUntagCertificateAuthorityTagsTypeDef,
+    _OptionalClientUntagCertificateAuthorityTagsTypeDef,
+):
+    """
+    Type definition for `ClientUntagCertificateAuthority` `Tags`
+
+    Tags are labels that you can use to identify and organize your private CAs. Each tag consists
+    of a key and an optional value. You can associate up to 50 tags with a private CA. To add one
+    or more tags to a private CA, call the  TagCertificateAuthority action. To remove a tag, call
+    the  UntagCertificateAuthority action.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Key (name) of the tag.
+
+    - **Value** *(string) --*
+
+      Value of the tag.
     """
 
 

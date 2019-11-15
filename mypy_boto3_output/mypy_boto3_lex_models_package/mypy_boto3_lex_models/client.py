@@ -48,7 +48,7 @@ from mypy_boto3_lex_models.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -65,7 +65,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_bot_version(
         self, name: str, checksum: str = None
     ) -> ClientCreateBotVersionResponseTypeDef:
@@ -317,7 +317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_intent_version(
         self, name: str, checksum: str = None
     ) -> ClientCreateIntentVersionResponseTypeDef:
@@ -806,7 +806,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_slot_type_version(
         self, name: str, checksum: str = None
     ) -> ClientCreateSlotTypeVersionResponseTypeDef:
@@ -936,7 +936,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bot(self, name: str) -> None:
         """
         Deletes all versions of the bot, including the ``$LATEST`` version. To delete a specific version of
@@ -966,7 +966,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bot_alias(self, name: str, botName: str) -> None:
         """
         Deletes an alias for the specified bot.
@@ -1001,7 +1001,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bot_channel_association(
         self, name: str, botName: str, botAlias: str
     ) -> None:
@@ -1040,7 +1040,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bot_version(self, name: str, version: str) -> None:
         """
         Deletes a specific version of a bot. To delete all versions of a bot, use the  DeleteBot operation.
@@ -1071,7 +1071,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_intent(self, name: str) -> None:
         """
         Deletes all versions of the intent, including the ``$LATEST`` version. To delete a specific version
@@ -1106,7 +1106,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_intent_version(self, name: str, version: str) -> None:
         """
         Deletes a specific version of an intent. To delete all versions of a intent, use the  DeleteIntent
@@ -1138,7 +1138,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_slot_type(self, name: str) -> None:
         """
         Deletes all versions of the slot type, including the ``$LATEST`` version. To delete a specific
@@ -1174,7 +1174,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_slot_type_version(self, name: str, version: str) -> None:
         """
         Deletes a specific version of a slot type. To delete all versions of a slot type, use the
@@ -1206,7 +1206,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_utterances(self, botName: str, userId: str) -> None:
         """
         Deletes stored utterances.
@@ -1246,7 +1246,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1275,7 +1275,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot(self, name: str, versionOrAlias: str) -> ClientGetBotResponseTypeDef:
         """
         Returns metadata information for a specific bot. You must provide the bot name and the bot version
@@ -1515,7 +1515,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot_alias(
         self, name: str, botName: str
     ) -> ClientGetBotAliasResponseTypeDef:
@@ -1596,7 +1596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot_aliases(
         self,
         botName: str,
@@ -1714,7 +1714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot_channel_association(
         self, name: str, botName: str, botAlias: str
     ) -> ClientGetBotChannelAssociationResponseTypeDef:
@@ -1825,7 +1825,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot_channel_associations(
         self,
         botName: str,
@@ -1983,7 +1983,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bot_versions(
         self, name: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetBotVersionsResponseTypeDef:
@@ -2093,7 +2093,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bots(
         self, nextToken: str = None, maxResults: int = None, nameContains: str = None
     ) -> ClientGetBotsResponseTypeDef:
@@ -2202,7 +2202,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_builtin_intent(
         self, signature: str
     ) -> ClientGetBuiltinIntentResponseTypeDef:
@@ -2274,7 +2274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_builtin_intents(
         self,
         locale: str = None,
@@ -2376,7 +2376,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_builtin_slot_types(
         self,
         locale: str = None,
@@ -2478,7 +2478,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_export(
         self, name: str, version: str, resourceType: str, exportType: str
     ) -> ClientGetExportResponseTypeDef:
@@ -2576,7 +2576,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_import(self, importId: str) -> ClientGetImportResponseTypeDef:
         """
         Gets information about an import job started with the ``StartImport`` operation.
@@ -2651,7 +2651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_intent(self, name: str, version: str) -> ClientGetIntentResponseTypeDef:
         """
         Returns information about an intent. In addition to the intent name, you must specify the intent
@@ -3129,7 +3129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_intent_versions(
         self, name: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetIntentVersionsResponseTypeDef:
@@ -3234,7 +3234,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_intents(
         self, nextToken: str = None, maxResults: int = None, nameContains: str = None
     ) -> ClientGetIntentsResponseTypeDef:
@@ -3337,7 +3337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3358,7 +3358,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_slot_type(
         self, name: str, version: str
     ) -> ClientGetSlotTypeResponseTypeDef:
@@ -3476,7 +3476,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_slot_type_versions(
         self, name: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetSlotTypeVersionsResponseTypeDef:
@@ -3581,7 +3581,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_slot_types(
         self, nextToken: str = None, maxResults: int = None, nameContains: str = None
     ) -> ClientGetSlotTypesResponseTypeDef:
@@ -3685,7 +3685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_utterances_view(
         self, botName: str, botVersions: List[str], statusType: str
     ) -> ClientGetUtterancesViewResponseTypeDef:
@@ -3820,7 +3820,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3833,7 +3833,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bot(
         self,
         name: str,
@@ -4326,7 +4326,7 @@ class Client(BaseClient):
             - **createVersion** *(boolean) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bot_alias(
         self,
         name: str,
@@ -4439,7 +4439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_intent(
         self,
         name: str,
@@ -5464,7 +5464,7 @@ class Client(BaseClient):
             - **createVersion** *(boolean) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_slot_type(
         self,
         name: str,
@@ -5684,7 +5684,7 @@ class Client(BaseClient):
             - **createVersion** *(boolean) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_import(
         self, payload: bytes, resourceType: str, mergeStrategy: str
     ) -> ClientStartImportResponseTypeDef:

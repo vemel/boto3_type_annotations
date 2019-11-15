@@ -31,7 +31,7 @@ from mypy_boto3_cloudhsm.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceArn: str, TagList: List[ClientAddTagsToResourceTagListTypeDef]
     ) -> ClientAddTagsToResourceResponseTypeDef:
@@ -107,7 +107,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -124,7 +124,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hapg(self, Label: str) -> ClientCreateHapgResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -176,7 +176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hsm(
         self,
         SubnetId: str,
@@ -300,7 +300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_luna_client(
         self, Certificate: str, Label: str = None
     ) -> ClientCreateLunaClientResponseTypeDef:
@@ -360,7 +360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hapg(self, HapgArn: str) -> ClientDeleteHapgResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -411,7 +411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hsm(self, HsmArn: str) -> ClientDeleteHsmResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -463,7 +463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_luna_client(
         self, ClientArn: str
     ) -> ClientDeleteLunaClientResponseTypeDef:
@@ -514,7 +514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hapg(self, HapgArn: str) -> ClientDescribeHapgResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -621,7 +621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hsm(
         self, HsmArn: str = None, HsmSerialNumber: str = None
     ) -> ClientDescribeHsmResponseTypeDef:
@@ -789,7 +789,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_luna_client(
         self, ClientArn: str = None, CertificateFingerprint: str = None
     ) -> ClientDescribeLunaClientResponseTypeDef:
@@ -866,7 +866,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -895,7 +895,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_config(
         self, ClientArn: str, ClientVersion: str, HapgList: List[str]
     ) -> ClientGetConfigResponseTypeDef:
@@ -974,7 +974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -995,7 +995,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1008,7 +1008,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_available_zones(
         self, *args: Any, **kwargs: Any
     ) -> ClientListAvailableZonesResponseTypeDef:
@@ -1057,7 +1057,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hapgs(self, NextToken: str = None) -> ClientListHapgsResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -1121,7 +1121,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hsms(self, NextToken: str = None) -> ClientListHsmsResponseTypeDef:
         """
         This is documentation for **AWS CloudHSM Classic** . For more information, see `AWS CloudHSM
@@ -1189,7 +1189,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_luna_clients(
         self, NextToken: str = None
     ) -> ClientListLunaClientsResponseTypeDef:
@@ -1255,7 +1255,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1323,7 +1323,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_hapg(
         self, HapgArn: str, Label: str = None, PartitionSerialList: List[str] = None
     ) -> ClientModifyHapgResponseTypeDef:
@@ -1390,7 +1390,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_hsm(
         self,
         HsmArn: str,
@@ -1491,7 +1491,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_luna_client(
         self, ClientArn: str, Certificate: str
     ) -> ClientModifyLunaClientResponseTypeDef:
@@ -1550,7 +1550,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceArn: str, TagKeyList: List[str]
     ) -> ClientRemoveTagsFromResourceResponseTypeDef:

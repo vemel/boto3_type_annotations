@@ -13,7 +13,7 @@ from mypy_boto3_fms.type_defs import (
 
 
 class ListComplianceStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PolicyId: str,
@@ -167,7 +167,7 @@ class ListComplianceStatus(Boto3Paginator):
 
 
 class ListMemberAccounts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMemberAccountsPaginatePaginationConfigTypeDef = None
     ) -> ListMemberAccountsPaginateResponseTypeDef:
@@ -235,7 +235,7 @@ class ListMemberAccounts(Boto3Paginator):
 
 
 class ListPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPoliciesPaginatePaginationConfigTypeDef = None
     ) -> ListPoliciesPaginateResponseTypeDef:

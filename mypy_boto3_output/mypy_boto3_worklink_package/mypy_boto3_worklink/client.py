@@ -26,7 +26,7 @@ from mypy_boto3_worklink.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_domain(
         self,
         FleetArn: str,
@@ -82,7 +82,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_website_authorization_provider(
         self, FleetArn: str, AuthorizationProviderType: str, DomainName: str = None
     ) -> ClientAssociateWebsiteAuthorizationProviderResponseTypeDef:
@@ -138,7 +138,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_website_certificate_authority(
         self, FleetArn: str, Certificate: str, DisplayName: str = None
     ) -> ClientAssociateWebsiteCertificateAuthorityResponseTypeDef:
@@ -192,7 +192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -209,7 +209,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fleet(
         self,
         FleetName: str,
@@ -267,7 +267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fleet(self, FleetArn: str) -> Dict[str, Any]:
         """
         Deletes a fleet. Prevents users from accessing previously associated websites.
@@ -299,7 +299,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_audit_stream_configuration(
         self, FleetArn: str
     ) -> ClientDescribeAuditStreamConfigurationResponseTypeDef:
@@ -340,7 +340,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_company_network_configuration(
         self, FleetArn: str
     ) -> ClientDescribeCompanyNetworkConfigurationResponseTypeDef:
@@ -400,7 +400,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_device(
         self, FleetArn: str, DeviceId: str
     ) -> ClientDescribeDeviceResponseTypeDef:
@@ -487,7 +487,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_device_policy_configuration(
         self, FleetArn: str
     ) -> ClientDescribeDevicePolicyConfigurationResponseTypeDef:
@@ -529,7 +529,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_domain(
         self, FleetArn: str, DomainName: str
     ) -> ClientDescribeDomainResponseTypeDef:
@@ -598,7 +598,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleet_metadata(
         self, FleetArn: str
     ) -> ClientDescribeFleetMetadataResponseTypeDef:
@@ -672,7 +672,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_identity_provider_configuration(
         self, FleetArn: str
     ) -> ClientDescribeIdentityProviderConfigurationResponseTypeDef:
@@ -724,7 +724,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_website_certificate_authority(
         self, FleetArn: str, WebsiteCaId: str
     ) -> ClientDescribeWebsiteCertificateAuthorityResponseTypeDef:
@@ -781,7 +781,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_domain(self, FleetArn: str, DomainName: str) -> Dict[str, Any]:
         """
         Disassociates a domain from Amazon WorkLink. End users lose the ability to access the domain with
@@ -820,7 +820,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_website_authorization_provider(
         self, FleetArn: str, AuthorizationProviderId: str
     ) -> Dict[str, Any]:
@@ -862,7 +862,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_website_certificate_authority(
         self, FleetArn: str, WebsiteCaId: str
     ) -> Dict[str, Any]:
@@ -903,7 +903,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -932,7 +932,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -953,7 +953,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -966,7 +966,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_devices(
         self, FleetArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListDevicesResponseTypeDef:
@@ -1043,7 +1043,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domains(
         self, FleetArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListDomainsResponseTypeDef:
@@ -1132,7 +1132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_fleets(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListFleetsResponseTypeDef:
@@ -1229,7 +1229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_website_authorization_providers(
         self, FleetArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListWebsiteAuthorizationProvidersResponseTypeDef:
@@ -1317,7 +1317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_website_certificate_authorities(
         self, FleetArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListWebsiteCertificateAuthoritiesResponseTypeDef:
@@ -1399,7 +1399,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_domain_access(self, FleetArn: str, DomainName: str) -> Dict[str, Any]:
         """
         Moves a domain to ACTIVE status if it was in the INACTIVE status.
@@ -1437,7 +1437,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_domain_access(self, FleetArn: str, DomainName: str) -> Dict[str, Any]:
         """
         Moves a domain to INACTIVE status if it was in the ACTIVE status.
@@ -1475,7 +1475,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def sign_out_user(self, FleetArn: str, Username: str) -> Dict[str, Any]:
         """
         Signs the user out from all of their devices. The user can sign in again if they have valid
@@ -1514,7 +1514,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_audit_stream_configuration(
         self, FleetArn: str, AuditStreamArn: str = None
     ) -> Dict[str, Any]:
@@ -1554,7 +1554,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_company_network_configuration(
         self,
         FleetArn: str,
@@ -1618,7 +1618,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_policy_configuration(
         self, FleetArn: str, DeviceCaCertificate: str = None
     ) -> Dict[str, Any]:
@@ -1659,7 +1659,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_metadata(
         self, FleetArn: str, DomainName: str, DisplayName: str = None
     ) -> Dict[str, Any]:
@@ -1705,7 +1705,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_fleet_metadata(
         self,
         FleetArn: str,
@@ -1755,7 +1755,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_identity_provider_configuration(
         self,
         FleetArn: str,

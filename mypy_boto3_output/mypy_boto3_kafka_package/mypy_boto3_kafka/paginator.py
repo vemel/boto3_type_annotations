@@ -17,7 +17,7 @@ from mypy_boto3_kafka.type_defs import (
 
 
 class ListClusterOperations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterArn: str,
@@ -249,7 +249,7 @@ class ListClusterOperations(Boto3Paginator):
 
 
 class ListClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterNameFilter: str = None,
@@ -546,7 +546,7 @@ class ListClusters(Boto3Paginator):
 
 
 class ListConfigurationRevisions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Arn: str,
@@ -642,7 +642,7 @@ class ListConfigurationRevisions(Boto3Paginator):
 
 
 class ListConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListConfigurationsPaginatePaginationConfigTypeDef = None
     ) -> ListConfigurationsPaginateResponseTypeDef:
@@ -767,7 +767,7 @@ class ListConfigurations(Boto3Paginator):
 
 
 class ListNodes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterArn: str,

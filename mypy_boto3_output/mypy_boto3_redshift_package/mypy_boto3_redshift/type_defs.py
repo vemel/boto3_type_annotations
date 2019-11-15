@@ -6229,6 +6229,27 @@ class ClientCreateSnapshotScheduleTagsTypeDef(_ClientCreateSnapshotScheduleTagsT
     """
 
 
+_ClientCreateTagsTagsTypeDef = TypedDict(
+    "_ClientCreateTagsTagsTypeDef", {"Key": str, "Value": str}, total=False
+)
+
+
+class ClientCreateTagsTagsTypeDef(_ClientCreateTagsTagsTypeDef):
+    """
+    Type definition for `ClientCreateTags` `Tags`
+
+    A tag consisting of a name/value pair for a resource.
+
+    - **Key** *(string) --*
+
+      The key, or name, for the resource tag.
+
+    - **Value** *(string) --*
+
+      The value for the resource tag.
+    """
+
+
 _ClientDeleteClusterResponseClusterClusterNodesTypeDef = TypedDict(
     "_ClientDeleteClusterResponseClusterClusterNodesTypeDef",
     {"NodeRole": str, "PrivateIPAddress": str, "PublicIPAddress": str},
@@ -39845,6 +39866,75 @@ class ClientRotateEncryptionKeyResponseTypeDef(
     """
 
 
+_ClusterAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterAvailableWaitWaiterConfigTypeDef(_ClusterAvailableWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 30
+    """
+
+
+_ClusterDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterDeletedWaitWaiterConfigTypeDef(_ClusterDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 30
+    """
+
+
+_ClusterRestoredWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterRestoredWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterRestoredWaitWaiterConfigTypeDef(_ClusterRestoredWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterRestoredWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 30
+    """
+
+
 _DescribeClusterDbRevisionsPaginatePaginationConfigTypeDef = TypedDict(
     "_DescribeClusterDbRevisionsPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},
@@ -47041,4 +47131,29 @@ class SnapshotAvailableWaitSortingEntitiesTypeDef(
     - **SortOrder** *(string) --*
 
       The order for listing the attributes.
+    """
+
+
+_SnapshotAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_SnapshotAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class SnapshotAvailableWaitWaiterConfigTypeDef(
+    _SnapshotAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `SnapshotAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
     """

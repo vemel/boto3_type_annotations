@@ -25,7 +25,7 @@ from mypy_boto3_discovery.type_defs import (
 
 
 class DescribeAgents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         agentIds: List[str] = None,
@@ -232,7 +232,7 @@ class DescribeAgents(Boto3Paginator):
 
 
 class DescribeContinuousExports(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         exportIds: List[str] = None,
@@ -368,7 +368,7 @@ class DescribeContinuousExports(Boto3Paginator):
 
                   * FIREHOSE_ROLE_MISSING - The Data Exploration feature is in an error state because your
                   IAM User is missing the AWSApplicationDiscoveryServiceFirehose role. Turn on Data
-                  Exploration in Amazon Athena and try again. For more information, see `Step 3: Provide
+                  Exploration in Amazon Athena and try again. For more information, see `Step 3\\: Provide
                   Application Discovery Service Access to Non-Administrator Users by Attaching Policies
                   <http://docs.aws.amazon.com/application-discovery/latest/userguide/setting-up.html#setting-up-user-policy>`__
                   in the Application Discovery Service User Guide.
@@ -387,7 +387,7 @@ class DescribeContinuousExports(Boto3Paginator):
 
                   * S3_NOT_SIGNED_UP - Your account is not signed up for the Amazon S3 service. You must
                   sign up before you can use Amazon S3. You can sign up at the following URL:
-                  `https://aws.amazon.com/s3 <https://aws.amazon.com/s3>`__ .
+                  `https\\://aws.amazon.com/s3 <https://aws.amazon.com/s3>`__ .
 
                 - **s3Bucket** *(string) --*
 
@@ -423,7 +423,7 @@ class DescribeContinuousExports(Boto3Paginator):
 
 
 class DescribeExportConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         exportIds: List[str] = None,
@@ -559,7 +559,7 @@ class DescribeExportConfigurations(Boto3Paginator):
 
 
 class DescribeExportTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         exportIds: List[str] = None,
@@ -735,7 +735,7 @@ class DescribeExportTasks(Boto3Paginator):
 
 
 class DescribeTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[DescribeTagsPaginatefiltersTypeDef] = None,
@@ -866,7 +866,7 @@ class DescribeTags(Boto3Paginator):
 
 
 class ListConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         configurationType: str,

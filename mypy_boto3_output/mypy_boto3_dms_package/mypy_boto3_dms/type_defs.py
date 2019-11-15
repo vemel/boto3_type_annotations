@@ -20,14 +20,14 @@ class ClientAddTagsToResourceTagsTypeDef(_ClientAddTagsToResourceTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -1118,7 +1118,7 @@ class ClientCreateEndpointResponseEndpointS3SettingsTypeDef(
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage return
-      (``\n`` ).
+      (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -1485,7 +1485,7 @@ class ClientCreateEndpointResponseEndpointTypeDef(
       - **CsvRowDelimiter** *(string) --*
 
         The delimiter used to separate rows in the source files. The default is a carriage return
-        (``\n`` ).
+        (``\\n`` ).
 
       - **CsvDelimiter** *(string) --*
 
@@ -2120,7 +2120,7 @@ class ClientCreateEndpointResponseTypeDef(_ClientCreateEndpointResponseTypeDef):
         - **CsvRowDelimiter** *(string) --*
 
           The delimiter used to separate rows in the source files. The default is a carriage return
-          (``\n`` ).
+          (``\\n`` ).
 
         - **CsvDelimiter** *(string) --*
 
@@ -2682,7 +2682,7 @@ class ClientCreateEndpointS3SettingsTypeDef(_ClientCreateEndpointS3SettingsTypeD
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage return
-      (``\n`` ).
+      (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -2911,14 +2911,14 @@ class ClientCreateEndpointTagsTypeDef(_ClientCreateEndpointTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -3088,14 +3088,14 @@ class ClientCreateEventSubscriptionTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -3739,14 +3739,14 @@ class ClientCreateReplicationInstanceTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -3946,14 +3946,14 @@ class ClientCreateReplicationSubnetGroupTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -3971,14 +3971,14 @@ class ClientCreateReplicationTaskTagsTypeDef(_ClientCreateReplicationTaskTagsTyp
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -4676,7 +4676,7 @@ class ClientDeleteEndpointResponseEndpointS3SettingsTypeDef(
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage return
-      (``\n`` ).
+      (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -5043,7 +5043,7 @@ class ClientDeleteEndpointResponseEndpointTypeDef(
       - **CsvRowDelimiter** *(string) --*
 
         The delimiter used to separate rows in the source files. The default is a carriage return
-        (``\n`` ).
+        (``\\n`` ).
 
       - **CsvDelimiter** *(string) --*
 
@@ -5678,7 +5678,7 @@ class ClientDeleteEndpointResponseTypeDef(_ClientDeleteEndpointResponseTypeDef):
         - **CsvRowDelimiter** *(string) --*
 
           The delimiter used to separate rows in the source files. The default is a carriage return
-          (``\n`` ).
+          (``\\n`` ).
 
         - **CsvDelimiter** *(string) --*
 
@@ -7948,7 +7948,7 @@ class ClientDescribeEndpointsResponseEndpointsS3SettingsTypeDef(
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage
-      return (``\n`` ).
+      return (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -8316,7 +8316,7 @@ class ClientDescribeEndpointsResponseEndpointsTypeDef(
       - **CsvRowDelimiter** *(string) --*
 
         The delimiter used to separate rows in the source files. The default is a carriage
-        return (``\n`` ).
+        return (``\\n`` ).
 
       - **CsvDelimiter** *(string) --*
 
@@ -8964,7 +8964,7 @@ class ClientDescribeEndpointsResponseTypeDef(_ClientDescribeEndpointsResponseTyp
           - **CsvRowDelimiter** *(string) --*
 
             The delimiter used to separate rows in the source files. The default is a carriage
-            return (``\n`` ).
+            return (``\\n`` ).
 
           - **CsvDelimiter** *(string) --*
 
@@ -11868,14 +11868,14 @@ class ClientImportCertificateTagsTypeDef(_ClientImportCertificateTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-      (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -11897,14 +11897,14 @@ class ClientListTagsForResourceResponseTagListTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-      '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-      '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+      '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -11932,14 +11932,14 @@ class ClientListTagsForResourceResponseTypeDef(
           A key is the required name of the tag. The string value can be from 1 to 128 Unicode
           characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
           contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-          '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+          '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         - **Value** *(string) --*
 
           A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
           characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
           contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-          '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+          '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
     """
 
 
@@ -12837,7 +12837,7 @@ class ClientModifyEndpointResponseEndpointS3SettingsTypeDef(
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage return
-      (``\n`` ).
+      (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -13204,7 +13204,7 @@ class ClientModifyEndpointResponseEndpointTypeDef(
       - **CsvRowDelimiter** *(string) --*
 
         The delimiter used to separate rows in the source files. The default is a carriage return
-        (``\n`` ).
+        (``\\n`` ).
 
       - **CsvDelimiter** *(string) --*
 
@@ -13839,7 +13839,7 @@ class ClientModifyEndpointResponseTypeDef(_ClientModifyEndpointResponseTypeDef):
         - **CsvRowDelimiter** *(string) --*
 
           The delimiter used to separate rows in the source files. The default is a carriage return
-          (``\n`` ).
+          (``\\n`` ).
 
         - **CsvDelimiter** *(string) --*
 
@@ -14401,7 +14401,7 @@ class ClientModifyEndpointS3SettingsTypeDef(_ClientModifyEndpointS3SettingsTypeD
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage return
-      (``\n`` ).
+      (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -17423,7 +17423,7 @@ class DescribeEndpointsPaginateResponseEndpointsS3SettingsTypeDef(
     - **CsvRowDelimiter** *(string) --*
 
       The delimiter used to separate rows in the source files. The default is a carriage
-      return (``\n`` ).
+      return (``\\n`` ).
 
     - **CsvDelimiter** *(string) --*
 
@@ -17791,7 +17791,7 @@ class DescribeEndpointsPaginateResponseEndpointsTypeDef(
       - **CsvRowDelimiter** *(string) --*
 
         The delimiter used to separate rows in the source files. The default is a carriage
-        return (``\n`` ).
+        return (``\\n`` ).
 
       - **CsvDelimiter** *(string) --*
 
@@ -18438,7 +18438,7 @@ class DescribeEndpointsPaginateResponseTypeDef(
           - **CsvRowDelimiter** *(string) --*
 
             The delimiter used to separate rows in the source files. The default is a carriage
-            return (``\n`` ).
+            return (``\\n`` ).
 
           - **CsvDelimiter** *(string) --*
 
@@ -21014,6 +21014,29 @@ class EndpointDeletedWaitFiltersTypeDef(_EndpointDeletedWaitFiltersTypeDef):
     """
 
 
+_EndpointDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_EndpointDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class EndpointDeletedWaitWaiterConfigTypeDef(_EndpointDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `EndpointDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ReplicationInstanceAvailableWaitFiltersTypeDef = TypedDict(
     "_ReplicationInstanceAvailableWaitFiltersTypeDef",
     {"Name": str, "Values": List[str]},
@@ -21035,6 +21058,31 @@ class ReplicationInstanceAvailableWaitFiltersTypeDef(
       The filter value.
 
       - *(string) --*
+    """
+
+
+_ReplicationInstanceAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationInstanceAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationInstanceAvailableWaitWaiterConfigTypeDef(
+    _ReplicationInstanceAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationInstanceAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """
 
 
@@ -21061,6 +21109,31 @@ class ReplicationInstanceDeletedWaitFiltersTypeDef(
     """
 
 
+_ReplicationInstanceDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationInstanceDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationInstanceDeletedWaitWaiterConfigTypeDef(
+    _ReplicationInstanceDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationInstanceDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ReplicationTaskDeletedWaitFiltersTypeDef = TypedDict(
     "_ReplicationTaskDeletedWaitFiltersTypeDef", {"Name": str, "Values": List[str]}
 )
@@ -21084,6 +21157,31 @@ class ReplicationTaskDeletedWaitFiltersTypeDef(
     """
 
 
+_ReplicationTaskDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationTaskDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationTaskDeletedWaitWaiterConfigTypeDef(
+    _ReplicationTaskDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationTaskDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ReplicationTaskReadyWaitFiltersTypeDef = TypedDict(
     "_ReplicationTaskReadyWaitFiltersTypeDef", {"Name": str, "Values": List[str]}
 )
@@ -21102,6 +21200,31 @@ class ReplicationTaskReadyWaitFiltersTypeDef(_ReplicationTaskReadyWaitFiltersTyp
       The filter value.
 
       - *(string) --*
+    """
+
+
+_ReplicationTaskReadyWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationTaskReadyWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationTaskReadyWaitWaiterConfigTypeDef(
+    _ReplicationTaskReadyWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationTaskReadyWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """
 
 
@@ -21128,6 +21251,31 @@ class ReplicationTaskRunningWaitFiltersTypeDef(
     """
 
 
+_ReplicationTaskRunningWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationTaskRunningWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationTaskRunningWaitWaiterConfigTypeDef(
+    _ReplicationTaskRunningWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationTaskRunningWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ReplicationTaskStoppedWaitFiltersTypeDef = TypedDict(
     "_ReplicationTaskStoppedWaitFiltersTypeDef", {"Name": str, "Values": List[str]}
 )
@@ -21151,6 +21299,31 @@ class ReplicationTaskStoppedWaitFiltersTypeDef(
     """
 
 
+_ReplicationTaskStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_ReplicationTaskStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ReplicationTaskStoppedWaitWaiterConfigTypeDef(
+    _ReplicationTaskStoppedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ReplicationTaskStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _TestConnectionSucceedsWaitFiltersTypeDef = TypedDict(
     "_TestConnectionSucceedsWaitFiltersTypeDef", {"Name": str, "Values": List[str]}
 )
@@ -21171,4 +21344,29 @@ class TestConnectionSucceedsWaitFiltersTypeDef(
       The filter value.
 
       - *(string) --*
+    """
+
+
+_TestConnectionSucceedsWaitWaiterConfigTypeDef = TypedDict(
+    "_TestConnectionSucceedsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TestConnectionSucceedsWaitWaiterConfigTypeDef(
+    _TestConnectionSucceedsWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `TestConnectionSucceedsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """

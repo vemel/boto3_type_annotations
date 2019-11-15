@@ -10,7 +10,7 @@ from mypy_boto3_opsworks.type_defs import (
 
 
 class DescribeEcsClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         EcsClusterArns: List[str] = None,

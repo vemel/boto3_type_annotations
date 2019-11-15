@@ -9,7 +9,7 @@ from mypy_boto3_route53resolver.type_defs import (
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,

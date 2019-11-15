@@ -15,7 +15,7 @@ from mypy_boto3_resourcegroupstaggingapi.type_defs import (
 
 
 class GetResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TagFilters: List[GetResourcesPaginateTagFiltersTypeDef] = None,
@@ -234,7 +234,7 @@ class GetResources(Boto3Paginator):
 
 
 class GetTagKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetTagKeysPaginatePaginationConfigTypeDef = None
     ) -> GetTagKeysPaginateResponseTypeDef:
@@ -301,7 +301,7 @@ class GetTagKeys(Boto3Paginator):
 
 
 class GetTagValues(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Key: str,

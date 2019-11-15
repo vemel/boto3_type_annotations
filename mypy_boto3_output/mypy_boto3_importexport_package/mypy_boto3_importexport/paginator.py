@@ -9,7 +9,7 @@ from mypy_boto3_importexport.type_defs import (
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         APIVersion: str = None,

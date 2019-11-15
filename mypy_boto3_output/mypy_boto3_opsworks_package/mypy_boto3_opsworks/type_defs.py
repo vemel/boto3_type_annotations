@@ -5,6 +5,27 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+_AppExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_AppExistsWaitWaiterConfigTypeDef", {"Delay": int, "MaxAttempts": int}, total=False
+)
+
+
+class AppExistsWaitWaiterConfigTypeDef(_AppExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `AppExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _ClientCloneStackChefConfigurationTypeDef = TypedDict(
     "_ClientCloneStackChefConfigurationTypeDef",
     {"ManageBerkshelf": bool, "BerkshelfVersion": str},
@@ -113,7 +134,7 @@ class ClientCloneStackCustomCookbooksSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -196,7 +217,7 @@ class ClientCreateAppAppSourceTypeDef(_ClientCreateAppAppSourceTypeDef):
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -1029,7 +1050,7 @@ class ClientCreateStackCustomCookbooksSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -1264,7 +1285,7 @@ class ClientDescribeAppsResponseAppsAppSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -1485,7 +1506,7 @@ class ClientDescribeAppsResponseAppsTypeDef(_ClientDescribeAppsResponseAppsTypeD
         * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
         For more information on how to safely handle IAM credentials, see
-        `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+        `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
         <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
         In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -1682,7 +1703,7 @@ class ClientDescribeAppsResponseTypeDef(_ClientDescribeAppsResponseTypeDef):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -2214,7 +2235,7 @@ class ClientDescribeDeploymentsResponseDeploymentsTypeDef(
       corresponding default stack configuration attribute values for stack or to pass data to
       recipes. The string should be in the following format:
 
-       ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+       ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
       For more information on custom JSON, see `Use Custom JSON to Modify the Stack
       Configuration Attributes
@@ -2373,7 +2394,7 @@ class ClientDescribeDeploymentsResponseTypeDef(
           corresponding default stack configuration attribute values for stack or to pass data to
           recipes. The string should be in the following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information on custom JSON, see `Use Custom JSON to Modify the Stack
           Configuration Attributes
@@ -4404,7 +4425,7 @@ class ClientDescribeStacksResponseStacksCustomCookbooksSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -4527,7 +4548,7 @@ class ClientDescribeStacksResponseStacksTypeDef(
       corresponding default stack configuration attribute values or to pass data to recipes.
       The string should be in the following format:
 
-       ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+       ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
       For more information on custom JSON, see `Use Custom JSON to Modify the Stack
       Configuration Attributes
@@ -4604,7 +4625,7 @@ class ClientDescribeStacksResponseStacksTypeDef(
         * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
         For more information on how to safely handle IAM credentials, see
-        `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+        `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
         <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
         In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -4732,7 +4753,7 @@ class ClientDescribeStacksResponseTypeDef(_ClientDescribeStacksResponseTypeDef):
           corresponding default stack configuration attribute values or to pass data to recipes.
           The string should be in the following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information on custom JSON, see `Use Custom JSON to Modify the Stack
           Configuration Attributes
@@ -4809,7 +4830,7 @@ class ClientDescribeStacksResponseTypeDef(_ClientDescribeStacksResponseTypeDef):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -5638,6 +5659,83 @@ class ClientRegisterVolumeResponseTypeDef(_ClientRegisterVolumeResponseTypeDef):
     """
 
 
+_ClientSetLoadBasedAutoScalingDownScalingTypeDef = TypedDict(
+    "_ClientSetLoadBasedAutoScalingDownScalingTypeDef",
+    {
+        "InstanceCount": int,
+        "ThresholdsWaitTime": int,
+        "IgnoreMetricsTime": int,
+        "CpuThreshold": float,
+        "MemoryThreshold": float,
+        "LoadThreshold": float,
+        "Alarms": List[str],
+    },
+    total=False,
+)
+
+
+class ClientSetLoadBasedAutoScalingDownScalingTypeDef(
+    _ClientSetLoadBasedAutoScalingDownScalingTypeDef
+):
+    """
+    Type definition for `ClientSetLoadBasedAutoScaling` `DownScaling`
+
+    An ``AutoScalingThresholds`` object with the downscaling threshold configuration. If the load
+    falls below these thresholds for a specified amount of time, AWS OpsWorks Stacks stops a
+    specified number of instances.
+
+    - **InstanceCount** *(integer) --*
+
+      The number of instances to add or remove when the load exceeds a threshold.
+
+    - **ThresholdsWaitTime** *(integer) --*
+
+      The amount of time, in minutes, that the load must exceed a threshold before more instances are
+      added or removed.
+
+    - **IgnoreMetricsTime** *(integer) --*
+
+      The amount of time (in minutes) after a scaling event occurs that AWS OpsWorks Stacks should
+      ignore metrics and suppress additional scaling events. For example, AWS OpsWorks Stacks adds
+      new instances following an upscaling event but the instances won't start reducing the load
+      until they have been booted and configured. There is no point in raising additional scaling
+      events during that operation, which typically takes several minutes. ``IgnoreMetricsTime``
+      allows you to direct AWS OpsWorks Stacks to suppress scaling events long enough to get the new
+      instances online.
+
+    - **CpuThreshold** *(float) --*
+
+      The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the
+      threshold.
+
+    - **MemoryThreshold** *(float) --*
+
+      The memory utilization threshold, as a percent of the available memory. A value of -1 disables
+      the threshold.
+
+    - **LoadThreshold** *(float) --*
+
+      The load threshold. A value of -1 disables the threshold. For more information about how load
+      is computed, see `Load (computing) <http://en.wikipedia.org/wiki/Load_%28computing%29>`__ .
+
+    - **Alarms** *(list) --*
+
+      Custom Cloudwatch auto scaling alarms, to be used as thresholds. This parameter takes a list of
+      up to five alarm names, which are case sensitive and must be in the same region as the stack.
+
+      .. note::
+
+        To use custom alarms, you must update your service role to allow
+        ``cloudwatch:DescribeAlarms`` . You can either have AWS OpsWorks Stacks update the role for
+        you when you first use this feature or you can edit the role manually. For more information,
+        see `Allowing AWS OpsWorks Stacks to Act on Your Behalf
+        <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-servicerole.html>`__
+        .
+
+      - *(string) --*
+    """
+
+
 _ClientSetLoadBasedAutoScalingUpScalingTypeDef = TypedDict(
     "_ClientSetLoadBasedAutoScalingUpScalingTypeDef",
     {
@@ -5715,6 +5813,87 @@ class ClientSetLoadBasedAutoScalingUpScalingTypeDef(
     """
 
 
+_ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef = TypedDict(
+    "_ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef",
+    {
+        "Monday": Dict[str, str],
+        "Tuesday": Dict[str, str],
+        "Wednesday": Dict[str, str],
+        "Thursday": Dict[str, str],
+        "Friday": Dict[str, str],
+        "Saturday": Dict[str, str],
+        "Sunday": Dict[str, str],
+    },
+    total=False,
+)
+
+
+class ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef(
+    _ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef
+):
+    """
+    Type definition for `ClientSetTimeBasedAutoScaling` `AutoScalingSchedule`
+
+    An ``AutoScalingSchedule`` with the instance schedule.
+
+    - **Monday** *(dict) --*
+
+      The schedule for Monday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Tuesday** *(dict) --*
+
+      The schedule for Tuesday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Wednesday** *(dict) --*
+
+      The schedule for Wednesday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Thursday** *(dict) --*
+
+      The schedule for Thursday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Friday** *(dict) --*
+
+      The schedule for Friday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Saturday** *(dict) --*
+
+      The schedule for Saturday.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **Sunday** *(dict) --*
+
+      The schedule for Sunday.
+
+      - *(string) --*
+
+        - *(string) --*
+    """
+
+
 _ClientUpdateAppAppSourceTypeDef = TypedDict(
     "_ClientUpdateAppAppSourceTypeDef",
     {
@@ -5762,7 +5941,7 @@ class ClientUpdateAppAppSourceTypeDef(_ClientUpdateAppAppSourceTypeDef):
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -5806,6 +5985,43 @@ class ClientUpdateAppDataSourcesTypeDef(_ClientUpdateAppDataSourcesTypeDef):
     - **DatabaseName** *(string) --*
 
       The database name.
+    """
+
+
+_RequiredClientUpdateAppEnvironmentTypeDef = TypedDict(
+    "_RequiredClientUpdateAppEnvironmentTypeDef", {"Key": str, "Value": str}
+)
+_OptionalClientUpdateAppEnvironmentTypeDef = TypedDict(
+    "_OptionalClientUpdateAppEnvironmentTypeDef", {"Secure": bool}, total=False
+)
+
+
+class ClientUpdateAppEnvironmentTypeDef(
+    _RequiredClientUpdateAppEnvironmentTypeDef,
+    _OptionalClientUpdateAppEnvironmentTypeDef,
+):
+    """
+    Type definition for `ClientUpdateApp` `Environment`
+
+    Represents an app's environment variable.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      (Required) The environment variable's name, which can consist of up to 64 characters and must
+      be specified. The name can contain upper- and lowercase letters, numbers, and underscores
+      (_), but it must start with a letter or underscore.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      (Optional) The environment variable's value, which can be left empty. If you specify a value,
+      it can contain up to 256 characters, which must all be printable.
+
+    - **Secure** *(boolean) --*
+
+      (Optional) Whether the variable's value will be returned by the  DescribeApps action. To
+      conceal an environment variable's value, set ``Secure`` to ``true`` . ``DescribeApps`` then
+      returns ``*****FILTERED*****`` instead of the actual value. The default value for ``Secure``
+      is ``false`` .
     """
 
 
@@ -6274,7 +6490,7 @@ class ClientUpdateStackCustomCookbooksSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -6290,6 +6506,31 @@ class ClientUpdateStackCustomCookbooksSourceTypeDef(
       The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an
       application. One of the simplest approaches is to have branches or revisions in your repository
       that represent different versions that can potentially be deployed.
+    """
+
+
+_DeploymentSuccessfulWaitWaiterConfigTypeDef = TypedDict(
+    "_DeploymentSuccessfulWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class DeploymentSuccessfulWaitWaiterConfigTypeDef(
+    _DeploymentSuccessfulWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `DeploymentSuccessfulWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """
 
 
@@ -6396,6 +6637,102 @@ class DescribeEcsClustersPaginateResponseTypeDef(
         - **RegisteredAt** *(string) --*
 
           The time and date that the cluster was registered with the stack.
+    """
+
+
+_InstanceOnlineWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceOnlineWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceOnlineWaitWaiterConfigTypeDef(_InstanceOnlineWaitWaiterConfigTypeDef):
+    """
+    Type definition for `InstanceOnlineWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_InstanceRegisteredWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceRegisteredWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceRegisteredWaitWaiterConfigTypeDef(
+    _InstanceRegisteredWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InstanceRegisteredWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_InstanceStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceStoppedWaitWaiterConfigTypeDef(_InstanceStoppedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `InstanceStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_InstanceTerminatedWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceTerminatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceTerminatedWaitWaiterConfigTypeDef(
+    _InstanceTerminatedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InstanceTerminatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """
 
 
@@ -6507,7 +6844,7 @@ class ServiceResourceCreateStackCustomCookbooksSourceTypeDef(
       * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
       For more information on how to safely handle IAM credentials, see
-      `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+      `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
       <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
       In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.

@@ -6,6 +6,31 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+_ChangeSetCreateCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_ChangeSetCreateCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ChangeSetCreateCompleteWaitWaiterConfigTypeDef(
+    _ChangeSetCreateCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ChangeSetCreateCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
+    """
+
+
 _ClientCreateChangeSetParametersTypeDef = TypedDict(
     "_ClientCreateChangeSetParametersTypeDef",
     {
@@ -130,7 +155,7 @@ class ClientCreateChangeSetRollbackConfigurationRollbackTriggersTypeDef(
 
     - **Type** *(string) --* **[REQUIRED]**
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -192,7 +217,7 @@ class ClientCreateChangeSetRollbackConfigurationTypeDef(
 
         - **Type** *(string) --* **[REQUIRED]**
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -460,7 +485,7 @@ class ClientCreateStackRollbackConfigurationRollbackTriggersTypeDef(
 
     - **Type** *(string) --* **[REQUIRED]**
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -522,7 +547,7 @@ class ClientCreateStackRollbackConfigurationTypeDef(
 
         - **Type** *(string) --* **[REQUIRED]**
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -1364,7 +1389,7 @@ class ClientDescribeChangeSetResponseRollbackConfigurationRollbackTriggersTypeDe
 
     - **Type** *(string) --*
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -1427,7 +1452,7 @@ class ClientDescribeChangeSetResponseRollbackConfigurationTypeDef(
 
         - **Type** *(string) --*
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -1632,7 +1657,7 @@ class ClientDescribeChangeSetResponseTypeDef(_ClientDescribeChangeSetResponseTyp
 
           - **Type** *(string) --*
 
-            The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+            The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
             is the only supported resource type.
 
@@ -3771,7 +3796,8 @@ class ClientDescribeStacksResponseStacksRollbackConfigurationRollbackTriggersTyp
 
     - **Type** *(string) --*
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently,
+      `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -3835,7 +3861,8 @@ class ClientDescribeStacksResponseStacksRollbackConfigurationTypeDef(
 
         - **Type** *(string) --*
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently,
+          `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -4030,7 +4057,8 @@ class ClientDescribeStacksResponseStacksTypeDef(
 
           - **Type** *(string) --*
 
-            The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+            The resource type of the rollback trigger. Currently,
+            `AWS\\:\\:CloudWatch\\:\\:Alarm
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
             is the only supported resource type.
 
@@ -4321,7 +4349,8 @@ class ClientDescribeStacksResponseTypeDef(_ClientDescribeStacksResponseTypeDef):
 
               - **Type** *(string) --*
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently,
+                `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -6817,7 +6846,7 @@ class ClientUpdateStackRollbackConfigurationRollbackTriggersTypeDef(
 
     - **Type** *(string) --* **[REQUIRED]**
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -6879,7 +6908,7 @@ class ClientUpdateStackRollbackConfigurationTypeDef(
 
         - **Type** *(string) --* **[REQUIRED]**
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -7874,7 +7903,7 @@ class DescribeChangeSetPaginateResponseRollbackConfigurationRollbackTriggersType
 
     - **Type** *(string) --*
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -7937,7 +7966,7 @@ class DescribeChangeSetPaginateResponseRollbackConfigurationTypeDef(
 
         - **Type** *(string) --*
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -8143,7 +8172,7 @@ class DescribeChangeSetPaginateResponseTypeDef(
 
           - **Type** *(string) --*
 
-            The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+            The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
             is the only supported resource type.
 
@@ -8715,7 +8744,8 @@ class DescribeStacksPaginateResponseStacksRollbackConfigurationRollbackTriggersT
 
     - **Type** *(string) --*
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently,
+      `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -8779,7 +8809,8 @@ class DescribeStacksPaginateResponseStacksRollbackConfigurationTypeDef(
 
         - **Type** *(string) --*
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently,
+          `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -8974,7 +9005,8 @@ class DescribeStacksPaginateResponseStacksTypeDef(
 
           - **Type** *(string) --*
 
-            The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+            The resource type of the rollback trigger. Currently,
+            `AWS\\:\\:CloudWatch\\:\\:Alarm
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
             is the only supported resource type.
 
@@ -9265,7 +9297,8 @@ class DescribeStacksPaginateResponseTypeDef(_DescribeStacksPaginateResponseTypeD
 
               - **Type** *(string) --*
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently,
+                `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -11049,7 +11082,7 @@ class ServiceResourceCreateStackRollbackConfigurationRollbackTriggersTypeDef(
 
     - **Type** *(string) --* **[REQUIRED]**
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -11111,7 +11144,7 @@ class ServiceResourceCreateStackRollbackConfigurationTypeDef(
 
         - **Type** *(string) --* **[REQUIRED]**
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 
@@ -11156,6 +11189,129 @@ class ServiceResourceCreateStackTagsTypeDef(_ServiceResourceCreateStackTagsTypeD
 
        *Required* . A string containing the value for this tag. You can specify a maximum of 256
        characters for a tag value.
+    """
+
+
+_StackCreateCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_StackCreateCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StackCreateCompleteWaitWaiterConfigTypeDef(
+    _StackCreateCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `StackCreateCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
+    """
+
+
+_StackDeleteCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_StackDeleteCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StackDeleteCompleteWaitWaiterConfigTypeDef(
+    _StackDeleteCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `StackDeleteCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
+    """
+
+
+_StackExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_StackExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StackExistsWaitWaiterConfigTypeDef(_StackExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `StackExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
+_StackImportCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_StackImportCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StackImportCompleteWaitWaiterConfigTypeDef(
+    _StackImportCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `StackImportCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
+    """
+
+
+_StackUpdateCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_StackUpdateCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StackUpdateCompleteWaitWaiterConfigTypeDef(
+    _StackUpdateCompleteWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `StackUpdateCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
     """
 
 
@@ -11241,7 +11397,7 @@ class StackUpdateRollbackConfigurationRollbackTriggersTypeDef(
 
     - **Type** *(string) --* **[REQUIRED]**
 
-      The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+      The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
       <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
       is the only supported resource type.
     """
@@ -11301,7 +11457,7 @@ class StackUpdateRollbackConfigurationTypeDef(_StackUpdateRollbackConfigurationT
 
         - **Type** *(string) --* **[REQUIRED]**
 
-          The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+          The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
           is the only supported resource type.
 

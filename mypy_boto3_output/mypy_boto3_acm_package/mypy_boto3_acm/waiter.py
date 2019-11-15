@@ -1,13 +1,17 @@
 "Main interface for acm Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_acm.type_defs import CertificateValidatedWaitWaiterConfigTypeDef
 
 
 class CertificateValidated(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, CertificateArn: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        CertificateArn: str,
+        WaiterConfig: CertificateValidatedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`ACM.Client.describe_certificate` every 60 seconds until a successful state is
         reached. An error is returned after 40 failed checks.

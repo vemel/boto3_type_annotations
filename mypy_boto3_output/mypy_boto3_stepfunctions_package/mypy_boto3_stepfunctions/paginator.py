@@ -15,7 +15,7 @@ from mypy_boto3_stepfunctions.type_defs import (
 
 
 class GetExecutionHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         executionArn: str,
@@ -707,7 +707,7 @@ class GetExecutionHistory(Boto3Paginator):
 
                     * wildcard characters ``? *``
 
-                    * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                    * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                     * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -723,7 +723,7 @@ class GetExecutionHistory(Boto3Paginator):
 
 
 class ListActivities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListActivitiesPaginatePaginationConfigTypeDef = None
     ) -> ListActivitiesPaginateResponseTypeDef:
@@ -808,7 +808,7 @@ class ListActivities(Boto3Paginator):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -824,7 +824,7 @@ class ListActivities(Boto3Paginator):
 
 
 class ListExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         stateMachineArn: str,
@@ -931,7 +931,7 @@ class ListExecutions(Boto3Paginator):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -955,7 +955,7 @@ class ListExecutions(Boto3Paginator):
 
 
 class ListStateMachines(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListStateMachinesPaginatePaginationConfigTypeDef = None
     ) -> ListStateMachinesPaginateResponseTypeDef:
@@ -1039,7 +1039,7 @@ class ListStateMachines(Boto3Paginator):
 
                   * wildcard characters ``? *``
 
-                  * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+                  * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
                   * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 

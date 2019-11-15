@@ -5,6 +5,58 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+_CertificateValidatedWaitWaiterConfigTypeDef = TypedDict(
+    "_CertificateValidatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class CertificateValidatedWaitWaiterConfigTypeDef(
+    _CertificateValidatedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `CertificateValidatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_RequiredClientAddTagsToCertificateTagsTypeDef = TypedDict(
+    "_RequiredClientAddTagsToCertificateTagsTypeDef", {"Key": str}
+)
+_OptionalClientAddTagsToCertificateTagsTypeDef = TypedDict(
+    "_OptionalClientAddTagsToCertificateTagsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientAddTagsToCertificateTagsTypeDef(
+    _RequiredClientAddTagsToCertificateTagsTypeDef,
+    _OptionalClientAddTagsToCertificateTagsTypeDef,
+):
+    """
+    Type definition for `ClientAddTagsToCertificate` `Tags`
+
+    A key-value pair that identifies or specifies metadata about an ACM resource.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key of the tag.
+
+    - **Value** *(string) --*
+
+      The value of the tag.
+    """
+
+
 _ClientExportCertificateResponseTypeDef = TypedDict(
     "_ClientExportCertificateResponseTypeDef",
     {"Certificate": str, "CertificateChain": str, "PrivateKey": str},
@@ -238,6 +290,33 @@ class ClientListTagsForCertificateResponseTypeDef(
     """
 
 
+_RequiredClientRemoveTagsFromCertificateTagsTypeDef = TypedDict(
+    "_RequiredClientRemoveTagsFromCertificateTagsTypeDef", {"Key": str}
+)
+_OptionalClientRemoveTagsFromCertificateTagsTypeDef = TypedDict(
+    "_OptionalClientRemoveTagsFromCertificateTagsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientRemoveTagsFromCertificateTagsTypeDef(
+    _RequiredClientRemoveTagsFromCertificateTagsTypeDef,
+    _OptionalClientRemoveTagsFromCertificateTagsTypeDef,
+):
+    """
+    Type definition for `ClientRemoveTagsFromCertificate` `Tags`
+
+    A key-value pair that identifies or specifies metadata about an ACM resource.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key of the tag.
+
+    - **Value** *(string) --*
+
+      The value of the tag.
+    """
+
+
 _ClientRequestCertificateDomainValidationOptionsTypeDef = TypedDict(
     "_ClientRequestCertificateDomainValidationOptionsTypeDef",
     {"DomainName": str, "ValidationDomain": str},
@@ -317,6 +396,31 @@ class ClientRequestCertificateResponseTypeDef(_ClientRequestCertificateResponseT
       String that contains the ARN of the issued certificate. This must be of the form:
 
        ``arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012``
+    """
+
+
+_ClientUpdateCertificateOptionsOptionsTypeDef = TypedDict(
+    "_ClientUpdateCertificateOptionsOptionsTypeDef",
+    {"CertificateTransparencyLoggingPreference": str},
+    total=False,
+)
+
+
+class ClientUpdateCertificateOptionsOptionsTypeDef(
+    _ClientUpdateCertificateOptionsOptionsTypeDef
+):
+    """
+    Type definition for `ClientUpdateCertificateOptions` `Options`
+
+    Use to update the options for your certificate. Currently, you can specify whether to add your
+    certificate to a transparency log. Certificate transparency makes it possible to detect SSL/TLS
+    certificates that have been mistakenly or maliciously issued. Certificates that have not been
+    logged typically produce an error message in a browser.
+
+    - **CertificateTransparencyLoggingPreference** *(string) --*
+
+      You can opt out of certificate transparency logging by specifying the ``DISABLED`` option. Opt
+      in by specifying ``ENABLED`` .
     """
 
 

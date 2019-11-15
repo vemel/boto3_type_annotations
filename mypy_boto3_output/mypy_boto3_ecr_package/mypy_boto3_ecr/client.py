@@ -50,7 +50,7 @@ from mypy_boto3_ecr.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_check_layer_availability(
         self, repositoryName: str, layerDigests: List[str], registryId: str = None
     ) -> ClientBatchCheckLayerAvailabilityResponseTypeDef:
@@ -170,7 +170,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_image(
         self,
         repositoryName: str,
@@ -309,7 +309,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_image(
         self,
         repositoryName: str,
@@ -478,7 +478,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -495,7 +495,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_layer_upload(
         self,
         repositoryName: str,
@@ -586,7 +586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_repository(
         self,
         repositoryName: str,
@@ -738,7 +738,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_lifecycle_policy(
         self, repositoryName: str, registryId: str = None
     ) -> ClientDeleteLifecyclePolicyResponseTypeDef:
@@ -801,7 +801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_repository(
         self, repositoryName: str, registryId: str = None, force: bool = None
     ) -> ClientDeleteRepositoryResponseTypeDef:
@@ -904,7 +904,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_repository_policy(
         self, repositoryName: str, registryId: str = None
     ) -> ClientDeleteRepositoryPolicyResponseTypeDef:
@@ -962,7 +962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_image_scan_findings(
         self,
         repositoryName: str,
@@ -1179,7 +1179,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_images(
         self,
         repositoryName: str,
@@ -1397,7 +1397,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_repositories(
         self,
         registryId: str = None,
@@ -1544,7 +1544,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1573,7 +1573,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_authorization_token(
         self, registryIds: List[str] = None
     ) -> ClientGetAuthorizationTokenResponseTypeDef:
@@ -1653,7 +1653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_download_url_for_layer(
         self, repositoryName: str, layerDigest: str, registryId: str = None
     ) -> ClientGetDownloadUrlForLayerResponseTypeDef:
@@ -1719,7 +1719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_lifecycle_policy(
         self, repositoryName: str, registryId: str = None
     ) -> ClientGetLifecyclePolicyResponseTypeDef:
@@ -1782,7 +1782,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_lifecycle_policy_preview(
         self,
         repositoryName: str,
@@ -1976,7 +1976,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1997,7 +1997,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_repository_policy(
         self, repositoryName: str, registryId: str = None
     ) -> ClientGetRepositoryPolicyResponseTypeDef:
@@ -2055,7 +2055,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2068,7 +2068,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_layer_upload(
         self, repositoryName: str, registryId: str = None
     ) -> ClientInitiateLayerUploadResponseTypeDef:
@@ -2128,7 +2128,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_images(
         self,
         repositoryName: str,
@@ -2249,7 +2249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2313,7 +2313,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_image(
         self,
         repositoryName: str,
@@ -2415,7 +2415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_image_scanning_configuration(
         self,
         repositoryName: str,
@@ -2502,7 +2502,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_image_tag_mutability(
         self, repositoryName: str, imageTagMutability: str, registryId: str = None
     ) -> ClientPutImageTagMutabilityResponseTypeDef:
@@ -2573,7 +2573,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lifecycle_policy(
         self, repositoryName: str, lifecyclePolicyText: str, registryId: str = None
     ) -> ClientPutLifecyclePolicyResponseTypeDef:
@@ -2639,7 +2639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_repository_policy(
         self,
         repositoryName: str,
@@ -2721,7 +2721,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_image_scan(
         self,
         repositoryName: str,
@@ -2829,7 +2829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_lifecycle_policy_preview(
         self,
         repositoryName: str,
@@ -2903,7 +2903,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2968,7 +2968,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes specified tags from a resource.
@@ -3011,7 +3011,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_layer_part(
         self,
         repositoryName: str,

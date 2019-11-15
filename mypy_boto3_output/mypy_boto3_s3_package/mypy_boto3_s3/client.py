@@ -58,8 +58,23 @@ from mypy_boto3_s3.type_defs import (
     ClientListObjectsResponseTypeDef,
     ClientListObjectsV2ResponseTypeDef,
     ClientListPartsResponseTypeDef,
+    ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef,
     ClientPutBucketAclAccessControlPolicyTypeDef,
+    ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef,
+    ClientPutBucketCorsCORSConfigurationTypeDef,
+    ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef,
+    ClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef,
+    ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef,
+    ClientPutBucketLifecycleLifecycleConfigurationTypeDef,
+    ClientPutBucketLoggingBucketLoggingStatusTypeDef,
+    ClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef,
+    ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef,
+    ClientPutBucketNotificationNotificationConfigurationTypeDef,
     ClientPutBucketReplicationReplicationConfigurationTypeDef,
+    ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef,
+    ClientPutBucketTaggingTaggingTypeDef,
+    ClientPutBucketVersioningVersioningConfigurationTypeDef,
+    ClientPutBucketWebsiteWebsiteConfigurationTypeDef,
     ClientPutObjectAclAccessControlPolicyTypeDef,
     ClientPutObjectAclResponseTypeDef,
     ClientPutObjectLegalHoldLegalHoldTypeDef,
@@ -71,6 +86,7 @@ from mypy_boto3_s3.type_defs import (
     ClientPutObjectRetentionRetentionTypeDef,
     ClientPutObjectTaggingResponseTypeDef,
     ClientPutObjectTaggingTaggingTypeDef,
+    ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef,
     ClientRestoreObjectResponseTypeDef,
     ClientRestoreObjectRestoreRequestTypeDef,
     ClientSelectObjectContentInputSerializationTypeDef,
@@ -83,7 +99,7 @@ from mypy_boto3_s3.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_multipart_upload(
         self, Bucket: str, Key: str, UploadId: str, RequestPayer: str = None
     ) -> ClientAbortMultipartUploadResponseTypeDef:
@@ -148,7 +164,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -165,7 +181,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_multipart_upload(
         self,
         Bucket: str,
@@ -286,7 +302,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
         CopySource: TypeDefS3CopySource,
@@ -346,7 +362,7 @@ class Client(BaseClient):
             copy.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_object(
         self,
         Bucket: str,
@@ -729,7 +745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_bucket(
         self,
         Bucket: str,
@@ -830,7 +846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_multipart_upload(
         self,
         Bucket: str,
@@ -1138,7 +1154,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket(self, Bucket: str) -> None:
         """
         Deletes the bucket. All objects (including all object versions and Delete Markers) in the bucket
@@ -1159,7 +1175,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_analytics_configuration(self, Bucket: str, Id: str) -> None:
         """
         Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
@@ -1191,7 +1207,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_cors(self, Bucket: str) -> None:
         """
         Deletes the CORS configuration information set for the bucket.
@@ -1211,7 +1227,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_encryption(self, Bucket: str) -> None:
         """
         Deletes the server-side encryption configuration from the bucket.
@@ -1233,7 +1249,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_inventory_configuration(self, Bucket: str, Id: str) -> None:
         """
         Deletes an inventory configuration (identified by the inventory ID) from the bucket.
@@ -1261,7 +1277,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_lifecycle(self, Bucket: str) -> None:
         """
         Deletes the lifecycle configuration from the bucket.
@@ -1281,7 +1297,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_metrics_configuration(self, Bucket: str, Id: str) -> None:
         """
         Deletes a metrics configuration (specified by the metrics configuration ID) from the bucket.
@@ -1309,7 +1325,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_policy(self, Bucket: str) -> None:
         """
         Deletes the policy from the bucket.
@@ -1329,7 +1345,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_replication(self, Bucket: str) -> None:
         """
         Deletes the replication configuration from the bucket. For information about replication
@@ -1358,7 +1374,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_tagging(self, Bucket: str) -> None:
         """
         Deletes the tags from the bucket.
@@ -1378,7 +1394,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bucket_website(self, Bucket: str) -> None:
         """
         This operation removes the website configuration from the bucket.
@@ -1398,7 +1414,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_object(
         self,
         Bucket: str,
@@ -1489,7 +1505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_object_tagging(
         self, Bucket: str, Key: str, VersionId: str = None
     ) -> ClientDeleteObjectTaggingResponseTypeDef:
@@ -1538,7 +1554,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_objects(
         self,
         Bucket: str,
@@ -1675,7 +1691,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_public_access_block(self, Bucket: str) -> None:
         """
         Removes the ``PublicAccessBlock`` configuration from an Amazon S3 bucket.
@@ -1697,7 +1713,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_file(
         self,
         Bucket: str,
@@ -1742,7 +1758,7 @@ class Client(BaseClient):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_fileobj(
         self,
         Bucket: str,
@@ -1791,7 +1807,7 @@ class Client(BaseClient):
             download.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_post(
         self,
         Bucket: str,
@@ -1864,7 +1880,7 @@ class Client(BaseClient):
             }
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1893,7 +1909,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_accelerate_configuration(
         self, Bucket: str
     ) -> ClientGetBucketAccelerateConfigurationResponseTypeDef:
@@ -1934,7 +1950,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_acl(self, Bucket: str) -> ClientGetBucketAclResponseTypeDef:
         """
         Gets the access control policy for the bucket.
@@ -2020,7 +2036,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_analytics_configuration(
         self, Bucket: str, Id: str
     ) -> ClientGetBucketAnalyticsConfigurationResponseTypeDef:
@@ -2187,7 +2203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_cors(self, Bucket: str) -> ClientGetBucketCorsResponseTypeDef:
         """
         Returns the CORS configuration for the bucket.
@@ -2275,7 +2291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_encryption(
         self, Bucket: str
     ) -> ClientGetBucketEncryptionResponseTypeDef:
@@ -2346,7 +2362,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_inventory_configuration(
         self, Bucket: str, Id: str
     ) -> ClientGetBucketInventoryConfigurationResponseTypeDef:
@@ -2503,7 +2519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_lifecycle(
         self, Bucket: str
     ) -> ClientGetBucketLifecycleResponseTypeDef:
@@ -2657,7 +2673,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_lifecycle_configuration(
         self, Bucket: str
     ) -> ClientGetBucketLifecycleConfigurationResponseTypeDef:
@@ -2873,7 +2889,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_location(
         self, Bucket: str
     ) -> ClientGetBucketLocationResponseTypeDef:
@@ -2912,7 +2928,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_logging(self, Bucket: str) -> ClientGetBucketLoggingResponseTypeDef:
         """
         Returns the logging status of a bucket and the permissions users have to view and modify that
@@ -3006,7 +3022,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_metrics_configuration(
         self, Bucket: str, Id: str
     ) -> ClientGetBucketMetricsConfigurationResponseTypeDef:
@@ -3121,7 +3137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_notification(
         self, Bucket: str
     ) -> ClientGetBucketNotificationResponseTypeDef:
@@ -3276,7 +3292,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_notification_configuration(
         self, Bucket: str
     ) -> ClientGetBucketNotificationConfigurationResponseTypeDef:
@@ -3542,7 +3558,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_policy(self, Bucket: str) -> ClientGetBucketPolicyResponseTypeDef:
         """
         Returns the policy of a specified bucket.
@@ -3579,7 +3595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_policy_status(
         self, Bucket: str
     ) -> ClientGetBucketPolicyStatusResponseTypeDef:
@@ -3627,7 +3643,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_replication(
         self, Bucket: str
     ) -> ClientGetBucketReplicationResponseTypeDef:
@@ -3845,7 +3861,7 @@ class Client(BaseClient):
                       Amazon S3 to change replica ownership to the AWS account that owns the destination
                       bucket by specifying the ``AccessControlTranslation`` property, this is the account
                       ID of the destination bucket owner. For more information, see `Cross-Region
-                      Replication Additional Configuration: Change Replica Owner
+                      Replication Additional Configuration\\: Change Replica Owner
                       <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
                       *Amazon Simple Storage Service Developer Guide* .
 
@@ -3896,7 +3912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_request_payment(
         self, Bucket: str
     ) -> ClientGetBucketRequestPaymentResponseTypeDef:
@@ -3935,7 +3951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_tagging(self, Bucket: str) -> ClientGetBucketTaggingResponseTypeDef:
         """
         Returns the tag set associated with the bucket.
@@ -3985,7 +4001,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_versioning(
         self, Bucket: str
     ) -> ClientGetBucketVersioningResponseTypeDef:
@@ -4031,7 +4047,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_bucket_website(self, Bucket: str) -> ClientGetBucketWebsiteResponseTypeDef:
         """
         Returns the website configuration for a bucket.
@@ -4178,7 +4194,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object(
         self,
         Bucket: str,
@@ -4527,7 +4543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_acl(
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectAclResponseTypeDef:
@@ -4639,7 +4655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_legal_hold(
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectLegalHoldResponseTypeDef:
@@ -4707,7 +4723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_lock_configuration(
         self, Bucket: str
     ) -> ClientGetObjectLockConfigurationResponseTypeDef:
@@ -4784,7 +4800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_retention(
         self, Bucket: str, Key: str, VersionId: str = None, RequestPayer: str = None
     ) -> ClientGetObjectRetentionResponseTypeDef:
@@ -4857,7 +4873,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_tagging(
         self, Bucket: str, Key: str, VersionId: str = None
     ) -> ClientGetObjectTaggingResponseTypeDef:
@@ -4920,7 +4936,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_torrent(
         self, Bucket: str, Key: str, RequestPayer: str = None
     ) -> ClientGetObjectTorrentResponseTypeDef:
@@ -4975,7 +4991,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4996,7 +5012,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_public_access_block(
         self, Bucket: str
     ) -> ClientGetPublicAccessBlockResponseTypeDef:
@@ -5080,7 +5096,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5093,7 +5109,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def head_bucket(self, Bucket: str) -> None:
         """
         This operation is useful to determine if a bucket exists and you have permission to access it.
@@ -5113,7 +5129,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def head_object(
         self,
         Bucket: str,
@@ -5407,7 +5423,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bucket_analytics_configurations(
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketAnalyticsConfigurationsResponseTypeDef:
@@ -5604,7 +5620,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bucket_inventory_configurations(
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketInventoryConfigurationsResponseTypeDef:
@@ -5792,7 +5808,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bucket_metrics_configurations(
         self, Bucket: str, ContinuationToken: str = None
     ) -> ClientListBucketMetricsConfigurationsResponseTypeDef:
@@ -5941,7 +5957,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_buckets(
         self, *args: Any, **kwargs: Any
     ) -> ClientListBucketsResponseTypeDef:
@@ -5999,7 +6015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_multipart_uploads(
         self,
         Bucket: str,
@@ -6204,7 +6220,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_versions(
         self,
         Bucket: str,
@@ -6429,7 +6445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_objects(
         self,
         Bucket: str,
@@ -6597,7 +6613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_objects_v2(
         self,
         Bucket: str,
@@ -6808,7 +6824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_parts(
         self,
         Bucket: str,
@@ -6992,9 +7008,11 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_accelerate_configuration(
-        self, Bucket: str, AccelerateConfiguration: Dict
+        self,
+        Bucket: str,
+        AccelerateConfiguration: ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef,
     ) -> None:
         """
         Sets the accelerate configuration of an existing bucket.
@@ -7028,7 +7046,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_acl(
         self,
         Bucket: str,
@@ -7157,9 +7175,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_analytics_configuration(
-        self, Bucket: str, Id: str, AnalyticsConfiguration: Dict
+        self,
+        Bucket: str,
+        Id: str,
+        AnalyticsConfiguration: ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef,
     ) -> None:
         """
         Sets an analytics configuration for the bucket (specified by the analytics configuration ID).
@@ -7313,8 +7334,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_bucket_cors(self, Bucket: str, CORSConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_bucket_cors(
+        self,
+        Bucket: str,
+        CORSConfiguration: ClientPutBucketCorsCORSConfigurationTypeDef,
+    ) -> None:
         """
         Sets the CORS configuration for a bucket.
 
@@ -7397,11 +7422,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_encryption(
         self,
         Bucket: str,
-        ServerSideEncryptionConfiguration: Dict,
+        ServerSideEncryptionConfiguration: ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef,
         ContentMD5: str = None,
     ) -> None:
         """
@@ -7471,9 +7496,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_inventory_configuration(
-        self, Bucket: str, Id: str, InventoryConfiguration: Dict
+        self,
+        Bucket: str,
+        Id: str,
+        InventoryConfiguration: ClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef,
     ) -> None:
         """
         Adds an inventory configuration (identified by the inventory ID) from the bucket.
@@ -7618,9 +7646,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_lifecycle(
-        self, Bucket: str, LifecycleConfiguration: Dict = None
+        self,
+        Bucket: str,
+        LifecycleConfiguration: ClientPutBucketLifecycleLifecycleConfigurationTypeDef = None,
     ) -> None:
         """
         No longer used, see the PutBucketLifecycleConfiguration operation.
@@ -7764,9 +7794,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_lifecycle_configuration(
-        self, Bucket: str, LifecycleConfiguration: Dict = None
+        self,
+        Bucket: str,
+        LifecycleConfiguration: ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef = None,
     ) -> None:
         """
         Sets lifecycle configuration for your bucket. If a lifecycle configuration exists, it replaces it.
@@ -7974,8 +8006,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_bucket_logging(self, Bucket: str, BucketLoggingStatus: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_bucket_logging(
+        self,
+        Bucket: str,
+        BucketLoggingStatus: ClientPutBucketLoggingBucketLoggingStatusTypeDef,
+    ) -> None:
         """
         Set the logging parameters for a bucket and to specify permissions for who can view and modify the
         logging parameters. To set the logging status of a bucket, you must be the bucket owner.
@@ -8062,9 +8098,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_metrics_configuration(
-        self, Bucket: str, Id: str, MetricsConfiguration: Dict
+        self,
+        Bucket: str,
+        Id: str,
+        MetricsConfiguration: ClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef,
     ) -> None:
         """
         Sets a metrics configuration (specified by the metrics configuration ID) for the bucket.
@@ -8166,9 +8205,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_notification(
-        self, Bucket: str, NotificationConfiguration: Dict
+        self,
+        Bucket: str,
+        NotificationConfiguration: ClientPutBucketNotificationNotificationConfigurationTypeDef,
     ) -> None:
         """
         No longer used, see the PutBucketNotificationConfiguration operation.
@@ -8312,9 +8353,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_notification_configuration(
-        self, Bucket: str, NotificationConfiguration: Dict
+        self,
+        Bucket: str,
+        NotificationConfiguration: ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef,
     ) -> None:
         """
         Enables notifications of specified events for a bucket.
@@ -8565,7 +8608,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_policy(
         self, Bucket: str, Policy: str, ConfirmRemoveSelfBucketAccess: bool = None
     ) -> None:
@@ -8600,7 +8643,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_replication(
         self,
         Bucket: str,
@@ -8805,7 +8848,7 @@ class Client(BaseClient):
                   to change replica ownership to the AWS account that owns the destination bucket by
                   specifying the ``AccessControlTranslation`` property, this is the account ID of the
                   destination bucket owner. For more information, see `Cross-Region Replication Additional
-                  Configuration: Change Replica Owner
+                  Configuration\\: Change Replica Owner
                   <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
                   Simple Storage Service Developer Guide* .
 
@@ -8862,9 +8905,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_request_payment(
-        self, Bucket: str, RequestPaymentConfiguration: Dict
+        self,
+        Bucket: str,
+        RequestPaymentConfiguration: ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef,
     ) -> None:
         """
         Sets the request payment configuration for a bucket. By default, the bucket owner pays for
@@ -8898,8 +8943,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_bucket_tagging(self, Bucket: str, Tagging: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_bucket_tagging(
+        self, Bucket: str, Tagging: ClientPutBucketTaggingTaggingTypeDef
+    ) -> None:
         """
         Sets the tags for a bucket.
 
@@ -8941,9 +8988,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_bucket_versioning(
-        self, Bucket: str, VersioningConfiguration: Dict, MFA: str = None
+        self,
+        Bucket: str,
+        VersioningConfiguration: ClientPutBucketVersioningVersioningConfigurationTypeDef,
+        MFA: str = None,
     ) -> None:
         """
         Sets the versioning state of an existing bucket. To set the versioning state, you must be the
@@ -8988,8 +9038,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def put_bucket_website(self, Bucket: str, WebsiteConfiguration: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_bucket_website(
+        self,
+        Bucket: str,
+        WebsiteConfiguration: ClientPutBucketWebsiteWebsiteConfigurationTypeDef,
+    ) -> None:
         """
         Set the website configuration for a bucket.
 
@@ -9140,7 +9194,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object(
         self,
         Bucket: str,
@@ -9462,7 +9516,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object_acl(
         self,
         Bucket: str,
@@ -9633,7 +9687,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object_legal_hold(
         self,
         Bucket: str,
@@ -9719,7 +9773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object_lock_configuration(
         self,
         Bucket: str,
@@ -9828,7 +9882,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object_retention(
         self,
         Bucket: str,
@@ -9926,7 +9980,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object_tagging(
         self,
         Bucket: str,
@@ -10003,9 +10057,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_public_access_block(
-        self, Bucket: str, PublicAccessBlockConfiguration: Dict, ContentMD5: str = None
+        self,
+        Bucket: str,
+        PublicAccessBlockConfiguration: ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef,
+        ContentMD5: str = None,
     ) -> None:
         """
         Creates or modifies the ``PublicAccessBlock`` configuration for an Amazon S3 bucket.
@@ -10086,7 +10143,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_object(
         self,
         Bucket: str,
@@ -10471,7 +10528,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def select_object_content(
         self,
         Bucket: str,
@@ -10804,7 +10861,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_file(
         self,
         Filename: str,
@@ -10849,7 +10906,7 @@ class Client(BaseClient):
             transfer.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_fileobj(
         self,
         Fileobj: IO[Any],
@@ -10898,7 +10955,7 @@ class Client(BaseClient):
             upload.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_part(
         self,
         Bucket: str,
@@ -11058,7 +11115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_part_copy(
         self,
         Bucket: str,

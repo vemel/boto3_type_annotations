@@ -1,13 +1,20 @@
 "Main interface for medialive Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_medialive.type_defs import (
+    ChannelCreatedWaitWaiterConfigTypeDef,
+    ChannelDeletedWaitWaiterConfigTypeDef,
+    ChannelRunningWaitWaiterConfigTypeDef,
+    ChannelStoppedWaitWaiterConfigTypeDef,
+)
 
 
 class ChannelCreated(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ChannelId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, ChannelId: str, WaiterConfig: ChannelCreatedWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`MediaLive.Client.describe_channel` every 3 seconds until a successful state is
         reached. An error is returned after 5 failed checks.
@@ -46,8 +53,10 @@ class ChannelCreated(Boto3Waiter):
 
 
 class ChannelDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ChannelId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, ChannelId: str, WaiterConfig: ChannelDeletedWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`MediaLive.Client.describe_channel` every 5 seconds until a successful state is
         reached. An error is returned after 20 failed checks.
@@ -86,8 +95,10 @@ class ChannelDeleted(Boto3Waiter):
 
 
 class ChannelRunning(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ChannelId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, ChannelId: str, WaiterConfig: ChannelRunningWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`MediaLive.Client.describe_channel` every 5 seconds until a successful state is
         reached. An error is returned after 120 failed checks.
@@ -126,8 +137,10 @@ class ChannelRunning(Boto3Waiter):
 
 
 class ChannelStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, ChannelId: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, ChannelId: str, WaiterConfig: ChannelStoppedWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`MediaLive.Client.describe_channel` every 5 seconds until a successful state is
         reached. An error is returned after 28 failed checks.

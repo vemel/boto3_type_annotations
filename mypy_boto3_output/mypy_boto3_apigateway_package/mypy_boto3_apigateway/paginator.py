@@ -33,7 +33,7 @@ from mypy_boto3_apigateway.type_defs import (
 
 
 class GetApiKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         nameQuery: str = None,
@@ -210,7 +210,7 @@ class GetApiKeys(Boto3Paginator):
 
 
 class GetAuthorizers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -405,7 +405,7 @@ class GetAuthorizers(Boto3Paginator):
 
 
 class GetBasePathMappings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         domainName: str,
@@ -515,7 +515,7 @@ class GetBasePathMappings(Boto3Paginator):
 
 
 class GetClientCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: GetClientCertificatesPaginatePaginationConfigTypeDef = None,
@@ -641,7 +641,7 @@ class GetClientCertificates(Boto3Paginator):
 
 
 class GetDeployments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -791,7 +791,7 @@ class GetDeployments(Boto3Paginator):
 
 
 class GetDocumentationParts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -990,9 +990,9 @@ class GetDocumentationParts(Boto3Paginator):
                 - **properties** *(string) --*
 
                   A content map of API-specific key-value pairs describing the targeted API entity. The map
-                  must be encoded as a JSON string, e.g., ``"{ \"description\": \"The API does ...\" }"`` .
-                  Only OpenAPI-compliant documentation-related fields from the propertiesmap are exported
-                  and, hence, published as part of the API entity definitions, while the original
+                  must be encoded as a JSON string, e.g., ``"{ \\"description\\": \\"The API does ...\\"
+                  }"`` . Only OpenAPI-compliant documentation-related fields from the propertiesmap are
+                  exported and, hence, published as part of the API entity definitions, while the original
                   documentation parts are exported in a OpenAPI extension of
                   ``x-amazon-apigateway-documentation`` .
 
@@ -1004,7 +1004,7 @@ class GetDocumentationParts(Boto3Paginator):
 
 
 class GetDocumentationVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -1118,7 +1118,7 @@ class GetDocumentationVersions(Boto3Paginator):
 
 
 class GetDomainNames(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDomainNamesPaginatePaginationConfigTypeDef = None
     ) -> Dict[str, Any]:
@@ -1344,7 +1344,7 @@ class GetDomainNames(Boto3Paginator):
 
 
 class GetGatewayResponses(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -1481,126 +1481,126 @@ class GetGatewayResponses(Boto3Paginator):
              "templated": true }, "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_FAILURE" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_FAILURE",
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "INTEGRATION_FAILURE",
              "statusCode": "504" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/RESOURCE_NOT_FOUND"
              } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "RESOURCE_NOT_FOUND", "statusCode": "404" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/REQUEST_TOO_LARGE"
              } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "REQUEST_TOO_LARGE", "statusCode": "413" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/THROTTLED" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/THROTTLED" } },
              "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "THROTTLED", "statusCode":
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "THROTTLED", "statusCode":
              "429" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" }, "gatewayresponse:put": {
              "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/UNSUPPORTED_MEDIA_TYPE" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "UNSUPPORTED_MEDIA_TYPE",
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "UNSUPPORTED_MEDIA_TYPE",
              "statusCode": "415" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" },
              "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}",
              "templated": true }, "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_CONFIGURATION_ERROR" } }, "defaultResponse":
              true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType":
+             "{\\"message\\":$context.error.messageString}" }, "responseType":
              "AUTHORIZER_CONFIGURATION_ERROR", "statusCode": "500" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_5XX" } },
              "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_5XX" }, { "_links": {
-             "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" },
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "DEFAULT_5XX" }, { "_links":
+             { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" },
              "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}",
              "templated": true }, "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/DEFAULT_4XX" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "DEFAULT_4XX" }, { "_links": {
-             "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" },
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "DEFAULT_4XX" }, { "_links":
+             { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" },
              "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}",
              "templated": true }, "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_PARAMETERS" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_PARAMETERS",
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "BAD_REQUEST_PARAMETERS",
              "statusCode": "400" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/BAD_REQUEST_BODY" }
              }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "BAD_REQUEST_BODY", "statusCode": "400" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/EXPIRED_TOKEN" } },
              "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "EXPIRED_TOKEN", "statusCode":
-             "403" }, { "_links": { "self": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED"
-             }, "gatewayresponse:put": { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}",
-             "templated": true }, "gatewayresponse:update": { "href":
-             "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" } }, "defaultResponse": true,
-             "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "ACCESS_DENIED", "statusCode":
-             "403" }, { "_links": { "self": { "href":
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "EXPIRED_TOKEN",
+             "statusCode": "403" }, { "_links": { "self": { "href":
+             "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" }, "gatewayresponse:put": { "href":
+             "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
+             "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/ACCESS_DENIED" } },
+             "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json":
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "ACCESS_DENIED",
+             "statusCode": "403" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_API_KEY" }
              }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "INVALID_API_KEY", "statusCode": "403" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/UNAUTHORIZED" } },
              "defaultResponse": true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "UNAUTHORIZED", "statusCode":
-             "401" }, { "_links": { "self": { "href":
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "UNAUTHORIZED",
+             "statusCode": "401" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" }, "gatewayresponse:put": {
              "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/API_CONFIGURATION_ERROR" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "API_CONFIGURATION_ERROR",
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "API_CONFIGURATION_ERROR",
              "statusCode": "500" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/QUOTA_EXCEEDED" }
              }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "QUOTA_EXCEEDED", "statusCode": "429" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" }, "gatewayresponse:put": {
              "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/INTEGRATION_TIMEOUT" } }, "defaultResponse": true,
              "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType": "INTEGRATION_TIMEOUT",
+             "{\\"message\\":$context.error.messageString}" }, "responseType": "INTEGRATION_TIMEOUT",
              "statusCode": "504" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" }, "gatewayresponse:put":
              { "href": "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href":
              "/restapis/o81lxisefl/gatewayresponses/MISSING_AUTHENTICATION_TOKEN" } }, "defaultResponse":
              true, "responseParameters": {}, "responseTemplates": { "application/json":
-             "{\"message\":$context.error.messageString}" }, "responseType":
+             "{\\"message\\":$context.error.messageString}" }, "responseType":
              "MISSING_AUTHENTICATION_TOKEN", "statusCode": "403" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/INVALID_SIGNATURE"
              } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "INVALID_SIGNATURE", "statusCode": "403" }, { "_links": { "self": { "href":
              "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE" }, "gatewayresponse:put": { "href":
              "/restapis/o81lxisefl/gatewayresponses/{response_type}", "templated": true },
              "gatewayresponse:update": { "href": "/restapis/o81lxisefl/gatewayresponses/AUTHORIZER_FAILURE"
              } }, "defaultResponse": true, "responseParameters": {}, "responseTemplates": {
-             "application/json": "{\"message\":$context.error.messageString}" }, "responseType":
+             "application/json": "{\\"message\\":$context.error.messageString}" }, "responseType":
              "AUTHORIZER_FAILURE", "statusCode": "500" } ] } }``
 
                 `Customize Gateway Responses
@@ -1652,11 +1652,11 @@ class GetGatewayResponses(Boto3Paginator):
                  "method.request.path.petId", "gatewayresponse.header.Access-Control-Allow-Origin":
                  "'a.b.c'", "gatewayresponse.header.x-request-query": "method.request.querystring.q",
                  "gatewayresponse.header.x-request-header": "method.request.header.Accept" },
-                 "responseTemplates": { "application/json": "{\n \"message\":
-                 $context.error.messageString,\n \"type\": \"$context.error.responseType\",\n \"stage\":
-                 \"$context.stage\",\n \"resourcePath\": \"$context.resourcePath\",\n \"stageVariables.a\":
-                 \"$stageVariables.a\",\n \"statusCode\": \"'404'\"\n}" }, "responseType":
-                 "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }``
+                 "responseTemplates": { "application/json": "{\\n \\"message\\":
+                 $context.error.messageString,\\n \\"type\\": \\"$context.error.responseType\\",\\n
+                 \\"stage\\": \\"$context.stage\\",\\n \\"resourcePath\\": \\"$context.resourcePath\\",\\n
+                 \\"stageVariables.a\\": \\"$stageVariables.a\\",\\n \\"statusCode\\": \\"'404'\\"\\n}" },
+                 "responseType": "MISSING_AUTHENTICATION_TOKEN", "statusCode": "404" }``
 
                     `Customize Gateway Responses
                     <https://docs.aws.amazon.com/apigateway/latest/developerguide/customize-gateway-responses.html>`__
@@ -1741,7 +1741,7 @@ class GetGatewayResponses(Boto3Paginator):
 
 
 class GetModels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -1853,7 +1853,7 @@ class GetModels(Boto3Paginator):
 
                   The schema for the model. For ``application/json`` models, this should be `JSON schema
                   draft 4 <https://tools.ietf.org/html/draft-zyp-json-schema-04>`__ model. Do not include
-                  "\*/" characters in the description of any properties because such "\*/" characters may
+                  "\\*/" characters in the description of any properties because such "\\*/" characters may
                   be interpreted as the closing marker for comments in some languages, such as Java or
                   JavaScript, causing the installation of your API's SDK generated by API Gateway to fail.
 
@@ -1869,7 +1869,7 @@ class GetModels(Boto3Paginator):
 
 
 class GetRequestValidators(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -1996,7 +1996,7 @@ class GetRequestValidators(Boto3Paginator):
 
 
 class GetResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         restApiId: str,
@@ -2228,7 +2228,7 @@ class GetResources(Boto3Paginator):
                    "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod": "POST",
                    "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": {
                    "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" },
-                   "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri":
+                   "requestTemplates": { "application/json": "{\\n}" }, "type": "AWS", "uri":
                    "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": {
                    "integration:responses": { "_links": { "self": { "href":
                    "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200",
@@ -2238,8 +2238,8 @@ class GetResources(Boto3Paginator):
                    "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" } },
                    "responseParameters": { "method.response.header.Content-Type": "'application/xml'" },
                    "responseTemplates": { "application/json":
-                   "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in
-                   $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n"
+                   "$util.urlDecode(\\"%3CkinesisStreams%3E#foreach($stream in
+                   $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\\")\\n"
                    }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href":
                    "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name": "200",
                    "title": "200" }, "methodresponse:delete": { "href":
@@ -2317,7 +2317,7 @@ class GetResources(Boto3Paginator):
                        "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod":
                        "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestParameters": {
                        "integration.request.header.Content-Type": "'application/x-amz-json-1.1'" },
-                       "requestTemplates": { "application/json": "{\n}" }, "type": "AWS", "uri":
+                       "requestTemplates": { "application/json": "{\\n}" }, "type": "AWS", "uri":
                        "arn:aws:apigateway:us-east-1:kinesis:action/ListStreams", "_embedded": {
                        "integration:responses": { "_links": { "self": { "href":
                        "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200",
@@ -2327,7 +2327,7 @@ class GetResources(Boto3Paginator):
                        "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200" }
                        }, "responseParameters": { "method.response.header.Content-Type":
                        "'application/xml'" }, "responseTemplates": { "application/json":
-                       "$util.urlDecode(\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\")"
+                       "$util.urlDecode(\\"%3CkinesisStreams%3E%23foreach(%24stream%20in%20%24input.path(%27%24.StreamNames%27))%3Cstream%3E%3Cname%3E%24stream%3C%2Fname%3E%3C%2Fstream%3E%23end%3C%2FkinesisStreams%3E\\")"
                        }, "statusCode": "200" } } }, "method:responses": { "_links": { "self": { "href":
                        "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/responses/200", "name":
                        "200", "title": "200" }, "methodresponse:delete": { "href":
@@ -2544,9 +2544,9 @@ class GetResources(Boto3Paginator):
                          "templated": true } }, "cacheKeyParameters": [], "cacheNamespace": "0cjtch",
                          "credentials": "arn:aws:iam::123456789012:role/apigAwsProxyRole", "httpMethod":
                          "POST", "passthroughBehavior": "WHEN_NO_MATCH", "requestTemplates": {
-                         "application/json": "{\n \"a\": \"$input.params('operand1')\",\n \"b\":
-                         \"$input.params('operand2')\", \n \"op\": \"$input.params('operator')\" \n}" },
-                         "type": "AWS", "uri":
+                         "application/json": "{\\n \\"a\\": \\"$input.params('operand1')\\",\\n \\"b\\":
+                         \\"$input.params('operand2')\\", \\n \\"op\\": \\"$input.params('operator')\\"
+                         \\n}" }, "type": "AWS", "uri":
                          "arn:aws:apigateway:us-west-2:lambda:path//2015-03-31/functions/arn:aws:lambda:us-west-2:123456789012:function:Calc/invocations",
                          "_embedded": { "integration:responses": { "_links": { "self": { "href":
                          "/restapis/uojnr9hd57/resources/0cjtch/methods/GET/integration/responses/200",
@@ -2558,9 +2558,10 @@ class GetResources(Boto3Paginator):
                          "integration.response.body.op", "method.response.header.operand_2":
                          "integration.response.body.b", "method.response.header.operand_1":
                          "integration.response.body.a" }, "responseTemplates": { "application/json":
-                         "#set($res = $input.path('$'))\n{\n \"result\": \"$res.a, $res.b, $res.op =>
-                         $res.c\",\n \"a\" : \"$res.a\",\n \"b\" : \"$res.b\",\n \"op\" : \"$res.op\",\n
-                         \"c\" : \"$res.c\"\n}" }, "selectionPattern": "", "statusCode": "200" } } }``
+                         "#set($res = $input.path('$'))\\n{\\n \\"result\\": \\"$res.a, $res.b, $res.op =>
+                         $res.c\\",\\n \\"a\\" : \\"$res.a\\",\\n \\"b\\" : \\"$res.b\\",\\n \\"op\\" :
+                         \\"$res.op\\",\\n \\"c\\" : \\"$res.c\\"\\n}" }, "selectionPattern": "",
+                         "statusCode": "200" } } }``
 
                            `AWS CLI
                            <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-integration.html>`__
@@ -2648,8 +2649,8 @@ class GetResources(Boto3Paginator):
                           integrations, three options are available. To specify an IAM Role for API Gateway
                           to assume, use the role's Amazon Resource Name (ARN). To require that the
                           caller's identity be passed through from the request, specify the string
-                          ``arn:aws:iam::\*:user/\*`` . To use resource-based permissions on supported AWS
-                          services, specify null.
+                          ``arn:aws:iam::\\*:user/\\*`` . To use resource-based permissions on supported
+                          AWS services, specify null.
 
                         - **requestParameters** *(dict) --*
 
@@ -2760,8 +2761,8 @@ class GetResources(Boto3Paginator):
                            "/restapis/fugvjdxtri/resources/3kzxbg5sa2/methods/GET/integration/responses/200"
                            } }, "responseParameters": { "method.response.header.Content-Type":
                            "'application/xml'" }, "responseTemplates": { "application/json":
-                           "$util.urlDecode(\"%3CkinesisStreams%3E#foreach($stream in
-                           $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\")\n"
+                           "$util.urlDecode(\\"%3CkinesisStreams%3E#foreach($stream in
+                           $input.path('$.StreamNames'))%3Cstream%3E%3Cname%3E$stream%3C/name%3E%3C/stream%3E#end%3C/kinesisStreams%3E\\")\\n"
                            }, "statusCode": "200" }``
 
                              `Creating an API
@@ -2791,7 +2792,7 @@ class GetResources(Boto3Paginator):
                                 integration response based on the response from the back end. For example,
                                 if the success response returns nothing and the error response returns some
                                 string, you could use the ``.+`` regex to match error response. However,
-                                make sure that the error response does not contain any newline (``\n`` )
+                                make sure that the error response does not contain any newline (``\\n`` )
                                 character in such cases. If the back end is an AWS Lambda function, the AWS
                                 Lambda function error header is matched. For all other HTTP and AWS back
                                 ends, the HTTP status code is matched.
@@ -2860,7 +2861,7 @@ class GetResources(Boto3Paginator):
 
 
 class GetRestApis(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetRestApisPaginatePaginationConfigTypeDef = None
     ) -> GetRestApisPaginateResponseTypeDef:
@@ -3055,7 +3056,7 @@ class GetRestApis(Boto3Paginator):
 
 
 class GetSdkTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetSdkTypesPaginatePaginationConfigTypeDef = None
     ) -> GetSdkTypesPaginateResponseTypeDef:
@@ -3185,7 +3186,7 @@ class GetSdkTypes(Boto3Paginator):
 
 
 class GetUsage(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         usagePlanId: str,
@@ -3322,7 +3323,7 @@ class GetUsage(Boto3Paginator):
 
 
 class GetUsagePlanKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         usagePlanId: str,
@@ -3447,7 +3448,7 @@ class GetUsagePlanKeys(Boto3Paginator):
 
 
 class GetUsagePlans(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         keyId: str = None,
@@ -3662,7 +3663,7 @@ class GetUsagePlans(Boto3Paginator):
 
 
 class GetVpcLinks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetVpcLinksPaginatePaginationConfigTypeDef = None
     ) -> Dict[str, Any]:

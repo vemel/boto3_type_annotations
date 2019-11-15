@@ -15,7 +15,7 @@ from mypy_boto3_amplify.type_defs import (
 
 
 class ListApps(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListAppsPaginatePaginationConfigTypeDef = None
     ) -> ListAppsPaginateResponseTypeDef:
@@ -313,7 +313,7 @@ class ListApps(Boto3Paginator):
 
 
 class ListBranches(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         appId: str,
@@ -548,7 +548,7 @@ class ListBranches(Boto3Paginator):
 
 
 class ListDomainAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         appId: str,
@@ -703,7 +703,7 @@ class ListDomainAssociations(Boto3Paginator):
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         appId: str,
@@ -830,7 +830,7 @@ class ListJobs(Boto3Paginator):
 
                 - **jobType** *(string) --*
 
-                  Type for the Job. \n "RELEASE": Manually released from source by using StartJob API.
+                  Type for the Job. \\n "RELEASE": Manually released from source by using StartJob API.
                   "RETRY": Manually retried by using StartJob API. "WEB_HOOK": Automatically triggered by
                   WebHooks.
 

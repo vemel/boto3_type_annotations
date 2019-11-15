@@ -2,11 +2,10 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_iot1click_devices.type_defs import (
     ClientClaimDevicesByClaimCodeResponseTypeDef,
     ClientDescribeDeviceResponseTypeDef,
@@ -23,7 +22,7 @@ from mypy_boto3_iot1click_devices.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -40,7 +39,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def claim_devices_by_claim_code(
         self, ClaimCode: str
     ) -> ClientClaimDevicesByClaimCodeResponseTypeDef:
@@ -90,7 +89,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_device(self, DeviceId: str) -> ClientDescribeDeviceResponseTypeDef:
         """
         Given a device ID, returns a DescribeDeviceResponse object describing the details of the device.
@@ -181,7 +180,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def finalize_device_claim(
         self, DeviceId: str, Tags: List[str] = None
     ) -> ClientFinalizeDeviceClaimResponseTypeDef:
@@ -244,7 +243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -273,7 +272,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_methods(
         self, DeviceId: str
     ) -> ClientGetDeviceMethodsResponseTypeDef:
@@ -331,7 +330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -352,7 +351,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -365,7 +364,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_device_claim(
         self, DeviceId: str
     ) -> ClientInitiateDeviceClaimResponseTypeDef:
@@ -414,7 +413,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invoke_device_method(
         self,
         DeviceId: str,
@@ -484,7 +483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_device_events(
         self,
         DeviceId: str,
@@ -594,7 +593,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_devices(
         self, DeviceType: str = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientListDevicesResponseTypeDef:
@@ -708,7 +707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -757,8 +756,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, Tags: List[str]) -> None:
         """
         Adds or updates the tags associated with the resource ARN. See `AWS IoT 1-Click Service Limits
         <https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits>`__
@@ -795,7 +794,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unclaim_device(self, DeviceId: str) -> ClientUnclaimDeviceResponseTypeDef:
         """
         Disassociates a device from your AWS account using its device ID.
@@ -836,8 +835,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Using tag keys, deletes the tags (key/value pairs) associated with the specified resource ARN.
 
@@ -868,7 +867,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_state(self, DeviceId: str, Enabled: bool = None) -> Dict:
         """
         Using a Boolean value (true or false), this operation enables or disables the device given a device

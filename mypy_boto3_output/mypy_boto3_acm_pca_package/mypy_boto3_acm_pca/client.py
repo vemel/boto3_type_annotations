@@ -1,11 +1,10 @@
 "Main interface for acm-pca Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_acm_pca.type_defs import (
     ClientCreateCertificateAuthorityAuditReportResponseTypeDef,
     ClientCreateCertificateAuthorityCertificateAuthorityConfigurationTypeDef,
@@ -22,12 +21,14 @@ from mypy_boto3_acm_pca.type_defs import (
     ClientListCertificateAuthoritiesResponseTypeDef,
     ClientListPermissionsResponseTypeDef,
     ClientListTagsResponseTypeDef,
+    ClientTagCertificateAuthorityTagsTypeDef,
+    ClientUntagCertificateAuthorityTagsTypeDef,
     ClientUpdateCertificateAuthorityRevocationConfigurationTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -44,7 +45,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_certificate_authority(
         self,
         CertificateAuthorityConfiguration: ClientCreateCertificateAuthorityCertificateAuthorityConfigurationTypeDef,
@@ -291,7 +292,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_certificate_authority_audit_report(
         self,
         CertificateAuthorityArn: str,
@@ -357,12 +358,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_permission(
         self,
         CertificateAuthorityArn: str,
         Principal: str,
-        Actions: List[Any],
+        Actions: List[str],
         SourceAccount: str = None,
     ) -> None:
         """
@@ -420,7 +421,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_certificate_authority(
         self, CertificateAuthorityArn: str, PermanentDeletionTimeInDays: int = None
     ) -> None:
@@ -477,7 +478,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_permission(
         self, CertificateAuthorityArn: str, Principal: str, SourceAccount: str = None
     ) -> None:
@@ -519,7 +520,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificate_authority(
         self, CertificateAuthorityArn: str
     ) -> ClientDescribeCertificateAuthorityResponseTypeDef:
@@ -784,7 +785,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificate_authority_audit_report(
         self, CertificateAuthorityArn: str, AuditReportId: str
     ) -> ClientDescribeCertificateAuthorityAuditReportResponseTypeDef:
@@ -853,7 +854,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -882,7 +883,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_certificate(
         self, CertificateAuthorityArn: str, CertificateArn: str
     ) -> ClientGetCertificateResponseTypeDef:
@@ -949,7 +950,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_certificate_authority_certificate(
         self, CertificateAuthorityArn: str
     ) -> ClientGetCertificateAuthorityCertificateResponseTypeDef:
@@ -1002,7 +1003,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_certificate_authority_csr(
         self, CertificateAuthorityArn: str
     ) -> ClientGetCertificateAuthorityCsrResponseTypeDef:
@@ -1051,7 +1052,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1072,7 +1073,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1085,7 +1086,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_certificate_authority_certificate(
         self,
         CertificateAuthorityArn: str,
@@ -1162,7 +1163,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def issue_certificate(
         self,
         CertificateAuthorityArn: str,
@@ -1300,7 +1301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_certificate_authorities(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListCertificateAuthoritiesResponseTypeDef:
@@ -1574,7 +1575,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_permissions(
         self,
         CertificateAuthorityArn: str,
@@ -1691,7 +1692,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self,
         CertificateAuthorityArn: str,
@@ -1784,7 +1785,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_certificate_authority(self, CertificateAuthorityArn: str) -> None:
         """
         Restores a certificate authority (CA) that is in the ``DELETED`` state. You can restore a CA during
@@ -1821,7 +1822,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_certificate(
         self,
         CertificateAuthorityArn: str,
@@ -1885,9 +1886,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_certificate_authority(
-        self, CertificateAuthorityArn: str, Tags: List[TypeDefEC2Tag]
+        self,
+        CertificateAuthorityArn: str,
+        Tags: List[ClientTagCertificateAuthorityTagsTypeDef],
     ) -> None:
         """
         Adds one or more tags to your private CA. Tags are labels that you can use to identify and organize
@@ -1945,9 +1948,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_certificate_authority(
-        self, CertificateAuthorityArn: str, Tags: List[TypeDefEC2Tag]
+        self,
+        CertificateAuthorityArn: str,
+        Tags: List[ClientUntagCertificateAuthorityTagsTypeDef],
     ) -> None:
         """
         Remove one or more tags from your private CA. A tag consists of a key-value pair. If you do not
@@ -2003,7 +2008,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_certificate_authority(
         self,
         CertificateAuthorityArn: str,

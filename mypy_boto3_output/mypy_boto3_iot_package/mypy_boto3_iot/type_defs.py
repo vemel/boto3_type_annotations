@@ -264,7 +264,7 @@ class ClientCreateDynamicThingGroupthingGroupPropertiesattributePayloadTypeDef(
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -313,7 +313,7 @@ class ClientCreateDynamicThingGroupthingGroupPropertiesTypeDef(
 
         A JSON string containing up to three key-value pair in JSON format. For example:
 
-         ``{\"attributes\":{\"string1\":\"string2\"}}``
+         ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
         - *(string) --*
 
@@ -2296,7 +2296,7 @@ class ClientCreateThingGroupthingGroupPropertiesattributePayloadTypeDef(
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -2345,7 +2345,7 @@ class ClientCreateThingGroupthingGroupPropertiesTypeDef(
 
         A JSON string containing up to three key-value pair in JSON format. For example:
 
-         ``{\"attributes\":{\"string1\":\"string2\"}}``
+         ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
         - *(string) --*
 
@@ -2483,13 +2483,13 @@ class ClientCreateThingattributePayloadTypeDef(
     The attribute payload, which consists of up to three name/value pairs in a JSON document. For
     example:
 
-     ``{\"attributes\":{\"string1\":\"string2\"}}``
+     ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
     - **attributes** *(dict) --*
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -2798,7 +2798,7 @@ class ClientCreateTopicRuletopicRulePayloadactionsfirehoseTypeDef(
     - **separator** *(string) --*
 
       A character separator that will be used to separate records written to the Firehose
-      stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+      stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
       (comma).
     """
 
@@ -3057,7 +3057,7 @@ class ClientCreateTopicRuletopicRulePayloadactionssnsTypeDef(
       "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
       the payload should be parsed and relevant platform-specific bits of the payload should be
       extracted. To read more about SNS message formats, see
-      `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
       <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
       documentation.
     """
@@ -3261,7 +3261,7 @@ class ClientCreateTopicRuletopicRulePayloadactionsTypeDef(
         "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
         the payload should be parsed and relevant platform-specific bits of the payload should be
         extracted. To read more about SNS message formats, see
-        `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
         <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
         documentation.
 
@@ -3351,7 +3351,7 @@ class ClientCreateTopicRuletopicRulePayloadactionsTypeDef(
       - **separator** *(string) --*
 
         A character separator that will be used to separate records written to the Firehose
-        stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+        stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
         (comma).
 
     - **cloudwatchMetric** *(dict) --*
@@ -3790,7 +3790,7 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionfirehoseTypeDef(
     - **separator** *(string) --*
 
       A character separator that will be used to separate records written to the Firehose stream.
-      Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+      Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
     """
 
 
@@ -4049,7 +4049,7 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionsnsTypeDef(
       "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
       the payload should be parsed and relevant platform-specific bits of the payload should be
       extracted. To read more about SNS message formats, see
-      `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
       <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
       documentation.
     """
@@ -4253,7 +4253,7 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionTypeDef(
         "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
         the payload should be parsed and relevant platform-specific bits of the payload should be
         extracted. To read more about SNS message formats, see
-        `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
         <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
         documentation.
 
@@ -4343,7 +4343,7 @@ class ClientCreateTopicRuletopicRulePayloaderrorActionTypeDef(
       - **separator** *(string) --*
 
         A character separator that will be used to separate records written to the Firehose stream.
-        Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+        Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
     - **cloudwatchMetric** *(dict) --*
 
@@ -4629,7 +4629,7 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
             "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
             the payload should be parsed and relevant platform-specific bits of the payload should be
             extracted. To read more about SNS message formats, see
-            `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+            `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
             <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
             documentation.
 
@@ -4719,7 +4719,7 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
           - **separator** *(string) --*
 
             A character separator that will be used to separate records written to the Firehose
-            stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+            stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
             (comma).
 
         - **cloudwatchMetric** *(dict) --*
@@ -4973,7 +4973,7 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
           "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
           the payload should be parsed and relevant platform-specific bits of the payload should be
           extracted. To read more about SNS message formats, see
-          `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+          `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
           <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
           documentation.
 
@@ -5063,7 +5063,7 @@ class ClientCreateTopicRuletopicRulePayloadTypeDef(
         - **separator** *(string) --*
 
           A character separator that will be used to separate records written to the Firehose stream.
-          Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+          Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
       - **cloudwatchMetric** *(dict) --*
 
@@ -10069,7 +10069,7 @@ class ClientDescribeThingGroupResponsethingGroupPropertiesattributePayloadTypeDe
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -10119,7 +10119,7 @@ class ClientDescribeThingGroupResponsethingGroupPropertiesTypeDef(
 
         A JSON string containing up to three key-value pair in JSON format. For example:
 
-         ``{\"attributes\":{\"string1\":\"string2\"}}``
+         ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
         - *(string) --*
 
@@ -10193,7 +10193,7 @@ class ClientDescribeThingGroupResponseTypeDef(_ClientDescribeThingGroupResponseT
 
           A JSON string containing up to three key-value pair in JSON format. For example:
 
-           ``{\"attributes\":{\"string1\":\"string2\"}}``
+           ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
           - *(string) --*
 
@@ -12680,8 +12680,8 @@ class ClientGetTopicRuleResponseruleactionsfirehoseTypeDef(
     - **separator** *(string) --*
 
       A character separator that will be used to separate records written to the Firehose
-      stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
-      (comma).
+      stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
+      ',' (comma).
     """
 
 
@@ -12918,7 +12918,7 @@ class ClientGetTopicRuleResponseruleactionssnsTypeDef(
       and "RAW". The default value of the attribute is "RAW". SNS uses this setting to
       determine if the payload should be parsed and relevant platform-specific bits of the
       payload should be extracted. To read more about SNS message formats, see
-      `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
       <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
       official documentation.
     """
@@ -13112,7 +13112,7 @@ class ClientGetTopicRuleResponseruleactionsTypeDef(
         and "RAW". The default value of the attribute is "RAW". SNS uses this setting to
         determine if the payload should be parsed and relevant platform-specific bits of the
         payload should be extracted. To read more about SNS message formats, see
-        `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
         <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
         official documentation.
 
@@ -13202,8 +13202,8 @@ class ClientGetTopicRuleResponseruleactionsTypeDef(
       - **separator** *(string) --*
 
         A character separator that will be used to separate records written to the Firehose
-        stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
-        (comma).
+        stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
+        ',' (comma).
 
     - **cloudwatchMetric** *(dict) --*
 
@@ -13636,7 +13636,7 @@ class ClientGetTopicRuleResponseruleerrorActionfirehoseTypeDef(
     - **separator** *(string) --*
 
       A character separator that will be used to separate records written to the Firehose
-      stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+      stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
       (comma).
     """
 
@@ -13874,7 +13874,7 @@ class ClientGetTopicRuleResponseruleerrorActionsnsTypeDef(
       "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine
       if the payload should be parsed and relevant platform-specific bits of the payload
       should be extracted. To read more about SNS message formats, see
-      `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
       <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
       official documentation.
     """
@@ -14068,7 +14068,7 @@ class ClientGetTopicRuleResponseruleerrorActionTypeDef(
         "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine
         if the payload should be parsed and relevant platform-specific bits of the payload
         should be extracted. To read more about SNS message formats, see
-        `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
         <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
         official documentation.
 
@@ -14158,7 +14158,7 @@ class ClientGetTopicRuleResponseruleerrorActionTypeDef(
       - **separator** *(string) --*
 
         A character separator that will be used to separate records written to the Firehose
-        stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+        stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
         (comma).
 
     - **cloudwatchMetric** *(dict) --*
@@ -14450,7 +14450,7 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
             and "RAW". The default value of the attribute is "RAW". SNS uses this setting to
             determine if the payload should be parsed and relevant platform-specific bits of the
             payload should be extracted. To read more about SNS message formats, see
-            `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+            `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
             <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
             official documentation.
 
@@ -14540,8 +14540,8 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
           - **separator** *(string) --*
 
             A character separator that will be used to separate records written to the Firehose
-            stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
-            (comma).
+            stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
+            ',' (comma).
 
         - **cloudwatchMetric** *(dict) --*
 
@@ -14795,7 +14795,7 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
           "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine
           if the payload should be parsed and relevant platform-specific bits of the payload
           should be extracted. To read more about SNS message formats, see
-          `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+          `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
           <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
           official documentation.
 
@@ -14885,7 +14885,7 @@ class ClientGetTopicRuleResponseruleTypeDef(_ClientGetTopicRuleResponseruleTypeD
         - **separator** *(string) --*
 
           A character separator that will be used to separate records written to the Firehose
-          stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+          stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
           (comma).
 
       - **cloudwatchMetric** *(dict) --*
@@ -15176,7 +15176,7 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
               and "RAW". The default value of the attribute is "RAW". SNS uses this setting to
               determine if the payload should be parsed and relevant platform-specific bits of the
               payload should be extracted. To read more about SNS message formats, see
-              `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+              `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
               <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
               official documentation.
 
@@ -15266,8 +15266,8 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
             - **separator** *(string) --*
 
               A character separator that will be used to separate records written to the Firehose
-              stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
-              (comma).
+              stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline),
+              ',' (comma).
 
           - **cloudwatchMetric** *(dict) --*
 
@@ -15521,7 +15521,7 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
             "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine
             if the payload should be parsed and relevant platform-specific bits of the payload
             should be extracted. To read more about SNS message formats, see
-            `https://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+            `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
             <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their
             official documentation.
 
@@ -15611,7 +15611,7 @@ class ClientGetTopicRuleResponseTypeDef(_ClientGetTopicRuleResponseTypeDef):
           - **separator** *(string) --*
 
             A character separator that will be used to separate records written to the Firehose
-            stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ','
+            stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
             (comma).
 
         - **cloudwatchMetric** *(dict) --*
@@ -20767,6 +20767,2709 @@ class ClientRegisterThingResponseTypeDef(_ClientRegisterThingResponseTypeDef):
     """
 
 
+_ClientReplaceTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef",
+    {"roleArn": str, "alarmName": str, "stateReason": str, "stateValue": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `cloudwatchAlarm`
+
+    Change the state of a CloudWatch alarm.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that allows access to the CloudWatch alarm.
+
+    - **alarmName** *(string) --* **[REQUIRED]**
+
+      The CloudWatch alarm name.
+
+    - **stateReason** *(string) --* **[REQUIRED]**
+
+      The reason for the alarm change.
+
+    - **stateValue** *(string) --* **[REQUIRED]**
+
+      The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef",
+    {
+        "roleArn": str,
+        "metricNamespace": str,
+        "metricName": str,
+        "metricValue": str,
+        "metricUnit": str,
+    },
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef",
+    {"metricTimestamp": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `cloudwatchMetric`
+
+    Capture a CloudWatch metric.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that allows access to the CloudWatch metric.
+
+    - **metricNamespace** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric namespace name.
+
+    - **metricName** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric name.
+
+    - **metricValue** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric value.
+
+    - **metricUnit** *(string) --* **[REQUIRED]**
+
+      The `metric unit
+      <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+      supported by CloudWatch.
+
+    - **metricTimestamp** *(string) --*
+
+      An optional `Unix timestamp
+      <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+      .
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef",
+    {"tableName": str, "roleArn": str, "hashKeyField": str, "hashKeyValue": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef",
+    {
+        "operation": str,
+        "hashKeyType": str,
+        "rangeKeyField": str,
+        "rangeKeyValue": str,
+        "rangeKeyType": str,
+        "payloadField": str,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `dynamoDB`
+
+    Write to a DynamoDB table.
+
+    - **tableName** *(string) --* **[REQUIRED]**
+
+      The name of the DynamoDB table.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the DynamoDB table.
+
+    - **operation** *(string) --*
+
+      The type of operation to be performed. This follows the substitution template, so it can
+      be ``${operation}`` , but the substitution must result in one of the following:
+      ``INSERT`` , ``UPDATE`` , or ``DELETE`` .
+
+    - **hashKeyField** *(string) --* **[REQUIRED]**
+
+      The hash key name.
+
+    - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+      The hash key value.
+
+    - **hashKeyType** *(string) --*
+
+      The hash key type. Valid values are "STRING" or "NUMBER"
+
+    - **rangeKeyField** *(string) --*
+
+      The range key name.
+
+    - **rangeKeyValue** *(string) --*
+
+      The range key value.
+
+    - **rangeKeyType** *(string) --*
+
+      The range key type. Valid values are "STRING" or "NUMBER"
+
+    - **payloadField** *(string) --*
+
+      The action payload. This name can be customized.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2putItemTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2putItemTypeDef",
+    {"tableName": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2putItemTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2putItemTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2` `putItem`
+
+    Specifies the DynamoDB table to which the message data will be written. For example:
+
+     ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+     "my-table" } } }``
+
+    Each attribute in the message payload will be written to a separate column in the
+    DynamoDB database.
+
+    - **tableName** *(string) --* **[REQUIRED]**
+
+      The table where the message data will be written.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef",
+    {
+        "roleArn": str,
+        "putItem": ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2putItemTypeDef,
+    },
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `dynamoDBv2`
+
+    Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+    write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the DynamoDB table.
+
+    - **putItem** *(dict) --* **[REQUIRED]**
+
+      Specifies the DynamoDB table to which the message data will be written. For example:
+
+       ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+       "my-table" } } }``
+
+      Each attribute in the message payload will be written to a separate column in the
+      DynamoDB database.
+
+      - **tableName** *(string) --* **[REQUIRED]**
+
+        The table where the message data will be written.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef",
+    {"roleArn": str, "endpoint": str, "index": str, "type": str, "id": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `elasticsearch`
+
+    Write data to an Amazon Elasticsearch Service domain.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role ARN that has access to Elasticsearch.
+
+    - **endpoint** *(string) --* **[REQUIRED]**
+
+      The endpoint of your Elasticsearch domain.
+
+    - **index** *(string) --* **[REQUIRED]**
+
+      The Elasticsearch index where you want to store your data.
+
+    - **type** *(string) --* **[REQUIRED]**
+
+      The type of document you are storing.
+
+    - **id** *(string) --* **[REQUIRED]**
+
+      The unique identifier for the document you are storing.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef",
+    {"roleArn": str, "deliveryStreamName": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef",
+    {"separator": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `firehose`
+
+    Write to an Amazon Kinesis Firehose stream.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+    - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+      The delivery stream name.
+
+    - **separator** *(string) --*
+
+      A character separator that will be used to separate records written to the Firehose
+      stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
+      (comma).
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef",
+    {"channelArn": str, "channelName": str, "roleArn": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `iotAnalytics`
+
+    Sends message data to an AWS IoT Analytics channel.
+
+    - **channelArn** *(string) --*
+
+      (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+    - **channelName** *(string) --*
+
+      The name of the IoT Analytics channel to which message data will be sent.
+
+    - **roleArn** *(string) --*
+
+      The ARN of the role which has a policy that grants IoT Analytics permission to send
+      message data via IoT Analytics (iotanalytics:BatchPutMessage).
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef",
+    {"inputName": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef",
+    {"messageId": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `iotEvents`
+
+    Sends an input to an AWS IoT Events detector.
+
+    - **inputName** *(string) --* **[REQUIRED]**
+
+      The name of the AWS IoT Events input.
+
+    - **messageId** *(string) --*
+
+      [Optional] Use this to ensure that only one input (message) with a given messageId will
+      be processed by an AWS IoT Events detector.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+      detector. ("Action":"iotevents:BatchPutMessage").
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef",
+    {"roleArn": str, "streamName": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef",
+    {"partitionKey": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `kinesis`
+
+    Write data to an Amazon Kinesis stream.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+    - **streamName** *(string) --* **[REQUIRED]**
+
+      The name of the Amazon Kinesis stream.
+
+    - **partitionKey** *(string) --*
+
+      The partition key.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionslambdaTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionslambdaTypeDef", {"functionArn": str}
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionslambdaTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionslambdaTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `lambda`
+
+    Invoke a Lambda function.
+
+    - **functionArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the Lambda function.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef",
+    {"roleArn": str, "topic": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef",
+    {"qos": int},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `republish`
+
+    Publish to another MQTT topic.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **topic** *(string) --* **[REQUIRED]**
+
+      The name of the MQTT topic.
+
+    - **qos** *(integer) --*
+
+      The Quality of Service (QoS) level to use when republishing messages. The default value
+      is 0.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionss3TypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionss3TypeDef",
+    {"roleArn": str, "bucketName": str, "key": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionss3TypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionss3TypeDef",
+    {"cannedAcl": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionss3TypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionss3TypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionss3TypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `s3`
+
+    Write to an Amazon S3 bucket.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **bucketName** *(string) --* **[REQUIRED]**
+
+      The Amazon S3 bucket.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The object key.
+
+    - **cannedAcl** *(string) --*
+
+      The Amazon S3 canned ACL that controls access to the object identified by the object key.
+      For more information, see `S3 canned ACLs
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionssalesforceTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionssalesforceTypeDef",
+    {"token": str, "url": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionssalesforceTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionssalesforceTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `salesforce`
+
+    Send a message to a Salesforce IoT Cloud Input Stream.
+
+    - **token** *(string) --* **[REQUIRED]**
+
+      The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+      is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+      Salesforce IoT Cloud platform after creation of the Input Stream.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef",
+    {"targetArn": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef",
+    {"messageFormat": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `sns`
+
+    Publish to an Amazon SNS topic.
+
+    - **targetArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the SNS topic.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **messageFormat** *(string) --*
+
+      (Optional) The message format of the message to publish. Accepted values are "JSON" and
+      "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+      the payload should be parsed and relevant platform-specific bits of the payload should be
+      extracted. To read more about SNS message formats, see
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+      documentation.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef",
+    {"roleArn": str, "queueUrl": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef",
+    {"useBase64": bool},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `sqs`
+
+    Publish to an Amazon SQS queue.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **queueUrl** *(string) --* **[REQUIRED]**
+
+      The URL of the Amazon SQS queue.
+
+    - **useBase64** *(boolean) --*
+
+      Specifies whether to use Base64 encoding.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef",
+    {"stateMachineName": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef",
+    {"executionNamePrefix": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloadactions` `stepFunctions`
+
+    Starts execution of a Step Functions state machine.
+
+    - **executionNamePrefix** *(string) --*
+
+      (Optional) A name will be given to the state machine execution consisting of this prefix
+      followed by a UUID. Step Functions automatically creates a unique name for each state
+      machine execution if one is not provided.
+
+    - **stateMachineName** *(string) --* **[REQUIRED]**
+
+      The name of the Step Functions state machine whose execution will be started.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants IoT permission to start execution of a state machine
+      ("Action":"states:StartExecution").
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloadactionsTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloadactionsTypeDef",
+    {
+        "dynamoDB": ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBTypeDef,
+        "dynamoDBv2": ClientReplaceTopicRuletopicRulePayloadactionsdynamoDBv2TypeDef,
+        "lambda": ClientReplaceTopicRuletopicRulePayloadactionslambdaTypeDef,
+        "sns": ClientReplaceTopicRuletopicRulePayloadactionssnsTypeDef,
+        "sqs": ClientReplaceTopicRuletopicRulePayloadactionssqsTypeDef,
+        "kinesis": ClientReplaceTopicRuletopicRulePayloadactionskinesisTypeDef,
+        "republish": ClientReplaceTopicRuletopicRulePayloadactionsrepublishTypeDef,
+        "s3": ClientReplaceTopicRuletopicRulePayloadactionss3TypeDef,
+        "firehose": ClientReplaceTopicRuletopicRulePayloadactionsfirehoseTypeDef,
+        "cloudwatchMetric": ClientReplaceTopicRuletopicRulePayloadactionscloudwatchMetricTypeDef,
+        "cloudwatchAlarm": ClientReplaceTopicRuletopicRulePayloadactionscloudwatchAlarmTypeDef,
+        "elasticsearch": ClientReplaceTopicRuletopicRulePayloadactionselasticsearchTypeDef,
+        "salesforce": ClientReplaceTopicRuletopicRulePayloadactionssalesforceTypeDef,
+        "iotAnalytics": ClientReplaceTopicRuletopicRulePayloadactionsiotAnalyticsTypeDef,
+        "iotEvents": ClientReplaceTopicRuletopicRulePayloadactionsiotEventsTypeDef,
+        "stepFunctions": ClientReplaceTopicRuletopicRulePayloadactionsstepFunctionsTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadactionsTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloadactionsTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayload` `actions`
+
+    Describes the actions associated with a rule.
+
+    - **dynamoDB** *(dict) --*
+
+      Write to a DynamoDB table.
+
+      - **tableName** *(string) --* **[REQUIRED]**
+
+        The name of the DynamoDB table.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the DynamoDB table.
+
+      - **operation** *(string) --*
+
+        The type of operation to be performed. This follows the substitution template, so it can
+        be ``${operation}`` , but the substitution must result in one of the following:
+        ``INSERT`` , ``UPDATE`` , or ``DELETE`` .
+
+      - **hashKeyField** *(string) --* **[REQUIRED]**
+
+        The hash key name.
+
+      - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+        The hash key value.
+
+      - **hashKeyType** *(string) --*
+
+        The hash key type. Valid values are "STRING" or "NUMBER"
+
+      - **rangeKeyField** *(string) --*
+
+        The range key name.
+
+      - **rangeKeyValue** *(string) --*
+
+        The range key value.
+
+      - **rangeKeyType** *(string) --*
+
+        The range key type. Valid values are "STRING" or "NUMBER"
+
+      - **payloadField** *(string) --*
+
+        The action payload. This name can be customized.
+
+    - **dynamoDBv2** *(dict) --*
+
+      Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+      write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the DynamoDB table.
+
+      - **putItem** *(dict) --* **[REQUIRED]**
+
+        Specifies the DynamoDB table to which the message data will be written. For example:
+
+         ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+         "my-table" } } }``
+
+        Each attribute in the message payload will be written to a separate column in the
+        DynamoDB database.
+
+        - **tableName** *(string) --* **[REQUIRED]**
+
+          The table where the message data will be written.
+
+    - **lambda** *(dict) --*
+
+      Invoke a Lambda function.
+
+      - **functionArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the Lambda function.
+
+    - **sns** *(dict) --*
+
+      Publish to an Amazon SNS topic.
+
+      - **targetArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the SNS topic.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **messageFormat** *(string) --*
+
+        (Optional) The message format of the message to publish. Accepted values are "JSON" and
+        "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+        the payload should be parsed and relevant platform-specific bits of the payload should be
+        extracted. To read more about SNS message formats, see
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+        documentation.
+
+    - **sqs** *(dict) --*
+
+      Publish to an Amazon SQS queue.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **queueUrl** *(string) --* **[REQUIRED]**
+
+        The URL of the Amazon SQS queue.
+
+      - **useBase64** *(boolean) --*
+
+        Specifies whether to use Base64 encoding.
+
+    - **kinesis** *(dict) --*
+
+      Write data to an Amazon Kinesis stream.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+      - **streamName** *(string) --* **[REQUIRED]**
+
+        The name of the Amazon Kinesis stream.
+
+      - **partitionKey** *(string) --*
+
+        The partition key.
+
+    - **republish** *(dict) --*
+
+      Publish to another MQTT topic.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **topic** *(string) --* **[REQUIRED]**
+
+        The name of the MQTT topic.
+
+      - **qos** *(integer) --*
+
+        The Quality of Service (QoS) level to use when republishing messages. The default value
+        is 0.
+
+    - **s3** *(dict) --*
+
+      Write to an Amazon S3 bucket.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **bucketName** *(string) --* **[REQUIRED]**
+
+        The Amazon S3 bucket.
+
+      - **key** *(string) --* **[REQUIRED]**
+
+        The object key.
+
+      - **cannedAcl** *(string) --*
+
+        The Amazon S3 canned ACL that controls access to the object identified by the object key.
+        For more information, see `S3 canned ACLs
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+
+    - **firehose** *(dict) --*
+
+      Write to an Amazon Kinesis Firehose stream.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+      - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+        The delivery stream name.
+
+      - **separator** *(string) --*
+
+        A character separator that will be used to separate records written to the Firehose
+        stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
+        (comma).
+
+    - **cloudwatchMetric** *(dict) --*
+
+      Capture a CloudWatch metric.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that allows access to the CloudWatch metric.
+
+      - **metricNamespace** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric namespace name.
+
+      - **metricName** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric name.
+
+      - **metricValue** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric value.
+
+      - **metricUnit** *(string) --* **[REQUIRED]**
+
+        The `metric unit
+        <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+        supported by CloudWatch.
+
+      - **metricTimestamp** *(string) --*
+
+        An optional `Unix timestamp
+        <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+        .
+
+    - **cloudwatchAlarm** *(dict) --*
+
+      Change the state of a CloudWatch alarm.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that allows access to the CloudWatch alarm.
+
+      - **alarmName** *(string) --* **[REQUIRED]**
+
+        The CloudWatch alarm name.
+
+      - **stateReason** *(string) --* **[REQUIRED]**
+
+        The reason for the alarm change.
+
+      - **stateValue** *(string) --* **[REQUIRED]**
+
+        The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+
+    - **elasticsearch** *(dict) --*
+
+      Write data to an Amazon Elasticsearch Service domain.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role ARN that has access to Elasticsearch.
+
+      - **endpoint** *(string) --* **[REQUIRED]**
+
+        The endpoint of your Elasticsearch domain.
+
+      - **index** *(string) --* **[REQUIRED]**
+
+        The Elasticsearch index where you want to store your data.
+
+      - **type** *(string) --* **[REQUIRED]**
+
+        The type of document you are storing.
+
+      - **id** *(string) --* **[REQUIRED]**
+
+        The unique identifier for the document you are storing.
+
+    - **salesforce** *(dict) --*
+
+      Send a message to a Salesforce IoT Cloud Input Stream.
+
+      - **token** *(string) --* **[REQUIRED]**
+
+        The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+        is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+        Salesforce IoT Cloud platform after creation of the Input Stream.
+
+    - **iotAnalytics** *(dict) --*
+
+      Sends message data to an AWS IoT Analytics channel.
+
+      - **channelArn** *(string) --*
+
+        (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+      - **channelName** *(string) --*
+
+        The name of the IoT Analytics channel to which message data will be sent.
+
+      - **roleArn** *(string) --*
+
+        The ARN of the role which has a policy that grants IoT Analytics permission to send
+        message data via IoT Analytics (iotanalytics:BatchPutMessage).
+
+    - **iotEvents** *(dict) --*
+
+      Sends an input to an AWS IoT Events detector.
+
+      - **inputName** *(string) --* **[REQUIRED]**
+
+        The name of the AWS IoT Events input.
+
+      - **messageId** *(string) --*
+
+        [Optional] Use this to ensure that only one input (message) with a given messageId will
+        be processed by an AWS IoT Events detector.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+        detector. ("Action":"iotevents:BatchPutMessage").
+
+    - **stepFunctions** *(dict) --*
+
+      Starts execution of a Step Functions state machine.
+
+      - **executionNamePrefix** *(string) --*
+
+        (Optional) A name will be given to the state machine execution consisting of this prefix
+        followed by a UUID. Step Functions automatically creates a unique name for each state
+        machine execution if one is not provided.
+
+      - **stateMachineName** *(string) --* **[REQUIRED]**
+
+        The name of the Step Functions state machine whose execution will be started.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that grants IoT permission to start execution of a state machine
+        ("Action":"states:StartExecution").
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchAlarmTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchAlarmTypeDef",
+    {"roleArn": str, "alarmName": str, "stateReason": str, "stateValue": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchAlarmTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchAlarmTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `cloudwatchAlarm`
+
+    Change the state of a CloudWatch alarm.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that allows access to the CloudWatch alarm.
+
+    - **alarmName** *(string) --* **[REQUIRED]**
+
+      The CloudWatch alarm name.
+
+    - **stateReason** *(string) --* **[REQUIRED]**
+
+      The reason for the alarm change.
+
+    - **stateValue** *(string) --* **[REQUIRED]**
+
+      The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef",
+    {
+        "roleArn": str,
+        "metricNamespace": str,
+        "metricName": str,
+        "metricValue": str,
+        "metricUnit": str,
+    },
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef",
+    {"metricTimestamp": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `cloudwatchMetric`
+
+    Capture a CloudWatch metric.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that allows access to the CloudWatch metric.
+
+    - **metricNamespace** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric namespace name.
+
+    - **metricName** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric name.
+
+    - **metricValue** *(string) --* **[REQUIRED]**
+
+      The CloudWatch metric value.
+
+    - **metricUnit** *(string) --* **[REQUIRED]**
+
+      The `metric unit
+      <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+      supported by CloudWatch.
+
+    - **metricTimestamp** *(string) --*
+
+      An optional `Unix timestamp
+      <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+      .
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef",
+    {"tableName": str, "roleArn": str, "hashKeyField": str, "hashKeyValue": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef",
+    {
+        "operation": str,
+        "hashKeyType": str,
+        "rangeKeyField": str,
+        "rangeKeyValue": str,
+        "rangeKeyType": str,
+        "payloadField": str,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `dynamoDB`
+
+    Write to a DynamoDB table.
+
+    - **tableName** *(string) --* **[REQUIRED]**
+
+      The name of the DynamoDB table.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the DynamoDB table.
+
+    - **operation** *(string) --*
+
+      The type of operation to be performed. This follows the substitution template, so it can be
+      ``${operation}`` , but the substitution must result in one of the following: ``INSERT`` ,
+      ``UPDATE`` , or ``DELETE`` .
+
+    - **hashKeyField** *(string) --* **[REQUIRED]**
+
+      The hash key name.
+
+    - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+      The hash key value.
+
+    - **hashKeyType** *(string) --*
+
+      The hash key type. Valid values are "STRING" or "NUMBER"
+
+    - **rangeKeyField** *(string) --*
+
+      The range key name.
+
+    - **rangeKeyValue** *(string) --*
+
+      The range key value.
+
+    - **rangeKeyType** *(string) --*
+
+      The range key type. Valid values are "STRING" or "NUMBER"
+
+    - **payloadField** *(string) --*
+
+      The action payload. This name can be customized.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2putItemTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2putItemTypeDef",
+    {"tableName": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2putItemTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2putItemTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2` `putItem`
+
+    Specifies the DynamoDB table to which the message data will be written. For example:
+
+     ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+     "my-table" } } }``
+
+    Each attribute in the message payload will be written to a separate column in the DynamoDB
+    database.
+
+    - **tableName** *(string) --* **[REQUIRED]**
+
+      The table where the message data will be written.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef",
+    {
+        "roleArn": str,
+        "putItem": ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2putItemTypeDef,
+    },
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `dynamoDBv2`
+
+    Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+    write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the DynamoDB table.
+
+    - **putItem** *(dict) --* **[REQUIRED]**
+
+      Specifies the DynamoDB table to which the message data will be written. For example:
+
+       ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+       "my-table" } } }``
+
+      Each attribute in the message payload will be written to a separate column in the DynamoDB
+      database.
+
+      - **tableName** *(string) --* **[REQUIRED]**
+
+        The table where the message data will be written.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef",
+    {"roleArn": str, "endpoint": str, "index": str, "type": str, "id": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `elasticsearch`
+
+    Write data to an Amazon Elasticsearch Service domain.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role ARN that has access to Elasticsearch.
+
+    - **endpoint** *(string) --* **[REQUIRED]**
+
+      The endpoint of your Elasticsearch domain.
+
+    - **index** *(string) --* **[REQUIRED]**
+
+      The Elasticsearch index where you want to store your data.
+
+    - **type** *(string) --* **[REQUIRED]**
+
+      The type of document you are storing.
+
+    - **id** *(string) --* **[REQUIRED]**
+
+      The unique identifier for the document you are storing.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef",
+    {"roleArn": str, "deliveryStreamName": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef",
+    {"separator": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `firehose`
+
+    Write to an Amazon Kinesis Firehose stream.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+    - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+      The delivery stream name.
+
+    - **separator** *(string) --*
+
+      A character separator that will be used to separate records written to the Firehose stream.
+      Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef",
+    {"channelArn": str, "channelName": str, "roleArn": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `iotAnalytics`
+
+    Sends message data to an AWS IoT Analytics channel.
+
+    - **channelArn** *(string) --*
+
+      (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+    - **channelName** *(string) --*
+
+      The name of the IoT Analytics channel to which message data will be sent.
+
+    - **roleArn** *(string) --*
+
+      The ARN of the role which has a policy that grants IoT Analytics permission to send message
+      data via IoT Analytics (iotanalytics:BatchPutMessage).
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef",
+    {"inputName": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef",
+    {"messageId": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `iotEvents`
+
+    Sends an input to an AWS IoT Events detector.
+
+    - **inputName** *(string) --* **[REQUIRED]**
+
+      The name of the AWS IoT Events input.
+
+    - **messageId** *(string) --*
+
+      [Optional] Use this to ensure that only one input (message) with a given messageId will be
+      processed by an AWS IoT Events detector.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+      detector. ("Action":"iotevents:BatchPutMessage").
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef",
+    {"roleArn": str, "streamName": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef",
+    {"partitionKey": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `kinesis`
+
+    Write data to an Amazon Kinesis stream.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+    - **streamName** *(string) --* **[REQUIRED]**
+
+      The name of the Amazon Kinesis stream.
+
+    - **partitionKey** *(string) --*
+
+      The partition key.
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionlambdaTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionlambdaTypeDef",
+    {"functionArn": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionlambdaTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionlambdaTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `lambda`
+
+    Invoke a Lambda function.
+
+    - **functionArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the Lambda function.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef",
+    {"roleArn": str, "topic": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef",
+    {"qos": int},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `republish`
+
+    Publish to another MQTT topic.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **topic** *(string) --* **[REQUIRED]**
+
+      The name of the MQTT topic.
+
+    - **qos** *(integer) --*
+
+      The Quality of Service (QoS) level to use when republishing messages. The default value is
+      0.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef",
+    {"roleArn": str, "bucketName": str, "key": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef",
+    {"cannedAcl": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `s3`
+
+    Write to an Amazon S3 bucket.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **bucketName** *(string) --* **[REQUIRED]**
+
+      The Amazon S3 bucket.
+
+    - **key** *(string) --* **[REQUIRED]**
+
+      The object key.
+
+    - **cannedAcl** *(string) --*
+
+      The Amazon S3 canned ACL that controls access to the object identified by the object key.
+      For more information, see `S3 canned ACLs
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionsalesforceTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionsalesforceTypeDef",
+    {"token": str, "url": str},
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionsalesforceTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionsalesforceTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `salesforce`
+
+    Send a message to a Salesforce IoT Cloud Input Stream.
+
+    - **token** *(string) --* **[REQUIRED]**
+
+      The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+      is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+    - **url** *(string) --* **[REQUIRED]**
+
+      The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+      Salesforce IoT Cloud platform after creation of the Input Stream.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef",
+    {"targetArn": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef",
+    {"messageFormat": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `sns`
+
+    Publish to an Amazon SNS topic.
+
+    - **targetArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the SNS topic.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **messageFormat** *(string) --*
+
+      (Optional) The message format of the message to publish. Accepted values are "JSON" and
+      "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+      the payload should be parsed and relevant platform-specific bits of the payload should be
+      extracted. To read more about SNS message formats, see
+      `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+      <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+      documentation.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef",
+    {"roleArn": str, "queueUrl": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef",
+    {"useBase64": bool},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `sqs`
+
+    Publish to an Amazon SQS queue.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **queueUrl** *(string) --* **[REQUIRED]**
+
+      The URL of the Amazon SQS queue.
+
+    - **useBase64** *(boolean) --*
+
+      Specifies whether to use Base64 encoding.
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef",
+    {"stateMachineName": str, "roleArn": str},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef",
+    {"executionNamePrefix": str},
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayloaderrorAction` `stepFunctions`
+
+    Starts execution of a Step Functions state machine.
+
+    - **executionNamePrefix** *(string) --*
+
+      (Optional) A name will be given to the state machine execution consisting of this prefix
+      followed by a UUID. Step Functions automatically creates a unique name for each state
+      machine execution if one is not provided.
+
+    - **stateMachineName** *(string) --* **[REQUIRED]**
+
+      The name of the Step Functions state machine whose execution will be started.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants IoT permission to start execution of a state machine
+      ("Action":"states:StartExecution").
+    """
+
+
+_ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef = TypedDict(
+    "_ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef",
+    {
+        "dynamoDB": ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBTypeDef,
+        "dynamoDBv2": ClientReplaceTopicRuletopicRulePayloaderrorActiondynamoDBv2TypeDef,
+        "lambda": ClientReplaceTopicRuletopicRulePayloaderrorActionlambdaTypeDef,
+        "sns": ClientReplaceTopicRuletopicRulePayloaderrorActionsnsTypeDef,
+        "sqs": ClientReplaceTopicRuletopicRulePayloaderrorActionsqsTypeDef,
+        "kinesis": ClientReplaceTopicRuletopicRulePayloaderrorActionkinesisTypeDef,
+        "republish": ClientReplaceTopicRuletopicRulePayloaderrorActionrepublishTypeDef,
+        "s3": ClientReplaceTopicRuletopicRulePayloaderrorActions3TypeDef,
+        "firehose": ClientReplaceTopicRuletopicRulePayloaderrorActionfirehoseTypeDef,
+        "cloudwatchMetric": ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchMetricTypeDef,
+        "cloudwatchAlarm": ClientReplaceTopicRuletopicRulePayloaderrorActioncloudwatchAlarmTypeDef,
+        "elasticsearch": ClientReplaceTopicRuletopicRulePayloaderrorActionelasticsearchTypeDef,
+        "salesforce": ClientReplaceTopicRuletopicRulePayloaderrorActionsalesforceTypeDef,
+        "iotAnalytics": ClientReplaceTopicRuletopicRulePayloaderrorActioniotAnalyticsTypeDef,
+        "iotEvents": ClientReplaceTopicRuletopicRulePayloaderrorActioniotEventsTypeDef,
+        "stepFunctions": ClientReplaceTopicRuletopicRulePayloaderrorActionstepFunctionsTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef(
+    _ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef
+):
+    """
+    Type definition for `ClientReplaceTopicRuletopicRulePayload` `errorAction`
+
+    The action to take when an error occurs.
+
+    - **dynamoDB** *(dict) --*
+
+      Write to a DynamoDB table.
+
+      - **tableName** *(string) --* **[REQUIRED]**
+
+        The name of the DynamoDB table.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the DynamoDB table.
+
+      - **operation** *(string) --*
+
+        The type of operation to be performed. This follows the substitution template, so it can be
+        ``${operation}`` , but the substitution must result in one of the following: ``INSERT`` ,
+        ``UPDATE`` , or ``DELETE`` .
+
+      - **hashKeyField** *(string) --* **[REQUIRED]**
+
+        The hash key name.
+
+      - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+        The hash key value.
+
+      - **hashKeyType** *(string) --*
+
+        The hash key type. Valid values are "STRING" or "NUMBER"
+
+      - **rangeKeyField** *(string) --*
+
+        The range key name.
+
+      - **rangeKeyValue** *(string) --*
+
+        The range key value.
+
+      - **rangeKeyType** *(string) --*
+
+        The range key type. Valid values are "STRING" or "NUMBER"
+
+      - **payloadField** *(string) --*
+
+        The action payload. This name can be customized.
+
+    - **dynamoDBv2** *(dict) --*
+
+      Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+      write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the DynamoDB table.
+
+      - **putItem** *(dict) --* **[REQUIRED]**
+
+        Specifies the DynamoDB table to which the message data will be written. For example:
+
+         ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+         "my-table" } } }``
+
+        Each attribute in the message payload will be written to a separate column in the DynamoDB
+        database.
+
+        - **tableName** *(string) --* **[REQUIRED]**
+
+          The table where the message data will be written.
+
+    - **lambda** *(dict) --*
+
+      Invoke a Lambda function.
+
+      - **functionArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the Lambda function.
+
+    - **sns** *(dict) --*
+
+      Publish to an Amazon SNS topic.
+
+      - **targetArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the SNS topic.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **messageFormat** *(string) --*
+
+        (Optional) The message format of the message to publish. Accepted values are "JSON" and
+        "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+        the payload should be parsed and relevant platform-specific bits of the payload should be
+        extracted. To read more about SNS message formats, see
+        `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+        <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+        documentation.
+
+    - **sqs** *(dict) --*
+
+      Publish to an Amazon SQS queue.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **queueUrl** *(string) --* **[REQUIRED]**
+
+        The URL of the Amazon SQS queue.
+
+      - **useBase64** *(boolean) --*
+
+        Specifies whether to use Base64 encoding.
+
+    - **kinesis** *(dict) --*
+
+      Write data to an Amazon Kinesis stream.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+      - **streamName** *(string) --* **[REQUIRED]**
+
+        The name of the Amazon Kinesis stream.
+
+      - **partitionKey** *(string) --*
+
+        The partition key.
+
+    - **republish** *(dict) --*
+
+      Publish to another MQTT topic.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **topic** *(string) --* **[REQUIRED]**
+
+        The name of the MQTT topic.
+
+      - **qos** *(integer) --*
+
+        The Quality of Service (QoS) level to use when republishing messages. The default value is
+        0.
+
+    - **s3** *(dict) --*
+
+      Write to an Amazon S3 bucket.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the IAM role that grants access.
+
+      - **bucketName** *(string) --* **[REQUIRED]**
+
+        The Amazon S3 bucket.
+
+      - **key** *(string) --* **[REQUIRED]**
+
+        The object key.
+
+      - **cannedAcl** *(string) --*
+
+        The Amazon S3 canned ACL that controls access to the object identified by the object key.
+        For more information, see `S3 canned ACLs
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+
+    - **firehose** *(dict) --*
+
+      Write to an Amazon Kinesis Firehose stream.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+      - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+        The delivery stream name.
+
+      - **separator** *(string) --*
+
+        A character separator that will be used to separate records written to the Firehose stream.
+        Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
+
+    - **cloudwatchMetric** *(dict) --*
+
+      Capture a CloudWatch metric.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that allows access to the CloudWatch metric.
+
+      - **metricNamespace** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric namespace name.
+
+      - **metricName** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric name.
+
+      - **metricValue** *(string) --* **[REQUIRED]**
+
+        The CloudWatch metric value.
+
+      - **metricUnit** *(string) --* **[REQUIRED]**
+
+        The `metric unit
+        <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+        supported by CloudWatch.
+
+      - **metricTimestamp** *(string) --*
+
+        An optional `Unix timestamp
+        <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+        .
+
+    - **cloudwatchAlarm** *(dict) --*
+
+      Change the state of a CloudWatch alarm.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role that allows access to the CloudWatch alarm.
+
+      - **alarmName** *(string) --* **[REQUIRED]**
+
+        The CloudWatch alarm name.
+
+      - **stateReason** *(string) --* **[REQUIRED]**
+
+        The reason for the alarm change.
+
+      - **stateValue** *(string) --* **[REQUIRED]**
+
+        The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+
+    - **elasticsearch** *(dict) --*
+
+      Write data to an Amazon Elasticsearch Service domain.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The IAM role ARN that has access to Elasticsearch.
+
+      - **endpoint** *(string) --* **[REQUIRED]**
+
+        The endpoint of your Elasticsearch domain.
+
+      - **index** *(string) --* **[REQUIRED]**
+
+        The Elasticsearch index where you want to store your data.
+
+      - **type** *(string) --* **[REQUIRED]**
+
+        The type of document you are storing.
+
+      - **id** *(string) --* **[REQUIRED]**
+
+        The unique identifier for the document you are storing.
+
+    - **salesforce** *(dict) --*
+
+      Send a message to a Salesforce IoT Cloud Input Stream.
+
+      - **token** *(string) --* **[REQUIRED]**
+
+        The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+        is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+      - **url** *(string) --* **[REQUIRED]**
+
+        The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+        Salesforce IoT Cloud platform after creation of the Input Stream.
+
+    - **iotAnalytics** *(dict) --*
+
+      Sends message data to an AWS IoT Analytics channel.
+
+      - **channelArn** *(string) --*
+
+        (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+      - **channelName** *(string) --*
+
+        The name of the IoT Analytics channel to which message data will be sent.
+
+      - **roleArn** *(string) --*
+
+        The ARN of the role which has a policy that grants IoT Analytics permission to send message
+        data via IoT Analytics (iotanalytics:BatchPutMessage).
+
+    - **iotEvents** *(dict) --*
+
+      Sends an input to an AWS IoT Events detector.
+
+      - **inputName** *(string) --* **[REQUIRED]**
+
+        The name of the AWS IoT Events input.
+
+      - **messageId** *(string) --*
+
+        [Optional] Use this to ensure that only one input (message) with a given messageId will be
+        processed by an AWS IoT Events detector.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+        detector. ("Action":"iotevents:BatchPutMessage").
+
+    - **stepFunctions** *(dict) --*
+
+      Starts execution of a Step Functions state machine.
+
+      - **executionNamePrefix** *(string) --*
+
+        (Optional) A name will be given to the state machine execution consisting of this prefix
+        followed by a UUID. Step Functions automatically creates a unique name for each state
+        machine execution if one is not provided.
+
+      - **stateMachineName** *(string) --* **[REQUIRED]**
+
+        The name of the Step Functions state machine whose execution will be started.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that grants IoT permission to start execution of a state machine
+        ("Action":"states:StartExecution").
+    """
+
+
+_RequiredClientReplaceTopicRuletopicRulePayloadTypeDef = TypedDict(
+    "_RequiredClientReplaceTopicRuletopicRulePayloadTypeDef",
+    {"sql": str, "actions": List[ClientReplaceTopicRuletopicRulePayloadactionsTypeDef]},
+)
+_OptionalClientReplaceTopicRuletopicRulePayloadTypeDef = TypedDict(
+    "_OptionalClientReplaceTopicRuletopicRulePayloadTypeDef",
+    {
+        "description": str,
+        "ruleDisabled": bool,
+        "awsIotSqlVersion": str,
+        "errorAction": ClientReplaceTopicRuletopicRulePayloaderrorActionTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientReplaceTopicRuletopicRulePayloadTypeDef(
+    _RequiredClientReplaceTopicRuletopicRulePayloadTypeDef,
+    _OptionalClientReplaceTopicRuletopicRulePayloadTypeDef,
+):
+    """
+    Type definition for `ClientReplaceTopicRule` `topicRulePayload`
+
+    The rule payload.
+
+    - **sql** *(string) --* **[REQUIRED]**
+
+      The SQL statement used to query the topic. For more information, see `AWS IoT SQL Reference
+      <https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference>`__
+      in the *AWS IoT Developer Guide* .
+
+    - **description** *(string) --*
+
+      The description of the rule.
+
+    - **actions** *(list) --* **[REQUIRED]**
+
+      The actions associated with the rule.
+
+      - *(dict) --*
+
+        Describes the actions associated with a rule.
+
+        - **dynamoDB** *(dict) --*
+
+          Write to a DynamoDB table.
+
+          - **tableName** *(string) --* **[REQUIRED]**
+
+            The name of the DynamoDB table.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access to the DynamoDB table.
+
+          - **operation** *(string) --*
+
+            The type of operation to be performed. This follows the substitution template, so it can
+            be ``${operation}`` , but the substitution must result in one of the following:
+            ``INSERT`` , ``UPDATE`` , or ``DELETE`` .
+
+          - **hashKeyField** *(string) --* **[REQUIRED]**
+
+            The hash key name.
+
+          - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+            The hash key value.
+
+          - **hashKeyType** *(string) --*
+
+            The hash key type. Valid values are "STRING" or "NUMBER"
+
+          - **rangeKeyField** *(string) --*
+
+            The range key name.
+
+          - **rangeKeyValue** *(string) --*
+
+            The range key value.
+
+          - **rangeKeyType** *(string) --*
+
+            The range key type. Valid values are "STRING" or "NUMBER"
+
+          - **payloadField** *(string) --*
+
+            The action payload. This name can be customized.
+
+        - **dynamoDBv2** *(dict) --*
+
+          Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+          write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access to the DynamoDB table.
+
+          - **putItem** *(dict) --* **[REQUIRED]**
+
+            Specifies the DynamoDB table to which the message data will be written. For example:
+
+             ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+             "my-table" } } }``
+
+            Each attribute in the message payload will be written to a separate column in the
+            DynamoDB database.
+
+            - **tableName** *(string) --* **[REQUIRED]**
+
+              The table where the message data will be written.
+
+        - **lambda** *(dict) --*
+
+          Invoke a Lambda function.
+
+          - **functionArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the Lambda function.
+
+        - **sns** *(dict) --*
+
+          Publish to an Amazon SNS topic.
+
+          - **targetArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the SNS topic.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access.
+
+          - **messageFormat** *(string) --*
+
+            (Optional) The message format of the message to publish. Accepted values are "JSON" and
+            "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+            the payload should be parsed and relevant platform-specific bits of the payload should be
+            extracted. To read more about SNS message formats, see
+            `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+            <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+            documentation.
+
+        - **sqs** *(dict) --*
+
+          Publish to an Amazon SQS queue.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access.
+
+          - **queueUrl** *(string) --* **[REQUIRED]**
+
+            The URL of the Amazon SQS queue.
+
+          - **useBase64** *(boolean) --*
+
+            Specifies whether to use Base64 encoding.
+
+        - **kinesis** *(dict) --*
+
+          Write data to an Amazon Kinesis stream.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+          - **streamName** *(string) --* **[REQUIRED]**
+
+            The name of the Amazon Kinesis stream.
+
+          - **partitionKey** *(string) --*
+
+            The partition key.
+
+        - **republish** *(dict) --*
+
+          Publish to another MQTT topic.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access.
+
+          - **topic** *(string) --* **[REQUIRED]**
+
+            The name of the MQTT topic.
+
+          - **qos** *(integer) --*
+
+            The Quality of Service (QoS) level to use when republishing messages. The default value
+            is 0.
+
+        - **s3** *(dict) --*
+
+          Write to an Amazon S3 bucket.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the IAM role that grants access.
+
+          - **bucketName** *(string) --* **[REQUIRED]**
+
+            The Amazon S3 bucket.
+
+          - **key** *(string) --* **[REQUIRED]**
+
+            The object key.
+
+          - **cannedAcl** *(string) --*
+
+            The Amazon S3 canned ACL that controls access to the object identified by the object key.
+            For more information, see `S3 canned ACLs
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+
+        - **firehose** *(dict) --*
+
+          Write to an Amazon Kinesis Firehose stream.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+          - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+            The delivery stream name.
+
+          - **separator** *(string) --*
+
+            A character separator that will be used to separate records written to the Firehose
+            stream. Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ','
+            (comma).
+
+        - **cloudwatchMetric** *(dict) --*
+
+          Capture a CloudWatch metric.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The IAM role that allows access to the CloudWatch metric.
+
+          - **metricNamespace** *(string) --* **[REQUIRED]**
+
+            The CloudWatch metric namespace name.
+
+          - **metricName** *(string) --* **[REQUIRED]**
+
+            The CloudWatch metric name.
+
+          - **metricValue** *(string) --* **[REQUIRED]**
+
+            The CloudWatch metric value.
+
+          - **metricUnit** *(string) --* **[REQUIRED]**
+
+            The `metric unit
+            <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+            supported by CloudWatch.
+
+          - **metricTimestamp** *(string) --*
+
+            An optional `Unix timestamp
+            <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+            .
+
+        - **cloudwatchAlarm** *(dict) --*
+
+          Change the state of a CloudWatch alarm.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The IAM role that allows access to the CloudWatch alarm.
+
+          - **alarmName** *(string) --* **[REQUIRED]**
+
+            The CloudWatch alarm name.
+
+          - **stateReason** *(string) --* **[REQUIRED]**
+
+            The reason for the alarm change.
+
+          - **stateValue** *(string) --* **[REQUIRED]**
+
+            The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+
+        - **elasticsearch** *(dict) --*
+
+          Write data to an Amazon Elasticsearch Service domain.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The IAM role ARN that has access to Elasticsearch.
+
+          - **endpoint** *(string) --* **[REQUIRED]**
+
+            The endpoint of your Elasticsearch domain.
+
+          - **index** *(string) --* **[REQUIRED]**
+
+            The Elasticsearch index where you want to store your data.
+
+          - **type** *(string) --* **[REQUIRED]**
+
+            The type of document you are storing.
+
+          - **id** *(string) --* **[REQUIRED]**
+
+            The unique identifier for the document you are storing.
+
+        - **salesforce** *(dict) --*
+
+          Send a message to a Salesforce IoT Cloud Input Stream.
+
+          - **token** *(string) --* **[REQUIRED]**
+
+            The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+            is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+          - **url** *(string) --* **[REQUIRED]**
+
+            The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+            Salesforce IoT Cloud platform after creation of the Input Stream.
+
+        - **iotAnalytics** *(dict) --*
+
+          Sends message data to an AWS IoT Analytics channel.
+
+          - **channelArn** *(string) --*
+
+            (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+          - **channelName** *(string) --*
+
+            The name of the IoT Analytics channel to which message data will be sent.
+
+          - **roleArn** *(string) --*
+
+            The ARN of the role which has a policy that grants IoT Analytics permission to send
+            message data via IoT Analytics (iotanalytics:BatchPutMessage).
+
+        - **iotEvents** *(dict) --*
+
+          Sends an input to an AWS IoT Events detector.
+
+          - **inputName** *(string) --* **[REQUIRED]**
+
+            The name of the AWS IoT Events input.
+
+          - **messageId** *(string) --*
+
+            [Optional] Use this to ensure that only one input (message) with a given messageId will
+            be processed by an AWS IoT Events detector.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+            detector. ("Action":"iotevents:BatchPutMessage").
+
+        - **stepFunctions** *(dict) --*
+
+          Starts execution of a Step Functions state machine.
+
+          - **executionNamePrefix** *(string) --*
+
+            (Optional) A name will be given to the state machine execution consisting of this prefix
+            followed by a UUID. Step Functions automatically creates a unique name for each state
+            machine execution if one is not provided.
+
+          - **stateMachineName** *(string) --* **[REQUIRED]**
+
+            The name of the Step Functions state machine whose execution will be started.
+
+          - **roleArn** *(string) --* **[REQUIRED]**
+
+            The ARN of the role that grants IoT permission to start execution of a state machine
+            ("Action":"states:StartExecution").
+
+    - **ruleDisabled** *(boolean) --*
+
+      Specifies whether the rule is disabled.
+
+    - **awsIotSqlVersion** *(string) --*
+
+      The version of the SQL rules engine to use when evaluating the rule.
+
+    - **errorAction** *(dict) --*
+
+      The action to take when an error occurs.
+
+      - **dynamoDB** *(dict) --*
+
+        Write to a DynamoDB table.
+
+        - **tableName** *(string) --* **[REQUIRED]**
+
+          The name of the DynamoDB table.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access to the DynamoDB table.
+
+        - **operation** *(string) --*
+
+          The type of operation to be performed. This follows the substitution template, so it can be
+          ``${operation}`` , but the substitution must result in one of the following: ``INSERT`` ,
+          ``UPDATE`` , or ``DELETE`` .
+
+        - **hashKeyField** *(string) --* **[REQUIRED]**
+
+          The hash key name.
+
+        - **hashKeyValue** *(string) --* **[REQUIRED]**
+
+          The hash key value.
+
+        - **hashKeyType** *(string) --*
+
+          The hash key type. Valid values are "STRING" or "NUMBER"
+
+        - **rangeKeyField** *(string) --*
+
+          The range key name.
+
+        - **rangeKeyValue** *(string) --*
+
+          The range key value.
+
+        - **rangeKeyType** *(string) --*
+
+          The range key type. Valid values are "STRING" or "NUMBER"
+
+        - **payloadField** *(string) --*
+
+          The action payload. This name can be customized.
+
+      - **dynamoDBv2** *(dict) --*
+
+        Write to a DynamoDB table. This is a new version of the DynamoDB action. It allows you to
+        write each attribute in an MQTT message payload into a separate DynamoDB column.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access to the DynamoDB table.
+
+        - **putItem** *(dict) --* **[REQUIRED]**
+
+          Specifies the DynamoDB table to which the message data will be written. For example:
+
+           ``{ "dynamoDBv2": { "roleArn": "aws:iam:12341251:my-role" "putItem": { "tableName":
+           "my-table" } } }``
+
+          Each attribute in the message payload will be written to a separate column in the DynamoDB
+          database.
+
+          - **tableName** *(string) --* **[REQUIRED]**
+
+            The table where the message data will be written.
+
+      - **lambda** *(dict) --*
+
+        Invoke a Lambda function.
+
+        - **functionArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the Lambda function.
+
+      - **sns** *(dict) --*
+
+        Publish to an Amazon SNS topic.
+
+        - **targetArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the SNS topic.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access.
+
+        - **messageFormat** *(string) --*
+
+          (Optional) The message format of the message to publish. Accepted values are "JSON" and
+          "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if
+          the payload should be parsed and relevant platform-specific bits of the payload should be
+          extracted. To read more about SNS message formats, see
+          `https\\://docs.aws.amazon.com/sns/latest/dg/json-formats.html
+          <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html>`__ refer to their official
+          documentation.
+
+      - **sqs** *(dict) --*
+
+        Publish to an Amazon SQS queue.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access.
+
+        - **queueUrl** *(string) --* **[REQUIRED]**
+
+          The URL of the Amazon SQS queue.
+
+        - **useBase64** *(boolean) --*
+
+          Specifies whether to use Base64 encoding.
+
+      - **kinesis** *(dict) --*
+
+        Write data to an Amazon Kinesis stream.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access to the Amazon Kinesis stream.
+
+        - **streamName** *(string) --* **[REQUIRED]**
+
+          The name of the Amazon Kinesis stream.
+
+        - **partitionKey** *(string) --*
+
+          The partition key.
+
+      - **republish** *(dict) --*
+
+        Publish to another MQTT topic.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access.
+
+        - **topic** *(string) --* **[REQUIRED]**
+
+          The name of the MQTT topic.
+
+        - **qos** *(integer) --*
+
+          The Quality of Service (QoS) level to use when republishing messages. The default value is
+          0.
+
+      - **s3** *(dict) --*
+
+        Write to an Amazon S3 bucket.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the IAM role that grants access.
+
+        - **bucketName** *(string) --* **[REQUIRED]**
+
+          The Amazon S3 bucket.
+
+        - **key** *(string) --* **[REQUIRED]**
+
+          The object key.
+
+        - **cannedAcl** *(string) --*
+
+          The Amazon S3 canned ACL that controls access to the object identified by the object key.
+          For more information, see `S3 canned ACLs
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl>`__ .
+
+      - **firehose** *(dict) --*
+
+        Write to an Amazon Kinesis Firehose stream.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The IAM role that grants access to the Amazon Kinesis Firehose stream.
+
+        - **deliveryStreamName** *(string) --* **[REQUIRED]**
+
+          The delivery stream name.
+
+        - **separator** *(string) --*
+
+          A character separator that will be used to separate records written to the Firehose stream.
+          Valid values are: '\\n' (newline), '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
+
+      - **cloudwatchMetric** *(dict) --*
+
+        Capture a CloudWatch metric.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The IAM role that allows access to the CloudWatch metric.
+
+        - **metricNamespace** *(string) --* **[REQUIRED]**
+
+          The CloudWatch metric namespace name.
+
+        - **metricName** *(string) --* **[REQUIRED]**
+
+          The CloudWatch metric name.
+
+        - **metricValue** *(string) --* **[REQUIRED]**
+
+          The CloudWatch metric value.
+
+        - **metricUnit** *(string) --* **[REQUIRED]**
+
+          The `metric unit
+          <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit>`__
+          supported by CloudWatch.
+
+        - **metricTimestamp** *(string) --*
+
+          An optional `Unix timestamp
+          <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp>`__
+          .
+
+      - **cloudwatchAlarm** *(dict) --*
+
+        Change the state of a CloudWatch alarm.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The IAM role that allows access to the CloudWatch alarm.
+
+        - **alarmName** *(string) --* **[REQUIRED]**
+
+          The CloudWatch alarm name.
+
+        - **stateReason** *(string) --* **[REQUIRED]**
+
+          The reason for the alarm change.
+
+        - **stateValue** *(string) --* **[REQUIRED]**
+
+          The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
+
+      - **elasticsearch** *(dict) --*
+
+        Write data to an Amazon Elasticsearch Service domain.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The IAM role ARN that has access to Elasticsearch.
+
+        - **endpoint** *(string) --* **[REQUIRED]**
+
+          The endpoint of your Elasticsearch domain.
+
+        - **index** *(string) --* **[REQUIRED]**
+
+          The Elasticsearch index where you want to store your data.
+
+        - **type** *(string) --* **[REQUIRED]**
+
+          The type of document you are storing.
+
+        - **id** *(string) --* **[REQUIRED]**
+
+          The unique identifier for the document you are storing.
+
+      - **salesforce** *(dict) --*
+
+        Send a message to a Salesforce IoT Cloud Input Stream.
+
+        - **token** *(string) --* **[REQUIRED]**
+
+          The token used to authenticate access to the Salesforce IoT Cloud Input Stream. The token
+          is available from the Salesforce IoT Cloud platform after creation of the Input Stream.
+
+        - **url** *(string) --* **[REQUIRED]**
+
+          The URL exposed by the Salesforce IoT Cloud Input Stream. The URL is available from the
+          Salesforce IoT Cloud platform after creation of the Input Stream.
+
+      - **iotAnalytics** *(dict) --*
+
+        Sends message data to an AWS IoT Analytics channel.
+
+        - **channelArn** *(string) --*
+
+          (deprecated) The ARN of the IoT Analytics channel to which message data will be sent.
+
+        - **channelName** *(string) --*
+
+          The name of the IoT Analytics channel to which message data will be sent.
+
+        - **roleArn** *(string) --*
+
+          The ARN of the role which has a policy that grants IoT Analytics permission to send message
+          data via IoT Analytics (iotanalytics:BatchPutMessage).
+
+      - **iotEvents** *(dict) --*
+
+        Sends an input to an AWS IoT Events detector.
+
+        - **inputName** *(string) --* **[REQUIRED]**
+
+          The name of the AWS IoT Events input.
+
+        - **messageId** *(string) --*
+
+          [Optional] Use this to ensure that only one input (message) with a given messageId will be
+          processed by an AWS IoT Events detector.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the role that grants AWS IoT permission to send an input to an AWS IoT Events
+          detector. ("Action":"iotevents:BatchPutMessage").
+
+      - **stepFunctions** *(dict) --*
+
+        Starts execution of a Step Functions state machine.
+
+        - **executionNamePrefix** *(string) --*
+
+          (Optional) A name will be given to the state machine execution consisting of this prefix
+          followed by a UUID. Step Functions automatically creates a unique name for each state
+          machine execution if one is not provided.
+
+        - **stateMachineName** *(string) --* **[REQUIRED]**
+
+          The name of the Step Functions state machine whose execution will be started.
+
+        - **roleArn** *(string) --* **[REQUIRED]**
+
+          The ARN of the role that grants IoT permission to start execution of a state machine
+          ("Action":"states:StartExecution").
+    """
+
+
 _ClientSearchIndexResponsethingGroupsTypeDef = TypedDict(
     "_ClientSearchIndexResponsethingGroupsTypeDef",
     {
@@ -21034,6 +23737,35 @@ class ClientSetDefaultAuthorizerResponseTypeDef(
     - **authorizerArn** *(string) --*
 
       The authorizer ARN.
+    """
+
+
+_RequiredClientSetLoggingOptionsloggingOptionsPayloadTypeDef = TypedDict(
+    "_RequiredClientSetLoggingOptionsloggingOptionsPayloadTypeDef", {"roleArn": str}
+)
+_OptionalClientSetLoggingOptionsloggingOptionsPayloadTypeDef = TypedDict(
+    "_OptionalClientSetLoggingOptionsloggingOptionsPayloadTypeDef",
+    {"logLevel": str},
+    total=False,
+)
+
+
+class ClientSetLoggingOptionsloggingOptionsPayloadTypeDef(
+    _RequiredClientSetLoggingOptionsloggingOptionsPayloadTypeDef,
+    _OptionalClientSetLoggingOptionsloggingOptionsPayloadTypeDef,
+):
+    """
+    Type definition for `ClientSetLoggingOptions` `loggingOptionsPayload`
+
+    The logging options payload.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the IAM role that grants access.
+
+    - **logLevel** *(string) --*
+
+      The log level.
     """
 
 
@@ -21953,7 +24685,7 @@ class ClientUpdateDynamicThingGroupthingGroupPropertiesattributePayloadTypeDef(
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -22002,7 +24734,7 @@ class ClientUpdateDynamicThingGroupthingGroupPropertiesTypeDef(
 
         A JSON string containing up to three key-value pair in JSON format. For example:
 
-         ``{\"attributes\":{\"string1\":\"string2\"}}``
+         ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
         - *(string) --*
 
@@ -22529,6 +25261,32 @@ class ClientUpdateJobpresignedUrlConfigTypeDef(
       How long (in seconds) pre-signed URLs are valid. Valid values are 60 - 3600, the default value
       is 3600 seconds. Pre-signed URLs are generated when Jobs receives an MQTT request for the job
       document.
+    """
+
+
+_ClientUpdateJobtimeoutConfigTypeDef = TypedDict(
+    "_ClientUpdateJobtimeoutConfigTypeDef",
+    {"inProgressTimeoutInMinutes": int},
+    total=False,
+)
+
+
+class ClientUpdateJobtimeoutConfigTypeDef(_ClientUpdateJobtimeoutConfigTypeDef):
+    """
+    Type definition for `ClientUpdateJob` `timeoutConfig`
+
+    Specifies the amount of time each device has to finish its execution of the job. The timer is
+    started when the job execution status is set to ``IN_PROGRESS`` . If the job execution status is
+    not set to another terminal state before the time expires, it will be automatically set to
+    ``TIMED_OUT`` .
+
+    - **inProgressTimeoutInMinutes** *(integer) --*
+
+      Specifies the amount of time, in minutes, this device has to finish execution of this job. The
+      timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The in
+      progress timer can't be updated and will apply to all job executions for the job. Whenever a
+      job execution remains in the IN_PROGRESS status for longer than this interval, the job
+      execution will fail and switch to the terminal ``TIMED_OUT`` status.
     """
 
 
@@ -23669,7 +26427,7 @@ class ClientUpdateThingGroupthingGroupPropertiesattributePayloadTypeDef(
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 
@@ -23718,7 +26476,7 @@ class ClientUpdateThingGroupthingGroupPropertiesTypeDef(
 
         A JSON string containing up to three key-value pair in JSON format. For example:
 
-         ``{\"attributes\":{\"string1\":\"string2\"}}``
+         ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
         - *(string) --*
 
@@ -23752,7 +26510,7 @@ class ClientUpdateThingattributePayloadTypeDef(
 
     A list of thing attributes, a JSON string containing name-value pairs. For example:
 
-     ``{\"attributes\":{\"name1\":\"value2\"}}``
+     ``{\\"attributes\\":{\\"name1\\":\\"value2\\"}}``
 
     This data is used to add new attributes or update existing attributes.
 
@@ -23760,7 +26518,7 @@ class ClientUpdateThingattributePayloadTypeDef(
 
       A JSON string containing up to three key-value pair in JSON format. For example:
 
-       ``{\"attributes\":{\"string1\":\"string2\"}}``
+       ``{\\"attributes\\":{\\"string1\\":\\"string2\\"}}``
 
       - *(string) --*
 

@@ -133,7 +133,7 @@ from mypy_boto3_cognito_idp.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_custom_attributes(
         self,
         UserPoolId: str,
@@ -251,7 +251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_add_user_to_group(
         self, UserPoolId: str, Username: str, GroupName: str
     ) -> None:
@@ -289,7 +289,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_confirm_sign_up(
         self, UserPoolId: str, Username: str, ClientMetadata: Dict[str, str] = None
     ) -> Dict:
@@ -371,7 +371,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_create_user(
         self,
         UserPoolId: str,
@@ -709,7 +709,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_delete_user(self, UserPoolId: str, Username: str) -> None:
         """
         Deletes a user as an administrator. Works on any user.
@@ -739,7 +739,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_delete_user_attributes(
         self, UserPoolId: str, Username: str, UserAttributeNames: List[str]
     ) -> Dict:
@@ -796,7 +796,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_disable_provider_for_user(
         self, UserPoolId: str, User: ClientAdminDisableProviderForUserUserTypeDef
     ) -> Dict[str, Any]:
@@ -876,7 +876,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_disable_user(self, UserPoolId: str, Username: str) -> Dict:
         """
         Disables the specified user.
@@ -919,7 +919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_enable_user(self, UserPoolId: str, Username: str) -> Dict:
         """
         Enables the specified user as an administrator. Works on any user.
@@ -962,7 +962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_forget_device(
         self, UserPoolId: str, Username: str, DeviceKey: str
     ) -> None:
@@ -1000,7 +1000,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_get_device(
         self, DeviceKey: str, UserPoolId: str, Username: str
     ) -> ClientAdminGetDeviceResponseTypeDef:
@@ -1100,7 +1100,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_get_user(
         self, UserPoolId: str, Username: str
     ) -> ClientAdminGetUserResponseTypeDef:
@@ -1261,7 +1261,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_initiate_auth(
         self,
         UserPoolId: str,
@@ -1615,7 +1615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_link_provider_for_user(
         self,
         UserPoolId: str,
@@ -1741,7 +1741,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_list_devices(
         self,
         UserPoolId: str,
@@ -1862,7 +1862,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_list_groups_for_user(
         self, Username: str, UserPoolId: str, Limit: int = None, NextToken: str = None
     ) -> ClientAdminListGroupsForUserResponseTypeDef:
@@ -1985,7 +1985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_list_user_auth_events(
         self,
         UserPoolId: str,
@@ -2173,7 +2173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_remove_user_from_group(
         self, UserPoolId: str, Username: str, GroupName: str
     ) -> None:
@@ -2211,7 +2211,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_reset_user_password(
         self, UserPoolId: str, Username: str, ClientMetadata: Dict[str, str] = None
     ) -> Dict:
@@ -2302,7 +2302,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_respond_to_auth_challenge(
         self,
         UserPoolId: str,
@@ -2582,7 +2582,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_set_user_mfa_preference(
         self,
         Username: str,
@@ -2664,7 +2664,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_set_user_password(
         self, UserPoolId: str, Username: str, Password: str, Permanent: bool = None
     ) -> Dict[str, Any]:
@@ -2725,7 +2725,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_set_user_settings(
         self,
         UserPoolId: str,
@@ -2804,7 +2804,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_update_auth_event_feedback(
         self, UserPoolId: str, Username: str, EventId: str, FeedbackValue: str
     ) -> Dict[str, Any]:
@@ -2858,7 +2858,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_update_device_status(
         self,
         UserPoolId: str,
@@ -2919,7 +2919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_update_user_attributes(
         self,
         UserPoolId: str,
@@ -3038,7 +3038,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def admin_user_global_sign_out(self, UserPoolId: str, Username: str) -> Dict:
         """
         Signs out users from all devices, as an administrator.
@@ -3081,7 +3081,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_software_token(
         self, AccessToken: str = None, Session: str = None
     ) -> ClientAssociateSoftwareTokenResponseTypeDef:
@@ -3137,7 +3137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -3154,7 +3154,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_password(
         self, PreviousPassword: str, ProposedPassword: str, AccessToken: str
     ) -> Dict:
@@ -3203,7 +3203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_device(
         self,
         AccessToken: str,
@@ -3279,7 +3279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_forgot_password(
         self,
         ClientId: str,
@@ -3415,7 +3415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_sign_up(
         self,
         ClientId: str,
@@ -3553,7 +3553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self,
         GroupName: str,
@@ -3687,7 +3687,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_identity_provider(
         self,
         UserPoolId: str,
@@ -3837,7 +3837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource_server(
         self,
         UserPoolId: str,
@@ -3956,7 +3956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_import_job(
         self, JobName: str, UserPoolId: str, CloudWatchLogsRoleArn: str
     ) -> ClientCreateUserImportJobResponseTypeDef:
@@ -4098,7 +4098,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_pool(
         self,
         PoolName: str,
@@ -5174,7 +5174,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_pool_client(
         self,
         UserPoolId: str,
@@ -5728,7 +5728,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_pool_domain(
         self,
         Domain: str,
@@ -5801,7 +5801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(self, GroupName: str, UserPoolId: str) -> None:
         """
         Deletes a group. Currently only groups with no members can be deleted.
@@ -5831,7 +5831,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_identity_provider(self, UserPoolId: str, ProviderName: str) -> None:
         """
         Deletes an identity provider for a user pool.
@@ -5859,7 +5859,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_server(self, UserPoolId: str, Identifier: str) -> None:
         """
         Deletes a resource server.
@@ -5887,7 +5887,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, AccessToken: str) -> None:
         """
         Allows a user to delete himself or herself.
@@ -5909,7 +5909,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_attributes(
         self, UserAttributeNames: List[str], AccessToken: str
     ) -> Dict:
@@ -5958,7 +5958,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_pool(self, UserPoolId: str) -> None:
         """
         Deletes the specified Amazon Cognito user pool.
@@ -5980,7 +5980,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_pool_client(self, UserPoolId: str, ClientId: str) -> None:
         """
         Allows the developer to delete the user pool client.
@@ -6008,7 +6008,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_pool_domain(self, Domain: str, UserPoolId: str) -> Dict[str, Any]:
         """
         Deletes a domain for a user pool.
@@ -6046,7 +6046,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_identity_provider(
         self, UserPoolId: str, ProviderName: str
     ) -> ClientDescribeIdentityProviderResponseTypeDef:
@@ -6150,7 +6150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource_server(
         self, UserPoolId: str, Identifier: str
     ) -> ClientDescribeResourceServerResponseTypeDef:
@@ -6235,7 +6235,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_risk_configuration(
         self, UserPoolId: str, ClientId: str = None
     ) -> ClientDescribeRiskConfigurationResponseTypeDef:
@@ -6531,7 +6531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_import_job(
         self, UserPoolId: str, JobId: str
     ) -> ClientDescribeUserImportJobResponseTypeDef:
@@ -6667,7 +6667,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_pool(
         self, UserPoolId: str
     ) -> ClientDescribeUserPoolResponseTypeDef:
@@ -7239,7 +7239,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_pool_client(
         self, UserPoolId: str, ClientId: str
     ) -> ClientDescribeUserPoolClientResponseTypeDef:
@@ -7538,7 +7538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_pool_domain(
         self, Domain: str
     ) -> ClientDescribeUserPoolDomainResponseTypeDef:
@@ -7628,7 +7628,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def forget_device(self, DeviceKey: str, AccessToken: str = None) -> None:
         """
         Forgets the specified device.
@@ -7656,7 +7656,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def forgot_password(
         self,
         ClientId: str,
@@ -7805,7 +7805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -7834,7 +7834,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_csv_header(self, UserPoolId: str) -> ClientGetCsvHeaderResponseTypeDef:
         """
         Gets the header information for the .csv file to be used as input for the user import job.
@@ -7885,7 +7885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device(
         self, DeviceKey: str, AccessToken: str = None
     ) -> ClientGetDeviceResponseTypeDef:
@@ -7977,7 +7977,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group(
         self, GroupName: str, UserPoolId: str
     ) -> ClientGetGroupResponseTypeDef:
@@ -8075,7 +8075,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_provider_by_identifier(
         self, UserPoolId: str, IdpIdentifier: str
     ) -> ClientGetIdentityProviderByIdentifierResponseTypeDef:
@@ -8179,7 +8179,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -8200,7 +8200,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_signing_certificate(
         self, UserPoolId: str
     ) -> ClientGetSigningCertificateResponseTypeDef:
@@ -8243,7 +8243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ui_customization(
         self, UserPoolId: str, ClientId: str = None
     ) -> ClientGetUiCustomizationResponseTypeDef:
@@ -8329,7 +8329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user(self, AccessToken: str) -> ClientGetUserResponseTypeDef:
         """
         Gets the user attributes and metadata for a user.
@@ -8442,7 +8442,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_attribute_verification_code(
         self,
         AccessToken: str,
@@ -8550,7 +8550,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_pool_mfa_config(
         self, UserPoolId: str
     ) -> ClientGetUserPoolMfaConfigResponseTypeDef:
@@ -8645,7 +8645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -8658,7 +8658,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def global_sign_out(self, AccessToken: str) -> Dict:
         """
         Signs out users from all devices.
@@ -8693,7 +8693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_auth(
         self,
         AuthFlow: str,
@@ -8985,7 +8985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_devices(
         self, AccessToken: str, Limit: int = None, PaginationToken: str = None
     ) -> ClientListDevicesResponseTypeDef:
@@ -9094,7 +9094,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self, UserPoolId: str, Limit: int = None, NextToken: str = None
     ) -> ClientListGroupsResponseTypeDef:
@@ -9211,7 +9211,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_identity_providers(
         self, UserPoolId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListIdentityProvidersResponseTypeDef:
@@ -9296,7 +9296,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_servers(
         self, UserPoolId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListResourceServersResponseTypeDef:
@@ -9398,7 +9398,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -9450,7 +9450,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_import_jobs(
         self, UserPoolId: str, MaxResults: int, PaginationToken: str = None
     ) -> ClientListUserImportJobsResponseTypeDef:
@@ -9606,7 +9606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_pool_clients(
         self, UserPoolId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListUserPoolClientsResponseTypeDef:
@@ -9690,7 +9690,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_pools(
         self, MaxResults: int, NextToken: str = None
     ) -> ClientListUserPoolsResponseTypeDef:
@@ -9834,7 +9834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self,
         UserPoolId: str,
@@ -9889,14 +9889,14 @@ class Client(BaseClient):
         :param Filter:
 
           A filter string of the form "*AttributeName*  *Filter-Type* "*AttributeValue* "". Quotation marks
-          within the filter string must be escaped using the backslash (\) character. For example,
-          "``family_name`` = \"Reddy\"".
+          within the filter string must be escaped using the backslash (\\) character. For example,
+          "``family_name`` = \\"Reddy\\"".
 
           * *AttributeName* : The name of the attribute to search for. You can only search for one
           attribute at a time.
 
-          * *Filter-Type* : For an exact match, use =, for example, "``given_name`` = \"Jon\"". For a
-          prefix ("starts with") match, use ^=, for example, "``given_name`` ^= \"Jon\"".
+          * *Filter-Type* : For an exact match, use =, for example, "``given_name`` = \\"Jon\\"". For a
+          prefix ("starts with") match, use ^=, for example, "``given_name`` ^= \\"Jon\\"".
 
           * *AttributeValue* : The attribute value that must be matched for each user.
 
@@ -10064,7 +10064,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users_in_group(
         self, UserPoolId: str, GroupName: str, Limit: int = None, NextToken: str = None
     ) -> ClientListUsersInGroupResponseTypeDef:
@@ -10236,7 +10236,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resend_confirmation_code(
         self,
         ClientId: str,
@@ -10381,7 +10381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def respond_to_auth_challenge(
         self,
         ClientId: str,
@@ -10620,7 +10620,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_risk_configuration(
         self,
         UserPoolId: str,
@@ -11162,7 +11162,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_ui_customization(
         self,
         UserPoolId: str,
@@ -11272,7 +11272,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_user_mfa_preference(
         self,
         AccessToken: str,
@@ -11347,7 +11347,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_user_pool_mfa_config(
         self,
         UserPoolId: str,
@@ -11506,7 +11506,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_user_settings(
         self, AccessToken: str, MFAOptions: List[ClientSetUserSettingsMFAOptionsTypeDef]
     ) -> Dict:
@@ -11576,7 +11576,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def sign_up(
         self,
         ClientId: str,
@@ -11786,7 +11786,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_user_import_job(
         self, UserPoolId: str, JobId: str
     ) -> ClientStartUserImportJobResponseTypeDef:
@@ -11922,7 +11922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_user_import_job(
         self, UserPoolId: str, JobId: str
     ) -> ClientStopUserImportJobResponseTypeDef:
@@ -12058,7 +12058,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Assigns a set of tags to an Amazon Cognito user pool. A tag is a label that you can use to
@@ -12117,7 +12117,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times
@@ -12160,7 +12160,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_auth_event_feedback(
         self,
         UserPoolId: str,
@@ -12225,7 +12225,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_status(
         self, AccessToken: str, DeviceKey: str, DeviceRememberedStatus: str = None
     ) -> Dict:
@@ -12274,7 +12274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(
         self,
         GroupName: str,
@@ -12400,7 +12400,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_identity_provider(
         self,
         UserPoolId: str,
@@ -12543,7 +12543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resource_server(
         self,
         UserPoolId: str,
@@ -12665,7 +12665,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_attributes(
         self,
         UserAttributes: List[ClientUpdateUserAttributesUserAttributesTypeDef],
@@ -12796,7 +12796,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_pool(
         self,
         UserPoolId: str,
@@ -13232,7 +13232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_pool_client(
         self,
         UserPoolId: str,
@@ -13779,7 +13779,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_pool_domain(
         self,
         Domain: str,
@@ -13877,7 +13877,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_software_token(
         self,
         UserCode: str,
@@ -13946,7 +13946,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_user_attribute(
         self, AccessToken: str, AttributeName: str, Code: str
     ) -> Dict:

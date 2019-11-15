@@ -12269,7 +12269,7 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitioncontainerDefinitionsTy
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
       ``--entrypoint`` option to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#entrypoint
+      `https\\://docs.docker.com/engine/reference/builder/#entrypoint
       <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
       - *(string) --*
@@ -12281,7 +12281,7 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitioncontainerDefinitionsTy
       <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
       parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-      information, see `https://docs.docker.com/engine/reference/builder/#cmd
+      information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
       arguments, each argument should be a separated string in the array.
 
@@ -13531,8 +13531,8 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitionvolumeshostTypeDef(
     Windows containers can mount whole directories on the same drive as
     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
     drive, and mount point cannot be across drives. For example, you can mount
-    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-    ``D::C:\my\path`` .
+    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+    or ``D:\\:C:\\my\\path`` .
 
     - **sourcePath** *(string) --*
 
@@ -13592,8 +13592,8 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitionvolumesTypeDef(
       Windows containers can mount whole directories on the same drive as
       ``$env:ProgramData`` . Windows containers cannot mount directories on a different
       drive, and mount point cannot be across drives. For example, you can mount
-      ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-      ``D::C:\my\path`` .
+      ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+      or ``D:\\:C:\\my\\path`` .
 
       - **sourcePath** *(string) --*
 
@@ -14057,7 +14057,7 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitionTypeDef(
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
           ``--entrypoint`` option to `docker run
           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-          `https://docs.docker.com/engine/reference/builder/#entrypoint
+          `https\\://docs.docker.com/engine/reference/builder/#entrypoint
           <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
           - *(string) --*
@@ -14069,7 +14069,7 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitionTypeDef(
           <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
           parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-          information, see `https://docs.docker.com/engine/reference/builder/#cmd
+          information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
           <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
           arguments, each argument should be a separated string in the array.
 
@@ -15140,8 +15140,8 @@ class ClientDeregisterTaskDefinitionResponsetaskDefinitionTypeDef(
           Windows containers can mount whole directories on the same drive as
           ``$env:ProgramData`` . Windows containers cannot mount directories on a different
           drive, and mount point cannot be across drives. For example, you can mount
-          ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-          ``D::C:\my\path`` .
+          ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+          or ``D:\\:C:\\my\\path`` .
 
           - **sourcePath** *(string) --*
 
@@ -15824,7 +15824,7 @@ class ClientDeregisterTaskDefinitionResponseTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
             ``--entrypoint`` option to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#entrypoint
+            `https\\://docs.docker.com/engine/reference/builder/#entrypoint
             <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
             - *(string) --*
@@ -15836,7 +15836,7 @@ class ClientDeregisterTaskDefinitionResponseTypeDef(
             <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
             parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-            information, see `https://docs.docker.com/engine/reference/builder/#cmd
+            information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
             arguments, each argument should be a separated string in the array.
 
@@ -16907,8 +16907,8 @@ class ClientDeregisterTaskDefinitionResponseTypeDef(
             Windows containers can mount whole directories on the same drive as
             ``$env:ProgramData`` . Windows containers cannot mount directories on a different
             drive, and mount point cannot be across drives. For example, you can mount
-            ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-            ``D::C:\my\path`` .
+            ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+            or ``D:\\:C:\\my\\path`` .
 
             - **sourcePath** *(string) --*
 
@@ -23533,7 +23533,7 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitioncontainerDefinitionsType
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
       ``--entrypoint`` option to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#entrypoint
+      `https\\://docs.docker.com/engine/reference/builder/#entrypoint
       <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
       - *(string) --*
@@ -23545,7 +23545,7 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitioncontainerDefinitionsType
       <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
       parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-      information, see `https://docs.docker.com/engine/reference/builder/#cmd
+      information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
       arguments, each argument should be a separated string in the array.
 
@@ -24795,8 +24795,8 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitionvolumeshostTypeDef(
     Windows containers can mount whole directories on the same drive as
     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
     drive, and mount point cannot be across drives. For example, you can mount
-    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-    ``D::C:\my\path`` .
+    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+    or ``D:\\:C:\\my\\path`` .
 
     - **sourcePath** *(string) --*
 
@@ -24856,8 +24856,8 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitionvolumesTypeDef(
       Windows containers can mount whole directories on the same drive as
       ``$env:ProgramData`` . Windows containers cannot mount directories on a different
       drive, and mount point cannot be across drives. For example, you can mount
-      ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-      ``D::C:\my\path`` .
+      ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+      or ``D:\\:C:\\my\\path`` .
 
       - **sourcePath** *(string) --*
 
@@ -25321,7 +25321,7 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitionTypeDef(
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
           ``--entrypoint`` option to `docker run
           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-          `https://docs.docker.com/engine/reference/builder/#entrypoint
+          `https\\://docs.docker.com/engine/reference/builder/#entrypoint
           <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
           - *(string) --*
@@ -25333,7 +25333,7 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitionTypeDef(
           <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
           parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-          information, see `https://docs.docker.com/engine/reference/builder/#cmd
+          information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
           <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
           arguments, each argument should be a separated string in the array.
 
@@ -26404,8 +26404,8 @@ class ClientDescribeTaskDefinitionResponsetaskDefinitionTypeDef(
           Windows containers can mount whole directories on the same drive as
           ``$env:ProgramData`` . Windows containers cannot mount directories on a different
           drive, and mount point cannot be across drives. For example, you can mount
-          ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-          ``D::C:\my\path`` .
+          ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+          or ``D:\\:C:\\my\\path`` .
 
           - **sourcePath** *(string) --*
 
@@ -27091,7 +27091,7 @@ class ClientDescribeTaskDefinitionResponseTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
             ``--entrypoint`` option to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#entrypoint
+            `https\\://docs.docker.com/engine/reference/builder/#entrypoint
             <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
             - *(string) --*
@@ -27103,7 +27103,7 @@ class ClientDescribeTaskDefinitionResponseTypeDef(
             <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
             parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-            information, see `https://docs.docker.com/engine/reference/builder/#cmd
+            information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
             arguments, each argument should be a separated string in the array.
 
@@ -28174,8 +28174,8 @@ class ClientDescribeTaskDefinitionResponseTypeDef(
             Windows containers can mount whole directories on the same drive as
             ``$env:ProgramData`` . Windows containers cannot mount directories on a different
             drive, and mount point cannot be across drives. For example, you can mount
-            ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-            ``D::C:\my\path`` .
+            ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+            or ``D:\\:C:\\my\\path`` .
 
             - **sourcePath** *(string) --*
 
@@ -34903,7 +34903,7 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitioncontainerDefinitionsType
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
       ``--entrypoint`` option to `docker run
       <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-      `https://docs.docker.com/engine/reference/builder/#entrypoint
+      `https\\://docs.docker.com/engine/reference/builder/#entrypoint
       <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
       - *(string) --*
@@ -34915,7 +34915,7 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitioncontainerDefinitionsType
       <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
       `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
       parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-      information, see `https://docs.docker.com/engine/reference/builder/#cmd
+      information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
       arguments, each argument should be a separated string in the array.
 
@@ -36165,8 +36165,8 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitionvolumeshostTypeDef(
     Windows containers can mount whole directories on the same drive as
     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
     drive, and mount point cannot be across drives. For example, you can mount
-    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-    ``D::C:\my\path`` .
+    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+    or ``D:\\:C:\\my\\path`` .
 
     - **sourcePath** *(string) --*
 
@@ -36226,8 +36226,8 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitionvolumesTypeDef(
       Windows containers can mount whole directories on the same drive as
       ``$env:ProgramData`` . Windows containers cannot mount directories on a different
       drive, and mount point cannot be across drives. For example, you can mount
-      ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-      ``D::C:\my\path`` .
+      ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+      or ``D:\\:C:\\my\\path`` .
 
       - **sourcePath** *(string) --*
 
@@ -36691,7 +36691,7 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitionTypeDef(
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
           ``--entrypoint`` option to `docker run
           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-          `https://docs.docker.com/engine/reference/builder/#entrypoint
+          `https\\://docs.docker.com/engine/reference/builder/#entrypoint
           <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
           - *(string) --*
@@ -36703,7 +36703,7 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitionTypeDef(
           <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
           `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
           parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-          information, see `https://docs.docker.com/engine/reference/builder/#cmd
+          information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
           <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
           arguments, each argument should be a separated string in the array.
 
@@ -37774,8 +37774,8 @@ class ClientRegisterTaskDefinitionResponsetaskDefinitionTypeDef(
           Windows containers can mount whole directories on the same drive as
           ``$env:ProgramData`` . Windows containers cannot mount directories on a different
           drive, and mount point cannot be across drives. For example, you can mount
-          ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-          ``D::C:\my\path`` .
+          ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+          or ``D:\\:C:\\my\\path`` .
 
           - **sourcePath** *(string) --*
 
@@ -38461,7 +38461,7 @@ class ClientRegisterTaskDefinitionResponseTypeDef(
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
             ``--entrypoint`` option to `docker run
             <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-            `https://docs.docker.com/engine/reference/builder/#entrypoint
+            `https\\://docs.docker.com/engine/reference/builder/#entrypoint
             <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
             - *(string) --*
@@ -38473,7 +38473,7 @@ class ClientRegisterTaskDefinitionResponseTypeDef(
             <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
             `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
             parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-            information, see `https://docs.docker.com/engine/reference/builder/#cmd
+            information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
             <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
             arguments, each argument should be a separated string in the array.
 
@@ -39544,8 +39544,8 @@ class ClientRegisterTaskDefinitionResponseTypeDef(
             Windows containers can mount whole directories on the same drive as
             ``$env:ProgramData`` . Windows containers cannot mount directories on a different
             drive, and mount point cannot be across drives. For example, you can mount
-            ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-            ``D::C:\my\path`` .
+            ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+            or ``D:\\:C:\\my\\path`` .
 
             - **sourcePath** *(string) --*
 
@@ -41366,7 +41366,7 @@ class ClientRegisterTaskDefinitioncontainerDefinitionsTypeDef(
       `Create a container <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__
       section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
       ``--entrypoint`` option to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-      For more information, see `https://docs.docker.com/engine/reference/builder/#entrypoint
+      For more information, see `https\\://docs.docker.com/engine/reference/builder/#entrypoint
       <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
       - *(string) --*
@@ -41377,7 +41377,7 @@ class ClientRegisterTaskDefinitioncontainerDefinitionsTypeDef(
       container <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of
       the `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
       parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-      information, see `https://docs.docker.com/engine/reference/builder/#cmd
+      information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
       <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple arguments,
       each argument should be a separated string in the array.
 
@@ -42612,8 +42612,8 @@ class ClientRegisterTaskDefinitionvolumeshostTypeDef(
 
     Windows containers can mount whole directories on the same drive as ``$env:ProgramData`` .
     Windows containers cannot mount directories on a different drive, and mount point cannot be
-    across drives. For example, you can mount ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not
-    ``D:\my\path:C:\my\path`` or ``D::C:\my\path`` .
+    across drives. For example, you can mount ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` ,
+    but not ``D:\\my\\path:C:\\my\\path`` or ``D:\\:C:\\my\\path`` .
 
     - **sourcePath** *(string) --*
 
@@ -42668,8 +42668,8 @@ class ClientRegisterTaskDefinitionvolumesTypeDef(
 
       Windows containers can mount whole directories on the same drive as ``$env:ProgramData`` .
       Windows containers cannot mount directories on a different drive, and mount point cannot be
-      across drives. For example, you can mount ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not
-      ``D:\my\path:C:\my\path`` or ``D::C:\my\path`` .
+      across drives. For example, you can mount ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` ,
+      but not ``D:\\my\\path:C:\\my\\path`` or ``D:\\:C:\\my\\path`` .
 
       - **sourcePath** *(string) --*
 
@@ -58080,4 +58080,96 @@ class ListTasksPaginateResponseTypeDef(_ListTasksPaginateResponseTypeDef):
     - **NextToken** *(string) --*
 
       A token to resume pagination.
+    """
+
+
+_ServicesInactiveWaitWaiterConfigTypeDef = TypedDict(
+    "_ServicesInactiveWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ServicesInactiveWaitWaiterConfigTypeDef(_ServicesInactiveWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ServicesInactiveWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_ServicesStableWaitWaiterConfigTypeDef = TypedDict(
+    "_ServicesStableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ServicesStableWaitWaiterConfigTypeDef(_ServicesStableWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ServicesStableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_TasksRunningWaitWaiterConfigTypeDef = TypedDict(
+    "_TasksRunningWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TasksRunningWaitWaiterConfigTypeDef(_TasksRunningWaitWaiterConfigTypeDef):
+    """
+    Type definition for `TasksRunningWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 6
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 100
+    """
+
+
+_TasksStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_TasksStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TasksStoppedWaitWaiterConfigTypeDef(_TasksStoppedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `TasksStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 6
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 100
     """

@@ -30,7 +30,7 @@ from mypy_boto3_managedblockchain.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -47,7 +47,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_member(
         self,
         ClientRequestToken: str,
@@ -130,7 +130,7 @@ class Client(BaseClient):
                 The password for the member's initial administrative user. The ``AdminPassword`` must be at
                 least eight characters long and no more than 32 characters. It must contain at least one
                 uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-                double quote(“), forward slash(/), backward slash(\), @, or a space.
+                double quote(“), forward slash(/), backward slash(\\), @, or a space.
 
         :rtype: dict
         :returns:
@@ -152,7 +152,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network(
         self,
         ClientRequestToken: str,
@@ -310,7 +310,7 @@ class Client(BaseClient):
                 The password for the member's initial administrative user. The ``AdminPassword`` must be at
                 least eight characters long and no more than 32 characters. It must contain at least one
                 uppercase letter, one lowercase letter, and one digit. It cannot have a single quote(‘),
-                double quote(“), forward slash(/), backward slash(\), @, or a space.
+                double quote(“), forward slash(/), backward slash(\\), @, or a space.
 
         :rtype: dict
         :returns:
@@ -337,7 +337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_node(
         self,
         ClientRequestToken: str,
@@ -416,7 +416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_proposal(
         self,
         ClientRequestToken: str,
@@ -537,7 +537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_member(self, NetworkId: str, MemberId: str) -> Dict[str, Any]:
         """
         Deletes a member. Deleting a member removes the member and all associated resources from the
@@ -580,7 +580,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_node(self, NetworkId: str, MemberId: str, NodeId: str) -> Dict[str, Any]:
         """
         Deletes a peer node from a member that your AWS account owns. All data on the node is lost and
@@ -625,7 +625,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -654,7 +654,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_member(
         self, NetworkId: str, MemberId: str
     ) -> ClientGetMemberResponseTypeDef:
@@ -770,7 +770,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_network(self, NetworkId: str) -> ClientGetNetworkResponseTypeDef:
         """
         Returns detailed information about a network.
@@ -914,7 +914,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_node(
         self, NetworkId: str, MemberId: str, NodeId: str
     ) -> ClientGetNodeResponseTypeDef:
@@ -1027,7 +1027,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1048,7 +1048,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_proposal(
         self, NetworkId: str, ProposalId: str
     ) -> ClientGetProposalResponseTypeDef:
@@ -1217,7 +1217,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1230,7 +1230,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_invitations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListInvitationsResponseTypeDef:
@@ -1367,7 +1367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_members(
         self,
         NetworkId: str,
@@ -1504,7 +1504,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_networks(
         self,
         Name: str = None,
@@ -1621,7 +1621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_nodes(
         self,
         NetworkId: str,
@@ -1728,7 +1728,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_proposal_votes(
         self,
         NetworkId: str,
@@ -1819,7 +1819,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_proposals(
         self, NetworkId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListProposalsResponseTypeDef:
@@ -1940,7 +1940,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_invitation(self, InvitationId: str) -> Dict[str, Any]:
         """
         Rejects an invitation to join a network. This action can be called by a principal in an AWS account
@@ -1973,7 +1973,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def vote_on_proposal(
         self, NetworkId: str, ProposalId: str, VoterMemberId: str, Vote: str
     ) -> Dict[str, Any]:

@@ -12,7 +12,7 @@ from mypy_boto3_support.type_defs import (
 
 
 class DescribeCases(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         caseIdList: List[str] = None,
@@ -325,7 +325,7 @@ class DescribeCases(Boto3Paginator):
 
 
 class DescribeCommunications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         caseId: str,

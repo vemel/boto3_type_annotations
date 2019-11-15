@@ -17,7 +17,7 @@ from mypy_boto3_s3.type_defs import (
 
 
 class ListMultipartUploads(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Bucket: str,
@@ -220,7 +220,7 @@ class ListMultipartUploads(Boto3Paginator):
 
 
 class ListObjectVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Bucket: str,
@@ -447,7 +447,7 @@ class ListObjectVersions(Boto3Paginator):
 
 
 class ListObjects(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Bucket: str,
@@ -632,7 +632,7 @@ class ListObjects(Boto3Paginator):
 
 
 class ListObjectsV2(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Bucket: str,
@@ -851,7 +851,7 @@ class ListObjectsV2(Boto3Paginator):
 
 
 class ListParts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Bucket: str,

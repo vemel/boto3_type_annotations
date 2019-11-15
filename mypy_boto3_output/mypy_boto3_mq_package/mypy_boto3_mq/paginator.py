@@ -9,7 +9,7 @@ from mypy_boto3_mq.type_defs import (
 
 
 class ListBrokers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListBrokersPaginatePaginationConfigTypeDef = None
     ) -> ListBrokersPaginateResponseTypeDef:

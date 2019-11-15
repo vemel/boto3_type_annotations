@@ -39,7 +39,7 @@ from mypy_boto3_elastictranscoder.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -56,7 +56,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_job(self, Id: str) -> Dict:
         """
         The CancelJob operation cancels an unfinished job.
@@ -101,7 +101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_job(
         self,
         PipelineId: str,
@@ -5973,7 +5973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_pipeline(
         self,
         Name: str,
@@ -6894,7 +6894,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_preset(
         self,
         Name: str,
@@ -8924,7 +8924,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_pipeline(self, Id: str) -> Dict:
         """
         The DeletePipeline operation removes a pipeline.
@@ -8962,7 +8962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_preset(self, Id: str) -> Dict:
         """
         The DeletePreset operation removes a preset that you've added in an AWS region.
@@ -9001,7 +9001,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -9030,7 +9030,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -9051,7 +9051,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -9064,7 +9064,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs_by_pipeline(
         self, PipelineId: str, Ascending: str = None, PageToken: str = None
     ) -> ClientListJobsByPipelineResponseTypeDef:
@@ -12244,7 +12244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs_by_status(
         self, Status: str, Ascending: str = None, PageToken: str = None
     ) -> ClientListJobsByStatusResponseTypeDef:
@@ -15424,7 +15424,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pipelines(
         self, Ascending: str = None, PageToken: str = None
     ) -> ClientListPipelinesResponseTypeDef:
@@ -15893,7 +15893,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_presets(
         self, Ascending: str = None, PageToken: str = None
     ) -> ClientListPresetsResponseTypeDef:
@@ -16973,7 +16973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def read_job(self, Id: str) -> ClientReadJobResponseTypeDef:
         """
         The ReadJob operation returns detailed information about a job.
@@ -20088,7 +20088,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def read_pipeline(self, Id: str) -> ClientReadPipelineResponseTypeDef:
         """
         The ReadPipeline operation gets detailed information about a pipeline.
@@ -20565,7 +20565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def read_preset(self, Id: str) -> ClientReadPresetResponseTypeDef:
         """
         The ReadPreset operation gets detailed information about a preset.
@@ -21610,7 +21610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_role(
         self, Role: str, InputBucket: str, OutputBucket: str, Topics: List[str]
     ) -> ClientTestRoleResponseTypeDef:
@@ -21698,7 +21698,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pipeline(
         self,
         Id: str,
@@ -22601,7 +22601,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pipeline_notifications(
         self,
         Id: str,
@@ -23105,7 +23105,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pipeline_status(
         self, Id: str, Status: str
     ) -> ClientUpdatePipelineStatusResponseTypeDef:

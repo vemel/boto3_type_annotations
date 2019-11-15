@@ -33,7 +33,7 @@ from mypy_boto3_iotthingsgraph.type_defs import (
 
 
 class GetFlowTemplateRevisions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         id: str,
@@ -140,7 +140,7 @@ class GetFlowTemplateRevisions(Boto3Paginator):
 
 
 class GetSystemTemplateRevisions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         id: str,
@@ -247,7 +247,7 @@ class GetSystemTemplateRevisions(Boto3Paginator):
 
 
 class ListFlowExecutionMessages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         flowExecutionId: str,
@@ -356,7 +356,7 @@ class ListFlowExecutionMessages(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         resourceArn: str,
@@ -451,7 +451,7 @@ class ListTagsForResource(Boto3Paginator):
 
 
 class SearchEntities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         entityTypes: List[str],
@@ -624,7 +624,7 @@ class SearchEntities(Boto3Paginator):
 
 
 class SearchFlowExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         systemInstanceId: str,
@@ -759,7 +759,7 @@ class SearchFlowExecutions(Boto3Paginator):
 
 
 class SearchFlowTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[SearchFlowTemplatesPaginatefiltersTypeDef] = None,
@@ -884,7 +884,7 @@ class SearchFlowTemplates(Boto3Paginator):
 
 
 class SearchSystemInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[SearchSystemInstancesPaginatefiltersTypeDef] = None,
@@ -1042,7 +1042,7 @@ class SearchSystemInstances(Boto3Paginator):
 
 
 class SearchSystemTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filters: List[SearchSystemTemplatesPaginatefiltersTypeDef] = None,
@@ -1168,7 +1168,7 @@ class SearchSystemTemplates(Boto3Paginator):
 
 
 class SearchThings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         entityId: str,

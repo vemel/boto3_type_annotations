@@ -1135,7 +1135,7 @@ class ClientCreatePredictorInputDataConfigSupplementaryFeaturesTypeDef(
 
     For this release, the only supported feature is a holiday calendar. If the calendar is used,
     all data should belong to the same country as the calendar. For the calendar data, see
-    `http://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
+    `http\\://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
 
     - **Name** *(string) --* **[REQUIRED]**
 
@@ -1196,7 +1196,7 @@ class ClientCreatePredictorInputDataConfigTypeDef(
 
         For this release, the only supported feature is a holiday calendar. If the calendar is used,
         all data should belong to the same country as the calendar. For the calendar data, see
-        `http://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
+        `http\\://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
 
         - **Name** *(string) --* **[REQUIRED]**
 
@@ -2817,7 +2817,7 @@ class ClientDescribePredictorResponseInputDataConfigSupplementaryFeaturesTypeDef
 
     For this release, the only supported feature is a holiday calendar. If the calendar is
     used, all data should belong to the same country as the calendar. For the calendar data,
-    see `http://jollyday.sourceforge.net/data.html
+    see `http\\://jollyday.sourceforge.net/data.html
     <http://jollyday.sourceforge.net/data.html>`__ .
 
     - **Name** *(string) --*
@@ -2876,7 +2876,7 @@ class ClientDescribePredictorResponseInputDataConfigTypeDef(
 
         For this release, the only supported feature is a holiday calendar. If the calendar is
         used, all data should belong to the same country as the calendar. For the calendar data,
-        see `http://jollyday.sourceforge.net/data.html
+        see `http\\://jollyday.sourceforge.net/data.html
         <http://jollyday.sourceforge.net/data.html>`__ .
 
         - **Name** *(string) --*
@@ -3128,7 +3128,7 @@ class ClientDescribePredictorResponseTypeDef(_ClientDescribePredictorResponseTyp
 
           For this release, the only supported feature is a holiday calendar. If the calendar is
           used, all data should belong to the same country as the calendar. For the calendar data,
-          see `http://jollyday.sourceforge.net/data.html
+          see `http\\://jollyday.sourceforge.net/data.html
           <http://jollyday.sourceforge.net/data.html>`__ .
 
           - **Name** *(string) --*

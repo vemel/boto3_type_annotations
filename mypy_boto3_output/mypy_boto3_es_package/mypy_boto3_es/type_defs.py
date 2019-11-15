@@ -6,6 +6,30 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+_ClientAddTagsTagListTypeDef = TypedDict(
+    "_ClientAddTagsTagListTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientAddTagsTagListTypeDef(_ClientAddTagsTagListTypeDef):
+    """
+    Type definition for `ClientAddTags` `TagList`
+
+    Specifies a key value pair for a resource tag.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Specifies the ``TagKey`` , the name of the tag. Tag keys must be unique for the Elasticsearch
+      domain to which they are attached.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Specifies the ``TagValue`` , the value assigned to the corresponding tag key. Tag values can
+      be null and do not have to be unique in a tag set. For example, you can have a key value pair
+      in a tag set of ``project : Trinity`` and ``cost-center : Trinity``
+    """
+
+
 _ClientCancelElasticsearchServiceSoftwareUpdateResponseServiceSoftwareOptionsTypeDef = TypedDict(
     "_ClientCancelElasticsearchServiceSoftwareUpdateResponseServiceSoftwareOptionsTypeDef",
     {

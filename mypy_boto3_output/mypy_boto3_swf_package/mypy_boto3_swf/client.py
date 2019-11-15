@@ -1,7 +1,7 @@
 "Main interface for swf Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
@@ -22,6 +22,8 @@ from mypy_boto3_swf.type_defs import (
     ClientCountPendingActivityTaskstaskListTypeDef,
     ClientCountPendingDecisionTasksResponseTypeDef,
     ClientCountPendingDecisionTaskstaskListTypeDef,
+    ClientDeprecateActivityTypeactivityTypeTypeDef,
+    ClientDeprecateWorkflowTypeworkflowTypeTypeDef,
     ClientDescribeActivityTypeResponseTypeDef,
     ClientDescribeActivityTypeactivityTypeTypeDef,
     ClientDescribeDomainResponseTypeDef,
@@ -53,16 +55,20 @@ from mypy_boto3_swf.type_defs import (
     ClientPollForDecisionTasktaskListTypeDef,
     ClientRecordActivityTaskHeartbeatResponseTypeDef,
     ClientRegisterActivityTypedefaultTaskListTypeDef,
+    ClientRegisterDomaintagsTypeDef,
     ClientRegisterWorkflowTypedefaultTaskListTypeDef,
     ClientRespondDecisionTaskCompleteddecisionsTypeDef,
     ClientStartWorkflowExecutionResponseTypeDef,
     ClientStartWorkflowExecutiontaskListTypeDef,
     ClientStartWorkflowExecutionworkflowTypeTypeDef,
+    ClientTagResourcetagsTypeDef,
+    ClientUndeprecateActivityTypeactivityTypeTypeDef,
+    ClientUndeprecateWorkflowTypeworkflowTypeTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -79,7 +85,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def count_closed_workflow_executions(
         self,
         domain: str,
@@ -289,7 +295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def count_open_workflow_executions(
         self,
         domain: str,
@@ -449,7 +455,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def count_pending_activity_tasks(
         self, domain: str, taskList: ClientCountPendingActivityTaskstaskListTypeDef
     ) -> ClientCountPendingActivityTasksResponseTypeDef:
@@ -530,7 +536,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def count_pending_decision_tasks(
         self, domain: str, taskList: ClientCountPendingDecisionTaskstaskListTypeDef
     ) -> ClientCountPendingDecisionTasksResponseTypeDef:
@@ -611,8 +617,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def deprecate_activity_type(self, domain: str, activityType: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def deprecate_activity_type(
+        self, domain: str, activityType: ClientDeprecateActivityTypeactivityTypeTypeDef
+    ) -> None:
         """
         Deprecates the specified *activity type* . After an activity type has been deprecated, you cannot
         create new tasks of that activity type. Tasks of this type that were scheduled before the type was
@@ -686,7 +694,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deprecate_domain(self, name: str) -> None:
         """
         Deprecates the specified domain. After a domain has been deprecated it cannot be used to create new
@@ -733,8 +741,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def deprecate_workflow_type(self, domain: str, workflowType: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def deprecate_workflow_type(
+        self, domain: str, workflowType: ClientDeprecateWorkflowTypeworkflowTypeTypeDef
+    ) -> None:
         """
         Deprecates the specified *workflow type* . After a workflow type has been deprecated, you cannot
         create new executions of that type. Executions that were started before the type was deprecated
@@ -808,7 +818,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_activity_type(
         self, domain: str, activityType: ClientDescribeActivityTypeactivityTypeTypeDef
     ) -> ClientDescribeActivityTypeResponseTypeDef:
@@ -1034,7 +1044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_domain(self, name: str) -> ClientDescribeDomainResponseTypeDef:
         """
         Returns information about the specified domain, including description and status.
@@ -1130,7 +1140,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workflow_execution(
         self, domain: str, execution: ClientDescribeWorkflowExecutionexecutionTypeDef
     ) -> ClientDescribeWorkflowExecutionResponseTypeDef:
@@ -1435,7 +1445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workflow_type(
         self, domain: str, workflowType: ClientDescribeWorkflowTypeworkflowTypeTypeDef
     ) -> ClientDescribeWorkflowTypeResponseTypeDef:
@@ -1666,13 +1676,13 @@ class Client(BaseClient):
                   Executions of this workflow type need IAM roles to invoke Lambda functions. If you don't
                   specify an IAM role when starting this workflow type, the default Lambda role is attached
                   to the execution. For more information, see
-                  `https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+                  `https\\://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
                   <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>`__ in the
                   *Amazon SWF Developer Guide* .
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1701,7 +1711,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1722,7 +1732,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1735,7 +1745,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_workflow_execution_history(
         self,
         domain: str,
@@ -4363,7 +4373,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_activity_types(
         self,
         domain: str,
@@ -4531,7 +4541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_closed_workflow_executions(
         self,
         domain: str,
@@ -4894,7 +4904,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domains(
         self,
         registrationStatus: str,
@@ -5036,7 +5046,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_open_workflow_executions(
         self,
         domain: str,
@@ -5348,7 +5358,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5410,7 +5420,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_workflow_types(
         self,
         domain: str,
@@ -5577,7 +5587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def poll_for_activity_task(
         self,
         domain: str,
@@ -5639,8 +5649,8 @@ class Client(BaseClient):
           Specifies the task list to poll for activity tasks.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
           - **name** *(string) --* **[REQUIRED]**
 
@@ -5732,7 +5742,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def poll_for_decision_task(
         self,
         domain: str,
@@ -5811,8 +5821,8 @@ class Client(BaseClient):
           Specifies the task list to poll for decision tasks.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
           - **name** *(string) --* **[REQUIRED]**
 
@@ -8451,7 +8461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def record_activity_task_heartbeat(
         self, taskToken: str, details: str = None
     ) -> ClientRecordActivityTaskHeartbeatResponseTypeDef:
@@ -8552,7 +8562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_activity_type(
         self,
         domain: str,
@@ -8629,8 +8639,8 @@ class Client(BaseClient):
           The name of the activity type within the domain.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type version: string
         :param version: **[REQUIRED]**
@@ -8643,8 +8653,8 @@ class Client(BaseClient):
             within the domain.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type description: string
         :param description:
@@ -8719,13 +8729,13 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_domain(
         self,
         name: str,
         workflowExecutionRetentionPeriodInDays: str,
         description: str = None,
-        tags: List[Any] = None,
+        tags: List[ClientRegisterDomaintagsTypeDef] = None,
     ) -> None:
         """
         Registers a new domain.
@@ -8772,8 +8782,8 @@ class Client(BaseClient):
           registered in.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type description: string
         :param description:
@@ -8821,7 +8831,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_workflow_type(
         self,
         domain: str,
@@ -8900,8 +8910,8 @@ class Client(BaseClient):
           The name of the workflow type.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type version: string
         :param version: **[REQUIRED]**
@@ -8915,8 +8925,8 @@ class Client(BaseClient):
             ListWorkflowTypes action.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type description: string
         :param description:
@@ -8997,14 +9007,14 @@ class Client(BaseClient):
             Executions of this workflow type need IAM roles to invoke Lambda functions. If you don't
             specify an IAM role when you start this workflow type, the default Lambda role is attached to
             the execution. For more information, see
-            `https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+            `https\\://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
             <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>`__ in the
             *Amazon SWF Developer Guide* .
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_cancel_workflow_execution(
         self, domain: str, workflowId: str, runId: str = None
     ) -> None:
@@ -9070,7 +9080,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def respond_activity_task_canceled(
         self, taskToken: str, details: str = None
     ) -> None:
@@ -9139,7 +9149,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def respond_activity_task_completed(
         self, taskToken: str, result: str = None
     ) -> None:
@@ -9208,7 +9218,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def respond_activity_task_failed(
         self, taskToken: str, reason: str = None, details: str = None
     ) -> None:
@@ -9276,7 +9286,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def respond_decision_task_completed(
         self,
         taskToken: str,
@@ -9627,8 +9637,9 @@ class Client(BaseClient):
                 The ``activityId`` of the activity task.
 
                 The specified string must not start or end with whitespace. It must not contain a ``:``
-                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-                | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+                (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+                ``arn`` .
 
               - **control** *(string) --*
 
@@ -9664,8 +9675,9 @@ class Client(BaseClient):
                   specified at registration time then a fault is returned.
 
                 The specified string must not start or end with whitespace. It must not contain a ``:``
-                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-                | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+                (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+                ``arn`` .
 
                 - **name** *(string) --* **[REQUIRED]**
 
@@ -9884,8 +9896,9 @@ class Client(BaseClient):
                 The unique ID of the timer.
 
                 The specified string must not start or end with whitespace. It must not contain a ``:``
-                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-                | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+                (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+                ``arn`` .
 
               - **control** *(string) --*
 
@@ -9979,8 +9992,9 @@ class Client(BaseClient):
                 The ``workflowId`` of the workflow execution.
 
                 The specified string must not start or end with whitespace. It must not contain a ``:``
-                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-                | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+                (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+                ``arn`` .
 
               - **control** *(string) --*
 
@@ -10017,8 +10031,9 @@ class Client(BaseClient):
                   task list was specified at registration time then a fault is returned.
 
                 The specified string must not start or end with whitespace. It must not contain a ``:``
-                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f``
-                | ``\u007f-\u009f`` ). Also, it must not contain the literal string ``arn`` .
+                (colon), ``/`` (slash), ``|`` (vertical bar), or any control characters
+                (``\\u0000-\\u001f`` | ``\\u007f-\\u009f`` ). Also, it must not contain the literal string
+                ``arn`` .
 
                 - **name** *(string) --* **[REQUIRED]**
 
@@ -10122,7 +10137,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def signal_workflow_execution(
         self,
         domain: str,
@@ -10204,7 +10219,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_workflow_execution(
         self,
         domain: str,
@@ -10298,8 +10313,8 @@ class Client(BaseClient):
           workflow executions with the same ``workflowId`` at the same time within the same domain.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
         :type workflowType: dict
         :param workflowType: **[REQUIRED]**
@@ -10335,8 +10350,8 @@ class Client(BaseClient):
             specified at registration time then a fault is returned.
 
           The specified string must not start or end with whitespace. It must not contain a ``:`` (colon),
-          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\u0000-\u001f`` |
-          ``\u007f-\u009f`` ). Also, it must not *be* the literal string ``arn`` .
+          ``/`` (slash), ``|`` (vertical bar), or any control characters (``\\u0000-\\u001f`` |
+          ``\\u007f-\\u009f`` ). Also, it must not *be* the literal string ``arn`` .
 
           - **name** *(string) --* **[REQUIRED]**
 
@@ -10438,7 +10453,7 @@ class Client(BaseClient):
             Executions of this workflow type need IAM roles to invoke Lambda functions. If you don't attach
             an IAM role, any attempt to schedule a Lambda task fails. This results in a
             ``ScheduleLambdaFunctionFailed`` history event. For more information, see
-            `https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
+            `https\\://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html
             <https://docs.aws.amazon.com/amazonswf/latest/developerguide/lambda-task.html>`__ in the
             *Amazon SWF Developer Guide* .
 
@@ -10465,8 +10480,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, resourceArn: str, tags: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
+    ) -> None:
         """
         Add a tag to a Amazon SWF domain.
 
@@ -10519,7 +10536,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_workflow_execution(
         self,
         domain: str,
@@ -10631,8 +10648,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def undeprecate_activity_type(self, domain: str, activityType: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def undeprecate_activity_type(
+        self,
+        domain: str,
+        activityType: ClientUndeprecateActivityTypeactivityTypeTypeDef,
+    ) -> None:
         """
         Undeprecates a previously deprecated *activity type* . After an activity type has been
         undeprecated, you can create new tasks of that activity type.
@@ -10705,7 +10726,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def undeprecate_domain(self, name: str) -> None:
         """
         Undeprecates a previously deprecated domain. After a domain has been undeprecated it can be used to
@@ -10750,8 +10771,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def undeprecate_workflow_type(self, domain: str, workflowType: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def undeprecate_workflow_type(
+        self,
+        domain: str,
+        workflowType: ClientUndeprecateWorkflowTypeworkflowTypeTypeDef,
+    ) -> None:
         """
         Undeprecates a previously deprecated *workflow type* . After a workflow type has been undeprecated,
         you can create new executions of that type.
@@ -10824,8 +10849,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, resourceArn: str, tagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> None:
         """
         Remove a tag from a Amazon SWF domain.
 

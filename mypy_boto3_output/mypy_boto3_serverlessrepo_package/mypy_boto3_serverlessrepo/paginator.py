@@ -13,7 +13,7 @@ from mypy_boto3_serverlessrepo.type_defs import (
 
 
 class ListApplicationDependencies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationId: str,
@@ -111,7 +111,7 @@ class ListApplicationDependencies(Boto3Paginator):
 
 
 class ListApplicationVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApplicationId: str,
@@ -203,7 +203,7 @@ class ListApplicationVersions(Boto3Paginator):
 
                   The semantic version of the application:
 
-                   `https://semver.org/ <https://semver.org/>`__
+                   `https\\://semver.org/ <https://semver.org/>`__
 
                 - **SourceCodeUrl** *(string) --*
 
@@ -214,7 +214,7 @@ class ListApplicationVersions(Boto3Paginator):
 
 
 class ListApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListApplicationsPaginatePaginationConfigTypeDef = None
     ) -> ListApplicationsPaginateResponseTypeDef:
@@ -326,7 +326,7 @@ class ListApplications(Boto3Paginator):
 
                   Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-                  Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+                  Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
                   - *(string) --*
 
@@ -336,10 +336,10 @@ class ListApplications(Boto3Paginator):
 
                   Minimum length=1. Maximum length=140
 
-                  Pattern: "[a-zA-Z0-9\\-]+";
+                  Pattern: "[a-zA-Z0-9\\\\-]+";
 
                 - **SpdxLicenseId** *(string) --*
 
-                  A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+                  A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
 
         """

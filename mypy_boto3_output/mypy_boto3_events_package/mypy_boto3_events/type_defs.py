@@ -1132,7 +1132,7 @@ class ClientListTargetsByRuleResponseTargetsInputTransformerTypeDef(
 
        ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-       ``"InputTemplate": "<instance> is in state \"<status>\""``
+       ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
        ``}``
     """
@@ -1379,7 +1379,7 @@ class ClientListTargetsByRuleResponseTargetsTypeDef(
 
          ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-         ``"InputTemplate": "<instance> is in state \"<status>\""``
+         ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
          ``}``
 
@@ -1658,7 +1658,7 @@ class ClientListTargetsByRuleResponseTypeDef(_ClientListTargetsByRuleResponseTyp
 
              ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-             ``"InputTemplate": "<instance> is in state \"<status>\""``
+             ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
              ``}``
 
@@ -2066,6 +2066,40 @@ class ClientPutPartnerEventsResponseTypeDef(_ClientPutPartnerEventsResponseTypeD
         - **ErrorMessage** *(string) --*
 
           The error message that explains why the event submission failed.
+    """
+
+
+_ClientPutPermissionConditionTypeDef = TypedDict(
+    "_ClientPutPermissionConditionTypeDef", {"Type": str, "Key": str, "Value": str}
+)
+
+
+class ClientPutPermissionConditionTypeDef(_ClientPutPermissionConditionTypeDef):
+    """
+    Type definition for `ClientPutPermission` `Condition`
+
+    This parameter enables you to limit the permission to accounts that fulfill a certain condition,
+    such as being a member of a certain AWS organization. For more information about AWS
+    Organizations, see `What Is AWS Organizations?
+    <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html>`__ in the
+    *AWS Organizations User Guide* .
+
+    If you specify ``Condition`` with an AWS organization ID and specify "*" as the value for
+    ``Principal`` , you grant permission to all the accounts in the named organization.
+
+    The ``Condition`` is a JSON string that must contain ``Type`` , ``Key`` , and ``Value`` fields.
+
+    - **Type** *(string) --* **[REQUIRED]**
+
+      The type of condition. Currently, the only supported value is ``StringEquals`` .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key for the condition. Currently, the only supported key is ``aws:PrincipalOrgID`` .
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value for the key. Currently, this must be the ID of the organization.
     """
 
 
@@ -2549,7 +2583,7 @@ class ClientPutTargetsTargetsInputTransformerTypeDef(
 
        ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-       ``"InputTemplate": "<instance> is in state \"<status>\""``
+       ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
        ``}``
     """
@@ -2790,7 +2824,7 @@ class ClientPutTargetsTargetsTypeDef(
 
          ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-         ``"InputTemplate": "<instance> is in state \"<status>\""``
+         ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
          ``}``
 
@@ -3668,7 +3702,7 @@ class ListTargetsByRulePaginateResponseTargetsInputTransformerTypeDef(
 
        ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-       ``"InputTemplate": "<instance> is in state \"<status>\""``
+       ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
        ``}``
     """
@@ -3915,7 +3949,7 @@ class ListTargetsByRulePaginateResponseTargetsTypeDef(
 
          ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-         ``"InputTemplate": "<instance> is in state \"<status>\""``
+         ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
          ``}``
 
@@ -4196,7 +4230,7 @@ class ListTargetsByRulePaginateResponseTypeDef(
 
              ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-             ``"InputTemplate": "<instance> is in state \"<status>\""``
+             ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
              ``}``
 

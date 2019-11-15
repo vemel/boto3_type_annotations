@@ -135,7 +135,7 @@ class ClientDescribeActivityResponseTypeDef(_ClientDescribeActivityResponseTypeD
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -185,7 +185,7 @@ class ClientDescribeExecutionResponseTypeDef(_ClientDescribeExecutionResponseTyp
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -296,7 +296,7 @@ class ClientDescribeStateMachineResponseTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -940,7 +940,7 @@ class ClientGetExecutionHistoryResponseeventsstateExitedEventDetailsTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -1712,7 +1712,7 @@ class ClientGetExecutionHistoryResponseeventsTypeDef(
 
         * wildcard characters ``? *``
 
-        * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+        * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
         * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2194,7 +2194,7 @@ class ClientGetExecutionHistoryResponseTypeDef(
 
             * wildcard characters ``? *``
 
-            * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+            * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
             * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2243,7 +2243,7 @@ class ClientListActivitiesResponseactivitiesTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2291,7 +2291,7 @@ class ClientListActivitiesResponseTypeDef(_ClientListActivitiesResponseTypeDef):
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2351,7 +2351,7 @@ class ClientListExecutionsResponseexecutionsTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2411,7 +2411,7 @@ class ClientListExecutionsResponseTypeDef(_ClientListExecutionsResponseTypeDef):
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2468,7 +2468,7 @@ class ClientListStateMachinesResponsestateMachinesTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -2514,7 +2514,7 @@ class ClientListStateMachinesResponseTypeDef(_ClientListStateMachinesResponseTyp
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -3315,7 +3315,7 @@ class GetExecutionHistoryPaginateResponseeventsstateExitedEventDetailsTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4087,7 +4087,7 @@ class GetExecutionHistoryPaginateResponseeventsTypeDef(
 
         * wildcard characters ``? *``
 
-        * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+        * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
         * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4572,7 +4572,7 @@ class GetExecutionHistoryPaginateResponseTypeDef(
 
             * wildcard characters ``? *``
 
-            * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+            * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
             * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4649,7 +4649,7 @@ class ListActivitiesPaginateResponseactivitiesTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4697,7 +4697,7 @@ class ListActivitiesPaginateResponseTypeDef(_ListActivitiesPaginateResponseTypeD
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4785,7 +4785,7 @@ class ListExecutionsPaginateResponseexecutionsTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4845,7 +4845,7 @@ class ListExecutionsPaginateResponseTypeDef(_ListExecutionsPaginateResponseTypeD
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4930,7 +4930,7 @@ class ListStateMachinesPaginateResponsestateMachinesTypeDef(
 
       * wildcard characters ``? *``
 
-      * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+      * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
       * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 
@@ -4978,7 +4978,7 @@ class ListStateMachinesPaginateResponseTypeDef(
 
           * wildcard characters ``? *``
 
-          * special characters ``" # % \ ^ | ~ ` $ & , ; : /``
+          * special characters ``" # % \\ ^ | ~ ` $ & , ; : /``
 
           * control characters (``U+0000-001F`` , ``U+007F-009F`` )
 

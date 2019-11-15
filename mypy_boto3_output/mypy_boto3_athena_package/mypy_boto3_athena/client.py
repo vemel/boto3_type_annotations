@@ -28,7 +28,7 @@ from mypy_boto3_athena.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_named_query(
         self, NamedQueryIds: List[str]
     ) -> ClientBatchGetNamedQueryResponseTypeDef:
@@ -145,7 +145,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_query_execution(
         self, QueryExecutionIds: List[str]
     ) -> ClientBatchGetQueryExecutionResponseTypeDef:
@@ -372,7 +372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -389,7 +389,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_named_query(
         self,
         Name: str,
@@ -481,7 +481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_work_group(
         self,
         Name: str,
@@ -654,7 +654,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_named_query(self, NamedQueryId: str) -> Dict[str, Any]:
         """
         Deletes the named query if you have access to the workgroup in which the query was saved.
@@ -692,7 +692,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_work_group(
         self, WorkGroup: str, RecursiveDeleteOption: bool = None
     ) -> Dict[str, Any]:
@@ -733,7 +733,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -762,7 +762,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_named_query(self, NamedQueryId: str) -> ClientGetNamedQueryResponseTypeDef:
         """
         Returns information about a single query. Requires that you have access to the workgroup in which
@@ -833,7 +833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -854,7 +854,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_query_execution(
         self, QueryExecutionId: str
     ) -> ClientGetQueryExecutionResponseTypeDef:
@@ -1042,7 +1042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_query_results(
         self, QueryExecutionId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientGetQueryResultsResponseTypeDef:
@@ -1220,7 +1220,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1233,7 +1233,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_work_group(self, WorkGroup: str) -> ClientGetWorkGroupResponseTypeDef:
         """
         Returns information about the workgroup with the specified name.
@@ -1388,7 +1388,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_named_queries(
         self, NextToken: str = None, MaxResults: int = None, WorkGroup: str = None
     ) -> ClientListNamedQueriesResponseTypeDef:
@@ -1455,7 +1455,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_query_executions(
         self, NextToken: str = None, MaxResults: int = None, WorkGroup: str = None
     ) -> ClientListQueryExecutionsResponseTypeDef:
@@ -1522,7 +1522,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1610,7 +1610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_work_groups(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListWorkGroupsResponseTypeDef:
@@ -1690,7 +1690,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_query_execution(
         self,
         QueryString: str,
@@ -1827,7 +1827,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_query_execution(self, QueryExecutionId: str) -> Dict[str, Any]:
         """
         Stops a query execution. Requires you to have access to the workgroup in which the query ran.
@@ -1865,7 +1865,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -1944,7 +1944,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from the workgroup resource. Takes as an input a list of TagKey Strings
@@ -1987,7 +1987,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_work_group(
         self,
         WorkGroup: str,

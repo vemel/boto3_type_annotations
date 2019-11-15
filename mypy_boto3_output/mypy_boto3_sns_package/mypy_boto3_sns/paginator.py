@@ -19,7 +19,7 @@ from mypy_boto3_sns.type_defs import (
 
 
 class ListEndpointsByPlatformApplication(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PlatformApplicationArn: str,
@@ -111,7 +111,7 @@ class ListEndpointsByPlatformApplication(Boto3Paginator):
 
 
 class ListPhoneNumbersOptedOut(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListPhoneNumbersOptedOutPaginatePaginationConfigTypeDef = None,
@@ -182,7 +182,7 @@ class ListPhoneNumbersOptedOut(Boto3Paginator):
 
 
 class ListPlatformApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListPlatformApplicationsPaginatePaginationConfigTypeDef = None,
@@ -267,7 +267,7 @@ class ListPlatformApplications(Boto3Paginator):
 
 
 class ListSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSubscriptionsPaginatePaginationConfigTypeDef = None
     ) -> ListSubscriptionsPaginateResponseTypeDef:
@@ -360,7 +360,7 @@ class ListSubscriptions(Boto3Paginator):
 
 
 class ListSubscriptionsByTopic(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TopicArn: str,
@@ -461,7 +461,7 @@ class ListSubscriptionsByTopic(Boto3Paginator):
 
 
 class ListTopics(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTopicsPaginatePaginationConfigTypeDef = None
     ) -> ListTopicsPaginateResponseTypeDef:

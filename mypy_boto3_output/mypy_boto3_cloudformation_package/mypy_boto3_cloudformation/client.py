@@ -66,7 +66,7 @@ from mypy_boto3_cloudformation.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -83,7 +83,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_update_stack(
         self, StackName: str, ClientRequestToken: str = None
     ) -> None:
@@ -121,7 +121,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def continue_update_rollback(
         self,
         StackName: str,
@@ -247,7 +247,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_change_set(
         self,
         StackName: str,
@@ -434,29 +434,29 @@ class Client(BaseClient):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -471,9 +471,9 @@ class Client(BaseClient):
           before actually creating the stack. If your stack template contains one or more macros, and you
           choose to create a stack directly from the processed template, without first reviewing the
           resulting changes in a change set, you must acknowledge this capability. This includes the
-          `AWS::Include
+          `AWS\\:\\:Include
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-          and `AWS::Serverless
+          and `AWS\\:\\:Serverless
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
           transforms, which are macros hosted by AWS CloudFormation.
 
@@ -562,7 +562,7 @@ class Client(BaseClient):
 
               - **Type** *(string) --* **[REQUIRED]**
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -705,7 +705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack(
         self,
         StackName: str,
@@ -896,7 +896,7 @@ class Client(BaseClient):
 
               - **Type** *(string) --* **[REQUIRED]**
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -954,29 +954,29 @@ class Client(BaseClient):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -991,9 +991,9 @@ class Client(BaseClient):
           before actually creating the stack. If your stack template contains one or more macros, and you
           choose to create a stack directly from the processed template, without first reviewing the
           resulting changes in a change set, you must acknowledge this capability. This includes the
-          `AWS::Include
+          `AWS\\:\\:Include
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-          and `AWS::Serverless
+          and `AWS\\:\\:Serverless
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
           transforms, which are macros hosted by AWS CloudFormation. Change sets do not currently support
           nested stacks. If you want to create a stack from a stack template that contains macros *and*
@@ -1144,7 +1144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack_instances(
         self,
         StackSetName: str,
@@ -1368,7 +1368,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack_set(
         self,
         StackSetName: str,
@@ -1507,29 +1507,29 @@ class Client(BaseClient):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -1546,9 +1546,9 @@ class Client(BaseClient):
           .. note::
 
              Stack sets do not currently support macros in stack templates. (This includes the
-             `AWS::Include
+             `AWS\\:\\:Include
              <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-             and `AWS::Serverless
+             and `AWS\\:\\:Serverless
              <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
              transforms, which are macros hosted by AWS CloudFormation.) Even if you specify this
              capability, if you include a macro in your template the stack set operation will fail.
@@ -1588,7 +1588,7 @@ class Client(BaseClient):
 
           Specify an IAM role only if you are using customized administrator roles to control which users
           or groups can manage specific stack sets within the same administrator account. For more
-          information, see `Prerequisites: Granting Permissions for Stack Set Operations
+          information, see `Prerequisites\\: Granting Permissions for Stack Set Operations
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html>`__ in the
           *AWS CloudFormation User Guide* .
 
@@ -1634,7 +1634,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_change_set(self, ChangeSetName: str, StackName: str = None) -> Dict:
         """
         Deletes the specified change set. Deleting change sets ensures that no one executes the wrong
@@ -1679,7 +1679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stack(
         self,
         StackName: str,
@@ -1755,7 +1755,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stack_instances(
         self,
         StackSetName: str,
@@ -1919,7 +1919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stack_set(self, StackSetName: str) -> Dict[str, Any]:
         """
         Deletes a stack set. Before you can delete a stack set, all of its member stack instances must be
@@ -1953,7 +1953,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_limits(
         self, NextToken: str = None
     ) -> ClientDescribeAccountLimitsResponseTypeDef:
@@ -2039,7 +2039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_change_set(
         self, ChangeSetName: str, StackName: str = None, NextToken: str = None
     ) -> ClientDescribeChangeSetResponseTypeDef:
@@ -2288,7 +2288,7 @@ class Client(BaseClient):
 
                   - **Type** *(string) --*
 
-                    The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                    The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                     <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                     is the only supported resource type.
 
@@ -2492,7 +2492,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_drift_detection_status(
         self, StackDriftDetectionId: str
     ) -> ClientDescribeStackDriftDetectionStatusResponseTypeDef:
@@ -2607,7 +2607,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_events(
         self, StackName: str = None, NextToken: str = None
     ) -> ClientDescribeStackEventsResponseTypeDef:
@@ -2758,7 +2758,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_instance(
         self, StackSetName: str, StackInstanceAccount: str, StackInstanceRegion: str
     ) -> ClientDescribeStackInstanceResponseTypeDef:
@@ -2901,7 +2901,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_resource(
         self, StackName: str, LogicalResourceId: str
     ) -> ClientDescribeStackResourceResponseTypeDef:
@@ -3061,7 +3061,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_resource_drifts(
         self,
         StackName: str,
@@ -3326,7 +3326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_resources(
         self,
         StackName: str = None,
@@ -3523,7 +3523,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_set(self, StackSetName: str) -> Dict[str, Any]:
         """
         Returns the description of the specified stack set.
@@ -3678,8 +3678,8 @@ class Client(BaseClient):
                 The Amazon Resource Number (ARN) of the IAM role used to create or update the stack set.
 
                 Use customized administrator roles to control which users or groups can manage specific
-                stack sets within the same administrator account. For more information, see `Prerequisites:
-                Granting Permissions for Stack Set Operations
+                stack sets within the same administrator account. For more information, see
+                `Prerequisites\\: Granting Permissions for Stack Set Operations
                 <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html>`__
                 in the *AWS CloudFormation User Guide* .
 
@@ -3692,7 +3692,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_set_operation(
         self, StackSetName: str, OperationId: str
     ) -> ClientDescribeStackSetOperationResponseTypeDef:
@@ -3889,7 +3889,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stacks(
         self, StackName: str = None, NextToken: str = None
     ) -> ClientDescribeStacksResponseTypeDef:
@@ -4120,7 +4120,8 @@ class Client(BaseClient):
 
                       - **Type** *(string) --*
 
-                        The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                        The resource type of the rollback trigger. Currently,
+                        `AWS\\:\\:CloudWatch\\:\\:Alarm
                         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                         is the only supported resource type.
 
@@ -4294,7 +4295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_stack_drift(
         self, StackName: str, LogicalResourceIds: List[str] = None
     ) -> ClientDetectStackDriftResponseTypeDef:
@@ -4372,7 +4373,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_stack_resource_drift(
         self, StackName: str, LogicalResourceId: str
     ) -> ClientDetectStackResourceDriftResponseTypeDef:
@@ -4572,7 +4573,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def estimate_template_cost(
         self,
         TemplateBody: str = None,
@@ -4676,7 +4677,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def execute_change_set(
         self, ChangeSetName: str, StackName: str = None, ClientRequestToken: str = None
     ) -> Dict:
@@ -4737,7 +4738,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4766,7 +4767,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4787,7 +4788,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_stack_policy(self, StackName: str) -> ClientGetStackPolicyResponseTypeDef:
         """
         Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is
@@ -4832,7 +4833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_template(
         self,
         StackName: str = None,
@@ -4927,7 +4928,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_template_summary(
         self,
         TemplateBody: str = None,
@@ -5167,7 +5168,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5180,7 +5181,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_change_sets(
         self, StackName: str, NextToken: str = None
     ) -> ClientListChangeSetsResponseTypeDef:
@@ -5299,7 +5300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_exports(self, NextToken: str = None) -> ClientListExportsResponseTypeDef:
         """
         ..
@@ -5382,7 +5383,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_imports(
         self, ExportName: str, NextToken: str = None
     ) -> ClientListImportsResponseTypeDef:
@@ -5452,7 +5453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stack_instances(
         self,
         StackSetName: str,
@@ -5592,7 +5593,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stack_resources(
         self, StackName: str, NextToken: str = None
     ) -> ClientListStackResourcesResponseTypeDef:
@@ -5742,7 +5743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stack_set_operation_results(
         self,
         StackSetName: str,
@@ -5904,7 +5905,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stack_set_operations(
         self, StackSetName: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListStackSetOperationsResponseTypeDef:
@@ -6029,7 +6030,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stack_sets(
         self, NextToken: str = None, MaxResults: int = None, Status: str = None
     ) -> ClientListStackSetsResponseTypeDef:
@@ -6123,7 +6124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stacks(
         self, NextToken: str = None, StackStatusFilter: List[str] = None
     ) -> ClientListStacksResponseTypeDef:
@@ -6303,7 +6304,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_stack_policy(
         self, StackName: str, StackPolicyBody: str = None, StackPolicyURL: str = None
     ) -> None:
@@ -6345,7 +6346,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def signal_resource(
         self, StackName: str, LogicalResourceId: str, UniqueId: str, Status: str
     ) -> None:
@@ -6395,7 +6396,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_stack_set_operation(
         self, StackSetName: str, OperationId: str
     ) -> Dict[str, Any]:
@@ -6435,7 +6436,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stack(
         self,
         StackName: str,
@@ -6627,29 +6628,29 @@ class Client(BaseClient):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -6664,9 +6665,9 @@ class Client(BaseClient):
           before actually updating the stack. If your stack template contains one or more macros, and you
           choose to update a stack directly from the processed template, without first reviewing the
           resulting changes in a change set, you must acknowledge this capability. This includes the
-          `AWS::Include
+          `AWS\\:\\:Include
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-          and `AWS::Serverless
+          and `AWS\\:\\:Serverless
           <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
           transforms, which are macros hosted by AWS CloudFormation. Change sets do not currently support
           nested stacks. If you want to update a stack from a stack template that contains macros *and*
@@ -6754,7 +6755,7 @@ class Client(BaseClient):
 
               - **Type** *(string) --* **[REQUIRED]**
 
-                The resource type of the rollback trigger. Currently, `AWS::CloudWatch::Alarm
+                The resource type of the rollback trigger. Currently, `AWS\\:\\:CloudWatch\\:\\:Alarm
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html>`__
                 is the only supported resource type.
 
@@ -6870,7 +6871,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stack_instances(
         self,
         StackSetName: str,
@@ -7114,7 +7115,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stack_set(
         self,
         StackSetName: str,
@@ -7281,29 +7282,29 @@ class Client(BaseClient):
           If your stack template contains these resources, we recommend that you review all permissions
           associated with them and edit their permissions if necessary.
 
-            * `AWS::IAM::AccessKey
+            * `AWS\\:\\:IAM\\:\\:AccessKey
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html>`__
 
-            * `AWS::IAM::Group
+            * `AWS\\:\\:IAM\\:\\:Group
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
 
-            * `AWS::IAM::InstanceProfile
+            * `AWS\\:\\:IAM\\:\\:InstanceProfile
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
 
-            * `AWS::IAM::Policy
+            * `AWS\\:\\:IAM\\:\\:Policy
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html>`__
 
-            * `AWS::IAM::Role
+            * `AWS\\:\\:IAM\\:\\:Role
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
 
-            * `AWS::IAM::User
+            * `AWS\\:\\:IAM\\:\\:User
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html>`__
 
-            * `AWS::IAM::UserToGroupAddition
+            * `AWS\\:\\:IAM\\:\\:UserToGroupAddition
             <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
         <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html>`__
 
@@ -7320,9 +7321,9 @@ class Client(BaseClient):
           .. warning::
 
              Stack sets do not currently support macros in stack templates. (This includes the
-             `AWS::Include
+             `AWS\\:\\:Include
              <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html>`__
-             and `AWS::Serverless
+             and `AWS\\:\\:Serverless
              <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html>`__
              transforms, which are macros hosted by AWS CloudFormation.) Even if you specify this
              capability, if you include a macro in your template the stack set operation will fail.
@@ -7534,7 +7535,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_termination_protection(
         self, EnableTerminationProtection: bool, StackName: str
     ) -> ClientUpdateTerminationProtectionResponseTypeDef:
@@ -7589,7 +7590,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def validate_template(
         self, TemplateBody: str = None, TemplateURL: str = None
     ) -> ClientValidateTemplateResponseTypeDef:

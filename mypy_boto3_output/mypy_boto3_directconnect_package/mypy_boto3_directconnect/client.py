@@ -80,7 +80,7 @@ from mypy_boto3_directconnect.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_direct_connect_gateway_association_proposal(
         self,
         directConnectGatewayId: str,
@@ -266,7 +266,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_connection_on_interconnect(
         self,
         bandwidth: str,
@@ -478,7 +478,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_hosted_connection(
         self,
         connectionId: str,
@@ -709,7 +709,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_private_virtual_interface(
         self,
         connectionId: str,
@@ -1089,7 +1089,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_public_virtual_interface(
         self,
         connectionId: str,
@@ -1490,7 +1490,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def allocate_transit_virtual_interface(
         self,
         connectionId: str,
@@ -1878,7 +1878,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_connection_with_lag(
         self, connectionId: str, lagId: str
     ) -> ClientAssociateConnectionWithLagResponseTypeDef:
@@ -2062,7 +2062,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_hosted_connection(
         self, connectionId: str, parentConnectionId: str
     ) -> ClientAssociateHostedConnectionResponseTypeDef:
@@ -2240,7 +2240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_virtual_interface(
         self, virtualInterfaceId: str, connectionId: str
     ) -> ClientAssociateVirtualInterfaceResponseTypeDef:
@@ -2550,7 +2550,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -2567,7 +2567,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_connection(
         self, connectionId: str
     ) -> ClientConfirmConnectionResponseTypeDef:
@@ -2635,7 +2635,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_private_virtual_interface(
         self,
         virtualInterfaceId: str,
@@ -2723,7 +2723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_public_virtual_interface(
         self, virtualInterfaceId: str
     ) -> ClientConfirmPublicVirtualInterfaceResponseTypeDef:
@@ -2795,7 +2795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def confirm_transit_virtual_interface(
         self, virtualInterfaceId: str, directConnectGatewayId: str
     ) -> ClientConfirmTransitVirtualInterfaceResponseTypeDef:
@@ -2873,7 +2873,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_bgp_peer(
         self,
         virtualInterfaceId: str = None,
@@ -3219,7 +3219,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_connection(
         self,
         location: str,
@@ -3448,7 +3448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_direct_connect_gateway(
         self, directConnectGatewayName: str, amazonSideAsn: int = None
     ) -> ClientCreateDirectConnectGatewayResponseTypeDef:
@@ -3541,7 +3541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_direct_connect_gateway_association(
         self,
         directConnectGatewayId: str,
@@ -3729,7 +3729,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_direct_connect_gateway_association_proposal(
         self,
         directConnectGatewayId: str,
@@ -3932,7 +3932,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_interconnect(
         self,
         interconnectName: str,
@@ -4148,7 +4148,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_lag(
         self,
         numberOfConnections: int,
@@ -4546,7 +4546,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_private_virtual_interface(
         self,
         connectionId: str,
@@ -4930,7 +4930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_public_virtual_interface(
         self,
         connectionId: str,
@@ -5319,7 +5319,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transit_virtual_interface(
         self,
         connectionId: str,
@@ -5706,7 +5706,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bgp_peer(
         self,
         virtualInterfaceId: str = None,
@@ -6029,7 +6029,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_connection(
         self, connectionId: str
     ) -> ClientDeleteConnectionResponseTypeDef:
@@ -6198,7 +6198,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_direct_connect_gateway(
         self, directConnectGatewayId: str
     ) -> ClientDeleteDirectConnectGatewayResponseTypeDef:
@@ -6280,7 +6280,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_direct_connect_gateway_association(
         self,
         associationId: str = None,
@@ -6441,7 +6441,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_direct_connect_gateway_association_proposal(
         self, proposalId: str
     ) -> ClientDeleteDirectConnectGatewayAssociationProposalResponseTypeDef:
@@ -6579,7 +6579,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_interconnect(
         self, interconnectId: str
     ) -> ClientDeleteInterconnectResponseTypeDef:
@@ -6639,7 +6639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_lag(self, lagId: str) -> ClientDeleteLagResponseTypeDef:
         """
         Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active
@@ -6930,7 +6930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_virtual_interface(
         self, virtualInterfaceId: str
     ) -> ClientDeleteVirtualInterfaceResponseTypeDef:
@@ -6999,7 +6999,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_connection_loa(
         self, connectionId: str, providerName: str = None, loaContentType: str = None
     ) -> ClientDescribeConnectionLoaResponseTypeDef:
@@ -7079,7 +7079,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_connections(
         self, connectionId: str = None
     ) -> ClientDescribeConnectionsResponseTypeDef:
@@ -7254,7 +7254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_connections_on_interconnect(
         self, interconnectId: str
     ) -> ClientDescribeConnectionsOnInterconnectResponseTypeDef:
@@ -7441,7 +7441,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_direct_connect_gateway_association_proposals(
         self,
         directConnectGatewayId: str = None,
@@ -7624,7 +7624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_direct_connect_gateway_associations(
         self,
         associationId: str = None,
@@ -7823,7 +7823,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_direct_connect_gateway_attachments(
         self,
         directConnectGatewayId: str = None,
@@ -7953,7 +7953,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_direct_connect_gateways(
         self,
         directConnectGatewayId: str = None,
@@ -8064,7 +8064,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hosted_connections(
         self, connectionId: str
     ) -> ClientDescribeHostedConnectionsResponseTypeDef:
@@ -8244,7 +8244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_interconnect_loa(
         self, interconnectId: str, providerName: str = None, loaContentType: str = None
     ) -> ClientDescribeInterconnectLoaResponseTypeDef:
@@ -8324,7 +8324,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_interconnects(
         self, interconnectId: str = None
     ) -> ClientDescribeInterconnectsResponseTypeDef:
@@ -8476,7 +8476,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_lags(self, lagId: str = None) -> ClientDescribeLagsResponseTypeDef:
         """
         Describes all your link aggregation groups (LAG) or the specified LAG.
@@ -8776,7 +8776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_loa(
         self, connectionId: str, providerName: str = None, loaContentType: str = None
     ) -> ClientDescribeLoaResponseTypeDef:
@@ -8845,7 +8845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_locations(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLocationsResponseTypeDef:
@@ -8922,7 +8922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self, resourceArns: List[str]
     ) -> ClientDescribeTagsResponseTypeDef:
@@ -9001,7 +9001,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_virtual_gateways(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeVirtualGatewaysResponseTypeDef:
@@ -9065,7 +9065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_virtual_interfaces(
         self, connectionId: str = None, virtualInterfaceId: str = None
     ) -> ClientDescribeVirtualInterfacesResponseTypeDef:
@@ -9381,7 +9381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_connection_from_lag(
         self, connectionId: str, lagId: str
     ) -> ClientDisassociateConnectionFromLagResponseTypeDef:
@@ -9561,7 +9561,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -9590,7 +9590,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -9611,7 +9611,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -9624,7 +9624,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -9685,7 +9685,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from the specified AWS Direct Connect resource.
@@ -9727,7 +9727,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_direct_connect_gateway_association(
         self,
         associationId: str = None,
@@ -9919,7 +9919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_lag(
         self, lagId: str, lagName: str = None, minimumLinks: int = None
     ) -> ClientUpdateLagResponseTypeDef:
@@ -10237,7 +10237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_virtual_interface_attributes(
         self, virtualInterfaceId: str, mtu: int = None
     ) -> ClientUpdateVirtualInterfaceAttributesResponseTypeDef:

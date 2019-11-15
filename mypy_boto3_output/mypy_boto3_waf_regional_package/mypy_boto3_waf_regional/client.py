@@ -104,7 +104,7 @@ from mypy_boto3_waf_regional.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_web_acl(self, WebACLId: str, ResourceArn: str) -> Dict[str, Any]:
         """
         Associates a web ACL with a resource, either an application load balancer or Amazon API Gateway
@@ -152,7 +152,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -169,7 +169,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_byte_match_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateByteMatchSetResponseTypeDef:
@@ -403,7 +403,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -417,15 +417,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -518,7 +518,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_geo_match_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateGeoMatchSetResponseTypeDef:
@@ -651,7 +651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ip_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateIpSetResponseTypeDef:
@@ -788,7 +788,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_rate_based_rule(
         self,
         Name: str,
@@ -1035,7 +1035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_regex_match_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateRegexMatchSetResponseTypeDef:
@@ -1229,7 +1229,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -1243,15 +1243,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -1307,7 +1307,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_regex_pattern_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateRegexPatternSetResponseTypeDef:
@@ -1406,7 +1406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_rule(
         self,
         Name: str,
@@ -1590,7 +1590,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_rule_group(
         self,
         Name: str,
@@ -1712,7 +1712,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_size_constraint_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateSizeConstraintSetResponseTypeDef:
@@ -1897,7 +1897,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -1911,15 +1911,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -1996,7 +1996,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_sql_injection_match_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateSqlInjectionMatchSetResponseTypeDef:
@@ -2169,7 +2169,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -2183,15 +2183,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -2236,7 +2236,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_web_acl(
         self,
         Name: str,
@@ -2579,7 +2579,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_xss_match_set(
         self, Name: str, ChangeToken: str
     ) -> ClientCreateXssMatchSetResponseTypeDef:
@@ -2751,7 +2751,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -2765,15 +2765,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -2818,7 +2818,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_byte_match_set(
         self, ByteMatchSetId: str, ChangeToken: str
     ) -> ClientDeleteByteMatchSetResponseTypeDef:
@@ -2881,7 +2881,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_geo_match_set(
         self, GeoMatchSetId: str, ChangeToken: str
     ) -> ClientDeleteGeoMatchSetResponseTypeDef:
@@ -2943,7 +2943,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ip_set(
         self, IPSetId: str, ChangeToken: str
     ) -> ClientDeleteIpSetResponseTypeDef:
@@ -3005,7 +3005,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_logging_configuration(self, ResourceArn: str) -> Dict[str, Any]:
         """
         Permanently deletes the  LoggingConfiguration from the specified web ACL.
@@ -3038,7 +3038,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_permission_policy(self, ResourceArn: str) -> Dict[str, Any]:
         """
         Permanently deletes an IAM policy from the specified RuleGroup.
@@ -3074,7 +3074,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_rate_based_rule(
         self, RuleId: str, ChangeToken: str
     ) -> ClientDeleteRateBasedRuleResponseTypeDef:
@@ -3137,7 +3137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_regex_match_set(
         self, RegexMatchSetId: str, ChangeToken: str
     ) -> ClientDeleteRegexMatchSetResponseTypeDef:
@@ -3200,7 +3200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_regex_pattern_set(
         self, RegexPatternSetId: str, ChangeToken: str
     ) -> ClientDeleteRegexPatternSetResponseTypeDef:
@@ -3251,7 +3251,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_rule(
         self, RuleId: str, ChangeToken: str
     ) -> ClientDeleteRuleResponseTypeDef:
@@ -3312,7 +3312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_rule_group(
         self, RuleGroupId: str, ChangeToken: str
     ) -> ClientDeleteRuleGroupResponseTypeDef:
@@ -3374,7 +3374,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_size_constraint_set(
         self, SizeConstraintSetId: str, ChangeToken: str
     ) -> ClientDeleteSizeConstraintSetResponseTypeDef:
@@ -3437,7 +3437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_sql_injection_match_set(
         self, SqlInjectionMatchSetId: str, ChangeToken: str
     ) -> ClientDeleteSqlInjectionMatchSetResponseTypeDef:
@@ -3503,7 +3503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_web_acl(
         self, WebACLId: str, ChangeToken: str
     ) -> ClientDeleteWebAclResponseTypeDef:
@@ -3562,7 +3562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_xss_match_set(
         self, XssMatchSetId: str, ChangeToken: str
     ) -> ClientDeleteXssMatchSetResponseTypeDef:
@@ -3627,7 +3627,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_web_acl(self, ResourceArn: str) -> Dict[str, Any]:
         """
         Removes a web ACL from the specified resource, either an application load balancer or Amazon API
@@ -3669,7 +3669,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3698,7 +3698,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_byte_match_set(
         self, ByteMatchSetId: str
     ) -> ClientGetByteMatchSetResponseTypeDef:
@@ -3914,7 +3914,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -3928,15 +3928,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -4023,7 +4023,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_change_token(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetChangeTokenResponseTypeDef:
@@ -4070,7 +4070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_change_token_status(
         self, ChangeToken: str
     ) -> ClientGetChangeTokenStatusResponseTypeDef:
@@ -4120,7 +4120,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_geo_match_set(
         self, GeoMatchSetId: str
     ) -> ClientGetGeoMatchSetResponseTypeDef:
@@ -4222,7 +4222,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ip_set(self, IPSetId: str) -> ClientGetIpSetResponseTypeDef:
         """
         Returns the  IPSet that is specified by ``IPSetId`` .
@@ -4331,7 +4331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_logging_configuration(
         self, ResourceArn: str
     ) -> ClientGetLoggingConfigurationResponseTypeDef:
@@ -4452,7 +4452,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4473,7 +4473,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_permission_policy(
         self, ResourceArn: str
     ) -> ClientGetPermissionPolicyResponseTypeDef:
@@ -4514,7 +4514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_rate_based_rule(self, RuleId: str) -> ClientGetRateBasedRuleResponseTypeDef:
         """
         Returns the  RateBasedRule that is specified by the ``RuleId`` that you included in the
@@ -4640,7 +4640,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_rate_based_rule_managed_keys(
         self, RuleId: str, NextMarker: str = None
     ) -> ClientGetRateBasedRuleManagedKeysResponseTypeDef:
@@ -4699,7 +4699,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_regex_match_set(
         self, RegexMatchSetId: str
     ) -> ClientGetRegexMatchSetResponseTypeDef:
@@ -4866,7 +4866,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -4880,15 +4880,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -4938,7 +4938,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_regex_pattern_set(
         self, RegexPatternSetId: str
     ) -> ClientGetRegexPatternSetResponseTypeDef:
@@ -5009,7 +5009,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_rule(self, RuleId: str) -> ClientGetRuleResponseTypeDef:
         """
         Returns the  Rule that is specified by the ``RuleId`` that you included in the ``GetRule`` request.
@@ -5124,7 +5124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_rule_group(self, RuleGroupId: str) -> ClientGetRuleGroupResponseTypeDef:
         """
         Returns the  RuleGroup that is specified by the ``RuleGroupId`` that you included in the
@@ -5193,7 +5193,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sampled_requests(
         self,
         WebAclId: str,
@@ -5428,7 +5428,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_size_constraint_set(
         self, SizeConstraintSetId: str
     ) -> ClientGetSizeConstraintSetResponseTypeDef:
@@ -5593,7 +5593,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -5607,15 +5607,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -5686,7 +5686,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sql_injection_match_set(
         self, SqlInjectionMatchSetId: str
     ) -> ClientGetSqlInjectionMatchSetResponseTypeDef:
@@ -5844,7 +5844,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -5858,15 +5858,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -5905,7 +5905,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5918,7 +5918,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_web_acl(self, WebACLId: str) -> ClientGetWebAclResponseTypeDef:
         """
         Returns the  WebACL that is specified by ``WebACLId`` .
@@ -6177,7 +6177,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_web_acl_for_resource(
         self, ResourceArn: str
     ) -> ClientGetWebAclForResourceResponseTypeDef:
@@ -6245,7 +6245,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_xss_match_set(
         self, XssMatchSetId: str
     ) -> ClientGetXssMatchSetResponseTypeDef:
@@ -6401,7 +6401,7 @@ class Client(BaseClient):
                     command and using unusual formatting to disguise some or all of the command, use this
                     option to perform the following transformations:
 
-                    * Delete the following characters: \ " ' ^
+                    * Delete the following characters: \\ " ' ^
 
                     * Delete spaces before the following characters: / (
 
@@ -6415,15 +6415,15 @@ class Client(BaseClient):
 
                     Use this option to replace the following characters with a space character (decimal 32):
 
-                    * \f, formfeed, decimal 12
+                    * \\f, formfeed, decimal 12
 
-                    * \t, tab, decimal 9
+                    * \\t, tab, decimal 9
 
-                    * \n, newline, decimal 10
+                    * \\n, newline, decimal 10
 
-                    * \r, carriage return, decimal 13
+                    * \\r, carriage return, decimal 13
 
-                    * \v, vertical tab, decimal 11
+                    * \\v, vertical tab, decimal 11
 
                     * non-breaking space, decimal 160
 
@@ -6462,7 +6462,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_activated_rules_in_rule_group(
         self, RuleGroupId: str = None, NextMarker: str = None, Limit: int = None
     ) -> ClientListActivatedRulesInRuleGroupResponseTypeDef:
@@ -6679,7 +6679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_byte_match_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListByteMatchSetsResponseTypeDef:
@@ -6764,7 +6764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_geo_match_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListGeoMatchSetsResponseTypeDef:
@@ -6844,7 +6844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ip_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListIpSetsResponseTypeDef:
@@ -6920,7 +6920,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_logging_configurations(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListLoggingConfigurationsResponseTypeDef:
@@ -7069,7 +7069,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rate_based_rules(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListRateBasedRulesResponseTypeDef:
@@ -7152,7 +7152,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_regex_match_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListRegexMatchSetsResponseTypeDef:
@@ -7237,7 +7237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_regex_pattern_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListRegexPatternSetsResponseTypeDef:
@@ -7324,7 +7324,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resources_for_web_acl(
         self, WebACLId: str, ResourceType: str = None
     ) -> ClientListResourcesForWebAclResponseTypeDef:
@@ -7377,7 +7377,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rule_groups(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListRuleGroupsResponseTypeDef:
@@ -7461,7 +7461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rules(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListRulesResponseTypeDef:
@@ -7544,7 +7544,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_size_constraint_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListSizeConstraintSetsResponseTypeDef:
@@ -7630,7 +7630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_sql_injection_match_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListSqlInjectionMatchSetsResponseTypeDef:
@@ -7719,7 +7719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscribed_rule_groups(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListSubscribedRuleGroupsResponseTypeDef:
@@ -7807,7 +7807,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str, NextMarker: str = None, Limit: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -7871,7 +7871,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_web_acls(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListWebAclsResponseTypeDef:
@@ -7954,7 +7954,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_xss_match_sets(
         self, NextMarker: str = None, Limit: int = None
     ) -> ClientListXssMatchSetsResponseTypeDef:
@@ -8040,7 +8040,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_logging_configuration(
         self,
         LoggingConfiguration: ClientPutLoggingConfigurationLoggingConfigurationTypeDef,
@@ -8262,7 +8262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_permission_policy(self, ResourceArn: str, Policy: str) -> Dict[str, Any]:
         """
         Attaches a IAM policy to the specified resource. The only supported use for this action is to share
@@ -8327,7 +8327,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -8372,7 +8372,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         See also: `AWS API Documentation
@@ -8408,7 +8408,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_byte_match_set(
         self,
         ByteMatchSetId: str,
@@ -8639,7 +8639,7 @@ class Client(BaseClient):
                 and using unusual formatting to disguise some or all of the command, use this option to
                 perform the following transformations:
 
-                * Delete the following characters: \ " ' ^
+                * Delete the following characters: \\ " ' ^
 
                 * Delete spaces before the following characters: / (
 
@@ -8653,15 +8653,15 @@ class Client(BaseClient):
 
                 Use this option to replace the following characters with a space character (decimal 32):
 
-                * \f, formfeed, decimal 12
+                * \\f, formfeed, decimal 12
 
-                * \t, tab, decimal 9
+                * \\t, tab, decimal 9
 
-                * \n, newline, decimal 10
+                * \\n, newline, decimal 10
 
-                * \r, carriage return, decimal 13
+                * \\r, carriage return, decimal 13
 
-                * \v, vertical tab, decimal 11
+                * \\v, vertical tab, decimal 11
 
                 * non-breaking space, decimal 160
 
@@ -8767,7 +8767,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_geo_match_set(
         self,
         GeoMatchSetId: str,
@@ -8903,7 +8903,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ip_set(
         self,
         IPSetId: str,
@@ -9065,7 +9065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_rate_based_rule(
         self,
         RuleId: str,
@@ -9216,7 +9216,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_regex_match_set(
         self,
         RegexMatchSetId: str,
@@ -9377,7 +9377,7 @@ class Client(BaseClient):
                 and using unusual formatting to disguise some or all of the command, use this option to
                 perform the following transformations:
 
-                * Delete the following characters: \ " ' ^
+                * Delete the following characters: \\ " ' ^
 
                 * Delete spaces before the following characters: / (
 
@@ -9391,15 +9391,15 @@ class Client(BaseClient):
 
                 Use this option to replace the following characters with a space character (decimal 32):
 
-                * \f, formfeed, decimal 12
+                * \\f, formfeed, decimal 12
 
-                * \t, tab, decimal 9
+                * \\t, tab, decimal 9
 
-                * \n, newline, decimal 10
+                * \\n, newline, decimal 10
 
-                * \r, carriage return, decimal 13
+                * \\r, carriage return, decimal 13
 
-                * \v, vertical tab, decimal 11
+                * \\v, vertical tab, decimal 11
 
                 * non-breaking space, decimal 160
 
@@ -9473,7 +9473,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_regex_pattern_set(
         self,
         RegexPatternSetId: str,
@@ -9582,7 +9582,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_rule(
         self,
         RuleId: str,
@@ -9726,7 +9726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_rule_group(
         self,
         RuleGroupId: str,
@@ -9968,7 +9968,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_size_constraint_set(
         self,
         SizeConstraintSetId: str,
@@ -10155,7 +10155,7 @@ class Client(BaseClient):
                 and using unusual formatting to disguise some or all of the command, use this option to
                 perform the following transformations:
 
-                * Delete the following characters: \ " ' ^
+                * Delete the following characters: \\ " ' ^
 
                 * Delete spaces before the following characters: / (
 
@@ -10169,15 +10169,15 @@ class Client(BaseClient):
 
                 Use this option to replace the following characters with a space character (decimal 32):
 
-                * \f, formfeed, decimal 12
+                * \\f, formfeed, decimal 12
 
-                * \t, tab, decimal 9
+                * \\t, tab, decimal 9
 
-                * \n, newline, decimal 10
+                * \\n, newline, decimal 10
 
-                * \r, carriage return, decimal 13
+                * \\r, carriage return, decimal 13
 
-                * \v, vertical tab, decimal 11
+                * \\v, vertical tab, decimal 11
 
                 * non-breaking space, decimal 160
 
@@ -10268,7 +10268,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_sql_injection_match_set(
         self,
         SqlInjectionMatchSetId: str,
@@ -10437,7 +10437,7 @@ class Client(BaseClient):
                 and using unusual formatting to disguise some or all of the command, use this option to
                 perform the following transformations:
 
-                * Delete the following characters: \ " ' ^
+                * Delete the following characters: \\ " ' ^
 
                 * Delete spaces before the following characters: / (
 
@@ -10451,15 +10451,15 @@ class Client(BaseClient):
 
                 Use this option to replace the following characters with a space character (decimal 32):
 
-                * \f, formfeed, decimal 12
+                * \\f, formfeed, decimal 12
 
-                * \t, tab, decimal 9
+                * \\t, tab, decimal 9
 
-                * \n, newline, decimal 10
+                * \\n, newline, decimal 10
 
-                * \r, carriage return, decimal 13
+                * \\r, carriage return, decimal 13
 
-                * \v, vertical tab, decimal 11
+                * \\v, vertical tab, decimal 11
 
                 * non-breaking space, decimal 160
 
@@ -10520,7 +10520,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_web_acl(
         self,
         WebACLId: str,
@@ -10817,7 +10817,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_xss_match_set(
         self,
         XssMatchSetId: str,
@@ -10985,7 +10985,7 @@ class Client(BaseClient):
                 and using unusual formatting to disguise some or all of the command, use this option to
                 perform the following transformations:
 
-                * Delete the following characters: \ " ' ^
+                * Delete the following characters: \\ " ' ^
 
                 * Delete spaces before the following characters: / (
 
@@ -10999,15 +10999,15 @@ class Client(BaseClient):
 
                 Use this option to replace the following characters with a space character (decimal 32):
 
-                * \f, formfeed, decimal 12
+                * \\f, formfeed, decimal 12
 
-                * \t, tab, decimal 9
+                * \\t, tab, decimal 9
 
-                * \n, newline, decimal 10
+                * \\n, newline, decimal 10
 
-                * \r, carriage return, decimal 13
+                * \\r, carriage return, decimal 13
 
-                * \v, vertical tab, decimal 11
+                * \\v, vertical tab, decimal 11
 
                 * non-breaking space, decimal 160
 

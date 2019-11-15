@@ -41,12 +41,13 @@ from mypy_boto3_inspector.type_defs import (
     ClientListTagsForResourceResponseTypeDef,
     ClientPreviewAgentsResponseTypeDef,
     ClientRemoveAttributesFromFindingsResponseTypeDef,
+    ClientSetTagsForResourcetagsTypeDef,
     ClientStartAssessmentRunResponseTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_attributes_to_findings(
         self,
         findingArns: List[str],
@@ -140,7 +141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -157,7 +158,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_assessment_target(
         self, assessmentTargetName: str, resourceGroupArn: str = None
     ) -> ClientCreateAssessmentTargetResponseTypeDef:
@@ -215,7 +216,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_assessment_template(
         self,
         assessmentTargetArn: str,
@@ -317,7 +318,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_exclusions_preview(
         self, assessmentTemplateArn: str
     ) -> ClientCreateExclusionsPreviewResponseTypeDef:
@@ -361,7 +362,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource_group(
         self, resourceGroupTags: List[ClientCreateResourceGroupresourceGroupTagsTypeDef]
     ) -> ClientCreateResourceGroupResponseTypeDef:
@@ -425,7 +426,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_assessment_run(self, assessmentRunArn: str) -> None:
         """
         Deletes the assessment run that is specified by the ARN of the assessment run.
@@ -447,7 +448,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_assessment_target(self, assessmentTargetArn: str) -> None:
         """
         Deletes the assessment target that is specified by the ARN of the assessment target.
@@ -469,7 +470,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_assessment_template(self, assessmentTemplateArn: str) -> None:
         """
         Deletes the assessment template that is specified by the ARN of the assessment template.
@@ -491,7 +492,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_assessment_runs(
         self, assessmentRunArns: List[str]
     ) -> ClientDescribeAssessmentRunsResponseTypeDef:
@@ -746,7 +747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_assessment_targets(
         self, assessmentTargetArns: List[str]
     ) -> ClientDescribeAssessmentTargetsResponseTypeDef:
@@ -852,7 +853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_assessment_templates(
         self, assessmentTemplateArns: List[str]
     ) -> ClientDescribeAssessmentTemplatesResponseTypeDef:
@@ -1003,7 +1004,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cross_account_access_role(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeCrossAccountAccessRoleResponseTypeDef:
@@ -1049,7 +1050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_exclusions(
         self, exclusionArns: List[str], locale: str = None
     ) -> ClientDescribeExclusionsResponseTypeDef:
@@ -1202,7 +1203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_findings(
         self, findingArns: List[str], locale: str = None
     ) -> ClientDescribeFindingsResponseTypeDef:
@@ -1598,7 +1599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource_groups(
         self, resourceGroupArns: List[str]
     ) -> ClientDescribeResourceGroupsResponseTypeDef:
@@ -1713,7 +1714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_rules_packages(
         self, rulesPackageArns: List[str], locale: str = None
     ) -> ClientDescribeRulesPackagesResponseTypeDef:
@@ -1825,7 +1826,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1854,7 +1855,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_assessment_report(
         self, assessmentRunArn: str, reportFileFormat: str, reportType: str
     ) -> ClientGetAssessmentReportResponseTypeDef:
@@ -1916,7 +1917,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_exclusions_preview(
         self,
         assessmentTemplateArn: str,
@@ -2072,7 +2073,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2093,7 +2094,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_telemetry_metadata(
         self, assessmentRunArn: str
     ) -> ClientGetTelemetryMetadataResponseTypeDef:
@@ -2157,7 +2158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2170,7 +2171,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assessment_run_agents(
         self,
         assessmentRunArn: str,
@@ -2334,7 +2335,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assessment_runs(
         self,
         assessmentTemplateArns: List[str] = None,
@@ -2525,7 +2526,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assessment_targets(
         self,
         filter: ClientListAssessmentTargetsfilterTypeDef = None,
@@ -2609,7 +2610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_assessment_templates(
         self,
         assessmentTargetArns: List[str] = None,
@@ -2733,7 +2734,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_event_subscriptions(
         self, resourceArn: str = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListEventSubscriptionsResponseTypeDef:
@@ -2841,7 +2842,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_exclusions(
         self, assessmentRunArn: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListExclusionsResponseTypeDef:
@@ -2909,7 +2910,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_findings(
         self,
         assessmentRunArns: List[str] = None,
@@ -3113,7 +3114,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rules_packages(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListRulesPackagesResponseTypeDef:
@@ -3175,7 +3176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3234,7 +3235,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def preview_agents(
         self, previewAgentsArn: str, nextToken: str = None, maxResults: int = None
     ) -> ClientPreviewAgentsResponseTypeDef:
@@ -3347,7 +3348,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_cross_account_access_role(self, roleArn: str) -> None:
         """
         Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform
@@ -3371,7 +3372,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_attributes_from_findings(
         self, findingArns: List[str], attributeKeys: List[str]
     ) -> ClientRemoveAttributesFromFindingsResponseTypeDef:
@@ -3449,8 +3450,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def set_tags_for_resource(self, resourceArn: str, tags: List[Any] = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_tags_for_resource(
+        self, resourceArn: str, tags: List[ClientSetTagsForResourcetagsTypeDef] = None
+    ) -> None:
         """
         Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the
         assessment template.
@@ -3496,7 +3499,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_assessment_run(
         self, assessmentTemplateArn: str, assessmentRunName: str = None
     ) -> ClientStartAssessmentRunResponseTypeDef:
@@ -3545,7 +3548,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_assessment_run(
         self, assessmentRunArn: str, stopAction: str = None
     ) -> None:
@@ -3578,7 +3581,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def subscribe_to_event(self, resourceArn: str, event: str, topicArn: str) -> None:
         """
         Enables the process of sending Amazon Simple Notification Service (SNS) notifications about a
@@ -3616,7 +3619,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unsubscribe_from_event(
         self, resourceArn: str, event: str, topicArn: str
     ) -> None:
@@ -3656,7 +3659,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_assessment_target(
         self,
         assessmentTargetArn: str,

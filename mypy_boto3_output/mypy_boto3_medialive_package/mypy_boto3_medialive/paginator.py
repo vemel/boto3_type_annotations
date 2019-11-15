@@ -19,7 +19,7 @@ from mypy_boto3_medialive.type_defs import (
 
 
 class DescribeSchedule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ChannelId: str,
@@ -423,7 +423,7 @@ class DescribeSchedule(Boto3Paginator):
 
 
 class ListChannels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListChannelsPaginatePaginationConfigTypeDef = None
     ) -> ListChannelsPaginateResponseTypeDef:
@@ -857,7 +857,7 @@ class ListChannels(Boto3Paginator):
 
 
 class ListInputSecurityGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListInputSecurityGroupsPaginatePaginationConfigTypeDef = None,
@@ -961,7 +961,7 @@ class ListInputSecurityGroups(Boto3Paginator):
 
 
 class ListInputs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListInputsPaginatePaginationConfigTypeDef = None
     ) -> ListInputsPaginateResponseTypeDef:
@@ -1148,7 +1148,7 @@ class ListInputs(Boto3Paginator):
 
 
 class ListOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ChannelClass: str = None,
@@ -1325,7 +1325,7 @@ class ListOfferings(Boto3Paginator):
 
 
 class ListReservations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ChannelClass: str = None,

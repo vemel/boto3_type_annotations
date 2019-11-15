@@ -1739,6 +1739,33 @@ class ClientScheduleKeyDeletionResponseTypeDef(
     """
 
 
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"TagKey": str, "TagValue": str}
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both
+    required, but tag values can be empty (null) strings.
+
+    For information about the rules that apply to tag keys and tag values, see `User-Defined Tag
+    Restrictions
+    <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html>`__
+    in the *AWS Billing and Cost Management User Guide* .
+
+    - **TagKey** *(string) --* **[REQUIRED]**
+
+      The key of the tag.
+
+    - **TagValue** *(string) --* **[REQUIRED]**
+
+      The value of the tag.
+    """
+
+
 _ListAliasesPaginatePaginationConfigTypeDef = TypedDict(
     "_ListAliasesPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},

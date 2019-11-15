@@ -1,13 +1,18 @@
 "Main interface for ses Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_ses.type_defs import IdentityExistsWaitWaiterConfigTypeDef
 
 
 class IdentityExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Identities: List[str], WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        Identities: List[str],
+        WaiterConfig: IdentityExistsWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SES.Client.get_identity_verification_attributes` every 3 seconds until a successful
         state is reached. An error is returned after 20 failed checks.

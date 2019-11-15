@@ -432,7 +432,8 @@ class ClientCreateReceiptRuleRuleActionsAddHeaderActionTypeDef(
 
     - **HeaderValue** *(string) --* **[REQUIRED]**
 
-      Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+      Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+      "\\n").
     """
 
 
@@ -919,7 +920,8 @@ class ClientCreateReceiptRuleRuleActionsTypeDef(
 
       - **HeaderValue** *(string) --* **[REQUIRED]**
 
-        Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+        Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+        "\\n").
 
     - **SNSAction** *(dict) --*
 
@@ -1181,7 +1183,8 @@ class ClientCreateReceiptRuleRuleTypeDef(
 
           - **HeaderValue** *(string) --* **[REQUIRED]**
 
-            Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+            Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+            "\\n").
 
         - **SNSAction** *(dict) --*
 
@@ -1301,8 +1304,8 @@ class ClientDescribeActiveReceiptRuleSetResponseRulesActionsAddHeaderActionTypeD
 
     - **HeaderValue** *(string) --*
 
-      Must be less than 2048 characters, and must not contain newline characters ("\r" or
-      "\n").
+      Must be less than 2048 characters, and must not contain newline characters ("\\r"
+      or "\\n").
     """
 
 
@@ -1786,8 +1789,8 @@ class ClientDescribeActiveReceiptRuleSetResponseRulesActionsTypeDef(
 
       - **HeaderValue** *(string) --*
 
-        Must be less than 2048 characters, and must not contain newline characters ("\r" or
-        "\n").
+        Must be less than 2048 characters, and must not contain newline characters ("\\r"
+        or "\\n").
 
     - **SNSAction** *(dict) --*
 
@@ -2064,8 +2067,8 @@ class ClientDescribeActiveReceiptRuleSetResponseRulesTypeDef(
 
           - **HeaderValue** *(string) --*
 
-            Must be less than 2048 characters, and must not contain newline characters ("\r" or
-            "\n").
+            Must be less than 2048 characters, and must not contain newline characters ("\\r"
+            or "\\n").
 
         - **SNSAction** *(dict) --*
 
@@ -2371,8 +2374,8 @@ class ClientDescribeActiveReceiptRuleSetResponseTypeDef(
 
               - **HeaderValue** *(string) --*
 
-                Must be less than 2048 characters, and must not contain newline characters ("\r" or
-                "\n").
+                Must be less than 2048 characters, and must not contain newline characters ("\\r"
+                or "\\n").
 
             - **SNSAction** *(dict) --*
 
@@ -3059,8 +3062,8 @@ class ClientDescribeReceiptRuleResponseRuleActionsAddHeaderActionTypeDef(
 
     - **HeaderValue** *(string) --*
 
-      Must be less than 2048 characters, and must not contain newline characters ("\r" or
-      "\n").
+      Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+      "\\n").
     """
 
 
@@ -3542,8 +3545,8 @@ class ClientDescribeReceiptRuleResponseRuleActionsTypeDef(
 
       - **HeaderValue** *(string) --*
 
-        Must be less than 2048 characters, and must not contain newline characters ("\r" or
-        "\n").
+        Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+        "\\n").
 
     - **SNSAction** *(dict) --*
 
@@ -3811,8 +3814,8 @@ class ClientDescribeReceiptRuleResponseRuleTypeDef(
 
           - **HeaderValue** *(string) --*
 
-            Must be less than 2048 characters, and must not contain newline characters ("\r" or
-            "\n").
+            Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+            "\\n").
 
         - **SNSAction** *(dict) --*
 
@@ -4082,8 +4085,8 @@ class ClientDescribeReceiptRuleResponseTypeDef(
 
             - **HeaderValue** *(string) --*
 
-              Must be less than 2048 characters, and must not contain newline characters ("\r" or
-              "\n").
+              Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+              "\\n").
 
           - **SNSAction** *(dict) --*
 
@@ -4165,8 +4168,8 @@ class ClientDescribeReceiptRuleSetResponseRulesActionsAddHeaderActionTypeDef(
 
     - **HeaderValue** *(string) --*
 
-      Must be less than 2048 characters, and must not contain newline characters ("\r" or
-      "\n").
+      Must be less than 2048 characters, and must not contain newline characters ("\\r"
+      or "\\n").
     """
 
 
@@ -4650,8 +4653,8 @@ class ClientDescribeReceiptRuleSetResponseRulesActionsTypeDef(
 
       - **HeaderValue** *(string) --*
 
-        Must be less than 2048 characters, and must not contain newline characters ("\r" or
-        "\n").
+        Must be less than 2048 characters, and must not contain newline characters ("\\r"
+        or "\\n").
 
     - **SNSAction** *(dict) --*
 
@@ -4928,8 +4931,8 @@ class ClientDescribeReceiptRuleSetResponseRulesTypeDef(
 
           - **HeaderValue** *(string) --*
 
-            Must be less than 2048 characters, and must not contain newline characters ("\r" or
-            "\n").
+            Must be less than 2048 characters, and must not contain newline characters ("\\r"
+            or "\\n").
 
         - **SNSAction** *(dict) --*
 
@@ -5235,8 +5238,8 @@ class ClientDescribeReceiptRuleSetResponseTypeDef(
 
               - **HeaderValue** *(string) --*
 
-                Must be less than 2048 characters, and must not contain newline characters ("\r" or
-                "\n").
+                Must be less than 2048 characters, and must not contain newline characters ("\\r"
+                or "\\n").
 
             - **SNSAction** *(dict) --*
 
@@ -6573,7 +6576,7 @@ class ClientSendBounceBouncedRecipientInfoListRecipientDsnFieldsExtensionFieldsT
     - **Value** *(string) --* **[REQUIRED]**
 
       The value of the header to add. Must be less than 2048 characters, and must not contain
-      newline characters ("\r" or "\n").
+      newline characters ("\\r" or "\\n").
     """
 
 
@@ -6666,7 +6669,7 @@ class ClientSendBounceBouncedRecipientInfoListRecipientDsnFieldsTypeDef(
         - **Value** *(string) --* **[REQUIRED]**
 
           The value of the header to add. Must be less than 2048 characters, and must not contain
-          newline characters ("\r" or "\n").
+          newline characters ("\\r" or "\\n").
     """
 
 
@@ -6778,7 +6781,7 @@ class ClientSendBounceBouncedRecipientInfoListTypeDef(
           - **Value** *(string) --* **[REQUIRED]**
 
             The value of the header to add. Must be less than 2048 characters, and must not contain
-            newline characters ("\r" or "\n").
+            newline characters ("\\r" or "\\n").
     """
 
 
@@ -6807,7 +6810,7 @@ class ClientSendBounceMessageDsnExtensionFieldsTypeDef(
     - **Value** *(string) --* **[REQUIRED]**
 
       The value of the header to add. Must be less than 2048 characters, and must not contain
-      newline characters ("\r" or "\n").
+      newline characters ("\\r" or "\\n").
     """
 
 
@@ -6864,7 +6867,7 @@ class ClientSendBounceMessageDsnTypeDef(
         - **Value** *(string) --* **[REQUIRED]**
 
           The value of the header to add. Must be less than 2048 characters, and must not contain
-          newline characters ("\r" or "\n").
+          newline characters ("\\r" or "\\n").
     """
 
 
@@ -8090,7 +8093,8 @@ class ClientUpdateReceiptRuleRuleActionsAddHeaderActionTypeDef(
 
     - **HeaderValue** *(string) --* **[REQUIRED]**
 
-      Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+      Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+      "\\n").
     """
 
 
@@ -8577,7 +8581,8 @@ class ClientUpdateReceiptRuleRuleActionsTypeDef(
 
       - **HeaderValue** *(string) --* **[REQUIRED]**
 
-        Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+        Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+        "\\n").
 
     - **SNSAction** *(dict) --*
 
@@ -8838,7 +8843,8 @@ class ClientUpdateReceiptRuleRuleTypeDef(
 
           - **HeaderValue** *(string) --* **[REQUIRED]**
 
-            Must be less than 2048 characters, and must not contain newline characters ("\r" or "\n").
+            Must be less than 2048 characters, and must not contain newline characters ("\\r" or
+            "\\n").
 
         - **SNSAction** *(dict) --*
 
@@ -8959,6 +8965,29 @@ class ClientVerifyDomainIdentityResponseTypeDef(
       Amazon SES is unable to detect the record within 72 hours, the domain's verification status
       changes to "Failed." In that case, if you still want to verify the domain, you must restart
       the verification process from the beginning.
+    """
+
+
+_IdentityExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_IdentityExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class IdentityExistsWaitWaiterConfigTypeDef(_IdentityExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `IdentityExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
     """
 
 

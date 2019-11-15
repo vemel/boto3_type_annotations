@@ -23,7 +23,7 @@ from mypy_boto3_guardduty.type_defs import (
 
 
 class ListDetectors(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDetectorsPaginatePaginationConfigTypeDef = None
     ) -> ListDetectorsPaginateResponseTypeDef:
@@ -91,7 +91,7 @@ class ListDetectors(Boto3Paginator):
 
 
 class ListFilters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DetectorId: str,
@@ -167,7 +167,7 @@ class ListFilters(Boto3Paginator):
 
 
 class ListFindings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DetectorId: str,
@@ -372,7 +372,7 @@ class ListFindings(Boto3Paginator):
 
 
 class ListIPSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DetectorId: str,
@@ -448,7 +448,7 @@ class ListIPSets(Boto3Paginator):
 
 
 class ListInvitations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListInvitationsPaginatePaginationConfigTypeDef = None
     ) -> ListInvitationsPaginateResponseTypeDef:
@@ -539,7 +539,7 @@ class ListInvitations(Boto3Paginator):
 
 
 class ListMembers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DetectorId: str,
@@ -661,7 +661,7 @@ class ListMembers(Boto3Paginator):
 
 
 class ListThreatIntelSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DetectorId: str,

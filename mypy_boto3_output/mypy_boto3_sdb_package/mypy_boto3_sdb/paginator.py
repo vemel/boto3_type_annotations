@@ -11,7 +11,7 @@ from mypy_boto3_sdb.type_defs import (
 
 
 class ListDomains(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDomainsPaginatePaginationConfigTypeDef = None
     ) -> ListDomainsPaginateResponseTypeDef:
@@ -77,7 +77,7 @@ class ListDomains(Boto3Paginator):
 
 
 class Select(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SelectExpression: str,

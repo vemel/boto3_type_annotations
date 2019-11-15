@@ -26,7 +26,7 @@ from mypy_boto3_serverlessrepo.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -43,7 +43,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self,
         Author: str,
@@ -120,7 +120,7 @@ class Client(BaseClient):
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
           - *(string) --*
 
@@ -151,7 +151,7 @@ class Client(BaseClient):
 
           Minimum length=1. Maximum length=140
 
-          Pattern: "[a-zA-Z0-9\\-]+";
+          Pattern: "[a-zA-Z0-9\\\\-]+";
 
         :type ReadmeBody: string
         :param ReadmeBody:
@@ -178,7 +178,7 @@ class Client(BaseClient):
 
           The semantic version of the application:
 
-           `https://semver.org/ <https://semver.org/>`__
+           `https\\://semver.org/ <https://semver.org/>`__
 
         :type SourceCodeArchiveUrl: string
         :param SourceCodeArchiveUrl:
@@ -197,7 +197,7 @@ class Client(BaseClient):
         :type SpdxLicenseId: string
         :param SpdxLicenseId:
 
-          A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+          A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
 
         :type TemplateBody: string
         :param TemplateBody:
@@ -308,7 +308,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-              Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+              Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
               - *(string) --*
 
@@ -324,7 +324,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=140
 
-              Pattern: "[a-zA-Z0-9\\-]+";
+              Pattern: "[a-zA-Z0-9\\\\-]+";
 
             - **ReadmeUrl** *(string) --*
 
@@ -470,30 +470,30 @@ class Client(BaseClient):
                 and CAPABILITY_AUTO_EXPAND.
 
                 The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-                `AWS::IAM::Group
+                `AWS\\:\\:IAM\\:\\:Group
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-                , `AWS::IAM::InstanceProfile
+                , `AWS\\:\\:IAM\\:\\:InstanceProfile
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-                , `AWS::IAM::Policy
+                , `AWS\\:\\:IAM\\:\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , and `AWS::IAM::Role
+                , and `AWS\\:\\:IAM\\:\\:Role
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
                 . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
                 CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
                 specify CAPABILITY_NAMED_IAM.
 
                 The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-                `AWS::Lambda::Permission
+                `AWS\\:\\:Lambda\\:\\:Permission
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-                , `AWS::IAM:Policy
+                , `AWS\\:\\:IAM\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , `AWS::ApplicationAutoScaling::ScalingPolicy
+                , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-                , `AWS::S3::BucketPolicy
+                , `AWS\\:\\:S3\\:\\:BucketPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-                , `AWS::SQS::QueuePolicy
+                , `AWS\\:\\:SQS\\:\\:QueuePolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-                , and `AWS::SNS::TopicPolicy
+                , and `AWS\\:\\:SNS\\:\\:TopicPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
                 .
 
@@ -517,7 +517,7 @@ class Client(BaseClient):
 
                 The semantic version of the application:
 
-                 `https://semver.org/ <https://semver.org/>`__
+                 `https\\://semver.org/ <https://semver.org/>`__
 
               - **SourceCodeArchiveUrl** *(string) --*
 
@@ -537,7 +537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application_version(
         self,
         ApplicationId: str,
@@ -771,30 +771,30 @@ class Client(BaseClient):
               and CAPABILITY_AUTO_EXPAND.
 
               The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-              `AWS::IAM::Group
+              `AWS\\:\\:IAM\\:\\:Group
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-              , `AWS::IAM::InstanceProfile
+              , `AWS\\:\\:IAM\\:\\:InstanceProfile
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-              , `AWS::IAM::Policy
+              , `AWS\\:\\:IAM\\:\\:Policy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-              , and `AWS::IAM::Role
+              , and `AWS\\:\\:IAM\\:\\:Role
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
               . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
               CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
               specify CAPABILITY_NAMED_IAM.
 
               The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-              `AWS::Lambda::Permission
+              `AWS\\:\\:Lambda\\:\\:Permission
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-              , `AWS::IAM:Policy
+              , `AWS\\:\\:IAM\\:Policy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-              , `AWS::ApplicationAutoScaling::ScalingPolicy
+              , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-              , `AWS::S3::BucketPolicy
+              , `AWS\\:\\:S3\\:\\:BucketPolicy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-              , `AWS::SQS::QueuePolicy
+              , `AWS\\:\\:SQS\\:\\:QueuePolicy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-              , and `AWS::SNS::TopicPolicy
+              , and `AWS\\:\\:SNS\\:\\:TopicPolicy
               <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
               .
 
@@ -818,7 +818,7 @@ class Client(BaseClient):
 
               The semantic version of the application:
 
-               `https://semver.org/ <https://semver.org/>`__
+               `https\\://semver.org/ <https://semver.org/>`__
 
             - **SourceCodeArchiveUrl** *(string) --*
 
@@ -838,7 +838,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cloud_formation_change_set(
         self,
         ApplicationId: str,
@@ -922,30 +922,30 @@ class Client(BaseClient):
           CAPABILITY_AUTO_EXPAND.
 
           The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-          `AWS::IAM::Group
+          `AWS\\:\\:IAM\\:\\:Group
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-          , `AWS::IAM::InstanceProfile
+          , `AWS\\:\\:IAM\\:\\:InstanceProfile
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-          , `AWS::IAM::Policy
+          , `AWS\\:\\:IAM\\:\\:Policy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-          , and `AWS::IAM::Role
+          , and `AWS\\:\\:IAM\\:\\:Role
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__ .
           If the application contains IAM resources, you can specify either CAPABILITY_IAM or
           CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
           specify CAPABILITY_NAMED_IAM.
 
           The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-          `AWS::Lambda::Permission
+          `AWS\\:\\:Lambda\\:\\:Permission
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-          , `AWS::IAM:Policy
+          , `AWS\\:\\:IAM\\:Policy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-          , `AWS::ApplicationAutoScaling::ScalingPolicy
+          , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-          , `AWS::S3::BucketPolicy
+          , `AWS\\:\\:S3\\:\\:BucketPolicy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-          , `AWS::SQS::QueuePolicy
+          , `AWS\\:\\:SQS\\:\\:QueuePolicy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-          , and `AWS::SNS:TopicPolicy
+          , and `AWS\\:\\:SNS\\:TopicPolicy
           <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
           .
 
@@ -1061,7 +1061,7 @@ class Client(BaseClient):
 
           The semantic version of the application:
 
-           `https://semver.org/ <https://semver.org/>`__
+           `https\\://semver.org/ <https://semver.org/>`__
 
         :type StackName: string
         :param StackName: **[REQUIRED]**
@@ -1097,7 +1097,7 @@ class Client(BaseClient):
 
           The UUID returned by CreateCloudFormationTemplate.
 
-          Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+          Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
         :rtype: dict
         :returns:
@@ -1134,7 +1134,7 @@ class Client(BaseClient):
 
               The semantic version of the application:
 
-               `https://semver.org/ <https://semver.org/>`__
+               `https\\://semver.org/ <https://semver.org/>`__
 
             - **StackId** *(string) --*
 
@@ -1142,7 +1142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cloud_formation_template(
         self, ApplicationId: str, SemanticVersion: str = None
     ) -> ClientCreateCloudFormationTemplateResponseTypeDef:
@@ -1169,7 +1169,7 @@ class Client(BaseClient):
 
           The semantic version of the application:
 
-           `https://semver.org/ <https://semver.org/>`__
+           `https\\://semver.org/ <https://semver.org/>`__
 
         :rtype: dict
         :returns:
@@ -1209,7 +1209,7 @@ class Client(BaseClient):
 
               The semantic version of the application:
 
-               `https://semver.org/ <https://semver.org/>`__
+               `https\\://semver.org/ <https://semver.org/>`__
 
             - **Status** *(string) --*
 
@@ -1221,7 +1221,7 @@ class Client(BaseClient):
 
               The UUID returned by CreateCloudFormationTemplate.
 
-              Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+              Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
             - **TemplateUrl** *(string) --*
 
@@ -1229,7 +1229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application(self, ApplicationId: str) -> None:
         """
         Deletes the specified application.
@@ -1251,7 +1251,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1280,7 +1280,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application(
         self, ApplicationId: str, SemanticVersion: str = None
     ) -> ClientGetApplicationResponseTypeDef:
@@ -1401,7 +1401,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-              Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+              Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
               - *(string) --*
 
@@ -1417,7 +1417,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=140
 
-              Pattern: "[a-zA-Z0-9\\-]+";
+              Pattern: "[a-zA-Z0-9\\\\-]+";
 
             - **ReadmeUrl** *(string) --*
 
@@ -1563,30 +1563,30 @@ class Client(BaseClient):
                 and CAPABILITY_AUTO_EXPAND.
 
                 The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-                `AWS::IAM::Group
+                `AWS\\:\\:IAM\\:\\:Group
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-                , `AWS::IAM::InstanceProfile
+                , `AWS\\:\\:IAM\\:\\:InstanceProfile
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-                , `AWS::IAM::Policy
+                , `AWS\\:\\:IAM\\:\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , and `AWS::IAM::Role
+                , and `AWS\\:\\:IAM\\:\\:Role
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
                 . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
                 CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
                 specify CAPABILITY_NAMED_IAM.
 
                 The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-                `AWS::Lambda::Permission
+                `AWS\\:\\:Lambda\\:\\:Permission
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-                , `AWS::IAM:Policy
+                , `AWS\\:\\:IAM\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , `AWS::ApplicationAutoScaling::ScalingPolicy
+                , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-                , `AWS::S3::BucketPolicy
+                , `AWS\\:\\:S3\\:\\:BucketPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-                , `AWS::SQS::QueuePolicy
+                , `AWS\\:\\:SQS\\:\\:QueuePolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-                , and `AWS::SNS::TopicPolicy
+                , and `AWS\\:\\:SNS\\:\\:TopicPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
                 .
 
@@ -1610,7 +1610,7 @@ class Client(BaseClient):
 
                 The semantic version of the application:
 
-                 `https://semver.org/ <https://semver.org/>`__
+                 `https\\://semver.org/ <https://semver.org/>`__
 
               - **SourceCodeArchiveUrl** *(string) --*
 
@@ -1630,7 +1630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application_policy(
         self, ApplicationId: str
     ) -> ClientGetApplicationPolicyResponseTypeDef:
@@ -1705,7 +1705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cloud_formation_template(
         self, ApplicationId: str, TemplateId: str
     ) -> ClientGetCloudFormationTemplateResponseTypeDef:
@@ -1732,7 +1732,7 @@ class Client(BaseClient):
 
           The UUID returned by CreateCloudFormationTemplate.
 
-          Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+          Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
         :rtype: dict
         :returns:
@@ -1772,7 +1772,7 @@ class Client(BaseClient):
 
               The semantic version of the application:
 
-               `https://semver.org/ <https://semver.org/>`__
+               `https\\://semver.org/ <https://semver.org/>`__
 
             - **Status** *(string) --*
 
@@ -1784,7 +1784,7 @@ class Client(BaseClient):
 
               The UUID returned by CreateCloudFormationTemplate.
 
-              Pattern: [0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}
+              Pattern: [0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}
 
             - **TemplateUrl** *(string) --*
 
@@ -1792,7 +1792,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1813,7 +1813,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1826,7 +1826,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_application_dependencies(
         self,
         ApplicationId: str,
@@ -1913,7 +1913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_application_versions(
         self, ApplicationId: str, MaxItems: int = None, NextToken: str = None
     ) -> ClientListApplicationVersionsResponseTypeDef:
@@ -1994,7 +1994,7 @@ class Client(BaseClient):
 
                   The semantic version of the application:
 
-                   `https://semver.org/ <https://semver.org/>`__
+                   `https\\://semver.org/ <https://semver.org/>`__
 
                 - **SourceCodeUrl** *(string) --*
 
@@ -2003,7 +2003,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_applications(
         self, MaxItems: int = None, NextToken: str = None
     ) -> ClientListApplicationsResponseTypeDef:
@@ -2101,7 +2101,7 @@ class Client(BaseClient):
 
                   Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-                  Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+                  Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
                   - *(string) --*
 
@@ -2111,11 +2111,11 @@ class Client(BaseClient):
 
                   Minimum length=1. Maximum length=140
 
-                  Pattern: "[a-zA-Z0-9\\-]+";
+                  Pattern: "[a-zA-Z0-9\\\\-]+";
 
                 - **SpdxLicenseId** *(string) --*
 
-                  A valid identifier from `https://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
+                  A valid identifier from `https\\://spdx.org/licenses/ <https://spdx.org/licenses/>`__ .
 
             - **NextToken** *(string) --*
 
@@ -2123,7 +2123,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_application_policy(
         self,
         ApplicationId: str,
@@ -2241,7 +2241,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self,
         ApplicationId: str,
@@ -2306,7 +2306,7 @@ class Client(BaseClient):
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
           - *(string) --*
 
@@ -2420,7 +2420,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-              Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+              Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
 
               - *(string) --*
 
@@ -2436,7 +2436,7 @@ class Client(BaseClient):
 
               Minimum length=1. Maximum length=140
 
-              Pattern: "[a-zA-Z0-9\\-]+";
+              Pattern: "[a-zA-Z0-9\\\\-]+";
 
             - **ReadmeUrl** *(string) --*
 
@@ -2582,30 +2582,30 @@ class Client(BaseClient):
                 and CAPABILITY_AUTO_EXPAND.
 
                 The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
-                `AWS::IAM::Group
+                `AWS\\:\\:IAM\\:\\:Group
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html>`__
-                , `AWS::IAM::InstanceProfile
+                , `AWS\\:\\:IAM\\:\\:InstanceProfile
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html>`__
-                , `AWS::IAM::Policy
+                , `AWS\\:\\:IAM\\:\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , and `AWS::IAM::Role
+                , and `AWS\\:\\:IAM\\:\\:Role
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html>`__
                 . If the application contains IAM resources, you can specify either CAPABILITY_IAM or
                 CAPABILITY_NAMED_IAM. If the application contains IAM resources with custom names, you must
                 specify CAPABILITY_NAMED_IAM.
 
                 The following resources require you to specify CAPABILITY_RESOURCE_POLICY:
-                `AWS::Lambda::Permission
+                `AWS\\:\\:Lambda\\:\\:Permission
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html>`__
-                , `AWS::IAM:Policy
+                , `AWS\\:\\:IAM\\:Policy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html>`__
-                , `AWS::ApplicationAutoScaling::ScalingPolicy
+                , `AWS\\:\\:ApplicationAutoScaling\\:\\:ScalingPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html>`__
-                , `AWS::S3::BucketPolicy
+                , `AWS\\:\\:S3\\:\\:BucketPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html>`__
-                , `AWS::SQS::QueuePolicy
+                , `AWS\\:\\:SQS\\:\\:QueuePolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html>`__
-                , and `AWS::SNS::TopicPolicy
+                , and `AWS\\:\\:SNS\\:\\:TopicPolicy
                 <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html>`__
                 .
 
@@ -2629,7 +2629,7 @@ class Client(BaseClient):
 
                 The semantic version of the application:
 
-                 `https://semver.org/ <https://semver.org/>`__
+                 `https\\://semver.org/ <https://semver.org/>`__
 
               - **SourceCodeArchiveUrl** *(string) --*
 

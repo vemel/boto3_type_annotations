@@ -3439,13 +3439,13 @@ class ClientCreateCompilationJobInputConfigTypeDef(
 
           * If using the console, ``{"input":[1,1024,1024,3]}``
 
-          * If using the CLI, ``{\"input\":[1,1024,1024,3]}``
+          * If using the CLI, ``{\\"input\\":[1,1024,1024,3]}``
 
         * Examples for two inputs:
 
           * If using the console, ``{"data1": [1,28,28,1], "data2":[1,28,28,1]}``
 
-          * If using the CLI, ``{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}``
+          * If using the CLI, ``{\\"data1\\": [1,28,28,1], \\"data2\\":[1,28,28,1]}``
 
       * ``MXNET/ONNX`` : You must specify the name and shape (NCHW format) of the expected data
       inputs in order using a dictionary format for your trained model. The dictionary formats
@@ -3455,13 +3455,13 @@ class ClientCreateCompilationJobInputConfigTypeDef(
 
           * If using the console, ``{"data":[1,3,1024,1024]}``
 
-          * If using the CLI, ``{\"data\":[1,3,1024,1024]}``
+          * If using the CLI, ``{\\"data\\":[1,3,1024,1024]}``
 
         * Examples for two inputs:
 
           * If using the console, ``{"var1": [1,1,28,28], "var2":[1,1,28,28]}``
 
-          * If using the CLI, ``{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}``
+          * If using the CLI, ``{\\"var1\\": [1,1,28,28], \\"var2\\":[1,1,28,28]}``
 
       * ``PyTorch`` : You can either specify the name and shape (NCHW format) of expected data inputs
       in order using a dictionary format for your trained model or you can specify the shape only
@@ -3472,7 +3472,7 @@ class ClientCreateCompilationJobInputConfigTypeDef(
 
           * If using the console, ``{"input0":[1,3,224,224]}``
 
-          * If using the CLI, ``{\"input0\":[1,3,224,224]}``
+          * If using the CLI, ``{\\"input0\\":[1,3,224,224]}``
 
         * Example for one input in list format: ``[[1,3,224,224]]``
 
@@ -3480,7 +3480,7 @@ class ClientCreateCompilationJobInputConfigTypeDef(
 
           * If using the console, ``{"input0":[1,3,224,224], "input1":[1,3,224,224]}``
 
-          * If using the CLI, ``{\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}``
+          * If using the CLI, ``{\\"input0\\":[1,3,224,224], \\"input1\\":[1,3,224,224]}``
 
         * Example for two inputs in list format: ``[[1,3,224,224], [1,3,224,224]]``
 
@@ -4364,7 +4364,7 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionAlgorithmSpecifica
 
       The registry path of the Docker image that contains the training algorithm. For information
       about Docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-      SageMaker: Common Parameters
+      SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -5131,7 +5131,7 @@ class ClientCreateHyperParameterTuningJobTrainingJobDefinitionTypeDef(
 
         The registry path of the Docker image that contains the training algorithm. For information
         about Docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-        SageMaker: Common Parameters
+        SageMaker\\: Common Parameters
         <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
         . Amazon SageMaker supports both ``registry/repository[:tag]`` and
         ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -8010,7 +8010,7 @@ class ClientCreateNotebookInstanceLifecycleConfigOnCreateTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
     Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -8048,7 +8048,7 @@ class ClientCreateNotebookInstanceLifecycleConfigOnStartTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
     Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -8201,7 +8201,7 @@ class ClientCreateTrainingJobAlgorithmSpecificationTypeDef(
 
       The registry path of the Docker image that contains the training algorithm. For information
       about docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-      SageMaker: Common Parameters
+      SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using Your Own
@@ -13882,13 +13882,13 @@ class ClientDescribeCompilationJobResponseInputConfigTypeDef(
 
           * If using the console, ``{"input":[1,1024,1024,3]}``
 
-          * If using the CLI, ``{\"input\":[1,1024,1024,3]}``
+          * If using the CLI, ``{\\"input\\":[1,1024,1024,3]}``
 
         * Examples for two inputs:
 
           * If using the console, ``{"data1": [1,28,28,1], "data2":[1,28,28,1]}``
 
-          * If using the CLI, ``{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}``
+          * If using the CLI, ``{\\"data1\\": [1,28,28,1], \\"data2\\":[1,28,28,1]}``
 
       * ``MXNET/ONNX`` : You must specify the name and shape (NCHW format) of the expected data
       inputs in order using a dictionary format for your trained model. The dictionary formats
@@ -13898,13 +13898,13 @@ class ClientDescribeCompilationJobResponseInputConfigTypeDef(
 
           * If using the console, ``{"data":[1,3,1024,1024]}``
 
-          * If using the CLI, ``{\"data\":[1,3,1024,1024]}``
+          * If using the CLI, ``{\\"data\\":[1,3,1024,1024]}``
 
         * Examples for two inputs:
 
           * If using the console, ``{"var1": [1,1,28,28], "var2":[1,1,28,28]}``
 
-          * If using the CLI, ``{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}``
+          * If using the CLI, ``{\\"var1\\": [1,1,28,28], \\"var2\\":[1,1,28,28]}``
 
       * ``PyTorch`` : You can either specify the name and shape (NCHW format) of expected data
       inputs in order using a dictionary format for your trained model or you can specify the
@@ -13915,7 +13915,7 @@ class ClientDescribeCompilationJobResponseInputConfigTypeDef(
 
           * If using the console, ``{"input0":[1,3,224,224]}``
 
-          * If using the CLI, ``{\"input0\":[1,3,224,224]}``
+          * If using the CLI, ``{\\"input0\\":[1,3,224,224]}``
 
         * Example for one input in list format: ``[[1,3,224,224]]``
 
@@ -13923,7 +13923,7 @@ class ClientDescribeCompilationJobResponseInputConfigTypeDef(
 
           * If using the console, ``{"input0":[1,3,224,224], "input1":[1,3,224,224]}``
 
-          * If using the CLI, ``{\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}``
+          * If using the CLI, ``{\\"input0\\":[1,3,224,224], \\"input1\\":[1,3,224,224]}``
 
         * Example for two inputs in list format: ``[[1,3,224,224], [1,3,224,224]]``
 
@@ -14139,13 +14139,13 @@ class ClientDescribeCompilationJobResponseTypeDef(
 
             * If using the console, ``{"input":[1,1024,1024,3]}``
 
-            * If using the CLI, ``{\"input\":[1,1024,1024,3]}``
+            * If using the CLI, ``{\\"input\\":[1,1024,1024,3]}``
 
           * Examples for two inputs:
 
             * If using the console, ``{"data1": [1,28,28,1], "data2":[1,28,28,1]}``
 
-            * If using the CLI, ``{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}``
+            * If using the CLI, ``{\\"data1\\": [1,28,28,1], \\"data2\\":[1,28,28,1]}``
 
         * ``MXNET/ONNX`` : You must specify the name and shape (NCHW format) of the expected data
         inputs in order using a dictionary format for your trained model. The dictionary formats
@@ -14155,13 +14155,13 @@ class ClientDescribeCompilationJobResponseTypeDef(
 
             * If using the console, ``{"data":[1,3,1024,1024]}``
 
-            * If using the CLI, ``{\"data\":[1,3,1024,1024]}``
+            * If using the CLI, ``{\\"data\\":[1,3,1024,1024]}``
 
           * Examples for two inputs:
 
             * If using the console, ``{"var1": [1,1,28,28], "var2":[1,1,28,28]}``
 
-            * If using the CLI, ``{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}``
+            * If using the CLI, ``{\\"var1\\": [1,1,28,28], \\"var2\\":[1,1,28,28]}``
 
         * ``PyTorch`` : You can either specify the name and shape (NCHW format) of expected data
         inputs in order using a dictionary format for your trained model or you can specify the
@@ -14172,7 +14172,7 @@ class ClientDescribeCompilationJobResponseTypeDef(
 
             * If using the console, ``{"input0":[1,3,224,224]}``
 
-            * If using the CLI, ``{\"input0\":[1,3,224,224]}``
+            * If using the CLI, ``{\\"input0\\":[1,3,224,224]}``
 
           * Example for one input in list format: ``[[1,3,224,224]]``
 
@@ -14180,7 +14180,7 @@ class ClientDescribeCompilationJobResponseTypeDef(
 
             * If using the console, ``{"input0":[1,3,224,224], "input1":[1,3,224,224]}``
 
-            * If using the CLI, ``{\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}``
+            * If using the CLI, ``{\\"input0\\":[1,3,224,224], \\"input1\\":[1,3,224,224]}``
 
           * Example for two inputs in list format: ``[[1,3,224,224], [1,3,224,224]]``
 
@@ -15507,7 +15507,7 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionAlgorith
 
       The registry path of the Docker image that contains the training algorithm. For
       information about Docker registry paths for built-in algorithms, see `Algorithms Provided
-      by Amazon SageMaker: Common Parameters
+      by Amazon SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -16263,7 +16263,7 @@ class ClientDescribeHyperParameterTuningJobResponseTrainingJobDefinitionTypeDef(
 
         The registry path of the Docker image that contains the training algorithm. For
         information about Docker registry paths for built-in algorithms, see `Algorithms Provided
-        by Amazon SageMaker: Common Parameters
+        by Amazon SageMaker\\: Common Parameters
         <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
         . Amazon SageMaker supports both ``registry/repository[:tag]`` and
         ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -17033,7 +17033,7 @@ class ClientDescribeHyperParameterTuningJobResponseTypeDef(
 
           The registry path of the Docker image that contains the training algorithm. For
           information about Docker registry paths for built-in algorithms, see `Algorithms Provided
-          by Amazon SageMaker: Common Parameters
+          by Amazon SageMaker\\: Common Parameters
           <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
           . Amazon SageMaker supports both ``registry/repository[:tag]`` and
           ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -21440,8 +21440,8 @@ class ClientDescribeNotebookInstanceLifecycleConfigResponseOnCreateTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-    Customize a Notebook Instance
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+    (Optional) Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
     - **Content** *(string) --*
@@ -21478,8 +21478,8 @@ class ClientDescribeNotebookInstanceLifecycleConfigResponseOnStartTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-    Customize a Notebook Instance
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+    (Optional) Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
     - **Content** *(string) --*
@@ -21541,8 +21541,8 @@ class ClientDescribeNotebookInstanceLifecycleConfigResponseTypeDef(
         Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
         longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-        For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-        Customize a Notebook Instance
+        For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+        (Optional) Customize a Notebook Instance
         <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
         - **Content** *(string) --*
@@ -21571,8 +21571,8 @@ class ClientDescribeNotebookInstanceLifecycleConfigResponseTypeDef(
         Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
         longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-        For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-        Customize a Notebook Instance
+        For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+        (Optional) Customize a Notebook Instance
         <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
         - **Content** *(string) --*
@@ -21685,7 +21685,7 @@ class ClientDescribeNotebookInstanceResponseTypeDef(
 
       Returns the name of a notebook instance lifecycle configuration.
 
-      For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+      For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
       Customize a Notebook Instance
       <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__
 
@@ -21885,7 +21885,7 @@ class ClientDescribeTrainingJobResponseAlgorithmSpecificationTypeDef(
 
       The registry path of the Docker image that contains the training algorithm. For information
       about docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-      SageMaker: Common Parameters
+      SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -22930,7 +22930,7 @@ class ClientDescribeTrainingJobResponseTypeDef(
 
         The registry path of the Docker image that contains the training algorithm. For information
         about docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-        SageMaker: Common Parameters
+        SageMaker\\: Common Parameters
         <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
         . Amazon SageMaker supports both ``registry/repository[:tag]`` and
         ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -26452,7 +26452,7 @@ class ClientListNotebookInstancesResponseNotebookInstancesTypeDef(
       The name of a notebook instance lifecycle configuration associated with this notebook
       instance.
 
-      For information about notebook instance lifestyle configurations, see `Step 2.1:
+      For information about notebook instance lifestyle configurations, see `Step 2.1\\:
       (Optional) Customize a Notebook Instance
       <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -26547,7 +26547,7 @@ class ClientListNotebookInstancesResponseTypeDef(
           The name of a notebook instance lifecycle configuration associated with this notebook
           instance.
 
-          For information about notebook instance lifestyle configurations, see `Step 2.1:
+          For information about notebook instance lifestyle configurations, see `Step 2.1\\:
           (Optional) Customize a Notebook Instance
           <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -27625,7 +27625,7 @@ class ClientSearchResponseResultsTrainingJobAlgorithmSpecificationTypeDef(
 
       The registry path of the Docker image that contains the training algorithm. For
       information about docker registry paths for built-in algorithms, see `Algorithms
-      Provided by Amazon SageMaker: Common Parameters
+      Provided by Amazon SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -28678,7 +28678,7 @@ class ClientSearchResponseResultsTrainingJobTypeDef(
 
         The registry path of the Docker image that contains the training algorithm. For
         information about docker registry paths for built-in algorithms, see `Algorithms
-        Provided by Amazon SageMaker: Common Parameters
+        Provided by Amazon SageMaker\\: Common Parameters
         <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
         . Amazon SageMaker supports both ``registry/repository[:tag]`` and
         ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -29358,7 +29358,7 @@ class ClientSearchResponseResultsTypeDef(_ClientSearchResponseResultsTypeDef):
 
           The registry path of the Docker image that contains the training algorithm. For
           information about docker registry paths for built-in algorithms, see `Algorithms
-          Provided by Amazon SageMaker: Common Parameters
+          Provided by Amazon SageMaker\\: Common Parameters
           <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
           . Amazon SageMaker supports both ``registry/repository[:tag]`` and
           ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -30044,7 +30044,7 @@ class ClientSearchResponseTypeDef(_ClientSearchResponseTypeDef):
 
               The registry path of the Docker image that contains the training algorithm. For
               information about docker registry paths for built-in algorithms, see `Algorithms
-              Provided by Amazon SageMaker: Common Parameters
+              Provided by Amazon SageMaker\\: Common Parameters
               <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
               . Amazon SageMaker supports both ``registry/repository[:tag]`` and
               ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -31440,7 +31440,7 @@ class ClientUpdateNotebookInstanceLifecycleConfigOnCreateTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
     Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -31478,7 +31478,7 @@ class ClientUpdateNotebookInstanceLifecycleConfigOnStartTypeDef(
     Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
     longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-    For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+    For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
     Customize a Notebook Instance
     <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -31839,6 +31839,54 @@ class ClientUpdateWorkteamResponseTypeDef(_ClientUpdateWorkteamResponseTypeDef):
         - **NotificationTopicArn** *(string) --*
 
           The ARN for the SNS topic to which notifications should be published.
+    """
+
+
+_EndpointDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_EndpointDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class EndpointDeletedWaitWaiterConfigTypeDef(_EndpointDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `EndpointDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_EndpointInServiceWaitWaiterConfigTypeDef = TypedDict(
+    "_EndpointInServiceWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class EndpointInServiceWaitWaiterConfigTypeDef(
+    _EndpointInServiceWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `EndpointInServiceWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 120
     """
 
 
@@ -34056,7 +34104,7 @@ class ListNotebookInstancesPaginateResponseNotebookInstancesTypeDef(
       The name of a notebook instance lifecycle configuration associated with this notebook
       instance.
 
-      For information about notebook instance lifestyle configurations, see `Step 2.1:
+      For information about notebook instance lifestyle configurations, see `Step 2.1\\:
       (Optional) Customize a Notebook Instance
       <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -34144,7 +34192,7 @@ class ListNotebookInstancesPaginateResponseTypeDef(
           The name of a notebook instance lifecycle configuration associated with this notebook
           instance.
 
-          For information about notebook instance lifestyle configurations, see `Step 2.1:
+          For information about notebook instance lifestyle configurations, see `Step 2.1\\:
           (Optional) Customize a Notebook Instance
           <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -35222,6 +35270,81 @@ class ListWorkteamsPaginateResponseTypeDef(_ListWorkteamsPaginateResponseTypeDef
     """
 
 
+_NotebookInstanceDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_NotebookInstanceDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NotebookInstanceDeletedWaitWaiterConfigTypeDef(
+    _NotebookInstanceDeletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `NotebookInstanceDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_NotebookInstanceInServiceWaitWaiterConfigTypeDef = TypedDict(
+    "_NotebookInstanceInServiceWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NotebookInstanceInServiceWaitWaiterConfigTypeDef(
+    _NotebookInstanceInServiceWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `NotebookInstanceInServiceWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_NotebookInstanceStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_NotebookInstanceStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NotebookInstanceStoppedWaitWaiterConfigTypeDef(
+    _NotebookInstanceStoppedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `NotebookInstanceStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _SearchPaginatePaginationConfigTypeDef = TypedDict(
     "_SearchPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},
@@ -35310,7 +35433,7 @@ class SearchPaginateResponseResultsTrainingJobAlgorithmSpecificationTypeDef(
 
       The registry path of the Docker image that contains the training algorithm. For
       information about docker registry paths for built-in algorithms, see `Algorithms
-      Provided by Amazon SageMaker: Common Parameters
+      Provided by Amazon SageMaker\\: Common Parameters
       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
       ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -36363,7 +36486,7 @@ class SearchPaginateResponseResultsTrainingJobTypeDef(
 
         The registry path of the Docker image that contains the training algorithm. For
         information about docker registry paths for built-in algorithms, see `Algorithms
-        Provided by Amazon SageMaker: Common Parameters
+        Provided by Amazon SageMaker\\: Common Parameters
         <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
         . Amazon SageMaker supports both ``registry/repository[:tag]`` and
         ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -37043,7 +37166,7 @@ class SearchPaginateResponseResultsTypeDef(_SearchPaginateResponseResultsTypeDef
 
           The registry path of the Docker image that contains the training algorithm. For
           information about docker registry paths for built-in algorithms, see `Algorithms
-          Provided by Amazon SageMaker: Common Parameters
+          Provided by Amazon SageMaker\\: Common Parameters
           <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
           . Amazon SageMaker supports both ``registry/repository[:tag]`` and
           ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -37729,7 +37852,7 @@ class SearchPaginateResponseTypeDef(_SearchPaginateResponseTypeDef):
 
               The registry path of the Docker image that contains the training algorithm. For
               information about docker registry paths for built-in algorithms, see `Algorithms
-              Provided by Amazon SageMaker: Common Parameters
+              Provided by Amazon SageMaker\\: Common Parameters
               <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
               . Amazon SageMaker supports both ``registry/repository[:tag]`` and
               ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -38976,4 +39099,54 @@ class SearchPaginateSearchExpressionTypeDef(_SearchPaginateSearchExpressionTypeD
       statement in all lists to be satisfied for the entire search expression to be true, specify
       ``And`` . If only a single conditional statement needs to be true for the entire search
       expression to be true, specify ``Or`` . The default value is ``And`` .
+    """
+
+
+_TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef(
+    _TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `TrainingJobCompletedOrStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 120
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 180
+    """
+
+
+_TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef = TypedDict(
+    "_TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef(
+    _TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `TransformJobCompletedOrStoppedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """

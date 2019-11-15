@@ -24,7 +24,7 @@ from mypy_boto3_forecast.type_defs import (
 
 
 class ListDatasetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetGroupsPaginatePaginationConfigTypeDef = None
     ) -> ListDatasetGroupsPaginateResponseTypeDef:
@@ -119,7 +119,7 @@ class ListDatasetGroups(Boto3Paginator):
 
 
 class ListDatasetImportJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListDatasetImportJobsPaginateFiltersTypeDef] = None,
@@ -316,7 +316,7 @@ class ListDatasetImportJobs(Boto3Paginator):
 
 
 class ListDatasets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetsPaginatePaginationConfigTypeDef = None
     ) -> ListDatasetsPaginateResponseTypeDef:
@@ -424,7 +424,7 @@ class ListDatasets(Boto3Paginator):
 
 
 class ListForecastExportJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListForecastExportJobsPaginateFiltersTypeDef] = None,
@@ -618,7 +618,7 @@ class ListForecastExportJobs(Boto3Paginator):
 
 
 class ListForecasts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListForecastsPaginateFiltersTypeDef] = None,
@@ -793,7 +793,7 @@ class ListForecasts(Boto3Paginator):
 
 
 class ListPredictors(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListPredictorsPaginateFiltersTypeDef] = None,

@@ -35,7 +35,7 @@ from mypy_boto3_datapipeline.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate_pipeline(
         self,
         pipelineId: str,
@@ -111,7 +111,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(self, pipelineId: str, tags: List[ClientAddTagstagsTypeDef]) -> Dict:
         """
         Adds or modifies tags for the specified pipeline.
@@ -179,7 +179,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -196,7 +196,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_pipeline(
         self,
         name: str,
@@ -301,7 +301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate_pipeline(self, pipelineId: str, cancelActive: bool = None) -> Dict:
         """
         Deactivates the specified running pipeline. The pipeline is set to the ``DEACTIVATING`` state until
@@ -348,7 +348,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_pipeline(self, pipelineId: str) -> None:
         """
         Deletes a pipeline, its pipeline definition, and its run history. AWS Data Pipeline attempts to
@@ -375,7 +375,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_objects(
         self,
         pipelineId: str,
@@ -508,7 +508,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pipelines(
         self, pipelineIds: List[str]
     ) -> ClientDescribePipelinesResponseTypeDef:
@@ -651,7 +651,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def evaluate_expression(
         self, pipelineId: str, objectId: str, expression: str
     ) -> ClientEvaluateExpressionResponseTypeDef:
@@ -707,7 +707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -736,7 +736,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -757,7 +757,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pipeline_definition(
         self, pipelineId: str, version: str = None
     ) -> ClientGetPipelineDefinitionResponseTypeDef:
@@ -917,7 +917,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -930,7 +930,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pipelines(self, marker: str = None) -> ClientListPipelinesResponseTypeDef:
         """
         Lists the pipeline identifiers for all active pipelines that you have permission to access.
@@ -1004,7 +1004,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def poll_for_task(
         self,
         workerGroup: str,
@@ -1173,7 +1173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_pipeline_definition(
         self,
         pipelineId: str,
@@ -1410,7 +1410,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def query_objects(
         self,
         pipelineId: str,
@@ -1586,7 +1586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags(self, pipelineId: str, tagKeys: List[str]) -> Dict:
         """
         Removes existing tags from the specified pipeline.
@@ -1631,7 +1631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def report_task_progress(
         self, taskId: str, fields: List[ClientReportTaskProgressfieldsTypeDef] = None
     ) -> ClientReportTaskProgressResponseTypeDef:
@@ -1714,7 +1714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def report_task_runner_heartbeat(
         self, taskrunnerId: str, workerGroup: str = None, hostname: str = None
     ) -> ClientReportTaskRunnerHeartbeatResponseTypeDef:
@@ -1778,7 +1778,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_status(self, pipelineId: str, objectIds: List[str], status: str) -> None:
         """
         Requests that the status of the specified physical or logical pipeline objects be updated in the
@@ -1822,7 +1822,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_task_status(
         self,
         taskId: str,
@@ -1899,7 +1899,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def validate_pipeline_definition(
         self,
         pipelineId: str,

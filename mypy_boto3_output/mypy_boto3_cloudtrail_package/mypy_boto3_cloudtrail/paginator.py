@@ -18,7 +18,7 @@ from mypy_boto3_cloudtrail.type_defs import (
 
 
 class ListPublicKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StartTime: datetime = None,
@@ -127,7 +127,7 @@ class ListPublicKeys(Boto3Paginator):
 
 
 class ListTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceIdList: List[str],
@@ -239,7 +239,7 @@ class ListTags(Boto3Paginator):
 
 
 class ListTrails(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTrailsPaginatePaginationConfigTypeDef = None
     ) -> ListTrailsPaginateResponseTypeDef:
@@ -321,7 +321,7 @@ class ListTrails(Boto3Paginator):
 
 
 class LookupEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         LookupAttributes: List[LookupEventsPaginateLookupAttributesTypeDef] = None,

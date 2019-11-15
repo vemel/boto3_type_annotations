@@ -53,7 +53,7 @@ from mypy_boto3_ds.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_shared_directory(
         self, SharedDirectoryId: str
     ) -> ClientAcceptSharedDirectoryResponseTypeDef:
@@ -150,7 +150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_ip_routes(
         self,
         DirectoryId: str,
@@ -165,7 +165,8 @@ class Client(BaseClient):
 
         Before you call *AddIpRoutes* , ensure that all of the required permissions have been explicitly
         granted through a policy. For details about what permissions are required to run the *AddIpRoutes*
-        operation, see `AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference
+        operation, see `AWS Directory Service API Permissions\\: Actions, Resources, and Conditions
+        Reference
         <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html>`__
         .
 
@@ -273,7 +274,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceId: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -314,13 +315,13 @@ class Client(BaseClient):
 
               Required name of the tag. The string value can be Unicode characters and cannot be prefixed
               with "aws:". The string can contain only the set of Unicode letters, digits, white-space,
-              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --* **[REQUIRED]**
 
               The optional value of the tag. The string value can be Unicode characters. The string can
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -335,7 +336,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -352,7 +353,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_schema_extension(
         self, DirectoryId: str, SchemaExtensionId: str
     ) -> Dict[str, Any]:
@@ -395,7 +396,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def connect_directory(
         self,
         Name: str,
@@ -411,8 +412,8 @@ class Client(BaseClient):
 
         Before you call ``ConnectDirectory`` , ensure that all of the required permissions have been
         explicitly granted through a policy. For details about what permissions are required to run the
-        ``ConnectDirectory`` operation, see `AWS Directory Service API Permissions: Actions, Resources, and
-        Conditions Reference
+        ``ConnectDirectory`` operation, see `AWS Directory Service API Permissions\\: Actions, Resources,
+        and Conditions Reference
         <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html>`__
         .
 
@@ -516,13 +517,13 @@ class Client(BaseClient):
 
               Required name of the tag. The string value can be Unicode characters and cannot be prefixed
               with "aws:". The string can contain only the set of Unicode letters, digits, white-space,
-              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --* **[REQUIRED]**
 
               The optional value of the tag. The string value can be Unicode characters. The string can
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -546,7 +547,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_alias(
         self, DirectoryId: str, Alias: str
     ) -> ClientCreateAliasResponseTypeDef:
@@ -609,7 +610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_computer(
         self,
         DirectoryId: str,
@@ -734,7 +735,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_conditional_forwarder(
         self, DirectoryId: str, RemoteDomainName: str, DnsIpAddrs: List[str]
     ) -> Dict:
@@ -790,7 +791,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_directory(
         self,
         Name: str,
@@ -806,8 +807,8 @@ class Client(BaseClient):
 
         Before you call ``CreateDirectory`` , ensure that all of the required permissions have been
         explicitly granted through a policy. For details about what permissions are required to run the
-        ``CreateDirectory`` operation, see `AWS Directory Service API Permissions: Actions, Resources, and
-        Conditions Reference
+        ``CreateDirectory`` operation, see `AWS Directory Service API Permissions\\: Actions, Resources,
+        and Conditions Reference
         <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html>`__
         .
 
@@ -892,13 +893,13 @@ class Client(BaseClient):
 
               Required name of the tag. The string value can be Unicode characters and cannot be prefixed
               with "aws:". The string can contain only the set of Unicode letters, digits, white-space,
-              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --* **[REQUIRED]**
 
               The optional value of the tag. The string value can be Unicode characters. The string can
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -922,7 +923,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_log_subscription(
         self, DirectoryId: str, LogGroupName: str
     ) -> Dict[str, Any]:
@@ -964,7 +965,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_microsoft_ad(
         self,
         Name: str,
@@ -980,8 +981,8 @@ class Client(BaseClient):
 
         Before you call *CreateMicrosoftAD* , ensure that all of the required permissions have been
         explicitly granted through a policy. For details about what permissions are required to run the
-        *CreateMicrosoftAD* operation, see `AWS Directory Service API Permissions: Actions, Resources, and
-        Conditions Reference
+        *CreateMicrosoftAD* operation, see `AWS Directory Service API Permissions\\: Actions, Resources,
+        and Conditions Reference
         <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html>`__
         .
 
@@ -1070,13 +1071,13 @@ class Client(BaseClient):
 
               Required name of the tag. The string value can be Unicode characters and cannot be prefixed
               with "aws:". The string can contain only the set of Unicode letters, digits, white-space,
-              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              '_', '.', '/', '=', '+', '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --* **[REQUIRED]**
 
               The optional value of the tag. The string value can be Unicode characters. The string can
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1100,7 +1101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self, DirectoryId: str, Name: str = None
     ) -> ClientCreateSnapshotResponseTypeDef:
@@ -1153,7 +1154,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_trust(
         self,
         DirectoryId: str,
@@ -1253,7 +1254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_conditional_forwarder(
         self, DirectoryId: str, RemoteDomainName: str
     ) -> Dict:
@@ -1297,7 +1298,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_directory(
         self, DirectoryId: str
     ) -> ClientDeleteDirectoryResponseTypeDef:
@@ -1306,8 +1307,8 @@ class Client(BaseClient):
 
         Before you call ``DeleteDirectory`` , ensure that all of the required permissions have been
         explicitly granted through a policy. For details about what permissions are required to run the
-        ``DeleteDirectory`` operation, see `AWS Directory Service API Permissions: Actions, Resources, and
-        Conditions Reference
+        ``DeleteDirectory`` operation, see `AWS Directory Service API Permissions\\: Actions, Resources,
+        and Conditions Reference
         <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html>`__
         .
 
@@ -1347,7 +1348,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_log_subscription(self, DirectoryId: str) -> Dict[str, Any]:
         """
         Deletes the specified log subscription.
@@ -1379,7 +1380,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot(self, SnapshotId: str) -> ClientDeleteSnapshotResponseTypeDef:
         """
         Deletes a directory snapshot.
@@ -1420,7 +1421,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_trust(
         self, TrustId: str, DeleteAssociatedConditionalForwarder: bool = None
     ) -> ClientDeleteTrustResponseTypeDef:
@@ -1470,7 +1471,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_event_topic(self, DirectoryId: str, TopicName: str) -> Dict:
         """
         Removes the specified directory as a publisher to the specified SNS topic.
@@ -1512,7 +1513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_conditional_forwarders(
         self, DirectoryId: str, RemoteDomainNames: List[str] = None
     ) -> ClientDescribeConditionalForwardersResponseTypeDef:
@@ -1601,7 +1602,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_directories(
         self, DirectoryIds: List[str] = None, NextToken: str = None, Limit: int = None
     ) -> ClientDescribeDirectoriesResponseTypeDef:
@@ -2069,7 +2070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_domain_controllers(
         self,
         DirectoryId: str,
@@ -2200,7 +2201,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_topics(
         self, DirectoryId: str = None, TopicNames: List[str] = None
     ) -> ClientDescribeEventTopicsResponseTypeDef:
@@ -2293,7 +2294,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_shared_directories(
         self,
         OwnerDirectoryId: str,
@@ -2430,7 +2431,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshots(
         self,
         DirectoryId: str = None,
@@ -2554,7 +2555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trusts(
         self,
         DirectoryId: str = None,
@@ -2706,7 +2707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_radius(self, DirectoryId: str) -> Dict:
         """
         Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service
@@ -2742,7 +2743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_sso(
         self, DirectoryId: str, UserName: str = None, Password: str = None
     ) -> Dict:
@@ -2798,7 +2799,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_radius(
         self, DirectoryId: str, RadiusSettings: ClientEnableRadiusRadiusSettingsTypeDef
     ) -> Dict:
@@ -2889,7 +2890,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_sso(
         self, DirectoryId: str, UserName: str = None, Password: str = None
     ) -> Dict:
@@ -2944,7 +2945,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2973,7 +2974,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_directory_limits(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetDirectoryLimitsResponseTypeDef:
@@ -3056,7 +3057,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3077,7 +3078,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_snapshot_limits(
         self, DirectoryId: str
     ) -> ClientGetSnapshotLimitsResponseTypeDef:
@@ -3136,7 +3137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3149,7 +3150,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ip_routes(
         self, DirectoryId: str, NextToken: str = None, Limit: int = None
     ) -> ClientListIpRoutesResponseTypeDef:
@@ -3248,7 +3249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_log_subscriptions(
         self, DirectoryId: str = None, NextToken: str = None, Limit: int = None
     ) -> ClientListLogSubscriptionsResponseTypeDef:
@@ -3332,7 +3333,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_schema_extensions(
         self, DirectoryId: str, NextToken: str = None, Limit: int = None
     ) -> ClientListSchemaExtensionsResponseTypeDef:
@@ -3436,7 +3437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceId: str, NextToken: str = None, Limit: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3502,13 +3503,13 @@ class Client(BaseClient):
                   Required name of the tag. The string value can be Unicode characters and cannot be
                   prefixed with "aws:". The string can contain only the set of Unicode letters, digits,
                   white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-                  "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
                 - **Value** *(string) --*
 
                   The optional value of the tag. The string value can be Unicode characters. The string can
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **NextToken** *(string) --*
 
@@ -3516,7 +3517,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_event_topic(self, DirectoryId: str, TopicName: str) -> Dict:
         """
         Associates a directory with an SNS topic. This establishes the directory as a publisher to the
@@ -3561,7 +3562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject_shared_directory(
         self, SharedDirectoryId: str
     ) -> ClientRejectSharedDirectoryResponseTypeDef:
@@ -3603,7 +3604,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_ip_routes(self, DirectoryId: str, CidrIps: List[str]) -> Dict[str, Any]:
         """
         Removes IP address blocks from a directory.
@@ -3645,7 +3646,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceId: str, TagKeys: List[str]
     ) -> Dict[str, Any]:
@@ -3689,7 +3690,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_user_password(
         self, DirectoryId: str, UserName: str, NewPassword: str
     ) -> Dict[str, Any]:
@@ -3735,7 +3736,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_from_snapshot(self, SnapshotId: str) -> Dict:
         """
         Restores a directory using an existing directory snapshot.
@@ -3778,7 +3779,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def share_directory(
         self,
         DirectoryId: str,
@@ -3873,7 +3874,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_schema_extension(
         self,
         DirectoryId: str,
@@ -3910,7 +3911,7 @@ class Client(BaseClient):
         :param LdifContent: **[REQUIRED]**
 
           The LDIF file represented as a string. To construct the LdifContent string, precede each line as
-          it would be formatted in an ldif file with \n. See the example request below for more details.
+          it would be formatted in an ldif file with \\n. See the example request below for more details.
           The file size can be no larger than 1MB.
 
         :type Description: string
@@ -3938,7 +3939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unshare_directory(
         self,
         DirectoryId: str,
@@ -3999,7 +4000,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_conditional_forwarder(
         self, DirectoryId: str, RemoteDomainName: str, DnsIpAddrs: List[str]
     ) -> Dict:
@@ -4053,7 +4054,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_number_of_domain_controllers(
         self, DirectoryId: str, DesiredNumber: int
     ) -> Dict[str, Any]:
@@ -4097,7 +4098,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_radius(
         self, DirectoryId: str, RadiusSettings: ClientUpdateRadiusRadiusSettingsTypeDef
     ) -> Dict:
@@ -4188,7 +4189,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_trust(
         self, TrustId: str, SelectiveAuth: str = None
     ) -> ClientUpdateTrustResponseTypeDef:
@@ -4241,7 +4242,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def verify_trust(self, TrustId: str) -> ClientVerifyTrustResponseTypeDef:
         """
         AWS Directory Service for Microsoft Active Directory allows you to configure and verify trust

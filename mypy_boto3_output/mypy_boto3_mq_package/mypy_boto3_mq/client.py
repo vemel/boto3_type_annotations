@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_mq.type_defs import (
     ClientCreateBrokerConfigurationTypeDef,
     ClientCreateBrokerEncryptionOptionsTypeDef,
@@ -33,7 +32,7 @@ from mypy_boto3_mq.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -50,7 +49,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_broker(
         self,
         AutoMinorVersionUpgrade: bool = None,
@@ -258,7 +257,7 @@ class Client(BaseClient):
             - **BrokerId** *(string) --* The unique ID that Amazon MQ generates for the broker.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration(
         self,
         EngineType: str = None,
@@ -345,8 +344,8 @@ class Client(BaseClient):
             1-150 characters long.
         """
 
-    # pylint: disable=arguments-differ
-    def create_tags(self, ResourceArn: str, Tags: List[TypeDefEC2Tag] = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(self, ResourceArn: str, Tags: List[str] = None) -> None:
         """
         Add a tag to a resource.
 
@@ -375,7 +374,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         BrokerId: str,
@@ -437,7 +436,7 @@ class Client(BaseClient):
           - *(dict) --* HTTP Status Code 200: OK.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_broker(self, BrokerId: str) -> ClientDeleteBrokerResponseTypeDef:
         """
         Deletes a broker. Note: This API is asynchronous.
@@ -473,8 +472,8 @@ class Client(BaseClient):
             - **BrokerId** *(string) --* The unique ID that Amazon MQ generates for the broker.
         """
 
-    # pylint: disable=arguments-differ
-    def delete_tags(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_tags(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes a tag from a resource.
 
@@ -501,7 +500,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, BrokerId: str, Username: str) -> Dict[str, Any]:
         """
         Deletes an ActiveMQ user.
@@ -537,7 +536,7 @@ class Client(BaseClient):
           - *(dict) --* HTTP Status Code 200: OK.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_broker(self, BrokerId: str) -> ClientDescribeBrokerResponseTypeDef:
         """
         Returns information about the specified broker.
@@ -797,7 +796,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_broker_engine_types(
         self, EngineType: str = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeBrokerEngineTypesResponseTypeDef:
@@ -870,7 +869,7 @@ class Client(BaseClient):
             should return. To request the first page, leave nextToken empty.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_broker_instance_options(
         self,
         EngineType: str = None,
@@ -961,7 +960,7 @@ class Client(BaseClient):
             should return. To request the first page, leave nextToken empty.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration(
         self, ConfigurationId: str
     ) -> ClientDescribeConfigurationResponseTypeDef:
@@ -1043,7 +1042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_revision(
         self, ConfigurationId: str, ConfigurationRevision: str
     ) -> ClientDescribeConfigurationRevisionResponseTypeDef:
@@ -1093,7 +1092,7 @@ class Client(BaseClient):
             - **Description** *(string) --* The description of the configuration.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user(
         self, BrokerId: str, Username: str
     ) -> ClientDescribeUserResponseTypeDef:
@@ -1173,7 +1172,7 @@ class Client(BaseClient):
             value must be 2-100 characters long.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1202,7 +1201,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1223,7 +1222,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1236,7 +1235,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_brokers(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListBrokersResponseTypeDef:
@@ -1313,7 +1312,7 @@ class Client(BaseClient):
             should return. To request the first page, leave nextToken empty.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configuration_revisions(
         self, ConfigurationId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListConfigurationRevisionsResponseTypeDef:
@@ -1386,7 +1385,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_configurations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListConfigurationsResponseTypeDef:
@@ -1490,7 +1489,7 @@ class Client(BaseClient):
             should return. To request the first page, leave nextToken empty.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(self, ResourceArn: str) -> ClientListTagsResponseTypeDef:
         """
         Lists tags for a resource.
@@ -1530,7 +1529,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self, BrokerId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListUsersResponseTypeDef:
@@ -1600,7 +1599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_broker(self, BrokerId: str) -> Dict[str, Any]:
         """
         Reboots a broker. Note: This API is asynchronous.
@@ -1630,7 +1629,7 @@ class Client(BaseClient):
           - *(dict) --* HTTP Status Code 200: OK.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_broker(
         self,
         BrokerId: str,
@@ -1769,7 +1768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration(
         self, ConfigurationId: str, Data: str = None, Description: str = None
     ) -> ClientUpdateConfigurationResponseTypeDef:
@@ -1860,7 +1859,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self,
         BrokerId: str,

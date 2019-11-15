@@ -1,21 +1,28 @@
 "Main interface for rds Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_rds.type_defs import (
     DbClusterSnapshotAvailableWaitFiltersTypeDef,
+    DbClusterSnapshotAvailableWaitWaiterConfigTypeDef,
     DbClusterSnapshotDeletedWaitFiltersTypeDef,
+    DbClusterSnapshotDeletedWaitWaiterConfigTypeDef,
     DbInstanceAvailableWaitFiltersTypeDef,
+    DbInstanceAvailableWaitWaiterConfigTypeDef,
     DbInstanceDeletedWaitFiltersTypeDef,
+    DbInstanceDeletedWaitWaiterConfigTypeDef,
     DbSnapshotAvailableWaitFiltersTypeDef,
+    DbSnapshotAvailableWaitWaiterConfigTypeDef,
     DbSnapshotCompletedWaitFiltersTypeDef,
+    DbSnapshotCompletedWaitWaiterConfigTypeDef,
     DbSnapshotDeletedWaitFiltersTypeDef,
+    DbSnapshotDeletedWaitWaiterConfigTypeDef,
 )
 
 
 class DBClusterSnapshotAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBClusterIdentifier: str = None,
@@ -26,7 +33,7 @@ class DBClusterSnapshotAvailable(Boto3Waiter):
         Marker: str = None,
         IncludeShared: bool = None,
         IncludePublic: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbClusterSnapshotAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`RDS.Client.describe_db_cluster_snapshots` every 30 seconds until a successful state
@@ -211,7 +218,7 @@ class DBClusterSnapshotAvailable(Boto3Waiter):
 
 
 class DBClusterSnapshotDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBClusterIdentifier: str = None,
@@ -222,7 +229,7 @@ class DBClusterSnapshotDeleted(Boto3Waiter):
         Marker: str = None,
         IncludeShared: bool = None,
         IncludePublic: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbClusterSnapshotDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`RDS.Client.describe_db_cluster_snapshots` every 30 seconds until a successful state
@@ -407,14 +414,14 @@ class DBClusterSnapshotDeleted(Boto3Waiter):
 
 
 class DBInstanceAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
         Filters: List[DbInstanceAvailableWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbInstanceAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`RDS.Client.describe_db_instances` every 30 seconds until a successful state is
@@ -546,14 +553,14 @@ class DBInstanceAvailable(Boto3Waiter):
 
 
 class DBInstanceDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
         Filters: List[DbInstanceDeletedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbInstanceDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`RDS.Client.describe_db_instances` every 30 seconds until a successful state is
@@ -685,7 +692,7 @@ class DBInstanceDeleted(Boto3Waiter):
 
 
 class DBSnapshotAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
@@ -697,7 +704,7 @@ class DBSnapshotAvailable(Boto3Waiter):
         IncludeShared: bool = None,
         IncludePublic: bool = None,
         DbiResourceId: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbSnapshotAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         .. _https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html:
@@ -895,7 +902,7 @@ class DBSnapshotAvailable(Boto3Waiter):
 
 
 class DBSnapshotCompleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
@@ -907,7 +914,7 @@ class DBSnapshotCompleted(Boto3Waiter):
         IncludeShared: bool = None,
         IncludePublic: bool = None,
         DbiResourceId: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbSnapshotCompletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         .. _https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html:
@@ -1105,7 +1112,7 @@ class DBSnapshotCompleted(Boto3Waiter):
 
 
 class DBSnapshotDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
@@ -1117,7 +1124,7 @@ class DBSnapshotDeleted(Boto3Waiter):
         IncludeShared: bool = None,
         IncludePublic: bool = None,
         DbiResourceId: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbSnapshotDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         .. _https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html:

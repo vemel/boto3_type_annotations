@@ -1,13 +1,18 @@
 "Main interface for dynamodb Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_dynamodb.type_defs import (
+    TableExistsWaitWaiterConfigTypeDef,
+    TableNotExistsWaitWaiterConfigTypeDef,
+)
 
 
 class TableExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, TableName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, TableName: str, WaiterConfig: TableExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`DynamoDB.Client.describe_table` every 20 seconds until a successful state is
         reached. An error is returned after 25 failed checks.
@@ -48,8 +53,10 @@ class TableExists(Boto3Waiter):
 
 
 class TableNotExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, TableName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, TableName: str, WaiterConfig: TableNotExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`DynamoDB.Client.describe_table` every 20 seconds until a successful state is
         reached. An error is returned after 25 failed checks.

@@ -11,7 +11,7 @@ from mypy_boto3_macie.type_defs import (
 
 
 class ListMemberAccounts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMemberAccountsPaginatePaginationConfigTypeDef = None
     ) -> ListMemberAccountsPaginateResponseTypeDef:
@@ -92,7 +92,7 @@ class ListMemberAccounts(Boto3Paginator):
 
 
 class ListS3Resources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         memberAccountId: str = None,

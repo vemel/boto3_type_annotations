@@ -1686,7 +1686,7 @@ class ClientListTagsForDomainResponseTagListTypeDef(
 
       The key (name) of a tag.
 
-      Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+      Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
       Constraints: Each key can be 1-128 characters long.
 
@@ -1694,7 +1694,7 @@ class ClientListTagsForDomainResponseTagListTypeDef(
 
       The value of a tag.
 
-      Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+      Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
       Constraints: Each value can be 0-256 characters long.
     """
@@ -1725,7 +1725,7 @@ class ClientListTagsForDomainResponseTypeDef(_ClientListTagsForDomainResponseTyp
 
           The key (name) of a tag.
 
-          Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+          Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
           Constraints: Each key can be 1-128 characters long.
 
@@ -1733,7 +1733,7 @@ class ClientListTagsForDomainResponseTypeDef(_ClientListTagsForDomainResponseTyp
 
           The value of a tag.
 
-          Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+          Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
           Constraints: Each value can be 0-256 characters long.
     """
@@ -3624,7 +3624,7 @@ class ClientUpdateTagsForDomainTagsToUpdateTypeDef(
 
       The key (name) of a tag.
 
-      Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+      Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
       Constraints: Each key can be 1-128 characters long.
 
@@ -3632,7 +3632,7 @@ class ClientUpdateTagsForDomainTagsToUpdateTypeDef(
 
       The value of a tag.
 
-      Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+      Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
       Constraints: Each value can be 0-256 characters long.
     """

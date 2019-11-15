@@ -1,23 +1,25 @@
 "Main interface for docdb Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_docdb.type_defs import (
     DbInstanceAvailableWaitFiltersTypeDef,
+    DbInstanceAvailableWaitWaiterConfigTypeDef,
     DbInstanceDeletedWaitFiltersTypeDef,
+    DbInstanceDeletedWaitWaiterConfigTypeDef,
 )
 
 
 class DBInstanceAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
         Filters: List[DbInstanceAvailableWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbInstanceAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DocDB.Client.describe_db_instances` every 30 seconds until a successful state is
@@ -122,14 +124,14 @@ class DBInstanceAvailable(Boto3Waiter):
 
 
 class DBInstanceDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         DBInstanceIdentifier: str = None,
         Filters: List[DbInstanceDeletedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DbInstanceDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DocDB.Client.describe_db_instances` every 30 seconds until a successful state is

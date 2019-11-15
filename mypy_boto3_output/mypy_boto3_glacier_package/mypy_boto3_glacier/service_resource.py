@@ -4,18 +4,21 @@ from __future__ import annotations
 from typing import Any, Dict, IO, List, Union
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_glacier.service_resource as service_resource_scope
 from mypy_boto3_glacier.type_defs import (
     JobGetOutputResponseTypeDef,
     MultipartUploadCompleteResponseTypeDef,
     MultipartUploadPartsResponseTypeDef,
     MultipartUploadUploadPartResponseTypeDef,
+    NotificationSetvaultNotificationConfigTypeDef,
     VaultCreateResponseTypeDef,
 )
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Account(self, id: str) -> service_resource_scope.Account:
         """
         Creates a Account resource.::
@@ -29,7 +32,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Account resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Archive(
         self, account_id: str, vault_name: str, id: str
     ) -> service_resource_scope.Archive:
@@ -49,7 +52,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Archive resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Job(
         self, account_id: str, vault_name: str, id: str
     ) -> service_resource_scope.Job:
@@ -69,7 +72,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Job resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def MultipartUpload(
         self, account_id: str, vault_name: str, id: str
     ) -> service_resource_scope.MultipartUpload:
@@ -89,7 +92,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A MultipartUpload resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Notification(
         self, account_id: str, vault_name: str
     ) -> service_resource_scope.Notification:
@@ -107,7 +110,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Notification resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Vault(self, account_id: str, name: str) -> service_resource_scope.Vault:
         """
         Creates a Vault resource.::
@@ -123,7 +126,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Vault resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vault(self, vaultName: str) -> service_resource_scope.Vault:
         """
         This operation creates a new vault with the specified name. The name of the vault must be unique
@@ -167,7 +170,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Vault resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -182,7 +185,7 @@ class ServiceResource(Boto3ServiceResource):
 class Account(Boto3ServiceResource):
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vault(self, vaultName: str) -> service_resource_scope.Vault:
         """
         This operation creates a new vault with the specified name. The name of the vault must be unique
@@ -226,7 +229,7 @@ class Account(Boto3ServiceResource):
         :returns: Vault resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -243,7 +246,7 @@ class Archive(Boto3ServiceResource):
     vault_name: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         This operation deletes an archive from a vault. Subsequent requests to initiate a retrieval of this
@@ -281,7 +284,7 @@ class Archive(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -292,7 +295,7 @@ class Archive(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_archive_retrieval(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.Job:
@@ -341,7 +344,7 @@ class Job(Boto3ServiceResource):
     vault_name: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -352,7 +355,7 @@ class Job(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_output(self, range: str = None) -> JobGetOutputResponseTypeDef:
         """
         This operation downloads the output of the job you initiated using  InitiateJob . Depending on the
@@ -505,7 +508,7 @@ class Job(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.describe_job` to update the attributes of the Job resource. Note
@@ -521,7 +524,7 @@ class Job(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.describe_job` to update the attributes of the Job resource. Note
@@ -548,7 +551,7 @@ class MultipartUpload(Boto3ServiceResource):
     vault_name: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort(self, *args: Any, **kwargs: Any) -> None:
         """
         This operation aborts a multipart upload identified by the upload ID.
@@ -584,7 +587,7 @@ class MultipartUpload(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete(
         self, archiveSize: str = None, checksum: str = None
     ) -> MultipartUploadCompleteResponseTypeDef:
@@ -703,7 +706,7 @@ class MultipartUpload(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -714,7 +717,7 @@ class MultipartUpload(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def parts(
         self, marker: str = None, limit: str = None
     ) -> MultipartUploadPartsResponseTypeDef:
@@ -840,7 +843,7 @@ class MultipartUpload(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_part(
         self, checksum: str = None, range: str = None, body: Union[bytes, IO] = None
     ) -> MultipartUploadUploadPartResponseTypeDef:
@@ -946,7 +949,7 @@ class Notification(Boto3ServiceResource):
     account_id: str
     vault_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         This operation deletes the notification configuration set for a vault. The operation is eventually
@@ -977,7 +980,7 @@ class Notification(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -988,7 +991,7 @@ class Notification(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.get_vault_notifications` to update the attributes of the
@@ -1005,7 +1008,7 @@ class Notification(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.get_vault_notifications` to update the attributes of the
@@ -1022,8 +1025,11 @@ class Notification(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def set(self, vaultNotificationConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set(
+        self,
+        vaultNotificationConfig: NotificationSetvaultNotificationConfigTypeDef = None,
+    ) -> None:
         """
         This operation configures notifications that will be sent when specific events happen to a vault.
         By default, you don't get any notifications.
@@ -1099,7 +1105,7 @@ class Vault(Boto3ServiceResource):
     account_id: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(self, *args: Any, **kwargs: Any) -> VaultCreateResponseTypeDef:
         """
         This operation creates a new vault with the specified name. The name of the vault must be unique
@@ -1155,7 +1161,7 @@ class Vault(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         This operation deletes a vault. Amazon S3 Glacier will delete a vault only if there are no archives
@@ -1192,7 +1198,7 @@ class Vault(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1203,7 +1209,7 @@ class Vault(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_inventory_retrieval(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.Job:
@@ -1225,7 +1231,7 @@ class Vault(Boto3ServiceResource):
         :returns: Job resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_multipart_upload(
         self, archiveDescription: str = None, partSize: str = None
     ) -> service_resource_scope.MultipartUpload:
@@ -1294,7 +1300,7 @@ class Vault(Boto3ServiceResource):
         :returns: MultipartUpload resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.describe_vault` to update the attributes of the Vault resource. Note
@@ -1310,7 +1316,7 @@ class Vault(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`Glacier.Client.describe_vault` to update the attributes of the Vault resource. Note
@@ -1326,7 +1332,7 @@ class Vault(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_archive(
         self,
         archiveDescription: str = None,
@@ -1414,8 +1420,7 @@ class vaults(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Vault]:
         """
         Creates an iterable of all Vault resources in the collection.
@@ -1432,8 +1437,7 @@ class vaults(ResourceCollection):
         :returns: A list of Vault resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, marker: str = None, limit: str = None
     ) -> List[service_resource_scope.Vault]:
@@ -1467,8 +1471,7 @@ class vaults(ResourceCollection):
         :returns: A list of Vault resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1477,8 +1480,7 @@ class vaults(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Vault]:
         """
         Creates an iterable up to a specified amount of Vault resources in the collection.
@@ -1499,8 +1501,7 @@ class vaults(ResourceCollection):
         :returns: A list of Vault resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Vault]:
         """
         Creates an iterable of all Vault resources in the collection, but limits the number of items
@@ -1522,8 +1523,7 @@ class vaults(ResourceCollection):
         :returns: A list of Vault resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1558,8 +1558,7 @@ class completed_jobs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection.
@@ -1576,8 +1575,7 @@ class completed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, limit: str = None, marker: str = None, statuscode: str = None
     ) -> List[service_resource_scope.Job]:
@@ -1620,8 +1618,7 @@ class completed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1630,8 +1627,7 @@ class completed_jobs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable up to a specified amount of Job resources in the collection.
@@ -1652,8 +1648,7 @@ class completed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection, but limits the number of items returned
@@ -1675,8 +1670,7 @@ class completed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1711,8 +1705,7 @@ class failed_jobs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection.
@@ -1729,8 +1722,7 @@ class failed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, limit: str = None, marker: str = None, completed: str = None
     ) -> List[service_resource_scope.Job]:
@@ -1771,8 +1763,7 @@ class failed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1781,8 +1772,7 @@ class failed_jobs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable up to a specified amount of Job resources in the collection.
@@ -1803,8 +1793,7 @@ class failed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection, but limits the number of items returned
@@ -1826,8 +1815,7 @@ class failed_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1862,8 +1850,7 @@ class jobs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection.
@@ -1880,8 +1867,7 @@ class jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         limit: str = None,
@@ -1933,8 +1919,7 @@ class jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1943,8 +1928,7 @@ class jobs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable up to a specified amount of Job resources in the collection.
@@ -1965,8 +1949,7 @@ class jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection, but limits the number of items returned
@@ -1988,8 +1971,7 @@ class jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -2024,8 +2006,7 @@ class jobs_in_progress(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection.
@@ -2042,8 +2023,7 @@ class jobs_in_progress(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, limit: str = None, marker: str = None, completed: str = None
     ) -> List[service_resource_scope.Job]:
@@ -2084,8 +2064,7 @@ class jobs_in_progress(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2094,8 +2073,7 @@ class jobs_in_progress(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable up to a specified amount of Job resources in the collection.
@@ -2116,8 +2094,7 @@ class jobs_in_progress(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection, but limits the number of items returned
@@ -2139,8 +2116,7 @@ class jobs_in_progress(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -2175,8 +2151,7 @@ class multipart_uplaods(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection.
@@ -2193,8 +2168,7 @@ class multipart_uplaods(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, marker: str = None, limit: str = None
     ) -> List[service_resource_scope.MultipartUpload]:
@@ -2230,8 +2204,7 @@ class multipart_uplaods(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2240,8 +2213,7 @@ class multipart_uplaods(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable up to a specified amount of MultipartUpload resources in the collection.
@@ -2262,8 +2234,7 @@ class multipart_uplaods(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection, but limits the number of
@@ -2285,8 +2256,7 @@ class multipart_uplaods(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -2321,8 +2291,7 @@ class multipart_uploads(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection.
@@ -2339,8 +2308,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, marker: str = None, limit: str = None
     ) -> List[service_resource_scope.MultipartUpload]:
@@ -2376,8 +2344,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2386,8 +2353,7 @@ class multipart_uploads(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable up to a specified amount of MultipartUpload resources in the collection.
@@ -2408,8 +2374,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.MultipartUpload]:
         """
         Creates an iterable of all MultipartUpload resources in the collection, but limits the number of
@@ -2431,8 +2396,7 @@ class multipart_uploads(ResourceCollection):
         :returns: A list of MultipartUpload resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -2467,8 +2431,7 @@ class succeeded_jobs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection.
@@ -2485,8 +2448,7 @@ class succeeded_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, limit: str = None, marker: str = None, completed: str = None
     ) -> List[service_resource_scope.Job]:
@@ -2527,8 +2489,7 @@ class succeeded_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2537,8 +2498,7 @@ class succeeded_jobs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable up to a specified amount of Job resources in the collection.
@@ -2559,8 +2519,7 @@ class succeeded_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Job]:
         """
         Creates an iterable of all Job resources in the collection, but limits the number of items returned
@@ -2582,8 +2541,7 @@ class succeeded_jobs(ResourceCollection):
         :returns: A list of Job resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

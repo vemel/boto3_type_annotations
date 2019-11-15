@@ -1193,6 +1193,31 @@ class ClientListUsersResponseTypeDef(_ClientListUsersResponseTypeDef):
     """
 
 
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    Creates a key-value pair for a specific resource. Tags are metadata that you can use to search
+    for and group a resource for various purposes. You can apply tags to servers, users, and roles.
+    A tag key can take more than one value. For example, to group servers for accounting purposes,
+    you might create a tag called ``Group`` and assign the values ``Research`` and ``Accounting``
+    to that group.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The name assigned to the tag that you create.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      This property contains one or more values that you assigned to the key name you create.
+    """
+
+
 _ClientTestIdentityProviderResponseTypeDef = TypedDict(
     "_ClientTestIdentityProviderResponseTypeDef",
     {"Response": str, "StatusCode": int, "Message": str, "Url": str},

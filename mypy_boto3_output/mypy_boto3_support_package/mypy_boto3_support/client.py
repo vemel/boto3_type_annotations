@@ -24,7 +24,7 @@ from mypy_boto3_support.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_attachments_to_set(
         self,
         attachments: List[ClientAddAttachmentsToSetattachmentsTypeDef],
@@ -110,7 +110,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_communication_to_case(
         self,
         communicationBody: str,
@@ -188,7 +188,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -205,7 +205,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_case(
         self,
         subject: str,
@@ -374,7 +374,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attachment(
         self, attachmentId: str
     ) -> ClientDescribeAttachmentResponseTypeDef:
@@ -432,7 +432,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cases(
         self,
         caseIdList: List[str] = None,
@@ -743,7 +743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_communications(
         self,
         caseId: str,
@@ -888,7 +888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_services(
         self, serviceCodeList: List[str] = None, language: str = None
     ) -> ClientDescribeServicesResponseTypeDef:
@@ -997,7 +997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_severity_levels(self, language: str = None) -> Dict[str, Any]:
         """
         Returns the list of severity levels that you can assign to an AWS Support case. The severity level
@@ -1086,7 +1086,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trusted_advisor_check_refresh_statuses(
         self, checkIds: List[str]
     ) -> ClientDescribeTrustedAdvisorCheckRefreshStatusesResponseTypeDef:
@@ -1176,7 +1176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trusted_advisor_check_result(
         self, checkId: str, language: str = None
     ) -> ClientDescribeTrustedAdvisorCheckResultResponseTypeDef:
@@ -1363,7 +1363,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trusted_advisor_check_summaries(
         self, checkIds: List[str]
     ) -> ClientDescribeTrustedAdvisorCheckSummariesResponseTypeDef:
@@ -1498,7 +1498,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trusted_advisor_checks(
         self, language: str
     ) -> ClientDescribeTrustedAdvisorChecksResponseTypeDef:
@@ -1587,7 +1587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1616,7 +1616,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1637,7 +1637,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1650,7 +1650,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def refresh_trusted_advisor_check(
         self, checkId: str
     ) -> ClientRefreshTrustedAdvisorCheckResponseTypeDef:
@@ -1748,7 +1748,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resolve_case(self, caseId: str = None) -> ClientResolveCaseResponseTypeDef:
         """
         Takes a ``caseId`` and returns the initial state of the case along with the state of the case after

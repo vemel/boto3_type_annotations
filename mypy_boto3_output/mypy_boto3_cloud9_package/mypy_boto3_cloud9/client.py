@@ -17,7 +17,7 @@ from mypy_boto3_cloud9.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -34,7 +34,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_environment_ec2(
         self,
         name: str,
@@ -129,7 +129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_environment_membership(
         self, environmentId: str, userArn: str, permissions: str
     ) -> ClientCreateEnvironmentMembershipResponseTypeDef:
@@ -221,7 +221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_environment(self, environmentId: str) -> Dict[str, Any]:
         """
         Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance is connected to the
@@ -254,7 +254,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_environment_membership(
         self, environmentId: str, userArn: str
     ) -> Dict[str, Any]:
@@ -294,7 +294,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_memberships(
         self,
         userArn: str = None,
@@ -428,7 +428,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_status(
         self, environmentId: str
     ) -> ClientDescribeEnvironmentStatusResponseTypeDef:
@@ -488,7 +488,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environments(
         self, environmentIds: List[str]
     ) -> ClientDescribeEnvironmentsResponseTypeDef:
@@ -607,7 +607,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -636,7 +636,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -657,7 +657,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -670,7 +670,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_environments(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListEnvironmentsResponseTypeDef:
@@ -732,7 +732,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_environment(
         self, environmentId: str, name: str = None, description: str = None
     ) -> Dict[str, Any]:
@@ -778,7 +778,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_environment_membership(
         self, environmentId: str, userArn: str, permissions: str
     ) -> ClientUpdateEnvironmentMembershipResponseTypeDef:

@@ -66,7 +66,7 @@ from mypy_boto3_elasticache.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceName: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
     ) -> ClientAddTagsToResourceResponseTypeDef:
@@ -168,7 +168,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_cache_security_group_ingress(
         self,
         CacheSecurityGroupName: str,
@@ -281,7 +281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_apply_update_action(
         self,
         ServiceUpdateName: str,
@@ -412,7 +412,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_stop_update_action(
         self,
         ServiceUpdateName: str,
@@ -544,7 +544,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -561,7 +561,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_migration(
         self, ReplicationGroupId: str, Force: bool = None
     ) -> ClientCompleteMigrationResponseTypeDef:
@@ -921,7 +921,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_snapshot(
         self,
         SourceSnapshotName: str,
@@ -951,19 +951,19 @@ class Client(BaseClient):
          **Error Messages**
 
         * **Error Message:** The S3 bucket %s is outside of the region.  **Solution:** Create an Amazon S3
-        bucket in the same region as your snapshot. For more information, see `Step 1: Create an Amazon S3
-        Bucket
+        bucket in the same region as your snapshot. For more information, see `Step 1\\: Create an Amazon
+        S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket>`__
         in the ElastiCache User Guide.
 
         * **Error Message:** The S3 bucket %s does not exist.  **Solution:** Create an Amazon S3 bucket in
-        the same region as your snapshot. For more information, see `Step 1: Create an Amazon S3 Bucket
+        the same region as your snapshot. For more information, see `Step 1\\: Create an Amazon S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket>`__
         in the ElastiCache User Guide.
 
         * **Error Message:** The S3 bucket %s is not owned by the authenticated user.  **Solution:** Create
-        an Amazon S3 bucket in the same region as your snapshot. For more information, see `Step 1: Create
-        an Amazon S3 Bucket
+        an Amazon S3 bucket in the same region as your snapshot. For more information, see `Step 1\\:
+        Create an Amazon S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket>`__
         in the ElastiCache User Guide.
 
@@ -975,19 +975,19 @@ class Client(BaseClient):
         create a new Amazon S3 bucket and use this same value for ``TargetSnapshotName`` .
 
         * **Error Message:** ElastiCache has not been granted READ permissions %s on the S3 Bucket.
-        **Solution:** Add List and Read permissions on the bucket. For more information, see `Step 2: Grant
-        ElastiCache Access to Your Amazon S3 Bucket
+        **Solution:** Add List and Read permissions on the bucket. For more information, see `Step 2\\:
+        Grant ElastiCache Access to Your Amazon S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access>`__
         in the ElastiCache User Guide.
 
         * **Error Message:** ElastiCache has not been granted WRITE permissions %s on the S3 Bucket.
-        **Solution:** Add Upload/Delete permissions on the bucket. For more information, see `Step 2: Grant
-        ElastiCache Access to Your Amazon S3 Bucket
+        **Solution:** Add Upload/Delete permissions on the bucket. For more information, see `Step 2\\:
+        Grant ElastiCache Access to Your Amazon S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access>`__
         in the ElastiCache User Guide.
 
         * **Error Message:** ElastiCache has not been granted READ_ACP permissions %s on the S3 Bucket.
-        **Solution:** Add View Permissions on the bucket. For more information, see `Step 2: Grant
+        **Solution:** Add View Permissions on the bucket. For more information, see `Step 2\\: Grant
         ElastiCache Access to Your Amazon S3 Bucket
         <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access>`__
         in the ElastiCache User Guide.
@@ -1022,7 +1022,7 @@ class Client(BaseClient):
           exporting a snapshot for external access.
 
           When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed
-          permissions to this S3 bucket. For more information, see `Step 2: Grant ElastiCache Access to
+          permissions to this S3 bucket. For more information, see `Step 2\\: Grant ElastiCache Access to
           Your Amazon S3 Bucket
           <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access>`__
           in the *Amazon ElastiCache User Guide* .
@@ -1351,7 +1351,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cache_cluster(
         self,
         CacheClusterId: str,
@@ -1509,7 +1509,7 @@ class Client(BaseClient):
           be between 1 and 20.
 
           If you need more than 20 nodes for your Memcached cluster, please fill out the ElastiCache Limit
-          Increase Request form at `http://aws.amazon.com/contact-us/elasticache-node-limit-request/
+          Increase Request form at `http\\://aws.amazon.com/contact-us/elasticache-node-limit-request/
           <http://aws.amazon.com/contact-us/elasticache-node-limit-request/>`__ .
 
         :type CacheNodeType: string
@@ -2230,7 +2230,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cache_parameter_group(
         self,
         CacheParameterGroupName: str,
@@ -2323,7 +2323,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cache_security_group(
         self, CacheSecurityGroupName: str, Description: str
     ) -> ClientCreateCacheSecurityGroupResponseTypeDef:
@@ -2430,7 +2430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cache_subnet_group(
         self,
         CacheSubnetGroupName: str,
@@ -2546,7 +2546,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_replication_group(
         self,
         ReplicationGroupId: str,
@@ -3431,7 +3431,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self,
         SnapshotName: str,
@@ -3794,7 +3794,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decrease_replica_count(
         self,
         ReplicationGroupId: str,
@@ -4248,7 +4248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cache_cluster(
         self, CacheClusterId: str, FinalSnapshotIdentifier: str = None
     ) -> ClientDeleteCacheClusterResponseTypeDef:
@@ -4764,7 +4764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cache_parameter_group(self, CacheParameterGroupName: str) -> None:
         """
         Deletes the specified cache parameter group. You cannot delete a cache parameter group if it is
@@ -4791,7 +4791,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cache_security_group(self, CacheSecurityGroupName: str) -> None:
         """
         Deletes a cache security group.
@@ -4821,7 +4821,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cache_subnet_group(self, CacheSubnetGroupName: str) -> None:
         """
         Deletes a cache subnet group.
@@ -4849,7 +4849,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_replication_group(
         self,
         ReplicationGroupId: str,
@@ -5229,7 +5229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot(self, SnapshotName: str) -> ClientDeleteSnapshotResponseTypeDef:
         """
         Deletes an existing snapshot. When you receive a successful response from this operation,
@@ -5568,7 +5568,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_clusters(
         self,
         CacheClusterId: str = None,
@@ -6137,7 +6137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_engine_versions(
         self,
         Engine: str = None,
@@ -6279,7 +6279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_parameter_groups(
         self,
         CacheParameterGroupName: str = None,
@@ -6378,7 +6378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_parameters(
         self,
         CacheParameterGroupName: str,
@@ -6595,7 +6595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_security_groups(
         self,
         CacheSecurityGroupName: str = None,
@@ -6724,7 +6724,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache_subnet_groups(
         self,
         CacheSubnetGroupName: str = None,
@@ -6853,7 +6853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_engine_default_parameters(
         self, CacheParameterGroupFamily: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeEngineDefaultParametersResponseTypeDef:
@@ -7078,7 +7078,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         SourceIdentifier: str = None,
@@ -7220,7 +7220,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_groups(
         self, ReplicationGroupId: str = None, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeReplicationGroupsResponseTypeDef:
@@ -7615,7 +7615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_cache_nodes(
         self,
         ReservedCacheNodeId: str = None,
@@ -7914,7 +7914,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_cache_nodes_offerings(
         self,
         ReservedCacheNodesOfferingId: str = None,
@@ -8178,7 +8178,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_service_updates(
         self,
         ServiceUpdateName: str = None,
@@ -8326,7 +8326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshots(
         self,
         ReplicationGroupId: str = None,
@@ -8741,7 +8741,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_update_actions(
         self,
         ServiceUpdateName: str = None,
@@ -9101,7 +9101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -9130,7 +9130,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -9151,7 +9151,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -9164,7 +9164,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def increase_replica_count(
         self,
         ReplicationGroupId: str,
@@ -9596,7 +9596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_allowed_node_type_modifications(
         self, CacheClusterId: str = None, ReplicationGroupId: str = None
     ) -> ClientListAllowedNodeTypeModificationsResponseTypeDef:
@@ -9683,7 +9683,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceName: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -9758,7 +9758,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cache_cluster(
         self,
         CacheClusterId: str,
@@ -10596,7 +10596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cache_parameter_group(
         self,
         CacheParameterGroupName: str,
@@ -10673,7 +10673,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_cache_subnet_group(
         self,
         CacheSubnetGroupName: str,
@@ -10786,7 +10786,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_replication_group(
         self,
         ReplicationGroupId: str,
@@ -11389,7 +11389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_replication_group_shard_configuration(
         self,
         ReplicationGroupId: str,
@@ -11832,7 +11832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_reserved_cache_nodes_offering(
         self,
         ReservedCacheNodesOfferingId: str,
@@ -12031,7 +12031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_cache_cluster(
         self, CacheClusterId: str, CacheNodeIdsToReboot: List[str]
     ) -> ClientRebootCacheClusterResponseTypeDef:
@@ -12551,7 +12551,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceName: str, TagKeys: List[str]
     ) -> ClientRemoveTagsFromResourceResponseTypeDef:
@@ -12628,7 +12628,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_cache_parameter_group(
         self,
         CacheParameterGroupName: str,
@@ -12717,7 +12717,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_cache_security_group_ingress(
         self,
         CacheSecurityGroupName: str,
@@ -12824,7 +12824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_migration(
         self,
         ReplicationGroupId: str,
@@ -13204,7 +13204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_failover(
         self, ReplicationGroupId: str, NodeGroupId: str
     ) -> ClientTestFailoverResponseTypeDef:

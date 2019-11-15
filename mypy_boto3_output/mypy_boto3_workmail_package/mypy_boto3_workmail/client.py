@@ -27,7 +27,7 @@ from mypy_boto3_workmail.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_delegate_to_resource(
         self, OrganizationId: str, ResourceId: str, EntityId: str
     ) -> Dict[str, Any]:
@@ -73,7 +73,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_member_to_group(
         self, OrganizationId: str, GroupId: str, MemberId: str
     ) -> Dict[str, Any]:
@@ -119,7 +119,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -136,7 +136,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_alias(
         self, OrganizationId: str, EntityId: str, Alias: str
     ) -> Dict[str, Any]:
@@ -182,7 +182,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self, OrganizationId: str, Name: str
     ) -> ClientCreateGroupResponseTypeDef:
@@ -229,7 +229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource(
         self, OrganizationId: str, Name: str, Type: str
     ) -> ClientCreateResourceResponseTypeDef:
@@ -282,7 +282,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self, OrganizationId: str, Name: str, DisplayName: str, Password: str
     ) -> ClientCreateUserResponseTypeDef:
@@ -342,7 +342,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_alias(
         self, OrganizationId: str, EntityId: str, Alias: str
     ) -> Dict[str, Any]:
@@ -389,7 +389,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(self, OrganizationId: str, GroupId: str) -> Dict[str, Any]:
         """
         Deletes a group from Amazon WorkMail.
@@ -427,7 +427,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_mailbox_permissions(
         self, OrganizationId: str, EntityId: str, GranteeId: str
     ) -> Dict[str, Any]:
@@ -473,7 +473,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource(self, OrganizationId: str, ResourceId: str) -> Dict[str, Any]:
         """
         Deletes the specified resource.
@@ -511,7 +511,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, OrganizationId: str, UserId: str) -> Dict[str, Any]:
         """
         Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the
@@ -553,7 +553,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_from_work_mail(
         self, OrganizationId: str, EntityId: str
     ) -> Dict[str, Any]:
@@ -595,7 +595,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_group(
         self, OrganizationId: str, GroupId: str
     ) -> ClientDescribeGroupResponseTypeDef:
@@ -668,7 +668,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_organization(
         self, OrganizationId: str
     ) -> ClientDescribeOrganizationResponseTypeDef:
@@ -746,7 +746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource(
         self, OrganizationId: str, ResourceId: str
     ) -> ClientDescribeResourceResponseTypeDef:
@@ -846,7 +846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user(
         self, OrganizationId: str, UserId: str
     ) -> ClientDescribeUserResponseTypeDef:
@@ -935,7 +935,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_delegate_from_resource(
         self, OrganizationId: str, ResourceId: str, EntityId: str
     ) -> Dict[str, Any]:
@@ -981,7 +981,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_member_from_group(
         self, OrganizationId: str, GroupId: str, MemberId: str
     ) -> Dict[str, Any]:
@@ -1027,7 +1027,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1056,7 +1056,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_mailbox_details(
         self, OrganizationId: str, UserId: str
     ) -> ClientGetMailboxDetailsResponseTypeDef:
@@ -1109,7 +1109,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1130,7 +1130,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1143,7 +1143,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aliases(
         self,
         OrganizationId: str,
@@ -1216,7 +1216,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_members(
         self,
         OrganizationId: str,
@@ -1322,7 +1322,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self, OrganizationId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListGroupsResponseTypeDef:
@@ -1418,7 +1418,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_mailbox_permissions(
         self,
         OrganizationId: str,
@@ -1519,7 +1519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_organizations(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListOrganizationsResponseTypeDef:
@@ -1601,7 +1601,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_delegates(
         self,
         OrganizationId: str,
@@ -1690,7 +1690,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resources(
         self, OrganizationId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListResourcesResponseTypeDef:
@@ -1791,7 +1791,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self, OrganizationId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListUsersResponseTypeDef:
@@ -1897,7 +1897,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_mailbox_permissions(
         self,
         OrganizationId: str,
@@ -1961,7 +1961,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_to_work_mail(
         self, OrganizationId: str, EntityId: str, Email: str
     ) -> Dict[str, Any]:
@@ -2015,7 +2015,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_password(
         self, OrganizationId: str, UserId: str, Password: str
     ) -> Dict[str, Any]:
@@ -2061,7 +2061,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_mailbox_quota(
         self, OrganizationId: str, UserId: str, MailboxQuota: int
     ) -> Dict[str, Any]:
@@ -2107,7 +2107,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_primary_email_address(
         self, OrganizationId: str, EntityId: str, Email: str
     ) -> Dict[str, Any]:
@@ -2155,7 +2155,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resource(
         self,
         OrganizationId: str,

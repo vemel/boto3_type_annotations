@@ -34,7 +34,7 @@ from mypy_boto3_snowball.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -51,7 +51,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_cluster(self, ClusterId: str) -> Dict[str, Any]:
         """
         Cancels a cluster job. You can only cancel a cluster job while it's in the ``AwaitingQuorum``
@@ -85,7 +85,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_job(self, JobId: str) -> Dict[str, Any]:
         """
         Cancels the specified job. You can only cancel a job before its ``JobState`` value changes to
@@ -120,7 +120,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_address(
         self, Address: ClientCreateAddressAddressTypeDef
     ) -> ClientCreateAddressResponseTypeDef:
@@ -236,7 +236,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self,
         JobType: str,
@@ -496,7 +496,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_job(
         self,
         JobType: str = None,
@@ -780,7 +780,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_address(self, AddressId: str) -> ClientDescribeAddressResponseTypeDef:
         """
         Takes an ``AddressId`` and returns specific details about that address in the form of an
@@ -893,7 +893,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_addresses(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeAddressesResponseTypeDef:
@@ -1032,7 +1032,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cluster(self, ClusterId: str) -> ClientDescribeClusterResponseTypeDef:
         """
         Returns information about a specific cluster including shipping information, cluster status, and
@@ -1295,7 +1295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job(self, JobId: str) -> ClientDescribeJobResponseTypeDef:
         """
         Returns information about a specific job including shipping information, job status, and other
@@ -2032,7 +2032,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2061,7 +2061,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_manifest(self, JobId: str) -> ClientGetJobManifestResponseTypeDef:
         """
         Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified
@@ -2116,7 +2116,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_unlock_code(self, JobId: str) -> ClientGetJobUnlockCodeResponseTypeDef:
         """
         Returns the ``UnlockCode`` code value for the specified job. A particular ``UnlockCode`` value can
@@ -2166,7 +2166,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2187,7 +2187,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_snowball_usage(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetSnowballUsageResponseTypeDef:
@@ -2232,7 +2232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_software_updates(
         self, JobId: str
     ) -> ClientGetSoftwareUpdatesResponseTypeDef:
@@ -2277,7 +2277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2290,7 +2290,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_cluster_jobs(
         self, ClusterId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListClusterJobsResponseTypeDef:
@@ -2408,7 +2408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_clusters(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListClustersResponseTypeDef:
@@ -2496,7 +2496,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_compatible_images(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListCompatibleImagesResponseTypeDef:
@@ -2575,7 +2575,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListJobsResponseTypeDef:
@@ -2688,7 +2688,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_cluster(
         self,
         ClusterId: str,
@@ -2911,7 +2911,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_job(
         self,
         JobId: str,

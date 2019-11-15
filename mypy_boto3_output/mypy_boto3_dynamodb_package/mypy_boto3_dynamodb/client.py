@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_dynamodb.type_defs import (
     ClientBatchGetItemRequestItemsTypeDef,
     ClientBatchGetItemResponseTypeDef,
@@ -65,6 +64,7 @@ from mypy_boto3_dynamodb.type_defs import (
     ClientScanExpressionAttributeValuesTypeDef,
     ClientScanResponseTypeDef,
     ClientScanScanFilterTypeDef,
+    ClientTagResourceTagsTypeDef,
     ClientTransactGetItemsResponseTypeDef,
     ClientTransactGetItemsTransactItemsTypeDef,
     ClientTransactWriteItemsResponseTypeDef,
@@ -94,7 +94,7 @@ from mypy_boto3_dynamodb.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_item(
         self,
         RequestItems: Dict[str, ClientBatchGetItemRequestItemsTypeDef],
@@ -1028,7 +1028,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_write_item(
         self,
         RequestItems: Dict[str, List[ClientBatchWriteItemRequestItemsTypeDef]],
@@ -2149,7 +2149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -2166,7 +2166,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_backup(
         self, TableName: str, BackupName: str
     ) -> ClientCreateBackupResponseTypeDef:
@@ -2286,7 +2286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_global_table(
         self,
         GlobalTableName: str,
@@ -2422,7 +2422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_table(
         self,
         AttributeDefinitions: List[ClientCreateTableAttributeDefinitionsTypeDef],
@@ -3822,7 +3822,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup(self, BackupArn: str) -> ClientDeleteBackupResponseTypeDef:
         """
         Deletes an existing backup of a table.
@@ -4380,7 +4380,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_item(
         self,
         TableName: str,
@@ -4938,7 +4938,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -5746,7 +5746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_table(self, TableName: str) -> ClientDeleteTableResponseTypeDef:
         """
         The ``DeleteTable`` operation deletes a table and all of its items. After a ``DeleteTable``
@@ -6547,7 +6547,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_backup(self, BackupArn: str) -> ClientDescribeBackupResponseTypeDef:
         """
         Describes an existing backup of a table.
@@ -7105,7 +7105,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_continuous_backups(
         self, TableName: str
     ) -> ClientDescribeContinuousBackupsResponseTypeDef:
@@ -7191,7 +7191,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoints(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeEndpointsResponseTypeDef:
@@ -7243,7 +7243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_global_table(
         self, GlobalTableName: str
     ) -> ClientDescribeGlobalTableResponseTypeDef:
@@ -7330,7 +7330,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_global_table_settings(
         self, GlobalTableName: str
     ) -> ClientDescribeGlobalTableSettingsResponseTypeDef:
@@ -7828,7 +7828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_limits(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLimitsResponseTypeDef:
@@ -7939,7 +7939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_table(self, TableName: str) -> ClientDescribeTableResponseTypeDef:
         """
         Returns information about the table, including the current status of the table, when it was
@@ -8731,7 +8731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_time_to_live(
         self, TableName: str
     ) -> ClientDescribeTimeToLiveResponseTypeDef:
@@ -8781,7 +8781,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -8810,7 +8810,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_item(
         self,
         TableName: str,
@@ -9356,7 +9356,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -9377,7 +9377,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -9390,7 +9390,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_backups(
         self,
         TableName: str = None,
@@ -9568,7 +9568,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_global_tables(
         self,
         ExclusiveStartGlobalTableName: str = None,
@@ -9658,7 +9658,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tables(
         self, ExclusiveStartTableName: str = None, Limit: int = None
     ) -> ClientListTablesResponseTypeDef:
@@ -9729,7 +9729,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_of_resource(
         self, ResourceArn: str, NextToken: str = None
     ) -> ClientListTagsOfResourceResponseTypeDef:
@@ -9817,7 +9817,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_item(
         self,
         TableName: str,
@@ -10429,7 +10429,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -11238,7 +11238,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def query(
         self,
         TableName: str,
@@ -11562,7 +11562,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -11823,7 +11823,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -12933,7 +12933,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_table_from_backup(
         self,
         TargetTableName: str,
@@ -14044,7 +14044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_table_to_point_in_time(
         self,
         SourceTableName: str,
@@ -15190,7 +15190,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def scan(
         self,
         TableName: str,
@@ -15452,7 +15452,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -16525,8 +16525,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Associate a set of tags with an Amazon DynamoDB resource. You can then activate these user-defined
         tags so that they appear on the Billing and Cost Management console for cost allocation tracking.
@@ -16589,7 +16591,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def transact_get_items(
         self,
         TransactItems: List[ClientTransactGetItemsTransactItemsTypeDef],
@@ -17107,7 +17109,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def transact_write_items(
         self,
         TransactItems: List[ClientTransactWriteItemsTransactItemsTypeDef],
@@ -18809,8 +18811,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes the association of tags from an Amazon DynamoDB resource. You can call ``UntagResource`` up
         to five times per second, per account.
@@ -18848,7 +18850,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_continuous_backups(
         self,
         TableName: str,
@@ -18946,7 +18948,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_global_table(
         self,
         GlobalTableName: str,
@@ -19093,7 +19095,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_global_table_settings(
         self,
         GlobalTableName: str,
@@ -20017,7 +20019,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_item(
         self,
         TableName: str,
@@ -20795,7 +20797,7 @@ class Client(BaseClient):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -21689,7 +21691,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_table(
         self,
         TableName: str,
@@ -22861,7 +22863,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_time_to_live(
         self,
         TableName: str,

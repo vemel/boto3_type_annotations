@@ -11,7 +11,7 @@ from mypy_boto3_eks.type_defs import (
 
 
 class ListClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListClustersPaginatePaginationConfigTypeDef = None
     ) -> ListClustersPaginateResponseTypeDef:
@@ -82,7 +82,7 @@ class ListClusters(Boto3Paginator):
 
 
 class ListUpdates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         name: str,

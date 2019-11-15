@@ -5,6 +5,8 @@ from datetime import datetime
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_iam.service_resource as service_resource_scope
 from mypy_boto3_iam.type_defs import (
     SamlProviderUpdateResponseTypeDef,
@@ -15,7 +17,7 @@ from mypy_boto3_iam.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AccessKey(self, user_name: str, id: str) -> service_resource_scope.AccessKey:
         """
         Creates a AccessKey resource.::
@@ -31,7 +33,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A AccessKey resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AccessKeyPair(
         self, user_name: str, id: str, secret: str
     ) -> service_resource_scope.AccessKeyPair:
@@ -51,7 +53,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A AccessKeyPair resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AccountPasswordPolicy(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.AccountPasswordPolicy:
@@ -64,7 +66,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A AccountPasswordPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AccountSummary(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.AccountSummary:
@@ -77,7 +79,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A AccountSummary resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AssumeRolePolicy(
         self, role_name: str
     ) -> service_resource_scope.AssumeRolePolicy:
@@ -93,7 +95,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A AssumeRolePolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def CurrentUser(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.CurrentUser:
@@ -106,7 +108,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A CurrentUser resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Group(self, name: str) -> service_resource_scope.Group:
         """
         Creates a Group resource.::
@@ -120,7 +122,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Group resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def GroupPolicy(
         self, group_name: str, name: str
     ) -> service_resource_scope.GroupPolicy:
@@ -138,7 +140,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A GroupPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def InstanceProfile(self, name: str) -> service_resource_scope.InstanceProfile:
         """
         Creates a InstanceProfile resource.::
@@ -152,7 +154,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A InstanceProfile resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def LoginProfile(self, user_name: str) -> service_resource_scope.LoginProfile:
         """
         Creates a LoginProfile resource.::
@@ -166,7 +168,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A LoginProfile resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def MfaDevice(
         self, user_name: str, serial_number: str
     ) -> service_resource_scope.MfaDevice:
@@ -184,7 +186,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A MfaDevice resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Policy(self, policy_arn: str) -> service_resource_scope.Policy:
         """
         Creates a Policy resource.::
@@ -198,7 +200,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Policy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def PolicyVersion(
         self, arn: str, version_id: str
     ) -> service_resource_scope.PolicyVersion:
@@ -216,7 +218,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A PolicyVersion resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Role(self, name: str) -> service_resource_scope.Role:
         """
         Creates a Role resource.::
@@ -230,7 +232,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Role resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def RolePolicy(
         self, role_name: str, name: str
     ) -> service_resource_scope.RolePolicy:
@@ -248,7 +250,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A RolePolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def SamlProvider(self, arn: str) -> service_resource_scope.SamlProvider:
         """
         Creates a SamlProvider resource.::
@@ -262,7 +264,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A SamlProvider resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ServerCertificate(self, name: str) -> service_resource_scope.ServerCertificate:
         """
         Creates a ServerCertificate resource.::
@@ -276,7 +278,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A ServerCertificate resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def SigningCertificate(
         self, user_name: str, id: str
     ) -> service_resource_scope.SigningCertificate:
@@ -294,7 +296,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A SigningCertificate resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def User(self, name: str) -> service_resource_scope.User:
         """
         Creates a User resource.::
@@ -308,7 +310,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A User resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def UserPolicy(
         self, user_name: str, name: str
     ) -> service_resource_scope.UserPolicy:
@@ -326,7 +328,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A UserPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def VirtualMfaDevice(
         self, serial_number: str
     ) -> service_resource_scope.VirtualMfaDevice:
@@ -342,7 +344,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A VirtualMfaDevice resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_password(self, OldPassword: str, NewPassword: str) -> None:
         """
         Changes the password of the IAM user who is calling this operation. The AWS account root user
@@ -376,8 +378,8 @@ class ServiceResource(Boto3ServiceResource):
 
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ that is used to validate this parameter
           is a string of characters. That string can include almost any printable ASCII character from the
-          space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the
-          tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these
+          space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the
+          tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these
           characters are valid in a password. However, many tools, such as the AWS Management Console,
           might restrict the ability to type certain characters because they have special meaning within
           that tool.
@@ -385,7 +387,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_account_alias(self, AccountAlias: str) -> None:
         """
         Creates an alias for your AWS account. For information about using an AWS account alias, see `Using
@@ -413,7 +415,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_account_password_policy(
         self,
         MinimumPasswordLength: int = None,
@@ -545,7 +547,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: AccountPasswordPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self, GroupName: str, Path: str = None
     ) -> List[service_resource_scope.Group]:
@@ -577,8 +579,8 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type GroupName: string
@@ -594,7 +596,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Group resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance_profile(
         self, InstanceProfileName: str, Path: str = None
     ) -> service_resource_scope.InstanceProfile:
@@ -636,15 +638,15 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :rtype: :py:class:`iam.InstanceProfile`
         :returns: InstanceProfile resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self,
         PolicyName: str,
@@ -698,8 +700,8 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyDocument: string
@@ -714,13 +716,13 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type Description: string
         :param Description:
@@ -736,7 +738,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Policy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_role(
         self,
         RoleName: str,
@@ -785,8 +787,8 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type RoleName: string
@@ -810,13 +812,13 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           Upon success, the response includes the same trust policy in JSON format.
 
@@ -887,7 +889,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Role resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_saml_provider(
         self, SAMLMetadataDocument: str, Name: str
     ) -> service_resource_scope.SamlProvider:
@@ -951,7 +953,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: SamlProvider resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_server_certificate(
         self,
         ServerCertificateName: str,
@@ -1014,8 +1016,8 @@ class ServiceResource(Boto3ServiceResource):
           This parameter is optional. If it is not included, it defaults to a slash (/). This parameter
           allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string of characters
           consisting of either a forward slash (/) by itself or a string that must begin and end with
-          forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the
-          DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased
+          forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the
+          DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased
           letters.
 
           .. note::
@@ -1042,13 +1044,13 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type PrivateKey: string
         :param PrivateKey: **[REQUIRED]**
@@ -1058,13 +1060,13 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type CertificateChain: string
         :param CertificateChain:
@@ -1075,19 +1077,19 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: :py:class:`iam.ServerCertificate`
         :returns: ServerCertificate resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_signing_certificate(
         self, CertificateBody: str, UserName: str = None
     ) -> service_resource_scope.SigningCertificate:
@@ -1138,19 +1140,19 @@ class ServiceResource(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: :py:class:`iam.SigningCertificate`
         :returns: SigningCertificate resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         UserName: str,
@@ -1193,8 +1195,8 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type UserName: string
@@ -1252,7 +1254,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: User resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_virtual_mfa_device(
         self, VirtualMFADeviceName: str, Path: str = None
     ) -> service_resource_scope.VirtualMfaDevice:
@@ -1295,8 +1297,8 @@ class ServiceResource(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type VirtualMFADeviceName: string
@@ -1312,7 +1314,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: VirtualMfaDevice resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1331,7 +1333,7 @@ class AccessKey(Boto3ServiceResource):
     user_name: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified access key from Active to Inactive, or vice versa. This
@@ -1357,7 +1359,7 @@ class AccessKey(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified access key from Active to Inactive, or vice versa. This
@@ -1383,7 +1385,7 @@ class AccessKey(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the access key pair associated with the specified IAM user.
@@ -1404,7 +1406,7 @@ class AccessKey(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1425,7 +1427,7 @@ class AccessKeyPair(Boto3ServiceResource):
     id: str
     secret: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified access key from Active to Inactive, or vice versa. This
@@ -1451,7 +1453,7 @@ class AccessKeyPair(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified access key from Active to Inactive, or vice versa. This
@@ -1477,7 +1479,7 @@ class AccessKeyPair(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the access key pair associated with the specified IAM user.
@@ -1498,7 +1500,7 @@ class AccessKeyPair(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1522,7 +1524,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
     password_reuse_prevention: int
     hard_expiry: bool
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the password policy for the AWS account. There are no parameters.
@@ -1538,7 +1540,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1549,7 +1551,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_account_password_policy` to update the attributes of the
@@ -1566,7 +1568,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_account_password_policy` to update the attributes of the
@@ -1583,7 +1585,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self,
         MinimumPasswordLength: int = None,
@@ -1718,7 +1720,7 @@ class AccountPasswordPolicy(Boto3ServiceResource):
 class AccountSummary(Boto3ServiceResource):
     summary_map: Dict[str, Any]
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1729,7 +1731,7 @@ class AccountSummary(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_account_summary` to update the attributes of the AccountSummary
@@ -1745,7 +1747,7 @@ class AccountSummary(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_account_summary` to update the attributes of the AccountSummary
@@ -1765,7 +1767,7 @@ class AccountSummary(Boto3ServiceResource):
 class AssumeRolePolicy(Boto3ServiceResource):
     role_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1776,7 +1778,7 @@ class AssumeRolePolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(self, PolicyDocument: str) -> None:
         """
         Updates the policy that grants an IAM entity permission to assume a role. This is typically
@@ -1805,13 +1807,13 @@ class AssumeRolePolicy(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
@@ -1827,7 +1829,7 @@ class CurrentUser(Boto3ServiceResource):
     permissions_boundary: Dict[str, Any]
     tags: List[Any]
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1838,7 +1840,7 @@ class CurrentUser(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user` to update the attributes of the CurrentUser resource. Note
@@ -1854,7 +1856,7 @@ class CurrentUser(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user` to update the attributes of the CurrentUser resource. Note
@@ -1879,7 +1881,7 @@ class Group(Boto3ServiceResource):
     create_date: datetime
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_user(self, UserName: str) -> None:
         """
         Adds the specified user to the specified group.
@@ -1905,7 +1907,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM group.
@@ -1938,7 +1940,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(self, Path: str = None) -> List[service_resource_scope.Group]:
         """
         Creates a new group.
@@ -1968,15 +1970,15 @@ class Group(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :rtype: :py:class:`iam.Group`
         :returns: Group resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self, PolicyName: str, PolicyDocument: str
     ) -> service_resource_scope.GroupPolicy:
@@ -2032,19 +2034,19 @@ class Group(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: :py:class:`iam.GroupPolicy`
         :returns: GroupPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified IAM group. The group must not contain any users or have any attached policies.
@@ -2060,7 +2062,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(self, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified IAM group.
@@ -2091,7 +2093,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2102,7 +2104,7 @@ class Group(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_group` to update the attributes of the Group resource. Note that the
@@ -2118,7 +2120,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_group` to update the attributes of the Group resource. Note that the
@@ -2134,7 +2136,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_user(self, UserName: str) -> None:
         """
         Removes the specified user from the specified group.
@@ -2160,7 +2162,7 @@ class Group(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self, NewPath: str = None, NewGroupName: str = None
     ) -> List[service_resource_scope.Group]:
@@ -2200,8 +2202,8 @@ class Group(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewGroupName: string
@@ -2224,7 +2226,7 @@ class GroupPolicy(Boto3ServiceResource):
     group_name: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM group.
@@ -2245,7 +2247,7 @@ class GroupPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2256,7 +2258,7 @@ class GroupPolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_group_policy` to update the attributes of the GroupPolicy resource.
@@ -2272,7 +2274,7 @@ class GroupPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(self, PolicyDocument: str) -> None:
         """
         Adds or updates an inline policy document that is embedded in the specified IAM group.
@@ -2316,18 +2318,18 @@ class GroupPolicy(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_group_policy` to update the attributes of the GroupPolicy resource.
@@ -2353,7 +2355,7 @@ class InstanceProfile(Boto3ServiceResource):
     roles_attribute: List[Any]
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_role(self, RoleName: str) -> None:
         """
         Adds the specified IAM role to the specified instance profile. An instance profile can contain only
@@ -2397,7 +2399,7 @@ class InstanceProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified instance profile. The instance profile must not have an associated role.
@@ -2422,7 +2424,7 @@ class InstanceProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2433,7 +2435,7 @@ class InstanceProfile(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_instance_profile` to update the attributes of the InstanceProfile
@@ -2449,7 +2451,7 @@ class InstanceProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_instance_profile` to update the attributes of the InstanceProfile
@@ -2465,7 +2467,7 @@ class InstanceProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_role(self, RoleName: str) -> None:
         """
         Removes the specified IAM role from the specified EC2 instance profile.
@@ -2508,7 +2510,7 @@ class LoginProfile(Boto3ServiceResource):
     password_reset_required: bool
     user_name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(
         self, Password: str, PasswordResetRequired: bool = None
     ) -> service_resource_scope.LoginProfile:
@@ -2535,8 +2537,8 @@ class LoginProfile(Boto3ServiceResource):
 
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ that is used to validate this parameter
           is a string of characters. That string can include almost any printable ASCII character from the
-          space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the
-          tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these
+          space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the
+          tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these
           characters are valid in a password. However, many tools, such as the AWS Management Console,
           might restrict the ability to type certain characters because they have special meaning within
           that tool.
@@ -2550,7 +2552,7 @@ class LoginProfile(Boto3ServiceResource):
         :returns: LoginProfile resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the password for the specified IAM user, which terminates the user's ability to access AWS
@@ -2574,7 +2576,7 @@ class LoginProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2585,7 +2587,7 @@ class LoginProfile(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_login_profile` to update the attributes of the LoginProfile
@@ -2601,7 +2603,7 @@ class LoginProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_login_profile` to update the attributes of the LoginProfile
@@ -2617,7 +2619,7 @@ class LoginProfile(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(self, Password: str = None, PasswordResetRequired: bool = None) -> None:
         """
         Changes the password for the specified IAM user.
@@ -2645,13 +2647,13 @@ class LoginProfile(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           However, the format can be further restricted by the account administrator by setting a password
           policy on the AWS account. For more information, see  UpdateAccountPasswordPolicy .
@@ -2671,7 +2673,7 @@ class MfaDevice(Boto3ServiceResource):
     user_name: str
     serial_number: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate(self, AuthenticationCode1: str, AuthenticationCode2: str) -> None:
         """
         Enables the specified MFA device and associates it with the specified IAM user. When enabled, the
@@ -2720,7 +2722,7 @@ class MfaDevice(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate(self, *args: Any, **kwargs: Any) -> None:
         """
         Deactivates the specified MFA device and removes it from association with the user name for which
@@ -2742,7 +2744,7 @@ class MfaDevice(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2753,7 +2755,7 @@ class MfaDevice(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resync(self, AuthenticationCode1: str, AuthenticationCode2: str) -> None:
         """
         Synchronizes the specified MFA device with its IAM resource object on the AWS servers.
@@ -2803,7 +2805,7 @@ class Policy(Boto3ServiceResource):
     update_date: datetime
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_group(self, GroupName: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM group.
@@ -2837,7 +2839,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_role(self, RoleName: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM role. When you attach a managed policy
@@ -2876,7 +2878,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_user(self, UserName: str) -> None:
         """
         Attaches the specified managed policy to the specified user.
@@ -2910,7 +2912,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_version(
         self, PolicyDocument: str, SetAsDefault: bool = None
     ) -> service_resource_scope.PolicyVersion:
@@ -2948,13 +2950,13 @@ class Policy(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type SetAsDefault: boolean
         :param SetAsDefault:
@@ -2973,7 +2975,7 @@ class Policy(Boto3ServiceResource):
         :returns: PolicyVersion resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified managed policy.
@@ -3007,7 +3009,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_group(self, GroupName: str) -> None:
         """
         Removes the specified managed policy from the specified IAM group.
@@ -3039,7 +3041,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_role(self, RoleName: str) -> None:
         """
         Removes the specified managed policy from the specified role.
@@ -3071,7 +3073,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_user(self, UserName: str) -> None:
         """
         Removes the specified managed policy from the specified user.
@@ -3103,7 +3105,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3114,7 +3116,7 @@ class Policy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_policy` to update the attributes of the Policy resource. Note that
@@ -3130,7 +3132,7 @@ class Policy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_policy` to update the attributes of the Policy resource. Note that
@@ -3154,7 +3156,7 @@ class PolicyVersion(Boto3ServiceResource):
     arn: str
     version_id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified version from the specified managed policy.
@@ -3178,7 +3180,7 @@ class PolicyVersion(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3189,7 +3191,7 @@ class PolicyVersion(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_policy_version` to update the attributes of the PolicyVersion
@@ -3205,7 +3207,7 @@ class PolicyVersion(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_policy_version` to update the attributes of the PolicyVersion
@@ -3221,7 +3223,7 @@ class PolicyVersion(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_as_default(self, *args: Any, **kwargs: Any) -> None:
         """
         Sets the specified version of the specified policy as the policy's default (operative) version.
@@ -3258,7 +3260,7 @@ class Role(Boto3ServiceResource):
     tags: List[Any]
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM role. When you attach a managed policy
@@ -3296,7 +3298,7 @@ class Role(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified role. The role must not have any policies attached. For more information
@@ -3320,7 +3322,7 @@ class Role(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(self, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified role.
@@ -3351,7 +3353,7 @@ class Role(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3362,7 +3364,7 @@ class Role(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_role` to update the attributes of the Role resource. Note that the
@@ -3378,7 +3380,7 @@ class Role(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_role` to update the attributes of the Role resource. Note that the
@@ -3401,7 +3403,7 @@ class RolePolicy(Boto3ServiceResource):
     role_name: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM role.
@@ -3422,7 +3424,7 @@ class RolePolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3433,7 +3435,7 @@ class RolePolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_role_policy` to update the attributes of the RolePolicy resource.
@@ -3449,7 +3451,7 @@ class RolePolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(self, PolicyDocument: str) -> None:
         """
         Adds or updates an inline policy document that is embedded in the specified IAM role.
@@ -3499,18 +3501,18 @@ class RolePolicy(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_role_policy` to update the attributes of the RolePolicy resource.
@@ -3533,7 +3535,7 @@ class SamlProvider(Boto3ServiceResource):
     valid_until: datetime
     arn: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a SAML provider resource in IAM.
@@ -3558,7 +3560,7 @@ class SamlProvider(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3569,7 +3571,7 @@ class SamlProvider(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_saml_provider` to update the attributes of the SamlProvider
@@ -3585,7 +3587,7 @@ class SamlProvider(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_saml_provider` to update the attributes of the SamlProvider
@@ -3601,7 +3603,7 @@ class SamlProvider(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(self, SAMLMetadataDocument: str) -> SamlProviderUpdateResponseTypeDef:
         """
         Updates the metadata document for an existing SAML provider resource object.
@@ -3658,7 +3660,7 @@ class ServerCertificate(Boto3ServiceResource):
     certificate_chain: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified server certificate.
@@ -3690,7 +3692,7 @@ class ServerCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3701,7 +3703,7 @@ class ServerCertificate(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_server_certificate` to update the attributes of the
@@ -3718,7 +3720,7 @@ class ServerCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_server_certificate` to update the attributes of the
@@ -3735,7 +3737,7 @@ class ServerCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self, NewPath: str = None, NewServerCertificateName: str = None
     ) -> service_resource_scope.ServerCertificate:
@@ -3782,8 +3784,8 @@ class ServerCertificate(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewServerCertificateName: string
@@ -3809,7 +3811,7 @@ class SigningCertificate(Boto3ServiceResource):
     user_name: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified user signing certificate from active to disabled, or vice
@@ -3832,7 +3834,7 @@ class SigningCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate(self, *args: Any, **kwargs: Any) -> None:
         """
         Changes the status of the specified user signing certificate from active to disabled, or vice
@@ -3855,7 +3857,7 @@ class SigningCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a signing certificate associated with the specified IAM user.
@@ -3876,7 +3878,7 @@ class SigningCertificate(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3899,7 +3901,7 @@ class User(Boto3ServiceResource):
     tags: List[Any]
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_group(self, GroupName: str) -> None:
         """
         Adds the specified user to the specified group.
@@ -3926,7 +3928,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified user.
@@ -3959,7 +3961,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(
         self,
         Path: str = None,
@@ -4000,8 +4002,8 @@ class User(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PermissionsBoundary: string
@@ -4050,7 +4052,7 @@ class User(Boto3ServiceResource):
         :returns: User resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_access_key_pair(
         self, *args: Any, **kwargs: Any
     ) -> service_resource_scope.AccessKeyPair:
@@ -4086,7 +4088,7 @@ class User(Boto3ServiceResource):
         :returns: AccessKeyPair resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_login_profile(
         self, Password: str, PasswordResetRequired: bool = None
     ) -> service_resource_scope.LoginProfile:
@@ -4113,8 +4115,8 @@ class User(Boto3ServiceResource):
 
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ that is used to validate this parameter
           is a string of characters. That string can include almost any printable ASCII character from the
-          space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the
-          tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these
+          space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the
+          tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these
           characters are valid in a password. However, many tools, such as the AWS Management Console,
           might restrict the ability to type certain characters because they have special meaning within
           that tool.
@@ -4128,7 +4130,7 @@ class User(Boto3ServiceResource):
         :returns: LoginProfile resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self, PolicyName: str, PolicyDocument: str
     ) -> service_resource_scope.UserPolicy:
@@ -4184,19 +4186,19 @@ class User(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: :py:class:`iam.UserPolicy`
         :returns: UserPolicy resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified IAM user. Unlike the AWS Management Console, when you delete a user
@@ -4234,7 +4236,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(self, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified user.
@@ -4265,7 +4267,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_mfa(
         self, SerialNumber: str, AuthenticationCode1: str, AuthenticationCode2: str
     ) -> service_resource_scope.MfaDevice:
@@ -4328,7 +4330,7 @@ class User(Boto3ServiceResource):
         :returns: MfaDevice resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -4339,7 +4341,7 @@ class User(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user` to update the attributes of the User resource. Note that the
@@ -4355,7 +4357,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user` to update the attributes of the User resource. Note that the
@@ -4371,7 +4373,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_group(self, GroupName: str) -> None:
         """
         Removes the specified user from the specified group.
@@ -4398,7 +4400,7 @@ class User(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self, NewPath: str = None, NewUserName: str = None
     ) -> service_resource_scope.User:
@@ -4439,8 +4441,8 @@ class User(Boto3ServiceResource):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewUserName: string
@@ -4463,7 +4465,7 @@ class UserPolicy(Boto3ServiceResource):
     user_name: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM user.
@@ -4484,7 +4486,7 @@ class UserPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -4495,7 +4497,7 @@ class UserPolicy(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user_policy` to update the attributes of the UserPolicy resource.
@@ -4511,7 +4513,7 @@ class UserPolicy(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put(self, PolicyDocument: str) -> None:
         """
         Adds or updates an inline policy document that is embedded in the specified IAM user.
@@ -4555,18 +4557,18 @@ class UserPolicy(Boto3ServiceResource):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`IAM.Client.get_user_policy` to update the attributes of the UserPolicy resource.
@@ -4590,7 +4592,7 @@ class VirtualMfaDevice(Boto3ServiceResource):
     enable_date: datetime
     serial_number: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a virtual MFA device.
@@ -4611,7 +4613,7 @@ class VirtualMfaDevice(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -4635,8 +4637,7 @@ class groups(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Group]:
         """
         Creates an iterable of all Group resources in the collection.
@@ -4653,8 +4654,7 @@ class groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.Group]:
@@ -4683,7 +4683,7 @@ class groups(ResourceCollection):
           groups. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ )
           a string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type Marker: string
@@ -4709,8 +4709,7 @@ class groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -4719,8 +4718,7 @@ class groups(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Group]:
         """
         Creates an iterable up to a specified amount of Group resources in the collection.
@@ -4741,8 +4739,7 @@ class groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Group]:
         """
         Creates an iterable of all Group resources in the collection, but limits the number of items
@@ -4764,8 +4761,7 @@ class groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -4800,8 +4796,7 @@ class instance_profiles(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.InstanceProfile]:
         """
         Creates an iterable of all InstanceProfile resources in the collection.
@@ -4818,8 +4813,7 @@ class instance_profiles(ResourceCollection):
         :returns: A list of InstanceProfile resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.InstanceProfile]:
@@ -4849,7 +4843,7 @@ class instance_profiles(ResourceCollection):
           instance profiles. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type Marker: string
@@ -4875,8 +4869,7 @@ class instance_profiles(ResourceCollection):
         :returns: A list of InstanceProfile resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -4885,8 +4878,7 @@ class instance_profiles(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.InstanceProfile]:
         """
         Creates an iterable up to a specified amount of InstanceProfile resources in the collection.
@@ -4907,8 +4899,7 @@ class instance_profiles(ResourceCollection):
         :returns: A list of InstanceProfile resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.InstanceProfile]:
         """
         Creates an iterable of all InstanceProfile resources in the collection, but limits the number of
@@ -4930,8 +4921,7 @@ class instance_profiles(ResourceCollection):
         :returns: A list of InstanceProfile resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -4966,8 +4956,7 @@ class policies(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable of all Policy resources in the collection.
@@ -4984,8 +4973,7 @@ class policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Scope: str = None,
@@ -5039,7 +5027,7 @@ class policies(ResourceCollection):
           defaults to a slash (/), listing all policies. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -5075,8 +5063,7 @@ class policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5085,8 +5072,7 @@ class policies(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable up to a specified amount of Policy resources in the collection.
@@ -5107,8 +5093,7 @@ class policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable of all Policy resources in the collection, but limits the number of items
@@ -5130,8 +5115,7 @@ class policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5166,8 +5150,7 @@ class roles(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Role]:
         """
         Creates an iterable of all Role resources in the collection.
@@ -5184,8 +5167,7 @@ class roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.Role]:
@@ -5213,8 +5195,8 @@ class roles(ResourceCollection):
           This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles.
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -5240,8 +5222,7 @@ class roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5250,8 +5231,7 @@ class roles(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Role]:
         """
         Creates an iterable up to a specified amount of Role resources in the collection.
@@ -5272,8 +5252,7 @@ class roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Role]:
         """
         Creates an iterable of all Role resources in the collection, but limits the number of items
@@ -5295,8 +5274,7 @@ class roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5331,8 +5309,7 @@ class saml_providers(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.SamlProvider]:
         """
         Creates an iterable of all SamlProvider resources in the collection.
@@ -5349,8 +5326,7 @@ class saml_providers(ResourceCollection):
         :returns: A list of SamlProvider resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, **kwargs: Any) -> List[service_resource_scope.SamlProvider]:
         """
         Creates an iterable of all SamlProvider resources in the collection filtered by kwargs passed to
@@ -5368,8 +5344,7 @@ class saml_providers(ResourceCollection):
         :returns: A list of SamlProvider resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5378,8 +5353,7 @@ class saml_providers(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.SamlProvider]:
         """
         Creates an iterable up to a specified amount of SamlProvider resources in the collection.
@@ -5400,8 +5374,7 @@ class saml_providers(ResourceCollection):
         :returns: A list of SamlProvider resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.SamlProvider]:
         """
         Creates an iterable of all SamlProvider resources in the collection, but limits the number of items
@@ -5423,8 +5396,7 @@ class saml_providers(ResourceCollection):
         :returns: A list of SamlProvider resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5459,8 +5431,7 @@ class server_certificates(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.ServerCertificate]:
         """
         Creates an iterable of all ServerCertificate resources in the collection.
@@ -5477,8 +5448,7 @@ class server_certificates(ResourceCollection):
         :returns: A list of ServerCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.ServerCertificate]:
@@ -5507,7 +5477,7 @@ class server_certificates(ResourceCollection):
           certificates. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type Marker: string
@@ -5533,8 +5503,7 @@ class server_certificates(ResourceCollection):
         :returns: A list of ServerCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5543,8 +5512,7 @@ class server_certificates(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.ServerCertificate]:
         """
         Creates an iterable up to a specified amount of ServerCertificate resources in the collection.
@@ -5565,8 +5533,7 @@ class server_certificates(ResourceCollection):
         :returns: A list of ServerCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.ServerCertificate]:
         """
         Creates an iterable of all ServerCertificate resources in the collection, but limits the number of
@@ -5588,8 +5555,7 @@ class server_certificates(ResourceCollection):
         :returns: A list of ServerCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5624,8 +5590,7 @@ class users(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.User]:
         """
         Creates an iterable of all User resources in the collection.
@@ -5642,8 +5607,7 @@ class users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.User]:
@@ -5671,7 +5635,7 @@ class users(ResourceCollection):
           names. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a
           string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type Marker: string
@@ -5697,8 +5661,7 @@ class users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5707,8 +5670,7 @@ class users(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.User]:
         """
         Creates an iterable up to a specified amount of User resources in the collection.
@@ -5729,8 +5691,7 @@ class users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.User]:
         """
         Creates an iterable of all User resources in the collection, but limits the number of items
@@ -5752,8 +5713,7 @@ class users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5788,8 +5748,7 @@ class virtual_mfa_devices(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.VirtualMfaDevice]:
         """
         Creates an iterable of all VirtualMfaDevice resources in the collection.
@@ -5806,8 +5765,7 @@ class virtual_mfa_devices(ResourceCollection):
         :returns: A list of VirtualMfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, AssignmentStatus: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.VirtualMfaDevice]:
@@ -5856,8 +5814,7 @@ class virtual_mfa_devices(ResourceCollection):
         :returns: A list of VirtualMfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -5866,8 +5823,7 @@ class virtual_mfa_devices(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.VirtualMfaDevice]:
         """
         Creates an iterable up to a specified amount of VirtualMfaDevice resources in the collection.
@@ -5888,8 +5844,7 @@ class virtual_mfa_devices(ResourceCollection):
         :returns: A list of VirtualMfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.VirtualMfaDevice]:
         """
         Creates an iterable of all VirtualMfaDevice resources in the collection, but limits the number of
@@ -5911,8 +5866,7 @@ class virtual_mfa_devices(ResourceCollection):
         :returns: A list of VirtualMfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -5947,8 +5901,7 @@ class access_keys(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.AccessKey]:
         """
         Creates an iterable of all AccessKey resources in the collection.
@@ -5965,8 +5918,7 @@ class access_keys(ResourceCollection):
         :returns: A list of AccessKey resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.AccessKey]:
@@ -6017,8 +5969,7 @@ class access_keys(ResourceCollection):
         :returns: A list of AccessKey resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6027,8 +5978,7 @@ class access_keys(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.AccessKey]:
         """
         Creates an iterable up to a specified amount of AccessKey resources in the collection.
@@ -6049,8 +5999,7 @@ class access_keys(ResourceCollection):
         :returns: A list of AccessKey resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.AccessKey]:
         """
         Creates an iterable of all AccessKey resources in the collection, but limits the number of items
@@ -6072,8 +6021,7 @@ class access_keys(ResourceCollection):
         :returns: A list of AccessKey resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6108,8 +6056,7 @@ class mfa_devices(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.MfaDevice]:
         """
         Creates an iterable of all MfaDevice resources in the collection.
@@ -6126,8 +6073,7 @@ class mfa_devices(ResourceCollection):
         :returns: A list of MfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.MfaDevice]:
@@ -6178,8 +6124,7 @@ class mfa_devices(ResourceCollection):
         :returns: A list of MfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6188,8 +6133,7 @@ class mfa_devices(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.MfaDevice]:
         """
         Creates an iterable up to a specified amount of MfaDevice resources in the collection.
@@ -6210,8 +6154,7 @@ class mfa_devices(ResourceCollection):
         :returns: A list of MfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.MfaDevice]:
         """
         Creates an iterable of all MfaDevice resources in the collection, but limits the number of items
@@ -6233,8 +6176,7 @@ class mfa_devices(ResourceCollection):
         :returns: A list of MfaDevice resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6269,8 +6211,7 @@ class signing_certificates(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.SigningCertificate]:
         """
         Creates an iterable of all SigningCertificate resources in the collection.
@@ -6287,8 +6228,7 @@ class signing_certificates(ResourceCollection):
         :returns: A list of SigningCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.SigningCertificate]:
@@ -6339,8 +6279,7 @@ class signing_certificates(ResourceCollection):
         :returns: A list of SigningCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6349,8 +6288,7 @@ class signing_certificates(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.SigningCertificate]:
         """
         Creates an iterable up to a specified amount of SigningCertificate resources in the collection.
@@ -6371,8 +6309,7 @@ class signing_certificates(ResourceCollection):
         :returns: A list of SigningCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.SigningCertificate]:
         """
         Creates an iterable of all SigningCertificate resources in the collection, but limits the number of
@@ -6394,8 +6331,7 @@ class signing_certificates(ResourceCollection):
         :returns: A list of SigningCertificate resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6430,8 +6366,7 @@ class attached_policies(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable of all Policy resources in the collection.
@@ -6448,8 +6383,7 @@ class attached_policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.Policy]:
@@ -6475,8 +6409,8 @@ class attached_policies(ResourceCollection):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -6502,8 +6436,7 @@ class attached_policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6512,8 +6445,7 @@ class attached_policies(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable up to a specified amount of Policy resources in the collection.
@@ -6534,8 +6466,7 @@ class attached_policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Policy]:
         """
         Creates an iterable of all Policy resources in the collection, but limits the number of items
@@ -6557,8 +6488,7 @@ class attached_policies(ResourceCollection):
         :returns: A list of Policy resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6593,8 +6523,7 @@ class attached_groups(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Group]:
         """
         Creates an iterable of all Group resources in the collection.
@@ -6611,8 +6540,7 @@ class attached_groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         PathPrefix: str = None,
@@ -6643,8 +6571,8 @@ class attached_groups(ResourceCollection):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -6680,8 +6608,7 @@ class attached_groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6690,8 +6617,7 @@ class attached_groups(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Group]:
         """
         Creates an iterable up to a specified amount of Group resources in the collection.
@@ -6712,8 +6638,7 @@ class attached_groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Group]:
         """
         Creates an iterable of all Group resources in the collection, but limits the number of items
@@ -6735,8 +6660,7 @@ class attached_groups(ResourceCollection):
         :returns: A list of Group resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6771,8 +6695,7 @@ class attached_roles(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Role]:
         """
         Creates an iterable of all Role resources in the collection.
@@ -6789,8 +6712,7 @@ class attached_roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         PathPrefix: str = None,
@@ -6821,8 +6743,8 @@ class attached_roles(ResourceCollection):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -6858,8 +6780,7 @@ class attached_roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -6868,8 +6789,7 @@ class attached_roles(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Role]:
         """
         Creates an iterable up to a specified amount of Role resources in the collection.
@@ -6890,8 +6810,7 @@ class attached_roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Role]:
         """
         Creates an iterable of all Role resources in the collection, but limits the number of items
@@ -6913,8 +6832,7 @@ class attached_roles(ResourceCollection):
         :returns: A list of Role resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -6949,8 +6867,7 @@ class attached_users(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.User]:
         """
         Creates an iterable of all User resources in the collection.
@@ -6967,8 +6884,7 @@ class attached_users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         PathPrefix: str = None,
@@ -6999,8 +6915,8 @@ class attached_users(ResourceCollection):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -7036,8 +6952,7 @@ class attached_users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -7046,8 +6961,7 @@ class attached_users(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.User]:
         """
         Creates an iterable up to a specified amount of User resources in the collection.
@@ -7068,8 +6982,7 @@ class attached_users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.User]:
         """
         Creates an iterable of all User resources in the collection, but limits the number of items
@@ -7091,8 +7004,7 @@ class attached_users(ResourceCollection):
         :returns: A list of User resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -7127,8 +7039,7 @@ class versions(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.PolicyVersion]:
         """
         Creates an iterable of all PolicyVersion resources in the collection.
@@ -7145,8 +7056,7 @@ class versions(ResourceCollection):
         :returns: A list of PolicyVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, Marker: str = None, MaxItems: int = None
     ) -> List[service_resource_scope.PolicyVersion]:
@@ -7187,8 +7097,7 @@ class versions(ResourceCollection):
         :returns: A list of PolicyVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -7197,8 +7106,7 @@ class versions(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.PolicyVersion]:
         """
         Creates an iterable up to a specified amount of PolicyVersion resources in the collection.
@@ -7219,8 +7127,7 @@ class versions(ResourceCollection):
         :returns: A list of PolicyVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.PolicyVersion]:
         """
         Creates an iterable of all PolicyVersion resources in the collection, but limits the number of
@@ -7242,8 +7149,7 @@ class versions(ResourceCollection):
         :returns: A list of PolicyVersion resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

@@ -43,7 +43,7 @@ from mypy_boto3_route53domains.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -60,7 +60,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def check_domain_availability(
         self, DomainName: str, IdnLangCode: str = None
     ) -> ClientCheckDomainAvailabilityResponseTypeDef:
@@ -162,7 +162,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def check_domain_transferability(
         self, DomainName: str, AuthCode: str = None
     ) -> ClientCheckDomainTransferabilityResponseTypeDef:
@@ -240,7 +240,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags_for_domain(
         self, DomainName: str, TagsToDelete: List[str]
     ) -> Dict[str, Any]:
@@ -287,7 +287,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_domain_auto_renew(self, DomainName: str) -> Dict[str, Any]:
         """
         This operation disables automatic renewal of domain registration for the specified domain.
@@ -319,7 +319,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_domain_transfer_lock(
         self, DomainName: str
     ) -> ClientDisableDomainTransferLockResponseTypeDef:
@@ -368,7 +368,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_domain_auto_renew(self, DomainName: str) -> Dict[str, Any]:
         """
         This operation configures Amazon Route 53 to automatically renew the specified domain before the
@@ -409,7 +409,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_domain_transfer_lock(
         self, DomainName: str
     ) -> ClientEnableDomainTransferLockResponseTypeDef:
@@ -456,7 +456,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -485,7 +485,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_contact_reachability_status(
         self, domainName: str = None
     ) -> ClientGetContactReachabilityStatusResponseTypeDef:
@@ -548,7 +548,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_detail(
         self, DomainName: str
     ) -> ClientGetDomainDetailResponseTypeDef:
@@ -1191,7 +1191,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_suggestions(
         self, DomainName: str, SuggestionCount: int, OnlyAvailable: bool
     ) -> ClientGetDomainSuggestionsResponseTypeDef:
@@ -1316,7 +1316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_operation_detail(
         self, OperationId: str
     ) -> ClientGetOperationDetailResponseTypeDef:
@@ -1389,7 +1389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1410,7 +1410,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1423,7 +1423,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_domains(
         self, Marker: str = None, MaxItems: int = None
     ) -> ClientListDomainsResponseTypeDef:
@@ -1514,7 +1514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_operations(
         self, SubmittedSince: datetime = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListOperationsResponseTypeDef:
@@ -1613,7 +1613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_domain(
         self, DomainName: str
     ) -> ClientListTagsForDomainResponseTypeDef:
@@ -1670,7 +1670,7 @@ class Client(BaseClient):
 
                   The key (name) of a tag.
 
-                  Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+                  Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
                   Constraints: Each key can be 1-128 characters long.
 
@@ -1678,13 +1678,13 @@ class Client(BaseClient):
 
                   The value of a tag.
 
-                  Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+                  Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
                   Constraints: Each value can be 0-256 characters long.
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_domain(
         self,
         DomainName: str,
@@ -2269,7 +2269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def renew_domain(
         self, DomainName: str, CurrentExpiryYear: int, DurationInYears: int = None
     ) -> ClientRenewDomainResponseTypeDef:
@@ -2337,7 +2337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resend_contact_reachability_email(
         self, domainName: str = None
     ) -> ClientResendContactReachabilityEmailResponseTypeDef:
@@ -2393,7 +2393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retrieve_domain_auth_code(
         self, DomainName: str
     ) -> ClientRetrieveDomainAuthCodeResponseTypeDef:
@@ -2437,7 +2437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def transfer_domain(
         self,
         DomainName: str,
@@ -3061,7 +3061,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_contact(
         self,
         DomainName: str,
@@ -3558,7 +3558,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_contact_privacy(
         self,
         DomainName: str,
@@ -3642,7 +3642,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_nameservers(
         self,
         DomainName: str,
@@ -3735,7 +3735,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_tags_for_domain(
         self,
         DomainName: str,
@@ -3781,7 +3781,7 @@ class Client(BaseClient):
 
               The key (name) of a tag.
 
-              Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+              Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
               Constraints: Each key can be 1-128 characters long.
 
@@ -3789,7 +3789,7 @@ class Client(BaseClient):
 
               The value of a tag.
 
-              Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
+              Valid values: A-Z, a-z, 0-9, space, ".:/=+\\-@"
 
               Constraints: Each value can be 0-256 characters long.
 
@@ -3806,7 +3806,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def view_billing(
         self,
         Start: datetime = None,

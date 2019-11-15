@@ -1,13 +1,19 @@
 "Main interface for cloudfront Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_cloudfront.type_defs import (
+    DistributionDeployedWaitWaiterConfigTypeDef,
+    InvalidationCompletedWaitWaiterConfigTypeDef,
+    StreamingDistributionDeployedWaitWaiterConfigTypeDef,
+)
 
 
 class DistributionDeployed(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Id: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, Id: str, WaiterConfig: DistributionDeployedWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`CloudFront.Client.get_distribution` every 60 seconds until a successful state is
         reached. An error is returned after 35 failed checks.
@@ -48,8 +54,13 @@ class DistributionDeployed(Boto3Waiter):
 
 
 class InvalidationCompleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, DistributionId: str, Id: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        DistributionId: str,
+        Id: str,
+        WaiterConfig: InvalidationCompletedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`CloudFront.Client.get_invalidation` every 20 seconds until a successful state is
         reached. An error is returned after 30 failed checks.
@@ -96,8 +107,12 @@ class InvalidationCompleted(Boto3Waiter):
 
 
 class StreamingDistributionDeployed(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Id: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        Id: str,
+        WaiterConfig: StreamingDistributionDeployedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`CloudFront.Client.get_streaming_distribution` every 60 seconds until a successful
         state is reached. An error is returned after 25 failed checks.

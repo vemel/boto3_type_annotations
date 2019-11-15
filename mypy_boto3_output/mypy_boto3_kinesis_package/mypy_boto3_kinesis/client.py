@@ -6,7 +6,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_kinesis.type_defs import (
     ClientDescribeLimitsResponseTypeDef,
     ClientDescribeStreamConsumerResponseTypeDef,
@@ -30,8 +29,8 @@ from mypy_boto3_kinesis.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
-    def add_tags_to_stream(self, StreamName: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def add_tags_to_stream(self, StreamName: str, Tags: List[str]) -> None:
         """
         Adds or updates tags for the specified Kinesis data stream. Each time you invoke this operation,
         you can specify up to 10 tags. If you want to add more than 10 tags to your stream, you can invoke
@@ -71,7 +70,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -88,7 +87,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stream(self, StreamName: str, ShardCount: int) -> None:
         """
         Creates a Kinesis data stream. A stream captures and transports data records that are continuously
@@ -155,7 +154,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decrease_stream_retention_period(
         self, StreamName: str, RetentionPeriodHours: int
     ) -> None:
@@ -191,7 +190,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stream(
         self, StreamName: str, EnforceConsumerDeletion: bool = None
     ) -> None:
@@ -239,7 +238,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_stream_consumer(
         self, StreamARN: str = None, ConsumerName: str = None, ConsumerARN: str = None
     ) -> None:
@@ -288,7 +287,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_limits(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLimitsResponseTypeDef:
@@ -332,7 +331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stream(
         self, StreamName: str, Limit: int = None, ExclusiveStartShardId: str = None
     ) -> ClientDescribeStreamResponseTypeDef:
@@ -587,7 +586,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stream_consumer(
         self, StreamARN: str = None, ConsumerName: str = None, ConsumerARN: str = None
     ) -> ClientDescribeStreamConsumerResponseTypeDef:
@@ -679,7 +678,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stream_summary(
         self, StreamName: str
     ) -> ClientDescribeStreamSummaryResponseTypeDef:
@@ -847,7 +846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_enhanced_monitoring(
         self, StreamName: str, ShardLevelMetrics: List[str]
     ) -> ClientDisableEnhancedMonitoringResponseTypeDef:
@@ -948,7 +947,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_enhanced_monitoring(
         self, StreamName: str, ShardLevelMetrics: List[str]
     ) -> ClientEnableEnhancedMonitoringResponseTypeDef:
@@ -1049,7 +1048,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1078,7 +1077,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1099,7 +1098,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_records(
         self, ShardIterator: str, Limit: int = None
     ) -> ClientGetRecordsResponseTypeDef:
@@ -1254,7 +1253,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_shard_iterator(
         self,
         StreamName: str,
@@ -1384,7 +1383,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1397,7 +1396,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def increase_stream_retention_period(
         self, StreamName: str, RetentionPeriodHours: int
     ) -> None:
@@ -1435,7 +1434,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_shards(
         self,
         StreamName: str = None,
@@ -1626,7 +1625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stream_consumers(
         self,
         StreamARN: str,
@@ -1767,7 +1766,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_streams(
         self, Limit: int = None, ExclusiveStartStreamName: str = None
     ) -> ClientListStreamsResponseTypeDef:
@@ -1839,7 +1838,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_stream(
         self, StreamName: str, ExclusiveStartTagKey: str = None, Limit: int = None
     ) -> ClientListTagsForStreamResponseTypeDef:
@@ -1924,7 +1923,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_shards(
         self, StreamName: str, ShardToMerge: str, AdjacentShardToMerge: str
     ) -> None:
@@ -1993,7 +1992,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_record(
         self,
         StreamName: str,
@@ -2131,7 +2130,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_records(
         self, Records: List[ClientPutRecordsRecordsTypeDef], StreamName: str
     ) -> ClientPutRecordsResponseTypeDef:
@@ -2317,7 +2316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_stream_consumer(
         self, StreamARN: str, ConsumerName: str
     ) -> ClientRegisterStreamConsumerResponseTypeDef:
@@ -2400,8 +2399,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def remove_tags_from_stream(self, StreamName: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def remove_tags_from_stream(self, StreamName: str, TagKeys: List[str]) -> None:
         """
         Removes tags from the specified Kinesis data stream. Removed tags are deleted and cannot be
         recovered after this operation successfully completes.
@@ -2437,7 +2436,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def split_shard(
         self, StreamName: str, ShardToSplit: str, NewStartingHashKey: str
     ) -> None:
@@ -2520,7 +2519,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_stream_encryption(
         self, StreamName: str, EncryptionType: str, KeyId: str
     ) -> None:
@@ -2583,7 +2582,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_stream_encryption(
         self, StreamName: str, EncryptionType: str, KeyId: str
     ) -> None:
@@ -2647,7 +2646,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def subscribe_to_shard(
         self,
         ConsumerARN: str,
@@ -2892,7 +2891,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_shard_count(
         self, StreamName: str, TargetShardCount: int, ScalingType: str
     ) -> ClientUpdateShardCountResponseTypeDef:

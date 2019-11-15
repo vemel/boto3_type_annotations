@@ -1,13 +1,25 @@
 "Main interface for sagemaker Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_sagemaker.type_defs import (
+    EndpointDeletedWaitWaiterConfigTypeDef,
+    EndpointInServiceWaitWaiterConfigTypeDef,
+    NotebookInstanceDeletedWaitWaiterConfigTypeDef,
+    NotebookInstanceInServiceWaitWaiterConfigTypeDef,
+    NotebookInstanceStoppedWaitWaiterConfigTypeDef,
+    TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef,
+    TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef,
+)
 
 
 class EndpointDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, EndpointName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        EndpointName: str,
+        WaiterConfig: EndpointDeletedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_endpoint` every 30 seconds until a successful state is
         reached. An error is returned after 60 failed checks.
@@ -48,8 +60,12 @@ class EndpointDeleted(Boto3Waiter):
 
 
 class EndpointInService(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, EndpointName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        EndpointName: str,
+        WaiterConfig: EndpointInServiceWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_endpoint` every 30 seconds until a successful state is
         reached. An error is returned after 120 failed checks.
@@ -90,8 +106,12 @@ class EndpointInService(Boto3Waiter):
 
 
 class NotebookInstanceDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, NotebookInstanceName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        NotebookInstanceName: str,
+        WaiterConfig: NotebookInstanceDeletedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_notebook_instance` every 30 seconds until a successful
         state is reached. An error is returned after 60 failed checks.
@@ -132,8 +152,12 @@ class NotebookInstanceDeleted(Boto3Waiter):
 
 
 class NotebookInstanceInService(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, NotebookInstanceName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        NotebookInstanceName: str,
+        WaiterConfig: NotebookInstanceInServiceWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_notebook_instance` every 30 seconds until a successful
         state is reached. An error is returned after 60 failed checks.
@@ -174,8 +198,12 @@ class NotebookInstanceInService(Boto3Waiter):
 
 
 class NotebookInstanceStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, NotebookInstanceName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        NotebookInstanceName: str,
+        WaiterConfig: NotebookInstanceStoppedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_notebook_instance` every 30 seconds until a successful
         state is reached. An error is returned after 60 failed checks.
@@ -216,8 +244,12 @@ class NotebookInstanceStopped(Boto3Waiter):
 
 
 class TrainingJobCompletedOrStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, TrainingJobName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        TrainingJobName: str,
+        WaiterConfig: TrainingJobCompletedOrStoppedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_training_job` every 120 seconds until a successful state
         is reached. An error is returned after 180 failed checks.
@@ -258,8 +290,12 @@ class TrainingJobCompletedOrStopped(Boto3Waiter):
 
 
 class TransformJobCompletedOrStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, TransformJobName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        TransformJobName: str,
+        WaiterConfig: TransformJobCompletedOrStoppedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`SageMaker.Client.describe_transform_job` every 60 seconds until a successful state
         is reached. An error is returned after 60 failed checks.

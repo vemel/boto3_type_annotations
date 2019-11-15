@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_iam.type_defs import (
     ClientCreateAccessKeyResponseTypeDef,
     ClientCreateGroupResponseTypeDef,
@@ -82,6 +81,8 @@ from mypy_boto3_iam.type_defs import (
     ClientResetServiceSpecificCredentialResponseTypeDef,
     ClientSimulateCustomPolicyContextEntriesTypeDef,
     ClientSimulatePrincipalPolicyContextEntriesTypeDef,
+    ClientTagRoleTagsTypeDef,
+    ClientTagUserTagsTypeDef,
     ClientUpdateRoleDescriptionResponseTypeDef,
     ClientUpdateSamlProviderResponseTypeDef,
     ClientUploadServerCertificateResponseTypeDef,
@@ -91,7 +92,7 @@ from mypy_boto3_iam.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_client_id_to_open_id_connect_provider(
         self, OpenIDConnectProviderArn: str, ClientID: str
     ) -> None:
@@ -127,7 +128,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_role_to_instance_profile(
         self, InstanceProfileName: str, RoleName: str
     ) -> None:
@@ -183,7 +184,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_user_to_group(self, GroupName: str, UserName: str) -> None:
         """
         Adds the specified user to the specified group.
@@ -219,7 +220,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_group_policy(self, GroupName: str, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM group.
@@ -262,7 +263,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_role_policy(self, RoleName: str, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified IAM role. When you attach a managed policy
@@ -310,7 +311,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_user_policy(self, UserName: str, PolicyArn: str) -> None:
         """
         Attaches the specified managed policy to the specified user.
@@ -353,7 +354,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -370,7 +371,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_password(self, OldPassword: str, NewPassword: str) -> None:
         """
         Changes the password of the IAM user who is calling this operation. The AWS account root user
@@ -404,8 +405,8 @@ class Client(BaseClient):
 
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ that is used to validate this parameter
           is a string of characters. That string can include almost any printable ASCII character from the
-          space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the
-          tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these
+          space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the
+          tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these
           characters are valid in a password. However, many tools, such as the AWS Management Console,
           might restrict the ability to type certain characters because they have special meaning within
           that tool.
@@ -413,7 +414,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_access_key(
         self, UserName: str = None
     ) -> ClientCreateAccessKeyResponseTypeDef:
@@ -504,7 +505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_account_alias(self, AccountAlias: str) -> None:
         """
         Creates an alias for your AWS account. For information about using an AWS account alias, see `Using
@@ -532,7 +533,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_group(
         self, GroupName: str, Path: str = None
     ) -> ClientCreateGroupResponseTypeDef:
@@ -564,8 +565,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type GroupName: string
@@ -634,7 +635,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance_profile(
         self, InstanceProfileName: str, Path: str = None
     ) -> ClientCreateInstanceProfileResponseTypeDef:
@@ -676,8 +677,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :rtype: dict
@@ -864,7 +865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_login_profile(
         self, UserName: str, Password: str, PasswordResetRequired: bool = None
     ) -> ClientCreateLoginProfileResponseTypeDef:
@@ -901,8 +902,8 @@ class Client(BaseClient):
 
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ that is used to validate this parameter
           is a string of characters. That string can include almost any printable ASCII character from the
-          space (\u0020) through the end of the ASCII character range (\u00FF). You can also include the
-          tab (\u0009), line feed (\u000A), and carriage return (\u000D) characters. Any of these
+          space (\\u0020) through the end of the ASCII character range (\\u00FF). You can also include the
+          tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D) characters. Any of these
           characters are valid in a password. However, many tools, such as the AWS Management Console,
           might restrict the ability to type certain characters because they have special meaning within
           that tool.
@@ -950,7 +951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_open_id_connect_provider(
         self, Url: str, ThumbprintList: List[str], ClientIDList: List[str] = None
     ) -> ClientCreateOpenIdConnectProviderResponseTypeDef:
@@ -1074,7 +1075,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy(
         self,
         PolicyName: str,
@@ -1128,8 +1129,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyDocument: string
@@ -1144,13 +1145,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type Description: string
         :param Description:
@@ -1267,7 +1268,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_policy_version(
         self, PolicyArn: str, PolicyDocument: str, SetAsDefault: bool = None
     ) -> ClientCreatePolicyVersionResponseTypeDef:
@@ -1315,13 +1316,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type SetAsDefault: boolean
         :param SetAsDefault:
@@ -1393,7 +1394,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_role(
         self,
         RoleName: str,
@@ -1442,8 +1443,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type RoleName: string
@@ -1467,13 +1468,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           Upon success, the response includes the same trust policy in JSON format.
 
@@ -1674,7 +1675,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_saml_provider(
         self, SAMLMetadataDocument: str, Name: str
     ) -> ClientCreateSamlProviderResponseTypeDef:
@@ -1756,7 +1757,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_service_linked_role(
         self, AWSServiceName: str, Description: str = None, CustomSuffix: str = None
     ) -> ClientCreateServiceLinkedRoleResponseTypeDef:
@@ -1944,7 +1945,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_service_specific_credential(
         self, UserName: str, ServiceName: str
     ) -> ClientCreateServiceSpecificCredentialResponseTypeDef:
@@ -1961,7 +1962,7 @@ class Client(BaseClient):
         You can reset the password to a new service-generated value by calling
         ResetServiceSpecificCredential .
 
-        For more information about service-specific credentials, see `Using IAM with AWS CodeCommit: Git
+        For more information about service-specific credentials, see `Using IAM with AWS CodeCommit\\: Git
         Credentials, SSH Keys, and AWS Access Keys
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html>`__ in the *IAM User
         Guide* .
@@ -2058,7 +2059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         UserName: str,
@@ -2101,8 +2102,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type UserName: string
@@ -2295,7 +2296,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_virtual_mfa_device(
         self, VirtualMFADeviceName: str, Path: str = None
     ) -> ClientCreateVirtualMfaDeviceResponseTypeDef:
@@ -2338,8 +2339,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type VirtualMFADeviceName: string
@@ -2523,7 +2524,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate_mfa_device(self, UserName: str, SerialNumber: str) -> None:
         """
         Deactivates the specified MFA device and removes it from association with the user name for which
@@ -2566,7 +2567,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_access_key(self, AccessKeyId: str, UserName: str = None) -> None:
         """
         Deletes the access key pair associated with the specified IAM user.
@@ -2606,7 +2607,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_account_alias(self, AccountAlias: str) -> None:
         """
         Deletes the specified AWS account alias. For information about using an AWS account alias, see
@@ -2634,7 +2635,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_account_password_policy(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the password policy for the AWS account. There are no parameters.
@@ -2650,7 +2651,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group(self, GroupName: str) -> None:
         """
         Deletes the specified IAM group. The group must not contain any users or have any attached policies.
@@ -2676,7 +2677,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_group_policy(self, GroupName: str, PolicyName: str) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM group.
@@ -2717,7 +2718,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_instance_profile(self, InstanceProfileName: str) -> None:
         """
         Deletes the specified instance profile. The instance profile must not have an associated role.
@@ -2752,7 +2753,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_login_profile(self, UserName: str) -> None:
         """
         Deletes the password for the specified IAM user, which terminates the user's ability to access AWS
@@ -2786,7 +2787,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_open_id_connect_provider(self, OpenIDConnectProviderArn: str) -> None:
         """
         Deletes an OpenID Connect identity provider (IdP) resource object in IAM.
@@ -2817,7 +2818,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy(self, PolicyArn: str) -> None:
         """
         Deletes the specified managed policy.
@@ -2861,7 +2862,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_policy_version(self, PolicyArn: str, VersionId: str) -> None:
         """
         Deletes the specified version from the specified managed policy.
@@ -2909,7 +2910,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_role(self, RoleName: str) -> None:
         """
         Deletes the specified role. The role must not have any policies attached. For more information
@@ -2943,7 +2944,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_role_permissions_boundary(self, RoleName: str) -> None:
         """
         Deletes the permissions boundary for the specified IAM role.
@@ -2972,7 +2973,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_role_policy(self, RoleName: str, PolicyName: str) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM role.
@@ -3013,7 +3014,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_saml_provider(self, SAMLProviderArn: str) -> None:
         """
         Deletes a SAML provider resource in IAM.
@@ -3044,7 +3045,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_server_certificate(self, ServerCertificateName: str) -> None:
         """
         Deletes the specified server certificate.
@@ -3086,7 +3087,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_service_linked_role(
         self, RoleName: str
     ) -> ClientDeleteServiceLinkedRoleResponseTypeDef:
@@ -3105,8 +3106,8 @@ class Client(BaseClient):
         the role. For more information about removing resources from a service, see the `AWS documentation
         <http://docs.aws.amazon.com/>`__ for your service.
 
-        For more information about service-linked roles, see `Roles Terms and Concepts: AWS Service-Linked
-        Role
+        For more information about service-linked roles, see `Roles Terms and Concepts\\: AWS
+        Service-Linked Role
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role>`__
         in the *IAM User Guide* .
 
@@ -3146,7 +3147,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_service_specific_credential(
         self, ServiceSpecificCredentialId: str, UserName: str = None
     ) -> None:
@@ -3185,7 +3186,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_signing_certificate(
         self, CertificateId: str, UserName: str = None
     ) -> None:
@@ -3227,7 +3228,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ssh_public_key(self, UserName: str, SSHPublicKeyId: str) -> None:
         """
         Deletes the specified SSH public key.
@@ -3268,7 +3269,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, UserName: str) -> None:
         """
         Deletes the specified IAM user. Unlike the AWS Management Console, when you delete a user
@@ -3316,7 +3317,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_permissions_boundary(self, UserName: str) -> None:
         """
         Deletes the permissions boundary for the specified IAM user.
@@ -3344,7 +3345,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_policy(self, UserName: str, PolicyName: str) -> None:
         """
         Deletes the specified inline policy that is embedded in the specified IAM user.
@@ -3385,7 +3386,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_virtual_mfa_device(self, SerialNumber: str) -> None:
         """
         Deletes a virtual MFA device.
@@ -3417,7 +3418,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_group_policy(self, GroupName: str, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified IAM group.
@@ -3458,7 +3459,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_role_policy(self, RoleName: str, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified role.
@@ -3499,7 +3500,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_user_policy(self, UserName: str, PolicyArn: str) -> None:
         """
         Removes the specified managed policy from the specified user.
@@ -3540,7 +3541,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_mfa_device(
         self,
         UserName: str,
@@ -3616,7 +3617,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_credential_report(
         self, *args: Any, **kwargs: Any
     ) -> ClientGenerateCredentialReportResponseTypeDef:
@@ -3661,7 +3662,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_organizations_access_report(
         self, EntityPath: str, OrganizationsPolicyId: str = None
     ) -> ClientGenerateOrganizationsAccessReportResponseTypeDef:
@@ -3819,7 +3820,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3848,7 +3849,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_service_last_accessed_details(
         self, Arn: str
     ) -> ClientGenerateServiceLastAccessedDetailsResponseTypeDef:
@@ -3939,7 +3940,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_access_key_last_used(
         self, AccessKeyId: str
     ) -> ClientGetAccessKeyLastUsedResponseTypeDef:
@@ -4034,7 +4035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_authorization_details(
         self, Filter: List[str] = None, MaxItems: int = None, Marker: str = None
     ) -> ClientGetAccountAuthorizationDetailsResponseTypeDef:
@@ -4954,7 +4955,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_password_policy(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountPasswordPolicyResponseTypeDef:
@@ -5046,7 +5047,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_summary(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountSummaryResponseTypeDef:
@@ -5093,7 +5094,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_context_keys_for_custom_policy(
         self, PolicyInputList: List[str]
     ) -> ClientGetContextKeysForCustomPolicyResponseTypeDef:
@@ -5128,13 +5129,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -5165,7 +5166,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_context_keys_for_principal_policy(
         self, PolicySourceArn: str, PolicyInputList: List[str] = None
     ) -> ClientGetContextKeysForPrincipalPolicyResponseTypeDef:
@@ -5221,13 +5222,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -5258,7 +5259,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_credential_report(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetCredentialReportResponseTypeDef:
@@ -5309,7 +5310,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group(
         self, GroupName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientGetGroupResponseTypeDef:
@@ -5565,7 +5566,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_group_policy(
         self, GroupName: str, PolicyName: str
     ) -> ClientGetGroupPolicyResponseTypeDef:
@@ -5652,7 +5653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_profile(
         self, InstanceProfileName: str
     ) -> ClientGetInstanceProfileResponseTypeDef:
@@ -5864,7 +5865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_login_profile(self, UserName: str) -> ClientGetLoginProfileResponseTypeDef:
         """
         Retrieves the user name and password-creation date for the specified IAM user. If the user has not
@@ -5926,7 +5927,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_open_id_connect_provider(
         self, OpenIDConnectProviderArn: str
     ) -> ClientGetOpenIdConnectProviderResponseTypeDef:
@@ -6007,7 +6008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_organizations_access_report(
         self, JobId: str, MaxItems: int = None, Marker: str = None, SortKey: str = None
     ) -> ClientGetOrganizationsAccessReportResponseTypeDef:
@@ -6231,7 +6232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -6252,7 +6253,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy(self, PolicyArn: str) -> ClientGetPolicyResponseTypeDef:
         """
         Retrieves information about the specified managed policy, including the policy's default version
@@ -6392,7 +6393,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_policy_version(
         self, PolicyArn: str, VersionId: str
     ) -> ClientGetPolicyVersionResponseTypeDef:
@@ -6507,7 +6508,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_role(self, RoleName: str) -> ClientGetRoleResponseTypeDef:
         """
         Retrieves information about the specified role, including the role's path, GUID, ARN, and the
@@ -6674,7 +6675,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_role_policy(
         self, RoleName: str, PolicyName: str
     ) -> ClientGetRolePolicyResponseTypeDef:
@@ -6764,7 +6765,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_saml_provider(
         self, SAMLProviderArn: str
     ) -> ClientGetSamlProviderResponseTypeDef:
@@ -6828,7 +6829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_server_certificate(
         self, ServerCertificateName: str
     ) -> ClientGetServerCertificateResponseTypeDef:
@@ -6935,7 +6936,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_last_accessed_details(
         self, JobId: str, MaxItems: int = None, Marker: str = None
     ) -> ClientGetServiceLastAccessedDetailsResponseTypeDef:
@@ -7147,7 +7148,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_last_accessed_details_with_entities(
         self,
         JobId: str,
@@ -7360,7 +7361,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_linked_role_deletion_status(
         self, DeletionTaskId: str
     ) -> ClientGetServiceLinkedRoleDeletionStatusResponseTypeDef:
@@ -7459,7 +7460,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ssh_public_key(
         self, UserName: str, SSHPublicKeyId: str, Encoding: str
     ) -> ClientGetSshPublicKeyResponseTypeDef:
@@ -7562,7 +7563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user(self, UserName: str = None) -> ClientGetUserResponseTypeDef:
         """
         Retrieves information about the specified IAM user, including the user's creation date, path,
@@ -7746,7 +7747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_policy(
         self, UserName: str, PolicyName: str
     ) -> ClientGetUserPolicyResponseTypeDef:
@@ -7833,7 +7834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -7846,7 +7847,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_access_keys(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListAccessKeysResponseTypeDef:
@@ -7973,7 +7974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_account_aliases(
         self, Marker: str = None, MaxItems: int = None
     ) -> ClientListAccountAliasesResponseTypeDef:
@@ -8052,7 +8053,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attached_group_policies(
         self,
         GroupName: str,
@@ -8103,8 +8104,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -8194,7 +8195,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attached_role_policies(
         self,
         RoleName: str,
@@ -8244,8 +8245,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -8335,7 +8336,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attached_user_policies(
         self,
         UserName: str,
@@ -8385,8 +8386,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -8476,7 +8477,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_entities_for_policy(
         self,
         PolicyArn: str,
@@ -8536,8 +8537,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -8694,7 +8695,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_group_policies(
         self, GroupName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListGroupPoliciesResponseTypeDef:
@@ -8794,7 +8795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListGroupsResponseTypeDef:
@@ -8825,7 +8826,7 @@ class Client(BaseClient):
           groups. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ )
           a string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type Marker: string
@@ -8933,7 +8934,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_groups_for_user(
         self, UserName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListGroupsForUserResponseTypeDef:
@@ -9067,7 +9068,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instance_profiles(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListInstanceProfilesResponseTypeDef:
@@ -9100,7 +9101,7 @@ class Client(BaseClient):
           instance profiles. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type Marker: string
@@ -9337,7 +9338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instance_profiles_for_role(
         self, RoleName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListInstanceProfilesForRoleResponseTypeDef:
@@ -9602,7 +9603,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_mfa_devices(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListMfaDevicesResponseTypeDef:
@@ -9715,7 +9716,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_open_id_connect_providers(
         self, *args: Any, **kwargs: Any
     ) -> ClientListOpenIdConnectProvidersResponseTypeDef:
@@ -9770,7 +9771,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies(
         self,
         Scope: str = None,
@@ -9836,7 +9837,7 @@ class Client(BaseClient):
           defaults to a slash (/), listing all policies. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type PolicyUsageFilter: string
@@ -10002,7 +10003,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policies_granting_service_access(
         self, Arn: str, ServiceNamespaces: List[str], Marker: str = None
     ) -> ClientListPoliciesGrantingServiceAccessResponseTypeDef:
@@ -10202,7 +10203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policy_versions(
         self, PolicyArn: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListPolicyVersionsResponseTypeDef:
@@ -10342,7 +10343,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_role_policies(
         self, RoleName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListRolePoliciesResponseTypeDef:
@@ -10438,7 +10439,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_role_tags(
         self, RoleName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListRoleTagsResponseTypeDef:
@@ -10554,7 +10555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_roles(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListRolesResponseTypeDef:
@@ -10586,8 +10587,8 @@ class Client(BaseClient):
           This parameter is optional. If it is not included, it defaults to a slash (/), listing all roles.
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type Marker: string
@@ -10767,7 +10768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_saml_providers(
         self, *args: Any, **kwargs: Any
     ) -> ClientListSamlProvidersResponseTypeDef:
@@ -10831,7 +10832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_server_certificates(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListServerCertificatesResponseTypeDef:
@@ -10867,7 +10868,7 @@ class Client(BaseClient):
           certificates. This parameter allows (through its `regex pattern
           <http://wikipedia.org/wiki/regex>`__ ) a string of characters consisting of either a forward
           slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can
-          contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including
+          contain any ASCII character from the ! (\\u0021) through the DEL character (\\u007F), including
           most punctuation characters, digits, and upper and lowercased letters.
 
         :type Marker: string
@@ -10975,7 +10976,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_service_specific_credentials(
         self, UserName: str = None, ServiceName: str = None
     ) -> ClientListServiceSpecificCredentialsResponseTypeDef:
@@ -11074,7 +11075,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_signing_certificates(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListSigningCertificatesResponseTypeDef:
@@ -11202,7 +11203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ssh_public_keys(
         self, UserName: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListSshPublicKeysResponseTypeDef:
@@ -11328,7 +11329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_policies(
         self, UserName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListUserPoliciesResponseTypeDef:
@@ -11424,7 +11425,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_tags(
         self, UserName: str, Marker: str = None, MaxItems: int = None
     ) -> ClientListUserTagsResponseTypeDef:
@@ -11540,7 +11541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListUsersResponseTypeDef:
@@ -11572,7 +11573,7 @@ class Client(BaseClient):
           names. This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a
           string of characters consisting of either a forward slash (/) by itself or a string that must
           begin and end with forward slashes. In addition, it can contain any ASCII character from the !
-          (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and
+          (\\u0021) through the DEL character (\\u007F), including most punctuation characters, digits, and
           upper and lowercased letters.
 
         :type Marker: string
@@ -11764,7 +11765,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_virtual_mfa_devices(
         self, AssignmentStatus: str = None, Marker: str = None, MaxItems: int = None
     ) -> ClientListVirtualMfaDevicesResponseTypeDef:
@@ -12008,7 +12009,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_group_policy(
         self, GroupName: str, PolicyName: str, PolicyDocument: str
     ) -> None:
@@ -12074,18 +12075,18 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_role_permissions_boundary(
         self, RoleName: str, PermissionsBoundary: str
     ) -> None:
@@ -12129,7 +12130,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_role_policy(
         self, RoleName: str, PolicyName: str, PolicyDocument: str
     ) -> None:
@@ -12201,18 +12202,18 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_user_permissions_boundary(
         self, UserName: str, PermissionsBoundary: str
     ) -> None:
@@ -12254,7 +12255,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_user_policy(
         self, UserName: str, PolicyName: str, PolicyDocument: str
     ) -> None:
@@ -12320,18 +12321,18 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_client_id_from_open_id_connect_provider(
         self, OpenIDConnectProviderArn: str, ClientID: str
     ) -> None:
@@ -12371,7 +12372,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_role_from_instance_profile(
         self, InstanceProfileName: str, RoleName: str
     ) -> None:
@@ -12420,7 +12421,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_user_from_group(self, GroupName: str, UserName: str) -> None:
         """
         Removes the specified user from the specified group.
@@ -12456,7 +12457,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_service_specific_credential(
         self, ServiceSpecificCredentialId: str, UserName: str = None
     ) -> ClientResetServiceSpecificCredentialResponseTypeDef:
@@ -12559,7 +12560,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resync_mfa_device(
         self,
         UserName: str,
@@ -12621,7 +12622,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_default_policy_version(self, PolicyArn: str, VersionId: str) -> None:
         """
         Sets the specified version of the specified policy as the policy's default (operative) version.
@@ -12664,7 +12665,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_security_token_service_preferences(
         self, GlobalEndpointTokenVersion: str
     ) -> None:
@@ -12715,7 +12716,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def simulate_custom_policy(
         self,
         PolicyInputList: List[str],
@@ -12797,13 +12798,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -12847,13 +12848,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type ResourceOwner: string
         :param ResourceOwner:
@@ -13255,7 +13256,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def simulate_principal_policy(
         self,
         PolicySourceArn: str,
@@ -13354,13 +13355,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           - *(string) --*
 
@@ -13400,13 +13401,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type ResourceOwner: string
         :param ResourceOwner:
@@ -13815,8 +13816,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_role(self, RoleName: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_role(self, RoleName: str, Tags: List[ClientTagRoleTagsTypeDef]) -> None:
         """
         Adds one or more tags to an IAM role. The role can be a regular role or a service-linked role. If a
         tag with the same key name already exists, then that tag is overwritten with the new value.
@@ -13907,8 +13908,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_user(self, UserName: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_user(self, UserName: str, Tags: List[ClientTagUserTagsTypeDef]) -> None:
         """
         Adds one or more tags to an IAM user. If a tag with the same key name already exists, then that tag
         is overwritten with the new value.
@@ -14000,8 +14001,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_role(self, RoleName: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_role(self, RoleName: str, TagKeys: List[str]) -> None:
         """
         Removes the specified tags from the role. For more information about tagging, see `Tagging IAM
         Identities <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html>`__ in the *IAM User
@@ -14039,8 +14040,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_user(self, UserName: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_user(self, UserName: str, TagKeys: List[str]) -> None:
         """
         Removes the specified tags from the user. For more information about tagging, see `Tagging IAM
         Identities <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html>`__ in the *IAM User
@@ -14078,7 +14079,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_access_key(
         self, AccessKeyId: str, Status: str, UserName: str = None
     ) -> None:
@@ -14132,7 +14133,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_account_password_policy(
         self,
         MinimumPasswordLength: int = None,
@@ -14263,7 +14264,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_assume_role_policy(self, RoleName: str, PolicyDocument: str) -> None:
         """
         Updates the policy that grants an IAM entity permission to assume a role. This is typically
@@ -14302,18 +14303,18 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_group(
         self, GroupName: str, NewPath: str = None, NewGroupName: str = None
     ) -> None:
@@ -14364,8 +14365,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewGroupName: string
@@ -14380,7 +14381,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_login_profile(
         self, UserName: str, Password: str = None, PasswordResetRequired: bool = None
     ) -> None:
@@ -14420,13 +14421,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
           However, the format can be further restricted by the account administrator by setting a password
           policy on the AWS account. For more information, see  UpdateAccountPasswordPolicy .
@@ -14440,9 +14441,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_open_id_connect_provider_thumbprint(
-        self, OpenIDConnectProviderArn: str, ThumbprintList: List[Any]
+        self, OpenIDConnectProviderArn: str, ThumbprintList: List[str]
     ) -> None:
         """
         Replaces the existing list of server certificate thumbprints associated with an OpenID Connect
@@ -14502,7 +14503,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_role(
         self, RoleName: str, Description: str = None, MaxSessionDuration: int = None
     ) -> Dict[str, Any]:
@@ -14559,7 +14560,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_role_description(
         self, RoleName: str, Description: str
     ) -> ClientUpdateRoleDescriptionResponseTypeDef:
@@ -14721,7 +14722,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_saml_provider(
         self, SAMLMetadataDocument: str, SAMLProviderArn: str
     ) -> ClientUpdateSamlProviderResponseTypeDef:
@@ -14782,7 +14783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_server_certificate(
         self,
         ServerCertificateName: str,
@@ -14842,8 +14843,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewServerCertificateName: string
@@ -14859,7 +14860,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service_specific_credential(
         self, ServiceSpecificCredentialId: str, Status: str, UserName: str = None
     ) -> None:
@@ -14905,7 +14906,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_signing_certificate(
         self, CertificateId: str, Status: str, UserName: str = None
     ) -> None:
@@ -14956,7 +14957,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ssh_public_key(
         self, UserName: str, SSHPublicKeyId: str, Status: str
     ) -> None:
@@ -15008,7 +15009,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self, UserName: str, NewPath: str = None, NewUserName: str = None
     ) -> None:
@@ -15060,8 +15061,8 @@ class Client(BaseClient):
 
           This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
           of characters consisting of either a forward slash (/) by itself or a string that must begin and
-          end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021)
-          through the DEL character (\u007F), including most punctuation characters, digits, and upper and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
           lowercased letters.
 
         :type NewUserName: string
@@ -15076,7 +15077,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_server_certificate(
         self,
         ServerCertificateName: str,
@@ -15139,8 +15140,8 @@ class Client(BaseClient):
           This parameter is optional. If it is not included, it defaults to a slash (/). This parameter
           allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string of characters
           consisting of either a forward slash (/) by itself or a string that must begin and end with
-          forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the
-          DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased
+          forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021) through the
+          DEL character (\\u007F), including most punctuation characters, digits, and upper and lowercased
           letters.
 
           .. note::
@@ -15167,13 +15168,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type PrivateKey: string
         :param PrivateKey: **[REQUIRED]**
@@ -15183,13 +15184,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :type CertificateChain: string
         :param CertificateChain:
@@ -15200,13 +15201,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: dict
         :returns:
@@ -15270,7 +15271,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_signing_certificate(
         self, CertificateBody: str, UserName: str = None
     ) -> ClientUploadSigningCertificateResponseTypeDef:
@@ -15321,13 +15322,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: dict
         :returns:
@@ -15378,7 +15379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_ssh_public_key(
         self, UserName: str, SSHPublicKeyBody: str
     ) -> ClientUploadSshPublicKeyResponseTypeDef:
@@ -15420,13 +15421,13 @@ class Client(BaseClient):
           The `regex pattern <http://wikipedia.org/wiki/regex>`__ used to validate this parameter is a
           string of characters consisting of the following:
 
-          * Any printable ASCII character ranging from the space character (\u0020) through the end of the
+          * Any printable ASCII character ranging from the space character (\\u0020) through the end of the
           ASCII character range
 
           * The printable characters in the Basic Latin and Latin-1 Supplement character set (through
-          \u00FF)
+          \\u00FF)
 
-          * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+          * The special characters tab (\\u0009), line feed (\\u000A), and carriage return (\\u000D)
 
         :rtype: dict
         :returns:

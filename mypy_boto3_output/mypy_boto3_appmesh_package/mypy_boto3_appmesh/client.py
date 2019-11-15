@@ -52,7 +52,7 @@ from mypy_boto3_appmesh.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -69,7 +69,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_mesh(
         self,
         meshName: str,
@@ -248,7 +248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route(
         self,
         meshName: str,
@@ -1615,7 +1615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_virtual_node(
         self,
         meshName: str,
@@ -2176,7 +2176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_virtual_router(
         self,
         meshName: str,
@@ -2399,7 +2399,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_virtual_service(
         self,
         meshName: str,
@@ -2621,7 +2621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_mesh(self, meshName: str) -> ClientDeleteMeshResponseTypeDef:
         """
         Deletes an existing service mesh.
@@ -2732,7 +2732,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_route(
         self, meshName: str, routeName: str, virtualRouterName: str
     ) -> ClientDeleteRouteResponseTypeDef:
@@ -3448,7 +3448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_virtual_node(
         self, meshName: str, virtualNodeName: str
     ) -> ClientDeleteVirtualNodeResponseTypeDef:
@@ -3751,7 +3751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_virtual_router(
         self, meshName: str, virtualRouterName: str
     ) -> ClientDeleteVirtualRouterResponseTypeDef:
@@ -3890,7 +3890,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_virtual_service(
         self, meshName: str, virtualServiceName: str
     ) -> ClientDeleteVirtualServiceResponseTypeDef:
@@ -4026,7 +4026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_mesh(self, meshName: str) -> ClientDescribeMeshResponseTypeDef:
         """
         Describes an existing service mesh.
@@ -4134,7 +4134,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_route(
         self, meshName: str, routeName: str, virtualRouterName: str
     ) -> ClientDescribeRouteResponseTypeDef:
@@ -4850,7 +4850,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_virtual_node(
         self, meshName: str, virtualNodeName: str
     ) -> ClientDescribeVirtualNodeResponseTypeDef:
@@ -5150,7 +5150,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_virtual_router(
         self, meshName: str, virtualRouterName: str
     ) -> ClientDescribeVirtualRouterResponseTypeDef:
@@ -5286,7 +5286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_virtual_service(
         self, meshName: str, virtualServiceName: str
     ) -> ClientDescribeVirtualServiceResponseTypeDef:
@@ -5422,7 +5422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5451,7 +5451,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5472,7 +5472,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5485,7 +5485,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_meshes(
         self, limit: int = None, nextToken: str = None
     ) -> ClientListMeshesResponseTypeDef:
@@ -5568,7 +5568,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_routes(
         self,
         meshName: str,
@@ -5672,7 +5672,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str, limit: int = None, nextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5762,7 +5762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_virtual_nodes(
         self, meshName: str, limit: int = None, nextToken: str = None
     ) -> ClientListVirtualNodesResponseTypeDef:
@@ -5851,7 +5851,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_virtual_routers(
         self, meshName: str, limit: int = None, nextToken: str = None
     ) -> ClientListVirtualRoutersResponseTypeDef:
@@ -5941,7 +5941,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_virtual_services(
         self, meshName: str, limit: int = None, nextToken: str = None
     ) -> ClientListVirtualServicesResponseTypeDef:
@@ -6031,7 +6031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -6097,7 +6097,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes specified tags from a resource.
@@ -6139,7 +6139,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_mesh(
         self,
         meshName: str,
@@ -6282,7 +6282,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_route(
         self,
         meshName: str,
@@ -7610,7 +7610,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_virtual_node(
         self,
         meshName: str,
@@ -8120,7 +8120,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_virtual_router(
         self,
         meshName: str,
@@ -8305,7 +8305,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_virtual_service(
         self,
         meshName: str,

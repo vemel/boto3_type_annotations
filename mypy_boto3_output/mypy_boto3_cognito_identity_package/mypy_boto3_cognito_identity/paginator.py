@@ -9,7 +9,7 @@ from mypy_boto3_cognito_identity.type_defs import (
 
 
 class ListIdentityPools(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListIdentityPoolsPaginatePaginationConfigTypeDef = None
     ) -> ListIdentityPoolsPaginateResponseTypeDef:

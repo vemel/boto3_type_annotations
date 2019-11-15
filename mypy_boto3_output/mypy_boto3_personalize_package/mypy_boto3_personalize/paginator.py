@@ -27,7 +27,7 @@ from mypy_boto3_personalize.type_defs import (
 
 
 class ListBatchInferenceJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         solutionVersionArn: str = None,
@@ -150,7 +150,7 @@ class ListBatchInferenceJobs(Boto3Paginator):
 
 
 class ListCampaigns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         solutionArn: str = None,
@@ -271,7 +271,7 @@ class ListCampaigns(Boto3Paginator):
 
 
 class ListDatasetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetGroupsPaginatePaginationConfigTypeDef = None
     ) -> ListDatasetGroupsPaginateResponseTypeDef:
@@ -383,7 +383,7 @@ class ListDatasetGroups(Boto3Paginator):
 
 
 class ListDatasetImportJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         datasetArn: str = None,
@@ -501,7 +501,7 @@ class ListDatasetImportJobs(Boto3Paginator):
 
 
 class ListDatasets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         datasetGroupArn: str = None,
@@ -629,7 +629,7 @@ class ListDatasets(Boto3Paginator):
 
 
 class ListEventTrackers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         datasetGroupArn: str = None,
@@ -744,7 +744,7 @@ class ListEventTrackers(Boto3Paginator):
 
 
 class ListRecipes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         recipeProvider: str = None,
@@ -853,7 +853,7 @@ class ListRecipes(Boto3Paginator):
 
 
 class ListSchemas(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSchemasPaginatePaginationConfigTypeDef = None
     ) -> ListSchemasPaginateResponseTypeDef:
@@ -949,7 +949,7 @@ class ListSchemas(Boto3Paginator):
 
 
 class ListSolutionVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         solutionArn: str = None,
@@ -1062,7 +1062,7 @@ class ListSolutionVersions(Boto3Paginator):
 
 
 class ListSolutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         datasetGroupArn: str = None,

@@ -2,13 +2,20 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_s3.type_defs import (
+    BucketExistsWaitWaiterConfigTypeDef,
+    BucketNotExistsWaitWaiterConfigTypeDef,
+    ObjectExistsWaitWaiterConfigTypeDef,
+    ObjectNotExistsWaitWaiterConfigTypeDef,
+)
 
 
 class BucketExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Bucket: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, Bucket: str, WaiterConfig: BucketExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`S3.Client.head_bucket` every 5 seconds until a successful state is reached. An
         error is returned after 20 failed checks.
@@ -47,8 +54,10 @@ class BucketExists(Boto3Waiter):
 
 
 class BucketNotExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, Bucket: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, Bucket: str, WaiterConfig: BucketNotExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`S3.Client.head_bucket` every 5 seconds until a successful state is reached. An
         error is returned after 20 failed checks.
@@ -87,7 +96,7 @@ class BucketNotExists(Boto3Waiter):
 
 
 class ObjectExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Bucket: str,
@@ -103,7 +112,7 @@ class ObjectExists(Boto3Waiter):
         SSECustomerKeyMD5: str = None,
         RequestPayer: str = None,
         PartNumber: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ObjectExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`S3.Client.head_object` every 5 seconds until a successful state is reached. An
@@ -229,7 +238,7 @@ class ObjectExists(Boto3Waiter):
 
 
 class ObjectNotExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Bucket: str,
@@ -245,7 +254,7 @@ class ObjectNotExists(Boto3Waiter):
         SSECustomerKeyMD5: str = None,
         RequestPayer: str = None,
         PartNumber: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ObjectNotExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`S3.Client.head_object` every 5 seconds until a successful state is reached. An

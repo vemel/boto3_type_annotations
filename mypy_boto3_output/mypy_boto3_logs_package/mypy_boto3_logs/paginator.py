@@ -26,7 +26,7 @@ from mypy_boto3_logs.type_defs import (
 
 
 class DescribeDestinations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DestinationNamePrefix: str = None,
@@ -142,7 +142,7 @@ class DescribeDestinations(Boto3Paginator):
 
 
 class DescribeExportTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         taskId: str = None,
@@ -304,7 +304,7 @@ class DescribeExportTasks(Boto3Paginator):
 
 
 class DescribeLogGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupNamePrefix: str = None,
@@ -424,7 +424,7 @@ class DescribeLogGroups(Boto3Paginator):
 
 
 class DescribeLogStreams(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupName: str,
@@ -590,7 +590,7 @@ class DescribeLogStreams(Boto3Paginator):
 
 
 class DescribeMetricFilters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupName: str = None,
@@ -754,7 +754,7 @@ class DescribeMetricFilters(Boto3Paginator):
 
 
 class DescribeQueries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupName: str = None,
@@ -872,7 +872,7 @@ class DescribeQueries(Boto3Paginator):
 
 
 class DescribeResourcePolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeResourcePoliciesPaginatePaginationConfigTypeDef = None,
@@ -964,7 +964,7 @@ class DescribeResourcePolicies(Boto3Paginator):
 
 
 class DescribeSubscriptionFilters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupName: str,
@@ -1091,7 +1091,7 @@ class DescribeSubscriptionFilters(Boto3Paginator):
 
 
 class FilterLogEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         logGroupName: str,

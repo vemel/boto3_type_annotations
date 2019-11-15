@@ -78,7 +78,7 @@ from mypy_boto3_devicefarm.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -95,7 +95,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_device_pool(
         self,
         projectArn: str,
@@ -157,7 +157,7 @@ class Client(BaseClient):
 
             - **attribute** *(string) --*
 
-              The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+              The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
               The supported operators for each attribute are provided in the following list.
 
@@ -335,7 +335,7 @@ class Client(BaseClient):
 
                   - **attribute** *(string) --*
 
-                    The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+                    The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
                     The supported operators for each attribute are provided in the following list.
 
@@ -444,7 +444,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance_profile(
         self,
         name: str,
@@ -563,7 +563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_profile(
         self,
         projectArn: str,
@@ -745,7 +745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_project(
         self, name: str, defaultJobTimeoutMinutes: int = None
     ) -> ClientCreateProjectResponseTypeDef:
@@ -817,7 +817,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_remote_access_session(
         self,
         projectArn: str,
@@ -1408,7 +1408,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_upload(
         self, projectArn: str, name: str, type: str, contentType: str = None
     ) -> ClientCreateUploadResponseTypeDef:
@@ -1700,7 +1700,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpce_configuration(
         self,
         vpceConfigurationName: str,
@@ -1793,7 +1793,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_device_pool(self, arn: str) -> Dict:
         """
         Deletes a device pool given the pool ARN. Does not allow deletion of curated pools owned by the
@@ -1829,7 +1829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_instance_profile(self, arn: str) -> Dict[str, Any]:
         """
         Deletes a profile that can be applied to one or more private device instances.
@@ -1861,7 +1861,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_network_profile(self, arn: str) -> Dict[str, Any]:
         """
         Deletes a network profile.
@@ -1893,7 +1893,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_project(self, arn: str) -> Dict:
         """
         Deletes an AWS Device Farm project, given the project ARN.
@@ -1930,7 +1930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_remote_access_session(self, arn: str) -> Dict:
         """
         Deletes a completed remote access session and its results.
@@ -1965,7 +1965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_run(self, arn: str) -> Dict:
         """
         Deletes the run, given the run ARN.
@@ -2002,7 +2002,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_upload(self, arn: str) -> Dict:
         """
         Deletes an upload given the upload ARN.
@@ -2037,7 +2037,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vpce_configuration(self, arn: str) -> Dict[str, Any]:
         """
         Deletes a configuration for your Amazon Virtual Private Cloud (VPC) endpoint.
@@ -2069,7 +2069,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2098,7 +2098,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_account_settings(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAccountSettingsResponseTypeDef:
@@ -2213,7 +2213,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device(self, arn: str) -> ClientGetDeviceResponseTypeDef:
         """
         Gets information about a unique device type.
@@ -2486,7 +2486,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_instance(self, arn: str) -> ClientGetDeviceInstanceResponseTypeDef:
         """
         Returns information about a device instance belonging to a private device fleet.
@@ -2600,7 +2600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_pool(self, arn: str) -> ClientGetDevicePoolResponseTypeDef:
         """
         Gets information about a device pool.
@@ -2689,7 +2689,7 @@ class Client(BaseClient):
 
                   - **attribute** *(string) --*
 
-                    The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+                    The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
                     The supported operators for each attribute are provided in the following list.
 
@@ -2798,7 +2798,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_device_pool_compatibility(
         self,
         devicePoolArn: str,
@@ -3768,7 +3768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_instance_profile(self, arn: str) -> ClientGetInstanceProfileResponseTypeDef:
         """
         Returns information about the specified instance profile.
@@ -3847,7 +3847,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job(self, arn: str) -> ClientGetJobResponseTypeDef:
         """
         Gets information about a job.
@@ -4332,7 +4332,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_network_profile(self, arn: str) -> ClientGetNetworkProfileResponseTypeDef:
         """
         Returns information about a network profile.
@@ -4434,7 +4434,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_offering_status(
         self, nextToken: str = None
     ) -> ClientGetOfferingStatusResponseTypeDef:
@@ -4662,7 +4662,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4683,7 +4683,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_project(self, arn: str) -> ClientGetProjectResponseTypeDef:
         """
         Gets information about a project.
@@ -4746,7 +4746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_remote_access_session(
         self, arn: str
     ) -> ClientGetRemoteAccessSessionResponseTypeDef:
@@ -5215,7 +5215,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_run(self, arn: str) -> ClientGetRunResponseTypeDef:
         """
         Gets information about a run.
@@ -5843,7 +5843,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_suite(self, arn: str) -> ClientGetSuiteResponseTypeDef:
         """
         Gets information about a suite.
@@ -6076,7 +6076,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_test(self, arn: str) -> ClientGetTestResponseTypeDef:
         """
         Gets information about a test.
@@ -6309,7 +6309,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_upload(self, arn: str) -> ClientGetUploadResponseTypeDef:
         """
         Gets information about an upload.
@@ -6497,7 +6497,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_vpce_configuration(
         self, arn: str
     ) -> ClientGetVpceConfigurationResponseTypeDef:
@@ -6567,7 +6567,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -6580,7 +6580,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def install_to_remote_access_session(
         self, remoteAccessSessionArn: str, appArn: str
     ) -> ClientInstallToRemoteAccessSessionResponseTypeDef:
@@ -6779,7 +6779,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_artifacts(
         self, arn: str, type: str, nextToken: str = None
     ) -> ClientListArtifactsResponseTypeDef:
@@ -6950,7 +6950,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_device_instances(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListDeviceInstancesResponseTypeDef:
@@ -7085,7 +7085,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_device_pools(
         self, arn: str, type: str = None, nextToken: str = None
     ) -> ClientListDevicePoolsResponseTypeDef:
@@ -7202,7 +7202,7 @@ class Client(BaseClient):
 
                     - **attribute** *(string) --*
 
-                      The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+                      The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
                       The supported operators for each attribute are provided in the following list.
 
@@ -7318,7 +7318,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_devices(
         self,
         arn: str = None,
@@ -7812,7 +7812,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_instance_profiles(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListInstanceProfilesResponseTypeDef:
@@ -7912,7 +7912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self, arn: str, nextToken: str = None
     ) -> ClientListJobsResponseTypeDef:
@@ -8420,7 +8420,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_network_profiles(
         self, arn: str, type: str = None, nextToken: str = None
     ) -> ClientListNetworkProfilesResponseTypeDef:
@@ -8549,7 +8549,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_offering_promotions(
         self, nextToken: str = None
     ) -> ClientListOfferingPromotionsResponseTypeDef:
@@ -8618,7 +8618,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_offering_transactions(
         self, nextToken: str = None
     ) -> ClientListOfferingTransactionsResponseTypeDef:
@@ -8792,7 +8792,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_offerings(
         self, nextToken: str = None
     ) -> ClientListOfferingsResponseTypeDef:
@@ -8906,7 +8906,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_projects(
         self, arn: str = None, nextToken: str = None
     ) -> ClientListProjectsResponseTypeDef:
@@ -8992,7 +8992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_remote_access_sessions(
         self, arn: str, nextToken: str = None
     ) -> ClientListRemoteAccessSessionsResponseTypeDef:
@@ -9481,7 +9481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_runs(
         self, arn: str, nextToken: str = None
     ) -> ClientListRunsResponseTypeDef:
@@ -10133,7 +10133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_samples(
         self, arn: str, nextToken: str = None
     ) -> ClientListSamplesResponseTypeDef:
@@ -10257,7 +10257,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_suites(
         self, arn: str, nextToken: str = None
     ) -> ClientListSuitesResponseTypeDef:
@@ -10512,7 +10512,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -10580,7 +10580,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tests(
         self, arn: str, nextToken: str = None
     ) -> ClientListTestsResponseTypeDef:
@@ -10835,7 +10835,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_unique_problems(
         self, arn: str, nextToken: str = None
     ) -> ClientListUniqueProblemsResponseTypeDef:
@@ -11269,7 +11269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_uploads(
         self, arn: str, type: str = None, nextToken: str = None
     ) -> ClientListUploadsResponseTypeDef:
@@ -11565,7 +11565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_vpce_configurations(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListVpceConfigurationsResponseTypeDef:
@@ -11655,7 +11655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_offering(
         self,
         offeringId: str = None,
@@ -11829,7 +11829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def renew_offering(
         self, offeringId: str = None, quantity: int = None
     ) -> ClientRenewOfferingResponseTypeDef:
@@ -11994,7 +11994,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def schedule_run(
         self,
         projectArn: str,
@@ -13187,7 +13187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_job(self, arn: str) -> ClientStopJobResponseTypeDef:
         """
         Initiates a stop request for the current job. AWS Device Farm will immediately stop the job on the
@@ -13674,7 +13674,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_remote_access_session(
         self, arn: str
     ) -> ClientStopRemoteAccessSessionResponseTypeDef:
@@ -14143,7 +14143,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_run(self, arn: str) -> ClientStopRunResponseTypeDef:
         """
         Initiates a stop request for the current test run. AWS Device Farm will immediately stop the run on
@@ -14775,7 +14775,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -14843,7 +14843,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes the specified tags from a resource.
@@ -14888,7 +14888,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_instance(
         self, arn: str, profileArn: str = None, labels: List[str] = None
     ) -> ClientUpdateDeviceInstanceResponseTypeDef:
@@ -15020,7 +15020,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_device_pool(
         self,
         arn: str,
@@ -15086,7 +15086,7 @@ class Client(BaseClient):
 
             - **attribute** *(string) --*
 
-              The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+              The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
               The supported operators for each attribute are provided in the following list.
 
@@ -15278,7 +15278,7 @@ class Client(BaseClient):
 
                   - **attribute** *(string) --*
 
-                    The rule's stringified attribute. For example, specify the value as ``"\"abc\""`` .
+                    The rule's stringified attribute. For example, specify the value as ``"\\"abc\\""`` .
 
                     The supported operators for each attribute are provided in the following list.
 
@@ -15387,7 +15387,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_instance_profile(
         self,
         arn: str,
@@ -15513,7 +15513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_network_profile(
         self,
         arn: str,
@@ -15696,7 +15696,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_project(
         self, arn: str, name: str = None, defaultJobTimeoutMinutes: int = None
     ) -> ClientUpdateProjectResponseTypeDef:
@@ -15773,7 +15773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_upload(
         self,
         arn: str,
@@ -15984,7 +15984,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_vpce_configuration(
         self,
         arn: str,

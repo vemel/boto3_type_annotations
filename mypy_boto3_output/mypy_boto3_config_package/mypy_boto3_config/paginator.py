@@ -46,7 +46,7 @@ from mypy_boto3_config.type_defs import (
 
 
 class DescribeAggregateComplianceByConfigRules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigurationAggregatorName: str,
@@ -221,7 +221,7 @@ class DescribeAggregateComplianceByConfigRules(Boto3Paginator):
 
 
 class DescribeAggregationAuthorizations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeAggregationAuthorizationsPaginatePaginationConfigTypeDef = None,
@@ -313,7 +313,7 @@ class DescribeAggregationAuthorizations(Boto3Paginator):
 
 
 class DescribeComplianceByConfigRule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigRuleNames: List[str] = None,
@@ -454,7 +454,7 @@ class DescribeComplianceByConfigRule(Boto3Paginator):
 
 
 class DescribeComplianceByResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceType: str = None,
@@ -617,7 +617,7 @@ class DescribeComplianceByResource(Boto3Paginator):
 
 
 class DescribeConfigRuleEvaluationStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigRuleNames: List[str] = None,
@@ -768,7 +768,7 @@ class DescribeConfigRuleEvaluationStatus(Boto3Paginator):
 
 
 class DescribeConfigRules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigRuleNames: List[str] = None,
@@ -1067,7 +1067,7 @@ class DescribeConfigRules(Boto3Paginator):
 
 
 class DescribeConfigurationAggregatorSourcesStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigurationAggregatorName: str,
@@ -1205,7 +1205,7 @@ class DescribeConfigurationAggregatorSourcesStatus(Boto3Paginator):
 
 
 class DescribeConfigurationAggregators(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigurationAggregatorNames: List[str] = None,
@@ -1370,7 +1370,7 @@ class DescribeConfigurationAggregators(Boto3Paginator):
 
 
 class DescribePendingAggregationRequests(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribePendingAggregationRequestsPaginatePaginationConfigTypeDef = None,
@@ -1453,7 +1453,7 @@ class DescribePendingAggregationRequests(Boto3Paginator):
 
 
 class DescribeRemediationExecutionStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigRuleName: str,
@@ -1705,7 +1705,7 @@ class DescribeRemediationExecutionStatus(Boto3Paginator):
 
 
 class DescribeRetentionConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RetentionConfigurationNames: List[str] = None,
@@ -1803,7 +1803,7 @@ class DescribeRetentionConfigurations(Boto3Paginator):
 
 
 class GetAggregateComplianceDetailsByConfigRule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigurationAggregatorName: str,
@@ -1989,7 +1989,7 @@ class GetAggregateComplianceDetailsByConfigRule(Boto3Paginator):
 
 
 class GetComplianceDetailsByConfigRule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigRuleName: str,
@@ -2152,7 +2152,7 @@ class GetComplianceDetailsByConfigRule(Boto3Paginator):
 
 
 class GetComplianceDetailsByResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceType: str,
@@ -2314,7 +2314,7 @@ class GetComplianceDetailsByResource(Boto3Paginator):
 
 
 class GetResourceConfigHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         resourceType: str,
@@ -2692,7 +2692,7 @@ class GetResourceConfigHistory(Boto3Paginator):
 
 
 class ListAggregateDiscoveredResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ConfigurationAggregatorName: str,
@@ -2904,7 +2904,7 @@ class ListAggregateDiscoveredResources(Boto3Paginator):
 
 
 class ListDiscoveredResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         resourceType: str,

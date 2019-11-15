@@ -61,7 +61,7 @@ from mypy_boto3_clouddirectory.type_defs import (
 
 
 class ListAppliedSchemaArns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -145,7 +145,7 @@ class ListAppliedSchemaArns(Boto3Paginator):
 
 
 class ListAttachedIndices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -330,7 +330,7 @@ class ListAttachedIndices(Boto3Paginator):
 
 
 class ListDevelopmentSchemaArns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListDevelopmentSchemaArnsPaginatePaginationConfigTypeDef = None,
@@ -399,7 +399,7 @@ class ListDevelopmentSchemaArns(Boto3Paginator):
 
 
 class ListDirectories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         state: str = None,
@@ -499,7 +499,7 @@ class ListDirectories(Boto3Paginator):
 
 
 class ListFacetAttributes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str,
@@ -701,7 +701,7 @@ class ListFacetAttributes(Boto3Paginator):
 
 
 class ListFacetNames(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str,
@@ -777,7 +777,7 @@ class ListFacetNames(Boto3Paginator):
 
 
 class ListIncomingTypedLinks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -1131,7 +1131,7 @@ class ListIncomingTypedLinks(Boto3Paginator):
 
 
 class ListIndex(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -1431,7 +1431,7 @@ class ListIndex(Boto3Paginator):
 
 
 class ListManagedSchemaArns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str = None,
@@ -1508,7 +1508,7 @@ class ListManagedSchemaArns(Boto3Paginator):
 
 
 class ListObjectAttributes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -1697,7 +1697,7 @@ class ListObjectAttributes(Boto3Paginator):
 
 
 class ListObjectParentPaths(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -1817,7 +1817,7 @@ class ListObjectParentPaths(Boto3Paginator):
 
 
 class ListObjectPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -1929,7 +1929,7 @@ class ListObjectPolicies(Boto3Paginator):
 
 
 class ListOutgoingTypedLinks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -2283,7 +2283,7 @@ class ListOutgoingTypedLinks(Boto3Paginator):
 
 
 class ListPolicyAttachments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,
@@ -2395,7 +2395,7 @@ class ListPolicyAttachments(Boto3Paginator):
 
 
 class ListPublishedSchemaArns(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str = None,
@@ -2472,7 +2472,7 @@ class ListPublishedSchemaArns(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,
@@ -2561,7 +2561,7 @@ class ListTagsForResource(Boto3Paginator):
 
 
 class ListTypedLinkFacetAttributes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str,
@@ -2731,7 +2731,7 @@ class ListTypedLinkFacetAttributes(Boto3Paginator):
 
 
 class ListTypedLinkFacetNames(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SchemaArn: str,
@@ -2808,7 +2808,7 @@ class ListTypedLinkFacetNames(Boto3Paginator):
 
 
 class LookupPolicy(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DirectoryArn: str,

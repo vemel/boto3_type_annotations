@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_mediapackage.type_defs import (
     ClientCreateChannelResponseTypeDef,
     ClientCreateHarvestJobResponseTypeDef,
@@ -33,7 +32,7 @@ from mypy_boto3_mediapackage.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -50,7 +49,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_channel(
         self, Id: str, Description: str = None, Tags: List[str] = None
     ) -> ClientCreateChannelResponseTypeDef:
@@ -142,7 +141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_harvest_job(
         self,
         EndTime: str,
@@ -255,7 +254,7 @@ class Client(BaseClient):
             the CloudWatch Event will include an explanation of why the HarvestJob failed.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_origin_endpoint(
         self,
         ChannelId: str,
@@ -1263,7 +1262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_channel(self, Id: str) -> Dict[str, Any]:
         """
         Deletes an existing Channel.
@@ -1293,7 +1292,7 @@ class Client(BaseClient):
           - *(dict) --* The Channel has been deleted.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_origin_endpoint(self, Id: str) -> Dict[str, Any]:
         """
         Deletes an existing OriginEndpoint.
@@ -1323,7 +1322,7 @@ class Client(BaseClient):
           - *(dict) --* The OriginEndpoint has been deleted.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_channel(self, Id: str) -> ClientDescribeChannelResponseTypeDef:
         """
         Gets details about a Channel.
@@ -1398,7 +1397,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_harvest_job(self, Id: str) -> ClientDescribeHarvestJobResponseTypeDef:
         """
         Gets details about an existing HarvestJob.
@@ -1473,7 +1472,7 @@ class Client(BaseClient):
             the CloudWatch Event will include an explanation of why the HarvestJob failed.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_origin_endpoint(
         self, Id: str
     ) -> ClientDescribeOriginEndpointResponseTypeDef:
@@ -1986,7 +1985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2015,7 +2014,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2036,7 +2035,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2049,7 +2048,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_channels(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListChannelsResponseTypeDef:
@@ -2141,7 +2140,7 @@ class Client(BaseClient):
             collection.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_harvest_jobs(
         self,
         IncludeChannelId: str = None,
@@ -2247,7 +2246,7 @@ class Client(BaseClient):
             collection.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_origin_endpoints(
         self, ChannelId: str = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientListOriginEndpointsResponseTypeDef:
@@ -2793,7 +2792,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2834,7 +2833,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rotate_channel_credentials(
         self, Id: str
     ) -> ClientRotateChannelCredentialsResponseTypeDef:
@@ -2917,7 +2916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rotate_ingest_endpoint_credentials(
         self, Id: str, IngestEndpointId: str
     ) -> ClientRotateIngestEndpointCredentialsResponseTypeDef:
@@ -2999,8 +2998,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, Tags: List[str]) -> None:
         """
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/TagResource>`_
@@ -3027,8 +3026,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/UntagResource>`_
@@ -3053,7 +3052,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_channel(
         self, Id: str, Description: str = None
     ) -> ClientUpdateChannelResponseTypeDef:
@@ -3134,7 +3133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_origin_endpoint(
         self,
         Id: str,

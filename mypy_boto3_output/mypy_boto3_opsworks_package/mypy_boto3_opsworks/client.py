@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_opsworks.type_defs import (
     ClientCloneStackChefConfigurationTypeDef,
     ClientCloneStackConfigurationManagerTypeDef,
@@ -58,9 +57,12 @@ from mypy_boto3_opsworks.type_defs import (
     ClientRegisterInstanceInstanceIdentityTypeDef,
     ClientRegisterInstanceResponseTypeDef,
     ClientRegisterVolumeResponseTypeDef,
+    ClientSetLoadBasedAutoScalingDownScalingTypeDef,
     ClientSetLoadBasedAutoScalingUpScalingTypeDef,
+    ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef,
     ClientUpdateAppAppSourceTypeDef,
     ClientUpdateAppDataSourcesTypeDef,
+    ClientUpdateAppEnvironmentTypeDef,
     ClientUpdateAppSslConfigurationTypeDef,
     ClientUpdateLayerCloudWatchLogsConfigurationTypeDef,
     ClientUpdateLayerCustomRecipesTypeDef,
@@ -72,8 +74,8 @@ from mypy_boto3_opsworks.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
-    def assign_instance(self, InstanceId: str, LayerIds: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def assign_instance(self, InstanceId: str, LayerIds: List[str]) -> None:
         """
         Assign a registered instance to a layer.
 
@@ -116,7 +118,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assign_volume(self, VolumeId: str, InstanceId: str = None) -> None:
         """
         Assigns one of the stack's registered Amazon EBS volumes to a specified instance. The volume must
@@ -153,7 +155,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_elastic_ip(self, ElasticIp: str, InstanceId: str = None) -> None:
         """
         Associates one of the stack's registered Elastic IP addresses with a specified instance. The
@@ -189,7 +191,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_elastic_load_balancer(
         self, ElasticLoadBalancerName: str, LayerId: str
     ) -> None:
@@ -233,7 +235,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -250,7 +252,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def clone_stack(
         self,
         SourceStackId: str,
@@ -499,7 +501,7 @@ class Client(BaseClient):
           A string that contains user-defined, custom JSON. It is used to override the corresponding
           default stack configuration JSON values. The string should be in the following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information about custom JSON, see `Use Custom JSON to Modify the Stack Configuration
           Attributes <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html>`__
@@ -598,7 +600,7 @@ class Client(BaseClient):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -691,7 +693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_app(
         self,
         StackId: str,
@@ -845,7 +847,7 @@ class Client(BaseClient):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -965,7 +967,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment(
         self,
         StackId: str,
@@ -1122,7 +1124,7 @@ class Client(BaseClient):
           corresponding default stack configuration JSON values. The string should be in the following
           format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information about custom JSON, see `Use Custom JSON to Modify the Stack Configuration
           Attributes <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html>`__ and
@@ -1151,7 +1153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instance(
         self,
         StackId: str,
@@ -1475,7 +1477,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_layer(
         self,
         StackId: str,
@@ -1937,7 +1939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack(
         self,
         Name: str,
@@ -2176,7 +2178,7 @@ class Client(BaseClient):
           default stack configuration attribute values or to pass data to recipes. The string should be in
           the following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information about custom JSON, see `Use Custom JSON to Modify the Stack Configuration
           Attributes <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html>`__ .
@@ -2274,7 +2276,7 @@ class Client(BaseClient):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -2357,7 +2359,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_profile(
         self,
         IamUserArn: str,
@@ -2432,7 +2434,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app(self, AppId: str) -> None:
         """
         Deletes a specified app.
@@ -2459,7 +2461,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_instance(
         self, InstanceId: str, DeleteElasticIp: bool = None, DeleteVolumes: bool = None
     ) -> None:
@@ -2504,7 +2506,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_layer(self, LayerId: str) -> None:
         """
         Deletes a specified layer. You must first stop and then delete all associated instances or unassign
@@ -2533,7 +2535,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stack(self, StackId: str) -> None:
         """
         Deletes a specified stack. You must first delete all instances, layers, and apps or deregister
@@ -2562,7 +2564,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_profile(self, IamUserArn: str) -> None:
         """
         Deletes a user profile.
@@ -2589,7 +2591,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_ecs_cluster(self, EcsClusterArn: str) -> None:
         """
         Deregisters a specified Amazon ECS cluster from a stack. For more information, see `Resource
@@ -2600,7 +2602,7 @@ class Client(BaseClient):
          **Required Permissions** : To use this action, an IAM user must have a Manage permissions level
          for the stack or an attached policy that explicitly grants permissions. For more information on
          user permissions, see
-         `https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html
+         `https\\://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html
          <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html>`__ .
 
         See also: `AWS API Documentation
@@ -2620,7 +2622,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_elastic_ip(self, ElasticIp: str) -> None:
         """
         Deregisters a specified Elastic IP address. The address can then be registered by another stack.
@@ -2649,7 +2651,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_instance(self, InstanceId: str) -> None:
         """
         Deregister a registered Amazon EC2 or on-premises instance. This action removes the instance from
@@ -2678,7 +2680,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_rds_db_instance(self, RdsDbInstanceArn: str) -> None:
         """
         Deregisters an Amazon RDS instance.
@@ -2705,7 +2707,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_volume(self, VolumeId: str) -> None:
         """
         Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more
@@ -2735,7 +2737,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_agent_versions(
         self,
         StackId: str = None,
@@ -2830,7 +2832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_apps(
         self, StackId: str = None, AppIds: List[str] = None
     ) -> ClientDescribeAppsResponseTypeDef:
@@ -3016,7 +3018,7 @@ class Client(BaseClient):
                     * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
                     For more information on how to safely handle IAM credentials, see
-                    `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+                    `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
                     <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
                     In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -3116,7 +3118,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_commands(
         self,
         DeploymentId: str = None,
@@ -3279,7 +3281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_deployments(
         self, StackId: str = None, AppId: str = None, DeploymentIds: List[str] = None
     ) -> ClientDescribeDeploymentsResponseTypeDef:
@@ -3501,7 +3503,7 @@ class Client(BaseClient):
                   corresponding default stack configuration attribute values for stack or to pass data to
                   recipes. The string should be in the following format:
 
-                   ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+                   ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
                   For more information on custom JSON, see `Use Custom JSON to Modify the Stack
                   Configuration Attributes
@@ -3515,7 +3517,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ecs_clusters(
         self,
         EcsClusterArns: List[str] = None,
@@ -3637,7 +3639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elastic_ips(
         self, InstanceId: str = None, StackId: str = None, Ips: List[str] = None
     ) -> ClientDescribeElasticIpsResponseTypeDef:
@@ -3743,7 +3745,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_elastic_load_balancers(
         self, StackId: str = None, LayerIds: List[str] = None
     ) -> ClientDescribeElasticLoadBalancersResponseTypeDef:
@@ -3872,7 +3874,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instances(
         self, StackId: str = None, LayerId: str = None, InstanceIds: List[str] = None
     ) -> Dict[str, Any]:
@@ -4301,7 +4303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_layers(
         self, StackId: str = None, LayerIds: List[str] = None
     ) -> Dict[str, Any]:
@@ -4832,7 +4834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_based_auto_scaling(
         self, LayerIds: List[str]
     ) -> ClientDescribeLoadBasedAutoScalingResponseTypeDef:
@@ -5042,7 +5044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_my_user_profile(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeMyUserProfileResponseTypeDef:
@@ -5105,7 +5107,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_operating_systems(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeOperatingSystemsResponseTypeDef:
@@ -5203,7 +5205,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_permissions(
         self, IamUserArn: str = None, StackId: str = None
     ) -> ClientDescribePermissionsResponseTypeDef:
@@ -5316,7 +5318,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_raid_arrays(
         self,
         InstanceId: str = None,
@@ -5462,7 +5464,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_rds_db_instances(
         self, StackId: str, RdsDbInstanceArns: List[str] = None
     ) -> ClientDescribeRdsDbInstancesResponseTypeDef:
@@ -5577,7 +5579,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_service_errors(
         self,
         StackId: str = None,
@@ -5686,7 +5688,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_provisioning_parameters(
         self, StackId: str
     ) -> ClientDescribeStackProvisioningParametersResponseTypeDef:
@@ -5745,7 +5747,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stack_summary(
         self, StackId: str
     ) -> ClientDescribeStackSummaryResponseTypeDef:
@@ -5926,7 +5928,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stacks(
         self, StackIds: List[str] = None
     ) -> ClientDescribeStacksResponseTypeDef:
@@ -6084,7 +6086,7 @@ class Client(BaseClient):
                   corresponding default stack configuration attribute values or to pass data to recipes.
                   The string should be in the following format:
 
-                   ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+                   ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
                   For more information on custom JSON, see `Use Custom JSON to Modify the Stack
                   Configuration Attributes
@@ -6161,7 +6163,7 @@ class Client(BaseClient):
                     * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
                     For more information on how to safely handle IAM credentials, see
-                    `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+                    `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
                     <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
                     In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual
@@ -6205,7 +6207,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_time_based_auto_scaling(
         self, InstanceIds: List[str]
     ) -> ClientDescribeTimeBasedAutoScalingResponseTypeDef:
@@ -6357,7 +6359,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_profiles(
         self, IamUserArns: List[str] = None
     ) -> ClientDescribeUserProfilesResponseTypeDef:
@@ -6443,7 +6445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_volumes(
         self,
         InstanceId: str = None,
@@ -6623,7 +6625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_elastic_load_balancer(
         self, ElasticLoadBalancerName: str, LayerId: str
     ) -> None:
@@ -6658,7 +6660,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_elastic_ip(self, ElasticIp: str) -> None:
         """
         Disassociates an Elastic IP address from its instance. The address remains registered with the
@@ -6687,7 +6689,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -6716,7 +6718,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_hostname_suggestion(
         self, LayerId: str
     ) -> ClientGetHostnameSuggestionResponseTypeDef:
@@ -6769,7 +6771,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -6790,7 +6792,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -6803,7 +6805,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def grant_access(
         self, InstanceId: str, ValidForInMinutes: int = None
     ) -> ClientGrantAccessResponseTypeDef:
@@ -6882,7 +6884,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTagsResponseTypeDef:
@@ -6954,7 +6956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_instance(self, InstanceId: str) -> None:
         """
         Reboots a specified instance. For more information, see `Starting, Stopping, and Rebooting
@@ -6983,7 +6985,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_ecs_cluster(
         self, EcsClusterArn: str, StackId: str
     ) -> ClientRegisterEcsClusterResponseTypeDef:
@@ -7040,7 +7042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_elastic_ip(
         self, ElasticIp: str, StackId: str
     ) -> ClientRegisterElasticIpResponseTypeDef:
@@ -7097,7 +7099,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_instance(
         self,
         StackId: str,
@@ -7216,7 +7218,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_rds_db_instance(
         self, StackId: str, RdsDbInstanceArn: str, DbUser: str, DbPassword: str
     ) -> None:
@@ -7263,7 +7265,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_volume(
         self, StackId: str, Ec2VolumeId: str = None
     ) -> ClientRegisterVolumeResponseTypeDef:
@@ -7320,13 +7322,13 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_load_based_auto_scaling(
         self,
         LayerId: str,
         Enable: bool = None,
         UpScaling: ClientSetLoadBasedAutoScalingUpScalingTypeDef = None,
-        DownScaling: Dict = None,
+        DownScaling: ClientSetLoadBasedAutoScalingDownScalingTypeDef = None,
     ) -> None:
         """
         Specify the load-based auto scaling configuration for a specified layer. For more information, see
@@ -7503,7 +7505,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_permission(
         self,
         StackId: str,
@@ -7577,9 +7579,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_time_based_auto_scaling(
-        self, InstanceId: str, AutoScalingSchedule: Dict = None
+        self,
+        InstanceId: str,
+        AutoScalingSchedule: ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef = None,
     ) -> None:
         """
         Specify the time-based auto scaling configuration for a specified instance. For more information,
@@ -7692,7 +7696,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_instance(self, InstanceId: str) -> None:
         """
         Starts a specified instance. For more information, see `Starting, Stopping, and Rebooting Instances
@@ -7720,7 +7724,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_stack(self, StackId: str) -> None:
         """
         Starts a stack's instances.
@@ -7747,7 +7751,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_instance(self, InstanceId: str, Force: bool = None) -> None:
         """
         Stops a specified instance. When you stop a standard instance, the data disappears and must be
@@ -7787,7 +7791,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_stack(self, StackId: str) -> None:
         """
         Stops a specified stack.
@@ -7814,8 +7818,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, ResourceArn: str, Tags: List[str]) -> None:
         """
         Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more
         information about how tagging works, see `Tags
@@ -7863,7 +7867,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unassign_instance(self, InstanceId: str) -> None:
         """
         Unassigns a registered instance from all layers that are using the instance. The instance remains
@@ -7892,7 +7896,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unassign_volume(self, VolumeId: str) -> None:
         """
         Unassigns an assigned Amazon EBS volume. The volume remains registered with the stack. For more
@@ -7921,8 +7925,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes tags from a specified stack or layer.
 
@@ -7953,7 +7957,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_app(
         self,
         AppId: str,
@@ -7966,7 +7970,7 @@ class Client(BaseClient):
         EnableSsl: bool = None,
         SslConfiguration: ClientUpdateAppSslConfigurationTypeDef = None,
         Attributes: Dict[str, str] = None,
-        Environment: List[Any] = None,
+        Environment: List[ClientUpdateAppEnvironmentTypeDef] = None,
     ) -> None:
         """
         Updates a specified app.
@@ -8096,7 +8100,7 @@ class Client(BaseClient):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -8197,7 +8201,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_elastic_ip(self, ElasticIp: str, Name: str = None) -> None:
         """
         Updates a registered Elastic IP address's name. For more information, see `Resource Management
@@ -8231,7 +8235,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_instance(
         self,
         InstanceId: str,
@@ -8404,7 +8408,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_layer(
         self,
         LayerId: str,
@@ -8541,7 +8545,7 @@ class Client(BaseClient):
           For custom layers only, use this parameter to specify the layer's short name, which is used
           internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the
           directory where your app files are installed. It can have a maximum of 200 characters and must be
-          in the following format: /\A[a-z0-9\-\_\.]+\Z/.
+          in the following format: /\\A[a-z0-9\\-\\_\\.]+\\Z/.
 
           The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see
           the `Layer Reference <https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html>`__
@@ -8821,7 +8825,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_my_user_profile(self, SshPublicKey: str = None) -> None:
         """
         Updates a user's SSH public key.
@@ -8848,7 +8852,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_rds_db_instance(
         self, RdsDbInstanceArn: str, DbUser: str = None, DbPassword: str = None
     ) -> None:
@@ -8889,7 +8893,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stack(
         self,
         StackId: str,
@@ -9076,7 +9080,7 @@ class Client(BaseClient):
           default stack configuration JSON values or to pass data to recipes. The string should be in the
           following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information about custom JSON, see `Use Custom JSON to Modify the Stack Configuration
           Attributes <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html>`__ .
@@ -9153,7 +9157,7 @@ class Client(BaseClient):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -9238,7 +9242,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_profile(
         self,
         IamUserArn: str,
@@ -9294,7 +9298,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_volume(
         self, VolumeId: str, Name: str = None, MountPoint: str = None
     ) -> None:

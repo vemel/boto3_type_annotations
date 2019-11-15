@@ -27,7 +27,7 @@ from mypy_boto3_comprehendmedical.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -44,7 +44,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_entities_detection_v2_job(
         self, JobId: str
     ) -> ClientDescribeEntitiesDetectionV2JobResponseTypeDef:
@@ -198,7 +198,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_phi_detection_job(
         self, JobId: str
     ) -> ClientDescribePhiDetectionJobResponseTypeDef:
@@ -351,7 +351,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_entities(self, Text: str) -> ClientDetectEntitiesResponseTypeDef:
         """
         The ``DetectEntities`` operation is deprecated. You should use the  DetectEntitiesV2 operation
@@ -670,7 +670,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_entities_v2(self, Text: str) -> ClientDetectEntitiesV2ResponseTypeDef:
         """
         Inspects the clinical text for a variety of medical entities and returns specific information about
@@ -988,7 +988,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_phi(self, Text: str) -> ClientDetectPhiResponseTypeDef:
         """
         Inspects the clinical text for protected health information (PHI) entities and entity category,
@@ -1203,7 +1203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1232,7 +1232,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1253,7 +1253,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1266,7 +1266,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_entities_detection_v2_jobs(
         self,
         Filter: ClientListEntitiesDetectionV2JobsFilterTypeDef = None,
@@ -1472,7 +1472,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_phi_detection_jobs(
         self,
         Filter: ClientListPhiDetectionJobsFilterTypeDef = None,
@@ -1678,7 +1678,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_entities_detection_v2_job(
         self,
         InputDataConfig: ClientStartEntitiesDetectionV2JobInputDataConfigTypeDef,
@@ -1803,7 +1803,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_phi_detection_job(
         self,
         InputDataConfig: ClientStartPhiDetectionJobInputDataConfigTypeDef,
@@ -1928,7 +1928,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_entities_detection_v2_job(
         self, JobId: str
     ) -> ClientStopEntitiesDetectionV2JobResponseTypeDef:
@@ -1969,7 +1969,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_phi_detection_job(
         self, JobId: str
     ) -> ClientStopPhiDetectionJobResponseTypeDef:

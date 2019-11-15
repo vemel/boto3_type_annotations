@@ -8535,6 +8535,32 @@ class ClientPutConfigRuleConfigRuleTypeDef(
     """
 
 
+_ClientPutConfigRuleTagsTypeDef = TypedDict(
+    "_ClientPutConfigRuleTagsTypeDef", {"Key": str, "Value": str}, total=False
+)
+
+
+class ClientPutConfigRuleTagsTypeDef(_ClientPutConfigRuleTagsTypeDef):
+    """
+    Type definition for `ClientPutConfigRule` `Tags`
+
+    The tags for the resource. The metadata that you apply to a resource to help you categorize and
+    organize them. Each tag consists of a key and an optional value, both of which you define. Tag
+    keys can have a maximum character length of 128 characters, and tag values can have a maximum
+    length of 256 characters.
+
+    - **Key** *(string) --*
+
+      One part of a key-value pair that make up a tag. A key is a general label that acts like a
+      category for more specific tag values.
+
+    - **Value** *(string) --*
+
+      The optional part of a key-value pair that make up a tag. A value acts as a descriptor within
+      a tag category (key).
+    """
+
+
 _RequiredClientPutConfigurationAggregatorAccountAggregationSourcesTypeDef = TypedDict(
     "_RequiredClientPutConfigurationAggregatorAccountAggregationSourcesTypeDef",
     {"AccountIds": List[str]},
@@ -8867,6 +8893,235 @@ class ClientPutConfigurationAggregatorTagsTypeDef(
 
       The optional part of a key-value pair that make up a tag. A value acts as a descriptor within
       a tag category (key).
+    """
+
+
+_ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef = TypedDict(
+    "_ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef",
+    {
+        "allSupported": bool,
+        "includeGlobalResourceTypes": bool,
+        "resourceTypes": List[str],
+    },
+    total=False,
+)
+
+
+class ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef(
+    _ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef
+):
+    """
+    Type definition for `ClientPutConfigurationRecorderConfigurationRecorder` `recordingGroup`
+
+    Specifies the types of AWS resources for which AWS Config records configuration changes.
+
+    - **allSupported** *(boolean) --*
+
+      Specifies whether AWS Config records configuration changes for every supported type of
+      regional resource.
+
+      If you set this option to ``true`` , when AWS Config adds support for a new type of regional
+      resource, it starts recording resources of that type automatically.
+
+      If you set this option to ``true`` , you cannot enumerate a list of ``resourceTypes`` .
+
+    - **includeGlobalResourceTypes** *(boolean) --*
+
+      Specifies whether AWS Config includes all supported types of global resources (for example,
+      IAM resources) with the resources that it records.
+
+      Before you can set this option to ``true`` , you must set the ``allSupported`` option to
+      ``true`` .
+
+      If you set this option to ``true`` , when AWS Config adds support for a new type of global
+      resource, it starts recording resources of that type automatically.
+
+      The configuration details for any global resource are the same in all regions. To prevent
+      duplicate configuration items, you should consider customizing AWS Config in only one region
+      to record global resources.
+
+    - **resourceTypes** *(list) --*
+
+      A comma-separated list that specifies the types of AWS resources for which AWS Config records
+      configuration changes (for example, ``AWS::EC2::Instance`` or ``AWS::CloudTrail::Trail`` ).
+
+      Before you can set this option to ``true`` , you must set the ``allSupported`` option to
+      ``false`` .
+
+      If you set this option to ``true`` , when AWS Config adds support for a new type of resource,
+      it will not record resources of that type unless you manually add that type to your recording
+      group.
+
+      For a list of valid ``resourceTypes`` values, see the **resourceType Value** column in
+      `Supported AWS Resource Types
+      <https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources>`__
+      .
+
+      - *(string) --*
+    """
+
+
+_ClientPutConfigurationRecorderConfigurationRecorderTypeDef = TypedDict(
+    "_ClientPutConfigurationRecorderConfigurationRecorderTypeDef",
+    {
+        "name": str,
+        "roleARN": str,
+        "recordingGroup": ClientPutConfigurationRecorderConfigurationRecorderrecordingGroupTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutConfigurationRecorderConfigurationRecorderTypeDef(
+    _ClientPutConfigurationRecorderConfigurationRecorderTypeDef
+):
+    """
+    Type definition for `ClientPutConfigurationRecorder` `ConfigurationRecorder`
+
+    The configuration recorder object that records each configuration change made to the resources.
+
+    - **name** *(string) --*
+
+      The name of the recorder. By default, AWS Config automatically assigns the name "default" when
+      creating the configuration recorder. You cannot change the assigned name.
+
+    - **roleARN** *(string) --*
+
+      Amazon Resource Name (ARN) of the IAM role used to describe the AWS resources associated with
+      the account.
+
+    - **recordingGroup** *(dict) --*
+
+      Specifies the types of AWS resources for which AWS Config records configuration changes.
+
+      - **allSupported** *(boolean) --*
+
+        Specifies whether AWS Config records configuration changes for every supported type of
+        regional resource.
+
+        If you set this option to ``true`` , when AWS Config adds support for a new type of regional
+        resource, it starts recording resources of that type automatically.
+
+        If you set this option to ``true`` , you cannot enumerate a list of ``resourceTypes`` .
+
+      - **includeGlobalResourceTypes** *(boolean) --*
+
+        Specifies whether AWS Config includes all supported types of global resources (for example,
+        IAM resources) with the resources that it records.
+
+        Before you can set this option to ``true`` , you must set the ``allSupported`` option to
+        ``true`` .
+
+        If you set this option to ``true`` , when AWS Config adds support for a new type of global
+        resource, it starts recording resources of that type automatically.
+
+        The configuration details for any global resource are the same in all regions. To prevent
+        duplicate configuration items, you should consider customizing AWS Config in only one region
+        to record global resources.
+
+      - **resourceTypes** *(list) --*
+
+        A comma-separated list that specifies the types of AWS resources for which AWS Config records
+        configuration changes (for example, ``AWS::EC2::Instance`` or ``AWS::CloudTrail::Trail`` ).
+
+        Before you can set this option to ``true`` , you must set the ``allSupported`` option to
+        ``false`` .
+
+        If you set this option to ``true`` , when AWS Config adds support for a new type of resource,
+        it will not record resources of that type unless you manually add that type to your recording
+        group.
+
+        For a list of valid ``resourceTypes`` values, see the **resourceType Value** column in
+        `Supported AWS Resource Types
+        <https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources>`__
+        .
+
+        - *(string) --*
+    """
+
+
+_ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef = TypedDict(
+    "_ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef",
+    {"deliveryFrequency": str},
+    total=False,
+)
+
+
+class ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef(
+    _ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef
+):
+    """
+    Type definition for `ClientPutDeliveryChannelDeliveryChannel` `configSnapshotDeliveryProperties`
+
+    The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+
+    - **deliveryFrequency** *(string) --*
+
+      The frequency with which AWS Config delivers configuration snapshots.
+    """
+
+
+_ClientPutDeliveryChannelDeliveryChannelTypeDef = TypedDict(
+    "_ClientPutDeliveryChannelDeliveryChannelTypeDef",
+    {
+        "name": str,
+        "s3BucketName": str,
+        "s3KeyPrefix": str,
+        "snsTopicARN": str,
+        "configSnapshotDeliveryProperties": ClientPutDeliveryChannelDeliveryChannelconfigSnapshotDeliveryPropertiesTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutDeliveryChannelDeliveryChannelTypeDef(
+    _ClientPutDeliveryChannelDeliveryChannelTypeDef
+):
+    """
+    Type definition for `ClientPutDeliveryChannel` `DeliveryChannel`
+
+    The configuration delivery channel object that delivers the configuration information to an
+    Amazon S3 bucket and to an Amazon SNS topic.
+
+    - **name** *(string) --*
+
+      The name of the delivery channel. By default, AWS Config assigns the name "default" when
+      creating the delivery channel. To change the delivery channel name, you must use the
+      DeleteDeliveryChannel action to delete your current delivery channel, and then you must use the
+      PutDeliveryChannel command to create a delivery channel that has the desired name.
+
+    - **s3BucketName** *(string) --*
+
+      The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and
+      configuration history files.
+
+      If you specify a bucket that belongs to another AWS account, that bucket must have policies
+      that grant access permissions to AWS Config. For more information, see `Permissions for the
+      Amazon S3 Bucket
+      <https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html>`__ in the AWS
+      Config Developer Guide.
+
+    - **s3KeyPrefix** *(string) --*
+
+      The prefix for the specified Amazon S3 bucket.
+
+    - **snsTopicARN** *(string) --*
+
+      The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS Config sends notifications
+      about configuration changes.
+
+      If you choose a topic from another account, the topic must have policies that grant access
+      permissions to AWS Config. For more information, see `Permissions for the Amazon SNS Topic
+      <https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html>`__ in the AWS
+      Config Developer Guide.
+
+    - **configSnapshotDeliveryProperties** *(dict) --*
+
+      The options for how often AWS Config delivers configuration snapshots to the Amazon S3 bucket.
+
+      - **deliveryFrequency** *(string) --*
+
+        The frequency with which AWS Config delivers configuration snapshots.
     """
 
 
@@ -10512,6 +10767,32 @@ class ClientStartRemediationExecutionResponseTypeDef(
         - **resourceId** *(string) --*
 
           The ID of the resource (for example., sg-xxxxxx).
+    """
+
+
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"Key": str, "Value": str}, total=False
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    The tags for the resource. The metadata that you apply to a resource to help you categorize and
+    organize them. Each tag consists of a key and an optional value, both of which you define. Tag
+    keys can have a maximum character length of 128 characters, and tag values can have a maximum
+    length of 256 characters.
+
+    - **Key** *(string) --*
+
+      One part of a key-value pair that make up a tag. A key is a general label that acts like a
+      category for more specific tag values.
+
+    - **Value** *(string) --*
+
+      The optional part of a key-value pair that make up a tag. A value acts as a descriptor within
+      a tag category (key).
     """
 
 

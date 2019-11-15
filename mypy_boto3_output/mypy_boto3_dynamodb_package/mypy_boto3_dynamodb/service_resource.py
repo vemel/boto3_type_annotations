@@ -5,6 +5,8 @@ from datetime import datetime
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_dynamodb.service_resource as service_resource_scope
 from mypy_boto3_dynamodb.type_defs import (
     ServiceResourceBatchGetItemRequestItemsTypeDef,
@@ -53,7 +55,7 @@ from mypy_boto3_dynamodb.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Table(self, name: str) -> service_resource_scope.Table:
         """
         Creates a Table resource.::
@@ -67,7 +69,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Table resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_item(
         self,
         RequestItems: Dict[str, ServiceResourceBatchGetItemRequestItemsTypeDef],
@@ -1001,7 +1003,7 @@ class ServiceResource(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_write_item(
         self,
         RequestItems: Dict[str, List[ServiceResourceBatchWriteItemRequestItemsTypeDef]],
@@ -2122,7 +2124,7 @@ class ServiceResource(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_table(
         self,
         AttributeDefinitions: List[
@@ -2763,7 +2765,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Table resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2796,7 +2798,7 @@ class Table(Boto3ServiceResource):
     sse_description: Dict[str, Any]
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_writer(self, overwrite_by_pkeys: List[str] = None) -> None:
         """
         Create a batch writer object.
@@ -2825,7 +2827,7 @@ class Table(Boto3ServiceResource):
             ``["partition_key1", "sort_key2", "sort_key3"]``
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> TableDeleteResponseTypeDef:
         """
         The ``DeleteTable`` operation deletes a table and all of its items. After a ``DeleteTable``
@@ -3620,7 +3622,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_item(
         self,
         Key: Dict[str, TableDeleteItemKeyTypeDef],
@@ -4171,7 +4173,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -4979,7 +4981,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -4990,7 +4992,7 @@ class Table(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_item(
         self,
         Key: Dict[str, TableGetItemKeyTypeDef],
@@ -5529,7 +5531,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`DynamoDB.Client.describe_table` to update the attributes of the Table resource.
@@ -5546,7 +5548,7 @@ class Table(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_item(
         self,
         Item: Dict[str, TablePutItemItemTypeDef],
@@ -6151,7 +6153,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -6960,7 +6962,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def query(
         self,
         IndexName: str = None,
@@ -7277,7 +7279,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -7538,7 +7540,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -8648,7 +8650,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`DynamoDB.Client.describe_table` to update the attributes of the Table resource.
@@ -8665,7 +8667,7 @@ class Table(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def scan(
         self,
         IndexName: str = None,
@@ -8919,7 +8921,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -9992,7 +9994,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update(
         self,
         AttributeDefinitions: List[TableUpdateAttributeDefinitionsTypeDef] = None,
@@ -10396,7 +10398,7 @@ class Table(Boto3ServiceResource):
         :returns: Table resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_item(
         self,
         Key: Dict[str, TableUpdateItemKeyTypeDef],
@@ -11167,7 +11169,7 @@ class Table(Boto3ServiceResource):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -12061,7 +12063,7 @@ class Table(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(self, *args: Any, **kwargs: Any) -> None:
         """
         Waits until this Table is exists. This method calls :py:meth:`DynamoDB.Waiter.table_exists.wait`
@@ -12079,7 +12081,7 @@ class Table(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_not_exists(self, *args: Any, **kwargs: Any) -> None:
         """
         Waits until this Table is not exists. This method calls
@@ -12111,8 +12113,7 @@ class tables(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Table]:
         """
         Creates an iterable of all Table resources in the collection.
@@ -12129,8 +12130,7 @@ class tables(ResourceCollection):
         :returns: A list of Table resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self, ExclusiveStartTableName: str = None, Limit: int = None
     ) -> List[service_resource_scope.Table]:
@@ -12163,8 +12163,7 @@ class tables(ResourceCollection):
         :returns: A list of Table resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -12173,8 +12172,7 @@ class tables(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Table]:
         """
         Creates an iterable up to a specified amount of Table resources in the collection.
@@ -12195,8 +12193,7 @@ class tables(ResourceCollection):
         :returns: A list of Table resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Table]:
         """
         Creates an iterable of all Table resources in the collection, but limits the number of items
@@ -12218,8 +12215,7 @@ class tables(ResourceCollection):
         :returns: A list of Table resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

@@ -23,7 +23,7 @@ from mypy_boto3_signer.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -40,7 +40,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_signing_profile(self, profileName: str) -> None:
         """
         Changes the state of an ``ACTIVE`` signing profile to ``CANCELED`` . A canceled profile is still
@@ -64,7 +64,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_signing_job(
         self, jobId: str
     ) -> ClientDescribeSigningJobResponseTypeDef:
@@ -237,7 +237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -266,7 +266,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -287,7 +287,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_signing_platform(
         self, platformId: str
     ) -> ClientGetSigningPlatformResponseTypeDef:
@@ -419,7 +419,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_signing_profile(
         self, profileName: str
     ) -> ClientGetSigningProfileResponseTypeDef:
@@ -533,7 +533,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -546,7 +546,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_signing_jobs(
         self,
         status: str = None,
@@ -715,7 +715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_signing_platforms(
         self,
         category: str = None,
@@ -901,7 +901,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_signing_profiles(
         self,
         includeCanceled: bool = None,
@@ -1031,7 +1031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1078,7 +1078,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_signing_profile(
         self,
         profileName: str,
@@ -1091,7 +1091,7 @@ class Client(BaseClient):
         """
         Creates a signing profile. A signing profile is a code signing template that can be used to carry
         out a pre-defined signing job. For more information, see
-        `http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
+        `http\\://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
         <http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html>`__
 
         See also: `AWS API Documentation
@@ -1197,7 +1197,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_signing_job(
         self,
         source: ClientStartSigningJobsourceTypeDef,
@@ -1228,7 +1228,7 @@ class Client(BaseClient):
         ``StartSigningJob`` .
 
         For a Java example that shows how to use this action, see
-        `http://docs.aws.amazon.com/acm/latest/userguide/
+        `http\\://docs.aws.amazon.com/acm/latest/userguide/
         <http://docs.aws.amazon.com/acm/latest/userguide/>`__
 
         See also: `AWS API Documentation
@@ -1327,7 +1327,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> Dict[str, Any]:
         """
         Adds one or more tags to a signing profile. Tags are labels that you can use to identify and
@@ -1373,7 +1373,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Remove one or more tags from a signing profile. Specify a list of tag keys to remove the tags.

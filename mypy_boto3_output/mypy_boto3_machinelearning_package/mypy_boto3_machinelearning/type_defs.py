@@ -6,6 +6,31 @@ from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 
+_BatchPredictionAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_BatchPredictionAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class BatchPredictionAvailableWaitWaiterConfigTypeDef(
+    _BatchPredictionAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `BatchPredictionAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ClientAddTagsResponseTypeDef = TypedDict(
     "_ClientAddTagsResponseTypeDef",
     {"ResourceId": str, "ResourceType": str},
@@ -194,7 +219,8 @@ class ClientCreateDataSourceFromRdsRDSDataTypeDef(
     is specified.
 
     * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-    for the ``Datasource`` .   Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+    for the ``Datasource`` .   Sample -
+    ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
     - **DatabaseInformation** *(dict) --* **[REQUIRED]**
 
@@ -481,7 +507,8 @@ class ClientCreateDataSourceFromRedshiftDataSpecTypeDef(
     is specified.
 
     * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-    for the ``DataSource`` . Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+    for the ``DataSource`` . Sample -
+    ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
     - **DatabaseInformation** *(dict) --* **[REQUIRED]**
 
@@ -668,7 +695,8 @@ class ClientCreateDataSourceFromS3DataSpecTypeDef(
     is specified.
 
     * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-    for the ``Datasource`` .  Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+    for the ``Datasource`` .  Sample -
+    ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
     - **DataLocationS3** *(string) --* **[REQUIRED]**
 
@@ -3935,6 +3963,31 @@ class ClientUpdateMlModelResponseTypeDef(_ClientUpdateMlModelResponseTypeDef):
     """
 
 
+_DataSourceAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_DataSourceAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class DataSourceAvailableWaitWaiterConfigTypeDef(
+    _DataSourceAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `DataSourceAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _DescribeBatchPredictionsPaginatePaginationConfigTypeDef = TypedDict(
     "_DescribeBatchPredictionsPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},
@@ -5584,4 +5637,52 @@ class DescribeMLModelsPaginateResponseTypeDef(_DescribeMLModelsPaginateResponseT
         - **StartedAt** *(datetime) --*
 
           A timestamp represented in epoch time.
+    """
+
+
+_EvaluationAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_EvaluationAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class EvaluationAvailableWaitWaiterConfigTypeDef(
+    _EvaluationAvailableWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `EvaluationAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_MlModelAvailableWaitWaiterConfigTypeDef = TypedDict(
+    "_MlModelAvailableWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class MlModelAvailableWaitWaiterConfigTypeDef(_MlModelAvailableWaitWaiterConfigTypeDef):
+    """
+    Type definition for `MlModelAvailableWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """

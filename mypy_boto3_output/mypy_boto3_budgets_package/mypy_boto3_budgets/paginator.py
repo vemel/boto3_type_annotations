@@ -14,7 +14,7 @@ from mypy_boto3_budgets.type_defs import (
 
 
 class DescribeBudgets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AccountId: str,
@@ -147,7 +147,7 @@ class DescribeBudgets(Boto3Paginator):
 
                 - **BudgetName** *(string) --*
 
-                  The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+                  The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
                   characters aren't allowed in ``BudgetName`` .
 
                 - **BudgetLimit** *(dict) --*
@@ -416,7 +416,7 @@ class DescribeBudgets(Boto3Paginator):
 
 
 class DescribeNotificationsForBudget(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AccountId: str,
@@ -550,7 +550,7 @@ class DescribeNotificationsForBudget(Boto3Paginator):
 
 
 class DescribeSubscribersForNotification(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AccountId: str,

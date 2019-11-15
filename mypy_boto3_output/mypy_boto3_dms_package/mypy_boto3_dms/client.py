@@ -82,7 +82,7 @@ from mypy_boto3_dms.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceArn: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -126,14 +126,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -149,7 +149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_pending_maintenance_action(
         self, ReplicationInstanceArn: str, ApplyAction: str, OptInType: str
     ) -> ClientApplyPendingMaintenanceActionResponseTypeDef:
@@ -272,7 +272,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -289,7 +289,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_endpoint(
         self,
         EndpointIdentifier: str,
@@ -504,14 +504,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type CertificateArn: string
         :param CertificateArn:
@@ -565,7 +565,7 @@ class Client(BaseClient):
           - **CsvRowDelimiter** *(string) --*
 
             The delimiter used to separate rows in the source files. The default is a carriage return
-            (``\n`` ).
+            (``\\n`` ).
 
           - **CsvDelimiter** *(string) --*
 
@@ -1298,7 +1298,7 @@ class Client(BaseClient):
                 - **CsvRowDelimiter** *(string) --*
 
                   The delimiter used to separate rows in the source files. The default is a carriage return
-                  (``\n`` ).
+                  (``\\n`` ).
 
                 - **CsvDelimiter** *(string) --*
 
@@ -1812,7 +1812,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_subscription(
         self,
         SubscriptionName: str,
@@ -1925,14 +1925,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -2019,7 +2019,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_replication_instance(
         self,
         ReplicationInstanceIdentifier: str,
@@ -2170,14 +2170,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -2461,7 +2461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_replication_subnet_group(
         self,
         ReplicationSubnetGroupIdentifier: str,
@@ -2525,14 +2525,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -2606,7 +2606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_replication_task(
         self,
         ReplicationTaskIdentifier: str,
@@ -2753,14 +2753,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -2954,7 +2954,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_certificate(
         self, CertificateArn: str
     ) -> ClientDeleteCertificateResponseTypeDef:
@@ -3048,7 +3048,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_connection(
         self, EndpointArn: str, ReplicationInstanceArn: str
     ) -> ClientDeleteConnectionResponseTypeDef:
@@ -3128,7 +3128,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint(self, EndpointArn: str) -> ClientDeleteEndpointResponseTypeDef:
         """
         Deletes the specified endpoint.
@@ -3374,7 +3374,7 @@ class Client(BaseClient):
                 - **CsvRowDelimiter** *(string) --*
 
                   The delimiter used to separate rows in the source files. The default is a carriage return
-                  (``\n`` ).
+                  (``\\n`` ).
 
                 - **CsvDelimiter** *(string) --*
 
@@ -3888,7 +3888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_subscription(
         self, SubscriptionName: str
     ) -> ClientDeleteEventSubscriptionResponseTypeDef:
@@ -3994,7 +3994,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_replication_instance(
         self, ReplicationInstanceArn: str
     ) -> ClientDeleteReplicationInstanceResponseTypeDef:
@@ -4279,7 +4279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_replication_subnet_group(
         self, ReplicationSubnetGroupIdentifier: str
     ) -> Dict[str, Any]:
@@ -4314,7 +4314,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_replication_task(self, ReplicationTaskArn: str) -> Dict[str, Any]:
         """
         Deletes the specified replication task.
@@ -4525,7 +4525,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -4604,7 +4604,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificates(
         self,
         Filters: List[ClientDescribeCertificatesFiltersTypeDef] = None,
@@ -4749,7 +4749,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_connections(
         self,
         Filters: List[ClientDescribeConnectionsFiltersTypeDef] = None,
@@ -4878,7 +4878,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoint_types(
         self,
         Filters: List[ClientDescribeEndpointTypesFiltersTypeDef] = None,
@@ -4997,7 +4997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoints(
         self,
         Filters: List[ClientDescribeEndpointsFiltersTypeDef] = None,
@@ -5295,7 +5295,7 @@ class Client(BaseClient):
                   - **CsvRowDelimiter** *(string) --*
 
                     The delimiter used to separate rows in the source files. The default is a carriage
-                    return (``\n`` ).
+                    return (``\\n`` ).
 
                   - **CsvDelimiter** *(string) --*
 
@@ -5814,7 +5814,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_categories(
         self,
         SourceType: str = None,
@@ -5909,7 +5909,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_subscriptions(
         self,
         SubscriptionName: str = None,
@@ -6079,7 +6079,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         SourceIdentifier: str = None,
@@ -6255,7 +6255,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_orderable_replication_instances(
         self, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeOrderableReplicationInstancesResponseTypeDef:
@@ -6382,7 +6382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pending_maintenance_actions(
         self,
         ReplicationInstanceArn: str = None,
@@ -6539,7 +6539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_refresh_schemas_status(
         self, EndpointArn: str
     ) -> ClientDescribeRefreshSchemasStatusResponseTypeDef:
@@ -6606,7 +6606,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_instance_task_logs(
         self, ReplicationInstanceArn: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeReplicationInstanceTaskLogsResponseTypeDef:
@@ -6701,7 +6701,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_instances(
         self,
         Filters: List[ClientDescribeReplicationInstancesFiltersTypeDef] = None,
@@ -7036,7 +7036,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_subnet_groups(
         self,
         Filters: List[ClientDescribeReplicationSubnetGroupsFiltersTypeDef] = None,
@@ -7181,7 +7181,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_task_assessment_results(
         self, ReplicationTaskArn: str = None, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeReplicationTaskAssessmentResultsResponseTypeDef:
@@ -7297,7 +7297,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_replication_tasks(
         self,
         Filters: List[ClientDescribeReplicationTasksFiltersTypeDef] = None,
@@ -7574,7 +7574,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_schemas(
         self, EndpointArn: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientDescribeSchemasResponseTypeDef:
@@ -7645,7 +7645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_table_statistics(
         self,
         ReplicationTaskArn: str,
@@ -7865,7 +7865,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -7894,7 +7894,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -7915,7 +7915,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -7928,7 +7928,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_certificate(
         self,
         CertificateIdentifier: str,
@@ -7985,14 +7985,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
               contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
-              (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8067,7 +8067,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -8118,18 +8118,18 @@ class Client(BaseClient):
                   A key is the required name of the tag. The string value can be from 1 to 128 Unicode
                   characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
                 - **Value** *(string) --*
 
                   A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
                   characters in length and cannot be prefixed with "aws:" or "dms:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_endpoint(
         self,
         EndpointArn: str,
@@ -8365,7 +8365,7 @@ class Client(BaseClient):
           - **CsvRowDelimiter** *(string) --*
 
             The delimiter used to separate rows in the source files. The default is a carriage return
-            (``\n`` ).
+            (``\\n`` ).
 
           - **CsvDelimiter** *(string) --*
 
@@ -9097,7 +9097,7 @@ class Client(BaseClient):
                 - **CsvRowDelimiter** *(string) --*
 
                   The delimiter used to separate rows in the source files. The default is a carriage return
-                  (``\n`` ).
+                  (``\\n`` ).
 
                 - **CsvDelimiter** *(string) --*
 
@@ -9611,7 +9611,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_event_subscription(
         self,
         SubscriptionName: str,
@@ -9754,7 +9754,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_replication_instance(
         self,
         ReplicationInstanceArn: str,
@@ -10137,7 +10137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_replication_subnet_group(
         self,
         ReplicationSubnetGroupIdentifier: str,
@@ -10249,7 +10249,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_replication_task(
         self,
         ReplicationTaskArn: str,
@@ -10559,7 +10559,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_replication_instance(
         self, ReplicationInstanceArn: str, ForceFailover: bool = None
     ) -> ClientRebootReplicationInstanceResponseTypeDef:
@@ -10847,7 +10847,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def refresh_schemas(
         self, EndpointArn: str, ReplicationInstanceArn: str
     ) -> ClientRefreshSchemasResponseTypeDef:
@@ -10922,7 +10922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload_tables(
         self,
         ReplicationTaskArn: str,
@@ -10999,7 +10999,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceArn: str, TagKeys: List[str]
     ) -> Dict[str, Any]:
@@ -11045,7 +11045,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_replication_task(
         self,
         ReplicationTaskArn: str,
@@ -11322,7 +11322,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_replication_task_assessment(
         self, ReplicationTaskArn: str
     ) -> Dict[str, Any]:
@@ -11535,7 +11535,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_replication_task(self, ReplicationTaskArn: str) -> Dict[str, Any]:
         """
         Stops the replication task.
@@ -11746,7 +11746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_connection(
         self, ReplicationInstanceArn: str, EndpointArn: str
     ) -> ClientTestConnectionResponseTypeDef:

@@ -1,18 +1,25 @@
 "Main interface for cloudformation Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_cloudformation.type_defs import (
+    ChangeSetCreateCompleteWaitWaiterConfigTypeDef,
+    StackCreateCompleteWaitWaiterConfigTypeDef,
+    StackDeleteCompleteWaitWaiterConfigTypeDef,
+    StackExistsWaitWaiterConfigTypeDef,
+    StackImportCompleteWaitWaiterConfigTypeDef,
+    StackUpdateCompleteWaitWaiterConfigTypeDef,
+)
 
 
 class ChangeSetCreateComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ChangeSetName: str,
         StackName: str = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ChangeSetCreateCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_change_set` every 30 seconds until a successful
@@ -68,9 +75,12 @@ class ChangeSetCreateComplete(Boto3Waiter):
 
 
 class StackCreateComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackName: str = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        StackName: str = None,
+        NextToken: str = None,
+        WaiterConfig: StackCreateCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_stacks` every 30 seconds until a successful state is
@@ -125,9 +135,12 @@ class StackCreateComplete(Boto3Waiter):
 
 
 class StackDeleteComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackName: str = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        StackName: str = None,
+        NextToken: str = None,
+        WaiterConfig: StackDeleteCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_stacks` every 30 seconds until a successful state is
@@ -182,9 +195,12 @@ class StackDeleteComplete(Boto3Waiter):
 
 
 class StackExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackName: str = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        StackName: str = None,
+        NextToken: str = None,
+        WaiterConfig: StackExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_stacks` every 5 seconds until a successful state is
@@ -239,9 +255,12 @@ class StackExists(Boto3Waiter):
 
 
 class StackImportComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackName: str = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        StackName: str = None,
+        NextToken: str = None,
+        WaiterConfig: StackImportCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_stacks` every 30 seconds until a successful state is
@@ -296,9 +315,12 @@ class StackImportComplete(Boto3Waiter):
 
 
 class StackUpdateComplete(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackName: str = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        StackName: str = None,
+        NextToken: str = None,
+        WaiterConfig: StackUpdateCompleteWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudFormation.Client.describe_stacks` every 30 seconds until a successful state is

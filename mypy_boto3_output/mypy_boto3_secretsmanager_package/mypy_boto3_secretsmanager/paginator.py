@@ -9,7 +9,7 @@ from mypy_boto3_secretsmanager.type_defs import (
 
 
 class ListSecrets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSecretsPaginatePaginationConfigTypeDef = None
     ) -> ListSecretsPaginateResponseTypeDef:

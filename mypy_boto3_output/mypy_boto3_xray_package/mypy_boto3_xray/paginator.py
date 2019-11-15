@@ -26,7 +26,7 @@ from mypy_boto3_xray.type_defs import (
 
 
 class BatchGetTraces(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TraceIds: List[str],
@@ -153,7 +153,7 @@ class BatchGetTraces(Boto3Paginator):
 
 
 class GetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetGroupsPaginatePaginationConfigTypeDef = None
     ) -> GetGroupsPaginateResponseTypeDef:
@@ -233,7 +233,7 @@ class GetGroups(Boto3Paginator):
 
 
 class GetSamplingRules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetSamplingRulesPaginatePaginationConfigTypeDef = None
     ) -> GetSamplingRulesPaginateResponseTypeDef:
@@ -388,7 +388,7 @@ class GetSamplingRules(Boto3Paginator):
 
 
 class GetSamplingStatisticSummaries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: GetSamplingStatisticSummariesPaginatePaginationConfigTypeDef = None,
@@ -481,7 +481,7 @@ class GetSamplingStatisticSummaries(Boto3Paginator):
 
 
 class GetServiceGraph(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StartTime: datetime,
@@ -896,7 +896,7 @@ class GetServiceGraph(Boto3Paginator):
 
 
 class GetTimeSeriesServiceStatistics(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StartTime: datetime,
@@ -1157,7 +1157,7 @@ class GetTimeSeriesServiceStatistics(Boto3Paginator):
 
 
 class GetTraceGraph(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TraceIds: List[str],
@@ -1539,7 +1539,7 @@ class GetTraceGraph(Boto3Paginator):
 
 
 class GetTraceSummaries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         StartTime: datetime,

@@ -1691,6 +1691,45 @@ class ClientPutLogEventslogEventsTypeDef(_ClientPutLogEventslogEventsTypeDef):
     """
 
 
+_RequiredClientPutMetricFiltermetricTransformationsTypeDef = TypedDict(
+    "_RequiredClientPutMetricFiltermetricTransformationsTypeDef",
+    {"metricName": str, "metricNamespace": str, "metricValue": str},
+)
+_OptionalClientPutMetricFiltermetricTransformationsTypeDef = TypedDict(
+    "_OptionalClientPutMetricFiltermetricTransformationsTypeDef",
+    {"defaultValue": float},
+    total=False,
+)
+
+
+class ClientPutMetricFiltermetricTransformationsTypeDef(
+    _RequiredClientPutMetricFiltermetricTransformationsTypeDef,
+    _OptionalClientPutMetricFiltermetricTransformationsTypeDef,
+):
+    """
+    Type definition for `ClientPutMetricFilter` `metricTransformations`
+
+    Indicates how to transform ingested log events to metric data in a CloudWatch metric.
+
+    - **metricName** *(string) --* **[REQUIRED]**
+
+      The name of the CloudWatch metric.
+
+    - **metricNamespace** *(string) --* **[REQUIRED]**
+
+      The namespace of the CloudWatch metric.
+
+    - **metricValue** *(string) --* **[REQUIRED]**
+
+      The value to publish to the CloudWatch metric when a filter pattern matches a log event.
+
+    - **defaultValue** *(float) --*
+
+      (Optional) The value to emit when a filter pattern does not match a log event. This value can
+      be null.
+    """
+
+
 _ClientPutResourcePolicyResponseresourcePolicyTypeDef = TypedDict(
     "_ClientPutResourcePolicyResponseresourcePolicyTypeDef",
     {"policyName": str, "policyDocument": str, "lastUpdatedTime": int},

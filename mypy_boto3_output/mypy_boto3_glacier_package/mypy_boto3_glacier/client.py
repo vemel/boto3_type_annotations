@@ -1,11 +1,10 @@
 "Main interface for glacier Client"
 from __future__ import annotations
 
-from typing import Any, Dict, IO, List, Union
+from typing import Dict, IO, List, Union
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_glacier.type_defs import (
     ClientCompleteMultipartUploadResponseTypeDef,
     ClientCreateVaultResponseTypeDef,
@@ -28,13 +27,16 @@ from mypy_boto3_glacier.type_defs import (
     ClientListTagsForVaultResponseTypeDef,
     ClientListVaultsResponseTypeDef,
     ClientPurchaseProvisionedCapacityResponseTypeDef,
+    ClientSetDataRetrievalPolicyPolicyTypeDef,
+    ClientSetVaultAccessPolicypolicyTypeDef,
+    ClientSetVaultNotificationsvaultNotificationConfigTypeDef,
     ClientUploadArchiveResponseTypeDef,
     ClientUploadMultipartPartResponseTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_multipart_upload(
         self, vaultName: str, uploadId: str, accountId: str = None
     ) -> None:
@@ -94,7 +96,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_vault_lock(self, vaultName: str, accountId: str = None) -> None:
         """
         This operation aborts the vault locking process if the vault lock is not in the ``Locked`` state.
@@ -140,9 +142,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_vault(
-        self, vaultName: str, accountId: str = None, Tags: List[TypeDefEC2Tag] = None
+        self, vaultName: str, accountId: str = None, Tags: List[str] = None
     ) -> None:
         """
         This operation adds the specified tags to a vault. Each tag is composed of a key and a value. Each
@@ -192,7 +194,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -209,7 +211,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_multipart_upload(
         self,
         vaultName: str,
@@ -355,7 +357,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def complete_vault_lock(
         self, vaultName: str, lockId: str, accountId: str = None
     ) -> None:
@@ -409,7 +411,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vault(
         self, vaultName: str, accountId: str = None
     ) -> ClientCreateVaultResponseTypeDef:
@@ -484,7 +486,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_archive(
         self, vaultName: str, archiveId: str, accountId: str = None
     ) -> None:
@@ -546,7 +548,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vault(self, vaultName: str, accountId: str = None) -> None:
         """
         This operation deletes a vault. Amazon S3 Glacier will delete a vault only if there are no archives
@@ -599,7 +601,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vault_access_policy(self, vaultName: str, accountId: str = None) -> None:
         """
         This operation deletes the access policy associated with the specified vault. The operation is
@@ -639,7 +641,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_vault_notifications(self, vaultName: str, accountId: str = None) -> None:
         """
         This operation deletes the notification configuration set for a vault. The operation is eventually
@@ -686,7 +688,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_job(
         self, vaultName: str, jobId: str, accountId: str = None
     ) -> ClientDescribeJobResponseTypeDef:
@@ -1150,7 +1152,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vault(
         self, vaultName: str, accountId: str = None
     ) -> ClientDescribeVaultResponseTypeDef:
@@ -1253,7 +1255,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1282,7 +1284,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_data_retrieval_policy(
         self, accountId: str = None
     ) -> ClientGetDataRetrievalPolicyResponseTypeDef:
@@ -1364,7 +1366,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_output(
         self, vaultName: str, jobId: str, accountId: str = None, range: str = None
     ) -> ClientGetJobOutputResponseTypeDef:
@@ -1541,7 +1543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1562,7 +1564,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_vault_access_policy(
         self, vaultName: str, accountId: str = None
     ) -> ClientGetVaultAccessPolicyResponseTypeDef:
@@ -1626,7 +1628,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_vault_lock(
         self, vaultName: str, accountId: str = None
     ) -> ClientGetVaultLockResponseTypeDef:
@@ -1696,7 +1698,7 @@ class Client(BaseClient):
 
             - **Policy** *(string) --*
 
-              The vault lock policy as a JSON string, which uses "\" as an escape character.
+              The vault lock policy as a JSON string, which uses "\\" as an escape character.
 
             - **State** *(string) --*
 
@@ -1713,7 +1715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_vault_notifications(
         self, vaultName: str, accountId: str = None
     ) -> ClientGetVaultNotificationsResponseTypeDef:
@@ -1800,7 +1802,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1813,7 +1815,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_job(
         self,
         vaultName: str,
@@ -2203,7 +2205,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_multipart_upload(
         self,
         vaultName: str,
@@ -2315,7 +2317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_vault_lock(
         self,
         vaultName: str,
@@ -2382,7 +2384,7 @@ class Client(BaseClient):
         :type policy: dict
         :param policy:
 
-          The vault lock policy as a JSON string, which uses "\" as an escape character.
+          The vault lock policy as a JSON string, which uses "\\" as an escape character.
 
           - **Policy** *(string) --*
 
@@ -2410,7 +2412,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self,
         vaultName: str,
@@ -2940,7 +2942,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_multipart_uploads(
         self,
         vaultName: str,
@@ -3082,7 +3084,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_parts(
         self,
         vaultName: str,
@@ -3235,7 +3237,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_provisioned_capacity(
         self, accountId: str = None
     ) -> ClientListProvisionedCapacityResponseTypeDef:
@@ -3304,7 +3306,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_vault(
         self, vaultName: str, accountId: str = None
     ) -> ClientListTagsForVaultResponseTypeDef:
@@ -3365,7 +3367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_vaults(
         self, accountId: str = None, marker: str = None, limit: str = None
     ) -> ClientListVaultsResponseTypeDef:
@@ -3497,7 +3499,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_provisioned_capacity(
         self, accountId: str = None
     ) -> ClientPurchaseProvisionedCapacityResponseTypeDef:
@@ -3543,9 +3545,9 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_vault(
-        self, vaultName: str, accountId: str = None, TagKeys: List[Any] = None
+        self, vaultName: str, accountId: str = None, TagKeys: List[str] = None
     ) -> None:
         """
         This operation removes one or more tags from the set of tags attached to a vault. For more
@@ -3590,9 +3592,11 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_data_retrieval_policy(
-        self, accountId: str = None, Policy: Dict = None
+        self,
+        accountId: str = None,
+        Policy: ClientSetDataRetrievalPolicyPolicyTypeDef = None,
     ) -> None:
         """
         This operation sets and then enacts a data retrieval policy in the region specified in the PUT
@@ -3661,9 +3665,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_vault_access_policy(
-        self, vaultName: str, accountId: str = None, policy: Dict = None
+        self,
+        vaultName: str,
+        accountId: str = None,
+        policy: ClientSetVaultAccessPolicypolicyTypeDef = None,
     ) -> None:
         """
         This operation configures an access policy for a vault and will overwrite an existing policy. To
@@ -3712,12 +3719,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_vault_notifications(
         self,
         vaultName: str,
         accountId: str = None,
-        vaultNotificationConfig: Dict = None,
+        vaultNotificationConfig: ClientSetVaultNotificationsvaultNotificationConfigTypeDef = None,
     ) -> None:
         """
         This operation configures notifications that will be sent when specific events happen to a vault.
@@ -3799,7 +3806,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_archive(
         self,
         vaultName: str,
@@ -3925,7 +3932,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upload_multipart_part(
         self,
         vaultName: str,

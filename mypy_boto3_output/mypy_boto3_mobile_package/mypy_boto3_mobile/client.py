@@ -19,7 +19,7 @@ from mypy_boto3_mobile.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -36,7 +36,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_project(
         self,
         name: str = None,
@@ -186,7 +186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_project(self, projectId: str) -> ClientDeleteProjectResponseTypeDef:
         """
         Delets a project in AWS Mobile Hub.
@@ -316,7 +316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_bundle(self, bundleId: str) -> ClientDescribeBundleResponseTypeDef:
         """
         Get the bundle details for the requested bundle id.
@@ -394,7 +394,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_project(
         self, projectId: str, syncFromResources: bool = None
     ) -> ClientDescribeProjectResponseTypeDef:
@@ -527,7 +527,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_bundle(
         self, bundleId: str, projectId: str = None, platform: str = None
     ) -> ClientExportBundleResponseTypeDef:
@@ -585,7 +585,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_project(self, projectId: str) -> ClientExportProjectResponseTypeDef:
         """
         Exports project configuration to a snapshot which can be downloaded and shared. Note that mobile
@@ -643,7 +643,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -672,7 +672,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -693,7 +693,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -706,7 +706,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_bundles(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListBundlesResponseTypeDef:
@@ -805,7 +805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_projects(
         self, maxResults: int = None, nextToken: str = None
     ) -> ClientListProjectsResponseTypeDef:
@@ -879,7 +879,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_project(
         self, projectId: str, contents: Union[bytes, IO] = None
     ) -> ClientUpdateProjectResponseTypeDef:

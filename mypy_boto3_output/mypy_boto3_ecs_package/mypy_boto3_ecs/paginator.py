@@ -23,7 +23,7 @@ from mypy_boto3_ecs.type_defs import (
 
 
 class ListAccountSettings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         name: str = None,
@@ -152,7 +152,7 @@ class ListAccountSettings(Boto3Paginator):
 
 
 class ListAttributes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         targetType: str,
@@ -286,7 +286,7 @@ class ListAttributes(Boto3Paginator):
 
 
 class ListClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListClustersPaginatePaginationConfigTypeDef = None
     ) -> ListClustersPaginateResponseTypeDef:
@@ -358,7 +358,7 @@ class ListClusters(Boto3Paginator):
 
 
 class ListContainerInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         cluster: str = None,
@@ -460,7 +460,7 @@ class ListContainerInstances(Boto3Paginator):
 
 
 class ListServices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         cluster: str = None,
@@ -554,7 +554,7 @@ class ListServices(Boto3Paginator):
 
 
 class ListTaskDefinitionFamilies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         familyPrefix: str = None,
@@ -649,7 +649,7 @@ class ListTaskDefinitionFamilies(Boto3Paginator):
 
 
 class ListTaskDefinitions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         familyPrefix: str = None,
@@ -754,7 +754,7 @@ class ListTaskDefinitions(Boto3Paginator):
 
 
 class ListTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         cluster: str = None,

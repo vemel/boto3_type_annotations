@@ -9955,7 +9955,7 @@ class ClientDeleteItemExpectedTypeDef(_ClientDeleteItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -21639,7 +21639,7 @@ class ClientPutItemExpectedTypeDef(_ClientPutItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -23462,7 +23462,7 @@ class ClientQueryKeyConditionsTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -23862,7 +23862,7 @@ class ClientQueryQueryFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -31578,7 +31578,7 @@ class ClientScanScanFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -31805,6 +31805,39 @@ class ClientScanScanFilterTypeDef(
       Conditional Parameters
       <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html>`__
       in the *Amazon DynamoDB Developer Guide* .
+    """
+
+
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    Describes a tag. A tag is a key-value pair. You can add up to 50 tags to a single DynamoDB
+    table.
+
+    AWS-assigned tag names and values are automatically assigned the ``aws:`` prefix, which the
+    user cannot assign. AWS-assigned tag names do not count towards the tag limit of 50.
+    User-assigned tag names have the prefix ``user:`` in the Cost Allocation Report. You cannot
+    backdate the application of a tag.
+
+    For an overview on tagging DynamoDB resources, see `Tagging for DynamoDB
+    <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html>`__ in the
+    *Amazon DynamoDB Developer Guide* .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key of the tag. Tag keys are case sensitive. Each DynamoDB table can only have up to one
+      tag with the same key. If you try to add an existing tag (same key), the existing tag value
+      will be updated to the new value.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value of the tag. Tag values are case-sensitive and can be null.
     """
 
 
@@ -41217,7 +41250,7 @@ class ClientUpdateItemExpectedTypeDef(_ClientUpdateItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -46242,7 +46275,7 @@ class QueryPaginateKeyConditionsTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -46672,7 +46705,7 @@ class QueryPaginateQueryFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -48399,7 +48432,7 @@ class ScanPaginateScanFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -54074,7 +54107,7 @@ class TableDeleteItemExpectedTypeDef(_TableDeleteItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -57652,6 +57685,29 @@ class TableDeleteResponseTypeDef(_TableDeleteResponseTypeDef):
     """
 
 
+_TableExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_TableExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TableExistsWaitWaiterConfigTypeDef(_TableExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `TableExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 20
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 25
+    """
+
+
 _TableGetItemKeyTypeDef = TypedDict(
     "_TableGetItemKeyTypeDef",
     {
@@ -58338,6 +58394,29 @@ class TableGetItemResponseTypeDef(_TableGetItemResponseTypeDef):
     """
 
 
+_TableNotExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_TableNotExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class TableNotExistsWaitWaiterConfigTypeDef(_TableNotExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `TableNotExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 20
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 25
+    """
+
+
 _TablePutItemExpectedAttributeValueListTypeDef = TypedDict(
     "_TablePutItemExpectedAttributeValueListTypeDef",
     {
@@ -58890,7 +58969,7 @@ class TablePutItemExpectedTypeDef(_TablePutItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -60713,7 +60792,7 @@ class TableQueryKeyConditionsTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -61113,7 +61192,7 @@ class TableQueryQueryFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -63445,7 +63524,7 @@ class TableScanScanFilterTypeDef(
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -65144,7 +65223,7 @@ class TableUpdateItemExpectedTypeDef(_TableUpdateItemExpectedTypeDef):
       String value comparisons for greater than, equals, or less than are based on ASCII
       character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
       ``B`` . For a list of code values, see
-      `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+      `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
       <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
       For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares

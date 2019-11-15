@@ -5,7 +5,6 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_medialive.type_defs import (
     ClientBatchUpdateScheduleCreatesTypeDef,
     ClientBatchUpdateScheduleDeletesTypeDef,
@@ -50,7 +49,7 @@ from mypy_boto3_medialive.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_update_schedule(
         self,
         ChannelId: str,
@@ -1143,7 +1142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -1160,7 +1159,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_channel(
         self,
         ChannelClass: str = None,
@@ -3340,7 +3339,7 @@ class Client(BaseClient):
                             - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                             - **PatInterval** *(integer) --* The number of milliseconds between instances
-                            of this table in the output transport stream. A value of \"0\" writes out the
+                            of this table in the output transport stream. A value of \\"0\\" writes out the
                             PMT once per segment file.
 
                             - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program Clock
@@ -3357,7 +3356,7 @@ class Client(BaseClient):
                             hexadecimal value.
 
                             - **PmtInterval** *(integer) --* The number of milliseconds between instances
-                            of this table in the output transport stream. A value of \"0\" writes out the
+                            of this table in the output transport stream. A value of \\"0\\" writes out the
                             PMT once per segment file.
 
                             - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map Table
@@ -3387,7 +3386,7 @@ class Client(BaseClient):
                             value.
 
                       - **NameModifier** *(string) --* String concatenated to the end of the destination
-                      filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                      filename. Accepts \\"Format Identifiers\\":#formatIdentifierParameters.
 
                       - **SegmentModifier** *(string) --* String concatenated to end of segment filenames.
 
@@ -6425,8 +6424,8 @@ class Client(BaseClient):
                                   - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                   - **PatInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                                   Clock Reference value is inserted for every Packetized Elementary Stream
@@ -6442,8 +6441,8 @@ class Client(BaseClient):
                                   decimal or hexadecimal value.
 
                                   - **PmtInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                                   Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -6474,8 +6473,8 @@ class Client(BaseClient):
                                   hexadecimal value.
 
                             - **NameModifier** *(string) --* String concatenated to the end of the
-                            destination filename. Accepts \"Format
-                            Identifiers\":#formatIdentifierParameters.
+                            destination filename. Accepts \\"Format
+                            Identifiers\\":#formatIdentifierParameters.
 
                             - **SegmentModifier** *(string) --* String concatenated to end of segment
                             filenames.
@@ -7321,7 +7320,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_input(
         self,
         Destinations: List[ClientCreateInputDestinationsTypeDef] = None,
@@ -7593,7 +7592,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_input_security_group(
         self,
         Tags: List[str] = None,
@@ -7689,8 +7688,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def create_tags(self, ResourceArn: str, Tags: List[TypeDefEC2Tag] = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(self, ResourceArn: str, Tags: List[str] = None) -> None:
         """
         Create tags for a resource
 
@@ -7719,7 +7718,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_channel(self, ChannelId: str) -> ClientDeleteChannelResponseTypeDef:
         """
         Starts deletion of channel. The associated outputs are also deleted.
@@ -9939,7 +9938,7 @@ class Client(BaseClient):
                                 - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                 - **PatInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -9956,7 +9955,7 @@ class Client(BaseClient):
                                 decimal or hexadecimal value.
 
                                 - **PmtInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -9987,7 +9986,8 @@ class Client(BaseClient):
                                 hexadecimal value.
 
                           - **NameModifier** *(string) --* String concatenated to the end of the
-                          destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                          destination filename. Accepts \\"Format
+                          Identifiers\\":#formatIdentifierParameters.
 
                           - **SegmentModifier** *(string) --* String concatenated to end of segment
                           filenames.
@@ -10824,7 +10824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_input(self, InputId: str) -> Dict[str, Any]:
         """
         Deletes the input end point
@@ -10854,7 +10854,7 @@ class Client(BaseClient):
           - *(dict) --* Successful deletion
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_input_security_group(self, InputSecurityGroupId: str) -> Dict[str, Any]:
         """
         Deletes an Input Security Group
@@ -10884,7 +10884,7 @@ class Client(BaseClient):
           - *(dict) --* An Input Security Group
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_reservation(
         self, ReservationId: str
     ) -> ClientDeleteReservationResponseTypeDef:
@@ -11008,7 +11008,7 @@ class Client(BaseClient):
             - **UsagePrice** *(float) --* Recurring usage charge for each reserved resource, e.g. '157.0'
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_schedule(self, ChannelId: str) -> Dict[str, Any]:
         """
         Delete all schedule actions on a channel.
@@ -11038,8 +11038,8 @@ class Client(BaseClient):
           - *(dict) --* Successful delete of the schedule.
         """
 
-    # pylint: disable=arguments-differ
-    def delete_tags(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_tags(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes tags for a resource
 
@@ -11066,7 +11066,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_channel(self, ChannelId: str) -> ClientDescribeChannelResponseTypeDef:
         """
         Gets details about a channel
@@ -13286,7 +13286,7 @@ class Client(BaseClient):
                                 - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                 - **PatInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -13303,7 +13303,7 @@ class Client(BaseClient):
                                 decimal or hexadecimal value.
 
                                 - **PmtInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -13334,7 +13334,8 @@ class Client(BaseClient):
                                 hexadecimal value.
 
                           - **NameModifier** *(string) --* String concatenated to the end of the
-                          destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                          destination filename. Accepts \\"Format
+                          Identifiers\\":#formatIdentifierParameters.
 
                           - **SegmentModifier** *(string) --* String concatenated to end of segment
                           filenames.
@@ -14171,7 +14172,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_input(self, InputId: str) -> ClientDescribeInputResponseTypeDef:
         """
         Produces details about an input
@@ -14320,7 +14321,7 @@ class Client(BaseClient):
             - **Type** *(string) --* Placeholder documentation for InputType
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_input_security_group(
         self, InputSecurityGroupId: str
     ) -> ClientDescribeInputSecurityGroupResponseTypeDef:
@@ -14390,7 +14391,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_offering(
         self, OfferingId: str
     ) -> ClientDescribeOfferingResponseTypeDef:
@@ -14485,7 +14486,7 @@ class Client(BaseClient):
             - **UsagePrice** *(float) --* Recurring usage charge for each reserved resource, e.g. '157.0'
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reservation(
         self, ReservationId: str
     ) -> ClientDescribeReservationResponseTypeDef:
@@ -14609,7 +14610,7 @@ class Client(BaseClient):
             - **UsagePrice** *(float) --* Recurring usage charge for each reserved resource, e.g. '157.0'
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_schedule(
         self, ChannelId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeScheduleResponseTypeDef:
@@ -14994,7 +14995,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -15023,7 +15024,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -15044,7 +15045,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -15057,7 +15058,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_channels(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListChannelsResponseTypeDef:
@@ -15472,7 +15473,7 @@ class Client(BaseClient):
             - **NextToken** *(string) --* Placeholder documentation for __string
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_input_security_groups(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListInputSecurityGroupsResponseTypeDef:
@@ -15556,7 +15557,7 @@ class Client(BaseClient):
             - **NextToken** *(string) --* Placeholder documentation for __string
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_inputs(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListInputsResponseTypeDef:
@@ -15724,7 +15725,7 @@ class Client(BaseClient):
             - **NextToken** *(string) --* Placeholder documentation for __string
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_offerings(
         self,
         ChannelClass: str = None,
@@ -15885,7 +15886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_reservations(
         self,
         ChannelClass: str = None,
@@ -16069,7 +16070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -16112,7 +16113,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_offering(
         self,
         Count: int,
@@ -16277,7 +16278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_channel(self, ChannelId: str) -> ClientStartChannelResponseTypeDef:
         """
         Starts an existing channel
@@ -18497,7 +18498,7 @@ class Client(BaseClient):
                                 - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                 - **PatInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -18514,7 +18515,7 @@ class Client(BaseClient):
                                 decimal or hexadecimal value.
 
                                 - **PmtInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -18545,7 +18546,8 @@ class Client(BaseClient):
                                 hexadecimal value.
 
                           - **NameModifier** *(string) --* String concatenated to the end of the
-                          destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                          destination filename. Accepts \\"Format
+                          Identifiers\\":#formatIdentifierParameters.
 
                           - **SegmentModifier** *(string) --* String concatenated to end of segment
                           filenames.
@@ -19382,7 +19384,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_channel(self, ChannelId: str) -> ClientStopChannelResponseTypeDef:
         """
         Stops a running channel
@@ -21602,7 +21604,7 @@ class Client(BaseClient):
                                 - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                 - **PatInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
@@ -21619,7 +21621,7 @@ class Client(BaseClient):
                                 decimal or hexadecimal value.
 
                                 - **PmtInterval** *(integer) --* The number of milliseconds between
-                                instances of this table in the output transport stream. A value of \"0\"
+                                instances of this table in the output transport stream. A value of \\"0\\"
                                 writes out the PMT once per segment file.
 
                                 - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
@@ -21650,7 +21652,8 @@ class Client(BaseClient):
                                 hexadecimal value.
 
                           - **NameModifier** *(string) --* String concatenated to the end of the
-                          destination filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                          destination filename. Accepts \\"Format
+                          Identifiers\\":#formatIdentifierParameters.
 
                           - **SegmentModifier** *(string) --* String concatenated to end of segment
                           filenames.
@@ -22487,7 +22490,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_channel(
         self,
         ChannelId: str,
@@ -24658,7 +24661,7 @@ class Client(BaseClient):
                             - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                             - **PatInterval** *(integer) --* The number of milliseconds between instances
-                            of this table in the output transport stream. A value of \"0\" writes out the
+                            of this table in the output transport stream. A value of \\"0\\" writes out the
                             PMT once per segment file.
 
                             - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program Clock
@@ -24675,7 +24678,7 @@ class Client(BaseClient):
                             hexadecimal value.
 
                             - **PmtInterval** *(integer) --* The number of milliseconds between instances
-                            of this table in the output transport stream. A value of \"0\" writes out the
+                            of this table in the output transport stream. A value of \\"0\\" writes out the
                             PMT once per segment file.
 
                             - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map Table
@@ -24705,7 +24708,7 @@ class Client(BaseClient):
                             value.
 
                       - **NameModifier** *(string) --* String concatenated to the end of the destination
-                      filename. Accepts \"Format Identifiers\":#formatIdentifierParameters.
+                      filename. Accepts \\"Format Identifiers\\":#formatIdentifierParameters.
 
                       - **SegmentModifier** *(string) --* String concatenated to end of segment filenames.
 
@@ -27730,8 +27733,8 @@ class Client(BaseClient):
                                   - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                   - **PatInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                                   Clock Reference value is inserted for every Packetized Elementary Stream
@@ -27747,8 +27750,8 @@ class Client(BaseClient):
                                   decimal or hexadecimal value.
 
                                   - **PmtInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                                   Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -27779,8 +27782,8 @@ class Client(BaseClient):
                                   hexadecimal value.
 
                             - **NameModifier** *(string) --* String concatenated to the end of the
-                            destination filename. Accepts \"Format
-                            Identifiers\":#formatIdentifierParameters.
+                            destination filename. Accepts \\"Format
+                            Identifiers\\":#formatIdentifierParameters.
 
                             - **SegmentModifier** *(string) --* String concatenated to end of segment
                             filenames.
@@ -28626,7 +28629,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_channel_class(
         self,
         ChannelClass: str,
@@ -30931,8 +30934,8 @@ class Client(BaseClient):
                                   - **EcmPid** *(string) --* This parameter is unused and deprecated.
 
                                   - **PatInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PcrControl** *(string) --* When set to pcrEveryPesPacket, a Program
                                   Clock Reference value is inserted for every Packetized Elementary Stream
@@ -30948,8 +30951,8 @@ class Client(BaseClient):
                                   decimal or hexadecimal value.
 
                                   - **PmtInterval** *(integer) --* The number of milliseconds between
-                                  instances of this table in the output transport stream. A value of \"0\"
-                                  writes out the PMT once per segment file.
+                                  instances of this table in the output transport stream. A value of
+                                  \\"0\\" writes out the PMT once per segment file.
 
                                   - **PmtPid** *(string) --* Packet Identifier (PID) for the Program Map
                                   Table (PMT) in the transport stream. Can be entered as a decimal or
@@ -30980,8 +30983,8 @@ class Client(BaseClient):
                                   hexadecimal value.
 
                             - **NameModifier** *(string) --* String concatenated to the end of the
-                            destination filename. Accepts \"Format
-                            Identifiers\":#formatIdentifierParameters.
+                            destination filename. Accepts \\"Format
+                            Identifiers\\":#formatIdentifierParameters.
 
                             - **SegmentModifier** *(string) --* String concatenated to end of segment
                             filenames.
@@ -31827,7 +31830,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_input(
         self,
         InputId: str,
@@ -32056,7 +32059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_input_security_group(
         self,
         InputSecurityGroupId: str,
@@ -32157,7 +32160,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_reservation(
         self, ReservationId: str, Name: str = None
     ) -> ClientUpdateReservationResponseTypeDef:

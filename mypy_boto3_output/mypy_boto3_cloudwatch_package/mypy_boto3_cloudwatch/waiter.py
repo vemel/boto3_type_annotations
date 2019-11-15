@@ -1,12 +1,13 @@
 "Main interface for cloudwatch Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_cloudwatch.type_defs import AlarmExistsWaitWaiterConfigTypeDef
 
 
 class AlarmExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         AlarmNames: List[str] = None,
@@ -15,7 +16,7 @@ class AlarmExists(Boto3Waiter):
         ActionPrefix: str = None,
         MaxRecords: int = None,
         NextToken: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: AlarmExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`CloudWatch.Client.describe_alarms` every 5 seconds until a successful state is

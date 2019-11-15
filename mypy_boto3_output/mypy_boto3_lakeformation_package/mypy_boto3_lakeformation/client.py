@@ -27,7 +27,7 @@ from mypy_boto3_lakeformation.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_grant_permissions(
         self,
         Entries: List[ClientBatchGrantPermissionsEntriesTypeDef],
@@ -394,7 +394,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_revoke_permissions(
         self,
         Entries: List[ClientBatchRevokePermissionsEntriesTypeDef],
@@ -761,7 +761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -778,7 +778,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_resource(self, ResourceArn: str) -> Dict[str, Any]:
         """
         Deregisters the resource as managed by the Data Catalog.
@@ -813,7 +813,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource(
         self, ResourceArn: str
     ) -> ClientDescribeResourceResponseTypeDef:
@@ -870,7 +870,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -899,7 +899,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_data_lake_settings(
         self, CatalogId: str = None
     ) -> ClientGetDataLakeSettingsResponseTypeDef:
@@ -1026,7 +1026,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_effective_permissions_for_path(
         self,
         ResourceArn: str,
@@ -1239,7 +1239,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1260,7 +1260,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1273,7 +1273,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def grant_permissions(
         self,
         Principal: ClientGrantPermissionsPrincipalTypeDef,
@@ -1466,7 +1466,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_permissions(
         self,
         CatalogId: str = None,
@@ -1808,7 +1808,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resources(
         self,
         FilterConditionList: List[ClientListResourcesFilterConditionListTypeDef] = None,
@@ -1918,7 +1918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_data_lake_settings(
         self,
         DataLakeSettings: ClientPutDataLakeSettingsDataLakeSettingsTypeDef,
@@ -2046,7 +2046,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_resource(
         self, ResourceArn: str, UseServiceLinkedRole: bool = None, RoleArn: str = None
     ) -> Dict[str, Any]:
@@ -2099,7 +2099,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_permissions(
         self,
         Principal: ClientRevokePermissionsPrincipalTypeDef,
@@ -2283,7 +2283,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resource(self, RoleArn: str, ResourceArn: str) -> Dict[str, Any]:
         """
         Updates the data access role used for vending access to the given (registered) resource in AWS Lake

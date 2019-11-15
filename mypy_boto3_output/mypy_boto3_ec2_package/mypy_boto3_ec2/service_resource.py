@@ -5,7 +5,9 @@ from datetime import datetime
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag, Tag as TypeDefTag
+from mypy_boto3.type_defs import Tag as TypeDefTag
+
+# pylint: disable=import-self
 import mypy_boto3_ec2.service_resource as service_resource_scope
 from mypy_boto3_ec2.type_defs import (
     ClassicAddressAssociateResponseTypeDef,
@@ -22,6 +24,7 @@ from mypy_boto3_ec2.type_defs import (
     InstanceConsoleOutputResponseTypeDef,
     InstanceCreateImageBlockDeviceMappingsTypeDef,
     InstanceCreateTagsTagsTypeDef,
+    InstanceDeleteTagsTagsTypeDef,
     InstanceDescribeAttributeResponseTypeDef,
     InstanceDetachClassicLinkVpcResponseTypeDef,
     InstanceDetachVolumeResponseTypeDef,
@@ -46,6 +49,7 @@ from mypy_boto3_ec2.type_defs import (
     InstanceWaitUntilRunningFiltersTypeDef,
     InstanceWaitUntilStoppedFiltersTypeDef,
     InstanceWaitUntilTerminatedFiltersTypeDef,
+    InstancesCreateTagsTagsTypeDef,
     InstancesFilterFiltersTypeDef,
     InstancesMonitorResponseTypeDef,
     InstancesStartResponseTypeDef,
@@ -68,6 +72,7 @@ from mypy_boto3_ec2.type_defs import (
     NetworkInterfaceDescribeAttributeResponseTypeDef,
     NetworkInterfaceModifyAttributeAttachmentTypeDef,
     NetworkInterfaceModifyAttributeDescriptionTypeDef,
+    NetworkInterfaceModifyAttributeSourceDestCheckTypeDef,
     NetworkInterfacesFilterFiltersTypeDef,
     PlacementGroupsFilterFiltersTypeDef,
     RouteTableCreateTagsTagsTypeDef,
@@ -143,6 +148,7 @@ from mypy_boto3_ec2.type_defs import (
     VpcDisableClassicLinkResponseTypeDef,
     VpcEnableClassicLinkResponseTypeDef,
     VpcModifyAttributeEnableDnsHostnamesTypeDef,
+    VpcModifyAttributeEnableDnsSupportTypeDef,
     VpcPeeringConnectionAcceptResponseTypeDef,
     VpcPeeringConnectionDeleteResponseTypeDef,
     VpcPeeringConnectionRejectResponseTypeDef,
@@ -155,7 +161,7 @@ from mypy_boto3_ec2.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ClassicAddress(self, public_ip: str) -> service_resource_scope.ClassicAddress:
         """
         Creates a ClassicAddress resource.::
@@ -169,7 +175,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A ClassicAddress resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def DhcpOptions(self, id: str) -> service_resource_scope.DhcpOptions:
         """
         Creates a DhcpOptions resource.::
@@ -183,7 +189,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A DhcpOptions resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Image(self, id: str) -> service_resource_scope.Image:
         """
         Creates a Image resource.::
@@ -197,7 +203,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Image resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Instance(self, id: str) -> service_resource_scope.Instance:
         """
         Creates a Instance resource.::
@@ -211,7 +217,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Instance resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def InternetGateway(self, id: str) -> service_resource_scope.InternetGateway:
         """
         Creates a InternetGateway resource.::
@@ -225,7 +231,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A InternetGateway resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def KeyPair(self, name: str) -> service_resource_scope.KeyPairInfo:
         """
         Creates a KeyPairInfo resource.::
@@ -239,7 +245,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A KeyPairInfo resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def NetworkAcl(self, id: str) -> service_resource_scope.NetworkAcl:
         """
         Creates a NetworkAcl resource.::
@@ -253,7 +259,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A NetworkAcl resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def NetworkInterface(self, id: str) -> service_resource_scope.NetworkInterface:
         """
         Creates a NetworkInterface resource.::
@@ -267,7 +273,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A NetworkInterface resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def NetworkInterfaceAssociation(
         self, id: str
     ) -> service_resource_scope.NetworkInterfaceAssociation:
@@ -283,7 +289,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A NetworkInterfaceAssociation resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def PlacementGroup(self, name: str) -> service_resource_scope.PlacementGroup:
         """
         Creates a PlacementGroup resource.::
@@ -297,7 +303,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A PlacementGroup resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Route(
         self, route_table_id: str, destination_cidr_block: str
     ) -> service_resource_scope.Route:
@@ -315,7 +321,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Route resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def RouteTable(self, id: str) -> service_resource_scope.RouteTable:
         """
         Creates a RouteTable resource.::
@@ -329,7 +335,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A RouteTable resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def RouteTableAssociation(
         self, id: str
     ) -> service_resource_scope.RouteTableAssociation:
@@ -345,7 +351,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A RouteTableAssociation resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def SecurityGroup(self, id: str) -> service_resource_scope.SecurityGroup:
         """
         Creates a SecurityGroup resource.::
@@ -359,7 +365,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A SecurityGroup resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Snapshot(self, id: str) -> service_resource_scope.Snapshot:
         """
         Creates a Snapshot resource.::
@@ -373,7 +379,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Snapshot resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Subnet(self, id: str) -> service_resource_scope.Subnet:
         """
         Creates a Subnet resource.::
@@ -387,7 +393,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Subnet resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Tag(self, resource_id: str, key: str, value: str) -> service_resource_scope.Tag:
         """
         Creates a Tag resource.::
@@ -405,7 +411,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Tag resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Volume(self, id: str) -> service_resource_scope.Volume:
         """
         Creates a Volume resource.::
@@ -419,7 +425,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Volume resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Vpc(self, id: str) -> service_resource_scope.Vpc:
         """
         Creates a Vpc resource.::
@@ -433,7 +439,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Vpc resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def VpcAddress(self, allocation_id: str) -> service_resource_scope.VpcAddress:
         """
         Creates a VpcAddress resource.::
@@ -447,7 +453,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A VpcAddress resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def VpcPeeringConnection(
         self, id: str
     ) -> service_resource_scope.VpcPeeringConnection:
@@ -463,7 +469,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A VpcPeeringConnection resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dhcp_options(
         self,
         DhcpConfigurations: List[
@@ -548,7 +554,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: DhcpOptions resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instances(
         self,
         MaxCount: int,
@@ -1599,7 +1605,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A list of Instance resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_internet_gateway(
         self, DryRun: bool = None
     ) -> service_resource_scope.InternetGateway:
@@ -1630,7 +1636,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: InternetGateway resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_key_pair(
         self, KeyName: str, DryRun: bool = None
     ) -> service_resource_scope.KeyPair:
@@ -1678,7 +1684,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: KeyPair resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_acl(
         self, VpcId: str, DryRun: bool = None
     ) -> service_resource_scope.NetworkAcl:
@@ -1716,7 +1722,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: NetworkAcl resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_interface(
         self,
         SubnetId: str,
@@ -1867,7 +1873,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: NetworkInterface resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_placement_group(
         self,
         DryRun: bool = None,
@@ -1929,7 +1935,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: PlacementGroup resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route_table(
         self, VpcId: str, DryRun: bool = None
     ) -> service_resource_scope.RouteTable:
@@ -1967,7 +1973,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: RouteTable resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_group(
         self, Description: str, GroupName: str, VpcId: str = None, DryRun: bool = None
     ) -> service_resource_scope.SecurityGroup:
@@ -2047,7 +2053,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: SecurityGroup resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self,
         VolumeId: str,
@@ -2182,7 +2188,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Snapshot resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subnet(
         self,
         CidrBlock: str,
@@ -2276,14 +2282,14 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Subnet resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Resources: List[Any], Tags: List[TypeDefTag], DryRun: bool = False
     ) -> None:
 
         pass
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_volume(
         self,
         AvailabilityZone: str,
@@ -2496,7 +2502,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Volume resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc(
         self,
         CidrBlock: str,
@@ -2573,7 +2579,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Vpc resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vpc_peering_connection(
         self,
         DryRun: bool = None,
@@ -2652,7 +2658,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: VpcPeeringConnection resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_route_table(self, AssociationId: str, DryRun: bool = None) -> None:
         """
         Disassociates a subnet from a route table.
@@ -2687,7 +2693,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -2698,7 +2704,7 @@ class ServiceResource(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_key_pair(
         self, KeyName: str, PublicKeyMaterial: bytes, DryRun: bool = None
     ) -> service_resource_scope.KeyPairInfo:
@@ -2745,7 +2751,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: KeyPairInfo resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_image(
         self,
         Name: str,
@@ -3061,7 +3067,7 @@ class ClassicAddress(Boto3ServiceResource):
     public_ipv4_pool: str
     public_ip: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate(
         self,
         AllocationId: str = None,
@@ -3176,7 +3182,7 @@ class ClassicAddress(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate(self, AssociationId: str = None, DryRun: bool = None) -> None:
         """
         Disassociates an Elastic IP address from the instance or network interface it's associated with.
@@ -3214,7 +3220,7 @@ class ClassicAddress(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3225,7 +3231,7 @@ class ClassicAddress(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_addresses` to update the attributes of the ClassicAddress
@@ -3241,7 +3247,7 @@ class ClassicAddress(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def release(self, AllocationId: str = None, DryRun: bool = None) -> None:
         """
         Releases the specified Elastic IP address.
@@ -3286,7 +3292,7 @@ class ClassicAddress(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_addresses` to update the attributes of the ClassicAddress
@@ -3310,7 +3316,7 @@ class DhcpOptions(Boto3ServiceResource):
     tags: List[Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_with_vpc(self, VpcId: str, DryRun: bool = None) -> None:
         """
         Associates a set of DHCP options (that you've previously created) with the specified VPC, or
@@ -3351,7 +3357,7 @@ class DhcpOptions(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[DhcpOptionsCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -3417,7 +3423,7 @@ class DhcpOptions(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you
@@ -3443,7 +3449,7 @@ class DhcpOptions(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3454,7 +3460,7 @@ class DhcpOptions(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_dhcp_options` to update the attributes of the DhcpOptions
@@ -3470,7 +3476,7 @@ class DhcpOptions(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_dhcp_options` to update the attributes of the DhcpOptions
@@ -3514,7 +3520,7 @@ class Image(Boto3ServiceResource):
     virtualization_type: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[ImageCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -3580,7 +3586,7 @@ class Image(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister(self, DryRun: bool = None) -> None:
         """
         Deregisters the specified AMI. After you deregister an AMI, it can't be used to launch new
@@ -3611,7 +3617,7 @@ class Image(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str, DryRun: bool = None
     ) -> ImageDescribeAttributeResponseTypeDef:
@@ -3892,7 +3898,7 @@ class Image(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -3903,7 +3909,7 @@ class Image(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_images` to update the attributes of the Image resource. Note
@@ -3919,7 +3925,7 @@ class Image(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         Attribute: str = None,
@@ -4078,7 +4084,7 @@ class Image(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_images` to update the attributes of the Image resource. Note
@@ -4094,7 +4100,7 @@ class Image(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_attribute(self, Attribute: str, DryRun: bool = None) -> None:
         """
         Resets an attribute of an AMI to its default value.
@@ -4128,7 +4134,7 @@ class Image(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         ExecutableUsers: List[str] = None,
@@ -4356,7 +4362,7 @@ class Instance(Boto3ServiceResource):
     licenses: List[Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_classic_link_vpc(
         self, Groups: List[str], VpcId: str, DryRun: bool = None
     ) -> InstanceAttachClassicLinkVpcResponseTypeDef:
@@ -4424,7 +4430,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_volume(
         self, Device: str, VolumeId: str, DryRun: bool = None
     ) -> InstanceAttachVolumeResponseTypeDef:
@@ -4531,7 +4537,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def console_output(
         self, DryRun: bool = None, Latest: bool = None
     ) -> InstanceConsoleOutputResponseTypeDef:
@@ -4608,7 +4614,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_image(
         self,
         Name: str,
@@ -4806,7 +4812,7 @@ class Instance(Boto3ServiceResource):
         :returns: Image resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[InstanceCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -4872,9 +4878,9 @@ class Instance(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(
-        self, DryRun: bool = None, Tags: List[TypeDefEC2Tag] = None
+        self, DryRun: bool = None, Tags: List[InstanceDeleteTagsTagsTypeDef] = None
     ) -> None:
         """
         Deletes the specified set of tags from the specified set of resources.
@@ -4936,7 +4942,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str, DryRun: bool = None
     ) -> InstanceDescribeAttributeResponseTypeDef:
@@ -5210,7 +5216,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_classic_link_vpc(
         self, VpcId: str, DryRun: bool = None
     ) -> InstanceDetachClassicLinkVpcResponseTypeDef:
@@ -5261,7 +5267,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_volume(
         self, VolumeId: str, Device: str = None, Force: bool = None, DryRun: bool = None
     ) -> InstanceDetachVolumeResponseTypeDef:
@@ -5365,7 +5371,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -5376,7 +5382,7 @@ class Instance(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_instances` to update the attributes of the Instance resource.
@@ -5392,7 +5398,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         SourceDestCheck: InstanceModifyAttributeSourceDestCheckTypeDef = None,
@@ -5669,7 +5675,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def monitor(self, DryRun: bool = None) -> InstanceMonitorResponseTypeDef:
         """
         Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For
@@ -5739,7 +5745,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def password_data(self, DryRun: bool = None) -> InstancePasswordDataResponseTypeDef:
         """
         Retrieves the encrypted administrator password for a running Windows instance.
@@ -5808,7 +5814,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot(self, DryRun: bool = None) -> None:
         """
         Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
@@ -5840,7 +5846,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_instances` to update the attributes of the Instance resource.
@@ -5856,7 +5862,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def report_status(
         self,
         ReasonCodes: List[str],
@@ -5950,7 +5956,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_attribute(self, Attribute: str, DryRun: bool = None) -> None:
         """
         Resets an attribute of an instance to its default value. To reset the ``kernel`` or ``ramdisk`` ,
@@ -5997,7 +6003,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_kernel(self, DryRun: bool = None) -> None:
         """
         Resets an attribute of an instance to its default value. To reset the ``kernel`` or ``ramdisk`` ,
@@ -6030,7 +6036,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_ramdisk(self, DryRun: bool = None) -> None:
         """
         Resets an attribute of an instance to its default value. To reset the ``kernel`` or ``ramdisk`` ,
@@ -6063,7 +6069,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_source_dest_check(self, DryRun: bool = None) -> None:
         """
         Resets an attribute of an instance to its default value. To reset the ``kernel`` or ``ramdisk`` ,
@@ -6096,7 +6102,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start(
         self, AdditionalInfo: str = None, DryRun: bool = None
     ) -> InstanceStartResponseTypeDef:
@@ -6259,7 +6265,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop(
         self, Hibernate: bool = None, DryRun: bool = None, Force: bool = None
     ) -> InstanceStopResponseTypeDef:
@@ -6459,7 +6465,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate(self, DryRun: bool = None) -> InstanceTerminateResponseTypeDef:
         """
         Shuts down the specified instances. This operation is idempotent; if you terminate an instance more
@@ -6616,7 +6622,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unmonitor(self, DryRun: bool = None) -> InstanceUnmonitorResponseTypeDef:
         """
         Disables detailed monitoring for a running instance. For more information, see `Monitoring Your
@@ -6684,7 +6690,7 @@ class Instance(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         Filters: List[InstanceWaitUntilExistsFiltersTypeDef] = None,
@@ -6998,7 +7004,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_running(
         self,
         Filters: List[InstanceWaitUntilRunningFiltersTypeDef] = None,
@@ -7312,7 +7318,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_stopped(
         self,
         Filters: List[InstanceWaitUntilStoppedFiltersTypeDef] = None,
@@ -7626,7 +7632,7 @@ class Instance(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_terminated(
         self,
         Filters: List[InstanceWaitUntilTerminatedFiltersTypeDef] = None,
@@ -7949,7 +7955,7 @@ class InternetGateway(Boto3ServiceResource):
     tags: List[Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_to_vpc(self, VpcId: str, DryRun: bool = None) -> None:
         """
         Attaches an internet gateway to a VPC, enabling connectivity between the internet and the VPC. For
@@ -7981,7 +7987,7 @@ class InternetGateway(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[InternetGatewayCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -8047,7 +8053,7 @@ class InternetGateway(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified internet gateway. You must detach the internet gateway from the VPC before
@@ -8073,7 +8079,7 @@ class InternetGateway(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_from_vpc(self, VpcId: str, DryRun: bool = None) -> None:
         """
         Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC.
@@ -8104,7 +8110,7 @@ class InternetGateway(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -8115,7 +8121,7 @@ class InternetGateway(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_internet_gateways` to update the attributes of the
@@ -8132,7 +8138,7 @@ class InternetGateway(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_internet_gateways` to update the attributes of the
@@ -8156,7 +8162,7 @@ class KeyPair(Boto3ServiceResource):
     key_name: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified key pair, by removing the public key from Amazon EC2.
@@ -8180,7 +8186,7 @@ class KeyPair(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -8197,7 +8203,7 @@ class KeyPairInfo(Boto3ServiceResource):
     key_name: str
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified key pair, by removing the public key from Amazon EC2.
@@ -8221,7 +8227,7 @@ class KeyPairInfo(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -8232,7 +8238,7 @@ class KeyPairInfo(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_key_pairs` to update the attributes of the KeyPairInfo
@@ -8248,7 +8254,7 @@ class KeyPairInfo(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_key_pairs` to update the attributes of the KeyPairInfo
@@ -8275,7 +8281,7 @@ class NetworkAcl(Boto3ServiceResource):
     owner_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_entry(
         self,
         Egress: bool,
@@ -8407,7 +8413,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[NetworkAclCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -8473,7 +8479,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets.
@@ -8499,7 +8505,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_entry(self, Egress: bool, RuleNumber: int, DryRun: bool = None) -> None:
         """
         Deletes the specified ingress or egress entry (rule) from the specified network ACL.
@@ -8535,7 +8541,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -8546,7 +8552,7 @@ class NetworkAcl(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_acls` to update the attributes of the NetworkAcl
@@ -8562,7 +8568,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_acls` to update the attributes of the NetworkAcl
@@ -8578,7 +8584,7 @@ class NetworkAcl(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_association(
         self, AssociationId: str, DryRun: bool = None
     ) -> NetworkAclReplaceAssociationResponseTypeDef:
@@ -8633,7 +8639,7 @@ class NetworkAcl(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_entry(
         self,
         Egress: bool,
@@ -8774,7 +8780,7 @@ class NetworkInterface(Boto3ServiceResource):
     vpc_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assign_private_ip_addresses(
         self,
         AllowReassignment: bool = None,
@@ -8874,7 +8880,7 @@ class NetworkInterface(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach(
         self, DeviceIndex: int, InstanceId: str, DryRun: bool = None
     ) -> NetworkInterfaceAttachResponseTypeDef:
@@ -8932,7 +8938,7 @@ class NetworkInterface(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[NetworkInterfaceCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -8998,7 +9004,7 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified network interface. You must detach the network interface before you can
@@ -9024,7 +9030,7 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str = None, DryRun: bool = None
     ) -> NetworkInterfaceDescribeAttributeResponseTypeDef:
@@ -9161,7 +9167,7 @@ class NetworkInterface(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach(self, DryRun: bool = None, Force: bool = None) -> None:
         """
         Detaches a network interface from an instance.
@@ -9206,7 +9212,7 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -9217,7 +9223,7 @@ class NetworkInterface(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_interfaces` to update the attributes of the
@@ -9234,14 +9240,14 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         Attachment: NetworkInterfaceModifyAttributeAttachmentTypeDef = None,
         Description: NetworkInterfaceModifyAttributeDescriptionTypeDef = None,
         DryRun: bool = None,
         Groups: List[str] = None,
-        SourceDestCheck: Dict = None,
+        SourceDestCheck: NetworkInterfaceModifyAttributeSourceDestCheckTypeDef = None,
     ) -> None:
         """
         Modifies the specified network interface attribute. You can specify only one attribute at a time.
@@ -9324,7 +9330,7 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_interfaces` to update the attributes of the
@@ -9341,7 +9347,7 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_attribute(self, DryRun: bool = None, SourceDestCheck: str = None) -> None:
         """
         Resets a network interface attribute. You can specify only one attribute at a time.
@@ -9371,8 +9377,8 @@ class NetworkInterface(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def unassign_private_ip_addresses(self, PrivateIpAddresses: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def unassign_private_ip_addresses(self, PrivateIpAddresses: List[str]) -> None:
         """
         Unassigns one or more secondary private IP addresses from a network interface.
 
@@ -9405,7 +9411,7 @@ class NetworkInterfaceAssociation(Boto3ServiceResource):
     public_ip: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, PublicIp: str = None, DryRun: bool = None) -> None:
         """
         Disassociates an Elastic IP address from the instance or network interface it's associated with.
@@ -9443,7 +9449,7 @@ class NetworkInterfaceAssociation(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -9454,7 +9460,7 @@ class NetworkInterfaceAssociation(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_interfaces` to update the attributes of the
@@ -9471,7 +9477,7 @@ class NetworkInterfaceAssociation(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_network_interfaces` to update the attributes of the
@@ -9496,7 +9502,7 @@ class PlacementGroup(Boto3ServiceResource):
     partition_count: int
     name: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified placement group. You must terminate all instances in the placement group
@@ -9524,7 +9530,7 @@ class PlacementGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -9535,7 +9541,7 @@ class PlacementGroup(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_placement_groups` to update the attributes of the
@@ -9552,7 +9558,7 @@ class PlacementGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_placement_groups` to update the attributes of the
@@ -9586,7 +9592,7 @@ class Route(Boto3ServiceResource):
     route_table_id: str
     destination_cidr_block: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DestinationIpv6CidrBlock: str = None, DryRun: bool = None) -> None:
         """
         Deletes the specified route from the specified route table.
@@ -9618,7 +9624,7 @@ class Route(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -9629,7 +9635,7 @@ class Route(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace(
         self,
         DestinationIpv6CidrBlock: str = None,
@@ -9730,7 +9736,7 @@ class RouteTable(Boto3ServiceResource):
     owner_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_with_subnet(
         self, SubnetId: str, DryRun: bool = None
     ) -> service_resource_scope.RouteTableAssociation:
@@ -9770,7 +9776,7 @@ class RouteTable(Boto3ServiceResource):
         :returns: RouteTableAssociation resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route(
         self,
         DestinationCidrBlock: str = None,
@@ -9883,7 +9889,7 @@ class RouteTable(Boto3ServiceResource):
         :returns: Route resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[RouteTableCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -9949,7 +9955,7 @@ class RouteTable(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified route table. You must disassociate the route table from any subnets before
@@ -9975,7 +9981,7 @@ class RouteTable(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -9986,7 +9992,7 @@ class RouteTable(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_route_tables` to update the attributes of the RouteTable
@@ -10002,7 +10008,7 @@ class RouteTable(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_route_tables` to update the attributes of the RouteTable
@@ -10026,7 +10032,7 @@ class RouteTableAssociation(Boto3ServiceResource):
     subnet_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Disassociates a subnet from a route table.
@@ -10055,7 +10061,7 @@ class RouteTableAssociation(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -10066,7 +10072,7 @@ class RouteTableAssociation(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def replace_subnet(
         self, RouteTableId: str, DryRun: bool = None
     ) -> service_resource_scope.RouteTableAssociation:
@@ -10119,7 +10125,7 @@ class SecurityGroup(Boto3ServiceResource):
     vpc_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_egress(
         self,
         DryRun: bool = None,
@@ -10382,7 +10388,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_ingress(
         self,
         CidrIp: str = None,
@@ -10683,7 +10689,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[SecurityGroupCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -10749,7 +10755,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, GroupName: str = None, DryRun: bool = None) -> None:
         """
         Deletes a security group.
@@ -10784,7 +10790,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -10795,7 +10801,7 @@ class SecurityGroup(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_security_groups` to update the attributes of the SecurityGroup
@@ -10811,7 +10817,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_security_groups` to update the attributes of the SecurityGroup
@@ -10827,7 +10833,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_egress(
         self,
         DryRun: bool = None,
@@ -11087,7 +11093,7 @@ class SecurityGroup(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_ingress(
         self,
         CidrIp: str = None,
@@ -11390,7 +11396,7 @@ class Snapshot(Boto3ServiceResource):
     tags: List[Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
         SourceRegion: str,
@@ -11537,7 +11543,7 @@ class Snapshot(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[SnapshotCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -11603,7 +11609,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified snapshot.
@@ -11640,7 +11646,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str, DryRun: bool = None
     ) -> SnapshotDescribeAttributeResponseTypeDef:
@@ -11741,7 +11747,7 @@ class Snapshot(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -11752,7 +11758,7 @@ class Snapshot(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_snapshots` to update the attributes of the Snapshot resource.
@@ -11768,7 +11774,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         Attribute: str = None,
@@ -11895,7 +11901,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_snapshots` to update the attributes of the Snapshot resource.
@@ -11911,7 +11917,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_attribute(self, Attribute: str, DryRun: bool = None) -> None:
         """
         Resets permission settings for the specified snapshot.
@@ -11946,7 +11952,7 @@ class Snapshot(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_completed(
         self,
         Filters: List[SnapshotWaitUntilCompletedFiltersTypeDef] = None,
@@ -12120,7 +12126,7 @@ class Subnet(Boto3ServiceResource):
     subnet_arn: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instances(
         self,
         MaxCount: int,
@@ -13158,7 +13164,7 @@ class Subnet(Boto3ServiceResource):
         :returns: A list of Instance resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_interface(
         self,
         Description: str = None,
@@ -13301,7 +13307,7 @@ class Subnet(Boto3ServiceResource):
         :returns: NetworkInterface resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[SubnetCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -13367,7 +13373,7 @@ class Subnet(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified subnet. You must terminate all running instances in the subnet before you can
@@ -13392,7 +13398,7 @@ class Subnet(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -13403,7 +13409,7 @@ class Subnet(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_subnets` to update the attributes of the Subnet resource. Note
@@ -13419,7 +13425,7 @@ class Subnet(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_subnets` to update the attributes of the Subnet resource. Note
@@ -13442,7 +13448,7 @@ class Tag(Boto3ServiceResource):
     key: str
     value: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified set of tags from the specified set of resources.
@@ -13471,7 +13477,7 @@ class Tag(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -13482,7 +13488,7 @@ class Tag(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_tags` to update the attributes of the Tag resource. Note that
@@ -13498,7 +13504,7 @@ class Tag(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_tags` to update the attributes of the Tag resource. Note that
@@ -13530,7 +13536,7 @@ class Volume(Boto3ServiceResource):
     volume_type: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_to_instance(
         self, Device: str, InstanceId: str, DryRun: bool = None
     ) -> VolumeAttachToInstanceResponseTypeDef:
@@ -13637,7 +13643,7 @@ class Volume(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self,
         Description: str = None,
@@ -13763,7 +13769,7 @@ class Volume(Boto3ServiceResource):
         :returns: Snapshot resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[VolumeCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -13829,7 +13835,7 @@ class Volume(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified EBS volume. The volume must be in the ``available`` state (not attached to an
@@ -13860,7 +13866,7 @@ class Volume(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str, DryRun: bool = None
     ) -> VolumeDescribeAttributeResponseTypeDef:
@@ -13949,7 +13955,7 @@ class Volume(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_status(
         self,
         Filters: List[VolumeDescribeStatusFiltersTypeDef] = None,
@@ -14253,7 +14259,7 @@ class Volume(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_from_instance(
         self,
         Device: str = None,
@@ -14361,7 +14367,7 @@ class Volume(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_io(self, DryRun: bool = None) -> None:
         """
         Enables I/O operations for a volume that had I/O operations disabled because the data on the volume
@@ -14387,7 +14393,7 @@ class Volume(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -14398,7 +14404,7 @@ class Volume(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_volumes` to update the attributes of the Volume resource. Note
@@ -14414,7 +14420,7 @@ class Volume(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         AutoEnableIO: VolumeModifyAttributeAutoEnableIOTypeDef = None,
@@ -14462,7 +14468,7 @@ class Volume(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_volumes` to update the attributes of the Volume resource. Note
@@ -14492,7 +14498,7 @@ class Vpc(Boto3ServiceResource):
     tags: List[Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_dhcp_options(self, DhcpOptionsId: str, DryRun: bool = None) -> None:
         """
         Associates a set of DHCP options (that you've previously created) with the specified VPC, or
@@ -14533,7 +14539,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_classic_link_instance(
         self, Groups: List[str], InstanceId: str, DryRun: bool = None
     ) -> VpcAttachClassicLinkInstanceResponseTypeDef:
@@ -14602,7 +14608,7 @@ class Vpc(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_internet_gateway(
         self, InternetGatewayId: str, DryRun: bool = None
     ) -> None:
@@ -14637,7 +14643,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_network_acl(
         self, DryRun: bool = None
     ) -> service_resource_scope.NetworkAcl:
@@ -14670,7 +14676,7 @@ class Vpc(Boto3ServiceResource):
         :returns: NetworkAcl resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route_table(
         self, DryRun: bool = None
     ) -> service_resource_scope.RouteTable:
@@ -14703,7 +14709,7 @@ class Vpc(Boto3ServiceResource):
         :returns: RouteTable resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_group(
         self, Description: str, GroupName: str, DryRun: bool = None
     ) -> service_resource_scope.SecurityGroup:
@@ -14777,7 +14783,7 @@ class Vpc(Boto3ServiceResource):
         :returns: SecurityGroup resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subnet(
         self,
         CidrBlock: str,
@@ -14864,7 +14870,7 @@ class Vpc(Boto3ServiceResource):
         :returns: Subnet resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
         self, Tags: List[VpcCreateTagsTagsTypeDef], DryRun: bool = None
     ) -> List[service_resource_scope.Tag]:
@@ -14930,7 +14936,7 @@ class Vpc(Boto3ServiceResource):
         :returns: A list of Tag resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
         """
         Deletes the specified VPC. You must detach or delete all gateways and resources that are associated
@@ -14957,7 +14963,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attribute(
         self, Attribute: str, DryRun: bool = None
     ) -> VpcDescribeAttributeResponseTypeDef:
@@ -15032,7 +15038,7 @@ class Vpc(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_classic_link_instance(
         self, InstanceId: str, DryRun: bool = None
     ) -> VpcDetachClassicLinkInstanceResponseTypeDef:
@@ -15084,7 +15090,7 @@ class Vpc(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_internet_gateway(
         self, InternetGatewayId: str, DryRun: bool = None
     ) -> None:
@@ -15118,7 +15124,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_classic_link(
         self, DryRun: bool = None
     ) -> VpcDisableClassicLinkResponseTypeDef:
@@ -15163,7 +15169,7 @@ class Vpc(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_classic_link(
         self, DryRun: bool = None
     ) -> VpcEnableClassicLinkResponseTypeDef:
@@ -15213,7 +15219,7 @@ class Vpc(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -15224,7 +15230,7 @@ class Vpc(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_vpcs` to update the attributes of the Vpc resource. Note that
@@ -15240,11 +15246,11 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_attribute(
         self,
         EnableDnsHostnames: VpcModifyAttributeEnableDnsHostnamesTypeDef = None,
-        EnableDnsSupport: Dict = None,
+        EnableDnsSupport: VpcModifyAttributeEnableDnsSupportTypeDef = None,
     ) -> None:
         """
         Modifies the specified attribute of the specified VPC.
@@ -15296,7 +15302,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_vpcs` to update the attributes of the Vpc resource. Note that
@@ -15312,7 +15318,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_vpc_peering_connection(
         self,
         DryRun: bool = None,
@@ -15384,7 +15390,7 @@ class Vpc(Boto3ServiceResource):
         :returns: VpcPeeringConnection resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_available(
         self,
         Filters: List[VpcWaitUntilAvailableFiltersTypeDef] = None,
@@ -15515,7 +15521,7 @@ class Vpc(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         Filters: List[VpcWaitUntilExistsFiltersTypeDef] = None,
@@ -15656,7 +15662,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
     vpc_peering_connection_id: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept(self, DryRun: bool = None) -> VpcPeeringConnectionAcceptResponseTypeDef:
         """
         Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in
@@ -15930,7 +15936,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> VpcPeeringConnectionDeleteResponseTypeDef:
         """
         Deletes a VPC peering connection. Either the owner of the requester VPC or the owner of the
@@ -15975,7 +15981,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -15986,7 +15992,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_vpc_peering_connections` to update the attributes of the
@@ -16003,7 +16009,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reject(self, DryRun: bool = None) -> VpcPeeringConnectionRejectResponseTypeDef:
         """
         Rejects a VPC peering connection request. The VPC peering connection must be in the
@@ -16048,7 +16054,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_vpc_peering_connections` to update the attributes of the
@@ -16065,7 +16071,7 @@ class VpcPeeringConnection(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait_until_exists(
         self,
         Filters: List[VpcPeeringConnectionWaitUntilExistsFiltersTypeDef] = None,
@@ -16204,7 +16210,7 @@ class VpcAddress(Boto3ServiceResource):
     public_ipv4_pool: str
     allocation_id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate(
         self,
         InstanceId: str = None,
@@ -16319,7 +16325,7 @@ class VpcAddress(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -16330,7 +16336,7 @@ class VpcAddress(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_addresses` to update the attributes of the VpcAddress resource.
@@ -16346,7 +16352,7 @@ class VpcAddress(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def release(self, PublicIp: str = None, DryRun: bool = None) -> None:
         """
         Releases the specified Elastic IP address.
@@ -16391,7 +16397,7 @@ class VpcAddress(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`EC2.Client.describe_addresses` to update the attributes of the VpcAddress resource.
@@ -16420,8 +16426,7 @@ class classic_addresses(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.ClassicAddress]:
         """
         Creates an iterable of all ClassicAddress resources in the collection.
@@ -16438,8 +16443,7 @@ class classic_addresses(ResourceCollection):
         :returns: A list of ClassicAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         PublicIps: List[str] = None,
@@ -16492,8 +16496,7 @@ class classic_addresses(ResourceCollection):
         :returns: A list of ClassicAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -16502,8 +16505,7 @@ class classic_addresses(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.ClassicAddress]:
         """
         Creates an iterable up to a specified amount of ClassicAddress resources in the collection.
@@ -16524,8 +16526,7 @@ class classic_addresses(ResourceCollection):
         :returns: A list of ClassicAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.ClassicAddress]:
         """
         Creates an iterable of all ClassicAddress resources in the collection, but limits the number of
@@ -16547,8 +16548,7 @@ class classic_addresses(ResourceCollection):
         :returns: A list of ClassicAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -16583,8 +16583,7 @@ class dhcp_options_sets(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.DhcpOptions]:
         """
         Creates an iterable of all DhcpOptions resources in the collection.
@@ -16601,8 +16600,7 @@ class dhcp_options_sets(ResourceCollection):
         :returns: A list of DhcpOptions resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         DhcpOptionsIds: List[str] = None,
@@ -16726,8 +16724,7 @@ class dhcp_options_sets(ResourceCollection):
         :returns: A list of DhcpOptions resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -16736,8 +16733,7 @@ class dhcp_options_sets(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.DhcpOptions]:
         """
         Creates an iterable up to a specified amount of DhcpOptions resources in the collection.
@@ -16758,8 +16754,7 @@ class dhcp_options_sets(ResourceCollection):
         :returns: A list of DhcpOptions resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.DhcpOptions]:
         """
         Creates an iterable of all DhcpOptions resources in the collection, but limits the number of items
@@ -16781,8 +16776,7 @@ class dhcp_options_sets(ResourceCollection):
         :returns: A list of DhcpOptions resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -16817,8 +16811,7 @@ class images(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Image]:
         """
         Creates an iterable of all Image resources in the collection.
@@ -16835,8 +16828,7 @@ class images(ResourceCollection):
         :returns: A list of Image resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         ExecutableUsers: List[str] = None,
@@ -17027,8 +17019,7 @@ class images(ResourceCollection):
         :returns: A list of Image resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -17037,8 +17028,7 @@ class images(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Image]:
         """
         Creates an iterable up to a specified amount of Image resources in the collection.
@@ -17059,8 +17049,7 @@ class images(ResourceCollection):
         :returns: A list of Image resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Image]:
         """
         Creates an iterable of all Image resources in the collection, but limits the number of items
@@ -17082,8 +17071,7 @@ class images(ResourceCollection):
         :returns: A list of Image resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -17118,8 +17106,7 @@ class instances(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Instance]:
         """
         Creates an iterable of all Instance resources in the collection.
@@ -17136,9 +17123,10 @@ class instances(ResourceCollection):
         :returns: A list of Instance resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
-    def create_tags(self, Tags: List[TypeDefEC2Tag], DryRun: bool = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, Tags: List[InstancesCreateTagsTagsTypeDef], DryRun: bool = None
+    ) -> None:
         """
         Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources. Each
         resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys
@@ -17200,8 +17188,7 @@ class instances(ResourceCollection):
         :returns: None
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[InstancesFilterFiltersTypeDef] = None,
@@ -17527,8 +17514,7 @@ class instances(ResourceCollection):
         :returns: A list of Instance resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -17537,8 +17523,7 @@ class instances(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Instance]:
         """
         Creates an iterable up to a specified amount of Instance resources in the collection.
@@ -17559,8 +17544,7 @@ class instances(ResourceCollection):
         :returns: A list of Instance resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def monitor(self, DryRun: bool = None) -> InstancesMonitorResponseTypeDef:
         """
         Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For
@@ -17630,8 +17614,7 @@ class instances(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Instance]:
         """
         Creates an iterable of all Instance resources in the collection, but limits the number of items
@@ -17653,8 +17636,7 @@ class instances(ResourceCollection):
         :returns: A list of Instance resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -17676,8 +17658,7 @@ class instances(ResourceCollection):
         :return: List of resource instances
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot(self, DryRun: bool = None) -> None:
         """
         Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
@@ -17709,8 +17690,7 @@ class instances(ResourceCollection):
         :returns: None
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start(
         self, AdditionalInfo: str = None, DryRun: bool = None
     ) -> InstancesStartResponseTypeDef:
@@ -17873,8 +17853,7 @@ class instances(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop(
         self, Hibernate: bool = None, DryRun: bool = None, Force: bool = None
     ) -> InstancesStopResponseTypeDef:
@@ -18074,8 +18053,7 @@ class instances(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate(self, DryRun: bool = None) -> InstancesTerminateResponseTypeDef:
         """
         Shuts down the specified instances. This operation is idempotent; if you terminate an instance more
@@ -18232,8 +18210,7 @@ class instances(ResourceCollection):
 
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unmonitor(self, DryRun: bool = None) -> InstancesUnmonitorResponseTypeDef:
         """
         Disables detailed monitoring for a running instance. For more information, see `Monitoring Your
@@ -18314,8 +18291,7 @@ class internet_gateways(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.InternetGateway]:
         """
         Creates an iterable of all InternetGateway resources in the collection.
@@ -18332,8 +18308,7 @@ class internet_gateways(ResourceCollection):
         :returns: A list of InternetGateway resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[InternetGatewaysFilterFiltersTypeDef] = None,
@@ -18458,8 +18433,7 @@ class internet_gateways(ResourceCollection):
         :returns: A list of InternetGateway resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -18468,8 +18442,7 @@ class internet_gateways(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.InternetGateway]:
         """
         Creates an iterable up to a specified amount of InternetGateway resources in the collection.
@@ -18490,8 +18463,7 @@ class internet_gateways(ResourceCollection):
         :returns: A list of InternetGateway resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.InternetGateway]:
         """
         Creates an iterable of all InternetGateway resources in the collection, but limits the number of
@@ -18513,8 +18485,7 @@ class internet_gateways(ResourceCollection):
         :returns: A list of InternetGateway resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -18549,8 +18520,7 @@ class key_pairs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.KeyPairInfo]:
         """
         Creates an iterable of all KeyPairInfo resources in the collection.
@@ -18567,8 +18537,7 @@ class key_pairs(ResourceCollection):
         :returns: A list of KeyPairInfo resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[KeyPairsFilterFiltersTypeDef] = None,
@@ -18665,8 +18634,7 @@ class key_pairs(ResourceCollection):
         :returns: A list of KeyPairInfo resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -18675,8 +18643,7 @@ class key_pairs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.KeyPairInfo]:
         """
         Creates an iterable up to a specified amount of KeyPairInfo resources in the collection.
@@ -18697,8 +18664,7 @@ class key_pairs(ResourceCollection):
         :returns: A list of KeyPairInfo resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.KeyPairInfo]:
         """
         Creates an iterable of all KeyPairInfo resources in the collection, but limits the number of items
@@ -18720,8 +18686,7 @@ class key_pairs(ResourceCollection):
         :returns: A list of KeyPairInfo resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -18756,8 +18721,7 @@ class network_acls(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.NetworkAcl]:
         """
         Creates an iterable of all NetworkAcl resources in the collection.
@@ -18774,8 +18738,7 @@ class network_acls(ResourceCollection):
         :returns: A list of NetworkAcl resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[NetworkAclsFilterFiltersTypeDef] = None,
@@ -18924,8 +18887,7 @@ class network_acls(ResourceCollection):
         :returns: A list of NetworkAcl resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -18934,8 +18896,7 @@ class network_acls(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.NetworkAcl]:
         """
         Creates an iterable up to a specified amount of NetworkAcl resources in the collection.
@@ -18956,8 +18917,7 @@ class network_acls(ResourceCollection):
         :returns: A list of NetworkAcl resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.NetworkAcl]:
         """
         Creates an iterable of all NetworkAcl resources in the collection, but limits the number of items
@@ -18979,8 +18939,7 @@ class network_acls(ResourceCollection):
         :returns: A list of NetworkAcl resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -19015,8 +18974,7 @@ class network_interfaces(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.NetworkInterface]:
         """
         Creates an iterable of all NetworkInterface resources in the collection.
@@ -19033,8 +18991,7 @@ class network_interfaces(ResourceCollection):
         :returns: A list of NetworkInterface resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[NetworkInterfacesFilterFiltersTypeDef] = None,
@@ -19235,8 +19192,7 @@ class network_interfaces(ResourceCollection):
         :returns: A list of NetworkInterface resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -19245,8 +19201,7 @@ class network_interfaces(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.NetworkInterface]:
         """
         Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
@@ -19267,8 +19222,7 @@ class network_interfaces(ResourceCollection):
         :returns: A list of NetworkInterface resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.NetworkInterface]:
         """
         Creates an iterable of all NetworkInterface resources in the collection, but limits the number of
@@ -19290,8 +19244,7 @@ class network_interfaces(ResourceCollection):
         :returns: A list of NetworkInterface resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -19326,8 +19279,7 @@ class placement_groups(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.PlacementGroup]:
         """
         Creates an iterable of all PlacementGroup resources in the collection.
@@ -19344,8 +19296,7 @@ class placement_groups(ResourceCollection):
         :returns: A list of PlacementGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[PlacementGroupsFilterFiltersTypeDef] = None,
@@ -19445,8 +19396,7 @@ class placement_groups(ResourceCollection):
         :returns: A list of PlacementGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -19455,8 +19405,7 @@ class placement_groups(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.PlacementGroup]:
         """
         Creates an iterable up to a specified amount of PlacementGroup resources in the collection.
@@ -19477,8 +19426,7 @@ class placement_groups(ResourceCollection):
         :returns: A list of PlacementGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.PlacementGroup]:
         """
         Creates an iterable of all PlacementGroup resources in the collection, but limits the number of
@@ -19500,8 +19448,7 @@ class placement_groups(ResourceCollection):
         :returns: A list of PlacementGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -19536,8 +19483,7 @@ class route_tables(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.RouteTable]:
         """
         Creates an iterable of all RouteTable resources in the collection.
@@ -19554,8 +19500,7 @@ class route_tables(ResourceCollection):
         :returns: A list of RouteTable resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[RouteTablesFilterFiltersTypeDef] = None,
@@ -19720,8 +19665,7 @@ class route_tables(ResourceCollection):
         :returns: A list of RouteTable resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -19730,8 +19674,7 @@ class route_tables(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.RouteTable]:
         """
         Creates an iterable up to a specified amount of RouteTable resources in the collection.
@@ -19752,8 +19695,7 @@ class route_tables(ResourceCollection):
         :returns: A list of RouteTable resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.RouteTable]:
         """
         Creates an iterable of all RouteTable resources in the collection, but limits the number of items
@@ -19775,8 +19717,7 @@ class route_tables(ResourceCollection):
         :returns: A list of RouteTable resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -19811,8 +19752,7 @@ class security_groups(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.SecurityGroup]:
         """
         Creates an iterable of all SecurityGroup resources in the collection.
@@ -19829,8 +19769,7 @@ class security_groups(ResourceCollection):
         :returns: A list of SecurityGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[SecurityGroupsFilterFiltersTypeDef] = None,
@@ -20023,8 +19962,7 @@ class security_groups(ResourceCollection):
         :returns: A list of SecurityGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -20033,8 +19971,7 @@ class security_groups(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.SecurityGroup]:
         """
         Creates an iterable up to a specified amount of SecurityGroup resources in the collection.
@@ -20055,8 +19992,7 @@ class security_groups(ResourceCollection):
         :returns: A list of SecurityGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.SecurityGroup]:
         """
         Creates an iterable of all SecurityGroup resources in the collection, but limits the number of
@@ -20078,8 +20014,7 @@ class security_groups(ResourceCollection):
         :returns: A list of SecurityGroup resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -20114,8 +20049,7 @@ class snapshots(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Snapshot]:
         """
         Creates an iterable of all Snapshot resources in the collection.
@@ -20132,8 +20066,7 @@ class snapshots(ResourceCollection):
         :returns: A list of Snapshot resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[SnapshotsFilterFiltersTypeDef] = None,
@@ -20301,8 +20234,7 @@ class snapshots(ResourceCollection):
         :returns: A list of Snapshot resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -20311,8 +20243,7 @@ class snapshots(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Snapshot]:
         """
         Creates an iterable up to a specified amount of Snapshot resources in the collection.
@@ -20333,8 +20264,7 @@ class snapshots(ResourceCollection):
         :returns: A list of Snapshot resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Snapshot]:
         """
         Creates an iterable of all Snapshot resources in the collection, but limits the number of items
@@ -20356,8 +20286,7 @@ class snapshots(ResourceCollection):
         :returns: A list of Snapshot resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -20392,8 +20321,7 @@ class subnets(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Subnet]:
         """
         Creates an iterable of all Subnet resources in the collection.
@@ -20410,8 +20338,7 @@ class subnets(ResourceCollection):
         :returns: A list of Subnet resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[SubnetsFilterFiltersTypeDef] = None,
@@ -20559,8 +20486,7 @@ class subnets(ResourceCollection):
         :returns: A list of Subnet resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -20569,8 +20495,7 @@ class subnets(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Subnet]:
         """
         Creates an iterable up to a specified amount of Subnet resources in the collection.
@@ -20591,8 +20516,7 @@ class subnets(ResourceCollection):
         :returns: A list of Subnet resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Subnet]:
         """
         Creates an iterable of all Subnet resources in the collection, but limits the number of items
@@ -20614,8 +20538,7 @@ class subnets(ResourceCollection):
         :returns: A list of Subnet resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -20650,8 +20573,7 @@ class volumes(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Volume]:
         """
         Creates an iterable of all Volume resources in the collection.
@@ -20668,8 +20590,7 @@ class volumes(ResourceCollection):
         :returns: A list of Volume resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[VolumesFilterFiltersTypeDef] = None,
@@ -20820,8 +20741,7 @@ class volumes(ResourceCollection):
         :returns: A list of Volume resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -20830,8 +20750,7 @@ class volumes(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Volume]:
         """
         Creates an iterable up to a specified amount of Volume resources in the collection.
@@ -20852,8 +20771,7 @@ class volumes(ResourceCollection):
         :returns: A list of Volume resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Volume]:
         """
         Creates an iterable of all Volume resources in the collection, but limits the number of items
@@ -20875,8 +20793,7 @@ class volumes(ResourceCollection):
         :returns: A list of Volume resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -20911,8 +20828,7 @@ class vpc_addresses(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.VpcAddress]:
         """
         Creates an iterable of all VpcAddress resources in the collection.
@@ -20929,8 +20845,7 @@ class vpc_addresses(ResourceCollection):
         :returns: A list of VpcAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         PublicIps: List[str] = None,
@@ -20983,8 +20898,7 @@ class vpc_addresses(ResourceCollection):
         :returns: A list of VpcAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -20993,8 +20907,7 @@ class vpc_addresses(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.VpcAddress]:
         """
         Creates an iterable up to a specified amount of VpcAddress resources in the collection.
@@ -21015,8 +20928,7 @@ class vpc_addresses(ResourceCollection):
         :returns: A list of VpcAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.VpcAddress]:
         """
         Creates an iterable of all VpcAddress resources in the collection, but limits the number of items
@@ -21038,8 +20950,7 @@ class vpc_addresses(ResourceCollection):
         :returns: A list of VpcAddress resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -21074,8 +20985,7 @@ class vpc_peering_connections(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable of all VpcPeeringConnection resources in the collection.
@@ -21092,8 +21002,7 @@ class vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[VpcPeeringConnectionsFilterFiltersTypeDef] = None,
@@ -21231,8 +21140,7 @@ class vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -21241,8 +21149,7 @@ class vpc_peering_connections(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
@@ -21263,8 +21170,7 @@ class vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(
         self, count: int
     ) -> List[service_resource_scope.VpcPeeringConnection]:
@@ -21288,8 +21194,7 @@ class vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -21324,8 +21229,7 @@ class vpcs(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Vpc]:
         """
         Creates an iterable of all Vpc resources in the collection.
@@ -21342,8 +21246,7 @@ class vpcs(ResourceCollection):
         :returns: A list of Vpc resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         Filters: List[VpcsFilterFiltersTypeDef] = None,
@@ -21486,8 +21389,7 @@ class vpcs(ResourceCollection):
         :returns: A list of Vpc resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -21496,8 +21398,7 @@ class vpcs(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Vpc]:
         """
         Creates an iterable up to a specified amount of Vpc resources in the collection.
@@ -21518,8 +21419,7 @@ class vpcs(ResourceCollection):
         :returns: A list of Vpc resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Vpc]:
         """
         Creates an iterable of all Vpc resources in the collection, but limits the number of items returned
@@ -21541,8 +21441,7 @@ class vpcs(ResourceCollection):
         :returns: A list of Vpc resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -21577,8 +21476,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable of all VpcPeeringConnection resources in the collection.
@@ -21595,8 +21493,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         DryRun: bool = None,
@@ -21653,8 +21550,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -21663,8 +21559,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
@@ -21685,8 +21580,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(
         self, count: int
     ) -> List[service_resource_scope.VpcPeeringConnection]:
@@ -21710,8 +21604,7 @@ class accepted_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -21746,8 +21639,7 @@ class requested_vpc_peering_connections(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable of all VpcPeeringConnection resources in the collection.
@@ -21764,8 +21656,7 @@ class requested_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(
         self,
         DryRun: bool = None,
@@ -21822,8 +21713,7 @@ class requested_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -21832,8 +21722,7 @@ class requested_vpc_peering_connections(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.VpcPeeringConnection]:
         """
         Creates an iterable up to a specified amount of VpcPeeringConnection resources in the collection.
@@ -21854,8 +21743,7 @@ class requested_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(
         self, count: int
     ) -> List[service_resource_scope.VpcPeeringConnection]:
@@ -21879,8 +21767,7 @@ class requested_vpc_peering_connections(ResourceCollection):
         :returns: A list of VpcPeeringConnection resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

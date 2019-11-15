@@ -5,24 +5,26 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_acm.type_defs import (
+    ClientAddTagsToCertificateTagsTypeDef,
     ClientExportCertificateResponseTypeDef,
     ClientGetCertificateResponseTypeDef,
     ClientImportCertificateResponseTypeDef,
     ClientListCertificatesIncludesTypeDef,
     ClientListCertificatesResponseTypeDef,
     ClientListTagsForCertificateResponseTypeDef,
+    ClientRemoveTagsFromCertificateTagsTypeDef,
     ClientRequestCertificateDomainValidationOptionsTypeDef,
     ClientRequestCertificateOptionsTypeDef,
     ClientRequestCertificateResponseTypeDef,
+    ClientUpdateCertificateOptionsOptionsTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_certificate(
-        self, CertificateArn: str, Tags: List[TypeDefEC2Tag]
+        self, CertificateArn: str, Tags: List[ClientAddTagsToCertificateTagsTypeDef]
     ) -> None:
         """
         Adds one or more tags to an ACM certificate. Tags are labels that you can use to identify and
@@ -87,7 +89,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -104,7 +106,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_certificate(self, CertificateArn: str) -> None:
         """
         Deletes a certificate and its associated private key. If this action succeeds, the certificate no
@@ -139,7 +141,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificate(self, CertificateArn: str) -> Dict[str, Any]:
         """
         Returns detailed metadata about the specified ACM certificate.
@@ -597,7 +599,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_certificate(
         self, CertificateArn: str, Passphrase: bytes
     ) -> ClientExportCertificateResponseTypeDef:
@@ -668,7 +670,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -697,7 +699,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_certificate(
         self, CertificateArn: str
     ) -> ClientGetCertificateResponseTypeDef:
@@ -753,7 +755,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -774,7 +776,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -787,7 +789,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_certificate(
         self,
         Certificate: bytes,
@@ -837,8 +839,8 @@ class Client(BaseClient):
 
         * When you import a certificate by using the CLI, you must specify the certificate, the certificate
         chain, and the private key by their file names preceded by ``file://`` . For example, you can
-        specify a certificate saved in the ``C:\temp`` folder as
-        ``file://C:\temp\certificate_to_import.pem`` . If you are making an HTTP or HTTPS Query request,
+        specify a certificate saved in the ``C:\\temp`` folder as
+        ``file://C:\\temp\\certificate_to_import.pem`` . If you are making an HTTP or HTTPS Query request,
         include these arguments as BLOBs.
 
         * When you import a certificate by using an SDK, you must specify the certificate, the certificate
@@ -904,7 +906,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_certificates(
         self,
         CertificateStatuses: List[str] = None,
@@ -1040,7 +1042,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_certificate(
         self, CertificateArn: str
     ) -> ClientListTagsForCertificateResponseTypeDef:
@@ -1106,9 +1108,11 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_certificate(
-        self, CertificateArn: str, Tags: List[TypeDefEC2Tag]
+        self,
+        CertificateArn: str,
+        Tags: List[ClientRemoveTagsFromCertificateTagsTypeDef],
     ) -> None:
         """
         Remove one or more tags from an ACM certificate. A tag consists of a key-value pair. If you do not
@@ -1165,7 +1169,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def renew_certificate(self, CertificateArn: str) -> None:
         """
         Renews an eligable ACM certificate. At this time, only exported private certificates can be renewed
@@ -1197,7 +1201,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_certificate(
         self,
         DomainName: str,
@@ -1383,7 +1387,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resend_validation_email(
         self, CertificateArn: str, Domain: str, ValidationDomain: str
     ) -> None:
@@ -1446,8 +1450,10 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def update_certificate_options(self, CertificateArn: str, Options: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_certificate_options(
+        self, CertificateArn: str, Options: ClientUpdateCertificateOptionsOptionsTypeDef
+    ) -> None:
         """
         Updates a certificate. Currently, you can use this function to specify whether to opt in to or out
         of recording your certificate in a certificate transparency log. For more information, see `Opting

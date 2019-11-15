@@ -4797,6 +4797,31 @@ class ClientPutVoiceConnectorStreamingConfigurationStreamingConfigurationTypeDef
     """
 
 
+_ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef = TypedDict(
+    "_ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef",
+    {"Username": str, "Password": str},
+    total=False,
+)
+
+
+class ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef(
+    _ClientPutVoiceConnectorTerminationCredentialsCredentialsTypeDef
+):
+    """
+    Type definition for `ClientPutVoiceConnectorTerminationCredentials` `Credentials`
+
+    The SIP credentials used to authenticate requests to your Amazon Chime Voice Connector.
+
+    - **Username** *(string) --*
+
+      The RFC2617 compliant user name associated with the SIP credentials, in US-ASCII format.
+
+    - **Password** *(string) --*
+
+      The RFC2617 compliant password associated with the SIP credentials, in US-ASCII format.
+    """
+
+
 _ClientPutVoiceConnectorTerminationResponseTerminationTypeDef = TypedDict(
     "_ClientPutVoiceConnectorTerminationResponseTerminationTypeDef",
     {
@@ -5785,6 +5810,25 @@ class ClientUpdateGlobalSettingsBusinessCallingTypeDef(
     """
 
 
+_ClientUpdateGlobalSettingsVoiceConnectorTypeDef = TypedDict(
+    "_ClientUpdateGlobalSettingsVoiceConnectorTypeDef", {"CdrBucket": str}, total=False
+)
+
+
+class ClientUpdateGlobalSettingsVoiceConnectorTypeDef(
+    _ClientUpdateGlobalSettingsVoiceConnectorTypeDef
+):
+    """
+    Type definition for `ClientUpdateGlobalSettings` `VoiceConnector`
+
+    The Amazon Chime Voice Connector settings.
+
+    - **CdrBucket** *(string) --*
+
+      The Amazon S3 bucket designated for call detail record storage.
+    """
+
+
 _ClientUpdatePhoneNumberResponsePhoneNumberAssociationsTypeDef = TypedDict(
     "_ClientUpdatePhoneNumberResponsePhoneNumberAssociationsTypeDef",
     {"Value": str, "Name": str, "AssociatedTimestamp": datetime},
@@ -6222,6 +6266,66 @@ class ClientUpdateUserResponseTypeDef(_ClientUpdateUserResponseTypeDef):
       - **PersonalPIN** *(string) --*
 
         The user's personal meeting PIN.
+    """
+
+
+_ClientUpdateUserSettingsUserSettingsTelephonyTypeDef = TypedDict(
+    "_ClientUpdateUserSettingsUserSettingsTelephonyTypeDef",
+    {"InboundCalling": bool, "OutboundCalling": bool, "SMS": bool},
+)
+
+
+class ClientUpdateUserSettingsUserSettingsTelephonyTypeDef(
+    _ClientUpdateUserSettingsUserSettingsTelephonyTypeDef
+):
+    """
+    Type definition for `ClientUpdateUserSettingsUserSettings` `Telephony`
+
+    The telephony settings associated with the user.
+
+    - **InboundCalling** *(boolean) --* **[REQUIRED]**
+
+      Allows or denies inbound calling.
+
+    - **OutboundCalling** *(boolean) --* **[REQUIRED]**
+
+      Allows or denies outbound calling.
+
+    - **SMS** *(boolean) --* **[REQUIRED]**
+
+      Allows or denies SMS messaging.
+    """
+
+
+_ClientUpdateUserSettingsUserSettingsTypeDef = TypedDict(
+    "_ClientUpdateUserSettingsUserSettingsTypeDef",
+    {"Telephony": ClientUpdateUserSettingsUserSettingsTelephonyTypeDef},
+)
+
+
+class ClientUpdateUserSettingsUserSettingsTypeDef(
+    _ClientUpdateUserSettingsUserSettingsTypeDef
+):
+    """
+    Type definition for `ClientUpdateUserSettings` `UserSettings`
+
+    The user settings to update.
+
+    - **Telephony** *(dict) --* **[REQUIRED]**
+
+      The telephony settings associated with the user.
+
+      - **InboundCalling** *(boolean) --* **[REQUIRED]**
+
+        Allows or denies inbound calling.
+
+      - **OutboundCalling** *(boolean) --* **[REQUIRED]**
+
+        Allows or denies outbound calling.
+
+      - **SMS** *(boolean) --* **[REQUIRED]**
+
+        Allows or denies SMS messaging.
     """
 
 

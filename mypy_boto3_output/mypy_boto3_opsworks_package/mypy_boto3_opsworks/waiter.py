@@ -1,14 +1,25 @@
 "Main interface for opsworks Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_opsworks.type_defs import (
+    AppExistsWaitWaiterConfigTypeDef,
+    DeploymentSuccessfulWaitWaiterConfigTypeDef,
+    InstanceOnlineWaitWaiterConfigTypeDef,
+    InstanceRegisteredWaitWaiterConfigTypeDef,
+    InstanceStoppedWaitWaiterConfigTypeDef,
+    InstanceTerminatedWaitWaiterConfigTypeDef,
+)
 
 
 class AppExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, StackId: str = None, AppIds: List[str] = None, WaiterConfig: Dict = None
+        self,
+        StackId: str = None,
+        AppIds: List[str] = None,
+        WaiterConfig: AppExistsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_apps` every 1 seconds until a successful state is reached.
@@ -62,13 +73,13 @@ class AppExists(Boto3Waiter):
 
 
 class DeploymentSuccessful(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StackId: str = None,
         AppId: str = None,
         DeploymentIds: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DeploymentSuccessfulWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_deployments` every 15 seconds until a successful state is
@@ -129,13 +140,13 @@ class DeploymentSuccessful(Boto3Waiter):
 
 
 class InstanceOnline(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StackId: str = None,
         LayerId: str = None,
         InstanceIds: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceOnlineWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_instances` every 15 seconds until a successful state is
@@ -197,13 +208,13 @@ class InstanceOnline(Boto3Waiter):
 
 
 class InstanceRegistered(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StackId: str = None,
         LayerId: str = None,
         InstanceIds: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceRegisteredWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_instances` every 15 seconds until a successful state is
@@ -265,13 +276,13 @@ class InstanceRegistered(Boto3Waiter):
 
 
 class InstanceStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StackId: str = None,
         LayerId: str = None,
         InstanceIds: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceStoppedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_instances` every 15 seconds until a successful state is
@@ -333,13 +344,13 @@ class InstanceStopped(Boto3Waiter):
 
 
 class InstanceTerminated(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         StackId: str = None,
         LayerId: str = None,
         InstanceIds: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: InstanceTerminatedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`OpsWorks.Client.describe_instances` every 15 seconds until a successful state is

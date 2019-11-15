@@ -19,6 +19,7 @@ from mypy_boto3_iotevents.type_defs import (
     ClientListDetectorModelsResponseTypeDef,
     ClientListInputsResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
+    ClientPutLoggingOptionsloggingOptionsTypeDef,
     ClientTagResourcetagsTypeDef,
     ClientUpdateDetectorModelResponseTypeDef,
     ClientUpdateDetectorModeldetectorModelDefinitionTypeDef,
@@ -28,7 +29,7 @@ from mypy_boto3_iotevents.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -45,7 +46,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_detector_model(
         self,
         detectorModelName: str,
@@ -423,8 +424,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
                 - **transitionEvents** *(list) --*
 
@@ -554,8 +555,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
                     - **nextState** *(string) --* **[REQUIRED]**
 
@@ -693,8 +694,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
               - **onExit** *(dict) --*
 
@@ -829,8 +830,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
           - **initialStateName** *(string) --* **[REQUIRED]**
 
@@ -955,7 +956,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_input(
         self,
         inputName: str,
@@ -1096,7 +1097,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_detector_model(self, detectorModelName: str) -> Dict[str, Any]:
         """
         Deletes a detector model. Any active instances of the detector model are also deleted.
@@ -1128,7 +1129,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_input(self, inputName: str) -> Dict[str, Any]:
         """
         Deletes an input.
@@ -1160,7 +1161,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_detector_model(
         self, detectorModelName: str, detectorModelVersion: str = None
     ) -> ClientDescribeDetectorModelResponseTypeDef:
@@ -1561,8 +1562,8 @@ class Client(BaseClient):
                                 - **separator** *(string) --*
 
                                   A character separator that is used to separate records written to the
-                                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                       - **transitionEvents** *(list) --*
 
@@ -1694,8 +1695,8 @@ class Client(BaseClient):
                                 - **separator** *(string) --*
 
                                   A character separator that is used to separate records written to the
-                                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                           - **nextState** *(string) --*
 
@@ -1836,8 +1837,8 @@ class Client(BaseClient):
                                 - **separator** *(string) --*
 
                                   A character separator that is used to separate records written to the
-                                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                     - **onExit** *(dict) --*
 
@@ -1975,8 +1976,8 @@ class Client(BaseClient):
                                 - **separator** *(string) --*
 
                                   A character separator that is used to separate records written to the
-                                  Kinesis Data Firehose delivery stream. Valid values are: '\n' (newline),
-                                  '\t' (tab), '\r\n' (Windows newline), ',' (comma).
+                                  Kinesis Data Firehose delivery stream. Valid values are: '\\n' (newline),
+                                  '\\t' (tab), '\\r\\n' (Windows newline), ',' (comma).
 
                 - **initialStateName** *(string) --*
 
@@ -2034,7 +2035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_input(self, inputName: str) -> ClientDescribeInputResponseTypeDef:
         """
         Describes an input.
@@ -2148,7 +2149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_logging_options(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeLoggingOptionsResponseTypeDef:
@@ -2224,7 +2225,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2253,7 +2254,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2274,7 +2275,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2287,7 +2288,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_detector_model_versions(
         self, detectorModelName: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListDetectorModelVersionsResponseTypeDef:
@@ -2395,7 +2396,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_detector_models(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListDetectorModelsResponseTypeDef:
@@ -2470,7 +2471,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_inputs(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListInputsResponseTypeDef:
@@ -2559,7 +2560,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2617,8 +2618,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def put_logging_options(self, loggingOptions: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_logging_options(
+        self, loggingOptions: ClientPutLoggingOptionsloggingOptionsTypeDef
+    ) -> None:
         """
         Sets or updates the AWS IoT Events logging options.
 
@@ -2685,7 +2688,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2743,7 +2746,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes the given tags (metadata) from the resource.
@@ -2785,7 +2788,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_detector_model(
         self,
         detectorModelName: str,
@@ -3155,8 +3158,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
                 - **transitionEvents** *(list) --*
 
@@ -3286,8 +3289,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
                     - **nextState** *(string) --* **[REQUIRED]**
 
@@ -3425,8 +3428,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
               - **onExit** *(dict) --*
 
@@ -3561,8 +3564,8 @@ class Client(BaseClient):
                           - **separator** *(string) --*
 
                             A character separator that is used to separate records written to the Kinesis
-                            Data Firehose delivery stream. Valid values are: '\n' (newline), '\t' (tab),
-                            '\r\n' (Windows newline), ',' (comma).
+                            Data Firehose delivery stream. Valid values are: '\\n' (newline), '\\t' (tab),
+                            '\\r\\n' (Windows newline), ',' (comma).
 
           - **initialStateName** *(string) --* **[REQUIRED]**
 
@@ -3662,7 +3665,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_input(
         self,
         inputName: str,

@@ -199,7 +199,7 @@ from mypy_boto3_ssm.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self,
         ResourceType: str,
@@ -313,7 +313,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -330,7 +330,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_command(self, CommandId: str, InstanceIds: List[str] = None) -> Dict:
         """
         Attempts to cancel the command specified by the Command ID. There is no guarantee that the command
@@ -378,7 +378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_maintenance_window_execution(
         self, WindowExecutionId: str
     ) -> ClientCancelMaintenanceWindowExecutionResponseTypeDef:
@@ -421,7 +421,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_activation(
         self,
         IamRole: str,
@@ -561,7 +561,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_association(
         self,
         Name: str,
@@ -1090,7 +1090,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_association_batch(
         self, Entries: List[ClientCreateAssociationBatchEntriesTypeDef]
     ) -> ClientCreateAssociationBatchResponseTypeDef:
@@ -1832,7 +1832,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_document(
         self,
         Content: str,
@@ -2192,7 +2192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_maintenance_window(
         self,
         Name: str,
@@ -2361,7 +2361,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ops_item(
         self,
         Description: str,
@@ -2561,7 +2561,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_patch_baseline(
         self,
         Name: str,
@@ -2930,7 +2930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resource_data_sync(
         self,
         SyncName: str,
@@ -3009,7 +3009,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_activation(self, ActivationId: str) -> Dict[str, Any]:
         """
         Deletes an activation. You are not required to delete an activation. If you delete an activation,
@@ -3043,7 +3043,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_association(
         self, Name: str = None, InstanceId: str = None, AssociationId: str = None
     ) -> Dict[str, Any]:
@@ -3093,7 +3093,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_document(
         self, Name: str, DocumentVersion: str = None, VersionName: str = None
     ) -> Dict[str, Any]:
@@ -3144,7 +3144,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_inventory(
         self,
         TypeName: str,
@@ -3276,7 +3276,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_maintenance_window(
         self, WindowId: str
     ) -> ClientDeleteMaintenanceWindowResponseTypeDef:
@@ -3317,7 +3317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_parameter(self, Name: str) -> Dict[str, Any]:
         """
         Delete a parameter from the system.
@@ -3349,7 +3349,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_parameters(
         self, Names: List[str]
     ) -> ClientDeleteParametersResponseTypeDef:
@@ -3407,7 +3407,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_patch_baseline(
         self, BaselineId: str
     ) -> ClientDeletePatchBaselineResponseTypeDef:
@@ -3448,7 +3448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_data_sync(self, SyncName: str) -> Dict[str, Any]:
         """
         Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to
@@ -3482,7 +3482,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_managed_instance(self, InstanceId: str) -> Dict[str, Any]:
         """
         Removes the server or virtual machine from the list of registered servers. You can reregister the
@@ -3516,7 +3516,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_patch_baseline_for_patch_group(
         self, BaselineId: str, PatchGroup: str
     ) -> ClientDeregisterPatchBaselineForPatchGroupResponseTypeDef:
@@ -3568,7 +3568,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_target_from_maintenance_window(
         self, WindowId: str, WindowTargetId: str, Safe: bool = None
     ) -> ClientDeregisterTargetFromMaintenanceWindowResponseTypeDef:
@@ -3627,7 +3627,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_task_from_maintenance_window(
         self, WindowId: str, WindowTaskId: str
     ) -> ClientDeregisterTaskFromMaintenanceWindowResponseTypeDef:
@@ -3679,7 +3679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_activations(
         self,
         Filters: List[ClientDescribeActivationsFiltersTypeDef] = None,
@@ -3843,7 +3843,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_association(
         self,
         Name: str = None,
@@ -4175,7 +4175,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_association_execution_targets(
         self,
         AssociationId: str,
@@ -4338,7 +4338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_association_executions(
         self,
         AssociationId: str,
@@ -4482,7 +4482,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_automation_executions(
         self,
         Filters: List[ClientDescribeAutomationExecutionsFiltersTypeDef] = None,
@@ -4804,7 +4804,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_automation_step_executions(
         self,
         AutomationExecutionId: str,
@@ -5192,7 +5192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_available_patches(
         self,
         Filters: List[ClientDescribeAvailablePatchesFiltersTypeDef] = None,
@@ -5347,7 +5347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_document(
         self, Name: str, DocumentVersion: str = None, VersionName: str = None
     ) -> ClientDescribeDocumentResponseTypeDef:
@@ -5588,7 +5588,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_document_permission(
         self, Name: str, PermissionType: str
     ) -> ClientDescribeDocumentPermissionResponseTypeDef:
@@ -5642,7 +5642,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_effective_instance_associations(
         self, InstanceId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeEffectiveInstanceAssociationsResponseTypeDef:
@@ -5729,7 +5729,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_effective_patches_for_patch_baseline(
         self, BaselineId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeEffectivePatchesForPatchBaselineResponseTypeDef:
@@ -5898,7 +5898,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_associations_status(
         self, InstanceId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeInstanceAssociationsStatusResponseTypeDef:
@@ -6037,7 +6037,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_information(
         self,
         InstanceInformationFilterList: List[
@@ -6301,7 +6301,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_patch_states(
         self, InstanceIds: List[str], NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeInstancePatchStatesResponseTypeDef:
@@ -6479,7 +6479,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_patch_states_for_patch_group(
         self,
         PatchGroup: str,
@@ -6700,7 +6700,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instance_patches(
         self,
         InstanceId: str,
@@ -6851,7 +6851,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_inventory_deletions(
         self, DeletionId: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeInventoryDeletionsResponseTypeDef:
@@ -6995,7 +6995,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_execution_task_invocations(
         self,
         WindowExecutionId: str,
@@ -7174,7 +7174,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_execution_tasks(
         self,
         WindowExecutionId: str,
@@ -7319,7 +7319,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_executions(
         self,
         WindowId: str,
@@ -7458,7 +7458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_schedule(
         self,
         WindowId: str = None,
@@ -7648,7 +7648,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_targets(
         self,
         WindowId: str,
@@ -7857,7 +7857,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_window_tasks(
         self,
         WindowId: str,
@@ -8145,7 +8145,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_windows(
         self,
         Filters: List[ClientDescribeMaintenanceWindowsFiltersTypeDef] = None,
@@ -8297,7 +8297,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_windows_for_target(
         self,
         Targets: List[ClientDescribeMaintenanceWindowsForTargetTargetsTypeDef],
@@ -8447,7 +8447,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ops_items(
         self,
         OpsItemFilters: List[ClientDescribeOpsItemsOpsItemFiltersTypeDef] = None,
@@ -8653,7 +8653,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_parameters(
         self,
         Filters: List[ClientDescribeParametersFiltersTypeDef] = None,
@@ -8869,7 +8869,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_patch_baselines(
         self,
         Filters: List[ClientDescribePatchBaselinesFiltersTypeDef] = None,
@@ -8992,7 +8992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_patch_group_state(
         self, PatchGroup: str
     ) -> ClientDescribePatchGroupStateResponseTypeDef:
@@ -9076,7 +9076,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_patch_groups(
         self,
         MaxResults: int = None,
@@ -9165,7 +9165,7 @@ class Client(BaseClient):
 
               Each entry in the array contains:
 
-              PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)
+              PatchGroup: string (between 1 and 256 characters, Regex: ^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$)
 
               PatchBaselineIdentity: A PatchBaselineIdentity element.
 
@@ -9211,7 +9211,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_patch_properties(
         self,
         OperatingSystem: str,
@@ -9334,7 +9334,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_sessions(
         self,
         State: str,
@@ -9511,7 +9511,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -9540,7 +9540,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_automation_execution(
         self, AutomationExecutionId: str
     ) -> ClientGetAutomationExecutionResponseTypeDef:
@@ -10191,7 +10191,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_command_invocation(
         self, CommandId: str, InstanceId: str, PluginName: str = None
     ) -> ClientGetCommandInvocationResponseTypeDef:
@@ -10399,7 +10399,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connection_status(
         self, Target: str
     ) -> ClientGetConnectionStatusResponseTypeDef:
@@ -10446,7 +10446,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_default_patch_baseline(
         self, OperatingSystem: str = None
     ) -> ClientGetDefaultPatchBaselineResponseTypeDef:
@@ -10498,7 +10498,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployable_patch_snapshot_for_instance(
         self, InstanceId: str, SnapshotId: str
     ) -> ClientGetDeployablePatchSnapshotForInstanceResponseTypeDef:
@@ -10562,7 +10562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_document(
         self,
         Name: str,
@@ -10704,7 +10704,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_inventory(
         self,
         Filters: List[ClientGetInventoryFiltersTypeDef] = None,
@@ -10963,7 +10963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_inventory_schema(
         self,
         TypeName: str = None,
@@ -11091,7 +11091,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_maintenance_window(
         self, WindowId: str
     ) -> ClientGetMaintenanceWindowResponseTypeDef:
@@ -11205,7 +11205,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_maintenance_window_execution(
         self, WindowExecutionId: str
     ) -> ClientGetMaintenanceWindowExecutionResponseTypeDef:
@@ -11277,7 +11277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_maintenance_window_execution_task(
         self, WindowExecutionId: str, TaskId: str
     ) -> ClientGetMaintenanceWindowExecutionTaskResponseTypeDef:
@@ -11422,7 +11422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_maintenance_window_execution_task_invocation(
         self, WindowExecutionId: str, TaskId: str, InvocationId: str
     ) -> ClientGetMaintenanceWindowExecutionTaskInvocationResponseTypeDef:
@@ -11535,7 +11535,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_maintenance_window_task(
         self, WindowId: str, WindowTaskId: str
     ) -> ClientGetMaintenanceWindowTaskResponseTypeDef:
@@ -11946,7 +11946,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ops_item(self, OpsItemId: str) -> ClientGetOpsItemResponseTypeDef:
         """
         Get information about an OpsItem by using the ID. You must have permission in AWS Identity and
@@ -12141,7 +12141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ops_summary(
         self,
         Aggregators: List[ClientGetOpsSummaryAggregatorsTypeDef],
@@ -12347,7 +12347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -12368,7 +12368,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_parameter(
         self, Name: str, WithDecryption: bool = None
     ) -> ClientGetParameterResponseTypeDef:
@@ -12465,7 +12465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_parameter_history(
         self,
         Name: str,
@@ -12638,7 +12638,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_parameters(
         self, Names: List[str], WithDecryption: bool = None
     ) -> ClientGetParametersResponseTypeDef:
@@ -12753,7 +12753,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_parameters_by_path(
         self,
         Path: str,
@@ -12949,7 +12949,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_patch_baseline(
         self, BaselineId: str
     ) -> ClientGetPatchBaselineResponseTypeDef:
@@ -13252,7 +13252,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_patch_baseline_for_patch_group(
         self, PatchGroup: str, OperatingSystem: str = None
     ) -> ClientGetPatchBaselineForPatchGroupResponseTypeDef:
@@ -13312,7 +13312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_setting(
         self, SettingId: str
     ) -> ClientGetServiceSettingResponseTypeDef:
@@ -13406,7 +13406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -13419,7 +13419,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def label_parameter_version(
         self, Name: str, Labels: List[str], ParameterVersion: int = None
     ) -> ClientLabelParameterVersionResponseTypeDef:
@@ -13516,7 +13516,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_association_versions(
         self, AssociationId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListAssociationVersionsResponseTypeDef:
@@ -13766,7 +13766,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_associations(
         self,
         AssociationFilterList: List[
@@ -13998,7 +13998,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_command_invocations(
         self,
         CommandId: str = None,
@@ -14452,7 +14452,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_commands(
         self,
         CommandId: str = None,
@@ -14875,7 +14875,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_compliance_items(
         self,
         Filters: List[ClientListComplianceItemsFiltersTypeDef] = None,
@@ -15073,7 +15073,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_compliance_summaries(
         self,
         Filters: List[ClientListComplianceSummariesFiltersTypeDef] = None,
@@ -15295,7 +15295,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_document_versions(
         self, Name: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListDocumentVersionsResponseTypeDef:
@@ -15406,7 +15406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_documents(
         self,
         DocumentFilterList: List[ClientListDocumentsDocumentFilterListTypeDef] = None,
@@ -15625,7 +15625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_inventory_entries(
         self,
         InstanceId: str,
@@ -15760,7 +15760,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_compliance_summaries(
         self,
         Filters: List[ClientListResourceComplianceSummariesFiltersTypeDef] = None,
@@ -16022,7 +16022,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resource_data_sync(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListResourceDataSyncResponseTypeDef:
@@ -16153,7 +16153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceType: str, ResourceId: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -16221,7 +16221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_document_permission(
         self,
         Name: str,
@@ -16291,7 +16291,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_compliance_items(
         self,
         ResourceId: str,
@@ -16465,7 +16465,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_inventory(
         self, InstanceId: str, Items: List[ClientPutInventoryItemsTypeDef]
     ) -> ClientPutInventoryResponseTypeDef:
@@ -16573,7 +16573,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_parameter(
         self,
         Name: str,
@@ -16698,7 +16698,7 @@ class Client(BaseClient):
         :param AllowedPattern:
 
           A regular expression used to validate the parameter value. For example, for String types with
-          values restricted to numbers, you can specify the following: AllowedPattern=^\d+$
+          values restricted to numbers, you can specify the following: AllowedPattern=^\\d+$
 
         :type Tags: list
         :param Tags:
@@ -16844,7 +16844,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_default_patch_baseline(
         self, BaselineId: str
     ) -> ClientRegisterDefaultPatchBaselineResponseTypeDef:
@@ -16890,7 +16890,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_patch_baseline_for_patch_group(
         self, BaselineId: str, PatchGroup: str
     ) -> ClientRegisterPatchBaselineForPatchGroupResponseTypeDef:
@@ -16942,7 +16942,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_target_with_maintenance_window(
         self,
         WindowId: str,
@@ -17024,7 +17024,7 @@ class Client(BaseClient):
              ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
 
           For more information about these examples formats, including the best use case for each one, see
-          `Examples: Register Targets with a Maintenance Window
+          `Examples\\: Register Targets with a Maintenance Window
           <https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html>`__
           in the *AWS Systems Manager User Guide* .
 
@@ -17127,7 +17127,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_task_with_maintenance_window(
         self,
         WindowId: str,
@@ -17577,7 +17577,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceType: str, ResourceId: str, TagKeys: List[str]
     ) -> Dict[str, Any]:
@@ -17648,7 +17648,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_service_setting(
         self, SettingId: str
     ) -> ClientResetServiceSettingResponseTypeDef:
@@ -17743,7 +17743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def resume_session(self, SessionId: str) -> ClientResumeSessionResponseTypeDef:
         """
         Reconnects a session to an instance after it has been disconnected. Connections can be resumed for
@@ -17809,7 +17809,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_automation_signal(
         self,
         AutomationExecutionId: str,
@@ -17882,7 +17882,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_command(
         self,
         DocumentName: str,
@@ -18044,9 +18044,9 @@ class Client(BaseClient):
           options by using a backslash. If you specify a version number, then you don't need to use the
           backslash. For example:
 
-          --document-version "\$DEFAULT"
+          --document-version "\\$DEFAULT"
 
-          --document-version "\$LATEST"
+          --document-version "\\$LATEST"
 
           --document-version "3"
 
@@ -18478,7 +18478,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_associations_once(self, AssociationIds: List[str]) -> Dict[str, Any]:
         """
         Use this API action to run an association immediately and only one time. This action can be helpful
@@ -18515,7 +18515,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_automation_execution(
         self,
         DocumentName: str,
@@ -18778,7 +18778,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_session(
         self,
         Target: str,
@@ -18880,7 +18880,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_automation_execution(
         self, AutomationExecutionId: str, Type: str = None
     ) -> Dict[str, Any]:
@@ -18921,7 +18921,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_session(
         self, SessionId: str
     ) -> ClientTerminateSessionResponseTypeDef:
@@ -18963,7 +18963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_association(
         self,
         AssociationId: str,
@@ -19497,7 +19497,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_association_status(
         self,
         Name: str,
@@ -19837,7 +19837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_document(
         self,
         Content: str,
@@ -20138,7 +20138,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_document_default_version(
         self, Name: str, DocumentVersion: str
     ) -> ClientUpdateDocumentDefaultVersionResponseTypeDef:
@@ -20201,7 +20201,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_maintenance_window(
         self,
         WindowId: str,
@@ -20396,7 +20396,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_maintenance_window_target(
         self,
         WindowId: str,
@@ -20652,7 +20652,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_maintenance_window_task(
         self,
         WindowId: str,
@@ -21476,7 +21476,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_managed_instance_role(
         self, InstanceId: str, IamRole: str
     ) -> Dict[str, Any]:
@@ -21516,7 +21516,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ops_item(
         self,
         OpsItemId: str,
@@ -21695,7 +21695,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_patch_baseline(
         self,
         BaselineId: str,
@@ -22274,7 +22274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service_setting(self, SettingId: str, SettingValue: str) -> Dict:
         """
          ``ServiceSetting`` is an account-level setting for an AWS service. This setting defines how a user

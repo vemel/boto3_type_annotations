@@ -2636,3 +2636,28 @@ class ListSigningProfilesPaginateResponseTypeDef(
 
       A token to resume pagination.
     """
+
+
+_SuccessfulSigningJobWaitWaiterConfigTypeDef = TypedDict(
+    "_SuccessfulSigningJobWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class SuccessfulSigningJobWaitWaiterConfigTypeDef(
+    _SuccessfulSigningJobWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `SuccessfulSigningJobWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 20
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 25
+    """

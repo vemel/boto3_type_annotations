@@ -83,7 +83,7 @@ from mypy_boto3_comprehend.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_detect_dominant_language(
         self, TextList: List[str]
     ) -> ClientBatchDetectDominantLanguageResponseTypeDef:
@@ -202,7 +202,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_detect_entities(
         self, TextList: List[str], LanguageCode: str
     ) -> ClientBatchDetectEntitiesResponseTypeDef:
@@ -347,7 +347,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_detect_key_phrases(
         self, TextList: List[str], LanguageCode: str
     ) -> ClientBatchDetectKeyPhrasesResponseTypeDef:
@@ -485,7 +485,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_detect_sentiment(
         self, TextList: List[str], LanguageCode: str
     ) -> ClientBatchDetectSentimentResponseTypeDef:
@@ -621,7 +621,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_detect_syntax(
         self, TextList: List[str], LanguageCode: str
     ) -> ClientBatchDetectSyntaxResponseTypeDef:
@@ -777,7 +777,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -794,7 +794,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_document_classifier(
         self,
         DocumentClassifierName: str,
@@ -1004,7 +1004,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_entity_recognizer(
         self,
         RecognizerName: str,
@@ -1222,7 +1222,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_document_classifier(self, DocumentClassifierArn: str) -> Dict[str, Any]:
         """
         Deletes a previously created document classifier
@@ -1261,7 +1261,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_entity_recognizer(self, EntityRecognizerArn: str) -> Dict[str, Any]:
         """
         Deletes an entity recognizer.
@@ -1300,7 +1300,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_document_classification_job(
         self, JobId: str
     ) -> ClientDescribeDocumentClassificationJobResponseTypeDef:
@@ -1497,7 +1497,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_document_classifier(
         self, DocumentClassifierArn: str
     ) -> ClientDescribeDocumentClassifierResponseTypeDef:
@@ -1750,7 +1750,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dominant_language_detection_job(
         self, JobId: str
     ) -> ClientDescribeDominantLanguageDetectionJobResponseTypeDef:
@@ -1942,7 +1942,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_entities_detection_job(
         self, JobId: str
     ) -> ClientDescribeEntitiesDetectionJobResponseTypeDef:
@@ -2141,7 +2141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_entity_recognizer(
         self, EntityRecognizerArn: str
     ) -> ClientDescribeEntityRecognizerResponseTypeDef:
@@ -2435,7 +2435,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_key_phrases_detection_job(
         self, JobId: str
     ) -> ClientDescribeKeyPhrasesDetectionJobResponseTypeDef:
@@ -2631,7 +2631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_sentiment_detection_job(
         self, JobId: str
     ) -> ClientDescribeSentimentDetectionJobResponseTypeDef:
@@ -2826,7 +2826,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_topics_detection_job(
         self, JobId: str
     ) -> ClientDescribeTopicsDetectionJobResponseTypeDef:
@@ -3021,7 +3021,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_dominant_language(
         self, Text: str
     ) -> ClientDetectDominantLanguageResponseTypeDef:
@@ -3089,7 +3089,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_entities(
         self, Text: str, LanguageCode: str
     ) -> ClientDetectEntitiesResponseTypeDef:
@@ -3182,7 +3182,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_key_phrases(
         self, Text: str, LanguageCode: str
     ) -> ClientDetectKeyPhrasesResponseTypeDef:
@@ -3266,7 +3266,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_sentiment(
         self, Text: str, LanguageCode: str
     ) -> ClientDetectSentimentResponseTypeDef:
@@ -3346,7 +3346,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_syntax(
         self, Text: str, LanguageCode: str
     ) -> ClientDetectSyntaxResponseTypeDef:
@@ -3448,7 +3448,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3477,7 +3477,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3498,7 +3498,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3511,7 +3511,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_document_classification_jobs(
         self,
         Filter: ClientListDocumentClassificationJobsFilterTypeDef = None,
@@ -3762,7 +3762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_document_classifiers(
         self,
         Filter: ClientListDocumentClassifiersFilterTypeDef = None,
@@ -4063,7 +4063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dominant_language_detection_jobs(
         self,
         Filter: ClientListDominantLanguageDetectionJobsFilterTypeDef = None,
@@ -4309,7 +4309,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_entities_detection_jobs(
         self,
         Filter: ClientListEntitiesDetectionJobsFilterTypeDef = None,
@@ -4564,7 +4564,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_entity_recognizers(
         self,
         Filter: ClientListEntityRecognizersFilterTypeDef = None,
@@ -4913,7 +4913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_key_phrases_detection_jobs(
         self,
         Filter: ClientListKeyPhrasesDetectionJobsFilterTypeDef = None,
@@ -5164,7 +5164,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_sentiment_detection_jobs(
         self,
         Filter: ClientListSentimentDetectionJobsFilterTypeDef = None,
@@ -5415,7 +5415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5488,7 +5488,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_topics_detection_jobs(
         self,
         Filter: ClientListTopicsDetectionJobsFilterTypeDef = None,
@@ -5736,7 +5736,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_document_classification_job(
         self,
         DocumentClassifierArn: str,
@@ -5938,7 +5938,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_dominant_language_detection_job(
         self,
         InputDataConfig: ClientStartDominantLanguageDetectionJobInputDataConfigTypeDef,
@@ -6041,7 +6041,7 @@ class Client(BaseClient):
 
           The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants
           Amazon Comprehend read access to your input data. For more information, see
-          `https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+          `https\\://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
           <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>`__
           .
 
@@ -6131,7 +6131,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_entities_detection_job(
         self,
         InputDataConfig: ClientStartEntitiesDetectionJobInputDataConfigTypeDef,
@@ -6242,7 +6242,7 @@ class Client(BaseClient):
 
           The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants
           Amazon Comprehend read access to your input data. For more information, see
-          `https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+          `https\\://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
           <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>`__
           .
 
@@ -6352,7 +6352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_key_phrases_detection_job(
         self,
         InputDataConfig: ClientStartKeyPhrasesDetectionJobInputDataConfigTypeDef,
@@ -6457,7 +6457,7 @@ class Client(BaseClient):
 
           The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants
           Amazon Comprehend read access to your input data. For more information, see
-          `https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+          `https\\://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
           <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>`__
           .
 
@@ -6554,7 +6554,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_sentiment_detection_job(
         self,
         InputDataConfig: ClientStartSentimentDetectionJobInputDataConfigTypeDef,
@@ -6659,7 +6659,7 @@ class Client(BaseClient):
 
           The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants
           Amazon Comprehend read access to your input data. For more information, see
-          `https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+          `https\\://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
           <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>`__
           .
 
@@ -6756,7 +6756,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_topics_detection_job(
         self,
         InputDataConfig: ClientStartTopicsDetectionJobInputDataConfigTypeDef,
@@ -6863,7 +6863,7 @@ class Client(BaseClient):
 
           The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants
           Amazon Comprehend read access to your input data. For more information, see
-          `https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
+          `https\\://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions
           <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions>`__
           .
 
@@ -6959,7 +6959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_dominant_language_detection_job(
         self, JobId: str
     ) -> ClientStopDominantLanguageDetectionJobResponseTypeDef:
@@ -7016,7 +7016,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_entities_detection_job(
         self, JobId: str
     ) -> ClientStopEntitiesDetectionJobResponseTypeDef:
@@ -7073,7 +7073,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_key_phrases_detection_job(
         self, JobId: str
     ) -> ClientStopKeyPhrasesDetectionJobResponseTypeDef:
@@ -7130,7 +7130,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_sentiment_detection_job(
         self, JobId: str
     ) -> ClientStopSentimentDetectionJobResponseTypeDef:
@@ -7187,7 +7187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_training_document_classifier(
         self, DocumentClassifierArn: str
     ) -> Dict[str, Any]:
@@ -7226,7 +7226,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_training_entity_recognizer(
         self, EntityRecognizerArn: str
     ) -> Dict[str, Any]:
@@ -7265,7 +7265,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -7334,7 +7334,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes a specific tag associated with an Amazon Comprehend resource.

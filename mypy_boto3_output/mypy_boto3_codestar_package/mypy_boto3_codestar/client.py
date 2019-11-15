@@ -27,7 +27,7 @@ from mypy_boto3_codestar.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_team_member(
         self,
         projectId: str,
@@ -101,7 +101,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -118,7 +118,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_project(
         self,
         name: str,
@@ -374,7 +374,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_profile(
         self,
         userArn: str,
@@ -469,7 +469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_project(
         self, id: str, clientRequestToken: str = None, deleteStack: bool = None
     ) -> ClientDeleteProjectResponseTypeDef:
@@ -533,7 +533,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_profile(
         self, userArn: str
     ) -> ClientDeleteUserProfileResponseTypeDef:
@@ -576,7 +576,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_project(self, id: str) -> ClientDescribeProjectResponseTypeDef:
         """
         Describes a project and its resources.
@@ -666,7 +666,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_profile(
         self, userArn: str
     ) -> ClientDescribeUserProfileResponseTypeDef:
@@ -742,7 +742,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_team_member(self, projectId: str, userArn: str) -> Dict[str, Any]:
         """
         Removes a user from a project. Removing a user from a project also removes the IAM policies from
@@ -782,7 +782,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -811,7 +811,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -832,7 +832,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -845,7 +845,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_projects(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListProjectsResponseTypeDef:
@@ -916,7 +916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resources(
         self, projectId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListResourcesResponseTypeDef:
@@ -988,7 +988,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_project(
         self, id: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListTagsForProjectResponseTypeDef:
@@ -1052,7 +1052,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_team_members(
         self, projectId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListTeamMembersResponseTypeDef:
@@ -1138,7 +1138,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_profiles(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListUserProfilesResponseTypeDef:
@@ -1228,7 +1228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_project(
         self, id: str, tags: Dict[str, str]
     ) -> ClientTagProjectResponseTypeDef:
@@ -1287,7 +1287,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_project(self, id: str, tags: List[str]) -> Dict[str, Any]:
         """
         Removes tags from a project.
@@ -1329,7 +1329,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_project(
         self, id: str, name: str = None, description: str = None
     ) -> Dict[str, Any]:
@@ -1375,7 +1375,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_team_member(
         self,
         projectId: str,
@@ -1455,7 +1455,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_profile(
         self,
         userArn: str,

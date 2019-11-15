@@ -1,18 +1,24 @@
 "Main interface for ecs Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_ecs.type_defs import (
+    ServicesInactiveWaitWaiterConfigTypeDef,
+    ServicesStableWaitWaiterConfigTypeDef,
+    TasksRunningWaitWaiterConfigTypeDef,
+    TasksStoppedWaitWaiterConfigTypeDef,
+)
 
 
 class ServicesInactive(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         services: List[str],
         cluster: str = None,
         include: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ServicesInactiveWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ECS.Client.describe_services` every 15 seconds until a successful state is reached.
@@ -80,13 +86,13 @@ class ServicesInactive(Boto3Waiter):
 
 
 class ServicesStable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         services: List[str],
         cluster: str = None,
         include: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ServicesStableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ECS.Client.describe_services` every 15 seconds until a successful state is reached.
@@ -154,13 +160,13 @@ class ServicesStable(Boto3Waiter):
 
 
 class TasksRunning(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         tasks: List[str],
         cluster: str = None,
         include: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: TasksRunningWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ECS.Client.describe_tasks` every 6 seconds until a successful state is reached. An
@@ -227,13 +233,13 @@ class TasksRunning(Boto3Waiter):
 
 
 class TasksStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         tasks: List[str],
         cluster: str = None,
         include: List[str] = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: TasksStoppedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ECS.Client.describe_tasks` every 6 seconds until a successful state is reached. An

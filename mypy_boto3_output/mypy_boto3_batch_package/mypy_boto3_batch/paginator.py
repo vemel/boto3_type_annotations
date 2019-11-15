@@ -16,7 +16,7 @@ from mypy_boto3_batch.type_defs import (
 
 
 class DescribeComputeEnvironments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         computeEnvironments: List[str] = None,
@@ -334,7 +334,7 @@ class DescribeComputeEnvironments(Boto3Paginator):
 
 
 class DescribeJobDefinitions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         jobDefinitions: List[str] = None,
@@ -671,7 +671,7 @@ class DescribeJobDefinitions(Boto3Paginator):
                     section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and
                     the ``COMMAND`` parameter to `docker run
                     <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                    `https://docs.docker.com/engine/reference/builder/#cmd
+                    `https\\://docs.docker.com/engine/reference/builder/#cmd
                     <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                     - *(string) --*
@@ -992,7 +992,7 @@ class DescribeJobDefinitions(Boto3Paginator):
                           `Docker Remote API <https://docs.docker.com/engine/api/v1.23/>`__ and the
                           ``COMMAND`` parameter to `docker run
                           <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                          `https://docs.docker.com/engine/reference/builder/#cmd
+                          `https\\://docs.docker.com/engine/reference/builder/#cmd
                           <https://docs.docker.com/engine/reference/builder/#cmd>`__ .
 
                           - *(string) --*
@@ -1219,7 +1219,7 @@ class DescribeJobDefinitions(Boto3Paginator):
 
 
 class DescribeJobQueues(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         jobQueues: List[str] = None,
@@ -1364,7 +1364,7 @@ class DescribeJobQueues(Boto3Paginator):
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         jobQueue: str = None,

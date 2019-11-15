@@ -125,7 +125,7 @@ class ClientDescribeMigrationTaskResponseMigrationTaskResourceAttributeListTypeD
 
       FQDN
 
-     ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
+     ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
 
     - **Type** *(string) --*
 
@@ -247,7 +247,7 @@ class ClientDescribeMigrationTaskResponseMigrationTaskTypeDef(
 
           FQDN
 
-         ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
+         ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
 
         - **Type** *(string) --*
 
@@ -332,7 +332,7 @@ class ClientDescribeMigrationTaskResponseTypeDef(
 
             FQDN
 
-           ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
+           ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
 
           - **Type** *(string) --*
 
@@ -716,7 +716,7 @@ class ClientPutResourceAttributesResourceAttributeListTypeDef(
 
       FQDN
 
-     ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
+     ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
 
     - **Type** *(string) --* **[REQUIRED]**
 

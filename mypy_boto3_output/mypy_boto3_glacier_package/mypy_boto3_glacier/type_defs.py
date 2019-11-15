@@ -1371,7 +1371,7 @@ class ClientGetVaultLockResponseTypeDef(_ClientGetVaultLockResponseTypeDef):
 
     - **Policy** *(string) --*
 
-      The vault lock policy as a JSON string, which uses "\" as an escape character.
+      The vault lock policy as a JSON string, which uses "\\" as an escape character.
 
     - **State** *(string) --*
 
@@ -2468,7 +2468,7 @@ class ClientInitiateVaultLockpolicyTypeDef(_ClientInitiateVaultLockpolicyTypeDef
     """
     Type definition for `ClientInitiateVaultLock` `policy`
 
-    The vault lock policy as a JSON string, which uses "\" as an escape character.
+    The vault lock policy as a JSON string, which uses "\\" as an escape character.
 
     - **Policy** *(string) --*
 
@@ -4261,6 +4261,122 @@ class ClientPurchaseProvisionedCapacityResponseTypeDef(
     - **capacityId** *(string) --*
 
       The ID that identifies the provisioned capacity unit.
+    """
+
+
+_ClientSetDataRetrievalPolicyPolicyRulesTypeDef = TypedDict(
+    "_ClientSetDataRetrievalPolicyPolicyRulesTypeDef",
+    {"Strategy": str, "BytesPerHour": int},
+    total=False,
+)
+
+
+class ClientSetDataRetrievalPolicyPolicyRulesTypeDef(
+    _ClientSetDataRetrievalPolicyPolicyRulesTypeDef
+):
+    """
+    Type definition for `ClientSetDataRetrievalPolicyPolicy` `Rules`
+
+    Data retrieval policy rule.
+
+    - **Strategy** *(string) --*
+
+      The type of data retrieval policy to set.
+
+      Valid values: BytesPerHour|FreeTier|None
+
+    - **BytesPerHour** *(integer) --*
+
+      The maximum number of bytes that can be retrieved in an hour.
+
+      This field is required only if the value of the Strategy field is ``BytesPerHour`` . Your
+      PUT operation will be rejected if the Strategy field is not set to ``BytesPerHour`` and you
+      set this field.
+    """
+
+
+_ClientSetDataRetrievalPolicyPolicyTypeDef = TypedDict(
+    "_ClientSetDataRetrievalPolicyPolicyTypeDef",
+    {"Rules": List[ClientSetDataRetrievalPolicyPolicyRulesTypeDef]},
+    total=False,
+)
+
+
+class ClientSetDataRetrievalPolicyPolicyTypeDef(
+    _ClientSetDataRetrievalPolicyPolicyTypeDef
+):
+    """
+    Type definition for `ClientSetDataRetrievalPolicy` `Policy`
+
+    The data retrieval policy in JSON format.
+
+    - **Rules** *(list) --*
+
+      The policy rule. Although this is a list type, currently there must be only one rule, which
+      contains a Strategy field and optionally a BytesPerHour field.
+
+      - *(dict) --*
+
+        Data retrieval policy rule.
+
+        - **Strategy** *(string) --*
+
+          The type of data retrieval policy to set.
+
+          Valid values: BytesPerHour|FreeTier|None
+
+        - **BytesPerHour** *(integer) --*
+
+          The maximum number of bytes that can be retrieved in an hour.
+
+          This field is required only if the value of the Strategy field is ``BytesPerHour`` . Your
+          PUT operation will be rejected if the Strategy field is not set to ``BytesPerHour`` and you
+          set this field.
+    """
+
+
+_ClientSetVaultAccessPolicypolicyTypeDef = TypedDict(
+    "_ClientSetVaultAccessPolicypolicyTypeDef", {"Policy": str}, total=False
+)
+
+
+class ClientSetVaultAccessPolicypolicyTypeDef(_ClientSetVaultAccessPolicypolicyTypeDef):
+    """
+    Type definition for `ClientSetVaultAccessPolicy` `policy`
+
+    The vault access policy as a JSON string.
+
+    - **Policy** *(string) --*
+
+      The vault access policy.
+    """
+
+
+_ClientSetVaultNotificationsvaultNotificationConfigTypeDef = TypedDict(
+    "_ClientSetVaultNotificationsvaultNotificationConfigTypeDef",
+    {"SNSTopic": str, "Events": List[str]},
+    total=False,
+)
+
+
+class ClientSetVaultNotificationsvaultNotificationConfigTypeDef(
+    _ClientSetVaultNotificationsvaultNotificationConfigTypeDef
+):
+    """
+    Type definition for `ClientSetVaultNotifications` `vaultNotificationConfig`
+
+    Provides options for specifying notification configuration.
+
+    - **SNSTopic** *(string) --*
+
+      The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).
+
+    - **Events** *(list) --*
+
+      A list of one or more events for which Amazon S3 Glacier will send a notification to the
+      specified Amazon SNS topic.
+
+      - *(string) --*
     """
 
 
@@ -6330,6 +6446,34 @@ class MultipartUploadUploadPartResponseTypeDef(
     """
 
 
+_NotificationSetvaultNotificationConfigTypeDef = TypedDict(
+    "_NotificationSetvaultNotificationConfigTypeDef",
+    {"SNSTopic": str, "Events": List[str]},
+    total=False,
+)
+
+
+class NotificationSetvaultNotificationConfigTypeDef(
+    _NotificationSetvaultNotificationConfigTypeDef
+):
+    """
+    Type definition for `NotificationSet` `vaultNotificationConfig`
+
+    Provides options for specifying notification configuration.
+
+    - **SNSTopic** *(string) --*
+
+      The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).
+
+    - **Events** *(list) --*
+
+      A list of one or more events for which Amazon S3 Glacier will send a notification to the
+      specified Amazon SNS topic.
+
+      - *(string) --*
+    """
+
+
 _VaultCreateResponseTypeDef = TypedDict(
     "_VaultCreateResponseTypeDef", {"location": str}, total=False
 )
@@ -6344,4 +6488,50 @@ class VaultCreateResponseTypeDef(_VaultCreateResponseTypeDef):
     - **location** *(string) --*
 
       The URI of the vault that was created.
+    """
+
+
+_VaultExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_VaultExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class VaultExistsWaitWaiterConfigTypeDef(_VaultExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `VaultExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 15
+    """
+
+
+_VaultNotExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_VaultNotExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class VaultNotExistsWaitWaiterConfigTypeDef(_VaultNotExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `VaultNotExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 3
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 15
     """

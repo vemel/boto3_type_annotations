@@ -22,7 +22,7 @@ from mypy_boto3_shield.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_drt_log_bucket(self, LogBucket: str) -> Dict[str, Any]:
         """
         Authorizes the DDoS Response team (DRT) to access the specified Amazon S3 bucket containing your
@@ -60,7 +60,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_drt_role(self, RoleArn: str) -> Dict[str, Any]:
         """
         Authorizes the DDoS Response team (DRT), using the specified role, to access your AWS account to
@@ -77,7 +77,7 @@ class Client(BaseClient):
         Detaching IAM Policies <
         https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html>`__ .
         The role must also trust the service principal ``drt.shield.amazonaws.com`` . For more information,
-        see `IAM JSON Policy Elements: Principal
+        see `IAM JSON Policy Elements\\: Principal
         <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html>`__ .
 
         The DRT will have access only to your AWS WAF and Shield resources. By submitting this request, you
@@ -124,7 +124,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -141,7 +141,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_protection(
         self, Name: str, ResourceArn: str
     ) -> ClientCreateProtectionResponseTypeDef:
@@ -217,7 +217,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_subscription(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Activates AWS Shield Advanced for an account.
@@ -256,7 +256,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_protection(self, ProtectionId: str) -> Dict[str, Any]:
         """
         Deletes an AWS Shield Advanced  Protection .
@@ -288,7 +288,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_subscription(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription
@@ -320,7 +320,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_attack(self, AttackId: str) -> ClientDescribeAttackResponseTypeDef:
         """
         Describes the details of a DDoS attack.
@@ -628,7 +628,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_drt_access(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeDrtAccessResponseTypeDef:
@@ -673,7 +673,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_emergency_contact_settings(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeEmergencyContactSettingsResponseTypeDef:
@@ -720,7 +720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_protection(
         self, ProtectionId: str = None, ResourceArn: str = None
     ) -> ClientDescribeProtectionResponseTypeDef:
@@ -787,7 +787,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subscription(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeSubscriptionResponseTypeDef:
@@ -873,7 +873,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_drt_log_bucket(self, LogBucket: str) -> Dict[str, Any]:
         """
         Removes the DDoS Response team's (DRT) access to the specified Amazon S3 bucket containing your AWS
@@ -912,7 +912,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_drt_role(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Removes the DDoS Response team's (DRT) access to your AWS account.
@@ -944,7 +944,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -973,7 +973,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -994,7 +994,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_subscription_state(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetSubscriptionStateResponseTypeDef:
@@ -1029,7 +1029,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1042,7 +1042,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attacks(
         self,
         ResourceArns: List[str] = None,
@@ -1254,7 +1254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_protections(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListProtectionsResponseTypeDef:
@@ -1343,7 +1343,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_emergency_contact_settings(
         self,
         EmergencyContactList: List[
@@ -1393,7 +1393,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_subscription(self, AutoRenew: str = None) -> Dict[str, Any]:
         """
         Updates the details of an existing subscription. Only enter values for parameters you want to

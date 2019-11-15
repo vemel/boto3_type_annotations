@@ -68,7 +68,7 @@ from mypy_boto3_apigatewayv2.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -85,7 +85,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_api(
         self,
         Name: str,
@@ -260,7 +260,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_api_mapping(
         self, ApiId: str, DomainName: str, Stage: str, ApiMappingKey: str = None
     ) -> ClientCreateApiMappingResponseTypeDef:
@@ -334,7 +334,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_authorizer(
         self,
         ApiId: str,
@@ -542,7 +542,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_deployment(
         self, ApiId: str, Description: str = None, StageName: str = None
     ) -> ClientCreateDeploymentResponseTypeDef:
@@ -617,7 +617,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_domain_name(
         self,
         DomainName: str,
@@ -828,7 +828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_integration(
         self,
         ApiId: str,
@@ -1170,7 +1170,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_integration_response(
         self,
         ApiId: str,
@@ -1349,7 +1349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_model(
         self,
         ApiId: str,
@@ -1442,7 +1442,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route(
         self,
         ApiId: str,
@@ -1686,7 +1686,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_route_response(
         self,
         ApiId: str,
@@ -1831,7 +1831,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stage(
         self,
         ApiId: str,
@@ -2176,7 +2176,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_api(self, ApiId: str) -> None:
         """
         Deletes an Api resource.
@@ -2198,7 +2198,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_api_mapping(self, ApiMappingId: str, DomainName: str) -> None:
         """
         Deletes an API mapping.
@@ -2226,7 +2226,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_authorizer(self, ApiId: str, AuthorizerId: str) -> None:
         """
         Deletes an Authorizer.
@@ -2254,7 +2254,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_deployment(self, ApiId: str, DeploymentId: str) -> None:
         """
         Deletes a Deployment.
@@ -2282,7 +2282,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_domain_name(self, DomainName: str) -> None:
         """
         Deletes a domain name.
@@ -2304,7 +2304,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_integration(self, ApiId: str, IntegrationId: str) -> None:
         """
         Deletes an Integration.
@@ -2332,7 +2332,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_integration_response(
         self, ApiId: str, IntegrationId: str, IntegrationResponseId: str
     ) -> None:
@@ -2368,7 +2368,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_model(self, ApiId: str, ModelId: str) -> None:
         """
         Deletes a Model.
@@ -2396,7 +2396,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_route(self, ApiId: str, RouteId: str) -> None:
         """
         Deletes a Route.
@@ -2424,7 +2424,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_route_response(
         self, ApiId: str, RouteId: str, RouteResponseId: str
     ) -> None:
@@ -2460,7 +2460,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stage(self, ApiId: str, StageName: str) -> None:
         """
         Deletes a Stage.
@@ -2488,7 +2488,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2517,7 +2517,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_api(self, ApiId: str) -> ClientGetApiResponseTypeDef:
         """
         Gets an Api resource.
@@ -2629,7 +2629,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_api_mapping(
         self, ApiMappingId: str, DomainName: str
     ) -> ClientGetApiMappingResponseTypeDef:
@@ -2693,7 +2693,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_api_mappings(
         self, DomainName: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetApiMappingsResponseTypeDef:
@@ -2781,7 +2781,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apis(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetApisResponseTypeDef:
@@ -2920,7 +2920,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_authorizer(
         self, ApiId: str, AuthorizerId: str
     ) -> ClientGetAuthorizerResponseTypeDef:
@@ -3044,7 +3044,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_authorizers(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetAuthorizersResponseTypeDef:
@@ -3194,7 +3194,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployment(
         self, ApiId: str, DeploymentId: str
     ) -> ClientGetDeploymentResponseTypeDef:
@@ -3263,7 +3263,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_deployments(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetDeploymentsResponseTypeDef:
@@ -3357,7 +3357,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_name(self, DomainName: str) -> ClientGetDomainNameResponseTypeDef:
         """
         Gets a domain name.
@@ -3481,7 +3481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_domain_names(
         self, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetDomainNamesResponseTypeDef:
@@ -3632,7 +3632,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_integration(
         self, ApiId: str, IntegrationId: str
     ) -> ClientGetIntegrationResponseTypeDef:
@@ -3822,7 +3822,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_integration_response(
         self, ApiId: str, IntegrationId: str, IntegrationResponseId: str
     ) -> ClientGetIntegrationResponseResponseTypeDef:
@@ -3934,7 +3934,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_integration_responses(
         self,
         ApiId: str,
@@ -4078,7 +4078,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_integrations(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetIntegrationsResponseTypeDef:
@@ -4294,7 +4294,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_model(self, ApiId: str, ModelId: str) -> ClientGetModelResponseTypeDef:
         """
         Gets a Model.
@@ -4362,7 +4362,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_model_template(
         self, ApiId: str, ModelId: str
     ) -> ClientGetModelTemplateResponseTypeDef:
@@ -4411,7 +4411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_models(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetModelsResponseTypeDef:
@@ -4507,7 +4507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4528,7 +4528,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_route(self, ApiId: str, RouteId: str) -> ClientGetRouteResponseTypeDef:
         """
         Gets a Route.
@@ -4667,7 +4667,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_route_response(
         self, ApiId: str, RouteId: str, RouteResponseId: str
     ) -> ClientGetRouteResponseResponseTypeDef:
@@ -4764,7 +4764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_route_responses(
         self, ApiId: str, RouteId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetRouteResponsesResponseTypeDef:
@@ -4886,7 +4886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_routes(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetRoutesResponseTypeDef:
@@ -5052,7 +5052,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_stage(self, ApiId: str, StageName: str) -> ClientGetStageResponseTypeDef:
         """
         Gets a Stage.
@@ -5243,7 +5243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_stages(
         self, ApiId: str, MaxResults: str = None, NextToken: str = None
     ) -> ClientGetStagesResponseTypeDef:
@@ -5461,7 +5461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_tags(self, ResourceArn: str) -> ClientGetTagsResponseTypeDef:
         """
         Gets the Tags for an API.
@@ -5502,7 +5502,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5515,7 +5515,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str] = None) -> Dict[str, Any]:
         """
         Tag an APIGW resource
@@ -5562,8 +5562,8 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Untag an APIGW resource
 
@@ -5594,7 +5594,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_api(
         self,
         ApiId: str,
@@ -5753,7 +5753,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_api_mapping(
         self,
         ApiId: str,
@@ -5840,7 +5840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_authorizer(
         self,
         ApiId: str,
@@ -6054,7 +6054,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_deployment(
         self, ApiId: str, DeploymentId: str, Description: str = None
     ) -> ClientUpdateDeploymentResponseTypeDef:
@@ -6129,7 +6129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_domain_name(
         self,
         DomainName: str,
@@ -6324,7 +6324,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_integration(
         self,
         ApiId: str,
@@ -6673,7 +6673,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_integration_response(
         self,
         ApiId: str,
@@ -6857,7 +6857,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_model(
         self,
         ApiId: str,
@@ -6957,7 +6957,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_route(
         self,
         ApiId: str,
@@ -7208,7 +7208,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_route_response(
         self,
         ApiId: str,
@@ -7360,7 +7360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stage(
         self,
         ApiId: str,

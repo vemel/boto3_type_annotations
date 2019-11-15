@@ -11359,6 +11359,100 @@ class ClientListTagsForResourceResponseTypeDef(
     """
 
 
+_RequiredClientTagResourceTagsItemsTypeDef = TypedDict(
+    "_RequiredClientTagResourceTagsItemsTypeDef", {"Key": str}
+)
+_OptionalClientTagResourceTagsItemsTypeDef = TypedDict(
+    "_OptionalClientTagResourceTagsItemsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientTagResourceTagsItemsTypeDef(
+    _RequiredClientTagResourceTagsItemsTypeDef,
+    _OptionalClientTagResourceTagsItemsTypeDef,
+):
+    """
+    Type definition for `ClientTagResourceTags` `Items`
+
+    A complex type that contains ``Tag`` key and ``Tag`` value.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      A string that contains ``Tag`` key.
+
+      The string length should be between 1 and 128 characters. Valid characters include ``a-z``
+      , ``A-Z`` , ``0-9`` , space, and the special characters ``_ - . : / = + @`` .
+
+    - **Value** *(string) --*
+
+      A string that contains an optional ``Tag`` value.
+
+      The string length should be between 0 and 256 characters. Valid characters include ``a-z``
+      , ``A-Z`` , ``0-9`` , space, and the special characters ``_ - . : / = + @`` .
+    """
+
+
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef",
+    {"Items": List[ClientTagResourceTagsItemsTypeDef]},
+    total=False,
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    A complex type that contains zero or more ``Tag`` elements.
+
+    - **Items** *(list) --*
+
+      A complex type that contains ``Tag`` elements.
+
+      - *(dict) --*
+
+        A complex type that contains ``Tag`` key and ``Tag`` value.
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          A string that contains ``Tag`` key.
+
+          The string length should be between 1 and 128 characters. Valid characters include ``a-z``
+          , ``A-Z`` , ``0-9`` , space, and the special characters ``_ - . : / = + @`` .
+
+        - **Value** *(string) --*
+
+          A string that contains an optional ``Tag`` value.
+
+          The string length should be between 0 and 256 characters. Valid characters include ``a-z``
+          , ``A-Z`` , ``0-9`` , space, and the special characters ``_ - . : / = + @`` .
+    """
+
+
+_ClientUntagResourceTagKeysTypeDef = TypedDict(
+    "_ClientUntagResourceTagKeysTypeDef", {"Items": List[str]}, total=False
+)
+
+
+class ClientUntagResourceTagKeysTypeDef(_ClientUntagResourceTagKeysTypeDef):
+    """
+    Type definition for `ClientUntagResource` `TagKeys`
+
+    A complex type that contains zero or more ``Tag`` key elements.
+
+    - **Items** *(list) --*
+
+      A complex type that contains ``Tag`` key elements.
+
+      - *(string) --*
+
+        A string that contains ``Tag`` key.
+
+        The string length should be between 1 and 128 characters. Valid characters include ``a-z`` ,
+        ``A-Z`` , ``0-9`` , space, and the special characters ``_ - . : / = + @`` .
+    """
+
+
 _ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef = TypedDict(
     "_ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
     {"CallerReference": str, "Comment": str},
@@ -14633,6 +14727,56 @@ class ClientUpdateStreamingDistributionStreamingDistributionConfigTypeDef(
     """
 
 
+_DistributionDeployedWaitWaiterConfigTypeDef = TypedDict(
+    "_DistributionDeployedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class DistributionDeployedWaitWaiterConfigTypeDef(
+    _DistributionDeployedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `DistributionDeployedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 35
+    """
+
+
+_InvalidationCompletedWaitWaiterConfigTypeDef = TypedDict(
+    "_InvalidationCompletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InvalidationCompletedWaitWaiterConfigTypeDef(
+    _InvalidationCompletedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InvalidationCompletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 20
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 30
+    """
+
+
 _ListCloudFrontOriginAccessIdentitiesPaginatePaginationConfigTypeDef = TypedDict(
     "_ListCloudFrontOriginAccessIdentitiesPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},
@@ -15728,4 +15872,29 @@ class ListStreamingDistributionsPaginateResponseTypeDef(
     - **NextToken** *(string) --*
 
       A token to resume pagination.
+    """
+
+
+_StreamingDistributionDeployedWaitWaiterConfigTypeDef = TypedDict(
+    "_StreamingDistributionDeployedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StreamingDistributionDeployedWaitWaiterConfigTypeDef(
+    _StreamingDistributionDeployedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `StreamingDistributionDeployedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 60
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 25
     """

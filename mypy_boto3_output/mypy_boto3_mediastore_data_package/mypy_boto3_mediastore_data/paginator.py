@@ -9,7 +9,7 @@ from mypy_boto3_mediastore_data.type_defs import (
 
 
 class ListItems(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Path: str = None,

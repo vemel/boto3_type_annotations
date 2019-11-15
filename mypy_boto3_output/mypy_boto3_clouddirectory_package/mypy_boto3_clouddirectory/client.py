@@ -48,6 +48,7 @@ from mypy_boto3_clouddirectory.type_defs import (
     ClientDetachObjectResponseTypeDef,
     ClientDetachPolicyObjectReferenceTypeDef,
     ClientDetachPolicyPolicyReferenceTypeDef,
+    ClientDetachTypedLinkTypedLinkSpecifierTypeDef,
     ClientDisableDirectoryResponseTypeDef,
     ClientEnableDirectoryResponseTypeDef,
     ClientGetAppliedSchemaVersionResponseTypeDef,
@@ -119,7 +120,7 @@ from mypy_boto3_clouddirectory.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_facet_to_object(
         self,
         DirectoryArn: str,
@@ -271,7 +272,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_schema(
         self, PublishedSchemaArn: str, DirectoryArn: str
     ) -> ClientApplySchemaResponseTypeDef:
@@ -328,7 +329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_object(
         self,
         DirectoryArn: str,
@@ -436,7 +437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(
         self,
         DirectoryArn: str,
@@ -527,7 +528,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_to_index(
         self,
         DirectoryArn: str,
@@ -623,7 +624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_typed_link(
         self,
         DirectoryArn: str,
@@ -907,7 +908,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_read(
         self,
         DirectoryArn: str,
@@ -3011,7 +3012,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_write(
         self, DirectoryArn: str, Operations: List[ClientBatchWriteOperationsTypeDef]
     ) -> ClientBatchWriteResponseTypeDef:
@@ -4619,7 +4620,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -4636,7 +4637,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_directory(
         self, Name: str, SchemaArn: str
     ) -> ClientCreateDirectoryResponseTypeDef:
@@ -4707,7 +4708,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_facet(
         self,
         SchemaArn: str,
@@ -4906,7 +4907,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_index(
         self,
         DirectoryArn: str,
@@ -5023,7 +5024,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_object(
         self,
         DirectoryArn: str,
@@ -5197,7 +5198,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_schema(self, Name: str) -> ClientCreateSchemaResponseTypeDef:
         """
         Creates a new schema in a development state. A schema can exist in three phases:
@@ -5246,7 +5247,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_typed_link_facet(
         self, SchemaArn: str, Facet: ClientCreateTypedLinkFacetFacetTypeDef
     ) -> Dict[str, Any]:
@@ -5403,7 +5404,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_directory(
         self, DirectoryArn: str
     ) -> ClientDeleteDirectoryResponseTypeDef:
@@ -5445,7 +5446,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_facet(self, SchemaArn: str, Name: str) -> Dict[str, Any]:
         """
         Deletes a given  Facet . All attributes and  Rule s that are associated with the facet will be
@@ -5485,7 +5486,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_object(
         self,
         DirectoryArn: str,
@@ -5551,7 +5552,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_schema(self, SchemaArn: str) -> ClientDeleteSchemaResponseTypeDef:
         """
         Deletes a given schema. Schemas in a development and published state can only be deleted.
@@ -5590,7 +5591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_typed_link_facet(self, SchemaArn: str, Name: str) -> Dict[str, Any]:
         """
         Deletes a  TypedLinkFacet . For more information, see `Typed Links
@@ -5631,7 +5632,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_from_index(
         self,
         DirectoryArn: str,
@@ -5727,7 +5728,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_object(
         self,
         DirectoryArn: str,
@@ -5805,7 +5806,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_policy(
         self,
         DirectoryArn: str,
@@ -5895,8 +5896,12 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
-    def detach_typed_link(self, DirectoryArn: str, TypedLinkSpecifier: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def detach_typed_link(
+        self,
+        DirectoryArn: str,
+        TypedLinkSpecifier: ClientDetachTypedLinkTypedLinkSpecifierTypeDef,
+    ) -> None:
         """
         Detaches a typed link from a specified source and target object. For more information, see `Typed
         Links
@@ -6042,7 +6047,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_directory(
         self, DirectoryArn: str
     ) -> ClientDisableDirectoryResponseTypeDef:
@@ -6084,7 +6089,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_directory(
         self, DirectoryArn: str
     ) -> ClientEnableDirectoryResponseTypeDef:
@@ -6126,7 +6131,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -6155,7 +6160,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_applied_schema_version(
         self, SchemaArn: str
     ) -> ClientGetAppliedSchemaVersionResponseTypeDef:
@@ -6196,7 +6201,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_directory(self, DirectoryArn: str) -> ClientGetDirectoryResponseTypeDef:
         """
         Retrieves metadata about a directory.
@@ -6257,7 +6262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_facet(self, SchemaArn: str, Name: str) -> ClientGetFacetResponseTypeDef:
         """
         Gets details of the  Facet , such as facet name, attributes,  Rule s, or ``ObjectType`` . You can
@@ -6323,7 +6328,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_link_attributes(
         self,
         DirectoryArn: str,
@@ -6568,7 +6573,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_attributes(
         self,
         DirectoryArn: str,
@@ -6735,7 +6740,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object_information(
         self,
         DirectoryArn: str,
@@ -6838,7 +6843,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -6859,7 +6864,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_schema_as_json(
         self, SchemaArn: str
     ) -> ClientGetSchemaAsJsonResponseTypeDef:
@@ -6907,7 +6912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_typed_link_facet_information(
         self, SchemaArn: str, Name: str
     ) -> ClientGetTypedLinkFacetInformationResponseTypeDef:
@@ -6970,7 +6975,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -6983,7 +6988,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_applied_schema_arns(
         self,
         DirectoryArn: str,
@@ -7057,7 +7062,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attached_indices(
         self,
         DirectoryArn: str,
@@ -7231,7 +7236,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_development_schema_arns(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListDevelopmentSchemaArnsResponseTypeDef:
@@ -7287,7 +7292,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_directories(
         self, NextToken: str = None, MaxResults: int = None, state: str = None
     ) -> ClientListDirectoriesResponseTypeDef:
@@ -7373,7 +7378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_facet_attributes(
         self, SchemaArn: str, Name: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListFacetAttributesResponseTypeDef:
@@ -7560,7 +7565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_facet_names(
         self, SchemaArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListFacetNamesResponseTypeDef:
@@ -7622,7 +7627,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_incoming_typed_links(
         self,
         DirectoryArn: str,
@@ -7969,7 +7974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_index(
         self,
         DirectoryArn: str,
@@ -8258,7 +8263,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_managed_schema_arns(
         self, SchemaArn: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientListManagedSchemaArnsResponseTypeDef:
@@ -8322,7 +8327,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_attributes(
         self,
         DirectoryArn: str,
@@ -8500,7 +8505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_children(
         self,
         DirectoryArn: str,
@@ -8604,7 +8609,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_parent_paths(
         self,
         DirectoryArn: str,
@@ -8722,7 +8727,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_parents(
         self,
         DirectoryArn: str,
@@ -8856,7 +8861,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_object_policies(
         self,
         DirectoryArn: str,
@@ -8957,7 +8962,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_outgoing_typed_links(
         self,
         DirectoryArn: str,
@@ -9304,7 +9309,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_policy_attachments(
         self,
         DirectoryArn: str,
@@ -9405,7 +9410,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_published_schema_arns(
         self, SchemaArn: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientListPublishedSchemaArnsResponseTypeDef:
@@ -9469,7 +9474,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -9547,7 +9552,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_typed_link_facet_attributes(
         self, SchemaArn: str, Name: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTypedLinkFacetAttributesResponseTypeDef:
@@ -9705,7 +9710,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_typed_link_facet_names(
         self, SchemaArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTypedLinkFacetNamesResponseTypeDef:
@@ -9771,7 +9776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def lookup_policy(
         self,
         DirectoryArn: str,
@@ -9912,7 +9917,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def publish_schema(
         self,
         DevelopmentSchemaArn: str,
@@ -9979,7 +9984,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_schema_from_json(
         self, SchemaArn: str, Document: str
     ) -> ClientPutSchemaFromJsonResponseTypeDef:
@@ -10029,7 +10034,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_facet_from_object(
         self,
         DirectoryArn: str,
@@ -10112,7 +10117,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -10169,7 +10174,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         An API operation for removing tags from a resource.
@@ -10211,7 +10216,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_facet(
         self,
         SchemaArn: str,
@@ -10410,7 +10415,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_link_attributes(
         self,
         DirectoryArn: str,
@@ -10649,7 +10654,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_object_attributes(
         self,
         DirectoryArn: str,
@@ -10796,7 +10801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_schema(
         self, SchemaArn: str, Name: str
     ) -> ClientUpdateSchemaResponseTypeDef:
@@ -10843,7 +10848,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_typed_link_facet(
         self,
         SchemaArn: str,
@@ -11014,7 +11019,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upgrade_applied_schema(
         self, PublishedSchemaArn: str, DirectoryArn: str, DryRun: bool = None
     ) -> ClientUpgradeAppliedSchemaResponseTypeDef:
@@ -11078,7 +11083,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def upgrade_published_schema(
         self,
         DevelopmentSchemaArn: str,

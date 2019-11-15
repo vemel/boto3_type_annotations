@@ -26,7 +26,7 @@ from mypy_boto3_cognito_idp.type_defs import (
 
 
 class AdminListGroupsForUser(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Username: str,
@@ -160,7 +160,7 @@ class AdminListGroupsForUser(Boto3Paginator):
 
 
 class AdminListUserAuthEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -359,7 +359,7 @@ class AdminListUserAuthEvents(Boto3Paginator):
 
 
 class ListGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -486,7 +486,7 @@ class ListGroups(Boto3Paginator):
 
 
 class ListIdentityProviders(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -585,7 +585,7 @@ class ListIdentityProviders(Boto3Paginator):
 
 
 class ListResourceServers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -701,7 +701,7 @@ class ListResourceServers(Boto3Paginator):
 
 
 class ListUserPoolClients(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -797,7 +797,7 @@ class ListUserPoolClients(Boto3Paginator):
 
 
 class ListUserPools(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListUserPoolsPaginatePaginationConfigTypeDef = None
     ) -> ListUserPoolsPaginateResponseTypeDef:
@@ -951,7 +951,7 @@ class ListUserPools(Boto3Paginator):
 
 
 class ListUsers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,
@@ -998,14 +998,14 @@ class ListUsers(Boto3Paginator):
         :param Filter:
 
           A filter string of the form "*AttributeName*  *Filter-Type* "*AttributeValue* "". Quotation marks
-          within the filter string must be escaped using the backslash (\) character. For example,
-          "``family_name`` = \"Reddy\"".
+          within the filter string must be escaped using the backslash (\\) character. For example,
+          "``family_name`` = \\"Reddy\\"".
 
           * *AttributeName* : The name of the attribute to search for. You can only search for one
           attribute at a time.
 
-          * *Filter-Type* : For an exact match, use =, for example, "``given_name`` = \"Jon\"". For a
-          prefix ("starts with") match, use ^=, for example, "``given_name`` ^= \"Jon\"".
+          * *Filter-Type* : For an exact match, use =, for example, "``given_name`` = \\"Jon\\"". For a
+          prefix ("starts with") match, use ^=, for example, "``given_name`` ^= \\"Jon\\"".
 
           * *AttributeValue* : The attribute value that must be matched for each user.
 
@@ -1194,7 +1194,7 @@ class ListUsers(Boto3Paginator):
 
 
 class ListUsersInGroup(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         UserPoolId: str,

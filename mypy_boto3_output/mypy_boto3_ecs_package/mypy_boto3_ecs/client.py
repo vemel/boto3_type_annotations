@@ -98,7 +98,7 @@ from mypy_boto3_ecs.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -115,7 +115,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self,
         clusterName: str = None,
@@ -453,7 +453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_service(
         self,
         serviceName: str,
@@ -2209,7 +2209,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_task_set(
         self,
         service: str,
@@ -2809,7 +2809,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_account_setting(
         self, name: str, principalArn: str = None
     ) -> ClientDeleteAccountSettingResponseTypeDef:
@@ -2885,7 +2885,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_attributes(
         self,
         attributes: List[ClientDeleteAttributesattributesTypeDef],
@@ -3008,7 +3008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster(self, cluster: str) -> ClientDeleteClusterResponseTypeDef:
         """
         Deletes the specified cluster. You must deregister all container instances from this cluster before
@@ -3231,7 +3231,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_service(
         self, service: str, cluster: str = None, force: bool = None
     ) -> ClientDeleteServiceResponseTypeDef:
@@ -4323,7 +4323,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_task_set(
         self, cluster: str, service: str, taskSet: str, force: bool = None
     ) -> ClientDeleteTaskSetResponseTypeDef:
@@ -4705,7 +4705,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_container_instance(
         self, containerInstance: str, cluster: str = None, force: bool = None
     ) -> ClientDeregisterContainerInstanceResponseTypeDef:
@@ -5168,7 +5168,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_task_definition(
         self, taskDefinition: str
     ) -> ClientDeregisterTaskDefinitionResponseTypeDef:
@@ -5795,7 +5795,7 @@ class Client(BaseClient):
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
                     ``--entrypoint`` option to `docker run
                     <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                    `https://docs.docker.com/engine/reference/builder/#entrypoint
+                    `https\\://docs.docker.com/engine/reference/builder/#entrypoint
                     <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
                     - *(string) --*
@@ -5807,7 +5807,7 @@ class Client(BaseClient):
                     <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
                     parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-                    information, see `https://docs.docker.com/engine/reference/builder/#cmd
+                    information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
                     <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
                     arguments, each argument should be a separated string in the array.
 
@@ -6878,8 +6878,8 @@ class Client(BaseClient):
                     Windows containers can mount whole directories on the same drive as
                     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
                     drive, and mount point cannot be across drives. For example, you can mount
-                    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-                    ``D::C:\my\path`` .
+                    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+                    or ``D:\\:C:\\my\\path`` .
 
                     - **sourcePath** *(string) --*
 
@@ -7203,7 +7203,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_clusters(
         self, clusters: List[str] = None, include: List[str] = None
     ) -> ClientDescribeClustersResponseTypeDef:
@@ -7490,7 +7490,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_container_instances(
         self,
         containerInstances: List[str],
@@ -7971,7 +7971,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_services(
         self, services: List[str], cluster: str = None, include: List[str] = None
     ) -> ClientDescribeServicesResponseTypeDef:
@@ -9095,7 +9095,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_task_definition(
         self, taskDefinition: str, include: List[str] = None
     ) -> ClientDescribeTaskDefinitionResponseTypeDef:
@@ -9734,7 +9734,7 @@ class Client(BaseClient):
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
                     ``--entrypoint`` option to `docker run
                     <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                    `https://docs.docker.com/engine/reference/builder/#entrypoint
+                    `https\\://docs.docker.com/engine/reference/builder/#entrypoint
                     <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
                     - *(string) --*
@@ -9746,7 +9746,7 @@ class Client(BaseClient):
                     <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
                     parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-                    information, see `https://docs.docker.com/engine/reference/builder/#cmd
+                    information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
                     <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
                     arguments, each argument should be a separated string in the array.
 
@@ -10817,8 +10817,8 @@ class Client(BaseClient):
                     Windows containers can mount whole directories on the same drive as
                     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
                     drive, and mount point cannot be across drives. For example, you can mount
-                    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-                    ``D::C:\my\path`` .
+                    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+                    or ``D:\\:C:\\my\\path`` .
 
                     - **sourcePath** *(string) --*
 
@@ -11206,7 +11206,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_task_sets(
         self, cluster: str, service: str, taskSets: List[str] = None
     ) -> ClientDescribeTaskSetsResponseTypeDef:
@@ -11614,7 +11614,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tasks(
         self, tasks: List[str], cluster: str = None, include: List[str] = None
     ) -> ClientDescribeTasksResponseTypeDef:
@@ -12382,7 +12382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def discover_poll_endpoint(
         self, containerInstance: str = None, cluster: str = None
     ) -> ClientDiscoverPollEndpointResponseTypeDef:
@@ -12444,7 +12444,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -12473,7 +12473,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -12494,7 +12494,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -12507,7 +12507,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_account_settings(
         self,
         name: str = None,
@@ -12636,7 +12636,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_attributes(
         self,
         targetType: str,
@@ -12775,7 +12775,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_clusters(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientListClustersResponseTypeDef:
@@ -12846,7 +12846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_container_instances(
         self,
         cluster: str = None,
@@ -12953,7 +12953,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_services(
         self,
         cluster: str = None,
@@ -13047,7 +13047,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -13132,7 +13132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_task_definition_families(
         self,
         familyPrefix: str = None,
@@ -13233,7 +13233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_task_definitions(
         self,
         familyPrefix: str = None,
@@ -13339,7 +13339,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tasks(
         self,
         cluster: str = None,
@@ -13481,7 +13481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_account_setting(
         self, name: str, value: str, principalArn: str = None
     ) -> ClientPutAccountSettingResponseTypeDef:
@@ -13593,7 +13593,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_account_setting_default(
         self, name: str, value: str
     ) -> ClientPutAccountSettingDefaultResponseTypeDef:
@@ -13669,7 +13669,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_attributes(
         self,
         attributes: List[ClientPutAttributesattributesTypeDef],
@@ -13795,7 +13795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_container_instance(
         self,
         cluster: str = None,
@@ -14469,7 +14469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_task_definition(
         self,
         family: str,
@@ -15135,7 +15135,7 @@ class Client(BaseClient):
               `Create a container <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__
               section of the `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
               ``--entrypoint`` option to `docker run <https://docs.docker.com/engine/reference/run/>`__ .
-              For more information, see `https://docs.docker.com/engine/reference/builder/#entrypoint
+              For more information, see `https\\://docs.docker.com/engine/reference/builder/#entrypoint
               <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
               - *(string) --*
@@ -15146,7 +15146,7 @@ class Client(BaseClient):
               container <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of
               the `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
               parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-              information, see `https://docs.docker.com/engine/reference/builder/#cmd
+              information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
               <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple arguments,
               each argument should be a separated string in the array.
 
@@ -16085,8 +16085,8 @@ class Client(BaseClient):
 
               Windows containers can mount whole directories on the same drive as ``$env:ProgramData`` .
               Windows containers cannot mount directories on a different drive, and mount point cannot be
-              across drives. For example, you can mount ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not
-              ``D:\my\path:C:\my\path`` or ``D::C:\my\path`` .
+              across drives. For example, you can mount ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` ,
+              but not ``D:\\my\\path:C:\\my\\path`` or ``D:\\:C:\\my\\path`` .
 
               - **sourcePath** *(string) --*
 
@@ -17060,7 +17060,7 @@ class Client(BaseClient):
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the
                     ``--entrypoint`` option to `docker run
                     <https://docs.docker.com/engine/reference/run/>`__ . For more information, see
-                    `https://docs.docker.com/engine/reference/builder/#entrypoint
+                    `https\\://docs.docker.com/engine/reference/builder/#entrypoint
                     <https://docs.docker.com/engine/reference/builder/#entrypoint>`__ .
 
                     - *(string) --*
@@ -17072,7 +17072,7 @@ class Client(BaseClient):
                     <https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate>`__ section of the
                     `Docker Remote API <https://docs.docker.com/engine/api/v1.35/>`__ and the ``COMMAND``
                     parameter to `docker run <https://docs.docker.com/engine/reference/run/>`__ . For more
-                    information, see `https://docs.docker.com/engine/reference/builder/#cmd
+                    information, see `https\\://docs.docker.com/engine/reference/builder/#cmd
                     <https://docs.docker.com/engine/reference/builder/#cmd>`__ . If there are multiple
                     arguments, each argument should be a separated string in the array.
 
@@ -18143,8 +18143,8 @@ class Client(BaseClient):
                     Windows containers can mount whole directories on the same drive as
                     ``$env:ProgramData`` . Windows containers cannot mount directories on a different
                     drive, and mount point cannot be across drives. For example, you can mount
-                    ``C:\my\path:C:\my\path`` and ``D::D:\`` , but not ``D:\my\path:C:\my\path`` or
-                    ``D::C:\my\path`` .
+                    ``C:\\my\\path:C:\\my\\path`` and ``D:\\:D:\\`` , but not ``D:\\my\\path:C:\\my\\path``
+                    or ``D:\\:C:\\my\\path`` .
 
                     - **sourcePath** *(string) --*
 
@@ -18509,7 +18509,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def run_task(
         self,
         taskDefinition: str,
@@ -19734,7 +19734,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_task(
         self,
         taskDefinition: str,
@@ -20840,7 +20840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_task(
         self, task: str, cluster: str = None, reason: str = None
     ) -> ClientStopTaskResponseTypeDef:
@@ -21580,7 +21580,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def submit_attachment_state_changes(
         self,
         attachments: List[ClientSubmitAttachmentStateChangesattachmentsTypeDef],
@@ -21652,7 +21652,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def submit_container_state_change(
         self,
         cluster: str = None,
@@ -21779,7 +21779,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def submit_task_state_change(
         self,
         cluster: str = None,
@@ -21970,7 +21970,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -22075,7 +22075,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes specified tags from a resource.
@@ -22119,7 +22119,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_cluster_settings(
         self, cluster: str, settings: List[ClientUpdateClusterSettingssettingsTypeDef]
     ) -> ClientUpdateClusterSettingsResponseTypeDef:
@@ -22375,7 +22375,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_container_agent(
         self, containerInstance: str, cluster: str = None
     ) -> ClientUpdateContainerAgentResponseTypeDef:
@@ -22814,7 +22814,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_container_instances_state(
         self, containerInstances: List[str], status: str, cluster: str = None
     ) -> ClientUpdateContainerInstancesStateResponseTypeDef:
@@ -23331,7 +23331,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service(
         self,
         service: str,
@@ -24648,7 +24648,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_service_primary_task_set(
         self, cluster: str, service: str, primaryTaskSet: str
     ) -> ClientUpdateServicePrimaryTaskSetResponseTypeDef:
@@ -25025,7 +25025,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_task_set(
         self,
         cluster: str,

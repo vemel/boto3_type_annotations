@@ -62,7 +62,7 @@ from mypy_boto3_appstream.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_fleet(self, FleetName: str, StackName: str) -> Dict[str, Any]:
         """
         Associates the specified fleet with the specified stack.
@@ -100,7 +100,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_associate_user_stack(
         self,
         UserStackAssociations: List[
@@ -228,7 +228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_disassociate_user_stack(
         self,
         UserStackAssociations: List[
@@ -355,7 +355,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -372,7 +372,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_image(
         self,
         SourceImageName: str,
@@ -437,7 +437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_directory_config(
         self,
         DirectoryName: str,
@@ -551,7 +551,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_fleet(
         self,
         Name: str,
@@ -777,7 +777,7 @@ class Client(BaseClient):
           Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the
           following special characters:
 
-          _ . : / = + \ - @
+          _ . : / = + \\ - @
 
           For more information, see `Tagging Your Resources
           <https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html>`__ in the
@@ -1119,7 +1119,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_image_builder(
         self,
         Name: str,
@@ -1317,7 +1317,7 @@ class Client(BaseClient):
           Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the
           following special characters:
 
-          _ . : / = + \ - @
+          _ . : / = + \\ - @
 
           If you do not specify a value, the value is set to an empty string.
 
@@ -1630,7 +1630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_image_builder_streaming_url(
         self, Name: str, Validity: int = None
     ) -> ClientCreateImageBuilderStreamingUrlResponseTypeDef:
@@ -1683,7 +1683,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack(
         self,
         Name: str,
@@ -1844,7 +1844,7 @@ class Client(BaseClient):
           Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the
           following special characters:
 
-          _ . : / = + \ - @
+          _ . : / = + \\ - @
 
           For more information about tags, see `Tagging Your Resources
           <https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html>`__ in the
@@ -2085,7 +2085,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_streaming_url(
         self,
         StackName: str,
@@ -2172,7 +2172,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_usage_report_subscription(
         self, *args: Any, **kwargs: Any
     ) -> ClientCreateUsageReportSubscriptionResponseTypeDef:
@@ -2219,7 +2219,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         UserName: str,
@@ -2295,7 +2295,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_directory_config(self, DirectoryName: str) -> Dict[str, Any]:
         """
         Deletes the specified Directory Config object from AppStream 2.0. This object includes the
@@ -2328,7 +2328,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_fleet(self, Name: str) -> Dict[str, Any]:
         """
         Deletes the specified fleet.
@@ -2360,7 +2360,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_image(self, Name: str) -> ClientDeleteImageResponseTypeDef:
         """
         Deletes the specified image. You cannot delete an image when it is in use. After you delete an
@@ -2555,7 +2555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_image_builder(
         self, Name: str
     ) -> ClientDeleteImageBuilderResponseTypeDef:
@@ -2855,7 +2855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_image_permissions(
         self, Name: str, SharedAccountId: str
     ) -> Dict[str, Any]:
@@ -2896,7 +2896,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stack(self, Name: str) -> Dict[str, Any]:
         """
         Deletes the specified stack. After the stack is deleted, the application streaming environment
@@ -2930,7 +2930,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_usage_report_subscription(
         self, *args: Any, **kwargs: Any
     ) -> Dict[str, Any]:
@@ -2958,7 +2958,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, UserName: str, AuthenticationType: str) -> Dict[str, Any]:
         """
         Deletes a user from the user pool.
@@ -3000,7 +3000,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_directory_configs(
         self,
         DirectoryNames: List[str] = None,
@@ -3121,7 +3121,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_fleets(
         self, Names: List[str] = None, NextToken: str = None
     ) -> ClientDescribeFleetsResponseTypeDef:
@@ -3462,7 +3462,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_image_builders(
         self, Names: List[str] = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeImageBuildersResponseTypeDef:
@@ -3795,7 +3795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_image_permissions(
         self,
         Name: str,
@@ -3905,7 +3905,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_images(
         self,
         Names: List[str] = None,
@@ -4152,7 +4152,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_sessions(
         self,
         StackName: str,
@@ -4316,7 +4316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stacks(
         self, Names: List[str] = None, NextToken: str = None
     ) -> ClientDescribeStacksResponseTypeDef:
@@ -4562,7 +4562,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_usage_report_subscriptions(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeUsageReportSubscriptionsResponseTypeDef:
@@ -4668,7 +4668,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_stack_associations(
         self,
         StackName: str = None,
@@ -4787,7 +4787,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_users(
         self, AuthenticationType: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientDescribeUsersResponseTypeDef:
@@ -4908,7 +4908,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_user(self, UserName: str, AuthenticationType: str) -> Dict[str, Any]:
         """
         Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are
@@ -4951,7 +4951,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_fleet(self, FleetName: str, StackName: str) -> Dict[str, Any]:
         """
         Disassociates the specified fleet from the specified stack.
@@ -4989,7 +4989,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_user(self, UserName: str, AuthenticationType: str) -> Dict[str, Any]:
         """
         Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open
@@ -5034,7 +5034,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def expire_session(self, SessionId: str) -> Dict[str, Any]:
         """
         Immediately stops the specified streaming session.
@@ -5066,7 +5066,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5095,7 +5095,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5116,7 +5116,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5129,7 +5129,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_associated_fleets(
         self, StackName: str, NextToken: str = None
     ) -> ClientListAssociatedFleetsResponseTypeDef:
@@ -5187,7 +5187,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_associated_stacks(
         self, FleetName: str, NextToken: str = None
     ) -> ClientListAssociatedStacksResponseTypeDef:
@@ -5245,7 +5245,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5297,7 +5297,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_fleet(self, Name: str) -> Dict[str, Any]:
         """
         Starts the specified fleet.
@@ -5329,7 +5329,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_image_builder(
         self, Name: str, AppstreamAgentVersion: str = None
     ) -> ClientStartImageBuilderResponseTypeDef:
@@ -5636,7 +5636,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_fleet(self, Name: str) -> Dict[str, Any]:
         """
         Stops the specified fleet.
@@ -5668,7 +5668,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_image_builder(self, Name: str) -> ClientStopImageBuilderResponseTypeDef:
         """
         Stops the specified image builder.
@@ -5966,7 +5966,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Adds or overwrites one or more tags for the specified AppStream 2.0 resource. You can tag AppStream
@@ -6010,7 +6010,7 @@ class Client(BaseClient):
           Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the
           following special characters:
 
-          _ . : / = + \ - @
+          _ . : / = + \\ - @
 
           - *(string) --*
 
@@ -6029,7 +6029,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Disassociates one or more specified tags from the specified AppStream 2.0 resource.
@@ -6077,7 +6077,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_directory_config(
         self,
         DirectoryName: str,
@@ -6192,7 +6192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_fleet(
         self,
         ImageName: str = None,
@@ -6744,7 +6744,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_image_permissions(
         self,
         Name: str,
@@ -6804,7 +6804,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_stack(
         self,
         Name: str,

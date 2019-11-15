@@ -13,7 +13,7 @@ from mypy_boto3_athena.type_defs import (
 
 
 class GetQueryResults(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         QueryExecutionId: str,
@@ -190,7 +190,7 @@ class GetQueryResults(Boto3Paginator):
 
 
 class ListNamedQueries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WorkGroup: str = None,
@@ -266,7 +266,7 @@ class ListNamedQueries(Boto3Paginator):
 
 
 class ListQueryExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WorkGroup: str = None,

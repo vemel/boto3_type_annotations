@@ -351,8 +351,8 @@ class ClientCreateBudgetBudgetTypeDef(
 
     - **BudgetName** *(string) --* **[REQUIRED]**
 
-      The name of a budget. The name must be unique within an account. The ``:`` and ``\`` characters
-      aren't allowed in ``BudgetName`` .
+      The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
+      characters aren't allowed in ``BudgetName`` .
 
     - **BudgetLimit** *(dict) --*
 
@@ -1342,7 +1342,7 @@ class ClientDescribeBudgetPerformanceHistoryResponseBudgetPerformanceHistoryType
 
     - **BudgetName** *(string) --*
 
-      A string that represents the budget name. The ":" and "\" characters aren't allowed.
+      A string that represents the budget name. The ":" and "\\" characters aren't allowed.
 
     - **BudgetType** *(string) --*
 
@@ -1530,7 +1530,7 @@ class ClientDescribeBudgetPerformanceHistoryResponseTypeDef(
 
       - **BudgetName** *(string) --*
 
-        A string that represents the budget name. The ":" and "\" characters aren't allowed.
+        A string that represents the budget name. The ":" and "\\" characters aren't allowed.
 
       - **BudgetType** *(string) --*
 
@@ -2080,7 +2080,7 @@ class ClientDescribeBudgetResponseBudgetTypeDef(
 
     - **BudgetName** *(string) --*
 
-      The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+      The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
       characters aren't allowed in ``BudgetName`` .
 
     - **BudgetLimit** *(dict) --*
@@ -2364,7 +2364,7 @@ class ClientDescribeBudgetResponseTypeDef(_ClientDescribeBudgetResponseTypeDef):
 
       - **BudgetName** *(string) --*
 
-        The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+        The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
         characters aren't allowed in ``BudgetName`` .
 
       - **BudgetLimit** *(dict) --*
@@ -2984,7 +2984,7 @@ class ClientDescribeBudgetsResponseBudgetsTypeDef(
 
     - **BudgetName** *(string) --*
 
-      The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+      The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
       characters aren't allowed in ``BudgetName`` .
 
     - **BudgetLimit** *(dict) --*
@@ -3280,7 +3280,7 @@ class ClientDescribeBudgetsResponseTypeDef(_ClientDescribeBudgetsResponseTypeDef
 
         - **BudgetName** *(string) --*
 
-          The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+          The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
           characters aren't allowed in ``BudgetName`` .
 
         - **BudgetLimit** *(dict) --*
@@ -4175,8 +4175,8 @@ class ClientUpdateBudgetNewBudgetTypeDef(
 
     - **BudgetName** *(string) --* **[REQUIRED]**
 
-      The name of a budget. The name must be unique within an account. The ``:`` and ``\`` characters
-      aren't allowed in ``BudgetName`` .
+      The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
+      characters aren't allowed in ``BudgetName`` .
 
     - **BudgetLimit** *(dict) --*
 
@@ -5023,7 +5023,7 @@ class DescribeBudgetsPaginateResponseBudgetsTypeDef(
 
     - **BudgetName** *(string) --*
 
-      The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+      The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
       characters aren't allowed in ``BudgetName`` .
 
     - **BudgetLimit** *(dict) --*
@@ -5319,7 +5319,7 @@ class DescribeBudgetsPaginateResponseTypeDef(_DescribeBudgetsPaginateResponseTyp
 
         - **BudgetName** *(string) --*
 
-          The name of a budget. The name must be unique within an account. The ``:`` and ``\``
+          The name of a budget. The name must be unique within an account. The ``:`` and ``\\``
           characters aren't allowed in ``BudgetName`` .
 
         - **BudgetLimit** *(dict) --*

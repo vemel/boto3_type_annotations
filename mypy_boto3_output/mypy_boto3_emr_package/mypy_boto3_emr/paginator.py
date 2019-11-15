@@ -23,7 +23,7 @@ from mypy_boto3_emr.type_defs import (
 
 
 class ListBootstrapActions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,
@@ -122,7 +122,7 @@ class ListBootstrapActions(Boto3Paginator):
 
 
 class ListClusters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CreatedAfter: datetime = None,
@@ -293,7 +293,7 @@ class ListClusters(Boto3Paginator):
 
 
 class ListInstanceFleets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,
@@ -701,7 +701,7 @@ class ListInstanceFleets(Boto3Paginator):
 
 
 class ListInstanceGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,
@@ -1310,7 +1310,7 @@ class ListInstanceGroups(Boto3Paginator):
 
 
 class ListInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,
@@ -1555,7 +1555,7 @@ class ListInstances(Boto3Paginator):
 
 
 class ListSecurityConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListSecurityConfigurationsPaginatePaginationConfigTypeDef = None,
@@ -1636,7 +1636,7 @@ class ListSecurityConfigurations(Boto3Paginator):
 
 
 class ListSteps(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClusterId: str,

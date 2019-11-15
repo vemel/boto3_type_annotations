@@ -65,7 +65,7 @@ from mypy_boto3_rekognition.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -82,7 +82,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def compare_faces(
         self,
         SourceImage: ClientCompareFacesSourceImageTypeDef,
@@ -565,7 +565,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_collection(
         self, CollectionId: str
     ) -> ClientCreateCollectionResponseTypeDef:
@@ -630,7 +630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stream_processor(
         self,
         Input: ClientCreateStreamProcessorInputTypeDef,
@@ -761,7 +761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_collection(
         self, CollectionId: str
     ) -> ClientDeleteCollectionResponseTypeDef:
@@ -805,7 +805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_faces(
         self, CollectionId: str, FaceIds: List[str]
     ) -> ClientDeleteFacesResponseTypeDef:
@@ -863,7 +863,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_stream_processor(self, Name: str) -> Dict[str, Any]:
         """
         Deletes the stream processor identified by ``Name`` . You assign the value for ``Name`` when you
@@ -897,7 +897,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_collection(
         self, CollectionId: str
     ) -> ClientDescribeCollectionResponseTypeDef:
@@ -961,7 +961,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stream_processor(
         self, Name: str
     ) -> ClientDescribeStreamProcessorResponseTypeDef:
@@ -1095,7 +1095,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_faces(
         self, Image: ClientDetectFacesImageTypeDef, Attributes: List[str] = None
     ) -> ClientDetectFacesResponseTypeDef:
@@ -1539,7 +1539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_labels(
         self,
         Image: ClientDetectLabelsImageTypeDef,
@@ -1797,7 +1797,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_moderation_labels(
         self,
         Image: ClientDetectModerationLabelsImageTypeDef,
@@ -1930,7 +1930,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detect_text(
         self, Image: ClientDetectTextImageTypeDef
     ) -> ClientDetectTextResponseTypeDef:
@@ -2134,7 +2134,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2163,7 +2163,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_celebrity_info(self, Id: str) -> ClientGetCelebrityInfoResponseTypeDef:
         """
         Gets the name and additional information about a celebrity based on his or her Amazon Rekognition
@@ -2219,7 +2219,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_celebrity_recognition(
         self,
         JobId: str,
@@ -2753,7 +2753,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_content_moderation(
         self,
         JobId: str,
@@ -2949,7 +2949,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_face_detection(
         self, JobId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetFaceDetectionResponseTypeDef:
@@ -3391,7 +3391,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_face_search(
         self,
         JobId: str,
@@ -3975,7 +3975,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_label_detection(
         self,
         JobId: str,
@@ -4222,7 +4222,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4243,7 +4243,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_person_tracking(
         self,
         JobId: str,
@@ -4754,7 +4754,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4767,7 +4767,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def index_faces(
         self,
         CollectionId: str,
@@ -5726,7 +5726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_collections(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListCollectionsResponseTypeDef:
@@ -5800,7 +5800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_faces(
         self, CollectionId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListFacesResponseTypeDef:
@@ -5926,7 +5926,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_stream_processors(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListStreamProcessorsResponseTypeDef:
@@ -6002,7 +6002,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def recognize_celebrities(
         self, Image: ClientRecognizeCelebritiesImageTypeDef
     ) -> ClientRecognizeCelebritiesResponseTypeDef:
@@ -6386,7 +6386,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_faces(
         self,
         CollectionId: str,
@@ -6545,7 +6545,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_faces_by_image(
         self,
         CollectionId: str,
@@ -6772,7 +6772,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_celebrity_recognition(
         self,
         Video: ClientStartCelebrityRecognitionVideoTypeDef,
@@ -6887,7 +6887,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_content_moderation(
         self,
         Video: ClientStartContentModerationVideoTypeDef,
@@ -7015,7 +7015,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_face_detection(
         self,
         Video: ClientStartFaceDetectionVideoTypeDef,
@@ -7142,7 +7142,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_face_search(
         self,
         Video: ClientStartFaceSearchVideoTypeDef,
@@ -7270,7 +7270,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_label_detection(
         self,
         Video: ClientStartLabelDetectionVideoTypeDef,
@@ -7401,7 +7401,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_person_tracking(
         self,
         Video: ClientStartPersonTrackingVideoTypeDef,
@@ -7514,7 +7514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_stream_processor(self, Name: str) -> Dict[str, Any]:
         """
         Starts processing a stream processor. You create a stream processor by calling
@@ -7548,7 +7548,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_stream_processor(self, Name: str) -> Dict[str, Any]:
         """
         Stops a running stream processor that was created by  CreateStreamProcessor .

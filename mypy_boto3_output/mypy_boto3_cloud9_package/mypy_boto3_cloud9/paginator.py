@@ -12,7 +12,7 @@ from mypy_boto3_cloud9.type_defs import (
 
 
 class DescribeEnvironmentMemberships(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         userArn: str = None,
@@ -155,7 +155,7 @@ class DescribeEnvironmentMemberships(Boto3Paginator):
 
 
 class ListEnvironments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListEnvironmentsPaginatePaginationConfigTypeDef = None
     ) -> ListEnvironmentsPaginateResponseTypeDef:

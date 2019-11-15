@@ -21,7 +21,7 @@ from mypy_boto3_appsync.type_defs import (
 
 
 class ListApiKeys(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,
@@ -155,7 +155,7 @@ class ListApiKeys(Boto3Paginator):
 
 
 class ListDataSources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,
@@ -416,7 +416,7 @@ class ListDataSources(Boto3Paginator):
 
 
 class ListFunctions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,
@@ -542,7 +542,7 @@ class ListFunctions(Boto3Paginator):
 
 
 class ListGraphqlApis(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGraphqlApisPaginatePaginationConfigTypeDef = None
     ) -> ListGraphqlApisPaginateResponseTypeDef:
@@ -831,7 +831,7 @@ class ListGraphqlApis(Boto3Paginator):
 
 
 class ListResolvers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,
@@ -978,7 +978,7 @@ class ListResolvers(Boto3Paginator):
 
 
 class ListResolversByFunction(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,
@@ -1125,7 +1125,7 @@ class ListResolversByFunction(Boto3Paginator):
 
 
 class ListTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         apiId: str,

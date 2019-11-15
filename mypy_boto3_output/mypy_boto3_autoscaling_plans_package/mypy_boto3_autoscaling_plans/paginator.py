@@ -13,7 +13,7 @@ from mypy_boto3_autoscaling_plans.type_defs import (
 
 
 class DescribeScalingPlanResources(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ScalingPlanName: str,
@@ -362,7 +362,7 @@ class DescribeScalingPlanResources(Boto3Paginator):
 
 
 class DescribeScalingPlans(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ScalingPlanNames: List[str] = None,

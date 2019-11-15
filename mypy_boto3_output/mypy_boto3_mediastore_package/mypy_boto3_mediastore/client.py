@@ -20,7 +20,7 @@ from mypy_boto3_mediastore.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -37,7 +37,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_container(
         self, ContainerName: str, Tags: List[ClientCreateContainerTagsTypeDef] = None
     ) -> ClientCreateContainerResponseTypeDef:
@@ -173,7 +173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_container(self, ContainerName: str) -> Dict[str, Any]:
         """
         Deletes the specified container. Before you make a ``DeleteContainer`` request, delete any objects
@@ -206,7 +206,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_container_policy(self, ContainerName: str) -> Dict[str, Any]:
         """
         Deletes the access policy that is associated with the specified container.
@@ -238,7 +238,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cors_policy(self, ContainerName: str) -> Dict[str, Any]:
         """
         Deletes the cross-origin resource sharing (CORS) configuration information that is set for the
@@ -274,7 +274,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_lifecycle_policy(self, ContainerName: str) -> Dict[str, Any]:
         """
         Removes an object lifecycle policy from a container. It takes up to 20 minutes for the change to
@@ -307,7 +307,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_container(
         self, ContainerName: str = None
     ) -> ClientDescribeContainerResponseTypeDef:
@@ -397,7 +397,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -426,7 +426,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_container_policy(
         self, ContainerName: str
     ) -> ClientGetContainerPolicyResponseTypeDef:
@@ -469,7 +469,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_cors_policy(self, ContainerName: str) -> ClientGetCorsPolicyResponseTypeDef:
         """
         Returns the cross-origin resource sharing (CORS) configuration information that is set for the
@@ -581,7 +581,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_lifecycle_policy(
         self, ContainerName: str
     ) -> ClientGetLifecyclePolicyResponseTypeDef:
@@ -622,7 +622,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -643,7 +643,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -656,7 +656,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_containers(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListContainersResponseTypeDef:
@@ -771,7 +771,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, Resource: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -837,7 +837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_container_policy(self, ContainerName: str, Policy: str) -> Dict[str, Any]:
         """
         Creates an access policy for the specified container to restrict the users and clients that can
@@ -884,7 +884,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_cors_policy(
         self, ContainerName: str, CorsPolicy: List[ClientPutCorsPolicyCorsPolicyTypeDef]
     ) -> Dict[str, Any]:
@@ -1003,7 +1003,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_lifecycle_policy(
         self, ContainerName: str, LifecyclePolicy: str
     ) -> Dict[str, Any]:
@@ -1049,7 +1049,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_access_logging(self, ContainerName: str) -> Dict[str, Any]:
         """
         Starts access logging on the specified container. When you enable access logging on a container,
@@ -1082,7 +1082,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_access_logging(self, ContainerName: str) -> Dict[str, Any]:
         """
         Stops access logging on the specified container. When you stop access logging on a container,
@@ -1116,7 +1116,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, Resource: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -1190,7 +1190,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, Resource: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes tags from the specified container. You can specify one or more tags to remove.

@@ -71,7 +71,7 @@ from mypy_boto3_elasticbeanstalk.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_environment_update(
         self, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> None:
@@ -101,7 +101,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_environment_managed_action(
         self, ActionId: str, EnvironmentName: str = None, EnvironmentId: str = None
     ) -> ClientApplyEnvironmentManagedActionResponseTypeDef:
@@ -174,7 +174,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -191,7 +191,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def check_dns_availability(
         self, CNAMEPrefix: str
     ) -> ClientCheckDnsAvailabilityResponseTypeDef:
@@ -244,7 +244,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def compose_environments(
         self,
         ApplicationName: str = None,
@@ -563,7 +563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application(
         self,
         ApplicationName: str,
@@ -834,7 +834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_application_version(
         self,
         ApplicationName: str,
@@ -1186,7 +1186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_configuration_template(
         self,
         ApplicationName: str,
@@ -1473,7 +1473,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_environment(
         self,
         ApplicationName: str,
@@ -1961,7 +1961,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_version(
         self,
         PlatformName: str,
@@ -2160,7 +2160,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_storage_location(
         self, *args: Any, **kwargs: Any
     ) -> ClientCreateStorageLocationResponseTypeDef:
@@ -2200,7 +2200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application(
         self, ApplicationName: str, TerminateEnvByForce: bool = None
     ) -> None:
@@ -2235,7 +2235,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_application_version(
         self, ApplicationName: str, VersionLabel: str, DeleteSourceBundle: bool = None
     ) -> None:
@@ -2276,7 +2276,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_configuration_template(
         self, ApplicationName: str, TemplateName: str
     ) -> None:
@@ -2312,7 +2312,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_environment_configuration(
         self, ApplicationName: str, EnvironmentName: str
     ) -> None:
@@ -2349,7 +2349,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_platform_version(
         self, PlatformArn: str = None
     ) -> ClientDeletePlatformVersionResponseTypeDef:
@@ -2440,7 +2440,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -2539,7 +2539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_application_versions(
         self,
         ApplicationName: str = None,
@@ -2738,7 +2738,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_applications(
         self, ApplicationNames: List[str] = None
     ) -> ClientDescribeApplicationsResponseTypeDef:
@@ -2907,7 +2907,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_options(
         self,
         ApplicationName: str = None,
@@ -3132,7 +3132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_configuration_settings(
         self,
         ApplicationName: str,
@@ -3307,7 +3307,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_health(
         self,
         EnvironmentName: str = None,
@@ -3558,7 +3558,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_managed_action_history(
         self,
         EnvironmentId: str = None,
@@ -3679,7 +3679,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_managed_actions(
         self, EnvironmentName: str = None, EnvironmentId: str = None, Status: str = None
     ) -> ClientDescribeEnvironmentManagedActionsResponseTypeDef:
@@ -3768,7 +3768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environment_resources(
         self, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> ClientDescribeEnvironmentResourcesResponseTypeDef:
@@ -3953,7 +3953,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_environments(
         self,
         ApplicationName: str = None,
@@ -4313,7 +4313,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         ApplicationName: str = None,
@@ -4505,7 +4505,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_instances_health(
         self,
         EnvironmentName: str = None,
@@ -4859,7 +4859,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_platform_version(
         self, PlatformArn: str = None
     ) -> ClientDescribePlatformVersionResponseTypeDef:
@@ -5050,7 +5050,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5079,7 +5079,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5100,7 +5100,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5113,7 +5113,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_available_solution_stacks(
         self, *args: Any, **kwargs: Any
     ) -> ClientListAvailableSolutionStacksResponseTypeDef:
@@ -5181,7 +5181,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_platform_versions(
         self,
         Filters: List[ClientListPlatformVersionsFiltersTypeDef] = None,
@@ -5336,7 +5336,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5406,7 +5406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rebuild_environment(
         self, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> None:
@@ -5443,7 +5443,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_environment_info(
         self, InfoType: str, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> None:
@@ -5503,7 +5503,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restart_app_server(
         self, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> None:
@@ -5540,7 +5540,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retrieve_environment_info(
         self, InfoType: str, EnvironmentId: str = None, EnvironmentName: str = None
     ) -> ClientRetrieveEnvironmentInfoResponseTypeDef:
@@ -5640,7 +5640,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def swap_environment_cnames(
         self,
         SourceEnvironmentId: str = None,
@@ -5702,7 +5702,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_environment(
         self,
         EnvironmentId: str = None,
@@ -6014,7 +6014,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application(
         self, ApplicationName: str, Description: str = None
     ) -> ClientUpdateApplicationResponseTypeDef:
@@ -6186,7 +6186,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application_resource_lifecycle(
         self,
         ApplicationName: str,
@@ -6373,7 +6373,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application_version(
         self, ApplicationName: str, VersionLabel: str, Description: str = None
     ) -> ClientUpdateApplicationVersionResponseTypeDef:
@@ -6549,7 +6549,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_configuration_template(
         self,
         ApplicationName: str,
@@ -6781,7 +6781,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_environment(
         self,
         ApplicationName: str = None,
@@ -7247,12 +7247,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_tags_for_resource(
         self,
         ResourceArn: str,
         TagsToAdd: List[ClientUpdateTagsForResourceTagsToAddTypeDef] = None,
-        TagsToRemove: List[Any] = None,
+        TagsToRemove: List[str] = None,
     ) -> None:
         """
         Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed:
@@ -7335,7 +7335,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def validate_configuration_settings(
         self,
         ApplicationName: str,

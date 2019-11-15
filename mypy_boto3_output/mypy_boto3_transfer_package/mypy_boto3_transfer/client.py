@@ -1,11 +1,10 @@
 "Main interface for transfer Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_transfer.type_defs import (
     ClientCreateServerEndpointDetailsTypeDef,
     ClientCreateServerIdentityProviderDetailsTypeDef,
@@ -20,6 +19,7 @@ from mypy_boto3_transfer.type_defs import (
     ClientListServersResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientListUsersResponseTypeDef,
+    ClientTagResourceTagsTypeDef,
     ClientTestIdentityProviderResponseTypeDef,
     ClientUpdateServerEndpointDetailsTypeDef,
     ClientUpdateServerIdentityProviderDetailsTypeDef,
@@ -30,7 +30,7 @@ from mypy_boto3_transfer.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -47,7 +47,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_server(
         self,
         EndpointDetails: ClientCreateServerEndpointDetailsTypeDef = None,
@@ -192,7 +192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         Role: str,
@@ -382,7 +382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_server(self, ServerId: str) -> None:
         """
         Deletes the Secure File Transfer Protocol (SFTP) server that you specify.
@@ -406,7 +406,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ssh_public_key(
         self, ServerId: str, SshPublicKeyId: str, UserName: str
     ) -> None:
@@ -445,7 +445,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, ServerId: str, UserName: str) -> None:
         """
         Deletes the user belonging to the server you specify.
@@ -479,7 +479,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_server(self, ServerId: str) -> ClientDescribeServerResponseTypeDef:
         """
         Describes the server that you specify by passing the ``ServerId`` parameter.
@@ -635,7 +635,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user(
         self, ServerId: str, UserName: str
     ) -> ClientDescribeUserResponseTypeDef:
@@ -829,7 +829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -858,7 +858,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -879,7 +879,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -892,7 +892,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_ssh_public_key(
         self, ServerId: str, SshPublicKeyBody: str, UserName: str
     ) -> ClientImportSshPublicKeyResponseTypeDef:
@@ -963,7 +963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_servers(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListServersResponseTypeDef:
@@ -1073,7 +1073,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, Arn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1164,7 +1164,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self, ServerId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListUsersResponseTypeDef:
@@ -1278,7 +1278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_server(self, ServerId: str) -> None:
         """
         Changes the state of a Secure File Transfer Protocol (SFTP) server from ``OFFLINE`` to ``ONLINE`` .
@@ -1308,7 +1308,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_server(self, ServerId: str) -> None:
         """
         Changes the state of an SFTP server from ``ONLINE`` to ``OFFLINE`` . An ``OFFLINE`` server cannot
@@ -1339,8 +1339,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, Arn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, Arn: str, Tags: List[ClientTagResourceTagsTypeDef]) -> None:
         """
         Attaches a key-value pair to a resource, as identified by its Amazon Resource Name (ARN). Resources
         are users, servers, roles, and other entities.
@@ -1392,7 +1392,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_identity_provider(
         self, ServerId: str, UserName: str, UserPassword: str = None
     ) -> ClientTestIdentityProviderResponseTypeDef:
@@ -1464,8 +1464,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, Arn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, Arn: str, TagKeys: List[str]) -> None:
         """
         Detaches a key-value pair from a resource, as identified by its Amazon Resource Name (ARN).
         Resources are users, servers, roles, and other entities.
@@ -1501,7 +1501,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_server(
         self,
         ServerId: str,
@@ -1615,7 +1615,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self,
         ServerId: str,

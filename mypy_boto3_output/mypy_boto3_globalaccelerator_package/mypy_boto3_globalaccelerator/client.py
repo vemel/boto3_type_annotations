@@ -28,7 +28,7 @@ from mypy_boto3_globalaccelerator.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -45,7 +45,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_accelerator(
         self,
         Name: str,
@@ -204,7 +204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_endpoint_group(
         self,
         ListenerArn: str,
@@ -501,7 +501,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_listener(
         self,
         AcceleratorArn: str,
@@ -663,7 +663,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_accelerator(self, AcceleratorArn: str) -> None:
         """
         Delete an accelerator. Note: before you can delete an accelerator, you must disable it and remove
@@ -686,7 +686,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint_group(self, EndpointGroupArn: str) -> None:
         """
         Delete an endpoint group from a listener.
@@ -708,7 +708,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_listener(self, ListenerArn: str) -> None:
         """
         Delete a listener from an accelerator.
@@ -730,7 +730,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_accelerator(
         self, AcceleratorArn: str
     ) -> ClientDescribeAcceleratorResponseTypeDef:
@@ -855,7 +855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_accelerator_attributes(
         self, AcceleratorArn: str
     ) -> ClientDescribeAcceleratorAttributesResponseTypeDef:
@@ -922,7 +922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoint_group(
         self, EndpointGroupArn: str
     ) -> ClientDescribeEndpointGroupResponseTypeDef:
@@ -1096,7 +1096,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_listener(
         self, ListenerArn: str
     ) -> ClientDescribeListenerResponseTypeDef:
@@ -1193,7 +1193,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1222,7 +1222,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1243,7 +1243,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1256,7 +1256,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_accelerators(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListAcceleratorsResponseTypeDef:
@@ -1400,7 +1400,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_endpoint_groups(
         self, ListenerArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListEndpointGroupsResponseTypeDef:
@@ -1600,7 +1600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_listeners(
         self, AcceleratorArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListListenersResponseTypeDef:
@@ -1720,7 +1720,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_accelerator(
         self,
         AcceleratorArn: str,
@@ -1876,7 +1876,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_accelerator_attributes(
         self,
         AcceleratorArn: str,
@@ -1974,7 +1974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_endpoint_group(
         self,
         EndpointGroupArn: str,
@@ -2254,7 +2254,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_listener(
         self,
         ListenerArn: str,

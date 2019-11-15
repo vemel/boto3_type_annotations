@@ -18,7 +18,7 @@ from mypy_boto3_iotanalytics.type_defs import (
 
 
 class ListChannels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListChannelsPaginatePaginationConfigTypeDef = None
     ) -> ListChannelsPaginateResponseTypeDef:
@@ -148,7 +148,7 @@ class ListChannels(Boto3Paginator):
 
 
 class ListDatasetContents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         datasetName: str,
@@ -284,7 +284,7 @@ class ListDatasetContents(Boto3Paginator):
 
 
 class ListDatasets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetsPaginatePaginationConfigTypeDef = None
     ) -> ListDatasetsPaginateResponseTypeDef:
@@ -441,7 +441,7 @@ class ListDatasets(Boto3Paginator):
 
 
 class ListDatastores(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatastoresPaginatePaginationConfigTypeDef = None
     ) -> ListDatastoresPaginateResponseTypeDef:
@@ -571,7 +571,7 @@ class ListDatastores(Boto3Paginator):
 
 
 class ListPipelines(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPipelinesPaginatePaginationConfigTypeDef = None
     ) -> ListPipelinesPaginateResponseTypeDef:

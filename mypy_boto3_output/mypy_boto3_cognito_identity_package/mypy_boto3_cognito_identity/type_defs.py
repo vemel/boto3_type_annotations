@@ -1069,6 +1069,159 @@ class ClientMergeDeveloperIdentitiesResponseTypeDef(
     """
 
 
+_ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef = TypedDict(
+    "_ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef",
+    {"Claim": str, "MatchType": str, "Value": str, "RoleARN": str},
+)
+
+
+class ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef(
+    _ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef
+):
+    """
+    Type definition for `ClientSetIdentityPoolRolesRoleMappingsRulesConfiguration` `Rules`
+
+    A rule that maps a claim name, a claim value, and a match type to a role ARN.
+
+    - **Claim** *(string) --* **[REQUIRED]**
+
+      The claim name that must be present in the token, for example, "isAdmin" or "paid".
+
+    - **MatchType** *(string) --* **[REQUIRED]**
+
+      The match condition that specifies how closely the claim value in the IdP token must
+      match ``Value`` .
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      A brief string that the claim must match, for example, "paid" or "yes".
+
+    - **RoleARN** *(string) --* **[REQUIRED]**
+
+      The role ARN.
+    """
+
+
+_ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef = TypedDict(
+    "_ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef",
+    {
+        "Rules": List[
+            ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef
+        ]
+    },
+)
+
+
+class ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef(
+    _ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef
+):
+    """
+    Type definition for `ClientSetIdentityPoolRolesRoleMappings` `RulesConfiguration`
+
+    The rules to be used for mapping users to roles.
+
+    If you specify Rules as the role mapping type, ``RulesConfiguration`` is required.
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      An array of rules. You can specify up to 25 rules per identity provider.
+
+      Rules are evaluated in order. The first one to match specifies the role.
+
+      - *(dict) --*
+
+        A rule that maps a claim name, a claim value, and a match type to a role ARN.
+
+        - **Claim** *(string) --* **[REQUIRED]**
+
+          The claim name that must be present in the token, for example, "isAdmin" or "paid".
+
+        - **MatchType** *(string) --* **[REQUIRED]**
+
+          The match condition that specifies how closely the claim value in the IdP token must
+          match ``Value`` .
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          A brief string that the claim must match, for example, "paid" or "yes".
+
+        - **RoleARN** *(string) --* **[REQUIRED]**
+
+          The role ARN.
+    """
+
+
+_RequiredClientSetIdentityPoolRolesRoleMappingsTypeDef = TypedDict(
+    "_RequiredClientSetIdentityPoolRolesRoleMappingsTypeDef", {"Type": str}
+)
+_OptionalClientSetIdentityPoolRolesRoleMappingsTypeDef = TypedDict(
+    "_OptionalClientSetIdentityPoolRolesRoleMappingsTypeDef",
+    {
+        "AmbiguousRoleResolution": str,
+        "RulesConfiguration": ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientSetIdentityPoolRolesRoleMappingsTypeDef(
+    _RequiredClientSetIdentityPoolRolesRoleMappingsTypeDef,
+    _OptionalClientSetIdentityPoolRolesRoleMappingsTypeDef,
+):
+    """
+    Type definition for `ClientSetIdentityPoolRoles` `RoleMappings`
+
+    A role mapping.
+
+    - **Type** *(string) --* **[REQUIRED]**
+
+      The role mapping type. Token will use ``cognito:roles`` and ``cognito:preferred_role``
+      claims from the Cognito identity provider token to map groups to roles. Rules will attempt
+      to match claims from the token to map to a role.
+
+    - **AmbiguousRoleResolution** *(string) --*
+
+      If you specify Token or Rules as the ``Type`` , ``AmbiguousRoleResolution`` is required.
+
+      Specifies the action to be taken if either no rules match the claim value for the ``Rules``
+      type, or there is no ``cognito:preferred_role`` claim and there are multiple
+      ``cognito:roles`` matches for the ``Token`` type.
+
+    - **RulesConfiguration** *(dict) --*
+
+      The rules to be used for mapping users to roles.
+
+      If you specify Rules as the role mapping type, ``RulesConfiguration`` is required.
+
+      - **Rules** *(list) --* **[REQUIRED]**
+
+        An array of rules. You can specify up to 25 rules per identity provider.
+
+        Rules are evaluated in order. The first one to match specifies the role.
+
+        - *(dict) --*
+
+          A rule that maps a claim name, a claim value, and a match type to a role ARN.
+
+          - **Claim** *(string) --* **[REQUIRED]**
+
+            The claim name that must be present in the token, for example, "isAdmin" or "paid".
+
+          - **MatchType** *(string) --* **[REQUIRED]**
+
+            The match condition that specifies how closely the claim value in the IdP token must
+            match ``Value`` .
+
+          - **Value** *(string) --* **[REQUIRED]**
+
+            A brief string that the claim must match, for example, "paid" or "yes".
+
+          - **RoleARN** *(string) --* **[REQUIRED]**
+
+            The role ARN.
+    """
+
+
 _ClientUpdateIdentityPoolCognitoIdentityProvidersTypeDef = TypedDict(
     "_ClientUpdateIdentityPoolCognitoIdentityProvidersTypeDef",
     {"ProviderName": str, "ClientId": str, "ServerSideTokenCheck": bool},

@@ -44,7 +44,7 @@ from mypy_boto3_dms.type_defs import (
 
 
 class DescribeCertificates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeCertificatesPaginateFiltersTypeDef] = None,
@@ -199,7 +199,7 @@ class DescribeCertificates(Boto3Paginator):
 
 
 class DescribeConnections(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeConnectionsPaginateFiltersTypeDef] = None,
@@ -333,7 +333,7 @@ class DescribeConnections(Boto3Paginator):
 
 
 class DescribeEndpointTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeEndpointTypesPaginateFiltersTypeDef] = None,
@@ -458,7 +458,7 @@ class DescribeEndpointTypes(Boto3Paginator):
 
 
 class DescribeEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeEndpointsPaginateFiltersTypeDef] = None,
@@ -756,7 +756,7 @@ class DescribeEndpoints(Boto3Paginator):
                   - **CsvRowDelimiter** *(string) --*
 
                     The delimiter used to separate rows in the source files. The default is a carriage
-                    return (``\n`` ).
+                    return (``\\n`` ).
 
                   - **CsvDelimiter** *(string) --*
 
@@ -1281,7 +1281,7 @@ class DescribeEndpoints(Boto3Paginator):
 
 
 class DescribeEventSubscriptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SubscriptionName: str = None,
@@ -1453,7 +1453,7 @@ class DescribeEventSubscriptions(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SourceIdentifier: str = None,
@@ -1632,7 +1632,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeOrderableReplicationInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: DescribeOrderableReplicationInstancesPaginatePaginationConfigTypeDef = None,
@@ -1766,7 +1766,7 @@ class DescribeOrderableReplicationInstances(Boto3Paginator):
 
 
 class DescribeReplicationInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeReplicationInstancesPaginateFiltersTypeDef] = None,
@@ -2107,7 +2107,7 @@ class DescribeReplicationInstances(Boto3Paginator):
 
 
 class DescribeReplicationSubnetGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeReplicationSubnetGroupsPaginateFiltersTypeDef] = None,
@@ -2258,7 +2258,7 @@ class DescribeReplicationSubnetGroups(Boto3Paginator):
 
 
 class DescribeReplicationTaskAssessmentResults(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReplicationTaskArn: str = None,
@@ -2383,7 +2383,7 @@ class DescribeReplicationTaskAssessmentResults(Boto3Paginator):
 
 
 class DescribeReplicationTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeReplicationTasksPaginateFiltersTypeDef] = None,
@@ -2666,7 +2666,7 @@ class DescribeReplicationTasks(Boto3Paginator):
 
 
 class DescribeSchemas(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         EndpointArn: str,
@@ -2746,7 +2746,7 @@ class DescribeSchemas(Boto3Paginator):
 
 
 class DescribeTableStatistics(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ReplicationTaskArn: str,

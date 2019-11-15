@@ -13,7 +13,7 @@ from mypy_boto3_opsworkscm.type_defs import (
 
 
 class DescribeBackups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         BackupId: str = None,
@@ -234,7 +234,7 @@ class DescribeBackups(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServerName: str,
@@ -333,7 +333,7 @@ class DescribeEvents(Boto3Paginator):
 
 
 class DescribeServers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServerName: str = None,

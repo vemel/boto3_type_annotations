@@ -18,7 +18,7 @@ from mypy_boto3_health.type_defs import (
 
 
 class DescribeAffectedEntities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filter: DescribeAffectedEntitiesPaginatefilterTypeDef,
@@ -240,7 +240,7 @@ class DescribeAffectedEntities(Boto3Paginator):
 
 
 class DescribeEventAggregates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         aggregateField: str,
@@ -523,7 +523,7 @@ class DescribeEventAggregates(Boto3Paginator):
 
 
 class DescribeEventTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filter: DescribeEventTypesPaginatefilterTypeDef = None,
@@ -665,7 +665,7 @@ class DescribeEventTypes(Boto3Paginator):
 
 
 class DescribeEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         filter: DescribeEventsPaginatefilterTypeDef = None,

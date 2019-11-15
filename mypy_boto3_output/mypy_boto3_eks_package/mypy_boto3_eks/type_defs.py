@@ -2681,6 +2681,52 @@ class ClientUpdateClusterVersionResponseTypeDef(
     """
 
 
+_ClusterActiveWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterActiveWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterActiveWaitWaiterConfigTypeDef(_ClusterActiveWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterActiveWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
+_ClusterDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterDeletedWaitWaiterConfigTypeDef(_ClusterDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _ListClustersPaginatePaginationConfigTypeDef = TypedDict(
     "_ListClustersPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},

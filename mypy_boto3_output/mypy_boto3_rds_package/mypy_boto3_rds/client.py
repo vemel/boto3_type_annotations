@@ -6,9 +6,9 @@ from typing import Any, Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_rds.type_defs import (
     ClientAddSourceIdentifierToSubscriptionResponseTypeDef,
+    ClientAddTagsToResourceTagsTypeDef,
     ClientApplyPendingMaintenanceActionResponseTypeDef,
     ClientAuthorizeDbSecurityGroupIngressResponseTypeDef,
     ClientBacktrackDbClusterResponseTypeDef,
@@ -189,7 +189,7 @@ from mypy_boto3_rds.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_role_to_db_cluster(
         self, DBClusterIdentifier: str, RoleArn: str, FeatureName: str = None
     ) -> None:
@@ -234,7 +234,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_role_to_db_instance(
         self, DBInstanceIdentifier: str, RoleArn: str, FeatureName: str
     ) -> None:
@@ -276,7 +276,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_source_identifier_to_subscription(
         self, SubscriptionName: str, SourceIdentifier: str
     ) -> ClientAddSourceIdentifierToSubscriptionResponseTypeDef:
@@ -402,9 +402,9 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
-        self, ResourceName: str, Tags: List[TypeDefEC2Tag]
+        self, ResourceName: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
     ) -> None:
         """
         Adds metadata tags to an Amazon RDS resource. These tags can also be used with cost allocation
@@ -451,19 +451,19 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def apply_pending_maintenance_action(
         self, ResourceIdentifier: str, ApplyAction: str, OptInType: str
     ) -> ClientApplyPendingMaintenanceActionResponseTypeDef:
@@ -587,7 +587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def authorize_db_security_group_ingress(
         self,
         DBSecurityGroupName: str,
@@ -769,7 +769,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def backtrack_db_cluster(
         self,
         DBClusterIdentifier: str,
@@ -910,7 +910,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -927,7 +927,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_db_cluster_parameter_group(
         self,
         SourceDBClusterParameterGroupIdentifier: str,
@@ -1016,14 +1016,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1070,7 +1070,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_db_cluster_snapshot(
         self,
         SourceDBClusterSnapshotIdentifier: str,
@@ -1118,8 +1118,8 @@ class Client(BaseClient):
           following example:
           ``arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`` .
 
-        To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests: Using
-        Query Parameters (AWS Signature Version 4)
+        To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests\\:
+        Using Query Parameters (AWS Signature Version 4)
         <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html>`__ and `Signature
         Version 4 Signing Process
         <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html>`__ .
@@ -1261,7 +1261,7 @@ class Client(BaseClient):
           following example:
           ``arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115`` .
 
-          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests:
+          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests\\:
           Using Query Parameters (AWS Signature Version 4)
           <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html>`__ and `Signature
           Version 4 Signing Process
@@ -1299,14 +1299,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type SourceRegion: string
         :param SourceRegion:
@@ -1445,7 +1445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_db_parameter_group(
         self,
         SourceDBParameterGroupIdentifier: str,
@@ -1526,14 +1526,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1579,7 +1579,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_db_snapshot(
         self,
         SourceDBSnapshotIdentifier: str,
@@ -1700,14 +1700,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type CopyTags: boolean
         :param CopyTags:
@@ -1748,7 +1748,7 @@ class Client(BaseClient):
           then your ``SourceDBSnapshotIdentifier`` looks like the following example:
           ``arn:aws:rds:us-west-2:123456789012:snapshot:mysql-instance1-snapshot-20161115`` .
 
-          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests:
+          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests\\:
           Using Query Parameters (AWS Signature Version 4)
           <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html>`__ and `Signature
           Version 4 Signing Process
@@ -2004,7 +2004,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_option_group(
         self,
         SourceOptionGroupIdentifier: str,
@@ -2088,14 +2088,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -2314,7 +2314,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_custom_availability_zone(
         self,
         CustomAvailabilityZoneName: str,
@@ -2451,7 +2451,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_cluster(
         self,
         DBClusterIdentifier: str,
@@ -2695,7 +2695,7 @@ class Client(BaseClient):
         :param MasterUserPassword:
 
           The password for the master database user. This password can contain any printable ASCII
-          character except "/", '"', or "@".
+          character except "/", ''', or "@".
 
           Constraints: Must contain from 8 to 41 characters.
 
@@ -2767,14 +2767,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type StorageEncrypted: boolean
         :param StorageEncrypted:
@@ -2832,7 +2832,7 @@ class Client(BaseClient):
           then your ``ReplicationSourceIdentifier`` would look like Example:
           ``arn:aws:rds:us-west-2:123456789012:cluster:aurora-cluster1`` .
 
-          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests:
+          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests\\:
           Using Query Parameters (AWS Signature Version 4)
           <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html>`__ and `Signature
           Version 4 Signing Process
@@ -3457,7 +3457,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_cluster_endpoint(
         self,
         DBClusterIdentifier: str,
@@ -3613,7 +3613,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_cluster_parameter_group(
         self,
         DBClusterParameterGroupName: str,
@@ -3719,14 +3719,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -3773,7 +3773,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_cluster_snapshot(
         self,
         DBClusterSnapshotIdentifier: str,
@@ -3845,14 +3845,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -3986,7 +3986,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_instance(
         self,
         DBInstanceIdentifier: str,
@@ -4386,7 +4386,7 @@ class Client(BaseClient):
         :param MasterUserPassword:
 
           The password for the master user. The password can include any printable ASCII character except
-          "/", '"', or "@".
+          "/", ''', or "@".
 
            **Amazon Aurora**
 
@@ -4730,14 +4730,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type DBClusterIdentifier: string
         :param DBClusterIdentifier:
@@ -5886,7 +5886,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_instance_read_replica(
         self,
         DBInstanceIdentifier: str,
@@ -6135,14 +6135,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type DBSubnetGroupName: string
         :param DBSubnetGroupName:
@@ -6270,7 +6270,7 @@ class Client(BaseClient):
           us-west-2 AWS Region, then your ``SourceDBInstanceIdentifier`` looks like the following example:
           ``arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115`` .
 
-          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests:
+          To learn how to generate a Signature Version 4 signed request, see `Authenticating Requests\\:
           Using Query Parameters (AWS Signature Version 4)
           <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html>`__ and `Signature
           Version 4 Signing Process
@@ -7302,7 +7302,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_parameter_group(
         self,
         DBParameterGroupName: str,
@@ -7400,14 +7400,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -7453,7 +7453,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_security_group(
         self,
         DBSecurityGroupName: str,
@@ -7519,14 +7519,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -7639,7 +7639,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_snapshot(
         self,
         DBSnapshotIdentifier: str,
@@ -7707,14 +7707,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -7939,7 +7939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_db_subnet_group(
         self,
         DBSubnetGroupName: str,
@@ -8006,14 +8006,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8098,7 +8098,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_subscription(
         self,
         SubscriptionName: str,
@@ -8228,14 +8228,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8326,7 +8326,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_global_cluster(
         self,
         GlobalClusterIdentifier: str = None,
@@ -8509,7 +8509,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_option_group(
         self,
         OptionGroupName: str,
@@ -8583,14 +8583,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8809,7 +8809,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_custom_availability_zone(
         self, CustomAvailabilityZoneId: str
     ) -> ClientDeleteCustomAvailabilityZoneResponseTypeDef:
@@ -8918,7 +8918,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_cluster(
         self,
         DBClusterIdentifier: str,
@@ -9466,7 +9466,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_cluster_endpoint(
         self, DBClusterEndpointIdentifier: str
     ) -> ClientDeleteDbClusterEndpointResponseTypeDef:
@@ -9583,7 +9583,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_cluster_parameter_group(
         self, DBClusterParameterGroupName: str
     ) -> None:
@@ -9624,7 +9624,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_cluster_snapshot(
         self, DBClusterSnapshotIdentifier: str
     ) -> ClientDeleteDbClusterSnapshotResponseTypeDef:
@@ -9791,7 +9791,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_instance(
         self,
         DBInstanceIdentifier: str,
@@ -10772,7 +10772,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_instance_automated_backup(
         self, DbiResourceId: str
     ) -> ClientDeleteDbInstanceAutomatedBackupResponseTypeDef:
@@ -10963,7 +10963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_parameter_group(self, DBParameterGroupName: str) -> None:
         """
         Deletes a specified DB parameter group. The DB parameter group to be deleted can't be associated
@@ -10994,7 +10994,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_security_group(self, DBSecurityGroupName: str) -> None:
         """
         Deletes a DB security group.
@@ -11034,7 +11034,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_snapshot(
         self, DBSnapshotIdentifier: str
     ) -> ClientDeleteDbSnapshotResponseTypeDef:
@@ -11284,7 +11284,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_db_subnet_group(self, DBSubnetGroupName: str) -> None:
         """
         Deletes a DB subnet group.
@@ -11320,7 +11320,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_subscription(
         self, SubscriptionName: str
     ) -> ClientDeleteEventSubscriptionResponseTypeDef:
@@ -11430,7 +11430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_global_cluster(
         self, GlobalClusterIdentifier: str
     ) -> ClientDeleteGlobalClusterResponseTypeDef:
@@ -11560,7 +11560,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_installation_media(
         self, InstallationMediaId: str
     ) -> ClientDeleteInstallationMediaResponseTypeDef:
@@ -11646,7 +11646,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_option_group(self, OptionGroupName: str) -> None:
         """
         Deletes an existing option group.
@@ -11672,7 +11672,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -11805,7 +11805,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_certificates(
         self,
         CertificateIdentifier: str = None,
@@ -11967,7 +11967,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_custom_availability_zones(
         self,
         CustomAvailabilityZoneId: str = None,
@@ -12160,7 +12160,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_backtracks(
         self,
         DBClusterIdentifier: str,
@@ -12378,7 +12378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_endpoints(
         self,
         DBClusterIdentifier: str = None,
@@ -12598,7 +12598,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_parameter_groups(
         self,
         DBClusterParameterGroupName: str = None,
@@ -12761,7 +12761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_parameters(
         self,
         DBClusterParameterGroupName: str,
@@ -12973,7 +12973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_snapshot_attributes(
         self, DBClusterSnapshotIdentifier: str
     ) -> ClientDescribeDbClusterSnapshotAttributesResponseTypeDef:
@@ -13078,7 +13078,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_cluster_snapshots(
         self,
         DBClusterIdentifier: str = None,
@@ -13406,7 +13406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_clusters(
         self,
         DBClusterIdentifier: str = None,
@@ -14018,7 +14018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_engine_versions(
         self,
         Engine: str = None,
@@ -14372,7 +14372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_instance_automated_backups(
         self,
         DbiResourceId: str = None,
@@ -14680,7 +14680,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_instances(
         self,
         DBInstanceIdentifier: str = None,
@@ -15697,7 +15697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_log_files(
         self,
         DBInstanceIdentifier: str,
@@ -15858,7 +15858,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_parameter_groups(
         self,
         DBParameterGroupName: str = None,
@@ -16013,7 +16013,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_parameters(
         self,
         DBParameterGroupName: str,
@@ -16219,7 +16219,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_security_groups(
         self,
         DBSecurityGroupName: str = None,
@@ -16437,7 +16437,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_snapshot_attributes(
         self, DBSnapshotIdentifier: str
     ) -> ClientDescribeDbSnapshotAttributesResponseTypeDef:
@@ -16533,7 +16533,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_snapshots(
         self,
         DBInstanceIdentifier: str = None,
@@ -16958,7 +16958,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_db_subnet_groups(
         self,
         DBSubnetGroupName: str = None,
@@ -17151,7 +17151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_engine_default_cluster_parameters(
         self,
         DBParameterGroupFamily: str,
@@ -17360,7 +17360,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_engine_default_parameters(
         self,
         DBParameterGroupFamily: str,
@@ -17563,7 +17563,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_categories(
         self,
         SourceType: str = None,
@@ -17680,7 +17680,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_subscriptions(
         self,
         SubscriptionName: str = None,
@@ -17879,7 +17879,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self,
         SourceIdentifier: str = None,
@@ -18111,7 +18111,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_global_clusters(
         self,
         GlobalClusterIdentifier: str = None,
@@ -18337,7 +18337,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_installation_media(
         self,
         InstallationMediaId: str = None,
@@ -18514,7 +18514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_option_group_options(
         self,
         EngineName: str,
@@ -18828,7 +18828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_option_groups(
         self,
         OptionGroupName: str = None,
@@ -19169,7 +19169,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_orderable_db_instance_options(
         self,
         Engine: str,
@@ -19500,7 +19500,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_pending_maintenance_actions(
         self,
         ResourceIdentifier: str = None,
@@ -19692,7 +19692,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_db_instances(
         self,
         ReservedDBInstanceId: str = None,
@@ -19986,7 +19986,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_reserved_db_instances_offerings(
         self,
         ReservedDBInstancesOfferingId: str = None,
@@ -20232,7 +20232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_source_regions(
         self,
         RegionName: str = None,
@@ -20381,7 +20381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_valid_db_instance_modifications(
         self, DBInstanceIdentifier: str
     ) -> ClientDescribeValidDbInstanceModificationsResponseTypeDef:
@@ -20566,7 +20566,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def download_db_log_file_portion(
         self,
         DBInstanceIdentifier: str,
@@ -20665,7 +20665,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def failover_db_cluster(
         self, DBClusterIdentifier: str, TargetDBInstanceIdentifier: str = None
     ) -> ClientFailoverDbClusterResponseTypeDef:
@@ -21193,7 +21193,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_db_auth_token(
         self, DBHostname: str, Port: int, DBUsername: str, Region: str = None
     ) -> None:
@@ -21216,7 +21216,7 @@ class Client(BaseClient):
         :return: A presigned url which can be used as an auth token.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -21245,7 +21245,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -21266,7 +21266,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -21279,7 +21279,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_installation_media(
         self,
         CustomAvailabilityZoneId: str,
@@ -21422,7 +21422,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self,
         ResourceName: str,
@@ -21530,18 +21530,18 @@ class Client(BaseClient):
                   A key is the required name of the tag. The string value can be from 1 to 128 Unicode
                   characters in length and can't be prefixed with "aws:" or "rds:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
                 - **Value** *(string) --*
 
                   A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
                   characters in length and can't be prefixed with "aws:" or "rds:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_current_db_cluster_capacity(
         self,
         DBClusterIdentifier: str,
@@ -21669,7 +21669,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_cluster(
         self,
         DBClusterIdentifier: str,
@@ -21826,7 +21826,7 @@ class Client(BaseClient):
         :param MasterUserPassword:
 
           The new password for the master database user. This password can contain any printable ASCII
-          character except "/", '"', or "@".
+          character except "/", ''', or "@".
 
           Constraints: Must contain from 8 to 41 characters.
 
@@ -22537,7 +22537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_cluster_endpoint(
         self,
         DBClusterEndpointIdentifier: str,
@@ -22685,7 +22685,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_cluster_parameter_group(
         self,
         DBClusterParameterGroupName: str,
@@ -22845,7 +22845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_cluster_snapshot_attribute(
         self,
         DBClusterSnapshotIdentifier: str,
@@ -22999,7 +22999,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_instance(
         self,
         DBInstanceIdentifier: str,
@@ -23213,7 +23213,7 @@ class Client(BaseClient):
         :param MasterUserPassword:
 
           The new password for the master user. The password can include any printable ASCII character
-          except "/", '"', or "@".
+          except "/", ''', or "@".
 
           Changing this parameter doesn't result in an outage and the change is asynchronously applied as
           soon as possible. Between the time of the request and the completion of the request, the
@@ -24626,7 +24626,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_parameter_group(
         self,
         DBParameterGroupName: str,
@@ -24783,7 +24783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_snapshot(
         self,
         DBSnapshotIdentifier: str,
@@ -25065,7 +25065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_snapshot_attribute(
         self,
         DBSnapshotIdentifier: str,
@@ -25209,7 +25209,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_db_subnet_group(
         self,
         DBSubnetGroupName: str,
@@ -25338,7 +25338,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_event_subscription(
         self,
         SubscriptionName: str,
@@ -25495,7 +25495,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_global_cluster(
         self,
         GlobalClusterIdentifier: str = None,
@@ -25660,7 +25660,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_option_group(
         self,
         OptionGroupName: str,
@@ -26031,7 +26031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def promote_read_replica(
         self,
         DBInstanceIdentifier: str,
@@ -26992,7 +26992,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def promote_read_replica_db_cluster(
         self, DBClusterIdentifier: str
     ) -> ClientPromoteReadReplicaDbClusterResponseTypeDef:
@@ -27500,7 +27500,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purchase_reserved_db_instances_offering(
         self,
         ReservedDBInstancesOfferingId: str,
@@ -27565,14 +27565,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -27698,7 +27698,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reboot_db_instance(
         self, DBInstanceIdentifier: str, ForceFailover: bool = None
     ) -> ClientRebootDbInstanceResponseTypeDef:
@@ -28623,7 +28623,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_from_global_cluster(
         self, GlobalClusterIdentifier: str = None, DbClusterIdentifier: str = None
     ) -> ClientRemoveFromGlobalClusterResponseTypeDef:
@@ -28761,7 +28761,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_role_from_db_cluster(
         self, DBClusterIdentifier: str, RoleArn: str, FeatureName: str = None
     ) -> None:
@@ -28807,7 +28807,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_role_from_db_instance(
         self, DBInstanceIdentifier: str, RoleArn: str, FeatureName: str
     ) -> None:
@@ -28845,7 +28845,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_source_identifier_from_subscription(
         self, SubscriptionName: str, SourceIdentifier: str
     ) -> ClientRemoveSourceIdentifierFromSubscriptionResponseTypeDef:
@@ -28962,8 +28962,8 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def remove_tags_from_resource(self, ResourceName: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def remove_tags_from_resource(self, ResourceName: str, TagKeys: List[str]) -> None:
         """
         Removes metadata tags from an Amazon RDS resource.
 
@@ -29001,7 +29001,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_db_cluster_parameter_group(
         self,
         DBClusterParameterGroupName: str,
@@ -29159,7 +29159,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_db_parameter_group(
         self,
         DBParameterGroupName: str,
@@ -29320,7 +29320,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_cluster_from_s3(
         self,
         DBClusterIdentifier: str,
@@ -29546,7 +29546,7 @@ class Client(BaseClient):
         :param MasterUserPassword: **[REQUIRED]**
 
           The password for the master database user. This password can contain any printable ASCII
-          character except "/", '"', or "@".
+          character except "/", ''', or "@".
 
           Constraints: Must contain from 8 to 41 characters.
 
@@ -29614,14 +29614,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type StorageEncrypted: boolean
         :param StorageEncrypted:
@@ -30200,7 +30200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_cluster_from_snapshot(
         self,
         DBClusterIdentifier: str,
@@ -30416,14 +30416,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -31045,7 +31045,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_cluster_to_point_in_time(
         self,
         DBClusterIdentifier: str,
@@ -31232,14 +31232,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -31803,7 +31803,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_instance_from_db_snapshot(
         self,
         DBInstanceIdentifier: str,
@@ -32094,14 +32094,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -33151,7 +33151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_instance_from_s3(
         self,
         DBInstanceIdentifier: str,
@@ -33342,7 +33342,7 @@ class Client(BaseClient):
         :param MasterUserPassword:
 
           The password for the master user. The password can include any printable ASCII character except
-          "/", '"', or "@".
+          "/", ''', or "@".
 
           Constraints: Must contain from 8 to 41 characters.
 
@@ -33510,14 +33510,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -34608,7 +34608,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_db_instance_to_point_in_time(
         self,
         TargetDBInstanceIdentifier: str,
@@ -34917,14 +34917,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -35973,7 +35973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def revoke_db_security_group_ingress(
         self,
         DBSecurityGroupName: str,
@@ -36145,7 +36145,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_activity_stream(
         self, ResourceArn: str, Mode: str, KmsKeyId: str, ApplyImmediately: bool = None
     ) -> ClientStartActivityStreamResponseTypeDef:
@@ -36233,7 +36233,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_db_cluster(
         self, DBClusterIdentifier: str
     ) -> ClientStartDbClusterResponseTypeDef:
@@ -36741,7 +36741,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_db_instance(
         self, DBInstanceIdentifier: str
     ) -> ClientStartDbInstanceResponseTypeDef:
@@ -37655,7 +37655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_activity_stream(
         self, ResourceArn: str, ApplyImmediately: bool = None
     ) -> ClientStopActivityStreamResponseTypeDef:
@@ -37719,7 +37719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_db_cluster(
         self, DBClusterIdentifier: str
     ) -> ClientStopDbClusterResponseTypeDef:
@@ -38228,7 +38228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_db_instance(
         self, DBInstanceIdentifier: str, DBSnapshotIdentifier: str = None
     ) -> ClientStopDbInstanceResponseTypeDef:

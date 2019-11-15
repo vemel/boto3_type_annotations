@@ -1,28 +1,36 @@
 "Main interface for dms Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_dms.type_defs import (
     EndpointDeletedWaitFiltersTypeDef,
+    EndpointDeletedWaitWaiterConfigTypeDef,
     ReplicationInstanceAvailableWaitFiltersTypeDef,
+    ReplicationInstanceAvailableWaitWaiterConfigTypeDef,
     ReplicationInstanceDeletedWaitFiltersTypeDef,
+    ReplicationInstanceDeletedWaitWaiterConfigTypeDef,
     ReplicationTaskDeletedWaitFiltersTypeDef,
+    ReplicationTaskDeletedWaitWaiterConfigTypeDef,
     ReplicationTaskReadyWaitFiltersTypeDef,
+    ReplicationTaskReadyWaitWaiterConfigTypeDef,
     ReplicationTaskRunningWaitFiltersTypeDef,
+    ReplicationTaskRunningWaitWaiterConfigTypeDef,
     ReplicationTaskStoppedWaitFiltersTypeDef,
+    ReplicationTaskStoppedWaitWaiterConfigTypeDef,
     TestConnectionSucceedsWaitFiltersTypeDef,
+    TestConnectionSucceedsWaitWaiterConfigTypeDef,
 )
 
 
 class EndpointDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[EndpointDeletedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: EndpointDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_endpoints` every 5 seconds until a
@@ -104,13 +112,13 @@ class EndpointDeleted(Boto3Waiter):
 
 
 class ReplicationInstanceAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationInstanceAvailableWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationInstanceAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_instances` every 60 seconds
@@ -193,13 +201,13 @@ class ReplicationInstanceAvailable(Boto3Waiter):
 
 
 class ReplicationInstanceDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationInstanceDeletedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationInstanceDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_instances` every 15 seconds
@@ -282,14 +290,14 @@ class ReplicationInstanceDeleted(Boto3Waiter):
 
 
 class ReplicationTaskDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationTaskDeletedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
         WithoutSettings: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationTaskDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_tasks` every 15 seconds until
@@ -380,14 +388,14 @@ class ReplicationTaskDeleted(Boto3Waiter):
 
 
 class ReplicationTaskReady(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationTaskReadyWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
         WithoutSettings: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationTaskReadyWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_tasks` every 15 seconds until
@@ -478,14 +486,14 @@ class ReplicationTaskReady(Boto3Waiter):
 
 
 class ReplicationTaskRunning(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationTaskRunningWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
         WithoutSettings: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationTaskRunningWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_tasks` every 15 seconds until
@@ -576,14 +584,14 @@ class ReplicationTaskRunning(Boto3Waiter):
 
 
 class ReplicationTaskStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[ReplicationTaskStoppedWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
         WithoutSettings: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationTaskStoppedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_replication_tasks` every 15 seconds until
@@ -674,13 +682,13 @@ class ReplicationTaskStopped(Boto3Waiter):
 
 
 class TestConnectionSucceeds(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         Filters: List[TestConnectionSucceedsWaitFiltersTypeDef] = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: TestConnectionSucceedsWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`DatabaseMigrationService.Client.describe_connections` every 5 seconds until a

@@ -2708,7 +2708,7 @@ class ClientDescribeClusterResponseClusterTypeDef(
       packages installed on the cluster. Release labels are in the form ``emr-x.x.x`` , where
       x.x.x is an Amazon EMR release version such as ``emr-5.14.0`` . For more information about
       Amazon EMR release versions and included application versions and features, see
-      `https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+      `https\\://docs.aws.amazon.com/emr/latest/ReleaseGuide/
       <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>`__ . The release label applies only
       to Amazon EMR releases version 4.0 and later. Earlier versions use ``AmiVersion`` .
 
@@ -3088,7 +3088,7 @@ class ClientDescribeClusterResponseTypeDef(_ClientDescribeClusterResponseTypeDef
         packages installed on the cluster. Release labels are in the form ``emr-x.x.x`` , where
         x.x.x is an Amazon EMR release version such as ``emr-5.14.0`` . For more information about
         Amazon EMR release versions and included application versions and features, see
-        `https://docs.aws.amazon.com/emr/latest/ReleaseGuide/
+        `https\\://docs.aws.amazon.com/emr/latest/ReleaseGuide/
         <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>`__ . The release label applies only
         to Amazon EMR releases version 4.0 and later. Earlier versions use ``AmiVersion`` .
 
@@ -9786,6 +9786,275 @@ class ClientListStepsResponseTypeDef(_ClientListStepsResponseTypeDef):
     """
 
 
+_RequiredClientModifyInstanceFleetInstanceFleetTypeDef = TypedDict(
+    "_RequiredClientModifyInstanceFleetInstanceFleetTypeDef", {"InstanceFleetId": str}
+)
+_OptionalClientModifyInstanceFleetInstanceFleetTypeDef = TypedDict(
+    "_OptionalClientModifyInstanceFleetInstanceFleetTypeDef",
+    {"TargetOnDemandCapacity": int, "TargetSpotCapacity": int},
+    total=False,
+)
+
+
+class ClientModifyInstanceFleetInstanceFleetTypeDef(
+    _RequiredClientModifyInstanceFleetInstanceFleetTypeDef,
+    _OptionalClientModifyInstanceFleetInstanceFleetTypeDef,
+):
+    """
+    Type definition for `ClientModifyInstanceFleet` `InstanceFleet`
+
+    The unique identifier of the instance fleet.
+
+    - **InstanceFleetId** *(string) --* **[REQUIRED]**
+
+      A unique identifier for the instance fleet.
+
+    - **TargetOnDemandCapacity** *(integer) --*
+
+      The target capacity of On-Demand units for the instance fleet. For more information see
+      InstanceFleetConfig$TargetOnDemandCapacity .
+
+    - **TargetSpotCapacity** *(integer) --*
+
+      The target capacity of Spot units for the instance fleet. For more information, see
+      InstanceFleetConfig$TargetSpotCapacity .
+    """
+
+
+_ClientModifyInstanceGroupsInstanceGroupsConfigurationsTypeDef = TypedDict(
+    "_ClientModifyInstanceGroupsInstanceGroupsConfigurationsTypeDef",
+    {"Classification": str, "Configurations": List[Any], "Properties": Dict[str, str]},
+    total=False,
+)
+
+
+class ClientModifyInstanceGroupsInstanceGroupsConfigurationsTypeDef(
+    _ClientModifyInstanceGroupsInstanceGroupsConfigurationsTypeDef
+):
+    """
+    Type definition for `ClientModifyInstanceGroupsInstanceGroups` `Configurations`
+
+    .. note::
+
+      Amazon EMR releases 4.x or later.
+
+    An optional configuration specification to be used when provisioning cluster instances,
+    which can include configurations for applications and software bundled with Amazon EMR. A
+    configuration consists of a classification, properties, and optional nested configurations.
+    A classification refers to an application-specific configuration file. Properties are the
+    settings you want to change in that file. For more information, see `Configuring
+    Applications
+    <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html>`__ .
+
+    - **Classification** *(string) --*
+
+      The classification within a configuration.
+
+    - **Configurations** *(list) --*
+
+      A list of additional configurations to apply within a configuration object.
+
+    - **Properties** *(dict) --*
+
+      A set of properties specified within a configuration classification.
+
+      - *(string) --*
+
+        - *(string) --*
+    """
+
+
+_ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyInstanceResizePolicyTypeDef = TypedDict(
+    "_ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyInstanceResizePolicyTypeDef",
+    {
+        "InstancesToTerminate": List[str],
+        "InstancesToProtect": List[str],
+        "InstanceTerminationTimeout": int,
+    },
+    total=False,
+)
+
+
+class ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyInstanceResizePolicyTypeDef(
+    _ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyInstanceResizePolicyTypeDef
+):
+    """
+    Type definition for `ClientModifyInstanceGroupsInstanceGroupsShrinkPolicy` `InstanceResizePolicy`
+
+    Custom policy for requesting termination protection or termination of specific instances
+    when shrinking an instance group.
+
+    - **InstancesToTerminate** *(list) --*
+
+      Specific list of instances to be terminated when shrinking an instance group.
+
+      - *(string) --*
+
+    - **InstancesToProtect** *(list) --*
+
+      Specific list of instances to be protected when shrinking an instance group.
+
+      - *(string) --*
+
+    - **InstanceTerminationTimeout** *(integer) --*
+
+      Decommissioning timeout override for the specific list of instances to be terminated.
+    """
+
+
+_ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyTypeDef = TypedDict(
+    "_ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyTypeDef",
+    {
+        "DecommissionTimeout": int,
+        "InstanceResizePolicy": ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyInstanceResizePolicyTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyTypeDef(
+    _ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyTypeDef
+):
+    """
+    Type definition for `ClientModifyInstanceGroupsInstanceGroups` `ShrinkPolicy`
+
+    Policy for customizing shrink operations.
+
+    - **DecommissionTimeout** *(integer) --*
+
+      The desired timeout for decommissioning an instance. Overrides the default YARN
+      decommissioning timeout.
+
+    - **InstanceResizePolicy** *(dict) --*
+
+      Custom policy for requesting termination protection or termination of specific instances
+      when shrinking an instance group.
+
+      - **InstancesToTerminate** *(list) --*
+
+        Specific list of instances to be terminated when shrinking an instance group.
+
+        - *(string) --*
+
+      - **InstancesToProtect** *(list) --*
+
+        Specific list of instances to be protected when shrinking an instance group.
+
+        - *(string) --*
+
+      - **InstanceTerminationTimeout** *(integer) --*
+
+        Decommissioning timeout override for the specific list of instances to be terminated.
+    """
+
+
+_RequiredClientModifyInstanceGroupsInstanceGroupsTypeDef = TypedDict(
+    "_RequiredClientModifyInstanceGroupsInstanceGroupsTypeDef", {"InstanceGroupId": str}
+)
+_OptionalClientModifyInstanceGroupsInstanceGroupsTypeDef = TypedDict(
+    "_OptionalClientModifyInstanceGroupsInstanceGroupsTypeDef",
+    {
+        "InstanceCount": int,
+        "EC2InstanceIdsToTerminate": List[str],
+        "ShrinkPolicy": ClientModifyInstanceGroupsInstanceGroupsShrinkPolicyTypeDef,
+        "Configurations": List[
+            ClientModifyInstanceGroupsInstanceGroupsConfigurationsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientModifyInstanceGroupsInstanceGroupsTypeDef(
+    _RequiredClientModifyInstanceGroupsInstanceGroupsTypeDef,
+    _OptionalClientModifyInstanceGroupsInstanceGroupsTypeDef,
+):
+    """
+    Type definition for `ClientModifyInstanceGroups` `InstanceGroups`
+
+    Modify the size or configurations of an instance group.
+
+    - **InstanceGroupId** *(string) --* **[REQUIRED]**
+
+      Unique ID of the instance group to expand or shrink.
+
+    - **InstanceCount** *(integer) --*
+
+      Target size for the instance group.
+
+    - **EC2InstanceIdsToTerminate** *(list) --*
+
+      The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will
+      not return to its original requested size.
+
+      - *(string) --*
+
+    - **ShrinkPolicy** *(dict) --*
+
+      Policy for customizing shrink operations.
+
+      - **DecommissionTimeout** *(integer) --*
+
+        The desired timeout for decommissioning an instance. Overrides the default YARN
+        decommissioning timeout.
+
+      - **InstanceResizePolicy** *(dict) --*
+
+        Custom policy for requesting termination protection or termination of specific instances
+        when shrinking an instance group.
+
+        - **InstancesToTerminate** *(list) --*
+
+          Specific list of instances to be terminated when shrinking an instance group.
+
+          - *(string) --*
+
+        - **InstancesToProtect** *(list) --*
+
+          Specific list of instances to be protected when shrinking an instance group.
+
+          - *(string) --*
+
+        - **InstanceTerminationTimeout** *(integer) --*
+
+          Decommissioning timeout override for the specific list of instances to be terminated.
+
+    - **Configurations** *(list) --*
+
+      A list of new or modified configurations to apply for an instance group.
+
+      - *(dict) --*
+
+        .. note::
+
+          Amazon EMR releases 4.x or later.
+
+        An optional configuration specification to be used when provisioning cluster instances,
+        which can include configurations for applications and software bundled with Amazon EMR. A
+        configuration consists of a classification, properties, and optional nested configurations.
+        A classification refers to an application-specific configuration file. Properties are the
+        settings you want to change in that file. For more information, see `Configuring
+        Applications
+        <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-configure-apps.html>`__ .
+
+        - **Classification** *(string) --*
+
+          The classification within a configuration.
+
+        - **Configurations** *(list) --*
+
+          A list of additional configurations to apply within a configuration object.
+
+        - **Properties** *(dict) --*
+
+          A set of properties specified within a configuration classification.
+
+          - *(string) --*
+
+            - *(string) --*
+    """
+
+
 _ClientPutAutoScalingPolicyAutoScalingPolicyConstraintsTypeDef = TypedDict(
     "_ClientPutAutoScalingPolicyAutoScalingPolicyConstraintsTypeDef",
     {"MinCapacity": int, "MaxCapacity": int},
@@ -14384,6 +14653,54 @@ class ClientRunJobFlowTagsTypeDef(_ClientRunJobFlowTagsTypeDef):
     """
 
 
+_ClusterRunningWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterRunningWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterRunningWaitWaiterConfigTypeDef(_ClusterRunningWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ClusterRunningWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
+_ClusterTerminatedWaitWaiterConfigTypeDef = TypedDict(
+    "_ClusterTerminatedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ClusterTerminatedWaitWaiterConfigTypeDef(
+    _ClusterTerminatedWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `ClusterTerminatedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
+    """
+
+
 _ListBootstrapActionsPaginatePaginationConfigTypeDef = TypedDict(
     "_ListBootstrapActionsPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "StartingToken": str},
@@ -18884,4 +19201,27 @@ class ListStepsPaginateResponseTypeDef(_ListStepsPaginateResponseTypeDef):
     - **NextToken** *(string) --*
 
       A token to resume pagination.
+    """
+
+
+_StepCompleteWaitWaiterConfigTypeDef = TypedDict(
+    "_StepCompleteWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class StepCompleteWaitWaiterConfigTypeDef(_StepCompleteWaitWaiterConfigTypeDef):
+    """
+    Type definition for `StepCompleteWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 60
     """

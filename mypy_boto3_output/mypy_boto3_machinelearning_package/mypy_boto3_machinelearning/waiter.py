@@ -1,12 +1,17 @@
 "Main interface for machinelearning Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_machinelearning.type_defs import (
+    BatchPredictionAvailableWaitWaiterConfigTypeDef,
+    DataSourceAvailableWaitWaiterConfigTypeDef,
+    EvaluationAvailableWaitWaiterConfigTypeDef,
+    MlModelAvailableWaitWaiterConfigTypeDef,
+)
 
 
 class BatchPredictionAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         FilterVariable: str = None,
@@ -20,7 +25,7 @@ class BatchPredictionAvailable(Boto3Waiter):
         SortOrder: str = None,
         NextToken: str = None,
         Limit: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: BatchPredictionAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`MachineLearning.Client.describe_batch_predictions` every 30 seconds until a
@@ -165,7 +170,7 @@ class BatchPredictionAvailable(Boto3Waiter):
 
 
 class DataSourceAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         FilterVariable: str = None,
@@ -179,7 +184,7 @@ class DataSourceAvailable(Boto3Waiter):
         SortOrder: str = None,
         NextToken: str = None,
         Limit: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: DataSourceAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`MachineLearning.Client.describe_data_sources` every 30 seconds until a successful
@@ -316,7 +321,7 @@ class DataSourceAvailable(Boto3Waiter):
 
 
 class EvaluationAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         FilterVariable: str = None,
@@ -330,7 +335,7 @@ class EvaluationAvailable(Boto3Waiter):
         SortOrder: str = None,
         NextToken: str = None,
         Limit: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: EvaluationAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`MachineLearning.Client.describe_evaluations` every 30 seconds until a successful
@@ -471,7 +476,7 @@ class EvaluationAvailable(Boto3Waiter):
 
 
 class MLModelAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         FilterVariable: str = None,
@@ -485,7 +490,7 @@ class MLModelAvailable(Boto3Waiter):
         SortOrder: str = None,
         NextToken: str = None,
         Limit: int = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: MlModelAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`MachineLearning.Client.describe_ml_models` every 30 seconds until a successful

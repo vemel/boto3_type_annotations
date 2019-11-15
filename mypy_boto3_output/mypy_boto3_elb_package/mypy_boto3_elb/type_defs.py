@@ -25,6 +25,31 @@ class AnyInstanceInServiceWaitInstancesTypeDef(
     """
 
 
+_AnyInstanceInServiceWaitWaiterConfigTypeDef = TypedDict(
+    "_AnyInstanceInServiceWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class AnyInstanceInServiceWaitWaiterConfigTypeDef(
+    _AnyInstanceInServiceWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `AnyInstanceInServiceWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _RequiredClientAddTagsTagsTypeDef = TypedDict(
     "_RequiredClientAddTagsTagsTypeDef", {"Key": str}
 )
@@ -4447,6 +4472,31 @@ class InstanceDeregisteredWaitInstancesTypeDef(
     """
 
 
+_InstanceDeregisteredWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceDeregisteredWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceDeregisteredWaitWaiterConfigTypeDef(
+    _InstanceDeregisteredWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InstanceDeregisteredWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
+    """
+
+
 _InstanceInServiceWaitInstancesTypeDef = TypedDict(
     "_InstanceInServiceWaitInstancesTypeDef", {"InstanceId": str}, total=False
 )
@@ -4461,4 +4511,29 @@ class InstanceInServiceWaitInstancesTypeDef(_InstanceInServiceWaitInstancesTypeD
     - **InstanceId** *(string) --*
 
       The instance ID.
+    """
+
+
+_InstanceInServiceWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceInServiceWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceInServiceWaitWaiterConfigTypeDef(
+    _InstanceInServiceWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InstanceInServiceWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 15
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """

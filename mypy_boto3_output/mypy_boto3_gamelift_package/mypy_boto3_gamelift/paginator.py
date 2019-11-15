@@ -40,7 +40,7 @@ from mypy_boto3_gamelift.type_defs import (
 
 
 class DescribeFleetAttributes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetIds: List[str] = None,
@@ -289,7 +289,7 @@ class DescribeFleetAttributes(Boto3Paginator):
                   session logs; see more on game session logs in the `Amazon GameLift Developer Guide
                   <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-api-server-code>`__
                   . If no default log path for a fleet is specified, Amazon GameLift automatically uploads
-                  logs that are stored on each instance at ``C:\game\logs`` (for Windows) or
+                  logs that are stored on each instance at ``C:\\game\\logs`` (for Windows) or
                   ``/local/game/logs`` (for Linux). Use the Amazon GameLift console to access stored logs.
 
                   - *(string) --*
@@ -356,7 +356,7 @@ class DescribeFleetAttributes(Boto3Paginator):
 
 
 class DescribeFleetCapacity(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetIds: List[str] = None,
@@ -549,7 +549,7 @@ class DescribeFleetCapacity(Boto3Paginator):
 
 
 class DescribeFleetEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str,
@@ -741,7 +741,7 @@ class DescribeFleetEvents(Boto3Paginator):
                   detail. A common reason for peering failure is that the two VPCs have overlapping CIDR
                   blocks of IPv4 addresses. To resolve this, change the CIDR block for the VPC in your AWS
                   account. For more information on VPC peering failures, see
-                  `https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
+                  `https\\://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html
                   <https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html>`__
         <https://docs.aws.amazon.com/AmazonVPC/latest/PeeringGuide/invalid-peering-configurations.html>`__
 
@@ -785,7 +785,7 @@ class DescribeFleetEvents(Boto3Paginator):
 
 
 class DescribeFleetUtilization(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetIds: List[str] = None,
@@ -937,7 +937,7 @@ class DescribeFleetUtilization(Boto3Paginator):
 
 
 class DescribeGameSessionDetails(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str = None,
@@ -1190,7 +1190,7 @@ class DescribeGameSessionDetails(Boto3Paginator):
 
 
 class DescribeGameSessionQueues(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Names: List[str] = None,
@@ -1391,7 +1391,7 @@ class DescribeGameSessionQueues(Boto3Paginator):
 
 
 class DescribeGameSessions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str = None,
@@ -1655,7 +1655,7 @@ class DescribeGameSessions(Boto3Paginator):
 
 
 class DescribeInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str,
@@ -1805,7 +1805,7 @@ class DescribeInstances(Boto3Paginator):
 
 
 class DescribeMatchmakingConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Names: List[str] = None,
@@ -2027,7 +2027,7 @@ class DescribeMatchmakingConfigurations(Boto3Paginator):
 
 
 class DescribeMatchmakingRuleSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Names: List[str] = None,
@@ -2158,7 +2158,7 @@ class DescribeMatchmakingRuleSets(Boto3Paginator):
 
 
 class DescribePlayerSessions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         GameSessionId: str = None,
@@ -2365,7 +2365,7 @@ class DescribePlayerSessions(Boto3Paginator):
 
 
 class DescribeScalingPolicies(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str,
@@ -2632,7 +2632,7 @@ class DescribeScalingPolicies(Boto3Paginator):
 
 
 class ListAliases(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RoutingStrategyType: str = None,
@@ -2804,7 +2804,7 @@ class ListAliases(Boto3Paginator):
 
 
 class ListBuilds(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Status: str = None,
@@ -2959,7 +2959,7 @@ class ListBuilds(Boto3Paginator):
 
 
 class ListFleets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         BuildId: str = None,
@@ -3048,7 +3048,7 @@ class ListFleets(Boto3Paginator):
 
 
 class SearchGameSessions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FleetId: str = None,
@@ -3110,7 +3110,7 @@ class SearchGameSessions(Boto3Paginator):
           strings depending on the operand. String values are case sensitive and must be enclosed in single
           quotes. Special characters must be escaped. Boolean and string values can only be used with the
           comparators ``=`` and ``<>`` . For example, the following filter expression searches on
-          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\'s Awesome Game 1'"`` .
+          ``gameSessionName`` : "``FilterExpression": "gameSessionName = 'Matt\\\\'s Awesome Game 1'"`` .
 
           To chain multiple conditions in a single expression, use the logical keywords ``AND`` , ``OR`` ,
           and ``NOT`` and parentheses as needed. For example: ``x AND y AND NOT z`` , ``NOT (x OR y)`` .

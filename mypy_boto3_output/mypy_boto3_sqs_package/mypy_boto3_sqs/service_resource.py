@@ -4,6 +4,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_sqs.service_resource as service_resource_scope
 from mypy_boto3_sqs.type_defs import (
     QueueChangeMessageVisibilityBatchEntriesTypeDef,
@@ -19,7 +21,7 @@ from mypy_boto3_sqs.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Message(
         self, queue_url: str, receipt_handle: str
     ) -> service_resource_scope.Message:
@@ -37,7 +39,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Message resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Queue(self, url: str) -> service_resource_scope.Queue:
         """
         Creates a Queue resource.::
@@ -51,7 +53,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Queue resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_queue(
         self,
         QueueName: str,
@@ -294,7 +296,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Queue resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -305,7 +307,7 @@ class ServiceResource(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_queue_by_name(
         self, QueueName: str, QueueOwnerAWSAccountId: str = None
     ) -> service_resource_scope.Queue:
@@ -357,7 +359,7 @@ class Message(Boto3ServiceResource):
     queue_url: str
     receipt_handle: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_visibility(self, VisibilityTimeout: int) -> None:
         """
         Changes the visibility timeout of a specified message in a queue to a new value. The default
@@ -430,7 +432,7 @@ class Message(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the specified message from the specified queue. To select the message to delete, use the
@@ -464,7 +466,7 @@ class Message(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -480,9 +482,9 @@ class Queue(Boto3ServiceResource):
     attributes: Dict[str, Any]
     url: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
-        self, Label: str, AWSAccountIds: List[str], Actions: List[Any]
+        self, Label: str, AWSAccountIds: List[str], Actions: List[str]
     ) -> None:
         """
         Adds a permission to a queue for a specific `principal
@@ -577,7 +579,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def change_message_visibility_batch(
         self, Entries: List[QueueChangeMessageVisibilityBatchEntriesTypeDef]
     ) -> QueueChangeMessageVisibilityBatchResponseTypeDef:
@@ -721,7 +723,7 @@ class Queue(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the queue specified by the ``QueueUrl`` , regardless of the queue's contents. If the
@@ -757,7 +759,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_messages(
         self, Entries: List[QueueDeleteMessagesEntriesTypeDef]
     ) -> QueueDeleteMessagesResponseTypeDef:
@@ -880,7 +882,7 @@ class Queue(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -891,7 +893,7 @@ class Queue(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SQS.Client.get_queue_attributes` to update the attributes of the Queue resource.
@@ -907,7 +909,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def purge(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes the messages in a queue specified by the ``QueueURL`` parameter.
@@ -936,7 +938,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def receive_messages(
         self,
         AttributeNames: List[str] = None,
@@ -1142,7 +1144,7 @@ class Queue(Boto3ServiceResource):
 
           The length of ``ReceiveRequestAttemptId`` is 128 characters. ``ReceiveRequestAttemptId`` can
           contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-          (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+          (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
           For best practices of using ``ReceiveRequestAttemptId`` , see `Using the ReceiveRequestAttemptId
           Request Parameter
@@ -1153,7 +1155,7 @@ class Queue(Boto3ServiceResource):
         :returns: A list of Message resources
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`SQS.Client.get_queue_attributes` to update the attributes of the Queue resource.
@@ -1169,7 +1171,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(self, Label: str) -> None:
         """
         Revokes any permissions in the queue policy that matches the specified ``Label`` parameter.
@@ -1204,7 +1206,7 @@ class Queue(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_message(
         self,
         MessageBody: str,
@@ -1452,7 +1454,7 @@ class Queue(Boto3ServiceResource):
 
           The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
           contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-          (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+          (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
           For best practices of using ``MessageDeduplicationId`` , see `Using the MessageDeduplicationId
           Property
@@ -1479,7 +1481,7 @@ class Queue(Boto3ServiceResource):
           ``MessageGroupId`` .
 
           The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-          punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+          punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
           For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
           <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__
@@ -1547,7 +1549,7 @@ class Queue(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_messages(
         self, Entries: List[QueueSendMessagesEntriesTypeDef]
     ) -> QueueSendMessagesResponseTypeDef:
@@ -1819,7 +1821,7 @@ class Queue(Boto3ServiceResource):
 
               The length of ``MessageDeduplicationId`` is 128 characters. ``MessageDeduplicationId`` can
               contain alphanumeric characters (``a-z`` , ``A-Z`` , ``0-9`` ) and punctuation
-              (``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`` ).
+              (``!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~`` ).
 
               For best practices of using ``MessageDeduplicationId`` , see `Using the
               MessageDeduplicationId Property
@@ -1845,7 +1847,7 @@ class Queue(Boto3ServiceResource):
               ``MessageGroupId`` .
 
               The length of ``MessageGroupId`` is 128 characters. Valid values: alphanumeric characters and
-              punctuation ``(!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)`` .
+              punctuation ``(!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~)`` .
 
               For best practices of using ``MessageGroupId`` , see `Using the MessageGroupId Property
               <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html>`__
@@ -1962,8 +1964,8 @@ class Queue(Boto3ServiceResource):
 
         """
 
-    # pylint: disable=arguments-differ
-    def set_attributes(self, Attributes: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def set_attributes(self, Attributes: Dict[str, str]) -> None:
         """
         Sets the value of one or more queue attributes. When you change a queue's attributes, the change
         can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system.
@@ -2119,8 +2121,7 @@ class queues(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection.
@@ -2137,8 +2138,7 @@ class queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, QueueNamePrefix: str = None) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection filtered by kwargs passed to method.
@@ -2164,8 +2164,7 @@ class queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2174,8 +2173,7 @@ class queues(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable up to a specified amount of Queue resources in the collection.
@@ -2196,8 +2194,7 @@ class queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection, but limits the number of items
@@ -2219,8 +2216,7 @@ class queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -2255,8 +2251,7 @@ class dead_letter_source_queues(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection.
@@ -2273,8 +2268,7 @@ class dead_letter_source_queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, **kwargs: Any) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection filtered by kwargs passed to method.
@@ -2291,8 +2285,7 @@ class dead_letter_source_queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -2301,8 +2294,7 @@ class dead_letter_source_queues(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable up to a specified amount of Queue resources in the collection.
@@ -2323,8 +2315,7 @@ class dead_letter_source_queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Queue]:
         """
         Creates an iterable of all Queue resources in the collection, but limits the number of items
@@ -2346,8 +2337,7 @@ class dead_letter_source_queues(ResourceCollection):
         :returns: A list of Queue resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

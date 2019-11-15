@@ -1,17 +1,21 @@
 "Main interface for acm-pca Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_acm_pca.type_defs import (
+    AuditReportCreatedWaitWaiterConfigTypeDef,
+    CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef,
+    CertificateIssuedWaitWaiterConfigTypeDef,
+)
 
 
 class AuditReportCreated(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         CertificateAuthorityArn: str,
         AuditReportId: str,
-        WaiterConfig: Dict = None,
+        WaiterConfig: AuditReportCreatedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ACMPCA.Client.describe_certificate_authority_audit_report` every 3 seconds until a
@@ -63,8 +67,12 @@ class AuditReportCreated(Boto3Waiter):
 
 
 class CertificateAuthorityCSRCreated(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, CertificateAuthorityArn: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        CertificateAuthorityArn: str,
+        WaiterConfig: CertificateAuthorityCsrCreatedWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`ACMPCA.Client.get_certificate_authority_csr` every 3 seconds until a successful
         state is reached. An error is returned after 60 failed checks.
@@ -109,12 +117,12 @@ class CertificateAuthorityCSRCreated(Boto3Waiter):
 
 
 class CertificateIssued(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         CertificateAuthorityArn: str,
         CertificateArn: str,
-        WaiterConfig: Dict = None,
+        WaiterConfig: CertificateIssuedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ACMPCA.Client.get_certificate` every 3 seconds until a successful state is reached.

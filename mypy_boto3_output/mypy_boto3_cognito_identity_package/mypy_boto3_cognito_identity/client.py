@@ -21,13 +21,14 @@ from mypy_boto3_cognito_identity.type_defs import (
     ClientListTagsForResourceResponseTypeDef,
     ClientLookupDeveloperIdentityResponseTypeDef,
     ClientMergeDeveloperIdentitiesResponseTypeDef,
+    ClientSetIdentityPoolRolesRoleMappingsTypeDef,
     ClientUpdateIdentityPoolCognitoIdentityProvidersTypeDef,
     ClientUpdateIdentityPoolResponseTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -44,7 +45,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_identity_pool(
         self,
         IdentityPoolName: str,
@@ -322,7 +323,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_identities(
         self, IdentityIdsToDelete: List[str]
     ) -> ClientDeleteIdentitiesResponseTypeDef:
@@ -390,7 +391,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_identity_pool(self, IdentityPoolId: str) -> None:
         """
         Deletes an identity pool. Once a pool is deleted, users will not be able to authenticate with the
@@ -415,7 +416,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_identity(
         self, IdentityId: str
     ) -> ClientDescribeIdentityResponseTypeDef:
@@ -480,7 +481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_identity_pool(
         self, IdentityPoolId: str
     ) -> ClientDescribeIdentityPoolResponseTypeDef:
@@ -627,7 +628,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -656,7 +657,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_credentials_for_identity(
         self, IdentityId: str, Logins: Dict[str, str] = None, CustomRoleArn: str = None
     ) -> ClientGetCredentialsForIdentityResponseTypeDef:
@@ -758,7 +759,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_id(
         self, IdentityPoolId: str, AccountId: str = None, Logins: Dict[str, str] = None
     ) -> ClientGetIdResponseTypeDef:
@@ -836,7 +837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_identity_pool_roles(
         self, IdentityPoolId: str
     ) -> ClientGetIdentityPoolRolesResponseTypeDef:
@@ -970,7 +971,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_open_id_token(
         self, IdentityId: str, Logins: Dict[str, str] = None
     ) -> ClientGetOpenIdTokenResponseTypeDef:
@@ -1040,7 +1041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_open_id_token_for_developer_identity(
         self,
         IdentityPoolId: str,
@@ -1147,7 +1148,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1168,7 +1169,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1181,7 +1182,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_identities(
         self,
         IdentityPoolId: str,
@@ -1290,7 +1291,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_identity_pools(
         self, MaxResults: int, NextToken: str = None
     ) -> ClientListIdentityPoolsResponseTypeDef:
@@ -1363,7 +1364,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1415,7 +1416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def lookup_developer_identity(
         self,
         IdentityPoolId: str,
@@ -1526,7 +1527,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def merge_developer_identities(
         self,
         SourceUserIdentifier: str,
@@ -1607,9 +1608,12 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_identity_pool_roles(
-        self, IdentityPoolId: str, Roles: Dict[str, str], RoleMappings: Dict = None
+        self,
+        IdentityPoolId: str,
+        Roles: Dict[str, str],
+        RoleMappings: Dict[str, ClientSetIdentityPoolRolesRoleMappingsTypeDef] = None,
     ) -> None:
         """
         Sets the roles for an identity pool. These roles are used when making calls to
@@ -1725,7 +1729,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Assigns a set of tags to an Amazon Cognito identity pool. A tag is a label that you can use to
@@ -1784,7 +1788,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unlink_developer_identity(
         self,
         IdentityId: str,
@@ -1835,9 +1839,9 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unlink_identity(
-        self, IdentityId: str, Logins: Dict[str, str], LoginsToRemove: List[Any]
+        self, IdentityId: str, Logins: Dict[str, str], LoginsToRemove: List[str]
     ) -> None:
         """
         Unlinks a federated identity from an existing account. Unlinked logins will be considered new
@@ -1885,7 +1889,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes the specified tags from an Amazon Cognito identity pool. You can use this action up to 5
@@ -1928,7 +1932,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_identity_pool(
         self,
         IdentityPoolId: str,

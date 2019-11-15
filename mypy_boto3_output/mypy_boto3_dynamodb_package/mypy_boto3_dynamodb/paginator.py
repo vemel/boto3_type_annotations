@@ -24,7 +24,7 @@ from mypy_boto3_dynamodb.type_defs import (
 
 
 class ListBackups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TableName: str = None,
@@ -196,7 +196,7 @@ class ListBackups(Boto3Paginator):
 
 
 class ListTables(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTablesPaginatePaginationConfigTypeDef = None
     ) -> ListTablesPaginateResponseTypeDef:
@@ -275,7 +275,7 @@ class ListTables(Boto3Paginator):
 
 
 class ListTagsOfResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ResourceArn: str,
@@ -371,7 +371,7 @@ class ListTagsOfResource(Boto3Paginator):
 
 
 class Query(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TableName: str,
@@ -615,7 +615,7 @@ class Query(Boto3Paginator):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -876,7 +876,7 @@ class Query(Boto3Paginator):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares
@@ -1746,7 +1746,7 @@ class Query(Boto3Paginator):
 
 
 class Scan(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TableName: str,
@@ -1949,7 +1949,7 @@ class Scan(Boto3Paginator):
                 String value comparisons for greater than, equals, or less than are based on ASCII
                 character code values. For example, ``a`` is greater than ``A`` , and ``a`` is greater than
                 ``B`` . For a list of code values, see
-                `http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
+                `http\\://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters
                 <http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters>`__ .
 
                 For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares

@@ -124,7 +124,7 @@ from mypy_boto3_ssm.type_defs import (
 
 
 class DescribeActivations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeActivationsPaginateFiltersTypeDef] = None,
@@ -296,7 +296,7 @@ class DescribeActivations(Boto3Paginator):
 
 
 class DescribeAssociationExecutionTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssociationId: str,
@@ -469,7 +469,7 @@ class DescribeAssociationExecutionTargets(Boto3Paginator):
 
 
 class DescribeAssociationExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssociationId: str,
@@ -623,7 +623,7 @@ class DescribeAssociationExecutions(Boto3Paginator):
 
 
 class DescribeAutomationExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeAutomationExecutionsPaginateFiltersTypeDef] = None,
@@ -954,7 +954,7 @@ class DescribeAutomationExecutions(Boto3Paginator):
 
 
 class DescribeAutomationStepExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AutomationExecutionId: str,
@@ -1351,7 +1351,7 @@ class DescribeAutomationStepExecutions(Boto3Paginator):
 
 
 class DescribeAvailablePatches(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeAvailablePatchesPaginateFiltersTypeDef] = None,
@@ -1516,7 +1516,7 @@ class DescribeAvailablePatches(Boto3Paginator):
 
 
 class DescribeEffectiveInstanceAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceId: str,
@@ -1615,7 +1615,7 @@ class DescribeEffectiveInstanceAssociations(Boto3Paginator):
 
 
 class DescribeEffectivePatchesForPatchBaseline(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         BaselineId: str,
@@ -1796,7 +1796,7 @@ class DescribeEffectivePatchesForPatchBaseline(Boto3Paginator):
 
 
 class DescribeInstanceAssociationsStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceId: str,
@@ -1947,7 +1947,7 @@ class DescribeInstanceAssociationsStatus(Boto3Paginator):
 
 
 class DescribeInstanceInformation(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceInformationFilterList: List[
@@ -2210,7 +2210,7 @@ class DescribeInstanceInformation(Boto3Paginator):
 
 
 class DescribeInstancePatchStates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceIds: List[str],
@@ -2401,7 +2401,7 @@ class DescribeInstancePatchStates(Boto3Paginator):
 
 
 class DescribeInstancePatchStatesForPatchGroup(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PatchGroup: str,
@@ -2632,7 +2632,7 @@ class DescribeInstancePatchStatesForPatchGroup(Boto3Paginator):
 
 
 class DescribeInstancePatches(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         InstanceId: str,
@@ -2792,7 +2792,7 @@ class DescribeInstancePatches(Boto3Paginator):
 
 
 class DescribeInventoryDeletions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DeletionId: str = None,
@@ -2949,7 +2949,7 @@ class DescribeInventoryDeletions(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowExecutionTaskInvocations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowExecutionId: str,
@@ -3136,7 +3136,7 @@ class DescribeMaintenanceWindowExecutionTaskInvocations(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowExecutionTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowExecutionId: str,
@@ -3290,7 +3290,7 @@ class DescribeMaintenanceWindowExecutionTasks(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowExecutions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowId: str,
@@ -3436,7 +3436,7 @@ class DescribeMaintenanceWindowExecutions(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowSchedule(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowId: str = None,
@@ -3636,7 +3636,7 @@ class DescribeMaintenanceWindowSchedule(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowId: str,
@@ -3854,7 +3854,7 @@ class DescribeMaintenanceWindowTargets(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         WindowId: str,
@@ -4151,7 +4151,7 @@ class DescribeMaintenanceWindowTasks(Boto3Paginator):
 
 
 class DescribeMaintenanceWindows(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeMaintenanceWindowsPaginateFiltersTypeDef] = None,
@@ -4312,7 +4312,7 @@ class DescribeMaintenanceWindows(Boto3Paginator):
 
 
 class DescribeMaintenanceWindowsForTarget(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Targets: List[DescribeMaintenanceWindowsForTargetPaginateTargetsTypeDef],
@@ -4471,7 +4471,7 @@ class DescribeMaintenanceWindowsForTarget(Boto3Paginator):
 
 
 class DescribeParameters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeParametersPaginateFiltersTypeDef] = None,
@@ -4691,7 +4691,7 @@ class DescribeParameters(Boto3Paginator):
 
 
 class DescribePatchBaselines(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribePatchBaselinesPaginateFiltersTypeDef] = None,
@@ -4824,7 +4824,7 @@ class DescribePatchBaselines(Boto3Paginator):
 
 
 class DescribePatchGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribePatchGroupsPaginateFiltersTypeDef] = None,
@@ -4926,7 +4926,7 @@ class DescribePatchGroups(Boto3Paginator):
 
               Each entry in the array contains:
 
-              PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)
+              PatchGroup: string (between 1 and 256 characters, Regex: ^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-@]*)$)
 
               PatchBaselineIdentity: A PatchBaselineIdentity element.
 
@@ -4969,7 +4969,7 @@ class DescribePatchGroups(Boto3Paginator):
 
 
 class DescribeSessions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         State: str,
@@ -5155,7 +5155,7 @@ class DescribeSessions(Boto3Paginator):
 
 
 class GetInventory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[GetInventoryPaginateFiltersTypeDef] = None,
@@ -5422,7 +5422,7 @@ class GetInventory(Boto3Paginator):
 
 
 class GetInventorySchema(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TypeName: str = None,
@@ -5558,7 +5558,7 @@ class GetInventorySchema(Boto3Paginator):
 
 
 class GetParameterHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Name: str,
@@ -5740,7 +5740,7 @@ class GetParameterHistory(Boto3Paginator):
 
 
 class GetParametersByPath(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Path: str,
@@ -5934,7 +5934,7 @@ class GetParametersByPath(Boto3Paginator):
 
 
 class ListAssociationVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssociationId: str,
@@ -6197,7 +6197,7 @@ class ListAssociationVersions(Boto3Paginator):
 
 
 class ListAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssociationFilterList: List[
@@ -6438,7 +6438,7 @@ class ListAssociations(Boto3Paginator):
 
 
 class ListCommandInvocations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CommandId: str = None,
@@ -6897,7 +6897,7 @@ class ListCommandInvocations(Boto3Paginator):
 
 
 class ListCommands(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CommandId: str = None,
@@ -7327,7 +7327,7 @@ class ListCommands(Boto3Paginator):
 
 
 class ListComplianceItems(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListComplianceItemsPaginateFiltersTypeDef] = None,
@@ -7533,7 +7533,7 @@ class ListComplianceItems(Boto3Paginator):
 
 
 class ListComplianceSummaries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListComplianceSummariesPaginateFiltersTypeDef] = None,
@@ -7762,7 +7762,7 @@ class ListComplianceSummaries(Boto3Paginator):
 
 
 class ListDocumentVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Name: str,
@@ -7885,7 +7885,7 @@ class ListDocumentVersions(Boto3Paginator):
 
 
 class ListDocuments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DocumentFilterList: List[ListDocumentsPaginateDocumentFilterListTypeDef] = None,
@@ -8112,7 +8112,7 @@ class ListDocuments(Boto3Paginator):
 
 
 class ListResourceComplianceSummaries(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[ListResourceComplianceSummariesPaginateFiltersTypeDef] = None,
@@ -8382,7 +8382,7 @@ class ListResourceComplianceSummaries(Boto3Paginator):
 
 
 class ListResourceDataSync(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListResourceDataSyncPaginatePaginationConfigTypeDef = None,

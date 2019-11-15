@@ -1,12 +1,17 @@
 "Main interface for elasticache Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_elasticache.type_defs import (
+    CacheClusterAvailableWaitWaiterConfigTypeDef,
+    CacheClusterDeletedWaitWaiterConfigTypeDef,
+    ReplicationGroupAvailableWaitWaiterConfigTypeDef,
+    ReplicationGroupDeletedWaitWaiterConfigTypeDef,
+)
 
 
 class CacheClusterAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         CacheClusterId: str = None,
@@ -14,7 +19,7 @@ class CacheClusterAvailable(Boto3Waiter):
         Marker: str = None,
         ShowCacheNodeInfo: bool = None,
         ShowCacheClustersNotInReplicationGroups: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: CacheClusterAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElastiCache.Client.describe_cache_clusters` every 15 seconds until a successful
@@ -92,7 +97,7 @@ class CacheClusterAvailable(Boto3Waiter):
 
 
 class CacheClusterDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         CacheClusterId: str = None,
@@ -100,7 +105,7 @@ class CacheClusterDeleted(Boto3Waiter):
         Marker: str = None,
         ShowCacheNodeInfo: bool = None,
         ShowCacheClustersNotInReplicationGroups: bool = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: CacheClusterDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElastiCache.Client.describe_cache_clusters` every 15 seconds until a successful
@@ -178,13 +183,13 @@ class CacheClusterDeleted(Boto3Waiter):
 
 
 class ReplicationGroupAvailable(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ReplicationGroupId: str = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationGroupAvailableWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElastiCache.Client.describe_replication_groups` every 15 seconds until a successful
@@ -248,13 +253,13 @@ class ReplicationGroupAvailable(Boto3Waiter):
 
 
 class ReplicationGroupDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
         ReplicationGroupId: str = None,
         MaxRecords: int = None,
         Marker: str = None,
-        WaiterConfig: Dict = None,
+        WaiterConfig: ReplicationGroupDeletedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`ElastiCache.Client.describe_replication_groups` every 15 seconds until a successful

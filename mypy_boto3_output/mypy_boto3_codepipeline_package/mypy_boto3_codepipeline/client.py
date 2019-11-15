@@ -37,9 +37,12 @@ from mypy_boto3_codepipeline.type_defs import (
     ClientPutActionRevisionactionRevisionTypeDef,
     ClientPutApprovalResultResponseTypeDef,
     ClientPutApprovalResultresultTypeDef,
+    ClientPutJobFailureResultfailureDetailsTypeDef,
     ClientPutJobSuccessResultcurrentRevisionTypeDef,
     ClientPutJobSuccessResultexecutionDetailsTypeDef,
+    ClientPutThirdPartyJobFailureResultfailureDetailsTypeDef,
     ClientPutThirdPartyJobSuccessResultcurrentRevisionTypeDef,
+    ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef,
     ClientPutWebhookResponseTypeDef,
     ClientPutWebhooktagsTypeDef,
     ClientPutWebhookwebhookTypeDef,
@@ -52,7 +55,7 @@ from mypy_boto3_codepipeline.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def acknowledge_job(
         self, jobId: str, nonce: str
     ) -> ClientAcknowledgeJobResponseTypeDef:
@@ -104,7 +107,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def acknowledge_third_party_job(
         self, jobId: str, nonce: str, clientToken: str
     ) -> ClientAcknowledgeThirdPartyJobResponseTypeDef:
@@ -162,7 +165,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -179,7 +182,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_custom_action_type(
         self,
         category: str,
@@ -588,7 +591,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_pipeline(
         self,
         pipeline: ClientCreatePipelinepipelineTypeDef,
@@ -1332,7 +1335,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_custom_action_type(
         self, category: str, provider: str, version: str
     ) -> None:
@@ -1376,7 +1379,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_pipeline(self, name: str) -> None:
         """
         Deletes the specified pipeline.
@@ -1398,7 +1401,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_webhook(self, name: str) -> Dict[str, Any]:
         """
         Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from
@@ -1433,7 +1436,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_webhook_with_third_party(
         self, webhookName: str = None
     ) -> Dict[str, Any]:
@@ -1469,7 +1472,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_stage_transition(
         self, pipelineName: str, stageName: str, transitionType: str, reason: str
     ) -> None:
@@ -1515,7 +1518,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_stage_transition(
         self, pipelineName: str, stageName: str, transitionType: str
     ) -> None:
@@ -1555,7 +1558,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1584,7 +1587,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_details(self, jobId: str) -> ClientGetJobDetailsResponseTypeDef:
         """
         Returns information about a job. Used for custom actions only.
@@ -1913,7 +1916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1934,7 +1937,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pipeline(
         self, name: str, version: int = None
     ) -> ClientGetPipelineResponseTypeDef:
@@ -2336,7 +2339,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pipeline_execution(
         self, pipelineName: str, pipelineExecutionId: str
     ) -> ClientGetPipelineExecutionResponseTypeDef:
@@ -2465,7 +2468,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pipeline_state(self, name: str) -> ClientGetPipelineStateResponseTypeDef:
         """
         Returns information about the state of a pipeline, including the stages and actions.
@@ -2708,7 +2711,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_third_party_job_details(
         self, jobId: str, clientToken: str
     ) -> ClientGetThirdPartyJobDetailsResponseTypeDef:
@@ -3048,7 +3051,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -3061,7 +3064,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_action_executions(
         self,
         pipelineName: str,
@@ -3378,7 +3381,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_action_types(
         self, actionOwnerFilter: str = None, nextToken: str = None
     ) -> ClientListActionTypesResponseTypeDef:
@@ -3599,7 +3602,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pipeline_executions(
         self, pipelineName: str, maxResults: int = None, nextToken: str = None
     ) -> ClientListPipelineExecutionsResponseTypeDef:
@@ -3759,7 +3762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_pipelines(
         self, nextToken: str = None
     ) -> ClientListPipelinesResponseTypeDef:
@@ -3837,7 +3840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str, nextToken: str = None, maxResults: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3916,7 +3919,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_webhooks(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListWebhooksResponseTypeDef:
@@ -4127,7 +4130,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def poll_for_jobs(
         self,
         actionTypeId: ClientPollForJobsactionTypeIdTypeDef,
@@ -4518,7 +4521,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def poll_for_third_party_jobs(
         self,
         actionTypeId: ClientPollForThirdPartyJobsactionTypeIdTypeDef,
@@ -4622,7 +4625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_action_revision(
         self,
         pipelineName: str,
@@ -4710,7 +4713,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_approval_result(
         self,
         pipelineName: str,
@@ -4796,8 +4799,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def put_job_failure_result(self, jobId: str, failureDetails: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def put_job_failure_result(
+        self, jobId: str, failureDetails: ClientPutJobFailureResultfailureDetailsTypeDef
+    ) -> None:
         """
         Represents the failure of a job as returned to the pipeline by a job worker. Used for custom
         actions only.
@@ -4844,14 +4849,14 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_job_success_result(
         self,
         jobId: str,
         currentRevision: ClientPutJobSuccessResultcurrentRevisionTypeDef = None,
         continuationToken: str = None,
         executionDetails: ClientPutJobSuccessResultexecutionDetailsTypeDef = None,
-        outputVariables: Dict = None,
+        outputVariables: Dict[str, str] = None,
     ) -> None:
         """
         Represents the success of a job as returned to the pipeline by a job worker. Used for custom
@@ -4949,9 +4954,12 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_third_party_job_failure_result(
-        self, jobId: str, clientToken: str, failureDetails: Dict
+        self,
+        jobId: str,
+        clientToken: str,
+        failureDetails: ClientPutThirdPartyJobFailureResultfailureDetailsTypeDef,
     ) -> None:
         """
         Represents the failure of a third party job as returned to the pipeline by a job worker. Used for
@@ -5005,14 +5013,14 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_third_party_job_success_result(
         self,
         jobId: str,
         clientToken: str,
         currentRevision: ClientPutThirdPartyJobSuccessResultcurrentRevisionTypeDef = None,
         continuationToken: str = None,
-        executionDetails: Dict = None,
+        executionDetails: ClientPutThirdPartyJobSuccessResultexecutionDetailsTypeDef = None,
     ) -> None:
         """
         Represents the success of a third party job as returned to the pipeline by a job worker. Used for
@@ -5104,7 +5112,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_webhook(
         self,
         webhook: ClientPutWebhookwebhookTypeDef,
@@ -5411,7 +5419,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_webhook_with_third_party(
         self, webhookName: str = None
     ) -> Dict[str, Any]:
@@ -5446,7 +5454,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retry_stage_execution(
         self,
         pipelineName: str,
@@ -5514,7 +5522,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_pipeline_execution(
         self, name: str, clientRequestToken: str = None
     ) -> ClientStartPipelineExecutionResponseTypeDef:
@@ -5566,7 +5574,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, resourceArn: str, tags: List[ClientTagResourcetagsTypeDef]
     ) -> Dict[str, Any]:
@@ -5624,7 +5632,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes tags from an AWS resource.
@@ -5666,7 +5674,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_pipeline(
         self, pipeline: ClientUpdatePipelinepipelineTypeDef
     ) -> ClientUpdatePipelineResponseTypeDef:

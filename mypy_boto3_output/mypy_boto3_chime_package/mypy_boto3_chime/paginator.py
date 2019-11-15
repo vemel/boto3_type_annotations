@@ -11,7 +11,7 @@ from mypy_boto3_chime.type_defs import (
 
 
 class ListAccounts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Name: str = None,
@@ -138,7 +138,7 @@ class ListAccounts(Boto3Paginator):
 
 
 class ListUsers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AccountId: str,

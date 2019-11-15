@@ -24,6 +24,7 @@ from mypy_boto3_events.type_defs import (
     ClientPutEventsResponseTypeDef,
     ClientPutPartnerEventsEntriesTypeDef,
     ClientPutPartnerEventsResponseTypeDef,
+    ClientPutPermissionConditionTypeDef,
     ClientPutRuleResponseTypeDef,
     ClientPutRuleTagsTypeDef,
     ClientPutTargetsResponseTypeDef,
@@ -35,7 +36,7 @@ from mypy_boto3_events.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate_event_source(self, Name: str) -> None:
         """
         Activates a partner event source that has been deactivated. Once activated, your matching event bus
@@ -62,7 +63,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -79,7 +80,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_event_bus(
         self, Name: str, EventSourceName: str = None
     ) -> ClientCreateEventBusResponseTypeDef:
@@ -140,7 +141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_partner_event_source(
         self, Name: str, Account: str
     ) -> ClientCreatePartnerEventSourceResponseTypeDef:
@@ -220,7 +221,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate_event_source(self, Name: str) -> None:
         """
         An AWS customer uses this operation to temporarily stop receiving events from the specified partner
@@ -248,7 +249,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_bus(self, Name: str) -> None:
         """
         Deletes the specified custom event bus or partner event bus. All rules associated with this event
@@ -275,7 +276,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_partner_event_source(self, Name: str, Account: str) -> None:
         """
         This operation is used by SaaS partners to delete a partner event source. AWS customers don't use
@@ -307,7 +308,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_rule(
         self, Name: str, EventBusName: str = None, Force: bool = None
     ) -> None:
@@ -356,7 +357,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_bus(
         self, Name: str = None
     ) -> ClientDescribeEventBusResponseTypeDef:
@@ -416,7 +417,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_event_source(
         self, Name: str
     ) -> ClientDescribeEventSourceResponseTypeDef:
@@ -490,7 +491,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_partner_event_source(
         self, Name: str
     ) -> ClientDescribePartnerEventSourceResponseTypeDef:
@@ -542,7 +543,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_rule(
         self, Name: str, EventBusName: str = None
     ) -> ClientDescribeRuleResponseTypeDef:
@@ -635,7 +636,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_rule(self, Name: str, EventBusName: str = None) -> None:
         """
         Disables the specified rule. A disabled rule won't match any events and won't self-trigger if it
@@ -667,7 +668,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def enable_rule(self, Name: str, EventBusName: str = None) -> None:
         """
         Enables the specified rule. If the rule doesn't exist, the operation fails.
@@ -698,7 +699,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -727,7 +728,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -748,7 +749,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -761,7 +762,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_event_buses(
         self, NamePrefix: str = None, NextToken: str = None, Limit: int = None
     ) -> ClientListEventBusesResponseTypeDef:
@@ -854,7 +855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_event_sources(
         self, NamePrefix: str = None, NextToken: str = None, Limit: int = None
     ) -> ClientListEventSourcesResponseTypeDef:
@@ -964,7 +965,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_partner_event_source_accounts(
         self, EventSourceName: str, NextToken: str = None, Limit: int = None
     ) -> ClientListPartnerEventSourceAccountsResponseTypeDef:
@@ -1062,7 +1063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_partner_event_sources(
         self, NamePrefix: str, NextToken: str = None, Limit: int = None
     ) -> ClientListPartnerEventSourcesResponseTypeDef:
@@ -1148,7 +1149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rule_names_by_target(
         self,
         TargetArn: str,
@@ -1222,7 +1223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_rules(
         self,
         NamePrefix: str = None,
@@ -1351,7 +1352,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1410,7 +1411,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_targets_by_rule(
         self,
         Rule: str,
@@ -1625,7 +1626,7 @@ class Client(BaseClient):
 
                      ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-                     ``"InputTemplate": "<instance> is in state \"<status>\""``
+                     ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
                      ``}``
 
@@ -1799,7 +1800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_events(
         self, Entries: List[ClientPutEventsEntriesTypeDef]
     ) -> ClientPutEventsResponseTypeDef:
@@ -1919,7 +1920,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_partner_events(
         self, Entries: List[ClientPutPartnerEventsEntriesTypeDef]
     ) -> ClientPutPartnerEventsResponseTypeDef:
@@ -2032,14 +2033,14 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_permission(
         self,
         Action: str,
         Principal: str,
         StatementId: str,
         EventBusName: str = None,
-        Condition: Dict = None,
+        Condition: ClientPutPermissionConditionTypeDef = None,
     ) -> None:
         """
         Running ``PutPermission`` permits the specified AWS account or AWS organization to put events to
@@ -2138,7 +2139,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_rule(
         self,
         Name: str,
@@ -2299,7 +2300,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_targets(
         self,
         Rule: str,
@@ -2584,7 +2585,7 @@ class Client(BaseClient):
 
                  ``"InputPathsMap": {"instance": "$.detail.instance","status": "$.detail.status"},``
 
-                 ``"InputTemplate": "<instance> is in state \"<status>\""``
+                 ``"InputTemplate": "<instance> is in state \\"<status>\\""``
 
                  ``}``
 
@@ -2799,7 +2800,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_permission(self, StatementId: str, EventBusName: str = None) -> None:
         """
         Revokes the permission of another AWS account to be able to put events to the specified event bus.
@@ -2832,7 +2833,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_targets(
         self, Rule: str, Ids: List[str], EventBusName: str = None, Force: bool = None
     ) -> ClientRemoveTargetsResponseTypeDef:
@@ -2934,7 +2935,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceARN: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -3004,7 +3005,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def test_event_pattern(
         self, EventPattern: str, Event: str
     ) -> ClientTestEventPatternResponseTypeDef:
@@ -3058,7 +3059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceARN: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from the specified EventBridge resource. In EventBridge, rules can be

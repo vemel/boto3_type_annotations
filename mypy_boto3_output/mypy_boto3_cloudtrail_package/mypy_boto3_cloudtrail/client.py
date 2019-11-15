@@ -27,7 +27,7 @@ from mypy_boto3_cloudtrail.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, ResourceId: str, TagsList: List[ClientAddTagsTagsListTypeDef] = None
     ) -> Dict:
@@ -97,7 +97,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -114,7 +114,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_trail(
         self,
         Name: str,
@@ -376,7 +376,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_trail(self, Name: str) -> Dict:
         """
         Deletes a trail. This operation must be called from the region in which the trail was created.
@@ -414,7 +414,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_trails(
         self, trailNameList: List[str] = None, includeShadowTrails: bool = None
     ) -> ClientDescribeTrailsResponseTypeDef:
@@ -588,7 +588,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -617,7 +617,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_event_selectors(
         self, TrailName: str
     ) -> ClientGetEventSelectorsResponseTypeDef:
@@ -842,7 +842,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -863,7 +863,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_trail(self, Name: str) -> ClientGetTrailResponseTypeDef:
         """
         Returns settings information for a specified trail.
@@ -997,7 +997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_trail_status(self, Name: str) -> ClientGetTrailStatusResponseTypeDef:
         """
         Returns a JSON-formatted list of information about the specified trail. Fields include information
@@ -1153,7 +1153,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1166,7 +1166,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_public_keys(
         self,
         StartTime: datetime = None,
@@ -1270,7 +1270,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceIdList: List[str], NextToken: str = None
     ) -> ClientListTagsResponseTypeDef:
@@ -1367,7 +1367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_trails(self, NextToken: str = None) -> ClientListTrailsResponseTypeDef:
         """
         Lists trails that are in the current account.
@@ -1429,7 +1429,7 @@ class Client(BaseClient):
             - **NextToken** *(string) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def lookup_events(
         self,
         LookupAttributes: List[ClientLookupEventsLookupAttributesTypeDef] = None,
@@ -1645,7 +1645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_event_selectors(
         self,
         TrailName: str,
@@ -2046,7 +2046,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags(
         self, ResourceId: str, TagsList: List[ClientRemoveTagsTagsListTypeDef] = None
     ) -> Dict:
@@ -2110,7 +2110,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_logging(self, Name: str) -> Dict:
         """
         Starts the recording of AWS API calls and log file delivery for a trail. For a trail that is
@@ -2151,7 +2151,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_logging(self, Name: str) -> Dict:
         """
         Suspends the recording of AWS API calls and log file delivery for the specified trail. Under most
@@ -2194,7 +2194,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_trail(
         self,
         Name: str,

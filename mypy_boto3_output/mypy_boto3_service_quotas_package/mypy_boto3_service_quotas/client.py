@@ -23,7 +23,7 @@ from mypy_boto3_service_quotas.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_service_quota_template(
         self, *args: Any, **kwargs: Any
     ) -> Dict[str, Any]:
@@ -54,7 +54,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -71,7 +71,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_service_quota_increase_request_from_template(
         self, ServiceCode: str, QuotaCode: str, AwsRegion: str
     ) -> Dict[str, Any]:
@@ -118,7 +118,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_service_quota_template(
         self, *args: Any, **kwargs: Any
     ) -> Dict[str, Any]:
@@ -156,7 +156,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -185,7 +185,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_association_for_service_quota_template(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetAssociationForServiceQuotaTemplateResponseTypeDef:
@@ -224,7 +224,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_aws_default_service_quota(
         self, ServiceCode: str, QuotaCode: str
     ) -> ClientGetAwsDefaultServiceQuotaResponseTypeDef:
@@ -404,7 +404,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -425,7 +425,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_requested_service_quota_change(
         self, RequestId: str
     ) -> ClientGetRequestedServiceQuotaChangeResponseTypeDef:
@@ -538,7 +538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_quota(
         self, ServiceCode: str, QuotaCode: str
     ) -> ClientGetServiceQuotaResponseTypeDef:
@@ -719,7 +719,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_service_quota_increase_request_from_template(
         self, ServiceCode: str, QuotaCode: str, AwsRegion: str
     ) -> ClientGetServiceQuotaIncreaseRequestFromTemplateResponseTypeDef:
@@ -814,7 +814,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -827,7 +827,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_aws_default_service_quotas(
         self, ServiceCode: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListAwsDefaultServiceQuotasResponseTypeDef:
@@ -1048,7 +1048,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_requested_service_quota_change_history(
         self,
         ServiceCode: str = None,
@@ -1208,7 +1208,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_requested_service_quota_change_history_by_quota(
         self,
         ServiceCode: str,
@@ -1378,7 +1378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_service_quota_increase_requests_in_template(
         self,
         ServiceCode: str = None,
@@ -1508,7 +1508,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_service_quotas(
         self, ServiceCode: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListServiceQuotasResponseTypeDef:
@@ -1727,7 +1727,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_services(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListServicesResponseTypeDef:
@@ -1812,7 +1812,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_service_quota_increase_request_into_template(
         self, QuotaCode: str, ServiceCode: str, AwsRegion: str, DesiredValue: float
     ) -> ClientPutServiceQuotaIncreaseRequestIntoTemplateResponseTypeDef:
@@ -1916,7 +1916,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def request_service_quota_increase(
         self, ServiceCode: str, QuotaCode: str, DesiredValue: float
     ) -> ClientRequestServiceQuotaIncreaseResponseTypeDef:

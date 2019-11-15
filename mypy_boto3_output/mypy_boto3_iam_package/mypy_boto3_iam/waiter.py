@@ -1,13 +1,22 @@
 "Main interface for iam Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_iam.type_defs import (
+    InstanceProfileExistsWaitWaiterConfigTypeDef,
+    PolicyExistsWaitWaiterConfigTypeDef,
+    RoleExistsWaitWaiterConfigTypeDef,
+    UserExistsWaitWaiterConfigTypeDef,
+)
 
 
 class InstanceProfileExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, InstanceProfileName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        InstanceProfileName: str,
+        WaiterConfig: InstanceProfileExistsWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`IAM.Client.get_instance_profile` every 1 seconds until a successful state is
         reached. An error is returned after 40 failed checks.
@@ -52,8 +61,10 @@ class InstanceProfileExists(Boto3Waiter):
 
 
 class PolicyExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, PolicyArn: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, PolicyArn: str, WaiterConfig: PolicyExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`IAM.Client.get_policy` every 1 seconds until a successful state is reached. An
         error is returned after 20 failed checks.
@@ -98,8 +109,10 @@ class PolicyExists(Boto3Waiter):
 
 
 class RoleExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, RoleName: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, RoleName: str, WaiterConfig: RoleExistsWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`IAM.Client.get_role` every 1 seconds until a successful state is reached. An error
         is returned after 20 failed checks.
@@ -143,8 +156,12 @@ class RoleExists(Boto3Waiter):
 
 
 class UserExists(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, UserName: str = None, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self,
+        UserName: str = None,
+        WaiterConfig: UserExistsWaitWaiterConfigTypeDef = None,
+    ) -> None:
         """
         Polls :py:meth:`IAM.Client.get_user` every 1 seconds until a successful state is reached. An error
         is returned after 20 failed checks.

@@ -47,7 +47,7 @@ from mypy_boto3_guardduty.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_invitation(
         self, DetectorId: str, MasterId: str, InvitationId: str
     ) -> Dict[str, Any]:
@@ -93,7 +93,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def archive_findings(
         self, DetectorId: str, FindingIds: List[str]
     ) -> Dict[str, Any]:
@@ -142,7 +142,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -159,7 +159,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_detector(
         self,
         Enable: bool,
@@ -232,7 +232,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_filter(
         self,
         DetectorId: str,
@@ -436,7 +436,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ip_set(
         self,
         DetectorId: str,
@@ -531,7 +531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_members(
         self,
         DetectorId: str,
@@ -618,7 +618,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_sample_findings(
         self, DetectorId: str, FindingTypes: List[str] = None
     ) -> Dict[str, Any]:
@@ -663,7 +663,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_threat_intel_set(
         self,
         DetectorId: str,
@@ -759,7 +759,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def decline_invitations(
         self, AccountIds: List[str]
     ) -> ClientDeclineInvitationsResponseTypeDef:
@@ -824,7 +824,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_detector(self, DetectorId: str) -> Dict[str, Any]:
         """
         Deletes a Amazon GuardDuty detector specified by the detector ID.
@@ -856,7 +856,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_filter(self, DetectorId: str, FilterName: str) -> Dict[str, Any]:
         """
         Deletes the filter specified by the filter name.
@@ -894,7 +894,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_invitations(
         self, AccountIds: List[str]
     ) -> ClientDeleteInvitationsResponseTypeDef:
@@ -959,7 +959,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ip_set(self, DetectorId: str, IpSetId: str) -> Dict[str, Any]:
         """
         Deletes the IPSet specified by the IPSet ID.
@@ -997,7 +997,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_members(
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientDeleteMembersResponseTypeDef:
@@ -1066,7 +1066,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_threat_intel_set(
         self, DetectorId: str, ThreatIntelSetId: str
     ) -> Dict[str, Any]:
@@ -1106,7 +1106,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_from_master_account(self, DetectorId: str) -> Dict[str, Any]:
         """
         Disassociates the current GuardDuty member account from its master account.
@@ -1138,7 +1138,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_members(
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientDisassociateMembersResponseTypeDef:
@@ -1209,7 +1209,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1238,7 +1238,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_detector(self, DetectorId: str) -> ClientGetDetectorResponseTypeDef:
         """
         Retrieves an Amazon GuardDuty detector specified by the detectorId.
@@ -1308,7 +1308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_filter(
         self, DetectorId: str, FilterName: str
     ) -> ClientGetFilterResponseTypeDef:
@@ -1491,7 +1491,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_findings(
         self,
         DetectorId: str,
@@ -2345,7 +2345,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_findings_statistics(
         self,
         DetectorId: str,
@@ -2522,7 +2522,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_invitations_count(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetInvitationsCountResponseTypeDef:
@@ -2558,7 +2558,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ip_set(
         self, DetectorId: str, IpSetId: str
     ) -> ClientGetIpSetResponseTypeDef:
@@ -2634,7 +2634,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_master_account(
         self, DetectorId: str
     ) -> ClientGetMasterAccountResponseTypeDef:
@@ -2697,7 +2697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_members(
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientGetMembersResponseTypeDef:
@@ -2814,7 +2814,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2835,7 +2835,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_threat_intel_set(
         self, DetectorId: str, ThreatIntelSetId: str
     ) -> ClientGetThreatIntelSetResponseTypeDef:
@@ -2911,7 +2911,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2924,7 +2924,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def invite_members(
         self,
         DetectorId: str,
@@ -3013,7 +3013,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_detectors(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListDetectorsResponseTypeDef:
@@ -3072,7 +3072,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_filters(
         self, DetectorId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListFiltersResponseTypeDef:
@@ -3137,7 +3137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_findings(
         self,
         DetectorId: str,
@@ -3334,7 +3334,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_invitations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListInvitationsResponseTypeDef:
@@ -3416,7 +3416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_ip_sets(
         self, DetectorId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListIpSetsResponseTypeDef:
@@ -3481,7 +3481,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_members(
         self,
         DetectorId: str,
@@ -3595,7 +3595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3644,7 +3644,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_threat_intel_sets(
         self, DetectorId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListThreatIntelSetsResponseTypeDef:
@@ -3709,7 +3709,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_monitoring_members(
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientStartMonitoringMembersResponseTypeDef:
@@ -3782,7 +3782,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_monitoring_members(
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientStopMonitoringMembersResponseTypeDef:
@@ -3855,7 +3855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(self, ResourceArn: str, Tags: List[str]) -> Dict[str, Any]:
         """
         Adds tags to a resource.
@@ -3899,7 +3899,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def unarchive_findings(
         self, DetectorId: str, FindingIds: List[str]
     ) -> Dict[str, Any]:
@@ -3943,7 +3943,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes tags from a resource.
@@ -3985,7 +3985,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_detector(
         self,
         DetectorId: str,
@@ -4034,7 +4034,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_filter(
         self,
         DetectorId: str,
@@ -4217,7 +4217,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_findings_feedback(
         self,
         DetectorId: str,
@@ -4278,7 +4278,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ip_set(
         self,
         DetectorId: str,
@@ -4342,7 +4342,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_threat_intel_set(
         self,
         DetectorId: str,

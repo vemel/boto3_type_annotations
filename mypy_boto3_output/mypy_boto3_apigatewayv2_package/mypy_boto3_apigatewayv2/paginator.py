@@ -27,7 +27,7 @@ from mypy_boto3_apigatewayv2.type_defs import (
 
 
 class GetApis(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetApisPaginatePaginationConfigTypeDef = None
     ) -> GetApisPaginateResponseTypeDef:
@@ -177,7 +177,7 @@ class GetApis(Boto3Paginator):
 
 
 class GetAuthorizers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -340,7 +340,7 @@ class GetAuthorizers(Boto3Paginator):
 
 
 class GetDeployments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -447,7 +447,7 @@ class GetDeployments(Boto3Paginator):
 
 
 class GetDomainNames(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDomainNamesPaginatePaginationConfigTypeDef = None
     ) -> GetDomainNamesPaginateResponseTypeDef:
@@ -609,7 +609,7 @@ class GetDomainNames(Boto3Paginator):
 
 
 class GetIntegrationResponses(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -763,7 +763,7 @@ class GetIntegrationResponses(Boto3Paginator):
 
 
 class GetIntegrations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -992,7 +992,7 @@ class GetIntegrations(Boto3Paginator):
 
 
 class GetModels(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -1101,7 +1101,7 @@ class GetModels(Boto3Paginator):
 
 
 class GetRouteResponses(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -1237,7 +1237,7 @@ class GetRouteResponses(Boto3Paginator):
 
 
 class GetRoutes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,
@@ -1416,7 +1416,7 @@ class GetRoutes(Boto3Paginator):
 
 
 class GetStages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ApiId: str,

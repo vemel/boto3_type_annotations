@@ -12,7 +12,7 @@ from mypy_boto3_iot1click_devices.type_defs import (
 
 
 class ListDeviceEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DeviceId: str,
@@ -132,7 +132,7 @@ class ListDeviceEvents(Boto3Paginator):
 
 
 class ListDevices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DeviceType: str = None,

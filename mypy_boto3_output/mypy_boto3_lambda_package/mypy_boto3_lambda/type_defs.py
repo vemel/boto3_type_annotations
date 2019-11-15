@@ -5299,6 +5299,29 @@ class ClientUpdateFunctionConfigurationVpcConfigTypeDef(
     """
 
 
+_FunctionExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_FunctionExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class FunctionExistsWaitWaiterConfigTypeDef(_FunctionExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `FunctionExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
 _ListAliasesPaginatePaginationConfigTypeDef = TypedDict(
     "_ListAliasesPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},

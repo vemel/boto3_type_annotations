@@ -27,7 +27,7 @@ from mypy_boto3_lex_models.type_defs import (
 
 
 class GetBotAliases(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         botName: str,
@@ -154,7 +154,7 @@ class GetBotAliases(Boto3Paginator):
 
 
 class GetBotChannelAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         botName: str,
@@ -320,7 +320,7 @@ class GetBotChannelAssociations(Boto3Paginator):
 
 
 class GetBotVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         name: str,
@@ -435,7 +435,7 @@ class GetBotVersions(Boto3Paginator):
 
 
 class GetBots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         nameContains: str = None,
@@ -550,7 +550,7 @@ class GetBots(Boto3Paginator):
 
 
 class GetBuiltinIntents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         locale: str = None,
@@ -661,7 +661,7 @@ class GetBuiltinIntents(Boto3Paginator):
 
 
 class GetBuiltinSlotTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         locale: str = None,
@@ -769,7 +769,7 @@ class GetBuiltinSlotTypes(Boto3Paginator):
 
 
 class GetIntentVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         name: str,
@@ -879,7 +879,7 @@ class GetIntentVersions(Boto3Paginator):
 
 
 class GetIntents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         nameContains: str = None,
@@ -989,7 +989,7 @@ class GetIntents(Boto3Paginator):
 
 
 class GetSlotTypeVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         name: str,
@@ -1099,7 +1099,7 @@ class GetSlotTypeVersions(Boto3Paginator):
 
 
 class GetSlotTypes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         nameContains: str = None,

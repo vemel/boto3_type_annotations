@@ -22,7 +22,7 @@ from mypy_boto3_cloudhsmv2.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -39,7 +39,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_backup_to_region(
         self, DestinationRegion: str, BackupId: str
     ) -> ClientCopyBackupToRegionResponseTypeDef:
@@ -104,7 +104,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cluster(
         self, SubnetIds: List[str], HsmType: str, SourceBackupId: str = None
     ) -> ClientCreateClusterResponseTypeDef:
@@ -318,7 +318,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hsm(
         self, ClusterId: str, AvailabilityZone: str, IpAddress: str = None
     ) -> ClientCreateHsmResponseTypeDef:
@@ -415,7 +415,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup(self, BackupId: str) -> ClientDeleteBackupResponseTypeDef:
         """
         Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the
@@ -494,7 +494,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_cluster(self, ClusterId: str) -> ClientDeleteClusterResponseTypeDef:
         """
         Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all
@@ -687,7 +687,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_hsm(
         self, ClusterId: str, HsmId: str = None, EniId: str = None, EniIp: str = None
     ) -> ClientDeleteHsmResponseTypeDef:
@@ -748,7 +748,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_backups(
         self,
         NextToken: str = None,
@@ -888,7 +888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_clusters(
         self,
         Filters: Dict[str, List[str]] = None,
@@ -1133,7 +1133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1162,7 +1162,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1183,7 +1183,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1196,7 +1196,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initialize_cluster(
         self, ClusterId: str, SignedCert: str, TrustAnchor: str
     ) -> ClientInitializeClusterResponseTypeDef:
@@ -1265,7 +1265,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTagsResponseTypeDef:
@@ -1349,7 +1349,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_backup(self, BackupId: str) -> ClientRestoreBackupResponseTypeDef:
         """
         Restores a specified AWS CloudHSM backup that is in the ``PENDING_DELETION`` state. For more
@@ -1428,7 +1428,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceId: str, TagList: List[ClientTagResourceTagListTypeDef]
     ) -> Dict[str, Any]:
@@ -1486,7 +1486,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceId: str, TagKeyList: List[str]) -> Dict[str, Any]:
         """
         Removes the specified tag or tags from the specified AWS CloudHSM cluster.

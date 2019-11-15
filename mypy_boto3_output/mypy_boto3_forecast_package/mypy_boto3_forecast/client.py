@@ -42,7 +42,7 @@ from mypy_boto3_forecast.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -59,7 +59,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset(
         self,
         DatasetName: str,
@@ -213,7 +213,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset_group(
         self, DatasetGroupName: str, Domain: str, DatasetArns: List[str] = None
     ) -> ClientCreateDatasetGroupResponseTypeDef:
@@ -289,7 +289,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dataset_import_job(
         self,
         DatasetImportJobName: str,
@@ -414,7 +414,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_forecast(
         self, ForecastName: str, PredictorArn: str
     ) -> ClientCreateForecastResponseTypeDef:
@@ -483,7 +483,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_forecast_export_job(
         self,
         ForecastExportJobName: str,
@@ -582,7 +582,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_predictor(
         self,
         PredictorName: str,
@@ -962,7 +962,7 @@ class Client(BaseClient):
 
               For this release, the only supported feature is a holiday calendar. If the calendar is used,
               all data should belong to the same country as the calendar. For the calendar data, see
-              `http://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
+              `http\\://jollyday.sourceforge.net/data.html <http://jollyday.sourceforge.net/data.html>`__ .
 
               - **Name** *(string) --* **[REQUIRED]**
 
@@ -1120,7 +1120,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset(self, DatasetArn: str) -> None:
         """
         Deletes an Amazon Forecast dataset created using the  CreateDataset operation. To be deleted, the
@@ -1144,7 +1144,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset_group(self, DatasetGroupArn: str) -> None:
         """
         Deletes a dataset group created using the  CreateDatasetGroup operation. To be deleted, the dataset
@@ -1170,7 +1170,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dataset_import_job(self, DatasetImportJobArn: str) -> None:
         """
         Deletes a dataset import job created using the  CreateDatasetImportJob operation. To be deleted,
@@ -1194,7 +1194,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_forecast(self, ForecastArn: str) -> None:
         """
         Deletes a forecast created using the  CreateForecast operation. To be deleted, the forecast must
@@ -1220,7 +1220,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_forecast_export_job(self, ForecastExportJobArn: str) -> None:
         """
         Deletes a forecast export job created using the  CreateForecastExportJob operation. To be deleted,
@@ -1244,7 +1244,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_predictor(self, PredictorArn: str) -> None:
         """
         Deletes a predictor created using the  CreatePredictor operation. To be deleted, the predictor must
@@ -1270,7 +1270,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset(self, DatasetArn: str) -> ClientDescribeDatasetResponseTypeDef:
         """
         Describes an Amazon Forecast dataset created using the  CreateDataset operation.
@@ -1430,7 +1430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset_group(
         self, DatasetGroupArn: str
     ) -> ClientDescribeDatasetGroupResponseTypeDef:
@@ -1538,7 +1538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_dataset_import_job(
         self, DatasetImportJobArn: str
     ) -> ClientDescribeDatasetImportJobResponseTypeDef:
@@ -1743,7 +1743,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_forecast(
         self, ForecastArn: str
     ) -> ClientDescribeForecastResponseTypeDef:
@@ -1846,7 +1846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_forecast_export_job(
         self, ForecastExportJobArn: str
     ) -> ClientDescribeForecastExportJobResponseTypeDef:
@@ -1972,7 +1972,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_predictor(
         self, PredictorArn: str
     ) -> ClientDescribePredictorResponseTypeDef:
@@ -2303,7 +2303,7 @@ class Client(BaseClient):
 
                   For this release, the only supported feature is a holiday calendar. If the calendar is
                   used, all data should belong to the same country as the calendar. For the calendar data,
-                  see `http://jollyday.sourceforge.net/data.html
+                  see `http\\://jollyday.sourceforge.net/data.html
                   <http://jollyday.sourceforge.net/data.html>`__ .
 
                   - **Name** *(string) --*
@@ -2485,7 +2485,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -2514,7 +2514,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_accuracy_metrics(
         self, PredictorArn: str
     ) -> ClientGetAccuracyMetricsResponseTypeDef:
@@ -2662,7 +2662,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -2683,7 +2683,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2696,7 +2696,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataset_groups(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListDatasetGroupsResponseTypeDef:
@@ -2783,7 +2783,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dataset_import_jobs(
         self,
         NextToken: str = None,
@@ -2974,7 +2974,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_datasets(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListDatasetsResponseTypeDef:
@@ -3074,7 +3074,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_forecast_export_jobs(
         self,
         NextToken: str = None,
@@ -3262,7 +3262,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_forecasts(
         self,
         NextToken: str = None,
@@ -3431,7 +3431,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_predictors(
         self,
         NextToken: str = None,
@@ -3596,7 +3596,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_dataset_group(
         self, DatasetGroupArn: str, DatasetArns: List[str]
     ) -> Dict[str, Any]:

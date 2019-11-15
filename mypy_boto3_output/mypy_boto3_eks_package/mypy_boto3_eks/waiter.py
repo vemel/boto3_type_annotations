@@ -1,13 +1,18 @@
 "Main interface for eks Waiters"
 from __future__ import annotations
 
-from typing import Dict
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_eks.type_defs import (
+    ClusterActiveWaitWaiterConfigTypeDef,
+    ClusterDeletedWaitWaiterConfigTypeDef,
+)
 
 
 class ClusterActive(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, name: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, name: str, WaiterConfig: ClusterActiveWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`EKS.Client.describe_cluster` every 30 seconds until a successful state is reached.
         An error is returned after 40 failed checks.
@@ -48,8 +53,10 @@ class ClusterActive(Boto3Waiter):
 
 
 class ClusterDeleted(Boto3Waiter):
-    # pylint: disable=arguments-differ
-    def wait(self, name: str, WaiterConfig: Dict = None) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def wait(
+        self, name: str, WaiterConfig: ClusterDeletedWaitWaiterConfigTypeDef = None
+    ) -> None:
         """
         Polls :py:meth:`EKS.Client.describe_cluster` every 30 seconds until a successful state is reached.
         An error is returned after 40 failed checks.

@@ -19,7 +19,7 @@ from mypy_boto3_appmesh.type_defs import (
 
 
 class ListMeshes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMeshesPaginatePaginationConfigTypeDef = None
     ) -> ListMeshesPaginateResponseTypeDef:
@@ -103,7 +103,7 @@ class ListMeshes(Boto3Paginator):
 
 
 class ListRoutes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         meshName: str,
@@ -212,7 +212,7 @@ class ListRoutes(Boto3Paginator):
 
 
 class ListTagsForResource(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         resourceArn: str,
@@ -310,7 +310,7 @@ class ListTagsForResource(Boto3Paginator):
 
 
 class ListVirtualNodes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         meshName: str,
@@ -408,7 +408,7 @@ class ListVirtualNodes(Boto3Paginator):
 
 
 class ListVirtualRouters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         meshName: str,
@@ -506,7 +506,7 @@ class ListVirtualRouters(Boto3Paginator):
 
 
 class ListVirtualServices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         meshName: str,

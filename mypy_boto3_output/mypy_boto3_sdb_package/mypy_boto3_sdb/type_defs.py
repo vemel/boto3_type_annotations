@@ -5,6 +5,121 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+_RequiredClientBatchDeleteAttributesItemsAttributesTypeDef = TypedDict(
+    "_RequiredClientBatchDeleteAttributesItemsAttributesTypeDef",
+    {"Name": str, "Value": str},
+)
+_OptionalClientBatchDeleteAttributesItemsAttributesTypeDef = TypedDict(
+    "_OptionalClientBatchDeleteAttributesItemsAttributesTypeDef",
+    {"AlternateNameEncoding": str, "AlternateValueEncoding": str},
+    total=False,
+)
+
+
+class ClientBatchDeleteAttributesItemsAttributesTypeDef(
+    _RequiredClientBatchDeleteAttributesItemsAttributesTypeDef,
+    _OptionalClientBatchDeleteAttributesItemsAttributesTypeDef,
+):
+    """
+    Type definition for `ClientBatchDeleteAttributesItems` `Attributes`
+
+    - **Name** *(string) --* **[REQUIRED]** The name of the attribute.
+
+    - **AlternateNameEncoding** *(string) --*
+
+    - **Value** *(string) --* **[REQUIRED]** The value of the attribute.
+
+    - **AlternateValueEncoding** *(string) --*
+    """
+
+
+_RequiredClientBatchDeleteAttributesItemsTypeDef = TypedDict(
+    "_RequiredClientBatchDeleteAttributesItemsTypeDef", {"Name": str}
+)
+_OptionalClientBatchDeleteAttributesItemsTypeDef = TypedDict(
+    "_OptionalClientBatchDeleteAttributesItemsTypeDef",
+    {"Attributes": List[ClientBatchDeleteAttributesItemsAttributesTypeDef]},
+    total=False,
+)
+
+
+class ClientBatchDeleteAttributesItemsTypeDef(
+    _RequiredClientBatchDeleteAttributesItemsTypeDef,
+    _OptionalClientBatchDeleteAttributesItemsTypeDef,
+):
+    """
+    Type definition for `ClientBatchDeleteAttributes` `Items`
+
+    - **Name** *(string) --* **[REQUIRED]**
+
+    - **Attributes** *(list) --*
+
+      - *(dict) --*
+
+        - **Name** *(string) --* **[REQUIRED]** The name of the attribute.
+
+        - **AlternateNameEncoding** *(string) --*
+
+        - **Value** *(string) --* **[REQUIRED]** The value of the attribute.
+
+        - **AlternateValueEncoding** *(string) --*
+    """
+
+
+_RequiredClientBatchPutAttributesItemsAttributesTypeDef = TypedDict(
+    "_RequiredClientBatchPutAttributesItemsAttributesTypeDef",
+    {"Name": str, "Value": str},
+)
+_OptionalClientBatchPutAttributesItemsAttributesTypeDef = TypedDict(
+    "_OptionalClientBatchPutAttributesItemsAttributesTypeDef",
+    {"Replace": bool},
+    total=False,
+)
+
+
+class ClientBatchPutAttributesItemsAttributesTypeDef(
+    _RequiredClientBatchPutAttributesItemsAttributesTypeDef,
+    _OptionalClientBatchPutAttributesItemsAttributesTypeDef,
+):
+    """
+    Type definition for `ClientBatchPutAttributesItems` `Attributes`
+
+    - **Name** *(string) --* **[REQUIRED]** The name of the replaceable attribute.
+
+    - **Value** *(string) --* **[REQUIRED]** The value of the replaceable attribute.
+
+    - **Replace** *(boolean) --* A flag specifying whether or not to replace the
+    attribute/value pair or to add a new attribute/value pair. The default setting is ``false``
+    .
+    """
+
+
+_ClientBatchPutAttributesItemsTypeDef = TypedDict(
+    "_ClientBatchPutAttributesItemsTypeDef",
+    {"Name": str, "Attributes": List[ClientBatchPutAttributesItemsAttributesTypeDef]},
+)
+
+
+class ClientBatchPutAttributesItemsTypeDef(_ClientBatchPutAttributesItemsTypeDef):
+    """
+    Type definition for `ClientBatchPutAttributes` `Items`
+
+    - **Name** *(string) --* **[REQUIRED]** The name of the replaceable item.
+
+    - **Attributes** *(list) --* **[REQUIRED]** The list of attributes for a replaceable item.
+
+      - *(dict) --*
+
+        - **Name** *(string) --* **[REQUIRED]** The name of the replaceable attribute.
+
+        - **Value** *(string) --* **[REQUIRED]** The value of the replaceable attribute.
+
+        - **Replace** *(boolean) --* A flag specifying whether or not to replace the
+        attribute/value pair or to add a new attribute/value pair. The default setting is ``false``
+        .
+    """
+
+
 _ClientDomainMetadataResponseTypeDef = TypedDict(
     "_ClientDomainMetadataResponseTypeDef",
     {

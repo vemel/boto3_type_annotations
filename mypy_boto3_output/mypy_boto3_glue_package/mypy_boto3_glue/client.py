@@ -154,7 +154,7 @@ from mypy_boto3_glue.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_create_partition(
         self,
         DatabaseName: str,
@@ -475,7 +475,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_connection(
         self, ConnectionNameList: List[str], CatalogId: str = None
     ) -> ClientBatchDeleteConnectionResponseTypeDef:
@@ -555,7 +555,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_partition(
         self,
         DatabaseName: str,
@@ -667,7 +667,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_table(
         self, DatabaseName: str, TablesToDelete: List[str], CatalogId: str = None
     ) -> ClientBatchDeleteTableResponseTypeDef:
@@ -764,7 +764,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_table_version(
         self,
         DatabaseName: str,
@@ -868,7 +868,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_crawlers(
         self, CrawlerNames: List[str]
     ) -> ClientBatchGetCrawlersResponseTypeDef:
@@ -1188,7 +1188,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_dev_endpoints(
         self, DevEndpointNames: List[str]
     ) -> ClientBatchGetDevEndpointsResponseTypeDef:
@@ -1463,7 +1463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_jobs(self, JobNames: List[str]) -> ClientBatchGetJobsResponseTypeDef:
         """
         Returns a list of resource metadata for a given list of job names. After calling the ``ListJobs``
@@ -1727,7 +1727,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_partition(
         self,
         DatabaseName: str,
@@ -2065,7 +2065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_triggers(
         self, TriggerNames: List[str]
     ) -> ClientBatchGetTriggersResponseTypeDef:
@@ -2294,7 +2294,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_workflows(
         self, Names: List[str], IncludeGraph: bool = None
     ) -> ClientBatchGetWorkflowsResponseTypeDef:
@@ -3507,7 +3507,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_stop_job_run(
         self, JobName: str, JobRunIds: List[str]
     ) -> ClientBatchStopJobRunResponseTypeDef:
@@ -3614,7 +3614,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -3631,7 +3631,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_ml_task_run(
         self, TransformId: str, TaskRunId: str
     ) -> ClientCancelMlTaskRunResponseTypeDef:
@@ -3691,7 +3691,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_classifier(
         self,
         GrokClassifier: ClientCreateClassifierGrokClassifierTypeDef = None,
@@ -3845,7 +3845,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_connection(
         self,
         ConnectionInput: ClientCreateConnectionConnectionInputTypeDef,
@@ -3952,7 +3952,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_crawler(
         self,
         Name: str,
@@ -4201,7 +4201,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_database(
         self,
         DatabaseInput: ClientCreateDatabaseDatabaseInputTypeDef,
@@ -4306,7 +4306,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_dev_endpoint(
         self,
         EndpointName: str,
@@ -4631,7 +4631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_job(
         self,
         Name: str,
@@ -4900,7 +4900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ml_transform(
         self,
         Name: str,
@@ -5124,7 +5124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_partition(
         self,
         DatabaseName: str,
@@ -5399,7 +5399,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_script(
         self,
         DagNodes: List[ClientCreateScriptDagNodesTypeDef] = None,
@@ -5531,7 +5531,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_security_configuration(
         self,
         Name: str,
@@ -5644,7 +5644,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_table(
         self,
         DatabaseName: str,
@@ -5979,7 +5979,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_trigger(
         self,
         Name: str,
@@ -6204,7 +6204,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user_defined_function(
         self,
         DatabaseName: str,
@@ -6297,7 +6297,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_workflow(
         self,
         Name: str,
@@ -6372,7 +6372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_classifier(self, Name: str) -> Dict[str, Any]:
         """
         Removes a classifier from the Data Catalog.
@@ -6404,7 +6404,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_connection(
         self, ConnectionName: str, CatalogId: str = None
     ) -> Dict[str, Any]:
@@ -6445,7 +6445,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_crawler(self, Name: str) -> Dict[str, Any]:
         """
         Removes a specified crawler from the AWS Glue Data Catalog, unless the crawler state is ``RUNNING``
@@ -6478,7 +6478,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_database(self, Name: str, CatalogId: str = None) -> Dict[str, Any]:
         """
         Removes a specified database from a Data Catalog.
@@ -6529,7 +6529,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_dev_endpoint(self, EndpointName: str) -> Dict[str, Any]:
         """
         Deletes a specified development endpoint.
@@ -6561,7 +6561,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_job(self, JobName: str) -> ClientDeleteJobResponseTypeDef:
         """
         Deletes a specified job definition. If the job definition is not found, no exception is thrown.
@@ -6600,7 +6600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ml_transform(
         self, TransformId: str
     ) -> ClientDeleteMlTransformResponseTypeDef:
@@ -6645,7 +6645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_partition(
         self,
         DatabaseName: str,
@@ -6706,7 +6706,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_policy(self, PolicyHashCondition: str = None) -> Dict[str, Any]:
         """
         Deletes a specified policy.
@@ -6738,7 +6738,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_security_configuration(self, Name: str) -> Dict[str, Any]:
         """
         Deletes a specified security configuration.
@@ -6770,7 +6770,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_table(
         self, DatabaseName: str, Name: str, CatalogId: str = None
     ) -> Dict[str, Any]:
@@ -6828,7 +6828,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_table_version(
         self, DatabaseName: str, TableName: str, VersionId: str, CatalogId: str = None
     ) -> Dict[str, Any]:
@@ -6883,7 +6883,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_trigger(self, Name: str) -> ClientDeleteTriggerResponseTypeDef:
         """
         Deletes a specified trigger. If the trigger is not found, no exception is thrown.
@@ -6922,7 +6922,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_defined_function(
         self, DatabaseName: str, FunctionName: str, CatalogId: str = None
     ) -> Dict[str, Any]:
@@ -6969,7 +6969,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_workflow(self, Name: str) -> ClientDeleteWorkflowResponseTypeDef:
         """
         Deletes a workflow.
@@ -7008,7 +7008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -7037,7 +7037,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_catalog_import_status(
         self, CatalogId: str = None
     ) -> ClientGetCatalogImportStatusResponseTypeDef:
@@ -7094,7 +7094,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_classifier(self, Name: str) -> ClientGetClassifierResponseTypeDef:
         """
         Retrieve a classifier by name.
@@ -7316,7 +7316,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_classifiers(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetClassifiersResponseTypeDef:
@@ -7566,7 +7566,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connection(
         self, Name: str, CatalogId: str = None, HidePassword: bool = None
     ) -> ClientGetConnectionResponseTypeDef:
@@ -7753,7 +7753,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connections(
         self,
         CatalogId: str = None,
@@ -7985,7 +7985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_crawler(self, Name: str) -> ClientGetCrawlerResponseTypeDef:
         """
         Retrieves metadata for a specified crawler.
@@ -8279,7 +8279,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_crawler_metrics(
         self,
         CrawlerNameList: List[str] = None,
@@ -8391,7 +8391,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_crawlers(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetCrawlersResponseTypeDef:
@@ -8707,7 +8707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_data_catalog_encryption_settings(
         self, CatalogId: str = None
     ) -> ClientGetDataCatalogEncryptionSettingsResponseTypeDef:
@@ -8794,7 +8794,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_database(
         self, Name: str, CatalogId: str = None
     ) -> ClientGetDatabaseResponseTypeDef:
@@ -8908,7 +8908,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_databases(
         self, CatalogId: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientGetDatabasesResponseTypeDef:
@@ -9041,7 +9041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dataflow_graph(
         self, PythonScript: str = None
     ) -> ClientGetDataflowGraphResponseTypeDef:
@@ -9158,7 +9158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dev_endpoint(
         self, EndpointName: str
     ) -> ClientGetDevEndpointResponseTypeDef:
@@ -9414,7 +9414,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_dev_endpoints(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetDevEndpointsResponseTypeDef:
@@ -9689,7 +9689,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job(self, JobName: str) -> ClientGetJobResponseTypeDef:
         """
         Retrieves an existing job definition.
@@ -9929,7 +9929,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_bookmark(
         self, JobName: str, RunId: str = None
     ) -> ClientGetJobBookmarkResponseTypeDef:
@@ -10012,7 +10012,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_run(
         self, JobName: str, RunId: str, PredecessorsIncluded: bool = None
     ) -> ClientGetJobRunResponseTypeDef:
@@ -10267,7 +10267,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_job_runs(
         self, JobName: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientGetJobRunsResponseTypeDef:
@@ -10534,7 +10534,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_jobs(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientGetJobsResponseTypeDef:
@@ -10794,7 +10794,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_mapping(
         self,
         Source: ClientGetMappingSourceTypeDef,
@@ -10997,7 +10997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ml_task_run(
         self, TransformId: str, TaskRunId: str
     ) -> ClientGetMlTaskRunResponseTypeDef:
@@ -11159,7 +11159,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ml_task_runs(
         self,
         TransformId: str,
@@ -11398,7 +11398,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ml_transform(self, TransformId: str) -> ClientGetMlTransformResponseTypeDef:
         """
         Gets an AWS Glue machine learning transform artifact and all its corresponding metadata. Machine
@@ -11737,7 +11737,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ml_transforms(
         self,
         NextToken: str = None,
@@ -12205,7 +12205,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -12226,7 +12226,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_partition(
         self,
         DatabaseName: str,
@@ -12524,7 +12524,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_partitions(
         self,
         DatabaseName: str,
@@ -12942,7 +12942,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_plan(
         self,
         Mapping: List[ClientGetPlanMappingTypeDef],
@@ -13163,7 +13163,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_policy(
         self, *args: Any, **kwargs: Any
     ) -> ClientGetResourcePolicyResponseTypeDef:
@@ -13213,7 +13213,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_security_configuration(
         self, Name: str
     ) -> ClientGetSecurityConfigurationResponseTypeDef:
@@ -13325,7 +13325,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_security_configurations(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientGetSecurityConfigurationsResponseTypeDef:
@@ -13454,7 +13454,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_table(
         self, DatabaseName: str, Name: str, CatalogId: str = None
     ) -> ClientGetTableResponseTypeDef:
@@ -13822,7 +13822,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_table_version(
         self,
         DatabaseName: str,
@@ -14214,7 +14214,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_table_versions(
         self,
         DatabaseName: str,
@@ -14623,7 +14623,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_tables(
         self,
         DatabaseName: str,
@@ -15021,7 +15021,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_tags(self, ResourceArn: str) -> ClientGetTagsResponseTypeDef:
         """
         Retrieves a list of tags associated with a resource.
@@ -15065,7 +15065,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_trigger(self, Name: str) -> ClientGetTriggerResponseTypeDef:
         """
         Retrieves the definition of a trigger.
@@ -15269,7 +15269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_triggers(
         self,
         NextToken: str = None,
@@ -15503,7 +15503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_defined_function(
         self, DatabaseName: str, FunctionName: str, CatalogId: str = None
     ) -> ClientGetUserDefinedFunctionResponseTypeDef:
@@ -15605,7 +15605,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_defined_functions(
         self,
         DatabaseName: str,
@@ -15736,7 +15736,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -15749,7 +15749,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_workflow(
         self, Name: str, IncludeGraph: bool = None
     ) -> ClientGetWorkflowResponseTypeDef:
@@ -16937,7 +16937,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_workflow_run(
         self, Name: str, RunId: str, IncludeGraph: bool = None
     ) -> ClientGetWorkflowRunResponseTypeDef:
@@ -17578,7 +17578,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_workflow_run_properties(
         self, Name: str, RunId: str
     ) -> ClientGetWorkflowRunPropertiesResponseTypeDef:
@@ -17631,7 +17631,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_workflow_runs(
         self,
         Name: str,
@@ -18294,7 +18294,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_catalog_to_glue(self, CatalogId: str = None) -> Dict[str, Any]:
         """
         Imports an existing Amazon Athena Data Catalog to AWS Glue
@@ -18326,7 +18326,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_crawlers(
         self, MaxResults: int = None, NextToken: str = None, Tags: List[str] = None
     ) -> ClientListCrawlersResponseTypeDef:
@@ -18400,7 +18400,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_dev_endpoints(
         self, NextToken: str = None, MaxResults: int = None, Tags: List[str] = None
     ) -> ClientListDevEndpointsResponseTypeDef:
@@ -18475,7 +18475,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_jobs(
         self, NextToken: str = None, MaxResults: int = None, Tags: List[str] = None
     ) -> ClientListJobsResponseTypeDef:
@@ -18549,7 +18549,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_triggers(
         self,
         NextToken: str = None,
@@ -18634,7 +18634,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_workflows(
         self, NextToken: str = None, MaxResults: int = None
     ) -> ClientListWorkflowsResponseTypeDef:
@@ -18690,7 +18690,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_data_catalog_encryption_settings(
         self,
         DataCatalogEncryptionSettings: ClientPutDataCatalogEncryptionSettingsDataCatalogEncryptionSettingsTypeDef,
@@ -18779,7 +18779,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_resource_policy(
         self,
         PolicyInJson: str,
@@ -18840,7 +18840,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_workflow_run_properties(
         self, Name: str, RunId: str, RunProperties: Dict[str, str]
     ) -> Dict[str, Any]:
@@ -18894,7 +18894,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_job_bookmark(
         self, JobName: str, RunId: str = None
     ) -> ClientResetJobBookmarkResponseTypeDef:
@@ -18977,7 +18977,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search_tables(
         self,
         CatalogId: str = None,
@@ -19430,7 +19430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_crawler(self, Name: str) -> Dict[str, Any]:
         """
         Starts a crawl using the specified crawler, regardless of what is scheduled. If the crawler is
@@ -19465,7 +19465,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_crawler_schedule(self, CrawlerName: str) -> Dict[str, Any]:
         """
         Changes the schedule state of the specified crawler to ``SCHEDULED`` , unless the crawler is
@@ -19498,7 +19498,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_export_labels_task_run(
         self, TransformId: str, OutputS3Path: str
     ) -> ClientStartExportLabelsTaskRunResponseTypeDef:
@@ -19551,7 +19551,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_import_labels_task_run(
         self, TransformId: str, InputS3Path: str, ReplaceAllLabels: bool = None
     ) -> ClientStartImportLabelsTaskRunResponseTypeDef:
@@ -19625,7 +19625,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_job_run(
         self,
         JobName: str,
@@ -19790,7 +19790,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_ml_evaluation_task_run(
         self, TransformId: str
     ) -> ClientStartMlEvaluationTaskRunResponseTypeDef:
@@ -19837,7 +19837,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_ml_labeling_set_generation_task_run(
         self, TransformId: str, OutputS3Path: str
     ) -> ClientStartMlLabelingSetGenerationTaskRunResponseTypeDef:
@@ -19896,7 +19896,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_trigger(self, Name: str) -> ClientStartTriggerResponseTypeDef:
         """
         Starts an existing trigger. See `Triggering Jobs
@@ -19937,7 +19937,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_workflow_run(self, Name: str) -> ClientStartWorkflowRunResponseTypeDef:
         """
         Starts a new run of the specified workflow.
@@ -19976,7 +19976,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_crawler(self, Name: str) -> Dict[str, Any]:
         """
         If the specified crawler is running, stops the crawl.
@@ -20008,7 +20008,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_crawler_schedule(self, CrawlerName: str) -> Dict[str, Any]:
         """
         Sets the schedule state of the specified crawler to ``NOT_SCHEDULED`` , but does not stop the
@@ -20041,7 +20041,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_trigger(self, Name: str) -> ClientStopTriggerResponseTypeDef:
         """
         Stops a specified trigger.
@@ -20080,7 +20080,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, TagsToAdd: Dict[str, str]
     ) -> Dict[str, Any]:
@@ -20131,7 +20131,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(
         self, ResourceArn: str, TagsToRemove: List[str]
     ) -> Dict[str, Any]:
@@ -20175,7 +20175,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_classifier(
         self,
         GrokClassifier: ClientUpdateClassifierGrokClassifierTypeDef = None,
@@ -20328,7 +20328,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_connection(
         self,
         Name: str,
@@ -20442,7 +20442,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_crawler(
         self,
         Name: str,
@@ -20675,7 +20675,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_crawler_schedule(
         self, CrawlerName: str, Schedule: str = None
     ) -> Dict[str, Any]:
@@ -20718,7 +20718,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_database(
         self,
         Name: str,
@@ -20831,7 +20831,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_dev_endpoint(
         self,
         EndpointName: str,
@@ -20971,7 +20971,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_job(
         self, JobName: str, JobUpdate: ClientUpdateJobJobUpdateTypeDef
     ) -> ClientUpdateJobResponseTypeDef:
@@ -21200,7 +21200,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ml_transform(
         self,
         TransformId: str,
@@ -21388,7 +21388,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_partition(
         self,
         DatabaseName: str,
@@ -21675,7 +21675,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_table(
         self,
         DatabaseName: str,
@@ -22018,7 +22018,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_trigger(
         self, Name: str, TriggerUpdate: ClientUpdateTriggerTriggerUpdateTypeDef
     ) -> ClientUpdateTriggerResponseTypeDef:
@@ -22372,7 +22372,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_defined_function(
         self,
         DatabaseName: str,
@@ -22472,7 +22472,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_workflow(
         self,
         Name: str,

@@ -125,7 +125,7 @@ from mypy_boto3_sagemaker.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, ResourceArn: str, Tags: List[ClientAddTagsTagsTypeDef]
     ) -> ClientAddTagsResponseTypeDef:
@@ -222,7 +222,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -239,7 +239,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_algorithm(
         self,
         AlgorithmName: str,
@@ -1303,7 +1303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_code_repository(
         self,
         CodeRepositoryName: str,
@@ -1382,7 +1382,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_compilation_job(
         self,
         CompilationJobName: str,
@@ -1493,13 +1493,13 @@ class Client(BaseClient):
 
                 * If using the console, ``{"input":[1,1024,1024,3]}``
 
-                * If using the CLI, ``{\"input\":[1,1024,1024,3]}``
+                * If using the CLI, ``{\\"input\\":[1,1024,1024,3]}``
 
               * Examples for two inputs:
 
                 * If using the console, ``{"data1": [1,28,28,1], "data2":[1,28,28,1]}``
 
-                * If using the CLI, ``{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}``
+                * If using the CLI, ``{\\"data1\\": [1,28,28,1], \\"data2\\":[1,28,28,1]}``
 
             * ``MXNET/ONNX`` : You must specify the name and shape (NCHW format) of the expected data
             inputs in order using a dictionary format for your trained model. The dictionary formats
@@ -1509,13 +1509,13 @@ class Client(BaseClient):
 
                 * If using the console, ``{"data":[1,3,1024,1024]}``
 
-                * If using the CLI, ``{\"data\":[1,3,1024,1024]}``
+                * If using the CLI, ``{\\"data\\":[1,3,1024,1024]}``
 
               * Examples for two inputs:
 
                 * If using the console, ``{"var1": [1,1,28,28], "var2":[1,1,28,28]}``
 
-                * If using the CLI, ``{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}``
+                * If using the CLI, ``{\\"var1\\": [1,1,28,28], \\"var2\\":[1,1,28,28]}``
 
             * ``PyTorch`` : You can either specify the name and shape (NCHW format) of expected data inputs
             in order using a dictionary format for your trained model or you can specify the shape only
@@ -1526,7 +1526,7 @@ class Client(BaseClient):
 
                 * If using the console, ``{"input0":[1,3,224,224]}``
 
-                * If using the CLI, ``{\"input0\":[1,3,224,224]}``
+                * If using the CLI, ``{\\"input0\\":[1,3,224,224]}``
 
               * Example for one input in list format: ``[[1,3,224,224]]``
 
@@ -1534,7 +1534,7 @@ class Client(BaseClient):
 
                 * If using the console, ``{"input0":[1,3,224,224], "input1":[1,3,224,224]}``
 
-                * If using the CLI, ``{\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}``
+                * If using the CLI, ``{\\"input0\\":[1,3,224,224], \\"input1\\":[1,3,224,224]}``
 
               * Example for two inputs in list format: ``[[1,3,224,224], [1,3,224,224]]``
 
@@ -1602,7 +1602,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_endpoint(
         self,
         EndpointName: str,
@@ -1633,7 +1633,7 @@ class Client(BaseClient):
         incoming requests for inferences. To check the status of an endpoint, use the `DescribeEndpoint
         <https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html>`__ API.
 
-        For an example, see `Exercise 1: Using the K-Means Algorithm Provided by Amazon SageMaker
+        For an example, see `Exercise 1\\: Using the K-Means Algorithm Provided by Amazon SageMaker
         <https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html>`__ .
 
         If any of the models hosted at this endpoint get model data from an Amazon S3 location, Amazon
@@ -1710,7 +1710,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_endpoint_config(
         self,
         EndpointConfigName: str,
@@ -1888,7 +1888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_hyper_parameter_tuning_job(
         self,
         HyperParameterTuningJobName: str,
@@ -2257,7 +2257,7 @@ class Client(BaseClient):
 
               The registry path of the Docker image that contains the training algorithm. For information
               about Docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-              SageMaker: Common Parameters
+              SageMaker\\: Common Parameters
               <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
               . Amazon SageMaker supports both ``registry/repository[:tag]`` and
               ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -2746,7 +2746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_labeling_job(
         self,
         LabelingJobName: str,
@@ -3390,7 +3390,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_model(
         self,
         ModelName: str,
@@ -3701,7 +3701,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_model_package(
         self,
         ModelPackageName: str,
@@ -4192,7 +4192,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_notebook_instance(
         self,
         NotebookInstanceName: str,
@@ -4358,7 +4358,7 @@ class Client(BaseClient):
         :param LifecycleConfigName:
 
           The name of a lifecycle configuration to associate with the notebook instance. For information
-          about lifestyle configurations, see `Step 2.1: (Optional) Customize a Notebook Instance
+          about lifestyle configurations, see `Step 2.1\\: (Optional) Customize a Notebook Instance
           <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
         :type DirectInternetAccess: string
@@ -4445,7 +4445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_notebook_instance_lifecycle_config(
         self,
         NotebookInstanceLifecycleConfigName: str,
@@ -4471,7 +4471,7 @@ class Client(BaseClient):
         Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for longer
         than 5 minutes, it fails and the notebook instance is not created or started.
 
-        For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+        For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
         Customize a Notebook Instance
         <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -4522,7 +4522,7 @@ class Client(BaseClient):
             Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
             longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-            For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+            For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
             Customize a Notebook Instance
             <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -4553,7 +4553,7 @@ class Client(BaseClient):
             Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
             longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-            For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+            For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
             Customize a Notebook Instance
             <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -4582,7 +4582,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_presigned_notebook_instance_url(
         self, NotebookInstanceName: str, SessionExpirationDurationInSeconds: int = None
     ) -> ClientCreatePresignedNotebookInstanceUrlResponseTypeDef:
@@ -4645,7 +4645,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_training_job(
         self,
         TrainingJobName: str,
@@ -4830,7 +4830,7 @@ class Client(BaseClient):
 
             The registry path of the Docker image that contains the training algorithm. For information
             about docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-            SageMaker: Common Parameters
+            SageMaker\\: Common Parameters
             <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
             . Amazon SageMaker supports both ``registry/repository[:tag]`` and
             ``registry/repository[@digest]`` image path formats. For more information, see `Using Your Own
@@ -5297,7 +5297,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_transform_job(
         self,
         TransformJobName: str,
@@ -5714,7 +5714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_workteam(
         self,
         WorkteamName: str,
@@ -5852,7 +5852,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_algorithm(self, AlgorithmName: str) -> None:
         """
         Removes the specified algorithm from your account.
@@ -5874,7 +5874,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_code_repository(self, CodeRepositoryName: str) -> None:
         """
         Deletes the specified Git repository from your account.
@@ -5896,7 +5896,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint(self, EndpointName: str) -> None:
         """
         Deletes an endpoint. Amazon SageMaker frees up all of the resources that were deployed when the
@@ -5923,7 +5923,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint_config(self, EndpointConfigName: str) -> None:
         """
         Deletes an endpoint configuration. The ``DeleteEndpointConfig`` API deletes only the specified
@@ -5946,7 +5946,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_model(self, ModelName: str) -> None:
         """
         Deletes a model. The ``DeleteModel`` API deletes only the model entry that was created in Amazon
@@ -5971,7 +5971,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_model_package(self, ModelPackageName: str) -> None:
         """
         Deletes a model package.
@@ -5997,7 +5997,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notebook_instance(self, NotebookInstanceName: str) -> None:
         """
         Deletes an Amazon SageMaker notebook instance. Before you can delete a notebook instance, you must
@@ -6026,7 +6026,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notebook_instance_lifecycle_config(
         self, NotebookInstanceLifecycleConfigName: str
     ) -> None:
@@ -6051,7 +6051,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Deletes the specified tags from an Amazon SageMaker resource.
@@ -6100,7 +6100,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_workteam(self, WorkteamName: str) -> ClientDeleteWorkteamResponseTypeDef:
         """
         Deletes an existing work team. This operation can't be undone.
@@ -6139,7 +6139,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_algorithm(
         self, AlgorithmName: str
     ) -> ClientDescribeAlgorithmResponseTypeDef:
@@ -7261,7 +7261,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_code_repository(
         self, CodeRepositoryName: str
     ) -> ClientDescribeCodeRepositoryResponseTypeDef:
@@ -7344,7 +7344,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_compilation_job(
         self, CompilationJobName: str
     ) -> ClientDescribeCompilationJobResponseTypeDef:
@@ -7503,13 +7503,13 @@ class Client(BaseClient):
 
                     * If using the console, ``{"input":[1,1024,1024,3]}``
 
-                    * If using the CLI, ``{\"input\":[1,1024,1024,3]}``
+                    * If using the CLI, ``{\\"input\\":[1,1024,1024,3]}``
 
                   * Examples for two inputs:
 
                     * If using the console, ``{"data1": [1,28,28,1], "data2":[1,28,28,1]}``
 
-                    * If using the CLI, ``{\"data1\": [1,28,28,1], \"data2\":[1,28,28,1]}``
+                    * If using the CLI, ``{\\"data1\\": [1,28,28,1], \\"data2\\":[1,28,28,1]}``
 
                 * ``MXNET/ONNX`` : You must specify the name and shape (NCHW format) of the expected data
                 inputs in order using a dictionary format for your trained model. The dictionary formats
@@ -7519,13 +7519,13 @@ class Client(BaseClient):
 
                     * If using the console, ``{"data":[1,3,1024,1024]}``
 
-                    * If using the CLI, ``{\"data\":[1,3,1024,1024]}``
+                    * If using the CLI, ``{\\"data\\":[1,3,1024,1024]}``
 
                   * Examples for two inputs:
 
                     * If using the console, ``{"var1": [1,1,28,28], "var2":[1,1,28,28]}``
 
-                    * If using the CLI, ``{\"var1\": [1,1,28,28], \"var2\":[1,1,28,28]}``
+                    * If using the CLI, ``{\\"var1\\": [1,1,28,28], \\"var2\\":[1,1,28,28]}``
 
                 * ``PyTorch`` : You can either specify the name and shape (NCHW format) of expected data
                 inputs in order using a dictionary format for your trained model or you can specify the
@@ -7536,7 +7536,7 @@ class Client(BaseClient):
 
                     * If using the console, ``{"input0":[1,3,224,224]}``
 
-                    * If using the CLI, ``{\"input0\":[1,3,224,224]}``
+                    * If using the CLI, ``{\\"input0\\":[1,3,224,224]}``
 
                   * Example for one input in list format: ``[[1,3,224,224]]``
 
@@ -7544,7 +7544,7 @@ class Client(BaseClient):
 
                     * If using the console, ``{"input0":[1,3,224,224], "input1":[1,3,224,224]}``
 
-                    * If using the CLI, ``{\"input0\":[1,3,224,224], \"input1\":[1,3,224,224]}``
+                    * If using the CLI, ``{\\"input0\\":[1,3,224,224], \\"input1\\":[1,3,224,224]}``
 
                   * Example for two inputs in list format: ``[[1,3,224,224], [1,3,224,224]]``
 
@@ -7571,7 +7571,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoint(
         self, EndpointName: str
     ) -> ClientDescribeEndpointResponseTypeDef:
@@ -7746,7 +7746,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_endpoint_config(
         self, EndpointConfigName: str
     ) -> ClientDescribeEndpointConfigResponseTypeDef:
@@ -7870,7 +7870,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_hyper_parameter_tuning_job(
         self, HyperParameterTuningJobName: str
     ) -> ClientDescribeHyperParameterTuningJobResponseTypeDef:
@@ -8297,7 +8297,7 @@ class Client(BaseClient):
 
                   The registry path of the Docker image that contains the training algorithm. For
                   information about Docker registry paths for built-in algorithms, see `Algorithms Provided
-                  by Amazon SageMaker: Common Parameters
+                  by Amazon SageMaker\\: Common Parameters
                   <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
                   . Amazon SageMaker supports both ``registry/repository[:tag]`` and
                   ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -8972,7 +8972,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_labeling_job(
         self, LabelingJobName: str
     ) -> ClientDescribeLabelingJobResponseTypeDef:
@@ -9647,7 +9647,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_model(self, ModelName: str) -> ClientDescribeModelResponseTypeDef:
         """
         Describes a model that you created using the ``CreateModel`` API.
@@ -9896,7 +9896,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_model_package(
         self, ModelPackageName: str
     ) -> ClientDescribeModelPackageResponseTypeDef:
@@ -10445,7 +10445,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_notebook_instance(
         self, NotebookInstanceName: str
     ) -> ClientDescribeNotebookInstanceResponseTypeDef:
@@ -10576,7 +10576,7 @@ class Client(BaseClient):
 
               Returns the name of a notebook instance lifecycle configuration.
 
-              For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+              For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
               Customize a Notebook Instance
               <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__
 
@@ -10638,14 +10638,14 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_notebook_instance_lifecycle_config(
         self, NotebookInstanceLifecycleConfigName: str
     ) -> ClientDescribeNotebookInstanceLifecycleConfigResponseTypeDef:
         """
         Returns a description of a notebook instance lifecycle configuration.
 
-        For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+        For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
         Customize a Notebook Instance
         <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -10719,8 +10719,8 @@ class Client(BaseClient):
                 Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
                 longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-                For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-                Customize a Notebook Instance
+                For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+                (Optional) Customize a Notebook Instance
                 <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
                 - **Content** *(string) --*
@@ -10749,8 +10749,8 @@ class Client(BaseClient):
                 Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
                 longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-                For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
-                Customize a Notebook Instance
+                For information about notebook instance lifestyle configurations, see `Step 2.1\\:
+                (Optional) Customize a Notebook Instance
                 <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
                 - **Content** *(string) --*
@@ -10768,7 +10768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_subscribed_workteam(
         self, WorkteamArn: str
     ) -> ClientDescribeSubscribedWorkteamResponseTypeDef:
@@ -10834,7 +10834,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_training_job(
         self, TrainingJobName: str
     ) -> ClientDescribeTrainingJobResponseTypeDef:
@@ -11105,7 +11105,7 @@ class Client(BaseClient):
 
                 The registry path of the Docker image that contains the training algorithm. For information
                 about docker registry paths for built-in algorithms, see `Algorithms Provided by Amazon
-                SageMaker: Common Parameters
+                SageMaker\\: Common Parameters
                 <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
                 . Amazon SageMaker supports both ``registry/repository[:tag]`` and
                 ``registry/repository[@digest]`` image path formats. For more information, see `Using Your
@@ -11656,7 +11656,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_transform_job(
         self, TransformJobName: str
     ) -> ClientDescribeTransformJobResponseTypeDef:
@@ -12031,7 +12031,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workteam(
         self, WorkteamName: str
     ) -> ClientDescribeWorkteamResponseTypeDef:
@@ -12160,7 +12160,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -12189,7 +12189,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -12210,7 +12210,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_search_suggestions(
         self,
         Resource: str,
@@ -12290,7 +12290,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -12303,7 +12303,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_algorithms(
         self,
         CreationTimeAfter: datetime = None,
@@ -12427,7 +12427,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_code_repositories(
         self,
         CreationTimeAfter: datetime = None,
@@ -12600,7 +12600,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_compilation_jobs(
         self,
         NextToken: str = None,
@@ -12768,7 +12768,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_endpoint_configs(
         self,
         SortBy: str = None,
@@ -12884,7 +12884,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_endpoints(
         self,
         SortBy: str = None,
@@ -13063,7 +13063,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hyper_parameter_tuning_jobs(
         self,
         NextToken: str = None,
@@ -13303,7 +13303,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_labeling_jobs(
         self,
         CreationTimeAfter: datetime = None,
@@ -13561,7 +13561,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_labeling_jobs_for_workteam(
         self,
         WorkteamArn: str,
@@ -13712,7 +13712,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_model_packages(
         self,
         CreationTimeAfter: datetime = None,
@@ -13836,7 +13836,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_models(
         self,
         SortBy: str = None,
@@ -13952,7 +13952,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_notebook_instance_lifecycle_configs(
         self,
         NextToken: str = None,
@@ -14093,7 +14093,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_notebook_instances(
         self,
         NextToken: str = None,
@@ -14302,7 +14302,7 @@ class Client(BaseClient):
                   The name of a notebook instance lifecycle configuration associated with this notebook
                   instance.
 
-                  For information about notebook instance lifestyle configurations, see `Step 2.1:
+                  For information about notebook instance lifestyle configurations, see `Step 2.1\\:
                   (Optional) Customize a Notebook Instance
                   <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -14332,7 +14332,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_subscribed_workteams(
         self, NameContains: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientListSubscribedWorkteamsResponseTypeDef:
@@ -14425,7 +14425,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags(
         self, ResourceArn: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListTagsResponseTypeDef:
@@ -14502,7 +14502,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_training_jobs(
         self,
         NextToken: str = None,
@@ -14654,7 +14654,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_training_jobs_for_hyper_parameter_tuning_job(
         self,
         HyperParameterTuningJobName: str,
@@ -14845,7 +14845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_transform_jobs(
         self,
         CreationTimeAfter: datetime = None,
@@ -15003,7 +15003,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_workteams(
         self,
         SortBy: str = None,
@@ -15175,7 +15175,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def render_ui_template(
         self,
         UiTemplate: ClientRenderUiTemplateUiTemplateTypeDef,
@@ -15269,7 +15269,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def search(
         self,
         Resource: str,
@@ -15916,7 +15916,7 @@ class Client(BaseClient):
 
                       The registry path of the Docker image that contains the training algorithm. For
                       information about docker registry paths for built-in algorithms, see `Algorithms
-                      Provided by Amazon SageMaker: Common Parameters
+                      Provided by Amazon SageMaker\\: Common Parameters
                       <https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html>`__
                       . Amazon SageMaker supports both ``registry/repository[:tag]`` and
                       ``registry/repository[@digest]`` image path formats. For more information, see `Using
@@ -16466,7 +16466,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_notebook_instance(self, NotebookInstanceName: str) -> None:
         """
         Launches an ML compute instance with the latest version of the libraries and attaches your ML
@@ -16491,7 +16491,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_compilation_job(self, CompilationJobName: str) -> None:
         """
         Stops a model compilation job.
@@ -16520,7 +16520,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_hyper_parameter_tuning_job(self, HyperParameterTuningJobName: str) -> None:
         """
         Stops a running hyperparameter tuning job and all running training jobs that the tuning job
@@ -16548,7 +16548,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_labeling_job(self, LabelingJobName: str) -> None:
         """
         Stops a running labeling job. A job that is stopped cannot be restarted. Any results obtained
@@ -16571,7 +16571,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_notebook_instance(self, NotebookInstanceName: str) -> None:
         """
         Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects
@@ -16599,7 +16599,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_training_job(self, TrainingJobName: str) -> None:
         """
         Stops a training job. To stop a job, Amazon SageMaker sends the algorithm the ``SIGTERM`` signal,
@@ -16626,7 +16626,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_transform_job(self, TransformJobName: str) -> None:
         """
         Stops a transform job.
@@ -16653,7 +16653,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_code_repository(
         self,
         CodeRepositoryName: str,
@@ -16716,7 +16716,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_endpoint(
         self, EndpointName: str, EndpointConfigName: str
     ) -> ClientUpdateEndpointResponseTypeDef:
@@ -16776,7 +16776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_endpoint_weights_and_capacities(
         self,
         EndpointName: str,
@@ -16853,7 +16853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_notebook_instance(
         self,
         NotebookInstanceName: str,
@@ -16935,7 +16935,7 @@ class Client(BaseClient):
         :param LifecycleConfigName:
 
           The name of a lifecycle configuration to associate with the notebook instance. For information
-          about lifestyle configurations, see `Step 2.1: (Optional) Customize a Notebook Instance
+          about lifestyle configurations, see `Step 2.1\\: (Optional) Customize a Notebook Instance
           <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
         :type DisassociateLifecycleConfig: boolean
@@ -17033,7 +17033,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_notebook_instance_lifecycle_config(
         self,
         NotebookInstanceLifecycleConfigName: str,
@@ -17093,7 +17093,7 @@ class Client(BaseClient):
             Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
             longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-            For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+            For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
             Customize a Notebook Instance
             <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -17124,7 +17124,7 @@ class Client(BaseClient):
             Lifecycle configuration scripts cannot run for longer than 5 minutes. If a script runs for
             longer than 5 minutes, it fails and the notebook instance is not created or started.
 
-            For information about notebook instance lifestyle configurations, see `Step 2.1: (Optional)
+            For information about notebook instance lifestyle configurations, see `Step 2.1\\: (Optional)
             Customize a Notebook Instance
             <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html>`__ .
 
@@ -17146,7 +17146,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_workteam(
         self,
         WorkteamName: str,

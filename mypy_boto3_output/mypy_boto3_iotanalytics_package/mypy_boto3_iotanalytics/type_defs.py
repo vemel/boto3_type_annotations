@@ -5131,6 +5131,34 @@ class ClientListTagsForResourceResponseTypeDef(
     """
 
 
+_ClientPutLoggingOptionsloggingOptionsTypeDef = TypedDict(
+    "_ClientPutLoggingOptionsloggingOptionsTypeDef",
+    {"roleArn": str, "level": str, "enabled": bool},
+)
+
+
+class ClientPutLoggingOptionsloggingOptionsTypeDef(
+    _ClientPutLoggingOptionsloggingOptionsTypeDef
+):
+    """
+    Type definition for `ClientPutLoggingOptions` `loggingOptions`
+
+    The new values of the AWS IoT Analytics logging options.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that grants permission to AWS IoT Analytics to perform logging.
+
+    - **level** *(string) --* **[REQUIRED]**
+
+      The logging level. Currently, only "ERROR" is supported.
+
+    - **enabled** *(boolean) --* **[REQUIRED]**
+
+      If true, logging is enabled for AWS IoT Analytics.
+    """
+
+
 _ClientRunPipelineActivityResponseTypeDef = TypedDict(
     "_ClientRunPipelineActivityResponseTypeDef",
     {"payloads": List[bytes], "logResult": str},
@@ -5898,6 +5926,32 @@ class ClientUpdateChannelchannelStorageTypeDef(
 
         The ARN of the role which grants AWS IoT Analytics permission to interact with your Amazon S3
         resources.
+    """
+
+
+_ClientUpdateChannelretentionPeriodTypeDef = TypedDict(
+    "_ClientUpdateChannelretentionPeriodTypeDef",
+    {"unlimited": bool, "numberOfDays": int},
+    total=False,
+)
+
+
+class ClientUpdateChannelretentionPeriodTypeDef(
+    _ClientUpdateChannelretentionPeriodTypeDef
+):
+    """
+    Type definition for `ClientUpdateChannel` `retentionPeriod`
+
+    How long, in days, message data is kept for the channel. The retention period cannot be updated
+    if the channel's S3 storage is customer-managed.
+
+    - **unlimited** *(boolean) --*
+
+      If true, message data is kept indefinitely.
+
+    - **numberOfDays** *(integer) --*
+
+      The number of days that message data is kept. The "unlimited" parameter must be false.
     """
 
 
@@ -6755,6 +6809,94 @@ class ClientUpdateDatasettriggersTypeDef(_ClientUpdateDatasettriggersTypeDef):
     """
 
 
+_RequiredClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef = TypedDict(
+    "_RequiredClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef",
+    {"bucket": str, "roleArn": str},
+)
+_OptionalClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef = TypedDict(
+    "_OptionalClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef",
+    {"keyPrefix": str},
+    total=False,
+)
+
+
+class ClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef(
+    _RequiredClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef,
+    _OptionalClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef,
+):
+    """
+    Type definition for `ClientUpdateDatastoredatastoreStorage` `customerManagedS3`
+
+    Use this to store data store data in an S3 bucket that you manage. When customer managed
+    storage is selected, the "retentionPeriod" parameter is ignored. The choice of service-managed
+    or customer-managed S3 storage cannot be changed after creation of the data store.
+
+    - **bucket** *(string) --* **[REQUIRED]**
+
+      The name of the Amazon S3 bucket in which data store data is stored.
+
+    - **keyPrefix** *(string) --*
+
+      [Optional] The prefix used to create the keys of the data store data objects. Each object in
+      an Amazon S3 bucket has a key that is its unique identifier within the bucket (each object in
+      a bucket has exactly one key). The prefix must end with a '/'.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role which grants AWS IoT Analytics permission to interact with your Amazon S3
+      resources.
+    """
+
+
+_ClientUpdateDatastoredatastoreStorageTypeDef = TypedDict(
+    "_ClientUpdateDatastoredatastoreStorageTypeDef",
+    {
+        "serviceManagedS3": Dict,
+        "customerManagedS3": ClientUpdateDatastoredatastoreStoragecustomerManagedS3TypeDef,
+    },
+    total=False,
+)
+
+
+class ClientUpdateDatastoredatastoreStorageTypeDef(
+    _ClientUpdateDatastoredatastoreStorageTypeDef
+):
+    """
+    Type definition for `ClientUpdateDatastore` `datastoreStorage`
+
+    Where data store data is stored. You may choose one of "serviceManagedS3" or "customerManagedS3"
+    storage. If not specified, the default is "serviceManagedS3". This cannot be changed after the
+    data store is created.
+
+    - **serviceManagedS3** *(dict) --*
+
+      Use this to store data store data in an S3 bucket managed by the AWS IoT Analytics service. The
+      choice of service-managed or customer-managed S3 storage cannot be changed after creation of
+      the data store.
+
+    - **customerManagedS3** *(dict) --*
+
+      Use this to store data store data in an S3 bucket that you manage. When customer managed
+      storage is selected, the "retentionPeriod" parameter is ignored. The choice of service-managed
+      or customer-managed S3 storage cannot be changed after creation of the data store.
+
+      - **bucket** *(string) --* **[REQUIRED]**
+
+        The name of the Amazon S3 bucket in which data store data is stored.
+
+      - **keyPrefix** *(string) --*
+
+        [Optional] The prefix used to create the keys of the data store data objects. Each object in
+        an Amazon S3 bucket has a key that is its unique identifier within the bucket (each object in
+        a bucket has exactly one key). The prefix must end with a '/'.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role which grants AWS IoT Analytics permission to interact with your Amazon S3
+        resources.
+    """
+
+
 _ClientUpdateDatastoreretentionPeriodTypeDef = TypedDict(
     "_ClientUpdateDatastoreretentionPeriodTypeDef",
     {"unlimited": bool, "numberOfDays": int},
@@ -6778,6 +6920,602 @@ class ClientUpdateDatastoreretentionPeriodTypeDef(
     - **numberOfDays** *(integer) --*
 
       The number of days that message data is kept. The "unlimited" parameter must be false.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef",
+    {"name": str, "attributes": Dict[str, str]},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `addAttributes`
+
+    Adds other attributes based on existing attributes in the message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'addAttributes' activity.
+
+    - **attributes** *(dict) --* **[REQUIRED]**
+
+      A list of 1-50 "AttributeNameMapping" objects that map an existing attribute to a new
+      attribute.
+
+      .. note::
+
+        The existing attributes remain in the message, so if you want to remove the originals,
+        use "RemoveAttributeActivity".
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitieschannelTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitieschannelTypeDef",
+    {"name": str, "channelName": str},
+)
+_OptionalClientUpdatePipelinepipelineActivitieschannelTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitieschannelTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitieschannelTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitieschannelTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitieschannelTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `channel`
+
+    Determines the source of the messages to be processed.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'channel' activity.
+
+    - **channelName** *(string) --* **[REQUIRED]**
+
+      The name of the channel from which the messages are processed.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_ClientUpdatePipelinepipelineActivitiesdatastoreTypeDef = TypedDict(
+    "_ClientUpdatePipelinepipelineActivitiesdatastoreTypeDef",
+    {"name": str, "datastoreName": str},
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesdatastoreTypeDef(
+    _ClientUpdatePipelinepipelineActivitiesdatastoreTypeDef
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `datastore`
+
+    Specifies where to store the processed message data.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'datastore' activity.
+
+    - **datastoreName** *(string) --* **[REQUIRED]**
+
+      The name of the data store where processed messages are stored.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef",
+    {"name": str, "attribute": str, "thingName": str, "roleArn": str},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `deviceRegistryEnrich`
+
+    Adds data from the AWS IoT device registry to your message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'deviceRegistryEnrich' activity.
+
+    - **attribute** *(string) --* **[REQUIRED]**
+
+      The name of the attribute that is added to the message.
+
+    - **thingName** *(string) --* **[REQUIRED]**
+
+      The name of the IoT device whose registry information is added to the message.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that allows access to the device's registry information.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef",
+    {"name": str, "attribute": str, "thingName": str, "roleArn": str},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `deviceShadowEnrich`
+
+    Adds information from the AWS IoT Device Shadows service to a message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'deviceShadowEnrich' activity.
+
+    - **attribute** *(string) --* **[REQUIRED]**
+
+      The name of the attribute that is added to the message.
+
+    - **thingName** *(string) --* **[REQUIRED]**
+
+      The name of the IoT device whose shadow information is added to the message.
+
+    - **roleArn** *(string) --* **[REQUIRED]**
+
+      The ARN of the role that allows access to the device's shadow.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesfilterTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesfilterTypeDef",
+    {"name": str, "filter": str},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesfilterTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesfilterTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesfilterTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesfilterTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesfilterTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `filter`
+
+    Filters a message based on its attributes.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'filter' activity.
+
+    - **filter** *(string) --* **[REQUIRED]**
+
+      An expression that looks like a SQL WHERE clause that must return a Boolean value.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitieslambdaTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitieslambdaTypeDef",
+    {"name": str, "lambdaName": str, "batchSize": int},
+)
+_OptionalClientUpdatePipelinepipelineActivitieslambdaTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitieslambdaTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitieslambdaTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitieslambdaTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitieslambdaTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `lambda`
+
+    Runs a Lambda function to modify the message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'lambda' activity.
+
+    - **lambdaName** *(string) --* **[REQUIRED]**
+
+      The name of the Lambda function that is run on the message.
+
+    - **batchSize** *(integer) --* **[REQUIRED]**
+
+      The number of messages passed to the Lambda function for processing.
+
+      The AWS Lambda function must be able to process all of these messages within five minutes,
+      which is the maximum timeout duration for Lambda functions.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesmathTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesmathTypeDef",
+    {"name": str, "attribute": str, "math": str},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesmathTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesmathTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesmathTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesmathTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesmathTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `math`
+
+    Computes an arithmetic expression using the message's attributes and adds it to the message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'math' activity.
+
+    - **attribute** *(string) --* **[REQUIRED]**
+
+      The name of the attribute that contains the result of the math operation.
+
+    - **math** *(string) --* **[REQUIRED]**
+
+      An expression that uses one or more existing attributes and must return an integer value.
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef",
+    {"name": str, "attributes": List[str]},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `removeAttributes`
+
+    Removes attributes from a message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'removeAttributes' activity.
+
+    - **attributes** *(list) --* **[REQUIRED]**
+
+      A list of 1-50 attributes to remove from the message.
+
+      - *(string) --*
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_RequiredClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef = TypedDict(
+    "_RequiredClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef",
+    {"name": str, "attributes": List[str]},
+)
+_OptionalClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef = TypedDict(
+    "_OptionalClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef",
+    {"next": str},
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef(
+    _RequiredClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef,
+    _OptionalClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef,
+):
+    """
+    Type definition for `ClientUpdatePipelinepipelineActivities` `selectAttributes`
+
+    Creates a new message using only the specified attributes from the original message.
+
+    - **name** *(string) --* **[REQUIRED]**
+
+      The name of the 'selectAttributes' activity.
+
+    - **attributes** *(list) --* **[REQUIRED]**
+
+      A list of the attributes to select from the message.
+
+      - *(string) --*
+
+    - **next** *(string) --*
+
+      The next activity in the pipeline.
+    """
+
+
+_ClientUpdatePipelinepipelineActivitiesTypeDef = TypedDict(
+    "_ClientUpdatePipelinepipelineActivitiesTypeDef",
+    {
+        "channel": ClientUpdatePipelinepipelineActivitieschannelTypeDef,
+        "lambda": ClientUpdatePipelinepipelineActivitieslambdaTypeDef,
+        "datastore": ClientUpdatePipelinepipelineActivitiesdatastoreTypeDef,
+        "addAttributes": ClientUpdatePipelinepipelineActivitiesaddAttributesTypeDef,
+        "removeAttributes": ClientUpdatePipelinepipelineActivitiesremoveAttributesTypeDef,
+        "selectAttributes": ClientUpdatePipelinepipelineActivitiesselectAttributesTypeDef,
+        "filter": ClientUpdatePipelinepipelineActivitiesfilterTypeDef,
+        "math": ClientUpdatePipelinepipelineActivitiesmathTypeDef,
+        "deviceRegistryEnrich": ClientUpdatePipelinepipelineActivitiesdeviceRegistryEnrichTypeDef,
+        "deviceShadowEnrich": ClientUpdatePipelinepipelineActivitiesdeviceShadowEnrichTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientUpdatePipelinepipelineActivitiesTypeDef(
+    _ClientUpdatePipelinepipelineActivitiesTypeDef
+):
+    """
+    Type definition for `ClientUpdatePipeline` `pipelineActivities`
+
+    An activity that performs a transformation on a message.
+
+    - **channel** *(dict) --*
+
+      Determines the source of the messages to be processed.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'channel' activity.
+
+      - **channelName** *(string) --* **[REQUIRED]**
+
+        The name of the channel from which the messages are processed.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **lambda** *(dict) --*
+
+      Runs a Lambda function to modify the message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'lambda' activity.
+
+      - **lambdaName** *(string) --* **[REQUIRED]**
+
+        The name of the Lambda function that is run on the message.
+
+      - **batchSize** *(integer) --* **[REQUIRED]**
+
+        The number of messages passed to the Lambda function for processing.
+
+        The AWS Lambda function must be able to process all of these messages within five minutes,
+        which is the maximum timeout duration for Lambda functions.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **datastore** *(dict) --*
+
+      Specifies where to store the processed message data.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'datastore' activity.
+
+      - **datastoreName** *(string) --* **[REQUIRED]**
+
+        The name of the data store where processed messages are stored.
+
+    - **addAttributes** *(dict) --*
+
+      Adds other attributes based on existing attributes in the message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'addAttributes' activity.
+
+      - **attributes** *(dict) --* **[REQUIRED]**
+
+        A list of 1-50 "AttributeNameMapping" objects that map an existing attribute to a new
+        attribute.
+
+        .. note::
+
+          The existing attributes remain in the message, so if you want to remove the originals,
+          use "RemoveAttributeActivity".
+
+        - *(string) --*
+
+          - *(string) --*
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **removeAttributes** *(dict) --*
+
+      Removes attributes from a message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'removeAttributes' activity.
+
+      - **attributes** *(list) --* **[REQUIRED]**
+
+        A list of 1-50 attributes to remove from the message.
+
+        - *(string) --*
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **selectAttributes** *(dict) --*
+
+      Creates a new message using only the specified attributes from the original message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'selectAttributes' activity.
+
+      - **attributes** *(list) --* **[REQUIRED]**
+
+        A list of the attributes to select from the message.
+
+        - *(string) --*
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **filter** *(dict) --*
+
+      Filters a message based on its attributes.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'filter' activity.
+
+      - **filter** *(string) --* **[REQUIRED]**
+
+        An expression that looks like a SQL WHERE clause that must return a Boolean value.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **math** *(dict) --*
+
+      Computes an arithmetic expression using the message's attributes and adds it to the message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'math' activity.
+
+      - **attribute** *(string) --* **[REQUIRED]**
+
+        The name of the attribute that contains the result of the math operation.
+
+      - **math** *(string) --* **[REQUIRED]**
+
+        An expression that uses one or more existing attributes and must return an integer value.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **deviceRegistryEnrich** *(dict) --*
+
+      Adds data from the AWS IoT device registry to your message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'deviceRegistryEnrich' activity.
+
+      - **attribute** *(string) --* **[REQUIRED]**
+
+        The name of the attribute that is added to the message.
+
+      - **thingName** *(string) --* **[REQUIRED]**
+
+        The name of the IoT device whose registry information is added to the message.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that allows access to the device's registry information.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
+
+    - **deviceShadowEnrich** *(dict) --*
+
+      Adds information from the AWS IoT Device Shadows service to a message.
+
+      - **name** *(string) --* **[REQUIRED]**
+
+        The name of the 'deviceShadowEnrich' activity.
+
+      - **attribute** *(string) --* **[REQUIRED]**
+
+        The name of the attribute that is added to the message.
+
+      - **thingName** *(string) --* **[REQUIRED]**
+
+        The name of the IoT device whose shadow information is added to the message.
+
+      - **roleArn** *(string) --* **[REQUIRED]**
+
+        The ARN of the role that allows access to the device's shadow.
+
+      - **next** *(string) --*
+
+        The next activity in the pipeline.
     """
 
 

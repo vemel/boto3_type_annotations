@@ -39,7 +39,7 @@ from mypy_boto3_workdocs.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_document_version_upload(
         self, DocumentId: str, VersionId: str, AuthenticationToken: str = None
     ) -> None:
@@ -78,7 +78,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate_user(
         self, UserId: str, AuthenticationToken: str = None
     ) -> ClientActivateUserResponseTypeDef:
@@ -224,7 +224,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_resource_permissions(
         self,
         ResourceId: str,
@@ -359,7 +359,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -376,7 +376,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_comment(
         self,
         DocumentId: str,
@@ -618,7 +618,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_custom_metadata(
         self,
         ResourceId: str,
@@ -681,7 +681,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_folder(
         self, ParentFolderId: str, AuthenticationToken: str = None, Name: str = None
     ) -> ClientCreateFolderResponseTypeDef:
@@ -795,7 +795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_labels(
         self, ResourceId: str, Labels: List[str], AuthenticationToken: str = None
     ) -> Dict[str, Any]:
@@ -846,7 +846,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_notification_subscription(
         self, OrganizationId: str, Endpoint: str, Protocol: str, SubscriptionType: str
     ) -> ClientCreateNotificationSubscriptionResponseTypeDef:
@@ -928,7 +928,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         Username: str,
@@ -1137,7 +1137,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deactivate_user(self, UserId: str, AuthenticationToken: str = None) -> None:
         """
         Deactivates the specified user, which revokes the user's access to Amazon WorkDocs.
@@ -1166,7 +1166,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_comment(
         self,
         DocumentId: str,
@@ -1213,7 +1213,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_custom_metadata(
         self,
         ResourceId: str,
@@ -1281,7 +1281,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_document(self, DocumentId: str, AuthenticationToken: str = None) -> None:
         """
         Permanently deletes the specified document and its associated metadata.
@@ -1310,7 +1310,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_folder(self, FolderId: str, AuthenticationToken: str = None) -> None:
         """
         Permanently deletes the specified folder and its contents.
@@ -1339,7 +1339,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_folder_contents(
         self, FolderId: str, AuthenticationToken: str = None
     ) -> None:
@@ -1370,7 +1370,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_labels(
         self,
         ResourceId: str,
@@ -1431,7 +1431,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_notification_subscription(
         self, SubscriptionId: str, OrganizationId: str
     ) -> None:
@@ -1461,7 +1461,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, UserId: str, AuthenticationToken: str = None) -> None:
         """
         Deletes the specified user from a Simple AD or Microsoft AD directory.
@@ -1490,7 +1490,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_activities(
         self,
         AuthenticationToken: str = None,
@@ -2017,7 +2017,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_comments(
         self,
         DocumentId: str,
@@ -2246,7 +2246,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_document_versions(
         self,
         DocumentId: str,
@@ -2416,7 +2416,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_folder_contents(
         self,
         FolderId: str,
@@ -2718,7 +2718,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_groups(
         self,
         SearchQuery: str,
@@ -2812,7 +2812,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_notification_subscriptions(
         self, OrganizationId: str, Marker: str = None, Limit: int = None
     ) -> ClientDescribeNotificationSubscriptionsResponseTypeDef:
@@ -2893,7 +2893,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_resource_permissions(
         self,
         ResourceId: str,
@@ -3009,7 +3009,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_root_folders(
         self, AuthenticationToken: str, Limit: int = None, Marker: str = None
     ) -> ClientDescribeRootFoldersResponseTypeDef:
@@ -3141,7 +3141,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_users(
         self,
         AuthenticationToken: str = None,
@@ -3367,7 +3367,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3396,7 +3396,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_current_user(
         self, AuthenticationToken: str
     ) -> ClientGetCurrentUserResponseTypeDef:
@@ -3537,7 +3537,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_document(
         self,
         DocumentId: str,
@@ -3728,7 +3728,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_document_path(
         self,
         DocumentId: str,
@@ -3826,7 +3826,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_document_version(
         self,
         DocumentId: str,
@@ -3986,7 +3986,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_folder(
         self,
         FolderId: str,
@@ -4114,7 +4114,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_folder_path(
         self,
         FolderId: str,
@@ -4212,7 +4212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4233,7 +4233,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resources(
         self,
         AuthenticationToken: str = None,
@@ -4512,7 +4512,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4525,7 +4525,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def initiate_document_version_upload(
         self,
         ParentFolderId: str,
@@ -4769,7 +4769,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_all_resource_permissions(
         self, ResourceId: str, AuthenticationToken: str = None
     ) -> None:
@@ -4800,7 +4800,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_resource_permission(
         self,
         ResourceId: str,
@@ -4847,7 +4847,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_document(
         self,
         DocumentId: str,
@@ -4902,7 +4902,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_document_version(
         self,
         DocumentId: str,
@@ -4953,7 +4953,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_folder(
         self,
         FolderId: str,
@@ -5008,7 +5008,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user(
         self,
         UserId: str,

@@ -21,7 +21,7 @@ from mypy_boto3_cloudwatch.type_defs import (
 
 
 class DescribeAlarmHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AlarmName: str = None,
@@ -146,7 +146,7 @@ class DescribeAlarmHistory(Boto3Paginator):
 
 
 class DescribeAlarms(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AlarmNames: List[str] = None,
@@ -622,7 +622,7 @@ class DescribeAlarms(Boto3Paginator):
 
 
 class GetMetricData(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         MetricDataQueries: List[GetMetricDataPaginateMetricDataQueriesTypeDef],
@@ -1028,7 +1028,7 @@ class GetMetricData(Boto3Paginator):
 
 
 class ListDashboards(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DashboardNamePrefix: str = None,
@@ -1125,7 +1125,7 @@ class ListDashboards(Boto3Paginator):
 
 
 class ListMetrics(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Namespace: str = None,

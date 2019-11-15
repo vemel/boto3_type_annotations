@@ -42,7 +42,7 @@ from mypy_boto3_machinelearning.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, Tags: List[ClientAddTagsTagsTypeDef], ResourceId: str, ResourceType: str
     ) -> ClientAddTagsResponseTypeDef:
@@ -124,7 +124,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -141,7 +141,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_batch_prediction(
         self,
         BatchPredictionId: str,
@@ -235,7 +235,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_data_source_from_rds(
         self,
         DataSourceId: str,
@@ -344,7 +344,8 @@ class Client(BaseClient):
           is specified.
 
           * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-          for the ``Datasource`` .   Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+          for the ``Datasource`` .   Sample -
+          ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
           - **DatabaseInformation** *(dict) --* **[REQUIRED]**
 
@@ -544,7 +545,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_data_source_from_redshift(
         self,
         DataSourceId: str,
@@ -649,7 +650,8 @@ class Client(BaseClient):
           is specified.
 
           * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-          for the ``DataSource`` . Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+          for the ``DataSource`` . Sample -
+          ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
           - **DatabaseInformation** *(dict) --* **[REQUIRED]**
 
@@ -828,7 +830,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_data_source_from_s3(
         self,
         DataSourceId: str,
@@ -903,7 +905,8 @@ class Client(BaseClient):
           is specified.
 
           * DataRearrangement - A JSON string that represents the splitting and rearrangement requirements
-          for the ``Datasource`` .  Sample - ``"{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"``
+          for the ``Datasource`` .  Sample -
+          ``"{\\"splitting\\":{\\"percentBegin\\":10,\\"percentEnd\\":60}}"``
 
           - **DataLocationS3** *(string) --* **[REQUIRED]**
 
@@ -1036,7 +1039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_evaluation(
         self,
         EvaluationId: str,
@@ -1124,7 +1127,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_ml_model(
         self,
         MLModelId: str,
@@ -1282,7 +1285,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_realtime_endpoint(
         self, MLModelId: str
     ) -> ClientCreateRealtimeEndpointResponseTypeDef:
@@ -1375,7 +1378,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_batch_prediction(
         self, BatchPredictionId: str
     ) -> ClientDeleteBatchPredictionResponseTypeDef:
@@ -1427,7 +1430,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_data_source(
         self, DataSourceId: str
     ) -> ClientDeleteDataSourceResponseTypeDef:
@@ -1476,7 +1479,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_evaluation(
         self, EvaluationId: str
     ) -> ClientDeleteEvaluationResponseTypeDef:
@@ -1531,7 +1534,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ml_model(self, MLModelId: str) -> ClientDeleteMlModelResponseTypeDef:
         """
         Assigns the ``DELETED`` status to an ``MLModel`` , rendering it unusable.
@@ -1581,7 +1584,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_realtime_endpoint(
         self, MLModelId: str
     ) -> ClientDeleteRealtimeEndpointResponseTypeDef:
@@ -1668,7 +1671,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tags(
         self, TagKeys: List[str], ResourceId: str, ResourceType: str
     ) -> ClientDeleteTagsResponseTypeDef:
@@ -1735,7 +1738,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_batch_predictions(
         self,
         FilterVariable: str = None,
@@ -2006,7 +2009,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_data_sources(
         self,
         FilterVariable: str = None,
@@ -2367,7 +2370,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_evaluations(
         self,
         FilterVariable: str = None,
@@ -2647,7 +2650,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ml_models(
         self,
         FilterVariable: str = None,
@@ -3021,7 +3024,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self, ResourceId: str, ResourceType: str
     ) -> ClientDescribeTagsResponseTypeDef:
@@ -3099,7 +3102,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -3128,7 +3131,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_batch_prediction(
         self, BatchPredictionId: str
     ) -> ClientGetBatchPredictionResponseTypeDef:
@@ -3274,7 +3277,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_data_source(
         self, DataSourceId: str, Verbose: bool = None
     ) -> ClientGetDataSourceResponseTypeDef:
@@ -3538,7 +3541,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_evaluation(self, EvaluationId: str) -> ClientGetEvaluationResponseTypeDef:
         """
         Returns an ``Evaluation`` that includes metadata as well as the current status of the
@@ -3694,7 +3697,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_ml_model(
         self, MLModelId: str, Verbose: bool = None
     ) -> ClientGetMlModelResponseTypeDef:
@@ -3973,7 +3976,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -3994,7 +3997,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4007,7 +4010,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def predict(
         self, MLModelId: str, Record: Dict[str, str], PredictEndpoint: str
     ) -> ClientPredictResponseTypeDef:
@@ -4116,7 +4119,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_batch_prediction(
         self, BatchPredictionId: str, BatchPredictionName: str
     ) -> ClientUpdateBatchPredictionResponseTypeDef:
@@ -4170,7 +4173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_data_source(
         self, DataSourceId: str, DataSourceName: str
     ) -> ClientUpdateDataSourceResponseTypeDef:
@@ -4225,7 +4228,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_evaluation(
         self, EvaluationId: str, EvaluationName: str
     ) -> ClientUpdateEvaluationResponseTypeDef:
@@ -4280,7 +4283,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_ml_model(
         self, MLModelId: str, MLModelName: str = None, ScoreThreshold: float = None
     ) -> ClientUpdateMlModelResponseTypeDef:

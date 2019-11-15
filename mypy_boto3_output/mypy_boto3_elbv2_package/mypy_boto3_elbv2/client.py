@@ -57,7 +57,7 @@ from mypy_boto3_elbv2.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_listener_certificates(
         self,
         ListenerArn: str,
@@ -158,7 +158,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, ResourceArns: List[str], Tags: List[ClientAddTagsTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -226,7 +226,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -243,7 +243,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_listener(
         self,
         LoadBalancerArn: str,
@@ -941,7 +941,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_load_balancer(
         self,
         Name: str,
@@ -1258,7 +1258,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_rule(
         self,
         ListenerArn: str,
@@ -1517,7 +1517,7 @@ class Client(BaseClient):
                 string is 128 characters. The comparison is case insensitive. The following wildcard
                 characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
                 character). To search for a literal '*' or '?' character in a query string, you must escape
-                these characters in ``Values`` using a '\' character.
+                these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if one of
                 them is found in the query string.
@@ -2059,7 +2059,7 @@ class Client(BaseClient):
                         of each string is 128 characters. The comparison is case insensitive. The following
                         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                         exactly 1 character). To search for a literal '*' or '?' character in a query
-                        string, you must escape these characters in ``Values`` using a '\' character.
+                        string, you must escape these characters in ``Values`` using a '\\' character.
 
                         If you specify multiple key/value pairs or values, the condition is satisfied if
                         one of them is found in the query string.
@@ -2328,7 +2328,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_target_group(
         self,
         Name: str,
@@ -2640,7 +2640,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_listener(self, ListenerArn: str) -> Dict[str, Any]:
         """
         Deletes the specified listener.
@@ -2675,7 +2675,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_load_balancer(self, LoadBalancerArn: str) -> Dict[str, Any]:
         """
         Deletes the specified Application Load Balancer or Network Load Balancer and its attached listeners.
@@ -2714,7 +2714,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_rule(self, RuleArn: str) -> Dict[str, Any]:
         """
         Deletes the specified rule.
@@ -2746,7 +2746,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_target_group(self, TargetGroupArn: str) -> Dict[str, Any]:
         """
         Deletes the specified target group.
@@ -2781,7 +2781,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def deregister_targets(
         self, TargetGroupArn: str, Targets: List[ClientDeregisterTargetsTargetsTypeDef]
     ) -> Dict[str, Any]:
@@ -2861,7 +2861,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_limits(
         self, Marker: str = None, PageSize: int = None
     ) -> ClientDescribeAccountLimitsResponseTypeDef:
@@ -2955,7 +2955,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_listener_certificates(
         self, ListenerArn: str, Marker: str = None, PageSize: int = None
     ) -> ClientDescribeListenerCertificatesResponseTypeDef:
@@ -3041,7 +3041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_listeners(
         self,
         LoadBalancerArn: str = None,
@@ -3435,7 +3435,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancer_attributes(
         self, LoadBalancerArn: str
     ) -> ClientDescribeLoadBalancerAttributesResponseTypeDef:
@@ -3534,7 +3534,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_load_balancers(
         self,
         LoadBalancerArns: List[str] = None,
@@ -3749,7 +3749,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_rules(
         self,
         ListenerArn: str = None,
@@ -4062,7 +4062,7 @@ class Client(BaseClient):
                         of each string is 128 characters. The comparison is case insensitive. The following
                         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                         exactly 1 character). To search for a literal '*' or '?' character in a query
-                        string, you must escape these characters in ``Values`` using a '\' character.
+                        string, you must escape these characters in ``Values`` using a '\\' character.
 
                         If you specify multiple key/value pairs or values, the condition is satisfied if
                         one of them is found in the query string.
@@ -4336,7 +4336,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_ssl_policies(
         self, Names: List[str] = None, Marker: str = None, PageSize: int = None
     ) -> ClientDescribeSslPoliciesResponseTypeDef:
@@ -4446,7 +4446,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tags(
         self, ResourceArns: List[str]
     ) -> ClientDescribeTagsResponseTypeDef:
@@ -4526,7 +4526,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_target_group_attributes(
         self, TargetGroupArn: str
     ) -> ClientDescribeTargetGroupAttributesResponseTypeDef:
@@ -4630,7 +4630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_target_groups(
         self,
         LoadBalancerArn: str = None,
@@ -4828,7 +4828,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_target_health(
         self,
         TargetGroupArn: str,
@@ -5040,7 +5040,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -5069,7 +5069,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -5090,7 +5090,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -5103,7 +5103,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_listener(
         self,
         ListenerArn: str,
@@ -5795,7 +5795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_load_balancer_attributes(
         self,
         LoadBalancerArn: str,
@@ -5951,7 +5951,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_rule(
         self,
         RuleArn: str,
@@ -6202,7 +6202,7 @@ class Client(BaseClient):
                 string is 128 characters. The comparison is case insensitive. The following wildcard
                 characters are supported: * (matches 0 or more characters) and ? (matches exactly 1
                 character). To search for a literal '*' or '?' character in a query string, you must escape
-                these characters in ``Values`` using a '\' character.
+                these characters in ``Values`` using a '\\' character.
 
                 If you specify multiple key/value pairs or values, the condition is satisfied if one of
                 them is found in the query string.
@@ -6739,7 +6739,7 @@ class Client(BaseClient):
                         of each string is 128 characters. The comparison is case insensitive. The following
                         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                         exactly 1 character). To search for a literal '*' or '?' character in a query
-                        string, you must escape these characters in ``Values`` using a '\' character.
+                        string, you must escape these characters in ``Values`` using a '\\' character.
 
                         If you specify multiple key/value pairs or values, the condition is satisfied if
                         one of them is found in the query string.
@@ -7008,7 +7008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_target_group(
         self,
         TargetGroupArn: str,
@@ -7252,7 +7252,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def modify_target_group_attributes(
         self,
         TargetGroupArn: str,
@@ -7414,7 +7414,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def register_targets(
         self, TargetGroupArn: str, Targets: List[ClientRegisterTargetsTargetsTypeDef]
     ) -> Dict[str, Any]:
@@ -7508,7 +7508,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_listener_certificates(
         self,
         ListenerArn: str,
@@ -7576,7 +7576,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags(
         self, ResourceArns: List[str], TagKeys: List[str]
     ) -> Dict[str, Any]:
@@ -7626,7 +7626,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_ip_address_type(
         self, LoadBalancerArn: str, IpAddressType: str
     ) -> ClientSetIpAddressTypeResponseTypeDef:
@@ -7676,7 +7676,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_rule_priorities(
         self, RulePriorities: List[ClientSetRulePrioritiesRulePrioritiesTypeDef]
     ) -> ClientSetRulePrioritiesResponseTypeDef:
@@ -7981,7 +7981,7 @@ class Client(BaseClient):
                         of each string is 128 characters. The comparison is case insensitive. The following
                         wildcard characters are supported: * (matches 0 or more characters) and ? (matches
                         exactly 1 character). To search for a literal '*' or '?' character in a query
-                        string, you must escape these characters in ``Values`` using a '\' character.
+                        string, you must escape these characters in ``Values`` using a '\\' character.
 
                         If you specify multiple key/value pairs or values, the condition is satisfied if
                         one of them is found in the query string.
@@ -8250,7 +8250,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_security_groups(
         self, LoadBalancerArn: str, SecurityGroups: List[str]
     ) -> ClientSetSecurityGroupsResponseTypeDef:
@@ -8308,7 +8308,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_subnets(
         self,
         LoadBalancerArn: str,

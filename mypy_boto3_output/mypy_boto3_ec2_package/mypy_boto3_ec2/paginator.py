@@ -211,7 +211,7 @@ from mypy_boto3_ec2.type_defs import (
 
 
 class DescribeByoipCidrs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -315,7 +315,7 @@ class DescribeByoipCidrs(Boto3Paginator):
 
 
 class DescribeCapacityReservations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CapacityReservationIds: List[str] = None,
@@ -623,7 +623,7 @@ class DescribeCapacityReservations(Boto3Paginator):
 
 
 class DescribeClassicLinkInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeClassicLinkInstancesPaginateFiltersTypeDef] = None,
@@ -841,7 +841,7 @@ class DescribeClassicLinkInstances(Boto3Paginator):
 
 
 class DescribeClientVpnAuthorizationRules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClientVpnEndpointId: str,
@@ -1022,7 +1022,7 @@ class DescribeClientVpnAuthorizationRules(Boto3Paginator):
 
 
 class DescribeClientVpnConnections(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClientVpnEndpointId: str,
@@ -1239,7 +1239,7 @@ class DescribeClientVpnConnections(Boto3Paginator):
 
 
 class DescribeClientVpnEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClientVpnEndpointIds: List[str] = None,
@@ -1590,7 +1590,7 @@ class DescribeClientVpnEndpoints(Boto3Paginator):
 
 
 class DescribeClientVpnRoutes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClientVpnEndpointId: str,
@@ -1778,7 +1778,7 @@ class DescribeClientVpnRoutes(Boto3Paginator):
 
 
 class DescribeClientVpnTargetNetworks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ClientVpnEndpointId: str,
@@ -1975,7 +1975,7 @@ class DescribeClientVpnTargetNetworks(Boto3Paginator):
 
 
 class DescribeDhcpOptions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DhcpOptionsIds: List[str] = None,
@@ -2208,7 +2208,7 @@ class DescribeDhcpOptions(Boto3Paginator):
 
 
 class DescribeEgressOnlyInternetGateways(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -2329,7 +2329,7 @@ class DescribeEgressOnlyInternetGateways(Boto3Paginator):
 
 
 class DescribeFleets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -3285,7 +3285,7 @@ class DescribeFleets(Boto3Paginator):
 
 
 class DescribeFlowLogs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -3513,7 +3513,7 @@ class DescribeFlowLogs(Boto3Paginator):
 
 
 class DescribeFpgaImages(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -3850,7 +3850,7 @@ class DescribeFpgaImages(Boto3Paginator):
 
 
 class DescribeHostReservationOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeHostReservationOfferingsPaginateFiltersTypeDef] = None,
@@ -4038,7 +4038,7 @@ class DescribeHostReservationOfferings(Boto3Paginator):
 
 
 class DescribeHostReservations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeHostReservationsPaginateFiltersTypeDef] = None,
@@ -4288,7 +4288,7 @@ class DescribeHostReservations(Boto3Paginator):
 
 
 class DescribeHosts(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeHostsPaginateFiltersTypeDef] = None,
@@ -4602,7 +4602,7 @@ class DescribeHosts(Boto3Paginator):
 
 
 class DescribeIamInstanceProfileAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AssociationIds: List[str] = None,
@@ -4779,7 +4779,7 @@ class DescribeIamInstanceProfileAssociations(Boto3Paginator):
 
 
 class DescribeImportImageTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -5062,7 +5062,7 @@ class DescribeImportImageTasks(Boto3Paginator):
 
 
 class DescribeImportSnapshotTasks(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -5289,7 +5289,7 @@ class DescribeImportSnapshotTasks(Boto3Paginator):
 
 
 class DescribeInstanceCreditSpecifications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -5451,7 +5451,7 @@ class DescribeInstanceCreditSpecifications(Boto3Paginator):
 
 
 class DescribeInstanceStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeInstanceStatusPaginateFiltersTypeDef] = None,
@@ -5826,7 +5826,7 @@ class DescribeInstanceStatus(Boto3Paginator):
 
 
 class DescribeInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeInstancesPaginateFiltersTypeDef] = None,
@@ -7093,7 +7093,7 @@ class DescribeInstances(Boto3Paginator):
 
 
 class DescribeInternetGateways(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeInternetGatewaysPaginateFiltersTypeDef] = None,
@@ -7317,7 +7317,7 @@ class DescribeInternetGateways(Boto3Paginator):
 
 
 class DescribeLaunchTemplateVersions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -8134,7 +8134,7 @@ class DescribeLaunchTemplateVersions(Boto3Paginator):
 
 
 class DescribeLaunchTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -8358,7 +8358,7 @@ class DescribeLaunchTemplates(Boto3Paginator):
 
 
 class DescribeMovingAddresses(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeMovingAddressesPaginateFiltersTypeDef] = None,
@@ -8515,7 +8515,7 @@ class DescribeMovingAddresses(Boto3Paginator):
 
 
 class DescribeNatGateways(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeNatGatewaysPaginateFiltersTypeDef] = None,
@@ -8843,7 +8843,7 @@ class DescribeNatGateways(Boto3Paginator):
 
 
 class DescribeNetworkAcls(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeNetworkAclsPaginateFiltersTypeDef] = None,
@@ -9179,7 +9179,7 @@ class DescribeNetworkAcls(Boto3Paginator):
 
 
 class DescribeNetworkInterfacePermissions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         NetworkInterfacePermissionIds: List[str] = None,
@@ -9367,7 +9367,7 @@ class DescribeNetworkInterfacePermissions(Boto3Paginator):
 
 
 class DescribeNetworkInterfaces(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeNetworkInterfacesPaginateFiltersTypeDef] = None,
@@ -9878,7 +9878,7 @@ class DescribeNetworkInterfaces(Boto3Paginator):
 
 
 class DescribePrefixLists(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -10043,7 +10043,7 @@ class DescribePrefixLists(Boto3Paginator):
 
 
 class DescribePrincipalIdFormat(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -10175,7 +10175,7 @@ class DescribePrincipalIdFormat(Boto3Paginator):
 
 
 class DescribePublicIpv4Pools(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PoolIds: List[str] = None,
@@ -10310,7 +10310,7 @@ class DescribePublicIpv4Pools(Boto3Paginator):
 
 
 class DescribeReservedInstancesModifications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[
@@ -10641,7 +10641,7 @@ class DescribeReservedInstancesModifications(Boto3Paginator):
 
 
 class DescribeReservedInstancesOfferings(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         AvailabilityZone: str = None,
@@ -11109,7 +11109,7 @@ class DescribeReservedInstancesOfferings(Boto3Paginator):
 
 
 class DescribeRouteTables(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeRouteTablesPaginateFiltersTypeDef] = None,
@@ -11491,7 +11491,7 @@ class DescribeRouteTables(Boto3Paginator):
 
 
 class DescribeScheduledInstanceAvailability(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         FirstSlotStartTimeRange: DescribeScheduledInstanceAvailabilityPaginateFirstSlotStartTimeRangeTypeDef,
@@ -11811,7 +11811,7 @@ class DescribeScheduledInstanceAvailability(Boto3Paginator):
 
 
 class DescribeScheduledInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -12088,7 +12088,7 @@ class DescribeScheduledInstances(Boto3Paginator):
 
 
 class DescribeSecurityGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeSecurityGroupsPaginateFiltersTypeDef] = None,
@@ -12732,7 +12732,7 @@ class DescribeSecurityGroups(Boto3Paginator):
 
 
 class DescribeSnapshots(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeSnapshotsPaginateFiltersTypeDef] = None,
@@ -13034,7 +13034,7 @@ class DescribeSnapshots(Boto3Paginator):
 
 
 class DescribeSpotFleetInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SpotFleetRequestId: str,
@@ -13150,7 +13150,7 @@ class DescribeSpotFleetInstances(Boto3Paginator):
 
 
 class DescribeSpotFleetRequests(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -14214,7 +14214,7 @@ class DescribeSpotFleetRequests(Boto3Paginator):
 
 
 class DescribeSpotInstanceRequests(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeSpotInstanceRequestsPaginateFiltersTypeDef] = None,
@@ -15082,7 +15082,7 @@ class DescribeSpotInstanceRequests(Boto3Paginator):
 
 
 class DescribeSpotPriceHistory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeSpotPriceHistoryPaginateFiltersTypeDef] = None,
@@ -15391,7 +15391,7 @@ class DescribeSpotPriceHistory(Boto3Paginator):
 
 
 class DescribeStaleSecurityGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         VpcId: str,
@@ -15722,7 +15722,7 @@ class DescribeStaleSecurityGroups(Boto3Paginator):
 
 
 class DescribeSubnets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeSubnetsPaginateFiltersTypeDef] = None,
@@ -16038,7 +16038,7 @@ class DescribeSubnets(Boto3Paginator):
 
 
 class DescribeTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -16212,7 +16212,7 @@ class DescribeTags(Boto3Paginator):
 
 
 class DescribeTrafficMirrorFilters(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TrafficMirrorFilterIds: List[str] = None,
@@ -16588,7 +16588,7 @@ class DescribeTrafficMirrorFilters(Boto3Paginator):
 
 
 class DescribeTrafficMirrorSessions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TrafficMirrorSessionIds: List[str] = None,
@@ -16830,7 +16830,7 @@ class DescribeTrafficMirrorSessions(Boto3Paginator):
 
 
 class DescribeTrafficMirrorTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TrafficMirrorTargetIds: List[str] = None,
@@ -17042,7 +17042,7 @@ class DescribeTrafficMirrorTargets(Boto3Paginator):
 
 
 class DescribeTransitGatewayAttachments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayAttachmentIds: List[str] = None,
@@ -17293,7 +17293,7 @@ class DescribeTransitGatewayAttachments(Boto3Paginator):
 
 
 class DescribeTransitGatewayRouteTables(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayRouteTableIds: List[str] = None,
@@ -17508,7 +17508,7 @@ class DescribeTransitGatewayRouteTables(Boto3Paginator):
 
 
 class DescribeTransitGatewayVpcAttachments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayAttachmentIds: List[str] = None,
@@ -17748,7 +17748,7 @@ class DescribeTransitGatewayVpcAttachments(Boto3Paginator):
 
 
 class DescribeTransitGateways(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayIds: List[str] = None,
@@ -18026,7 +18026,7 @@ class DescribeTransitGateways(Boto3Paginator):
 
 
 class DescribeVolumeStatus(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeVolumeStatusPaginateFiltersTypeDef] = None,
@@ -18312,7 +18312,7 @@ class DescribeVolumeStatus(Boto3Paginator):
 
 
 class DescribeVolumes(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeVolumesPaginateFiltersTypeDef] = None,
@@ -18631,7 +18631,7 @@ class DescribeVolumes(Boto3Paginator):
 
 
 class DescribeVolumesModifications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -18838,7 +18838,7 @@ class DescribeVolumesModifications(Boto3Paginator):
 
 
 class DescribeVpcClassicLinkDnsSupport(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         VpcIds: List[str] = None,
@@ -18930,7 +18930,7 @@ class DescribeVpcClassicLinkDnsSupport(Boto3Paginator):
 
 
 class DescribeVpcEndpointConnectionNotifications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -19124,7 +19124,7 @@ class DescribeVpcEndpointConnectionNotifications(Boto3Paginator):
 
 
 class DescribeVpcEndpointConnections(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -19323,7 +19323,7 @@ class DescribeVpcEndpointConnections(Boto3Paginator):
 
 
 class DescribeVpcEndpointServiceConfigurations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -19587,7 +19587,7 @@ class DescribeVpcEndpointServiceConfigurations(Boto3Paginator):
 
 
 class DescribeVpcEndpointServicePermissions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ServiceId: str,
@@ -19743,7 +19743,7 @@ class DescribeVpcEndpointServicePermissions(Boto3Paginator):
 
 
 class DescribeVpcEndpointServices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -20007,7 +20007,7 @@ class DescribeVpcEndpointServices(Boto3Paginator):
 
 
 class DescribeVpcEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DryRun: bool = None,
@@ -20321,7 +20321,7 @@ class DescribeVpcEndpoints(Boto3Paginator):
 
 
 class DescribeVpcPeeringConnections(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeVpcPeeringConnectionsPaginateFiltersTypeDef] = None,
@@ -20722,7 +20722,7 @@ class DescribeVpcPeeringConnections(Boto3Paginator):
 
 
 class DescribeVpcs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[DescribeVpcsPaginateFiltersTypeDef] = None,
@@ -21046,7 +21046,7 @@ class DescribeVpcs(Boto3Paginator):
 
 
 class GetTransitGatewayAttachmentPropagations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayAttachmentId: str,
@@ -21199,7 +21199,7 @@ class GetTransitGatewayAttachmentPropagations(Boto3Paginator):
 
 
 class GetTransitGatewayRouteTableAssociations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayRouteTableId: str,
@@ -21366,7 +21366,7 @@ class GetTransitGatewayRouteTableAssociations(Boto3Paginator):
 
 
 class GetTransitGatewayRouteTablePropagations(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         TransitGatewayRouteTableId: str,

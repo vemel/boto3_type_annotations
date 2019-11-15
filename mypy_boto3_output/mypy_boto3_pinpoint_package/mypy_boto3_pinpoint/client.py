@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
@@ -101,6 +101,7 @@ from mypy_boto3_pinpoint.type_defs import (
     ClientSendMessagesResponseTypeDef,
     ClientSendUsersMessagesResponseTypeDef,
     ClientSendUsersMessagesSendUsersMessageRequestTypeDef,
+    ClientTagResourceTagsModelTypeDef,
     ClientUpdateAdmChannelADMChannelRequestTypeDef,
     ClientUpdateAdmChannelResponseTypeDef,
     ClientUpdateApnsChannelAPNSChannelRequestTypeDef,
@@ -145,7 +146,7 @@ from mypy_boto3_pinpoint.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -162,7 +163,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_app(
         self, CreateApplicationRequest: ClientCreateAppCreateApplicationRequestTypeDef
     ) -> ClientCreateAppResponseTypeDef:
@@ -254,7 +255,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_campaign(
         self,
         ApplicationId: str,
@@ -3572,7 +3573,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_email_template(
         self,
         EmailTemplateRequest: ClientCreateEmailTemplateEmailTemplateRequestTypeDef,
@@ -3674,7 +3675,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_export_job(
         self,
         ApplicationId: str,
@@ -3863,7 +3864,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_import_job(
         self,
         ApplicationId: str,
@@ -4117,7 +4118,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_journey(
         self,
         ApplicationId: str,
@@ -6878,7 +6879,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_push_template(
         self,
         PushNotificationTemplateRequest: ClientCreatePushTemplatePushNotificationTemplateRequestTypeDef,
@@ -7257,7 +7258,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_segment(
         self,
         ApplicationId: str,
@@ -8920,7 +8921,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_sms_template(
         self,
         SMSTemplateRequest: ClientCreateSmsTemplateSMSTemplateRequestTypeDef,
@@ -9007,7 +9008,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_adm_channel(
         self, ApplicationId: str
     ) -> ClientDeleteAdmChannelResponseTypeDef:
@@ -9105,7 +9106,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_apns_channel(
         self, ApplicationId: str
     ) -> ClientDeleteApnsChannelResponseTypeDef:
@@ -9216,7 +9217,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_apns_sandbox_channel(
         self, ApplicationId: str
     ) -> ClientDeleteApnsSandboxChannelResponseTypeDef:
@@ -9328,7 +9329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_apns_voip_channel(
         self, ApplicationId: str
     ) -> ClientDeleteApnsVoipChannelResponseTypeDef:
@@ -9439,7 +9440,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_apns_voip_sandbox_channel(
         self, ApplicationId: str
     ) -> ClientDeleteApnsVoipSandboxChannelResponseTypeDef:
@@ -9551,7 +9552,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app(self, ApplicationId: str) -> ClientDeleteAppResponseTypeDef:
         """
         Deletes an application.
@@ -9623,7 +9624,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_baidu_channel(
         self, ApplicationId: str
     ) -> ClientDeleteBaiduChannelResponseTypeDef:
@@ -9727,7 +9728,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_campaign(
         self, ApplicationId: str, CampaignId: str
     ) -> ClientDeleteCampaignResponseTypeDef:
@@ -11458,7 +11459,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_email_channel(
         self, ApplicationId: str
     ) -> ClientDeleteEmailChannelResponseTypeDef:
@@ -11583,7 +11584,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_email_template(
         self, TemplateName: str
     ) -> ClientDeleteEmailTemplateResponseTypeDef:
@@ -11640,7 +11641,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_endpoint(
         self, ApplicationId: str, EndpointId: str
     ) -> ClientDeleteEndpointResponseTypeDef:
@@ -11896,7 +11897,7 @@ class Client(BaseClient):
                   segments.
 
                   When you define the name of a custom attribute, avoid using the following characters:
-                  number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon
+                  number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon
                   Pinpoint console can't display attribute names that contain these characters. This
                   limitation doesn't apply to attribute values.
 
@@ -11912,7 +11913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_event_stream(
         self, ApplicationId: str
     ) -> ClientDeleteEventStreamResponseTypeDef:
@@ -11999,7 +12000,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_gcm_channel(
         self, ApplicationId: str
     ) -> ClientDeleteGcmChannelResponseTypeDef:
@@ -12104,7 +12105,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_journey(
         self, ApplicationId: str, JourneyId: str
     ) -> ClientDeleteJourneyResponseTypeDef:
@@ -13537,7 +13538,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_push_template(
         self, TemplateName: str
     ) -> ClientDeletePushTemplateResponseTypeDef:
@@ -13594,7 +13595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_segment(
         self, ApplicationId: str, SegmentId: str
     ) -> ClientDeleteSegmentResponseTypeDef:
@@ -14498,7 +14499,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_sms_channel(
         self, ApplicationId: str
     ) -> ClientDeleteSmsChannelResponseTypeDef:
@@ -14618,7 +14619,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_sms_template(
         self, TemplateName: str
     ) -> ClientDeleteSmsTemplateResponseTypeDef:
@@ -14675,7 +14676,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user_endpoints(
         self, ApplicationId: str, UserId: str
     ) -> ClientDeleteUserEndpointsResponseTypeDef:
@@ -14946,7 +14947,7 @@ class Client(BaseClient):
                       you create segments.
 
                       When you define the name of a custom attribute, avoid using the following characters:
-                      number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The
+                      number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The
                       Amazon Pinpoint console can't display attribute names that contain these characters.
                       This limitation doesn't apply to attribute values.
 
@@ -14962,7 +14963,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_voice_channel(
         self, ApplicationId: str
     ) -> ClientDeleteVoiceChannelResponseTypeDef:
@@ -15059,7 +15060,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -15088,7 +15089,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_adm_channel(self, ApplicationId: str) -> ClientGetAdmChannelResponseTypeDef:
         """
         Retrieves information about the status and settings of the ADM channel for an application.
@@ -15184,7 +15185,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apns_channel(
         self, ApplicationId: str
     ) -> ClientGetApnsChannelResponseTypeDef:
@@ -15295,7 +15296,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apns_sandbox_channel(
         self, ApplicationId: str
     ) -> ClientGetApnsSandboxChannelResponseTypeDef:
@@ -15406,7 +15407,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apns_voip_channel(
         self, ApplicationId: str
     ) -> ClientGetApnsVoipChannelResponseTypeDef:
@@ -15517,7 +15518,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apns_voip_sandbox_channel(
         self, ApplicationId: str
     ) -> ClientGetApnsVoipSandboxChannelResponseTypeDef:
@@ -15629,7 +15630,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_app(self, ApplicationId: str) -> ClientGetAppResponseTypeDef:
         """
         Retrieves information about an application.
@@ -15701,7 +15702,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application_date_range_kpi(
         self,
         ApplicationId: str,
@@ -15911,7 +15912,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_application_settings(
         self, ApplicationId: str
     ) -> ClientGetApplicationSettingsResponseTypeDef:
@@ -16055,7 +16056,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_apps(
         self, PageSize: str = None, Token: str = None
     ) -> ClientGetAppsResponseTypeDef:
@@ -16154,7 +16155,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_baidu_channel(
         self, ApplicationId: str
     ) -> ClientGetBaiduChannelResponseTypeDef:
@@ -16258,7 +16259,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaign(
         self, ApplicationId: str, CampaignId: str
     ) -> ClientGetCampaignResponseTypeDef:
@@ -17989,7 +17990,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaign_activities(
         self,
         ApplicationId: str,
@@ -18143,7 +18144,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaign_date_range_kpi(
         self,
         ApplicationId: str,
@@ -18365,7 +18366,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaign_version(
         self, ApplicationId: str, CampaignId: str, Version: str
     ) -> ClientGetCampaignVersionResponseTypeDef:
@@ -20103,7 +20104,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaign_versions(
         self,
         ApplicationId: str,
@@ -21899,7 +21900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_campaigns(
         self, ApplicationId: str, PageSize: str = None, Token: str = None
     ) -> ClientGetCampaignsResponseTypeDef:
@@ -23685,7 +23686,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_channels(self, ApplicationId: str) -> ClientGetChannelsResponseTypeDef:
         """
         Retrieves information about the history and status of each channel for an application.
@@ -23791,7 +23792,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_email_channel(
         self, ApplicationId: str
     ) -> ClientGetEmailChannelResponseTypeDef:
@@ -23916,7 +23917,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_email_template(
         self, TemplateName: str
     ) -> ClientGetEmailTemplateResponseTypeDef:
@@ -24020,7 +24021,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_endpoint(
         self, ApplicationId: str, EndpointId: str
     ) -> ClientGetEndpointResponseTypeDef:
@@ -24276,7 +24277,7 @@ class Client(BaseClient):
                   segments.
 
                   When you define the name of a custom attribute, avoid using the following characters:
-                  number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon
+                  number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon
                   Pinpoint console can't display attribute names that contain these characters. This
                   limitation doesn't apply to attribute values.
 
@@ -24292,7 +24293,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_event_stream(
         self, ApplicationId: str
     ) -> ClientGetEventStreamResponseTypeDef:
@@ -24379,7 +24380,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_export_job(
         self, ApplicationId: str, JobId: str
     ) -> ClientGetExportJobResponseTypeDef:
@@ -24538,7 +24539,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_export_jobs(
         self, ApplicationId: str, PageSize: str = None, Token: str = None
     ) -> ClientGetExportJobsResponseTypeDef:
@@ -24725,7 +24726,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_gcm_channel(self, ApplicationId: str) -> ClientGetGcmChannelResponseTypeDef:
         """
         Retrieves information about the status and settings of the GCM channel for an application.
@@ -24828,7 +24829,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_import_job(
         self, ApplicationId: str, JobId: str
     ) -> ClientGetImportJobResponseTypeDef:
@@ -25021,7 +25022,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_import_jobs(
         self, ApplicationId: str, PageSize: str = None, Token: str = None
     ) -> ClientGetImportJobsResponseTypeDef:
@@ -25244,7 +25245,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_journey(
         self, ApplicationId: str, JourneyId: str
     ) -> ClientGetJourneyResponseTypeDef:
@@ -26677,7 +26678,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_journey_date_range_kpi(
         self,
         ApplicationId: str,
@@ -26899,7 +26900,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_journey_execution_activity_metrics(
         self,
         ApplicationId: str,
@@ -27036,7 +27037,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_journey_execution_metrics(
         self,
         ApplicationId: str,
@@ -27135,7 +27136,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -27156,7 +27157,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_push_template(
         self, TemplateName: str
     ) -> ClientGetPushTemplateResponseTypeDef:
@@ -27552,7 +27553,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segment(
         self, ApplicationId: str, SegmentId: str
     ) -> ClientGetSegmentResponseTypeDef:
@@ -28457,7 +28458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segment_export_jobs(
         self,
         ApplicationId: str,
@@ -28654,7 +28655,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segment_import_jobs(
         self,
         ApplicationId: str,
@@ -28887,7 +28888,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segment_version(
         self, ApplicationId: str, SegmentId: str, Version: str
     ) -> ClientGetSegmentVersionResponseTypeDef:
@@ -29798,7 +29799,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segment_versions(
         self,
         ApplicationId: str,
@@ -30753,7 +30754,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_segments(
         self, ApplicationId: str, PageSize: str = None, Token: str = None
     ) -> ClientGetSegmentsResponseTypeDef:
@@ -31698,7 +31699,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sms_channel(self, ApplicationId: str) -> ClientGetSmsChannelResponseTypeDef:
         """
         Retrieves information about the status and settings of the SMS channel for an application.
@@ -31816,7 +31817,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_sms_template(
         self, TemplateName: str
     ) -> ClientGetSmsTemplateResponseTypeDef:
@@ -31907,7 +31908,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user_endpoints(
         self, ApplicationId: str, UserId: str
     ) -> ClientGetUserEndpointsResponseTypeDef:
@@ -32178,7 +32179,7 @@ class Client(BaseClient):
                       you create segments.
 
                       When you define the name of a custom attribute, avoid using the following characters:
-                      number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The
+                      number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The
                       Amazon Pinpoint console can't display attribute names that contain these characters.
                       This limitation doesn't apply to attribute values.
 
@@ -32194,7 +32195,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_voice_channel(
         self, ApplicationId: str
     ) -> ClientGetVoiceChannelResponseTypeDef:
@@ -32291,7 +32292,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -32304,7 +32305,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_journeys(
         self, ApplicationId: str, PageSize: str = None, Token: str = None
     ) -> ClientListJourneysResponseTypeDef:
@@ -33784,7 +33785,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -33846,7 +33847,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_templates(
         self,
         NextToken: str = None,
@@ -33977,7 +33978,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def phone_number_validate(
         self,
         NumberValidateRequest: ClientPhoneNumberValidateNumberValidateRequestTypeDef,
@@ -34112,7 +34113,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_event_stream(
         self,
         ApplicationId: str,
@@ -34228,7 +34229,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_events(
         self, ApplicationId: str, EventsRequest: ClientPutEventsEventsRequestTypeDef
     ) -> ClientPutEventsResponseTypeDef:
@@ -34481,7 +34482,7 @@ class Client(BaseClient):
                       you create segments.
 
                       When you define the name of a custom attribute, avoid using the following characters:
-                      number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The
+                      number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The
                       Amazon Pinpoint console can't display attribute names that contain these characters.
                       This limitation doesn't apply to attribute values.
 
@@ -34657,7 +34658,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_attributes(
         self,
         ApplicationId: str,
@@ -34769,7 +34770,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_messages(
         self,
         ApplicationId: str,
@@ -36116,7 +36117,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def send_users_messages(
         self,
         ApplicationId: str,
@@ -37334,8 +37335,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, ResourceArn: str, TagsModel: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, ResourceArn: str, TagsModel: ClientTagResourceTagsModelTypeDef
+    ) -> None:
         """
         Adds one or more tags (keys and values) to an application, campaign, journey, message template, or
         segment.
@@ -37380,8 +37383,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, ResourceArn: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> None:
         """
         Removes one or more tags (keys and values) from an application, campaign, journey, message
         template, or segment.
@@ -37414,7 +37417,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_adm_channel(
         self,
         ADMChannelRequest: ClientUpdateAdmChannelADMChannelRequestTypeDef,
@@ -37537,7 +37540,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_apns_channel(
         self,
         APNSChannelRequest: ClientUpdateApnsChannelAPNSChannelRequestTypeDef,
@@ -37704,7 +37707,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_apns_sandbox_channel(
         self,
         APNSSandboxChannelRequest: ClientUpdateApnsSandboxChannelAPNSSandboxChannelRequestTypeDef,
@@ -37871,7 +37874,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_apns_voip_channel(
         self,
         APNSVoipChannelRequest: ClientUpdateApnsVoipChannelAPNSVoipChannelRequestTypeDef,
@@ -38038,7 +38041,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_apns_voip_sandbox_channel(
         self,
         APNSVoipSandboxChannelRequest: ClientUpdateApnsVoipSandboxChannelAPNSVoipSandboxChannelRequestTypeDef,
@@ -38205,7 +38208,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_application_settings(
         self,
         ApplicationId: str,
@@ -38456,7 +38459,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_baidu_channel(
         self,
         ApplicationId: str,
@@ -38586,7 +38589,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_campaign(
         self,
         ApplicationId: str,
@@ -41910,7 +41913,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_email_channel(
         self,
         ApplicationId: str,
@@ -42074,7 +42077,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_email_template(
         self,
         EmailTemplateRequest: ClientUpdateEmailTemplateEmailTemplateRequestTypeDef,
@@ -42172,7 +42175,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_endpoint(
         self,
         ApplicationId: str,
@@ -42269,7 +42272,7 @@ class Client(BaseClient):
             "music", "travel"]. You can use these attributes as filter criteria when you create segments.
 
             When you define the name of a custom attribute, avoid using the following characters: number
-            sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint
+            sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon Pinpoint
             console can't display attribute names that contain these characters. This limitation doesn't
             apply to attribute values.
 
@@ -42394,7 +42397,7 @@ class Client(BaseClient):
               "travel"]. You can use these attributes as filter criteria when you create segments.
 
               When you define the name of a custom attribute, avoid using the following characters: number
-              sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint
+              sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon Pinpoint
               console can't display attribute names that contain these characters. This limitation doesn't
               apply to attribute values.
 
@@ -42441,7 +42444,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_endpoints_batch(
         self,
         ApplicationId: str,
@@ -42549,7 +42552,7 @@ class Client(BaseClient):
                 create segments.
 
                 When you define the name of a custom attribute, avoid using the following characters:
-                number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon
+                number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon
                 Pinpoint console can't display attribute names that contain these characters. This
                 limitation doesn't apply to attribute values.
 
@@ -42681,7 +42684,7 @@ class Client(BaseClient):
                   segments.
 
                   When you define the name of a custom attribute, avoid using the following characters:
-                  number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon
+                  number sign (#), colon (:), question mark (?), backslash (\\), and slash (/). The Amazon
                   Pinpoint console can't display attribute names that contain these characters. This
                   limitation doesn't apply to attribute values.
 
@@ -42728,7 +42731,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_gcm_channel(
         self,
         ApplicationId: str,
@@ -42856,7 +42859,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_journey(
         self,
         ApplicationId: str,
@@ -45624,7 +45627,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_journey_state(
         self,
         ApplicationId: str,
@@ -47081,7 +47084,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_push_template(
         self,
         PushNotificationTemplateRequest: ClientUpdatePushTemplatePushNotificationTemplateRequestTypeDef,
@@ -47455,7 +47458,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_segment(
         self,
         ApplicationId: str,
@@ -49125,7 +49128,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_sms_channel(
         self,
         ApplicationId: str,
@@ -49271,7 +49274,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_sms_template(
         self,
         SMSTemplateRequest: ClientUpdateSmsTemplateSMSTemplateRequestTypeDef,
@@ -49355,7 +49358,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_voice_channel(
         self,
         ApplicationId: str,

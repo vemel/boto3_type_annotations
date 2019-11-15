@@ -10,7 +10,7 @@ from mypy_boto3_marketplace_entitlement.type_defs import (
 
 
 class GetEntitlements(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ProductCode: str,

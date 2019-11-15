@@ -44,7 +44,7 @@ from mypy_boto3_alexaforbusiness.type_defs import (
 
 
 class ListBusinessReportSchedules(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListBusinessReportSchedulesPaginatePaginationConfigTypeDef = None,
@@ -206,7 +206,7 @@ class ListBusinessReportSchedules(Boto3Paginator):
 
 
 class ListConferenceProviders(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListConferenceProvidersPaginatePaginationConfigTypeDef = None,
@@ -354,7 +354,7 @@ class ListConferenceProviders(Boto3Paginator):
 
 
 class ListDeviceEvents(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         DeviceArn: str,
@@ -457,7 +457,7 @@ class ListDeviceEvents(Boto3Paginator):
 
 
 class ListSkills(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         SkillGroupArn: str = None,
@@ -576,7 +576,7 @@ class ListSkills(Boto3Paginator):
 
 
 class ListSkillsStoreCategories(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListSkillsStoreCategoriesPaginatePaginationConfigTypeDef = None,
@@ -659,7 +659,7 @@ class ListSkillsStoreCategories(Boto3Paginator):
 
 
 class ListSkillsStoreSkillsByCategory(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CategoryId: int,
@@ -872,7 +872,7 @@ class ListSkillsStoreSkillsByCategory(Boto3Paginator):
 
 
 class ListSmartHomeAppliances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         RoomArn: str,
@@ -967,7 +967,7 @@ class ListSmartHomeAppliances(Boto3Paginator):
 
 
 class ListTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, Arn: str, PaginationConfig: ListTagsPaginatePaginationConfigTypeDef = None
     ) -> ListTagsPaginateResponseTypeDef:
@@ -1054,7 +1054,7 @@ class ListTags(Boto3Paginator):
 
 
 class SearchDevices(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[SearchDevicesPaginateFiltersTypeDef] = None,
@@ -1285,7 +1285,7 @@ class SearchDevices(Boto3Paginator):
 
 
 class SearchProfiles(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[SearchProfilesPaginateFiltersTypeDef] = None,
@@ -1461,7 +1461,7 @@ class SearchProfiles(Boto3Paginator):
 
 
 class SearchRooms(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[SearchRoomsPaginateFiltersTypeDef] = None,
@@ -1622,7 +1622,7 @@ class SearchRooms(Boto3Paginator):
 
 
 class SearchSkillGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[SearchSkillGroupsPaginateFiltersTypeDef] = None,
@@ -1768,7 +1768,7 @@ class SearchSkillGroups(Boto3Paginator):
 
 
 class SearchUsers(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Filters: List[SearchUsersPaginateFiltersTypeDef] = None,

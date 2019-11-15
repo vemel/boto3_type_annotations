@@ -1,14 +1,21 @@
 "Main interface for appstream Waiters"
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import List
 from botocore.waiter import Waiter as Boto3Waiter
+from mypy_boto3_appstream.type_defs import (
+    FleetStartedWaitWaiterConfigTypeDef,
+    FleetStoppedWaitWaiterConfigTypeDef,
+)
 
 
 class FleetStarted(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, Names: List[str] = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        Names: List[str] = None,
+        NextToken: str = None,
+        WaiterConfig: FleetStartedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`AppStream.Client.describe_fleets` every 30 seconds until a successful state is
@@ -61,9 +68,12 @@ class FleetStarted(Boto3Waiter):
 
 
 class FleetStopped(Boto3Waiter):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
-        self, Names: List[str] = None, NextToken: str = None, WaiterConfig: Dict = None
+        self,
+        Names: List[str] = None,
+        NextToken: str = None,
+        WaiterConfig: FleetStoppedWaitWaiterConfigTypeDef = None,
     ) -> None:
         """
         Polls :py:meth:`AppStream.Client.describe_fleets` every 30 seconds until a successful state is

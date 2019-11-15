@@ -13737,6 +13737,74 @@ class ClientSimulatePrincipalPolicyContextEntriesTypeDef(
     """
 
 
+_ClientTagRoleTagsTypeDef = TypedDict(
+    "_ClientTagRoleTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientTagRoleTagsTypeDef(_ClientTagRoleTagsTypeDef):
+    """
+    Type definition for `ClientTagRole` `Tags`
+
+    A structure that represents user-provided metadata that can be associated with a resource such
+    as an IAM user or role. For more information about tagging, see `Tagging IAM Identities
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html>`__ in the *IAM User Guide* .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key name that can be used to look up or retrieve the associated value. For example,
+      ``Department`` or ``Cost Center`` are common choices.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value associated with this tag. For example, tags with a key name of ``Department`` could
+      have values such as ``Human Resources`` , ``Accounting`` , and ``Support`` . Tags with a key
+      name of ``Cost Center`` might have values that consist of the number associated with the
+      different cost centers in your company. Typically, many resources have tags with the same key
+      name but with different values.
+
+      .. note::
+
+        AWS always interprets the tag ``Value`` as a single string. If you need to store an array,
+        you can store comma-separated values in the string. However, you must interpret the value
+        in your code.
+    """
+
+
+_ClientTagUserTagsTypeDef = TypedDict(
+    "_ClientTagUserTagsTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientTagUserTagsTypeDef(_ClientTagUserTagsTypeDef):
+    """
+    Type definition for `ClientTagUser` `Tags`
+
+    A structure that represents user-provided metadata that can be associated with a resource such
+    as an IAM user or role. For more information about tagging, see `Tagging IAM Identities
+    <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html>`__ in the *IAM User Guide* .
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key name that can be used to look up or retrieve the associated value. For example,
+      ``Department`` or ``Cost Center`` are common choices.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      The value associated with this tag. For example, tags with a key name of ``Department`` could
+      have values such as ``Human Resources`` , ``Accounting`` , and ``Support`` . Tags with a key
+      name of ``Cost Center`` might have values that consist of the number associated with the
+      different cost centers in your company. Typically, many resources have tags with the same key
+      name but with different values.
+
+      .. note::
+
+        AWS always interprets the tag ``Value`` as a single string. If you need to store an array,
+        you can store comma-separated values in the string. However, you must interpret the value
+        in your code.
+    """
+
+
 _ClientUpdateRoleDescriptionResponseRolePermissionsBoundaryTypeDef = TypedDict(
     "_ClientUpdateRoleDescriptionResponseRolePermissionsBoundaryTypeDef",
     {"PermissionsBoundaryType": str, "PermissionsBoundaryArn": str},
@@ -17129,6 +17197,31 @@ class GetGroupPaginateResponseTypeDef(_GetGroupPaginateResponseTypeDef):
     - **NextToken** *(string) --*
 
       A token to resume pagination.
+    """
+
+
+_InstanceProfileExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_InstanceProfileExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class InstanceProfileExistsWaitWaiterConfigTypeDef(
+    _InstanceProfileExistsWaitWaiterConfigTypeDef
+):
+    """
+    Type definition for `InstanceProfileExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """
 
 
@@ -21988,6 +22081,52 @@ class ListVirtualMFADevicesPaginateResponseTypeDef(
     """
 
 
+_PolicyExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_PolicyExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class PolicyExistsWaitWaiterConfigTypeDef(_PolicyExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `PolicyExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
+_RoleExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_RoleExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class RoleExistsWaitWaiterConfigTypeDef(_RoleExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `RoleExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
 _SamlProviderUpdateResponseTypeDef = TypedDict(
     "_SamlProviderUpdateResponseTypeDef", {"SAMLProviderArn": str}, total=False
 )
@@ -22244,4 +22383,27 @@ class UserCreateTagsTypeDef(_UserCreateTagsTypeDef):
         AWS always interprets the tag ``Value`` as a single string. If you need to store an array,
         you can store comma-separated values in the string. However, you must interpret the value
         in your code.
+    """
+
+
+_UserExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_UserExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class UserExistsWaitWaiterConfigTypeDef(_UserExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `UserExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 1
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
     """

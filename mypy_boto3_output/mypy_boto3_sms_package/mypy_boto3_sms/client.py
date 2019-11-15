@@ -32,7 +32,7 @@ from mypy_boto3_sms.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -49,7 +49,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_app(
         self,
         name: str = None,
@@ -459,7 +459,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_replication_job(
         self,
         serverId: str,
@@ -575,7 +575,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app(
         self,
         appId: str = None,
@@ -626,7 +626,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app_launch_configuration(self, appId: str = None) -> Dict[str, Any]:
         """
         Deletes existing launch configuration for an application.
@@ -658,7 +658,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_app_replication_configuration(self, appId: str = None) -> Dict[str, Any]:
         """
         Deletes existing replication configuration for an application.
@@ -690,7 +690,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_replication_job(self, replicationJobId: str) -> Dict[str, Any]:
         """
         Deletes the specified replication job.
@@ -726,7 +726,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_server_catalog(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Deletes all servers from your server catalog.
@@ -752,7 +752,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_connector(self, connectorId: str) -> Dict[str, Any]:
         """
         Disassociates the specified connector from AWS SMS.
@@ -786,7 +786,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_change_set(
         self, appId: str = None, changesetFormat: str = None
     ) -> ClientGenerateChangeSetResponseTypeDef:
@@ -845,7 +845,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -874,7 +874,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_template(
         self, appId: str = None, templateFormat: str = None
     ) -> ClientGenerateTemplateResponseTypeDef:
@@ -933,7 +933,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_app(self, appId: str = None) -> ClientGetAppResponseTypeDef:
         """
         Retrieve information about an application.
@@ -1195,7 +1195,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_app_launch_configuration(
         self, appId: str = None
     ) -> ClientGetAppLaunchConfigurationResponseTypeDef:
@@ -1401,7 +1401,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_app_replication_configuration(
         self, appId: str = None
     ) -> ClientGetAppReplicationConfigurationResponseTypeDef:
@@ -1585,7 +1585,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_connectors(
         self, nextToken: str = None, maxResults: int = None
     ) -> ClientGetConnectorsResponseTypeDef:
@@ -1700,7 +1700,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1721,7 +1721,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_replication_jobs(
         self,
         replicationJobId: str = None,
@@ -2018,7 +2018,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_replication_runs(
         self, replicationJobId: str, nextToken: str = None, maxResults: int = None
     ) -> ClientGetReplicationRunsResponseTypeDef:
@@ -2395,7 +2395,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_servers(
         self,
         nextToken: str = None,
@@ -2556,7 +2556,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -2569,7 +2569,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_server_catalog(self, *args: Any, **kwargs: Any) -> Dict[str, Any]:
         """
         Gathers a complete list of on-premises servers. Connectors must be installed and monitoring all
@@ -2598,7 +2598,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def launch_app(self, appId: str = None) -> Dict[str, Any]:
         """
         Launches an application stack.
@@ -2630,7 +2630,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_apps(
         self, appIds: List[str] = None, nextToken: str = None, maxResults: int = None
     ) -> ClientListAppsResponseTypeDef:
@@ -2803,7 +2803,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_app_launch_configuration(
         self,
         appId: str = None,
@@ -3009,7 +3009,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_app_replication_configuration(
         self,
         appId: str = None,
@@ -3196,7 +3196,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_app_replication(self, appId: str = None) -> Dict[str, Any]:
         """
         Starts replicating an application.
@@ -3228,7 +3228,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_on_demand_replication_run(
         self, replicationJobId: str, description: str = None
     ) -> ClientStartOnDemandReplicationRunResponseTypeDef:
@@ -3278,7 +3278,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_app_replication(self, appId: str = None) -> Dict[str, Any]:
         """
         Stops replicating an application.
@@ -3310,7 +3310,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def terminate_app(self, appId: str = None) -> Dict[str, Any]:
         """
         Terminates the stack for an application.
@@ -3342,7 +3342,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_app(
         self,
         appId: str = None,
@@ -3751,7 +3751,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_replication_job(
         self,
         replicationJobId: str,

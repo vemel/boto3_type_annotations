@@ -14,7 +14,7 @@ from mypy_boto3_mediastore_data.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -31,7 +31,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_object(self, Path: str) -> Dict[str, Any]:
         """
         Deletes an object at the specified path.
@@ -64,7 +64,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_object(self, Path: str) -> ClientDescribeObjectResponseTypeDef:
         """
         Gets the headers for an object at the specified path.
@@ -118,7 +118,7 @@ class Client(BaseClient):
 
               An optional ``CacheControl`` header that allows the caller to control the object's cache
               behavior. Headers can be passed in as specified in the HTTP at
-              `https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+              `https\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
               <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
               Headers with a custom user-defined value are also accepted.
@@ -129,7 +129,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -158,7 +158,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_object(
         self, Path: str, Range: str = None
     ) -> ClientGetObjectResponseTypeDef:
@@ -183,7 +183,7 @@ class Client(BaseClient):
           The path (including the file name) where the object is stored in the container. Format: <folder
           name>/<folder name>/<file name>
 
-          For example, to upload the file ``mlaw.avi`` to the folder path ``premium\canada`` in the
+          For example, to upload the file ``mlaw.avi`` to the folder path ``premium\\canada`` in the
           container ``movies`` , enter the path ``premium/canada/mlaw.avi`` .
 
           Do not include the container name in this path.
@@ -207,7 +207,7 @@ class Client(BaseClient):
         :param Range:
 
           The range bytes of an object to retrieve. For more information about the ``Range`` header, see
-          `http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+          `http\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
           <http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35>`__ . AWS Elemental MediaStore
           ignores this header for partially uploaded objects that have streaming upload availability.
 
@@ -240,7 +240,7 @@ class Client(BaseClient):
 
               An optional ``CacheControl`` header that allows the caller to control the object's cache
               behavior. Headers can be passed in as specified in the HTTP spec at
-              `https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+              `https\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
               <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
               Headers with a custom user-defined value are also accepted.
@@ -272,7 +272,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -293,7 +293,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -306,7 +306,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_items(
         self, Path: str = None, MaxResults: int = None, NextToken: str = None
     ) -> ClientListItemsResponseTypeDef:
@@ -417,7 +417,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_object(
         self,
         Body: Union[bytes, IO],
@@ -456,7 +456,7 @@ class Client(BaseClient):
           The path (including the file name) where the object is stored in the container. Format: <folder
           name>/<folder name>/<file name>
 
-          For example, to upload the file ``mlaw.avi`` to the folder path ``premium\canada`` in the
+          For example, to upload the file ``mlaw.avi`` to the folder path ``premium\\canada`` in the
           container ``movies`` , enter the path ``premium/canada/mlaw.avi`` .
 
           Do not include the container name in this path.
@@ -486,7 +486,7 @@ class Client(BaseClient):
 
           An optional ``CacheControl`` header that allows the caller to control the object's cache
           behavior. Headers can be passed in as specified in the HTTP at
-          `https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
+          `https\\://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9
           <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9>`__ .
 
           Headers with a custom user-defined value are also accepted.

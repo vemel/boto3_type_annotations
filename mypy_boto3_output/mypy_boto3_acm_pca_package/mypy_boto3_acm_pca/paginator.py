@@ -13,7 +13,7 @@ from mypy_boto3_acm_pca.type_defs import (
 
 
 class ListCertificateAuthorities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListCertificateAuthoritiesPaginatePaginationConfigTypeDef = None,
@@ -293,7 +293,7 @@ class ListCertificateAuthorities(Boto3Paginator):
 
 
 class ListPermissions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CertificateAuthorityArn: str,
@@ -415,7 +415,7 @@ class ListPermissions(Boto3Paginator):
 
 
 class ListTags(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         CertificateAuthorityArn: str,

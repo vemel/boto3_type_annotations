@@ -95,7 +95,7 @@ from mypy_boto3_storagegateway.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def activate_gateway(
         self,
         ActivationKey: str,
@@ -257,7 +257,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_cache(
         self, GatewayARN: str, DiskIds: List[str]
     ) -> ClientAddCacheResponseTypeDef:
@@ -317,7 +317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceARN: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
     ) -> ClientAddTagsToResourceResponseTypeDef:
@@ -406,7 +406,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_upload_buffer(
         self, GatewayARN: str, DiskIds: List[str]
     ) -> ClientAddUploadBufferResponseTypeDef:
@@ -465,7 +465,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_working_storage(
         self, GatewayARN: str, DiskIds: List[str]
     ) -> ClientAddWorkingStorageResponseTypeDef:
@@ -532,7 +532,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assign_tape_pool(
         self, TapeARN: str, PoolId: str
     ) -> ClientAssignTapePoolResponseTypeDef:
@@ -589,7 +589,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_volume(
         self,
         GatewayARN: str,
@@ -681,7 +681,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -698,7 +698,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_archival(
         self, GatewayARN: str, TapeARN: str
     ) -> ClientCancelArchivalResponseTypeDef:
@@ -749,7 +749,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_retrieval(
         self, GatewayARN: str, TapeARN: str
     ) -> ClientCancelRetrievalResponseTypeDef:
@@ -801,7 +801,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_cached_iscsi_volume(
         self,
         GatewayARN: str,
@@ -973,7 +973,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_nfs_file_share(
         self,
         ClientToken: str,
@@ -1207,7 +1207,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_smb_file_share(
         self,
         ClientToken: str,
@@ -1449,7 +1449,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot(
         self,
         VolumeARN: str,
@@ -1569,7 +1569,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_snapshot_from_volume_recovery_point(
         self,
         VolumeARN: str,
@@ -1683,7 +1683,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stored_iscsi_volume(
         self,
         GatewayARN: str,
@@ -1852,7 +1852,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tape_with_barcode(
         self,
         GatewayARN: str,
@@ -1989,7 +1989,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tapes(
         self,
         GatewayARN: str,
@@ -2149,7 +2149,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_bandwidth_rate_limit(
         self, GatewayARN: str, BandwidthType: str
     ) -> ClientDeleteBandwidthRateLimitResponseTypeDef:
@@ -2205,7 +2205,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_chap_credentials(
         self, TargetARN: str, InitiatorName: str
     ) -> ClientDeleteChapCredentialsResponseTypeDef:
@@ -2261,7 +2261,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_file_share(
         self, FileShareARN: str, ForceDelete: bool = None
     ) -> ClientDeleteFileShareResponseTypeDef:
@@ -2312,7 +2312,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_gateway(self, GatewayARN: str) -> ClientDeleteGatewayResponseTypeDef:
         """
         Deletes a gateway. To specify which gateway to delete, use the Amazon Resource Name (ARN) of the
@@ -2370,7 +2370,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_snapshot_schedule(
         self, VolumeARN: str
     ) -> ClientDeleteSnapshotScheduleResponseTypeDef:
@@ -2423,7 +2423,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tape(
         self, GatewayARN: str, TapeARN: str
     ) -> ClientDeleteTapeResponseTypeDef:
@@ -2474,7 +2474,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_tape_archive(
         self, TapeARN: str
     ) -> ClientDeleteTapeArchiveResponseTypeDef:
@@ -2519,7 +2519,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_volume(self, VolumeARN: str) -> ClientDeleteVolumeResponseTypeDef:
         """
         Deletes the specified storage volume that you previously created using the  CreateCachediSCSIVolume
@@ -2575,7 +2575,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_bandwidth_rate_limit(
         self, GatewayARN: str
     ) -> ClientDescribeBandwidthRateLimitResponseTypeDef:
@@ -2638,7 +2638,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cache(self, GatewayARN: str) -> ClientDescribeCacheResponseTypeDef:
         """
         Returns information about the cache of a gateway. This operation is only supported in the cached
@@ -2723,7 +2723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_cached_iscsi_volumes(
         self, VolumeARNs: List[str]
     ) -> ClientDescribeCachedIscsiVolumesResponseTypeDef:
@@ -2899,7 +2899,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_chap_credentials(
         self, TargetARN: str
     ) -> ClientDescribeChapCredentialsResponseTypeDef:
@@ -2989,7 +2989,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_gateway_information(
         self, GatewayARN: str
     ) -> ClientDescribeGatewayInformationResponseTypeDef:
@@ -3154,7 +3154,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_maintenance_start_time(
         self, GatewayARN: str
     ) -> ClientDescribeMaintenanceStartTimeResponseTypeDef:
@@ -3245,7 +3245,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_nfs_file_shares(
         self, FileShareARNList: List[str]
     ) -> ClientDescribeNfsFileSharesResponseTypeDef:
@@ -3476,7 +3476,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_smb_file_shares(
         self, FileShareARNList: List[str]
     ) -> ClientDescribeSmbFileSharesResponseTypeDef:
@@ -3704,7 +3704,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_smb_settings(
         self, GatewayARN: str
     ) -> ClientDescribeSmbSettingsResponseTypeDef:
@@ -3776,7 +3776,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_snapshot_schedule(
         self, VolumeARN: str
     ) -> ClientDescribeSnapshotScheduleResponseTypeDef:
@@ -3867,7 +3867,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_stored_iscsi_volumes(
         self, VolumeARNs: List[str]
     ) -> ClientDescribeStoredIscsiVolumesResponseTypeDef:
@@ -4097,7 +4097,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tape_archives(
         self, TapeARNs: List[str] = None, Marker: str = None, Limit: int = None
     ) -> ClientDescribeTapeArchivesResponseTypeDef:
@@ -4242,7 +4242,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tape_recovery_points(
         self, GatewayARN: str, Marker: str = None, Limit: int = None
     ) -> ClientDescribeTapeRecoveryPointsResponseTypeDef:
@@ -4351,7 +4351,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_tapes(
         self,
         GatewayARN: str,
@@ -4510,7 +4510,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_upload_buffer(
         self, GatewayARN: str
     ) -> ClientDescribeUploadBufferResponseTypeDef:
@@ -4578,7 +4578,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_vtl_devices(
         self,
         GatewayARN: str,
@@ -4725,7 +4725,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_working_storage(
         self, GatewayARN: str
     ) -> ClientDescribeWorkingStorageResponseTypeDef:
@@ -4803,7 +4803,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def detach_volume(
         self, VolumeARN: str, ForceDetach: bool = None
     ) -> ClientDetachVolumeResponseTypeDef:
@@ -4857,7 +4857,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disable_gateway(self, GatewayARN: str) -> ClientDisableGatewayResponseTypeDef:
         """
         Disables a tape gateway when the gateway is no longer functioning. For example, if your gateway VM
@@ -4907,7 +4907,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -4936,7 +4936,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -4957,7 +4957,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -4970,7 +4970,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def join_domain(
         self,
         GatewayARN: str,
@@ -5059,7 +5059,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_file_shares(
         self, GatewayARN: str = None, Limit: int = None, Marker: str = None
     ) -> ClientListFileSharesResponseTypeDef:
@@ -5163,7 +5163,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_gateways(
         self, Marker: str = None, Limit: int = None
     ) -> ClientListGatewaysResponseTypeDef:
@@ -5270,7 +5270,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_local_disks(self, GatewayARN: str) -> ClientListLocalDisksResponseTypeDef:
         """
         Returns a list of the gateway's local disks. To specify which gateway to describe, you use the
@@ -5379,7 +5379,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceARN: str, Marker: str = None, Limit: int = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -5464,7 +5464,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tapes(
         self, TapeARNs: List[str] = None, Marker: str = None, Limit: int = None
     ) -> ClientListTapesResponseTypeDef:
@@ -5587,7 +5587,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_volume_initiators(
         self, VolumeARN: str
     ) -> ClientListVolumeInitiatorsResponseTypeDef:
@@ -5637,7 +5637,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_volume_recovery_points(
         self, GatewayARN: str
     ) -> ClientListVolumeRecoveryPointsResponseTypeDef:
@@ -5723,7 +5723,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_volumes(
         self, GatewayARN: str = None, Marker: str = None, Limit: int = None
     ) -> Dict[str, Any]:
@@ -5863,7 +5863,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def notify_when_uploaded(
         self, FileShareARN: str
     ) -> ClientNotifyWhenUploadedResponseTypeDef:
@@ -5921,7 +5921,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def refresh_cache(
         self, FileShareARN: str, FolderList: List[str] = None, Recursive: bool = None
     ) -> ClientRefreshCacheResponseTypeDef:
@@ -6005,7 +6005,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def remove_tags_from_resource(
         self, ResourceARN: str, TagKeys: List[str]
     ) -> ClientRemoveTagsFromResourceResponseTypeDef:
@@ -6060,7 +6060,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reset_cache(self, GatewayARN: str) -> ClientResetCacheResponseTypeDef:
         """
         Resets all cache disks that have encountered a error and makes the disks available for
@@ -6113,7 +6113,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retrieve_tape_archive(
         self, TapeARN: str, GatewayARN: str
     ) -> ClientRetrieveTapeArchiveResponseTypeDef:
@@ -6173,7 +6173,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def retrieve_tape_recovery_point(
         self, TapeARN: str, GatewayARN: str
     ) -> ClientRetrieveTapeRecoveryPointResponseTypeDef:
@@ -6235,7 +6235,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_local_console_password(
         self, GatewayARN: str, LocalConsolePassword: str
     ) -> ClientSetLocalConsolePasswordResponseTypeDef:
@@ -6286,7 +6286,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def set_smb_guest_password(
         self, GatewayARN: str, Password: str
     ) -> ClientSetSmbGuestPasswordResponseTypeDef:
@@ -6335,7 +6335,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def shutdown_gateway(self, GatewayARN: str) -> ClientShutdownGatewayResponseTypeDef:
         """
         Shuts down a gateway. To specify which gateway to shut down, use the Amazon Resource Name (ARN) of
@@ -6401,7 +6401,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_gateway(self, GatewayARN: str) -> ClientStartGatewayResponseTypeDef:
         """
         Starts a gateway that you previously shut down (see  ShutdownGateway ). After the gateway starts,
@@ -6455,7 +6455,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_bandwidth_rate_limit(
         self,
         GatewayARN: str,
@@ -6524,7 +6524,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_chap_credentials(
         self,
         TargetARN: str,
@@ -6616,7 +6616,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_gateway_information(
         self,
         GatewayARN: str,
@@ -6699,7 +6699,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_gateway_software_now(
         self, GatewayARN: str
     ) -> ClientUpdateGatewaySoftwareNowResponseTypeDef:
@@ -6762,7 +6762,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_maintenance_start_time(
         self,
         GatewayARN: str,
@@ -6846,7 +6846,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_nfs_file_share(
         self,
         FileShareARN: str,
@@ -7035,7 +7035,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_smb_file_share(
         self,
         FileShareARN: str,
@@ -7212,7 +7212,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_smb_security_strategy(
         self, GatewayARN: str, SMBSecurityStrategy: str
     ) -> ClientUpdateSmbSecurityStrategyResponseTypeDef:
@@ -7280,7 +7280,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_snapshot_schedule(
         self,
         VolumeARN: str,
@@ -7388,7 +7388,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_vtl_device_type(
         self, VTLDeviceARN: str, DeviceType: str
     ) -> ClientUpdateVtlDeviceTypeResponseTypeDef:

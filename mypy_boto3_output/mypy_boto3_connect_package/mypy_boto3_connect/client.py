@@ -37,7 +37,7 @@ from mypy_boto3_connect.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -54,7 +54,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_user(
         self,
         Username: str,
@@ -107,7 +107,7 @@ class Client(BaseClient):
 
           The user name for the account. For instances not using SAML for identity management, the user
           name can include up to 20 characters. If you are using SAML for identity management, the user
-          name can include up to 64 characters from [a-zA-Z0-9_-.\@]+.
+          name can include up to 64 characters from [a-zA-Z0-9_-.\\@]+.
 
         :type Password: string
         :param Password:
@@ -223,7 +223,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_user(self, InstanceId: str, UserId: str) -> None:
         """
         Deletes a user account from the specified Amazon Connect instance.
@@ -251,7 +251,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user(
         self, UserId: str, InstanceId: str
     ) -> ClientDescribeUserResponseTypeDef:
@@ -401,7 +401,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_hierarchy_group(
         self, HierarchyGroupId: str, InstanceId: str
     ) -> ClientDescribeUserHierarchyGroupResponseTypeDef:
@@ -580,7 +580,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_user_hierarchy_structure(
         self, InstanceId: str
     ) -> ClientDescribeUserHierarchyStructureResponseTypeDef:
@@ -727,7 +727,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -756,7 +756,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_contact_attributes(
         self, InstanceId: str, InitialContactId: str
     ) -> ClientGetContactAttributesResponseTypeDef:
@@ -809,7 +809,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_current_metric_data(
         self,
         InstanceId: str,
@@ -1069,7 +1069,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_federation_token(
         self, InstanceId: str
     ) -> ClientGetFederationTokenResponseTypeDef:
@@ -1132,7 +1132,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_metric_data(
         self,
         InstanceId: str,
@@ -1577,7 +1577,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1598,7 +1598,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1611,7 +1611,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_contact_flows(
         self,
         InstanceId: str,
@@ -1714,7 +1714,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_hours_of_operations(
         self, InstanceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListHoursOfOperationsResponseTypeDef:
@@ -1795,7 +1795,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_phone_numbers(
         self,
         InstanceId: str,
@@ -1939,7 +1939,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_queues(
         self,
         InstanceId: str,
@@ -2039,7 +2039,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_routing_profiles(
         self, InstanceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListRoutingProfilesResponseTypeDef:
@@ -2120,7 +2120,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_security_profiles(
         self, InstanceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListSecurityProfilesResponseTypeDef:
@@ -2201,7 +2201,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2248,7 +2248,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_user_hierarchy_groups(
         self, InstanceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListUserHierarchyGroupsResponseTypeDef:
@@ -2329,7 +2329,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_users(
         self, InstanceId: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientListUsersResponseTypeDef:
@@ -2410,7 +2410,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_outbound_voice_contact(
         self,
         DestinationPhoneNumber: str,
@@ -2514,7 +2514,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def stop_contact(self, ContactId: str, InstanceId: str) -> Dict[str, Any]:
         """
         Ends the specified contact.
@@ -2552,8 +2552,8 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, resourceArn: str, tags: Dict) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(self, resourceArn: str, tags: Dict[str, str]) -> None:
         """
         Adds the specified tags to the specified resource.
 
@@ -2588,8 +2588,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, resourceArn: str, tagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, resourceArn: str, tagKeys: List[str]) -> None:
         """
         Removes the specified tags from the specified resource.
 
@@ -2620,7 +2620,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_contact_attributes(
         self, InitialContactId: str, InstanceId: str, Attributes: Dict[str, str]
     ) -> Dict[str, Any]:
@@ -2693,7 +2693,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_hierarchy(
         self, UserId: str, InstanceId: str, HierarchyGroupId: str = None
     ) -> None:
@@ -2729,7 +2729,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_identity_info(
         self,
         IdentityInfo: ClientUpdateUserIdentityInfoIdentityInfoTypeDef,
@@ -2786,7 +2786,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_phone_config(
         self,
         PhoneConfig: ClientUpdateUserPhoneConfigPhoneConfigTypeDef,
@@ -2846,7 +2846,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_routing_profile(
         self, RoutingProfileId: str, UserId: str, InstanceId: str
     ) -> None:
@@ -2882,7 +2882,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_user_security_profiles(
         self, SecurityProfileIds: List[str], UserId: str, InstanceId: str
     ) -> None:

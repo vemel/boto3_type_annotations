@@ -17,7 +17,7 @@ from mypy_boto3_mediaconvert.type_defs import (
 
 
 class DescribeEndpoints(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Mode: str = None,
@@ -95,7 +95,7 @@ class DescribeEndpoints(Boto3Paginator):
 
 
 class ListJobTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Category: str = None,
@@ -4786,7 +4786,7 @@ class ListJobTemplates(Boto3Paginator):
 
 
 class ListJobs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Order: str = None,
@@ -9653,7 +9653,7 @@ class ListJobs(Boto3Paginator):
 
 
 class ListPresets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         Category: str = None,
@@ -12291,7 +12291,7 @@ class ListPresets(Boto3Paginator):
 
 
 class ListQueues(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         ListBy: str = None,

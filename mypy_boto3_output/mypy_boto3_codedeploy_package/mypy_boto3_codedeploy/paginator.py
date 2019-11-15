@@ -28,7 +28,7 @@ from mypy_boto3_codedeploy.type_defs import (
 
 
 class ListApplicationRevisions(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         applicationName: str,
@@ -290,7 +290,7 @@ class ListApplicationRevisions(Boto3Paginator):
 
 
 class ListApplications(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListApplicationsPaginatePaginationConfigTypeDef = None
     ) -> ListApplicationsPaginateResponseTypeDef:
@@ -359,7 +359,7 @@ class ListApplications(Boto3Paginator):
 
 
 class ListDeploymentConfigs(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListDeploymentConfigsPaginatePaginationConfigTypeDef = None,
@@ -430,7 +430,7 @@ class ListDeploymentConfigs(Boto3Paginator):
 
 
 class ListDeploymentGroups(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         applicationName: str,
@@ -512,7 +512,7 @@ class ListDeploymentGroups(Boto3Paginator):
 
 
 class ListDeploymentInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         deploymentId: str,
@@ -630,7 +630,7 @@ class ListDeploymentInstances(Boto3Paginator):
 
 
 class ListDeploymentTargets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         deploymentId: str = None,
@@ -727,7 +727,7 @@ class ListDeploymentTargets(Boto3Paginator):
 
 
 class ListDeployments(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         applicationName: str = None,
@@ -870,7 +870,7 @@ class ListDeployments(Boto3Paginator):
 
 
 class ListGitHubAccountTokenNames(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListGitHubAccountTokenNamesPaginatePaginationConfigTypeDef = None,
@@ -940,7 +940,7 @@ class ListGitHubAccountTokenNames(Boto3Paginator):
 
 
 class ListOnPremisesInstances(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         registrationStatus: str = None,

@@ -28,7 +28,7 @@ from mypy_boto3_opsworkscm.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_node(
         self,
         ServerName: str,
@@ -134,7 +134,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -151,7 +151,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_backup(
         self, ServerName: str, Description: str = None
     ) -> ClientCreateBackupResponseTypeDef:
@@ -344,7 +344,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_server(
         self,
         ServerName: str,
@@ -853,7 +853,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_backup(self, BackupId: str) -> Dict[str, Any]:
         """
         Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous.
@@ -890,7 +890,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_server(self, ServerName: str) -> Dict[str, Any]:
         """
         Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2
@@ -931,7 +931,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account_attributes(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountAttributesResponseTypeDef:
@@ -997,7 +997,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_backups(
         self,
         BackupId: str = None,
@@ -1213,7 +1213,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_events(
         self, ServerName: str, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeEventsResponseTypeDef:
@@ -1317,7 +1317,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_node_association_status(
         self, NodeAssociationStatusToken: str, ServerName: str
     ) -> ClientDescribeNodeAssociationStatusResponseTypeDef:
@@ -1399,7 +1399,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_servers(
         self, ServerName: str = None, NextToken: str = None, MaxResults: int = None
     ) -> ClientDescribeServersResponseTypeDef:
@@ -1654,7 +1654,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_node(
         self,
         ServerName: str,
@@ -1741,7 +1741,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def export_server_engine_attribute(
         self,
         ExportAttributeName: str,
@@ -1857,7 +1857,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1886,7 +1886,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1907,7 +1907,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1920,7 +1920,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_server(
         self,
         BackupId: str,
@@ -1990,7 +1990,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def start_maintenance(
         self,
         ServerName: str,
@@ -2243,7 +2243,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_server(
         self,
         ServerName: str,
@@ -2503,7 +2503,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_server_engine_attributes(
         self, ServerName: str, AttributeName: str, AttributeValue: str = None
     ) -> ClientUpdateServerEngineAttributesResponseTypeDef:

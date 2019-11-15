@@ -41,7 +41,7 @@ from mypy_boto3_route53resolver.type_defs import (
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_resolver_endpoint_ip_address(
         self,
         ResolverEndpointId: str,
@@ -190,7 +190,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_resolver_rule(
         self, ResolverRuleId: str, VPCId: str, Name: str = None
     ) -> ClientAssociateResolverRuleResponseTypeDef:
@@ -281,7 +281,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -298,7 +298,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resolver_endpoint(
         self,
         CreatorRequestId: str,
@@ -513,7 +513,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_resolver_rule(
         self,
         CreatorRequestId: str,
@@ -732,7 +732,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resolver_endpoint(
         self, ResolverEndpointId: str
     ) -> ClientDeleteResolverEndpointResponseTypeDef:
@@ -855,7 +855,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resolver_rule(
         self, ResolverRuleId: str
     ) -> ClientDeleteResolverRuleResponseTypeDef:
@@ -985,7 +985,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_resolver_endpoint_ip_address(
         self,
         ResolverEndpointId: str,
@@ -1133,7 +1133,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def disassociate_resolver_rule(
         self, VPCId: str, ResolverRuleId: str
     ) -> ClientDisassociateResolverRuleResponseTypeDef:
@@ -1220,7 +1220,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -1249,7 +1249,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -1270,7 +1270,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resolver_endpoint(
         self, ResolverEndpointId: str
     ) -> ClientGetResolverEndpointResponseTypeDef:
@@ -1389,7 +1389,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resolver_rule(
         self, ResolverRuleId: str
     ) -> ClientGetResolverRuleResponseTypeDef:
@@ -1518,7 +1518,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resolver_rule_association(
         self, ResolverRuleAssociationId: str
     ) -> ClientGetResolverRuleAssociationResponseTypeDef:
@@ -1595,7 +1595,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resolver_rule_policy(
         self, Arn: str
     ) -> ClientGetResolverRulePolicyResponseTypeDef:
@@ -1638,7 +1638,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1651,7 +1651,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolver_endpoint_ip_addresses(
         self, ResolverEndpointId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListResolverEndpointIpAddressesResponseTypeDef:
@@ -1772,7 +1772,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolver_endpoints(
         self,
         MaxResults: int = None,
@@ -1966,7 +1966,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolver_rule_associations(
         self,
         MaxResults: int = None,
@@ -2119,7 +2119,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_resolver_rules(
         self,
         MaxResults: int = None,
@@ -2325,7 +2325,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -2412,7 +2412,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_resolver_rule_policy(
         self, Arn: str, ResolverRulePolicy: str
     ) -> ClientPutResolverRulePolicyResponseTypeDef:
@@ -2463,7 +2463,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def tag_resource(
         self, ResourceArn: str, Tags: List[ClientTagResourceTagsTypeDef]
     ) -> Dict[str, Any]:
@@ -2537,7 +2537,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def untag_resource(self, ResourceArn: str, TagKeys: List[str]) -> Dict[str, Any]:
         """
         Removes one or more tags from a specified resource.
@@ -2592,7 +2592,7 @@ class Client(BaseClient):
           - *(dict) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resolver_endpoint(
         self, ResolverEndpointId: str, Name: str = None
     ) -> ClientUpdateResolverEndpointResponseTypeDef:
@@ -2715,7 +2715,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_resolver_rule(
         self, ResolverRuleId: str, Config: ClientUpdateResolverRuleConfigTypeDef
     ) -> ClientUpdateResolverRuleResponseTypeDef:

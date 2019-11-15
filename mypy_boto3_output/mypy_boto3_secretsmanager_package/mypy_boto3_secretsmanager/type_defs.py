@@ -989,6 +989,27 @@ class ClientRotateSecretRotationRulesTypeDef(_ClientRotateSecretRotationRulesTyp
     """
 
 
+_ClientTagResourceTagsTypeDef = TypedDict(
+    "_ClientTagResourceTagsTypeDef", {"Key": str, "Value": str}, total=False
+)
+
+
+class ClientTagResourceTagsTypeDef(_ClientTagResourceTagsTypeDef):
+    """
+    Type definition for `ClientTagResource` `Tags`
+
+    A structure that contains information about a tag.
+
+    - **Key** *(string) --*
+
+      The key identifier, or name, of the tag.
+
+    - **Value** *(string) --*
+
+      The string value that's associated with the key of the tag.
+    """
+
+
 _ClientUpdateSecretResponseTypeDef = TypedDict(
     "_ClientUpdateSecretResponseTypeDef",
     {"ARN": str, "Name": str, "VersionId": str},

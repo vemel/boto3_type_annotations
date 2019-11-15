@@ -4,6 +4,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
+
+# pylint: disable=import-self
 import mypy_boto3_opsworks.service_resource as service_resource_scope
 from mypy_boto3_opsworks.type_defs import (
     ServiceResourceCreateStackChefConfigurationTypeDef,
@@ -16,7 +18,7 @@ from mypy_boto3_opsworks.type_defs import (
 
 
 class ServiceResource(Boto3ServiceResource):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Layer(self, id: str) -> service_resource_scope.Layer:
         """
         Creates a Layer resource.::
@@ -30,7 +32,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Layer resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Stack(self, id: str) -> service_resource_scope.Stack:
         """
         Creates a Stack resource.::
@@ -44,7 +46,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A Stack resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def StackSummary(self, stack_id: str) -> service_resource_scope.StackSummary:
         """
         Creates a StackSummary resource.::
@@ -58,7 +60,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: A StackSummary resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_stack(
         self,
         Name: str,
@@ -297,7 +299,7 @@ class ServiceResource(Boto3ServiceResource):
           default stack configuration attribute values or to pass data to recipes. The string should be in
           the following format:
 
-           ``"{\"key1\": \"value1\", \"key2\": \"value2\",...}"``
+           ``"{\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\",...}"``
 
           For more information about custom JSON, see `Use Custom JSON to Modify the Stack Configuration
           Attributes <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html>`__ .
@@ -395,7 +397,7 @@ class ServiceResource(Boto3ServiceResource):
             * For HTTP bundles and Subversion repositories, set ``Password`` to the password.
 
             For more information on how to safely handle IAM credentials, see
-            `https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
+            `https\\://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html
             <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html>`__ .
 
             In responses, AWS OpsWorks Stacks returns ``*****FILTERED*****`` instead of the actual value.
@@ -459,7 +461,7 @@ class ServiceResource(Boto3ServiceResource):
         :returns: Stack resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -497,7 +499,7 @@ class Layer(Boto3ServiceResource):
     lifecycle_event_configuration: Dict[str, Any]
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a specified layer. You must first stop and then delete all associated instances or unassign
@@ -520,7 +522,7 @@ class Layer(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -531,7 +533,7 @@ class Layer(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_layers` to update the attributes of the Layer resource.
@@ -548,7 +550,7 @@ class Layer(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_layers` to update the attributes of the Layer resource.
@@ -591,7 +593,7 @@ class Stack(Boto3ServiceResource):
     agent_version: str
     id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_layer(
         self,
         Type: str,
@@ -1028,7 +1030,7 @@ class Stack(Boto3ServiceResource):
         :returns: Layer resource
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, *args: Any, **kwargs: Any) -> None:
         """
         Deletes a specified stack. You must first delete all instances, layers, and apps or deregister
@@ -1051,7 +1053,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1062,7 +1064,7 @@ class Stack(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_stacks` to update the attributes of the Stack resource.
@@ -1079,7 +1081,7 @@ class Stack(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_stacks` to update the attributes of the Stack resource.
@@ -1105,7 +1107,7 @@ class StackSummary(Boto3ServiceResource):
     instances_count: Dict[str, Any]
     stack_id: str
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
         """
         Returns a list of all the available sub-resources for this
@@ -1116,7 +1118,7 @@ class StackSummary(Boto3ServiceResource):
         :rtype: list of str
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def load(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_stack_summary` to update the attributes of the
@@ -1134,7 +1136,7 @@ class StackSummary(Boto3ServiceResource):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def reload(self, *args: Any, **kwargs: Any) -> None:
         """
         Calls :py:meth:`OpsWorks.Client.describe_stack_summary` to update the attributes of the
@@ -1165,8 +1167,7 @@ class stacks(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable of all Stack resources in the collection.
@@ -1183,8 +1184,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, StackIds: List[str] = None) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable of all Stack resources in the collection filtered by kwargs passed to method.
@@ -1212,8 +1212,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1222,8 +1221,7 @@ class stacks(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable up to a specified amount of Stack resources in the collection.
@@ -1244,8 +1242,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Stack]:
         """
         Creates an iterable of all Stack resources in the collection, but limits the number of items
@@ -1267,8 +1264,7 @@ class stacks(ResourceCollection):
         :returns: A list of Stack resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after
@@ -1303,8 +1299,7 @@ class layers(ResourceCollection):
     :param resource_defs: All resources defined in the service
     """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def all(self) -> List[service_resource_scope.Layer]:
         """
         Creates an iterable of all Layer resources in the collection.
@@ -1321,8 +1316,7 @@ class layers(ResourceCollection):
         :returns: A list of Layer resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def filter(self, LayerIds: List[str] = None) -> List[service_resource_scope.Layer]:
         """
         Creates an iterable of all Layer resources in the collection filtered by kwargs passed to method.
@@ -1350,8 +1344,7 @@ class layers(ResourceCollection):
         :returns: A list of Layer resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def iterator(self, **kwargs: Any) -> ResourceCollection:
         """
         Get a resource collection iterator from this manager.
@@ -1360,8 +1353,7 @@ class layers(ResourceCollection):
         :return: An iterable representing the collection of resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def limit(self, count: int) -> List[service_resource_scope.Layer]:
         """
         Creates an iterable up to a specified amount of Layer resources in the collection.
@@ -1382,8 +1374,7 @@ class layers(ResourceCollection):
         :returns: A list of Layer resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def page_size(self, count: int) -> List[service_resource_scope.Layer]:
         """
         Creates an iterable of all Layer resources in the collection, but limits the number of items
@@ -1405,8 +1396,7 @@ class layers(ResourceCollection):
         :returns: A list of Layer resources
         """
 
-    @classmethod
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def pages(self) -> List[Boto3ServiceResource]:
         """
         A generator which yields pages of resource instances after

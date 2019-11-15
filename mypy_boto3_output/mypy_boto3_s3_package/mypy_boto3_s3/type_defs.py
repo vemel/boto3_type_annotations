@@ -165,6 +165,114 @@ class BucketAclPutAccessControlPolicyTypeDef(_BucketAclPutAccessControlPolicyTyp
     """
 
 
+_RequiredBucketCorsPutCORSConfigurationCORSRulesTypeDef = TypedDict(
+    "_RequiredBucketCorsPutCORSConfigurationCORSRulesTypeDef",
+    {"AllowedMethods": List[str], "AllowedOrigins": List[str]},
+)
+_OptionalBucketCorsPutCORSConfigurationCORSRulesTypeDef = TypedDict(
+    "_OptionalBucketCorsPutCORSConfigurationCORSRulesTypeDef",
+    {"AllowedHeaders": List[str], "ExposeHeaders": List[str], "MaxAgeSeconds": int},
+    total=False,
+)
+
+
+class BucketCorsPutCORSConfigurationCORSRulesTypeDef(
+    _RequiredBucketCorsPutCORSConfigurationCORSRulesTypeDef,
+    _OptionalBucketCorsPutCORSConfigurationCORSRulesTypeDef,
+):
+    """
+    Type definition for `BucketCorsPutCORSConfiguration` `CORSRules`
+
+    Specifies a cross-origin access rule for an Amazon S3 bucket.
+
+    - **AllowedHeaders** *(list) --*
+
+      Headers that are specified in the ``Access-Control-Request-Headers`` header. These headers
+      are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request,
+      Amazon S3 returns any requested headers that are allowed.
+
+      - *(string) --*
+
+    - **AllowedMethods** *(list) --* **[REQUIRED]**
+
+      An HTTP method that you allow the origin to execute. Valid values are ``GET`` , ``PUT`` ,
+      ``HEAD`` , ``POST`` , and ``DELETE`` .
+
+      - *(string) --*
+
+    - **AllowedOrigins** *(list) --* **[REQUIRED]**
+
+      One or more origins you want customers to be able to access the bucket from.
+
+      - *(string) --*
+
+    - **ExposeHeaders** *(list) --*
+
+      One or more headers in the response that you want customers to be able to access from their
+      applications (for example, from a JavaScript ``XMLHttpRequest`` object).
+
+      - *(string) --*
+
+    - **MaxAgeSeconds** *(integer) --*
+
+      The time in seconds that your browser is to cache the preflight response for the specified
+      resource.
+    """
+
+
+_BucketCorsPutCORSConfigurationTypeDef = TypedDict(
+    "_BucketCorsPutCORSConfigurationTypeDef",
+    {"CORSRules": List[BucketCorsPutCORSConfigurationCORSRulesTypeDef]},
+)
+
+
+class BucketCorsPutCORSConfigurationTypeDef(_BucketCorsPutCORSConfigurationTypeDef):
+    """
+    Type definition for `BucketCorsPut` `CORSConfiguration`
+
+    - **CORSRules** *(list) --* **[REQUIRED]**
+
+      A set of allowed origins and methods.
+
+      - *(dict) --*
+
+        Specifies a cross-origin access rule for an Amazon S3 bucket.
+
+        - **AllowedHeaders** *(list) --*
+
+          Headers that are specified in the ``Access-Control-Request-Headers`` header. These headers
+          are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request,
+          Amazon S3 returns any requested headers that are allowed.
+
+          - *(string) --*
+
+        - **AllowedMethods** *(list) --* **[REQUIRED]**
+
+          An HTTP method that you allow the origin to execute. Valid values are ``GET`` , ``PUT`` ,
+          ``HEAD`` , ``POST`` , and ``DELETE`` .
+
+          - *(string) --*
+
+        - **AllowedOrigins** *(list) --* **[REQUIRED]**
+
+          One or more origins you want customers to be able to access the bucket from.
+
+          - *(string) --*
+
+        - **ExposeHeaders** *(list) --*
+
+          One or more headers in the response that you want customers to be able to access from their
+          applications (for example, from a JavaScript ``XMLHttpRequest`` object).
+
+          - *(string) --*
+
+        - **MaxAgeSeconds** *(integer) --*
+
+          The time in seconds that your browser is to cache the preflight response for the specified
+          resource.
+    """
+
+
 _BucketCreateCreateBucketConfigurationTypeDef = TypedDict(
     "_BucketCreateCreateBucketConfigurationTypeDef",
     {"LocationConstraint": str},
@@ -345,6 +453,2351 @@ class BucketDeleteObjectsResponseTypeDef(_BucketDeleteObjectsResponseTypeDef):
         - **Code** *(string) --*
 
         - **Message** *(string) --*
+    """
+
+
+_BucketExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_BucketExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class BucketExistsWaitWaiterConfigTypeDef(_BucketExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `BucketExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef",
+    {"DaysAfterInitiation": int},
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
+
+    - **DaysAfterInitiation** *(integer) --*
+
+      Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDef",
+    {"Date": datetime, "Days": int, "ExpiredObjectDeleteMarker": bool},
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `Expiration`
+
+    - **Date** *(datetime) --*
+
+      Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+      Format.
+
+    - **Days** *(integer) --*
+
+      Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+      must be a non-zero positive integer.
+
+    - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+      Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+      set to true, the delete marker will be expired; if set to false the policy takes no
+      action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAnd` `Tags`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef",
+    {
+        "Prefix": str,
+        "Tags": List[
+            BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTagsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilter` `And`
+
+    - **Prefix** *(string) --*
+
+    - **Tags** *(list) --*
+
+      All of these tags must exist in the object's tag set in order for the rule to apply.
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTagTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTagTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTagTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTagTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilter` `Tag`
+
+    This tag must exist in the object's tag set in order for the rule to apply.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef",
+    {
+        "Prefix": str,
+        "Tag": BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTagTypeDef,
+        "And": BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterAndTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `Filter`
+
+    - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies.
+
+    - **Tag** *(dict) --*
+
+      This tag must exist in the object's tag set in order for the rule to apply.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        Name of the tag.
+
+      - **Value** *(string) --* **[REQUIRED]**
+
+        Value of the tag.
+
+    - **And** *(dict) --*
+
+      - **Prefix** *(string) --*
+
+      - **Tags** *(list) --*
+
+        All of these tags must exist in the object's tag set in order for the rule to apply.
+
+        - *(dict) --*
+
+          - **Key** *(string) --* **[REQUIRED]**
+
+            Name of the tag.
+
+          - **Value** *(string) --* **[REQUIRED]**
+
+            Value of the tag.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef",
+    {"NoncurrentDays": int},
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+      in the Amazon Simple Storage Service Developer Guide.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef",
+    {"NoncurrentDays": int, "StorageClass": str},
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `NoncurrentVersionTransitions`
+
+    Container for the transition rule that describes when noncurrent objects transition to
+    the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+    ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+    suspended), you can set this action to request that Amazon S3 transition noncurrent
+    object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+    ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+    lifetime.
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **StorageClass** *(string) --*
+
+      The class of storage used to store the object.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationRulesTransitionsTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationRulesTransitionsTypeDef",
+    {"Date": datetime, "Days": int, "StorageClass": str},
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTransitionsTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationRulesTransitionsTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfigurationRules` `Transitions`
+
+    Specifies when an object transitions to a specified storage class.
+
+    - **Date** *(datetime) --*
+
+      Indicates when objects are transitioned to the specified storage class. The date value
+      must be in ISO 8601 format. The time is always midnight UTC.
+
+    - **Days** *(integer) --*
+
+      Indicates the number of days after creation when objects are transitioned to the
+      specified storage class. The value must be a positive integer.
+
+    - **StorageClass** *(string) --*
+
+      The storage class to which you want the object to transition.
+    """
+
+
+_RequiredBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_RequiredBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef",
+    {"Status": str},
+)
+_OptionalBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_OptionalBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef",
+    {
+        "Expiration": BucketLifecycleConfigurationPutLifecycleConfigurationRulesExpirationTypeDef,
+        "ID": str,
+        "Prefix": str,
+        "Filter": BucketLifecycleConfigurationPutLifecycleConfigurationRulesFilterTypeDef,
+        "Transitions": List[
+            BucketLifecycleConfigurationPutLifecycleConfigurationRulesTransitionsTypeDef
+        ],
+        "NoncurrentVersionTransitions": List[
+            BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef
+        ],
+        "NoncurrentVersionExpiration": BucketLifecycleConfigurationPutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef,
+        "AbortIncompleteMultipartUpload": BucketLifecycleConfigurationPutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef(
+    _RequiredBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef,
+    _OptionalBucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef,
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPutLifecycleConfiguration` `Rules`
+
+    - **Expiration** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+        Format.
+
+      - **Days** *(integer) --*
+
+        Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+        must be a non-zero positive integer.
+
+      - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+        Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+        set to true, the delete marker will be expired; if set to false the policy takes no
+        action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+    - **ID** *(string) --*
+
+      Unique identifier for the rule. The value cannot be longer than 255 characters.
+
+    - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies. This is No longer used;
+      use Filter instead.
+
+    - **Filter** *(dict) --*
+
+      - **Prefix** *(string) --*
+
+        Prefix identifying one or more objects to which the rule applies.
+
+      - **Tag** *(dict) --*
+
+        This tag must exist in the object's tag set in order for the rule to apply.
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+
+      - **And** *(dict) --*
+
+        - **Prefix** *(string) --*
+
+        - **Tags** *(list) --*
+
+          All of these tags must exist in the object's tag set in order for the rule to apply.
+
+          - *(dict) --*
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+
+    - **Status** *(string) --* **[REQUIRED]**
+
+      If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently
+      being applied.
+
+    - **Transitions** *(list) --*
+
+      - *(dict) --*
+
+        Specifies when an object transitions to a specified storage class.
+
+        - **Date** *(datetime) --*
+
+          Indicates when objects are transitioned to the specified storage class. The date value
+          must be in ISO 8601 format. The time is always midnight UTC.
+
+        - **Days** *(integer) --*
+
+          Indicates the number of days after creation when objects are transitioned to the
+          specified storage class. The value must be a positive integer.
+
+        - **StorageClass** *(string) --*
+
+          The storage class to which you want the object to transition.
+
+    - **NoncurrentVersionTransitions** *(list) --*
+
+      - *(dict) --*
+
+        Container for the transition rule that describes when noncurrent objects transition to
+        the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+        ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+        suspended), you can set this action to request that Amazon S3 transition noncurrent
+        object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+        ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+        lifetime.
+
+        - **NoncurrentDays** *(integer) --*
+
+          Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+          associated action. For information about the noncurrent days calculations, see `How
+          Amazon S3 Calculates When an Object Became Noncurrent
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **StorageClass** *(string) --*
+
+          The class of storage used to store the object.
+
+    - **NoncurrentVersionExpiration** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+        in the Amazon Simple Storage Service Developer Guide.
+
+    - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      - **DaysAfterInitiation** *(integer) --*
+
+        Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef = TypedDict(
+    "_BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef",
+    {"Rules": List[BucketLifecycleConfigurationPutLifecycleConfigurationRulesTypeDef]},
+)
+
+
+class BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef(
+    _BucketLifecycleConfigurationPutLifecycleConfigurationTypeDef
+):
+    """
+    Type definition for `BucketLifecycleConfigurationPut` `LifecycleConfiguration`
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      A lifecycle rule for individual objects in an Amazon S3 bucket.
+
+      - *(dict) --*
+
+        - **Expiration** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+            Format.
+
+          - **Days** *(integer) --*
+
+            Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+            must be a non-zero positive integer.
+
+          - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+            Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+            set to true, the delete marker will be expired; if set to false the policy takes no
+            action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+        - **ID** *(string) --*
+
+          Unique identifier for the rule. The value cannot be longer than 255 characters.
+
+        - **Prefix** *(string) --*
+
+          Prefix identifying one or more objects to which the rule applies. This is No longer used;
+          use Filter instead.
+
+        - **Filter** *(dict) --*
+
+          - **Prefix** *(string) --*
+
+            Prefix identifying one or more objects to which the rule applies.
+
+          - **Tag** *(dict) --*
+
+            This tag must exist in the object's tag set in order for the rule to apply.
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+
+          - **And** *(dict) --*
+
+            - **Prefix** *(string) --*
+
+            - **Tags** *(list) --*
+
+              All of these tags must exist in the object's tag set in order for the rule to apply.
+
+              - *(dict) --*
+
+                - **Key** *(string) --* **[REQUIRED]**
+
+                  Name of the tag.
+
+                - **Value** *(string) --* **[REQUIRED]**
+
+                  Value of the tag.
+
+        - **Status** *(string) --* **[REQUIRED]**
+
+          If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently
+          being applied.
+
+        - **Transitions** *(list) --*
+
+          - *(dict) --*
+
+            Specifies when an object transitions to a specified storage class.
+
+            - **Date** *(datetime) --*
+
+              Indicates when objects are transitioned to the specified storage class. The date value
+              must be in ISO 8601 format. The time is always midnight UTC.
+
+            - **Days** *(integer) --*
+
+              Indicates the number of days after creation when objects are transitioned to the
+              specified storage class. The value must be a positive integer.
+
+            - **StorageClass** *(string) --*
+
+              The storage class to which you want the object to transition.
+
+        - **NoncurrentVersionTransitions** *(list) --*
+
+          - *(dict) --*
+
+            Container for the transition rule that describes when noncurrent objects transition to
+            the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+            ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+            suspended), you can set this action to request that Amazon S3 transition noncurrent
+            object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+            ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+            lifetime.
+
+            - **NoncurrentDays** *(integer) --*
+
+              Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+              associated action. For information about the noncurrent days calculations, see `How
+              Amazon S3 Calculates When an Object Became Noncurrent
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **StorageClass** *(string) --*
+
+              The class of storage used to store the object.
+
+        - **NoncurrentVersionExpiration** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+            in the Amazon Simple Storage Service Developer Guide.
+
+        - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          - **DaysAfterInitiation** *(integer) --*
+
+            Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef",
+    {"DaysAfterInitiation": int},
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
+
+    - **DaysAfterInitiation** *(integer) --*
+
+      Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef",
+    {"Date": datetime, "Days": int, "ExpiredObjectDeleteMarker": bool},
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `Expiration`
+
+    - **Date** *(datetime) --*
+
+      Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+      Format.
+
+    - **Days** *(integer) --*
+
+      Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+      must be a non-zero positive integer.
+
+    - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+      Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+      set to true, the delete marker will be expired; if set to false the policy takes no
+      action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef",
+    {"NoncurrentDays": int},
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+      in the Amazon Simple Storage Service Developer Guide.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef",
+    {"NoncurrentDays": int, "StorageClass": str},
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `NoncurrentVersionTransition`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **StorageClass** *(string) --*
+
+      The class of storage used to store the object.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef",
+    {"Date": datetime, "Days": int, "StorageClass": str},
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfigurationRules` `Transition`
+
+    - **Date** *(datetime) --*
+
+      Indicates when objects are transitioned to the specified storage class. The date value
+      must be in ISO 8601 format. The time is always midnight UTC.
+
+    - **Days** *(integer) --*
+
+      Indicates the number of days after creation when objects are transitioned to the
+      specified storage class. The value must be a positive integer.
+
+    - **StorageClass** *(string) --*
+
+      The storage class to which you want the object to transition.
+    """
+
+
+_RequiredBucketLifecyclePutLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_RequiredBucketLifecyclePutLifecycleConfigurationRulesTypeDef",
+    {"Prefix": str, "Status": str},
+)
+_OptionalBucketLifecyclePutLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_OptionalBucketLifecyclePutLifecycleConfigurationRulesTypeDef",
+    {
+        "Expiration": BucketLifecyclePutLifecycleConfigurationRulesExpirationTypeDef,
+        "ID": str,
+        "Transition": BucketLifecyclePutLifecycleConfigurationRulesTransitionTypeDef,
+        "NoncurrentVersionTransition": BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef,
+        "NoncurrentVersionExpiration": BucketLifecyclePutLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef,
+        "AbortIncompleteMultipartUpload": BucketLifecyclePutLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationRulesTypeDef(
+    _RequiredBucketLifecyclePutLifecycleConfigurationRulesTypeDef,
+    _OptionalBucketLifecyclePutLifecycleConfigurationRulesTypeDef,
+):
+    """
+    Type definition for `BucketLifecyclePutLifecycleConfiguration` `Rules`
+
+    Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
+    lifecycle <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html>`__ in
+    the *Amazon Simple Storage Service API Reference* .
+
+    - **Expiration** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+        Format.
+
+      - **Days** *(integer) --*
+
+        Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+        must be a non-zero positive integer.
+
+      - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+        Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+        set to true, the delete marker will be expired; if set to false the policy takes no
+        action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+    - **ID** *(string) --*
+
+      Unique identifier for the rule. The value can't be longer than 255 characters.
+
+    - **Prefix** *(string) --* **[REQUIRED]**
+
+      Object key prefix that identifies one or more objects to which this rule applies.
+
+    - **Status** *(string) --* **[REQUIRED]**
+
+      If ``Enabled`` , the rule is currently being applied. If ``Disabled`` , the rule is not
+      currently being applied.
+
+    - **Transition** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates when objects are transitioned to the specified storage class. The date value
+        must be in ISO 8601 format. The time is always midnight UTC.
+
+      - **Days** *(integer) --*
+
+        Indicates the number of days after creation when objects are transitioned to the
+        specified storage class. The value must be a positive integer.
+
+      - **StorageClass** *(string) --*
+
+        The storage class to which you want the object to transition.
+
+    - **NoncurrentVersionTransition** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+      - **StorageClass** *(string) --*
+
+        The class of storage used to store the object.
+
+    - **NoncurrentVersionExpiration** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+        in the Amazon Simple Storage Service Developer Guide.
+
+    - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      - **DaysAfterInitiation** *(integer) --*
+
+        Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_BucketLifecyclePutLifecycleConfigurationTypeDef = TypedDict(
+    "_BucketLifecyclePutLifecycleConfigurationTypeDef",
+    {"Rules": List[BucketLifecyclePutLifecycleConfigurationRulesTypeDef]},
+)
+
+
+class BucketLifecyclePutLifecycleConfigurationTypeDef(
+    _BucketLifecyclePutLifecycleConfigurationTypeDef
+):
+    """
+    Type definition for `BucketLifecyclePut` `LifecycleConfiguration`
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      - *(dict) --*
+
+        Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
+        lifecycle <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html>`__ in
+        the *Amazon Simple Storage Service API Reference* .
+
+        - **Expiration** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+            Format.
+
+          - **Days** *(integer) --*
+
+            Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+            must be a non-zero positive integer.
+
+          - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+            Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+            set to true, the delete marker will be expired; if set to false the policy takes no
+            action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+        - **ID** *(string) --*
+
+          Unique identifier for the rule. The value can't be longer than 255 characters.
+
+        - **Prefix** *(string) --* **[REQUIRED]**
+
+          Object key prefix that identifies one or more objects to which this rule applies.
+
+        - **Status** *(string) --* **[REQUIRED]**
+
+          If ``Enabled`` , the rule is currently being applied. If ``Disabled`` , the rule is not
+          currently being applied.
+
+        - **Transition** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates when objects are transitioned to the specified storage class. The date value
+            must be in ISO 8601 format. The time is always midnight UTC.
+
+          - **Days** *(integer) --*
+
+            Indicates the number of days after creation when objects are transitioned to the
+            specified storage class. The value must be a positive integer.
+
+          - **StorageClass** *(string) --*
+
+            The storage class to which you want the object to transition.
+
+        - **NoncurrentVersionTransition** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **StorageClass** *(string) --*
+
+            The class of storage used to store the object.
+
+        - **NoncurrentVersionExpiration** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+            in the Amazon Simple Storage Service Developer Guide.
+
+        - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          - **DaysAfterInitiation** *(integer) --*
+
+            Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef = TypedDict(
+    "_RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef",
+    {"Type": str},
+)
+_OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef = TypedDict(
+    "_OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef",
+    {"DisplayName": str, "EmailAddress": str, "ID": str, "URI": str},
+    total=False,
+)
+
+
+class BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef(
+    _RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+    _OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+):
+    """
+    Type definition for `BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrants` `Grantee`
+
+    - **DisplayName** *(string) --*
+
+      Screen name of the grantee.
+
+    - **EmailAddress** *(string) --*
+
+      Email address of the grantee.
+
+    - **ID** *(string) --*
+
+      The canonical user ID of the grantee.
+
+    - **Type** *(string) --* **[REQUIRED]**
+
+      Type of grantee
+
+    - **URI** *(string) --*
+
+      URI of the grantee group.
+    """
+
+
+_BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef = TypedDict(
+    "_BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef",
+    {
+        "Grantee": BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+        "Permission": str,
+    },
+    total=False,
+)
+
+
+class BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef(
+    _BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef
+):
+    """
+    Type definition for `BucketLoggingPutBucketLoggingStatusLoggingEnabled` `TargetGrants`
+
+    - **Grantee** *(dict) --*
+
+      - **DisplayName** *(string) --*
+
+        Screen name of the grantee.
+
+      - **EmailAddress** *(string) --*
+
+        Email address of the grantee.
+
+      - **ID** *(string) --*
+
+        The canonical user ID of the grantee.
+
+      - **Type** *(string) --* **[REQUIRED]**
+
+        Type of grantee
+
+      - **URI** *(string) --*
+
+        URI of the grantee group.
+
+    - **Permission** *(string) --*
+
+      Logging permissions assigned to the Grantee for the bucket.
+    """
+
+
+_RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef = TypedDict(
+    "_RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef",
+    {"TargetBucket": str, "TargetPrefix": str},
+)
+_OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef = TypedDict(
+    "_OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef",
+    {
+        "TargetGrants": List[
+            BucketLoggingPutBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class BucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef(
+    _RequiredBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef,
+    _OptionalBucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef,
+):
+    """
+    Type definition for `BucketLoggingPutBucketLoggingStatus` `LoggingEnabled`
+
+    - **TargetBucket** *(string) --* **[REQUIRED]**
+
+      Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
+      logs delivered to any bucket that you own, including the same bucket that is being logged.
+      You can also configure multiple buckets to deliver their logs to the same target bucket. In
+      this case you should choose a different TargetPrefix for each source bucket so that the
+      delivered log files can be distinguished by key.
+
+    - **TargetGrants** *(list) --*
+
+      - *(dict) --*
+
+        - **Grantee** *(dict) --*
+
+          - **DisplayName** *(string) --*
+
+            Screen name of the grantee.
+
+          - **EmailAddress** *(string) --*
+
+            Email address of the grantee.
+
+          - **ID** *(string) --*
+
+            The canonical user ID of the grantee.
+
+          - **Type** *(string) --* **[REQUIRED]**
+
+            Type of grantee
+
+          - **URI** *(string) --*
+
+            URI of the grantee group.
+
+        - **Permission** *(string) --*
+
+          Logging permissions assigned to the Grantee for the bucket.
+
+    - **TargetPrefix** *(string) --* **[REQUIRED]**
+
+      A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a
+      single bucket, you can use a prefix to distinguish which log files came from which bucket.
+    """
+
+
+_BucketLoggingPutBucketLoggingStatusTypeDef = TypedDict(
+    "_BucketLoggingPutBucketLoggingStatusTypeDef",
+    {"LoggingEnabled": BucketLoggingPutBucketLoggingStatusLoggingEnabledTypeDef},
+    total=False,
+)
+
+
+class BucketLoggingPutBucketLoggingStatusTypeDef(
+    _BucketLoggingPutBucketLoggingStatusTypeDef
+):
+    """
+    Type definition for `BucketLoggingPut` `BucketLoggingStatus`
+
+    - **LoggingEnabled** *(dict) --*
+
+      - **TargetBucket** *(string) --* **[REQUIRED]**
+
+        Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
+        logs delivered to any bucket that you own, including the same bucket that is being logged.
+        You can also configure multiple buckets to deliver their logs to the same target bucket. In
+        this case you should choose a different TargetPrefix for each source bucket so that the
+        delivered log files can be distinguished by key.
+
+      - **TargetGrants** *(list) --*
+
+        - *(dict) --*
+
+          - **Grantee** *(dict) --*
+
+            - **DisplayName** *(string) --*
+
+              Screen name of the grantee.
+
+            - **EmailAddress** *(string) --*
+
+              Email address of the grantee.
+
+            - **ID** *(string) --*
+
+              The canonical user ID of the grantee.
+
+            - **Type** *(string) --* **[REQUIRED]**
+
+              Type of grantee
+
+            - **URI** *(string) --*
+
+              URI of the grantee group.
+
+          - **Permission** *(string) --*
+
+            Logging permissions assigned to the Grantee for the bucket.
+
+      - **TargetPrefix** *(string) --* **[REQUIRED]**
+
+        A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a
+        single bucket, you can use a prefix to distinguish which log files came from which bucket.
+    """
+
+
+_BucketNotExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_BucketNotExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class BucketNotExistsWaitWaiterConfigTypeDef(_BucketNotExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `BucketNotExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
+_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef(
+    _BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef(
+    _BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef",
+    {
+        "Key": BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef(
+    _BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef = TypedDict(
+    "_RequiredBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef",
+    {"LambdaFunctionArn": str, "Events": List[str]},
+)
+_OptionalBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef = TypedDict(
+    "_OptionalBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef(
+    _RequiredBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef,
+    _OptionalBucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef,
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfiguration` `LambdaFunctionConfigurations`
+
+    A container for specifying the configuration for AWS Lambda notifications.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **LambdaFunctionArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the
+      specified event type occurs.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more
+      information, see `Supported Event Types
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef(
+    _BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyTypeDef(
+    _BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationQueueConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTypeDef",
+    {
+        "Key": BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTypeDef(
+    _BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationQueueConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef = TypedDict(
+    "_RequiredBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef",
+    {"QueueArn": str, "Events": List[str]},
+)
+_OptionalBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef = TypedDict(
+    "_OptionalBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": BucketNotificationPutNotificationConfigurationQueueConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef(
+    _RequiredBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef,
+    _OptionalBucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef,
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfiguration` `QueueConfigurations`
+
+    Specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon
+    SQS) queue when Amazon S3 detects specified events.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **QueueArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+      message when it detects events of the specified type.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef(
+    _BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyTypeDef(
+    _BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationTopicConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTypeDef",
+    {
+        "Key": BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTypeDef(
+    _BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfigurationTopicConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef = TypedDict(
+    "_RequiredBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef",
+    {"TopicArn": str, "Events": List[str]},
+)
+_OptionalBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef = TypedDict(
+    "_OptionalBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": BucketNotificationPutNotificationConfigurationTopicConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef(
+    _RequiredBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef,
+    _OptionalBucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef,
+):
+    """
+    Type definition for `BucketNotificationPutNotificationConfiguration` `TopicConfigurations`
+
+    A container for specifying the configuration for publication of messages to an Amazon Simple
+    Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **TopicArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a
+      message when it detects events of the specified type.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      The Amazon S3 bucket event about which to send notifications. For more information, see
+      `Supported Event Types
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_BucketNotificationPutNotificationConfigurationTypeDef = TypedDict(
+    "_BucketNotificationPutNotificationConfigurationTypeDef",
+    {
+        "TopicConfigurations": List[
+            BucketNotificationPutNotificationConfigurationTopicConfigurationsTypeDef
+        ],
+        "QueueConfigurations": List[
+            BucketNotificationPutNotificationConfigurationQueueConfigurationsTypeDef
+        ],
+        "LambdaFunctionConfigurations": List[
+            BucketNotificationPutNotificationConfigurationLambdaFunctionConfigurationsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class BucketNotificationPutNotificationConfigurationTypeDef(
+    _BucketNotificationPutNotificationConfigurationTypeDef
+):
+    """
+    Type definition for `BucketNotificationPut` `NotificationConfiguration`
+
+    - **TopicConfigurations** *(list) --*
+
+      The topic to which notifications are sent and the events for which notifications are generated.
+
+      - *(dict) --*
+
+        A container for specifying the configuration for publication of messages to an Amazon Simple
+        Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **TopicArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a
+          message when it detects events of the specified type.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          The Amazon S3 bucket event about which to send notifications. For more information, see
+          `Supported Event Types
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+
+    - **QueueConfigurations** *(list) --*
+
+      The Amazon Simple Queue Service queues to publish messages to and the events for which to
+      publish messages.
+
+      - *(dict) --*
+
+        Specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon
+        SQS) queue when Amazon S3 detects specified events.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **QueueArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+          message when it detects events of the specified type.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+
+    - **LambdaFunctionConfigurations** *(list) --*
+
+      Describes the AWS Lambda functions to invoke and the events for which to invoke them.
+
+      - *(dict) --*
+
+        A container for specifying the configuration for AWS Lambda notifications.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **LambdaFunctionArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the
+          specified event type occurs.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more
+          information, see `Supported Event Types
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+    """
+
+
+_BucketRequestPaymentPutRequestPaymentConfigurationTypeDef = TypedDict(
+    "_BucketRequestPaymentPutRequestPaymentConfigurationTypeDef", {"Payer": str}
+)
+
+
+class BucketRequestPaymentPutRequestPaymentConfigurationTypeDef(
+    _BucketRequestPaymentPutRequestPaymentConfigurationTypeDef
+):
+    """
+    Type definition for `BucketRequestPaymentPut` `RequestPaymentConfiguration`
+
+    - **Payer** *(string) --* **[REQUIRED]**
+
+      Specifies who pays for the download and request fees.
+    """
+
+
+_BucketTaggingPutTaggingTagSetTypeDef = TypedDict(
+    "_BucketTaggingPutTaggingTagSetTypeDef", {"Key": str, "Value": str}
+)
+
+
+class BucketTaggingPutTaggingTagSetTypeDef(_BucketTaggingPutTaggingTagSetTypeDef):
+    """
+    Type definition for `BucketTaggingPutTagging` `TagSet`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_BucketTaggingPutTaggingTypeDef = TypedDict(
+    "_BucketTaggingPutTaggingTypeDef",
+    {"TagSet": List[BucketTaggingPutTaggingTagSetTypeDef]},
+)
+
+
+class BucketTaggingPutTaggingTypeDef(_BucketTaggingPutTaggingTypeDef):
+    """
+    Type definition for `BucketTaggingPut` `Tagging`
+
+    - **TagSet** *(list) --* **[REQUIRED]**
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_BucketVersioningPutVersioningConfigurationTypeDef = TypedDict(
+    "_BucketVersioningPutVersioningConfigurationTypeDef",
+    {"MFADelete": str, "Status": str},
+    total=False,
+)
+
+
+class BucketVersioningPutVersioningConfigurationTypeDef(
+    _BucketVersioningPutVersioningConfigurationTypeDef
+):
+    """
+    Type definition for `BucketVersioningPut` `VersioningConfiguration`
+
+    - **MFADelete** *(string) --*
+
+      Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is
+      only returned if the bucket has been configured with MFA delete. If the bucket has never been
+      so configured, this element is not returned.
+
+    - **Status** *(string) --*
+
+      The versioning state of the bucket.
+    """
+
+
+_BucketWebsitePutWebsiteConfigurationErrorDocumentTypeDef = TypedDict(
+    "_BucketWebsitePutWebsiteConfigurationErrorDocumentTypeDef", {"Key": str}
+)
+
+
+class BucketWebsitePutWebsiteConfigurationErrorDocumentTypeDef(
+    _BucketWebsitePutWebsiteConfigurationErrorDocumentTypeDef
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfiguration` `ErrorDocument`
+
+    The name of the error document for the website.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The object key name to use when a 4XX class error occurs.
+    """
+
+
+_BucketWebsitePutWebsiteConfigurationIndexDocumentTypeDef = TypedDict(
+    "_BucketWebsitePutWebsiteConfigurationIndexDocumentTypeDef", {"Suffix": str}
+)
+
+
+class BucketWebsitePutWebsiteConfigurationIndexDocumentTypeDef(
+    _BucketWebsitePutWebsiteConfigurationIndexDocumentTypeDef
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfiguration` `IndexDocument`
+
+    The name of the index document for the website.
+
+    - **Suffix** *(string) --* **[REQUIRED]**
+
+      A suffix that is appended to a request that is for a directory on the website endpoint (e.g.
+      if the suffix is index.html and you make a request to samplebucket/images/ the data that is
+      returned will be for the object with the key name images/index.html) The suffix must not be
+      empty and must not include a slash character.
+    """
+
+
+_RequiredBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef = TypedDict(
+    "_RequiredBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef",
+    {"HostName": str},
+)
+_OptionalBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef = TypedDict(
+    "_OptionalBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef",
+    {"Protocol": str},
+    total=False,
+)
+
+
+class BucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef(
+    _RequiredBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef,
+    _OptionalBucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef,
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfiguration` `RedirectAllRequestsTo`
+
+    The redirect behavior for every request to this bucket's website endpoint.
+
+    .. warning::
+
+      If you specify this property, you can't specify any other property.
+
+    - **HostName** *(string) --* **[REQUIRED]**
+
+      Name of the host where requests are redirected.
+
+    - **Protocol** *(string) --*
+
+      Protocol to use when redirecting requests. The default is the protocol that is used in the
+      original request.
+    """
+
+
+_BucketWebsitePutWebsiteConfigurationRoutingRulesConditionTypeDef = TypedDict(
+    "_BucketWebsitePutWebsiteConfigurationRoutingRulesConditionTypeDef",
+    {"HttpErrorCodeReturnedEquals": str, "KeyPrefixEquals": str},
+    total=False,
+)
+
+
+class BucketWebsitePutWebsiteConfigurationRoutingRulesConditionTypeDef(
+    _BucketWebsitePutWebsiteConfigurationRoutingRulesConditionTypeDef
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfigurationRoutingRules` `Condition`
+
+    A container for describing a condition that must be met for the specified redirect to
+    apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+    ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+    host where you might process the error.
+
+    - **HttpErrorCodeReturnedEquals** *(string) --*
+
+      The HTTP error code when the redirect is applied. In the event of an error, if the error
+      code equals this value, then the specified redirect is applied. Required when parent
+      element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+      both are specified, then both must be true for the redirect to be applied.
+
+    - **KeyPrefixEquals** *(string) --*
+
+      The object key name prefix when the redirect is applied. For example, to redirect
+      requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+      redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+      ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+      element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+      specified. If both conditions are specified, both must be true for the redirect to be
+      applied.
+    """
+
+
+_BucketWebsitePutWebsiteConfigurationRoutingRulesRedirectTypeDef = TypedDict(
+    "_BucketWebsitePutWebsiteConfigurationRoutingRulesRedirectTypeDef",
+    {
+        "HostName": str,
+        "HttpRedirectCode": str,
+        "Protocol": str,
+        "ReplaceKeyPrefixWith": str,
+        "ReplaceKeyWith": str,
+    },
+    total=False,
+)
+
+
+class BucketWebsitePutWebsiteConfigurationRoutingRulesRedirectTypeDef(
+    _BucketWebsitePutWebsiteConfigurationRoutingRulesRedirectTypeDef
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfigurationRoutingRules` `Redirect`
+
+    Container for redirect information. You can redirect requests to another host, to another
+    page, or with another protocol. In the event of an error, you can specify a different error
+    code to return.
+
+    - **HostName** *(string) --*
+
+      The host name to use in the redirect request.
+
+    - **HttpRedirectCode** *(string) --*
+
+      The HTTP redirect code to use on the response. Not required if one of the siblings is
+      present.
+
+    - **Protocol** *(string) --*
+
+      Protocol to use when redirecting requests. The default is the protocol that is used in
+      the original request.
+
+    - **ReplaceKeyPrefixWith** *(string) --*
+
+      The object key prefix to use in the redirect request. For example, to redirect requests
+      for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+      you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+      Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+      siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+    - **ReplaceKeyWith** *(string) --*
+
+      The specific object key to use in the redirect request. For example, redirect request to
+      ``error.html`` . Not required if one of the siblings is present. Can be present only if
+      ``ReplaceKeyPrefixWith`` is not provided.
+    """
+
+
+_RequiredBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef = TypedDict(
+    "_RequiredBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef",
+    {"Redirect": BucketWebsitePutWebsiteConfigurationRoutingRulesRedirectTypeDef},
+)
+_OptionalBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef = TypedDict(
+    "_OptionalBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef",
+    {"Condition": BucketWebsitePutWebsiteConfigurationRoutingRulesConditionTypeDef},
+    total=False,
+)
+
+
+class BucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef(
+    _RequiredBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef,
+    _OptionalBucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef,
+):
+    """
+    Type definition for `BucketWebsitePutWebsiteConfiguration` `RoutingRules`
+
+    Specifies the redirect behavior and when a redirect is applied.
+
+    - **Condition** *(dict) --*
+
+      A container for describing a condition that must be met for the specified redirect to
+      apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+      ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+      host where you might process the error.
+
+      - **HttpErrorCodeReturnedEquals** *(string) --*
+
+        The HTTP error code when the redirect is applied. In the event of an error, if the error
+        code equals this value, then the specified redirect is applied. Required when parent
+        element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+        both are specified, then both must be true for the redirect to be applied.
+
+      - **KeyPrefixEquals** *(string) --*
+
+        The object key name prefix when the redirect is applied. For example, to redirect
+        requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+        redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+        ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+        element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+        specified. If both conditions are specified, both must be true for the redirect to be
+        applied.
+
+    - **Redirect** *(dict) --* **[REQUIRED]**
+
+      Container for redirect information. You can redirect requests to another host, to another
+      page, or with another protocol. In the event of an error, you can specify a different error
+      code to return.
+
+      - **HostName** *(string) --*
+
+        The host name to use in the redirect request.
+
+      - **HttpRedirectCode** *(string) --*
+
+        The HTTP redirect code to use on the response. Not required if one of the siblings is
+        present.
+
+      - **Protocol** *(string) --*
+
+        Protocol to use when redirecting requests. The default is the protocol that is used in
+        the original request.
+
+      - **ReplaceKeyPrefixWith** *(string) --*
+
+        The object key prefix to use in the redirect request. For example, to redirect requests
+        for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+        you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+        Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+        siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+      - **ReplaceKeyWith** *(string) --*
+
+        The specific object key to use in the redirect request. For example, redirect request to
+        ``error.html`` . Not required if one of the siblings is present. Can be present only if
+        ``ReplaceKeyPrefixWith`` is not provided.
+    """
+
+
+_BucketWebsitePutWebsiteConfigurationTypeDef = TypedDict(
+    "_BucketWebsitePutWebsiteConfigurationTypeDef",
+    {
+        "ErrorDocument": BucketWebsitePutWebsiteConfigurationErrorDocumentTypeDef,
+        "IndexDocument": BucketWebsitePutWebsiteConfigurationIndexDocumentTypeDef,
+        "RedirectAllRequestsTo": BucketWebsitePutWebsiteConfigurationRedirectAllRequestsToTypeDef,
+        "RoutingRules": List[BucketWebsitePutWebsiteConfigurationRoutingRulesTypeDef],
+    },
+    total=False,
+)
+
+
+class BucketWebsitePutWebsiteConfigurationTypeDef(
+    _BucketWebsitePutWebsiteConfigurationTypeDef
+):
+    """
+    Type definition for `BucketWebsitePut` `WebsiteConfiguration`
+
+    - **ErrorDocument** *(dict) --*
+
+      The name of the error document for the website.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        The object key name to use when a 4XX class error occurs.
+
+    - **IndexDocument** *(dict) --*
+
+      The name of the index document for the website.
+
+      - **Suffix** *(string) --* **[REQUIRED]**
+
+        A suffix that is appended to a request that is for a directory on the website endpoint (e.g.
+        if the suffix is index.html and you make a request to samplebucket/images/ the data that is
+        returned will be for the object with the key name images/index.html) The suffix must not be
+        empty and must not include a slash character.
+
+    - **RedirectAllRequestsTo** *(dict) --*
+
+      The redirect behavior for every request to this bucket's website endpoint.
+
+      .. warning::
+
+        If you specify this property, you can't specify any other property.
+
+      - **HostName** *(string) --* **[REQUIRED]**
+
+        Name of the host where requests are redirected.
+
+      - **Protocol** *(string) --*
+
+        Protocol to use when redirecting requests. The default is the protocol that is used in the
+        original request.
+
+    - **RoutingRules** *(list) --*
+
+      Rules that define when a redirect is applied and the redirect behavior.
+
+      - *(dict) --*
+
+        Specifies the redirect behavior and when a redirect is applied.
+
+        - **Condition** *(dict) --*
+
+          A container for describing a condition that must be met for the specified redirect to
+          apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+          ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+          host where you might process the error.
+
+          - **HttpErrorCodeReturnedEquals** *(string) --*
+
+            The HTTP error code when the redirect is applied. In the event of an error, if the error
+            code equals this value, then the specified redirect is applied. Required when parent
+            element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+            both are specified, then both must be true for the redirect to be applied.
+
+          - **KeyPrefixEquals** *(string) --*
+
+            The object key name prefix when the redirect is applied. For example, to redirect
+            requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+            redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+            ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+            element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+            specified. If both conditions are specified, both must be true for the redirect to be
+            applied.
+
+        - **Redirect** *(dict) --* **[REQUIRED]**
+
+          Container for redirect information. You can redirect requests to another host, to another
+          page, or with another protocol. In the event of an error, you can specify a different error
+          code to return.
+
+          - **HostName** *(string) --*
+
+            The host name to use in the redirect request.
+
+          - **HttpRedirectCode** *(string) --*
+
+            The HTTP redirect code to use on the response. Not required if one of the siblings is
+            present.
+
+          - **Protocol** *(string) --*
+
+            Protocol to use when redirecting requests. The default is the protocol that is used in
+            the original request.
+
+          - **ReplaceKeyPrefixWith** *(string) --*
+
+            The object key prefix to use in the redirect request. For example, to redirect requests
+            for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+            you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+            Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+            siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+          - **ReplaceKeyWith** *(string) --*
+
+            The specific object key to use in the redirect request. For example, redirect request to
+            ``error.html`` . Not required if one of the siblings is present. Can be present only if
+            ``ReplaceKeyPrefixWith`` is not provided.
     """
 
 
@@ -4752,7 +7205,7 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesDestination
       Amazon S3 to change replica ownership to the AWS account that owns the destination
       bucket by specifying the ``AccessControlTranslation`` property, this is the account
       ID of the destination bucket owner. For more information, see `Cross-Region
-      Replication Additional Configuration: Change Replica Owner
+      Replication Additional Configuration\\: Change Replica Owner
       <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
       *Amazon Simple Storage Service Developer Guide* .
 
@@ -5145,7 +7598,7 @@ class ClientGetBucketReplicationResponseReplicationConfigurationRulesTypeDef(
         Amazon S3 to change replica ownership to the AWS account that owns the destination
         bucket by specifying the ``AccessControlTranslation`` property, this is the account
         ID of the destination bucket owner. For more information, see `Cross-Region
-        Replication Additional Configuration: Change Replica Owner
+        Replication Additional Configuration\\: Change Replica Owner
         <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
         *Amazon Simple Storage Service Developer Guide* .
 
@@ -5345,7 +7798,7 @@ class ClientGetBucketReplicationResponseReplicationConfigurationTypeDef(
             Amazon S3 to change replica ownership to the AWS account that owns the destination
             bucket by specifying the ``AccessControlTranslation`` property, this is the account
             ID of the destination bucket owner. For more information, see `Cross-Region
-            Replication Additional Configuration: Change Replica Owner
+            Replication Additional Configuration\\: Change Replica Owner
             <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
             *Amazon Simple Storage Service Developer Guide* .
 
@@ -5544,7 +7997,7 @@ class ClientGetBucketReplicationResponseTypeDef(
               Amazon S3 to change replica ownership to the AWS account that owns the destination
               bucket by specifying the ``AccessControlTranslation`` property, this is the account
               ID of the destination bucket owner. For more information, see `Cross-Region
-              Replication Additional Configuration: Change Replica Owner
+              Replication Additional Configuration\\: Change Replica Owner
               <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the
               *Amazon Simple Storage Service Developer Guide* .
 
@@ -9439,6 +11892,27 @@ class ClientListPartsResponseTypeDef(_ClientListPartsResponseTypeDef):
     """
 
 
+_ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef",
+    {"Status": str},
+    total=False,
+)
+
+
+class ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef(
+    _ClientPutBucketAccelerateConfigurationAccelerateConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAccelerateConfiguration` `AccelerateConfiguration`
+
+    Specifies the Accelerate Configuration you want to set for the bucket.
+
+    - **Status** *(string) --*
+
+      Specifies the transfer acceleration status of the bucket.
+    """
+
+
 _RequiredClientPutBucketAclAccessControlPolicyGrantsGranteeTypeDef = TypedDict(
     "_RequiredClientPutBucketAclAccessControlPolicyGrantsGranteeTypeDef", {"Type": str}
 )
@@ -9603,6 +12077,3256 @@ class ClientPutBucketAclAccessControlPolicyTypeDef(
     """
 
 
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAnd` `Tags`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDef",
+    {
+        "Prefix": str,
+        "Tags": List[
+            ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTagsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilter` `And`
+
+    A conjunction (logical AND) of predicates, which is used in evaluating an analytics filter.
+    The operator must have at least two predicates.
+
+    - **Prefix** *(string) --*
+
+      The prefix to use when evaluating an AND predicate: The prefix that an object must have to
+      be included in the metrics results.
+
+    - **Tags** *(list) --*
+
+      The list of tags to use when evaluating an AND predicate.
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTagTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTagTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTagTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTagTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilter` `Tag`
+
+    The tag to use when evaluating an analytics filter.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef",
+    {
+        "Prefix": str,
+        "Tag": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTagTypeDef,
+        "And": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterAndTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfiguration` `Filter`
+
+    The filter used to describe a set of objects for analyses. A filter must have exactly one
+    prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all
+    objects will be considered in any analysis.
+
+    - **Prefix** *(string) --*
+
+      The prefix to use when evaluating an analytics filter.
+
+    - **Tag** *(dict) --*
+
+      The tag to use when evaluating an analytics filter.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        Name of the tag.
+
+      - **Value** *(string) --* **[REQUIRED]**
+
+        Value of the tag.
+
+    - **And** *(dict) --*
+
+      A conjunction (logical AND) of predicates, which is used in evaluating an analytics filter.
+      The operator must have at least two predicates.
+
+      - **Prefix** *(string) --*
+
+        The prefix to use when evaluating an AND predicate: The prefix that an object must have to
+        be included in the metrics results.
+
+      - **Tags** *(list) --*
+
+        The list of tags to use when evaluating an AND predicate.
+
+        - *(dict) --*
+
+          - **Key** *(string) --* **[REQUIRED]**
+
+            Name of the tag.
+
+          - **Value** *(string) --* **[REQUIRED]**
+
+            Value of the tag.
+    """
+
+
+_RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef = TypedDict(
+    "_RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef",
+    {"Format": str, "Bucket": str},
+)
+_OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef = TypedDict(
+    "_OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef",
+    {"BucketAccountId": str, "Prefix": str},
+    total=False,
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef(
+    _RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef,
+    _OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestination` `S3BucketDestination`
+
+    A destination signifying output to an S3 bucket.
+
+    - **Format** *(string) --* **[REQUIRED]**
+
+      Specifies the file format used when exporting data to Amazon S3.
+
+    - **BucketAccountId** *(string) --*
+
+      The account ID that owns the destination bucket. If no account ID is provided, the
+      owner will not be validated prior to exporting data.
+
+    - **Bucket** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the bucket to which data is exported.
+
+    - **Prefix** *(string) --*
+
+      The prefix to use when exporting data. The prefix is prepended to all results.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationTypeDef",
+    {
+        "S3BucketDestination": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestinationTypeDef
+    },
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExport` `Destination`
+
+    The place to store the data for an analysis.
+
+    - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+      A destination signifying output to an S3 bucket.
+
+      - **Format** *(string) --* **[REQUIRED]**
+
+        Specifies the file format used when exporting data to Amazon S3.
+
+      - **BucketAccountId** *(string) --*
+
+        The account ID that owns the destination bucket. If no account ID is provided, the
+        owner will not be validated prior to exporting data.
+
+      - **Bucket** *(string) --* **[REQUIRED]**
+
+        The Amazon Resource Name (ARN) of the bucket to which data is exported.
+
+      - **Prefix** *(string) --*
+
+        The prefix to use when exporting data. The prefix is prepended to all results.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportTypeDef",
+    {
+        "OutputSchemaVersion": str,
+        "Destination": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportDestinationTypeDef,
+    },
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysis` `DataExport`
+
+    Specifies how data related to the storage class analysis for an Amazon S3 bucket should be
+    exported.
+
+    - **OutputSchemaVersion** *(string) --* **[REQUIRED]**
+
+      The version of the output schema to use when exporting data. Must be ``V_1`` .
+
+    - **Destination** *(dict) --* **[REQUIRED]**
+
+      The place to store the data for an analysis.
+
+      - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+        A destination signifying output to an S3 bucket.
+
+        - **Format** *(string) --* **[REQUIRED]**
+
+          Specifies the file format used when exporting data to Amazon S3.
+
+        - **BucketAccountId** *(string) --*
+
+          The account ID that owns the destination bucket. If no account ID is provided, the
+          owner will not be validated prior to exporting data.
+
+        - **Bucket** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the bucket to which data is exported.
+
+        - **Prefix** *(string) --*
+
+          The prefix to use when exporting data. The prefix is prepended to all results.
+    """
+
+
+_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisTypeDef = TypedDict(
+    "_ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisTypeDef",
+    {
+        "DataExport": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisDataExportTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisTypeDef(
+    _ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisTypeDef
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfigurationAnalyticsConfiguration` `StorageClassAnalysis`
+
+    Contains data related to access patterns to be collected and made available to analyze the
+    tradeoffs between different storage classes.
+
+    - **DataExport** *(dict) --*
+
+      Specifies how data related to the storage class analysis for an Amazon S3 bucket should be
+      exported.
+
+      - **OutputSchemaVersion** *(string) --* **[REQUIRED]**
+
+        The version of the output schema to use when exporting data. Must be ``V_1`` .
+
+      - **Destination** *(dict) --* **[REQUIRED]**
+
+        The place to store the data for an analysis.
+
+        - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+          A destination signifying output to an S3 bucket.
+
+          - **Format** *(string) --* **[REQUIRED]**
+
+            Specifies the file format used when exporting data to Amazon S3.
+
+          - **BucketAccountId** *(string) --*
+
+            The account ID that owns the destination bucket. If no account ID is provided, the
+            owner will not be validated prior to exporting data.
+
+          - **Bucket** *(string) --* **[REQUIRED]**
+
+            The Amazon Resource Name (ARN) of the bucket to which data is exported.
+
+          - **Prefix** *(string) --*
+
+            The prefix to use when exporting data. The prefix is prepended to all results.
+    """
+
+
+_RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef = TypedDict(
+    "_RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef",
+    {
+        "Id": str,
+        "StorageClassAnalysis": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationStorageClassAnalysisTypeDef,
+    },
+)
+_OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef = TypedDict(
+    "_OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef",
+    {
+        "Filter": ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationFilterTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef(
+    _RequiredClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef,
+    _OptionalClientPutBucketAnalyticsConfigurationAnalyticsConfigurationTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketAnalyticsConfiguration` `AnalyticsConfiguration`
+
+    The configuration and any analyses for the analytics filter.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The ID that identifies the analytics configuration.
+
+    - **Filter** *(dict) --*
+
+      The filter used to describe a set of objects for analyses. A filter must have exactly one
+      prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all
+      objects will be considered in any analysis.
+
+      - **Prefix** *(string) --*
+
+        The prefix to use when evaluating an analytics filter.
+
+      - **Tag** *(dict) --*
+
+        The tag to use when evaluating an analytics filter.
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+
+      - **And** *(dict) --*
+
+        A conjunction (logical AND) of predicates, which is used in evaluating an analytics filter.
+        The operator must have at least two predicates.
+
+        - **Prefix** *(string) --*
+
+          The prefix to use when evaluating an AND predicate: The prefix that an object must have to
+          be included in the metrics results.
+
+        - **Tags** *(list) --*
+
+          The list of tags to use when evaluating an AND predicate.
+
+          - *(dict) --*
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+
+    - **StorageClassAnalysis** *(dict) --* **[REQUIRED]**
+
+      Contains data related to access patterns to be collected and made available to analyze the
+      tradeoffs between different storage classes.
+
+      - **DataExport** *(dict) --*
+
+        Specifies how data related to the storage class analysis for an Amazon S3 bucket should be
+        exported.
+
+        - **OutputSchemaVersion** *(string) --* **[REQUIRED]**
+
+          The version of the output schema to use when exporting data. Must be ``V_1`` .
+
+        - **Destination** *(dict) --* **[REQUIRED]**
+
+          The place to store the data for an analysis.
+
+          - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+            A destination signifying output to an S3 bucket.
+
+            - **Format** *(string) --* **[REQUIRED]**
+
+              Specifies the file format used when exporting data to Amazon S3.
+
+            - **BucketAccountId** *(string) --*
+
+              The account ID that owns the destination bucket. If no account ID is provided, the
+              owner will not be validated prior to exporting data.
+
+            - **Bucket** *(string) --* **[REQUIRED]**
+
+              The Amazon Resource Name (ARN) of the bucket to which data is exported.
+
+            - **Prefix** *(string) --*
+
+              The prefix to use when exporting data. The prefix is prepended to all results.
+    """
+
+
+_RequiredClientPutBucketCorsCORSConfigurationCORSRulesTypeDef = TypedDict(
+    "_RequiredClientPutBucketCorsCORSConfigurationCORSRulesTypeDef",
+    {"AllowedMethods": List[str], "AllowedOrigins": List[str]},
+)
+_OptionalClientPutBucketCorsCORSConfigurationCORSRulesTypeDef = TypedDict(
+    "_OptionalClientPutBucketCorsCORSConfigurationCORSRulesTypeDef",
+    {"AllowedHeaders": List[str], "ExposeHeaders": List[str], "MaxAgeSeconds": int},
+    total=False,
+)
+
+
+class ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef(
+    _RequiredClientPutBucketCorsCORSConfigurationCORSRulesTypeDef,
+    _OptionalClientPutBucketCorsCORSConfigurationCORSRulesTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketCorsCORSConfiguration` `CORSRules`
+
+    Specifies a cross-origin access rule for an Amazon S3 bucket.
+
+    - **AllowedHeaders** *(list) --*
+
+      Headers that are specified in the ``Access-Control-Request-Headers`` header. These headers
+      are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request,
+      Amazon S3 returns any requested headers that are allowed.
+
+      - *(string) --*
+
+    - **AllowedMethods** *(list) --* **[REQUIRED]**
+
+      An HTTP method that you allow the origin to execute. Valid values are ``GET`` , ``PUT`` ,
+      ``HEAD`` , ``POST`` , and ``DELETE`` .
+
+      - *(string) --*
+
+    - **AllowedOrigins** *(list) --* **[REQUIRED]**
+
+      One or more origins you want customers to be able to access the bucket from.
+
+      - *(string) --*
+
+    - **ExposeHeaders** *(list) --*
+
+      One or more headers in the response that you want customers to be able to access from their
+      applications (for example, from a JavaScript ``XMLHttpRequest`` object).
+
+      - *(string) --*
+
+    - **MaxAgeSeconds** *(integer) --*
+
+      The time in seconds that your browser is to cache the preflight response for the specified
+      resource.
+    """
+
+
+_ClientPutBucketCorsCORSConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketCorsCORSConfigurationTypeDef",
+    {"CORSRules": List[ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef]},
+)
+
+
+class ClientPutBucketCorsCORSConfigurationTypeDef(
+    _ClientPutBucketCorsCORSConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketCors` `CORSConfiguration`
+
+    - **CORSRules** *(list) --* **[REQUIRED]**
+
+      A set of allowed origins and methods.
+
+      - *(dict) --*
+
+        Specifies a cross-origin access rule for an Amazon S3 bucket.
+
+        - **AllowedHeaders** *(list) --*
+
+          Headers that are specified in the ``Access-Control-Request-Headers`` header. These headers
+          are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request,
+          Amazon S3 returns any requested headers that are allowed.
+
+          - *(string) --*
+
+        - **AllowedMethods** *(list) --* **[REQUIRED]**
+
+          An HTTP method that you allow the origin to execute. Valid values are ``GET`` , ``PUT`` ,
+          ``HEAD`` , ``POST`` , and ``DELETE`` .
+
+          - *(string) --*
+
+        - **AllowedOrigins** *(list) --* **[REQUIRED]**
+
+          One or more origins you want customers to be able to access the bucket from.
+
+          - *(string) --*
+
+        - **ExposeHeaders** *(list) --*
+
+          One or more headers in the response that you want customers to be able to access from their
+          applications (for example, from a JavaScript ``XMLHttpRequest`` object).
+
+          - *(string) --*
+
+        - **MaxAgeSeconds** *(integer) --*
+
+          The time in seconds that your browser is to cache the preflight response for the specified
+          resource.
+    """
+
+
+_RequiredClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef = TypedDict(
+    "_RequiredClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef",
+    {"SSEAlgorithm": str},
+)
+_OptionalClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef = TypedDict(
+    "_OptionalClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef",
+    {"KMSMasterKeyID": str},
+    total=False,
+)
+
+
+class ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef(
+    _RequiredClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef,
+    _OptionalClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketEncryptionServerSideEncryptionConfigurationRules` `ApplyServerSideEncryptionByDefault`
+
+    Specifies the default server-side encryption to apply to new objects in the bucket. If a
+    PUT Object request doesn't specify any server-side encryption, this default encryption will
+    be applied.
+
+    - **SSEAlgorithm** *(string) --* **[REQUIRED]**
+
+      Server-side encryption algorithm to use for the default encryption.
+
+    - **KMSMasterKeyID** *(string) --*
+
+      KMS master key ID to use for the default encryption. This parameter is allowed if and
+      only if ``SSEAlgorithm`` is set to ``aws:kms`` .
+    """
+
+
+_ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesTypeDef = TypedDict(
+    "_ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesTypeDef",
+    {
+        "ApplyServerSideEncryptionByDefault": ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesApplyServerSideEncryptionByDefaultTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesTypeDef(
+    _ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesTypeDef
+):
+    """
+    Type definition for `ClientPutBucketEncryptionServerSideEncryptionConfiguration` `Rules`
+
+    Specifies the default server-side encryption configuration.
+
+    - **ApplyServerSideEncryptionByDefault** *(dict) --*
+
+      Specifies the default server-side encryption to apply to new objects in the bucket. If a
+      PUT Object request doesn't specify any server-side encryption, this default encryption will
+      be applied.
+
+      - **SSEAlgorithm** *(string) --* **[REQUIRED]**
+
+        Server-side encryption algorithm to use for the default encryption.
+
+      - **KMSMasterKeyID** *(string) --*
+
+        KMS master key ID to use for the default encryption. This parameter is allowed if and
+        only if ``SSEAlgorithm`` is set to ``aws:kms`` .
+    """
+
+
+_ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef",
+    {
+        "Rules": List[
+            ClientPutBucketEncryptionServerSideEncryptionConfigurationRulesTypeDef
+        ]
+    },
+)
+
+
+class ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef(
+    _ClientPutBucketEncryptionServerSideEncryptionConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketEncryption` `ServerSideEncryptionConfiguration`
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      Container for information about a particular server-side encryption configuration rule.
+
+      - *(dict) --*
+
+        Specifies the default server-side encryption configuration.
+
+        - **ApplyServerSideEncryptionByDefault** *(dict) --*
+
+          Specifies the default server-side encryption to apply to new objects in the bucket. If a
+          PUT Object request doesn't specify any server-side encryption, this default encryption will
+          be applied.
+
+          - **SSEAlgorithm** *(string) --* **[REQUIRED]**
+
+            Server-side encryption algorithm to use for the default encryption.
+
+          - **KMSMasterKeyID** *(string) --*
+
+            KMS master key ID to use for the default encryption. This parameter is allowed if and
+            only if ``SSEAlgorithm`` is set to ``aws:kms`` .
+    """
+
+
+_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionSSEKMSTypeDef = TypedDict(
+    "_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionSSEKMSTypeDef",
+    {"KeyId": str},
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionSSEKMSTypeDef(
+    _ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionSSEKMSTypeDef
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryption` `SSEKMS`
+
+    Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
+
+    - **KeyId** *(string) --* **[REQUIRED]**
+
+      Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
+      for encrypting Inventory reports.
+    """
+
+
+_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionTypeDef = TypedDict(
+    "_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionTypeDef",
+    {
+        "SSES3": Dict,
+        "SSEKMS": ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionSSEKMSTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionTypeDef(
+    _ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionTypeDef
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestination` `Encryption`
+
+    Contains the type of server-side encryption used to encrypt the inventory results.
+
+    - **SSES3** *(dict) --*
+
+      Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
+
+    - **SSEKMS** *(dict) --*
+
+      Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
+
+      - **KeyId** *(string) --* **[REQUIRED]**
+
+        Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
+        for encrypting Inventory reports.
+    """
+
+
+_RequiredClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef = TypedDict(
+    "_RequiredClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef",
+    {"Bucket": str, "Format": str},
+)
+_OptionalClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef = TypedDict(
+    "_OptionalClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef",
+    {
+        "AccountId": str,
+        "Prefix": str,
+        "Encryption": ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationEncryptionTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef(
+    _RequiredClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef,
+    _OptionalClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfigurationDestination` `S3BucketDestination`
+
+    Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where
+    inventory results are published.
+
+    - **AccountId** *(string) --*
+
+      The ID of the account that owns the destination bucket.
+
+    - **Bucket** *(string) --* **[REQUIRED]**
+
+      The Amazon resource name (ARN) of the bucket where inventory results will be published.
+
+    - **Format** *(string) --* **[REQUIRED]**
+
+      Specifies the output format of the inventory results.
+
+    - **Prefix** *(string) --*
+
+      The prefix that is prepended to all inventory results.
+
+    - **Encryption** *(dict) --*
+
+      Contains the type of server-side encryption used to encrypt the inventory results.
+
+      - **SSES3** *(dict) --*
+
+        Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
+
+      - **SSEKMS** *(dict) --*
+
+        Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
+
+        - **KeyId** *(string) --* **[REQUIRED]**
+
+          Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
+          for encrypting Inventory reports.
+    """
+
+
+_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationTypeDef = TypedDict(
+    "_ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationTypeDef",
+    {
+        "S3BucketDestination": ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationS3BucketDestinationTypeDef
+    },
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationTypeDef(
+    _ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfiguration` `Destination`
+
+    Contains information about where to publish the inventory results.
+
+    - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+      Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where
+      inventory results are published.
+
+      - **AccountId** *(string) --*
+
+        The ID of the account that owns the destination bucket.
+
+      - **Bucket** *(string) --* **[REQUIRED]**
+
+        The Amazon resource name (ARN) of the bucket where inventory results will be published.
+
+      - **Format** *(string) --* **[REQUIRED]**
+
+        Specifies the output format of the inventory results.
+
+      - **Prefix** *(string) --*
+
+        The prefix that is prepended to all inventory results.
+
+      - **Encryption** *(dict) --*
+
+        Contains the type of server-side encryption used to encrypt the inventory results.
+
+        - **SSES3** *(dict) --*
+
+          Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
+
+        - **SSEKMS** *(dict) --*
+
+          Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
+
+          - **KeyId** *(string) --* **[REQUIRED]**
+
+            Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
+            for encrypting Inventory reports.
+    """
+
+
+_ClientPutBucketInventoryConfigurationInventoryConfigurationFilterTypeDef = TypedDict(
+    "_ClientPutBucketInventoryConfigurationInventoryConfigurationFilterTypeDef",
+    {"Prefix": str},
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationFilterTypeDef(
+    _ClientPutBucketInventoryConfigurationInventoryConfigurationFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfiguration` `Filter`
+
+    Specifies an inventory filter. The inventory only includes objects that meet the filter's
+    criteria.
+
+    - **Prefix** *(string) --* **[REQUIRED]**
+
+      The prefix that an object must have to be included in the inventory results.
+    """
+
+
+_ClientPutBucketInventoryConfigurationInventoryConfigurationScheduleTypeDef = TypedDict(
+    "_ClientPutBucketInventoryConfigurationInventoryConfigurationScheduleTypeDef",
+    {"Frequency": str},
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationScheduleTypeDef(
+    _ClientPutBucketInventoryConfigurationInventoryConfigurationScheduleTypeDef
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfigurationInventoryConfiguration` `Schedule`
+
+    Specifies the schedule for generating inventory results.
+
+    - **Frequency** *(string) --* **[REQUIRED]**
+
+      Specifies how frequently inventory results are produced.
+    """
+
+
+_RequiredClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef = TypedDict(
+    "_RequiredClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef",
+    {
+        "Destination": ClientPutBucketInventoryConfigurationInventoryConfigurationDestinationTypeDef,
+        "IsEnabled": bool,
+        "Id": str,
+        "IncludedObjectVersions": str,
+        "Schedule": ClientPutBucketInventoryConfigurationInventoryConfigurationScheduleTypeDef,
+    },
+)
+_OptionalClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef = TypedDict(
+    "_OptionalClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef",
+    {
+        "Filter": ClientPutBucketInventoryConfigurationInventoryConfigurationFilterTypeDef,
+        "OptionalFields": List[str],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef(
+    _RequiredClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef,
+    _OptionalClientPutBucketInventoryConfigurationInventoryConfigurationTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketInventoryConfiguration` `InventoryConfiguration`
+
+    Specifies the inventory configuration.
+
+    - **Destination** *(dict) --* **[REQUIRED]**
+
+      Contains information about where to publish the inventory results.
+
+      - **S3BucketDestination** *(dict) --* **[REQUIRED]**
+
+        Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where
+        inventory results are published.
+
+        - **AccountId** *(string) --*
+
+          The ID of the account that owns the destination bucket.
+
+        - **Bucket** *(string) --* **[REQUIRED]**
+
+          The Amazon resource name (ARN) of the bucket where inventory results will be published.
+
+        - **Format** *(string) --* **[REQUIRED]**
+
+          Specifies the output format of the inventory results.
+
+        - **Prefix** *(string) --*
+
+          The prefix that is prepended to all inventory results.
+
+        - **Encryption** *(dict) --*
+
+          Contains the type of server-side encryption used to encrypt the inventory results.
+
+          - **SSES3** *(dict) --*
+
+            Specifies the use of SSE-S3 to encrypt delivered Inventory reports.
+
+          - **SSEKMS** *(dict) --*
+
+            Specifies the use of SSE-KMS to encrypt delivered Inventory reports.
+
+            - **KeyId** *(string) --* **[REQUIRED]**
+
+              Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use
+              for encrypting Inventory reports.
+
+    - **IsEnabled** *(boolean) --* **[REQUIRED]**
+
+      Specifies whether the inventory is enabled or disabled. If set to ``True`` , an inventory list
+      is generated. If set to ``False`` , no inventory list is generated.
+
+    - **Filter** *(dict) --*
+
+      Specifies an inventory filter. The inventory only includes objects that meet the filter's
+      criteria.
+
+      - **Prefix** *(string) --* **[REQUIRED]**
+
+        The prefix that an object must have to be included in the inventory results.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The ID used to identify the inventory configuration.
+
+    - **IncludedObjectVersions** *(string) --* **[REQUIRED]**
+
+      Object versions to include in the inventory list. If set to ``All`` , the list includes all the
+      object versions, which adds the version-related fields ``VersionId`` , ``IsLatest`` , and
+      ``DeleteMarker`` to the list. If set to ``Current`` , the list does not contain these
+      version-related fields.
+
+    - **OptionalFields** *(list) --*
+
+      Contains the optional fields that are included in the inventory results.
+
+      - *(string) --*
+
+    - **Schedule** *(dict) --* **[REQUIRED]**
+
+      Specifies the schedule for generating inventory results.
+
+      - **Frequency** *(string) --* **[REQUIRED]**
+
+        Specifies how frequently inventory results are produced.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef",
+    {"DaysAfterInitiation": int},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
+
+    - **DaysAfterInitiation** *(integer) --*
+
+      Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpirationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpirationTypeDef",
+    {"Date": datetime, "Days": int, "ExpiredObjectDeleteMarker": bool},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpirationTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpirationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `Expiration`
+
+    - **Date** *(datetime) --*
+
+      Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+      Format.
+
+    - **Days** *(integer) --*
+
+      Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+      must be a non-zero positive integer.
+
+    - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+      Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+      set to true, the delete marker will be expired; if set to false the policy takes no
+      action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTagsTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTagsTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTagsTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTagsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAnd` `Tags`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTypeDef",
+    {
+        "Prefix": str,
+        "Tags": List[
+            ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTagsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilter` `And`
+
+    - **Prefix** *(string) --*
+
+    - **Tags** *(list) --*
+
+      All of these tags must exist in the object's tag set in order for the rule to apply.
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTagTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTagTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTagTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTagTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilter` `Tag`
+
+    This tag must exist in the object's tag set in order for the rule to apply.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTypeDef",
+    {
+        "Prefix": str,
+        "Tag": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTagTypeDef,
+        "And": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterAndTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `Filter`
+
+    - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies.
+
+    - **Tag** *(dict) --*
+
+      This tag must exist in the object's tag set in order for the rule to apply.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        Name of the tag.
+
+      - **Value** *(string) --* **[REQUIRED]**
+
+        Value of the tag.
+
+    - **And** *(dict) --*
+
+      - **Prefix** *(string) --*
+
+      - **Tags** *(list) --*
+
+        All of these tags must exist in the object's tag set in order for the rule to apply.
+
+        - *(dict) --*
+
+          - **Key** *(string) --* **[REQUIRED]**
+
+            Name of the tag.
+
+          - **Value** *(string) --* **[REQUIRED]**
+
+            Value of the tag.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef",
+    {"NoncurrentDays": int},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+      in the Amazon Simple Storage Service Developer Guide.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef",
+    {"NoncurrentDays": int, "StorageClass": str},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `NoncurrentVersionTransitions`
+
+    Container for the transition rule that describes when noncurrent objects transition to
+    the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+    ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+    suspended), you can set this action to request that Amazon S3 transition noncurrent
+    object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+    ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+    lifetime.
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **StorageClass** *(string) --*
+
+      The class of storage used to store the object.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTransitionsTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTransitionsTypeDef",
+    {"Date": datetime, "Days": int, "StorageClass": str},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTransitionsTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTransitionsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfigurationRules` `Transitions`
+
+    Specifies when an object transitions to a specified storage class.
+
+    - **Date** *(datetime) --*
+
+      Indicates when objects are transitioned to the specified storage class. The date value
+      must be in ISO 8601 format. The time is always midnight UTC.
+
+    - **Days** *(integer) --*
+
+      Indicates the number of days after creation when objects are transitioned to the
+      specified storage class. The value must be a positive integer.
+
+    - **StorageClass** *(string) --*
+
+      The storage class to which you want the object to transition.
+    """
+
+
+_RequiredClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_RequiredClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef",
+    {"Status": str},
+)
+_OptionalClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_OptionalClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef",
+    {
+        "Expiration": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesExpirationTypeDef,
+        "ID": str,
+        "Prefix": str,
+        "Filter": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesFilterTypeDef,
+        "Transitions": List[
+            ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTransitionsTypeDef
+        ],
+        "NoncurrentVersionTransitions": List[
+            ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionTransitionsTypeDef
+        ],
+        "NoncurrentVersionExpiration": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef,
+        "AbortIncompleteMultipartUpload": ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef(
+    _RequiredClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef,
+    _OptionalClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfigurationLifecycleConfiguration` `Rules`
+
+    - **Expiration** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+        Format.
+
+      - **Days** *(integer) --*
+
+        Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+        must be a non-zero positive integer.
+
+      - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+        Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+        set to true, the delete marker will be expired; if set to false the policy takes no
+        action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+    - **ID** *(string) --*
+
+      Unique identifier for the rule. The value cannot be longer than 255 characters.
+
+    - **Prefix** *(string) --*
+
+      Prefix identifying one or more objects to which the rule applies. This is No longer used;
+      use Filter instead.
+
+    - **Filter** *(dict) --*
+
+      - **Prefix** *(string) --*
+
+        Prefix identifying one or more objects to which the rule applies.
+
+      - **Tag** *(dict) --*
+
+        This tag must exist in the object's tag set in order for the rule to apply.
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+
+      - **And** *(dict) --*
+
+        - **Prefix** *(string) --*
+
+        - **Tags** *(list) --*
+
+          All of these tags must exist in the object's tag set in order for the rule to apply.
+
+          - *(dict) --*
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+
+    - **Status** *(string) --* **[REQUIRED]**
+
+      If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently
+      being applied.
+
+    - **Transitions** *(list) --*
+
+      - *(dict) --*
+
+        Specifies when an object transitions to a specified storage class.
+
+        - **Date** *(datetime) --*
+
+          Indicates when objects are transitioned to the specified storage class. The date value
+          must be in ISO 8601 format. The time is always midnight UTC.
+
+        - **Days** *(integer) --*
+
+          Indicates the number of days after creation when objects are transitioned to the
+          specified storage class. The value must be a positive integer.
+
+        - **StorageClass** *(string) --*
+
+          The storage class to which you want the object to transition.
+
+    - **NoncurrentVersionTransitions** *(list) --*
+
+      - *(dict) --*
+
+        Container for the transition rule that describes when noncurrent objects transition to
+        the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+        ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+        suspended), you can set this action to request that Amazon S3 transition noncurrent
+        object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+        ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+        lifetime.
+
+        - **NoncurrentDays** *(integer) --*
+
+          Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+          associated action. For information about the noncurrent days calculations, see `How
+          Amazon S3 Calculates When an Object Became Noncurrent
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **StorageClass** *(string) --*
+
+          The class of storage used to store the object.
+
+    - **NoncurrentVersionExpiration** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+        in the Amazon Simple Storage Service Developer Guide.
+
+    - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      - **DaysAfterInitiation** *(integer) --*
+
+        Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef",
+    {
+        "Rules": List[
+            ClientPutBucketLifecycleConfigurationLifecycleConfigurationRulesTypeDef
+        ]
+    },
+)
+
+
+class ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef(
+    _ClientPutBucketLifecycleConfigurationLifecycleConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleConfiguration` `LifecycleConfiguration`
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      A lifecycle rule for individual objects in an Amazon S3 bucket.
+
+      - *(dict) --*
+
+        - **Expiration** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+            Format.
+
+          - **Days** *(integer) --*
+
+            Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+            must be a non-zero positive integer.
+
+          - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+            Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+            set to true, the delete marker will be expired; if set to false the policy takes no
+            action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+        - **ID** *(string) --*
+
+          Unique identifier for the rule. The value cannot be longer than 255 characters.
+
+        - **Prefix** *(string) --*
+
+          Prefix identifying one or more objects to which the rule applies. This is No longer used;
+          use Filter instead.
+
+        - **Filter** *(dict) --*
+
+          - **Prefix** *(string) --*
+
+            Prefix identifying one or more objects to which the rule applies.
+
+          - **Tag** *(dict) --*
+
+            This tag must exist in the object's tag set in order for the rule to apply.
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+
+          - **And** *(dict) --*
+
+            - **Prefix** *(string) --*
+
+            - **Tags** *(list) --*
+
+              All of these tags must exist in the object's tag set in order for the rule to apply.
+
+              - *(dict) --*
+
+                - **Key** *(string) --* **[REQUIRED]**
+
+                  Name of the tag.
+
+                - **Value** *(string) --* **[REQUIRED]**
+
+                  Value of the tag.
+
+        - **Status** *(string) --* **[REQUIRED]**
+
+          If 'Enabled', the rule is currently being applied. If 'Disabled', the rule is not currently
+          being applied.
+
+        - **Transitions** *(list) --*
+
+          - *(dict) --*
+
+            Specifies when an object transitions to a specified storage class.
+
+            - **Date** *(datetime) --*
+
+              Indicates when objects are transitioned to the specified storage class. The date value
+              must be in ISO 8601 format. The time is always midnight UTC.
+
+            - **Days** *(integer) --*
+
+              Indicates the number of days after creation when objects are transitioned to the
+              specified storage class. The value must be a positive integer.
+
+            - **StorageClass** *(string) --*
+
+              The storage class to which you want the object to transition.
+
+        - **NoncurrentVersionTransitions** *(list) --*
+
+          - *(dict) --*
+
+            Container for the transition rule that describes when noncurrent objects transition to
+            the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` , ``GLACIER`` , or
+            ``DEEP_ARCHIVE`` storage class. If your bucket is versioning-enabled (or versioning is
+            suspended), you can set this action to request that Amazon S3 transition noncurrent
+            object versions to the ``STANDARD_IA`` , ``ONEZONE_IA`` , ``INTELLIGENT_TIERING`` ,
+            ``GLACIER`` , or ``DEEP_ARCHIVE`` storage class at a specific period in the object's
+            lifetime.
+
+            - **NoncurrentDays** *(integer) --*
+
+              Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+              associated action. For information about the noncurrent days calculations, see `How
+              Amazon S3 Calculates When an Object Became Noncurrent
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **StorageClass** *(string) --*
+
+              The class of storage used to store the object.
+
+        - **NoncurrentVersionExpiration** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+            in the Amazon Simple Storage Service Developer Guide.
+
+        - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          - **DaysAfterInitiation** *(integer) --*
+
+            Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef",
+    {"DaysAfterInitiation": int},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `AbortIncompleteMultipartUpload`
+
+    - **DaysAfterInitiation** *(integer) --*
+
+      Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef",
+    {"Date": datetime, "Days": int, "ExpiredObjectDeleteMarker": bool},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `Expiration`
+
+    - **Date** *(datetime) --*
+
+      Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+      Format.
+
+    - **Days** *(integer) --*
+
+      Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+      must be a non-zero positive integer.
+
+    - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+      Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+      set to true, the delete marker will be expired; if set to false the policy takes no
+      action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef",
+    {"NoncurrentDays": int},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `NoncurrentVersionExpiration`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+      in the Amazon Simple Storage Service Developer Guide.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef",
+    {"NoncurrentDays": int, "StorageClass": str},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `NoncurrentVersionTransition`
+
+    - **NoncurrentDays** *(integer) --*
+
+      Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+      associated action. For information about the noncurrent days calculations, see `How
+      Amazon S3 Calculates When an Object Became Noncurrent
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **StorageClass** *(string) --*
+
+      The class of storage used to store the object.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef",
+    {"Date": datetime, "Days": int, "StorageClass": str},
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfigurationRules` `Transition`
+
+    - **Date** *(datetime) --*
+
+      Indicates when objects are transitioned to the specified storage class. The date value
+      must be in ISO 8601 format. The time is always midnight UTC.
+
+    - **Days** *(integer) --*
+
+      Indicates the number of days after creation when objects are transitioned to the
+      specified storage class. The value must be a positive integer.
+
+    - **StorageClass** *(string) --*
+
+      The storage class to which you want the object to transition.
+    """
+
+
+_RequiredClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_RequiredClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef",
+    {"Prefix": str, "Status": str},
+)
+_OptionalClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef = TypedDict(
+    "_OptionalClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef",
+    {
+        "Expiration": ClientPutBucketLifecycleLifecycleConfigurationRulesExpirationTypeDef,
+        "ID": str,
+        "Transition": ClientPutBucketLifecycleLifecycleConfigurationRulesTransitionTypeDef,
+        "NoncurrentVersionTransition": ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionTransitionTypeDef,
+        "NoncurrentVersionExpiration": ClientPutBucketLifecycleLifecycleConfigurationRulesNoncurrentVersionExpirationTypeDef,
+        "AbortIncompleteMultipartUpload": ClientPutBucketLifecycleLifecycleConfigurationRulesAbortIncompleteMultipartUploadTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef(
+    _RequiredClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef,
+    _OptionalClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketLifecycleLifecycleConfiguration` `Rules`
+
+    Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
+    lifecycle <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html>`__ in
+    the *Amazon Simple Storage Service API Reference* .
+
+    - **Expiration** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+        Format.
+
+      - **Days** *(integer) --*
+
+        Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+        must be a non-zero positive integer.
+
+      - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+        Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+        set to true, the delete marker will be expired; if set to false the policy takes no
+        action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+    - **ID** *(string) --*
+
+      Unique identifier for the rule. The value can't be longer than 255 characters.
+
+    - **Prefix** *(string) --* **[REQUIRED]**
+
+      Object key prefix that identifies one or more objects to which this rule applies.
+
+    - **Status** *(string) --* **[REQUIRED]**
+
+      If ``Enabled`` , the rule is currently being applied. If ``Disabled`` , the rule is not
+      currently being applied.
+
+    - **Transition** *(dict) --*
+
+      - **Date** *(datetime) --*
+
+        Indicates when objects are transitioned to the specified storage class. The date value
+        must be in ISO 8601 format. The time is always midnight UTC.
+
+      - **Days** *(integer) --*
+
+        Indicates the number of days after creation when objects are transitioned to the
+        specified storage class. The value must be a positive integer.
+
+      - **StorageClass** *(string) --*
+
+        The storage class to which you want the object to transition.
+
+    - **NoncurrentVersionTransition** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+        *Amazon Simple Storage Service Developer Guide* .
+
+      - **StorageClass** *(string) --*
+
+        The class of storage used to store the object.
+
+    - **NoncurrentVersionExpiration** *(dict) --*
+
+      - **NoncurrentDays** *(integer) --*
+
+        Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+        associated action. For information about the noncurrent days calculations, see `How
+        Amazon S3 Calculates When an Object Became Noncurrent
+        <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+        in the Amazon Simple Storage Service Developer Guide.
+
+    - **AbortIncompleteMultipartUpload** *(dict) --*
+
+      - **DaysAfterInitiation** *(integer) --*
+
+        Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_ClientPutBucketLifecycleLifecycleConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketLifecycleLifecycleConfigurationTypeDef",
+    {"Rules": List[ClientPutBucketLifecycleLifecycleConfigurationRulesTypeDef]},
+)
+
+
+class ClientPutBucketLifecycleLifecycleConfigurationTypeDef(
+    _ClientPutBucketLifecycleLifecycleConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLifecycle` `LifecycleConfiguration`
+
+    - **Rules** *(list) --* **[REQUIRED]**
+
+      - *(dict) --*
+
+        Specifies lifecycle rules for an Amazon S3 bucket. For more information, see `PUT Bucket
+        lifecycle <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html>`__ in
+        the *Amazon Simple Storage Service API Reference* .
+
+        - **Expiration** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601
+            Format.
+
+          - **Days** *(integer) --*
+
+            Indicates the lifetime, in days, of the objects that are subject to the rule. The value
+            must be a non-zero positive integer.
+
+          - **ExpiredObjectDeleteMarker** *(boolean) --*
+
+            Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If
+            set to true, the delete marker will be expired; if set to false the policy takes no
+            action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
+
+        - **ID** *(string) --*
+
+          Unique identifier for the rule. The value can't be longer than 255 characters.
+
+        - **Prefix** *(string) --* **[REQUIRED]**
+
+          Object key prefix that identifies one or more objects to which this rule applies.
+
+        - **Status** *(string) --* **[REQUIRED]**
+
+          If ``Enabled`` , the rule is currently being applied. If ``Disabled`` , the rule is not
+          currently being applied.
+
+        - **Transition** *(dict) --*
+
+          - **Date** *(datetime) --*
+
+            Indicates when objects are transitioned to the specified storage class. The date value
+            must be in ISO 8601 format. The time is always midnight UTC.
+
+          - **Days** *(integer) --*
+
+            Indicates the number of days after creation when objects are transitioned to the
+            specified storage class. The value must be a positive integer.
+
+          - **StorageClass** *(string) --*
+
+            The storage class to which you want the object to transition.
+
+        - **NoncurrentVersionTransition** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **StorageClass** *(string) --*
+
+            The class of storage used to store the object.
+
+        - **NoncurrentVersionExpiration** *(dict) --*
+
+          - **NoncurrentDays** *(integer) --*
+
+            Specifies the number of days an object is noncurrent before Amazon S3 can perform the
+            associated action. For information about the noncurrent days calculations, see `How
+            Amazon S3 Calculates When an Object Became Noncurrent
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations>`__
+            in the Amazon Simple Storage Service Developer Guide.
+
+        - **AbortIncompleteMultipartUpload** *(dict) --*
+
+          - **DaysAfterInitiation** *(integer) --*
+
+            Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
+    """
+
+
+_RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef = TypedDict(
+    "_RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef",
+    {"Type": str},
+)
+_OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef = TypedDict(
+    "_OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef",
+    {"DisplayName": str, "EmailAddress": str, "ID": str, "URI": str},
+    total=False,
+)
+
+
+class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef(
+    _RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+    _OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrants` `Grantee`
+
+    - **DisplayName** *(string) --*
+
+      Screen name of the grantee.
+
+    - **EmailAddress** *(string) --*
+
+      Email address of the grantee.
+
+    - **ID** *(string) --*
+
+      The canonical user ID of the grantee.
+
+    - **Type** *(string) --* **[REQUIRED]**
+
+      Type of grantee
+
+    - **URI** *(string) --*
+
+      URI of the grantee group.
+    """
+
+
+_ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef = TypedDict(
+    "_ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef",
+    {
+        "Grantee": ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsGranteeTypeDef,
+        "Permission": str,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef(
+    _ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLoggingBucketLoggingStatusLoggingEnabled` `TargetGrants`
+
+    - **Grantee** *(dict) --*
+
+      - **DisplayName** *(string) --*
+
+        Screen name of the grantee.
+
+      - **EmailAddress** *(string) --*
+
+        Email address of the grantee.
+
+      - **ID** *(string) --*
+
+        The canonical user ID of the grantee.
+
+      - **Type** *(string) --* **[REQUIRED]**
+
+        Type of grantee
+
+      - **URI** *(string) --*
+
+        URI of the grantee group.
+
+    - **Permission** *(string) --*
+
+      Logging permissions assigned to the Grantee for the bucket.
+    """
+
+
+_RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef = TypedDict(
+    "_RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef",
+    {"TargetBucket": str, "TargetPrefix": str},
+)
+_OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef = TypedDict(
+    "_OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef",
+    {
+        "TargetGrants": List[
+            ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTargetGrantsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef(
+    _RequiredClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef,
+    _OptionalClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketLoggingBucketLoggingStatus` `LoggingEnabled`
+
+    - **TargetBucket** *(string) --* **[REQUIRED]**
+
+      Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
+      logs delivered to any bucket that you own, including the same bucket that is being logged.
+      You can also configure multiple buckets to deliver their logs to the same target bucket. In
+      this case you should choose a different TargetPrefix for each source bucket so that the
+      delivered log files can be distinguished by key.
+
+    - **TargetGrants** *(list) --*
+
+      - *(dict) --*
+
+        - **Grantee** *(dict) --*
+
+          - **DisplayName** *(string) --*
+
+            Screen name of the grantee.
+
+          - **EmailAddress** *(string) --*
+
+            Email address of the grantee.
+
+          - **ID** *(string) --*
+
+            The canonical user ID of the grantee.
+
+          - **Type** *(string) --* **[REQUIRED]**
+
+            Type of grantee
+
+          - **URI** *(string) --*
+
+            URI of the grantee group.
+
+        - **Permission** *(string) --*
+
+          Logging permissions assigned to the Grantee for the bucket.
+
+    - **TargetPrefix** *(string) --* **[REQUIRED]**
+
+      A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a
+      single bucket, you can use a prefix to distinguish which log files came from which bucket.
+    """
+
+
+_ClientPutBucketLoggingBucketLoggingStatusTypeDef = TypedDict(
+    "_ClientPutBucketLoggingBucketLoggingStatusTypeDef",
+    {"LoggingEnabled": ClientPutBucketLoggingBucketLoggingStatusLoggingEnabledTypeDef},
+    total=False,
+)
+
+
+class ClientPutBucketLoggingBucketLoggingStatusTypeDef(
+    _ClientPutBucketLoggingBucketLoggingStatusTypeDef
+):
+    """
+    Type definition for `ClientPutBucketLogging` `BucketLoggingStatus`
+
+    - **LoggingEnabled** *(dict) --*
+
+      - **TargetBucket** *(string) --* **[REQUIRED]**
+
+        Specifies the bucket where you want Amazon S3 to store server access logs. You can have your
+        logs delivered to any bucket that you own, including the same bucket that is being logged.
+        You can also configure multiple buckets to deliver their logs to the same target bucket. In
+        this case you should choose a different TargetPrefix for each source bucket so that the
+        delivered log files can be distinguished by key.
+
+      - **TargetGrants** *(list) --*
+
+        - *(dict) --*
+
+          - **Grantee** *(dict) --*
+
+            - **DisplayName** *(string) --*
+
+              Screen name of the grantee.
+
+            - **EmailAddress** *(string) --*
+
+              Email address of the grantee.
+
+            - **ID** *(string) --*
+
+              The canonical user ID of the grantee.
+
+            - **Type** *(string) --* **[REQUIRED]**
+
+              Type of grantee
+
+            - **URI** *(string) --*
+
+              URI of the grantee group.
+
+          - **Permission** *(string) --*
+
+            Logging permissions assigned to the Grantee for the bucket.
+
+      - **TargetPrefix** *(string) --* **[REQUIRED]**
+
+        A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a
+        single bucket, you can use a prefix to distinguish which log files came from which bucket.
+    """
+
+
+_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDef = TypedDict(
+    "_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDef(
+    _ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDef
+):
+    """
+    Type definition for `ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAnd` `Tags`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef = TypedDict(
+    "_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef",
+    {
+        "Prefix": str,
+        "Tags": List[
+            ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTagsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef(
+    _ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef
+):
+    """
+    Type definition for `ClientPutBucketMetricsConfigurationMetricsConfigurationFilter` `And`
+
+    A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The
+    operator must have at least two predicates, and an object must match all of the predicates in
+    order for the filter to apply.
+
+    - **Prefix** *(string) --*
+
+      The prefix used when evaluating an AND predicate.
+
+    - **Tags** *(list) --*
+
+      The list of tags used when evaluating an AND predicate.
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTagTypeDef = TypedDict(
+    "_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTagTypeDef",
+    {"Key": str, "Value": str},
+)
+
+
+class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTagTypeDef(
+    _ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTagTypeDef
+):
+    """
+    Type definition for `ClientPutBucketMetricsConfigurationMetricsConfigurationFilter` `Tag`
+
+    The tag used when evaluating a metrics filter.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef = TypedDict(
+    "_ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef",
+    {
+        "Prefix": str,
+        "Tag": ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTagTypeDef,
+        "And": ClientPutBucketMetricsConfigurationMetricsConfigurationFilterAndTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef(
+    _ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketMetricsConfigurationMetricsConfiguration` `Filter`
+
+    Specifies a metrics configuration filter. The metrics configuration will only include objects
+    that meet the filter's criteria. A filter must be a prefix, a tag, or a conjunction
+    (MetricsAndOperator).
+
+    - **Prefix** *(string) --*
+
+      The prefix used when evaluating a metrics filter.
+
+    - **Tag** *(dict) --*
+
+      The tag used when evaluating a metrics filter.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        Name of the tag.
+
+      - **Value** *(string) --* **[REQUIRED]**
+
+        Value of the tag.
+
+    - **And** *(dict) --*
+
+      A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The
+      operator must have at least two predicates, and an object must match all of the predicates in
+      order for the filter to apply.
+
+      - **Prefix** *(string) --*
+
+        The prefix used when evaluating an AND predicate.
+
+      - **Tags** *(list) --*
+
+        The list of tags used when evaluating an AND predicate.
+
+        - *(dict) --*
+
+          - **Key** *(string) --* **[REQUIRED]**
+
+            Name of the tag.
+
+          - **Value** *(string) --* **[REQUIRED]**
+
+            Value of the tag.
+    """
+
+
+_RequiredClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef = TypedDict(
+    "_RequiredClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef",
+    {"Id": str},
+)
+_OptionalClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef = TypedDict(
+    "_OptionalClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef",
+    {"Filter": ClientPutBucketMetricsConfigurationMetricsConfigurationFilterTypeDef},
+    total=False,
+)
+
+
+class ClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef(
+    _RequiredClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef,
+    _OptionalClientPutBucketMetricsConfigurationMetricsConfigurationTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketMetricsConfiguration` `MetricsConfiguration`
+
+    Specifies the metrics configuration.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The ID used to identify the metrics configuration.
+
+    - **Filter** *(dict) --*
+
+      Specifies a metrics configuration filter. The metrics configuration will only include objects
+      that meet the filter's criteria. A filter must be a prefix, a tag, or a conjunction
+      (MetricsAndOperator).
+
+      - **Prefix** *(string) --*
+
+        The prefix used when evaluating a metrics filter.
+
+      - **Tag** *(dict) --*
+
+        The tag used when evaluating a metrics filter.
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+
+      - **And** *(dict) --*
+
+        A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The
+        operator must have at least two predicates, and an object must match all of the predicates in
+        order for the filter to apply.
+
+        - **Prefix** *(string) --*
+
+          The prefix used when evaluating an AND predicate.
+
+        - **Tags** *(list) --*
+
+          The list of tags used when evaluating an AND predicate.
+
+          - *(dict) --*
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              Name of the tag.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              Value of the tag.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef",
+    {
+        "Key": ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef = TypedDict(
+    "_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef",
+    {"LambdaFunctionArn": str, "Events": List[str]},
+)
+_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef = TypedDict(
+    "_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef(
+    _RequiredClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef,
+    _OptionalClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfiguration` `LambdaFunctionConfigurations`
+
+    A container for specifying the configuration for AWS Lambda notifications.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **LambdaFunctionArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the
+      specified event type occurs.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more
+      information, see `Supported Event Types
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterTypeDef",
+    {
+        "Key": ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef = TypedDict(
+    "_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef",
+    {"QueueArn": str, "Events": List[str]},
+)
+_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef = TypedDict(
+    "_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef(
+    _RequiredClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef,
+    _OptionalClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfiguration` `QueueConfigurations`
+
+    Specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon
+    SQS) queue when Amazon S3 detects specified events.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **QueueArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+      message when it detects events of the specified type.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef",
+    {"Name": str, "Value": str},
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKey` `FilterRules`
+
+    Specifies the Amazon S3 object key name to filter on and whether to filter on the
+    suffix or prefix of the key name.
+
+    - **Name** *(string) --*
+
+      The object key name prefix or suffix identifying one or more objects to which the
+      filtering rule applies. The maximum length is 1,024 characters. Overlapping
+      prefixes and suffixes are not supported. For more information, see `Configuring
+      Event Notifications
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+      *Amazon Simple Storage Service Developer Guide* .
+
+    - **Value** *(string) --*
+
+      The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyTypeDef",
+    {
+        "FilterRules": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyFilterRulesTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilter` `Key`
+
+    - **FilterRules** *(list) --*
+
+      - *(dict) --*
+
+        Specifies the Amazon S3 object key name to filter on and whether to filter on the
+        suffix or prefix of the key name.
+
+        - **Name** *(string) --*
+
+          The object key name prefix or suffix identifying one or more objects to which the
+          filtering rule applies. The maximum length is 1,024 characters. Overlapping
+          prefixes and suffixes are not supported. For more information, see `Configuring
+          Event Notifications
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+          *Amazon Simple Storage Service Developer Guide* .
+
+        - **Value** *(string) --*
+
+          The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterTypeDef",
+    {
+        "Key": ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterKeyTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurations` `Filter`
+
+    - **Key** *(dict) --*
+
+      - **FilterRules** *(list) --*
+
+        - *(dict) --*
+
+          Specifies the Amazon S3 object key name to filter on and whether to filter on the
+          suffix or prefix of the key name.
+
+          - **Name** *(string) --*
+
+            The object key name prefix or suffix identifying one or more objects to which the
+            filtering rule applies. The maximum length is 1,024 characters. Overlapping
+            prefixes and suffixes are not supported. For more information, see `Configuring
+            Event Notifications
+            <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+            *Amazon Simple Storage Service Developer Guide* .
+
+          - **Value** *(string) --*
+
+            The value that the filter searches for in object key names.
+    """
+
+
+_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef = TypedDict(
+    "_RequiredClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef",
+    {"TopicArn": str, "Events": List[str]},
+)
+_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef = TypedDict(
+    "_OptionalClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef",
+    {
+        "Id": str,
+        "Filter": ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsFilterTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef(
+    _RequiredClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef,
+    _OptionalClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfigurationNotificationConfiguration` `TopicConfigurations`
+
+    A container for specifying the configuration for publication of messages to an Amazon Simple
+    Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **TopicArn** *(string) --* **[REQUIRED]**
+
+      The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a
+      message when it detects events of the specified type.
+
+    - **Events** *(list) --* **[REQUIRED]**
+
+      The Amazon S3 bucket event about which to send notifications. For more information, see
+      `Supported Event Types
+      <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+      Simple Storage Service Developer Guide* .
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Filter** *(dict) --*
+
+      - **Key** *(dict) --*
+
+        - **FilterRules** *(list) --*
+
+          - *(dict) --*
+
+            Specifies the Amazon S3 object key name to filter on and whether to filter on the
+            suffix or prefix of the key name.
+
+            - **Name** *(string) --*
+
+              The object key name prefix or suffix identifying one or more objects to which the
+              filtering rule applies. The maximum length is 1,024 characters. Overlapping
+              prefixes and suffixes are not supported. For more information, see `Configuring
+              Event Notifications
+              <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+              *Amazon Simple Storage Service Developer Guide* .
+
+            - **Value** *(string) --*
+
+              The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef",
+    {
+        "TopicConfigurations": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationTopicConfigurationsTypeDef
+        ],
+        "QueueConfigurations": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationQueueConfigurationsTypeDef
+        ],
+        "LambdaFunctionConfigurations": List[
+            ClientPutBucketNotificationConfigurationNotificationConfigurationLambdaFunctionConfigurationsTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef(
+    _ClientPutBucketNotificationConfigurationNotificationConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationConfiguration` `NotificationConfiguration`
+
+    - **TopicConfigurations** *(list) --*
+
+      The topic to which notifications are sent and the events for which notifications are generated.
+
+      - *(dict) --*
+
+        A container for specifying the configuration for publication of messages to an Amazon Simple
+        Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **TopicArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a
+          message when it detects events of the specified type.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          The Amazon S3 bucket event about which to send notifications. For more information, see
+          `Supported Event Types
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+
+    - **QueueConfigurations** *(list) --*
+
+      The Amazon Simple Queue Service queues to publish messages to and the events for which to
+      publish messages.
+
+      - *(dict) --*
+
+        Specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon
+        SQS) queue when Amazon S3 detects specified events.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **QueueArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a
+          message when it detects events of the specified type.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+
+    - **LambdaFunctionConfigurations** *(list) --*
+
+      Describes the AWS Lambda functions to invoke and the events for which to invoke them.
+
+      - *(dict) --*
+
+        A container for specifying the configuration for AWS Lambda notifications.
+
+        - **Id** *(string) --*
+
+          An optional unique identifier for configurations in a notification configuration. If you
+          don't provide one, Amazon S3 will assign an ID.
+
+        - **LambdaFunctionArn** *(string) --* **[REQUIRED]**
+
+          The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the
+          specified event type occurs.
+
+        - **Events** *(list) --* **[REQUIRED]**
+
+          The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more
+          information, see `Supported Event Types
+          <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the *Amazon
+          Simple Storage Service Developer Guide* .
+
+          - *(string) --*
+
+            The bucket event for which to send notifications.
+
+        - **Filter** *(dict) --*
+
+          - **Key** *(dict) --*
+
+            - **FilterRules** *(list) --*
+
+              - *(dict) --*
+
+                Specifies the Amazon S3 object key name to filter on and whether to filter on the
+                suffix or prefix of the key name.
+
+                - **Name** *(string) --*
+
+                  The object key name prefix or suffix identifying one or more objects to which the
+                  filtering rule applies. The maximum length is 1,024 characters. Overlapping
+                  prefixes and suffixes are not supported. For more information, see `Configuring
+                  Event Notifications
+                  <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html>`__ in the
+                  *Amazon Simple Storage Service Developer Guide* .
+
+                - **Value** *(string) --*
+
+                  The value that the filter searches for in object key names.
+    """
+
+
+_ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigurationTypeDef",
+    {
+        "Id": str,
+        "Event": str,
+        "Events": List[str],
+        "CloudFunction": str,
+        "InvocationRole": str,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigurationTypeDef(
+    _ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationNotificationConfiguration` `CloudFunctionConfiguration`
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **Event** *(string) --*
+
+      The bucket event for which to send notifications.
+
+    - **Events** *(list) --*
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **CloudFunction** *(string) --*
+
+    - **InvocationRole** *(string) --*
+    """
+
+
+_ClientPutBucketNotificationNotificationConfigurationQueueConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketNotificationNotificationConfigurationQueueConfigurationTypeDef",
+    {"Id": str, "Event": str, "Events": List[str], "Queue": str},
+    total=False,
+)
+
+
+class ClientPutBucketNotificationNotificationConfigurationQueueConfigurationTypeDef(
+    _ClientPutBucketNotificationNotificationConfigurationQueueConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationNotificationConfiguration` `QueueConfiguration`
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **Event** *(string) --*
+
+      The bucket event for which to send notifications.
+
+    - **Events** *(list) --*
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Queue** *(string) --*
+    """
+
+
+_ClientPutBucketNotificationNotificationConfigurationTopicConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketNotificationNotificationConfigurationTopicConfigurationTypeDef",
+    {"Id": str, "Events": List[str], "Event": str, "Topic": str},
+    total=False,
+)
+
+
+class ClientPutBucketNotificationNotificationConfigurationTopicConfigurationTypeDef(
+    _ClientPutBucketNotificationNotificationConfigurationTopicConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotificationNotificationConfiguration` `TopicConfiguration`
+
+    - **Id** *(string) --*
+
+      An optional unique identifier for configurations in a notification configuration. If you
+      don't provide one, Amazon S3 will assign an ID.
+
+    - **Events** *(list) --*
+
+      - *(string) --*
+
+        The bucket event for which to send notifications.
+
+    - **Event** *(string) --*
+
+      Bucket event for which to send notifications.
+
+    - **Topic** *(string) --*
+
+      Amazon SNS topic to which Amazon S3 will publish a message to report the specified events for
+      the bucket.
+    """
+
+
+_ClientPutBucketNotificationNotificationConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketNotificationNotificationConfigurationTypeDef",
+    {
+        "TopicConfiguration": ClientPutBucketNotificationNotificationConfigurationTopicConfigurationTypeDef,
+        "QueueConfiguration": ClientPutBucketNotificationNotificationConfigurationQueueConfigurationTypeDef,
+        "CloudFunctionConfiguration": ClientPutBucketNotificationNotificationConfigurationCloudFunctionConfigurationTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketNotificationNotificationConfigurationTypeDef(
+    _ClientPutBucketNotificationNotificationConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketNotification` `NotificationConfiguration`
+
+    - **TopicConfiguration** *(dict) --*
+
+      - **Id** *(string) --*
+
+        An optional unique identifier for configurations in a notification configuration. If you
+        don't provide one, Amazon S3 will assign an ID.
+
+      - **Events** *(list) --*
+
+        - *(string) --*
+
+          The bucket event for which to send notifications.
+
+      - **Event** *(string) --*
+
+        Bucket event for which to send notifications.
+
+      - **Topic** *(string) --*
+
+        Amazon SNS topic to which Amazon S3 will publish a message to report the specified events for
+        the bucket.
+
+    - **QueueConfiguration** *(dict) --*
+
+      - **Id** *(string) --*
+
+        An optional unique identifier for configurations in a notification configuration. If you
+        don't provide one, Amazon S3 will assign an ID.
+
+      - **Event** *(string) --*
+
+        The bucket event for which to send notifications.
+
+      - **Events** *(list) --*
+
+        - *(string) --*
+
+          The bucket event for which to send notifications.
+
+      - **Queue** *(string) --*
+
+    - **CloudFunctionConfiguration** *(dict) --*
+
+      - **Id** *(string) --*
+
+        An optional unique identifier for configurations in a notification configuration. If you
+        don't provide one, Amazon S3 will assign an ID.
+
+      - **Event** *(string) --*
+
+        The bucket event for which to send notifications.
+
+      - **Events** *(list) --*
+
+        - *(string) --*
+
+          The bucket event for which to send notifications.
+
+      - **CloudFunction** *(string) --*
+
+      - **InvocationRole** *(string) --*
+    """
+
+
 _ClientPutBucketReplicationReplicationConfigurationRulesDeleteMarkerReplicationTypeDef = TypedDict(
     "_ClientPutBucketReplicationReplicationConfigurationRulesDeleteMarkerReplicationTypeDef",
     {"Status": str},
@@ -9716,7 +15440,7 @@ class ClientPutBucketReplicationReplicationConfigurationRulesDestinationTypeDef(
       to change replica ownership to the AWS account that owns the destination bucket by
       specifying the ``AccessControlTranslation`` property, this is the account ID of the
       destination bucket owner. For more information, see `Cross-Region Replication Additional
-      Configuration: Change Replica Owner
+      Configuration\\: Change Replica Owner
       <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
       Simple Storage Service Developer Guide* .
 
@@ -10110,7 +15834,7 @@ class ClientPutBucketReplicationReplicationConfigurationRulesTypeDef(
         to change replica ownership to the AWS account that owns the destination bucket by
         specifying the ``AccessControlTranslation`` property, this is the account ID of the
         destination bucket owner. For more information, see `Cross-Region Replication Additional
-        Configuration: Change Replica Owner
+        Configuration\\: Change Replica Owner
         <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
         Simple Storage Service Developer Guide* .
 
@@ -10305,7 +16029,7 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
             to change replica ownership to the AWS account that owns the destination bucket by
             specifying the ``AccessControlTranslation`` property, this is the account ID of the
             destination bucket owner. For more information, see `Cross-Region Replication Additional
-            Configuration: Change Replica Owner
+            Configuration\\: Change Replica Owner
             <https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html>`__ in the *Amazon
             Simple Storage Service Developer Guide* .
 
@@ -10353,6 +16077,465 @@ class ClientPutBucketReplicationReplicationConfigurationTypeDef(
 
               In the current implementation, Amazon S3 doesn't replicate the delete markers. The
               status must be ``Disabled`` .
+    """
+
+
+_ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef", {"Payer": str}
+)
+
+
+class ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef(
+    _ClientPutBucketRequestPaymentRequestPaymentConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketRequestPayment` `RequestPaymentConfiguration`
+
+    - **Payer** *(string) --* **[REQUIRED]**
+
+      Specifies who pays for the download and request fees.
+    """
+
+
+_ClientPutBucketTaggingTaggingTagSetTypeDef = TypedDict(
+    "_ClientPutBucketTaggingTaggingTagSetTypeDef", {"Key": str, "Value": str}
+)
+
+
+class ClientPutBucketTaggingTaggingTagSetTypeDef(
+    _ClientPutBucketTaggingTaggingTagSetTypeDef
+):
+    """
+    Type definition for `ClientPutBucketTaggingTagging` `TagSet`
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      Name of the tag.
+
+    - **Value** *(string) --* **[REQUIRED]**
+
+      Value of the tag.
+    """
+
+
+_ClientPutBucketTaggingTaggingTypeDef = TypedDict(
+    "_ClientPutBucketTaggingTaggingTypeDef",
+    {"TagSet": List[ClientPutBucketTaggingTaggingTagSetTypeDef]},
+)
+
+
+class ClientPutBucketTaggingTaggingTypeDef(_ClientPutBucketTaggingTaggingTypeDef):
+    """
+    Type definition for `ClientPutBucketTagging` `Tagging`
+
+    - **TagSet** *(list) --* **[REQUIRED]**
+
+      - *(dict) --*
+
+        - **Key** *(string) --* **[REQUIRED]**
+
+          Name of the tag.
+
+        - **Value** *(string) --* **[REQUIRED]**
+
+          Value of the tag.
+    """
+
+
+_ClientPutBucketVersioningVersioningConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketVersioningVersioningConfigurationTypeDef",
+    {"MFADelete": str, "Status": str},
+    total=False,
+)
+
+
+class ClientPutBucketVersioningVersioningConfigurationTypeDef(
+    _ClientPutBucketVersioningVersioningConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketVersioning` `VersioningConfiguration`
+
+    - **MFADelete** *(string) --*
+
+      Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is
+      only returned if the bucket has been configured with MFA delete. If the bucket has never been
+      so configured, this element is not returned.
+
+    - **Status** *(string) --*
+
+      The versioning state of the bucket.
+    """
+
+
+_ClientPutBucketWebsiteWebsiteConfigurationErrorDocumentTypeDef = TypedDict(
+    "_ClientPutBucketWebsiteWebsiteConfigurationErrorDocumentTypeDef", {"Key": str}
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationErrorDocumentTypeDef(
+    _ClientPutBucketWebsiteWebsiteConfigurationErrorDocumentTypeDef
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfiguration` `ErrorDocument`
+
+    The name of the error document for the website.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The object key name to use when a 4XX class error occurs.
+    """
+
+
+_ClientPutBucketWebsiteWebsiteConfigurationIndexDocumentTypeDef = TypedDict(
+    "_ClientPutBucketWebsiteWebsiteConfigurationIndexDocumentTypeDef", {"Suffix": str}
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationIndexDocumentTypeDef(
+    _ClientPutBucketWebsiteWebsiteConfigurationIndexDocumentTypeDef
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfiguration` `IndexDocument`
+
+    The name of the index document for the website.
+
+    - **Suffix** *(string) --* **[REQUIRED]**
+
+      A suffix that is appended to a request that is for a directory on the website endpoint (e.g.
+      if the suffix is index.html and you make a request to samplebucket/images/ the data that is
+      returned will be for the object with the key name images/index.html) The suffix must not be
+      empty and must not include a slash character.
+    """
+
+
+_RequiredClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef = TypedDict(
+    "_RequiredClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef",
+    {"HostName": str},
+)
+_OptionalClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef = TypedDict(
+    "_OptionalClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef",
+    {"Protocol": str},
+    total=False,
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef(
+    _RequiredClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef,
+    _OptionalClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfiguration` `RedirectAllRequestsTo`
+
+    The redirect behavior for every request to this bucket's website endpoint.
+
+    .. warning::
+
+      If you specify this property, you can't specify any other property.
+
+    - **HostName** *(string) --* **[REQUIRED]**
+
+      Name of the host where requests are redirected.
+
+    - **Protocol** *(string) --*
+
+      Protocol to use when redirecting requests. The default is the protocol that is used in the
+      original request.
+    """
+
+
+_ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesConditionTypeDef = TypedDict(
+    "_ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesConditionTypeDef",
+    {"HttpErrorCodeReturnedEquals": str, "KeyPrefixEquals": str},
+    total=False,
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesConditionTypeDef(
+    _ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesConditionTypeDef
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfigurationRoutingRules` `Condition`
+
+    A container for describing a condition that must be met for the specified redirect to
+    apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+    ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+    host where you might process the error.
+
+    - **HttpErrorCodeReturnedEquals** *(string) --*
+
+      The HTTP error code when the redirect is applied. In the event of an error, if the error
+      code equals this value, then the specified redirect is applied. Required when parent
+      element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+      both are specified, then both must be true for the redirect to be applied.
+
+    - **KeyPrefixEquals** *(string) --*
+
+      The object key name prefix when the redirect is applied. For example, to redirect
+      requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+      redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+      ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+      element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+      specified. If both conditions are specified, both must be true for the redirect to be
+      applied.
+    """
+
+
+_ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesRedirectTypeDef = TypedDict(
+    "_ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesRedirectTypeDef",
+    {
+        "HostName": str,
+        "HttpRedirectCode": str,
+        "Protocol": str,
+        "ReplaceKeyPrefixWith": str,
+        "ReplaceKeyWith": str,
+    },
+    total=False,
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesRedirectTypeDef(
+    _ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesRedirectTypeDef
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfigurationRoutingRules` `Redirect`
+
+    Container for redirect information. You can redirect requests to another host, to another
+    page, or with another protocol. In the event of an error, you can specify a different error
+    code to return.
+
+    - **HostName** *(string) --*
+
+      The host name to use in the redirect request.
+
+    - **HttpRedirectCode** *(string) --*
+
+      The HTTP redirect code to use on the response. Not required if one of the siblings is
+      present.
+
+    - **Protocol** *(string) --*
+
+      Protocol to use when redirecting requests. The default is the protocol that is used in
+      the original request.
+
+    - **ReplaceKeyPrefixWith** *(string) --*
+
+      The object key prefix to use in the redirect request. For example, to redirect requests
+      for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+      you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+      Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+      siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+    - **ReplaceKeyWith** *(string) --*
+
+      The specific object key to use in the redirect request. For example, redirect request to
+      ``error.html`` . Not required if one of the siblings is present. Can be present only if
+      ``ReplaceKeyPrefixWith`` is not provided.
+    """
+
+
+_RequiredClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef = TypedDict(
+    "_RequiredClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef",
+    {"Redirect": ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesRedirectTypeDef},
+)
+_OptionalClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef = TypedDict(
+    "_OptionalClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef",
+    {
+        "Condition": ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesConditionTypeDef
+    },
+    total=False,
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef(
+    _RequiredClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef,
+    _OptionalClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef,
+):
+    """
+    Type definition for `ClientPutBucketWebsiteWebsiteConfiguration` `RoutingRules`
+
+    Specifies the redirect behavior and when a redirect is applied.
+
+    - **Condition** *(dict) --*
+
+      A container for describing a condition that must be met for the specified redirect to
+      apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+      ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+      host where you might process the error.
+
+      - **HttpErrorCodeReturnedEquals** *(string) --*
+
+        The HTTP error code when the redirect is applied. In the event of an error, if the error
+        code equals this value, then the specified redirect is applied. Required when parent
+        element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+        both are specified, then both must be true for the redirect to be applied.
+
+      - **KeyPrefixEquals** *(string) --*
+
+        The object key name prefix when the redirect is applied. For example, to redirect
+        requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+        redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+        ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+        element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+        specified. If both conditions are specified, both must be true for the redirect to be
+        applied.
+
+    - **Redirect** *(dict) --* **[REQUIRED]**
+
+      Container for redirect information. You can redirect requests to another host, to another
+      page, or with another protocol. In the event of an error, you can specify a different error
+      code to return.
+
+      - **HostName** *(string) --*
+
+        The host name to use in the redirect request.
+
+      - **HttpRedirectCode** *(string) --*
+
+        The HTTP redirect code to use on the response. Not required if one of the siblings is
+        present.
+
+      - **Protocol** *(string) --*
+
+        Protocol to use when redirecting requests. The default is the protocol that is used in
+        the original request.
+
+      - **ReplaceKeyPrefixWith** *(string) --*
+
+        The object key prefix to use in the redirect request. For example, to redirect requests
+        for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+        you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+        Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+        siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+      - **ReplaceKeyWith** *(string) --*
+
+        The specific object key to use in the redirect request. For example, redirect request to
+        ``error.html`` . Not required if one of the siblings is present. Can be present only if
+        ``ReplaceKeyPrefixWith`` is not provided.
+    """
+
+
+_ClientPutBucketWebsiteWebsiteConfigurationTypeDef = TypedDict(
+    "_ClientPutBucketWebsiteWebsiteConfigurationTypeDef",
+    {
+        "ErrorDocument": ClientPutBucketWebsiteWebsiteConfigurationErrorDocumentTypeDef,
+        "IndexDocument": ClientPutBucketWebsiteWebsiteConfigurationIndexDocumentTypeDef,
+        "RedirectAllRequestsTo": ClientPutBucketWebsiteWebsiteConfigurationRedirectAllRequestsToTypeDef,
+        "RoutingRules": List[
+            ClientPutBucketWebsiteWebsiteConfigurationRoutingRulesTypeDef
+        ],
+    },
+    total=False,
+)
+
+
+class ClientPutBucketWebsiteWebsiteConfigurationTypeDef(
+    _ClientPutBucketWebsiteWebsiteConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutBucketWebsite` `WebsiteConfiguration`
+
+    - **ErrorDocument** *(dict) --*
+
+      The name of the error document for the website.
+
+      - **Key** *(string) --* **[REQUIRED]**
+
+        The object key name to use when a 4XX class error occurs.
+
+    - **IndexDocument** *(dict) --*
+
+      The name of the index document for the website.
+
+      - **Suffix** *(string) --* **[REQUIRED]**
+
+        A suffix that is appended to a request that is for a directory on the website endpoint (e.g.
+        if the suffix is index.html and you make a request to samplebucket/images/ the data that is
+        returned will be for the object with the key name images/index.html) The suffix must not be
+        empty and must not include a slash character.
+
+    - **RedirectAllRequestsTo** *(dict) --*
+
+      The redirect behavior for every request to this bucket's website endpoint.
+
+      .. warning::
+
+        If you specify this property, you can't specify any other property.
+
+      - **HostName** *(string) --* **[REQUIRED]**
+
+        Name of the host where requests are redirected.
+
+      - **Protocol** *(string) --*
+
+        Protocol to use when redirecting requests. The default is the protocol that is used in the
+        original request.
+
+    - **RoutingRules** *(list) --*
+
+      Rules that define when a redirect is applied and the redirect behavior.
+
+      - *(dict) --*
+
+        Specifies the redirect behavior and when a redirect is applied.
+
+        - **Condition** *(dict) --*
+
+          A container for describing a condition that must be met for the specified redirect to
+          apply. For example, 1. If request is for pages in the ``/docs`` folder, redirect to the
+          ``/documents`` folder. 2. If request results in HTTP error 4xx, redirect request to another
+          host where you might process the error.
+
+          - **HttpErrorCodeReturnedEquals** *(string) --*
+
+            The HTTP error code when the redirect is applied. In the event of an error, if the error
+            code equals this value, then the specified redirect is applied. Required when parent
+            element ``Condition`` is specified and sibling ``KeyPrefixEquals`` is not specified. If
+            both are specified, then both must be true for the redirect to be applied.
+
+          - **KeyPrefixEquals** *(string) --*
+
+            The object key name prefix when the redirect is applied. For example, to redirect
+            requests for ``ExamplePage.html`` , the key prefix will be ``ExamplePage.html`` . To
+            redirect request for all pages with the prefix ``docs/`` , the key prefix will be
+            ``/docs`` , which identifies all objects in the docs/ folder. Required when the parent
+            element ``Condition`` is specified and sibling ``HttpErrorCodeReturnedEquals`` is not
+            specified. If both conditions are specified, both must be true for the redirect to be
+            applied.
+
+        - **Redirect** *(dict) --* **[REQUIRED]**
+
+          Container for redirect information. You can redirect requests to another host, to another
+          page, or with another protocol. In the event of an error, you can specify a different error
+          code to return.
+
+          - **HostName** *(string) --*
+
+            The host name to use in the redirect request.
+
+          - **HttpRedirectCode** *(string) --*
+
+            The HTTP redirect code to use on the response. Not required if one of the siblings is
+            present.
+
+          - **Protocol** *(string) --*
+
+            Protocol to use when redirecting requests. The default is the protocol that is used in
+            the original request.
+
+          - **ReplaceKeyPrefixWith** *(string) --*
+
+            The object key prefix to use in the redirect request. For example, to redirect requests
+            for all pages with prefix ``docs/`` (objects in the ``docs/`` folder) to ``documents/`` ,
+            you can set a condition block with ``KeyPrefixEquals`` set to ``docs/`` and in the
+            Redirect set ``ReplaceKeyPrefixWith`` to ``/documents`` . Not required if one of the
+            siblings is present. Can be present only if ``ReplaceKeyWith`` is not provided.
+
+          - **ReplaceKeyWith** *(string) --*
+
+            The specific object key to use in the redirect request. For example, redirect request to
+            ``error.html`` . Not required if one of the siblings is present. Can be present only if
+            ``ReplaceKeyPrefixWith`` is not provided.
     """
 
 
@@ -10864,6 +17047,70 @@ class ClientPutObjectTaggingTaggingTypeDef(_ClientPutObjectTaggingTaggingTypeDef
         - **Value** *(string) --* **[REQUIRED]**
 
           Value of the tag.
+    """
+
+
+_ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef = TypedDict(
+    "_ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef",
+    {
+        "BlockPublicAcls": bool,
+        "IgnorePublicAcls": bool,
+        "BlockPublicPolicy": bool,
+        "RestrictPublicBuckets": bool,
+    },
+    total=False,
+)
+
+
+class ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef(
+    _ClientPutPublicAccessBlockPublicAccessBlockConfigurationTypeDef
+):
+    """
+    Type definition for `ClientPutPublicAccessBlock` `PublicAccessBlockConfiguration`
+
+    The ``PublicAccessBlock`` configuration that you want to apply to this Amazon S3 bucket. You can
+    enable the configuration options in any combination. For more information about when Amazon S3
+    considers a bucket or object public, see `The Meaning of "Public"
+    <https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status>`__
+    in the *Amazon Simple Storage Service Developer Guide* .
+
+    - **BlockPublicAcls** *(boolean) --*
+
+      Specifies whether Amazon S3 should block public access control lists (ACLs) for this bucket and
+      objects in this bucket. Setting this element to ``TRUE`` causes the following behavior:
+
+      * PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public.
+
+      * PUT Object calls fail if the request includes a public ACL.
+
+      Enabling this setting doesn't affect existing policies or ACLs.
+
+    - **IgnorePublicAcls** *(boolean) --*
+
+      Specifies whether Amazon S3 should ignore public ACLs for this bucket and objects in this
+      bucket. Setting this element to ``TRUE`` causes Amazon S3 to ignore all public ACLs on this
+      bucket and objects in this bucket.
+
+      Enabling this setting doesn't affect the persistence of any existing ACLs and doesn't prevent
+      new public ACLs from being set.
+
+    - **BlockPublicPolicy** *(boolean) --*
+
+      Specifies whether Amazon S3 should block public bucket policies for this bucket. Setting this
+      element to ``TRUE`` causes Amazon S3 to reject calls to PUT Bucket policy if the specified
+      bucket policy allows public access.
+
+      Enabling this setting doesn't affect existing bucket policies.
+
+    - **RestrictPublicBuckets** *(boolean) --*
+
+      Specifies whether Amazon S3 should restrict public bucket policies for this bucket. Setting
+      this element to ``TRUE`` restricts access to this bucket to only AWS services and authorized
+      users within this account if the bucket has a public policy.
+
+      Enabling this setting doesn't affect previously stored bucket policies, except that public and
+      cross-account access within any public bucket policy, including non-public delegation to
+      specific accounts, is blocked.
     """
 
 
@@ -14113,6 +20360,29 @@ class ObjectDeleteResponseTypeDef(_ObjectDeleteResponseTypeDef):
     """
 
 
+_ObjectExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_ObjectExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ObjectExistsWaitWaiterConfigTypeDef(_ObjectExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ObjectExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
+    """
+
+
 _ObjectGetResponseTypeDef = TypedDict(
     "_ObjectGetResponseTypeDef",
     {
@@ -14294,6 +20564,29 @@ class ObjectGetResponseTypeDef(_ObjectGetResponseTypeDef):
 
       Indicates whether this object has an active legal hold. This field is only returned if you
       have permission to view an object's legal hold status.
+    """
+
+
+_ObjectNotExistsWaitWaiterConfigTypeDef = TypedDict(
+    "_ObjectNotExistsWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class ObjectNotExistsWaitWaiterConfigTypeDef(_ObjectNotExistsWaitWaiterConfigTypeDef):
+    """
+    Type definition for `ObjectNotExistsWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 5
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 20
     """
 
 

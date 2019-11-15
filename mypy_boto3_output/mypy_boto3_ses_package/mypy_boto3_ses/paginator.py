@@ -17,7 +17,7 @@ from mypy_boto3_ses.type_defs import (
 
 
 class ListConfigurationSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListConfigurationSetsPaginatePaginationConfigTypeDef = None,
@@ -110,7 +110,7 @@ class ListConfigurationSets(Boto3Paginator):
 
 
 class ListCustomVerificationEmailTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListCustomVerificationEmailTemplatesPaginatePaginationConfigTypeDef = None,
@@ -211,7 +211,7 @@ class ListCustomVerificationEmailTemplates(Boto3Paginator):
 
 
 class ListIdentities(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         IdentityType: str = None,
@@ -290,7 +290,7 @@ class ListIdentities(Boto3Paginator):
 
 
 class ListReceiptRuleSets(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
         PaginationConfig: ListReceiptRuleSetsPaginatePaginationConfigTypeDef = None,
@@ -384,7 +384,7 @@ class ListReceiptRuleSets(Boto3Paginator):
 
 
 class ListTemplates(Boto3Paginator):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTemplatesPaginatePaginationConfigTypeDef = None
     ) -> ListTemplatesPaginateResponseTypeDef:

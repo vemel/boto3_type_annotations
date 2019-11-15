@@ -1,11 +1,10 @@
 "Main interface for secretsmanager Client"
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Dict, List
 from botocore.client import BaseClient
 from botocore.paginate import Paginator
 from botocore.waiter import Waiter
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
 from mypy_boto3_secretsmanager.type_defs import (
     ClientCancelRotateSecretResponseTypeDef,
     ClientCreateSecretResponseTypeDef,
@@ -23,13 +22,14 @@ from mypy_boto3_secretsmanager.type_defs import (
     ClientRestoreSecretResponseTypeDef,
     ClientRotateSecretResponseTypeDef,
     ClientRotateSecretRotationRulesTypeDef,
+    ClientTagResourceTagsTypeDef,
     ClientUpdateSecretResponseTypeDef,
     ClientUpdateSecretVersionStageResponseTypeDef,
 )
 
 
 class Client(BaseClient):
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
         Check if an operation can be paginated.
@@ -46,7 +46,7 @@ class Client(BaseClient):
             ``False`` otherwise.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_rotate_secret(
         self, SecretId: str
     ) -> ClientCancelRotateSecretResponseTypeDef:
@@ -154,7 +154,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_secret(
         self,
         Name: str,
@@ -461,7 +461,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_resource_policy(
         self, SecretId: str
     ) -> ClientDeleteResourcePolicyResponseTypeDef:
@@ -535,7 +535,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_secret(
         self,
         SecretId: str,
@@ -668,7 +668,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_secret(self, SecretId: str) -> ClientDescribeSecretResponseTypeDef:
         """
         Retrieves the details of a secret. It does not include the encrypted fields. Only those fields that
@@ -860,7 +860,7 @@ class Client(BaseClient):
             - **OwningService** *(string) --*
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def generate_presigned_url(
         self,
         ClientMethod: str,
@@ -889,7 +889,7 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(self, operation_name: str) -> Paginator:
         """
         Create a paginator for an operation.
@@ -910,7 +910,7 @@ class Client(BaseClient):
         :return: A paginator object.
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_random_password(
         self,
         PasswordLength: int = None,
@@ -976,7 +976,7 @@ class Client(BaseClient):
           The following are the punctuation characters that *can* be included in the generated password if
           you don't explicitly exclude them with ``ExcludeCharacters`` or ``ExcludePunctuation`` :
 
-           ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~``
+           ``! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \\ ] ^ _ ` { | } ~``
 
         :type ExcludeUppercase: boolean
         :param ExcludeUppercase:
@@ -1023,7 +1023,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_policy(
         self, SecretId: str
     ) -> ClientGetResourcePolicyResponseTypeDef:
@@ -1109,7 +1109,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_secret_value(
         self, SecretId: str, VersionId: str = None, VersionStage: str = None
     ) -> ClientGetSecretValueResponseTypeDef:
@@ -1255,7 +1255,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_waiter(self, waiter_name: str) -> Waiter:
         """
         Returns an object that can wait for some condition.
@@ -1268,7 +1268,7 @@ class Client(BaseClient):
         :rtype: botocore.waiter.Waiter
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_secret_version_ids(
         self,
         SecretId: str,
@@ -1434,7 +1434,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_secrets(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListSecretsResponseTypeDef:
@@ -1657,7 +1657,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_resource_policy(
         self, SecretId: str, ResourcePolicy: str
     ) -> ClientPutResourcePolicyResponseTypeDef:
@@ -1750,7 +1750,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def put_secret_value(
         self,
         SecretId: str,
@@ -1986,7 +1986,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def restore_secret(self, SecretId: str) -> ClientRestoreSecretResponseTypeDef:
         """
         Cancels the scheduled deletion of a secret by removing the ``DeletedDate`` time stamp. This makes
@@ -2054,7 +2054,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def rotate_secret(
         self,
         SecretId: str,
@@ -2220,8 +2220,10 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
-    def tag_resource(self, SecretId: str, Tags: List[TypeDefEC2Tag]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def tag_resource(
+        self, SecretId: str, Tags: List[ClientTagResourceTagsTypeDef]
+    ) -> None:
         """
         Attaches one or more tags, each consisting of a key name and a value, to the specified secret. Tags
         are part of the secret's overall metadata, and are not associated with any specific version of the
@@ -2323,8 +2325,8 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
-    def untag_resource(self, SecretId: str, TagKeys: List[Any]) -> None:
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def untag_resource(self, SecretId: str, TagKeys: List[str]) -> None:
         """
         Removes one or more tags from the specified secret.
 
@@ -2395,7 +2397,7 @@ class Client(BaseClient):
         :returns: None
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_secret(
         self,
         SecretId: str,
@@ -2590,7 +2592,7 @@ class Client(BaseClient):
           For example, the following string is surrounded by double-quotes. All of the embedded double
           quotes are escaped:
 
-           ``"[{\"username\":\"bob\"},{\"password\":\"abc123xyz456\"}]"``
+           ``"[{\\"username\\":\\"bob\\"},{\\"password\\":\\"abc123xyz456\\"}]"``
 
         :rtype: dict
         :returns:
@@ -2631,7 +2633,7 @@ class Client(BaseClient):
 
         """
 
-    # pylint: disable=arguments-differ
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_secret_version_stage(
         self,
         SecretId: str,
