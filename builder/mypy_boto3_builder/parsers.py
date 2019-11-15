@@ -129,8 +129,8 @@ def parse_collections(resource: Boto3ServiceResource,) -> List[Collection]:
         methods = parse_methods(
             collection.name, get_public_methods(getattr(resource, collection.name)),
         )
-        for method in methods:
-            method.decorators.append(TypeAnnotation(classmethod))
+        # for method in methods:
+        #     method.decorators.append(TypeAnnotation(classmethod))
         result.append(
             Collection(
                 name=collection.name,

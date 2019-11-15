@@ -1,6 +1,7 @@
 import re
 import inspect
 from typing import List, Any, Pattern, Optional, Dict, Tuple
+from types import FunctionType
 
 
 from mypy_boto3_builder.structures import Argument
@@ -9,8 +10,9 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
-from mypy_boto3_builder.type_map import TYPE_MAP
-from mypy_boto3_builder.named_type_map import NAMED_TYPE_MAP
+from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
+from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
+from mypy_boto3_builder.type_maps.method_type_map import METHOD_TYPE_MAP
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.indent_trimmer import IndentTrimmer
 
@@ -102,7 +104,8 @@ class DocstringParser:
         return self.DEFAULT_METHOD_ARGUMENTS[method_name]
 
     @classmethod
-    def get_function_arguments(cls, func: Any) -> List[Argument]:
+    def get_function_arguments(cls, func: FunctionType) -> List[Argument]:
+        func_name = func.__name__
         argspec = inspect.getfullargspec(func)
         arguments: List[Argument] = []
         for argument_name in argspec.args:
@@ -131,6 +134,11 @@ class DocstringParser:
             arguments.append(
                 Argument(argspec.varkw, prefix="**", type=TypeAnnotation(Any))
             )
+
+        for argument in arguments:
+            method_type = f"{func_name}: {argument.name}"
+            if method_type in METHOD_TYPE_MAP:
+                argument.type = METHOD_TYPE_MAP[method_type]
 
         return arguments
 
