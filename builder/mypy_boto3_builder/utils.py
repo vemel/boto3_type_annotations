@@ -1,9 +1,12 @@
+import re
 from pathlib import Path
 from typing import Optional, List
 
 import black
 
 from mypy_boto3_builder.constants import LINE_LENGTH
+
+RE_BACKSLASH = re.compile(r"\\{1,2}")
 
 
 def clean_doc(doc: Optional[str]) -> str:
@@ -14,7 +17,7 @@ def clean_doc(doc: Optional[str]) -> str:
     result: List[str] = []
     for line in lines:
         line = line.rstrip()
-        line = line.replace("\\", "\\\\")
+        line = RE_BACKSLASH.sub(r"\\\\", line)
         line = line.replace('"""', "'''")
         if not line and result and not result[-1]:
             continue
