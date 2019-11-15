@@ -451,4 +451,10 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "list(:py:class:`s3.ObjectSummary`)": TypeSubscript(
         TypeAnnotation(List), [InternalImport("ObjectSummary", ServiceName.s3)]
     ),
+    "botocore.waiter.SingleWaiterConfig": ExternalImport(
+        source="botocore.waiter", name="SingleWaiterConfig"
+    ),
+    "callable": TypeSubscript(
+        TypeAnnotation(Callable), [TypeAnnotation(...), TypeAnnotation(Any)]
+    ),
 }

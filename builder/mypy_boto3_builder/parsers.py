@@ -13,7 +13,6 @@ from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 from boto3.session import Session
 from boto3.utils import ServiceContext
 from botocore import xform_name
-from botocore.docs.method import get_instance_public_methods
 from botocore.exceptions import UnknownServiceError
 from botocore.client import BaseClient
 
@@ -89,10 +88,10 @@ def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
     class_members = inspect.getmembers(inspect_class)
     methods: Dict[str, FunctionType] = {}
     for name, member in class_members:
-        if name.startswith("_") and not name.startswith("__"):
+        if not inspect.ismethod(member):
             continue
 
-        if name[0].isupper():
+        if name.startswith("_"):
             continue
 
         methods[name] = member
@@ -120,7 +119,7 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
         service_name=service_name,
         boto3_client=client,
         docstring=clean_doc(getdoc(client)),
-        methods=parse_methods("Client", get_instance_public_methods(client)),
+        methods=parse_methods("Client", get_public_methods(client)),
     )
 
 
@@ -128,8 +127,7 @@ def parse_collections(resource: Boto3ServiceResource,) -> List[Collection]:
     result: List[Collection] = []
     for collection in resource.meta.resource_model.collections:
         methods = parse_methods(
-            collection.name,
-            get_instance_public_methods(getattr(resource, collection.name)),
+            collection.name, get_public_methods(getattr(resource, collection.name)),
         )
         for method in methods:
             method.decorators.append(TypeAnnotation(classmethod))
@@ -208,9 +206,7 @@ def parse_service_resource(
     except ResourceNotExistsError:
         return None
 
-    methods = parse_methods(
-        "ServiceResource", get_instance_public_methods(service_resource)
-    )
+    methods = parse_methods("ServiceResource", get_public_methods(service_resource))
 
     attributes: List[Attribute] = []
     attributes.extend(parse_attributes(service_resource))
@@ -287,7 +283,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 name=waiter.name,
                 boto3_waiter=waiter,
                 docstring=clean_doc(getdoc(waiter)),
-                methods=parse_methods(waiter_name, get_instance_public_methods(waiter)),
+                methods=parse_methods(waiter_name, get_public_methods(waiter)),
             )
         )
 
@@ -313,7 +309,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                     boto3_paginator=paginator,
                     docstring=clean_doc(getdoc(paginator)),
                     methods=parse_methods(
-                        paginator_name, get_instance_public_methods(paginator)
+                        paginator_name, get_public_methods(paginator)
                     ),
                 )
             )
