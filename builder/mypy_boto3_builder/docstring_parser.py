@@ -174,12 +174,8 @@ class DocstringParser:
                     argument = self._find_argument_or_append(argument_name, arguments)
                     argument.type = self.parse_type(argument_type_str, argument_name)
                 continue
-            if line.startswith(":rtype:"):
-                break
-            if line.startswith(":returns:"):
-                break
-            if line.startswith(":yields:"):
-                break
+            if line.startswith(":"):
+                argument = None
             if argument:
                 if argument.name not in type_syntax:
                     type_syntax[argument.name] = []
