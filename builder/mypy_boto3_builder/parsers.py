@@ -476,7 +476,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         result.client.methods.append(
             Method(
                 name="get_paginator",
-                docstring=f"Stub for `get_paginator` method.",
+                docstring=clean_doc(getdoc(client.boto3_client.get_paginator)),
                 arguments=[
                     Argument("self"),
                     Argument("operation_name", TypeAnnotation(str)),
@@ -491,7 +491,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         result.client.methods.append(
             Method(
                 name="get_waiter",
-                docstring=f"Stub for `get_waiter` method.",
+                docstring=clean_doc(getdoc(client.boto3_client.get_waiter)),
                 arguments=[
                     Argument("self"),
                     Argument("waiter_name", TypeAnnotation(str)),
