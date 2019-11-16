@@ -137,6 +137,7 @@ class ClassRecord:
 
 @dataclass
 class Collection(ClassRecord):
+    attribute_name: str = "collection"
     type: FakeAnnotation = TypeAnnotation(Any)
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
@@ -240,11 +241,12 @@ class ServiceResource(ClassRecord):
 
     def get_collections(self) -> List[Collection]:
         collection_names = [i.name for i in self.collections]
-        result = self.collections
+        result: List[Collection] = []
+        result.extend(self.collections)
         for resource in self.sub_resources:
             for collection in resource.collections:
                 if collection.name in collection_names:
-                    continue
+                    raise ValueError(f"Conflicting collections: {collection.name}")
                 collection_names.append(collection.name)
                 result.append(collection)
 

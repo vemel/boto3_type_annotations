@@ -170,7 +170,9 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     )
 
 
-def parse_collections(resource: Boto3ServiceResource) -> List[Collection]:
+def parse_collections(
+    parent_name: str, resource: Boto3ServiceResource
+) -> List[Collection]:
     """
     Extract collections from boto3 resource.
 
@@ -191,7 +193,8 @@ def parse_collections(resource: Boto3ServiceResource) -> List[Collection]:
 
         result.append(
             Collection(
-                name=collection.name,
+                name=f"{parent_name}{get_class_prefix(collection.name)}",
+                attribute_name=collection.name,
                 docstring=clean_doc(getdoc(collection)),
                 type=InternalImport(
                     name=collection.name,
@@ -250,7 +253,9 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     )
 
 
-def parse_resource(resource: Boto3ServiceResource) -> Resource:
+def parse_resource(
+    resource: Boto3ServiceResource, service_name: ServiceName
+) -> Resource:
     """
     Parse boto3 sub Resource data.
 
@@ -272,7 +277,13 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
     attributes.extend(parse_attributes(resource))
     attributes.extend(parse_identifiers(resource))
 
-    collections = parse_collections(resource)
+    collections = parse_collections(name, resource)
+    for collection in collections:
+        attributes.append(
+            Attribute(
+                collection.attribute_name, InternalImport(collection.name, service_name)
+            )
+        )
 
     return Resource(
         name=name,
@@ -311,11 +322,17 @@ def parse_service_resource(
     attributes.extend(parse_attributes(service_resource))
     attributes.extend(parse_identifiers(service_resource))
 
-    collections = parse_collections(service_resource)
+    collections = parse_collections("ServiceResource", service_resource)
+    for collection in collections:
+        attributes.append(
+            Attribute(
+                collection.attribute_name, InternalImport(collection.name, service_name)
+            )
+        )
 
     sub_resources: List[Resource] = []
     for sub_resource in get_sub_resources(session, service_name, service_resource):
-        sub_resources.append(parse_resource(sub_resource))
+        sub_resources.append(parse_resource(sub_resource, service_name))
 
     return ServiceResource(
         service_name=service_name,
