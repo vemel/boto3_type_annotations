@@ -7,6 +7,17 @@ from __future__ import annotations
 
 {{ "\n\n" -}}
 
+__all__ = (
+{% for typed_dict in module.typed_dicts -%}
+    {{ '"' -}}
+    {{ typed_dict.name -}}
+    {{ '"' -}}
+    {{ ",\n" if not loop.last or loop.first else "\n" }}
+{% endfor -%}
+)
+
+{{ "\n\n" -}}
+
 {% for typed_dict in module.typed_dicts -%}
     {% include "common/typed_dict.py.jinja2" with context -%}
     {{ "\n" -}}
