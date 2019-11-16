@@ -7,11 +7,12 @@
 
 ## write_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/service_module.py#L10)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/service_module.py#L13)
 
 ```python
 def write_service_module(
     service_module: ServiceModule,
     output_path: Path,
-) -> None:
+    reformat: bool,
+) -> List[Path]:
 ```

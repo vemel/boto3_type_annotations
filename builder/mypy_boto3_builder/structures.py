@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from typing import List, Set, Optional, Any, Iterable, Dict
+from typing_extensions import overload
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from botocore.client import BaseClient
@@ -14,11 +15,17 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.constants import MODULE_NAME, BOTO3_STUBS_NAME, PYPI_NAME
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.internal_import_record import (
+    InternalImportRecord,
+)
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
+from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
+from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
+from mypy_boto3_builder.enums import ServiceModuleName
 
 
 @dataclass
@@ -97,6 +104,8 @@ class Function:
         types = self.return_type.get_types()
         for argument in self.arguments:
             types.update(argument.get_types())
+        for decorator in self.decorators:
+            types.update(decorator.get_types())
 
         return types
 
@@ -128,6 +137,8 @@ class ClassRecord:
         result: Set[ImportRecord] = set()
         for type_annotation in self.get_types():
             import_record = type_annotation.get_import_record()
+            if not import_record:
+                continue
             if import_record.is_builtins():
                 continue
             result.add(import_record)
@@ -175,6 +186,7 @@ class Resource(ClassRecord):
 
 @dataclass
 class Waiter(ClassRecord):
+    waiter_name: str = "waiter_name"
     boto3_waiter: Boto3Waiter = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
@@ -184,9 +196,27 @@ class Waiter(ClassRecord):
         ]
     )
 
+    def get_import_record(self) -> InternalImportRecord:
+        return InternalImportRecord(
+            source=ServiceModuleName.waiter.value, name=self.name,
+        )
+
+    def get_client_method(self) -> Method:
+        return Method(
+            name="get_waiter",
+            docstring=f"Get Waiter `{self.waiter_name}`.",
+            decorators=[TypeAnnotation(overload)],
+            arguments=[
+                Argument("self"),
+                Argument("waiter_name", TypeLiteral(self.waiter_name)),
+            ],
+            return_type=InternalImport(self.name, module_name=ServiceModuleName.waiter),
+        )
+
 
 @dataclass
 class Paginator(ClassRecord):
+    operation_name: str = "operation_name"
     boto3_paginator: Boto3Paginator = None
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
@@ -195,6 +225,25 @@ class Paginator(ClassRecord):
             )
         ]
     )
+
+    def get_import_record(self) -> InternalImportRecord:
+        return InternalImportRecord(
+            source=ServiceModuleName.paginator.value, name=self.name,
+        )
+
+    def get_client_method(self) -> Method:
+        return Method(
+            name="get_paginator",
+            docstring=f"Get Paginator for `{self.operation_name}` operation.",
+            decorators=[TypeAnnotation(overload)],
+            arguments=[
+                Argument("self"),
+                Argument("operation_name", TypeLiteral(self.operation_name)),
+            ],
+            return_type=InternalImport(
+                self.name, module_name=ServiceModuleName.paginator
+            ),
+        )
 
 
 @dataclass
@@ -279,6 +328,27 @@ class Client(ClassRecord):
     def get_all_names(self) -> List[str]:
         return [self.name]
 
+    @staticmethod
+    def get_paginator_method() -> Method:
+        return Method(
+            name="get_paginator",
+            docstring=f"Stub for `get_paginator` method.",
+            arguments=[
+                Argument("self"),
+                Argument("operation_name", TypeAnnotation(str)),
+            ],
+            return_type=TypeAnnotation(Boto3Paginator),
+        )
+
+    @staticmethod
+    def get_waiter_method() -> Method:
+        return Method(
+            name="get_waiter",
+            docstring=f"Stub for `get_waiter` method.",
+            arguments=[Argument("self"), Argument("waiter_name", TypeAnnotation(str)),],
+            return_type=TypeAnnotation(Boto3Waiter),
+        )
+
 
 @dataclass
 class ServiceModule:
@@ -341,6 +411,7 @@ class ServiceModule:
             import_records.add(
                 import_record.get_external(self.service_name.module_name)
             )
+
         return ImportRecordGroup.from_import_records(import_records)
 
     def get_service_resource_required_import_record_groups(

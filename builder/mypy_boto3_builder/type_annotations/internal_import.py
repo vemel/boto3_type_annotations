@@ -3,9 +3,15 @@ Wrapper for simple type annotations from this module.
 """
 from __future__ import annotations
 
+from typing import Optional
+
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.internal_import_record import (
+    InternalImportRecord,
+)
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
+from mypy_boto3_builder.enums import ServiceModuleName
 
 
 class InternalImport(FakeAnnotation):
@@ -21,8 +27,8 @@ class InternalImport(FakeAnnotation):
     def __init__(
         self,
         name: str,
-        service_name: ServiceName,
-        module_name: str = "service_resource",
+        service_name: Optional[ServiceName] = None,
+        module_name: ServiceModuleName = ServiceModuleName.service_resource,
     ) -> None:
         self.name = name
         self.service_name = service_name
@@ -39,16 +45,18 @@ class InternalImport(FakeAnnotation):
 
     @property
     def scope(self) -> str:
-        return f"{self.module_name}_scope"
+        return f"{self.module_name.value}_scope"
 
     def get_import_record(self) -> ImportRecord:
         """
         Get import record required for using type annotation.
         """
-        return ImportRecord(
-            source=f"{self.service_name.module_name}.{self.module_name}",
-            alias=self.scope,
-        )
+        if self.service_name is not None:
+            return ImportRecord(
+                source=f"{self.service_name.module_name}.{self.module_name.value}",
+                alias=self.scope,
+            )
+        return InternalImportRecord(source=self.module_name.value, alias=self.scope,)
 
     def copy(self) -> InternalImport:
         """

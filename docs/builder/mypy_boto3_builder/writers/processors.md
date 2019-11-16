@@ -16,29 +16,32 @@ def process_boto3_stubs(
     session: Session,
     service_names: Iterable[ServiceName],
     output_path: Path,
+    reformat: bool,
 ) -> Boto3Module:
 ```
 
 ## process_master
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L39)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L45)
 
 ```python
 def process_master(
     session: Session,
     service_names: Iterable[ServiceName],
     output_path: Path,
+    reformat: bool,
 ) -> MasterModule:
 ```
 
 ## process_service
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L50)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L62)
 
 ```python
 def process_service(
     session: Session,
     service_name: ServiceName,
     output_path: Path,
+    reformat: bool,
 ) -> ServiceModule:
 ```

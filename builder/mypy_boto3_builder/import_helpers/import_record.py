@@ -36,6 +36,9 @@ class ImportRecord:
         self.name = name
         self.alias = alias
 
+    def __bool__(self) -> bool:
+        return bool(self.source)
+
     def __str__(self) -> str:
         if self.name and self.alias:
             return f"from {self.source} import {self.name} as {self.alias}"

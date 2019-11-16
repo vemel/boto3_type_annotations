@@ -158,6 +158,13 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
     """
     client = get_boto3_client(session, service_name)
     public_methods = get_public_methods(client)
+
+    # remove methods that will be overriden
+    if "get_paginator" in public_methods:
+        del public_methods["get_paginator"]
+    if "get_waiter" in public_methods:
+        del public_methods["get_waiter"]
+
     methods = [
         parse_method("Client", method_name, method)
         for method_name, method in public_methods.items()
@@ -420,9 +427,10 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         ]
         result.waiters.append(
             Waiter(
-                name=waiter.name,
+                name=f"{waiter.name}Waiter",
+                waiter_name=waiter_name,
                 boto3_waiter=waiter,
-                docstring=clean_doc(getdoc(waiter)),
+                docstring=f"Waiter for `{waiter_name}` name.",
                 methods=methods,
             )
         )
@@ -441,7 +449,8 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             service_paginator_model._paginator_config  # pylint: disable=protected-access
         )
         for paginator_name in sorted(paginator_config):
-            paginator = session_client.get_paginator(xform_name(paginator_name))
+            operation_name = xform_name(paginator_name)
+            paginator = session_client.get_paginator(operation_name)
             public_methods = get_public_methods(paginator)
             methods = [
                 parse_method(paginator_name, method_name, method)
@@ -450,12 +459,23 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             paginator_model = paginator._model  # pylint: disable=protected-access
             result.paginators.append(
                 Paginator(
-                    name=paginator_model.name,
+                    name=f"{paginator_model.name}Paginator",
+                    operation_name=operation_name,
                     boto3_paginator=paginator,
-                    docstring=clean_doc(getdoc(paginator)),
+                    docstring=f"Paginator for `{operation_name}`",
                     methods=methods,
                 )
             )
+
+    if result.paginators:
+        for paginator in result.paginators:
+            result.client.methods.append(paginator.get_client_method())
+        result.client.methods.append(result.client.get_paginator_method())
+
+    if result.waiters:
+        for waiter in result.waiters:
+            result.client.methods.append(waiter.get_client_method())
+        result.client.methods.append(result.client.get_waiter_method())
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
     return result

@@ -7,6 +7,7 @@ from mypy_boto3_builder.writers.utils import (
     render_jinja2_template,
     blackify_str,
 )
+from mypy_boto3_builder.enums import ServiceModuleName
 
 
 def write_service_module(
@@ -27,31 +28,38 @@ def write_service_module(
         (package_path / "__init__.py", module_templates_path / "__init__.py.jinja2"),
         (package_path / "__main__.py", module_templates_path / "__main__.py.jinja2"),
         (package_path / "py.typed", module_templates_path / "py.typed.jinja2"),
-        (package_path / "client.py", module_templates_path / "client.py.jinja2"),
+        (
+            package_path / ServiceModuleName.client.file_name,
+            module_templates_path / ServiceModuleName.client.template_name,
+        ),
     ]
     if service_module.service_resource:
         file_paths.append(
             (
-                package_path / "service_resource.py",
-                module_templates_path / "service_resource.py.jinja2",
+                package_path / ServiceModuleName.service_resource.file_name,
+                module_templates_path
+                / ServiceModuleName.service_resource.template_name,
             )
         )
     if service_module.paginators:
         file_paths.append(
             (
-                package_path / "paginator.py",
-                module_templates_path / "paginator.py.jinja2",
+                package_path / ServiceModuleName.paginator.file_name,
+                module_templates_path / ServiceModuleName.paginator.template_name,
             )
         )
     if service_module.waiters:
         file_paths.append(
-            (package_path / "waiter.py", module_templates_path / "waiter.py.jinja2",)
+            (
+                package_path / ServiceModuleName.waiter.file_name,
+                module_templates_path / ServiceModuleName.waiter.template_name,
+            )
         )
     if service_module.typed_dicts:
         file_paths.append(
             (
-                package_path / "type_defs.py",
-                module_templates_path / "type_defs.py.jinja2",
+                package_path / ServiceModuleName.type_defs.file_name,
+                module_templates_path / ServiceModuleName.type_defs.template_name,
             )
         )
 
@@ -61,8 +69,11 @@ def write_service_module(
             module=service_module,
             service_name=service_module.service_name,
         )
-        if reformat and file_path.suffix == ".py":
-            content = blackify_str(content)
+        if reformat:
+            if file_path.suffix == ".py":
+                content = blackify_str(content)
+            if file_path.suffix == ".pyi":
+                content = blackify_str(content, is_pyi=True)
 
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)

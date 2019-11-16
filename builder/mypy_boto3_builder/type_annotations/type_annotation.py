@@ -19,6 +19,9 @@ class TypeAnnotation(FakeAnnotation):
     """
 
     def __init__(self, wrapped_type: Any) -> None:
+        if isinstance(wrapped_type, str):
+            raise ValueError(f"Cannot wrap str: {wrapped_type}")
+
         if isinstance(wrapped_type, FakeAnnotation):
             raise ValueError(f"Cannot wrap FakeAnnotation: {wrapped_type}")
 

@@ -16,7 +16,7 @@
         {{ function.docstring -}}
         {{ '\n' -}}
         {{ '"""\n' -}}
-    {% else %}
+    {% else -%}
         {{ function.body -}}
     {% endif -%}
 {% endfilter -%}

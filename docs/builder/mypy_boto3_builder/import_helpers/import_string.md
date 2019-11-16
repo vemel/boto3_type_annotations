@@ -43,7 +43,7 @@ import_string.render()
 
 ### ImportString().master_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L87)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L90)
 
 ```python
 @property
@@ -54,7 +54,7 @@ Get first import string part or `builtins`.
 
 ### ImportString().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L78)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L81)
 
 ```python
 def render() -> str:
@@ -68,7 +68,7 @@ Ready to use import string.
 
 ### ImportString().startswith
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_string.py#L49)
 
 ```python
 def startswith(other: ImportString) -> bool:
