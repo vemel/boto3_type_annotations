@@ -46,13 +46,17 @@ def render_jinja2_template(
     output_path.parent.parent.mkdir(exist_ok=True)
     output_path.parent.mkdir(exist_ok=True)
     template = jinja2_env.get_template(template_path.as_posix())
-    output_path.write_text(
-        template.render(
-            version=version,
-            master_pypi_name=PYPI_NAME,
-            master_module_name=MODULE_NAME,
-            boto3_stubs_name=BOTO3_STUBS_NAME,
-            indent=0,
-            **kwargs,
-        )
+    new_content = template.render(
+        version=version,
+        master_pypi_name=PYPI_NAME,
+        master_module_name=MODULE_NAME,
+        boto3_stubs_name=BOTO3_STUBS_NAME,
+        indent=0,
+        **kwargs,
     )
+    if output_path.exists():
+        old_content = output_path.read_text()
+        if old_content == new_content:
+            return
+
+    output_path.write_text(new_content)
