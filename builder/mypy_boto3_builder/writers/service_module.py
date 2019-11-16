@@ -1,8 +1,6 @@
 from pathlib import Path
 from typing import List
 
-from boto3 import __version__ as boto3_version
-
 from mypy_boto3_builder.structures import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import (
@@ -24,6 +22,8 @@ def write_service_module(
     module_templates_path = templates_path / "service"
     file_paths = [
         (output_path / "setup.py", templates_path / "setup.py.jinja2"),
+        (output_path / "README.md", templates_path / "README.md.jinja2"),
+        (package_path / "version.py", module_templates_path / "version.py.jinja2"),
         (package_path / "__init__.py", module_templates_path / "__init__.py.jinja2"),
         (package_path / "__main__.py", module_templates_path / "__main__.py.jinja2"),
         (package_path / "py.typed", module_templates_path / "py.typed.jinja2"),
