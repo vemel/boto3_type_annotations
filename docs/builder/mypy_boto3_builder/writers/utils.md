@@ -16,7 +16,7 @@ def format_path(path: Path) -> None:
 
 ## render_jinja2_template
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L34)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L39)
 
 ```python
 def render_jinja2_template(

@@ -1,10 +1,10 @@
 # IndentTrimmer
 
-> Auto-generated documentation for [builder.mypy_boto3_builder.indent_trimmer](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py) module.
+> Auto-generated documentation for [builder.mypy_boto3_builder.utils.indent_trimmer](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py) module.
 
 Utility for removing indentation for sections and lines.
 
-- [mypy-boto3](../../README.md#mypy_boto3) / [Modules](../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](index.md#mypy-boto3-builder) / IndentTrimmer
+- [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Utils](index.md#utils) / IndentTrimmer
     - [IndentTrimmer](#indenttrimmer)
         - [IndentTrimmer.get_line_indent](#indenttrimmerget_line_indent)
         - [IndentTrimmer.indent_line](#indenttrimmerindent_line)
@@ -15,7 +15,7 @@ Utility for removing indentation for sections and lines.
 
 ## IndentTrimmer
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L11)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L11)
 
 ```python
 class IndentTrimmer():
@@ -25,7 +25,7 @@ Utility for removing indentation for sections and lines.
 
 ### IndentTrimmer.get_line_indent
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L129)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L129)
 
 ```python
 @staticmethod
@@ -54,7 +54,7 @@ A number of indentation characters in a beginning of the line.
 
 ### IndentTrimmer.indent_line
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L150)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L150)
 
 ```python
 @staticmethod
@@ -81,7 +81,7 @@ An indented line.
 
 ### IndentTrimmer.trim_empty_lines
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L16)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L16)
 
 ```python
 @staticmethod
@@ -114,7 +114,7 @@ Lines wih no empty lines at start and end.
 
 ### IndentTrimmer.trim_line
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L102)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L102)
 
 ```python
 @staticmethod
@@ -146,7 +146,7 @@ A line with removed indent.
 
 ### IndentTrimmer.trim_lines
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L67)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L67)
 
 ```python
 @classmethod
@@ -180,7 +180,7 @@ A list of lines with trimmed indent.
 
 ### IndentTrimmer.trim_text
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/indent_trimmer.py#L48)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/utils/indent_trimmer.py#L48)
 
 ```python
 @classmethod

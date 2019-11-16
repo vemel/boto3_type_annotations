@@ -2,6 +2,8 @@
 
 > Auto-generated documentation for [builder.mypy_boto3_builder.docstring_parser](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py) module.
 
+Boto3 docstring parser for arguemnts and return type annotations.
+
 - [mypy-boto3](../../README.md#mypy_boto3) / [Modules](../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](index.md#mypy-boto3-builder) / DocstringParser
     - [DocstringParser](#docstringparser)
         - [DocstringParser().enrich_arguments](#docstringparserenrich_arguments)
@@ -17,7 +19,7 @@
 
 ## DocstringParser
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L20)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L23)
 
 ```python
 class DocstringParser():
@@ -26,7 +28,7 @@ class DocstringParser():
 
 ### DocstringParser().enrich_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L149)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L152)
 
 ```python
 def enrich_arguments(
@@ -38,7 +40,7 @@ def enrich_arguments(
 
 ### DocstringParser().get_docless_method_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L98)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L101)
 
 ```python
 def get_docless_method_arguments(
@@ -48,7 +50,7 @@ def get_docless_method_arguments(
 
 ### DocstringParser().get_function_arguments
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L138)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L141)
 
 ```python
 def get_function_arguments(func: FunctionType) -> List[Argument]:
@@ -56,7 +58,7 @@ def get_function_arguments(func: FunctionType) -> List[Argument]:
 
 ### DocstringParser().get_return_type
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L47)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L50)
 
 ```python
 def get_return_type(docstring: str, prefix: str) -> FakeAnnotation:
@@ -64,7 +66,7 @@ def get_return_type(docstring: str, prefix: str) -> FakeAnnotation:
 
 ### DocstringParser().parse_any_syntax
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L205)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L212)
 
 ```python
 def parse_any_syntax(
@@ -76,7 +78,7 @@ def parse_any_syntax(
 
 ### DocstringParser().parse_dict_syntax
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L241)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L248)
 
 ```python
 def parse_dict_syntax(
@@ -89,7 +91,7 @@ def parse_dict_syntax(
 
 ### DocstringParser().parse_syntax
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L227)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L234)
 
 ```python
 def parse_syntax(
@@ -102,7 +104,7 @@ def parse_syntax(
 
 ### DocstringParser.parse_type
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L192)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L199)
 
 ```python
 @staticmethod
@@ -111,7 +113,7 @@ def parse_type(type_str: str, name: Optional[str] = None) -> FakeAnnotation:
 
 ### DocstringParser().parse_typed_dict_syntax
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L259)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L266)
 
 ```python
 def parse_typed_dict_syntax(
@@ -123,7 +125,7 @@ def parse_typed_dict_syntax(
 
 ## main
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L288)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/docstring_parser.py#L295)
 
 ```python
 def main() -> None:
