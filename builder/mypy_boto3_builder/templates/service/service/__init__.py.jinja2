@@ -5,8 +5,13 @@
     {{ '\n' -}}
 {% endfor -%}
 
+{{ "\n\n" -}}
+
 __all__ = (
-    {% for import_record in module.get_import_records() -%}
-    "{{ import_record.get_local_name() }}",
-    {% endfor -%}
+{% for import_record in module.get_import_records() -%}
+    {{ '"' -}}
+    {{ import_record.get_local_name() -}}
+    {{ '"' -}}
+    {{ ",\n" if not loop.last or loop.first else "\n" }}
+{% endfor -%}
 )
