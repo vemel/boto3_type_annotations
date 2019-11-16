@@ -7,6 +7,17 @@ from __future__ import annotations
 
 {{ "\n\n" -}}
 
+__all__ = (
+{% for name in module.service_resource.get_all_names() -%}
+    {{ '"' -}}
+    {{ name -}}
+    {{ '"' -}}
+    {{ ",\n" if not loop.last or loop.first else "\n" }}
+{% endfor -%}
+)
+
+{{ "\n\n" -}}
+
 {% with class=module.service_resource -%}
     {% include "common/class.py.jinja2" with context -%}
 {% endwith -%}

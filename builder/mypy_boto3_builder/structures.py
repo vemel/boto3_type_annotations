@@ -236,6 +236,14 @@ class ServiceResource(ClassRecord):
 
         return import_records
 
+    def get_all_names(self) -> List[str]:
+        result = [self.name]
+        for resource in self.sub_resources:
+            result.append(resource.name)
+        for collection in self.get_collections():
+            result.append(collection.name)
+        return result
+
     def get_collections(self) -> List[Collection]:
         collection_names = [i.name for i in self.collections]
         result: List[Collection] = []
@@ -267,6 +275,9 @@ class Client(ClassRecord):
     def get_import_records(self) -> Set[ImportRecord]:
         source = f"{self.service_name.module_name}.client"
         return {ImportRecord(source, "Client")}
+
+    def get_all_names(self) -> List[str]:
+        return [self.name]
 
 
 @dataclass

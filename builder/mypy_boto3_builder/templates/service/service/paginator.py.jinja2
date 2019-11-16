@@ -7,6 +7,17 @@ from __future__ import annotations
 
 {{ "\n\n" -}}
 
+__all__ = (
+{% for paginator in module.paginators -%}
+    {{ '"' -}}
+    {{ paginator.name -}}
+    {{ '"' -}}
+    {{ ",\n" if not loop.last or loop.first else "\n" }}
+{% endfor -%}
+)
+
+{{ "\n\n" -}}
+
 {% for paginator in module.paginators -%}
     {% with class=paginator -%}
         {% include "common/class.py.jinja2" with context -%}
