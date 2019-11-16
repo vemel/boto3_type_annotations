@@ -3,8 +3,6 @@ Wrapper for classes like `Paginator`.
 """
 from __future__ import annotations
 
-from typing import Callable, Union
-
 import inspect
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
@@ -20,7 +18,7 @@ class TypeClass(FakeAnnotation):
         alias -- Local name.
     """
 
-    def __init__(self, value: Union[type, Callable], alias: str = "") -> None:
+    def __init__(self, value: type, alias: str = "") -> None:
         self.value = value
         self.alias = alias
 

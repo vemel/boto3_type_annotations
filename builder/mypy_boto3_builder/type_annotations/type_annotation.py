@@ -4,6 +4,7 @@ Wrapper for simple type annotation like `str` or `Dict`.
 from __future__ import annotations
 
 from typing import Union, Optional, Any, Dict, List, Callable, IO
+from typing_extensions import overload
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -25,6 +26,7 @@ class TypeAnnotation(FakeAnnotation):
         Optional,
         Callable,
         IO,
+        overload,
     ]
 
     def __init__(self, wrapped_type: Any) -> None:
@@ -45,14 +47,19 @@ class TypeAnnotation(FakeAnnotation):
         return self.get_import_name()
 
     def get_import_name(self) -> str:
-        if self.wrapped_type == IO:
+        if self.wrapped_type is IO:
             return "IO"
-        if self.wrapped_type == Callable:
+        if self.wrapped_type is Callable:
             return "Callable"
-        return getattr(self.wrapped_type, "_name", "Any")
+        if self.wrapped_type is overload:
+            return "overload"
+        return getattr(self.wrapped_type, "_name")
 
     def get_import_record(self) -> ImportRecord:
-        return ImportRecord(source="typing", name=self.get_import_name())
+        source = "typing"
+        if self.wrapped_type is overload:
+            source = "typing_extensions"
+        return ImportRecord(source=source, name=self.get_import_name())
 
     def is_dict(self) -> bool:
         return self.wrapped_type == Dict

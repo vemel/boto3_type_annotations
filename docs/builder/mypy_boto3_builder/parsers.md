@@ -152,7 +152,7 @@ A list of Attribute structures.
 
 ## parse_boto3_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L567)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L564)
 
 ```python
 def parse_boto3_module(
@@ -214,7 +214,7 @@ A list of Collection structures.
 
 ## parse_fake_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L507)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L504)
 
 ```python
 def parse_fake_service_module(
@@ -256,7 +256,7 @@ A list of Attribute structures.
 
 ## parse_master_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L546)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L543)
 
 ```python
 def parse_master_module(

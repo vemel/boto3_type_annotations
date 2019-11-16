@@ -203,7 +203,7 @@ class Waiter(ClassRecord):
         return Method(
             name="get_waiter",
             docstring=f"Get Waiter `{self.waiter_name}`.",
-            decorators=[TypeClass(overload)],
+            decorators=[TypeAnnotation(overload)],
             arguments=[
                 Argument("self"),
                 Argument("waiter_name", TypeLiteral(self.waiter_name)),
@@ -229,7 +229,7 @@ class Paginator(ClassRecord):
         return Method(
             name="get_paginator",
             docstring=f"Get Paginator for `{self.operation_name}` operation.",
-            decorators=[TypeClass(overload)],
+            decorators=[TypeAnnotation(overload)],
             arguments=[
                 Argument("self"),
                 Argument("operation_name", TypeLiteral(self.operation_name)),
