@@ -7,17 +7,21 @@ from boto3 import __version__ as boto3_version
 
 from mypy_boto3_builder.structures import Boto3Module
 from mypy_boto3_builder.version import __version__ as version
-from mypy_boto3_builder.writers.utils import render_jinja2_template
+from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify_str
 from mypy_boto3_builder.constants import BOTO3_STUBS_STATIC_PATH
 
 
 def write_boto3_stubs_module(
-    boto3_module: Boto3Module, output_path: Path
+    boto3_module: Boto3Module, output_path: Path, reformat: bool
 ) -> List[Path]:
+    modified_paths: List[Path] = []
     package_path = output_path / boto3_module.package_name
+
+    output_path.mkdir(exist_ok=True)
+    package_path.mkdir(exist_ok=True)
+
     templates_path = Path("boto3-stubs")
     module_templates_path = templates_path / "boto3-stubs"
-    modified_paths: List[Path] = []
     file_paths = [
         (output_path / "setup.py", templates_path / "setup.py.jinja2"),
         (output_path / "README.md", templates_path / "README.md.jinja2"),
@@ -27,10 +31,18 @@ def write_boto3_stubs_module(
         (package_path / "__init__.py", module_templates_path / "__init__.py.jinja2"),
         (package_path / "version.py", module_templates_path / "version.py.jinja2"),
     ]
+
     for file_path, template_path in file_paths:
-        modified = render_jinja2_template(file_path, template_path, module=boto3_module)
-        if modified:
+        content = render_jinja2_template(template_path, module=boto3_module)
+        if reformat:
+            if file_path.suffix == ".py":
+                content = blackify_str(content)
+            if file_path.suffix == ".pyi":
+                content = blackify_str(content, is_pyi=True)
+
+        if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
+            file_path.write_text(content)
 
     for static_path in BOTO3_STUBS_STATIC_PATH.glob("**/*.pyi"):
         relative_output_path = static_path.relative_to(BOTO3_STUBS_STATIC_PATH)

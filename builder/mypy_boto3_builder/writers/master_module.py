@@ -5,39 +5,49 @@ from typing import List, Tuple
 
 from mypy_boto3_builder.structures import MasterModule
 from mypy_boto3_builder.version import __version__ as version
-from mypy_boto3_builder.writers.utils import render_jinja2_template
+from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify_str
 from mypy_boto3_builder.constants import MYPY_BOTO3_STATIC_PATH
 
 
-def write_master_module(master_module: MasterModule, output_path: Path) -> List[Path]:
+def write_master_module(
+    master_module: MasterModule, output_path: Path, reformat: bool
+) -> List[Path]:
     modified_paths: List[Path] = []
-    module_path = output_path / master_module.package_name
+    package_path = output_path / master_module.package_name
+
+    output_path.mkdir(exist_ok=True)
+    package_path.mkdir(exist_ok=True)
+
     templates_path = Path("master")
     file_paths = [
         (output_path / "setup.py", templates_path / "setup.py.jinja2"),
         (output_path / "README.md", templates_path / "README.md.jinja2"),
         (
-            module_path / "__init__.py",
+            package_path / "__init__.py",
             templates_path / "master" / "__init__.py.jinja2",
         ),
         (
-            module_path / "__main__.py",
+            package_path / "__main__.py",
             templates_path / "master" / "__main__.py.jinja2",
         ),
-        (module_path / "py.typed", templates_path / "master" / "py.typed.jinja2",),
-        (module_path / "version.py", templates_path / "master" / "version.py.jinja2",),
+        (package_path / "py.typed", templates_path / "master" / "py.typed.jinja2",),
+        (package_path / "version.py", templates_path / "master" / "version.py.jinja2",),
     ]
 
     for file_path, template_path in file_paths:
-        modified = render_jinja2_template(
-            file_path, template_path, module=master_module
-        )
-        if modified:
+        content = render_jinja2_template(template_path, module=master_module)
+        if reformat and file_path.suffix == ".py":
+            content = blackify_str(content)
+
+        if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
+            file_path.write_text(content)
 
     for service_module in master_module.service_modules:
-        service_module_path = module_path / service_module.service_name.import_name
+        service_module_path = package_path / service_module.service_name.import_name
+        service_module_path.mkdir(exist_ok=True)
         service_templates_path = templates_path / "master" / "service_module"
+
         service_file_paths: List[Tuple[Path, Path]] = [
             (
                 service_module_path / "__init__.py",
@@ -78,16 +88,20 @@ def write_master_module(master_module: MasterModule, output_path: Path) -> List[
             )
 
         for file_path, template_path in service_file_paths:
-            modified = render_jinja2_template(
-                file_path, template_path, service_name=service_module.service_name
+            content = render_jinja2_template(
+                template_path, service_name=service_module.service_name
             )
-            if modified:
-                modified_paths.append(file_path)
+            if reformat and file_path.suffix == ".py":
+                content = blackify_str(content)
 
-    for static_path in MYPY_BOTO3_STATIC_PATH.glob("**/*.pyi"):
+            if not file_path.exists() or file_path.read_text() != content:
+                modified_paths.append(file_path)
+                file_path.write_text(content)
+
+    for static_path in MYPY_BOTO3_STATIC_PATH.glob("**/*.py"):
         relative_output_path = static_path.relative_to(MYPY_BOTO3_STATIC_PATH)
         file_path = (
-            module_path
+            package_path
             / relative_output_path.parent
             / f"{relative_output_path.stem}.py"
         )

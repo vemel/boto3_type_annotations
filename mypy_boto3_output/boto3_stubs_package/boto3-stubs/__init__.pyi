@@ -33,7 +33,9 @@ except ImportError:
     ApigatewayClient = Any
 
 try:
-    from mypy_boto3.apigatewaymanagementapi.client import Client as ApigatewaymanagementapiClient
+    from mypy_boto3.apigatewaymanagementapi.client import (
+        Client as ApigatewaymanagementapiClient,
+    )
 except ImportError:
     ApigatewaymanagementapiClient = Any
 
@@ -43,12 +45,16 @@ except ImportError:
     Apigatewayv2Client = Any
 
 try:
-    from mypy_boto3.application_autoscaling.client import Client as ApplicationAutoscalingClient
+    from mypy_boto3.application_autoscaling.client import (
+        Client as ApplicationAutoscalingClient,
+    )
 except ImportError:
     ApplicationAutoscalingClient = Any
 
 try:
-    from mypy_boto3.application_insights.client import Client as ApplicationInsightsClient
+    from mypy_boto3.application_insights.client import (
+        Client as ApplicationInsightsClient,
+    )
 except ImportError:
     ApplicationInsightsClient = Any
 
@@ -122,7 +128,9 @@ try:
 except ImportError:
     CloudformationClient = Any
 try:
-    from mypy_boto3.cloudformation.service_resource import ServiceResource as CloudformationServiceResource
+    from mypy_boto3.cloudformation.service_resource import (
+        ServiceResource as CloudformationServiceResource,
+    )
 except ImportError:
     CloudformationServiceResource = Any
 
@@ -161,7 +169,9 @@ try:
 except ImportError:
     CloudwatchClient = Any
 try:
-    from mypy_boto3.cloudwatch.service_resource import ServiceResource as CloudwatchServiceResource
+    from mypy_boto3.cloudwatch.service_resource import (
+        ServiceResource as CloudwatchServiceResource,
+    )
 except ImportError:
     CloudwatchServiceResource = Any
 
@@ -191,7 +201,9 @@ except ImportError:
     CodestarClient = Any
 
 try:
-    from mypy_boto3.codestar_notifications.client import Client as CodestarNotificationsClient
+    from mypy_boto3.codestar_notifications.client import (
+        Client as CodestarNotificationsClient,
+    )
 except ImportError:
     CodestarNotificationsClient = Any
 
@@ -290,7 +302,9 @@ try:
 except ImportError:
     DynamodbClient = Any
 try:
-    from mypy_boto3.dynamodb.service_resource import ServiceResource as DynamodbServiceResource
+    from mypy_boto3.dynamodb.service_resource import (
+        ServiceResource as DynamodbServiceResource,
+    )
 except ImportError:
     DynamodbServiceResource = Any
 
@@ -309,7 +323,9 @@ except ImportError:
     EC2ServiceResource = Any
 
 try:
-    from mypy_boto3.ec2_instance_connect.client import Client as Ec2InstanceConnectClient
+    from mypy_boto3.ec2_instance_connect.client import (
+        Client as Ec2InstanceConnectClient,
+    )
 except ImportError:
     Ec2InstanceConnectClient = Any
 
@@ -408,7 +424,9 @@ try:
 except ImportError:
     GlacierClient = Any
 try:
-    from mypy_boto3.glacier.service_resource import ServiceResource as GlacierServiceResource
+    from mypy_boto3.glacier.service_resource import (
+        ServiceResource as GlacierServiceResource,
+    )
 except ImportError:
     GlacierServiceResource = Any
 
@@ -517,7 +535,9 @@ except ImportError:
     KinesisClient = Any
 
 try:
-    from mypy_boto3.kinesis_video_archived_media.client import Client as KinesisVideoArchivedMediaClient
+    from mypy_boto3.kinesis_video_archived_media.client import (
+        Client as KinesisVideoArchivedMediaClient,
+    )
 except ImportError:
     KinesisVideoArchivedMediaClient = Any
 
@@ -597,12 +617,16 @@ except ImportError:
     ManagedblockchainClient = Any
 
 try:
-    from mypy_boto3.marketplace_entitlement.client import Client as MarketplaceEntitlementClient
+    from mypy_boto3.marketplace_entitlement.client import (
+        Client as MarketplaceEntitlementClient,
+    )
 except ImportError:
     MarketplaceEntitlementClient = Any
 
 try:
-    from mypy_boto3.marketplacecommerceanalytics.client import Client as MarketplacecommerceanalyticsClient
+    from mypy_boto3.marketplacecommerceanalytics.client import (
+        Client as MarketplacecommerceanalyticsClient,
+    )
 except ImportError:
     MarketplacecommerceanalyticsClient = Any
 
@@ -647,7 +671,9 @@ except ImportError:
     MediatailorClient = Any
 
 try:
-    from mypy_boto3.meteringmarketplace.client import Client as MeteringmarketplaceClient
+    from mypy_boto3.meteringmarketplace.client import (
+        Client as MeteringmarketplaceClient,
+    )
 except ImportError:
     MeteringmarketplaceClient = Any
 
@@ -681,7 +707,9 @@ try:
 except ImportError:
     OpsworksClient = Any
 try:
-    from mypy_boto3.opsworks.service_resource import ServiceResource as OpsworksServiceResource
+    from mypy_boto3.opsworks.service_resource import (
+        ServiceResource as OpsworksServiceResource,
+    )
 except ImportError:
     OpsworksServiceResource = Any
 
@@ -786,7 +814,9 @@ except ImportError:
     ResourceGroupsClient = Any
 
 try:
-    from mypy_boto3.resourcegroupstaggingapi.client import Client as ResourcegroupstaggingapiClient
+    from mypy_boto3.resourcegroupstaggingapi.client import (
+        Client as ResourcegroupstaggingapiClient,
+    )
 except ImportError:
     ResourcegroupstaggingapiClient = Any
 
@@ -998,7 +1028,9 @@ except ImportError:
     WorkmailClient = Any
 
 try:
-    from mypy_boto3.workmailmessageflow.client import Client as WorkmailmessageflowClient
+    from mypy_boto3.workmailmessageflow.client import (
+        Client as WorkmailmessageflowClient,
+    )
 except ImportError:
     WorkmailmessageflowClient = Any
 
@@ -1037,7 +1069,7 @@ class NullHandler(logging.Handler):
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['acm'],
+    service_name: Literal["acm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1046,12 +1078,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ACMClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['acm-pca'],
+    service_name: Literal["acm-pca"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1060,12 +1092,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AcmPcaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['alexaforbusiness'],
+    service_name: Literal["alexaforbusiness"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1074,12 +1106,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AlexaforbusinessClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['amplify'],
+    service_name: Literal["amplify"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1088,12 +1120,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AmplifyClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['apigateway'],
+    service_name: Literal["apigateway"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1102,12 +1134,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ApigatewayClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['apigatewaymanagementapi'],
+    service_name: Literal["apigatewaymanagementapi"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1116,12 +1148,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ApigatewaymanagementapiClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['apigatewayv2'],
+    service_name: Literal["apigatewayv2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1130,12 +1162,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Apigatewayv2Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['application-autoscaling'],
+    service_name: Literal["application-autoscaling"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1144,12 +1176,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ApplicationAutoscalingClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['application-insights'],
+    service_name: Literal["application-insights"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1158,12 +1190,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ApplicationInsightsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['appmesh'],
+    service_name: Literal["appmesh"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1172,12 +1204,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AppmeshClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['appstream'],
+    service_name: Literal["appstream"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1186,12 +1218,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AppstreamClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['appsync'],
+    service_name: Literal["appsync"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1200,12 +1232,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AppsyncClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['athena'],
+    service_name: Literal["athena"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1214,12 +1246,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AthenaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['autoscaling'],
+    service_name: Literal["autoscaling"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1228,12 +1260,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AutoscalingClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['autoscaling-plans'],
+    service_name: Literal["autoscaling-plans"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1242,12 +1274,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> AutoscalingPlansClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['backup'],
+    service_name: Literal["backup"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1256,12 +1288,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> BackupClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['batch'],
+    service_name: Literal["batch"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1270,12 +1302,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> BatchClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['budgets'],
+    service_name: Literal["budgets"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1284,12 +1316,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> BudgetsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ce'],
+    service_name: Literal["ce"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1298,12 +1330,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CEClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['chime'],
+    service_name: Literal["chime"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1312,12 +1344,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ChimeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloud9'],
+    service_name: Literal["cloud9"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1326,12 +1358,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Cloud9Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['clouddirectory'],
+    service_name: Literal["clouddirectory"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1340,12 +1372,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ClouddirectoryClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudformation'],
+    service_name: Literal["cloudformation"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1354,12 +1386,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudformationClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudfront'],
+    service_name: Literal["cloudfront"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1368,12 +1400,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudfrontClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudhsm'],
+    service_name: Literal["cloudhsm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1382,12 +1414,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudhsmClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudhsmv2'],
+    service_name: Literal["cloudhsmv2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1396,12 +1428,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Cloudhsmv2Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudsearch'],
+    service_name: Literal["cloudsearch"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1410,12 +1442,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudsearchClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudsearchdomain'],
+    service_name: Literal["cloudsearchdomain"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1424,12 +1456,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudsearchdomainClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudtrail'],
+    service_name: Literal["cloudtrail"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1438,12 +1470,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudtrailClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cloudwatch'],
+    service_name: Literal["cloudwatch"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1452,12 +1484,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudwatchClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codebuild'],
+    service_name: Literal["codebuild"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1466,12 +1498,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodebuildClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codecommit'],
+    service_name: Literal["codecommit"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1480,12 +1512,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodecommitClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codedeploy'],
+    service_name: Literal["codedeploy"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1494,12 +1526,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodedeployClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codepipeline'],
+    service_name: Literal["codepipeline"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1508,12 +1540,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodepipelineClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codestar'],
+    service_name: Literal["codestar"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1522,12 +1554,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodestarClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['codestar-notifications'],
+    service_name: Literal["codestar-notifications"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1536,12 +1568,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CodestarNotificationsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cognito-identity'],
+    service_name: Literal["cognito-identity"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1550,12 +1582,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CognitoIdentityClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cognito-idp'],
+    service_name: Literal["cognito-idp"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1564,12 +1596,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CognitoIdpClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cognito-sync'],
+    service_name: Literal["cognito-sync"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1578,12 +1610,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CognitoSyncClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['comprehend'],
+    service_name: Literal["comprehend"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1592,12 +1624,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ComprehendClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['comprehendmedical'],
+    service_name: Literal["comprehendmedical"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1606,12 +1638,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ComprehendmedicalClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['config'],
+    service_name: Literal["config"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1620,12 +1652,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ConfigClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['connect'],
+    service_name: Literal["connect"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1634,12 +1666,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ConnectClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['cur'],
+    service_name: Literal["cur"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1648,12 +1680,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CURClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['datapipeline'],
+    service_name: Literal["datapipeline"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1662,12 +1694,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DatapipelineClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['datasync'],
+    service_name: Literal["datasync"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1676,12 +1708,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DatasyncClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['dax'],
+    service_name: Literal["dax"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1690,12 +1722,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DAXClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['devicefarm'],
+    service_name: Literal["devicefarm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1704,12 +1736,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DevicefarmClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['directconnect'],
+    service_name: Literal["directconnect"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1718,12 +1750,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DirectconnectClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['discovery'],
+    service_name: Literal["discovery"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1732,12 +1764,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DiscoveryClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['dlm'],
+    service_name: Literal["dlm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1746,12 +1778,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DLMClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['dms'],
+    service_name: Literal["dms"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1760,12 +1792,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DMSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['docdb'],
+    service_name: Literal["docdb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1774,12 +1806,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DocdbClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ds'],
+    service_name: Literal["ds"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1788,12 +1820,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['dynamodb'],
+    service_name: Literal["dynamodb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1802,12 +1834,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DynamodbClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['dynamodbstreams'],
+    service_name: Literal["dynamodbstreams"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1816,12 +1848,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DynamodbstreamsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ec2'],
+    service_name: Literal["ec2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1830,12 +1862,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EC2Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ec2-instance-connect'],
+    service_name: Literal["ec2-instance-connect"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1844,12 +1876,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Ec2InstanceConnectClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ecr'],
+    service_name: Literal["ecr"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1858,12 +1890,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ECRClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ecs'],
+    service_name: Literal["ecs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1872,12 +1904,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ECSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['efs'],
+    service_name: Literal["efs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1886,12 +1918,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EFSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['eks'],
+    service_name: Literal["eks"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1900,12 +1932,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EKSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['elasticache'],
+    service_name: Literal["elasticache"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1914,12 +1946,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ElasticacheClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['elasticbeanstalk'],
+    service_name: Literal["elasticbeanstalk"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1928,12 +1960,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ElasticbeanstalkClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['elastictranscoder'],
+    service_name: Literal["elastictranscoder"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1942,12 +1974,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ElastictranscoderClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['elb'],
+    service_name: Literal["elb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1956,12 +1988,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ELBClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['elbv2'],
+    service_name: Literal["elbv2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1970,12 +2002,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Elbv2Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['emr'],
+    service_name: Literal["emr"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1984,12 +2016,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EMRClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['es'],
+    service_name: Literal["es"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -1998,12 +2030,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ESClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['events'],
+    service_name: Literal["events"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2012,12 +2044,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EventsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['firehose'],
+    service_name: Literal["firehose"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2026,12 +2058,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> FirehoseClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['fms'],
+    service_name: Literal["fms"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2040,12 +2072,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> FMSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['forecast'],
+    service_name: Literal["forecast"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2054,12 +2086,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ForecastClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['forecastquery'],
+    service_name: Literal["forecastquery"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2068,12 +2100,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ForecastqueryClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['fsx'],
+    service_name: Literal["fsx"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2082,12 +2114,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> FSXClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['gamelift'],
+    service_name: Literal["gamelift"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2096,12 +2128,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GameliftClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['glacier'],
+    service_name: Literal["glacier"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2110,12 +2142,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GlacierClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['globalaccelerator'],
+    service_name: Literal["globalaccelerator"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2124,12 +2156,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GlobalacceleratorClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['glue'],
+    service_name: Literal["glue"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2138,12 +2170,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GlueClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['greengrass'],
+    service_name: Literal["greengrass"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2152,12 +2184,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GreengrassClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['groundstation'],
+    service_name: Literal["groundstation"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2166,12 +2198,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GroundstationClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['guardduty'],
+    service_name: Literal["guardduty"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2180,12 +2212,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GuarddutyClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['health'],
+    service_name: Literal["health"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2194,12 +2226,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> HealthClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iam'],
+    service_name: Literal["iam"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2208,12 +2240,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IAMClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['importexport'],
+    service_name: Literal["importexport"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2222,12 +2254,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ImportexportClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['inspector'],
+    service_name: Literal["inspector"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2236,12 +2268,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> InspectorClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iot'],
+    service_name: Literal["iot"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2250,12 +2282,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IOTClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iot-data'],
+    service_name: Literal["iot-data"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2264,12 +2296,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IotDataClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iot-jobs-data'],
+    service_name: Literal["iot-jobs-data"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2278,12 +2310,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IotJobsDataClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iot1click-devices'],
+    service_name: Literal["iot1click-devices"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2292,12 +2324,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Iot1clickDevicesClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iot1click-projects'],
+    service_name: Literal["iot1click-projects"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2306,12 +2338,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Iot1clickProjectsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iotanalytics'],
+    service_name: Literal["iotanalytics"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2320,12 +2352,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IotanalyticsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iotevents'],
+    service_name: Literal["iotevents"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2334,12 +2366,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IoteventsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iotevents-data'],
+    service_name: Literal["iotevents-data"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2348,12 +2380,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IoteventsDataClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['iotthingsgraph'],
+    service_name: Literal["iotthingsgraph"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2362,12 +2394,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IotthingsgraphClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kafka'],
+    service_name: Literal["kafka"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2376,12 +2408,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KafkaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesis'],
+    service_name: Literal["kinesis"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2390,12 +2422,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KinesisClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesis-video-archived-media'],
+    service_name: Literal["kinesis-video-archived-media"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2404,12 +2436,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KinesisVideoArchivedMediaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesis-video-media'],
+    service_name: Literal["kinesis-video-media"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2418,12 +2450,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KinesisVideoMediaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesisanalytics'],
+    service_name: Literal["kinesisanalytics"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2432,12 +2464,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KinesisanalyticsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesisanalyticsv2'],
+    service_name: Literal["kinesisanalyticsv2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2446,12 +2478,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Kinesisanalyticsv2Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kinesisvideo'],
+    service_name: Literal["kinesisvideo"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2460,12 +2492,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KinesisvideoClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['kms'],
+    service_name: Literal["kms"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2474,12 +2506,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> KMSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['lakeformation'],
+    service_name: Literal["lakeformation"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2488,12 +2520,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LakeformationClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['lambda'],
+    service_name: Literal["lambda"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2502,12 +2534,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LambdaClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['lex-models'],
+    service_name: Literal["lex-models"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2516,12 +2548,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LexModelsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['lex-runtime'],
+    service_name: Literal["lex-runtime"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2530,12 +2562,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LexRuntimeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['license-manager'],
+    service_name: Literal["license-manager"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2544,12 +2576,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LicenseManagerClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['lightsail'],
+    service_name: Literal["lightsail"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2558,12 +2590,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LightsailClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['logs'],
+    service_name: Literal["logs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2572,12 +2604,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> LogsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['machinelearning'],
+    service_name: Literal["machinelearning"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2586,12 +2618,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MachinelearningClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['macie'],
+    service_name: Literal["macie"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2600,12 +2632,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MacieClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['managedblockchain'],
+    service_name: Literal["managedblockchain"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2614,12 +2646,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ManagedblockchainClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['marketplace-entitlement'],
+    service_name: Literal["marketplace-entitlement"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2628,12 +2660,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MarketplaceEntitlementClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['marketplacecommerceanalytics'],
+    service_name: Literal["marketplacecommerceanalytics"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2642,12 +2674,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MarketplacecommerceanalyticsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediaconnect'],
+    service_name: Literal["mediaconnect"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2656,12 +2688,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediaconnectClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediaconvert'],
+    service_name: Literal["mediaconvert"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2670,12 +2702,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediaconvertClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['medialive'],
+    service_name: Literal["medialive"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2684,12 +2716,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MedialiveClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediapackage'],
+    service_name: Literal["mediapackage"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2698,12 +2730,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediapackageClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediapackage-vod'],
+    service_name: Literal["mediapackage-vod"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2712,12 +2744,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediapackageVodClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediastore'],
+    service_name: Literal["mediastore"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2726,12 +2758,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediastoreClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediastore-data'],
+    service_name: Literal["mediastore-data"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2740,12 +2772,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediastoreDataClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mediatailor'],
+    service_name: Literal["mediatailor"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2754,12 +2786,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MediatailorClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['meteringmarketplace'],
+    service_name: Literal["meteringmarketplace"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2768,12 +2800,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MeteringmarketplaceClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mgh'],
+    service_name: Literal["mgh"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2782,12 +2814,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MGHClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mobile'],
+    service_name: Literal["mobile"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2796,12 +2828,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MobileClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mq'],
+    service_name: Literal["mq"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2810,12 +2842,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MQClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['mturk'],
+    service_name: Literal["mturk"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2824,12 +2856,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> MturkClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['neptune'],
+    service_name: Literal["neptune"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2838,12 +2870,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> NeptuneClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['opsworks'],
+    service_name: Literal["opsworks"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2852,12 +2884,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> OpsworksClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['opsworkscm'],
+    service_name: Literal["opsworkscm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2866,12 +2898,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> OpsworkscmClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['organizations'],
+    service_name: Literal["organizations"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2880,12 +2912,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> OrganizationsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['personalize'],
+    service_name: Literal["personalize"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2894,12 +2926,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PersonalizeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['personalize-events'],
+    service_name: Literal["personalize-events"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2908,12 +2940,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PersonalizeEventsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['personalize-runtime'],
+    service_name: Literal["personalize-runtime"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2922,12 +2954,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PersonalizeRuntimeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['pi'],
+    service_name: Literal["pi"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2936,12 +2968,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PIClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['pinpoint'],
+    service_name: Literal["pinpoint"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2950,12 +2982,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PinpointClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['pinpoint-email'],
+    service_name: Literal["pinpoint-email"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2964,12 +2996,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PinpointEmailClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['pinpoint-sms-voice'],
+    service_name: Literal["pinpoint-sms-voice"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2978,12 +3010,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PinpointSmsVoiceClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['polly'],
+    service_name: Literal["polly"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -2992,12 +3024,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PollyClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['pricing'],
+    service_name: Literal["pricing"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3006,12 +3038,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> PricingClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['qldb'],
+    service_name: Literal["qldb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3020,12 +3052,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> QldbClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['qldb-session'],
+    service_name: Literal["qldb-session"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3034,12 +3066,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> QldbSessionClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['quicksight'],
+    service_name: Literal["quicksight"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3048,12 +3080,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> QuicksightClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ram'],
+    service_name: Literal["ram"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3062,12 +3094,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RAMClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['rds'],
+    service_name: Literal["rds"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3076,12 +3108,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RDSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['rds-data'],
+    service_name: Literal["rds-data"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3090,12 +3122,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RdsDataClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['redshift'],
+    service_name: Literal["redshift"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3104,12 +3136,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RedshiftClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['rekognition'],
+    service_name: Literal["rekognition"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3118,12 +3150,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RekognitionClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['resource-groups'],
+    service_name: Literal["resource-groups"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3132,12 +3164,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ResourceGroupsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['resourcegroupstaggingapi'],
+    service_name: Literal["resourcegroupstaggingapi"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3146,12 +3178,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ResourcegroupstaggingapiClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['robomaker'],
+    service_name: Literal["robomaker"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3160,12 +3192,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> RobomakerClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['route53'],
+    service_name: Literal["route53"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3174,12 +3206,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Route53Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['route53domains'],
+    service_name: Literal["route53domains"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3188,12 +3220,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Route53domainsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['route53resolver'],
+    service_name: Literal["route53resolver"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3202,12 +3234,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> Route53resolverClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['s3'],
+    service_name: Literal["s3"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3216,12 +3248,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> S3Client: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['s3control'],
+    service_name: Literal["s3control"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3230,12 +3262,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> S3controlClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sagemaker'],
+    service_name: Literal["sagemaker"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3244,12 +3276,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SagemakerClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sagemaker-runtime'],
+    service_name: Literal["sagemaker-runtime"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3258,12 +3290,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SagemakerRuntimeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['savingsplans'],
+    service_name: Literal["savingsplans"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3272,12 +3304,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SavingsplansClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sdb'],
+    service_name: Literal["sdb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3286,12 +3318,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SDBClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['secretsmanager'],
+    service_name: Literal["secretsmanager"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3300,12 +3332,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SecretsmanagerClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['securityhub'],
+    service_name: Literal["securityhub"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3314,12 +3346,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SecurityhubClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['serverlessrepo'],
+    service_name: Literal["serverlessrepo"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3328,12 +3360,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ServerlessrepoClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['service-quotas'],
+    service_name: Literal["service-quotas"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3342,12 +3374,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ServiceQuotasClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['servicecatalog'],
+    service_name: Literal["servicecatalog"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3356,12 +3388,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ServicecatalogClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['servicediscovery'],
+    service_name: Literal["servicediscovery"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3370,12 +3402,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ServicediscoveryClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ses'],
+    service_name: Literal["ses"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3384,12 +3416,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SESClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['shield'],
+    service_name: Literal["shield"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3398,12 +3430,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> ShieldClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['signer'],
+    service_name: Literal["signer"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3412,12 +3444,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SignerClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sms'],
+    service_name: Literal["sms"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3426,12 +3458,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SMSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sms-voice'],
+    service_name: Literal["sms-voice"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3440,12 +3472,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SmsVoiceClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['snowball'],
+    service_name: Literal["snowball"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3454,12 +3486,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SnowballClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sns'],
+    service_name: Literal["sns"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3468,12 +3500,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SNSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sqs'],
+    service_name: Literal["sqs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3482,12 +3514,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SQSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['ssm'],
+    service_name: Literal["ssm"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3496,12 +3528,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SSMClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['stepfunctions'],
+    service_name: Literal["stepfunctions"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3510,12 +3542,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> StepfunctionsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['storagegateway'],
+    service_name: Literal["storagegateway"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3524,12 +3556,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> StoragegatewayClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['sts'],
+    service_name: Literal["sts"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3538,12 +3570,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> STSClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['support'],
+    service_name: Literal["support"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3552,12 +3584,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SupportClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['swf'],
+    service_name: Literal["swf"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3566,12 +3598,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SWFClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['textract'],
+    service_name: Literal["textract"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3580,12 +3612,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> TextractClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['transcribe'],
+    service_name: Literal["transcribe"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3594,12 +3626,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> TranscribeClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['transfer'],
+    service_name: Literal["transfer"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3608,12 +3640,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> TransferClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['translate'],
+    service_name: Literal["translate"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3622,12 +3654,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> TranslateClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['waf'],
+    service_name: Literal["waf"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3636,12 +3668,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WAFClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['waf-regional'],
+    service_name: Literal["waf-regional"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3650,12 +3682,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WafRegionalClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['workdocs'],
+    service_name: Literal["workdocs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3664,12 +3696,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WorkdocsClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['worklink'],
+    service_name: Literal["worklink"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3678,12 +3710,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WorklinkClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['workmail'],
+    service_name: Literal["workmail"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3692,12 +3724,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WorkmailClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['workmailmessageflow'],
+    service_name: Literal["workmailmessageflow"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3706,12 +3738,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WorkmailmessageflowClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['workspaces'],
+    service_name: Literal["workspaces"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3720,12 +3752,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> WorkspacesClient: ...
 @overload
 # pylint: disable=arguments-differ
 def client(
-    service_name: Literal['xray'],
+    service_name: Literal["xray"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3734,12 +3766,12 @@ def client(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> XrayClient: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['cloudformation'],
+    service_name: Literal["cloudformation"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3748,12 +3780,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudformationServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['cloudwatch'],
+    service_name: Literal["cloudwatch"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3762,12 +3794,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> CloudwatchServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['dynamodb'],
+    service_name: Literal["dynamodb"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3776,12 +3808,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> DynamodbServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['ec2'],
+    service_name: Literal["ec2"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3790,12 +3822,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> EC2ServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['glacier'],
+    service_name: Literal["glacier"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3804,12 +3836,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> GlacierServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['iam'],
+    service_name: Literal["iam"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3818,12 +3850,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> IAMServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['opsworks'],
+    service_name: Literal["opsworks"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3832,12 +3864,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> OpsworksServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['s3'],
+    service_name: Literal["s3"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3846,12 +3878,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> S3ServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['sns'],
+    service_name: Literal["sns"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3860,12 +3892,12 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SNSServiceResource: ...
 @overload
 # pylint: disable=arguments-differ
 def resource(
-    service_name: Literal['sqs'],
+    service_name: Literal["sqs"],
     region_name: str = None,
     api_version: str = None,
     use_ssl: bool = None,
@@ -3874,5 +3906,5 @@ def resource(
     aws_access_key_id: str = None,
     aws_secret_access_key: str = None,
     aws_session_token: str = None,
-    config: Config = None
+    config: Config = None,
 ) -> SQSServiceResource: ...

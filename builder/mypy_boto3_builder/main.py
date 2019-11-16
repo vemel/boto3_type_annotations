@@ -10,7 +10,6 @@ from mypy_boto3_builder.writers.processors import (
     process_master,
     process_service,
 )
-from mypy_boto3_builder.writers.utils import format_path
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.cli_parser import get_cli_parser
@@ -45,30 +44,31 @@ def main() -> None:
             logger.info(f"Generating {service_name.module_name} module")
             output_path = args.output_path / f"{service_name.module_name}_package"
             process_service(
-                session=session, output_path=output_path, service_name=service_name,
+                session=session,
+                output_path=output_path,
+                service_name=service_name,
+                reformat=args.format,
             )
-            if args.format:
-                format_path(output_path)
 
     if not args.skip_master:
         logger.info(f"Generating {MODULE_NAME} module")
         output_path = args.output_path / "master_package"
         process_master(
-            session=session, output_path=output_path, service_names=service_names,
+            session=session,
+            output_path=output_path,
+            service_names=service_names,
+            reformat=args.format,
         )
-
-        if args.format:
-            format_path(output_path)
 
     if not args.skip_stubs:
         logger.info(f"Generating {BOTO3_STUBS_NAME} module")
         output_path = args.output_path / "boto3_stubs_package"
         process_boto3_stubs(
-            session=session, output_path=output_path, service_names=service_names,
+            session=session,
+            output_path=output_path,
+            service_names=service_names,
+            reformat=args.format,
         )
-
-        if args.format:
-            format_path(output_path)
 
 
 if __name__ == "__main__":
