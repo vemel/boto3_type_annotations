@@ -2,9 +2,13 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_cloudformation.paginator as paginator_scope
 from mypy_boto3_cloudformation.type_defs import (
     ClientCreateChangeSetParametersTypeDef,
     ClientCreateChangeSetResourcesToImportTypeDef,
@@ -63,6 +67,12 @@ from mypy_boto3_cloudformation.type_defs import (
     ClientUpdateTerminationProtectionResponseTypeDef,
     ClientValidateTemplateResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_cloudformation.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -4768,27 +4778,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_stack_policy(self, StackName: str) -> ClientGetStackPolicyResponseTypeDef:
         """
         Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is
@@ -5166,19 +5155,6 @@ class Client(BaseClient):
 
                   - *(string) --*
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -7713,4 +7689,209 @@ class Client(BaseClient):
 
               - *(string) --*
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_account_limits"]
+    ) -> paginator_scope.DescribeAccountLimitsPaginator:
+        """
+        Get Paginator for `describe_account_limits` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_change_set"]
+    ) -> paginator_scope.DescribeChangeSetPaginator:
+        """
+        Get Paginator for `describe_change_set` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_stack_events"]
+    ) -> paginator_scope.DescribeStackEventsPaginator:
+        """
+        Get Paginator for `describe_stack_events` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_stacks"]
+    ) -> paginator_scope.DescribeStacksPaginator:
+        """
+        Get Paginator for `describe_stacks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_change_sets"]
+    ) -> paginator_scope.ListChangeSetsPaginator:
+        """
+        Get Paginator for `list_change_sets` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_exports"]
+    ) -> paginator_scope.ListExportsPaginator:
+        """
+        Get Paginator for `list_exports` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_imports"]
+    ) -> paginator_scope.ListImportsPaginator:
+        """
+        Get Paginator for `list_imports` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stack_instances"]
+    ) -> paginator_scope.ListStackInstancesPaginator:
+        """
+        Get Paginator for `list_stack_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stack_resources"]
+    ) -> paginator_scope.ListStackResourcesPaginator:
+        """
+        Get Paginator for `list_stack_resources` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stack_set_operation_results"]
+    ) -> paginator_scope.ListStackSetOperationResultsPaginator:
+        """
+        Get Paginator for `list_stack_set_operation_results` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stack_set_operations"]
+    ) -> paginator_scope.ListStackSetOperationsPaginator:
+        """
+        Get Paginator for `list_stack_set_operations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stack_sets"]
+    ) -> paginator_scope.ListStackSetsPaginator:
+        """
+        Get Paginator for `list_stack_sets` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_stacks"]
+    ) -> paginator_scope.ListStacksPaginator:
+        """
+        Get Paginator for `list_stacks` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["change_set_create_complete"]
+    ) -> waiter_scope.ChangeSetCreateCompleteWaiter:
+        """
+        Get Waiter `change_set_create_complete`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["stack_create_complete"]
+    ) -> waiter_scope.StackCreateCompleteWaiter:
+        """
+        Get Waiter `stack_create_complete`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["stack_delete_complete"]
+    ) -> waiter_scope.StackDeleteCompleteWaiter:
+        """
+        Get Waiter `stack_delete_complete`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["stack_exists"]
+    ) -> waiter_scope.StackExistsWaiter:
+        """
+        Get Waiter `stack_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["stack_import_complete"]
+    ) -> waiter_scope.StackImportCompleteWaiter:
+        """
+        Get Waiter `stack_import_complete`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["stack_update_complete"]
+    ) -> waiter_scope.StackUpdateCompleteWaiter:
+        """
+        Get Waiter `stack_update_complete`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

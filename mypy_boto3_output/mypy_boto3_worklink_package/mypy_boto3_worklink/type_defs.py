@@ -6,6 +6,31 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAssociateWebsiteAuthorizationProviderResponseTypeDef",
+    "ClientAssociateWebsiteCertificateAuthorityResponseTypeDef",
+    "ClientCreateFleetResponseTypeDef",
+    "ClientDescribeAuditStreamConfigurationResponseTypeDef",
+    "ClientDescribeCompanyNetworkConfigurationResponseTypeDef",
+    "ClientDescribeDevicePolicyConfigurationResponseTypeDef",
+    "ClientDescribeDeviceResponseTypeDef",
+    "ClientDescribeDomainResponseTypeDef",
+    "ClientDescribeFleetMetadataResponseTypeDef",
+    "ClientDescribeIdentityProviderConfigurationResponseTypeDef",
+    "ClientDescribeWebsiteCertificateAuthorityResponseTypeDef",
+    "ClientListDevicesResponseDevicesTypeDef",
+    "ClientListDevicesResponseTypeDef",
+    "ClientListDomainsResponseDomainsTypeDef",
+    "ClientListDomainsResponseTypeDef",
+    "ClientListFleetsResponseFleetSummaryListTypeDef",
+    "ClientListFleetsResponseTypeDef",
+    "ClientListWebsiteAuthorizationProvidersResponseWebsiteAuthorizationProvidersTypeDef",
+    "ClientListWebsiteAuthorizationProvidersResponseTypeDef",
+    "ClientListWebsiteCertificateAuthoritiesResponseWebsiteCertificateAuthoritiesTypeDef",
+    "ClientListWebsiteCertificateAuthoritiesResponseTypeDef",
+)
+
+
 _ClientAssociateWebsiteAuthorizationProviderResponseTypeDef = TypedDict(
     "_ClientAssociateWebsiteAuthorizationProviderResponseTypeDef",
     {"AuthorizationProviderId": str},

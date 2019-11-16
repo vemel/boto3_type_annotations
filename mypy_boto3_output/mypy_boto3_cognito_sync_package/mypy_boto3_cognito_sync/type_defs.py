@@ -6,6 +6,34 @@ from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientBulkPublishResponseTypeDef",
+    "ClientDeleteDatasetResponseTypeDef",
+    "ClientDescribeDatasetResponseTypeDef",
+    "ClientDescribeIdentityPoolUsageResponseIdentityPoolUsageTypeDef",
+    "ClientDescribeIdentityPoolUsageResponseTypeDef",
+    "ClientDescribeIdentityUsageResponseIdentityUsageTypeDef",
+    "ClientDescribeIdentityUsageResponseTypeDef",
+    "ClientGetBulkPublishDetailsResponseTypeDef",
+    "ClientGetCognitoEventsResponseTypeDef",
+    "ClientGetIdentityPoolConfigurationResponsePushSyncTypeDef",
+    "ClientGetIdentityPoolConfigurationResponseTypeDef",
+    "ClientListDatasetsResponseTypeDef",
+    "ClientListIdentityPoolUsageResponseIdentityPoolUsagesTypeDef",
+    "ClientListIdentityPoolUsageResponseTypeDef",
+    "ClientListRecordsResponseRecordsTypeDef",
+    "ClientListRecordsResponseTypeDef",
+    "ClientRegisterDeviceResponseTypeDef",
+    "ClientSetIdentityPoolConfigurationCognitoStreamsTypeDef",
+    "ClientSetIdentityPoolConfigurationPushSyncTypeDef",
+    "ClientSetIdentityPoolConfigurationResponsePushSyncTypeDef",
+    "ClientSetIdentityPoolConfigurationResponseTypeDef",
+    "ClientUpdateRecordsRecordPatchesTypeDef",
+    "ClientUpdateRecordsResponseRecordsTypeDef",
+    "ClientUpdateRecordsResponseTypeDef",
+)
+
+
 _ClientBulkPublishResponseTypeDef = TypedDict(
     "_ClientBulkPublishResponseTypeDef", {"IdentityPoolId": str}, total=False
 )

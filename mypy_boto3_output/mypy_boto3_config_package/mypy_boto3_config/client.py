@@ -3,9 +3,12 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_config.paginator as paginator_scope
 from mypy_boto3_config.type_defs import (
     ClientBatchGetAggregateResourceConfigResourceIdentifiersTypeDef,
     ClientBatchGetAggregateResourceConfigResponseTypeDef,
@@ -80,6 +83,9 @@ from mypy_boto3_config.type_defs import (
     ClientStartRemediationExecutionResponseTypeDef,
     ClientTagResourceTagsTypeDef,
 )
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -5899,27 +5905,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_resource_config_history(
         self,
         resourceType: str,
@@ -6297,19 +6282,6 @@ class Client(BaseClient):
               The string that you use in a subsequent request to get the next page of results in a
               paginated response.
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -9051,4 +9023,179 @@ class Client(BaseClient):
           - *(string) --*
 
         :returns: None
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_aggregate_compliance_by_config_rules"]
+    ) -> paginator_scope.DescribeAggregateComplianceByConfigRulesPaginator:
+        """
+        Get Paginator for `describe_aggregate_compliance_by_config_rules` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_aggregation_authorizations"]
+    ) -> paginator_scope.DescribeAggregationAuthorizationsPaginator:
+        """
+        Get Paginator for `describe_aggregation_authorizations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_compliance_by_config_rule"]
+    ) -> paginator_scope.DescribeComplianceByConfigRulePaginator:
+        """
+        Get Paginator for `describe_compliance_by_config_rule` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_compliance_by_resource"]
+    ) -> paginator_scope.DescribeComplianceByResourcePaginator:
+        """
+        Get Paginator for `describe_compliance_by_resource` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_config_rule_evaluation_status"]
+    ) -> paginator_scope.DescribeConfigRuleEvaluationStatusPaginator:
+        """
+        Get Paginator for `describe_config_rule_evaluation_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_config_rules"]
+    ) -> paginator_scope.DescribeConfigRulesPaginator:
+        """
+        Get Paginator for `describe_config_rules` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self,
+        operation_name: Literal["describe_configuration_aggregator_sources_status"],
+    ) -> paginator_scope.DescribeConfigurationAggregatorSourcesStatusPaginator:
+        """
+        Get Paginator for `describe_configuration_aggregator_sources_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_configuration_aggregators"]
+    ) -> paginator_scope.DescribeConfigurationAggregatorsPaginator:
+        """
+        Get Paginator for `describe_configuration_aggregators` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_pending_aggregation_requests"]
+    ) -> paginator_scope.DescribePendingAggregationRequestsPaginator:
+        """
+        Get Paginator for `describe_pending_aggregation_requests` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_remediation_execution_status"]
+    ) -> paginator_scope.DescribeRemediationExecutionStatusPaginator:
+        """
+        Get Paginator for `describe_remediation_execution_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_retention_configurations"]
+    ) -> paginator_scope.DescribeRetentionConfigurationsPaginator:
+        """
+        Get Paginator for `describe_retention_configurations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_aggregate_compliance_details_by_config_rule"]
+    ) -> paginator_scope.GetAggregateComplianceDetailsByConfigRulePaginator:
+        """
+        Get Paginator for `get_aggregate_compliance_details_by_config_rule` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_compliance_details_by_config_rule"]
+    ) -> paginator_scope.GetComplianceDetailsByConfigRulePaginator:
+        """
+        Get Paginator for `get_compliance_details_by_config_rule` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_compliance_details_by_resource"]
+    ) -> paginator_scope.GetComplianceDetailsByResourcePaginator:
+        """
+        Get Paginator for `get_compliance_details_by_resource` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_resource_config_history"]
+    ) -> paginator_scope.GetResourceConfigHistoryPaginator:
+        """
+        Get Paginator for `get_resource_config_history` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_aggregate_discovered_resources"]
+    ) -> paginator_scope.ListAggregateDiscoveredResourcesPaginator:
+        """
+        Get Paginator for `list_aggregate_discovered_resources` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_discovered_resources"]
+    ) -> paginator_scope.ListDiscoveredResourcesPaginator:
+        """
+        Get Paginator for `list_discovered_resources` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
         """

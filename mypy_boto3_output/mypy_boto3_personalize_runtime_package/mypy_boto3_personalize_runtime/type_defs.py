@@ -5,6 +5,14 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetPersonalizedRankingResponsepersonalizedRankingTypeDef",
+    "ClientGetPersonalizedRankingResponseTypeDef",
+    "ClientGetRecommendationsResponseitemListTypeDef",
+    "ClientGetRecommendationsResponseTypeDef",
+)
+
+
 _ClientGetPersonalizedRankingResponsepersonalizedRankingTypeDef = TypedDict(
     "_ClientGetPersonalizedRankingResponsepersonalizedRankingTypeDef",
     {"itemId": str},

@@ -14,7 +14,20 @@ from mypy_boto3_elbv2.type_defs import (
 )
 
 
-class LoadBalancerAvailable(Boto3Waiter):
+__all__ = (
+    "LoadBalancerAvailableWaiter",
+    "LoadBalancerExistsWaiter",
+    "LoadBalancersDeletedWaiter",
+    "TargetDeregisteredWaiter",
+    "TargetInServiceWaiter",
+)
+
+
+class LoadBalancerAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `load_balancer_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -90,7 +103,11 @@ class LoadBalancerAvailable(Boto3Waiter):
         """
 
 
-class LoadBalancerExists(Boto3Waiter):
+class LoadBalancerExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `load_balancer_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -166,7 +183,11 @@ class LoadBalancerExists(Boto3Waiter):
         """
 
 
-class LoadBalancersDeleted(Boto3Waiter):
+class LoadBalancersDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `load_balancers_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -242,7 +263,11 @@ class LoadBalancersDeleted(Boto3Waiter):
         """
 
 
-class TargetDeregistered(Boto3Waiter):
+class TargetDeregisteredWaiter(Boto3Waiter):
+    """
+    Waiter for `target_deregistered` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -333,7 +358,11 @@ class TargetDeregistered(Boto3Waiter):
         """
 
 
-class TargetInService(Boto3Waiter):
+class TargetInServiceWaiter(Boto3Waiter):
+    """
+    Waiter for `target_in_service` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

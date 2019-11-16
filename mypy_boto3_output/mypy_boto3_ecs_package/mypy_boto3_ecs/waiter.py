@@ -11,7 +11,19 @@ from mypy_boto3_ecs.type_defs import (
 )
 
 
-class ServicesInactive(Boto3Waiter):
+__all__ = (
+    "ServicesInactiveWaiter",
+    "ServicesStableWaiter",
+    "TasksRunningWaiter",
+    "TasksStoppedWaiter",
+)
+
+
+class ServicesInactiveWaiter(Boto3Waiter):
+    """
+    Waiter for `services_inactive` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -85,7 +97,11 @@ class ServicesInactive(Boto3Waiter):
         """
 
 
-class ServicesStable(Boto3Waiter):
+class ServicesStableWaiter(Boto3Waiter):
+    """
+    Waiter for `services_stable` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -159,7 +175,11 @@ class ServicesStable(Boto3Waiter):
         """
 
 
-class TasksRunning(Boto3Waiter):
+class TasksRunningWaiter(Boto3Waiter):
+    """
+    Waiter for `tasks_running` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -232,7 +252,11 @@ class TasksRunning(Boto3Waiter):
         """
 
 
-class TasksStopped(Boto3Waiter):
+class TasksStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `tasks_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

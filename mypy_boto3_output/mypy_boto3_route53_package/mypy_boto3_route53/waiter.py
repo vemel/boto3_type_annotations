@@ -7,7 +7,14 @@ from mypy_boto3_route53.type_defs import (
 )
 
 
-class ResourceRecordSetsChanged(Boto3Waiter):
+__all__ = ("ResourceRecordSetsChangedWaiter",)
+
+
+class ResourceRecordSetsChangedWaiter(Boto3Waiter):
+    """
+    Waiter for `resource_record_sets_changed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

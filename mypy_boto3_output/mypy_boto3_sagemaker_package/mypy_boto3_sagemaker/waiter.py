@@ -13,7 +13,22 @@ from mypy_boto3_sagemaker.type_defs import (
 )
 
 
-class EndpointDeleted(Boto3Waiter):
+__all__ = (
+    "EndpointDeletedWaiter",
+    "EndpointInServiceWaiter",
+    "NotebookInstanceDeletedWaiter",
+    "NotebookInstanceInServiceWaiter",
+    "NotebookInstanceStoppedWaiter",
+    "TrainingJobCompletedOrStoppedWaiter",
+    "TransformJobCompletedOrStoppedWaiter",
+)
+
+
+class EndpointDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `endpoint_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -59,7 +74,11 @@ class EndpointDeleted(Boto3Waiter):
         """
 
 
-class EndpointInService(Boto3Waiter):
+class EndpointInServiceWaiter(Boto3Waiter):
+    """
+    Waiter for `endpoint_in_service` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -105,7 +124,11 @@ class EndpointInService(Boto3Waiter):
         """
 
 
-class NotebookInstanceDeleted(Boto3Waiter):
+class NotebookInstanceDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `notebook_instance_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -151,7 +174,11 @@ class NotebookInstanceDeleted(Boto3Waiter):
         """
 
 
-class NotebookInstanceInService(Boto3Waiter):
+class NotebookInstanceInServiceWaiter(Boto3Waiter):
+    """
+    Waiter for `notebook_instance_in_service` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -197,7 +224,11 @@ class NotebookInstanceInService(Boto3Waiter):
         """
 
 
-class NotebookInstanceStopped(Boto3Waiter):
+class NotebookInstanceStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `notebook_instance_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -243,7 +274,11 @@ class NotebookInstanceStopped(Boto3Waiter):
         """
 
 
-class TrainingJobCompletedOrStopped(Boto3Waiter):
+class TrainingJobCompletedOrStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `training_job_completed_or_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -289,7 +324,11 @@ class TrainingJobCompletedOrStopped(Boto3Waiter):
         """
 
 
-class TransformJobCompletedOrStopped(Boto3Waiter):
+class TransformJobCompletedOrStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `transform_job_completed_or_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -22,7 +22,22 @@ from mypy_boto3_emr.type_defs import (
 )
 
 
-class ListBootstrapActions(Boto3Paginator):
+__all__ = (
+    "ListBootstrapActionsPaginator",
+    "ListClustersPaginator",
+    "ListInstanceFleetsPaginator",
+    "ListInstanceGroupsPaginator",
+    "ListInstancesPaginator",
+    "ListSecurityConfigurationsPaginator",
+    "ListStepsPaginator",
+)
+
+
+class ListBootstrapActionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_bootstrap_actions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -121,7 +136,11 @@ class ListBootstrapActions(Boto3Paginator):
         """
 
 
-class ListClusters(Boto3Paginator):
+class ListClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -292,7 +311,11 @@ class ListClusters(Boto3Paginator):
         """
 
 
-class ListInstanceFleets(Boto3Paginator):
+class ListInstanceFleetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_instance_fleets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -700,7 +723,11 @@ class ListInstanceFleets(Boto3Paginator):
         """
 
 
-class ListInstanceGroups(Boto3Paginator):
+class ListInstanceGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_instance_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1309,7 +1336,11 @@ class ListInstanceGroups(Boto3Paginator):
         """
 
 
-class ListInstances(Boto3Paginator):
+class ListInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1554,7 +1585,11 @@ class ListInstances(Boto3Paginator):
         """
 
 
-class ListSecurityConfigurations(Boto3Paginator):
+class ListSecurityConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_security_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1635,7 +1670,11 @@ class ListSecurityConfigurations(Boto3Paginator):
         """
 
 
-class ListSteps(Boto3Paginator):
+class ListStepsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_steps`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

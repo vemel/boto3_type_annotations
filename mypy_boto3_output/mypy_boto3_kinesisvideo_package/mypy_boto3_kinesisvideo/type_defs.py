@@ -6,6 +6,22 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateStreamResponseTypeDef",
+    "ClientDescribeStreamResponseStreamInfoTypeDef",
+    "ClientDescribeStreamResponseTypeDef",
+    "ClientGetDataEndpointResponseTypeDef",
+    "ClientListStreamsResponseStreamInfoListTypeDef",
+    "ClientListStreamsResponseTypeDef",
+    "ClientListStreamsStreamNameConditionTypeDef",
+    "ClientListTagsForStreamResponseTypeDef",
+    "ListStreamsPaginatePaginationConfigTypeDef",
+    "ListStreamsPaginateResponseStreamInfoListTypeDef",
+    "ListStreamsPaginateResponseTypeDef",
+    "ListStreamsPaginateStreamNameConditionTypeDef",
+)
+
+
 _ClientCreateStreamResponseTypeDef = TypedDict(
     "_ClientCreateStreamResponseTypeDef", {"StreamARN": str}, total=False
 )

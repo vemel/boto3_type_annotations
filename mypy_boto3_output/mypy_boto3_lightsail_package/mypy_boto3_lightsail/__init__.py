@@ -2,4 +2,5 @@
 
 from mypy_boto3_lightsail.client import Client
 
+
 __all__ = ("Client",)

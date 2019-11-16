@@ -27,7 +27,25 @@ from mypy_boto3_appstream.type_defs import (
 )
 
 
-class DescribeDirectoryConfigs(Boto3Paginator):
+__all__ = (
+    "DescribeDirectoryConfigsPaginator",
+    "DescribeFleetsPaginator",
+    "DescribeImageBuildersPaginator",
+    "DescribeImagesPaginator",
+    "DescribeSessionsPaginator",
+    "DescribeStacksPaginator",
+    "DescribeUserStackAssociationsPaginator",
+    "DescribeUsersPaginator",
+    "ListAssociatedFleetsPaginator",
+    "ListAssociatedStacksPaginator",
+)
+
+
+class DescribeDirectoryConfigsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_directory_configs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -151,7 +169,11 @@ class DescribeDirectoryConfigs(Boto3Paginator):
         """
 
 
-class DescribeFleets(Boto3Paginator):
+class DescribeFleetsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_fleets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -504,7 +526,11 @@ class DescribeFleets(Boto3Paginator):
         """
 
 
-class DescribeImageBuilders(Boto3Paginator):
+class DescribeImageBuildersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_image_builders`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -848,7 +874,11 @@ class DescribeImageBuilders(Boto3Paginator):
         """
 
 
-class DescribeImages(Boto3Paginator):
+class DescribeImagesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_images`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1103,7 +1133,11 @@ class DescribeImages(Boto3Paginator):
         """
 
 
-class DescribeSessions(Boto3Paginator):
+class DescribeSessionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_sessions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1274,7 +1308,11 @@ class DescribeSessions(Boto3Paginator):
         """
 
 
-class DescribeStacks(Boto3Paginator):
+class DescribeStacksPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_stacks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1532,7 +1570,11 @@ class DescribeStacks(Boto3Paginator):
         """
 
 
-class DescribeUserStackAssociations(Boto3Paginator):
+class DescribeUserStackAssociationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_user_stack_associations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1654,7 +1696,11 @@ class DescribeUserStackAssociations(Boto3Paginator):
         """
 
 
-class DescribeUsers(Boto3Paginator):
+class DescribeUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1787,7 +1833,11 @@ class DescribeUsers(Boto3Paginator):
         """
 
 
-class ListAssociatedFleets(Boto3Paginator):
+class ListAssociatedFleetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_associated_fleets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1858,7 +1908,11 @@ class ListAssociatedFleets(Boto3Paginator):
         """
 
 
-class ListAssociatedStacks(Boto3Paginator):
+class ListAssociatedStacksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_associated_stacks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

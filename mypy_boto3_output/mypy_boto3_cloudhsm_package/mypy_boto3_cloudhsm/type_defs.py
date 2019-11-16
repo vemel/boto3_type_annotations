@@ -5,6 +5,38 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAddTagsToResourceResponseTypeDef",
+    "ClientAddTagsToResourceTagListTypeDef",
+    "ClientCreateHapgResponseTypeDef",
+    "ClientCreateHsmResponseTypeDef",
+    "ClientCreateLunaClientResponseTypeDef",
+    "ClientDeleteHapgResponseTypeDef",
+    "ClientDeleteHsmResponseTypeDef",
+    "ClientDeleteLunaClientResponseTypeDef",
+    "ClientDescribeHapgResponseTypeDef",
+    "ClientDescribeHsmResponseTypeDef",
+    "ClientDescribeLunaClientResponseTypeDef",
+    "ClientGetConfigResponseTypeDef",
+    "ClientListAvailableZonesResponseTypeDef",
+    "ClientListHapgsResponseTypeDef",
+    "ClientListHsmsResponseTypeDef",
+    "ClientListLunaClientsResponseTypeDef",
+    "ClientListTagsForResourceResponseTagListTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientModifyHapgResponseTypeDef",
+    "ClientModifyHsmResponseTypeDef",
+    "ClientModifyLunaClientResponseTypeDef",
+    "ClientRemoveTagsFromResourceResponseTypeDef",
+    "ListHapgsPaginatePaginationConfigTypeDef",
+    "ListHapgsPaginateResponseTypeDef",
+    "ListHsmsPaginatePaginationConfigTypeDef",
+    "ListHsmsPaginateResponseTypeDef",
+    "ListLunaClientsPaginatePaginationConfigTypeDef",
+    "ListLunaClientsPaginateResponseTypeDef",
+)
+
+
 _ClientAddTagsToResourceResponseTypeDef = TypedDict(
     "_ClientAddTagsToResourceResponseTypeDef", {"Status": str}, total=False
 )

@@ -18,7 +18,21 @@ from mypy_boto3_medialive.type_defs import (
 )
 
 
-class DescribeSchedule(Boto3Paginator):
+__all__ = (
+    "DescribeSchedulePaginator",
+    "ListChannelsPaginator",
+    "ListInputSecurityGroupsPaginator",
+    "ListInputsPaginator",
+    "ListOfferingsPaginator",
+    "ListReservationsPaginator",
+)
+
+
+class DescribeSchedulePaginator(Boto3Paginator):
+    """
+    Paginator for `describe_schedule`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -422,7 +436,11 @@ class DescribeSchedule(Boto3Paginator):
         """
 
 
-class ListChannels(Boto3Paginator):
+class ListChannelsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_channels`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListChannelsPaginatePaginationConfigTypeDef = None
@@ -856,7 +874,11 @@ class ListChannels(Boto3Paginator):
         """
 
 
-class ListInputSecurityGroups(Boto3Paginator):
+class ListInputSecurityGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_input_security_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -960,7 +982,11 @@ class ListInputSecurityGroups(Boto3Paginator):
         """
 
 
-class ListInputs(Boto3Paginator):
+class ListInputsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_inputs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListInputsPaginatePaginationConfigTypeDef = None
@@ -1147,7 +1173,11 @@ class ListInputs(Boto3Paginator):
         """
 
 
-class ListOfferings(Boto3Paginator):
+class ListOfferingsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_offerings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1324,7 +1354,11 @@ class ListOfferings(Boto3Paginator):
         """
 
 
-class ListReservations(Boto3Paginator):
+class ListReservationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_reservations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

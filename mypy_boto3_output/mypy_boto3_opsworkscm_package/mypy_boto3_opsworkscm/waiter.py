@@ -5,7 +5,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_opsworkscm.type_defs import NodeAssociatedWaitWaiterConfigTypeDef
 
 
-class NodeAssociated(Boto3Waiter):
+__all__ = ("NodeAssociatedWaiter",)
+
+
+class NodeAssociatedWaiter(Boto3Waiter):
+    """
+    Waiter for `node_associated` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

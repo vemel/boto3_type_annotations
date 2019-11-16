@@ -46,7 +46,34 @@ from mypy_boto3_sagemaker.type_defs import (
 )
 
 
-class ListAlgorithms(Boto3Paginator):
+__all__ = (
+    "ListAlgorithmsPaginator",
+    "ListCodeRepositoriesPaginator",
+    "ListCompilationJobsPaginator",
+    "ListEndpointConfigsPaginator",
+    "ListEndpointsPaginator",
+    "ListHyperParameterTuningJobsPaginator",
+    "ListLabelingJobsPaginator",
+    "ListLabelingJobsForWorkteamPaginator",
+    "ListModelPackagesPaginator",
+    "ListModelsPaginator",
+    "ListNotebookInstanceLifecycleConfigsPaginator",
+    "ListNotebookInstancesPaginator",
+    "ListSubscribedWorkteamsPaginator",
+    "ListTagsPaginator",
+    "ListTrainingJobsPaginator",
+    "ListTrainingJobsForHyperParameterTuningJobPaginator",
+    "ListTransformJobsPaginator",
+    "ListWorkteamsPaginator",
+    "SearchPaginator",
+)
+
+
+class ListAlgorithmsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_algorithms`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -179,7 +206,11 @@ class ListAlgorithms(Boto3Paginator):
         """
 
 
-class ListCodeRepositories(Boto3Paginator):
+class ListCodeRepositoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_code_repositories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -360,7 +391,11 @@ class ListCodeRepositories(Boto3Paginator):
         """
 
 
-class ListCompilationJobs(Boto3Paginator):
+class ListCompilationJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_compilation_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -533,7 +568,11 @@ class ListCompilationJobs(Boto3Paginator):
         """
 
 
-class ListEndpointConfigs(Boto3Paginator):
+class ListEndpointConfigsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_endpoint_configs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -657,7 +696,11 @@ class ListEndpointConfigs(Boto3Paginator):
         """
 
 
-class ListEndpoints(Boto3Paginator):
+class ListEndpointsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_endpoints`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -845,7 +888,11 @@ class ListEndpoints(Boto3Paginator):
         """
 
 
-class ListHyperParameterTuningJobs(Boto3Paginator):
+class ListHyperParameterTuningJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_hyper_parameter_tuning_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1091,7 +1138,11 @@ class ListHyperParameterTuningJobs(Boto3Paginator):
         """
 
 
-class ListLabelingJobs(Boto3Paginator):
+class ListLabelingJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_labeling_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1358,7 +1409,11 @@ class ListLabelingJobs(Boto3Paginator):
         """
 
 
-class ListLabelingJobsForWorkteam(Boto3Paginator):
+class ListLabelingJobsForWorkteamPaginator(Boto3Paginator):
+    """
+    Paginator for `list_labeling_jobs_for_workteam`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1517,7 +1572,11 @@ class ListLabelingJobsForWorkteam(Boto3Paginator):
         """
 
 
-class ListModelPackages(Boto3Paginator):
+class ListModelPackagesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_model_packages`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1650,7 +1709,11 @@ class ListModelPackages(Boto3Paginator):
         """
 
 
-class ListModels(Boto3Paginator):
+class ListModelsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_models`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1774,7 +1837,11 @@ class ListModels(Boto3Paginator):
         """
 
 
-class ListNotebookInstanceLifecycleConfigs(Boto3Paginator):
+class ListNotebookInstanceLifecycleConfigsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_notebook_instance_lifecycle_configs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1921,7 +1988,11 @@ class ListNotebookInstanceLifecycleConfigs(Boto3Paginator):
         """
 
 
-class ListNotebookInstances(Boto3Paginator):
+class ListNotebookInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_notebook_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2160,7 +2231,11 @@ class ListNotebookInstances(Boto3Paginator):
         """
 
 
-class ListSubscribedWorkteams(Boto3Paginator):
+class ListSubscribedWorkteamsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_subscribed_workteams`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2263,7 +2338,11 @@ class ListSubscribedWorkteams(Boto3Paginator):
         """
 
 
-class ListTags(Boto3Paginator):
+class ListTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2351,7 +2430,11 @@ class ListTags(Boto3Paginator):
         """
 
 
-class ListTrainingJobs(Boto3Paginator):
+class ListTrainingJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_training_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2512,7 +2595,11 @@ class ListTrainingJobs(Boto3Paginator):
         """
 
 
-class ListTrainingJobsForHyperParameterTuningJob(Boto3Paginator):
+class ListTrainingJobsForHyperParameterTuningJobPaginator(Boto3Paginator):
+    """
+    Paginator for `list_training_jobs_for_hyper_parameter_tuning_job`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2709,7 +2796,11 @@ class ListTrainingJobsForHyperParameterTuningJob(Boto3Paginator):
         """
 
 
-class ListTransformJobs(Boto3Paginator):
+class ListTransformJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_transform_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2876,7 +2967,11 @@ class ListTransformJobs(Boto3Paginator):
         """
 
 
-class ListWorkteams(Boto3Paginator):
+class ListWorkteamsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_workteams`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3056,7 +3151,11 @@ class ListWorkteams(Boto3Paginator):
         """
 
 
-class Search(Boto3Paginator):
+class SearchPaginator(Boto3Paginator):
+    """
+    Paginator for `search`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

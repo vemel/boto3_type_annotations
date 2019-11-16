@@ -10,7 +10,14 @@ from mypy_boto3_mediaconnect.type_defs import (
 )
 
 
-class ListEntitlements(Boto3Paginator):
+__all__ = ("ListEntitlementsPaginator", "ListFlowsPaginator")
+
+
+class ListEntitlementsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_entitlements`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListEntitlementsPaginatePaginationConfigTypeDef = None
@@ -88,7 +95,11 @@ class ListEntitlements(Boto3Paginator):
         """
 
 
-class ListFlows(Boto3Paginator):
+class ListFlowsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_flows`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListFlowsPaginatePaginationConfigTypeDef = None

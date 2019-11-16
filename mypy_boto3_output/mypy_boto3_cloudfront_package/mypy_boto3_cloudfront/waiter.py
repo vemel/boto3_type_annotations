@@ -9,7 +9,18 @@ from mypy_boto3_cloudfront.type_defs import (
 )
 
 
-class DistributionDeployed(Boto3Waiter):
+__all__ = (
+    "DistributionDeployedWaiter",
+    "InvalidationCompletedWaiter",
+    "StreamingDistributionDeployedWaiter",
+)
+
+
+class DistributionDeployedWaiter(Boto3Waiter):
+    """
+    Waiter for `distribution_deployed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, Id: str, WaiterConfig: DistributionDeployedWaitWaiterConfigTypeDef = None
@@ -53,7 +64,11 @@ class DistributionDeployed(Boto3Waiter):
         """
 
 
-class InvalidationCompleted(Boto3Waiter):
+class InvalidationCompletedWaiter(Boto3Waiter):
+    """
+    Waiter for `invalidation_completed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -106,7 +121,11 @@ class InvalidationCompleted(Boto3Waiter):
         """
 
 
-class StreamingDistributionDeployed(Boto3Waiter):
+class StreamingDistributionDeployedWaiter(Boto3Waiter):
+    """
+    Waiter for `streaming_distribution_deployed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

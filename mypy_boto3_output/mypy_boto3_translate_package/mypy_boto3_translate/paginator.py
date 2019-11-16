@@ -8,7 +8,14 @@ from mypy_boto3_translate.type_defs import (
 )
 
 
-class ListTerminologies(Boto3Paginator):
+__all__ = ("ListTerminologiesPaginator",)
+
+
+class ListTerminologiesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_terminologies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTerminologiesPaginatePaginationConfigTypeDef = None

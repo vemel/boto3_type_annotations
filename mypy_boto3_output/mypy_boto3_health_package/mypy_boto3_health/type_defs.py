@@ -6,6 +6,44 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeAffectedEntitiesfilterlastUpdatedTimesTypeDef",
+    "ClientDescribeAffectedEntitiesfilterTypeDef",
+    "ClientDescribeEventAggregatesResponseeventAggregatesTypeDef",
+    "ClientDescribeEventAggregatesResponseTypeDef",
+    "ClientDescribeEventAggregatesfilterendTimesTypeDef",
+    "ClientDescribeEventAggregatesfilterlastUpdatedTimesTypeDef",
+    "ClientDescribeEventAggregatesfilterstartTimesTypeDef",
+    "ClientDescribeEventAggregatesfilterTypeDef",
+    "ClientDescribeEventTypesResponseeventTypesTypeDef",
+    "ClientDescribeEventTypesResponseTypeDef",
+    "ClientDescribeEventTypesfilterTypeDef",
+    "ClientDescribeEventsfilterendTimesTypeDef",
+    "ClientDescribeEventsfilterlastUpdatedTimesTypeDef",
+    "ClientDescribeEventsfilterstartTimesTypeDef",
+    "ClientDescribeEventsfilterTypeDef",
+    "DescribeAffectedEntitiesPaginatePaginationConfigTypeDef",
+    "DescribeAffectedEntitiesPaginatefilterlastUpdatedTimesTypeDef",
+    "DescribeAffectedEntitiesPaginatefilterTypeDef",
+    "DescribeEventAggregatesPaginatePaginationConfigTypeDef",
+    "DescribeEventAggregatesPaginateResponseeventAggregatesTypeDef",
+    "DescribeEventAggregatesPaginateResponseTypeDef",
+    "DescribeEventAggregatesPaginatefilterendTimesTypeDef",
+    "DescribeEventAggregatesPaginatefilterlastUpdatedTimesTypeDef",
+    "DescribeEventAggregatesPaginatefilterstartTimesTypeDef",
+    "DescribeEventAggregatesPaginatefilterTypeDef",
+    "DescribeEventTypesPaginatePaginationConfigTypeDef",
+    "DescribeEventTypesPaginateResponseeventTypesTypeDef",
+    "DescribeEventTypesPaginateResponseTypeDef",
+    "DescribeEventTypesPaginatefilterTypeDef",
+    "DescribeEventsPaginatePaginationConfigTypeDef",
+    "DescribeEventsPaginatefilterendTimesTypeDef",
+    "DescribeEventsPaginatefilterlastUpdatedTimesTypeDef",
+    "DescribeEventsPaginatefilterstartTimesTypeDef",
+    "DescribeEventsPaginatefilterTypeDef",
+)
+
+
 _ClientDescribeAffectedEntitiesfilterlastUpdatedTimesTypeDef = TypedDict(
     "_ClientDescribeAffectedEntitiesfilterlastUpdatedTimesTypeDef",
     {"from": datetime, "to": datetime},

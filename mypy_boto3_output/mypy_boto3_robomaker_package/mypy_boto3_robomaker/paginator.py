@@ -25,7 +25,21 @@ from mypy_boto3_robomaker.type_defs import (
 )
 
 
-class ListDeploymentJobs(Boto3Paginator):
+__all__ = (
+    "ListDeploymentJobsPaginator",
+    "ListFleetsPaginator",
+    "ListRobotApplicationsPaginator",
+    "ListRobotsPaginator",
+    "ListSimulationApplicationsPaginator",
+    "ListSimulationJobsPaginator",
+)
+
+
+class ListDeploymentJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_deployment_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -274,7 +288,11 @@ class ListDeploymentJobs(Boto3Paginator):
         """
 
 
-class ListFleets(Boto3Paginator):
+class ListFleetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_fleets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -412,7 +430,11 @@ class ListFleets(Boto3Paginator):
         """
 
 
-class ListRobotApplications(Boto3Paginator):
+class ListRobotApplicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_robot_applications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -562,7 +584,11 @@ class ListRobotApplications(Boto3Paginator):
         """
 
 
-class ListRobots(Boto3Paginator):
+class ListRobotsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_robots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -718,7 +744,11 @@ class ListRobots(Boto3Paginator):
         """
 
 
-class ListSimulationApplications(Boto3Paginator):
+class ListSimulationApplicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_simulation_applications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -885,7 +915,11 @@ class ListSimulationApplications(Boto3Paginator):
         """
 
 
-class ListSimulationJobs(Boto3Paginator):
+class ListSimulationJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_simulation_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

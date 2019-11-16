@@ -11,7 +11,14 @@ from mypy_boto3_elb.type_defs import (
 )
 
 
-class DescribeAccountLimits(Boto3Paginator):
+__all__ = ("DescribeAccountLimitsPaginator", "DescribeLoadBalancersPaginator")
+
+
+class DescribeAccountLimitsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_account_limits`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -103,7 +110,11 @@ class DescribeAccountLimits(Boto3Paginator):
         """
 
 
-class DescribeLoadBalancers(Boto3Paginator):
+class DescribeLoadBalancersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_load_balancers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

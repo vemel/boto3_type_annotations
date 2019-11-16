@@ -9,7 +9,18 @@ from mypy_boto3_acm_pca.type_defs import (
 )
 
 
-class AuditReportCreated(Boto3Waiter):
+__all__ = (
+    "AuditReportCreatedWaiter",
+    "CertificateAuthorityCSRCreatedWaiter",
+    "CertificateIssuedWaiter",
+)
+
+
+class AuditReportCreatedWaiter(Boto3Waiter):
+    """
+    Waiter for `audit_report_created` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -66,7 +77,11 @@ class AuditReportCreated(Boto3Waiter):
         """
 
 
-class CertificateAuthorityCSRCreated(Boto3Waiter):
+class CertificateAuthorityCSRCreatedWaiter(Boto3Waiter):
+    """
+    Waiter for `certificate_authority_csr_created` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -116,7 +131,11 @@ class CertificateAuthorityCSRCreated(Boto3Waiter):
         """
 
 
-class CertificateIssued(Boto3Waiter):
+class CertificateIssuedWaiter(Boto3Waiter):
+    """
+    Waiter for `certificate_issued` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

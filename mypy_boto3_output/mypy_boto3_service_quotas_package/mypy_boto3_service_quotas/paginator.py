@@ -18,7 +18,21 @@ from mypy_boto3_service_quotas.type_defs import (
 )
 
 
-class ListAWSDefaultServiceQuotas(Boto3Paginator):
+__all__ = (
+    "ListAWSDefaultServiceQuotasPaginator",
+    "ListRequestedServiceQuotaChangeHistoryPaginator",
+    "ListRequestedServiceQuotaChangeHistoryByQuotaPaginator",
+    "ListServiceQuotaIncreaseRequestsInTemplatePaginator",
+    "ListServiceQuotasPaginator",
+    "ListServicesPaginator",
+)
+
+
+class ListAWSDefaultServiceQuotasPaginator(Boto3Paginator):
+    """
+    Paginator for `list_aws_default_service_quotas`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -227,7 +241,11 @@ class ListAWSDefaultServiceQuotas(Boto3Paginator):
         """
 
 
-class ListRequestedServiceQuotaChangeHistory(Boto3Paginator):
+class ListRequestedServiceQuotaChangeHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `list_requested_service_quota_change_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -384,7 +402,11 @@ class ListRequestedServiceQuotaChangeHistory(Boto3Paginator):
         """
 
 
-class ListRequestedServiceQuotaChangeHistoryByQuota(Boto3Paginator):
+class ListRequestedServiceQuotaChangeHistoryByQuotaPaginator(Boto3Paginator):
+    """
+    Paginator for `list_requested_service_quota_change_history_by_quota`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -548,7 +570,11 @@ class ListRequestedServiceQuotaChangeHistoryByQuota(Boto3Paginator):
         """
 
 
-class ListServiceQuotaIncreaseRequestsInTemplate(Boto3Paginator):
+class ListServiceQuotaIncreaseRequestsInTemplatePaginator(Boto3Paginator):
+    """
+    Paginator for `list_service_quota_increase_requests_in_template`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -676,7 +702,11 @@ class ListServiceQuotaIncreaseRequestsInTemplate(Boto3Paginator):
         """
 
 
-class ListServiceQuotas(Boto3Paginator):
+class ListServiceQuotasPaginator(Boto3Paginator):
+    """
+    Paginator for `list_service_quotas`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -886,7 +916,11 @@ class ListServiceQuotas(Boto3Paginator):
         """
 
 
-class ListServices(Boto3Paginator):
+class ListServicesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_services`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListServicesPaginatePaginationConfigTypeDef = None

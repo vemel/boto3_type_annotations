@@ -8,7 +8,14 @@ from mypy_boto3_secretsmanager.type_defs import (
 )
 
 
-class ListSecrets(Boto3Paginator):
+__all__ = ("ListSecretsPaginator",)
+
+
+class ListSecretsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_secrets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSecretsPaginatePaginationConfigTypeDef = None

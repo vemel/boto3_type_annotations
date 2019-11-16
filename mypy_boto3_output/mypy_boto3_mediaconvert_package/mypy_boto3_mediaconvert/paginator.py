@@ -16,7 +16,20 @@ from mypy_boto3_mediaconvert.type_defs import (
 )
 
 
-class DescribeEndpoints(Boto3Paginator):
+__all__ = (
+    "DescribeEndpointsPaginator",
+    "ListJobTemplatesPaginator",
+    "ListJobsPaginator",
+    "ListPresetsPaginator",
+    "ListQueuesPaginator",
+)
+
+
+class DescribeEndpointsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_endpoints`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -94,7 +107,11 @@ class DescribeEndpoints(Boto3Paginator):
         """
 
 
-class ListJobTemplates(Boto3Paginator):
+class ListJobTemplatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_job_templates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4785,7 +4802,11 @@ class ListJobTemplates(Boto3Paginator):
         """
 
 
-class ListJobs(Boto3Paginator):
+class ListJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -9652,7 +9673,11 @@ class ListJobs(Boto3Paginator):
         """
 
 
-class ListPresets(Boto3Paginator):
+class ListPresetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_presets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -12290,7 +12315,11 @@ class ListPresets(Boto3Paginator):
         """
 
 
-class ListQueues(Boto3Paginator):
+class ListQueuesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_queues`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

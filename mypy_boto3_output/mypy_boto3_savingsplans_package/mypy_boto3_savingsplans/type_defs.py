@@ -5,6 +5,28 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateSavingsPlanResponseTypeDef",
+    "ClientDescribeSavingsPlanRatesResponsesearchResultspropertiesTypeDef",
+    "ClientDescribeSavingsPlanRatesResponsesearchResultsTypeDef",
+    "ClientDescribeSavingsPlanRatesResponseTypeDef",
+    "ClientDescribeSavingsPlanRatesfiltersTypeDef",
+    "ClientDescribeSavingsPlansOfferingRatesResponsesearchResultspropertiesTypeDef",
+    "ClientDescribeSavingsPlansOfferingRatesResponsesearchResultssavingsPlanOfferingTypeDef",
+    "ClientDescribeSavingsPlansOfferingRatesResponsesearchResultsTypeDef",
+    "ClientDescribeSavingsPlansOfferingRatesResponseTypeDef",
+    "ClientDescribeSavingsPlansOfferingRatesfiltersTypeDef",
+    "ClientDescribeSavingsPlansOfferingsResponsesearchResultspropertiesTypeDef",
+    "ClientDescribeSavingsPlansOfferingsResponsesearchResultsTypeDef",
+    "ClientDescribeSavingsPlansOfferingsResponseTypeDef",
+    "ClientDescribeSavingsPlansOfferingsfiltersTypeDef",
+    "ClientDescribeSavingsPlansResponsesavingsPlansTypeDef",
+    "ClientDescribeSavingsPlansResponseTypeDef",
+    "ClientDescribeSavingsPlansfiltersTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+)
+
+
 _ClientCreateSavingsPlanResponseTypeDef = TypedDict(
     "_ClientCreateSavingsPlanResponseTypeDef", {"savingsPlanId": str}, total=False
 )

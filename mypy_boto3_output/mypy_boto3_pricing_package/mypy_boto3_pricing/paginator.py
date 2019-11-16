@@ -14,7 +14,18 @@ from mypy_boto3_pricing.type_defs import (
 )
 
 
-class DescribeServices(Boto3Paginator):
+__all__ = (
+    "DescribeServicesPaginator",
+    "GetAttributeValuesPaginator",
+    "GetProductsPaginator",
+)
+
+
+class DescribeServicesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_services`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -123,7 +134,11 @@ class DescribeServices(Boto3Paginator):
         """
 
 
-class GetAttributeValues(Boto3Paginator):
+class GetAttributeValuesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_attribute_values`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -217,7 +232,11 @@ class GetAttributeValues(Boto3Paginator):
         """
 
 
-class GetProducts(Boto3Paginator):
+class GetProductsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_products`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

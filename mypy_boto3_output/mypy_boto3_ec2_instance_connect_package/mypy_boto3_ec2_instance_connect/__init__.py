@@ -2,4 +2,5 @@
 
 from mypy_boto3_ec2_instance_connect.client import Client
 
+
 __all__ = ("Client",)

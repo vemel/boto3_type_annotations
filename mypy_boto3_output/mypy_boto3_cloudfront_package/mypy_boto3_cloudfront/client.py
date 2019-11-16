@@ -2,12 +2,18 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_cloudfront.paginator as paginator_scope
 from mypy_boto3_cloudfront.type_defs import (
     ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
     ClientCreateCloudFrontOriginAccessIdentityResponseTypeDef,
+    ClientCreateDistributionDistributionConfigTypeDef,
+    ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef,
     ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef,
     ClientCreateFieldLevelEncryptionConfigResponseTypeDef,
     ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef,
@@ -42,6 +48,7 @@ from mypy_boto3_cloudfront.type_defs import (
     ClientUntagResourceTagKeysTypeDef,
     ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef,
     ClientUpdateCloudFrontOriginAccessIdentityResponseTypeDef,
+    ClientUpdateDistributionDistributionConfigTypeDef,
     ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef,
     ClientUpdateFieldLevelEncryptionConfigResponseTypeDef,
     ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef,
@@ -51,6 +58,12 @@ from mypy_boto3_cloudfront.type_defs import (
     ClientUpdateStreamingDistributionResponseTypeDef,
     ClientUpdateStreamingDistributionStreamingDistributionConfigTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_cloudfront.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -199,7 +212,9 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def create_distribution(self, DistributionConfig: Dict) -> Dict[str, Any]:
+    def create_distribution(
+        self, DistributionConfig: ClientCreateDistributionDistributionConfigTypeDef
+    ) -> Dict[str, Any]:
         """
         Creates a new web distribution. You create a CloudFront distribution to tell CloudFront where you
         want content to be delivered from, and the details about how to track and manage content delivery.
@@ -4072,7 +4087,8 @@ class Client(BaseClient):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_distribution_with_tags(
-        self, DistributionConfigWithTags: Dict
+        self,
+        DistributionConfigWithTags: ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef,
     ) -> Dict[str, Any]:
         """
         Create a new distribution with tags.
@@ -14852,27 +14868,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_public_key(self, Id: str) -> ClientGetPublicKeyResponseTypeDef:
         """
         Get the public key information.
@@ -15529,19 +15524,6 @@ class Client(BaseClient):
 
               The current version of the configuration. For example: ``E2QWRUHAPOMQZL`` .
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -20539,7 +20521,10 @@ class Client(BaseClient):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def update_distribution(
-        self, DistributionConfig: Dict, Id: str, IfMatch: str = None
+        self,
+        DistributionConfig: ClientUpdateDistributionDistributionConfigTypeDef,
+        Id: str,
+        IfMatch: str = None,
     ) -> Dict[str, Any]:
         """
         Updates the configuration for a web distribution.
@@ -25607,4 +25592,101 @@ class Client(BaseClient):
 
               The current version of the configuration. For example: ``E2QWRUHAPOMQZL`` .
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_cloud_front_origin_access_identities"]
+    ) -> paginator_scope.ListCloudFrontOriginAccessIdentitiesPaginator:
+        """
+        Get Paginator for `list_cloud_front_origin_access_identities` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_distributions"]
+    ) -> paginator_scope.ListDistributionsPaginator:
+        """
+        Get Paginator for `list_distributions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_invalidations"]
+    ) -> paginator_scope.ListInvalidationsPaginator:
+        """
+        Get Paginator for `list_invalidations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_streaming_distributions"]
+    ) -> paginator_scope.ListStreamingDistributionsPaginator:
+        """
+        Get Paginator for `list_streaming_distributions` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["distribution_deployed"]
+    ) -> waiter_scope.DistributionDeployedWaiter:
+        """
+        Get Waiter `distribution_deployed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["invalidation_completed"]
+    ) -> waiter_scope.InvalidationCompletedWaiter:
+        """
+        Get Waiter `invalidation_completed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["streaming_distribution_deployed"]
+    ) -> waiter_scope.StreamingDistributionDeployedWaiter:
+        """
+        Get Waiter `streaming_distribution_deployed`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

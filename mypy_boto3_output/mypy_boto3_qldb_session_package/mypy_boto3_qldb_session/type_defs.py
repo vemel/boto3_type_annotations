@@ -5,6 +5,25 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientSendCommandCommitTransactionTypeDef",
+    "ClientSendCommandExecuteStatementParametersTypeDef",
+    "ClientSendCommandExecuteStatementTypeDef",
+    "ClientSendCommandFetchPageTypeDef",
+    "ClientSendCommandResponseCommitTransactionTypeDef",
+    "ClientSendCommandResponseExecuteStatementFirstPageValuesTypeDef",
+    "ClientSendCommandResponseExecuteStatementFirstPageTypeDef",
+    "ClientSendCommandResponseExecuteStatementTypeDef",
+    "ClientSendCommandResponseFetchPagePageValuesTypeDef",
+    "ClientSendCommandResponseFetchPagePageTypeDef",
+    "ClientSendCommandResponseFetchPageTypeDef",
+    "ClientSendCommandResponseStartSessionTypeDef",
+    "ClientSendCommandResponseStartTransactionTypeDef",
+    "ClientSendCommandResponseTypeDef",
+    "ClientSendCommandStartSessionTypeDef",
+)
+
+
 _ClientSendCommandCommitTransactionTypeDef = TypedDict(
     "_ClientSendCommandCommitTransactionTypeDef",
     {"TransactionId": str, "CommitDigest": bytes},

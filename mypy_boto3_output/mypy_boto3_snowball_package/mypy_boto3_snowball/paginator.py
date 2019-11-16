@@ -16,7 +16,20 @@ from mypy_boto3_snowball.type_defs import (
 )
 
 
-class DescribeAddresses(Boto3Paginator):
+__all__ = (
+    "DescribeAddressesPaginator",
+    "ListClusterJobsPaginator",
+    "ListClustersPaginator",
+    "ListCompatibleImagesPaginator",
+    "ListJobsPaginator",
+)
+
+
+class DescribeAddressesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_addresses`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: DescribeAddressesPaginatePaginationConfigTypeDef = None
@@ -162,7 +175,11 @@ class DescribeAddresses(Boto3Paginator):
         """
 
 
-class ListClusterJobs(Boto3Paginator):
+class ListClusterJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_cluster_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -289,7 +306,11 @@ class ListClusterJobs(Boto3Paginator):
         """
 
 
-class ListClusters(Boto3Paginator):
+class ListClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListClustersPaginatePaginationConfigTypeDef = None
@@ -384,7 +405,11 @@ class ListClusters(Boto3Paginator):
         """
 
 
-class ListCompatibleImages(Boto3Paginator):
+class ListCompatibleImagesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_compatible_images`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -469,7 +494,11 @@ class ListCompatibleImages(Boto3Paginator):
         """
 
 
-class ListJobs(Boto3Paginator):
+class ListJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListJobsPaginatePaginationConfigTypeDef = None

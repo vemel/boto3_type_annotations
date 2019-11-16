@@ -30,7 +30,24 @@ from mypy_boto3_inspector.type_defs import (
 )
 
 
-class ListAssessmentRunAgents(Boto3Paginator):
+__all__ = (
+    "ListAssessmentRunAgentsPaginator",
+    "ListAssessmentRunsPaginator",
+    "ListAssessmentTargetsPaginator",
+    "ListAssessmentTemplatesPaginator",
+    "ListEventSubscriptionsPaginator",
+    "ListExclusionsPaginator",
+    "ListFindingsPaginator",
+    "ListRulesPackagesPaginator",
+    "PreviewAgentsPaginator",
+)
+
+
+class ListAssessmentRunAgentsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assessment_run_agents`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -203,7 +220,11 @@ class ListAssessmentRunAgents(Boto3Paginator):
         """
 
 
-class ListAssessmentRuns(Boto3Paginator):
+class ListAssessmentRunsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assessment_runs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -402,7 +423,11 @@ class ListAssessmentRuns(Boto3Paginator):
         """
 
 
-class ListAssessmentTargets(Boto3Paginator):
+class ListAssessmentTargetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assessment_targets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -493,7 +518,11 @@ class ListAssessmentTargets(Boto3Paginator):
         """
 
 
-class ListAssessmentTemplates(Boto3Paginator):
+class ListAssessmentTemplatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assessment_templates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -625,7 +654,11 @@ class ListAssessmentTemplates(Boto3Paginator):
         """
 
 
-class ListEventSubscriptions(Boto3Paginator):
+class ListEventSubscriptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_event_subscriptions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -744,7 +777,11 @@ class ListEventSubscriptions(Boto3Paginator):
         """
 
 
-class ListExclusions(Boto3Paginator):
+class ListExclusionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_exclusions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -824,7 +861,11 @@ class ListExclusions(Boto3Paginator):
         """
 
 
-class ListFindings(Boto3Paginator):
+class ListFindingsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_findings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1036,7 +1077,11 @@ class ListFindings(Boto3Paginator):
         """
 
 
-class ListRulesPackages(Boto3Paginator):
+class ListRulesPackagesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rules_packages`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListRulesPackagesPaginatePaginationConfigTypeDef = None
@@ -1108,7 +1153,11 @@ class ListRulesPackages(Boto3Paginator):
         """
 
 
-class PreviewAgents(Boto3Paginator):
+class PreviewAgentsPaginator(Boto3Paginator):
+    """
+    Paginator for `preview_agents`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

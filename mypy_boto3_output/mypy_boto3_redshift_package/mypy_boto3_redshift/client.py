@@ -3,9 +3,13 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_redshift.paginator as paginator_scope
 from mypy_boto3_redshift.type_defs import (
     ClientAcceptReservedNodeExchangeResponseTypeDef,
     ClientAuthorizeClusterSecurityGroupIngressResponseTypeDef,
@@ -95,6 +99,12 @@ from mypy_boto3_redshift.type_defs import (
     ClientRevokeSnapshotAccessResponseTypeDef,
     ClientRotateEncryptionKeyResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_redshift.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -12971,27 +12981,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_reserved_node_exchange_offerings(
         self, ReservedNodeId: str, MaxRecords: int = None, Marker: str = None
     ) -> ClientGetReservedNodeExchangeOfferingsResponseTypeDef:
@@ -13121,19 +13110,6 @@ class Client(BaseClient):
 
                 - **ReservedNodeOfferingType** *(string) --*
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -22818,4 +22794,281 @@ class Client(BaseClient):
 
                   A boolean value indicating if the resize operation can be cancelled.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_db_revisions"]
+    ) -> paginator_scope.DescribeClusterDbRevisionsPaginator:
+        """
+        Get Paginator for `describe_cluster_db_revisions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_parameter_groups"]
+    ) -> paginator_scope.DescribeClusterParameterGroupsPaginator:
+        """
+        Get Paginator for `describe_cluster_parameter_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_parameters"]
+    ) -> paginator_scope.DescribeClusterParametersPaginator:
+        """
+        Get Paginator for `describe_cluster_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_security_groups"]
+    ) -> paginator_scope.DescribeClusterSecurityGroupsPaginator:
+        """
+        Get Paginator for `describe_cluster_security_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_snapshots"]
+    ) -> paginator_scope.DescribeClusterSnapshotsPaginator:
+        """
+        Get Paginator for `describe_cluster_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_subnet_groups"]
+    ) -> paginator_scope.DescribeClusterSubnetGroupsPaginator:
+        """
+        Get Paginator for `describe_cluster_subnet_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_tracks"]
+    ) -> paginator_scope.DescribeClusterTracksPaginator:
+        """
+        Get Paginator for `describe_cluster_tracks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_cluster_versions"]
+    ) -> paginator_scope.DescribeClusterVersionsPaginator:
+        """
+        Get Paginator for `describe_cluster_versions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_clusters"]
+    ) -> paginator_scope.DescribeClustersPaginator:
+        """
+        Get Paginator for `describe_clusters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_default_cluster_parameters"]
+    ) -> paginator_scope.DescribeDefaultClusterParametersPaginator:
+        """
+        Get Paginator for `describe_default_cluster_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_event_subscriptions"]
+    ) -> paginator_scope.DescribeEventSubscriptionsPaginator:
+        """
+        Get Paginator for `describe_event_subscriptions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_events"]
+    ) -> paginator_scope.DescribeEventsPaginator:
+        """
+        Get Paginator for `describe_events` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_hsm_client_certificates"]
+    ) -> paginator_scope.DescribeHsmClientCertificatesPaginator:
+        """
+        Get Paginator for `describe_hsm_client_certificates` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_hsm_configurations"]
+    ) -> paginator_scope.DescribeHsmConfigurationsPaginator:
+        """
+        Get Paginator for `describe_hsm_configurations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_node_configuration_options"]
+    ) -> paginator_scope.DescribeNodeConfigurationOptionsPaginator:
+        """
+        Get Paginator for `describe_node_configuration_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_orderable_cluster_options"]
+    ) -> paginator_scope.DescribeOrderableClusterOptionsPaginator:
+        """
+        Get Paginator for `describe_orderable_cluster_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_node_offerings"]
+    ) -> paginator_scope.DescribeReservedNodeOfferingsPaginator:
+        """
+        Get Paginator for `describe_reserved_node_offerings` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_nodes"]
+    ) -> paginator_scope.DescribeReservedNodesPaginator:
+        """
+        Get Paginator for `describe_reserved_nodes` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_snapshot_copy_grants"]
+    ) -> paginator_scope.DescribeSnapshotCopyGrantsPaginator:
+        """
+        Get Paginator for `describe_snapshot_copy_grants` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_snapshot_schedules"]
+    ) -> paginator_scope.DescribeSnapshotSchedulesPaginator:
+        """
+        Get Paginator for `describe_snapshot_schedules` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_table_restore_status"]
+    ) -> paginator_scope.DescribeTableRestoreStatusPaginator:
+        """
+        Get Paginator for `describe_table_restore_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_tags"]
+    ) -> paginator_scope.DescribeTagsPaginator:
+        """
+        Get Paginator for `describe_tags` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_reserved_node_exchange_offerings"]
+    ) -> paginator_scope.GetReservedNodeExchangeOfferingsPaginator:
+        """
+        Get Paginator for `get_reserved_node_exchange_offerings` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["cluster_available"]
+    ) -> waiter_scope.ClusterAvailableWaiter:
+        """
+        Get Waiter `cluster_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["cluster_deleted"]
+    ) -> waiter_scope.ClusterDeletedWaiter:
+        """
+        Get Waiter `cluster_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["cluster_restored"]
+    ) -> waiter_scope.ClusterRestoredWaiter:
+        """
+        Get Waiter `cluster_restored`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["snapshot_available"]
+    ) -> waiter_scope.SnapshotAvailableWaiter:
+        """
+        Get Waiter `snapshot_available`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

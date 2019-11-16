@@ -12,7 +12,18 @@ from mypy_boto3_athena.type_defs import (
 )
 
 
-class GetQueryResults(Boto3Paginator):
+__all__ = (
+    "GetQueryResultsPaginator",
+    "ListNamedQueriesPaginator",
+    "ListQueryExecutionsPaginator",
+)
+
+
+class GetQueryResultsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_query_results`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -189,7 +200,11 @@ class GetQueryResults(Boto3Paginator):
         """
 
 
-class ListNamedQueries(Boto3Paginator):
+class ListNamedQueriesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_named_queries`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -265,7 +280,11 @@ class ListNamedQueries(Boto3Paginator):
         """
 
 
-class ListQueryExecutions(Boto3Paginator):
+class ListQueryExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_query_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -8,7 +8,14 @@ from mypy_boto3_mq.type_defs import (
 )
 
 
-class ListBrokers(Boto3Paginator):
+__all__ = ("ListBrokersPaginator",)
+
+
+class ListBrokersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_brokers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListBrokersPaginatePaginationConfigTypeDef = None

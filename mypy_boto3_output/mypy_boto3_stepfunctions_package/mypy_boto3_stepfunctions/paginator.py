@@ -14,7 +14,19 @@ from mypy_boto3_stepfunctions.type_defs import (
 )
 
 
-class GetExecutionHistory(Boto3Paginator):
+__all__ = (
+    "GetExecutionHistoryPaginator",
+    "ListActivitiesPaginator",
+    "ListExecutionsPaginator",
+    "ListStateMachinesPaginator",
+)
+
+
+class GetExecutionHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `get_execution_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -722,7 +734,11 @@ class GetExecutionHistory(Boto3Paginator):
         """
 
 
-class ListActivities(Boto3Paginator):
+class ListActivitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_activities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListActivitiesPaginatePaginationConfigTypeDef = None
@@ -823,7 +839,11 @@ class ListActivities(Boto3Paginator):
         """
 
 
-class ListExecutions(Boto3Paginator):
+class ListExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -954,7 +974,11 @@ class ListExecutions(Boto3Paginator):
         """
 
 
-class ListStateMachines(Boto3Paginator):
+class ListStateMachinesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_state_machines`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListStateMachinesPaginatePaginationConfigTypeDef = None

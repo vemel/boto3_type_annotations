@@ -5,7 +5,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_lambda.type_defs import FunctionExistsWaitWaiterConfigTypeDef
 
 
-class FunctionExists(Boto3Waiter):
+__all__ = ("FunctionExistsWaiter",)
+
+
+class FunctionExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `function_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

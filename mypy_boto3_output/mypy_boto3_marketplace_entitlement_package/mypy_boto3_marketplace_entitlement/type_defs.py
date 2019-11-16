@@ -6,6 +6,17 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetEntitlementsResponseEntitlementsValueTypeDef",
+    "ClientGetEntitlementsResponseEntitlementsTypeDef",
+    "ClientGetEntitlementsResponseTypeDef",
+    "GetEntitlementsPaginatePaginationConfigTypeDef",
+    "GetEntitlementsPaginateResponseEntitlementsValueTypeDef",
+    "GetEntitlementsPaginateResponseEntitlementsTypeDef",
+    "GetEntitlementsPaginateResponseTypeDef",
+)
+
+
 _ClientGetEntitlementsResponseEntitlementsValueTypeDef = TypedDict(
     "_ClientGetEntitlementsResponseEntitlementsValueTypeDef",
     {

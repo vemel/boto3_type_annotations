@@ -25,7 +25,24 @@ from mypy_boto3_mturk.type_defs import (
 )
 
 
-class ListAssignmentsForHIT(Boto3Paginator):
+__all__ = (
+    "ListAssignmentsForHITPaginator",
+    "ListBonusPaymentsPaginator",
+    "ListHITsPaginator",
+    "ListHITsForQualificationTypePaginator",
+    "ListQualificationRequestsPaginator",
+    "ListQualificationTypesPaginator",
+    "ListReviewableHITsPaginator",
+    "ListWorkerBlocksPaginator",
+    "ListWorkersWithQualificationTypePaginator",
+)
+
+
+class ListAssignmentsForHITPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assignments_for_hit`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -196,7 +213,11 @@ class ListAssignmentsForHIT(Boto3Paginator):
         """
 
 
-class ListBonusPayments(Boto3Paginator):
+class ListBonusPaymentsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_bonus_payments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -317,7 +338,11 @@ class ListBonusPayments(Boto3Paginator):
         """
 
 
-class ListHITs(Boto3Paginator):
+class ListHITsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_hits`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListHITsPaginatePaginationConfigTypeDef = None
@@ -617,7 +642,11 @@ class ListHITs(Boto3Paginator):
         """
 
 
-class ListHITsForQualificationType(Boto3Paginator):
+class ListHITsForQualificationTypePaginator(Boto3Paginator):
+    """
+    Paginator for `list_hits_for_qualification_type`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -926,7 +955,11 @@ class ListHITsForQualificationType(Boto3Paginator):
         """
 
 
-class ListQualificationRequests(Boto3Paginator):
+class ListQualificationRequestsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_qualification_requests`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1050,7 +1083,11 @@ class ListQualificationRequests(Boto3Paginator):
         """
 
 
-class ListQualificationTypes(Boto3Paginator):
+class ListQualificationTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_qualification_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1239,7 +1276,11 @@ class ListQualificationTypes(Boto3Paginator):
         """
 
 
-class ListReviewableHITs(Boto3Paginator):
+class ListReviewableHITsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_reviewable_hits`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1556,7 +1597,11 @@ class ListReviewableHITs(Boto3Paginator):
         """
 
 
-class ListWorkerBlocks(Boto3Paginator):
+class ListWorkerBlocksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_worker_blocks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListWorkerBlocksPaginatePaginationConfigTypeDef = None
@@ -1643,7 +1688,11 @@ class ListWorkerBlocks(Boto3Paginator):
         """
 
 
-class ListWorkersWithQualificationType(Boto3Paginator):
+class ListWorkersWithQualificationTypePaginator(Boto3Paginator):
+    """
+    Paginator for `list_workers_with_qualification_type`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -3,9 +3,13 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_rds.paginator as paginator_scope
 from mypy_boto3_rds.type_defs import (
     ClientAddSourceIdentifierToSubscriptionResponseTypeDef,
     ClientAddTagsToResourceTagsTypeDef,
@@ -186,6 +190,12 @@ from mypy_boto3_rds.type_defs import (
     ClientStopDbClusterResponseTypeDef,
     ClientStopDbInstanceResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_rds.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -451,14 +461,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :returns: None
         """
@@ -1016,14 +1026,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1299,14 +1309,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type SourceRegion: string
         :param SourceRegion:
@@ -1526,14 +1536,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -1700,14 +1710,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type CopyTags: boolean
         :param CopyTags:
@@ -2088,14 +2098,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -2767,14 +2777,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageEncrypted: boolean
         :param StorageEncrypted:
@@ -3719,14 +3729,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -3845,14 +3855,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -4730,14 +4740,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type DBClusterIdentifier: string
         :param DBClusterIdentifier:
@@ -6135,14 +6145,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type DBSubnetGroupName: string
         :param DBSubnetGroupName:
@@ -7400,14 +7410,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -7519,14 +7529,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -7707,14 +7717,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8006,14 +8016,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8228,14 +8238,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -8583,14 +8593,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -21246,40 +21256,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_installation_media(
         self,
         CustomAvailabilityZoneId: str,
@@ -21530,14 +21506,14 @@ class Client(BaseClient):
                   A key is the required name of the tag. The string value can be from 1 to 128 Unicode
                   characters in length and can't be prefixed with "aws:" or "rds:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
                 - **Value** *(string) --*
 
                   A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
                   characters in length and can't be prefixed with "aws:" or "rds:". The string can only
                   contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-                  '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+                  '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         """
 
@@ -27565,14 +27541,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :rtype: dict
         :returns:
@@ -29614,14 +29590,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageEncrypted: boolean
         :param StorageEncrypted:
@@ -30416,14 +30392,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -31232,14 +31208,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type KmsKeyId: string
         :param KmsKeyId:
@@ -32094,14 +32070,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -33510,14 +33486,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -34917,14 +34893,14 @@ class Client(BaseClient):
               A key is the required name of the tag. The string value can be from 1 to 128 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
             - **Value** *(string) --*
 
               A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
               characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
               only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-              regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+              regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         :type StorageType: string
         :param StorageType:
@@ -39148,4 +39124,380 @@ class Client(BaseClient):
 
                 The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_certificates"]
+    ) -> paginator_scope.DescribeCertificatesPaginator:
+        """
+        Get Paginator for `describe_certificates` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_custom_availability_zones"]
+    ) -> paginator_scope.DescribeCustomAvailabilityZonesPaginator:
+        """
+        Get Paginator for `describe_custom_availability_zones` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_cluster_backtracks"]
+    ) -> paginator_scope.DescribeDBClusterBacktracksPaginator:
+        """
+        Get Paginator for `describe_db_cluster_backtracks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_cluster_endpoints"]
+    ) -> paginator_scope.DescribeDBClusterEndpointsPaginator:
+        """
+        Get Paginator for `describe_db_cluster_endpoints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_cluster_parameter_groups"]
+    ) -> paginator_scope.DescribeDBClusterParameterGroupsPaginator:
+        """
+        Get Paginator for `describe_db_cluster_parameter_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_cluster_parameters"]
+    ) -> paginator_scope.DescribeDBClusterParametersPaginator:
+        """
+        Get Paginator for `describe_db_cluster_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_cluster_snapshots"]
+    ) -> paginator_scope.DescribeDBClusterSnapshotsPaginator:
+        """
+        Get Paginator for `describe_db_cluster_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_clusters"]
+    ) -> paginator_scope.DescribeDBClustersPaginator:
+        """
+        Get Paginator for `describe_db_clusters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_engine_versions"]
+    ) -> paginator_scope.DescribeDBEngineVersionsPaginator:
+        """
+        Get Paginator for `describe_db_engine_versions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_instance_automated_backups"]
+    ) -> paginator_scope.DescribeDBInstanceAutomatedBackupsPaginator:
+        """
+        Get Paginator for `describe_db_instance_automated_backups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_instances"]
+    ) -> paginator_scope.DescribeDBInstancesPaginator:
+        """
+        Get Paginator for `describe_db_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_log_files"]
+    ) -> paginator_scope.DescribeDBLogFilesPaginator:
+        """
+        Get Paginator for `describe_db_log_files` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_parameter_groups"]
+    ) -> paginator_scope.DescribeDBParameterGroupsPaginator:
+        """
+        Get Paginator for `describe_db_parameter_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_parameters"]
+    ) -> paginator_scope.DescribeDBParametersPaginator:
+        """
+        Get Paginator for `describe_db_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_security_groups"]
+    ) -> paginator_scope.DescribeDBSecurityGroupsPaginator:
+        """
+        Get Paginator for `describe_db_security_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_snapshots"]
+    ) -> paginator_scope.DescribeDBSnapshotsPaginator:
+        """
+        Get Paginator for `describe_db_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_db_subnet_groups"]
+    ) -> paginator_scope.DescribeDBSubnetGroupsPaginator:
+        """
+        Get Paginator for `describe_db_subnet_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_engine_default_cluster_parameters"]
+    ) -> paginator_scope.DescribeEngineDefaultClusterParametersPaginator:
+        """
+        Get Paginator for `describe_engine_default_cluster_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_engine_default_parameters"]
+    ) -> paginator_scope.DescribeEngineDefaultParametersPaginator:
+        """
+        Get Paginator for `describe_engine_default_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_event_subscriptions"]
+    ) -> paginator_scope.DescribeEventSubscriptionsPaginator:
+        """
+        Get Paginator for `describe_event_subscriptions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_events"]
+    ) -> paginator_scope.DescribeEventsPaginator:
+        """
+        Get Paginator for `describe_events` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_global_clusters"]
+    ) -> paginator_scope.DescribeGlobalClustersPaginator:
+        """
+        Get Paginator for `describe_global_clusters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_installation_media"]
+    ) -> paginator_scope.DescribeInstallationMediaPaginator:
+        """
+        Get Paginator for `describe_installation_media` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_option_group_options"]
+    ) -> paginator_scope.DescribeOptionGroupOptionsPaginator:
+        """
+        Get Paginator for `describe_option_group_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_option_groups"]
+    ) -> paginator_scope.DescribeOptionGroupsPaginator:
+        """
+        Get Paginator for `describe_option_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_orderable_db_instance_options"]
+    ) -> paginator_scope.DescribeOrderableDBInstanceOptionsPaginator:
+        """
+        Get Paginator for `describe_orderable_db_instance_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_pending_maintenance_actions"]
+    ) -> paginator_scope.DescribePendingMaintenanceActionsPaginator:
+        """
+        Get Paginator for `describe_pending_maintenance_actions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_db_instances"]
+    ) -> paginator_scope.DescribeReservedDBInstancesPaginator:
+        """
+        Get Paginator for `describe_reserved_db_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_db_instances_offerings"]
+    ) -> paginator_scope.DescribeReservedDBInstancesOfferingsPaginator:
+        """
+        Get Paginator for `describe_reserved_db_instances_offerings` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_source_regions"]
+    ) -> paginator_scope.DescribeSourceRegionsPaginator:
+        """
+        Get Paginator for `describe_source_regions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["download_db_log_file_portion"]
+    ) -> paginator_scope.DownloadDBLogFilePortionPaginator:
+        """
+        Get Paginator for `download_db_log_file_portion` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_cluster_snapshot_available"]
+    ) -> waiter_scope.DBClusterSnapshotAvailableWaiter:
+        """
+        Get Waiter `db_cluster_snapshot_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_cluster_snapshot_deleted"]
+    ) -> waiter_scope.DBClusterSnapshotDeletedWaiter:
+        """
+        Get Waiter `db_cluster_snapshot_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_instance_available"]
+    ) -> waiter_scope.DBInstanceAvailableWaiter:
+        """
+        Get Waiter `db_instance_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_instance_deleted"]
+    ) -> waiter_scope.DBInstanceDeletedWaiter:
+        """
+        Get Waiter `db_instance_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_snapshot_available"]
+    ) -> waiter_scope.DBSnapshotAvailableWaiter:
+        """
+        Get Waiter `db_snapshot_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_snapshot_completed"]
+    ) -> waiter_scope.DBSnapshotCompletedWaiter:
+        """
+        Get Waiter `db_snapshot_completed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["db_snapshot_deleted"]
+    ) -> waiter_scope.DBSnapshotDeletedWaiter:
+        """
+        Get Waiter `db_snapshot_deleted`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

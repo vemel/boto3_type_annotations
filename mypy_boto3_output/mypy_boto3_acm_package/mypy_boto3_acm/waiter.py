@@ -5,7 +5,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_acm.type_defs import CertificateValidatedWaitWaiterConfigTypeDef
 
 
-class CertificateValidated(Boto3Waiter):
+__all__ = ("CertificateValidatedWaiter",)
+
+
+class CertificateValidatedWaiter(Boto3Waiter):
+    """
+    Waiter for `certificate_validated` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -24,7 +24,21 @@ from mypy_boto3_discovery.type_defs import (
 )
 
 
-class DescribeAgents(Boto3Paginator):
+__all__ = (
+    "DescribeAgentsPaginator",
+    "DescribeContinuousExportsPaginator",
+    "DescribeExportConfigurationsPaginator",
+    "DescribeExportTasksPaginator",
+    "DescribeTagsPaginator",
+    "ListConfigurationsPaginator",
+)
+
+
+class DescribeAgentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_agents`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -231,7 +245,11 @@ class DescribeAgents(Boto3Paginator):
         """
 
 
-class DescribeContinuousExports(Boto3Paginator):
+class DescribeContinuousExportsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_continuous_exports`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -422,7 +440,11 @@ class DescribeContinuousExports(Boto3Paginator):
         """
 
 
-class DescribeExportConfigurations(Boto3Paginator):
+class DescribeExportConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_export_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -558,7 +580,11 @@ class DescribeExportConfigurations(Boto3Paginator):
         """
 
 
-class DescribeExportTasks(Boto3Paginator):
+class DescribeExportTasksPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_export_tasks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -734,7 +760,11 @@ class DescribeExportTasks(Boto3Paginator):
         """
 
 
-class DescribeTags(Boto3Paginator):
+class DescribeTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -865,7 +895,11 @@ class DescribeTags(Boto3Paginator):
         """
 
 
-class ListConfigurations(Boto3Paginator):
+class ListConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

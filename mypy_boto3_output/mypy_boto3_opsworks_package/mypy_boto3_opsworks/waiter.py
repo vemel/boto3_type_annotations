@@ -13,7 +13,21 @@ from mypy_boto3_opsworks.type_defs import (
 )
 
 
-class AppExists(Boto3Waiter):
+__all__ = (
+    "AppExistsWaiter",
+    "DeploymentSuccessfulWaiter",
+    "InstanceOnlineWaiter",
+    "InstanceRegisteredWaiter",
+    "InstanceStoppedWaiter",
+    "InstanceTerminatedWaiter",
+)
+
+
+class AppExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `app_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -72,7 +86,11 @@ class AppExists(Boto3Waiter):
         """
 
 
-class DeploymentSuccessful(Boto3Waiter):
+class DeploymentSuccessfulWaiter(Boto3Waiter):
+    """
+    Waiter for `deployment_successful` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -139,7 +157,11 @@ class DeploymentSuccessful(Boto3Waiter):
         """
 
 
-class InstanceOnline(Boto3Waiter):
+class InstanceOnlineWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_online` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -207,7 +229,11 @@ class InstanceOnline(Boto3Waiter):
         """
 
 
-class InstanceRegistered(Boto3Waiter):
+class InstanceRegisteredWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_registered` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -275,7 +301,11 @@ class InstanceRegistered(Boto3Waiter):
         """
 
 
-class InstanceStopped(Boto3Waiter):
+class InstanceStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -343,7 +373,11 @@ class InstanceStopped(Boto3Waiter):
         """
 
 
-class InstanceTerminated(Boto3Waiter):
+class InstanceTerminatedWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_terminated` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

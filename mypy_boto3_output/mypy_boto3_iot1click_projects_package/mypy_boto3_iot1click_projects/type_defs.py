@@ -6,6 +6,32 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateProjectplacementTemplatedeviceTemplatesTypeDef",
+    "ClientCreateProjectplacementTemplateTypeDef",
+    "ClientDescribePlacementResponseplacementTypeDef",
+    "ClientDescribePlacementResponseTypeDef",
+    "ClientDescribeProjectResponseprojectplacementTemplatedeviceTemplatesTypeDef",
+    "ClientDescribeProjectResponseprojectplacementTemplateTypeDef",
+    "ClientDescribeProjectResponseprojectTypeDef",
+    "ClientDescribeProjectResponseTypeDef",
+    "ClientGetDevicesInPlacementResponseTypeDef",
+    "ClientListPlacementsResponseplacementsTypeDef",
+    "ClientListPlacementsResponseTypeDef",
+    "ClientListProjectsResponseprojectsTypeDef",
+    "ClientListProjectsResponseTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientUpdateProjectplacementTemplatedeviceTemplatesTypeDef",
+    "ClientUpdateProjectplacementTemplateTypeDef",
+    "ListPlacementsPaginatePaginationConfigTypeDef",
+    "ListPlacementsPaginateResponseplacementsTypeDef",
+    "ListPlacementsPaginateResponseTypeDef",
+    "ListProjectsPaginatePaginationConfigTypeDef",
+    "ListProjectsPaginateResponseprojectsTypeDef",
+    "ListProjectsPaginateResponseTypeDef",
+)
+
+
 _ClientCreateProjectplacementTemplatedeviceTemplatesTypeDef = TypedDict(
     "_ClientCreateProjectplacementTemplatedeviceTemplatesTypeDef",
     {"deviceType": str, "callbackOverrides": Dict[str, str]},

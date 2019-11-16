@@ -8,7 +8,14 @@ from mypy_boto3_dynamodb.type_defs import (
 )
 
 
-class TableExists(Boto3Waiter):
+__all__ = ("TableExistsWaiter", "TableNotExistsWaiter")
+
+
+class TableExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `table_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, TableName: str, WaiterConfig: TableExistsWaitWaiterConfigTypeDef = None
@@ -52,7 +59,11 @@ class TableExists(Boto3Waiter):
         """
 
 
-class TableNotExists(Boto3Waiter):
+class TableNotExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `table_not_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, TableName: str, WaiterConfig: TableNotExistsWaitWaiterConfigTypeDef = None

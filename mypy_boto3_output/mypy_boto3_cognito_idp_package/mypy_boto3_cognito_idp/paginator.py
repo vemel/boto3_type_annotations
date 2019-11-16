@@ -25,7 +25,24 @@ from mypy_boto3_cognito_idp.type_defs import (
 )
 
 
-class AdminListGroupsForUser(Boto3Paginator):
+__all__ = (
+    "AdminListGroupsForUserPaginator",
+    "AdminListUserAuthEventsPaginator",
+    "ListGroupsPaginator",
+    "ListIdentityProvidersPaginator",
+    "ListResourceServersPaginator",
+    "ListUserPoolClientsPaginator",
+    "ListUserPoolsPaginator",
+    "ListUsersPaginator",
+    "ListUsersInGroupPaginator",
+)
+
+
+class AdminListGroupsForUserPaginator(Boto3Paginator):
+    """
+    Paginator for `admin_list_groups_for_user`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -159,7 +176,11 @@ class AdminListGroupsForUser(Boto3Paginator):
         """
 
 
-class AdminListUserAuthEvents(Boto3Paginator):
+class AdminListUserAuthEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `admin_list_user_auth_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -358,7 +379,11 @@ class AdminListUserAuthEvents(Boto3Paginator):
         """
 
 
-class ListGroups(Boto3Paginator):
+class ListGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -485,7 +510,11 @@ class ListGroups(Boto3Paginator):
         """
 
 
-class ListIdentityProviders(Boto3Paginator):
+class ListIdentityProvidersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_identity_providers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -584,7 +613,11 @@ class ListIdentityProviders(Boto3Paginator):
         """
 
 
-class ListResourceServers(Boto3Paginator):
+class ListResourceServersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_resource_servers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -700,7 +733,11 @@ class ListResourceServers(Boto3Paginator):
         """
 
 
-class ListUserPoolClients(Boto3Paginator):
+class ListUserPoolClientsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_user_pool_clients`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -796,7 +833,11 @@ class ListUserPoolClients(Boto3Paginator):
         """
 
 
-class ListUserPools(Boto3Paginator):
+class ListUserPoolsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_user_pools`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListUserPoolsPaginatePaginationConfigTypeDef = None
@@ -950,7 +991,11 @@ class ListUserPools(Boto3Paginator):
         """
 
 
-class ListUsers(Boto3Paginator):
+class ListUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1193,7 +1238,11 @@ class ListUsers(Boto3Paginator):
         """
 
 
-class ListUsersInGroup(Boto3Paginator):
+class ListUsersInGroupPaginator(Boto3Paginator):
+    """
+    Paginator for `list_users_in_group`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

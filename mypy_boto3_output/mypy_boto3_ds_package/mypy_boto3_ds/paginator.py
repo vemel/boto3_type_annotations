@@ -25,7 +25,24 @@ from mypy_boto3_ds.type_defs import (
 )
 
 
-class DescribeDirectories(Boto3Paginator):
+__all__ = (
+    "DescribeDirectoriesPaginator",
+    "DescribeDomainControllersPaginator",
+    "DescribeSharedDirectoriesPaginator",
+    "DescribeSnapshotsPaginator",
+    "DescribeTrustsPaginator",
+    "ListIpRoutesPaginator",
+    "ListLogSubscriptionsPaginator",
+    "ListSchemaExtensionsPaginator",
+    "ListTagsForResourcePaginator",
+)
+
+
+class DescribeDirectoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_directories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -493,7 +510,11 @@ class DescribeDirectories(Boto3Paginator):
         """
 
 
-class DescribeDomainControllers(Boto3Paginator):
+class DescribeDomainControllersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_domain_controllers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -633,7 +654,11 @@ class DescribeDomainControllers(Boto3Paginator):
         """
 
 
-class DescribeSharedDirectories(Boto3Paginator):
+class DescribeSharedDirectoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_shared_directories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -778,7 +803,11 @@ class DescribeSharedDirectories(Boto3Paginator):
         """
 
 
-class DescribeSnapshots(Boto3Paginator):
+class DescribeSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -905,7 +934,11 @@ class DescribeSnapshots(Boto3Paginator):
         """
 
 
-class DescribeTrusts(Boto3Paginator):
+class DescribeTrustsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_trusts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1063,7 +1096,11 @@ class DescribeTrusts(Boto3Paginator):
         """
 
 
-class ListIpRoutes(Boto3Paginator):
+class ListIpRoutesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_ip_routes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1173,7 +1210,11 @@ class ListIpRoutes(Boto3Paginator):
         """
 
 
-class ListLogSubscriptions(Boto3Paginator):
+class ListLogSubscriptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_log_subscriptions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1271,7 +1312,11 @@ class ListLogSubscriptions(Boto3Paginator):
         """
 
 
-class ListSchemaExtensions(Boto3Paginator):
+class ListSchemaExtensionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_schema_extensions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1387,7 +1432,11 @@ class ListSchemaExtensions(Boto3Paginator):
         """
 
 
-class ListTagsForResource(Boto3Paginator):
+class ListTagsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

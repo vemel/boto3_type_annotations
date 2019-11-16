@@ -9,7 +9,14 @@ from mypy_boto3_appstream.type_defs import (
 )
 
 
-class FleetStarted(Boto3Waiter):
+__all__ = ("FleetStartedWaiter", "FleetStoppedWaiter")
+
+
+class FleetStartedWaiter(Boto3Waiter):
+    """
+    Waiter for `fleet_started` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -67,7 +74,11 @@ class FleetStarted(Boto3Waiter):
         """
 
 
-class FleetStopped(Boto3Waiter):
+class FleetStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `fleet_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

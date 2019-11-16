@@ -23,7 +23,21 @@ from mypy_boto3_forecast.type_defs import (
 )
 
 
-class ListDatasetGroups(Boto3Paginator):
+__all__ = (
+    "ListDatasetGroupsPaginator",
+    "ListDatasetImportJobsPaginator",
+    "ListDatasetsPaginator",
+    "ListForecastExportJobsPaginator",
+    "ListForecastsPaginator",
+    "ListPredictorsPaginator",
+)
+
+
+class ListDatasetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dataset_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetGroupsPaginatePaginationConfigTypeDef = None
@@ -118,7 +132,11 @@ class ListDatasetGroups(Boto3Paginator):
         """
 
 
-class ListDatasetImportJobs(Boto3Paginator):
+class ListDatasetImportJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dataset_import_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -315,7 +333,11 @@ class ListDatasetImportJobs(Boto3Paginator):
         """
 
 
-class ListDatasets(Boto3Paginator):
+class ListDatasetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_datasets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetsPaginatePaginationConfigTypeDef = None
@@ -423,7 +445,11 @@ class ListDatasets(Boto3Paginator):
         """
 
 
-class ListForecastExportJobs(Boto3Paginator):
+class ListForecastExportJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_forecast_export_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -617,7 +643,11 @@ class ListForecastExportJobs(Boto3Paginator):
         """
 
 
-class ListForecasts(Boto3Paginator):
+class ListForecastsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_forecasts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -792,7 +822,11 @@ class ListForecasts(Boto3Paginator):
         """
 
 
-class ListPredictors(Boto3Paginator):
+class ListPredictorsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_predictors`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

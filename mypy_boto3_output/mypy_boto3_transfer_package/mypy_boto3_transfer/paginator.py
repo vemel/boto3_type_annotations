@@ -8,7 +8,14 @@ from mypy_boto3_transfer.type_defs import (
 )
 
 
-class ListServers(Boto3Paginator):
+__all__ = ("ListServersPaginator",)
+
+
+class ListServersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_servers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListServersPaginatePaginationConfigTypeDef = None

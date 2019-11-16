@@ -6,6 +6,39 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAssociateCreatedArtifactCreatedArtifactTypeDef",
+    "ClientAssociateDiscoveredResourceDiscoveredResourceTypeDef",
+    "ClientDescribeApplicationStateResponseTypeDef",
+    "ClientDescribeMigrationTaskResponseMigrationTaskResourceAttributeListTypeDef",
+    "ClientDescribeMigrationTaskResponseMigrationTaskTaskTypeDef",
+    "ClientDescribeMigrationTaskResponseMigrationTaskTypeDef",
+    "ClientDescribeMigrationTaskResponseTypeDef",
+    "ClientListCreatedArtifactsResponseCreatedArtifactListTypeDef",
+    "ClientListCreatedArtifactsResponseTypeDef",
+    "ClientListDiscoveredResourcesResponseDiscoveredResourceListTypeDef",
+    "ClientListDiscoveredResourcesResponseTypeDef",
+    "ClientListMigrationTasksResponseMigrationTaskSummaryListTypeDef",
+    "ClientListMigrationTasksResponseTypeDef",
+    "ClientListProgressUpdateStreamsResponseProgressUpdateStreamSummaryListTypeDef",
+    "ClientListProgressUpdateStreamsResponseTypeDef",
+    "ClientNotifyMigrationTaskStateTaskTypeDef",
+    "ClientPutResourceAttributesResourceAttributeListTypeDef",
+    "ListCreatedArtifactsPaginatePaginationConfigTypeDef",
+    "ListCreatedArtifactsPaginateResponseCreatedArtifactListTypeDef",
+    "ListCreatedArtifactsPaginateResponseTypeDef",
+    "ListDiscoveredResourcesPaginatePaginationConfigTypeDef",
+    "ListDiscoveredResourcesPaginateResponseDiscoveredResourceListTypeDef",
+    "ListDiscoveredResourcesPaginateResponseTypeDef",
+    "ListMigrationTasksPaginatePaginationConfigTypeDef",
+    "ListMigrationTasksPaginateResponseMigrationTaskSummaryListTypeDef",
+    "ListMigrationTasksPaginateResponseTypeDef",
+    "ListProgressUpdateStreamsPaginatePaginationConfigTypeDef",
+    "ListProgressUpdateStreamsPaginateResponseProgressUpdateStreamSummaryListTypeDef",
+    "ListProgressUpdateStreamsPaginateResponseTypeDef",
+)
+
+
 _RequiredClientAssociateCreatedArtifactCreatedArtifactTypeDef = TypedDict(
     "_RequiredClientAssociateCreatedArtifactCreatedArtifactTypeDef", {"Name": str}
 )
@@ -125,7 +158,7 @@ class ClientDescribeMigrationTaskResponseMigrationTaskResourceAttributeListTypeD
 
       FQDN
 
-     ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
+     ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
 
     - **Type** *(string) --*
 
@@ -247,7 +280,7 @@ class ClientDescribeMigrationTaskResponseMigrationTaskTypeDef(
 
           FQDN
 
-         ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
+         ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
 
         - **Type** *(string) --*
 
@@ -332,7 +365,7 @@ class ClientDescribeMigrationTaskResponseTypeDef(
 
             FQDN
 
-           ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
+           ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
 
           - **Type** *(string) --*
 
@@ -716,7 +749,7 @@ class ClientPutResourceAttributesResourceAttributeListTypeDef(
 
       FQDN
 
-     ``^[^<>{}\\\\\\\\/?,=\\\\p{Cntrl}]{1,256}$``
+     ``^[^<>{}\\\\/?,=\\p{Cntrl}]{1,256}$``
 
     - **Type** *(string) --* **[REQUIRED]**
 

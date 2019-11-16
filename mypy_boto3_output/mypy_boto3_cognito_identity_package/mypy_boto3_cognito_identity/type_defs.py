@@ -6,6 +6,43 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateIdentityPoolCognitoIdentityProvidersTypeDef",
+    "ClientCreateIdentityPoolResponseCognitoIdentityProvidersTypeDef",
+    "ClientCreateIdentityPoolResponseTypeDef",
+    "ClientDeleteIdentitiesResponseUnprocessedIdentityIdsTypeDef",
+    "ClientDeleteIdentitiesResponseTypeDef",
+    "ClientDescribeIdentityPoolResponseCognitoIdentityProvidersTypeDef",
+    "ClientDescribeIdentityPoolResponseTypeDef",
+    "ClientDescribeIdentityResponseTypeDef",
+    "ClientGetCredentialsForIdentityResponseCredentialsTypeDef",
+    "ClientGetCredentialsForIdentityResponseTypeDef",
+    "ClientGetIdResponseTypeDef",
+    "ClientGetIdentityPoolRolesResponseRoleMappingsRulesConfigurationRulesTypeDef",
+    "ClientGetIdentityPoolRolesResponseRoleMappingsRulesConfigurationTypeDef",
+    "ClientGetIdentityPoolRolesResponseRoleMappingsTypeDef",
+    "ClientGetIdentityPoolRolesResponseTypeDef",
+    "ClientGetOpenIdTokenForDeveloperIdentityResponseTypeDef",
+    "ClientGetOpenIdTokenResponseTypeDef",
+    "ClientListIdentitiesResponseIdentitiesTypeDef",
+    "ClientListIdentitiesResponseTypeDef",
+    "ClientListIdentityPoolsResponseIdentityPoolsTypeDef",
+    "ClientListIdentityPoolsResponseTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientLookupDeveloperIdentityResponseTypeDef",
+    "ClientMergeDeveloperIdentitiesResponseTypeDef",
+    "ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationRulesTypeDef",
+    "ClientSetIdentityPoolRolesRoleMappingsRulesConfigurationTypeDef",
+    "ClientSetIdentityPoolRolesRoleMappingsTypeDef",
+    "ClientUpdateIdentityPoolCognitoIdentityProvidersTypeDef",
+    "ClientUpdateIdentityPoolResponseCognitoIdentityProvidersTypeDef",
+    "ClientUpdateIdentityPoolResponseTypeDef",
+    "ListIdentityPoolsPaginatePaginationConfigTypeDef",
+    "ListIdentityPoolsPaginateResponseIdentityPoolsTypeDef",
+    "ListIdentityPoolsPaginateResponseTypeDef",
+)
+
+
 _ClientCreateIdentityPoolCognitoIdentityProvidersTypeDef = TypedDict(
     "_ClientCreateIdentityPoolCognitoIdentityProvidersTypeDef",
     {"ProviderName": str, "ClientId": str, "ServerSideTokenCheck": bool},

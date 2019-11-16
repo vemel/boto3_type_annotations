@@ -2,9 +2,13 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_medialive.paginator as paginator_scope
 from mypy_boto3_medialive.type_defs import (
     ClientBatchUpdateScheduleCreatesTypeDef,
     ClientBatchUpdateScheduleDeletesTypeDef,
@@ -46,6 +50,12 @@ from mypy_boto3_medialive.type_defs import (
     ClientUpdateInputSecurityGroupWhitelistRulesTypeDef,
     ClientUpdateReservationResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_medialive.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -1166,7 +1176,7 @@ class Client(BaseClient):
         Destinations: List[ClientCreateChannelDestinationsTypeDef] = None,
         EncoderSettings: ClientCreateChannelEncoderSettingsTypeDef = None,
         InputAttachments: List[ClientCreateChannelInputAttachmentsTypeDef] = None,
-        InputSpecification: Dict = None,
+        InputSpecification: Dict[str, Any] = None,
         LogLevel: str = None,
         Name: str = None,
         RequestId: str = None,
@@ -7332,7 +7342,7 @@ class Client(BaseClient):
         Sources: List[Any] = None,
         Tags: List[str] = None,
         Type: str = None,
-        Vpc: Dict = None,
+        Vpc: Dict[str, Any] = None,
     ) -> ClientCreateInputResponseTypeDef:
         """
         Create an input
@@ -15025,40 +15035,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_channels(
         self, MaxResults: int = None, NextToken: str = None
     ) -> ClientListChannelsResponseTypeDef:
@@ -22497,7 +22473,7 @@ class Client(BaseClient):
         Destinations: List[ClientUpdateChannelDestinationsTypeDef] = None,
         EncoderSettings: ClientUpdateChannelEncoderSettingsTypeDef = None,
         InputAttachments: List[ClientUpdateChannelInputAttachmentsTypeDef] = None,
-        InputSpecification: Dict = None,
+        InputSpecification: Dict[str, Any] = None,
         LogLevel: str = None,
         Name: str = None,
         RoleArn: str = None,
@@ -32292,4 +32268,128 @@ class Client(BaseClient):
 
               - **UsagePrice** *(float) --* Recurring usage charge for each reserved resource, e.g. '157.0'
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_schedule"]
+    ) -> paginator_scope.DescribeSchedulePaginator:
+        """
+        Get Paginator for `describe_schedule` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_channels"]
+    ) -> paginator_scope.ListChannelsPaginator:
+        """
+        Get Paginator for `list_channels` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_input_security_groups"]
+    ) -> paginator_scope.ListInputSecurityGroupsPaginator:
+        """
+        Get Paginator for `list_input_security_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_inputs"]
+    ) -> paginator_scope.ListInputsPaginator:
+        """
+        Get Paginator for `list_inputs` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_offerings"]
+    ) -> paginator_scope.ListOfferingsPaginator:
+        """
+        Get Paginator for `list_offerings` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_reservations"]
+    ) -> paginator_scope.ListReservationsPaginator:
+        """
+        Get Paginator for `list_reservations` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["channel_created"]
+    ) -> waiter_scope.ChannelCreatedWaiter:
+        """
+        Get Waiter `channel_created`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["channel_deleted"]
+    ) -> waiter_scope.ChannelDeletedWaiter:
+        """
+        Get Waiter `channel_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["channel_running"]
+    ) -> waiter_scope.ChannelRunningWaiter:
+        """
+        Get Waiter `channel_running`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["channel_stopped"]
+    ) -> waiter_scope.ChannelStoppedWaiter:
+        """
+        Get Waiter `channel_stopped`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

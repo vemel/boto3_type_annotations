@@ -6,7 +6,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_ses.type_defs import IdentityExistsWaitWaiterConfigTypeDef
 
 
-class IdentityExists(Boto3Waiter):
+__all__ = ("IdentityExistsWaiter",)
+
+
+class IdentityExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `identity_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

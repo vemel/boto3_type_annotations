@@ -6,6 +6,306 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientCreateCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientCreateCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityTypeDef",
+    "ClientCreateCloudFrontOriginAccessIdentityResponseTypeDef",
+    "ClientCreateDistributionDistributionConfigAliasesTypeDef",
+    "ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    "ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    "ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    "ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    "ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginGroupsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsItemsTypeDef",
+    "ClientCreateDistributionDistributionConfigOriginsTypeDef",
+    "ClientCreateDistributionDistributionConfigTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef",
+    "ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseFieldLevelEncryptionTypeDef",
+    "ClientCreateFieldLevelEncryptionConfigResponseTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileTypeDef",
+    "ClientCreateFieldLevelEncryptionProfileResponseTypeDef",
+    "ClientCreateInvalidationInvalidationBatchPathsTypeDef",
+    "ClientCreateInvalidationInvalidationBatchTypeDef",
+    "ClientCreateInvalidationResponseInvalidationInvalidationBatchPathsTypeDef",
+    "ClientCreateInvalidationResponseInvalidationInvalidationBatchTypeDef",
+    "ClientCreateInvalidationResponseInvalidationTypeDef",
+    "ClientCreateInvalidationResponseTypeDef",
+    "ClientCreatePublicKeyPublicKeyConfigTypeDef",
+    "ClientCreatePublicKeyResponsePublicKeyPublicKeyConfigTypeDef",
+    "ClientCreatePublicKeyResponsePublicKeyTypeDef",
+    "ClientCreatePublicKeyResponseTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsKeyPairIdsTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTypeDef",
+    "ClientCreateStreamingDistributionResponseStreamingDistributionTypeDef",
+    "ClientCreateStreamingDistributionResponseTypeDef",
+    "ClientCreateStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientCreateStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientCreateStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientCreateStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionStreamingDistributionConfigTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionActiveTrustedSignersItemsKeyPairIdsTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionActiveTrustedSignersItemsTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionActiveTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionStreamingDistributionConfigTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseStreamingDistributionTypeDef",
+    "ClientCreateStreamingDistributionWithTagsResponseTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsStreamingDistributionConfigAliasesTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsStreamingDistributionConfigLoggingTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsStreamingDistributionConfigS3OriginTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsStreamingDistributionConfigTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsTagsItemsTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsTagsTypeDef",
+    "ClientCreateStreamingDistributionWithTagsStreamingDistributionConfigWithTagsTypeDef",
+    "ClientGetCloudFrontOriginAccessIdentityConfigResponseCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientGetCloudFrontOriginAccessIdentityConfigResponseTypeDef",
+    "ClientGetCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientGetCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityTypeDef",
+    "ClientGetCloudFrontOriginAccessIdentityResponseTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseFieldLevelEncryptionConfigTypeDef",
+    "ClientGetFieldLevelEncryptionConfigResponseTypeDef",
+    "ClientGetFieldLevelEncryptionProfileConfigResponseFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientGetFieldLevelEncryptionProfileConfigResponseFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionProfileConfigResponseFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientGetFieldLevelEncryptionProfileConfigResponseFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionProfileConfigResponseTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileTypeDef",
+    "ClientGetFieldLevelEncryptionProfileResponseTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionFieldLevelEncryptionConfigTypeDef",
+    "ClientGetFieldLevelEncryptionResponseFieldLevelEncryptionTypeDef",
+    "ClientGetFieldLevelEncryptionResponseTypeDef",
+    "ClientGetInvalidationResponseInvalidationInvalidationBatchPathsTypeDef",
+    "ClientGetInvalidationResponseInvalidationInvalidationBatchTypeDef",
+    "ClientGetInvalidationResponseInvalidationTypeDef",
+    "ClientGetInvalidationResponseTypeDef",
+    "ClientGetPublicKeyConfigResponsePublicKeyConfigTypeDef",
+    "ClientGetPublicKeyConfigResponseTypeDef",
+    "ClientGetPublicKeyResponsePublicKeyPublicKeyConfigTypeDef",
+    "ClientGetPublicKeyResponsePublicKeyTypeDef",
+    "ClientGetPublicKeyResponseTypeDef",
+    "ClientGetStreamingDistributionConfigResponseStreamingDistributionConfigAliasesTypeDef",
+    "ClientGetStreamingDistributionConfigResponseStreamingDistributionConfigLoggingTypeDef",
+    "ClientGetStreamingDistributionConfigResponseStreamingDistributionConfigS3OriginTypeDef",
+    "ClientGetStreamingDistributionConfigResponseStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientGetStreamingDistributionConfigResponseStreamingDistributionConfigTypeDef",
+    "ClientGetStreamingDistributionConfigResponseTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsKeyPairIdsTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionActiveTrustedSignersTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTypeDef",
+    "ClientGetStreamingDistributionResponseStreamingDistributionTypeDef",
+    "ClientGetStreamingDistributionResponseTypeDef",
+    "ClientListCloudFrontOriginAccessIdentitiesResponseCloudFrontOriginAccessIdentityListItemsTypeDef",
+    "ClientListCloudFrontOriginAccessIdentitiesResponseCloudFrontOriginAccessIdentityListTypeDef",
+    "ClientListCloudFrontOriginAccessIdentitiesResponseTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsContentTypeProfileConfigTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsQueryArgProfileConfigTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListItemsTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseFieldLevelEncryptionListTypeDef",
+    "ClientListFieldLevelEncryptionConfigsResponseTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseFieldLevelEncryptionProfileListItemsEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseFieldLevelEncryptionProfileListItemsEncryptionEntitiesItemsTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseFieldLevelEncryptionProfileListItemsEncryptionEntitiesTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseFieldLevelEncryptionProfileListItemsTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseFieldLevelEncryptionProfileListTypeDef",
+    "ClientListFieldLevelEncryptionProfilesResponseTypeDef",
+    "ClientListInvalidationsResponseInvalidationListItemsTypeDef",
+    "ClientListInvalidationsResponseInvalidationListTypeDef",
+    "ClientListInvalidationsResponseTypeDef",
+    "ClientListPublicKeysResponsePublicKeyListItemsTypeDef",
+    "ClientListPublicKeysResponsePublicKeyListTypeDef",
+    "ClientListPublicKeysResponseTypeDef",
+    "ClientListStreamingDistributionsResponseStreamingDistributionListItemsAliasesTypeDef",
+    "ClientListStreamingDistributionsResponseStreamingDistributionListItemsS3OriginTypeDef",
+    "ClientListStreamingDistributionsResponseStreamingDistributionListItemsTrustedSignersTypeDef",
+    "ClientListStreamingDistributionsResponseStreamingDistributionListItemsTypeDef",
+    "ClientListStreamingDistributionsResponseStreamingDistributionListTypeDef",
+    "ClientListStreamingDistributionsResponseTypeDef",
+    "ClientListTagsForResourceResponseTagsItemsTypeDef",
+    "ClientListTagsForResourceResponseTagsTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientTagResourceTagsItemsTypeDef",
+    "ClientTagResourceTagsTypeDef",
+    "ClientUntagResourceTagKeysTypeDef",
+    "ClientUpdateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientUpdateCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
+    "ClientUpdateCloudFrontOriginAccessIdentityResponseCloudFrontOriginAccessIdentityTypeDef",
+    "ClientUpdateCloudFrontOriginAccessIdentityResponseTypeDef",
+    "ClientUpdateDistributionDistributionConfigAliasesTypeDef",
+    "ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    "ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    "ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    "ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    "ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginGroupsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsItemsTypeDef",
+    "ClientUpdateDistributionDistributionConfigOriginsTypeDef",
+    "ClientUpdateDistributionDistributionConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigFieldLevelEncryptionConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigContentTypeProfilesTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigContentTypeProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigQueryArgProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionFieldLevelEncryptionConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseFieldLevelEncryptionTypeDef",
+    "ClientUpdateFieldLevelEncryptionConfigResponseTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsFieldPatternsTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesItemsTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigEncryptionEntitiesTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileFieldLevelEncryptionProfileConfigTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseFieldLevelEncryptionProfileTypeDef",
+    "ClientUpdateFieldLevelEncryptionProfileResponseTypeDef",
+    "ClientUpdatePublicKeyPublicKeyConfigTypeDef",
+    "ClientUpdatePublicKeyResponsePublicKeyPublicKeyConfigTypeDef",
+    "ClientUpdatePublicKeyResponsePublicKeyTypeDef",
+    "ClientUpdatePublicKeyResponseTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsKeyPairIdsTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersItemsTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionActiveTrustedSignersTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionStreamingDistributionConfigTypeDef",
+    "ClientUpdateStreamingDistributionResponseStreamingDistributionTypeDef",
+    "ClientUpdateStreamingDistributionResponseTypeDef",
+    "ClientUpdateStreamingDistributionStreamingDistributionConfigAliasesTypeDef",
+    "ClientUpdateStreamingDistributionStreamingDistributionConfigLoggingTypeDef",
+    "ClientUpdateStreamingDistributionStreamingDistributionConfigS3OriginTypeDef",
+    "ClientUpdateStreamingDistributionStreamingDistributionConfigTrustedSignersTypeDef",
+    "ClientUpdateStreamingDistributionStreamingDistributionConfigTypeDef",
+    "DistributionDeployedWaitWaiterConfigTypeDef",
+    "InvalidationCompletedWaitWaiterConfigTypeDef",
+    "ListCloudFrontOriginAccessIdentitiesPaginatePaginationConfigTypeDef",
+    "ListCloudFrontOriginAccessIdentitiesPaginateResponseCloudFrontOriginAccessIdentityListItemsTypeDef",
+    "ListCloudFrontOriginAccessIdentitiesPaginateResponseCloudFrontOriginAccessIdentityListTypeDef",
+    "ListCloudFrontOriginAccessIdentitiesPaginateResponseTypeDef",
+    "ListDistributionsPaginatePaginationConfigTypeDef",
+    "ListInvalidationsPaginatePaginationConfigTypeDef",
+    "ListInvalidationsPaginateResponseInvalidationListItemsTypeDef",
+    "ListInvalidationsPaginateResponseInvalidationListTypeDef",
+    "ListInvalidationsPaginateResponseTypeDef",
+    "ListStreamingDistributionsPaginatePaginationConfigTypeDef",
+    "ListStreamingDistributionsPaginateResponseStreamingDistributionListItemsAliasesTypeDef",
+    "ListStreamingDistributionsPaginateResponseStreamingDistributionListItemsS3OriginTypeDef",
+    "ListStreamingDistributionsPaginateResponseStreamingDistributionListItemsTrustedSignersTypeDef",
+    "ListStreamingDistributionsPaginateResponseStreamingDistributionListItemsTypeDef",
+    "ListStreamingDistributionsPaginateResponseStreamingDistributionListTypeDef",
+    "ListStreamingDistributionsPaginateResponseTypeDef",
+    "StreamingDistributionDeployedWaitWaiterConfigTypeDef",
+)
+
+
 _ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef = TypedDict(
     "_ClientCreateCloudFrontOriginAccessIdentityCloudFrontOriginAccessIdentityConfigTypeDef",
     {"CallerReference": str, "Comment": str},
@@ -204,6 +504,4242 @@ class ClientCreateCloudFrontOriginAccessIdentityResponseTypeDef(
     - **ETag** *(string) --*
 
       The current version of the origin access identity created.
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigAliasesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigAliasesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionDistributionConfigAliasesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigAliasesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigAliasesTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigAliasesTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigAliasesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfig` `Aliases`
+
+    A complex type that contains information about CNAMEs (alternate domain names), if any, for
+    this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+    - **Items** *(list) --*
+
+      A complex type that contains the CNAME aliases, if any, that you want to associate with this
+      distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookies` `WhitelistedNames`
+
+    Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+    specifies how many different cookies you want CloudFront to forward to the origin for
+    this cache behavior and, if you want to forward selected cookies, the names of those
+    cookies.
+
+    If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+    If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+    delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+    automatically.
+
+    For the current limit on the number of cookie names that you can whitelist for each cache
+    behavior, see `CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different cookies that you want CloudFront to forward to the origin for
+      this cache behavior.
+
+    - **Items** *(list) --*
+
+      A complex type that contains one ``Name`` element for each cookie that you want
+      CloudFront to forward to the origin for this cache behavior.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {"Forward": str},
+)
+_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {
+        "WhitelistedNames": ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValues` `Cookies`
+
+    A complex type that specifies whether you want CloudFront to forward cookies to the origin
+    and, if so, which ones. For more information about forwarding cookies to the origin, see
+    `How CloudFront Forwards, Caches, and Logs Cookies
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+    *Amazon CloudFront Developer Guide* .
+
+    - **Forward** *(string) --* **[REQUIRED]**
+
+      Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+      the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+      Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+      Amazon S3 origin, specify none for the ``Forward`` element.
+
+    - **WhitelistedNames** *(dict) --*
+
+      Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+      specifies how many different cookies you want CloudFront to forward to the origin for
+      this cache behavior and, if you want to forward selected cookies, the names of those
+      cookies.
+
+      If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+      If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+      delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+      automatically.
+
+      For the current limit on the number of cookie names that you can whitelist for each cache
+      behavior, see `CloudFront Limits
+      <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+      in the *AWS General Reference* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different cookies that you want CloudFront to forward to the origin for
+        this cache behavior.
+
+      - **Items** *(list) --*
+
+        A complex type that contains one ``Name`` element for each cookie that you want
+        CloudFront to forward to the origin for this cache behavior.
+
+        - *(string) --*
+    """
+
+
+_ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    {"Quantity": int},
+)
+
+
+class ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef(
+    _ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValues` `Headers`
+
+    A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+    to the origin for this cache behavior (whitelisted headers). For the headers that you
+    specify, CloudFront also caches separate versions of a specified object that is based on
+    the header values in viewer requests.
+
+    For more information, see `Caching Content Based on Request Headers
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+    in the *Amazon CloudFront Developer Guide* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different headers that you want CloudFront to base caching on for this
+      cache behavior. You can configure each cache behavior in a web distribution to do one of
+      the following:
+
+      * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+      ``Name`` .
+
+      .. warning::
+
+         CloudFront doesn't cache the objects that are associated with this cache behavior.
+         Instead, CloudFront sends every request to the origin.
+
+      * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+      want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+      CloudFront caches your objects based on the values in the specified headers.
+
+      * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+      ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+      request headers.
+
+      Regardless of which option you choose, CloudFront forwards headers to your origin based
+      on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+      * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "QueryString": bool,
+        "Cookies": ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    },
+)
+_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "Headers": ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigDefaultCacheBehavior` `ForwardedValues`
+
+    A complex type that specifies how CloudFront handles query strings and cookies.
+
+    - **QueryString** *(boolean) --* **[REQUIRED]**
+
+      Indicates whether you want CloudFront to forward query strings to the origin that is
+      associated with this cache behavior and cache based on the query string parameters.
+      CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+      specify for ``QueryStringCacheKeys`` , if any:
+
+      If you specify true for ``QueryString`` and you don't specify any values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+      and caches based on all query string parameters. Depending on how many query string
+      parameters and values you have, this can adversely affect performance because CloudFront
+      must forward more requests to the origin.
+
+      If you specify true for ``QueryString`` and you specify one or more values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+      but it only caches based on the query string parameters that you specify.
+
+      If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+      parameters to the origin, and doesn't cache based on query string parameters.
+
+      For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Cookies** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies whether you want CloudFront to forward cookies to the origin
+      and, if so, which ones. For more information about forwarding cookies to the origin, see
+      `How CloudFront Forwards, Caches, and Logs Cookies
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+      *Amazon CloudFront Developer Guide* .
+
+      - **Forward** *(string) --* **[REQUIRED]**
+
+        Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+        the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+        Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+        Amazon S3 origin, specify none for the ``Forward`` element.
+
+      - **WhitelistedNames** *(dict) --*
+
+        Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+        specifies how many different cookies you want CloudFront to forward to the origin for
+        this cache behavior and, if you want to forward selected cookies, the names of those
+        cookies.
+
+        If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+        If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+        delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+        automatically.
+
+        For the current limit on the number of cookie names that you can whitelist for each cache
+        behavior, see `CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different cookies that you want CloudFront to forward to the origin for
+          this cache behavior.
+
+        - **Items** *(list) --*
+
+          A complex type that contains one ``Name`` element for each cookie that you want
+          CloudFront to forward to the origin for this cache behavior.
+
+          - *(string) --*
+
+    - **Headers** *(dict) --*
+
+      A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+      to the origin for this cache behavior (whitelisted headers). For the headers that you
+      specify, CloudFront also caches separate versions of a specified object that is based on
+      the header values in viewer requests.
+
+      For more information, see `Caching Content Based on Request Headers
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different headers that you want CloudFront to base caching on for this
+        cache behavior. You can configure each cache behavior in a web distribution to do one of
+        the following:
+
+        * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+        ``Name`` .
+
+        .. warning::
+
+           CloudFront doesn't cache the objects that are associated with this cache behavior.
+           Instead, CloudFront sends every request to the origin.
+
+        * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+        want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+        CloudFront caches your objects based on the values in the specified headers.
+
+        * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+        ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+        request headers.
+
+        Regardless of which option you choose, CloudFront forwards headers to your origin based
+        on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+        * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef",
+    {
+        "TargetOriginId": str,
+        "ForwardedValues": ClientCreateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    },
+)
+
+
+class ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef(
+    _ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfig` `DefaultCacheBehavior`
+
+    A complex type that describes the default cache behavior if you don't specify a
+    ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+    ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+    - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+      The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+      request matches the path pattern either for a cache behavior or for the default cache
+      behavior in your distribution.
+
+    - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies how CloudFront handles query strings and cookies.
+
+      - **QueryString** *(boolean) --* **[REQUIRED]**
+
+        Indicates whether you want CloudFront to forward query strings to the origin that is
+        associated with this cache behavior and cache based on the query string parameters.
+        CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+        specify for ``QueryStringCacheKeys`` , if any:
+
+        If you specify true for ``QueryString`` and you don't specify any values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+        and caches based on all query string parameters. Depending on how many query string
+        parameters and values you have, this can adversely affect performance because CloudFront
+        must forward more requests to the origin.
+
+        If you specify true for ``QueryString`` and you specify one or more values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+        but it only caches based on the query string parameters that you specify.
+
+        If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+        parameters to the origin, and doesn't cache based on query string parameters.
+
+        For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+      - **Cookies** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies whether you want CloudFront to forward cookies to the origin
+        and, if so, which ones. For more information about forwarding cookies to the origin, see
+        `How CloudFront Forwards, Caches, and Logs Cookies
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+        *Amazon CloudFront Developer Guide* .
+
+        - **Forward** *(string) --* **[REQUIRED]**
+
+          Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+          the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+          Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+          Amazon S3 origin, specify none for the ``Forward`` element.
+
+        - **WhitelistedNames** *(dict) --*
+
+          Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+          specifies how many different cookies you want CloudFront to forward to the origin for
+          this cache behavior and, if you want to forward selected cookies, the names of those
+          cookies.
+
+          If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+          If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+          delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+          automatically.
+
+          For the current limit on the number of cookie names that you can whitelist for each cache
+          behavior, see `CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different cookies that you want CloudFront to forward to the origin for
+            this cache behavior.
+
+          - **Items** *(list) --*
+
+            A complex type that contains one ``Name`` element for each cookie that you want
+            CloudFront to forward to the origin for this cache behavior.
+
+            - *(string) --*
+
+      - **Headers** *(dict) --*
+
+        A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+        to the origin for this cache behavior (whitelisted headers). For the headers that you
+        specify, CloudFront also caches separate versions of a specified object that is based on
+        the header values in viewer requests.
+
+        For more information, see `Caching Content Based on Request Headers
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different headers that you want CloudFront to base caching on for this
+          cache behavior. You can configure each cache behavior in a web distribution to do one of
+          the following:
+
+          * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+          ``Name`` .
+
+          .. warning::
+
+             CloudFront doesn't cache the objects that are associated with this cache behavior.
+             Instead, CloudFront sends every request to the origin.
+
+          * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+          want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+          CloudFront caches your objects based on the values in the specified headers.
+
+          * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+          ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+          request headers.
+
+          Regardless of which option you choose, CloudFront forwards headers to your origin based
+          on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+          * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    {"Quantity": int, "Items": List[int]},
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteria` `StatusCodes`
+
+    The status codes that, when returned from the primary origin, will trigger CloudFront
+    to failover to the second origin.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of status codes.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      The items (status codes) for an origin group.
+
+      - *(integer) --*
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    {
+        "StatusCodes": ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+    },
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginGroupsItems` `FailoverCriteria`
+
+    A complex type that contains information about the failover criteria for an origin group.
+
+    - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+      The status codes that, when returned from the primary origin, will trigger CloudFront
+      to failover to the second origin.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of status codes.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        The items (status codes) for an origin group.
+
+        - *(integer) --*
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    {"OriginId": str},
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginGroupsItemsMembers` `Items`
+
+    An origin in an origin group.
+
+    - **OriginId** *(string) --* **[REQUIRED]**
+
+      The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[
+            ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+        ],
+    },
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginGroupsItems` `Members`
+
+    A complex type that contains information about the origins in an origin group.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins in an origin group.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      Items (origins) in an origin group.
+
+      - *(dict) --*
+
+        An origin in an origin group.
+
+        - **OriginId** *(string) --* **[REQUIRED]**
+
+          The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef",
+    {
+        "Id": str,
+        "FailoverCriteria": ClientCreateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef,
+        "Members": ClientCreateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef,
+    },
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginGroups` `Items`
+
+    An origin group includes two origins (a primary origin and a second origin to failover to)
+    and a failover criteria that you specify. You create an origin group to support origin
+    failover in CloudFront. When you create or update a distribution, you can specifiy the
+    origin group instead of a single origin, and CloudFront will failover from the primary
+    origin to the second origin under the failover conditions that you've chosen.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The origin group's ID.
+
+    - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the failover criteria for an origin group.
+
+      - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+        The status codes that, when returned from the primary origin, will trigger CloudFront
+        to failover to the second origin.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of status codes.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          The items (status codes) for an origin group.
+
+          - *(integer) --*
+
+    - **Members** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the origins in an origin group.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins in an origin group.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        Items (origins) in an origin group.
+
+        - *(dict) --*
+
+          An origin in an origin group.
+
+          - **OriginId** *(string) --* **[REQUIRED]**
+
+            The ID for an origin in an origin group.
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigOriginGroupsTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigOriginGroupsTypeDef",
+    {"Items": List[ClientCreateDistributionDistributionConfigOriginGroupsItemsTypeDef]},
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginGroupsTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigOriginGroupsTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigOriginGroupsTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfig` `OriginGroups`
+
+    A complex type that contains information about origin groups for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origin groups.
+
+    - **Items** *(list) --*
+
+      The items (origin groups) in a distribution.
+
+      - *(dict) --*
+
+        An origin group includes two origins (a primary origin and a second origin to failover to)
+        and a failover criteria that you specify. You create an origin group to support origin
+        failover in CloudFront. When you create or update a distribution, you can specifiy the
+        origin group instead of a single origin, and CloudFront will failover from the primary
+        origin to the second origin under the failover conditions that you've chosen.
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          The origin group's ID.
+
+        - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the failover criteria for an origin group.
+
+          - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+            The status codes that, when returned from the primary origin, will trigger CloudFront
+            to failover to the second origin.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of status codes.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              The items (status codes) for an origin group.
+
+              - *(integer) --*
+
+        - **Members** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the origins in an origin group.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of origins in an origin group.
+
+          - **Items** *(list) --* **[REQUIRED]**
+
+            Items (origins) in an origin group.
+
+            - *(dict) --*
+
+              An origin in an origin group.
+
+              - **OriginId** *(string) --* **[REQUIRED]**
+
+                The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    {"HeaderName": str, "HeaderValue": str},
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginsItemsCustomHeaders` `Items`
+
+    A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+    this distribution.
+
+    - **HeaderName** *(string) --* **[REQUIRED]**
+
+      The name of a header that you want CloudFront to forward to your origin. For more
+      information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **HeaderValue** *(string) --* **[REQUIRED]**
+
+      The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {
+        "Items": List[
+            ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginsItems` `CustomHeaders`
+
+    A complex type that contains names and values for the custom headers that you want.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of custom headers, if any, for this distribution.
+
+    - **Items** *(list) --*
+
+       **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+       header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+       ``Items`` .
+
+      - *(dict) --*
+
+        A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+        this distribution.
+
+        - **HeaderName** *(string) --* **[REQUIRED]**
+
+          The name of a header that you want CloudFront to forward to your origin. For more
+          information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **HeaderValue** *(string) --* **[REQUIRED]**
+
+          The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    {"Quantity": int, "Items": List[str]},
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfig` `OriginSslProtocols`
+
+    The SSL/TLS protocols that you want CloudFront to use when communicating with your
+    origin over HTTPS.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of SSL/TLS protocols that you want to allow CloudFront to use when
+      establishing an HTTPS connection with this origin.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A list that contains allowed SSL/TLS protocols for this distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {"HTTPPort": int, "HTTPSPort": int, "OriginProtocolPolicy": str},
+)
+_OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {
+        "OriginSslProtocols": ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef,
+        "OriginReadTimeout": int,
+        "OriginKeepaliveTimeout": int,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginsItems` `CustomOriginConfig`
+
+    A complex type that contains information about a custom origin. If the origin is an
+    Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+    - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+      The HTTP port the custom origin listens on.
+
+    - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+      The HTTPS port the custom origin listens on.
+
+    - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+      The origin protocol policy to apply to your origin.
+
+    - **OriginSslProtocols** *(dict) --*
+
+      The SSL/TLS protocols that you want CloudFront to use when communicating with your
+      origin over HTTPS.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of SSL/TLS protocols that you want to allow CloudFront to use when
+        establishing an HTTPS connection with this origin.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A list that contains allowed SSL/TLS protocols for this distribution.
+
+        - *(string) --*
+
+    - **OriginReadTimeout** *(integer) --*
+
+      You can create a custom origin read timeout. All timeout units are in seconds. The
+      default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+      using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+      seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginKeepaliveTimeout** *(integer) --*
+
+      You can create a custom keep-alive timeout. All timeout units are in seconds. The
+      default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+      using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+      seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    {"OriginAccessIdentity": str},
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOriginsItems` `S3OriginConfig`
+
+    A complex type that contains information about the Amazon S3 origin. If the origin is a
+    custom origin, use the ``CustomOriginConfig`` element instead.
+
+    - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+      The CloudFront origin access identity to associate with the origin. Use an origin
+      access identity to configure the origin so that viewers can *only* access objects in an
+      Amazon S3 bucket through CloudFront. The format of the value is:
+
+      origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+      where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+      ``ID`` element when you created the origin access identity.
+
+      If you want viewers to be able to access objects using either the CloudFront URL or the
+      Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+      To delete the origin access identity from an existing distribution, update the
+      distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+      To replace the origin access identity, update the distribution configuration and
+      specify the new origin access identity.
+
+      For more information about the origin access identity, see `Serving Private Content
+      through CloudFront
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigOriginsItemsTypeDef",
+    {"Id": str, "DomainName": str},
+)
+_OptionalClientCreateDistributionDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigOriginsItemsTypeDef",
+    {
+        "OriginPath": str,
+        "CustomHeaders": ClientCreateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+        "S3OriginConfig": ClientCreateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef,
+        "CustomOriginConfig": ClientCreateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsItemsTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigOriginsItemsTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigOriginsItemsTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfigOrigins` `Items`
+
+    A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+    server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+    also be an origin group, if you've created an origin group. You must specify at least one
+    origin or origin group.
+
+    For the current limit on the number of origins or origin groups that you can specify for a
+    distribution, see `Amazon CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+      within the distribution.
+
+      When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+      another cache behavior, you indicate the origin to which you want the cache behavior to
+      route requests by specifying the value of the ``Id`` element for that origin. When a
+      request matches the path pattern for that cache behavior, CloudFront routes the request
+      to the specified origin. For more information, see `Cache Behavior Settings
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **DomainName** *(string) --* **[REQUIRED]**
+
+       **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+       CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+       . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+       static website hosting endpoint for the bucket.
+
+      For more information about specifying this value for different types of origins, see
+      `Origin Domain Name
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      Constraints for Amazon S3 origins:
+
+      * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+      ``s3-accelerate`` endpoint for ``DomainName`` .
+
+      * The bucket name must be between 3 and 63 characters long (inclusive).
+
+      * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+      and dashes.
+
+      * The bucket name must not contain adjacent periods.
+
+       **Custom Origins** : The DNS domain name for the HTTP server from which you want
+       CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+      Constraints for custom origins:
+
+      * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+      hyphen (-), or underscore (_) characters.
+
+      * The name cannot exceed 128 characters.
+
+    - **OriginPath** *(string) --*
+
+      An optional element that causes CloudFront to request your content from a directory in
+      your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+      specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+      name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+      include a ``/`` at the end of the directory name.
+
+      For example, suppose you've specified the following values for your distribution:
+
+      * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+      * ``OriginPath`` : ``/production``
+
+      * ``CNAME`` : ``example.com``
+
+      When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+      Amazon S3 for ``myawsbucket/production/index.html`` .
+
+      When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+      request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+    - **CustomHeaders** *(dict) --*
+
+      A complex type that contains names and values for the custom headers that you want.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of custom headers, if any, for this distribution.
+
+      - **Items** *(list) --*
+
+         **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+         header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+         ``Items`` .
+
+        - *(dict) --*
+
+          A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+          this distribution.
+
+          - **HeaderName** *(string) --* **[REQUIRED]**
+
+            The name of a header that you want CloudFront to forward to your origin. For more
+            information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **HeaderValue** *(string) --* **[REQUIRED]**
+
+            The value for the header that you specified in the ``HeaderName`` field.
+
+    - **S3OriginConfig** *(dict) --*
+
+      A complex type that contains information about the Amazon S3 origin. If the origin is a
+      custom origin, use the ``CustomOriginConfig`` element instead.
+
+      - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+        The CloudFront origin access identity to associate with the origin. Use an origin
+        access identity to configure the origin so that viewers can *only* access objects in an
+        Amazon S3 bucket through CloudFront. The format of the value is:
+
+        origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+        where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+        ``ID`` element when you created the origin access identity.
+
+        If you want viewers to be able to access objects using either the CloudFront URL or the
+        Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+        To delete the origin access identity from an existing distribution, update the
+        distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+        To replace the origin access identity, update the distribution configuration and
+        specify the new origin access identity.
+
+        For more information about the origin access identity, see `Serving Private Content
+        through CloudFront
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+    - **CustomOriginConfig** *(dict) --*
+
+      A complex type that contains information about a custom origin. If the origin is an
+      Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+      - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+        The HTTP port the custom origin listens on.
+
+      - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+        The HTTPS port the custom origin listens on.
+
+      - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+        The origin protocol policy to apply to your origin.
+
+      - **OriginSslProtocols** *(dict) --*
+
+        The SSL/TLS protocols that you want CloudFront to use when communicating with your
+        origin over HTTPS.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of SSL/TLS protocols that you want to allow CloudFront to use when
+          establishing an HTTPS connection with this origin.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          A list that contains allowed SSL/TLS protocols for this distribution.
+
+          - *(string) --*
+
+      - **OriginReadTimeout** *(integer) --*
+
+        You can create a custom origin read timeout. All timeout units are in seconds. The
+        default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+        using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+        seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+
+      - **OriginKeepaliveTimeout** *(integer) --*
+
+        You can create a custom keep-alive timeout. All timeout units are in seconds. The
+        default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+        using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+        seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientCreateDistributionDistributionConfigOriginsTypeDef = TypedDict(
+    "_ClientCreateDistributionDistributionConfigOriginsTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[ClientCreateDistributionDistributionConfigOriginsItemsTypeDef],
+    },
+)
+
+
+class ClientCreateDistributionDistributionConfigOriginsTypeDef(
+    _ClientCreateDistributionDistributionConfigOriginsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionDistributionConfig` `Origins`
+
+    A complex type that contains information about origins for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins or origin groups for this distribution.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A complex type that contains origins or origin groups for this distribution.
+
+      - *(dict) --*
+
+        A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+        server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+        also be an origin group, if you've created an origin group. You must specify at least one
+        origin or origin group.
+
+        For the current limit on the number of origins or origin groups that you can specify for a
+        distribution, see `Amazon CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+          within the distribution.
+
+          When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+          another cache behavior, you indicate the origin to which you want the cache behavior to
+          route requests by specifying the value of the ``Id`` element for that origin. When a
+          request matches the path pattern for that cache behavior, CloudFront routes the request
+          to the specified origin. For more information, see `Cache Behavior Settings
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **DomainName** *(string) --* **[REQUIRED]**
+
+           **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+           CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+           . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+           static website hosting endpoint for the bucket.
+
+          For more information about specifying this value for different types of origins, see
+          `Origin Domain Name
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          Constraints for Amazon S3 origins:
+
+          * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+          ``s3-accelerate`` endpoint for ``DomainName`` .
+
+          * The bucket name must be between 3 and 63 characters long (inclusive).
+
+          * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+          and dashes.
+
+          * The bucket name must not contain adjacent periods.
+
+           **Custom Origins** : The DNS domain name for the HTTP server from which you want
+           CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+          Constraints for custom origins:
+
+          * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+          hyphen (-), or underscore (_) characters.
+
+          * The name cannot exceed 128 characters.
+
+        - **OriginPath** *(string) --*
+
+          An optional element that causes CloudFront to request your content from a directory in
+          your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+          specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+          name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+          include a ``/`` at the end of the directory name.
+
+          For example, suppose you've specified the following values for your distribution:
+
+          * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+          * ``OriginPath`` : ``/production``
+
+          * ``CNAME`` : ``example.com``
+
+          When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+          Amazon S3 for ``myawsbucket/production/index.html`` .
+
+          When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+          request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+        - **CustomHeaders** *(dict) --*
+
+          A complex type that contains names and values for the custom headers that you want.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of custom headers, if any, for this distribution.
+
+          - **Items** *(list) --*
+
+             **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+             header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+             ``Items`` .
+
+            - *(dict) --*
+
+              A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+              this distribution.
+
+              - **HeaderName** *(string) --* **[REQUIRED]**
+
+                The name of a header that you want CloudFront to forward to your origin. For more
+                information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+                <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                in the *Amazon CloudFront Developer Guide* .
+
+              - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                The value for the header that you specified in the ``HeaderName`` field.
+
+        - **S3OriginConfig** *(dict) --*
+
+          A complex type that contains information about the Amazon S3 origin. If the origin is a
+          custom origin, use the ``CustomOriginConfig`` element instead.
+
+          - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+            The CloudFront origin access identity to associate with the origin. Use an origin
+            access identity to configure the origin so that viewers can *only* access objects in an
+            Amazon S3 bucket through CloudFront. The format of the value is:
+
+            origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+            where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+            ``ID`` element when you created the origin access identity.
+
+            If you want viewers to be able to access objects using either the CloudFront URL or the
+            Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+            To delete the origin access identity from an existing distribution, update the
+            distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+            To replace the origin access identity, update the distribution configuration and
+            specify the new origin access identity.
+
+            For more information about the origin access identity, see `Serving Private Content
+            through CloudFront
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+        - **CustomOriginConfig** *(dict) --*
+
+          A complex type that contains information about a custom origin. If the origin is an
+          Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+          - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+            The HTTP port the custom origin listens on.
+
+          - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+            The HTTPS port the custom origin listens on.
+
+          - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+            The origin protocol policy to apply to your origin.
+
+          - **OriginSslProtocols** *(dict) --*
+
+            The SSL/TLS protocols that you want CloudFront to use when communicating with your
+            origin over HTTPS.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of SSL/TLS protocols that you want to allow CloudFront to use when
+              establishing an HTTPS connection with this origin.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              A list that contains allowed SSL/TLS protocols for this distribution.
+
+              - *(string) --*
+
+          - **OriginReadTimeout** *(integer) --*
+
+            You can create a custom origin read timeout. All timeout units are in seconds. The
+            default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+            using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+            seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+
+          - **OriginKeepaliveTimeout** *(integer) --*
+
+            You can create a custom keep-alive timeout. All timeout units are in seconds. The
+            default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+            using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+            seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_RequiredClientCreateDistributionDistributionConfigTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionDistributionConfigTypeDef",
+    {
+        "CallerReference": str,
+        "Origins": ClientCreateDistributionDistributionConfigOriginsTypeDef,
+        "DefaultCacheBehavior": ClientCreateDistributionDistributionConfigDefaultCacheBehaviorTypeDef,
+    },
+)
+_OptionalClientCreateDistributionDistributionConfigTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionDistributionConfigTypeDef",
+    {
+        "Aliases": ClientCreateDistributionDistributionConfigAliasesTypeDef,
+        "DefaultRootObject": str,
+        "OriginGroups": ClientCreateDistributionDistributionConfigOriginGroupsTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionDistributionConfigTypeDef(
+    _RequiredClientCreateDistributionDistributionConfigTypeDef,
+    _OptionalClientCreateDistributionDistributionConfigTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistribution` `DistributionConfig`
+
+    The distribution's configuration information.
+
+    - **CallerReference** *(string) --* **[REQUIRED]**
+
+      A unique value (for example, a date-time stamp) that ensures that the request can't be replayed.
+
+      If the value of ``CallerReference`` is new (regardless of the content of the
+      ``DistributionConfig`` object), CloudFront creates a new distribution.
+
+      If ``CallerReference`` is a value that you already sent in a previous request to create a
+      distribution, CloudFront returns a ``DistributionAlreadyExists`` error.
+
+    - **Aliases** *(dict) --*
+
+      A complex type that contains information about CNAMEs (alternate domain names), if any, for
+      this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+      - **Items** *(list) --*
+
+        A complex type that contains the CNAME aliases, if any, that you want to associate with this
+        distribution.
+
+        - *(string) --*
+
+    - **DefaultRootObject** *(string) --*
+
+      The object that you want CloudFront to request from your origin (for example, ``index.html`` )
+      when a viewer requests the root URL for your distribution (``http://www.example.com`` ) instead
+      of an object in your distribution (``http://www.example.com/product-description.html`` ).
+      Specifying a default root object avoids exposing the contents of your distribution.
+
+      Specify only the object name, for example, ``index.html`` . Don't add a ``/`` before the object
+      name.
+
+      If you don't want to specify a default root object when you create a distribution, include an
+      empty ``DefaultRootObject`` element.
+
+      To delete the default root object from an existing distribution, update the distribution
+      configuration and include an empty ``DefaultRootObject`` element.
+
+      To replace the default root object, update the distribution configuration and specify the new
+      object.
+
+      For more information about the default root object, see `Creating a Default Root Object
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Origins** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about origins for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins or origin groups for this distribution.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A complex type that contains origins or origin groups for this distribution.
+
+        - *(dict) --*
+
+          A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+          server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+          also be an origin group, if you've created an origin group. You must specify at least one
+          origin or origin group.
+
+          For the current limit on the number of origins or origin groups that you can specify for a
+          distribution, see `Amazon CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+            within the distribution.
+
+            When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+            another cache behavior, you indicate the origin to which you want the cache behavior to
+            route requests by specifying the value of the ``Id`` element for that origin. When a
+            request matches the path pattern for that cache behavior, CloudFront routes the request
+            to the specified origin. For more information, see `Cache Behavior Settings
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **DomainName** *(string) --* **[REQUIRED]**
+
+             **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+             CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+             . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+             static website hosting endpoint for the bucket.
+
+            For more information about specifying this value for different types of origins, see
+            `Origin Domain Name
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+            Constraints for Amazon S3 origins:
+
+            * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+            ``s3-accelerate`` endpoint for ``DomainName`` .
+
+            * The bucket name must be between 3 and 63 characters long (inclusive).
+
+            * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+            and dashes.
+
+            * The bucket name must not contain adjacent periods.
+
+             **Custom Origins** : The DNS domain name for the HTTP server from which you want
+             CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+            Constraints for custom origins:
+
+            * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+            hyphen (-), or underscore (_) characters.
+
+            * The name cannot exceed 128 characters.
+
+          - **OriginPath** *(string) --*
+
+            An optional element that causes CloudFront to request your content from a directory in
+            your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+            specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+            name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+            include a ``/`` at the end of the directory name.
+
+            For example, suppose you've specified the following values for your distribution:
+
+            * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+            * ``OriginPath`` : ``/production``
+
+            * ``CNAME`` : ``example.com``
+
+            When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+            Amazon S3 for ``myawsbucket/production/index.html`` .
+
+            When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+            request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+          - **CustomHeaders** *(dict) --*
+
+            A complex type that contains names and values for the custom headers that you want.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of custom headers, if any, for this distribution.
+
+            - **Items** *(list) --*
+
+               **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+               header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+               ``Items`` .
+
+              - *(dict) --*
+
+                A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+                this distribution.
+
+                - **HeaderName** *(string) --* **[REQUIRED]**
+
+                  The name of a header that you want CloudFront to forward to your origin. For more
+                  information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+                  <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                  in the *Amazon CloudFront Developer Guide* .
+
+                - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                  The value for the header that you specified in the ``HeaderName`` field.
+
+          - **S3OriginConfig** *(dict) --*
+
+            A complex type that contains information about the Amazon S3 origin. If the origin is a
+            custom origin, use the ``CustomOriginConfig`` element instead.
+
+            - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+              The CloudFront origin access identity to associate with the origin. Use an origin
+              access identity to configure the origin so that viewers can *only* access objects in an
+              Amazon S3 bucket through CloudFront. The format of the value is:
+
+              origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+              where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+              ``ID`` element when you created the origin access identity.
+
+              If you want viewers to be able to access objects using either the CloudFront URL or the
+              Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+              To delete the origin access identity from an existing distribution, update the
+              distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+              To replace the origin access identity, update the distribution configuration and
+              specify the new origin access identity.
+
+              For more information about the origin access identity, see `Serving Private Content
+              through CloudFront
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+              in the *Amazon CloudFront Developer Guide* .
+
+          - **CustomOriginConfig** *(dict) --*
+
+            A complex type that contains information about a custom origin. If the origin is an
+            Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+            - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+              The HTTP port the custom origin listens on.
+
+            - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+              The HTTPS port the custom origin listens on.
+
+            - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+              The origin protocol policy to apply to your origin.
+
+            - **OriginSslProtocols** *(dict) --*
+
+              The SSL/TLS protocols that you want CloudFront to use when communicating with your
+              origin over HTTPS.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of SSL/TLS protocols that you want to allow CloudFront to use when
+                establishing an HTTPS connection with this origin.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                A list that contains allowed SSL/TLS protocols for this distribution.
+
+                - *(string) --*
+
+            - **OriginReadTimeout** *(integer) --*
+
+              You can create a custom origin read timeout. All timeout units are in seconds. The
+              default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+              using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+              seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+            - **OriginKeepaliveTimeout** *(integer) --*
+
+              You can create a custom keep-alive timeout. All timeout units are in seconds. The
+              default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+              using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+              seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginGroups** *(dict) --*
+
+      A complex type that contains information about origin groups for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origin groups.
+
+      - **Items** *(list) --*
+
+        The items (origin groups) in a distribution.
+
+        - *(dict) --*
+
+          An origin group includes two origins (a primary origin and a second origin to failover to)
+          and a failover criteria that you specify. You create an origin group to support origin
+          failover in CloudFront. When you create or update a distribution, you can specifiy the
+          origin group instead of a single origin, and CloudFront will failover from the primary
+          origin to the second origin under the failover conditions that you've chosen.
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            The origin group's ID.
+
+          - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the failover criteria for an origin group.
+
+            - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+              The status codes that, when returned from the primary origin, will trigger CloudFront
+              to failover to the second origin.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of status codes.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                The items (status codes) for an origin group.
+
+                - *(integer) --*
+
+          - **Members** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the origins in an origin group.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of origins in an origin group.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              Items (origins) in an origin group.
+
+              - *(dict) --*
+
+                An origin in an origin group.
+
+                - **OriginId** *(string) --* **[REQUIRED]**
+
+                  The ID for an origin in an origin group.
+
+    - **DefaultCacheBehavior** *(dict) --* **[REQUIRED]**
+
+      A complex type that describes the default cache behavior if you don't specify a
+      ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+      ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+      - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+        The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+        request matches the path pattern either for a cache behavior or for the default cache
+        behavior in your distribution.
+
+      - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies how CloudFront handles query strings and cookies.
+
+        - **QueryString** *(boolean) --* **[REQUIRED]**
+
+          Indicates whether you want CloudFront to forward query strings to the origin that is
+          associated with this cache behavior and cache based on the query string parameters.
+          CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+          specify for ``QueryStringCacheKeys`` , if any:
+
+          If you specify true for ``QueryString`` and you don't specify any values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+          and caches based on all query string parameters. Depending on how many query string
+          parameters and values you have, this can adversely affect performance because CloudFront
+          must forward more requests to the origin.
+
+          If you specify true for ``QueryString`` and you specify one or more values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+          but it only caches based on the query string parameters that you specify.
+
+          If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+          parameters to the origin, and doesn't cache based on query string parameters.
+
+          For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **Cookies** *(dict) --* **[REQUIRED]**
+
+          A complex type that specifies whether you want CloudFront to forward cookies to the origin
+          and, if so, which ones. For more information about forwarding cookies to the origin, see
+          `How CloudFront Forwards, Caches, and Logs Cookies
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+          *Amazon CloudFront Developer Guide* .
+
+          - **Forward** *(string) --* **[REQUIRED]**
+
+            Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+            the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+            Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+            Amazon S3 origin, specify none for the ``Forward`` element.
+
+          - **WhitelistedNames** *(dict) --*
+
+            Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+            specifies how many different cookies you want CloudFront to forward to the origin for
+            this cache behavior and, if you want to forward selected cookies, the names of those
+            cookies.
+
+            If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+            If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+            delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+            automatically.
+
+            For the current limit on the number of cookie names that you can whitelist for each cache
+            behavior, see `CloudFront Limits
+            <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+            in the *AWS General Reference* .
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of different cookies that you want CloudFront to forward to the origin for
+              this cache behavior.
+
+            - **Items** *(list) --*
+
+              A complex type that contains one ``Name`` element for each cookie that you want
+              CloudFront to forward to the origin for this cache behavior.
+
+              - *(string) --*
+
+        - **Headers** *(dict) --*
+
+          A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+          to the origin for this cache behavior (whitelisted headers). For the headers that you
+          specify, CloudFront also caches separate versions of a specified object that is based on
+          the header values in viewer requests.
+
+          For more information, see `Caching Content Based on Request Headers
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different headers that you want CloudFront to base caching on for this
+            cache behavior. You can configure each cache behavior in a web distribution to do one of
+            the following:
+
+            * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+            ``Name`` .
+
+            .. warning::
+
+               CloudFront doesn't cache the objects that are associated with this cache behavior.
+               Instead, CloudFront sends every request to the origin.
+
+            * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+            want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+            CloudFront caches your objects based on the values in the specified headers.
+
+            * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+            ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+            request headers.
+
+            Regardless of which option you choose, CloudFront forwards headers to your origin based
+            on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+            * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfig` `Aliases`
+
+    A complex type that contains information about CNAMEs (alternate domain names), if any, for
+    this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+    - **Items** *(list) --*
+
+      A complex type that contains the CNAME aliases, if any, that you want to associate with
+      this distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookies` `WhitelistedNames`
+
+    Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+    that specifies how many different cookies you want CloudFront to forward to the origin
+    for this cache behavior and, if you want to forward selected cookies, the names of
+    those cookies.
+
+    If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+    . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+    don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+    deletes them automatically.
+
+    For the current limit on the number of cookie names that you can whitelist for each
+    cache behavior, see `CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different cookies that you want CloudFront to forward to the origin for
+      this cache behavior.
+
+    - **Items** *(list) --*
+
+      A complex type that contains one ``Name`` element for each cookie that you want
+      CloudFront to forward to the origin for this cache behavior.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {"Forward": str},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {
+        "WhitelistedNames": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValues` `Cookies`
+
+    A complex type that specifies whether you want CloudFront to forward cookies to the
+    origin and, if so, which ones. For more information about forwarding cookies to the
+    origin, see `How CloudFront Forwards, Caches, and Logs Cookies
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in
+    the *Amazon CloudFront Developer Guide* .
+
+    - **Forward** *(string) --* **[REQUIRED]**
+
+      Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+      the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+      Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+      Amazon S3 origin, specify none for the ``Forward`` element.
+
+    - **WhitelistedNames** *(dict) --*
+
+      Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+      that specifies how many different cookies you want CloudFront to forward to the origin
+      for this cache behavior and, if you want to forward selected cookies, the names of
+      those cookies.
+
+      If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+      . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+      don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+      deletes them automatically.
+
+      For the current limit on the number of cookie names that you can whitelist for each
+      cache behavior, see `CloudFront Limits
+      <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+      in the *AWS General Reference* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different cookies that you want CloudFront to forward to the origin for
+        this cache behavior.
+
+      - **Items** *(list) --*
+
+        A complex type that contains one ``Name`` element for each cookie that you want
+        CloudFront to forward to the origin for this cache behavior.
+
+        - *(string) --*
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    {"Quantity": int},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValues` `Headers`
+
+    A complex type that specifies the ``Headers`` , if any, that you want CloudFront to
+    forward to the origin for this cache behavior (whitelisted headers). For the headers that
+    you specify, CloudFront also caches separate versions of a specified object that is based
+    on the header values in viewer requests.
+
+    For more information, see `Caching Content Based on Request Headers
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+    in the *Amazon CloudFront Developer Guide* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different headers that you want CloudFront to base caching on for this
+      cache behavior. You can configure each cache behavior in a web distribution to do one
+      of the following:
+
+      * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+      ``Name`` .
+
+      .. warning::
+
+         CloudFront doesn't cache the objects that are associated with this cache behavior.
+         Instead, CloudFront sends every request to the origin.
+
+      * **Forward a whitelist of headers you specify** : Specify the number of headers that
+      you want CloudFront to base caching on. Then specify the header names in ``Name``
+      elements. CloudFront caches your objects based on the values in the specified headers.
+
+      * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+      ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+      request headers.
+
+      Regardless of which option you choose, CloudFront forwards headers to your origin based
+      on whether the origin is an S3 bucket or a custom origin. See the following
+      documentation:
+
+      * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "QueryString": bool,
+        "Cookies": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    },
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "Headers": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehavior` `ForwardedValues`
+
+    A complex type that specifies how CloudFront handles query strings and cookies.
+
+    - **QueryString** *(boolean) --* **[REQUIRED]**
+
+      Indicates whether you want CloudFront to forward query strings to the origin that is
+      associated with this cache behavior and cache based on the query string parameters.
+      CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+      specify for ``QueryStringCacheKeys`` , if any:
+
+      If you specify true for ``QueryString`` and you don't specify any values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+      and caches based on all query string parameters. Depending on how many query string
+      parameters and values you have, this can adversely affect performance because CloudFront
+      must forward more requests to the origin.
+
+      If you specify true for ``QueryString`` and you specify one or more values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+      but it only caches based on the query string parameters that you specify.
+
+      If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+      parameters to the origin, and doesn't cache based on query string parameters.
+
+      For more information, see `Configuring CloudFront to Cache Based on Query String
+      Parameters
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Cookies** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies whether you want CloudFront to forward cookies to the
+      origin and, if so, which ones. For more information about forwarding cookies to the
+      origin, see `How CloudFront Forwards, Caches, and Logs Cookies
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in
+      the *Amazon CloudFront Developer Guide* .
+
+      - **Forward** *(string) --* **[REQUIRED]**
+
+        Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+        the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+        Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+        Amazon S3 origin, specify none for the ``Forward`` element.
+
+      - **WhitelistedNames** *(dict) --*
+
+        Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+        that specifies how many different cookies you want CloudFront to forward to the origin
+        for this cache behavior and, if you want to forward selected cookies, the names of
+        those cookies.
+
+        If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+        . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+        don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+        deletes them automatically.
+
+        For the current limit on the number of cookie names that you can whitelist for each
+        cache behavior, see `CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different cookies that you want CloudFront to forward to the origin for
+          this cache behavior.
+
+        - **Items** *(list) --*
+
+          A complex type that contains one ``Name`` element for each cookie that you want
+          CloudFront to forward to the origin for this cache behavior.
+
+          - *(string) --*
+
+    - **Headers** *(dict) --*
+
+      A complex type that specifies the ``Headers`` , if any, that you want CloudFront to
+      forward to the origin for this cache behavior (whitelisted headers). For the headers that
+      you specify, CloudFront also caches separate versions of a specified object that is based
+      on the header values in viewer requests.
+
+      For more information, see `Caching Content Based on Request Headers
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different headers that you want CloudFront to base caching on for this
+        cache behavior. You can configure each cache behavior in a web distribution to do one
+        of the following:
+
+        * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+        ``Name`` .
+
+        .. warning::
+
+           CloudFront doesn't cache the objects that are associated with this cache behavior.
+           Instead, CloudFront sends every request to the origin.
+
+        * **Forward a whitelist of headers you specify** : Specify the number of headers that
+        you want CloudFront to base caching on. Then specify the header names in ``Name``
+        elements. CloudFront caches your objects based on the values in the specified headers.
+
+        * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+        ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+        request headers.
+
+        Regardless of which option you choose, CloudFront forwards headers to your origin based
+        on whether the origin is an S3 bucket or a custom origin. See the following
+        documentation:
+
+        * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef",
+    {
+        "TargetOriginId": str,
+        "ForwardedValues": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfig` `DefaultCacheBehavior`
+
+    A complex type that describes the default cache behavior if you don't specify a
+    ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+    ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+    - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+      The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+      request matches the path pattern either for a cache behavior or for the default cache
+      behavior in your distribution.
+
+    - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies how CloudFront handles query strings and cookies.
+
+      - **QueryString** *(boolean) --* **[REQUIRED]**
+
+        Indicates whether you want CloudFront to forward query strings to the origin that is
+        associated with this cache behavior and cache based on the query string parameters.
+        CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+        specify for ``QueryStringCacheKeys`` , if any:
+
+        If you specify true for ``QueryString`` and you don't specify any values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+        and caches based on all query string parameters. Depending on how many query string
+        parameters and values you have, this can adversely affect performance because CloudFront
+        must forward more requests to the origin.
+
+        If you specify true for ``QueryString`` and you specify one or more values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+        but it only caches based on the query string parameters that you specify.
+
+        If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+        parameters to the origin, and doesn't cache based on query string parameters.
+
+        For more information, see `Configuring CloudFront to Cache Based on Query String
+        Parameters
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+      - **Cookies** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies whether you want CloudFront to forward cookies to the
+        origin and, if so, which ones. For more information about forwarding cookies to the
+        origin, see `How CloudFront Forwards, Caches, and Logs Cookies
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in
+        the *Amazon CloudFront Developer Guide* .
+
+        - **Forward** *(string) --* **[REQUIRED]**
+
+          Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+          the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+          Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+          Amazon S3 origin, specify none for the ``Forward`` element.
+
+        - **WhitelistedNames** *(dict) --*
+
+          Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+          that specifies how many different cookies you want CloudFront to forward to the origin
+          for this cache behavior and, if you want to forward selected cookies, the names of
+          those cookies.
+
+          If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+          . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+          don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+          deletes them automatically.
+
+          For the current limit on the number of cookie names that you can whitelist for each
+          cache behavior, see `CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different cookies that you want CloudFront to forward to the origin for
+            this cache behavior.
+
+          - **Items** *(list) --*
+
+            A complex type that contains one ``Name`` element for each cookie that you want
+            CloudFront to forward to the origin for this cache behavior.
+
+            - *(string) --*
+
+      - **Headers** *(dict) --*
+
+        A complex type that specifies the ``Headers`` , if any, that you want CloudFront to
+        forward to the origin for this cache behavior (whitelisted headers). For the headers that
+        you specify, CloudFront also caches separate versions of a specified object that is based
+        on the header values in viewer requests.
+
+        For more information, see `Caching Content Based on Request Headers
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different headers that you want CloudFront to base caching on for this
+          cache behavior. You can configure each cache behavior in a web distribution to do one
+          of the following:
+
+          * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+          ``Name`` .
+
+          .. warning::
+
+             CloudFront doesn't cache the objects that are associated with this cache behavior.
+             Instead, CloudFront sends every request to the origin.
+
+          * **Forward a whitelist of headers you specify** : Specify the number of headers that
+          you want CloudFront to base caching on. Then specify the header names in ``Name``
+          elements. CloudFront caches your objects based on the values in the specified headers.
+
+          * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+          ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+          request headers.
+
+          Regardless of which option you choose, CloudFront forwards headers to your origin based
+          on whether the origin is an S3 bucket or a custom origin. See the following
+          documentation:
+
+          * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    {"Quantity": int, "Items": List[int]},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteria` `StatusCodes`
+
+    The status codes that, when returned from the primary origin, will trigger CloudFront
+    to failover to the second origin.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of status codes.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      The items (status codes) for an origin group.
+
+      - *(integer) --*
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    {
+        "StatusCodes": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItems` `FailoverCriteria`
+
+    A complex type that contains information about the failover criteria for an origin
+    group.
+
+    - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+      The status codes that, when returned from the primary origin, will trigger CloudFront
+      to failover to the second origin.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of status codes.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        The items (status codes) for an origin group.
+
+        - *(integer) --*
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    {"OriginId": str},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembers` `Items`
+
+    An origin in an origin group.
+
+    - **OriginId** *(string) --* **[REQUIRED]**
+
+      The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[
+            ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+        ],
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItems` `Members`
+
+    A complex type that contains information about the origins in an origin group.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins in an origin group.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      Items (origins) in an origin group.
+
+      - *(dict) --*
+
+        An origin in an origin group.
+
+        - **OriginId** *(string) --* **[REQUIRED]**
+
+          The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef",
+    {
+        "Id": str,
+        "FailoverCriteria": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef,
+        "Members": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsMembersTypeDef,
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroups` `Items`
+
+    An origin group includes two origins (a primary origin and a second origin to failover
+    to) and a failover criteria that you specify. You create an origin group to support
+    origin failover in CloudFront. When you create or update a distribution, you can specifiy
+    the origin group instead of a single origin, and CloudFront will failover from the
+    primary origin to the second origin under the failover conditions that you've chosen.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The origin group's ID.
+
+    - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the failover criteria for an origin
+      group.
+
+      - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+        The status codes that, when returned from the primary origin, will trigger CloudFront
+        to failover to the second origin.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of status codes.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          The items (status codes) for an origin group.
+
+          - *(integer) --*
+
+    - **Members** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the origins in an origin group.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins in an origin group.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        Items (origins) in an origin group.
+
+        - *(dict) --*
+
+          An origin in an origin group.
+
+          - **OriginId** *(string) --* **[REQUIRED]**
+
+            The ID for an origin in an origin group.
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef",
+    {
+        "Items": List[
+            ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsItemsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfig` `OriginGroups`
+
+    A complex type that contains information about origin groups for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origin groups.
+
+    - **Items** *(list) --*
+
+      The items (origin groups) in a distribution.
+
+      - *(dict) --*
+
+        An origin group includes two origins (a primary origin and a second origin to failover
+        to) and a failover criteria that you specify. You create an origin group to support
+        origin failover in CloudFront. When you create or update a distribution, you can specifiy
+        the origin group instead of a single origin, and CloudFront will failover from the
+        primary origin to the second origin under the failover conditions that you've chosen.
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          The origin group's ID.
+
+        - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the failover criteria for an origin
+          group.
+
+          - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+            The status codes that, when returned from the primary origin, will trigger CloudFront
+            to failover to the second origin.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of status codes.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              The items (status codes) for an origin group.
+
+              - *(integer) --*
+
+        - **Members** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the origins in an origin group.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of origins in an origin group.
+
+          - **Items** *(list) --* **[REQUIRED]**
+
+            Items (origins) in an origin group.
+
+            - *(dict) --*
+
+              An origin in an origin group.
+
+              - **OriginId** *(string) --* **[REQUIRED]**
+
+                The ID for an origin in an origin group.
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    {"HeaderName": str, "HeaderValue": str},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeaders` `Items`
+
+    A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+    for this distribution.
+
+    - **HeaderName** *(string) --* **[REQUIRED]**
+
+      The name of a header that you want CloudFront to forward to your origin. For more
+      information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+      Only)
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **HeaderValue** *(string) --* **[REQUIRED]**
+
+      The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {
+        "Items": List[
+            ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItems` `CustomHeaders`
+
+    A complex type that contains names and values for the custom headers that you want.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of custom headers, if any, for this distribution.
+
+    - **Items** *(list) --*
+
+       **Optional** : A list that contains one ``OriginCustomHeader`` element for each
+       custom header that you want CloudFront to forward to the origin. If Quantity is
+       ``0`` , omit ``Items`` .
+
+      - *(dict) --*
+
+        A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+        for this distribution.
+
+        - **HeaderName** *(string) --* **[REQUIRED]**
+
+          The name of a header that you want CloudFront to forward to your origin. For more
+          information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+          Only)
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **HeaderValue** *(string) --* **[REQUIRED]**
+
+          The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    {"Quantity": int, "Items": List[str]},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfig` `OriginSslProtocols`
+
+    The SSL/TLS protocols that you want CloudFront to use when communicating with your
+    origin over HTTPS.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of SSL/TLS protocols that you want to allow CloudFront to use when
+      establishing an HTTPS connection with this origin.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A list that contains allowed SSL/TLS protocols for this distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {"HTTPPort": int, "HTTPSPort": int, "OriginProtocolPolicy": str},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {
+        "OriginSslProtocols": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef,
+        "OriginReadTimeout": int,
+        "OriginKeepaliveTimeout": int,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItems` `CustomOriginConfig`
+
+    A complex type that contains information about a custom origin. If the origin is an
+    Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+    - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+      The HTTP port the custom origin listens on.
+
+    - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+      The HTTPS port the custom origin listens on.
+
+    - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+      The origin protocol policy to apply to your origin.
+
+    - **OriginSslProtocols** *(dict) --*
+
+      The SSL/TLS protocols that you want CloudFront to use when communicating with your
+      origin over HTTPS.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of SSL/TLS protocols that you want to allow CloudFront to use when
+        establishing an HTTPS connection with this origin.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A list that contains allowed SSL/TLS protocols for this distribution.
+
+        - *(string) --*
+
+    - **OriginReadTimeout** *(integer) --*
+
+      You can create a custom origin read timeout. All timeout units are in seconds. The
+      default origin read timeout is 30 seconds, but you can configure custom timeout
+      lengths using the CloudFront API. The minimum timeout length is 4 seconds; the
+      maximum is 60 seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginKeepaliveTimeout** *(integer) --*
+
+      You can create a custom keep-alive timeout. All timeout units are in seconds. The
+      default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+      using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+      seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    {"OriginAccessIdentity": str},
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItems` `S3OriginConfig`
+
+    A complex type that contains information about the Amazon S3 origin. If the origin is a
+    custom origin, use the ``CustomOriginConfig`` element instead.
+
+    - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+      The CloudFront origin access identity to associate with the origin. Use an origin
+      access identity to configure the origin so that viewers can *only* access objects in
+      an Amazon S3 bucket through CloudFront. The format of the value is:
+
+      origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+      where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in
+      the ``ID`` element when you created the origin access identity.
+
+      If you want viewers to be able to access objects using either the CloudFront URL or
+      the Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+      To delete the origin access identity from an existing distribution, update the
+      distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+      To replace the origin access identity, update the distribution configuration and
+      specify the new origin access identity.
+
+      For more information about the origin access identity, see `Serving Private Content
+      through CloudFront
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef",
+    {"Id": str, "DomainName": str},
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef",
+    {
+        "OriginPath": str,
+        "CustomHeaders": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomHeadersTypeDef,
+        "S3OriginConfig": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsS3OriginConfigTypeDef,
+        "CustomOriginConfig": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOrigins` `Items`
+
+    A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+    server), Amazon MediaStore, or other server from which CloudFront gets your files. This
+    can also be an origin group, if you've created an origin group. You must specify at least
+    one origin or origin group.
+
+    For the current limit on the number of origins or origin groups that you can specify for
+    a distribution, see `Amazon CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+      within the distribution.
+
+      When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+      another cache behavior, you indicate the origin to which you want the cache behavior to
+      route requests by specifying the value of the ``Id`` element for that origin. When a
+      request matches the path pattern for that cache behavior, CloudFront routes the request
+      to the specified origin. For more information, see `Cache Behavior Settings
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **DomainName** *(string) --* **[REQUIRED]**
+
+       **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+       CloudFront to get objects for this origin, for example,
+       ``myawsbucket.s3.amazonaws.com`` . If you set up your bucket to be configured as a
+       website endpoint, enter the Amazon S3 static website hosting endpoint for the bucket.
+
+      For more information about specifying this value for different types of origins, see
+      `Origin Domain Name
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      Constraints for Amazon S3 origins:
+
+      * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+      ``s3-accelerate`` endpoint for ``DomainName`` .
+
+      * The bucket name must be between 3 and 63 characters long (inclusive).
+
+      * The bucket name must contain only lowercase characters, numbers, periods,
+      underscores, and dashes.
+
+      * The bucket name must not contain adjacent periods.
+
+       **Custom Origins** : The DNS domain name for the HTTP server from which you want
+       CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+      Constraints for custom origins:
+
+      * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+      hyphen (-), or underscore (_) characters.
+
+      * The name cannot exceed 128 characters.
+
+    - **OriginPath** *(string) --*
+
+      An optional element that causes CloudFront to request your content from a directory in
+      your Amazon S3 bucket or your custom origin. When you include the ``OriginPath``
+      element, specify the directory name, beginning with a ``/`` . CloudFront appends the
+      directory name to the value of ``DomainName`` , for example, ``example.com/production``
+      . Do not include a ``/`` at the end of the directory name.
+
+      For example, suppose you've specified the following values for your distribution:
+
+      * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+      * ``OriginPath`` : ``/production``
+
+      * ``CNAME`` : ``example.com``
+
+      When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request
+      to Amazon S3 for ``myawsbucket/production/index.html`` .
+
+      When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+      request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+    - **CustomHeaders** *(dict) --*
+
+      A complex type that contains names and values for the custom headers that you want.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of custom headers, if any, for this distribution.
+
+      - **Items** *(list) --*
+
+         **Optional** : A list that contains one ``OriginCustomHeader`` element for each
+         custom header that you want CloudFront to forward to the origin. If Quantity is
+         ``0`` , omit ``Items`` .
+
+        - *(dict) --*
+
+          A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+          for this distribution.
+
+          - **HeaderName** *(string) --* **[REQUIRED]**
+
+            The name of a header that you want CloudFront to forward to your origin. For more
+            information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+            Only)
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **HeaderValue** *(string) --* **[REQUIRED]**
+
+            The value for the header that you specified in the ``HeaderName`` field.
+
+    - **S3OriginConfig** *(dict) --*
+
+      A complex type that contains information about the Amazon S3 origin. If the origin is a
+      custom origin, use the ``CustomOriginConfig`` element instead.
+
+      - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+        The CloudFront origin access identity to associate with the origin. Use an origin
+        access identity to configure the origin so that viewers can *only* access objects in
+        an Amazon S3 bucket through CloudFront. The format of the value is:
+
+        origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+        where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in
+        the ``ID`` element when you created the origin access identity.
+
+        If you want viewers to be able to access objects using either the CloudFront URL or
+        the Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+        To delete the origin access identity from an existing distribution, update the
+        distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+        To replace the origin access identity, update the distribution configuration and
+        specify the new origin access identity.
+
+        For more information about the origin access identity, see `Serving Private Content
+        through CloudFront
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+    - **CustomOriginConfig** *(dict) --*
+
+      A complex type that contains information about a custom origin. If the origin is an
+      Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+      - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+        The HTTP port the custom origin listens on.
+
+      - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+        The HTTPS port the custom origin listens on.
+
+      - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+        The origin protocol policy to apply to your origin.
+
+      - **OriginSslProtocols** *(dict) --*
+
+        The SSL/TLS protocols that you want CloudFront to use when communicating with your
+        origin over HTTPS.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of SSL/TLS protocols that you want to allow CloudFront to use when
+          establishing an HTTPS connection with this origin.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          A list that contains allowed SSL/TLS protocols for this distribution.
+
+          - *(string) --*
+
+      - **OriginReadTimeout** *(integer) --*
+
+        You can create a custom origin read timeout. All timeout units are in seconds. The
+        default origin read timeout is 30 seconds, but you can configure custom timeout
+        lengths using the CloudFront API. The minimum timeout length is 4 seconds; the
+        maximum is 60 seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+
+      - **OriginKeepaliveTimeout** *(integer) --*
+
+        You can create a custom keep-alive timeout. All timeout units are in seconds. The
+        default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+        using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+        seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[
+            ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsItemsTypeDef
+        ],
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfig` `Origins`
+
+    A complex type that contains information about origins for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins or origin groups for this distribution.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A complex type that contains origins or origin groups for this distribution.
+
+      - *(dict) --*
+
+        A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+        server), Amazon MediaStore, or other server from which CloudFront gets your files. This
+        can also be an origin group, if you've created an origin group. You must specify at least
+        one origin or origin group.
+
+        For the current limit on the number of origins or origin groups that you can specify for
+        a distribution, see `Amazon CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+          within the distribution.
+
+          When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+          another cache behavior, you indicate the origin to which you want the cache behavior to
+          route requests by specifying the value of the ``Id`` element for that origin. When a
+          request matches the path pattern for that cache behavior, CloudFront routes the request
+          to the specified origin. For more information, see `Cache Behavior Settings
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **DomainName** *(string) --* **[REQUIRED]**
+
+           **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+           CloudFront to get objects for this origin, for example,
+           ``myawsbucket.s3.amazonaws.com`` . If you set up your bucket to be configured as a
+           website endpoint, enter the Amazon S3 static website hosting endpoint for the bucket.
+
+          For more information about specifying this value for different types of origins, see
+          `Origin Domain Name
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          Constraints for Amazon S3 origins:
+
+          * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+          ``s3-accelerate`` endpoint for ``DomainName`` .
+
+          * The bucket name must be between 3 and 63 characters long (inclusive).
+
+          * The bucket name must contain only lowercase characters, numbers, periods,
+          underscores, and dashes.
+
+          * The bucket name must not contain adjacent periods.
+
+           **Custom Origins** : The DNS domain name for the HTTP server from which you want
+           CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+          Constraints for custom origins:
+
+          * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+          hyphen (-), or underscore (_) characters.
+
+          * The name cannot exceed 128 characters.
+
+        - **OriginPath** *(string) --*
+
+          An optional element that causes CloudFront to request your content from a directory in
+          your Amazon S3 bucket or your custom origin. When you include the ``OriginPath``
+          element, specify the directory name, beginning with a ``/`` . CloudFront appends the
+          directory name to the value of ``DomainName`` , for example, ``example.com/production``
+          . Do not include a ``/`` at the end of the directory name.
+
+          For example, suppose you've specified the following values for your distribution:
+
+          * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+          * ``OriginPath`` : ``/production``
+
+          * ``CNAME`` : ``example.com``
+
+          When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request
+          to Amazon S3 for ``myawsbucket/production/index.html`` .
+
+          When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+          request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+        - **CustomHeaders** *(dict) --*
+
+          A complex type that contains names and values for the custom headers that you want.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of custom headers, if any, for this distribution.
+
+          - **Items** *(list) --*
+
+             **Optional** : A list that contains one ``OriginCustomHeader`` element for each
+             custom header that you want CloudFront to forward to the origin. If Quantity is
+             ``0`` , omit ``Items`` .
+
+            - *(dict) --*
+
+              A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+              for this distribution.
+
+              - **HeaderName** *(string) --* **[REQUIRED]**
+
+                The name of a header that you want CloudFront to forward to your origin. For more
+                information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+                Only)
+                <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                in the *Amazon CloudFront Developer Guide* .
+
+              - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                The value for the header that you specified in the ``HeaderName`` field.
+
+        - **S3OriginConfig** *(dict) --*
+
+          A complex type that contains information about the Amazon S3 origin. If the origin is a
+          custom origin, use the ``CustomOriginConfig`` element instead.
+
+          - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+            The CloudFront origin access identity to associate with the origin. Use an origin
+            access identity to configure the origin so that viewers can *only* access objects in
+            an Amazon S3 bucket through CloudFront. The format of the value is:
+
+            origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+            where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in
+            the ``ID`` element when you created the origin access identity.
+
+            If you want viewers to be able to access objects using either the CloudFront URL or
+            the Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+            To delete the origin access identity from an existing distribution, update the
+            distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+            To replace the origin access identity, update the distribution configuration and
+            specify the new origin access identity.
+
+            For more information about the origin access identity, see `Serving Private Content
+            through CloudFront
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+        - **CustomOriginConfig** *(dict) --*
+
+          A complex type that contains information about a custom origin. If the origin is an
+          Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+          - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+            The HTTP port the custom origin listens on.
+
+          - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+            The HTTPS port the custom origin listens on.
+
+          - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+            The origin protocol policy to apply to your origin.
+
+          - **OriginSslProtocols** *(dict) --*
+
+            The SSL/TLS protocols that you want CloudFront to use when communicating with your
+            origin over HTTPS.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of SSL/TLS protocols that you want to allow CloudFront to use when
+              establishing an HTTPS connection with this origin.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              A list that contains allowed SSL/TLS protocols for this distribution.
+
+              - *(string) --*
+
+          - **OriginReadTimeout** *(integer) --*
+
+            You can create a custom origin read timeout. All timeout units are in seconds. The
+            default origin read timeout is 30 seconds, but you can configure custom timeout
+            lengths using the CloudFront API. The minimum timeout length is 4 seconds; the
+            maximum is 60 seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+
+          - **OriginKeepaliveTimeout** *(integer) --*
+
+            You can create a custom keep-alive timeout. All timeout units are in seconds. The
+            default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+            using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+            seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef = TypedDict(
+    "_RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef",
+    {
+        "CallerReference": str,
+        "Origins": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginsTypeDef,
+        "DefaultCacheBehavior": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigDefaultCacheBehaviorTypeDef,
+    },
+)
+_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef = TypedDict(
+    "_OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef",
+    {
+        "Aliases": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigAliasesTypeDef,
+        "DefaultRootObject": str,
+        "OriginGroups": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigOriginGroupsTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef(
+    _RequiredClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef,
+    _OptionalClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef,
+):
+    """
+    Type definition for `ClientCreateDistributionWithTagsDistributionConfigWithTags` `DistributionConfig`
+
+    A distribution configuration.
+
+    - **CallerReference** *(string) --* **[REQUIRED]**
+
+      A unique value (for example, a date-time stamp) that ensures that the request can't be
+      replayed.
+
+      If the value of ``CallerReference`` is new (regardless of the content of the
+      ``DistributionConfig`` object), CloudFront creates a new distribution.
+
+      If ``CallerReference`` is a value that you already sent in a previous request to create a
+      distribution, CloudFront returns a ``DistributionAlreadyExists`` error.
+
+    - **Aliases** *(dict) --*
+
+      A complex type that contains information about CNAMEs (alternate domain names), if any, for
+      this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+      - **Items** *(list) --*
+
+        A complex type that contains the CNAME aliases, if any, that you want to associate with
+        this distribution.
+
+        - *(string) --*
+
+    - **DefaultRootObject** *(string) --*
+
+      The object that you want CloudFront to request from your origin (for example, ``index.html``
+      ) when a viewer requests the root URL for your distribution (``http://www.example.com`` )
+      instead of an object in your distribution
+      (``http://www.example.com/product-description.html`` ). Specifying a default root object
+      avoids exposing the contents of your distribution.
+
+      Specify only the object name, for example, ``index.html`` . Don't add a ``/`` before the
+      object name.
+
+      If you don't want to specify a default root object when you create a distribution, include an
+      empty ``DefaultRootObject`` element.
+
+      To delete the default root object from an existing distribution, update the distribution
+      configuration and include an empty ``DefaultRootObject`` element.
+
+      To replace the default root object, update the distribution configuration and specify the new
+      object.
+
+      For more information about the default root object, see `Creating a Default Root Object
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Origins** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about origins for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins or origin groups for this distribution.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A complex type that contains origins or origin groups for this distribution.
+
+        - *(dict) --*
+
+          A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+          server), Amazon MediaStore, or other server from which CloudFront gets your files. This
+          can also be an origin group, if you've created an origin group. You must specify at least
+          one origin or origin group.
+
+          For the current limit on the number of origins or origin groups that you can specify for
+          a distribution, see `Amazon CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+            within the distribution.
+
+            When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+            another cache behavior, you indicate the origin to which you want the cache behavior to
+            route requests by specifying the value of the ``Id`` element for that origin. When a
+            request matches the path pattern for that cache behavior, CloudFront routes the request
+            to the specified origin. For more information, see `Cache Behavior Settings
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **DomainName** *(string) --* **[REQUIRED]**
+
+             **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+             CloudFront to get objects for this origin, for example,
+             ``myawsbucket.s3.amazonaws.com`` . If you set up your bucket to be configured as a
+             website endpoint, enter the Amazon S3 static website hosting endpoint for the bucket.
+
+            For more information about specifying this value for different types of origins, see
+            `Origin Domain Name
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+            Constraints for Amazon S3 origins:
+
+            * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+            ``s3-accelerate`` endpoint for ``DomainName`` .
+
+            * The bucket name must be between 3 and 63 characters long (inclusive).
+
+            * The bucket name must contain only lowercase characters, numbers, periods,
+            underscores, and dashes.
+
+            * The bucket name must not contain adjacent periods.
+
+             **Custom Origins** : The DNS domain name for the HTTP server from which you want
+             CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+            Constraints for custom origins:
+
+            * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+            hyphen (-), or underscore (_) characters.
+
+            * The name cannot exceed 128 characters.
+
+          - **OriginPath** *(string) --*
+
+            An optional element that causes CloudFront to request your content from a directory in
+            your Amazon S3 bucket or your custom origin. When you include the ``OriginPath``
+            element, specify the directory name, beginning with a ``/`` . CloudFront appends the
+            directory name to the value of ``DomainName`` , for example, ``example.com/production``
+            . Do not include a ``/`` at the end of the directory name.
+
+            For example, suppose you've specified the following values for your distribution:
+
+            * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+            * ``OriginPath`` : ``/production``
+
+            * ``CNAME`` : ``example.com``
+
+            When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request
+            to Amazon S3 for ``myawsbucket/production/index.html`` .
+
+            When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+            request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+          - **CustomHeaders** *(dict) --*
+
+            A complex type that contains names and values for the custom headers that you want.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of custom headers, if any, for this distribution.
+
+            - **Items** *(list) --*
+
+               **Optional** : A list that contains one ``OriginCustomHeader`` element for each
+               custom header that you want CloudFront to forward to the origin. If Quantity is
+               ``0`` , omit ``Items`` .
+
+              - *(dict) --*
+
+                A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+                for this distribution.
+
+                - **HeaderName** *(string) --* **[REQUIRED]**
+
+                  The name of a header that you want CloudFront to forward to your origin. For more
+                  information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+                  Only)
+                  <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                  in the *Amazon CloudFront Developer Guide* .
+
+                - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                  The value for the header that you specified in the ``HeaderName`` field.
+
+          - **S3OriginConfig** *(dict) --*
+
+            A complex type that contains information about the Amazon S3 origin. If the origin is a
+            custom origin, use the ``CustomOriginConfig`` element instead.
+
+            - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+              The CloudFront origin access identity to associate with the origin. Use an origin
+              access identity to configure the origin so that viewers can *only* access objects in
+              an Amazon S3 bucket through CloudFront. The format of the value is:
+
+              origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+              where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in
+              the ``ID`` element when you created the origin access identity.
+
+              If you want viewers to be able to access objects using either the CloudFront URL or
+              the Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+              To delete the origin access identity from an existing distribution, update the
+              distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+              To replace the origin access identity, update the distribution configuration and
+              specify the new origin access identity.
+
+              For more information about the origin access identity, see `Serving Private Content
+              through CloudFront
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+              in the *Amazon CloudFront Developer Guide* .
+
+          - **CustomOriginConfig** *(dict) --*
+
+            A complex type that contains information about a custom origin. If the origin is an
+            Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+            - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+              The HTTP port the custom origin listens on.
+
+            - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+              The HTTPS port the custom origin listens on.
+
+            - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+              The origin protocol policy to apply to your origin.
+
+            - **OriginSslProtocols** *(dict) --*
+
+              The SSL/TLS protocols that you want CloudFront to use when communicating with your
+              origin over HTTPS.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of SSL/TLS protocols that you want to allow CloudFront to use when
+                establishing an HTTPS connection with this origin.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                A list that contains allowed SSL/TLS protocols for this distribution.
+
+                - *(string) --*
+
+            - **OriginReadTimeout** *(integer) --*
+
+              You can create a custom origin read timeout. All timeout units are in seconds. The
+              default origin read timeout is 30 seconds, but you can configure custom timeout
+              lengths using the CloudFront API. The minimum timeout length is 4 seconds; the
+              maximum is 60 seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+            - **OriginKeepaliveTimeout** *(integer) --*
+
+              You can create a custom keep-alive timeout. All timeout units are in seconds. The
+              default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+              using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+              seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginGroups** *(dict) --*
+
+      A complex type that contains information about origin groups for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origin groups.
+
+      - **Items** *(list) --*
+
+        The items (origin groups) in a distribution.
+
+        - *(dict) --*
+
+          An origin group includes two origins (a primary origin and a second origin to failover
+          to) and a failover criteria that you specify. You create an origin group to support
+          origin failover in CloudFront. When you create or update a distribution, you can specifiy
+          the origin group instead of a single origin, and CloudFront will failover from the
+          primary origin to the second origin under the failover conditions that you've chosen.
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            The origin group's ID.
+
+          - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the failover criteria for an origin
+            group.
+
+            - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+              The status codes that, when returned from the primary origin, will trigger CloudFront
+              to failover to the second origin.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of status codes.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                The items (status codes) for an origin group.
+
+                - *(integer) --*
+
+          - **Members** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the origins in an origin group.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of origins in an origin group.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              Items (origins) in an origin group.
+
+              - *(dict) --*
+
+                An origin in an origin group.
+
+                - **OriginId** *(string) --* **[REQUIRED]**
+
+                  The ID for an origin in an origin group.
+
+    - **DefaultCacheBehavior** *(dict) --* **[REQUIRED]**
+
+      A complex type that describes the default cache behavior if you don't specify a
+      ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+      ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+      - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+        The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+        request matches the path pattern either for a cache behavior or for the default cache
+        behavior in your distribution.
+
+      - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies how CloudFront handles query strings and cookies.
+
+        - **QueryString** *(boolean) --* **[REQUIRED]**
+
+          Indicates whether you want CloudFront to forward query strings to the origin that is
+          associated with this cache behavior and cache based on the query string parameters.
+          CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+          specify for ``QueryStringCacheKeys`` , if any:
+
+          If you specify true for ``QueryString`` and you don't specify any values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+          and caches based on all query string parameters. Depending on how many query string
+          parameters and values you have, this can adversely affect performance because CloudFront
+          must forward more requests to the origin.
+
+          If you specify true for ``QueryString`` and you specify one or more values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+          but it only caches based on the query string parameters that you specify.
+
+          If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+          parameters to the origin, and doesn't cache based on query string parameters.
+
+          For more information, see `Configuring CloudFront to Cache Based on Query String
+          Parameters
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **Cookies** *(dict) --* **[REQUIRED]**
+
+          A complex type that specifies whether you want CloudFront to forward cookies to the
+          origin and, if so, which ones. For more information about forwarding cookies to the
+          origin, see `How CloudFront Forwards, Caches, and Logs Cookies
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in
+          the *Amazon CloudFront Developer Guide* .
+
+          - **Forward** *(string) --* **[REQUIRED]**
+
+            Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+            the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+            Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+            Amazon S3 origin, specify none for the ``Forward`` element.
+
+          - **WhitelistedNames** *(dict) --*
+
+            Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+            that specifies how many different cookies you want CloudFront to forward to the origin
+            for this cache behavior and, if you want to forward selected cookies, the names of
+            those cookies.
+
+            If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+            . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+            don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+            deletes them automatically.
+
+            For the current limit on the number of cookie names that you can whitelist for each
+            cache behavior, see `CloudFront Limits
+            <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+            in the *AWS General Reference* .
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of different cookies that you want CloudFront to forward to the origin for
+              this cache behavior.
+
+            - **Items** *(list) --*
+
+              A complex type that contains one ``Name`` element for each cookie that you want
+              CloudFront to forward to the origin for this cache behavior.
+
+              - *(string) --*
+
+        - **Headers** *(dict) --*
+
+          A complex type that specifies the ``Headers`` , if any, that you want CloudFront to
+          forward to the origin for this cache behavior (whitelisted headers). For the headers that
+          you specify, CloudFront also caches separate versions of a specified object that is based
+          on the header values in viewer requests.
+
+          For more information, see `Caching Content Based on Request Headers
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different headers that you want CloudFront to base caching on for this
+            cache behavior. You can configure each cache behavior in a web distribution to do one
+            of the following:
+
+            * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+            ``Name`` .
+
+            .. warning::
+
+               CloudFront doesn't cache the objects that are associated with this cache behavior.
+               Instead, CloudFront sends every request to the origin.
+
+            * **Forward a whitelist of headers you specify** : Specify the number of headers that
+            you want CloudFront to base caching on. Then specify the header names in ``Name``
+            elements. CloudFront caches your objects based on the values in the specified headers.
+
+            * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+            ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+            request headers.
+
+            Regardless of which option you choose, CloudFront forwards headers to your origin based
+            on whether the origin is an S3 bucket or a custom origin. See the following
+            documentation:
+
+            * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef = TypedDict(
+    "_ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef",
+    {
+        "DistributionConfig": ClientCreateDistributionWithTagsDistributionConfigWithTagsDistributionConfigTypeDef
+    },
+)
+
+
+class ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef(
+    _ClientCreateDistributionWithTagsDistributionConfigWithTagsTypeDef
+):
+    """
+    Type definition for `ClientCreateDistributionWithTags` `DistributionConfigWithTags`
+
+    The distribution's configuration information.
+
+    - **DistributionConfig** *(dict) --* **[REQUIRED]**
+
+      A distribution configuration.
+
+      - **CallerReference** *(string) --* **[REQUIRED]**
+
+        A unique value (for example, a date-time stamp) that ensures that the request can't be
+        replayed.
+
+        If the value of ``CallerReference`` is new (regardless of the content of the
+        ``DistributionConfig`` object), CloudFront creates a new distribution.
+
+        If ``CallerReference`` is a value that you already sent in a previous request to create a
+        distribution, CloudFront returns a ``DistributionAlreadyExists`` error.
+
+      - **Aliases** *(dict) --*
+
+        A complex type that contains information about CNAMEs (alternate domain names), if any, for
+        this distribution.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+        - **Items** *(list) --*
+
+          A complex type that contains the CNAME aliases, if any, that you want to associate with
+          this distribution.
+
+          - *(string) --*
+
+      - **DefaultRootObject** *(string) --*
+
+        The object that you want CloudFront to request from your origin (for example, ``index.html``
+        ) when a viewer requests the root URL for your distribution (``http://www.example.com`` )
+        instead of an object in your distribution
+        (``http://www.example.com/product-description.html`` ). Specifying a default root object
+        avoids exposing the contents of your distribution.
+
+        Specify only the object name, for example, ``index.html`` . Don't add a ``/`` before the
+        object name.
+
+        If you don't want to specify a default root object when you create a distribution, include an
+        empty ``DefaultRootObject`` element.
+
+        To delete the default root object from an existing distribution, update the distribution
+        configuration and include an empty ``DefaultRootObject`` element.
+
+        To replace the default root object, update the distribution configuration and specify the new
+        object.
+
+        For more information about the default root object, see `Creating a Default Root Object
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+      - **Origins** *(dict) --* **[REQUIRED]**
+
+        A complex type that contains information about origins for this distribution.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of origins or origin groups for this distribution.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          A complex type that contains origins or origin groups for this distribution.
+
+          - *(dict) --*
+
+            A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+            server), Amazon MediaStore, or other server from which CloudFront gets your files. This
+            can also be an origin group, if you've created an origin group. You must specify at least
+            one origin or origin group.
+
+            For the current limit on the number of origins or origin groups that you can specify for
+            a distribution, see `Amazon CloudFront Limits
+            <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+            in the *AWS General Reference* .
+
+            - **Id** *(string) --* **[REQUIRED]**
+
+              A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+              within the distribution.
+
+              When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+              another cache behavior, you indicate the origin to which you want the cache behavior to
+              route requests by specifying the value of the ``Id`` element for that origin. When a
+              request matches the path pattern for that cache behavior, CloudFront routes the request
+              to the specified origin. For more information, see `Cache Behavior Settings
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+              in the *Amazon CloudFront Developer Guide* .
+
+            - **DomainName** *(string) --* **[REQUIRED]**
+
+               **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+               CloudFront to get objects for this origin, for example,
+               ``myawsbucket.s3.amazonaws.com`` . If you set up your bucket to be configured as a
+               website endpoint, enter the Amazon S3 static website hosting endpoint for the bucket.
+
+              For more information about specifying this value for different types of origins, see
+              `Origin Domain Name
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+              in the *Amazon CloudFront Developer Guide* .
+
+              Constraints for Amazon S3 origins:
+
+              * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+              ``s3-accelerate`` endpoint for ``DomainName`` .
+
+              * The bucket name must be between 3 and 63 characters long (inclusive).
+
+              * The bucket name must contain only lowercase characters, numbers, periods,
+              underscores, and dashes.
+
+              * The bucket name must not contain adjacent periods.
+
+               **Custom Origins** : The DNS domain name for the HTTP server from which you want
+               CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+              Constraints for custom origins:
+
+              * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+              hyphen (-), or underscore (_) characters.
+
+              * The name cannot exceed 128 characters.
+
+            - **OriginPath** *(string) --*
+
+              An optional element that causes CloudFront to request your content from a directory in
+              your Amazon S3 bucket or your custom origin. When you include the ``OriginPath``
+              element, specify the directory name, beginning with a ``/`` . CloudFront appends the
+              directory name to the value of ``DomainName`` , for example, ``example.com/production``
+              . Do not include a ``/`` at the end of the directory name.
+
+              For example, suppose you've specified the following values for your distribution:
+
+              * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+              * ``OriginPath`` : ``/production``
+
+              * ``CNAME`` : ``example.com``
+
+              When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request
+              to Amazon S3 for ``myawsbucket/production/index.html`` .
+
+              When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+              request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+            - **CustomHeaders** *(dict) --*
+
+              A complex type that contains names and values for the custom headers that you want.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of custom headers, if any, for this distribution.
+
+              - **Items** *(list) --*
+
+                 **Optional** : A list that contains one ``OriginCustomHeader`` element for each
+                 custom header that you want CloudFront to forward to the origin. If Quantity is
+                 ``0`` , omit ``Items`` .
+
+                - *(dict) --*
+
+                  A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any,
+                  for this distribution.
+
+                  - **HeaderName** *(string) --* **[REQUIRED]**
+
+                    The name of a header that you want CloudFront to forward to your origin. For more
+                    information, see `Forwarding Custom Headers to Your Origin (Web Distributions
+                    Only)
+                    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                    in the *Amazon CloudFront Developer Guide* .
+
+                  - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                    The value for the header that you specified in the ``HeaderName`` field.
+
+            - **S3OriginConfig** *(dict) --*
+
+              A complex type that contains information about the Amazon S3 origin. If the origin is a
+              custom origin, use the ``CustomOriginConfig`` element instead.
+
+              - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+                The CloudFront origin access identity to associate with the origin. Use an origin
+                access identity to configure the origin so that viewers can *only* access objects in
+                an Amazon S3 bucket through CloudFront. The format of the value is:
+
+                origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+                where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in
+                the ``ID`` element when you created the origin access identity.
+
+                If you want viewers to be able to access objects using either the CloudFront URL or
+                the Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+                To delete the origin access identity from an existing distribution, update the
+                distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+                To replace the origin access identity, update the distribution configuration and
+                specify the new origin access identity.
+
+                For more information about the origin access identity, see `Serving Private Content
+                through CloudFront
+                <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+                in the *Amazon CloudFront Developer Guide* .
+
+            - **CustomOriginConfig** *(dict) --*
+
+              A complex type that contains information about a custom origin. If the origin is an
+              Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+              - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+                The HTTP port the custom origin listens on.
+
+              - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+                The HTTPS port the custom origin listens on.
+
+              - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+                The origin protocol policy to apply to your origin.
+
+              - **OriginSslProtocols** *(dict) --*
+
+                The SSL/TLS protocols that you want CloudFront to use when communicating with your
+                origin over HTTPS.
+
+                - **Quantity** *(integer) --* **[REQUIRED]**
+
+                  The number of SSL/TLS protocols that you want to allow CloudFront to use when
+                  establishing an HTTPS connection with this origin.
+
+                - **Items** *(list) --* **[REQUIRED]**
+
+                  A list that contains allowed SSL/TLS protocols for this distribution.
+
+                  - *(string) --*
+
+              - **OriginReadTimeout** *(integer) --*
+
+                You can create a custom origin read timeout. All timeout units are in seconds. The
+                default origin read timeout is 30 seconds, but you can configure custom timeout
+                lengths using the CloudFront API. The minimum timeout length is 4 seconds; the
+                maximum is 60 seconds.
+
+                If you need to increase the maximum time limit, contact the `AWS Support Center
+                <https://console.aws.amazon.com/support/home#/>`__ .
+
+              - **OriginKeepaliveTimeout** *(integer) --*
+
+                You can create a custom keep-alive timeout. All timeout units are in seconds. The
+                default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+                using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+                seconds.
+
+                If you need to increase the maximum time limit, contact the `AWS Support Center
+                <https://console.aws.amazon.com/support/home#/>`__ .
+
+      - **OriginGroups** *(dict) --*
+
+        A complex type that contains information about origin groups for this distribution.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of origin groups.
+
+        - **Items** *(list) --*
+
+          The items (origin groups) in a distribution.
+
+          - *(dict) --*
+
+            An origin group includes two origins (a primary origin and a second origin to failover
+            to) and a failover criteria that you specify. You create an origin group to support
+            origin failover in CloudFront. When you create or update a distribution, you can specifiy
+            the origin group instead of a single origin, and CloudFront will failover from the
+            primary origin to the second origin under the failover conditions that you've chosen.
+
+            - **Id** *(string) --* **[REQUIRED]**
+
+              The origin group's ID.
+
+            - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+              A complex type that contains information about the failover criteria for an origin
+              group.
+
+              - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+                The status codes that, when returned from the primary origin, will trigger CloudFront
+                to failover to the second origin.
+
+                - **Quantity** *(integer) --* **[REQUIRED]**
+
+                  The number of status codes.
+
+                - **Items** *(list) --* **[REQUIRED]**
+
+                  The items (status codes) for an origin group.
+
+                  - *(integer) --*
+
+            - **Members** *(dict) --* **[REQUIRED]**
+
+              A complex type that contains information about the origins in an origin group.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of origins in an origin group.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                Items (origins) in an origin group.
+
+                - *(dict) --*
+
+                  An origin in an origin group.
+
+                  - **OriginId** *(string) --* **[REQUIRED]**
+
+                    The ID for an origin in an origin group.
+
+      - **DefaultCacheBehavior** *(dict) --* **[REQUIRED]**
+
+        A complex type that describes the default cache behavior if you don't specify a
+        ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+        ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+        - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+          The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+          request matches the path pattern either for a cache behavior or for the default cache
+          behavior in your distribution.
+
+        - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+          A complex type that specifies how CloudFront handles query strings and cookies.
+
+          - **QueryString** *(boolean) --* **[REQUIRED]**
+
+            Indicates whether you want CloudFront to forward query strings to the origin that is
+            associated with this cache behavior and cache based on the query string parameters.
+            CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+            specify for ``QueryStringCacheKeys`` , if any:
+
+            If you specify true for ``QueryString`` and you don't specify any values for
+            ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+            and caches based on all query string parameters. Depending on how many query string
+            parameters and values you have, this can adversely affect performance because CloudFront
+            must forward more requests to the origin.
+
+            If you specify true for ``QueryString`` and you specify one or more values for
+            ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+            but it only caches based on the query string parameters that you specify.
+
+            If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+            parameters to the origin, and doesn't cache based on query string parameters.
+
+            For more information, see `Configuring CloudFront to Cache Based on Query String
+            Parameters
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **Cookies** *(dict) --* **[REQUIRED]**
+
+            A complex type that specifies whether you want CloudFront to forward cookies to the
+            origin and, if so, which ones. For more information about forwarding cookies to the
+            origin, see `How CloudFront Forwards, Caches, and Logs Cookies
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in
+            the *Amazon CloudFront Developer Guide* .
+
+            - **Forward** *(string) --* **[REQUIRED]**
+
+              Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+              the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+              Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+              Amazon S3 origin, specify none for the ``Forward`` element.
+
+            - **WhitelistedNames** *(dict) --*
+
+              Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type
+              that specifies how many different cookies you want CloudFront to forward to the origin
+              for this cache behavior and, if you want to forward selected cookies, the names of
+              those cookies.
+
+              If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames``
+              . If you change the value of ``Forward`` from ``whitelist`` to all or none and you
+              don't delete the ``WhitelistedNames`` element and its child elements, CloudFront
+              deletes them automatically.
+
+              For the current limit on the number of cookie names that you can whitelist for each
+              cache behavior, see `CloudFront Limits
+              <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+              in the *AWS General Reference* .
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of different cookies that you want CloudFront to forward to the origin for
+                this cache behavior.
+
+              - **Items** *(list) --*
+
+                A complex type that contains one ``Name`` element for each cookie that you want
+                CloudFront to forward to the origin for this cache behavior.
+
+                - *(string) --*
+
+          - **Headers** *(dict) --*
+
+            A complex type that specifies the ``Headers`` , if any, that you want CloudFront to
+            forward to the origin for this cache behavior (whitelisted headers). For the headers that
+            you specify, CloudFront also caches separate versions of a specified object that is based
+            on the header values in viewer requests.
+
+            For more information, see `Caching Content Based on Request Headers
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of different headers that you want CloudFront to base caching on for this
+              cache behavior. You can configure each cache behavior in a web distribution to do one
+              of the following:
+
+              * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+              ``Name`` .
+
+              .. warning::
+
+                 CloudFront doesn't cache the objects that are associated with this cache behavior.
+                 Instead, CloudFront sends every request to the origin.
+
+              * **Forward a whitelist of headers you specify** : Specify the number of headers that
+              you want CloudFront to base caching on. Then specify the header names in ``Name``
+              elements. CloudFront caches your objects based on the values in the specified headers.
+
+              * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+              ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+              request headers.
+
+              Regardless of which option you choose, CloudFront forwards headers to your origin based
+              on whether the origin is an S3 bucket or a custom origin. See the following
+              documentation:
+
+              * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
     """
 
 
@@ -11644,6 +16180,1877 @@ class ClientUpdateCloudFrontOriginAccessIdentityResponseTypeDef(
     - **ETag** *(string) --*
 
       The current version of the configuration. For example: ``E2QWRUHAPOMQZL`` .
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigAliasesTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigAliasesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientUpdateDistributionDistributionConfigAliasesTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigAliasesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigAliasesTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigAliasesTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigAliasesTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfig` `Aliases`
+
+    A complex type that contains information about CNAMEs (alternate domain names), if any, for
+    this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+    - **Items** *(list) --*
+
+      A complex type that contains the CNAME aliases, if any, that you want to associate with this
+      distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef",
+    {"Items": List[str]},
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookies` `WhitelistedNames`
+
+    Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+    specifies how many different cookies you want CloudFront to forward to the origin for
+    this cache behavior and, if you want to forward selected cookies, the names of those
+    cookies.
+
+    If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+    If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+    delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+    automatically.
+
+    For the current limit on the number of cookie names that you can whitelist for each cache
+    behavior, see `CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different cookies that you want CloudFront to forward to the origin for
+      this cache behavior.
+
+    - **Items** *(list) --*
+
+      A complex type that contains one ``Name`` element for each cookie that you want
+      CloudFront to forward to the origin for this cache behavior.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {"Forward": str},
+)
+_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef",
+    {
+        "WhitelistedNames": ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesWhitelistedNamesTypeDef
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValues` `Cookies`
+
+    A complex type that specifies whether you want CloudFront to forward cookies to the origin
+    and, if so, which ones. For more information about forwarding cookies to the origin, see
+    `How CloudFront Forwards, Caches, and Logs Cookies
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+    *Amazon CloudFront Developer Guide* .
+
+    - **Forward** *(string) --* **[REQUIRED]**
+
+      Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+      the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+      Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+      Amazon S3 origin, specify none for the ``Forward`` element.
+
+    - **WhitelistedNames** *(dict) --*
+
+      Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+      specifies how many different cookies you want CloudFront to forward to the origin for
+      this cache behavior and, if you want to forward selected cookies, the names of those
+      cookies.
+
+      If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+      If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+      delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+      automatically.
+
+      For the current limit on the number of cookie names that you can whitelist for each cache
+      behavior, see `CloudFront Limits
+      <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+      in the *AWS General Reference* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different cookies that you want CloudFront to forward to the origin for
+        this cache behavior.
+
+      - **Items** *(list) --*
+
+        A complex type that contains one ``Name`` element for each cookie that you want
+        CloudFront to forward to the origin for this cache behavior.
+
+        - *(string) --*
+    """
+
+
+_ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef",
+    {"Quantity": int},
+)
+
+
+class ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef(
+    _ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValues` `Headers`
+
+    A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+    to the origin for this cache behavior (whitelisted headers). For the headers that you
+    specify, CloudFront also caches separate versions of a specified object that is based on
+    the header values in viewer requests.
+
+    For more information, see `Caching Content Based on Request Headers
+    <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+    in the *Amazon CloudFront Developer Guide* .
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of different headers that you want CloudFront to base caching on for this
+      cache behavior. You can configure each cache behavior in a web distribution to do one of
+      the following:
+
+      * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+      ``Name`` .
+
+      .. warning::
+
+         CloudFront doesn't cache the objects that are associated with this cache behavior.
+         Instead, CloudFront sends every request to the origin.
+
+      * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+      want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+      CloudFront caches your objects based on the values in the specified headers.
+
+      * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+      ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+      request headers.
+
+      Regardless of which option you choose, CloudFront forwards headers to your origin based
+      on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+      * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "QueryString": bool,
+        "Cookies": ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesCookiesTypeDef,
+    },
+)
+_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef",
+    {
+        "Headers": ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesHeadersTypeDef
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigDefaultCacheBehavior` `ForwardedValues`
+
+    A complex type that specifies how CloudFront handles query strings and cookies.
+
+    - **QueryString** *(boolean) --* **[REQUIRED]**
+
+      Indicates whether you want CloudFront to forward query strings to the origin that is
+      associated with this cache behavior and cache based on the query string parameters.
+      CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+      specify for ``QueryStringCacheKeys`` , if any:
+
+      If you specify true for ``QueryString`` and you don't specify any values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+      and caches based on all query string parameters. Depending on how many query string
+      parameters and values you have, this can adversely affect performance because CloudFront
+      must forward more requests to the origin.
+
+      If you specify true for ``QueryString`` and you specify one or more values for
+      ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+      but it only caches based on the query string parameters that you specify.
+
+      If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+      parameters to the origin, and doesn't cache based on query string parameters.
+
+      For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Cookies** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies whether you want CloudFront to forward cookies to the origin
+      and, if so, which ones. For more information about forwarding cookies to the origin, see
+      `How CloudFront Forwards, Caches, and Logs Cookies
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+      *Amazon CloudFront Developer Guide* .
+
+      - **Forward** *(string) --* **[REQUIRED]**
+
+        Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+        the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+        Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+        Amazon S3 origin, specify none for the ``Forward`` element.
+
+      - **WhitelistedNames** *(dict) --*
+
+        Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+        specifies how many different cookies you want CloudFront to forward to the origin for
+        this cache behavior and, if you want to forward selected cookies, the names of those
+        cookies.
+
+        If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+        If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+        delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+        automatically.
+
+        For the current limit on the number of cookie names that you can whitelist for each cache
+        behavior, see `CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different cookies that you want CloudFront to forward to the origin for
+          this cache behavior.
+
+        - **Items** *(list) --*
+
+          A complex type that contains one ``Name`` element for each cookie that you want
+          CloudFront to forward to the origin for this cache behavior.
+
+          - *(string) --*
+
+    - **Headers** *(dict) --*
+
+      A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+      to the origin for this cache behavior (whitelisted headers). For the headers that you
+      specify, CloudFront also caches separate versions of a specified object that is based on
+      the header values in viewer requests.
+
+      For more information, see `Caching Content Based on Request Headers
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of different headers that you want CloudFront to base caching on for this
+        cache behavior. You can configure each cache behavior in a web distribution to do one of
+        the following:
+
+        * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+        ``Name`` .
+
+        .. warning::
+
+           CloudFront doesn't cache the objects that are associated with this cache behavior.
+           Instead, CloudFront sends every request to the origin.
+
+        * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+        want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+        CloudFront caches your objects based on the values in the specified headers.
+
+        * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+        ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+        request headers.
+
+        Regardless of which option you choose, CloudFront forwards headers to your origin based
+        on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+        * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef",
+    {
+        "TargetOriginId": str,
+        "ForwardedValues": ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorForwardedValuesTypeDef,
+    },
+)
+
+
+class ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef(
+    _ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfig` `DefaultCacheBehavior`
+
+    A complex type that describes the default cache behavior if you don't specify a
+    ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+    ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+    - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+      The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+      request matches the path pattern either for a cache behavior or for the default cache
+      behavior in your distribution.
+
+    - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+      A complex type that specifies how CloudFront handles query strings and cookies.
+
+      - **QueryString** *(boolean) --* **[REQUIRED]**
+
+        Indicates whether you want CloudFront to forward query strings to the origin that is
+        associated with this cache behavior and cache based on the query string parameters.
+        CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+        specify for ``QueryStringCacheKeys`` , if any:
+
+        If you specify true for ``QueryString`` and you don't specify any values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+        and caches based on all query string parameters. Depending on how many query string
+        parameters and values you have, this can adversely affect performance because CloudFront
+        must forward more requests to the origin.
+
+        If you specify true for ``QueryString`` and you specify one or more values for
+        ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+        but it only caches based on the query string parameters that you specify.
+
+        If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+        parameters to the origin, and doesn't cache based on query string parameters.
+
+        For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+      - **Cookies** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies whether you want CloudFront to forward cookies to the origin
+        and, if so, which ones. For more information about forwarding cookies to the origin, see
+        `How CloudFront Forwards, Caches, and Logs Cookies
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+        *Amazon CloudFront Developer Guide* .
+
+        - **Forward** *(string) --* **[REQUIRED]**
+
+          Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+          the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+          Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+          Amazon S3 origin, specify none for the ``Forward`` element.
+
+        - **WhitelistedNames** *(dict) --*
+
+          Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+          specifies how many different cookies you want CloudFront to forward to the origin for
+          this cache behavior and, if you want to forward selected cookies, the names of those
+          cookies.
+
+          If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+          If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+          delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+          automatically.
+
+          For the current limit on the number of cookie names that you can whitelist for each cache
+          behavior, see `CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different cookies that you want CloudFront to forward to the origin for
+            this cache behavior.
+
+          - **Items** *(list) --*
+
+            A complex type that contains one ``Name`` element for each cookie that you want
+            CloudFront to forward to the origin for this cache behavior.
+
+            - *(string) --*
+
+      - **Headers** *(dict) --*
+
+        A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+        to the origin for this cache behavior (whitelisted headers). For the headers that you
+        specify, CloudFront also caches separate versions of a specified object that is based on
+        the header values in viewer requests.
+
+        For more information, see `Caching Content Based on Request Headers
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of different headers that you want CloudFront to base caching on for this
+          cache behavior. You can configure each cache behavior in a web distribution to do one of
+          the following:
+
+          * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+          ``Name`` .
+
+          .. warning::
+
+             CloudFront doesn't cache the objects that are associated with this cache behavior.
+             Instead, CloudFront sends every request to the origin.
+
+          * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+          want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+          CloudFront caches your objects based on the values in the specified headers.
+
+          * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+          ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+          request headers.
+
+          Regardless of which option you choose, CloudFront forwards headers to your origin based
+          on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+          * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef",
+    {"Quantity": int, "Items": List[int]},
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteria` `StatusCodes`
+
+    The status codes that, when returned from the primary origin, will trigger CloudFront
+    to failover to the second origin.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of status codes.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      The items (status codes) for an origin group.
+
+      - *(integer) --*
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef",
+    {
+        "StatusCodes": ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaStatusCodesTypeDef
+    },
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginGroupsItems` `FailoverCriteria`
+
+    A complex type that contains information about the failover criteria for an origin group.
+
+    - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+      The status codes that, when returned from the primary origin, will trigger CloudFront
+      to failover to the second origin.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of status codes.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        The items (status codes) for an origin group.
+
+        - *(integer) --*
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef",
+    {"OriginId": str},
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembers` `Items`
+
+    An origin in an origin group.
+
+    - **OriginId** *(string) --* **[REQUIRED]**
+
+      The ID for an origin in an origin group.
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[
+            ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersItemsTypeDef
+        ],
+    },
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginGroupsItems` `Members`
+
+    A complex type that contains information about the origins in an origin group.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins in an origin group.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      Items (origins) in an origin group.
+
+      - *(dict) --*
+
+        An origin in an origin group.
+
+        - **OriginId** *(string) --* **[REQUIRED]**
+
+          The ID for an origin in an origin group.
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef",
+    {
+        "Id": str,
+        "FailoverCriteria": ClientUpdateDistributionDistributionConfigOriginGroupsItemsFailoverCriteriaTypeDef,
+        "Members": ClientUpdateDistributionDistributionConfigOriginGroupsItemsMembersTypeDef,
+    },
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginGroups` `Items`
+
+    An origin group includes two origins (a primary origin and a second origin to failover to)
+    and a failover criteria that you specify. You create an origin group to support origin
+    failover in CloudFront. When you create or update a distribution, you can specifiy the
+    origin group instead of a single origin, and CloudFront will failover from the primary
+    origin to the second origin under the failover conditions that you've chosen.
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      The origin group's ID.
+
+    - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the failover criteria for an origin group.
+
+      - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+        The status codes that, when returned from the primary origin, will trigger CloudFront
+        to failover to the second origin.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of status codes.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          The items (status codes) for an origin group.
+
+          - *(integer) --*
+
+    - **Members** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about the origins in an origin group.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins in an origin group.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        Items (origins) in an origin group.
+
+        - *(dict) --*
+
+          An origin in an origin group.
+
+          - **OriginId** *(string) --* **[REQUIRED]**
+
+            The ID for an origin in an origin group.
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigOriginGroupsTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientUpdateDistributionDistributionConfigOriginGroupsTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigOriginGroupsTypeDef",
+    {"Items": List[ClientUpdateDistributionDistributionConfigOriginGroupsItemsTypeDef]},
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginGroupsTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigOriginGroupsTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigOriginGroupsTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfig` `OriginGroups`
+
+    A complex type that contains information about origin groups for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origin groups.
+
+    - **Items** *(list) --*
+
+      The items (origin groups) in a distribution.
+
+      - *(dict) --*
+
+        An origin group includes two origins (a primary origin and a second origin to failover to)
+        and a failover criteria that you specify. You create an origin group to support origin
+        failover in CloudFront. When you create or update a distribution, you can specifiy the
+        origin group instead of a single origin, and CloudFront will failover from the primary
+        origin to the second origin under the failover conditions that you've chosen.
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          The origin group's ID.
+
+        - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the failover criteria for an origin group.
+
+          - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+            The status codes that, when returned from the primary origin, will trigger CloudFront
+            to failover to the second origin.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of status codes.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              The items (status codes) for an origin group.
+
+              - *(integer) --*
+
+        - **Members** *(dict) --* **[REQUIRED]**
+
+          A complex type that contains information about the origins in an origin group.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of origins in an origin group.
+
+          - **Items** *(list) --* **[REQUIRED]**
+
+            Items (origins) in an origin group.
+
+            - *(dict) --*
+
+              An origin in an origin group.
+
+              - **OriginId** *(string) --* **[REQUIRED]**
+
+                The ID for an origin in an origin group.
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef",
+    {"HeaderName": str, "HeaderValue": str},
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeaders` `Items`
+
+    A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+    this distribution.
+
+    - **HeaderName** *(string) --* **[REQUIRED]**
+
+      The name of a header that you want CloudFront to forward to your origin. For more
+      information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **HeaderValue** *(string) --* **[REQUIRED]**
+
+      The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {"Quantity": int},
+)
+_OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef",
+    {
+        "Items": List[
+            ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersItemsTypeDef
+        ]
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginsItems` `CustomHeaders`
+
+    A complex type that contains names and values for the custom headers that you want.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of custom headers, if any, for this distribution.
+
+    - **Items** *(list) --*
+
+       **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+       header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+       ``Items`` .
+
+      - *(dict) --*
+
+        A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+        this distribution.
+
+        - **HeaderName** *(string) --* **[REQUIRED]**
+
+          The name of a header that you want CloudFront to forward to your origin. For more
+          information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **HeaderValue** *(string) --* **[REQUIRED]**
+
+          The value for the header that you specified in the ``HeaderName`` field.
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef",
+    {"Quantity": int, "Items": List[str]},
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfig` `OriginSslProtocols`
+
+    The SSL/TLS protocols that you want CloudFront to use when communicating with your
+    origin over HTTPS.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of SSL/TLS protocols that you want to allow CloudFront to use when
+      establishing an HTTPS connection with this origin.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A list that contains allowed SSL/TLS protocols for this distribution.
+
+      - *(string) --*
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {"HTTPPort": int, "HTTPSPort": int, "OriginProtocolPolicy": str},
+)
+_OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef",
+    {
+        "OriginSslProtocols": ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigOriginSslProtocolsTypeDef,
+        "OriginReadTimeout": int,
+        "OriginKeepaliveTimeout": int,
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginsItems` `CustomOriginConfig`
+
+    A complex type that contains information about a custom origin. If the origin is an
+    Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+    - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+      The HTTP port the custom origin listens on.
+
+    - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+      The HTTPS port the custom origin listens on.
+
+    - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+      The origin protocol policy to apply to your origin.
+
+    - **OriginSslProtocols** *(dict) --*
+
+      The SSL/TLS protocols that you want CloudFront to use when communicating with your
+      origin over HTTPS.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of SSL/TLS protocols that you want to allow CloudFront to use when
+        establishing an HTTPS connection with this origin.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A list that contains allowed SSL/TLS protocols for this distribution.
+
+        - *(string) --*
+
+    - **OriginReadTimeout** *(integer) --*
+
+      You can create a custom origin read timeout. All timeout units are in seconds. The
+      default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+      using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+      seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginKeepaliveTimeout** *(integer) --*
+
+      You can create a custom keep-alive timeout. All timeout units are in seconds. The
+      default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+      using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+      seconds.
+
+      If you need to increase the maximum time limit, contact the `AWS Support Center
+      <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef",
+    {"OriginAccessIdentity": str},
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOriginsItems` `S3OriginConfig`
+
+    A complex type that contains information about the Amazon S3 origin. If the origin is a
+    custom origin, use the ``CustomOriginConfig`` element instead.
+
+    - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+      The CloudFront origin access identity to associate with the origin. Use an origin
+      access identity to configure the origin so that viewers can *only* access objects in an
+      Amazon S3 bucket through CloudFront. The format of the value is:
+
+      origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+      where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+      ``ID`` element when you created the origin access identity.
+
+      If you want viewers to be able to access objects using either the CloudFront URL or the
+      Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+      To delete the origin access identity from an existing distribution, update the
+      distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+      To replace the origin access identity, update the distribution configuration and
+      specify the new origin access identity.
+
+      For more information about the origin access identity, see `Serving Private Content
+      through CloudFront
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigOriginsItemsTypeDef",
+    {"Id": str, "DomainName": str},
+)
+_OptionalClientUpdateDistributionDistributionConfigOriginsItemsTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigOriginsItemsTypeDef",
+    {
+        "OriginPath": str,
+        "CustomHeaders": ClientUpdateDistributionDistributionConfigOriginsItemsCustomHeadersTypeDef,
+        "S3OriginConfig": ClientUpdateDistributionDistributionConfigOriginsItemsS3OriginConfigTypeDef,
+        "CustomOriginConfig": ClientUpdateDistributionDistributionConfigOriginsItemsCustomOriginConfigTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsItemsTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigOriginsItemsTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigOriginsItemsTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfigOrigins` `Items`
+
+    A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+    server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+    also be an origin group, if you've created an origin group. You must specify at least one
+    origin or origin group.
+
+    For the current limit on the number of origins or origin groups that you can specify for a
+    distribution, see `Amazon CloudFront Limits
+    <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+    in the *AWS General Reference* .
+
+    - **Id** *(string) --* **[REQUIRED]**
+
+      A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+      within the distribution.
+
+      When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+      another cache behavior, you indicate the origin to which you want the cache behavior to
+      route requests by specifying the value of the ``Id`` element for that origin. When a
+      request matches the path pattern for that cache behavior, CloudFront routes the request
+      to the specified origin. For more information, see `Cache Behavior Settings
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **DomainName** *(string) --* **[REQUIRED]**
+
+       **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+       CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+       . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+       static website hosting endpoint for the bucket.
+
+      For more information about specifying this value for different types of origins, see
+      `Origin Domain Name
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+      Constraints for Amazon S3 origins:
+
+      * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+      ``s3-accelerate`` endpoint for ``DomainName`` .
+
+      * The bucket name must be between 3 and 63 characters long (inclusive).
+
+      * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+      and dashes.
+
+      * The bucket name must not contain adjacent periods.
+
+       **Custom Origins** : The DNS domain name for the HTTP server from which you want
+       CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+      Constraints for custom origins:
+
+      * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+      hyphen (-), or underscore (_) characters.
+
+      * The name cannot exceed 128 characters.
+
+    - **OriginPath** *(string) --*
+
+      An optional element that causes CloudFront to request your content from a directory in
+      your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+      specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+      name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+      include a ``/`` at the end of the directory name.
+
+      For example, suppose you've specified the following values for your distribution:
+
+      * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+      * ``OriginPath`` : ``/production``
+
+      * ``CNAME`` : ``example.com``
+
+      When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+      Amazon S3 for ``myawsbucket/production/index.html`` .
+
+      When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+      request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+    - **CustomHeaders** *(dict) --*
+
+      A complex type that contains names and values for the custom headers that you want.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of custom headers, if any, for this distribution.
+
+      - **Items** *(list) --*
+
+         **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+         header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+         ``Items`` .
+
+        - *(dict) --*
+
+          A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+          this distribution.
+
+          - **HeaderName** *(string) --* **[REQUIRED]**
+
+            The name of a header that you want CloudFront to forward to your origin. For more
+            information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **HeaderValue** *(string) --* **[REQUIRED]**
+
+            The value for the header that you specified in the ``HeaderName`` field.
+
+    - **S3OriginConfig** *(dict) --*
+
+      A complex type that contains information about the Amazon S3 origin. If the origin is a
+      custom origin, use the ``CustomOriginConfig`` element instead.
+
+      - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+        The CloudFront origin access identity to associate with the origin. Use an origin
+        access identity to configure the origin so that viewers can *only* access objects in an
+        Amazon S3 bucket through CloudFront. The format of the value is:
+
+        origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+        where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+        ``ID`` element when you created the origin access identity.
+
+        If you want viewers to be able to access objects using either the CloudFront URL or the
+        Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+        To delete the origin access identity from an existing distribution, update the
+        distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+        To replace the origin access identity, update the distribution configuration and
+        specify the new origin access identity.
+
+        For more information about the origin access identity, see `Serving Private Content
+        through CloudFront
+        <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+        in the *Amazon CloudFront Developer Guide* .
+
+    - **CustomOriginConfig** *(dict) --*
+
+      A complex type that contains information about a custom origin. If the origin is an
+      Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+      - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+        The HTTP port the custom origin listens on.
+
+      - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+        The HTTPS port the custom origin listens on.
+
+      - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+        The origin protocol policy to apply to your origin.
+
+      - **OriginSslProtocols** *(dict) --*
+
+        The SSL/TLS protocols that you want CloudFront to use when communicating with your
+        origin over HTTPS.
+
+        - **Quantity** *(integer) --* **[REQUIRED]**
+
+          The number of SSL/TLS protocols that you want to allow CloudFront to use when
+          establishing an HTTPS connection with this origin.
+
+        - **Items** *(list) --* **[REQUIRED]**
+
+          A list that contains allowed SSL/TLS protocols for this distribution.
+
+          - *(string) --*
+
+      - **OriginReadTimeout** *(integer) --*
+
+        You can create a custom origin read timeout. All timeout units are in seconds. The
+        default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+        using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+        seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+
+      - **OriginKeepaliveTimeout** *(integer) --*
+
+        You can create a custom keep-alive timeout. All timeout units are in seconds. The
+        default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+        using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+        seconds.
+
+        If you need to increase the maximum time limit, contact the `AWS Support Center
+        <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_ClientUpdateDistributionDistributionConfigOriginsTypeDef = TypedDict(
+    "_ClientUpdateDistributionDistributionConfigOriginsTypeDef",
+    {
+        "Quantity": int,
+        "Items": List[ClientUpdateDistributionDistributionConfigOriginsItemsTypeDef],
+    },
+)
+
+
+class ClientUpdateDistributionDistributionConfigOriginsTypeDef(
+    _ClientUpdateDistributionDistributionConfigOriginsTypeDef
+):
+    """
+    Type definition for `ClientUpdateDistributionDistributionConfig` `Origins`
+
+    A complex type that contains information about origins for this distribution.
+
+    - **Quantity** *(integer) --* **[REQUIRED]**
+
+      The number of origins or origin groups for this distribution.
+
+    - **Items** *(list) --* **[REQUIRED]**
+
+      A complex type that contains origins or origin groups for this distribution.
+
+      - *(dict) --*
+
+        A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+        server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+        also be an origin group, if you've created an origin group. You must specify at least one
+        origin or origin group.
+
+        For the current limit on the number of origins or origin groups that you can specify for a
+        distribution, see `Amazon CloudFront Limits
+        <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+        in the *AWS General Reference* .
+
+        - **Id** *(string) --* **[REQUIRED]**
+
+          A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+          within the distribution.
+
+          When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+          another cache behavior, you indicate the origin to which you want the cache behavior to
+          route requests by specifying the value of the ``Id`` element for that origin. When a
+          request matches the path pattern for that cache behavior, CloudFront routes the request
+          to the specified origin. For more information, see `Cache Behavior Settings
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **DomainName** *(string) --* **[REQUIRED]**
+
+           **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+           CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+           . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+           static website hosting endpoint for the bucket.
+
+          For more information about specifying this value for different types of origins, see
+          `Origin Domain Name
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          Constraints for Amazon S3 origins:
+
+          * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+          ``s3-accelerate`` endpoint for ``DomainName`` .
+
+          * The bucket name must be between 3 and 63 characters long (inclusive).
+
+          * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+          and dashes.
+
+          * The bucket name must not contain adjacent periods.
+
+           **Custom Origins** : The DNS domain name for the HTTP server from which you want
+           CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+          Constraints for custom origins:
+
+          * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+          hyphen (-), or underscore (_) characters.
+
+          * The name cannot exceed 128 characters.
+
+        - **OriginPath** *(string) --*
+
+          An optional element that causes CloudFront to request your content from a directory in
+          your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+          specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+          name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+          include a ``/`` at the end of the directory name.
+
+          For example, suppose you've specified the following values for your distribution:
+
+          * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+          * ``OriginPath`` : ``/production``
+
+          * ``CNAME`` : ``example.com``
+
+          When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+          Amazon S3 for ``myawsbucket/production/index.html`` .
+
+          When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+          request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+        - **CustomHeaders** *(dict) --*
+
+          A complex type that contains names and values for the custom headers that you want.
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of custom headers, if any, for this distribution.
+
+          - **Items** *(list) --*
+
+             **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+             header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+             ``Items`` .
+
+            - *(dict) --*
+
+              A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+              this distribution.
+
+              - **HeaderName** *(string) --* **[REQUIRED]**
+
+                The name of a header that you want CloudFront to forward to your origin. For more
+                information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+                <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                in the *Amazon CloudFront Developer Guide* .
+
+              - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                The value for the header that you specified in the ``HeaderName`` field.
+
+        - **S3OriginConfig** *(dict) --*
+
+          A complex type that contains information about the Amazon S3 origin. If the origin is a
+          custom origin, use the ``CustomOriginConfig`` element instead.
+
+          - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+            The CloudFront origin access identity to associate with the origin. Use an origin
+            access identity to configure the origin so that viewers can *only* access objects in an
+            Amazon S3 bucket through CloudFront. The format of the value is:
+
+            origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+            where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+            ``ID`` element when you created the origin access identity.
+
+            If you want viewers to be able to access objects using either the CloudFront URL or the
+            Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+            To delete the origin access identity from an existing distribution, update the
+            distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+            To replace the origin access identity, update the distribution configuration and
+            specify the new origin access identity.
+
+            For more information about the origin access identity, see `Serving Private Content
+            through CloudFront
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+        - **CustomOriginConfig** *(dict) --*
+
+          A complex type that contains information about a custom origin. If the origin is an
+          Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+          - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+            The HTTP port the custom origin listens on.
+
+          - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+            The HTTPS port the custom origin listens on.
+
+          - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+            The origin protocol policy to apply to your origin.
+
+          - **OriginSslProtocols** *(dict) --*
+
+            The SSL/TLS protocols that you want CloudFront to use when communicating with your
+            origin over HTTPS.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of SSL/TLS protocols that you want to allow CloudFront to use when
+              establishing an HTTPS connection with this origin.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              A list that contains allowed SSL/TLS protocols for this distribution.
+
+              - *(string) --*
+
+          - **OriginReadTimeout** *(integer) --*
+
+            You can create a custom origin read timeout. All timeout units are in seconds. The
+            default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+            using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+            seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+
+          - **OriginKeepaliveTimeout** *(integer) --*
+
+            You can create a custom keep-alive timeout. All timeout units are in seconds. The
+            default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+            using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+            seconds.
+
+            If you need to increase the maximum time limit, contact the `AWS Support Center
+            <https://console.aws.amazon.com/support/home#/>`__ .
+    """
+
+
+_RequiredClientUpdateDistributionDistributionConfigTypeDef = TypedDict(
+    "_RequiredClientUpdateDistributionDistributionConfigTypeDef",
+    {
+        "CallerReference": str,
+        "Origins": ClientUpdateDistributionDistributionConfigOriginsTypeDef,
+        "DefaultCacheBehavior": ClientUpdateDistributionDistributionConfigDefaultCacheBehaviorTypeDef,
+    },
+)
+_OptionalClientUpdateDistributionDistributionConfigTypeDef = TypedDict(
+    "_OptionalClientUpdateDistributionDistributionConfigTypeDef",
+    {
+        "Aliases": ClientUpdateDistributionDistributionConfigAliasesTypeDef,
+        "DefaultRootObject": str,
+        "OriginGroups": ClientUpdateDistributionDistributionConfigOriginGroupsTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientUpdateDistributionDistributionConfigTypeDef(
+    _RequiredClientUpdateDistributionDistributionConfigTypeDef,
+    _OptionalClientUpdateDistributionDistributionConfigTypeDef,
+):
+    """
+    Type definition for `ClientUpdateDistribution` `DistributionConfig`
+
+    The distribution's configuration information.
+
+    - **CallerReference** *(string) --* **[REQUIRED]**
+
+      A unique value (for example, a date-time stamp) that ensures that the request can't be replayed.
+
+      If the value of ``CallerReference`` is new (regardless of the content of the
+      ``DistributionConfig`` object), CloudFront creates a new distribution.
+
+      If ``CallerReference`` is a value that you already sent in a previous request to create a
+      distribution, CloudFront returns a ``DistributionAlreadyExists`` error.
+
+    - **Aliases** *(dict) --*
+
+      A complex type that contains information about CNAMEs (alternate domain names), if any, for
+      this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of CNAME aliases, if any, that you want to associate with this distribution.
+
+      - **Items** *(list) --*
+
+        A complex type that contains the CNAME aliases, if any, that you want to associate with this
+        distribution.
+
+        - *(string) --*
+
+    - **DefaultRootObject** *(string) --*
+
+      The object that you want CloudFront to request from your origin (for example, ``index.html`` )
+      when a viewer requests the root URL for your distribution (``http://www.example.com`` ) instead
+      of an object in your distribution (``http://www.example.com/product-description.html`` ).
+      Specifying a default root object avoids exposing the contents of your distribution.
+
+      Specify only the object name, for example, ``index.html`` . Don't add a ``/`` before the object
+      name.
+
+      If you don't want to specify a default root object when you create a distribution, include an
+      empty ``DefaultRootObject`` element.
+
+      To delete the default root object from an existing distribution, update the distribution
+      configuration and include an empty ``DefaultRootObject`` element.
+
+      To replace the default root object, update the distribution configuration and specify the new
+      object.
+
+      For more information about the default root object, see `Creating a Default Root Object
+      <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html>`__
+      in the *Amazon CloudFront Developer Guide* .
+
+    - **Origins** *(dict) --* **[REQUIRED]**
+
+      A complex type that contains information about origins for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origins or origin groups for this distribution.
+
+      - **Items** *(list) --* **[REQUIRED]**
+
+        A complex type that contains origins or origin groups for this distribution.
+
+        - *(dict) --*
+
+          A complex type that describes the Amazon S3 bucket, HTTP server (for example, a web
+          server), Amazon MediaStore, or other server from which CloudFront gets your files. This can
+          also be an origin group, if you've created an origin group. You must specify at least one
+          origin or origin group.
+
+          For the current limit on the number of origins or origin groups that you can specify for a
+          distribution, see `Amazon CloudFront Limits
+          <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_cloudfront>`__
+          in the *AWS General Reference* .
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            A unique identifier for the origin or origin group. The value of ``Id`` must be unique
+            within the distribution.
+
+            When you specify the value of ``TargetOriginId`` for the default cache behavior or for
+            another cache behavior, you indicate the origin to which you want the cache behavior to
+            route requests by specifying the value of the ``Id`` element for that origin. When a
+            request matches the path pattern for that cache behavior, CloudFront routes the request
+            to the specified origin. For more information, see `Cache Behavior Settings
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesCacheBehavior>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+          - **DomainName** *(string) --* **[REQUIRED]**
+
+             **Amazon S3 origins** : The DNS name of the Amazon S3 bucket from which you want
+             CloudFront to get objects for this origin, for example, ``myawsbucket.s3.amazonaws.com``
+             . If you set up your bucket to be configured as a website endpoint, enter the Amazon S3
+             static website hosting endpoint for the bucket.
+
+            For more information about specifying this value for different types of origins, see
+            `Origin Domain Name
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesDomainName>`__
+            in the *Amazon CloudFront Developer Guide* .
+
+            Constraints for Amazon S3 origins:
+
+            * If you configured Amazon S3 Transfer Acceleration for your bucket, don't specify the
+            ``s3-accelerate`` endpoint for ``DomainName`` .
+
+            * The bucket name must be between 3 and 63 characters long (inclusive).
+
+            * The bucket name must contain only lowercase characters, numbers, periods, underscores,
+            and dashes.
+
+            * The bucket name must not contain adjacent periods.
+
+             **Custom Origins** : The DNS domain name for the HTTP server from which you want
+             CloudFront to get objects for this origin, for example, ``www.example.com`` .
+
+            Constraints for custom origins:
+
+            * ``DomainName`` must be a valid DNS name that contains only a-z, A-Z, 0-9, dot (.),
+            hyphen (-), or underscore (_) characters.
+
+            * The name cannot exceed 128 characters.
+
+          - **OriginPath** *(string) --*
+
+            An optional element that causes CloudFront to request your content from a directory in
+            your Amazon S3 bucket or your custom origin. When you include the ``OriginPath`` element,
+            specify the directory name, beginning with a ``/`` . CloudFront appends the directory
+            name to the value of ``DomainName`` , for example, ``example.com/production`` . Do not
+            include a ``/`` at the end of the directory name.
+
+            For example, suppose you've specified the following values for your distribution:
+
+            * ``DomainName`` : An Amazon S3 bucket named ``myawsbucket`` .
+
+            * ``OriginPath`` : ``/production``
+
+            * ``CNAME`` : ``example.com``
+
+            When a user enters ``example.com/index.html`` in a browser, CloudFront sends a request to
+            Amazon S3 for ``myawsbucket/production/index.html`` .
+
+            When a user enters ``example.com/acme/index.html`` in a browser, CloudFront sends a
+            request to Amazon S3 for ``myawsbucket/production/acme/index.html`` .
+
+          - **CustomHeaders** *(dict) --*
+
+            A complex type that contains names and values for the custom headers that you want.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of custom headers, if any, for this distribution.
+
+            - **Items** *(list) --*
+
+               **Optional** : A list that contains one ``OriginCustomHeader`` element for each custom
+               header that you want CloudFront to forward to the origin. If Quantity is ``0`` , omit
+               ``Items`` .
+
+              - *(dict) --*
+
+                A complex type that contains ``HeaderName`` and ``HeaderValue`` elements, if any, for
+                this distribution.
+
+                - **HeaderName** *(string) --* **[REQUIRED]**
+
+                  The name of a header that you want CloudFront to forward to your origin. For more
+                  information, see `Forwarding Custom Headers to Your Origin (Web Distributions Only)
+                  <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/forward-custom-headers.html>`__
+                  in the *Amazon CloudFront Developer Guide* .
+
+                - **HeaderValue** *(string) --* **[REQUIRED]**
+
+                  The value for the header that you specified in the ``HeaderName`` field.
+
+          - **S3OriginConfig** *(dict) --*
+
+            A complex type that contains information about the Amazon S3 origin. If the origin is a
+            custom origin, use the ``CustomOriginConfig`` element instead.
+
+            - **OriginAccessIdentity** *(string) --* **[REQUIRED]**
+
+              The CloudFront origin access identity to associate with the origin. Use an origin
+              access identity to configure the origin so that viewers can *only* access objects in an
+              Amazon S3 bucket through CloudFront. The format of the value is:
+
+              origin-access-identity/cloudfront/*ID-of-origin-access-identity*
+
+              where `` *ID-of-origin-access-identity* `` is the value that CloudFront returned in the
+              ``ID`` element when you created the origin access identity.
+
+              If you want viewers to be able to access objects using either the CloudFront URL or the
+              Amazon S3 URL, specify an empty ``OriginAccessIdentity`` element.
+
+              To delete the origin access identity from an existing distribution, update the
+              distribution configuration and include an empty ``OriginAccessIdentity`` element.
+
+              To replace the origin access identity, update the distribution configuration and
+              specify the new origin access identity.
+
+              For more information about the origin access identity, see `Serving Private Content
+              through CloudFront
+              <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html>`__
+              in the *Amazon CloudFront Developer Guide* .
+
+          - **CustomOriginConfig** *(dict) --*
+
+            A complex type that contains information about a custom origin. If the origin is an
+            Amazon S3 bucket, use the ``S3OriginConfig`` element instead.
+
+            - **HTTPPort** *(integer) --* **[REQUIRED]**
+
+              The HTTP port the custom origin listens on.
+
+            - **HTTPSPort** *(integer) --* **[REQUIRED]**
+
+              The HTTPS port the custom origin listens on.
+
+            - **OriginProtocolPolicy** *(string) --* **[REQUIRED]**
+
+              The origin protocol policy to apply to your origin.
+
+            - **OriginSslProtocols** *(dict) --*
+
+              The SSL/TLS protocols that you want CloudFront to use when communicating with your
+              origin over HTTPS.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of SSL/TLS protocols that you want to allow CloudFront to use when
+                establishing an HTTPS connection with this origin.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                A list that contains allowed SSL/TLS protocols for this distribution.
+
+                - *(string) --*
+
+            - **OriginReadTimeout** *(integer) --*
+
+              You can create a custom origin read timeout. All timeout units are in seconds. The
+              default origin read timeout is 30 seconds, but you can configure custom timeout lengths
+              using the CloudFront API. The minimum timeout length is 4 seconds; the maximum is 60
+              seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+            - **OriginKeepaliveTimeout** *(integer) --*
+
+              You can create a custom keep-alive timeout. All timeout units are in seconds. The
+              default keep-alive timeout is 5 seconds, but you can configure custom timeout lengths
+              using the CloudFront API. The minimum timeout length is 1 second; the maximum is 60
+              seconds.
+
+              If you need to increase the maximum time limit, contact the `AWS Support Center
+              <https://console.aws.amazon.com/support/home#/>`__ .
+
+    - **OriginGroups** *(dict) --*
+
+      A complex type that contains information about origin groups for this distribution.
+
+      - **Quantity** *(integer) --* **[REQUIRED]**
+
+        The number of origin groups.
+
+      - **Items** *(list) --*
+
+        The items (origin groups) in a distribution.
+
+        - *(dict) --*
+
+          An origin group includes two origins (a primary origin and a second origin to failover to)
+          and a failover criteria that you specify. You create an origin group to support origin
+          failover in CloudFront. When you create or update a distribution, you can specifiy the
+          origin group instead of a single origin, and CloudFront will failover from the primary
+          origin to the second origin under the failover conditions that you've chosen.
+
+          - **Id** *(string) --* **[REQUIRED]**
+
+            The origin group's ID.
+
+          - **FailoverCriteria** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the failover criteria for an origin group.
+
+            - **StatusCodes** *(dict) --* **[REQUIRED]**
+
+              The status codes that, when returned from the primary origin, will trigger CloudFront
+              to failover to the second origin.
+
+              - **Quantity** *(integer) --* **[REQUIRED]**
+
+                The number of status codes.
+
+              - **Items** *(list) --* **[REQUIRED]**
+
+                The items (status codes) for an origin group.
+
+                - *(integer) --*
+
+          - **Members** *(dict) --* **[REQUIRED]**
+
+            A complex type that contains information about the origins in an origin group.
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of origins in an origin group.
+
+            - **Items** *(list) --* **[REQUIRED]**
+
+              Items (origins) in an origin group.
+
+              - *(dict) --*
+
+                An origin in an origin group.
+
+                - **OriginId** *(string) --* **[REQUIRED]**
+
+                  The ID for an origin in an origin group.
+
+    - **DefaultCacheBehavior** *(dict) --* **[REQUIRED]**
+
+      A complex type that describes the default cache behavior if you don't specify a
+      ``CacheBehavior`` element or if files don't match any of the values of ``PathPattern`` in
+      ``CacheBehavior`` elements. You must create exactly one default cache behavior.
+
+      - **TargetOriginId** *(string) --* **[REQUIRED]**
+
+        The value of ``ID`` for the origin that you want CloudFront to route requests to when a
+        request matches the path pattern either for a cache behavior or for the default cache
+        behavior in your distribution.
+
+      - **ForwardedValues** *(dict) --* **[REQUIRED]**
+
+        A complex type that specifies how CloudFront handles query strings and cookies.
+
+        - **QueryString** *(boolean) --* **[REQUIRED]**
+
+          Indicates whether you want CloudFront to forward query strings to the origin that is
+          associated with this cache behavior and cache based on the query string parameters.
+          CloudFront behavior depends on the value of ``QueryString`` and on the values that you
+          specify for ``QueryStringCacheKeys`` , if any:
+
+          If you specify true for ``QueryString`` and you don't specify any values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin
+          and caches based on all query string parameters. Depending on how many query string
+          parameters and values you have, this can adversely affect performance because CloudFront
+          must forward more requests to the origin.
+
+          If you specify true for ``QueryString`` and you specify one or more values for
+          ``QueryStringCacheKeys`` , CloudFront forwards all query string parameters to the origin,
+          but it only caches based on the query string parameters that you specify.
+
+          If you specify false for ``QueryString`` , CloudFront doesn't forward any query string
+          parameters to the origin, and doesn't cache based on query string parameters.
+
+          For more information, see `Configuring CloudFront to Cache Based on Query String Parameters
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/QueryStringParameters.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+        - **Cookies** *(dict) --* **[REQUIRED]**
+
+          A complex type that specifies whether you want CloudFront to forward cookies to the origin
+          and, if so, which ones. For more information about forwarding cookies to the origin, see
+          `How CloudFront Forwards, Caches, and Logs Cookies
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Cookies.html>`__ in the
+          *Amazon CloudFront Developer Guide* .
+
+          - **Forward** *(string) --* **[REQUIRED]**
+
+            Specifies which cookies to forward to the origin for this cache behavior: all, none, or
+            the list of cookies specified in the ``WhitelistedNames`` complex type.
+
+            Amazon S3 doesn't process cookies. When the cache behavior is forwarding requests to an
+            Amazon S3 origin, specify none for the ``Forward`` element.
+
+          - **WhitelistedNames** *(dict) --*
+
+            Required if you specify ``whitelist`` for the value of ``Forward:`` . A complex type that
+            specifies how many different cookies you want CloudFront to forward to the origin for
+            this cache behavior and, if you want to forward selected cookies, the names of those
+            cookies.
+
+            If you specify ``all`` or none for the value of ``Forward`` , omit ``WhitelistedNames`` .
+            If you change the value of ``Forward`` from ``whitelist`` to all or none and you don't
+            delete the ``WhitelistedNames`` element and its child elements, CloudFront deletes them
+            automatically.
+
+            For the current limit on the number of cookie names that you can whitelist for each cache
+            behavior, see `CloudFront Limits
+            <https://docs.aws.amazon.com/general/latest/gr/xrefaws_service_limits.html#limits_cloudfront>`__
+            in the *AWS General Reference* .
+
+            - **Quantity** *(integer) --* **[REQUIRED]**
+
+              The number of different cookies that you want CloudFront to forward to the origin for
+              this cache behavior.
+
+            - **Items** *(list) --*
+
+              A complex type that contains one ``Name`` element for each cookie that you want
+              CloudFront to forward to the origin for this cache behavior.
+
+              - *(string) --*
+
+        - **Headers** *(dict) --*
+
+          A complex type that specifies the ``Headers`` , if any, that you want CloudFront to forward
+          to the origin for this cache behavior (whitelisted headers). For the headers that you
+          specify, CloudFront also caches separate versions of a specified object that is based on
+          the header values in viewer requests.
+
+          For more information, see `Caching Content Based on Request Headers
+          <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html>`__
+          in the *Amazon CloudFront Developer Guide* .
+
+          - **Quantity** *(integer) --* **[REQUIRED]**
+
+            The number of different headers that you want CloudFront to base caching on for this
+            cache behavior. You can configure each cache behavior in a web distribution to do one of
+            the following:
+
+            * **Forward all headers to your origin** : Specify ``1`` for ``Quantity`` and ``*`` for
+            ``Name`` .
+
+            .. warning::
+
+               CloudFront doesn't cache the objects that are associated with this cache behavior.
+               Instead, CloudFront sends every request to the origin.
+
+            * **Forward a whitelist of headers you specify** : Specify the number of headers that you
+            want CloudFront to base caching on. Then specify the header names in ``Name`` elements.
+            CloudFront caches your objects based on the values in the specified headers.
+
+            * **Forward only the default headers** : Specify ``0`` for ``Quantity`` and omit
+            ``Items`` . In this configuration, CloudFront doesn't cache based on the values in the
+            request headers.
+
+            Regardless of which option you choose, CloudFront forwards headers to your origin based
+            on whether the origin is an S3 bucket or a custom origin. See the following documentation:
+
+            * **S3 bucket** : See `HTTP Request Headers That CloudFront Removes or Updates
+            <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/RequestAndResponseBehaviorS3Origin.html#request-s3-removed-headers>`__
     """
 
 

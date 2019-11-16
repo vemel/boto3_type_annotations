@@ -5,6 +5,133 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "AppExistsWaitWaiterConfigTypeDef",
+    "ClientCloneStackChefConfigurationTypeDef",
+    "ClientCloneStackConfigurationManagerTypeDef",
+    "ClientCloneStackCustomCookbooksSourceTypeDef",
+    "ClientCloneStackResponseTypeDef",
+    "ClientCreateAppAppSourceTypeDef",
+    "ClientCreateAppDataSourcesTypeDef",
+    "ClientCreateAppEnvironmentTypeDef",
+    "ClientCreateAppResponseTypeDef",
+    "ClientCreateAppSslConfigurationTypeDef",
+    "ClientCreateDeploymentCommandTypeDef",
+    "ClientCreateDeploymentResponseTypeDef",
+    "ClientCreateInstanceBlockDeviceMappingsEbsTypeDef",
+    "ClientCreateInstanceBlockDeviceMappingsTypeDef",
+    "ClientCreateInstanceResponseTypeDef",
+    "ClientCreateLayerCloudWatchLogsConfigurationLogStreamsTypeDef",
+    "ClientCreateLayerCloudWatchLogsConfigurationTypeDef",
+    "ClientCreateLayerCustomRecipesTypeDef",
+    "ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef",
+    "ClientCreateLayerLifecycleEventConfigurationTypeDef",
+    "ClientCreateLayerResponseTypeDef",
+    "ClientCreateLayerVolumeConfigurationsTypeDef",
+    "ClientCreateStackChefConfigurationTypeDef",
+    "ClientCreateStackConfigurationManagerTypeDef",
+    "ClientCreateStackCustomCookbooksSourceTypeDef",
+    "ClientCreateStackResponseTypeDef",
+    "ClientCreateUserProfileResponseTypeDef",
+    "ClientDescribeAgentVersionsConfigurationManagerTypeDef",
+    "ClientDescribeAgentVersionsResponseAgentVersionsConfigurationManagerTypeDef",
+    "ClientDescribeAgentVersionsResponseAgentVersionsTypeDef",
+    "ClientDescribeAgentVersionsResponseTypeDef",
+    "ClientDescribeAppsResponseAppsAppSourceTypeDef",
+    "ClientDescribeAppsResponseAppsDataSourcesTypeDef",
+    "ClientDescribeAppsResponseAppsEnvironmentTypeDef",
+    "ClientDescribeAppsResponseAppsSslConfigurationTypeDef",
+    "ClientDescribeAppsResponseAppsTypeDef",
+    "ClientDescribeAppsResponseTypeDef",
+    "ClientDescribeCommandsResponseCommandsTypeDef",
+    "ClientDescribeCommandsResponseTypeDef",
+    "ClientDescribeDeploymentsResponseDeploymentsCommandTypeDef",
+    "ClientDescribeDeploymentsResponseDeploymentsTypeDef",
+    "ClientDescribeDeploymentsResponseTypeDef",
+    "ClientDescribeEcsClustersResponseEcsClustersTypeDef",
+    "ClientDescribeEcsClustersResponseTypeDef",
+    "ClientDescribeElasticIpsResponseElasticIpsTypeDef",
+    "ClientDescribeElasticIpsResponseTypeDef",
+    "ClientDescribeElasticLoadBalancersResponseElasticLoadBalancersTypeDef",
+    "ClientDescribeElasticLoadBalancersResponseTypeDef",
+    "ClientDescribeLoadBasedAutoScalingResponseLoadBasedAutoScalingConfigurationsDownScalingTypeDef",
+    "ClientDescribeLoadBasedAutoScalingResponseLoadBasedAutoScalingConfigurationsUpScalingTypeDef",
+    "ClientDescribeLoadBasedAutoScalingResponseLoadBasedAutoScalingConfigurationsTypeDef",
+    "ClientDescribeLoadBasedAutoScalingResponseTypeDef",
+    "ClientDescribeMyUserProfileResponseUserProfileTypeDef",
+    "ClientDescribeMyUserProfileResponseTypeDef",
+    "ClientDescribeOperatingSystemsResponseOperatingSystemsConfigurationManagersTypeDef",
+    "ClientDescribeOperatingSystemsResponseOperatingSystemsTypeDef",
+    "ClientDescribeOperatingSystemsResponseTypeDef",
+    "ClientDescribePermissionsResponsePermissionsTypeDef",
+    "ClientDescribePermissionsResponseTypeDef",
+    "ClientDescribeRaidArraysResponseRaidArraysTypeDef",
+    "ClientDescribeRaidArraysResponseTypeDef",
+    "ClientDescribeRdsDbInstancesResponseRdsDbInstancesTypeDef",
+    "ClientDescribeRdsDbInstancesResponseTypeDef",
+    "ClientDescribeServiceErrorsResponseServiceErrorsTypeDef",
+    "ClientDescribeServiceErrorsResponseTypeDef",
+    "ClientDescribeStackProvisioningParametersResponseTypeDef",
+    "ClientDescribeStackSummaryResponseStackSummaryInstancesCountTypeDef",
+    "ClientDescribeStackSummaryResponseStackSummaryTypeDef",
+    "ClientDescribeStackSummaryResponseTypeDef",
+    "ClientDescribeStacksResponseStacksChefConfigurationTypeDef",
+    "ClientDescribeStacksResponseStacksConfigurationManagerTypeDef",
+    "ClientDescribeStacksResponseStacksCustomCookbooksSourceTypeDef",
+    "ClientDescribeStacksResponseStacksTypeDef",
+    "ClientDescribeStacksResponseTypeDef",
+    "ClientDescribeTimeBasedAutoScalingResponseTimeBasedAutoScalingConfigurationsAutoScalingScheduleTypeDef",
+    "ClientDescribeTimeBasedAutoScalingResponseTimeBasedAutoScalingConfigurationsTypeDef",
+    "ClientDescribeTimeBasedAutoScalingResponseTypeDef",
+    "ClientDescribeUserProfilesResponseUserProfilesTypeDef",
+    "ClientDescribeUserProfilesResponseTypeDef",
+    "ClientDescribeVolumesResponseVolumesTypeDef",
+    "ClientDescribeVolumesResponseTypeDef",
+    "ClientGetHostnameSuggestionResponseTypeDef",
+    "ClientGrantAccessResponseTemporaryCredentialTypeDef",
+    "ClientGrantAccessResponseTypeDef",
+    "ClientListTagsResponseTypeDef",
+    "ClientRegisterEcsClusterResponseTypeDef",
+    "ClientRegisterElasticIpResponseTypeDef",
+    "ClientRegisterInstanceInstanceIdentityTypeDef",
+    "ClientRegisterInstanceResponseTypeDef",
+    "ClientRegisterVolumeResponseTypeDef",
+    "ClientSetLoadBasedAutoScalingDownScalingTypeDef",
+    "ClientSetLoadBasedAutoScalingUpScalingTypeDef",
+    "ClientSetTimeBasedAutoScalingAutoScalingScheduleTypeDef",
+    "ClientUpdateAppAppSourceTypeDef",
+    "ClientUpdateAppDataSourcesTypeDef",
+    "ClientUpdateAppEnvironmentTypeDef",
+    "ClientUpdateAppSslConfigurationTypeDef",
+    "ClientUpdateLayerCloudWatchLogsConfigurationLogStreamsTypeDef",
+    "ClientUpdateLayerCloudWatchLogsConfigurationTypeDef",
+    "ClientUpdateLayerCustomRecipesTypeDef",
+    "ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef",
+    "ClientUpdateLayerLifecycleEventConfigurationTypeDef",
+    "ClientUpdateLayerVolumeConfigurationsTypeDef",
+    "ClientUpdateStackChefConfigurationTypeDef",
+    "ClientUpdateStackConfigurationManagerTypeDef",
+    "ClientUpdateStackCustomCookbooksSourceTypeDef",
+    "DeploymentSuccessfulWaitWaiterConfigTypeDef",
+    "DescribeEcsClustersPaginatePaginationConfigTypeDef",
+    "DescribeEcsClustersPaginateResponseEcsClustersTypeDef",
+    "DescribeEcsClustersPaginateResponseTypeDef",
+    "InstanceOnlineWaitWaiterConfigTypeDef",
+    "InstanceRegisteredWaitWaiterConfigTypeDef",
+    "InstanceStoppedWaitWaiterConfigTypeDef",
+    "InstanceTerminatedWaitWaiterConfigTypeDef",
+    "ServiceResourceCreateStackChefConfigurationTypeDef",
+    "ServiceResourceCreateStackConfigurationManagerTypeDef",
+    "ServiceResourceCreateStackCustomCookbooksSourceTypeDef",
+    "StackCreateLayerCloudWatchLogsConfigurationLogStreamsTypeDef",
+    "StackCreateLayerCloudWatchLogsConfigurationTypeDef",
+    "StackCreateLayerCustomRecipesTypeDef",
+    "StackCreateLayerLifecycleEventConfigurationShutdownTypeDef",
+    "StackCreateLayerLifecycleEventConfigurationTypeDef",
+    "StackCreateLayerVolumeConfigurationsTypeDef",
+)
+
+
 _AppExistsWaitWaiterConfigTypeDef = TypedDict(
     "_AppExistsWaitWaiterConfigTypeDef", {"Delay": int, "MaxAttempts": int}, total=False
 )
@@ -855,6 +982,67 @@ class ClientCreateLayerCustomRecipesTypeDef(_ClientCreateLayerCustomRecipesTypeD
       An array of custom recipe names to be run following a ``shutdown`` event.
 
       - *(string) --*
+    """
+
+
+_ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef = TypedDict(
+    "_ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef",
+    {"ExecutionTimeout": int, "DelayUntilElbConnectionsDrained": bool},
+    total=False,
+)
+
+
+class ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef(
+    _ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef
+):
+    """
+    Type definition for `ClientCreateLayerLifecycleEventConfiguration` `Shutdown`
+
+    A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+    - **ExecutionTimeout** *(integer) --*
+
+      The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+      before shutting down an instance.
+
+    - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+      Whether to enable Elastic Load Balancing connection draining. For more information, see
+      `Connection Draining
+      <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
+    """
+
+
+_ClientCreateLayerLifecycleEventConfigurationTypeDef = TypedDict(
+    "_ClientCreateLayerLifecycleEventConfigurationTypeDef",
+    {"Shutdown": ClientCreateLayerLifecycleEventConfigurationShutdownTypeDef},
+    total=False,
+)
+
+
+class ClientCreateLayerLifecycleEventConfigurationTypeDef(
+    _ClientCreateLayerLifecycleEventConfigurationTypeDef
+):
+    """
+    Type definition for `ClientCreateLayer` `LifecycleEventConfiguration`
+
+    A ``LifeCycleEventConfiguration`` object that you can use to configure the Shutdown event to
+    specify an execution timeout and enable or disable Elastic Load Balancer connection draining.
+
+    - **Shutdown** *(dict) --*
+
+      A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+      - **ExecutionTimeout** *(integer) --*
+
+        The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+        before shutting down an instance.
+
+      - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+        Whether to enable Elastic Load Balancing connection draining. For more information, see
+        `Connection Draining
+        <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
     """
 
 
@@ -6315,6 +6503,64 @@ class ClientUpdateLayerCustomRecipesTypeDef(_ClientUpdateLayerCustomRecipesTypeD
     """
 
 
+_ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef = TypedDict(
+    "_ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef",
+    {"ExecutionTimeout": int, "DelayUntilElbConnectionsDrained": bool},
+    total=False,
+)
+
+
+class ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef(
+    _ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef
+):
+    """
+    Type definition for `ClientUpdateLayerLifecycleEventConfiguration` `Shutdown`
+
+    A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+    - **ExecutionTimeout** *(integer) --*
+
+      The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+      before shutting down an instance.
+
+    - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+      Whether to enable Elastic Load Balancing connection draining. For more information, see
+      `Connection Draining
+      <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
+    """
+
+
+_ClientUpdateLayerLifecycleEventConfigurationTypeDef = TypedDict(
+    "_ClientUpdateLayerLifecycleEventConfigurationTypeDef",
+    {"Shutdown": ClientUpdateLayerLifecycleEventConfigurationShutdownTypeDef},
+    total=False,
+)
+
+
+class ClientUpdateLayerLifecycleEventConfigurationTypeDef(
+    _ClientUpdateLayerLifecycleEventConfigurationTypeDef
+):
+    """
+    Type definition for `ClientUpdateLayer` `LifecycleEventConfiguration`
+
+    - **Shutdown** *(dict) --*
+
+      A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+      - **ExecutionTimeout** *(integer) --*
+
+        The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+        before shutting down an instance.
+
+      - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+        Whether to enable Elastic Load Balancing connection draining. For more information, see
+        `Connection Draining
+        <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
+    """
+
+
 _RequiredClientUpdateLayerVolumeConfigurationsTypeDef = TypedDict(
     "_RequiredClientUpdateLayerVolumeConfigurationsTypeDef",
     {"MountPoint": str, "NumberOfDisks": int, "Size": int},
@@ -7117,6 +7363,67 @@ class StackCreateLayerCustomRecipesTypeDef(_StackCreateLayerCustomRecipesTypeDef
       An array of custom recipe names to be run following a ``shutdown`` event.
 
       - *(string) --*
+    """
+
+
+_StackCreateLayerLifecycleEventConfigurationShutdownTypeDef = TypedDict(
+    "_StackCreateLayerLifecycleEventConfigurationShutdownTypeDef",
+    {"ExecutionTimeout": int, "DelayUntilElbConnectionsDrained": bool},
+    total=False,
+)
+
+
+class StackCreateLayerLifecycleEventConfigurationShutdownTypeDef(
+    _StackCreateLayerLifecycleEventConfigurationShutdownTypeDef
+):
+    """
+    Type definition for `StackCreateLayerLifecycleEventConfiguration` `Shutdown`
+
+    A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+    - **ExecutionTimeout** *(integer) --*
+
+      The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+      before shutting down an instance.
+
+    - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+      Whether to enable Elastic Load Balancing connection draining. For more information, see
+      `Connection Draining
+      <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
+    """
+
+
+_StackCreateLayerLifecycleEventConfigurationTypeDef = TypedDict(
+    "_StackCreateLayerLifecycleEventConfigurationTypeDef",
+    {"Shutdown": StackCreateLayerLifecycleEventConfigurationShutdownTypeDef},
+    total=False,
+)
+
+
+class StackCreateLayerLifecycleEventConfigurationTypeDef(
+    _StackCreateLayerLifecycleEventConfigurationTypeDef
+):
+    """
+    Type definition for `StackCreateLayer` `LifecycleEventConfiguration`
+
+    A ``LifeCycleEventConfiguration`` object that you can use to configure the Shutdown event to
+    specify an execution timeout and enable or disable Elastic Load Balancer connection draining.
+
+    - **Shutdown** *(dict) --*
+
+      A ``ShutdownEventConfiguration`` object that specifies the Shutdown event configuration.
+
+      - **ExecutionTimeout** *(integer) --*
+
+        The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event
+        before shutting down an instance.
+
+      - **DelayUntilElbConnectionsDrained** *(boolean) --*
+
+        Whether to enable Elastic Load Balancing connection draining. For more information, see
+        `Connection Draining
+        <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain>`__
     """
 
 

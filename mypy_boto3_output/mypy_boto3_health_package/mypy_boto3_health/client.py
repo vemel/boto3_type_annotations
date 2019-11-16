@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_health.paginator as paginator_scope
 from mypy_boto3_health.type_defs import (
     ClientDescribeAffectedEntitiesfilterTypeDef,
     ClientDescribeEventAggregatesResponseTypeDef,
@@ -13,6 +16,9 @@ from mypy_boto3_health.type_defs import (
     ClientDescribeEventTypesfilterTypeDef,
     ClientDescribeEventsfilterTypeDef,
 )
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -1272,8 +1278,44 @@ class Client(BaseClient):
         :returns: The presigned url
         """
 
+    @overload
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
+    def get_paginator(
+        self, operation_name: Literal["describe_affected_entities"]
+    ) -> paginator_scope.DescribeAffectedEntitiesPaginator:
+        """
+        Get Paginator for `describe_affected_entities` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_event_aggregates"]
+    ) -> paginator_scope.DescribeEventAggregatesPaginator:
+        """
+        Get Paginator for `describe_event_aggregates` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_event_types"]
+    ) -> paginator_scope.DescribeEventTypesPaginator:
+        """
+        Get Paginator for `describe_event_types` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_events"]
+    ) -> paginator_scope.DescribeEventsPaginator:
+        """
+        Get Paginator for `describe_events` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
         """
         Create a paginator for an operation.
 
@@ -1291,17 +1333,4 @@ class Client(BaseClient):
 
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """

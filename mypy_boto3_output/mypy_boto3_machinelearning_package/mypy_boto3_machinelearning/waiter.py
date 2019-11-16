@@ -10,7 +10,19 @@ from mypy_boto3_machinelearning.type_defs import (
 )
 
 
-class BatchPredictionAvailable(Boto3Waiter):
+__all__ = (
+    "BatchPredictionAvailableWaiter",
+    "DataSourceAvailableWaiter",
+    "EvaluationAvailableWaiter",
+    "MLModelAvailableWaiter",
+)
+
+
+class BatchPredictionAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `batch_prediction_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -169,7 +181,11 @@ class BatchPredictionAvailable(Boto3Waiter):
         """
 
 
-class DataSourceAvailable(Boto3Waiter):
+class DataSourceAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `data_source_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -320,7 +336,11 @@ class DataSourceAvailable(Boto3Waiter):
         """
 
 
-class EvaluationAvailable(Boto3Waiter):
+class EvaluationAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `evaluation_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -475,7 +495,11 @@ class EvaluationAvailable(Boto3Waiter):
         """
 
 
-class MLModelAvailable(Boto3Waiter):
+class MLModelAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `ml_model_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

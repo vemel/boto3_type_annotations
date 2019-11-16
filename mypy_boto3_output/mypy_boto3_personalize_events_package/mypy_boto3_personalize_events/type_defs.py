@@ -5,6 +5,9 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
+__all__ = ("ClientPutEventseventListTypeDef",)
+
+
 _RequiredClientPutEventseventListTypeDef = TypedDict(
     "_RequiredClientPutEventseventListTypeDef",
     {"eventType": str, "properties": str, "sentAt": datetime},

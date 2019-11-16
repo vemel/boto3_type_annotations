@@ -14,7 +14,19 @@ from mypy_boto3_kms.type_defs import (
 )
 
 
-class ListAliases(Boto3Paginator):
+__all__ = (
+    "ListAliasesPaginator",
+    "ListGrantsPaginator",
+    "ListKeyPoliciesPaginator",
+    "ListKeysPaginator",
+)
+
+
+class ListAliasesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_aliases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -123,7 +135,11 @@ class ListAliases(Boto3Paginator):
         """
 
 
-class ListGrants(Boto3Paginator):
+class ListGrantsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_grants`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -303,7 +319,11 @@ class ListGrants(Boto3Paginator):
         """
 
 
-class ListKeyPolicies(Boto3Paginator):
+class ListKeyPoliciesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_key_policies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -400,7 +420,11 @@ class ListKeyPolicies(Boto3Paginator):
         """
 
 
-class ListKeys(Boto3Paginator):
+class ListKeysPaginator(Boto3Paginator):
+    """
+    Paginator for `list_keys`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListKeysPaginatePaginationConfigTypeDef = None

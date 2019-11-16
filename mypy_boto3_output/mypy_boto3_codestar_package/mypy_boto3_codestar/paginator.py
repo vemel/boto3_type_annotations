@@ -14,7 +14,19 @@ from mypy_boto3_codestar.type_defs import (
 )
 
 
-class ListProjects(Boto3Paginator):
+__all__ = (
+    "ListProjectsPaginator",
+    "ListResourcesPaginator",
+    "ListTeamMembersPaginator",
+    "ListUserProfilesPaginator",
+)
+
+
+class ListProjectsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_projects`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProjectsPaginatePaginationConfigTypeDef = None
@@ -99,7 +111,11 @@ class ListProjects(Boto3Paginator):
         """
 
 
-class ListResources(Boto3Paginator):
+class ListResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -187,7 +203,11 @@ class ListResources(Boto3Paginator):
         """
 
 
-class ListTeamMembers(Boto3Paginator):
+class ListTeamMembersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_team_members`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -289,7 +309,11 @@ class ListTeamMembers(Boto3Paginator):
         """
 
 
-class ListUserProfiles(Boto3Paginator):
+class ListUserProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_user_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListUserProfilesPaginatePaginationConfigTypeDef = None

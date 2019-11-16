@@ -8,7 +8,14 @@ from mypy_boto3_kinesis.type_defs import (
 )
 
 
-class StreamExists(Boto3Waiter):
+__all__ = ("StreamExistsWaiter", "StreamNotExistsWaiter")
+
+
+class StreamExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `stream_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -69,7 +76,11 @@ class StreamExists(Boto3Waiter):
         """
 
 
-class StreamNotExists(Boto3Waiter):
+class StreamNotExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `stream_not_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

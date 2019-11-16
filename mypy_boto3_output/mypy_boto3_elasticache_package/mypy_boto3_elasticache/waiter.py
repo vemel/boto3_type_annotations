@@ -10,7 +10,19 @@ from mypy_boto3_elasticache.type_defs import (
 )
 
 
-class CacheClusterAvailable(Boto3Waiter):
+__all__ = (
+    "CacheClusterAvailableWaiter",
+    "CacheClusterDeletedWaiter",
+    "ReplicationGroupAvailableWaiter",
+    "ReplicationGroupDeletedWaiter",
+)
+
+
+class CacheClusterAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `cache_cluster_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -96,7 +108,11 @@ class CacheClusterAvailable(Boto3Waiter):
         """
 
 
-class CacheClusterDeleted(Boto3Waiter):
+class CacheClusterDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `cache_cluster_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -182,7 +198,11 @@ class CacheClusterDeleted(Boto3Waiter):
         """
 
 
-class ReplicationGroupAvailable(Boto3Waiter):
+class ReplicationGroupAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_group_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -252,7 +272,11 @@ class ReplicationGroupAvailable(Boto3Waiter):
         """
 
 
-class ReplicationGroupDeleted(Boto3Waiter):
+class ReplicationGroupDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_group_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

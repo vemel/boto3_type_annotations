@@ -20,7 +20,18 @@ from mypy_boto3_sqs.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Message",
+    "Queue",
+    "ServiceResourceQueuesCollection",
+    "QueueDeadLetterSourceQueuesCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    queues: service_resource_scope.ServiceResourceQueuesCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Message(
         self, queue_url: str, receipt_handle: str
@@ -481,6 +492,7 @@ class Message(Boto3ServiceResource):
 class Queue(Boto3ServiceResource):
     attributes: Dict[str, Any]
     url: str
+    dead_letter_source_queues: service_resource_scope.QueueDeadLetterSourceQueuesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
@@ -2109,7 +2121,7 @@ class Queue(Boto3ServiceResource):
         """
 
 
-class queues(ResourceCollection):
+class ServiceResourceQueuesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -2239,7 +2251,7 @@ class queues(ResourceCollection):
         """
 
 
-class dead_letter_source_queues(ResourceCollection):
+class QueueDeadLetterSourceQueuesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

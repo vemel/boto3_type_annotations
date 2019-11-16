@@ -13,7 +13,18 @@ from mypy_boto3_elb.type_defs import (
 )
 
 
-class AnyInstanceInService(Boto3Waiter):
+__all__ = (
+    "AnyInstanceInServiceWaiter",
+    "InstanceDeregisteredWaiter",
+    "InstanceInServiceWaiter",
+)
+
+
+class AnyInstanceInServiceWaiter(Boto3Waiter):
+    """
+    Waiter for `any_instance_in_service` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -78,7 +89,11 @@ class AnyInstanceInService(Boto3Waiter):
         """
 
 
-class InstanceDeregistered(Boto3Waiter):
+class InstanceDeregisteredWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_deregistered` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -143,7 +158,11 @@ class InstanceDeregistered(Boto3Waiter):
         """
 
 
-class InstanceInService(Boto3Waiter):
+class InstanceInServiceWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_in_service` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -16,7 +16,69 @@ from mypy_boto3_iam.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "AccessKey",
+    "AccessKeyPair",
+    "AccountPasswordPolicy",
+    "AccountSummary",
+    "AssumeRolePolicy",
+    "CurrentUser",
+    "Group",
+    "GroupPolicy",
+    "InstanceProfile",
+    "LoginProfile",
+    "MfaDevice",
+    "Policy",
+    "PolicyVersion",
+    "Role",
+    "RolePolicy",
+    "SamlProvider",
+    "ServerCertificate",
+    "SigningCertificate",
+    "User",
+    "UserPolicy",
+    "VirtualMfaDevice",
+    "ServiceResourceGroupsCollection",
+    "ServiceResourceInstanceProfilesCollection",
+    "ServiceResourcePoliciesCollection",
+    "ServiceResourceRolesCollection",
+    "ServiceResourceSamlProvidersCollection",
+    "ServiceResourceServerCertificatesCollection",
+    "ServiceResourceUsersCollection",
+    "ServiceResourceVirtualMfaDevicesCollection",
+    "CurrentUserAccessKeysCollection",
+    "CurrentUserMfaDevicesCollection",
+    "CurrentUserSigningCertificatesCollection",
+    "GroupAttachedPoliciesCollection",
+    "GroupPoliciesCollection",
+    "GroupUsersCollection",
+    "PolicyAttachedGroupsCollection",
+    "PolicyAttachedRolesCollection",
+    "PolicyAttachedUsersCollection",
+    "PolicyVersionsCollection",
+    "RoleAttachedPoliciesCollection",
+    "RoleInstanceProfilesCollection",
+    "RolePoliciesCollection",
+    "UserAccessKeysCollection",
+    "UserAttachedPoliciesCollection",
+    "UserGroupsCollection",
+    "UserMfaDevicesCollection",
+    "UserPoliciesCollection",
+    "UserSigningCertificatesCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    groups: service_resource_scope.ServiceResourceGroupsCollection
+    instance_profiles: service_resource_scope.ServiceResourceInstanceProfilesCollection
+    policies: service_resource_scope.ServiceResourcePoliciesCollection
+    roles: service_resource_scope.ServiceResourceRolesCollection
+    saml_providers: service_resource_scope.ServiceResourceSamlProvidersCollection
+    server_certificates: service_resource_scope.ServiceResourceServerCertificatesCollection
+    users: service_resource_scope.ServiceResourceUsersCollection
+    virtual_mfa_devices: service_resource_scope.ServiceResourceVirtualMfaDevicesCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def AccessKey(self, user_name: str, id: str) -> service_resource_scope.AccessKey:
         """
@@ -1828,6 +1890,9 @@ class CurrentUser(Boto3ServiceResource):
     password_last_used: datetime
     permissions_boundary: Dict[str, Any]
     tags: List[Any]
+    access_keys: service_resource_scope.CurrentUserAccessKeysCollection
+    mfa_devices: service_resource_scope.CurrentUserMfaDevicesCollection
+    signing_certificates: service_resource_scope.CurrentUserSigningCertificatesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
@@ -1880,6 +1945,9 @@ class Group(Boto3ServiceResource):
     arn: str
     create_date: datetime
     name: str
+    attached_policies: service_resource_scope.GroupAttachedPoliciesCollection
+    policies: service_resource_scope.GroupPoliciesCollection
+    users: service_resource_scope.GroupUsersCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_user(self, UserName: str) -> None:
@@ -2804,6 +2872,10 @@ class Policy(Boto3ServiceResource):
     create_date: datetime
     update_date: datetime
     arn: str
+    attached_groups: service_resource_scope.PolicyAttachedGroupsCollection
+    attached_roles: service_resource_scope.PolicyAttachedRolesCollection
+    attached_users: service_resource_scope.PolicyAttachedUsersCollection
+    versions: service_resource_scope.PolicyVersionsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_group(self, GroupName: str) -> None:
@@ -3259,6 +3331,9 @@ class Role(Boto3ServiceResource):
     permissions_boundary: Dict[str, Any]
     tags: List[Any]
     name: str
+    attached_policies: service_resource_scope.RoleAttachedPoliciesCollection
+    instance_profiles: service_resource_scope.RoleInstanceProfilesCollection
+    policies: service_resource_scope.RolePoliciesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_policy(self, PolicyArn: str) -> None:
@@ -3900,6 +3975,12 @@ class User(Boto3ServiceResource):
     permissions_boundary: Dict[str, Any]
     tags: List[Any]
     name: str
+    access_keys: service_resource_scope.UserAccessKeysCollection
+    attached_policies: service_resource_scope.UserAttachedPoliciesCollection
+    groups: service_resource_scope.UserGroupsCollection
+    mfa_devices: service_resource_scope.UserMfaDevicesCollection
+    policies: service_resource_scope.UserPoliciesCollection
+    signing_certificates: service_resource_scope.UserSigningCertificatesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_group(self, GroupName: str) -> None:
@@ -4625,7 +4706,7 @@ class VirtualMfaDevice(Boto3ServiceResource):
         """
 
 
-class groups(ResourceCollection):
+class ServiceResourceGroupsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -4784,7 +4865,7 @@ class groups(ResourceCollection):
         """
 
 
-class instance_profiles(ResourceCollection):
+class ServiceResourceInstanceProfilesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -4944,7 +5025,7 @@ class instance_profiles(ResourceCollection):
         """
 
 
-class policies(ResourceCollection):
+class ServiceResourcePoliciesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5138,7 +5219,7 @@ class policies(ResourceCollection):
         """
 
 
-class roles(ResourceCollection):
+class ServiceResourceRolesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5297,7 +5378,7 @@ class roles(ResourceCollection):
         """
 
 
-class saml_providers(ResourceCollection):
+class ServiceResourceSamlProvidersCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5419,7 +5500,7 @@ class saml_providers(ResourceCollection):
         """
 
 
-class server_certificates(ResourceCollection):
+class ServiceResourceServerCertificatesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5578,7 +5659,7 @@ class server_certificates(ResourceCollection):
         """
 
 
-class users(ResourceCollection):
+class ServiceResourceUsersCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5736,7 +5817,7 @@ class users(ResourceCollection):
         """
 
 
-class virtual_mfa_devices(ResourceCollection):
+class ServiceResourceVirtualMfaDevicesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -5889,7 +5970,7 @@ class virtual_mfa_devices(ResourceCollection):
         """
 
 
-class access_keys(ResourceCollection):
+class CurrentUserAccessKeysCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6044,7 +6125,7 @@ class access_keys(ResourceCollection):
         """
 
 
-class mfa_devices(ResourceCollection):
+class CurrentUserMfaDevicesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6199,7 +6280,7 @@ class mfa_devices(ResourceCollection):
         """
 
 
-class signing_certificates(ResourceCollection):
+class CurrentUserSigningCertificatesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6354,7 +6435,7 @@ class signing_certificates(ResourceCollection):
         """
 
 
-class attached_policies(ResourceCollection):
+class GroupAttachedPoliciesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6511,7 +6592,292 @@ class attached_policies(ResourceCollection):
         """
 
 
-class attached_groups(ResourceCollection):
+class GroupPoliciesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.GroupPolicy]:
+        """
+        Creates an iterable of all GroupPolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          group_policy_iterator = group.policies.all()
+
+        :rtype: list(:py:class:`iam.GroupPolicy`)
+        :returns: A list of GroupPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.GroupPolicy]:
+        """
+        Creates an iterable of all GroupPolicy resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          group_policy_iterator = group.policies.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.GroupPolicy`)
+        :returns: A list of GroupPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.GroupPolicy]:
+        """
+        Creates an iterable up to a specified amount of GroupPolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          group_policy_iterator = group.policies.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.GroupPolicy`)
+        :returns: A list of GroupPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.GroupPolicy]:
+        """
+        Creates an iterable of all GroupPolicy resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          group_policy_iterator = group.policies.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.GroupPolicy`)
+        :returns: A list of GroupPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class GroupUsersCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.User]:
+        """
+        Creates an iterable of all User resources in the collection.
+
+        See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup>`_
+
+        **Request Syntax**
+        ::
+
+          user_iterator = group.users.all()
+
+        :rtype: list(:py:class:`iam.User`)
+        :returns: A list of User resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.User]:
+        """
+        Creates an iterable of all User resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup>`_
+
+        **Request Syntax**
+        ::
+
+          user_iterator = group.users.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.User`)
+        :returns: A list of User resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.User]:
+        """
+        Creates an iterable up to a specified amount of User resources in the collection.
+
+        See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup>`_
+
+        **Request Syntax**
+        ::
+
+          user_iterator = group.users.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.User`)
+        :returns: A list of User resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.User]:
+        """
+        Creates an iterable of all User resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/GetGroup>`_
+
+        **Request Syntax**
+        ::
+
+          user_iterator = group.users.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.User`)
+        :returns: A list of User resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class PolicyAttachedGroupsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6683,7 +7049,7 @@ class attached_groups(ResourceCollection):
         """
 
 
-class attached_roles(ResourceCollection):
+class PolicyAttachedRolesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -6855,7 +7221,7 @@ class attached_roles(ResourceCollection):
         """
 
 
-class attached_users(ResourceCollection):
+class PolicyAttachedUsersCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -7027,7 +7393,7 @@ class attached_users(ResourceCollection):
         """
 
 
-class versions(ResourceCollection):
+class PolicyVersionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -7147,6 +7513,1334 @@ class versions(ResourceCollection):
 
         :rtype: list(:py:class:`iam.PolicyVersion`)
         :returns: A list of PolicyVersion resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class RoleAttachedPoliciesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = role.attached_policies.all()
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = role.attached_policies.filter(
+              PathPrefix='string',
+              Marker='string',
+              MaxItems=123
+          )
+        :type PathPrefix: string
+        :param PathPrefix:
+
+          The path prefix for filtering the results. This parameter is optional. If it is not included, it
+          defaults to a slash (/), listing all policies.
+
+          This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
+          of characters consisting of either a forward slash (/) by itself or a string that must begin and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
+          lowercased letters.
+
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable up to a specified amount of Policy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = role.attached_policies.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = role.attached_policies.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class RoleInstanceProfilesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.InstanceProfile]:
+        """
+        Creates an iterable of all InstanceProfile resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole>`_
+
+        **Request Syntax**
+        ::
+
+          instance_profile_iterator = role.instance_profiles.all()
+
+        :rtype: list(:py:class:`iam.InstanceProfile`)
+        :returns: A list of InstanceProfile resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.InstanceProfile]:
+        """
+        Creates an iterable of all InstanceProfile resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole>`_
+
+        **Request Syntax**
+        ::
+
+          instance_profile_iterator = role.instance_profiles.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.InstanceProfile`)
+        :returns: A list of InstanceProfile resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.InstanceProfile]:
+        """
+        Creates an iterable up to a specified amount of InstanceProfile resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole>`_
+
+        **Request Syntax**
+        ::
+
+          instance_profile_iterator = role.instance_profiles.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.InstanceProfile`)
+        :returns: A list of InstanceProfile resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.InstanceProfile]:
+        """
+        Creates an iterable of all InstanceProfile resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListInstanceProfilesForRole>`_
+
+        **Request Syntax**
+        ::
+
+          instance_profile_iterator = role.instance_profiles.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.InstanceProfile`)
+        :returns: A list of InstanceProfile resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class RolePoliciesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.RolePolicy]:
+        """
+        Creates an iterable of all RolePolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          role_policy_iterator = role.policies.all()
+
+        :rtype: list(:py:class:`iam.RolePolicy`)
+        :returns: A list of RolePolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.RolePolicy]:
+        """
+        Creates an iterable of all RolePolicy resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          role_policy_iterator = role.policies.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.RolePolicy`)
+        :returns: A list of RolePolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.RolePolicy]:
+        """
+        Creates an iterable up to a specified amount of RolePolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          role_policy_iterator = role.policies.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.RolePolicy`)
+        :returns: A list of RolePolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.RolePolicy]:
+        """
+        Creates an iterable of all RolePolicy resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListRolePolicies>`_
+
+        **Request Syntax**
+        ::
+
+          role_policy_iterator = role.policies.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.RolePolicy`)
+        :returns: A list of RolePolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserAccessKeysCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.AccessKey]:
+        """
+        Creates an iterable of all AccessKey resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys>`_
+
+        **Request Syntax**
+        ::
+
+          access_key_iterator = user.access_keys.all()
+
+        :rtype: list(:py:class:`iam.AccessKey`)
+        :returns: A list of AccessKey resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.AccessKey]:
+        """
+        Creates an iterable of all AccessKey resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys>`_
+
+        **Request Syntax**
+        ::
+
+          access_key_iterator = user.access_keys.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.AccessKey`)
+        :returns: A list of AccessKey resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.AccessKey]:
+        """
+        Creates an iterable up to a specified amount of AccessKey resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys>`_
+
+        **Request Syntax**
+        ::
+
+          access_key_iterator = user.access_keys.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.AccessKey`)
+        :returns: A list of AccessKey resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.AccessKey]:
+        """
+        Creates an iterable of all AccessKey resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAccessKeys>`_
+
+        **Request Syntax**
+        ::
+
+          access_key_iterator = user.access_keys.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.AccessKey`)
+        :returns: A list of AccessKey resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserAttachedPoliciesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = user.attached_policies.all()
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, PathPrefix: str = None, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = user.attached_policies.filter(
+              PathPrefix='string',
+              Marker='string',
+              MaxItems=123
+          )
+        :type PathPrefix: string
+        :param PathPrefix:
+
+          The path prefix for filtering the results. This parameter is optional. If it is not included, it
+          defaults to a slash (/), listing all policies.
+
+          This parameter allows (through its `regex pattern <http://wikipedia.org/wiki/regex>`__ ) a string
+          of characters consisting of either a forward slash (/) by itself or a string that must begin and
+          end with forward slashes. In addition, it can contain any ASCII character from the ! (\\u0021)
+          through the DEL character (\\u007F), including most punctuation characters, digits, and upper and
+          lowercased letters.
+
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable up to a specified amount of Policy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = user.attached_policies.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Policy]:
+        """
+        Creates an iterable of all Policy resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListAttachedUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          policy_iterator = user.attached_policies.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.Policy`)
+        :returns: A list of Policy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserGroupsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Group]:
+        """
+        Creates an iterable of all Group resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser>`_
+
+        **Request Syntax**
+        ::
+
+          group_iterator = user.groups.all()
+
+        :rtype: list(:py:class:`iam.Group`)
+        :returns: A list of Group resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.Group]:
+        """
+        Creates an iterable of all Group resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser>`_
+
+        **Request Syntax**
+        ::
+
+          group_iterator = user.groups.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.Group`)
+        :returns: A list of Group resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Group]:
+        """
+        Creates an iterable up to a specified amount of Group resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser>`_
+
+        **Request Syntax**
+        ::
+
+          group_iterator = user.groups.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.Group`)
+        :returns: A list of Group resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Group]:
+        """
+        Creates an iterable of all Group resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListGroupsForUser>`_
+
+        **Request Syntax**
+        ::
+
+          group_iterator = user.groups.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.Group`)
+        :returns: A list of Group resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserMfaDevicesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.MfaDevice]:
+        """
+        Creates an iterable of all MfaDevice resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices>`_
+
+        **Request Syntax**
+        ::
+
+          mfa_device_iterator = user.mfa_devices.all()
+
+        :rtype: list(:py:class:`iam.MfaDevice`)
+        :returns: A list of MfaDevice resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.MfaDevice]:
+        """
+        Creates an iterable of all MfaDevice resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices>`_
+
+        **Request Syntax**
+        ::
+
+          mfa_device_iterator = user.mfa_devices.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.MfaDevice`)
+        :returns: A list of MfaDevice resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.MfaDevice]:
+        """
+        Creates an iterable up to a specified amount of MfaDevice resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices>`_
+
+        **Request Syntax**
+        ::
+
+          mfa_device_iterator = user.mfa_devices.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.MfaDevice`)
+        :returns: A list of MfaDevice resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.MfaDevice]:
+        """
+        Creates an iterable of all MfaDevice resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListMFADevices>`_
+
+        **Request Syntax**
+        ::
+
+          mfa_device_iterator = user.mfa_devices.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.MfaDevice`)
+        :returns: A list of MfaDevice resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserPoliciesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.UserPolicy]:
+        """
+        Creates an iterable of all UserPolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          user_policy_iterator = user.policies.all()
+
+        :rtype: list(:py:class:`iam.UserPolicy`)
+        :returns: A list of UserPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.UserPolicy]:
+        """
+        Creates an iterable of all UserPolicy resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          user_policy_iterator = user.policies.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.UserPolicy`)
+        :returns: A list of UserPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.UserPolicy]:
+        """
+        Creates an iterable up to a specified amount of UserPolicy resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          user_policy_iterator = user.policies.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.UserPolicy`)
+        :returns: A list of UserPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.UserPolicy]:
+        """
+        Creates an iterable of all UserPolicy resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListUserPolicies>`_
+
+        **Request Syntax**
+        ::
+
+          user_policy_iterator = user.policies.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.UserPolicy`)
+        :returns: A list of UserPolicy resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class UserSigningCertificatesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.SigningCertificate]:
+        """
+        Creates an iterable of all SigningCertificate resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates>`_
+
+        **Request Syntax**
+        ::
+
+          signing_certificate_iterator = user.signing_certificates.all()
+
+        :rtype: list(:py:class:`iam.SigningCertificate`)
+        :returns: A list of SigningCertificate resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, Marker: str = None, MaxItems: int = None
+    ) -> List[service_resource_scope.SigningCertificate]:
+        """
+        Creates an iterable of all SigningCertificate resources in the collection filtered by kwargs passed
+        to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates>`_
+
+        **Request Syntax**
+        ::
+
+          signing_certificate_iterator = user.signing_certificates.filter(
+              Marker='string',
+              MaxItems=123
+          )
+        :type Marker: string
+        :param Marker:
+
+          Use this parameter only when paginating results and only after you receive a response indicating
+          that the results are truncated. Set it to the value of the ``Marker`` element in the response
+          that you received to indicate where the next call should start.
+
+        :type MaxItems: integer
+        :param MaxItems:
+
+          Use this only when paginating results to indicate the maximum number of items you want in the
+          response. If additional items exist beyond the maximum you specify, the ``IsTruncated`` response
+          element is ``true`` .
+
+          If you do not include this parameter, the number of items defaults to 100. Note that IAM might
+          return fewer results, even when there are more results available. In that case, the
+          ``IsTruncated`` response element returns ``true`` , and ``Marker`` contains a value to include in
+          the subsequent call that tells the service where to continue from.
+
+        :rtype: list(:py:class:`iam.SigningCertificate`)
+        :returns: A list of SigningCertificate resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.SigningCertificate]:
+        """
+        Creates an iterable up to a specified amount of SigningCertificate resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates>`_
+
+        **Request Syntax**
+        ::
+
+          signing_certificate_iterator = user.signing_certificates.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`iam.SigningCertificate`)
+        :returns: A list of SigningCertificate resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.SigningCertificate]:
+        """
+        Creates an iterable of all SigningCertificate resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/iam-2010-05-08/ListSigningCertificates>`_
+
+        **Request Syntax**
+        ::
+
+          signing_certificate_iterator = user.signing_certificates.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`iam.SigningCertificate`)
+        :returns: A list of SigningCertificate resources
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

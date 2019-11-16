@@ -9,7 +9,14 @@ from mypy_boto3_kinesis_video_archived_media.type_defs import (
 )
 
 
-class ListFragments(Boto3Paginator):
+__all__ = ("ListFragmentsPaginator",)
+
+
+class ListFragmentsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_fragments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

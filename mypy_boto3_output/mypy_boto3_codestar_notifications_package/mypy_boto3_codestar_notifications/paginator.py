@@ -16,7 +16,18 @@ from mypy_boto3_codestar_notifications.type_defs import (
 )
 
 
-class ListEventTypes(Boto3Paginator):
+__all__ = (
+    "ListEventTypesPaginator",
+    "ListNotificationRulesPaginator",
+    "ListTargetsPaginator",
+)
+
+
+class ListEventTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_event_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -134,7 +145,11 @@ class ListEventTypes(Boto3Paginator):
         """
 
 
-class ListNotificationRules(Boto3Paginator):
+class ListNotificationRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_notification_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -248,7 +263,11 @@ class ListNotificationRules(Boto3Paginator):
         """
 
 
-class ListTargets(Boto3Paginator):
+class ListTargetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_targets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

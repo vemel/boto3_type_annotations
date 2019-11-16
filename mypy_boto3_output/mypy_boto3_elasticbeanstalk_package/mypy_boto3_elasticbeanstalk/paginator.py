@@ -19,7 +19,20 @@ from mypy_boto3_elasticbeanstalk.type_defs import (
 )
 
 
-class DescribeApplicationVersions(Boto3Paginator):
+__all__ = (
+    "DescribeApplicationVersionsPaginator",
+    "DescribeEnvironmentManagedActionHistoryPaginator",
+    "DescribeEnvironmentsPaginator",
+    "DescribeEventsPaginator",
+    "ListPlatformVersionsPaginator",
+)
+
+
+class DescribeApplicationVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_application_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -220,7 +233,11 @@ class DescribeApplicationVersions(Boto3Paginator):
         """
 
 
-class DescribeEnvironmentManagedActionHistory(Boto3Paginator):
+class DescribeEnvironmentManagedActionHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_environment_managed_action_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -351,7 +368,11 @@ class DescribeEnvironmentManagedActionHistory(Boto3Paginator):
         """
 
 
-class DescribeEnvironments(Boto3Paginator):
+class DescribeEnvironmentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_environments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -715,7 +736,11 @@ class DescribeEnvironments(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -913,7 +938,11 @@ class DescribeEvents(Boto3Paginator):
         """
 
 
-class ListPlatformVersions(Boto3Paginator):
+class ListPlatformVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_platform_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

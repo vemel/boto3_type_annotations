@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_codepipeline.paginator as paginator_scope
 from mypy_boto3_codepipeline.type_defs import (
     ClientAcknowledgeJobResponseTypeDef,
     ClientAcknowledgeThirdPartyJobResponseTypeDef,
@@ -52,6 +55,9 @@ from mypy_boto3_codepipeline.type_defs import (
     ClientUpdatePipelineResponseTypeDef,
     ClientUpdatePipelinepipelineTypeDef,
 )
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -1917,27 +1923,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_pipeline(
         self, name: str, version: int = None
     ) -> ClientGetPipelineResponseTypeDef:
@@ -3049,19 +3034,6 @@ class Client(BaseClient):
                 A system-generated random number that AWS CodePipeline uses to ensure that the job is being
                 worked on by only one job worker. Use this number in an  AcknowledgeThirdPartyJob request.
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -6365,4 +6337,79 @@ class Client(BaseClient):
                 The version number of the pipeline. A new pipeline always has a version number of 1. This
                 number is incremented when a pipeline is updated.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_action_executions"]
+    ) -> paginator_scope.ListActionExecutionsPaginator:
+        """
+        Get Paginator for `list_action_executions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_action_types"]
+    ) -> paginator_scope.ListActionTypesPaginator:
+        """
+        Get Paginator for `list_action_types` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_pipeline_executions"]
+    ) -> paginator_scope.ListPipelineExecutionsPaginator:
+        """
+        Get Paginator for `list_pipeline_executions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_pipelines"]
+    ) -> paginator_scope.ListPipelinesPaginator:
+        """
+        Get Paginator for `list_pipelines` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_tags_for_resource"]
+    ) -> paginator_scope.ListTagsForResourcePaginator:
+        """
+        Get Paginator for `list_tags_for_resource` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_webhooks"]
+    ) -> paginator_scope.ListWebhooksPaginator:
+        """
+        Get Paginator for `list_webhooks` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
         """

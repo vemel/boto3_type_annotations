@@ -14,7 +14,19 @@ from mypy_boto3_mgh.type_defs import (
 )
 
 
-class ListCreatedArtifacts(Boto3Paginator):
+__all__ = (
+    "ListCreatedArtifactsPaginator",
+    "ListDiscoveredResourcesPaginator",
+    "ListMigrationTasksPaginator",
+    "ListProgressUpdateStreamsPaginator",
+)
+
+
+class ListCreatedArtifactsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_created_artifacts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -111,7 +123,11 @@ class ListCreatedArtifacts(Boto3Paginator):
         """
 
 
-class ListDiscoveredResources(Boto3Paginator):
+class ListDiscoveredResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_discovered_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -207,7 +223,11 @@ class ListDiscoveredResources(Boto3Paginator):
         """
 
 
-class ListMigrationTasks(Boto3Paginator):
+class ListMigrationTasksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_migration_tasks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -317,7 +337,11 @@ class ListMigrationTasks(Boto3Paginator):
         """
 
 
-class ListProgressUpdateStreams(Boto3Paginator):
+class ListProgressUpdateStreamsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_progress_update_streams`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

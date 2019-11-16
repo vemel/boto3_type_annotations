@@ -15,7 +15,19 @@ from mypy_boto3_batch.type_defs import (
 )
 
 
-class DescribeComputeEnvironments(Boto3Paginator):
+__all__ = (
+    "DescribeComputeEnvironmentsPaginator",
+    "DescribeJobDefinitionsPaginator",
+    "DescribeJobQueuesPaginator",
+    "ListJobsPaginator",
+)
+
+
+class DescribeComputeEnvironmentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_compute_environments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -333,7 +345,11 @@ class DescribeComputeEnvironments(Boto3Paginator):
         """
 
 
-class DescribeJobDefinitions(Boto3Paginator):
+class DescribeJobDefinitionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_job_definitions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1218,7 +1234,11 @@ class DescribeJobDefinitions(Boto3Paginator):
         """
 
 
-class DescribeJobQueues(Boto3Paginator):
+class DescribeJobQueuesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_job_queues`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1363,7 +1383,11 @@ class DescribeJobQueues(Boto3Paginator):
         """
 
 
-class ListJobs(Boto3Paginator):
+class ListJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

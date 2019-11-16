@@ -5,6 +5,18 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDeleteReportDefinitionResponseTypeDef",
+    "ClientDescribeReportDefinitionsResponseReportDefinitionsTypeDef",
+    "ClientDescribeReportDefinitionsResponseTypeDef",
+    "ClientModifyReportDefinitionReportDefinitionTypeDef",
+    "ClientPutReportDefinitionReportDefinitionTypeDef",
+    "DescribeReportDefinitionsPaginatePaginationConfigTypeDef",
+    "DescribeReportDefinitionsPaginateResponseReportDefinitionsTypeDef",
+    "DescribeReportDefinitionsPaginateResponseTypeDef",
+)
+
+
 _ClientDeleteReportDefinitionResponseTypeDef = TypedDict(
     "_ClientDeleteReportDefinitionResponseTypeDef",
     {"ResponseMessage": str},

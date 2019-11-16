@@ -38,7 +38,31 @@ from mypy_boto3_waf.type_defs import (
 )
 
 
-class GetRateBasedRuleManagedKeys(Boto3Paginator):
+__all__ = (
+    "GetRateBasedRuleManagedKeysPaginator",
+    "ListActivatedRulesInRuleGroupPaginator",
+    "ListByteMatchSetsPaginator",
+    "ListGeoMatchSetsPaginator",
+    "ListIPSetsPaginator",
+    "ListLoggingConfigurationsPaginator",
+    "ListRateBasedRulesPaginator",
+    "ListRegexMatchSetsPaginator",
+    "ListRegexPatternSetsPaginator",
+    "ListRuleGroupsPaginator",
+    "ListRulesPaginator",
+    "ListSizeConstraintSetsPaginator",
+    "ListSqlInjectionMatchSetsPaginator",
+    "ListSubscribedRuleGroupsPaginator",
+    "ListWebACLsPaginator",
+    "ListXssMatchSetsPaginator",
+)
+
+
+class GetRateBasedRuleManagedKeysPaginator(Boto3Paginator):
+    """
+    Paginator for `get_rate_based_rule_managed_keys`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -114,7 +138,11 @@ class GetRateBasedRuleManagedKeys(Boto3Paginator):
         """
 
 
-class ListActivatedRulesInRuleGroup(Boto3Paginator):
+class ListActivatedRulesInRuleGroupPaginator(Boto3Paginator):
+    """
+    Paginator for `list_activated_rules_in_rule_group`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -340,7 +368,11 @@ class ListActivatedRulesInRuleGroup(Boto3Paginator):
         """
 
 
-class ListByteMatchSets(Boto3Paginator):
+class ListByteMatchSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_byte_match_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListByteMatchSetsPaginatePaginationConfigTypeDef = None
@@ -431,7 +463,11 @@ class ListByteMatchSets(Boto3Paginator):
         """
 
 
-class ListGeoMatchSets(Boto3Paginator):
+class ListGeoMatchSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_geo_match_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGeoMatchSetsPaginatePaginationConfigTypeDef = None
@@ -518,7 +554,11 @@ class ListGeoMatchSets(Boto3Paginator):
         """
 
 
-class ListIPSets(Boto3Paginator):
+class ListIPSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_ip_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListIPSetsPaginatePaginationConfigTypeDef = None
@@ -604,7 +644,11 @@ class ListIPSets(Boto3Paginator):
         """
 
 
-class ListLoggingConfigurations(Boto3Paginator):
+class ListLoggingConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_logging_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -760,7 +804,11 @@ class ListLoggingConfigurations(Boto3Paginator):
         """
 
 
-class ListRateBasedRules(Boto3Paginator):
+class ListRateBasedRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rate_based_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListRateBasedRulesPaginatePaginationConfigTypeDef = None
@@ -851,7 +899,11 @@ class ListRateBasedRules(Boto3Paginator):
         """
 
 
-class ListRegexMatchSets(Boto3Paginator):
+class ListRegexMatchSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_regex_match_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListRegexMatchSetsPaginatePaginationConfigTypeDef = None
@@ -942,7 +994,11 @@ class ListRegexMatchSets(Boto3Paginator):
         """
 
 
-class ListRegexPatternSets(Boto3Paginator):
+class ListRegexPatternSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_regex_pattern_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1036,7 +1092,11 @@ class ListRegexPatternSets(Boto3Paginator):
         """
 
 
-class ListRuleGroups(Boto3Paginator):
+class ListRuleGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rule_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListRuleGroupsPaginatePaginationConfigTypeDef = None
@@ -1127,7 +1187,11 @@ class ListRuleGroups(Boto3Paginator):
         """
 
 
-class ListRules(Boto3Paginator):
+class ListRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListRulesPaginatePaginationConfigTypeDef = None
@@ -1217,7 +1281,11 @@ class ListRules(Boto3Paginator):
         """
 
 
-class ListSizeConstraintSets(Boto3Paginator):
+class ListSizeConstraintSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_size_constraint_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1310,7 +1378,11 @@ class ListSizeConstraintSets(Boto3Paginator):
         """
 
 
-class ListSqlInjectionMatchSets(Boto3Paginator):
+class ListSqlInjectionMatchSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_sql_injection_match_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1405,7 +1477,11 @@ class ListSqlInjectionMatchSets(Boto3Paginator):
         """
 
 
-class ListSubscribedRuleGroups(Boto3Paginator):
+class ListSubscribedRuleGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_subscribed_rule_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1501,7 +1577,11 @@ class ListSubscribedRuleGroups(Boto3Paginator):
         """
 
 
-class ListWebACLs(Boto3Paginator):
+class ListWebACLsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_web_acls`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListWebACLsPaginatePaginationConfigTypeDef = None
@@ -1590,7 +1670,11 @@ class ListWebACLs(Boto3Paginator):
         """
 
 
-class ListXssMatchSets(Boto3Paginator):
+class ListXssMatchSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_xss_match_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListXssMatchSetsPaginatePaginationConfigTypeDef = None

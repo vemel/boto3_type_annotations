@@ -26,7 +26,25 @@ from mypy_boto3_apigatewayv2.type_defs import (
 )
 
 
-class GetApis(Boto3Paginator):
+__all__ = (
+    "GetApisPaginator",
+    "GetAuthorizersPaginator",
+    "GetDeploymentsPaginator",
+    "GetDomainNamesPaginator",
+    "GetIntegrationResponsesPaginator",
+    "GetIntegrationsPaginator",
+    "GetModelsPaginator",
+    "GetRouteResponsesPaginator",
+    "GetRoutesPaginator",
+    "GetStagesPaginator",
+)
+
+
+class GetApisPaginator(Boto3Paginator):
+    """
+    Paginator for `get_apis`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetApisPaginatePaginationConfigTypeDef = None
@@ -176,7 +194,11 @@ class GetApis(Boto3Paginator):
         """
 
 
-class GetAuthorizers(Boto3Paginator):
+class GetAuthorizersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_authorizers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -339,7 +361,11 @@ class GetAuthorizers(Boto3Paginator):
         """
 
 
-class GetDeployments(Boto3Paginator):
+class GetDeploymentsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_deployments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -446,7 +472,11 @@ class GetDeployments(Boto3Paginator):
         """
 
 
-class GetDomainNames(Boto3Paginator):
+class GetDomainNamesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_domain_names`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDomainNamesPaginatePaginationConfigTypeDef = None
@@ -608,7 +638,11 @@ class GetDomainNames(Boto3Paginator):
         """
 
 
-class GetIntegrationResponses(Boto3Paginator):
+class GetIntegrationResponsesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_integration_responses`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -762,7 +796,11 @@ class GetIntegrationResponses(Boto3Paginator):
         """
 
 
-class GetIntegrations(Boto3Paginator):
+class GetIntegrationsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_integrations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -991,7 +1029,11 @@ class GetIntegrations(Boto3Paginator):
         """
 
 
-class GetModels(Boto3Paginator):
+class GetModelsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_models`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1100,7 +1142,11 @@ class GetModels(Boto3Paginator):
         """
 
 
-class GetRouteResponses(Boto3Paginator):
+class GetRouteResponsesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_route_responses`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1236,7 +1282,11 @@ class GetRouteResponses(Boto3Paginator):
         """
 
 
-class GetRoutes(Boto3Paginator):
+class GetRoutesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_routes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1415,7 +1465,11 @@ class GetRoutes(Boto3Paginator):
         """
 
 
-class GetStages(Boto3Paginator):
+class GetStagesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_stages`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

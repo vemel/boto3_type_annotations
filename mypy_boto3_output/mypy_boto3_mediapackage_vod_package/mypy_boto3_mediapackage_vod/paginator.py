@@ -12,7 +12,18 @@ from mypy_boto3_mediapackage_vod.type_defs import (
 )
 
 
-class ListAssets(Boto3Paginator):
+__all__ = (
+    "ListAssetsPaginator",
+    "ListPackagingConfigurationsPaginator",
+    "ListPackagingGroupsPaginator",
+)
+
+
+class ListAssetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_assets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -103,7 +114,11 @@ class ListAssets(Boto3Paginator):
         """
 
 
-class ListPackagingConfigurations(Boto3Paginator):
+class ListPackagingConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_packaging_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -499,7 +514,11 @@ class ListPackagingConfigurations(Boto3Paginator):
         """
 
 
-class ListPackagingGroups(Boto3Paginator):
+class ListPackagingGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_packaging_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

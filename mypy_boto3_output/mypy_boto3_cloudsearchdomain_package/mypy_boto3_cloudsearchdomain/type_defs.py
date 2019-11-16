@@ -5,6 +5,23 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientSearchResponsefacetsbucketsTypeDef",
+    "ClientSearchResponsefacetsTypeDef",
+    "ClientSearchResponsehitshitTypeDef",
+    "ClientSearchResponsehitsTypeDef",
+    "ClientSearchResponsestatsTypeDef",
+    "ClientSearchResponsestatusTypeDef",
+    "ClientSearchResponseTypeDef",
+    "ClientSuggestResponsestatusTypeDef",
+    "ClientSuggestResponsesuggestsuggestionsTypeDef",
+    "ClientSuggestResponsesuggestTypeDef",
+    "ClientSuggestResponseTypeDef",
+    "ClientUploadDocumentsResponsewarningsTypeDef",
+    "ClientUploadDocumentsResponseTypeDef",
+)
+
+
 _ClientSearchResponsefacetsbucketsTypeDef = TypedDict(
     "_ClientSearchResponsefacetsbucketsTypeDef",
     {"value": str, "count": int},

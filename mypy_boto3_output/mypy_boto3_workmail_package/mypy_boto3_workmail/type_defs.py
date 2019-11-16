@@ -6,6 +6,58 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateGroupResponseTypeDef",
+    "ClientCreateResourceResponseTypeDef",
+    "ClientCreateUserResponseTypeDef",
+    "ClientDescribeGroupResponseTypeDef",
+    "ClientDescribeOrganizationResponseTypeDef",
+    "ClientDescribeResourceResponseBookingOptionsTypeDef",
+    "ClientDescribeResourceResponseTypeDef",
+    "ClientDescribeUserResponseTypeDef",
+    "ClientGetMailboxDetailsResponseTypeDef",
+    "ClientListAliasesResponseTypeDef",
+    "ClientListGroupMembersResponseMembersTypeDef",
+    "ClientListGroupMembersResponseTypeDef",
+    "ClientListGroupsResponseGroupsTypeDef",
+    "ClientListGroupsResponseTypeDef",
+    "ClientListMailboxPermissionsResponsePermissionsTypeDef",
+    "ClientListMailboxPermissionsResponseTypeDef",
+    "ClientListOrganizationsResponseOrganizationSummariesTypeDef",
+    "ClientListOrganizationsResponseTypeDef",
+    "ClientListResourceDelegatesResponseDelegatesTypeDef",
+    "ClientListResourceDelegatesResponseTypeDef",
+    "ClientListResourcesResponseResourcesTypeDef",
+    "ClientListResourcesResponseTypeDef",
+    "ClientListUsersResponseUsersTypeDef",
+    "ClientListUsersResponseTypeDef",
+    "ClientUpdateResourceBookingOptionsTypeDef",
+    "ListAliasesPaginatePaginationConfigTypeDef",
+    "ListAliasesPaginateResponseTypeDef",
+    "ListGroupMembersPaginatePaginationConfigTypeDef",
+    "ListGroupMembersPaginateResponseMembersTypeDef",
+    "ListGroupMembersPaginateResponseTypeDef",
+    "ListGroupsPaginatePaginationConfigTypeDef",
+    "ListGroupsPaginateResponseGroupsTypeDef",
+    "ListGroupsPaginateResponseTypeDef",
+    "ListMailboxPermissionsPaginatePaginationConfigTypeDef",
+    "ListMailboxPermissionsPaginateResponsePermissionsTypeDef",
+    "ListMailboxPermissionsPaginateResponseTypeDef",
+    "ListOrganizationsPaginatePaginationConfigTypeDef",
+    "ListOrganizationsPaginateResponseOrganizationSummariesTypeDef",
+    "ListOrganizationsPaginateResponseTypeDef",
+    "ListResourceDelegatesPaginatePaginationConfigTypeDef",
+    "ListResourceDelegatesPaginateResponseDelegatesTypeDef",
+    "ListResourceDelegatesPaginateResponseTypeDef",
+    "ListResourcesPaginatePaginationConfigTypeDef",
+    "ListResourcesPaginateResponseResourcesTypeDef",
+    "ListResourcesPaginateResponseTypeDef",
+    "ListUsersPaginatePaginationConfigTypeDef",
+    "ListUsersPaginateResponseUsersTypeDef",
+    "ListUsersPaginateResponseTypeDef",
+)
+
+
 _ClientCreateGroupResponseTypeDef = TypedDict(
     "_ClientCreateGroupResponseTypeDef", {"GroupId": str}, total=False
 )

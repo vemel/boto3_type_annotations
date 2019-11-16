@@ -6,6 +6,48 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCopyBackupToRegionResponseDestinationBackupTypeDef",
+    "ClientCopyBackupToRegionResponseTypeDef",
+    "ClientCreateClusterResponseClusterCertificatesTypeDef",
+    "ClientCreateClusterResponseClusterHsmsTypeDef",
+    "ClientCreateClusterResponseClusterTypeDef",
+    "ClientCreateClusterResponseTypeDef",
+    "ClientCreateHsmResponseHsmTypeDef",
+    "ClientCreateHsmResponseTypeDef",
+    "ClientDeleteBackupResponseBackupTypeDef",
+    "ClientDeleteBackupResponseTypeDef",
+    "ClientDeleteClusterResponseClusterCertificatesTypeDef",
+    "ClientDeleteClusterResponseClusterHsmsTypeDef",
+    "ClientDeleteClusterResponseClusterTypeDef",
+    "ClientDeleteClusterResponseTypeDef",
+    "ClientDeleteHsmResponseTypeDef",
+    "ClientDescribeBackupsResponseBackupsTypeDef",
+    "ClientDescribeBackupsResponseTypeDef",
+    "ClientDescribeClustersResponseClustersCertificatesTypeDef",
+    "ClientDescribeClustersResponseClustersHsmsTypeDef",
+    "ClientDescribeClustersResponseClustersTypeDef",
+    "ClientDescribeClustersResponseTypeDef",
+    "ClientInitializeClusterResponseTypeDef",
+    "ClientListTagsResponseTagListTypeDef",
+    "ClientListTagsResponseTypeDef",
+    "ClientRestoreBackupResponseBackupTypeDef",
+    "ClientRestoreBackupResponseTypeDef",
+    "ClientTagResourceTagListTypeDef",
+    "DescribeBackupsPaginatePaginationConfigTypeDef",
+    "DescribeBackupsPaginateResponseBackupsTypeDef",
+    "DescribeBackupsPaginateResponseTypeDef",
+    "DescribeClustersPaginatePaginationConfigTypeDef",
+    "DescribeClustersPaginateResponseClustersCertificatesTypeDef",
+    "DescribeClustersPaginateResponseClustersHsmsTypeDef",
+    "DescribeClustersPaginateResponseClustersTypeDef",
+    "DescribeClustersPaginateResponseTypeDef",
+    "ListTagsPaginatePaginationConfigTypeDef",
+    "ListTagsPaginateResponseTagListTypeDef",
+    "ListTagsPaginateResponseTypeDef",
+)
+
+
 _ClientCopyBackupToRegionResponseDestinationBackupTypeDef = TypedDict(
     "_ClientCopyBackupToRegionResponseDestinationBackupTypeDef",
     {

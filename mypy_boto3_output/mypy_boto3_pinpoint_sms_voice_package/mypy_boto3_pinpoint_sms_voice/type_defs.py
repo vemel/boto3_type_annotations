@@ -5,6 +5,14 @@ from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateConfigurationSetEventDestinationEventDestinationTypeDef",
+    "ClientGetConfigurationSetEventDestinationsResponseTypeDef",
+    "ClientSendVoiceMessageResponseTypeDef",
+    "ClientUpdateConfigurationSetEventDestinationEventDestinationTypeDef",
+)
+
+
 _ClientCreateConfigurationSetEventDestinationEventDestinationTypeDef = TypedDict(
     "_ClientCreateConfigurationSetEventDestinationEventDestinationTypeDef",
     {

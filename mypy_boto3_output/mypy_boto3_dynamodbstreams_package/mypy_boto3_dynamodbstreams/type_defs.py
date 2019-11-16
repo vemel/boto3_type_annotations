@@ -6,6 +6,25 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeStreamResponseStreamDescriptionKeySchemaTypeDef",
+    "ClientDescribeStreamResponseStreamDescriptionShardsSequenceNumberRangeTypeDef",
+    "ClientDescribeStreamResponseStreamDescriptionShardsTypeDef",
+    "ClientDescribeStreamResponseStreamDescriptionTypeDef",
+    "ClientDescribeStreamResponseTypeDef",
+    "ClientGetRecordsResponseRecordsdynamodbKeysTypeDef",
+    "ClientGetRecordsResponseRecordsdynamodbNewImageTypeDef",
+    "ClientGetRecordsResponseRecordsdynamodbOldImageTypeDef",
+    "ClientGetRecordsResponseRecordsdynamodbTypeDef",
+    "ClientGetRecordsResponseRecordsuserIdentityTypeDef",
+    "ClientGetRecordsResponseRecordsTypeDef",
+    "ClientGetRecordsResponseTypeDef",
+    "ClientGetShardIteratorResponseTypeDef",
+    "ClientListStreamsResponseStreamsTypeDef",
+    "ClientListStreamsResponseTypeDef",
+)
+
+
 _ClientDescribeStreamResponseStreamDescriptionKeySchemaTypeDef = TypedDict(
     "_ClientDescribeStreamResponseStreamDescriptionKeySchemaTypeDef",
     {"AttributeName": str, "KeyType": str},

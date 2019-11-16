@@ -13,7 +13,14 @@ from mypy_boto3_cloudhsmv2.type_defs import (
 )
 
 
-class DescribeBackups(Boto3Paginator):
+__all__ = ("DescribeBackupsPaginator", "DescribeClustersPaginator", "ListTagsPaginator")
+
+
+class DescribeBackupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_backups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -155,7 +162,11 @@ class DescribeBackups(Boto3Paginator):
         """
 
 
-class DescribeClusters(Boto3Paginator):
+class DescribeClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -402,7 +413,11 @@ class DescribeClusters(Boto3Paginator):
         """
 
 
-class ListTags(Boto3Paginator):
+class ListTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -46,7 +46,35 @@ from mypy_boto3_lightsail.type_defs import (
 )
 
 
-class GetActiveNames(Boto3Paginator):
+__all__ = (
+    "GetActiveNamesPaginator",
+    "GetBlueprintsPaginator",
+    "GetBundlesPaginator",
+    "GetCloudFormationStackRecordsPaginator",
+    "GetDiskSnapshotsPaginator",
+    "GetDisksPaginator",
+    "GetDomainsPaginator",
+    "GetExportSnapshotRecordsPaginator",
+    "GetInstanceSnapshotsPaginator",
+    "GetInstancesPaginator",
+    "GetKeyPairsPaginator",
+    "GetLoadBalancersPaginator",
+    "GetOperationsPaginator",
+    "GetRelationalDatabaseBlueprintsPaginator",
+    "GetRelationalDatabaseBundlesPaginator",
+    "GetRelationalDatabaseEventsPaginator",
+    "GetRelationalDatabaseParametersPaginator",
+    "GetRelationalDatabaseSnapshotsPaginator",
+    "GetRelationalDatabasesPaginator",
+    "GetStaticIpsPaginator",
+)
+
+
+class GetActiveNamesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_active_names`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetActiveNamesPaginatePaginationConfigTypeDef = None
@@ -113,7 +141,11 @@ class GetActiveNames(Boto3Paginator):
         """
 
 
-class GetBlueprints(Boto3Paginator):
+class GetBlueprintsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_blueprints`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -258,7 +290,11 @@ class GetBlueprints(Boto3Paginator):
         """
 
 
-class GetBundles(Boto3Paginator):
+class GetBundlesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_bundles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -402,7 +438,11 @@ class GetBundles(Boto3Paginator):
         """
 
 
-class GetCloudFormationStackRecords(Boto3Paginator):
+class GetCloudFormationStackRecordsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_cloud_formation_stack_records`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -573,7 +613,11 @@ class GetCloudFormationStackRecords(Boto3Paginator):
         """
 
 
-class GetDiskSnapshots(Boto3Paginator):
+class GetDiskSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_disk_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDiskSnapshotsPaginatePaginationConfigTypeDef = None
@@ -769,7 +813,11 @@ class GetDiskSnapshots(Boto3Paginator):
         """
 
 
-class GetDisks(Boto3Paginator):
+class GetDisksPaginator(Boto3Paginator):
+    """
+    Paginator for `get_disks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDisksPaginatePaginationConfigTypeDef = None
@@ -1020,7 +1068,11 @@ class GetDisks(Boto3Paginator):
         """
 
 
-class GetDomains(Boto3Paginator):
+class GetDomainsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_domains`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDomainsPaginatePaginationConfigTypeDef = None
@@ -1252,7 +1304,11 @@ class GetDomains(Boto3Paginator):
         """
 
 
-class GetExportSnapshotRecords(Boto3Paginator):
+class GetExportSnapshotRecordsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_export_snapshot_records`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1483,7 +1539,11 @@ class GetExportSnapshotRecords(Boto3Paginator):
         """
 
 
-class GetInstanceSnapshots(Boto3Paginator):
+class GetInstanceSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_instance_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1878,7 +1938,11 @@ class GetInstanceSnapshots(Boto3Paginator):
         """
 
 
-class GetInstances(Boto3Paginator):
+class GetInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetInstancesPaginatePaginationConfigTypeDef = None
@@ -2426,7 +2490,11 @@ class GetInstances(Boto3Paginator):
         """
 
 
-class GetKeyPairs(Boto3Paginator):
+class GetKeyPairsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_key_pairs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetKeyPairsPaginatePaginationConfigTypeDef = None
@@ -2586,7 +2654,11 @@ class GetKeyPairs(Boto3Paginator):
         """
 
 
-class GetLoadBalancers(Boto3Paginator):
+class GetLoadBalancersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_load_balancers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetLoadBalancersPaginatePaginationConfigTypeDef = None
@@ -2894,7 +2966,11 @@ class GetLoadBalancers(Boto3Paginator):
         """
 
 
-class GetOperations(Boto3Paginator):
+class GetOperationsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_operations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetOperationsPaginatePaginationConfigTypeDef = None
@@ -3059,7 +3135,11 @@ class GetOperations(Boto3Paginator):
         """
 
 
-class GetRelationalDatabaseBlueprints(Boto3Paginator):
+class GetRelationalDatabaseBlueprintsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_database_blueprints`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3162,7 +3242,11 @@ class GetRelationalDatabaseBlueprints(Boto3Paginator):
         """
 
 
-class GetRelationalDatabaseBundles(Boto3Paginator):
+class GetRelationalDatabaseBundlesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_database_bundles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3279,7 +3363,11 @@ class GetRelationalDatabaseBundles(Boto3Paginator):
         """
 
 
-class GetRelationalDatabaseEvents(Boto3Paginator):
+class GetRelationalDatabaseEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_database_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3393,7 +3481,11 @@ class GetRelationalDatabaseEvents(Boto3Paginator):
         """
 
 
-class GetRelationalDatabaseParameters(Boto3Paginator):
+class GetRelationalDatabaseParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_database_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3513,7 +3605,11 @@ class GetRelationalDatabaseParameters(Boto3Paginator):
         """
 
 
-class GetRelationalDatabaseSnapshots(Boto3Paginator):
+class GetRelationalDatabaseSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_database_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3709,7 +3805,11 @@ class GetRelationalDatabaseSnapshots(Boto3Paginator):
         """
 
 
-class GetRelationalDatabases(Boto3Paginator):
+class GetRelationalDatabasesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_relational_databases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4025,7 +4125,11 @@ class GetRelationalDatabases(Boto3Paginator):
         """
 
 
-class GetStaticIps(Boto3Paginator):
+class GetStaticIpsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_static_ips`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetStaticIpsPaginatePaginationConfigTypeDef = None

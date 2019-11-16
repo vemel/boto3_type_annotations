@@ -5,6 +5,37 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateGroupMembershipResponseGroupMemberTypeDef",
+    "ClientCreateGroupMembershipResponseTypeDef",
+    "ClientCreateGroupResponseGroupTypeDef",
+    "ClientCreateGroupResponseTypeDef",
+    "ClientDeleteGroupMembershipResponseTypeDef",
+    "ClientDeleteGroupResponseTypeDef",
+    "ClientDeleteUserByPrincipalIdResponseTypeDef",
+    "ClientDeleteUserResponseTypeDef",
+    "ClientDescribeGroupResponseGroupTypeDef",
+    "ClientDescribeGroupResponseTypeDef",
+    "ClientDescribeUserResponseUserTypeDef",
+    "ClientDescribeUserResponseTypeDef",
+    "ClientGetDashboardEmbedUrlResponseTypeDef",
+    "ClientListGroupMembershipsResponseGroupMemberListTypeDef",
+    "ClientListGroupMembershipsResponseTypeDef",
+    "ClientListGroupsResponseGroupListTypeDef",
+    "ClientListGroupsResponseTypeDef",
+    "ClientListUserGroupsResponseGroupListTypeDef",
+    "ClientListUserGroupsResponseTypeDef",
+    "ClientListUsersResponseUserListTypeDef",
+    "ClientListUsersResponseTypeDef",
+    "ClientRegisterUserResponseUserTypeDef",
+    "ClientRegisterUserResponseTypeDef",
+    "ClientUpdateGroupResponseGroupTypeDef",
+    "ClientUpdateGroupResponseTypeDef",
+    "ClientUpdateUserResponseUserTypeDef",
+    "ClientUpdateUserResponseTypeDef",
+)
+
+
 _ClientCreateGroupMembershipResponseGroupMemberTypeDef = TypedDict(
     "_ClientCreateGroupMembershipResponseGroupMemberTypeDef",
     {"Arn": str, "MemberName": str},

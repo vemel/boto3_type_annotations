@@ -13,7 +13,14 @@ from mypy_boto3_route53domains.type_defs import (
 )
 
 
-class ListDomains(Boto3Paginator):
+__all__ = ("ListDomainsPaginator", "ListOperationsPaginator", "ViewBillingPaginator")
+
+
+class ListDomainsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_domains`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDomainsPaginatePaginationConfigTypeDef = None
@@ -110,7 +117,11 @@ class ListDomains(Boto3Paginator):
         """
 
 
-class ListOperations(Boto3Paginator):
+class ListOperationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_operations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -220,7 +231,11 @@ class ListOperations(Boto3Paginator):
         """
 
 
-class ViewBilling(Boto3Paginator):
+class ViewBillingPaginator(Boto3Paginator):
+    """
+    Paginator for `view_billing`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

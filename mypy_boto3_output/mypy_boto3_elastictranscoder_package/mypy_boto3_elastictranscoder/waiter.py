@@ -5,7 +5,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_elastictranscoder.type_defs import JobCompleteWaitWaiterConfigTypeDef
 
 
-class JobComplete(Boto3Waiter):
+__all__ = ("JobCompleteWaiter",)
+
+
+class JobCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `job_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, Id: str, WaiterConfig: JobCompleteWaitWaiterConfigTypeDef = None

@@ -13,7 +13,18 @@ from mypy_boto3_budgets.type_defs import (
 )
 
 
-class DescribeBudgets(Boto3Paginator):
+__all__ = (
+    "DescribeBudgetsPaginator",
+    "DescribeNotificationsForBudgetPaginator",
+    "DescribeSubscribersForNotificationPaginator",
+)
+
+
+class DescribeBudgetsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_budgets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -415,7 +426,11 @@ class DescribeBudgets(Boto3Paginator):
         """
 
 
-class DescribeNotificationsForBudget(Boto3Paginator):
+class DescribeNotificationsForBudgetPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_notifications_for_budget`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -549,7 +564,11 @@ class DescribeNotificationsForBudget(Boto3Paginator):
         """
 
 
-class DescribeSubscribersForNotification(Boto3Paginator):
+class DescribeSubscribersForNotificationPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_subscribers_for_notification`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

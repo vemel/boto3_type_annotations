@@ -20,7 +20,21 @@ from mypy_boto3_ram.type_defs import (
 )
 
 
-class GetResourcePolicies(Boto3Paginator):
+__all__ = (
+    "GetResourcePoliciesPaginator",
+    "GetResourceShareAssociationsPaginator",
+    "GetResourceShareInvitationsPaginator",
+    "GetResourceSharesPaginator",
+    "ListPrincipalsPaginator",
+    "ListResourcesPaginator",
+)
+
+
+class GetResourcePoliciesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_resource_policies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -111,7 +125,11 @@ class GetResourcePolicies(Boto3Paginator):
         """
 
 
-class GetResourceShareAssociations(Boto3Paginator):
+class GetResourceShareAssociationsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_resource_share_associations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -275,7 +293,11 @@ class GetResourceShareAssociations(Boto3Paginator):
         """
 
 
-class GetResourceShareInvitations(Boto3Paginator):
+class GetResourceShareInvitationsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_resource_share_invitations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -472,7 +494,11 @@ class GetResourceShareInvitations(Boto3Paginator):
         """
 
 
-class GetResourceShares(Boto3Paginator):
+class GetResourceSharesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_resource_shares`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -671,7 +697,11 @@ class GetResourceShares(Boto3Paginator):
         """
 
 
-class ListPrincipals(Boto3Paginator):
+class ListPrincipalsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_principals`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -818,7 +848,11 @@ class ListPrincipals(Boto3Paginator):
         """
 
 
-class ListResources(Boto3Paginator):
+class ListResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

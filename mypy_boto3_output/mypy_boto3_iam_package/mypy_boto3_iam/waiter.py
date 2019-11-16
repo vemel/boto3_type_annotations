@@ -10,7 +10,19 @@ from mypy_boto3_iam.type_defs import (
 )
 
 
-class InstanceProfileExists(Boto3Waiter):
+__all__ = (
+    "InstanceProfileExistsWaiter",
+    "PolicyExistsWaiter",
+    "RoleExistsWaiter",
+    "UserExistsWaiter",
+)
+
+
+class InstanceProfileExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_profile_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -60,7 +72,11 @@ class InstanceProfileExists(Boto3Waiter):
         """
 
 
-class PolicyExists(Boto3Waiter):
+class PolicyExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `policy_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, PolicyArn: str, WaiterConfig: PolicyExistsWaitWaiterConfigTypeDef = None
@@ -108,7 +124,11 @@ class PolicyExists(Boto3Waiter):
         """
 
 
-class RoleExists(Boto3Waiter):
+class RoleExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `role_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, RoleName: str, WaiterConfig: RoleExistsWaitWaiterConfigTypeDef = None
@@ -155,7 +175,11 @@ class RoleExists(Boto3Waiter):
         """
 
 
-class UserExists(Boto3Waiter):
+class UserExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `user_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -10,7 +10,14 @@ from mypy_boto3_eks.type_defs import (
 )
 
 
-class ListClusters(Boto3Paginator):
+__all__ = ("ListClustersPaginator", "ListUpdatesPaginator")
+
+
+class ListClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListClustersPaginatePaginationConfigTypeDef = None
@@ -81,7 +88,11 @@ class ListClusters(Boto3Paginator):
         """
 
 
-class ListUpdates(Boto3Paginator):
+class ListUpdatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_updates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

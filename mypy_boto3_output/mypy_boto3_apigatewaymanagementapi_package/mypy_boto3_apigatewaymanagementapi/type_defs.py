@@ -5,6 +5,12 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetConnectionResponseIdentityTypeDef",
+    "ClientGetConnectionResponseTypeDef",
+)
+
+
 _ClientGetConnectionResponseIdentityTypeDef = TypedDict(
     "_ClientGetConnectionResponseIdentityTypeDef",
     {"SourceIp": str, "UserAgent": str},

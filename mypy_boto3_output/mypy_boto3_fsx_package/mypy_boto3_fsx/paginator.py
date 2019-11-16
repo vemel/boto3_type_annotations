@@ -14,7 +14,18 @@ from mypy_boto3_fsx.type_defs import (
 )
 
 
-class DescribeBackups(Boto3Paginator):
+__all__ = (
+    "DescribeBackupsPaginator",
+    "DescribeFileSystemsPaginator",
+    "ListTagsForResourcePaginator",
+)
+
+
+class DescribeBackupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_backups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -515,7 +526,11 @@ class DescribeBackups(Boto3Paginator):
         """
 
 
-class DescribeFileSystems(Boto3Paginator):
+class DescribeFileSystemsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_file_systems`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -884,7 +899,11 @@ class DescribeFileSystems(Boto3Paginator):
         """
 
 
-class ListTagsForResource(Boto3Paginator):
+class ListTagsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

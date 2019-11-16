@@ -13,7 +13,14 @@ from mypy_boto3_shield.type_defs import (
 )
 
 
-class ListAttacks(Boto3Paginator):
+__all__ = ("ListAttacksPaginator", "ListProtectionsPaginator")
+
+
+class ListAttacksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_attacks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -222,7 +229,11 @@ class ListAttacks(Boto3Paginator):
         """
 
 
-class ListProtections(Boto3Paginator):
+class ListProtectionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_protections`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProtectionsPaginatePaginationConfigTypeDef = None

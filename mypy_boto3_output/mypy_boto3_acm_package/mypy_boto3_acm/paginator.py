@@ -10,7 +10,14 @@ from mypy_boto3_acm.type_defs import (
 )
 
 
-class ListCertificates(Boto3Paginator):
+__all__ = ("ListCertificatesPaginator",)
+
+
+class ListCertificatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_certificates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -2,9 +2,12 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_servicecatalog.paginator as paginator_scope
 from mypy_boto3_servicecatalog.type_defs import (
     ClientBatchAssociateServiceActionWithProvisioningArtifactResponseTypeDef,
     ClientBatchAssociateServiceActionWithProvisioningArtifactServiceActionAssociationsTypeDef,
@@ -93,6 +96,9 @@ from mypy_boto3_servicecatalog.type_defs import (
     ClientUpdateServiceActionResponseTypeDef,
     ClientUpdateTagOptionResponseTypeDef,
 )
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -5603,40 +5609,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_accepted_portfolio_shares(
         self,
         AcceptLanguage: str = None,
@@ -10714,4 +10686,169 @@ class Client(BaseClient):
 
                 The TagOption identifier.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_accepted_portfolio_shares"]
+    ) -> paginator_scope.ListAcceptedPortfolioSharesPaginator:
+        """
+        Get Paginator for `list_accepted_portfolio_shares` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_constraints_for_portfolio"]
+    ) -> paginator_scope.ListConstraintsForPortfolioPaginator:
+        """
+        Get Paginator for `list_constraints_for_portfolio` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_launch_paths"]
+    ) -> paginator_scope.ListLaunchPathsPaginator:
+        """
+        Get Paginator for `list_launch_paths` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_organization_portfolio_access"]
+    ) -> paginator_scope.ListOrganizationPortfolioAccessPaginator:
+        """
+        Get Paginator for `list_organization_portfolio_access` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_portfolios"]
+    ) -> paginator_scope.ListPortfoliosPaginator:
+        """
+        Get Paginator for `list_portfolios` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_portfolios_for_product"]
+    ) -> paginator_scope.ListPortfoliosForProductPaginator:
+        """
+        Get Paginator for `list_portfolios_for_product` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_principals_for_portfolio"]
+    ) -> paginator_scope.ListPrincipalsForPortfolioPaginator:
+        """
+        Get Paginator for `list_principals_for_portfolio` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_provisioned_product_plans"]
+    ) -> paginator_scope.ListProvisionedProductPlansPaginator:
+        """
+        Get Paginator for `list_provisioned_product_plans` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_provisioning_artifacts_for_service_action"]
+    ) -> paginator_scope.ListProvisioningArtifactsForServiceActionPaginator:
+        """
+        Get Paginator for `list_provisioning_artifacts_for_service_action` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_record_history"]
+    ) -> paginator_scope.ListRecordHistoryPaginator:
+        """
+        Get Paginator for `list_record_history` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_resources_for_tag_option"]
+    ) -> paginator_scope.ListResourcesForTagOptionPaginator:
+        """
+        Get Paginator for `list_resources_for_tag_option` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_service_actions"]
+    ) -> paginator_scope.ListServiceActionsPaginator:
+        """
+        Get Paginator for `list_service_actions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_service_actions_for_provisioning_artifact"]
+    ) -> paginator_scope.ListServiceActionsForProvisioningArtifactPaginator:
+        """
+        Get Paginator for `list_service_actions_for_provisioning_artifact` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_tag_options"]
+    ) -> paginator_scope.ListTagOptionsPaginator:
+        """
+        Get Paginator for `list_tag_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["scan_provisioned_products"]
+    ) -> paginator_scope.ScanProvisionedProductsPaginator:
+        """
+        Get Paginator for `scan_provisioned_products` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["search_products_as_admin"]
+    ) -> paginator_scope.SearchProductsAsAdminPaginator:
+        """
+        Get Paginator for `search_products_as_admin` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
         """

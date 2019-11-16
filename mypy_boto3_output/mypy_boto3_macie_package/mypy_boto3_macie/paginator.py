@@ -10,7 +10,14 @@ from mypy_boto3_macie.type_defs import (
 )
 
 
-class ListMemberAccounts(Boto3Paginator):
+__all__ = ("ListMemberAccountsPaginator", "ListS3ResourcesPaginator")
+
+
+class ListMemberAccountsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_member_accounts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMemberAccountsPaginatePaginationConfigTypeDef = None
@@ -91,7 +98,11 @@ class ListMemberAccounts(Boto3Paginator):
         """
 
 
-class ListS3Resources(Boto3Paginator):
+class ListS3ResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_s3_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -12,7 +12,18 @@ from mypy_boto3_codebuild.type_defs import (
 )
 
 
-class ListBuilds(Boto3Paginator):
+__all__ = (
+    "ListBuildsPaginator",
+    "ListBuildsForProjectPaginator",
+    "ListProjectsPaginator",
+)
+
+
+class ListBuildsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_builds`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -91,7 +102,11 @@ class ListBuilds(Boto3Paginator):
         """
 
 
-class ListBuildsForProject(Boto3Paginator):
+class ListBuildsForProjectPaginator(Boto3Paginator):
+    """
+    Paginator for `list_builds_for_project`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -178,7 +193,11 @@ class ListBuildsForProject(Boto3Paginator):
         """
 
 
-class ListProjects(Boto3Paginator):
+class ListProjectsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_projects`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

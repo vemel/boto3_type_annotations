@@ -10,7 +10,14 @@ from mypy_boto3_iot1click_projects.type_defs import (
 )
 
 
-class ListPlacements(Boto3Paginator):
+__all__ = ("ListPlacementsPaginator", "ListProjectsPaginator")
+
+
+class ListPlacementsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_placements`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -114,7 +121,11 @@ class ListPlacements(Boto3Paginator):
         """
 
 
-class ListProjects(Boto3Paginator):
+class ListProjectsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_projects`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListProjectsPaginatePaginationConfigTypeDef = None

@@ -16,7 +16,20 @@ from mypy_boto3_s3.type_defs import (
 )
 
 
-class ListMultipartUploads(Boto3Paginator):
+__all__ = (
+    "ListMultipartUploadsPaginator",
+    "ListObjectVersionsPaginator",
+    "ListObjectsPaginator",
+    "ListObjectsV2Paginator",
+    "ListPartsPaginator",
+)
+
+
+class ListMultipartUploadsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_multipart_uploads`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -219,7 +232,11 @@ class ListMultipartUploads(Boto3Paginator):
         """
 
 
-class ListObjectVersions(Boto3Paginator):
+class ListObjectVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_object_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -446,7 +463,11 @@ class ListObjectVersions(Boto3Paginator):
         """
 
 
-class ListObjects(Boto3Paginator):
+class ListObjectsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_objects`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -631,7 +652,11 @@ class ListObjects(Boto3Paginator):
         """
 
 
-class ListObjectsV2(Boto3Paginator):
+class ListObjectsV2Paginator(Boto3Paginator):
+    """
+    Paginator for `list_objects_v2`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -850,7 +875,11 @@ class ListObjectsV2(Boto3Paginator):
         """
 
 
-class ListParts(Boto3Paginator):
+class ListPartsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_parts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

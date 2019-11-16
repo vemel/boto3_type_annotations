@@ -11,7 +11,19 @@ from mypy_boto3_s3.type_defs import (
 )
 
 
-class BucketExists(Boto3Waiter):
+__all__ = (
+    "BucketExistsWaiter",
+    "BucketNotExistsWaiter",
+    "ObjectExistsWaiter",
+    "ObjectNotExistsWaiter",
+)
+
+
+class BucketExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `bucket_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, Bucket: str, WaiterConfig: BucketExistsWaitWaiterConfigTypeDef = None
@@ -53,7 +65,11 @@ class BucketExists(Boto3Waiter):
         """
 
 
-class BucketNotExists(Boto3Waiter):
+class BucketNotExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `bucket_not_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, Bucket: str, WaiterConfig: BucketNotExistsWaitWaiterConfigTypeDef = None
@@ -95,7 +111,11 @@ class BucketNotExists(Boto3Waiter):
         """
 
 
-class ObjectExists(Boto3Waiter):
+class ObjectExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `object_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -237,7 +257,11 @@ class ObjectExists(Boto3Waiter):
         """
 
 
-class ObjectNotExists(Boto3Waiter):
+class ObjectNotExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `object_not_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

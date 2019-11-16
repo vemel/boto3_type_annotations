@@ -16,7 +16,20 @@ from mypy_boto3_pinpoint_email.type_defs import (
 )
 
 
-class GetDedicatedIps(Boto3Paginator):
+__all__ = (
+    "GetDedicatedIpsPaginator",
+    "ListConfigurationSetsPaginator",
+    "ListDedicatedIpPoolsPaginator",
+    "ListDeliverabilityTestReportsPaginator",
+    "ListEmailIdentitiesPaginator",
+)
+
+
+class GetDedicatedIpsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_dedicated_ips`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -127,7 +140,11 @@ class GetDedicatedIps(Boto3Paginator):
         """
 
 
-class ListConfigurationSets(Boto3Paginator):
+class ListConfigurationSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_configuration_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -206,7 +223,11 @@ class ListConfigurationSets(Boto3Paginator):
         """
 
 
-class ListDedicatedIpPools(Boto3Paginator):
+class ListDedicatedIpPoolsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dedicated_ip_pools`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -279,7 +300,11 @@ class ListDedicatedIpPools(Boto3Paginator):
         """
 
 
-class ListDeliverabilityTestReports(Boto3Paginator):
+class ListDeliverabilityTestReportsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_deliverability_test_reports`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -389,7 +414,11 @@ class ListDeliverabilityTestReports(Boto3Paginator):
         """
 
 
-class ListEmailIdentities(Boto3Paginator):
+class ListEmailIdentitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_email_identities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

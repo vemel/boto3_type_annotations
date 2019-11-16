@@ -6,6 +6,29 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateVocabularyResponseTypeDef",
+    "ClientGetTranscriptionJobResponseTranscriptionJobMediaTypeDef",
+    "ClientGetTranscriptionJobResponseTranscriptionJobSettingsTypeDef",
+    "ClientGetTranscriptionJobResponseTranscriptionJobTranscriptTypeDef",
+    "ClientGetTranscriptionJobResponseTranscriptionJobTypeDef",
+    "ClientGetTranscriptionJobResponseTypeDef",
+    "ClientGetVocabularyResponseTypeDef",
+    "ClientListTranscriptionJobsResponseTranscriptionJobSummariesTypeDef",
+    "ClientListTranscriptionJobsResponseTypeDef",
+    "ClientListVocabulariesResponseVocabulariesTypeDef",
+    "ClientListVocabulariesResponseTypeDef",
+    "ClientStartTranscriptionJobMediaTypeDef",
+    "ClientStartTranscriptionJobResponseTranscriptionJobMediaTypeDef",
+    "ClientStartTranscriptionJobResponseTranscriptionJobSettingsTypeDef",
+    "ClientStartTranscriptionJobResponseTranscriptionJobTranscriptTypeDef",
+    "ClientStartTranscriptionJobResponseTranscriptionJobTypeDef",
+    "ClientStartTranscriptionJobResponseTypeDef",
+    "ClientStartTranscriptionJobSettingsTypeDef",
+    "ClientUpdateVocabularyResponseTypeDef",
+)
+
+
 _ClientCreateVocabularyResponseTypeDef = TypedDict(
     "_ClientCreateVocabularyResponseTypeDef",
     {

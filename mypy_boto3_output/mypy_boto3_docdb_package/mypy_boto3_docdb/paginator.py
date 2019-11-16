@@ -26,7 +26,21 @@ from mypy_boto3_docdb.type_defs import (
 )
 
 
-class DescribeDBClusters(Boto3Paginator):
+__all__ = (
+    "DescribeDBClustersPaginator",
+    "DescribeDBEngineVersionsPaginator",
+    "DescribeDBInstancesPaginator",
+    "DescribeDBSubnetGroupsPaginator",
+    "DescribeEventsPaginator",
+    "DescribeOrderableDBInstanceOptionsPaginator",
+)
+
+
+class DescribeDBClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_db_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -403,7 +417,11 @@ class DescribeDBClusters(Boto3Paginator):
         """
 
 
-class DescribeDBEngineVersions(Boto3Paginator):
+class DescribeDBEngineVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_db_engine_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -644,7 +662,11 @@ class DescribeDBEngineVersions(Boto3Paginator):
         """
 
 
-class DescribeDBInstances(Boto3Paginator):
+class DescribeDBInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_db_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1144,7 +1166,11 @@ class DescribeDBInstances(Boto3Paginator):
         """
 
 
-class DescribeDBSubnetGroups(Boto3Paginator):
+class DescribeDBSubnetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_db_subnet_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1318,7 +1344,11 @@ class DescribeDBSubnetGroups(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1532,7 +1562,11 @@ class DescribeEvents(Boto3Paginator):
         """
 
 
-class DescribeOrderableDBInstanceOptions(Boto3Paginator):
+class DescribeOrderableDBInstanceOptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_orderable_db_instance_options`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

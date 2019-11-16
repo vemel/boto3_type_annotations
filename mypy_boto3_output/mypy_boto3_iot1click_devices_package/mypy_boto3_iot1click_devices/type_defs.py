@@ -5,6 +5,33 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientClaimDevicesByClaimCodeResponseTypeDef",
+    "ClientDescribeDeviceResponseDeviceDescriptionTypeDef",
+    "ClientDescribeDeviceResponseTypeDef",
+    "ClientFinalizeDeviceClaimResponseTypeDef",
+    "ClientGetDeviceMethodsResponseDeviceMethodsTypeDef",
+    "ClientGetDeviceMethodsResponseTypeDef",
+    "ClientInitiateDeviceClaimResponseTypeDef",
+    "ClientInvokeDeviceMethodDeviceMethodTypeDef",
+    "ClientInvokeDeviceMethodResponseTypeDef",
+    "ClientListDeviceEventsResponseEventsDeviceTypeDef",
+    "ClientListDeviceEventsResponseEventsTypeDef",
+    "ClientListDeviceEventsResponseTypeDef",
+    "ClientListDevicesResponseDevicesTypeDef",
+    "ClientListDevicesResponseTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientUnclaimDeviceResponseTypeDef",
+    "ListDeviceEventsPaginatePaginationConfigTypeDef",
+    "ListDeviceEventsPaginateResponseEventsDeviceTypeDef",
+    "ListDeviceEventsPaginateResponseEventsTypeDef",
+    "ListDeviceEventsPaginateResponseTypeDef",
+    "ListDevicesPaginatePaginationConfigTypeDef",
+    "ListDevicesPaginateResponseDevicesTypeDef",
+    "ListDevicesPaginateResponseTypeDef",
+)
+
+
 _ClientClaimDevicesByClaimCodeResponseTypeDef = TypedDict(
     "_ClientClaimDevicesByClaimCodeResponseTypeDef",
     {"ClaimCode": str, "Total": int},

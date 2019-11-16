@@ -14,7 +14,19 @@ from mypy_boto3_elastictranscoder.type_defs import (
 )
 
 
-class ListJobsByPipeline(Boto3Paginator):
+__all__ = (
+    "ListJobsByPipelinePaginator",
+    "ListJobsByStatusPaginator",
+    "ListPipelinesPaginator",
+    "ListPresetsPaginator",
+)
+
+
+class ListJobsByPipelinePaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs_by_pipeline`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3208,7 +3220,11 @@ class ListJobsByPipeline(Boto3Paginator):
         """
 
 
-class ListJobsByStatus(Boto3Paginator):
+class ListJobsByStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs_by_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -6404,7 +6420,11 @@ class ListJobsByStatus(Boto3Paginator):
         """
 
 
-class ListPipelines(Boto3Paginator):
+class ListPipelinesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_pipelines`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -6889,7 +6909,11 @@ class ListPipelines(Boto3Paginator):
         """
 
 
-class ListPresets(Boto3Paginator):
+class ListPresetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_presets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

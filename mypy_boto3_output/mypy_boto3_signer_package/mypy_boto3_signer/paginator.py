@@ -12,7 +12,18 @@ from mypy_boto3_signer.type_defs import (
 )
 
 
-class ListSigningJobs(Boto3Paginator):
+__all__ = (
+    "ListSigningJobsPaginator",
+    "ListSigningPlatformsPaginator",
+    "ListSigningProfilesPaginator",
+)
+
+
+class ListSigningJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_signing_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -186,7 +197,11 @@ class ListSigningJobs(Boto3Paginator):
         """
 
 
-class ListSigningPlatforms(Boto3Paginator):
+class ListSigningPlatformsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_signing_platforms`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -381,7 +396,11 @@ class ListSigningPlatforms(Boto3Paginator):
         """
 
 
-class ListSigningProfiles(Boto3Paginator):
+class ListSigningProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_signing_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

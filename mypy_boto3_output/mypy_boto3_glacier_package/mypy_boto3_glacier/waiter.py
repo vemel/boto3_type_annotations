@@ -8,7 +8,14 @@ from mypy_boto3_glacier.type_defs import (
 )
 
 
-class VaultExists(Boto3Waiter):
+__all__ = ("VaultExistsWaiter", "VaultNotExistsWaiter")
+
+
+class VaultExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `vault_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -65,7 +72,11 @@ class VaultExists(Boto3Waiter):
         """
 
 
-class VaultNotExists(Boto3Waiter):
+class VaultNotExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `vault_not_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

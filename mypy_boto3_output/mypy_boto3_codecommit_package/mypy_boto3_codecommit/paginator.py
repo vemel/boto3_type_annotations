@@ -20,7 +20,22 @@ from mypy_boto3_codecommit.type_defs import (
 )
 
 
-class DescribePullRequestEvents(Boto3Paginator):
+__all__ = (
+    "DescribePullRequestEventsPaginator",
+    "GetCommentsForComparedCommitPaginator",
+    "GetCommentsForPullRequestPaginator",
+    "GetDifferencesPaginator",
+    "ListBranchesPaginator",
+    "ListPullRequestsPaginator",
+    "ListRepositoriesPaginator",
+)
+
+
+class DescribePullRequestEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_pull_request_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -255,7 +270,11 @@ class DescribePullRequestEvents(Boto3Paginator):
         """
 
 
-class GetCommentsForComparedCommit(Boto3Paginator):
+class GetCommentsForComparedCommitPaginator(Boto3Paginator):
+    """
+    Paginator for `get_comments_for_compared_commit`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -457,7 +476,11 @@ class GetCommentsForComparedCommit(Boto3Paginator):
         """
 
 
-class GetCommentsForPullRequest(Boto3Paginator):
+class GetCommentsForPullRequestPaginator(Boto3Paginator):
+    """
+    Paginator for `get_comments_for_pull_request`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -676,7 +699,11 @@ class GetCommentsForPullRequest(Boto3Paginator):
         """
 
 
-class GetDifferences(Boto3Paginator):
+class GetDifferencesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_differences`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -857,7 +884,11 @@ class GetDifferences(Boto3Paginator):
         """
 
 
-class ListBranches(Boto3Paginator):
+class ListBranchesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_branches`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -934,7 +965,11 @@ class ListBranches(Boto3Paginator):
         """
 
 
-class ListPullRequests(Boto3Paginator):
+class ListPullRequestsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_pull_requests`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1030,7 +1065,11 @@ class ListPullRequests(Boto3Paginator):
         """
 
 
-class ListRepositories(Boto3Paginator):
+class ListRepositoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_repositories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -14,7 +14,19 @@ from mypy_boto3_glacier.type_defs import (
 )
 
 
-class ListJobs(Boto3Paginator):
+__all__ = (
+    "ListJobsPaginator",
+    "ListMultipartUploadsPaginator",
+    "ListPartsPaginator",
+    "ListVaultsPaginator",
+)
+
+
+class ListJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -519,7 +531,11 @@ class ListJobs(Boto3Paginator):
         """
 
 
-class ListMultipartUploads(Boto3Paginator):
+class ListMultipartUploadsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_multipart_uploads`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -643,7 +659,11 @@ class ListMultipartUploads(Boto3Paginator):
         """
 
 
-class ListParts(Boto3Paginator):
+class ListPartsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_parts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -783,7 +803,11 @@ class ListParts(Boto3Paginator):
         """
 
 
-class ListVaults(Boto3Paginator):
+class ListVaultsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_vaults`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

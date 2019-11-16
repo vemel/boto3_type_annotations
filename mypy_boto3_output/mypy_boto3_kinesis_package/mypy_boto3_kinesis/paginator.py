@@ -15,7 +15,19 @@ from mypy_boto3_kinesis.type_defs import (
 )
 
 
-class DescribeStream(Boto3Paginator):
+__all__ = (
+    "DescribeStreamPaginator",
+    "ListShardsPaginator",
+    "ListStreamConsumersPaginator",
+    "ListStreamsPaginator",
+)
+
+
+class DescribeStreamPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_stream`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -276,7 +288,11 @@ class DescribeStream(Boto3Paginator):
         """
 
 
-class ListShards(Boto3Paginator):
+class ListShardsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_shards`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -433,7 +449,11 @@ class ListShards(Boto3Paginator):
         """
 
 
-class ListStreamConsumers(Boto3Paginator):
+class ListStreamConsumersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stream_consumers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -550,7 +570,11 @@ class ListStreamConsumers(Boto3Paginator):
         """
 
 
-class ListStreams(Boto3Paginator):
+class ListStreamsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_streams`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListStreamsPaginatePaginationConfigTypeDef = None

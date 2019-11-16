@@ -11,7 +11,14 @@ from mypy_boto3_support.type_defs import (
 )
 
 
-class DescribeCases(Boto3Paginator):
+__all__ = ("DescribeCasesPaginator", "DescribeCommunicationsPaginator")
+
+
+class DescribeCasesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -324,7 +331,11 @@ class DescribeCases(Boto3Paginator):
         """
 
 
-class DescribeCommunications(Boto3Paginator):
+class DescribeCommunicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_communications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

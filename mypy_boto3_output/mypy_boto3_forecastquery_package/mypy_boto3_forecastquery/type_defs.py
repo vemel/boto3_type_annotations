@@ -5,6 +5,13 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientQueryForecastResponseForecastPredictionsTypeDef",
+    "ClientQueryForecastResponseForecastTypeDef",
+    "ClientQueryForecastResponseTypeDef",
+)
+
+
 _ClientQueryForecastResponseForecastPredictionsTypeDef = TypedDict(
     "_ClientQueryForecastResponseForecastPredictionsTypeDef",
     {"Timestamp": str, "Value": float},

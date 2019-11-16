@@ -5,6 +5,38 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientBatchExecuteStatementResponseupdateResultsgeneratedFieldsarrayValueTypeDef",
+    "ClientBatchExecuteStatementResponseupdateResultsgeneratedFieldsTypeDef",
+    "ClientBatchExecuteStatementResponseupdateResultsTypeDef",
+    "ClientBatchExecuteStatementResponseTypeDef",
+    "ClientBatchExecuteStatementparameterSetsvaluearrayValueTypeDef",
+    "ClientBatchExecuteStatementparameterSetsvalueTypeDef",
+    "ClientBatchExecuteStatementparameterSetsTypeDef",
+    "ClientBeginTransactionResponseTypeDef",
+    "ClientCommitTransactionResponseTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFramerecordsvaluesstructValueTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFramerecordsvaluesTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFramerecordsTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFrameresultSetMetadatacolumnMetadataTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFrameresultSetMetadataTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsresultFrameTypeDef",
+    "ClientExecuteSqlResponsesqlStatementResultsTypeDef",
+    "ClientExecuteSqlResponseTypeDef",
+    "ClientExecuteStatementResponsecolumnMetadataTypeDef",
+    "ClientExecuteStatementResponsegeneratedFieldsarrayValueTypeDef",
+    "ClientExecuteStatementResponsegeneratedFieldsTypeDef",
+    "ClientExecuteStatementResponserecordsarrayValueTypeDef",
+    "ClientExecuteStatementResponserecordsTypeDef",
+    "ClientExecuteStatementResponseTypeDef",
+    "ClientExecuteStatementparametersvaluearrayValueTypeDef",
+    "ClientExecuteStatementparametersvalueTypeDef",
+    "ClientExecuteStatementparametersTypeDef",
+    "ClientExecuteStatementresultSetOptionsTypeDef",
+    "ClientRollbackTransactionResponseTypeDef",
+)
+
+
 _ClientBatchExecuteStatementResponseupdateResultsgeneratedFieldsarrayValueTypeDef = TypedDict(
     "_ClientBatchExecuteStatementResponseupdateResultsgeneratedFieldsarrayValueTypeDef",
     {

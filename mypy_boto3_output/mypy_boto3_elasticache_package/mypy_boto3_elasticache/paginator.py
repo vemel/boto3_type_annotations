@@ -36,7 +36,29 @@ from mypy_boto3_elasticache.type_defs import (
 )
 
 
-class DescribeCacheClusters(Boto3Paginator):
+__all__ = (
+    "DescribeCacheClustersPaginator",
+    "DescribeCacheEngineVersionsPaginator",
+    "DescribeCacheParameterGroupsPaginator",
+    "DescribeCacheParametersPaginator",
+    "DescribeCacheSecurityGroupsPaginator",
+    "DescribeCacheSubnetGroupsPaginator",
+    "DescribeEngineDefaultParametersPaginator",
+    "DescribeEventsPaginator",
+    "DescribeReplicationGroupsPaginator",
+    "DescribeReservedCacheNodesPaginator",
+    "DescribeReservedCacheNodesOfferingsPaginator",
+    "DescribeServiceUpdatesPaginator",
+    "DescribeSnapshotsPaginator",
+    "DescribeUpdateActionsPaginator",
+)
+
+
+class DescribeCacheClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -595,7 +617,11 @@ class DescribeCacheClusters(Boto3Paginator):
         """
 
 
-class DescribeCacheEngineVersions(Boto3Paginator):
+class DescribeCacheEngineVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_engine_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -744,7 +770,11 @@ class DescribeCacheEngineVersions(Boto3Paginator):
         """
 
 
-class DescribeCacheParameterGroups(Boto3Paginator):
+class DescribeCacheParameterGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_parameter_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -849,7 +879,11 @@ class DescribeCacheParameterGroups(Boto3Paginator):
         """
 
 
-class DescribeCacheParameters(Boto3Paginator):
+class DescribeCacheParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1073,7 +1107,11 @@ class DescribeCacheParameters(Boto3Paginator):
         """
 
 
-class DescribeCacheSecurityGroups(Boto3Paginator):
+class DescribeCacheSecurityGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_security_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1207,7 +1245,11 @@ class DescribeCacheSecurityGroups(Boto3Paginator):
         """
 
 
-class DescribeCacheSubnetGroups(Boto3Paginator):
+class DescribeCacheSubnetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cache_subnet_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1341,7 +1383,11 @@ class DescribeCacheSubnetGroups(Boto3Paginator):
         """
 
 
-class DescribeEngineDefaultParameters(Boto3Paginator):
+class DescribeEngineDefaultParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_engine_default_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1581,7 +1627,11 @@ class DescribeEngineDefaultParameters(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1725,7 +1775,11 @@ class DescribeEvents(Boto3Paginator):
         """
 
 
-class DescribeReplicationGroups(Boto3Paginator):
+class DescribeReplicationGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_replication_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2125,7 +2179,11 @@ class DescribeReplicationGroups(Boto3Paginator):
         """
 
 
-class DescribeReservedCacheNodes(Boto3Paginator):
+class DescribeReservedCacheNodesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_cache_nodes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2430,7 +2488,11 @@ class DescribeReservedCacheNodes(Boto3Paginator):
         """
 
 
-class DescribeReservedCacheNodesOfferings(Boto3Paginator):
+class DescribeReservedCacheNodesOfferingsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_cache_nodes_offerings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2701,7 +2763,11 @@ class DescribeReservedCacheNodesOfferings(Boto3Paginator):
         """
 
 
-class DescribeServiceUpdates(Boto3Paginator):
+class DescribeServiceUpdatesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_service_updates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2860,7 +2926,11 @@ class DescribeServiceUpdates(Boto3Paginator):
         """
 
 
-class DescribeSnapshots(Boto3Paginator):
+class DescribeSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3274,7 +3344,11 @@ class DescribeSnapshots(Boto3Paginator):
         """
 
 
-class DescribeUpdateActions(Boto3Paginator):
+class DescribeUpdateActionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_update_actions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

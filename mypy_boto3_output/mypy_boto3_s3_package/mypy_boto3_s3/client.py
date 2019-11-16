@@ -3,11 +3,15 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Callable, Dict, IO, List, Union
+from typing_extensions import Literal, overload
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3.type_defs import S3CopySource as TypeDefS3CopySource
+
+# pylint: disable=import-self
+import mypy_boto3_s3.paginator as paginator_scope
 from mypy_boto3_s3.type_defs import (
     ClientAbortMultipartUploadResponseTypeDef,
     ClientCompleteMultipartUploadMultipartUploadTypeDef,
@@ -96,6 +100,12 @@ from mypy_boto3_s3.type_defs import (
     ClientUploadPartCopyResponseTypeDef,
     ClientUploadPartResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_s3.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -309,7 +319,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -1720,7 +1730,7 @@ class Client(BaseClient):
         Key: str,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1765,7 +1775,7 @@ class Client(BaseClient):
         Key: str,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -4992,27 +5002,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_public_access_block(
         self, Bucket: str
     ) -> ClientGetPublicAccessBlockResponseTypeDef:
@@ -5094,19 +5083,6 @@ class Client(BaseClient):
                 and cross-account access within any public bucket policy, including non-public delegation
                 to specific accounts, is blocked.
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -10868,7 +10844,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -10913,7 +10889,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -11330,4 +11306,119 @@ class Client(BaseClient):
 
               If present, indicates that the requester was successfully charged for the request.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_multipart_uploads"]
+    ) -> paginator_scope.ListMultipartUploadsPaginator:
+        """
+        Get Paginator for `list_multipart_uploads` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_object_versions"]
+    ) -> paginator_scope.ListObjectVersionsPaginator:
+        """
+        Get Paginator for `list_object_versions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_objects"]
+    ) -> paginator_scope.ListObjectsPaginator:
+        """
+        Get Paginator for `list_objects` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_objects_v2"]
+    ) -> paginator_scope.ListObjectsV2Paginator:
+        """
+        Get Paginator for `list_objects_v2` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_parts"]
+    ) -> paginator_scope.ListPartsPaginator:
+        """
+        Get Paginator for `list_parts` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["bucket_exists"]
+    ) -> waiter_scope.BucketExistsWaiter:
+        """
+        Get Waiter `bucket_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["bucket_not_exists"]
+    ) -> waiter_scope.BucketNotExistsWaiter:
+        """
+        Get Waiter `bucket_not_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["object_exists"]
+    ) -> waiter_scope.ObjectExistsWaiter:
+        """
+        Get Waiter `object_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["object_not_exists"]
+    ) -> waiter_scope.ObjectNotExistsWaiter:
+        """
+        Get Waiter `object_not_exists`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

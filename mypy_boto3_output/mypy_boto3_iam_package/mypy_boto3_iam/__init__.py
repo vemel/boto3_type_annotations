@@ -23,22 +23,7 @@ from mypy_boto3_iam.service_resource import SigningCertificate
 from mypy_boto3_iam.service_resource import User
 from mypy_boto3_iam.service_resource import UserPolicy
 from mypy_boto3_iam.service_resource import VirtualMfaDevice
-from mypy_boto3_iam.service_resource import access_keys
-from mypy_boto3_iam.service_resource import attached_groups
-from mypy_boto3_iam.service_resource import attached_policies
-from mypy_boto3_iam.service_resource import attached_roles
-from mypy_boto3_iam.service_resource import attached_users
-from mypy_boto3_iam.service_resource import groups
-from mypy_boto3_iam.service_resource import instance_profiles
-from mypy_boto3_iam.service_resource import mfa_devices
-from mypy_boto3_iam.service_resource import policies
-from mypy_boto3_iam.service_resource import roles
-from mypy_boto3_iam.service_resource import saml_providers
-from mypy_boto3_iam.service_resource import server_certificates
-from mypy_boto3_iam.service_resource import signing_certificates
-from mypy_boto3_iam.service_resource import users
-from mypy_boto3_iam.service_resource import versions
-from mypy_boto3_iam.service_resource import virtual_mfa_devices
+
 
 __all__ = (
     "Client",
@@ -64,20 +49,4 @@ __all__ = (
     "User",
     "UserPolicy",
     "VirtualMfaDevice",
-    "access_keys",
-    "attached_groups",
-    "attached_policies",
-    "attached_roles",
-    "attached_users",
-    "groups",
-    "instance_profiles",
-    "mfa_devices",
-    "policies",
-    "roles",
-    "saml_providers",
-    "server_certificates",
-    "signing_certificates",
-    "users",
-    "versions",
-    "virtual_mfa_devices",
 )

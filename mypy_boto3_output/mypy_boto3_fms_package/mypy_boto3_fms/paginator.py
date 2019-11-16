@@ -12,7 +12,18 @@ from mypy_boto3_fms.type_defs import (
 )
 
 
-class ListComplianceStatus(Boto3Paginator):
+__all__ = (
+    "ListComplianceStatusPaginator",
+    "ListMemberAccountsPaginator",
+    "ListPoliciesPaginator",
+)
+
+
+class ListComplianceStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `list_compliance_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -166,7 +177,11 @@ class ListComplianceStatus(Boto3Paginator):
         """
 
 
-class ListMemberAccounts(Boto3Paginator):
+class ListMemberAccountsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_member_accounts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMemberAccountsPaginatePaginationConfigTypeDef = None
@@ -234,7 +249,11 @@ class ListMemberAccounts(Boto3Paginator):
         """
 
 
-class ListPolicies(Boto3Paginator):
+class ListPoliciesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_policies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPoliciesPaginatePaginationConfigTypeDef = None

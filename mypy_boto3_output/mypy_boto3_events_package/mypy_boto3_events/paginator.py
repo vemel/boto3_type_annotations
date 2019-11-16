@@ -12,7 +12,18 @@ from mypy_boto3_events.type_defs import (
 )
 
 
-class ListRuleNamesByTarget(Boto3Paginator):
+__all__ = (
+    "ListRuleNamesByTargetPaginator",
+    "ListRulesPaginator",
+    "ListTargetsByRulePaginator",
+)
+
+
+class ListRuleNamesByTargetPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rule_names_by_target`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -95,7 +106,11 @@ class ListRuleNamesByTarget(Boto3Paginator):
         """
 
 
-class ListRules(Boto3Paginator):
+class ListRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -230,7 +245,11 @@ class ListRules(Boto3Paginator):
         """
 
 
-class ListTargetsByRule(Boto3Paginator):
+class ListTargetsByRulePaginator(Boto3Paginator):
+    """
+    Paginator for `list_targets_by_rule`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

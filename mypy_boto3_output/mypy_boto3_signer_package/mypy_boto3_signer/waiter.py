@@ -5,7 +5,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_signer.type_defs import SuccessfulSigningJobWaitWaiterConfigTypeDef
 
 
-class SuccessfulSigningJob(Boto3Waiter):
+__all__ = ("SuccessfulSigningJobWaiter",)
+
+
+class SuccessfulSigningJobWaiter(Boto3Waiter):
+    """
+    Waiter for `successful_signing_job` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

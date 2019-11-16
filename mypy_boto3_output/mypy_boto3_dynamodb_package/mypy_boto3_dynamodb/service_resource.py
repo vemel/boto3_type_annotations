@@ -54,7 +54,12 @@ from mypy_boto3_dynamodb.type_defs import (
 )
 
 
+__all__ = ("ServiceResource", "Table", "ServiceResourceTablesCollection")
+
+
 class ServiceResource(Boto3ServiceResource):
+    tables: service_resource_scope.ServiceResourceTablesCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Table(self, name: str) -> service_resource_scope.Table:
         """
@@ -12101,7 +12106,7 @@ class Table(Boto3ServiceResource):
         """
 
 
-class tables(ResourceCollection):
+class ServiceResourceTablesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

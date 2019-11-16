@@ -5,6 +5,31 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAssumeRolePolicyArnsTypeDef",
+    "ClientAssumeRoleResponseAssumedRoleUserTypeDef",
+    "ClientAssumeRoleResponseCredentialsTypeDef",
+    "ClientAssumeRoleResponseTypeDef",
+    "ClientAssumeRoleWithSamlPolicyArnsTypeDef",
+    "ClientAssumeRoleWithSamlResponseAssumedRoleUserTypeDef",
+    "ClientAssumeRoleWithSamlResponseCredentialsTypeDef",
+    "ClientAssumeRoleWithSamlResponseTypeDef",
+    "ClientAssumeRoleWithWebIdentityPolicyArnsTypeDef",
+    "ClientAssumeRoleWithWebIdentityResponseAssumedRoleUserTypeDef",
+    "ClientAssumeRoleWithWebIdentityResponseCredentialsTypeDef",
+    "ClientAssumeRoleWithWebIdentityResponseTypeDef",
+    "ClientDecodeAuthorizationMessageResponseTypeDef",
+    "ClientGetAccessKeyInfoResponseTypeDef",
+    "ClientGetCallerIdentityResponseTypeDef",
+    "ClientGetFederationTokenPolicyArnsTypeDef",
+    "ClientGetFederationTokenResponseCredentialsTypeDef",
+    "ClientGetFederationTokenResponseFederatedUserTypeDef",
+    "ClientGetFederationTokenResponseTypeDef",
+    "ClientGetSessionTokenResponseCredentialsTypeDef",
+    "ClientGetSessionTokenResponseTypeDef",
+)
+
+
 _ClientAssumeRolePolicyArnsTypeDef = TypedDict(
     "_ClientAssumeRolePolicyArnsTypeDef", {"arn": str}, total=False
 )

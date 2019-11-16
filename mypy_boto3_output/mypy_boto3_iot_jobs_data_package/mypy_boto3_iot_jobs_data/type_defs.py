@@ -5,6 +5,19 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeJobExecutionResponseexecutionTypeDef",
+    "ClientDescribeJobExecutionResponseTypeDef",
+    "ClientGetPendingJobExecutionsResponseinProgressJobsTypeDef",
+    "ClientGetPendingJobExecutionsResponsequeuedJobsTypeDef",
+    "ClientGetPendingJobExecutionsResponseTypeDef",
+    "ClientStartNextPendingJobExecutionResponseexecutionTypeDef",
+    "ClientStartNextPendingJobExecutionResponseTypeDef",
+    "ClientUpdateJobExecutionResponseexecutionStateTypeDef",
+    "ClientUpdateJobExecutionResponseTypeDef",
+)
+
+
 _ClientDescribeJobExecutionResponseexecutionTypeDef = TypedDict(
     "_ClientDescribeJobExecutionResponseexecutionTypeDef",
     {

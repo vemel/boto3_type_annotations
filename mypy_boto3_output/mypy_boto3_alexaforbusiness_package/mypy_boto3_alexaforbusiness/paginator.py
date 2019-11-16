@@ -43,7 +43,28 @@ from mypy_boto3_alexaforbusiness.type_defs import (
 )
 
 
-class ListBusinessReportSchedules(Boto3Paginator):
+__all__ = (
+    "ListBusinessReportSchedulesPaginator",
+    "ListConferenceProvidersPaginator",
+    "ListDeviceEventsPaginator",
+    "ListSkillsPaginator",
+    "ListSkillsStoreCategoriesPaginator",
+    "ListSkillsStoreSkillsByCategoryPaginator",
+    "ListSmartHomeAppliancesPaginator",
+    "ListTagsPaginator",
+    "SearchDevicesPaginator",
+    "SearchProfilesPaginator",
+    "SearchRoomsPaginator",
+    "SearchSkillGroupsPaginator",
+    "SearchUsersPaginator",
+)
+
+
+class ListBusinessReportSchedulesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_business_report_schedules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -205,7 +226,11 @@ class ListBusinessReportSchedules(Boto3Paginator):
         """
 
 
-class ListConferenceProviders(Boto3Paginator):
+class ListConferenceProvidersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_conference_providers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -353,7 +378,11 @@ class ListConferenceProviders(Boto3Paginator):
         """
 
 
-class ListDeviceEvents(Boto3Paginator):
+class ListDeviceEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_device_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -456,7 +485,11 @@ class ListDeviceEvents(Boto3Paginator):
         """
 
 
-class ListSkills(Boto3Paginator):
+class ListSkillsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_skills`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -575,7 +608,11 @@ class ListSkills(Boto3Paginator):
         """
 
 
-class ListSkillsStoreCategories(Boto3Paginator):
+class ListSkillsStoreCategoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_skills_store_categories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -658,7 +695,11 @@ class ListSkillsStoreCategories(Boto3Paginator):
         """
 
 
-class ListSkillsStoreSkillsByCategory(Boto3Paginator):
+class ListSkillsStoreSkillsByCategoryPaginator(Boto3Paginator):
+    """
+    Paginator for `list_skills_store_skills_by_category`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -871,7 +912,11 @@ class ListSkillsStoreSkillsByCategory(Boto3Paginator):
         """
 
 
-class ListSmartHomeAppliances(Boto3Paginator):
+class ListSmartHomeAppliancesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_smart_home_appliances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -966,7 +1011,11 @@ class ListSmartHomeAppliances(Boto3Paginator):
         """
 
 
-class ListTags(Boto3Paginator):
+class ListTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, Arn: str, PaginationConfig: ListTagsPaginatePaginationConfigTypeDef = None
@@ -1053,7 +1102,11 @@ class ListTags(Boto3Paginator):
         """
 
 
-class SearchDevices(Boto3Paginator):
+class SearchDevicesPaginator(Boto3Paginator):
+    """
+    Paginator for `search_devices`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1284,7 +1337,11 @@ class SearchDevices(Boto3Paginator):
         """
 
 
-class SearchProfiles(Boto3Paginator):
+class SearchProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `search_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1460,7 +1517,11 @@ class SearchProfiles(Boto3Paginator):
         """
 
 
-class SearchRooms(Boto3Paginator):
+class SearchRoomsPaginator(Boto3Paginator):
+    """
+    Paginator for `search_rooms`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1621,7 +1682,11 @@ class SearchRooms(Boto3Paginator):
         """
 
 
-class SearchSkillGroups(Boto3Paginator):
+class SearchSkillGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `search_skill_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1767,7 +1832,11 @@ class SearchSkillGroups(Boto3Paginator):
         """
 
 
-class SearchUsers(Boto3Paginator):
+class SearchUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `search_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

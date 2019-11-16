@@ -6,6 +6,44 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateServerEndpointDetailsTypeDef",
+    "ClientCreateServerIdentityProviderDetailsTypeDef",
+    "ClientCreateServerResponseTypeDef",
+    "ClientCreateServerTagsTypeDef",
+    "ClientCreateUserHomeDirectoryMappingsTypeDef",
+    "ClientCreateUserResponseTypeDef",
+    "ClientCreateUserTagsTypeDef",
+    "ClientDescribeServerResponseServerEndpointDetailsTypeDef",
+    "ClientDescribeServerResponseServerIdentityProviderDetailsTypeDef",
+    "ClientDescribeServerResponseServerTagsTypeDef",
+    "ClientDescribeServerResponseServerTypeDef",
+    "ClientDescribeServerResponseTypeDef",
+    "ClientDescribeUserResponseUserHomeDirectoryMappingsTypeDef",
+    "ClientDescribeUserResponseUserSshPublicKeysTypeDef",
+    "ClientDescribeUserResponseUserTagsTypeDef",
+    "ClientDescribeUserResponseUserTypeDef",
+    "ClientDescribeUserResponseTypeDef",
+    "ClientImportSshPublicKeyResponseTypeDef",
+    "ClientListServersResponseServersTypeDef",
+    "ClientListServersResponseTypeDef",
+    "ClientListTagsForResourceResponseTagsTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientListUsersResponseUsersTypeDef",
+    "ClientListUsersResponseTypeDef",
+    "ClientTagResourceTagsTypeDef",
+    "ClientTestIdentityProviderResponseTypeDef",
+    "ClientUpdateServerEndpointDetailsTypeDef",
+    "ClientUpdateServerIdentityProviderDetailsTypeDef",
+    "ClientUpdateServerResponseTypeDef",
+    "ClientUpdateUserHomeDirectoryMappingsTypeDef",
+    "ClientUpdateUserResponseTypeDef",
+    "ListServersPaginatePaginationConfigTypeDef",
+    "ListServersPaginateResponseServersTypeDef",
+    "ListServersPaginateResponseTypeDef",
+)
+
+
 _ClientCreateServerEndpointDetailsTypeDef = TypedDict(
     "_ClientCreateServerEndpointDetailsTypeDef", {"VpcEndpointId": str}, total=False
 )

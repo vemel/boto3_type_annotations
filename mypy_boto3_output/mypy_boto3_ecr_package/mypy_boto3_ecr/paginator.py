@@ -23,7 +23,20 @@ from mypy_boto3_ecr.type_defs import (
 )
 
 
-class DescribeImageScanFindings(Boto3Paginator):
+__all__ = (
+    "DescribeImageScanFindingsPaginator",
+    "DescribeImagesPaginator",
+    "DescribeRepositoriesPaginator",
+    "GetLifecyclePolicyPreviewPaginator",
+    "ListImagesPaginator",
+)
+
+
+class DescribeImageScanFindingsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_image_scan_findings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -243,7 +256,11 @@ class DescribeImageScanFindings(Boto3Paginator):
         """
 
 
-class DescribeImages(Boto3Paginator):
+class DescribeImagesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_images`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -456,7 +473,11 @@ class DescribeImages(Boto3Paginator):
         """
 
 
-class DescribeRepositories(Boto3Paginator):
+class DescribeRepositoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_repositories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -600,7 +621,11 @@ class DescribeRepositories(Boto3Paginator):
         """
 
 
-class GetLifecyclePolicyPreview(Boto3Paginator):
+class GetLifecyclePolicyPreviewPaginator(Boto3Paginator):
+    """
+    Paginator for `get_lifecycle_policy_preview`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -795,7 +820,11 @@ class GetLifecyclePolicyPreview(Boto3Paginator):
         """
 
 
-class ListImages(Boto3Paginator):
+class ListImagesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_images`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -3,9 +3,13 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_dms.paginator as paginator_scope
 from mypy_boto3_dms.type_defs import (
     ClientAddTagsToResourceTagsTypeDef,
     ClientApplyPendingMaintenanceActionResponseTypeDef,
@@ -79,6 +83,12 @@ from mypy_boto3_dms.type_defs import (
     ClientReloadTablesTablesToReloadTypeDef,
     ClientTestConnectionResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_dms.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -7895,40 +7905,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def import_certificate(
         self,
         CertificateIdentifier: str,
@@ -11824,4 +11800,227 @@ class Client(BaseClient):
 
                 The replication instance identifier. This parameter is stored as a lowercase string.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_certificates"]
+    ) -> paginator_scope.DescribeCertificatesPaginator:
+        """
+        Get Paginator for `describe_certificates` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_connections"]
+    ) -> paginator_scope.DescribeConnectionsPaginator:
+        """
+        Get Paginator for `describe_connections` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_endpoint_types"]
+    ) -> paginator_scope.DescribeEndpointTypesPaginator:
+        """
+        Get Paginator for `describe_endpoint_types` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_endpoints"]
+    ) -> paginator_scope.DescribeEndpointsPaginator:
+        """
+        Get Paginator for `describe_endpoints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_event_subscriptions"]
+    ) -> paginator_scope.DescribeEventSubscriptionsPaginator:
+        """
+        Get Paginator for `describe_event_subscriptions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_events"]
+    ) -> paginator_scope.DescribeEventsPaginator:
+        """
+        Get Paginator for `describe_events` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_orderable_replication_instances"]
+    ) -> paginator_scope.DescribeOrderableReplicationInstancesPaginator:
+        """
+        Get Paginator for `describe_orderable_replication_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_replication_instances"]
+    ) -> paginator_scope.DescribeReplicationInstancesPaginator:
+        """
+        Get Paginator for `describe_replication_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_replication_subnet_groups"]
+    ) -> paginator_scope.DescribeReplicationSubnetGroupsPaginator:
+        """
+        Get Paginator for `describe_replication_subnet_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_replication_task_assessment_results"]
+    ) -> paginator_scope.DescribeReplicationTaskAssessmentResultsPaginator:
+        """
+        Get Paginator for `describe_replication_task_assessment_results` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_replication_tasks"]
+    ) -> paginator_scope.DescribeReplicationTasksPaginator:
+        """
+        Get Paginator for `describe_replication_tasks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_schemas"]
+    ) -> paginator_scope.DescribeSchemasPaginator:
+        """
+        Get Paginator for `describe_schemas` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_table_statistics"]
+    ) -> paginator_scope.DescribeTableStatisticsPaginator:
+        """
+        Get Paginator for `describe_table_statistics` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["endpoint_deleted"]
+    ) -> waiter_scope.EndpointDeletedWaiter:
+        """
+        Get Waiter `endpoint_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_instance_available"]
+    ) -> waiter_scope.ReplicationInstanceAvailableWaiter:
+        """
+        Get Waiter `replication_instance_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_instance_deleted"]
+    ) -> waiter_scope.ReplicationInstanceDeletedWaiter:
+        """
+        Get Waiter `replication_instance_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_task_deleted"]
+    ) -> waiter_scope.ReplicationTaskDeletedWaiter:
+        """
+        Get Waiter `replication_task_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_task_ready"]
+    ) -> waiter_scope.ReplicationTaskReadyWaiter:
+        """
+        Get Waiter `replication_task_ready`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_task_running"]
+    ) -> waiter_scope.ReplicationTaskRunningWaiter:
+        """
+        Get Waiter `replication_task_running`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["replication_task_stopped"]
+    ) -> waiter_scope.ReplicationTaskStoppedWaiter:
+        """
+        Get Waiter `replication_task_stopped`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["test_connection_succeeds"]
+    ) -> waiter_scope.TestConnectionSucceedsWaiter:
+        """
+        Get Waiter `test_connection_succeeds`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

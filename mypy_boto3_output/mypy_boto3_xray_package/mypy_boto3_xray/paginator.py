@@ -25,7 +25,23 @@ from mypy_boto3_xray.type_defs import (
 )
 
 
-class BatchGetTraces(Boto3Paginator):
+__all__ = (
+    "BatchGetTracesPaginator",
+    "GetGroupsPaginator",
+    "GetSamplingRulesPaginator",
+    "GetSamplingStatisticSummariesPaginator",
+    "GetServiceGraphPaginator",
+    "GetTimeSeriesServiceStatisticsPaginator",
+    "GetTraceGraphPaginator",
+    "GetTraceSummariesPaginator",
+)
+
+
+class BatchGetTracesPaginator(Boto3Paginator):
+    """
+    Paginator for `batch_get_traces`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -152,7 +168,11 @@ class BatchGetTraces(Boto3Paginator):
         """
 
 
-class GetGroups(Boto3Paginator):
+class GetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetGroupsPaginatePaginationConfigTypeDef = None
@@ -232,7 +252,11 @@ class GetGroups(Boto3Paginator):
         """
 
 
-class GetSamplingRules(Boto3Paginator):
+class GetSamplingRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_sampling_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetSamplingRulesPaginatePaginationConfigTypeDef = None
@@ -387,7 +411,11 @@ class GetSamplingRules(Boto3Paginator):
         """
 
 
-class GetSamplingStatisticSummaries(Boto3Paginator):
+class GetSamplingStatisticSummariesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_sampling_statistic_summaries`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -480,7 +508,11 @@ class GetSamplingStatisticSummaries(Boto3Paginator):
         """
 
 
-class GetServiceGraph(Boto3Paginator):
+class GetServiceGraphPaginator(Boto3Paginator):
+    """
+    Paginator for `get_service_graph`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -895,7 +927,11 @@ class GetServiceGraph(Boto3Paginator):
         """
 
 
-class GetTimeSeriesServiceStatistics(Boto3Paginator):
+class GetTimeSeriesServiceStatisticsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_time_series_service_statistics`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1156,7 +1192,11 @@ class GetTimeSeriesServiceStatistics(Boto3Paginator):
         """
 
 
-class GetTraceGraph(Boto3Paginator):
+class GetTraceGraphPaginator(Boto3Paginator):
+    """
+    Paginator for `get_trace_graph`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1538,7 +1578,11 @@ class GetTraceGraph(Boto3Paginator):
         """
 
 
-class GetTraceSummaries(Boto3Paginator):
+class GetTraceSummariesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_trace_summaries`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

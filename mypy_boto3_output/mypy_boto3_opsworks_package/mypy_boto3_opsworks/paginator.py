@@ -9,7 +9,14 @@ from mypy_boto3_opsworks.type_defs import (
 )
 
 
-class DescribeEcsClusters(Boto3Paginator):
+__all__ = ("DescribeEcsClustersPaginator",)
+
+
+class DescribeEcsClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_ecs_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

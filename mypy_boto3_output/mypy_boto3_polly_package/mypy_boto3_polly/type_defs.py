@@ -6,6 +6,35 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeVoicesResponseVoicesTypeDef",
+    "ClientDescribeVoicesResponseTypeDef",
+    "ClientGetLexiconResponseLexiconAttributesTypeDef",
+    "ClientGetLexiconResponseLexiconTypeDef",
+    "ClientGetLexiconResponseTypeDef",
+    "ClientGetSpeechSynthesisTaskResponseSynthesisTaskTypeDef",
+    "ClientGetSpeechSynthesisTaskResponseTypeDef",
+    "ClientListLexiconsResponseLexiconsAttributesTypeDef",
+    "ClientListLexiconsResponseLexiconsTypeDef",
+    "ClientListLexiconsResponseTypeDef",
+    "ClientListSpeechSynthesisTasksResponseSynthesisTasksTypeDef",
+    "ClientListSpeechSynthesisTasksResponseTypeDef",
+    "ClientStartSpeechSynthesisTaskResponseSynthesisTaskTypeDef",
+    "ClientStartSpeechSynthesisTaskResponseTypeDef",
+    "ClientSynthesizeSpeechResponseTypeDef",
+    "DescribeVoicesPaginatePaginationConfigTypeDef",
+    "DescribeVoicesPaginateResponseVoicesTypeDef",
+    "DescribeVoicesPaginateResponseTypeDef",
+    "ListLexiconsPaginatePaginationConfigTypeDef",
+    "ListLexiconsPaginateResponseLexiconsAttributesTypeDef",
+    "ListLexiconsPaginateResponseLexiconsTypeDef",
+    "ListLexiconsPaginateResponseTypeDef",
+    "ListSpeechSynthesisTasksPaginatePaginationConfigTypeDef",
+    "ListSpeechSynthesisTasksPaginateResponseSynthesisTasksTypeDef",
+    "ListSpeechSynthesisTasksPaginateResponseTypeDef",
+)
+
+
 _ClientDescribeVoicesResponseVoicesTypeDef = TypedDict(
     "_ClientDescribeVoicesResponseVoicesTypeDef",
     {

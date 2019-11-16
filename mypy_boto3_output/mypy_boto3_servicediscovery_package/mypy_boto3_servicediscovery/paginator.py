@@ -18,7 +18,19 @@ from mypy_boto3_servicediscovery.type_defs import (
 )
 
 
-class ListInstances(Boto3Paginator):
+__all__ = (
+    "ListInstancesPaginator",
+    "ListNamespacesPaginator",
+    "ListOperationsPaginator",
+    "ListServicesPaginator",
+)
+
+
+class ListInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -136,7 +148,11 @@ class ListInstances(Boto3Paginator):
         """
 
 
-class ListNamespaces(Boto3Paginator):
+class ListNamespacesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_namespaces`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -326,7 +342,11 @@ class ListNamespaces(Boto3Paginator):
         """
 
 
-class ListOperations(Boto3Paginator):
+class ListOperationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_operations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -492,7 +512,11 @@ class ListOperations(Boto3Paginator):
         """
 
 
-class ListServices(Boto3Paginator):
+class ListServicesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_services`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

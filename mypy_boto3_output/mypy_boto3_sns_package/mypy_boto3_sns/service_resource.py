@@ -16,7 +16,25 @@ from mypy_boto3_sns.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "PlatformApplication",
+    "PlatformEndpoint",
+    "Subscription",
+    "Topic",
+    "ServiceResourcePlatformApplicationsCollection",
+    "ServiceResourceSubscriptionsCollection",
+    "ServiceResourceTopicsCollection",
+    "PlatformApplicationEndpointsCollection",
+    "TopicSubscriptionsCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    platform_applications: service_resource_scope.ServiceResourcePlatformApplicationsCollection
+    subscriptions: service_resource_scope.ServiceResourceSubscriptionsCollection
+    topics: service_resource_scope.ServiceResourceTopicsCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def PlatformApplication(
         self, arn: str
@@ -249,6 +267,7 @@ class ServiceResource(Boto3ServiceResource):
 class PlatformApplication(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
+    endpoints: service_resource_scope.PlatformApplicationEndpointsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_platform_endpoint(
@@ -872,6 +891,7 @@ class Subscription(Boto3ServiceResource):
 class Topic(Boto3ServiceResource):
     attributes: Dict[str, Any]
     arn: str
+    subscriptions: service_resource_scope.TopicSubscriptionsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
@@ -1409,7 +1429,7 @@ class Topic(Boto3ServiceResource):
         """
 
 
-class platform_applications(ResourceCollection):
+class ServiceResourcePlatformApplicationsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1540,7 +1560,7 @@ class platform_applications(ResourceCollection):
         """
 
 
-class subscriptions(ResourceCollection):
+class ServiceResourceSubscriptionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1670,7 +1690,7 @@ class subscriptions(ResourceCollection):
         """
 
 
-class topics(ResourceCollection):
+class ServiceResourceTopicsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1797,7 +1817,7 @@ class topics(ResourceCollection):
         """
 
 
-class endpoints(ResourceCollection):
+class PlatformApplicationEndpointsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1903,6 +1923,136 @@ class endpoints(ResourceCollection):
 
         :rtype: list(:py:class:`sns.PlatformEndpoint`)
         :returns: A list of PlatformEndpoint resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class TopicSubscriptionsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Subscription]:
+        """
+        Creates an iterable of all Subscription resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic>`_
+
+        **Request Syntax**
+        ::
+
+          subscription_iterator = topic.subscriptions.all()
+
+        :rtype: list(:py:class:`sns.Subscription`)
+        :returns: A list of Subscription resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, NextToken: str = None
+    ) -> List[service_resource_scope.Subscription]:
+        """
+        Creates an iterable of all Subscription resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic>`_
+
+        **Request Syntax**
+        ::
+
+          subscription_iterator = topic.subscriptions.filter(
+              NextToken='string'
+          )
+        :type NextToken: string
+        :param NextToken:
+
+          Token returned by the previous ``ListSubscriptionsByTopic`` request.
+
+        :rtype: list(:py:class:`sns.Subscription`)
+        :returns: A list of Subscription resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Subscription]:
+        """
+        Creates an iterable up to a specified amount of Subscription resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic>`_
+
+        **Request Syntax**
+        ::
+
+          subscription_iterator = topic.subscriptions.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`sns.Subscription`)
+        :returns: A list of Subscription resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Subscription]:
+        """
+        Creates an iterable of all Subscription resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/sns-2010-03-31/ListSubscriptionsByTopic>`_
+
+        **Request Syntax**
+        ::
+
+          subscription_iterator = topic.subscriptions.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`sns.Subscription`)
+        :returns: A list of Subscription resources
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

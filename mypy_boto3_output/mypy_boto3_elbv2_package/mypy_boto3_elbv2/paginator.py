@@ -21,7 +21,22 @@ from mypy_boto3_elbv2.type_defs import (
 )
 
 
-class DescribeAccountLimits(Boto3Paginator):
+__all__ = (
+    "DescribeAccountLimitsPaginator",
+    "DescribeListenerCertificatesPaginator",
+    "DescribeListenersPaginator",
+    "DescribeLoadBalancersPaginator",
+    "DescribeRulesPaginator",
+    "DescribeSSLPoliciesPaginator",
+    "DescribeTargetGroupsPaginator",
+)
+
+
+class DescribeAccountLimitsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_account_limits`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -125,7 +140,11 @@ class DescribeAccountLimits(Boto3Paginator):
         """
 
 
-class DescribeListenerCertificates(Boto3Paginator):
+class DescribeListenerCertificatesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_listener_certificates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -221,7 +240,11 @@ class DescribeListenerCertificates(Boto3Paginator):
         """
 
 
-class DescribeListeners(Boto3Paginator):
+class DescribeListenersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_listeners`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -625,7 +648,11 @@ class DescribeListeners(Boto3Paginator):
         """
 
 
-class DescribeLoadBalancers(Boto3Paginator):
+class DescribeLoadBalancersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_load_balancers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -851,7 +878,11 @@ class DescribeLoadBalancers(Boto3Paginator):
         """
 
 
-class DescribeRules(Boto3Paginator):
+class DescribeRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1451,7 +1482,11 @@ class DescribeRules(Boto3Paginator):
         """
 
 
-class DescribeSSLPolicies(Boto3Paginator):
+class DescribeSSLPoliciesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_ssl_policies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1574,7 +1609,11 @@ class DescribeSSLPolicies(Boto3Paginator):
         """
 
 
-class DescribeTargetGroups(Boto3Paginator):
+class DescribeTargetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_target_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

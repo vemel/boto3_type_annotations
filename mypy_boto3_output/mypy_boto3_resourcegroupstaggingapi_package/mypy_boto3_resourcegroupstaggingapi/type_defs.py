@@ -5,6 +5,29 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetResourcesResponseResourceTagMappingListTagsTypeDef",
+    "ClientGetResourcesResponseResourceTagMappingListTypeDef",
+    "ClientGetResourcesResponseTypeDef",
+    "ClientGetResourcesTagFiltersTypeDef",
+    "ClientGetTagKeysResponseTypeDef",
+    "ClientGetTagValuesResponseTypeDef",
+    "ClientTagResourcesResponseFailedResourcesMapTypeDef",
+    "ClientTagResourcesResponseTypeDef",
+    "ClientUntagResourcesResponseFailedResourcesMapTypeDef",
+    "ClientUntagResourcesResponseTypeDef",
+    "GetResourcesPaginatePaginationConfigTypeDef",
+    "GetResourcesPaginateResponseResourceTagMappingListTagsTypeDef",
+    "GetResourcesPaginateResponseResourceTagMappingListTypeDef",
+    "GetResourcesPaginateResponseTypeDef",
+    "GetResourcesPaginateTagFiltersTypeDef",
+    "GetTagKeysPaginatePaginationConfigTypeDef",
+    "GetTagKeysPaginateResponseTypeDef",
+    "GetTagValuesPaginatePaginationConfigTypeDef",
+    "GetTagValuesPaginateResponseTypeDef",
+)
+
+
 _ClientGetResourcesResponseResourceTagMappingListTagsTypeDef = TypedDict(
     "_ClientGetResourcesResponseResourceTagMappingListTagsTypeDef",
     {"Key": str, "Value": str},

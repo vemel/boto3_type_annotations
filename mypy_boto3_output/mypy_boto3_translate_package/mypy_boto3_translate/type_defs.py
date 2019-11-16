@@ -6,6 +6,29 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetTerminologyResponseTerminologyDataLocationTypeDef",
+    "ClientGetTerminologyResponseTerminologyPropertiesEncryptionKeyTypeDef",
+    "ClientGetTerminologyResponseTerminologyPropertiesTypeDef",
+    "ClientGetTerminologyResponseTypeDef",
+    "ClientImportTerminologyEncryptionKeyTypeDef",
+    "ClientImportTerminologyResponseTerminologyPropertiesEncryptionKeyTypeDef",
+    "ClientImportTerminologyResponseTerminologyPropertiesTypeDef",
+    "ClientImportTerminologyResponseTypeDef",
+    "ClientImportTerminologyTerminologyDataTypeDef",
+    "ClientListTerminologiesResponseTerminologyPropertiesListEncryptionKeyTypeDef",
+    "ClientListTerminologiesResponseTerminologyPropertiesListTypeDef",
+    "ClientListTerminologiesResponseTypeDef",
+    "ClientTranslateTextResponseAppliedTerminologiesTermsTypeDef",
+    "ClientTranslateTextResponseAppliedTerminologiesTypeDef",
+    "ClientTranslateTextResponseTypeDef",
+    "ListTerminologiesPaginatePaginationConfigTypeDef",
+    "ListTerminologiesPaginateResponseTerminologyPropertiesListEncryptionKeyTypeDef",
+    "ListTerminologiesPaginateResponseTerminologyPropertiesListTypeDef",
+    "ListTerminologiesPaginateResponseTypeDef",
+)
+
+
 _ClientGetTerminologyResponseTerminologyDataLocationTypeDef = TypedDict(
     "_ClientGetTerminologyResponseTerminologyDataLocationTypeDef",
     {"RepositoryType": str, "Location": str},

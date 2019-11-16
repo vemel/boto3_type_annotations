@@ -14,7 +14,19 @@ from mypy_boto3_cloudfront.type_defs import (
 )
 
 
-class ListCloudFrontOriginAccessIdentities(Boto3Paginator):
+__all__ = (
+    "ListCloudFrontOriginAccessIdentitiesPaginator",
+    "ListDistributionsPaginator",
+    "ListInvalidationsPaginator",
+    "ListStreamingDistributionsPaginator",
+)
+
+
+class ListCloudFrontOriginAccessIdentitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_cloud_front_origin_access_identities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -149,7 +161,11 @@ class ListCloudFrontOriginAccessIdentities(Boto3Paginator):
         """
 
 
-class ListDistributions(Boto3Paginator):
+class ListDistributionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_distributions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDistributionsPaginatePaginationConfigTypeDef = None
@@ -2038,7 +2054,11 @@ class ListDistributions(Boto3Paginator):
         """
 
 
-class ListInvalidations(Boto3Paginator):
+class ListInvalidationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_invalidations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2174,7 +2194,11 @@ class ListInvalidations(Boto3Paginator):
         """
 
 
-class ListStreamingDistributions(Boto3Paginator):
+class ListStreamingDistributionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_streaming_distributions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

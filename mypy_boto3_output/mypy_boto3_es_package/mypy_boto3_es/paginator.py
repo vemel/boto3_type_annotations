@@ -16,7 +16,20 @@ from mypy_boto3_es.type_defs import (
 )
 
 
-class DescribeReservedElasticsearchInstanceOfferings(Boto3Paginator):
+__all__ = (
+    "DescribeReservedElasticsearchInstanceOfferingsPaginator",
+    "DescribeReservedElasticsearchInstancesPaginator",
+    "GetUpgradeHistoryPaginator",
+    "ListElasticsearchInstanceTypesPaginator",
+    "ListElasticsearchVersionsPaginator",
+)
+
+
+class DescribeReservedElasticsearchInstanceOfferingsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_elasticsearch_instance_offerings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -177,7 +190,11 @@ class DescribeReservedElasticsearchInstanceOfferings(Boto3Paginator):
         """
 
 
-class DescribeReservedElasticsearchInstances(Boto3Paginator):
+class DescribeReservedElasticsearchInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_elasticsearch_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -363,7 +380,11 @@ class DescribeReservedElasticsearchInstances(Boto3Paginator):
         """
 
 
-class GetUpgradeHistory(Boto3Paginator):
+class GetUpgradeHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `get_upgrade_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -524,7 +545,11 @@ class GetUpgradeHistory(Boto3Paginator):
         """
 
 
-class ListElasticsearchInstanceTypes(Boto3Paginator):
+class ListElasticsearchInstanceTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_elasticsearch_instance_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -630,7 +655,11 @@ class ListElasticsearchInstanceTypes(Boto3Paginator):
         """
 
 
-class ListElasticsearchVersions(Boto3Paginator):
+class ListElasticsearchVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_elasticsearch_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

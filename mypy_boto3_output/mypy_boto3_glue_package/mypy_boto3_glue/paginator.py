@@ -37,7 +37,29 @@ from mypy_boto3_glue.type_defs import (
 )
 
 
-class GetClassifiers(Boto3Paginator):
+__all__ = (
+    "GetClassifiersPaginator",
+    "GetConnectionsPaginator",
+    "GetCrawlerMetricsPaginator",
+    "GetCrawlersPaginator",
+    "GetDatabasesPaginator",
+    "GetDevEndpointsPaginator",
+    "GetJobRunsPaginator",
+    "GetJobsPaginator",
+    "GetPartitionsPaginator",
+    "GetSecurityConfigurationsPaginator",
+    "GetTableVersionsPaginator",
+    "GetTablesPaginator",
+    "GetTriggersPaginator",
+    "GetUserDefinedFunctionsPaginator",
+)
+
+
+class GetClassifiersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_classifiers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetClassifiersPaginatePaginationConfigTypeDef = None
@@ -299,7 +321,11 @@ class GetClassifiers(Boto3Paginator):
         """
 
 
-class GetConnections(Boto3Paginator):
+class GetConnectionsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_connections`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -541,7 +567,11 @@ class GetConnections(Boto3Paginator):
         """
 
 
-class GetCrawlerMetrics(Boto3Paginator):
+class GetCrawlerMetricsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_crawler_metrics`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -664,7 +694,11 @@ class GetCrawlerMetrics(Boto3Paginator):
         """
 
 
-class GetCrawlers(Boto3Paginator):
+class GetCrawlersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_crawlers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetCrawlersPaginatePaginationConfigTypeDef = None
@@ -990,7 +1024,11 @@ class GetCrawlers(Boto3Paginator):
         """
 
 
-class GetDatabases(Boto3Paginator):
+class GetDatabasesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_databases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1135,7 +1173,11 @@ class GetDatabases(Boto3Paginator):
         """
 
 
-class GetDevEndpoints(Boto3Paginator):
+class GetDevEndpointsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_dev_endpoints`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetDevEndpointsPaginatePaginationConfigTypeDef = None
@@ -1416,7 +1458,11 @@ class GetDevEndpoints(Boto3Paginator):
         """
 
 
-class GetJobRuns(Boto3Paginator):
+class GetJobRunsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_job_runs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1696,7 +1742,11 @@ class GetJobRuns(Boto3Paginator):
         """
 
 
-class GetJobs(Boto3Paginator):
+class GetJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetJobsPaginatePaginationConfigTypeDef = None
@@ -1967,7 +2017,11 @@ class GetJobs(Boto3Paginator):
         """
 
 
-class GetPartitions(Boto3Paginator):
+class GetPartitionsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_partitions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2395,7 +2449,11 @@ class GetPartitions(Boto3Paginator):
         """
 
 
-class GetSecurityConfigurations(Boto3Paginator):
+class GetSecurityConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_security_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2537,7 +2595,11 @@ class GetSecurityConfigurations(Boto3Paginator):
         """
 
 
-class GetTableVersions(Boto3Paginator):
+class GetTableVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_table_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2957,7 +3019,11 @@ class GetTableVersions(Boto3Paginator):
         """
 
 
-class GetTables(Boto3Paginator):
+class GetTablesPaginator(Boto3Paginator):
+    """
+    Paginator for `get_tables`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3365,7 +3431,11 @@ class GetTables(Boto3Paginator):
         """
 
 
-class GetTriggers(Boto3Paginator):
+class GetTriggersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_triggers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3609,7 +3679,11 @@ class GetTriggers(Boto3Paginator):
         """
 
 
-class GetUserDefinedFunctions(Boto3Paginator):
+class GetUserDefinedFunctionsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_user_defined_functions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

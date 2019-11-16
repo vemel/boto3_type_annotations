@@ -11,7 +11,14 @@ from mypy_boto3_docdb.type_defs import (
 )
 
 
-class DBInstanceAvailable(Boto3Waiter):
+__all__ = ("DBInstanceAvailableWaiter", "DBInstanceDeletedWaiter")
+
+
+class DBInstanceAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `db_instance_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -123,7 +130,11 @@ class DBInstanceAvailable(Boto3Waiter):
         """
 
 
-class DBInstanceDeleted(Boto3Waiter):
+class DBInstanceDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `db_instance_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -9,7 +9,14 @@ from mypy_boto3_marketplace_entitlement.type_defs import (
 )
 
 
-class GetEntitlements(Boto3Paginator):
+__all__ = ("GetEntitlementsPaginator",)
+
+
+class GetEntitlementsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_entitlements`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

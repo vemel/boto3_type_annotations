@@ -6,6 +6,44 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateFileSystemResponseSizeInBytesTypeDef",
+    "ClientCreateFileSystemResponseTagsTypeDef",
+    "ClientCreateFileSystemResponseTypeDef",
+    "ClientCreateFileSystemTagsTypeDef",
+    "ClientCreateMountTargetResponseTypeDef",
+    "ClientCreateTagsTagsTypeDef",
+    "ClientDescribeFileSystemsResponseFileSystemsSizeInBytesTypeDef",
+    "ClientDescribeFileSystemsResponseFileSystemsTagsTypeDef",
+    "ClientDescribeFileSystemsResponseFileSystemsTypeDef",
+    "ClientDescribeFileSystemsResponseTypeDef",
+    "ClientDescribeLifecycleConfigurationResponseLifecyclePoliciesTypeDef",
+    "ClientDescribeLifecycleConfigurationResponseTypeDef",
+    "ClientDescribeMountTargetSecurityGroupsResponseTypeDef",
+    "ClientDescribeMountTargetsResponseMountTargetsTypeDef",
+    "ClientDescribeMountTargetsResponseTypeDef",
+    "ClientDescribeTagsResponseTagsTypeDef",
+    "ClientDescribeTagsResponseTypeDef",
+    "ClientPutLifecycleConfigurationLifecyclePoliciesTypeDef",
+    "ClientPutLifecycleConfigurationResponseLifecyclePoliciesTypeDef",
+    "ClientPutLifecycleConfigurationResponseTypeDef",
+    "ClientUpdateFileSystemResponseSizeInBytesTypeDef",
+    "ClientUpdateFileSystemResponseTagsTypeDef",
+    "ClientUpdateFileSystemResponseTypeDef",
+    "DescribeFileSystemsPaginatePaginationConfigTypeDef",
+    "DescribeFileSystemsPaginateResponseFileSystemsSizeInBytesTypeDef",
+    "DescribeFileSystemsPaginateResponseFileSystemsTagsTypeDef",
+    "DescribeFileSystemsPaginateResponseFileSystemsTypeDef",
+    "DescribeFileSystemsPaginateResponseTypeDef",
+    "DescribeMountTargetsPaginatePaginationConfigTypeDef",
+    "DescribeMountTargetsPaginateResponseMountTargetsTypeDef",
+    "DescribeMountTargetsPaginateResponseTypeDef",
+    "DescribeTagsPaginatePaginationConfigTypeDef",
+    "DescribeTagsPaginateResponseTagsTypeDef",
+    "DescribeTagsPaginateResponseTypeDef",
+)
+
+
 _ClientCreateFileSystemResponseSizeInBytesTypeDef = TypedDict(
     "_ClientCreateFileSystemResponseSizeInBytesTypeDef",
     {"Value": int, "Timestamp": datetime, "ValueInIA": int, "ValueInStandard": int},

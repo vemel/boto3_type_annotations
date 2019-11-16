@@ -32,7 +32,22 @@ from mypy_boto3_swf.type_defs import (
 )
 
 
-class GetWorkflowExecutionHistory(Boto3Paginator):
+__all__ = (
+    "GetWorkflowExecutionHistoryPaginator",
+    "ListActivityTypesPaginator",
+    "ListClosedWorkflowExecutionsPaginator",
+    "ListDomainsPaginator",
+    "ListOpenWorkflowExecutionsPaginator",
+    "ListWorkflowTypesPaginator",
+    "PollForDecisionTaskPaginator",
+)
+
+
+class GetWorkflowExecutionHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `get_workflow_execution_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2639,7 +2654,11 @@ class GetWorkflowExecutionHistory(Boto3Paginator):
         """
 
 
-class ListActivityTypes(Boto3Paginator):
+class ListActivityTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_activity_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2790,7 +2809,11 @@ class ListActivityTypes(Boto3Paginator):
         """
 
 
-class ListClosedWorkflowExecutions(Boto3Paginator):
+class ListClosedWorkflowExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_closed_workflow_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3126,7 +3149,11 @@ class ListClosedWorkflowExecutions(Boto3Paginator):
         """
 
 
-class ListDomains(Boto3Paginator):
+class ListDomainsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_domains`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3244,7 +3271,11 @@ class ListDomains(Boto3Paginator):
         """
 
 
-class ListOpenWorkflowExecutions(Boto3Paginator):
+class ListOpenWorkflowExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_open_workflow_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3529,7 +3560,11 @@ class ListOpenWorkflowExecutions(Boto3Paginator):
         """
 
 
-class ListWorkflowTypes(Boto3Paginator):
+class ListWorkflowTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_workflow_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3681,7 +3716,11 @@ class ListWorkflowTypes(Boto3Paginator):
         """
 
 
-class PollForDecisionTask(Boto3Paginator):
+class PollForDecisionTaskPaginator(Boto3Paginator):
+    """
+    Paginator for `poll_for_decision_task`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

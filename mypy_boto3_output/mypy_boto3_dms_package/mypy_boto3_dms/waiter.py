@@ -23,7 +23,23 @@ from mypy_boto3_dms.type_defs import (
 )
 
 
-class EndpointDeleted(Boto3Waiter):
+__all__ = (
+    "EndpointDeletedWaiter",
+    "ReplicationInstanceAvailableWaiter",
+    "ReplicationInstanceDeletedWaiter",
+    "ReplicationTaskDeletedWaiter",
+    "ReplicationTaskReadyWaiter",
+    "ReplicationTaskRunningWaiter",
+    "ReplicationTaskStoppedWaiter",
+    "TestConnectionSucceedsWaiter",
+)
+
+
+class EndpointDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `endpoint_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -111,7 +127,11 @@ class EndpointDeleted(Boto3Waiter):
         """
 
 
-class ReplicationInstanceAvailable(Boto3Waiter):
+class ReplicationInstanceAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_instance_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -200,7 +220,11 @@ class ReplicationInstanceAvailable(Boto3Waiter):
         """
 
 
-class ReplicationInstanceDeleted(Boto3Waiter):
+class ReplicationInstanceDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_instance_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -289,7 +313,11 @@ class ReplicationInstanceDeleted(Boto3Waiter):
         """
 
 
-class ReplicationTaskDeleted(Boto3Waiter):
+class ReplicationTaskDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_task_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -387,7 +415,11 @@ class ReplicationTaskDeleted(Boto3Waiter):
         """
 
 
-class ReplicationTaskReady(Boto3Waiter):
+class ReplicationTaskReadyWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_task_ready` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -485,7 +517,11 @@ class ReplicationTaskReady(Boto3Waiter):
         """
 
 
-class ReplicationTaskRunning(Boto3Waiter):
+class ReplicationTaskRunningWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_task_running` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -583,7 +619,11 @@ class ReplicationTaskRunning(Boto3Waiter):
         """
 
 
-class ReplicationTaskStopped(Boto3Waiter):
+class ReplicationTaskStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `replication_task_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -681,7 +721,11 @@ class ReplicationTaskStopped(Boto3Waiter):
         """
 
 
-class TestConnectionSucceeds(Boto3Waiter):
+class TestConnectionSucceedsWaiter(Boto3Waiter):
+    """
+    Waiter for `test_connection_succeeds` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

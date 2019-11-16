@@ -53,7 +53,37 @@ from mypy_boto3_s3.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Bucket",
+    "BucketAcl",
+    "BucketCors",
+    "BucketLifecycle",
+    "BucketLifecycleConfiguration",
+    "BucketLogging",
+    "BucketNotification",
+    "BucketPolicy",
+    "BucketRequestPayment",
+    "BucketTagging",
+    "BucketVersioning",
+    "BucketWebsite",
+    "MultipartUpload",
+    "MultipartUploadPart",
+    "Object",
+    "ObjectAcl",
+    "ObjectSummary",
+    "ObjectVersion",
+    "ServiceResourceBucketsCollection",
+    "BucketMultipartUploadsCollection",
+    "BucketObjectVersionsCollection",
+    "BucketObjectsCollection",
+    "MultipartUploadPartsCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    buckets: service_resource_scope.ServiceResourceBucketsCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Bucket(self, name: str) -> service_resource_scope.Bucket:
         """
@@ -454,6 +484,9 @@ class ServiceResource(Boto3ServiceResource):
 class Bucket(Boto3ServiceResource):
     creation_date: datetime
     name: str
+    multipart_uploads: service_resource_scope.BucketMultipartUploadsCollection
+    object_versions: service_resource_scope.BucketObjectVersionsCollection
+    objects: service_resource_scope.BucketObjectsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
@@ -461,7 +494,7 @@ class Bucket(Boto3ServiceResource):
         CopySource: TypeDefS3CopySource,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -763,7 +796,7 @@ class Bucket(Boto3ServiceResource):
         Key: str,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -804,7 +837,7 @@ class Bucket(Boto3ServiceResource):
         Key: str,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1119,7 +1152,7 @@ class Bucket(Boto3ServiceResource):
         Filename: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1160,7 +1193,7 @@ class Bucket(Boto3ServiceResource):
         Fileobj: IO[Any],
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -3120,6 +3153,7 @@ class MultipartUpload(Boto3ServiceResource):
     bucket_name: str
     object_key: str
     id: str
+    parts: service_resource_scope.MultipartUploadPartsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort(self, RequestPayer: str = None) -> MultipartUploadAbortResponseTypeDef:
@@ -3614,7 +3648,7 @@ class Object(Boto3ServiceResource):
         self,
         CopySource: TypeDefS3CopySource,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -4122,7 +4156,7 @@ class Object(Boto3ServiceResource):
         self,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -4159,7 +4193,7 @@ class Object(Boto3ServiceResource):
         self,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -5492,7 +5526,7 @@ class Object(Boto3ServiceResource):
         self,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -5529,7 +5563,7 @@ class Object(Boto3ServiceResource):
         self,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[..., Any] = None,
+        Callback: Callable[Ellipsis, Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -8669,7 +8703,7 @@ class ObjectVersion(Boto3ServiceResource):
         """
 
 
-class buckets(ResourceCollection):
+class ServiceResourceBucketsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -8782,7 +8816,7 @@ class buckets(ResourceCollection):
         """
 
 
-class multipart_uploads(ResourceCollection):
+class BucketMultipartUploadsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -8955,7 +8989,7 @@ class multipart_uploads(ResourceCollection):
         """
 
 
-class object_versions(ResourceCollection):
+class BucketObjectVersionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -9228,7 +9262,7 @@ class object_versions(ResourceCollection):
         """
 
 
-class objects(ResourceCollection):
+class BucketObjectsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -9502,7 +9536,7 @@ class objects(ResourceCollection):
         """
 
 
-class parts(ResourceCollection):
+class MultipartUploadPartsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

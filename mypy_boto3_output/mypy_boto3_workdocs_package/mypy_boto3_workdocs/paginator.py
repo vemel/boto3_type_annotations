@@ -25,7 +25,24 @@ from mypy_boto3_workdocs.type_defs import (
 )
 
 
-class DescribeActivities(Boto3Paginator):
+__all__ = (
+    "DescribeActivitiesPaginator",
+    "DescribeCommentsPaginator",
+    "DescribeDocumentVersionsPaginator",
+    "DescribeFolderContentsPaginator",
+    "DescribeGroupsPaginator",
+    "DescribeNotificationSubscriptionsPaginator",
+    "DescribeResourcePermissionsPaginator",
+    "DescribeRootFoldersPaginator",
+    "DescribeUsersPaginator",
+)
+
+
+class DescribeActivitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_activities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -567,7 +584,11 @@ class DescribeActivities(Boto3Paginator):
         """
 
 
-class DescribeComments(Boto3Paginator):
+class DescribeCommentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_comments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -811,7 +832,11 @@ class DescribeComments(Boto3Paginator):
         """
 
 
-class DescribeDocumentVersions(Boto3Paginator):
+class DescribeDocumentVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_document_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -993,7 +1018,11 @@ class DescribeDocumentVersions(Boto3Paginator):
         """
 
 
-class DescribeFolderContents(Boto3Paginator):
+class DescribeFolderContentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_folder_contents`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1305,7 +1334,11 @@ class DescribeFolderContents(Boto3Paginator):
         """
 
 
-class DescribeGroups(Boto3Paginator):
+class DescribeGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1413,7 +1446,11 @@ class DescribeGroups(Boto3Paginator):
         """
 
 
-class DescribeNotificationSubscriptions(Boto3Paginator):
+class DescribeNotificationSubscriptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_notification_subscriptions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1511,7 +1548,11 @@ class DescribeNotificationSubscriptions(Boto3Paginator):
         """
 
 
-class DescribeResourcePermissions(Boto3Paginator):
+class DescribeResourcePermissionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_resource_permissions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1641,7 +1682,11 @@ class DescribeResourcePermissions(Boto3Paginator):
         """
 
 
-class DescribeRootFolders(Boto3Paginator):
+class DescribeRootFoldersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_root_folders`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1784,7 +1829,11 @@ class DescribeRootFolders(Boto3Paginator):
         """
 
 
-class DescribeUsers(Boto3Paginator):
+class DescribeUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

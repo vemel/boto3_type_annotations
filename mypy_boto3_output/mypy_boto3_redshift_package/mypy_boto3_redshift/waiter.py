@@ -13,7 +13,19 @@ from mypy_boto3_redshift.type_defs import (
 )
 
 
-class ClusterAvailable(Boto3Waiter):
+__all__ = (
+    "ClusterAvailableWaiter",
+    "ClusterDeletedWaiter",
+    "ClusterRestoredWaiter",
+    "SnapshotAvailableWaiter",
+)
+
+
+class ClusterAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -120,7 +132,11 @@ class ClusterAvailable(Boto3Waiter):
         """
 
 
-class ClusterDeleted(Boto3Waiter):
+class ClusterDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -227,7 +243,11 @@ class ClusterDeleted(Boto3Waiter):
         """
 
 
-class ClusterRestored(Boto3Waiter):
+class ClusterRestoredWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_restored` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -334,7 +354,11 @@ class ClusterRestored(Boto3Waiter):
         """
 
 
-class SnapshotAvailable(Boto3Waiter):
+class SnapshotAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `snapshot_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

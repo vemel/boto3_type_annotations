@@ -5,6 +5,28 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientBatchDeleteAttributesItemsAttributesTypeDef",
+    "ClientBatchDeleteAttributesItemsTypeDef",
+    "ClientBatchPutAttributesItemsAttributesTypeDef",
+    "ClientBatchPutAttributesItemsTypeDef",
+    "ClientDomainMetadataResponseTypeDef",
+    "ClientGetAttributesResponseAttributesTypeDef",
+    "ClientGetAttributesResponseTypeDef",
+    "ClientListDomainsResponseTypeDef",
+    "ClientPutAttributesAttributesTypeDef",
+    "ClientSelectResponseItemsAttributesTypeDef",
+    "ClientSelectResponseItemsTypeDef",
+    "ClientSelectResponseTypeDef",
+    "ListDomainsPaginatePaginationConfigTypeDef",
+    "ListDomainsPaginateResponseTypeDef",
+    "SelectPaginatePaginationConfigTypeDef",
+    "SelectPaginateResponseItemsAttributesTypeDef",
+    "SelectPaginateResponseItemsTypeDef",
+    "SelectPaginateResponseTypeDef",
+)
+
+
 _RequiredClientBatchDeleteAttributesItemsAttributesTypeDef = TypedDict(
     "_RequiredClientBatchDeleteAttributesItemsAttributesTypeDef",
     {"Name": str, "Value": str},

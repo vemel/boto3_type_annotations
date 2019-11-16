@@ -13,11 +13,24 @@ from mypy_boto3_opsworks.type_defs import (
     ServiceResourceCreateStackCustomCookbooksSourceTypeDef,
     StackCreateLayerCloudWatchLogsConfigurationTypeDef,
     StackCreateLayerCustomRecipesTypeDef,
+    StackCreateLayerLifecycleEventConfigurationTypeDef,
     StackCreateLayerVolumeConfigurationsTypeDef,
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Layer",
+    "Stack",
+    "StackSummary",
+    "ServiceResourceStacksCollection",
+    "StackLayersCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    stacks: service_resource_scope.ServiceResourceStacksCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Layer(self, id: str) -> service_resource_scope.Layer:
         """
@@ -592,6 +605,7 @@ class Stack(Boto3ServiceResource):
     default_root_device_type: str
     agent_version: str
     id: str
+    layers: service_resource_scope.StackLayersCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_layer(
@@ -612,7 +626,7 @@ class Stack(Boto3ServiceResource):
         CustomRecipes: StackCreateLayerCustomRecipesTypeDef = None,
         InstallUpdatesOnBoot: bool = None,
         UseEbsOptimizedInstances: bool = None,
-        LifecycleEventConfiguration: Dict = None,
+        LifecycleEventConfiguration: StackCreateLayerLifecycleEventConfigurationTypeDef = None,
     ) -> service_resource_scope.Layer:
         """
         Creates a layer. For more information, see `How to Create a Layer
@@ -1155,7 +1169,7 @@ class StackSummary(Boto3ServiceResource):
         """
 
 
-class stacks(ResourceCollection):
+class ServiceResourceStacksCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1287,7 +1301,7 @@ class stacks(ResourceCollection):
         """
 
 
-class layers(ResourceCollection):
+class StackLayersCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

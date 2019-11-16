@@ -12,7 +12,21 @@ from mypy_boto3_cloudformation.type_defs import (
 )
 
 
-class ChangeSetCreateComplete(Boto3Waiter):
+__all__ = (
+    "ChangeSetCreateCompleteWaiter",
+    "StackCreateCompleteWaiter",
+    "StackDeleteCompleteWaiter",
+    "StackExistsWaiter",
+    "StackImportCompleteWaiter",
+    "StackUpdateCompleteWaiter",
+)
+
+
+class ChangeSetCreateCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `change_set_create_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -74,7 +88,11 @@ class ChangeSetCreateComplete(Boto3Waiter):
         """
 
 
-class StackCreateComplete(Boto3Waiter):
+class StackCreateCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `stack_create_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -134,7 +152,11 @@ class StackCreateComplete(Boto3Waiter):
         """
 
 
-class StackDeleteComplete(Boto3Waiter):
+class StackDeleteCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `stack_delete_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -194,7 +216,11 @@ class StackDeleteComplete(Boto3Waiter):
         """
 
 
-class StackExists(Boto3Waiter):
+class StackExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `stack_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -254,7 +280,11 @@ class StackExists(Boto3Waiter):
         """
 
 
-class StackImportComplete(Boto3Waiter):
+class StackImportCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `stack_import_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -314,7 +344,11 @@ class StackImportComplete(Boto3Waiter):
         """
 
 
-class StackUpdateComplete(Boto3Waiter):
+class StackUpdateCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `stack_update_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

@@ -20,11 +20,7 @@ from mypy_boto3_s3.service_resource import ObjectAcl
 from mypy_boto3_s3.service_resource import ObjectSummary
 from mypy_boto3_s3.service_resource import ObjectVersion
 from mypy_boto3_s3.service_resource import ServiceResource
-from mypy_boto3_s3.service_resource import buckets
-from mypy_boto3_s3.service_resource import multipart_uploads
-from mypy_boto3_s3.service_resource import object_versions
-from mypy_boto3_s3.service_resource import objects
-from mypy_boto3_s3.service_resource import parts
+
 
 __all__ = (
     "Client",
@@ -47,9 +43,4 @@ __all__ = (
     "ObjectSummary",
     "ObjectVersion",
     "ServiceResource",
-    "buckets",
-    "multipart_uploads",
-    "object_versions",
-    "objects",
-    "parts",
 )

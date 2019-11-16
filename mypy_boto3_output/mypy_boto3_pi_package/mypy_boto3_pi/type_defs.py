@@ -6,6 +6,21 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeDimensionKeysGroupByTypeDef",
+    "ClientDescribeDimensionKeysPartitionByTypeDef",
+    "ClientDescribeDimensionKeysResponseKeysTypeDef",
+    "ClientDescribeDimensionKeysResponsePartitionKeysTypeDef",
+    "ClientDescribeDimensionKeysResponseTypeDef",
+    "ClientGetResourceMetricsMetricQueriesGroupByTypeDef",
+    "ClientGetResourceMetricsMetricQueriesTypeDef",
+    "ClientGetResourceMetricsResponseMetricListDataPointsTypeDef",
+    "ClientGetResourceMetricsResponseMetricListKeyTypeDef",
+    "ClientGetResourceMetricsResponseMetricListTypeDef",
+    "ClientGetResourceMetricsResponseTypeDef",
+)
+
+
 _RequiredClientDescribeDimensionKeysGroupByTypeDef = TypedDict(
     "_RequiredClientDescribeDimensionKeysGroupByTypeDef", {"Group": str}
 )

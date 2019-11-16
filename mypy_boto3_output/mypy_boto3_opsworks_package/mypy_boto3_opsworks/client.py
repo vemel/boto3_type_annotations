@@ -2,9 +2,13 @@
 from __future__ import annotations
 
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_opsworks.paginator as paginator_scope
 from mypy_boto3_opsworks.type_defs import (
     ClientCloneStackChefConfigurationTypeDef,
     ClientCloneStackConfigurationManagerTypeDef,
@@ -21,6 +25,7 @@ from mypy_boto3_opsworks.type_defs import (
     ClientCreateInstanceResponseTypeDef,
     ClientCreateLayerCloudWatchLogsConfigurationTypeDef,
     ClientCreateLayerCustomRecipesTypeDef,
+    ClientCreateLayerLifecycleEventConfigurationTypeDef,
     ClientCreateLayerResponseTypeDef,
     ClientCreateLayerVolumeConfigurationsTypeDef,
     ClientCreateStackChefConfigurationTypeDef,
@@ -66,11 +71,18 @@ from mypy_boto3_opsworks.type_defs import (
     ClientUpdateAppSslConfigurationTypeDef,
     ClientUpdateLayerCloudWatchLogsConfigurationTypeDef,
     ClientUpdateLayerCustomRecipesTypeDef,
+    ClientUpdateLayerLifecycleEventConfigurationTypeDef,
     ClientUpdateLayerVolumeConfigurationsTypeDef,
     ClientUpdateStackChefConfigurationTypeDef,
     ClientUpdateStackConfigurationManagerTypeDef,
     ClientUpdateStackCustomCookbooksSourceTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_opsworks.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -1497,7 +1509,7 @@ class Client(BaseClient):
         CustomRecipes: ClientCreateLayerCustomRecipesTypeDef = None,
         InstallUpdatesOnBoot: bool = None,
         UseEbsOptimizedInstances: bool = None,
-        LifecycleEventConfiguration: Dict = None,
+        LifecycleEventConfiguration: ClientCreateLayerLifecycleEventConfigurationTypeDef = None,
     ) -> ClientCreateLayerResponseTypeDef:
         """
         Creates a layer. For more information, see `How to Create a Layer
@@ -6772,40 +6784,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def grant_access(
         self, InstanceId: str, ValidForInMinutes: int = None
     ) -> ClientGrantAccessResponseTypeDef:
@@ -8427,7 +8405,7 @@ class Client(BaseClient):
         CustomRecipes: ClientUpdateLayerCustomRecipesTypeDef = None,
         InstallUpdatesOnBoot: bool = None,
         UseEbsOptimizedInstances: bool = None,
-        LifecycleEventConfiguration: Dict = None,
+        LifecycleEventConfiguration: ClientUpdateLayerLifecycleEventConfigurationTypeDef = None,
     ) -> None:
         """
         Updates a specified layer.
@@ -9338,4 +9316,101 @@ class Client(BaseClient):
           The new mount point.
 
         :returns: None
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_ecs_clusters"]
+    ) -> paginator_scope.DescribeEcsClustersPaginator:
+        """
+        Get Paginator for `describe_ecs_clusters` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["app_exists"]
+    ) -> waiter_scope.AppExistsWaiter:
+        """
+        Get Waiter `app_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["deployment_successful"]
+    ) -> waiter_scope.DeploymentSuccessfulWaiter:
+        """
+        Get Waiter `deployment_successful`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_online"]
+    ) -> waiter_scope.InstanceOnlineWaiter:
+        """
+        Get Waiter `instance_online`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_registered"]
+    ) -> waiter_scope.InstanceRegisteredWaiter:
+        """
+        Get Waiter `instance_registered`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_stopped"]
+    ) -> waiter_scope.InstanceStoppedWaiter:
+        """
+        Get Waiter `instance_stopped`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_terminated"]
+    ) -> waiter_scope.InstanceTerminatedWaiter:
+        """
+        Get Waiter `instance_terminated`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

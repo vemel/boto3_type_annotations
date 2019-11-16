@@ -5,6 +5,48 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateApplicationResponseVersionParameterDefinitionsTypeDef",
+    "ClientCreateApplicationResponseVersionTypeDef",
+    "ClientCreateApplicationResponseTypeDef",
+    "ClientCreateApplicationVersionResponseParameterDefinitionsTypeDef",
+    "ClientCreateApplicationVersionResponseTypeDef",
+    "ClientCreateCloudFormationChangeSetParameterOverridesTypeDef",
+    "ClientCreateCloudFormationChangeSetResponseTypeDef",
+    "ClientCreateCloudFormationChangeSetRollbackConfigurationRollbackTriggersTypeDef",
+    "ClientCreateCloudFormationChangeSetRollbackConfigurationTypeDef",
+    "ClientCreateCloudFormationChangeSetTagsTypeDef",
+    "ClientCreateCloudFormationTemplateResponseTypeDef",
+    "ClientGetApplicationPolicyResponseStatementsTypeDef",
+    "ClientGetApplicationPolicyResponseTypeDef",
+    "ClientGetApplicationResponseVersionParameterDefinitionsTypeDef",
+    "ClientGetApplicationResponseVersionTypeDef",
+    "ClientGetApplicationResponseTypeDef",
+    "ClientGetCloudFormationTemplateResponseTypeDef",
+    "ClientListApplicationDependenciesResponseDependenciesTypeDef",
+    "ClientListApplicationDependenciesResponseTypeDef",
+    "ClientListApplicationVersionsResponseVersionsTypeDef",
+    "ClientListApplicationVersionsResponseTypeDef",
+    "ClientListApplicationsResponseApplicationsTypeDef",
+    "ClientListApplicationsResponseTypeDef",
+    "ClientPutApplicationPolicyResponseStatementsTypeDef",
+    "ClientPutApplicationPolicyResponseTypeDef",
+    "ClientPutApplicationPolicyStatementsTypeDef",
+    "ClientUpdateApplicationResponseVersionParameterDefinitionsTypeDef",
+    "ClientUpdateApplicationResponseVersionTypeDef",
+    "ClientUpdateApplicationResponseTypeDef",
+    "ListApplicationDependenciesPaginatePaginationConfigTypeDef",
+    "ListApplicationDependenciesPaginateResponseDependenciesTypeDef",
+    "ListApplicationDependenciesPaginateResponseTypeDef",
+    "ListApplicationVersionsPaginatePaginationConfigTypeDef",
+    "ListApplicationVersionsPaginateResponseVersionsTypeDef",
+    "ListApplicationVersionsPaginateResponseTypeDef",
+    "ListApplicationsPaginatePaginationConfigTypeDef",
+    "ListApplicationsPaginateResponseApplicationsTypeDef",
+    "ListApplicationsPaginateResponseTypeDef",
+)
+
+
 _ClientCreateApplicationResponseVersionParameterDefinitionsTypeDef = TypedDict(
     "_ClientCreateApplicationResponseVersionParameterDefinitionsTypeDef",
     {
@@ -418,7 +460,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
       - *(string) --*
 
@@ -434,7 +476,7 @@ class ClientCreateApplicationResponseTypeDef(_ClientCreateApplicationResponseTyp
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\\\-]+";
+      Pattern: "[a-zA-Z0-9\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -1727,7 +1769,7 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
       - *(string) --*
 
@@ -1743,7 +1785,7 @@ class ClientGetApplicationResponseTypeDef(_ClientGetApplicationResponseTypeDef):
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\\\-]+";
+      Pattern: "[a-zA-Z0-9\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -2231,7 +2273,7 @@ class ClientListApplicationsResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
       - *(string) --*
 
@@ -2241,7 +2283,7 @@ class ClientListApplicationsResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\\\-]+";
+      Pattern: "[a-zA-Z0-9\\-]+";
 
     - **SpdxLicenseId** *(string) --*
 
@@ -2306,7 +2348,7 @@ class ClientListApplicationsResponseTypeDef(_ClientListApplicationsResponseTypeD
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
           - *(string) --*
 
@@ -2316,7 +2358,7 @@ class ClientListApplicationsResponseTypeDef(_ClientListApplicationsResponseTypeD
 
           Minimum length=1. Maximum length=140
 
-          Pattern: "[a-zA-Z0-9\\\\-]+";
+          Pattern: "[a-zA-Z0-9\\-]+";
 
         - **SpdxLicenseId** *(string) --*
 
@@ -2859,7 +2901,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
       - *(string) --*
 
@@ -2875,7 +2917,7 @@ class ClientUpdateApplicationResponseTypeDef(_ClientUpdateApplicationResponseTyp
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\\\-]+";
+      Pattern: "[a-zA-Z0-9\\-]+";
 
     - **ReadmeUrl** *(string) --*
 
@@ -3388,7 +3430,7 @@ class ListApplicationsPaginateResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-      Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+      Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
       - *(string) --*
 
@@ -3398,7 +3440,7 @@ class ListApplicationsPaginateResponseApplicationsTypeDef(
 
       Minimum length=1. Maximum length=140
 
-      Pattern: "[a-zA-Z0-9\\\\-]+";
+      Pattern: "[a-zA-Z0-9\\-]+";
 
     - **SpdxLicenseId** *(string) --*
 
@@ -3460,7 +3502,7 @@ class ListApplicationsPaginateResponseTypeDef(_ListApplicationsPaginateResponseT
 
           Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-          Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+          Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
           - *(string) --*
 
@@ -3470,7 +3512,7 @@ class ListApplicationsPaginateResponseTypeDef(_ListApplicationsPaginateResponseT
 
           Minimum length=1. Maximum length=140
 
-          Pattern: "[a-zA-Z0-9\\\\-]+";
+          Pattern: "[a-zA-Z0-9\\-]+";
 
         - **SpdxLicenseId** *(string) --*
 

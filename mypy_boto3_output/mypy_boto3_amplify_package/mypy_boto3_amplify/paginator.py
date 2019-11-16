@@ -14,7 +14,19 @@ from mypy_boto3_amplify.type_defs import (
 )
 
 
-class ListApps(Boto3Paginator):
+__all__ = (
+    "ListAppsPaginator",
+    "ListBranchesPaginator",
+    "ListDomainAssociationsPaginator",
+    "ListJobsPaginator",
+)
+
+
+class ListAppsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_apps`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListAppsPaginatePaginationConfigTypeDef = None
@@ -312,7 +324,11 @@ class ListApps(Boto3Paginator):
         """
 
 
-class ListBranches(Boto3Paginator):
+class ListBranchesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_branches`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -547,7 +563,11 @@ class ListBranches(Boto3Paginator):
         """
 
 
-class ListDomainAssociations(Boto3Paginator):
+class ListDomainAssociationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_domain_associations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -702,7 +722,11 @@ class ListDomainAssociations(Boto3Paginator):
         """
 
 
-class ListJobs(Boto3Paginator):
+class ListJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

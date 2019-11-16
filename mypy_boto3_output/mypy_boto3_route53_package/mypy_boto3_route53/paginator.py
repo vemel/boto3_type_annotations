@@ -16,7 +16,20 @@ from mypy_boto3_route53.type_defs import (
 )
 
 
-class ListHealthChecks(Boto3Paginator):
+__all__ = (
+    "ListHealthChecksPaginator",
+    "ListHostedZonesPaginator",
+    "ListQueryLoggingConfigsPaginator",
+    "ListResourceRecordSetsPaginator",
+    "ListVPCAssociationAuthorizationsPaginator",
+)
+
+
+class ListHealthChecksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_health_checks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListHealthChecksPaginatePaginationConfigTypeDef = None
@@ -616,7 +629,11 @@ class ListHealthChecks(Boto3Paginator):
         """
 
 
-class ListHostedZones(Boto3Paginator):
+class ListHostedZonesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_hosted_zones`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -784,7 +801,11 @@ class ListHostedZones(Boto3Paginator):
         """
 
 
-class ListQueryLoggingConfigs(Boto3Paginator):
+class ListQueryLoggingConfigsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_query_logging_configs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -886,7 +907,11 @@ class ListQueryLoggingConfigs(Boto3Paginator):
         """
 
 
-class ListResourceRecordSets(Boto3Paginator):
+class ListResourceRecordSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_resource_record_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1817,7 +1842,11 @@ class ListResourceRecordSets(Boto3Paginator):
         """
 
 
-class ListVPCAssociationAuthorizations(Boto3Paginator):
+class ListVPCAssociationAuthorizationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_vpc_association_authorizations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

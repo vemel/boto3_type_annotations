@@ -8,7 +8,14 @@ from mypy_boto3_eks.type_defs import (
 )
 
 
-class ClusterActive(Boto3Waiter):
+__all__ = ("ClusterActiveWaiter", "ClusterDeletedWaiter")
+
+
+class ClusterActiveWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_active` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, name: str, WaiterConfig: ClusterActiveWaitWaiterConfigTypeDef = None
@@ -52,7 +59,11 @@ class ClusterActive(Boto3Waiter):
         """
 
 
-class ClusterDeleted(Boto3Waiter):
+class ClusterDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, name: str, WaiterConfig: ClusterDeletedWaitWaiterConfigTypeDef = None

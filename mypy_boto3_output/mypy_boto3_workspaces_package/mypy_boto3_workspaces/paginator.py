@@ -23,7 +23,23 @@ from mypy_boto3_workspaces.type_defs import (
 )
 
 
-class DescribeAccountModifications(Boto3Paginator):
+__all__ = (
+    "DescribeAccountModificationsPaginator",
+    "DescribeIpGroupsPaginator",
+    "DescribeWorkspaceBundlesPaginator",
+    "DescribeWorkspaceDirectoriesPaginator",
+    "DescribeWorkspaceImagesPaginator",
+    "DescribeWorkspacesPaginator",
+    "DescribeWorkspacesConnectionStatusPaginator",
+    "ListAvailableManagementCidrRangesPaginator",
+)
+
+
+class DescribeAccountModificationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_account_modifications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -123,7 +139,11 @@ class DescribeAccountModifications(Boto3Paginator):
         """
 
 
-class DescribeIpGroups(Boto3Paginator):
+class DescribeIpGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_ip_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -243,7 +263,11 @@ class DescribeIpGroups(Boto3Paginator):
         """
 
 
-class DescribeWorkspaceBundles(Boto3Paginator):
+class DescribeWorkspaceBundlesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_workspace_bundles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -387,7 +411,11 @@ class DescribeWorkspaceBundles(Boto3Paginator):
         """
 
 
-class DescribeWorkspaceDirectories(Boto3Paginator):
+class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_workspace_directories`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -580,7 +608,11 @@ class DescribeWorkspaceDirectories(Boto3Paginator):
         """
 
 
-class DescribeWorkspaceImages(Boto3Paginator):
+class DescribeWorkspaceImagesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_workspace_images`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -710,7 +742,11 @@ class DescribeWorkspaceImages(Boto3Paginator):
         """
 
 
-class DescribeWorkspaces(Boto3Paginator):
+class DescribeWorkspacesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_workspaces`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -948,7 +984,11 @@ class DescribeWorkspaces(Boto3Paginator):
         """
 
 
-class DescribeWorkspacesConnectionStatus(Boto3Paginator):
+class DescribeWorkspacesConnectionStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_workspaces_connection_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1047,7 +1087,11 @@ class DescribeWorkspacesConnectionStatus(Boto3Paginator):
         """
 
 
-class ListAvailableManagementCidrRanges(Boto3Paginator):
+class ListAvailableManagementCidrRangesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_available_management_cidr_ranges`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

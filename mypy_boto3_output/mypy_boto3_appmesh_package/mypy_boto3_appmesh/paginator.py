@@ -18,7 +18,21 @@ from mypy_boto3_appmesh.type_defs import (
 )
 
 
-class ListMeshes(Boto3Paginator):
+__all__ = (
+    "ListMeshesPaginator",
+    "ListRoutesPaginator",
+    "ListTagsForResourcePaginator",
+    "ListVirtualNodesPaginator",
+    "ListVirtualRoutersPaginator",
+    "ListVirtualServicesPaginator",
+)
+
+
+class ListMeshesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_meshes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListMeshesPaginatePaginationConfigTypeDef = None
@@ -102,7 +116,11 @@ class ListMeshes(Boto3Paginator):
         """
 
 
-class ListRoutes(Boto3Paginator):
+class ListRoutesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_routes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -211,7 +229,11 @@ class ListRoutes(Boto3Paginator):
         """
 
 
-class ListTagsForResource(Boto3Paginator):
+class ListTagsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -309,7 +331,11 @@ class ListTagsForResource(Boto3Paginator):
         """
 
 
-class ListVirtualNodes(Boto3Paginator):
+class ListVirtualNodesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_virtual_nodes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -407,7 +433,11 @@ class ListVirtualNodes(Boto3Paginator):
         """
 
 
-class ListVirtualRouters(Boto3Paginator):
+class ListVirtualRoutersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_virtual_routers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -505,7 +535,11 @@ class ListVirtualRouters(Boto3Paginator):
         """
 
 
-class ListVirtualServices(Boto3Paginator):
+class ListVirtualServicesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_virtual_services`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

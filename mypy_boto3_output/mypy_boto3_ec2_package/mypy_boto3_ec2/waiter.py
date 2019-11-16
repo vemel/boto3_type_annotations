@@ -63,7 +63,46 @@ from mypy_boto3_ec2.type_defs import (
 )
 
 
-class BundleTaskComplete(Boto3Waiter):
+__all__ = (
+    "BundleTaskCompleteWaiter",
+    "ConversionTaskCancelledWaiter",
+    "ConversionTaskCompletedWaiter",
+    "ConversionTaskDeletedWaiter",
+    "CustomerGatewayAvailableWaiter",
+    "ExportTaskCancelledWaiter",
+    "ExportTaskCompletedWaiter",
+    "ImageAvailableWaiter",
+    "ImageExistsWaiter",
+    "InstanceExistsWaiter",
+    "InstanceRunningWaiter",
+    "InstanceStatusOkWaiter",
+    "InstanceStoppedWaiter",
+    "InstanceTerminatedWaiter",
+    "KeyPairExistsWaiter",
+    "NatGatewayAvailableWaiter",
+    "NetworkInterfaceAvailableWaiter",
+    "PasswordDataAvailableWaiter",
+    "SnapshotCompletedWaiter",
+    "SpotInstanceRequestFulfilledWaiter",
+    "SubnetAvailableWaiter",
+    "SystemStatusOkWaiter",
+    "VolumeAvailableWaiter",
+    "VolumeDeletedWaiter",
+    "VolumeInUseWaiter",
+    "VpcAvailableWaiter",
+    "VpcExistsWaiter",
+    "VpcPeeringConnectionDeletedWaiter",
+    "VpcPeeringConnectionExistsWaiter",
+    "VpnConnectionAvailableWaiter",
+    "VpnConnectionDeletedWaiter",
+)
+
+
+class BundleTaskCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `bundle_task_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -196,7 +235,11 @@ class BundleTaskComplete(Boto3Waiter):
         """
 
 
-class ConversionTaskCancelled(Boto3Waiter):
+class ConversionTaskCancelledWaiter(Boto3Waiter):
+    """
+    Waiter for `conversion_task_cancelled` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -255,7 +298,11 @@ class ConversionTaskCancelled(Boto3Waiter):
         """
 
 
-class ConversionTaskCompleted(Boto3Waiter):
+class ConversionTaskCompletedWaiter(Boto3Waiter):
+    """
+    Waiter for `conversion_task_completed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -314,7 +361,11 @@ class ConversionTaskCompleted(Boto3Waiter):
         """
 
 
-class ConversionTaskDeleted(Boto3Waiter):
+class ConversionTaskDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `conversion_task_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -373,7 +424,11 @@ class ConversionTaskDeleted(Boto3Waiter):
         """
 
 
-class CustomerGatewayAvailable(Boto3Waiter):
+class CustomerGatewayAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `customer_gateway_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -505,7 +560,11 @@ class CustomerGatewayAvailable(Boto3Waiter):
         """
 
 
-class ExportTaskCancelled(Boto3Waiter):
+class ExportTaskCancelledWaiter(Boto3Waiter):
+    """
+    Waiter for `export_task_cancelled` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -555,7 +614,11 @@ class ExportTaskCancelled(Boto3Waiter):
         """
 
 
-class ExportTaskCompleted(Boto3Waiter):
+class ExportTaskCompletedWaiter(Boto3Waiter):
+    """
+    Waiter for `export_task_completed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -605,7 +668,11 @@ class ExportTaskCompleted(Boto3Waiter):
         """
 
 
-class ImageAvailable(Boto3Waiter):
+class ImageAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `image_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -816,7 +883,11 @@ class ImageAvailable(Boto3Waiter):
         """
 
 
-class ImageExists(Boto3Waiter):
+class ImageExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `image_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -1027,7 +1098,11 @@ class ImageExists(Boto3Waiter):
         """
 
 
-class InstanceExists(Boto3Waiter):
+class InstanceExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -1373,7 +1448,11 @@ class InstanceExists(Boto3Waiter):
         """
 
 
-class InstanceRunning(Boto3Waiter):
+class InstanceRunningWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_running` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -1719,7 +1798,11 @@ class InstanceRunning(Boto3Waiter):
         """
 
 
-class InstanceStatusOk(Boto3Waiter):
+class InstanceStatusOkWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_status_ok` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -1897,7 +1980,11 @@ class InstanceStatusOk(Boto3Waiter):
         """
 
 
-class InstanceStopped(Boto3Waiter):
+class InstanceStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -2243,7 +2330,11 @@ class InstanceStopped(Boto3Waiter):
         """
 
 
-class InstanceTerminated(Boto3Waiter):
+class InstanceTerminatedWaiter(Boto3Waiter):
+    """
+    Waiter for `instance_terminated` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -2589,7 +2680,11 @@ class InstanceTerminated(Boto3Waiter):
         """
 
 
-class KeyPairExists(Boto3Waiter):
+class KeyPairExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `key_pair_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -2705,7 +2800,11 @@ class KeyPairExists(Boto3Waiter):
         """
 
 
-class NatGatewayAvailable(Boto3Waiter):
+class NatGatewayAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `nat_gateway_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -2838,7 +2937,11 @@ class NatGatewayAvailable(Boto3Waiter):
         """
 
 
-class NetworkInterfaceAvailable(Boto3Waiter):
+class NetworkInterfaceAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `network_interface_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3058,7 +3161,11 @@ class NetworkInterfaceAvailable(Boto3Waiter):
         """
 
 
-class PasswordDataAvailable(Boto3Waiter):
+class PasswordDataAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `password_data_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3113,7 +3220,11 @@ class PasswordDataAvailable(Boto3Waiter):
         """
 
 
-class SnapshotCompleted(Boto3Waiter):
+class SnapshotCompletedWaiter(Boto3Waiter):
+    """
+    Waiter for `snapshot_completed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3301,7 +3412,11 @@ class SnapshotCompleted(Boto3Waiter):
         """
 
 
-class SpotInstanceRequestFulfilled(Boto3Waiter):
+class SpotInstanceRequestFulfilledWaiter(Boto3Waiter):
+    """
+    Waiter for `spot_instance_request_fulfilled` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3524,7 +3639,11 @@ class SpotInstanceRequestFulfilled(Boto3Waiter):
         """
 
 
-class SubnetAvailable(Boto3Waiter):
+class SubnetAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `subnet_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3692,7 +3811,11 @@ class SubnetAvailable(Boto3Waiter):
         """
 
 
-class SystemStatusOk(Boto3Waiter):
+class SystemStatusOkWaiter(Boto3Waiter):
+    """
+    Waiter for `system_status_ok` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -3870,7 +3993,11 @@ class SystemStatusOk(Boto3Waiter):
         """
 
 
-class VolumeAvailable(Boto3Waiter):
+class VolumeAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `volume_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4041,7 +4168,11 @@ class VolumeAvailable(Boto3Waiter):
         """
 
 
-class VolumeDeleted(Boto3Waiter):
+class VolumeDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `volume_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4212,7 +4343,11 @@ class VolumeDeleted(Boto3Waiter):
         """
 
 
-class VolumeInUse(Boto3Waiter):
+class VolumeInUseWaiter(Boto3Waiter):
+    """
+    Waiter for `volume_in_use` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4383,7 +4518,11 @@ class VolumeInUse(Boto3Waiter):
         """
 
 
-class VpcAvailable(Boto3Waiter):
+class VpcAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `vpc_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4546,7 +4685,11 @@ class VpcAvailable(Boto3Waiter):
         """
 
 
-class VpcExists(Boto3Waiter):
+class VpcExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `vpc_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4709,7 +4852,11 @@ class VpcExists(Boto3Waiter):
         """
 
 
-class VpcPeeringConnectionDeleted(Boto3Waiter):
+class VpcPeeringConnectionDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `vpc_peering_connection_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -4866,7 +5013,11 @@ class VpcPeeringConnectionDeleted(Boto3Waiter):
         """
 
 
-class VpcPeeringConnectionExists(Boto3Waiter):
+class VpcPeeringConnectionExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `vpc_peering_connection_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -5023,7 +5174,11 @@ class VpcPeeringConnectionExists(Boto3Waiter):
         """
 
 
-class VpnConnectionAvailable(Boto3Waiter):
+class VpnConnectionAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `vpn_connection_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -5164,7 +5319,11 @@ class VpnConnectionAvailable(Boto3Waiter):
         """
 
 
-class VpnConnectionDeleted(Boto3Waiter):
+class VpnConnectionDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `vpn_connection_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

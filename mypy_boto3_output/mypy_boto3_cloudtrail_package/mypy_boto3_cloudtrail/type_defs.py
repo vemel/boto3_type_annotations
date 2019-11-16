@@ -6,6 +6,54 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAddTagsTagsListTypeDef",
+    "ClientCreateTrailResponseTypeDef",
+    "ClientCreateTrailTagsListTypeDef",
+    "ClientDescribeTrailsResponsetrailListTypeDef",
+    "ClientDescribeTrailsResponseTypeDef",
+    "ClientGetEventSelectorsResponseEventSelectorsDataResourcesTypeDef",
+    "ClientGetEventSelectorsResponseEventSelectorsTypeDef",
+    "ClientGetEventSelectorsResponseTypeDef",
+    "ClientGetTrailResponseTrailTypeDef",
+    "ClientGetTrailResponseTypeDef",
+    "ClientGetTrailStatusResponseTypeDef",
+    "ClientListPublicKeysResponsePublicKeyListTypeDef",
+    "ClientListPublicKeysResponseTypeDef",
+    "ClientListTagsResponseResourceTagListTagsListTypeDef",
+    "ClientListTagsResponseResourceTagListTypeDef",
+    "ClientListTagsResponseTypeDef",
+    "ClientListTrailsResponseTrailsTypeDef",
+    "ClientListTrailsResponseTypeDef",
+    "ClientLookupEventsLookupAttributesTypeDef",
+    "ClientLookupEventsResponseEventsResourcesTypeDef",
+    "ClientLookupEventsResponseEventsTypeDef",
+    "ClientLookupEventsResponseTypeDef",
+    "ClientPutEventSelectorsEventSelectorsDataResourcesTypeDef",
+    "ClientPutEventSelectorsEventSelectorsTypeDef",
+    "ClientPutEventSelectorsResponseEventSelectorsDataResourcesTypeDef",
+    "ClientPutEventSelectorsResponseEventSelectorsTypeDef",
+    "ClientPutEventSelectorsResponseTypeDef",
+    "ClientRemoveTagsTagsListTypeDef",
+    "ClientUpdateTrailResponseTypeDef",
+    "ListPublicKeysPaginatePaginationConfigTypeDef",
+    "ListPublicKeysPaginateResponsePublicKeyListTypeDef",
+    "ListPublicKeysPaginateResponseTypeDef",
+    "ListTagsPaginatePaginationConfigTypeDef",
+    "ListTagsPaginateResponseResourceTagListTagsListTypeDef",
+    "ListTagsPaginateResponseResourceTagListTypeDef",
+    "ListTagsPaginateResponseTypeDef",
+    "ListTrailsPaginatePaginationConfigTypeDef",
+    "ListTrailsPaginateResponseTrailsTypeDef",
+    "ListTrailsPaginateResponseTypeDef",
+    "LookupEventsPaginateLookupAttributesTypeDef",
+    "LookupEventsPaginatePaginationConfigTypeDef",
+    "LookupEventsPaginateResponseEventsResourcesTypeDef",
+    "LookupEventsPaginateResponseEventsTypeDef",
+    "LookupEventsPaginateResponseTypeDef",
+)
+
+
 _RequiredClientAddTagsTagsListTypeDef = TypedDict(
     "_RequiredClientAddTagsTagsListTypeDef", {"Key": str}
 )

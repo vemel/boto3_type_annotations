@@ -5,6 +5,9 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
+__all__ = ("ClientGetMediaResponseTypeDef", "ClientGetMediaStartSelectorTypeDef")
+
+
 _ClientGetMediaResponseTypeDef = TypedDict(
     "_ClientGetMediaResponseTypeDef", {"ContentType": str}, total=False
 )

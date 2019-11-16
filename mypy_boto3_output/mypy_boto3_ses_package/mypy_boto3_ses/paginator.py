@@ -16,7 +16,20 @@ from mypy_boto3_ses.type_defs import (
 )
 
 
-class ListConfigurationSets(Boto3Paginator):
+__all__ = (
+    "ListConfigurationSetsPaginator",
+    "ListCustomVerificationEmailTemplatesPaginator",
+    "ListIdentitiesPaginator",
+    "ListReceiptRuleSetsPaginator",
+    "ListTemplatesPaginator",
+)
+
+
+class ListConfigurationSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_configuration_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -109,7 +122,11 @@ class ListConfigurationSets(Boto3Paginator):
         """
 
 
-class ListCustomVerificationEmailTemplates(Boto3Paginator):
+class ListCustomVerificationEmailTemplatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_custom_verification_email_templates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -210,7 +227,11 @@ class ListCustomVerificationEmailTemplates(Boto3Paginator):
         """
 
 
-class ListIdentities(Boto3Paginator):
+class ListIdentitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_identities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -289,7 +310,11 @@ class ListIdentities(Boto3Paginator):
         """
 
 
-class ListReceiptRuleSets(Boto3Paginator):
+class ListReceiptRuleSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_receipt_rule_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -383,7 +408,11 @@ class ListReceiptRuleSets(Boto3Paginator):
         """
 
 
-class ListTemplates(Boto3Paginator):
+class ListTemplatesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_templates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTemplatesPaginatePaginationConfigTypeDef = None

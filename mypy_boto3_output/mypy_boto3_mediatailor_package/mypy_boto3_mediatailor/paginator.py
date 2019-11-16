@@ -8,7 +8,14 @@ from mypy_boto3_mediatailor.type_defs import (
 )
 
 
-class ListPlaybackConfigurations(Boto3Paginator):
+__all__ = ("ListPlaybackConfigurationsPaginator",)
+
+
+class ListPlaybackConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_playback_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

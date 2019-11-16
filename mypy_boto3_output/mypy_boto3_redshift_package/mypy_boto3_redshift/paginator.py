@@ -56,7 +56,38 @@ from mypy_boto3_redshift.type_defs import (
 )
 
 
-class DescribeClusterDbRevisions(Boto3Paginator):
+__all__ = (
+    "DescribeClusterDbRevisionsPaginator",
+    "DescribeClusterParameterGroupsPaginator",
+    "DescribeClusterParametersPaginator",
+    "DescribeClusterSecurityGroupsPaginator",
+    "DescribeClusterSnapshotsPaginator",
+    "DescribeClusterSubnetGroupsPaginator",
+    "DescribeClusterTracksPaginator",
+    "DescribeClusterVersionsPaginator",
+    "DescribeClustersPaginator",
+    "DescribeDefaultClusterParametersPaginator",
+    "DescribeEventSubscriptionsPaginator",
+    "DescribeEventsPaginator",
+    "DescribeHsmClientCertificatesPaginator",
+    "DescribeHsmConfigurationsPaginator",
+    "DescribeNodeConfigurationOptionsPaginator",
+    "DescribeOrderableClusterOptionsPaginator",
+    "DescribeReservedNodeOfferingsPaginator",
+    "DescribeReservedNodesPaginator",
+    "DescribeSnapshotCopyGrantsPaginator",
+    "DescribeSnapshotSchedulesPaginator",
+    "DescribeTableRestoreStatusPaginator",
+    "DescribeTagsPaginator",
+    "GetReservedNodeExchangeOfferingsPaginator",
+)
+
+
+class DescribeClusterDbRevisionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_db_revisions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -185,7 +216,11 @@ class DescribeClusterDbRevisions(Boto3Paginator):
         """
 
 
-class DescribeClusterParameterGroups(Boto3Paginator):
+class DescribeClusterParameterGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_parameter_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -340,7 +375,11 @@ class DescribeClusterParameterGroups(Boto3Paginator):
         """
 
 
-class DescribeClusterParameters(Boto3Paginator):
+class DescribeClusterParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -490,7 +529,11 @@ class DescribeClusterParameters(Boto3Paginator):
         """
 
 
-class DescribeClusterSecurityGroups(Boto3Paginator):
+class DescribeClusterSecurityGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_security_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -734,7 +777,11 @@ class DescribeClusterSecurityGroups(Boto3Paginator):
         """
 
 
-class DescribeClusterSnapshots(Boto3Paginator):
+class DescribeClusterSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1174,7 +1221,11 @@ class DescribeClusterSnapshots(Boto3Paginator):
         """
 
 
-class DescribeClusterSubnetGroups(Boto3Paginator):
+class DescribeClusterSubnetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_subnet_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1376,7 +1427,11 @@ class DescribeClusterSubnetGroups(Boto3Paginator):
         """
 
 
-class DescribeClusterTracks(Boto3Paginator):
+class DescribeClusterTracksPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_tracks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1511,7 +1566,11 @@ class DescribeClusterTracks(Boto3Paginator):
         """
 
 
-class DescribeClusterVersions(Boto3Paginator):
+class DescribeClusterVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_cluster_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1629,7 +1688,11 @@ class DescribeClusterVersions(Boto3Paginator):
         """
 
 
-class DescribeClusters(Boto3Paginator):
+class DescribeClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2484,7 +2547,11 @@ class DescribeClusters(Boto3Paginator):
         """
 
 
-class DescribeDefaultClusterParameters(Boto3Paginator):
+class DescribeDefaultClusterParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_default_cluster_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2638,7 +2705,11 @@ class DescribeDefaultClusterParameters(Boto3Paginator):
         """
 
 
-class DescribeEventSubscriptions(Boto3Paginator):
+class DescribeEventSubscriptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_event_subscriptions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2849,7 +2920,11 @@ class DescribeEventSubscriptions(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3041,7 +3116,11 @@ class DescribeEvents(Boto3Paginator):
         """
 
 
-class DescribeHsmClientCertificates(Boto3Paginator):
+class DescribeHsmClientCertificatesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_hsm_client_certificates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3192,7 +3271,11 @@ class DescribeHsmClientCertificates(Boto3Paginator):
         """
 
 
-class DescribeHsmConfigurations(Boto3Paginator):
+class DescribeHsmConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_hsm_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3352,7 +3435,11 @@ class DescribeHsmConfigurations(Boto3Paginator):
         """
 
 
-class DescribeNodeConfigurationOptions(Boto3Paginator):
+class DescribeNodeConfigurationOptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_node_configuration_options`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3504,7 +3591,11 @@ class DescribeNodeConfigurationOptions(Boto3Paginator):
         """
 
 
-class DescribeOrderableClusterOptions(Boto3Paginator):
+class DescribeOrderableClusterOptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_orderable_cluster_options`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3648,7 +3739,11 @@ class DescribeOrderableClusterOptions(Boto3Paginator):
         """
 
 
-class DescribeReservedNodeOfferings(Boto3Paginator):
+class DescribeReservedNodeOfferingsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_node_offerings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3793,7 +3888,11 @@ class DescribeReservedNodeOfferings(Boto3Paginator):
         """
 
 
-class DescribeReservedNodes(Boto3Paginator):
+class DescribeReservedNodesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_reserved_nodes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3972,7 +4071,11 @@ class DescribeReservedNodes(Boto3Paginator):
         """
 
 
-class DescribeSnapshotCopyGrants(Boto3Paginator):
+class DescribeSnapshotCopyGrantsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_snapshot_copy_grants`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4124,7 +4227,11 @@ class DescribeSnapshotCopyGrants(Boto3Paginator):
         """
 
 
-class DescribeSnapshotSchedules(Boto3Paginator):
+class DescribeSnapshotSchedulesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_snapshot_schedules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4306,7 +4413,11 @@ class DescribeSnapshotSchedules(Boto3Paginator):
         """
 
 
-class DescribeTableRestoreStatus(Boto3Paginator):
+class DescribeTableRestoreStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_table_restore_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4471,7 +4582,11 @@ class DescribeTableRestoreStatus(Boto3Paginator):
         """
 
 
-class DescribeTags(Boto3Paginator):
+class DescribeTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -4667,7 +4782,11 @@ class DescribeTags(Boto3Paginator):
         """
 
 
-class GetReservedNodeExchangeOfferings(Boto3Paginator):
+class GetReservedNodeExchangeOfferingsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_reserved_node_exchange_offerings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

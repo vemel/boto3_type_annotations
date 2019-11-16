@@ -5,6 +5,22 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDeleteSessionResponseTypeDef",
+    "ClientGetSessionResponsedialogActionTypeDef",
+    "ClientGetSessionResponserecentIntentSummaryViewTypeDef",
+    "ClientGetSessionResponseTypeDef",
+    "ClientPostContentResponseTypeDef",
+    "ClientPostTextResponseresponseCardgenericAttachmentsbuttonsTypeDef",
+    "ClientPostTextResponseresponseCardgenericAttachmentsTypeDef",
+    "ClientPostTextResponseresponseCardTypeDef",
+    "ClientPostTextResponseTypeDef",
+    "ClientPutSessionResponseTypeDef",
+    "ClientPutSessiondialogActionTypeDef",
+    "ClientPutSessionrecentIntentSummaryViewTypeDef",
+)
+
+
 _ClientDeleteSessionResponseTypeDef = TypedDict(
     "_ClientDeleteSessionResponseTypeDef",
     {"botName": str, "botAlias": str, "userId": str, "sessionId": str},

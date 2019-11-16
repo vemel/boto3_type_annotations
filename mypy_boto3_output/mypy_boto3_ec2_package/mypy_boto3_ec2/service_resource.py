@@ -160,7 +160,84 @@ from mypy_boto3_ec2.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "ClassicAddress",
+    "DhcpOptions",
+    "Image",
+    "Instance",
+    "InternetGateway",
+    "KeyPair",
+    "KeyPairInfo",
+    "NetworkAcl",
+    "NetworkInterface",
+    "NetworkInterfaceAssociation",
+    "PlacementGroup",
+    "Route",
+    "RouteTable",
+    "RouteTableAssociation",
+    "SecurityGroup",
+    "Snapshot",
+    "Subnet",
+    "Tag",
+    "Volume",
+    "Vpc",
+    "VpcPeeringConnection",
+    "VpcAddress",
+    "ServiceResourceClassicAddressesCollection",
+    "ServiceResourceDhcpOptionsSetsCollection",
+    "ServiceResourceImagesCollection",
+    "ServiceResourceInstancesCollection",
+    "ServiceResourceInternetGatewaysCollection",
+    "ServiceResourceKeyPairsCollection",
+    "ServiceResourceNetworkAclsCollection",
+    "ServiceResourceNetworkInterfacesCollection",
+    "ServiceResourcePlacementGroupsCollection",
+    "ServiceResourceRouteTablesCollection",
+    "ServiceResourceSecurityGroupsCollection",
+    "ServiceResourceSnapshotsCollection",
+    "ServiceResourceSubnetsCollection",
+    "ServiceResourceVolumesCollection",
+    "ServiceResourceVpcAddressesCollection",
+    "ServiceResourceVpcPeeringConnectionsCollection",
+    "ServiceResourceVpcsCollection",
+    "InstanceVolumesCollection",
+    "InstanceVpcAddressesCollection",
+    "PlacementGroupInstancesCollection",
+    "SubnetInstancesCollection",
+    "SubnetNetworkInterfacesCollection",
+    "VolumeSnapshotsCollection",
+    "VpcAcceptedVpcPeeringConnectionsCollection",
+    "VpcInstancesCollection",
+    "VpcInternetGatewaysCollection",
+    "VpcNetworkAclsCollection",
+    "VpcNetworkInterfacesCollection",
+    "VpcRequestedVpcPeeringConnectionsCollection",
+    "VpcRouteTablesCollection",
+    "VpcSecurityGroupsCollection",
+    "VpcSubnetsCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    classic_addresses: service_resource_scope.ServiceResourceClassicAddressesCollection
+    dhcp_options_sets: service_resource_scope.ServiceResourceDhcpOptionsSetsCollection
+    images: service_resource_scope.ServiceResourceImagesCollection
+    instances: service_resource_scope.ServiceResourceInstancesCollection
+    internet_gateways: service_resource_scope.ServiceResourceInternetGatewaysCollection
+    key_pairs: service_resource_scope.ServiceResourceKeyPairsCollection
+    network_acls: service_resource_scope.ServiceResourceNetworkAclsCollection
+    network_interfaces: service_resource_scope.ServiceResourceNetworkInterfacesCollection
+    placement_groups: service_resource_scope.ServiceResourcePlacementGroupsCollection
+    route_tables: service_resource_scope.ServiceResourceRouteTablesCollection
+    security_groups: service_resource_scope.ServiceResourceSecurityGroupsCollection
+    snapshots: service_resource_scope.ServiceResourceSnapshotsCollection
+    subnets: service_resource_scope.ServiceResourceSubnetsCollection
+    volumes: service_resource_scope.ServiceResourceVolumesCollection
+    vpc_addresses: service_resource_scope.ServiceResourceVpcAddressesCollection
+    vpc_peering_connections: service_resource_scope.ServiceResourceVpcPeeringConnectionsCollection
+    vpcs: service_resource_scope.ServiceResourceVpcsCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def ClassicAddress(self, public_ip: str) -> service_resource_scope.ClassicAddress:
         """
@@ -2286,7 +2363,6 @@ class ServiceResource(Boto3ServiceResource):
     def create_tags(
         self, Resources: List[Any], Tags: List[TypeDefTag], DryRun: bool = False
     ) -> None:
-
         pass
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -4361,6 +4437,8 @@ class Instance(Boto3ServiceResource):
     hibernation_options: Dict[str, Any]
     licenses: List[Any]
     id: str
+    volumes: service_resource_scope.InstanceVolumesCollection
+    vpc_addresses: service_resource_scope.InstanceVpcAddressesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_classic_link_vpc(
@@ -9501,6 +9579,7 @@ class PlacementGroup(Boto3ServiceResource):
     strategy: str
     partition_count: int
     name: str
+    instances: service_resource_scope.PlacementGroupInstancesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete(self, DryRun: bool = None) -> None:
@@ -12125,6 +12204,8 @@ class Subnet(Boto3ServiceResource):
     tags: List[Any]
     subnet_arn: str
     id: str
+    instances: service_resource_scope.SubnetInstancesCollection
+    network_interfaces: service_resource_scope.SubnetNetworkInterfacesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_instances(
@@ -13535,6 +13616,7 @@ class Volume(Boto3ServiceResource):
     tags: List[Any]
     volume_type: str
     id: str
+    snapshots: service_resource_scope.VolumeSnapshotsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_to_instance(
@@ -14497,6 +14579,15 @@ class Vpc(Boto3ServiceResource):
     is_default: bool
     tags: List[Any]
     id: str
+    accepted_vpc_peering_connections: service_resource_scope.VpcAcceptedVpcPeeringConnectionsCollection
+    instances: service_resource_scope.VpcInstancesCollection
+    internet_gateways: service_resource_scope.VpcInternetGatewaysCollection
+    network_acls: service_resource_scope.VpcNetworkAclsCollection
+    network_interfaces: service_resource_scope.VpcNetworkInterfacesCollection
+    requested_vpc_peering_connections: service_resource_scope.VpcRequestedVpcPeeringConnectionsCollection
+    route_tables: service_resource_scope.VpcRouteTablesCollection
+    security_groups: service_resource_scope.VpcSecurityGroupsCollection
+    subnets: service_resource_scope.VpcSubnetsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_dhcp_options(self, DhcpOptionsId: str, DryRun: bool = None) -> None:
@@ -16414,7 +16505,7 @@ class VpcAddress(Boto3ServiceResource):
         """
 
 
-class classic_addresses(ResourceCollection):
+class ServiceResourceClassicAddressesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -16571,7 +16662,7 @@ class classic_addresses(ResourceCollection):
         """
 
 
-class dhcp_options_sets(ResourceCollection):
+class ServiceResourceDhcpOptionsSetsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -16799,7 +16890,7 @@ class dhcp_options_sets(ResourceCollection):
         """
 
 
-class images(ResourceCollection):
+class ServiceResourceImagesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -17094,7 +17185,7 @@ class images(ResourceCollection):
         """
 
 
-class instances(ResourceCollection):
+class ServiceResourceInstancesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -18279,7 +18370,7 @@ class instances(ResourceCollection):
         """
 
 
-class internet_gateways(ResourceCollection):
+class ServiceResourceInternetGatewaysCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -18508,7 +18599,7 @@ class internet_gateways(ResourceCollection):
         """
 
 
-class key_pairs(ResourceCollection):
+class ServiceResourceKeyPairsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -18709,7 +18800,7 @@ class key_pairs(ResourceCollection):
         """
 
 
-class network_acls(ResourceCollection):
+class ServiceResourceNetworkAclsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -18962,7 +19053,7 @@ class network_acls(ResourceCollection):
         """
 
 
-class network_interfaces(ResourceCollection):
+class ServiceResourceNetworkInterfacesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -19267,7 +19358,7 @@ class network_interfaces(ResourceCollection):
         """
 
 
-class placement_groups(ResourceCollection):
+class ServiceResourcePlacementGroupsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -19471,7 +19562,7 @@ class placement_groups(ResourceCollection):
         """
 
 
-class route_tables(ResourceCollection):
+class ServiceResourceRouteTablesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -19740,7 +19831,7 @@ class route_tables(ResourceCollection):
         """
 
 
-class security_groups(ResourceCollection):
+class ServiceResourceSecurityGroupsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -20037,7 +20128,7 @@ class security_groups(ResourceCollection):
         """
 
 
-class snapshots(ResourceCollection):
+class ServiceResourceSnapshotsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -20309,7 +20400,7 @@ class snapshots(ResourceCollection):
         """
 
 
-class subnets(ResourceCollection):
+class ServiceResourceSubnetsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -20561,7 +20652,7 @@ class subnets(ResourceCollection):
         """
 
 
-class volumes(ResourceCollection):
+class ServiceResourceVolumesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -20816,7 +20907,7 @@ class volumes(ResourceCollection):
         """
 
 
-class vpc_addresses(ResourceCollection):
+class ServiceResourceVpcAddressesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -20973,7 +21064,7 @@ class vpc_addresses(ResourceCollection):
         """
 
 
-class vpc_peering_connections(ResourceCollection):
+class ServiceResourceVpcPeeringConnectionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -21217,7 +21308,7 @@ class vpc_peering_connections(ResourceCollection):
         """
 
 
-class vpcs(ResourceCollection):
+class ServiceResourceVpcsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -21464,7 +21555,2514 @@ class vpcs(ResourceCollection):
         """
 
 
-class accepted_vpc_peering_connections(ResourceCollection):
+class InstanceVolumesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Volume]:
+        """
+        Creates an iterable of all Volume resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes>`_
+
+        **Request Syntax**
+        ::
+
+          volume_iterator = instance.volumes.all()
+
+        :rtype: list(:py:class:`ec2.Volume`)
+        :returns: A list of Volume resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        VolumeIds: List[str] = None,
+        DryRun: bool = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> List[service_resource_scope.Volume]:
+        """
+        Creates an iterable of all Volume resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes>`_
+
+        **Request Syntax**
+        ::
+
+          volume_iterator = instance.volumes.filter(
+              VolumeIds=[
+                  'string',
+              ],
+              DryRun=True|False,
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type VolumeIds: list
+        :param VolumeIds:
+
+          The volume IDs.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of volume results returned by ``DescribeVolumes`` in paginated output. When
+          this parameter is used, ``DescribeVolumes`` only returns ``MaxResults`` results in a single page
+          along with a ``NextToken`` response element. The remaining results of the initial request can be
+          seen by sending another ``DescribeVolumes`` request with the returned ``NextToken`` value. This
+          value can be between 5 and 500; if ``MaxResults`` is given a value larger than 500, only 500
+          results are returned. If this parameter is not used, then ``DescribeVolumes`` returns all
+          results. You cannot specify this parameter and the volume IDs parameter in the same request.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``NextToken`` value returned from a previous paginated ``DescribeVolumes`` request where
+          ``MaxResults`` was used and the results exceeded the value of that parameter. Pagination
+          continues from the end of the previous results that returned the ``NextToken`` value. This value
+          is ``null`` when there are no more results to return.
+
+        :rtype: list(:py:class:`ec2.Volume`)
+        :returns: A list of Volume resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Volume]:
+        """
+        Creates an iterable up to a specified amount of Volume resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes>`_
+
+        **Request Syntax**
+        ::
+
+          volume_iterator = instance.volumes.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Volume`)
+        :returns: A list of Volume resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Volume]:
+        """
+        Creates an iterable of all Volume resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeVolumes>`_
+
+        **Request Syntax**
+        ::
+
+          volume_iterator = instance.volumes.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Volume`)
+        :returns: A list of Volume resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class InstanceVpcAddressesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.VpcAddress]:
+        """
+        Creates an iterable of all VpcAddress resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses>`_
+
+        **Request Syntax**
+        ::
+
+          vpc_address_iterator = instance.vpc_addresses.all()
+
+        :rtype: list(:py:class:`ec2.VpcAddress`)
+        :returns: A list of VpcAddress resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        PublicIps: List[str] = None,
+        AllocationIds: List[str] = None,
+        DryRun: bool = None,
+    ) -> List[service_resource_scope.VpcAddress]:
+        """
+        Creates an iterable of all VpcAddress resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses>`_
+
+        **Request Syntax**
+        ::
+
+          vpc_address_iterator = instance.vpc_addresses.filter(
+              PublicIps=[
+                  'string',
+              ],
+              AllocationIds=[
+                  'string',
+              ],
+              DryRun=True|False
+          )
+        :type PublicIps: list
+        :param PublicIps:
+
+          One or more Elastic IP addresses.
+
+          Default: Describes all your Elastic IP addresses.
+
+          - *(string) --*
+
+        :type AllocationIds: list
+        :param AllocationIds:
+
+          [EC2-VPC] Information about the allocation IDs.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: list(:py:class:`ec2.VpcAddress`)
+        :returns: A list of VpcAddress resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.VpcAddress]:
+        """
+        Creates an iterable up to a specified amount of VpcAddress resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses>`_
+
+        **Request Syntax**
+        ::
+
+          vpc_address_iterator = instance.vpc_addresses.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.VpcAddress`)
+        :returns: A list of VpcAddress resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.VpcAddress]:
+        """
+        Creates an iterable of all VpcAddress resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeAddresses>`_
+
+        **Request Syntax**
+        ::
+
+          vpc_address_iterator = instance.vpc_addresses.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.VpcAddress`)
+        :returns: A list of VpcAddress resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class PlacementGroupInstancesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = placement_group.instances.all()
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, Tags: List[InstancesCreateTagsTagsTypeDef], DryRun: bool = None
+    ) -> None:
+        """
+        Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources. Each
+        resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys
+        must be unique per resource.
+
+        For more information about tags, see `Tagging Your Resources
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* . For more information about creating IAM policies that control users'
+        access to resources based on tags, see `Supported Resource-Level Permissions for Amazon EC2 API
+        Actions
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.create_tags(
+              DryRun=True|False,
+              Tags=[
+                  {
+                      'Key': 'string',
+                      'Value': 'string'
+                  },
+              ]
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Tags: list
+        :param Tags: **[REQUIRED]**
+
+          The tags. The ``value`` parameter is required, but if you don't want the tag to have a value,
+          specify the parameter with no value, and we set the value to an empty string.
+
+          - *(dict) --*
+
+            Describes a tag.
+
+            - **Key** *(string) --*
+
+              The key of the tag.
+
+              Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May
+              not begin with ``aws:`` .
+
+            - **Value** *(string) --*
+
+              The value of the tag.
+
+              Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        InstanceIds: List[str] = None,
+        DryRun: bool = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = placement_group.instances.filter(
+              InstanceIds=[
+                  'string',
+              ],
+              DryRun=True|False,
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type InstanceIds: list
+        :param InstanceIds:
+
+          The instance IDs.
+
+          Default: Describes all your instances.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call. To retrieve the remaining results, make
+          another call with the returned ``NextToken`` value. This value can be between 5 and 1000. You
+          cannot specify this parameter and the instance IDs parameter in the same call.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to request the next page of results.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable up to a specified amount of Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = placement_group.instances.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def monitor(self, DryRun: bool = None) -> InstancesMonitorResponseTypeDef:
+        """
+        Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For
+        more information, see `Monitoring Your Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        To disable detailed monitoring, see .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.monitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = placement_group.instances.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def reboot(self, DryRun: bool = None) -> None:
+        """
+        Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
+        request to reboot the specified instances. The operation succeeds if the instances are valid and
+        belong to you. Requests to reboot terminated instances are ignored.
+
+        If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.
+
+        For more information about troubleshooting, see `Getting Console Output and Rebooting Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.reboot(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def start(
+        self, AdditionalInfo: str = None, DryRun: bool = None
+    ) -> InstancesStartResponseTypeDef:
+        """
+        Starts an Amazon EBS-backed instance that you've previously stopped.
+
+        Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started.
+        When an instance is stopped, the compute resources are released and you are not billed for instance
+        usage. However, your root partition Amazon EBS volume remains and continues to persist your data,
+        and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Every
+        time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop
+        and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for
+        another full instance hour even if you are still within the same 60-minute period when it was
+        stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for
+        instance usage, and thereafter charges per second for instance usage.
+
+        Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an
+        instance does not preserve data stored in RAM.
+
+        Performing this operation on an instance that uses an instance store as its root device returns an
+        error.
+
+        For more information, see `Stopping Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.start(
+              AdditionalInfo='string',
+              DryRun=True|False
+          )
+        :type AdditionalInfo: string
+        :param AdditionalInfo:
+
+          Reserved.
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StartingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StartingInstances** *(list) --*
+
+              Information about the started instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def stop(
+        self, Hibernate: bool = None, DryRun: bool = None, Force: bool = None
+    ) -> InstancesStopResponseTypeDef:
+        """
+        Stops an Amazon EBS-backed instance.
+
+        You can use the Stop action to hibernate an instance if the instance is `enabled for hibernation
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation>`__ and it
+        meets the `hibernation prerequisites
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites>`__ .
+        For more information, see `Hibernate Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        We don't charge usage for a stopped instance, or data transfer fees; however, your root partition
+        Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS
+        volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full
+        instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon
+        EC2 charges you for another full instance hour even if you are still within the same 60-minute
+        period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a
+        one-minute minimum for instance usage, and thereafter charges per second for instance usage.
+
+        You can't start, stop, or hibernate Spot Instances, and you can't stop or hibernate instance
+        store-backed instances. For information about using hibernation for Spot Instances, see
+        `Hibernating Interrupted Spot Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        When you stop or hibernate an instance, we shut it down. You can restart your instance at any time.
+        Before stopping or hibernating an instance, make sure it is in a state from which it can be
+        restarted. Stopping an instance does not preserve data stored in RAM, but hibernating an instance
+        does preserve data stored in RAM. If an instance cannot hibernate successfully, a normal shutdown
+        occurs.
+
+        Stopping and hibernating an instance is different to rebooting or terminating it. For example, when
+        you stop or hibernate an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, the root device and any other devices attached during the
+        instance launch are automatically deleted. For more information about the differences between
+        rebooting, stopping, hibernating, and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        When you stop an instance, we attempt to shut it down forcibly after a short while. If your
+        instance appears stuck in the stopping state after a period of time, there may be an issue with the
+        underlying host computer. For more information, see `Troubleshooting Stopping Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html>`__ in
+        the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.stop(
+              Hibernate=True|False,
+              DryRun=True|False,
+              Force=True|False
+          )
+        :type Hibernate: boolean
+        :param Hibernate:
+
+          Hibernates the instance if the instance was enabled for hibernation at launch. If the instance
+          cannot hibernate successfully, a normal shutdown occurs. For more information, see `Hibernate
+          Your Instance <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide* .
+
+          Default: ``false``
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Force: boolean
+        :param Force:
+
+          Forces the instances to stop. The instances do not have an opportunity to flush file system
+          caches or file system metadata. If you use this option, you must perform file system check and
+          repair procedures. This option is not recommended for Windows instances.
+
+          Default: ``false``
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StoppingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StoppingInstances** *(list) --*
+
+              Information about the stopped instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def terminate(self, DryRun: bool = None) -> InstancesTerminateResponseTypeDef:
+        """
+        Shuts down the specified instances. This operation is idempotent; if you terminate an instance more
+        than once, each call succeeds.
+
+        If you specify multiple instances and the request fails (for example, because of a single incorrect
+        instance ID), none of the instances are terminated.
+
+        Terminated instances remain visible after termination (for approximately one hour).
+
+        By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched.
+        Volumes attached after instance launch continue running.
+
+        You can stop, start, and terminate EBS-backed instances. You can only terminate instance
+        store-backed instances. What happens to an instance differs if you stop it or terminate it. For
+        example, when you stop an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, any attached EBS volumes with the ``DeleteOnTermination``
+        block device mapping parameter set to ``true`` are automatically deleted. For more information
+        about the differences between stopping and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        For more information about troubleshooting, see `Troubleshooting Terminating Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.terminate(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'TerminatingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **TerminatingInstances** *(list) --*
+
+              Information about the terminated instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def unmonitor(self, DryRun: bool = None) -> InstancesUnmonitorResponseTypeDef:
+        """
+        Disables detailed monitoring for a running instance. For more information, see `Monitoring Your
+        Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = placement_group.instances.unmonitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+
+class SubnetInstancesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = subnet.instances.all()
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, Tags: List[InstancesCreateTagsTagsTypeDef], DryRun: bool = None
+    ) -> None:
+        """
+        Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources. Each
+        resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys
+        must be unique per resource.
+
+        For more information about tags, see `Tagging Your Resources
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* . For more information about creating IAM policies that control users'
+        access to resources based on tags, see `Supported Resource-Level Permissions for Amazon EC2 API
+        Actions
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.create_tags(
+              DryRun=True|False,
+              Tags=[
+                  {
+                      'Key': 'string',
+                      'Value': 'string'
+                  },
+              ]
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Tags: list
+        :param Tags: **[REQUIRED]**
+
+          The tags. The ``value`` parameter is required, but if you don't want the tag to have a value,
+          specify the parameter with no value, and we set the value to an empty string.
+
+          - *(dict) --*
+
+            Describes a tag.
+
+            - **Key** *(string) --*
+
+              The key of the tag.
+
+              Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May
+              not begin with ``aws:`` .
+
+            - **Value** *(string) --*
+
+              The value of the tag.
+
+              Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        InstanceIds: List[str] = None,
+        DryRun: bool = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = subnet.instances.filter(
+              InstanceIds=[
+                  'string',
+              ],
+              DryRun=True|False,
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type InstanceIds: list
+        :param InstanceIds:
+
+          The instance IDs.
+
+          Default: Describes all your instances.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call. To retrieve the remaining results, make
+          another call with the returned ``NextToken`` value. This value can be between 5 and 1000. You
+          cannot specify this parameter and the instance IDs parameter in the same call.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to request the next page of results.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable up to a specified amount of Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = subnet.instances.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def monitor(self, DryRun: bool = None) -> InstancesMonitorResponseTypeDef:
+        """
+        Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For
+        more information, see `Monitoring Your Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        To disable detailed monitoring, see .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.monitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = subnet.instances.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def reboot(self, DryRun: bool = None) -> None:
+        """
+        Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
+        request to reboot the specified instances. The operation succeeds if the instances are valid and
+        belong to you. Requests to reboot terminated instances are ignored.
+
+        If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.
+
+        For more information about troubleshooting, see `Getting Console Output and Rebooting Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.reboot(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def start(
+        self, AdditionalInfo: str = None, DryRun: bool = None
+    ) -> InstancesStartResponseTypeDef:
+        """
+        Starts an Amazon EBS-backed instance that you've previously stopped.
+
+        Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started.
+        When an instance is stopped, the compute resources are released and you are not billed for instance
+        usage. However, your root partition Amazon EBS volume remains and continues to persist your data,
+        and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Every
+        time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop
+        and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for
+        another full instance hour even if you are still within the same 60-minute period when it was
+        stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for
+        instance usage, and thereafter charges per second for instance usage.
+
+        Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an
+        instance does not preserve data stored in RAM.
+
+        Performing this operation on an instance that uses an instance store as its root device returns an
+        error.
+
+        For more information, see `Stopping Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.start(
+              AdditionalInfo='string',
+              DryRun=True|False
+          )
+        :type AdditionalInfo: string
+        :param AdditionalInfo:
+
+          Reserved.
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StartingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StartingInstances** *(list) --*
+
+              Information about the started instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def stop(
+        self, Hibernate: bool = None, DryRun: bool = None, Force: bool = None
+    ) -> InstancesStopResponseTypeDef:
+        """
+        Stops an Amazon EBS-backed instance.
+
+        You can use the Stop action to hibernate an instance if the instance is `enabled for hibernation
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation>`__ and it
+        meets the `hibernation prerequisites
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites>`__ .
+        For more information, see `Hibernate Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        We don't charge usage for a stopped instance, or data transfer fees; however, your root partition
+        Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS
+        volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full
+        instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon
+        EC2 charges you for another full instance hour even if you are still within the same 60-minute
+        period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a
+        one-minute minimum for instance usage, and thereafter charges per second for instance usage.
+
+        You can't start, stop, or hibernate Spot Instances, and you can't stop or hibernate instance
+        store-backed instances. For information about using hibernation for Spot Instances, see
+        `Hibernating Interrupted Spot Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        When you stop or hibernate an instance, we shut it down. You can restart your instance at any time.
+        Before stopping or hibernating an instance, make sure it is in a state from which it can be
+        restarted. Stopping an instance does not preserve data stored in RAM, but hibernating an instance
+        does preserve data stored in RAM. If an instance cannot hibernate successfully, a normal shutdown
+        occurs.
+
+        Stopping and hibernating an instance is different to rebooting or terminating it. For example, when
+        you stop or hibernate an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, the root device and any other devices attached during the
+        instance launch are automatically deleted. For more information about the differences between
+        rebooting, stopping, hibernating, and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        When you stop an instance, we attempt to shut it down forcibly after a short while. If your
+        instance appears stuck in the stopping state after a period of time, there may be an issue with the
+        underlying host computer. For more information, see `Troubleshooting Stopping Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html>`__ in
+        the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.stop(
+              Hibernate=True|False,
+              DryRun=True|False,
+              Force=True|False
+          )
+        :type Hibernate: boolean
+        :param Hibernate:
+
+          Hibernates the instance if the instance was enabled for hibernation at launch. If the instance
+          cannot hibernate successfully, a normal shutdown occurs. For more information, see `Hibernate
+          Your Instance <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide* .
+
+          Default: ``false``
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Force: boolean
+        :param Force:
+
+          Forces the instances to stop. The instances do not have an opportunity to flush file system
+          caches or file system metadata. If you use this option, you must perform file system check and
+          repair procedures. This option is not recommended for Windows instances.
+
+          Default: ``false``
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StoppingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StoppingInstances** *(list) --*
+
+              Information about the stopped instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def terminate(self, DryRun: bool = None) -> InstancesTerminateResponseTypeDef:
+        """
+        Shuts down the specified instances. This operation is idempotent; if you terminate an instance more
+        than once, each call succeeds.
+
+        If you specify multiple instances and the request fails (for example, because of a single incorrect
+        instance ID), none of the instances are terminated.
+
+        Terminated instances remain visible after termination (for approximately one hour).
+
+        By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched.
+        Volumes attached after instance launch continue running.
+
+        You can stop, start, and terminate EBS-backed instances. You can only terminate instance
+        store-backed instances. What happens to an instance differs if you stop it or terminate it. For
+        example, when you stop an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, any attached EBS volumes with the ``DeleteOnTermination``
+        block device mapping parameter set to ``true`` are automatically deleted. For more information
+        about the differences between stopping and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        For more information about troubleshooting, see `Troubleshooting Terminating Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.terminate(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'TerminatingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **TerminatingInstances** *(list) --*
+
+              Information about the terminated instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def unmonitor(self, DryRun: bool = None) -> InstancesUnmonitorResponseTypeDef:
+        """
+        Disables detailed monitoring for a running instance. For more information, see `Monitoring Your
+        Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = subnet.instances.unmonitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+
+class SubnetNetworkInterfacesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = subnet.network_interfaces.all()
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        DryRun: bool = None,
+        NetworkInterfaceIds: List[str] = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed
+        to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = subnet.network_interfaces.filter(
+              DryRun=True|False,
+              NetworkInterfaceIds=[
+                  'string',
+              ],
+              NextToken='string',
+              MaxResults=123
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type NetworkInterfaceIds: list
+        :param NetworkInterfaceIds:
+
+          One or more network interface IDs.
+
+          Default: Describes all your network interfaces.
+
+          - *(string) --*
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to retrieve the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of items to return for this request. The request returns a token that you can
+          specify in a subsequent call to get the next set of results.
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = subnet.network_interfaces.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = subnet.network_interfaces.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VolumeSnapshotsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Snapshot]:
+        """
+        Creates an iterable of all Snapshot resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots>`_
+
+        **Request Syntax**
+        ::
+
+          snapshot_iterator = volume.snapshots.all()
+
+        :rtype: list(:py:class:`ec2.Snapshot`)
+        :returns: A list of Snapshot resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        MaxResults: int = None,
+        NextToken: str = None,
+        OwnerIds: List[str] = None,
+        RestorableByUserIds: List[str] = None,
+        SnapshotIds: List[str] = None,
+        DryRun: bool = None,
+    ) -> List[service_resource_scope.Snapshot]:
+        """
+        Creates an iterable of all Snapshot resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots>`_
+
+        **Request Syntax**
+        ::
+
+          snapshot_iterator = volume.snapshots.filter(
+              MaxResults=123,
+              NextToken='string',
+              OwnerIds=[
+                  'string',
+              ],
+              RestorableByUserIds=[
+                  'string',
+              ],
+              SnapshotIds=[
+                  'string',
+              ],
+              DryRun=True|False
+          )
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of snapshot results returned by ``DescribeSnapshots`` in paginated output.
+          When this parameter is used, ``DescribeSnapshots`` only returns ``MaxResults`` results in a
+          single page along with a ``NextToken`` response element. The remaining results of the initial
+          request can be seen by sending another ``DescribeSnapshots`` request with the returned
+          ``NextToken`` value. This value can be between 5 and 1000; if ``MaxResults`` is given a value
+          larger than 1000, only 1000 results are returned. If this parameter is not used, then
+          ``DescribeSnapshots`` returns all results. You cannot specify this parameter and the snapshot IDs
+          parameter in the same request.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The ``NextToken`` value returned from a previous paginated ``DescribeSnapshots`` request where
+          ``MaxResults`` was used and the results exceeded the value of that parameter. Pagination
+          continues from the end of the previous results that returned the ``NextToken`` value. This value
+          is ``null`` when there are no more results to return.
+
+        :type OwnerIds: list
+        :param OwnerIds:
+
+          Describes the snapshots owned by these owners.
+
+          - *(string) --*
+
+        :type RestorableByUserIds: list
+        :param RestorableByUserIds:
+
+          The IDs of the AWS accounts that can create volumes from the snapshot.
+
+          - *(string) --*
+
+        :type SnapshotIds: list
+        :param SnapshotIds:
+
+          The snapshot IDs.
+
+          Default: Describes the snapshots for which you have create volume permissions.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: list(:py:class:`ec2.Snapshot`)
+        :returns: A list of Snapshot resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Snapshot]:
+        """
+        Creates an iterable up to a specified amount of Snapshot resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots>`_
+
+        **Request Syntax**
+        ::
+
+          snapshot_iterator = volume.snapshots.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Snapshot`)
+        :returns: A list of Snapshot resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Snapshot]:
+        """
+        Creates an iterable of all Snapshot resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSnapshots>`_
+
+        **Request Syntax**
+        ::
+
+          snapshot_iterator = volume.snapshots.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Snapshot`)
+        :returns: A list of Snapshot resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcAcceptedVpcPeeringConnectionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -21627,7 +24225,1406 @@ class accepted_vpc_peering_connections(ResourceCollection):
         """
 
 
-class requested_vpc_peering_connections(ResourceCollection):
+class VpcInstancesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = vpc.instances.all()
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_tags(
+        self, Tags: List[InstancesCreateTagsTagsTypeDef], DryRun: bool = None
+    ) -> None:
+        """
+        Adds or overwrites the specified tags for the specified Amazon EC2 resource or resources. Each
+        resource can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys
+        must be unique per resource.
+
+        For more information about tags, see `Tagging Your Resources
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* . For more information about creating IAM policies that control users'
+        access to resources based on tags, see `Supported Resource-Level Permissions for Amazon EC2 API
+        Actions
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-iam-actions-resources.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/CreateTags>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.create_tags(
+              DryRun=True|False,
+              Tags=[
+                  {
+                      'Key': 'string',
+                      'Value': 'string'
+                  },
+              ]
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Tags: list
+        :param Tags: **[REQUIRED]**
+
+          The tags. The ``value`` parameter is required, but if you don't want the tag to have a value,
+          specify the parameter with no value, and we set the value to an empty string.
+
+          - *(dict) --*
+
+            Describes a tag.
+
+            - **Key** *(string) --*
+
+              The key of the tag.
+
+              Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May
+              not begin with ``aws:`` .
+
+            - **Value** *(string) --*
+
+              The value of the tag.
+
+              Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        InstanceIds: List[str] = None,
+        DryRun: bool = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = vpc.instances.filter(
+              InstanceIds=[
+                  'string',
+              ],
+              DryRun=True|False,
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type InstanceIds: list
+        :param InstanceIds:
+
+          The instance IDs.
+
+          Default: Describes all your instances.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call. To retrieve the remaining results, make
+          another call with the returned ``NextToken`` value. This value can be between 5 and 1000. You
+          cannot specify this parameter and the instance IDs parameter in the same call.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to request the next page of results.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable up to a specified amount of Instance resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = vpc.instances.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def monitor(self, DryRun: bool = None) -> InstancesMonitorResponseTypeDef:
+        """
+        Enables detailed monitoring for a running instance. Otherwise, basic monitoring is enabled. For
+        more information, see `Monitoring Your Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        To disable detailed monitoring, see .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/MonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.monitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Instance]:
+        """
+        Creates an iterable of all Instance resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInstances>`_
+
+        **Request Syntax**
+        ::
+
+          instance_iterator = vpc.instances.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Instance`)
+        :returns: A list of Instance resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def reboot(self, DryRun: bool = None) -> None:
+        """
+        Requests a reboot of the specified instances. This operation is asynchronous; it only queues a
+        request to reboot the specified instances. The operation succeeds if the instances are valid and
+        belong to you. Requests to reboot terminated instances are ignored.
+
+        If an instance does not cleanly shut down within four minutes, Amazon EC2 performs a hard reboot.
+
+        For more information about troubleshooting, see `Getting Console Output and Rebooting Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/RebootInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.reboot(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def start(
+        self, AdditionalInfo: str = None, DryRun: bool = None
+    ) -> InstancesStartResponseTypeDef:
+        """
+        Starts an Amazon EBS-backed instance that you've previously stopped.
+
+        Instances that use Amazon EBS volumes as their root devices can be quickly stopped and started.
+        When an instance is stopped, the compute resources are released and you are not billed for instance
+        usage. However, your root partition Amazon EBS volume remains and continues to persist your data,
+        and you are charged for Amazon EBS volume usage. You can restart your instance at any time. Every
+        time you start your Windows instance, Amazon EC2 charges you for a full instance hour. If you stop
+        and restart your Windows instance, a new instance hour begins and Amazon EC2 charges you for
+        another full instance hour even if you are still within the same 60-minute period when it was
+        stopped. Every time you start your Linux instance, Amazon EC2 charges a one-minute minimum for
+        instance usage, and thereafter charges per second for instance usage.
+
+        Before stopping an instance, make sure it is in a state from which it can be restarted. Stopping an
+        instance does not preserve data stored in RAM.
+
+        Performing this operation on an instance that uses an instance store as its root device returns an
+        error.
+
+        For more information, see `Stopping Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StartInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.start(
+              AdditionalInfo='string',
+              DryRun=True|False
+          )
+        :type AdditionalInfo: string
+        :param AdditionalInfo:
+
+          Reserved.
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StartingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StartingInstances** *(list) --*
+
+              Information about the started instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def stop(
+        self, Hibernate: bool = None, DryRun: bool = None, Force: bool = None
+    ) -> InstancesStopResponseTypeDef:
+        """
+        Stops an Amazon EBS-backed instance.
+
+        You can use the Stop action to hibernate an instance if the instance is `enabled for hibernation
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation>`__ and it
+        meets the `hibernation prerequisites
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites>`__ .
+        For more information, see `Hibernate Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the *Amazon Elastic
+        Compute Cloud User Guide* .
+
+        We don't charge usage for a stopped instance, or data transfer fees; however, your root partition
+        Amazon EBS volume remains and continues to persist your data, and you are charged for Amazon EBS
+        volume usage. Every time you start your Windows instance, Amazon EC2 charges you for a full
+        instance hour. If you stop and restart your Windows instance, a new instance hour begins and Amazon
+        EC2 charges you for another full instance hour even if you are still within the same 60-minute
+        period when it was stopped. Every time you start your Linux instance, Amazon EC2 charges a
+        one-minute minimum for instance usage, and thereafter charges per second for instance usage.
+
+        You can't start, stop, or hibernate Spot Instances, and you can't stop or hibernate instance
+        store-backed instances. For information about using hibernation for Spot Instances, see
+        `Hibernating Interrupted Spot Instances
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        When you stop or hibernate an instance, we shut it down. You can restart your instance at any time.
+        Before stopping or hibernating an instance, make sure it is in a state from which it can be
+        restarted. Stopping an instance does not preserve data stored in RAM, but hibernating an instance
+        does preserve data stored in RAM. If an instance cannot hibernate successfully, a normal shutdown
+        occurs.
+
+        Stopping and hibernating an instance is different to rebooting or terminating it. For example, when
+        you stop or hibernate an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, the root device and any other devices attached during the
+        instance launch are automatically deleted. For more information about the differences between
+        rebooting, stopping, hibernating, and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        When you stop an instance, we attempt to shut it down forcibly after a short while. If your
+        instance appears stuck in the stopping state after a period of time, there may be an issue with the
+        underlying host computer. For more information, see `Troubleshooting Stopping Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html>`__ in
+        the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/StopInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.stop(
+              Hibernate=True|False,
+              DryRun=True|False,
+              Force=True|False
+          )
+        :type Hibernate: boolean
+        :param Hibernate:
+
+          Hibernates the instance if the instance was enabled for hibernation at launch. If the instance
+          cannot hibernate successfully, a normal shutdown occurs. For more information, see `Hibernate
+          Your Instance <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide* .
+
+          Default: ``false``
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type Force: boolean
+        :param Force:
+
+          Forces the instances to stop. The instances do not have an opportunity to flush file system
+          caches or file system metadata. If you use this option, you must perform file system check and
+          repair procedures. This option is not recommended for Windows instances.
+
+          Default: ``false``
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'StoppingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **StoppingInstances** *(list) --*
+
+              Information about the stopped instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def terminate(self, DryRun: bool = None) -> InstancesTerminateResponseTypeDef:
+        """
+        Shuts down the specified instances. This operation is idempotent; if you terminate an instance more
+        than once, each call succeeds.
+
+        If you specify multiple instances and the request fails (for example, because of a single incorrect
+        instance ID), none of the instances are terminated.
+
+        Terminated instances remain visible after termination (for approximately one hour).
+
+        By default, Amazon EC2 deletes all EBS volumes that were attached when the instance launched.
+        Volumes attached after instance launch continue running.
+
+        You can stop, start, and terminate EBS-backed instances. You can only terminate instance
+        store-backed instances. What happens to an instance differs if you stop it or terminate it. For
+        example, when you stop an instance, the root device and any other devices attached to the instance
+        persist. When you terminate an instance, any attached EBS volumes with the ``DeleteOnTermination``
+        block device mapping parameter set to ``true`` are automatically deleted. For more information
+        about the differences between stopping and terminating instances, see `Instance Lifecycle
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        For more information about troubleshooting, see `Troubleshooting Terminating Your Instance
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html>`__
+        in the *Amazon Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/TerminateInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.terminate(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'TerminatingInstances': [
+                    {
+                        'CurrentState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        },
+                        'InstanceId': 'string',
+                        'PreviousState': {
+                            'Code': 123,
+                            'Name': 'pending'|'running'|'shutting-down'|'terminated'|'stopping'|'stopped'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **TerminatingInstances** *(list) --*
+
+              Information about the terminated instances.
+
+              - *(dict) --*
+
+                Describes an instance state change.
+
+                - **CurrentState** *(dict) --*
+
+                  The current state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **PreviousState** *(dict) --*
+
+                  The previous state of the instance.
+
+                  - **Code** *(integer) --*
+
+                    The state of the instance as a 16-bit unsigned integer.
+
+                    The high byte is all of the bits between 2^8 and (2^16)-1, which equals decimal values
+                    between 256 and 65,535. These numerical values are used for internal purposes and
+                    should be ignored.
+
+                    The low byte is all of the bits between 2^0 and (2^8)-1, which equals decimal values
+                    between 0 and 255.
+
+                    The valid values for instance-state-code will all be in the range of the low byte and
+                    they are:
+
+                    * ``0`` : ``pending``
+
+                    * ``16`` : ``running``
+
+                    * ``32`` : ``shutting-down``
+
+                    * ``48`` : ``terminated``
+
+                    * ``64`` : ``stopping``
+
+                    * ``80`` : ``stopped``
+
+                    You can ignore the high byte value by zeroing out all of the bits above 2^8 or 256 in
+                    decimal.
+
+                  - **Name** *(string) --*
+
+                    The current state of the instance.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def unmonitor(self, DryRun: bool = None) -> InstancesUnmonitorResponseTypeDef:
+        """
+        Disables detailed monitoring for a running instance. For more information, see `Monitoring Your
+        Instances and Volumes
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html>`__ in the *Amazon
+        Elastic Compute Cloud User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/UnmonitorInstances>`_
+
+        **Request Syntax**
+        ::
+
+          response = vpc.instances.unmonitor(
+              DryRun=True|False
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'InstanceMonitorings': [
+                    {
+                        'InstanceId': 'string',
+                        'Monitoring': {
+                            'State': 'disabled'|'disabling'|'enabled'|'pending'
+                        }
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **InstanceMonitorings** *(list) --*
+
+              The monitoring information.
+
+              - *(dict) --*
+
+                Describes the monitoring of an instance.
+
+                - **InstanceId** *(string) --*
+
+                  The ID of the instance.
+
+                - **Monitoring** *(dict) --*
+
+                  The monitoring for the instance.
+
+                  - **State** *(string) --*
+
+                    Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is
+                    enabled.
+
+        """
+
+
+class VpcInternetGatewaysCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.InternetGateway]:
+        """
+        Creates an iterable of all InternetGateway resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways>`_
+
+        **Request Syntax**
+        ::
+
+          internet_gateway_iterator = vpc.internet_gateways.all()
+
+        :rtype: list(:py:class:`ec2.InternetGateway`)
+        :returns: A list of InternetGateway resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        DryRun: bool = None,
+        InternetGatewayIds: List[str] = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.InternetGateway]:
+        """
+        Creates an iterable of all InternetGateway resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways>`_
+
+        **Request Syntax**
+        ::
+
+          internet_gateway_iterator = vpc.internet_gateways.filter(
+              DryRun=True|False,
+              InternetGatewayIds=[
+                  'string',
+              ],
+              NextToken='string',
+              MaxResults=123
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type InternetGatewayIds: list
+        :param InternetGatewayIds:
+
+          One or more internet gateway IDs.
+
+          Default: Describes all your internet gateways.
+
+          - *(string) --*
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token for the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return with a single call. To retrieve the remaining results,
+          make another call with the returned ``nextToken`` value.
+
+        :rtype: list(:py:class:`ec2.InternetGateway`)
+        :returns: A list of InternetGateway resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.InternetGateway]:
+        """
+        Creates an iterable up to a specified amount of InternetGateway resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways>`_
+
+        **Request Syntax**
+        ::
+
+          internet_gateway_iterator = vpc.internet_gateways.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.InternetGateway`)
+        :returns: A list of InternetGateway resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.InternetGateway]:
+        """
+        Creates an iterable of all InternetGateway resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeInternetGateways>`_
+
+        **Request Syntax**
+        ::
+
+          internet_gateway_iterator = vpc.internet_gateways.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.InternetGateway`)
+        :returns: A list of InternetGateway resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcNetworkAclsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.NetworkAcl]:
+        """
+        Creates an iterable of all NetworkAcl resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls>`_
+
+        **Request Syntax**
+        ::
+
+          network_acl_iterator = vpc.network_acls.all()
+
+        :rtype: list(:py:class:`ec2.NetworkAcl`)
+        :returns: A list of NetworkAcl resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        DryRun: bool = None,
+        NetworkAclIds: List[str] = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.NetworkAcl]:
+        """
+        Creates an iterable of all NetworkAcl resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls>`_
+
+        **Request Syntax**
+        ::
+
+          network_acl_iterator = vpc.network_acls.filter(
+              DryRun=True|False,
+              NetworkAclIds=[
+                  'string',
+              ],
+              NextToken='string',
+              MaxResults=123
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type NetworkAclIds: list
+        :param NetworkAclIds:
+
+          One or more network ACL IDs.
+
+          Default: Describes all your network ACLs.
+
+          - *(string) --*
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token for the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return with a single call. To retrieve the remaining results,
+          make another call with the returned ``nextToken`` value.
+
+        :rtype: list(:py:class:`ec2.NetworkAcl`)
+        :returns: A list of NetworkAcl resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.NetworkAcl]:
+        """
+        Creates an iterable up to a specified amount of NetworkAcl resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls>`_
+
+        **Request Syntax**
+        ::
+
+          network_acl_iterator = vpc.network_acls.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.NetworkAcl`)
+        :returns: A list of NetworkAcl resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.NetworkAcl]:
+        """
+        Creates an iterable of all NetworkAcl resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkAcls>`_
+
+        **Request Syntax**
+        ::
+
+          network_acl_iterator = vpc.network_acls.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.NetworkAcl`)
+        :returns: A list of NetworkAcl resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcNetworkInterfacesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = vpc.network_interfaces.all()
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        DryRun: bool = None,
+        NetworkInterfaceIds: List[str] = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection filtered by kwargs passed
+        to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = vpc.network_interfaces.filter(
+              DryRun=True|False,
+              NetworkInterfaceIds=[
+                  'string',
+              ],
+              NextToken='string',
+              MaxResults=123
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type NetworkInterfaceIds: list
+        :param NetworkInterfaceIds:
+
+          One or more network interface IDs.
+
+          Default: Describes all your network interfaces.
+
+          - *(string) --*
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to retrieve the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of items to return for this request. The request returns a token that you can
+          specify in a subsequent call to get the next set of results.
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable up to a specified amount of NetworkInterface resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = vpc.network_interfaces.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.NetworkInterface]:
+        """
+        Creates an iterable of all NetworkInterface resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeNetworkInterfaces>`_
+
+        **Request Syntax**
+        ::
+
+          network_interface_iterator = vpc.network_interfaces.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.NetworkInterface`)
+        :returns: A list of NetworkInterface resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcRequestedVpcPeeringConnectionsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -21765,6 +25762,504 @@ class requested_vpc_peering_connections(ResourceCollection):
 
         :rtype: list(:py:class:`ec2.VpcPeeringConnection`)
         :returns: A list of VpcPeeringConnection resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcRouteTablesCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.RouteTable]:
+        """
+        Creates an iterable of all RouteTable resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables>`_
+
+        **Request Syntax**
+        ::
+
+          route_table_iterator = vpc.route_tables.all()
+
+        :rtype: list(:py:class:`ec2.RouteTable`)
+        :returns: A list of RouteTable resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        DryRun: bool = None,
+        RouteTableIds: List[str] = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.RouteTable]:
+        """
+        Creates an iterable of all RouteTable resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables>`_
+
+        **Request Syntax**
+        ::
+
+          route_table_iterator = vpc.route_tables.filter(
+              DryRun=True|False,
+              RouteTableIds=[
+                  'string',
+              ],
+              NextToken='string',
+              MaxResults=123
+          )
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type RouteTableIds: list
+        :param RouteTableIds:
+
+          One or more route table IDs.
+
+          Default: Describes all your route tables.
+
+          - *(string) --*
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token for the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return with a single call. To retrieve the remaining results,
+          make another call with the returned ``nextToken`` value.
+
+        :rtype: list(:py:class:`ec2.RouteTable`)
+        :returns: A list of RouteTable resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.RouteTable]:
+        """
+        Creates an iterable up to a specified amount of RouteTable resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables>`_
+
+        **Request Syntax**
+        ::
+
+          route_table_iterator = vpc.route_tables.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.RouteTable`)
+        :returns: A list of RouteTable resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.RouteTable]:
+        """
+        Creates an iterable of all RouteTable resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeRouteTables>`_
+
+        **Request Syntax**
+        ::
+
+          route_table_iterator = vpc.route_tables.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.RouteTable`)
+        :returns: A list of RouteTable resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcSecurityGroupsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.SecurityGroup]:
+        """
+        Creates an iterable of all SecurityGroup resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups>`_
+
+        **Request Syntax**
+        ::
+
+          security_group_iterator = vpc.security_groups.all()
+
+        :rtype: list(:py:class:`ec2.SecurityGroup`)
+        :returns: A list of SecurityGroup resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        GroupIds: List[str] = None,
+        GroupNames: List[str] = None,
+        DryRun: bool = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.SecurityGroup]:
+        """
+        Creates an iterable of all SecurityGroup resources in the collection filtered by kwargs passed to
+        method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups>`_
+
+        **Request Syntax**
+        ::
+
+          security_group_iterator = vpc.security_groups.filter(
+              GroupIds=[
+                  'string',
+              ],
+              GroupNames=[
+                  'string',
+              ],
+              DryRun=True|False,
+              NextToken='string',
+              MaxResults=123
+          )
+        :type GroupIds: list
+        :param GroupIds:
+
+          The IDs of the security groups. Required for security groups in a nondefault VPC.
+
+          Default: Describes all your security groups.
+
+          - *(string) --*
+
+        :type GroupNames: list
+        :param GroupNames:
+
+          [EC2-Classic and default VPC only] The names of the security groups. You can specify either the
+          security group name or the security group ID. For security groups in a nondefault VPC, use the
+          ``group-name`` filter to describe security groups by name.
+
+          Default: Describes all your security groups.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to request the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call. To retrieve the remaining results, make
+          another request with the returned ``NextToken`` value. This value can be between 5 and 1000. If
+          this parameter is not specified, then all results are returned.
+
+        :rtype: list(:py:class:`ec2.SecurityGroup`)
+        :returns: A list of SecurityGroup resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.SecurityGroup]:
+        """
+        Creates an iterable up to a specified amount of SecurityGroup resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups>`_
+
+        **Request Syntax**
+        ::
+
+          security_group_iterator = vpc.security_groups.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.SecurityGroup`)
+        :returns: A list of SecurityGroup resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.SecurityGroup]:
+        """
+        Creates an iterable of all SecurityGroup resources in the collection, but limits the number of
+        items returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSecurityGroups>`_
+
+        **Request Syntax**
+        ::
+
+          security_group_iterator = vpc.security_groups.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.SecurityGroup`)
+        :returns: A list of SecurityGroup resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VpcSubnetsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Subnet]:
+        """
+        Creates an iterable of all Subnet resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets>`_
+
+        **Request Syntax**
+        ::
+
+          subnet_iterator = vpc.subnets.all()
+
+        :rtype: list(:py:class:`ec2.Subnet`)
+        :returns: A list of Subnet resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        SubnetIds: List[str] = None,
+        DryRun: bool = None,
+        NextToken: str = None,
+        MaxResults: int = None,
+    ) -> List[service_resource_scope.Subnet]:
+        """
+        Creates an iterable of all Subnet resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets>`_
+
+        **Request Syntax**
+        ::
+
+          subnet_iterator = vpc.subnets.filter(
+              SubnetIds=[
+                  'string',
+              ],
+              DryRun=True|False,
+              NextToken='string',
+              MaxResults=123
+          )
+        :type SubnetIds: list
+        :param SubnetIds:
+
+          One or more subnet IDs.
+
+          Default: Describes all your subnets.
+
+          - *(string) --*
+
+        :type DryRun: boolean
+        :param DryRun:
+
+          Checks whether you have the required permissions for the action, without actually making the
+          request, and provides an error response. If you have the required permissions, the error response
+          is ``DryRunOperation`` . Otherwise, it is ``UnauthorizedOperation`` .
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token for the next page of results.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return with a single call. To retrieve the remaining results,
+          make another call with the returned ``nextToken`` value.
+
+        :rtype: list(:py:class:`ec2.Subnet`)
+        :returns: A list of Subnet resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Subnet]:
+        """
+        Creates an iterable up to a specified amount of Subnet resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets>`_
+
+        **Request Syntax**
+        ::
+
+          subnet_iterator = vpc.subnets.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`ec2.Subnet`)
+        :returns: A list of Subnet resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Subnet]:
+        """
+        Creates an iterable of all Subnet resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/DescribeSubnets>`_
+
+        **Request Syntax**
+        ::
+
+          subnet_iterator = vpc.subnets.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`ec2.Subnet`)
+        :returns: A list of Subnet resources
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

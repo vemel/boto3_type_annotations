@@ -9,7 +9,14 @@ from mypy_boto3_kinesisvideo.type_defs import (
 )
 
 
-class ListStreams(Boto3Paginator):
+__all__ = ("ListStreamsPaginator",)
+
+
+class ListStreamsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_streams`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

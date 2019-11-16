@@ -19,7 +19,21 @@ from mypy_boto3_codepipeline.type_defs import (
 )
 
 
-class ListActionExecutions(Boto3Paginator):
+__all__ = (
+    "ListActionExecutionsPaginator",
+    "ListActionTypesPaginator",
+    "ListPipelineExecutionsPaginator",
+    "ListPipelinesPaginator",
+    "ListTagsForResourcePaginator",
+    "ListWebhooksPaginator",
+)
+
+
+class ListActionExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_action_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -342,7 +356,11 @@ class ListActionExecutions(Boto3Paginator):
         """
 
 
-class ListActionTypes(Boto3Paginator):
+class ListActionTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_action_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -579,7 +597,11 @@ class ListActionTypes(Boto3Paginator):
         """
 
 
-class ListPipelineExecutions(Boto3Paginator):
+class ListPipelineExecutionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_pipeline_executions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -752,7 +774,11 @@ class ListPipelineExecutions(Boto3Paginator):
         """
 
 
-class ListPipelines(Boto3Paginator):
+class ListPipelinesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_pipelines`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPipelinesPaginatePaginationConfigTypeDef = None
@@ -844,7 +870,11 @@ class ListPipelines(Boto3Paginator):
         """
 
 
-class ListTagsForResource(Boto3Paginator):
+class ListTagsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -937,7 +967,11 @@ class ListTagsForResource(Boto3Paginator):
         """
 
 
-class ListWebhooks(Boto3Paginator):
+class ListWebhooksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_webhooks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListWebhooksPaginatePaginationConfigTypeDef = None

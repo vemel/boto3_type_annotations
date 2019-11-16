@@ -10,7 +10,14 @@ from mypy_boto3_sdb.type_defs import (
 )
 
 
-class ListDomains(Boto3Paginator):
+__all__ = ("ListDomainsPaginator", "SelectPaginator")
+
+
+class ListDomainsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_domains`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDomainsPaginatePaginationConfigTypeDef = None
@@ -76,7 +83,11 @@ class ListDomains(Boto3Paginator):
         """
 
 
-class Select(Boto3Paginator):
+class SelectPaginator(Boto3Paginator):
+    """
+    Paginator for `select`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

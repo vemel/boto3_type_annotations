@@ -28,7 +28,24 @@ from mypy_boto3_connect.type_defs import (
 )
 
 
-class GetMetricData(Boto3Paginator):
+__all__ = (
+    "GetMetricDataPaginator",
+    "ListContactFlowsPaginator",
+    "ListHoursOfOperationsPaginator",
+    "ListPhoneNumbersPaginator",
+    "ListQueuesPaginator",
+    "ListRoutingProfilesPaginator",
+    "ListSecurityProfilesPaginator",
+    "ListUserHierarchyGroupsPaginator",
+    "ListUsersPaginator",
+)
+
+
+class GetMetricDataPaginator(Boto3Paginator):
+    """
+    Paginator for `get_metric_data`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -475,7 +492,11 @@ class GetMetricData(Boto3Paginator):
         """
 
 
-class ListContactFlows(Boto3Paginator):
+class ListContactFlowsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_contact_flows`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -588,7 +609,11 @@ class ListContactFlows(Boto3Paginator):
         """
 
 
-class ListHoursOfOperations(Boto3Paginator):
+class ListHoursOfOperationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_hours_of_operations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -682,7 +707,11 @@ class ListHoursOfOperations(Boto3Paginator):
         """
 
 
-class ListPhoneNumbers(Boto3Paginator):
+class ListPhoneNumbersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_phone_numbers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -836,7 +865,11 @@ class ListPhoneNumbers(Boto3Paginator):
         """
 
 
-class ListQueues(Boto3Paginator):
+class ListQueuesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_queues`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -945,7 +978,11 @@ class ListQueues(Boto3Paginator):
         """
 
 
-class ListRoutingProfiles(Boto3Paginator):
+class ListRoutingProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_routing_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1039,7 +1076,11 @@ class ListRoutingProfiles(Boto3Paginator):
         """
 
 
-class ListSecurityProfiles(Boto3Paginator):
+class ListSecurityProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_security_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1133,7 +1174,11 @@ class ListSecurityProfiles(Boto3Paginator):
         """
 
 
-class ListUserHierarchyGroups(Boto3Paginator):
+class ListUserHierarchyGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_user_hierarchy_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1227,7 +1272,11 @@ class ListUserHierarchyGroups(Boto3Paginator):
         """
 
 
-class ListUsers(Boto3Paginator):
+class ListUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

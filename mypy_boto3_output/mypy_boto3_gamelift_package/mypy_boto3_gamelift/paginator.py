@@ -39,7 +39,31 @@ from mypy_boto3_gamelift.type_defs import (
 )
 
 
-class DescribeFleetAttributes(Boto3Paginator):
+__all__ = (
+    "DescribeFleetAttributesPaginator",
+    "DescribeFleetCapacityPaginator",
+    "DescribeFleetEventsPaginator",
+    "DescribeFleetUtilizationPaginator",
+    "DescribeGameSessionDetailsPaginator",
+    "DescribeGameSessionQueuesPaginator",
+    "DescribeGameSessionsPaginator",
+    "DescribeInstancesPaginator",
+    "DescribeMatchmakingConfigurationsPaginator",
+    "DescribeMatchmakingRuleSetsPaginator",
+    "DescribePlayerSessionsPaginator",
+    "DescribeScalingPoliciesPaginator",
+    "ListAliasesPaginator",
+    "ListBuildsPaginator",
+    "ListFleetsPaginator",
+    "SearchGameSessionsPaginator",
+)
+
+
+class DescribeFleetAttributesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_fleet_attributes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -355,7 +379,11 @@ class DescribeFleetAttributes(Boto3Paginator):
         """
 
 
-class DescribeFleetCapacity(Boto3Paginator):
+class DescribeFleetCapacityPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_fleet_capacity`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -548,7 +576,11 @@ class DescribeFleetCapacity(Boto3Paginator):
         """
 
 
-class DescribeFleetEvents(Boto3Paginator):
+class DescribeFleetEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_fleet_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -784,7 +816,11 @@ class DescribeFleetEvents(Boto3Paginator):
         """
 
 
-class DescribeFleetUtilization(Boto3Paginator):
+class DescribeFleetUtilizationPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_fleet_utilization`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -936,7 +972,11 @@ class DescribeFleetUtilization(Boto3Paginator):
         """
 
 
-class DescribeGameSessionDetails(Boto3Paginator):
+class DescribeGameSessionDetailsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_game_session_details`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1189,7 +1229,11 @@ class DescribeGameSessionDetails(Boto3Paginator):
         """
 
 
-class DescribeGameSessionQueues(Boto3Paginator):
+class DescribeGameSessionQueuesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_game_session_queues`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1390,7 +1434,11 @@ class DescribeGameSessionQueues(Boto3Paginator):
         """
 
 
-class DescribeGameSessions(Boto3Paginator):
+class DescribeGameSessionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_game_sessions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1654,7 +1702,11 @@ class DescribeGameSessions(Boto3Paginator):
         """
 
 
-class DescribeInstances(Boto3Paginator):
+class DescribeInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1804,7 +1856,11 @@ class DescribeInstances(Boto3Paginator):
         """
 
 
-class DescribeMatchmakingConfigurations(Boto3Paginator):
+class DescribeMatchmakingConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_matchmaking_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2026,7 +2082,11 @@ class DescribeMatchmakingConfigurations(Boto3Paginator):
         """
 
 
-class DescribeMatchmakingRuleSets(Boto3Paginator):
+class DescribeMatchmakingRuleSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_matchmaking_rule_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2157,7 +2217,11 @@ class DescribeMatchmakingRuleSets(Boto3Paginator):
         """
 
 
-class DescribePlayerSessions(Boto3Paginator):
+class DescribePlayerSessionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_player_sessions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2364,7 +2428,11 @@ class DescribePlayerSessions(Boto3Paginator):
         """
 
 
-class DescribeScalingPolicies(Boto3Paginator):
+class DescribeScalingPoliciesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_scaling_policies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2631,7 +2699,11 @@ class DescribeScalingPolicies(Boto3Paginator):
         """
 
 
-class ListAliases(Boto3Paginator):
+class ListAliasesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_aliases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2803,7 +2875,11 @@ class ListAliases(Boto3Paginator):
         """
 
 
-class ListBuilds(Boto3Paginator):
+class ListBuildsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_builds`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2958,7 +3034,11 @@ class ListBuilds(Boto3Paginator):
         """
 
 
-class ListFleets(Boto3Paginator):
+class ListFleetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_fleets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -3047,7 +3127,11 @@ class ListFleets(Boto3Paginator):
         """
 
 
-class SearchGameSessions(Boto3Paginator):
+class SearchGameSessionsPaginator(Boto3Paginator):
+    """
+    Paginator for `search_game_sessions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

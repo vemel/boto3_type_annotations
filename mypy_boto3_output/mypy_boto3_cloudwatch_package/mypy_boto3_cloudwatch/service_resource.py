@@ -20,7 +20,20 @@ from mypy_boto3_cloudwatch.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Alarm",
+    "Metric",
+    "ServiceResourceAlarmsCollection",
+    "ServiceResourceMetricsCollection",
+    "MetricAlarmsCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    alarms: service_resource_scope.ServiceResourceAlarmsCollection
+    metrics: service_resource_scope.ServiceResourceMetricsCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Alarm(self, name: str) -> service_resource_scope.Alarm:
         """
@@ -346,6 +359,7 @@ class Metric(Boto3ServiceResource):
     dimensions: List[Any]
     namespace: str
     name: str
+    alarms: service_resource_scope.MetricAlarmsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_available_subresources(self) -> List[str]:
@@ -1284,7 +1298,7 @@ class Metric(Boto3ServiceResource):
         """
 
 
-class alarms(ResourceCollection):
+class ServiceResourceAlarmsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1503,7 +1517,7 @@ class alarms(ResourceCollection):
         """
 
 
-class metrics(ResourceCollection):
+class ServiceResourceMetricsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1646,6 +1660,238 @@ class metrics(ResourceCollection):
 
         :rtype: list(:py:class:`cloudwatch.Metric`)
         :returns: A list of Metric resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class MetricAlarmsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Alarm]:
+        """
+        Creates an iterable of all Alarm resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric>`_
+
+        **Request Syntax**
+        ::
+
+          alarm_iterator = metric.alarms.all()
+
+        :rtype: list(:py:class:`cloudwatch.Alarm`)
+        :returns: A list of Alarm resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete(self, *args: Any, **kwargs: Any) -> None:
+        """
+        Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an
+        error, no alarms are deleted.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteAlarms>`_
+
+        **Request Syntax**
+        ::
+
+          response = metric.alarms.delete()
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def disable_actions(self, *args: Any, **kwargs: Any) -> None:
+        """
+        Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm
+        actions do not execute when the alarm state changes.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DisableAlarmActions>`_
+
+        **Request Syntax**
+        ::
+
+          response = metric.alarms.disable_actions()
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def enable_actions(self, *args: Any, **kwargs: Any) -> None:
+        """
+        Enables the actions for the specified alarms.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/EnableAlarmActions>`_
+
+        **Request Syntax**
+        ::
+
+          response = metric.alarms.enable_actions()
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self,
+        Statistic: str = None,
+        ExtendedStatistic: str = None,
+        Dimensions: List[AlarmsFilterDimensionsTypeDef] = None,
+        Period: int = None,
+        Unit: str = None,
+    ) -> List[service_resource_scope.Alarm]:
+        """
+        Creates an iterable of all Alarm resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric>`_
+
+        **Request Syntax**
+        ::
+
+          alarm_iterator = metric.alarms.filter(
+              Statistic='SampleCount'|'Average'|'Sum'|'Minimum'|'Maximum',
+              ExtendedStatistic='string',
+              Dimensions=[
+                  {
+                      'Name': 'string',
+                      'Value': 'string'
+                  },
+              ],
+              Period=123,
+              Unit=
+                  'Seconds'|'Microseconds'|'Milliseconds'|'Bytes'|'Kilobytes'|'Megabytes'|'Gigabytes'
+                  |'Terabytes'|'Bits'|'Kilobits'|'Megabits'|'Gigabits'|'Terabits'|'Percent'|'Count'
+                  |'Bytes/Second'|'Kilobytes/Second'|'Megabytes/Second'|'Gigabytes/Second'
+                  |'Terabytes/Second'|'Bits/Second'|'Kilobits/Second'|'Megabits/Second'|'Gigabits/Second'
+                  |'Terabits/Second'|'Count/Second'|'None'
+          )
+        :type Statistic: string
+        :param Statistic:
+
+          The statistic for the metric, other than percentiles. For percentile statistics, use
+          ``ExtendedStatistics`` .
+
+        :type ExtendedStatistic: string
+        :param ExtendedStatistic:
+
+          The percentile statistic for the metric. Specify a value between p0.0 and p100.
+
+        :type Dimensions: list
+        :param Dimensions:
+
+          The dimensions associated with the metric. If the metric has any associated dimensions, you must
+          specify them in order for the call to succeed.
+
+          - *(dict) --*
+
+            Expands the identity of a metric.
+
+            - **Name** *(string) --* **[REQUIRED]**
+
+              The name of the dimension.
+
+            - **Value** *(string) --* **[REQUIRED]**
+
+              The value representing the dimension measurement.
+
+        :type Period: integer
+        :param Period:
+
+          The period, in seconds, over which the statistic is applied.
+
+        :type Unit: string
+        :param Unit:
+
+          The unit for the metric.
+
+        :rtype: list(:py:class:`cloudwatch.Alarm`)
+        :returns: A list of Alarm resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Alarm]:
+        """
+        Creates an iterable up to a specified amount of Alarm resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric>`_
+
+        **Request Syntax**
+        ::
+
+          alarm_iterator = metric.alarms.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`cloudwatch.Alarm`)
+        :returns: A list of Alarm resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Alarm]:
+        """
+        Creates an iterable of all Alarm resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAlarmsForMetric>`_
+
+        **Request Syntax**
+        ::
+
+          alarm_iterator = metric.alarms.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`cloudwatch.Alarm`)
+        :returns: A list of Alarm resources
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

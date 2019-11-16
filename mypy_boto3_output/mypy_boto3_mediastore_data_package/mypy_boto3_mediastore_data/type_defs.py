@@ -6,6 +6,18 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientDescribeObjectResponseTypeDef",
+    "ClientGetObjectResponseTypeDef",
+    "ClientListItemsResponseItemsTypeDef",
+    "ClientListItemsResponseTypeDef",
+    "ClientPutObjectResponseTypeDef",
+    "ListItemsPaginatePaginationConfigTypeDef",
+    "ListItemsPaginateResponseItemsTypeDef",
+    "ListItemsPaginateResponseTypeDef",
+)
+
+
 _ClientDescribeObjectResponseTypeDef = TypedDict(
     "_ClientDescribeObjectResponseTypeDef",
     {

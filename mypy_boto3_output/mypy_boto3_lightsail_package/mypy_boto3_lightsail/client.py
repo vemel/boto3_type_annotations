@@ -3,9 +3,12 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Any, Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_lightsail.paginator as paginator_scope
 from mypy_boto3_lightsail.type_defs import (
     ClientAllocateStaticIpResponseTypeDef,
     ClientAttachDiskResponseTypeDef,
@@ -140,6 +143,9 @@ from mypy_boto3_lightsail.type_defs import (
     ClientUpdateRelationalDatabaseParametersparametersTypeDef,
     ClientUpdateRelationalDatabaseResponseTypeDef,
 )
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -14378,27 +14384,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_regions(
         self,
         includeAvailabilityZones: bool = None,
@@ -16481,19 +16466,6 @@ class Client(BaseClient):
 
               A token used for advancing to the next page of results from your get static IPs request.
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -19510,4 +19482,205 @@ class Client(BaseClient):
 
                   The error details.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_active_names"]
+    ) -> paginator_scope.GetActiveNamesPaginator:
+        """
+        Get Paginator for `get_active_names` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_blueprints"]
+    ) -> paginator_scope.GetBlueprintsPaginator:
+        """
+        Get Paginator for `get_blueprints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_bundles"]
+    ) -> paginator_scope.GetBundlesPaginator:
+        """
+        Get Paginator for `get_bundles` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_cloud_formation_stack_records"]
+    ) -> paginator_scope.GetCloudFormationStackRecordsPaginator:
+        """
+        Get Paginator for `get_cloud_formation_stack_records` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_disk_snapshots"]
+    ) -> paginator_scope.GetDiskSnapshotsPaginator:
+        """
+        Get Paginator for `get_disk_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_disks"]
+    ) -> paginator_scope.GetDisksPaginator:
+        """
+        Get Paginator for `get_disks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_domains"]
+    ) -> paginator_scope.GetDomainsPaginator:
+        """
+        Get Paginator for `get_domains` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_export_snapshot_records"]
+    ) -> paginator_scope.GetExportSnapshotRecordsPaginator:
+        """
+        Get Paginator for `get_export_snapshot_records` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_instance_snapshots"]
+    ) -> paginator_scope.GetInstanceSnapshotsPaginator:
+        """
+        Get Paginator for `get_instance_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_instances"]
+    ) -> paginator_scope.GetInstancesPaginator:
+        """
+        Get Paginator for `get_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_key_pairs"]
+    ) -> paginator_scope.GetKeyPairsPaginator:
+        """
+        Get Paginator for `get_key_pairs` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_load_balancers"]
+    ) -> paginator_scope.GetLoadBalancersPaginator:
+        """
+        Get Paginator for `get_load_balancers` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_operations"]
+    ) -> paginator_scope.GetOperationsPaginator:
+        """
+        Get Paginator for `get_operations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_database_blueprints"]
+    ) -> paginator_scope.GetRelationalDatabaseBlueprintsPaginator:
+        """
+        Get Paginator for `get_relational_database_blueprints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_database_bundles"]
+    ) -> paginator_scope.GetRelationalDatabaseBundlesPaginator:
+        """
+        Get Paginator for `get_relational_database_bundles` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_database_events"]
+    ) -> paginator_scope.GetRelationalDatabaseEventsPaginator:
+        """
+        Get Paginator for `get_relational_database_events` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_database_parameters"]
+    ) -> paginator_scope.GetRelationalDatabaseParametersPaginator:
+        """
+        Get Paginator for `get_relational_database_parameters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_database_snapshots"]
+    ) -> paginator_scope.GetRelationalDatabaseSnapshotsPaginator:
+        """
+        Get Paginator for `get_relational_database_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_relational_databases"]
+    ) -> paginator_scope.GetRelationalDatabasesPaginator:
+        """
+        Get Paginator for `get_relational_databases` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_static_ips"]
+    ) -> paginator_scope.GetStaticIpsPaginator:
+        """
+        Get Paginator for `get_static_ips` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
         """

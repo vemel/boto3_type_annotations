@@ -23,7 +23,20 @@ from mypy_boto3_dynamodb.type_defs import (
 )
 
 
-class ListBackups(Boto3Paginator):
+__all__ = (
+    "ListBackupsPaginator",
+    "ListTablesPaginator",
+    "ListTagsOfResourcePaginator",
+    "QueryPaginator",
+    "ScanPaginator",
+)
+
+
+class ListBackupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_backups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -195,7 +208,11 @@ class ListBackups(Boto3Paginator):
         """
 
 
-class ListTables(Boto3Paginator):
+class ListTablesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tables`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTablesPaginatePaginationConfigTypeDef = None
@@ -274,7 +291,11 @@ class ListTables(Boto3Paginator):
         """
 
 
-class ListTagsOfResource(Boto3Paginator):
+class ListTagsOfResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_of_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -370,7 +391,11 @@ class ListTagsOfResource(Boto3Paginator):
         """
 
 
-class Query(Boto3Paginator):
+class QueryPaginator(Boto3Paginator):
+    """
+    Paginator for `query`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1745,7 +1770,11 @@ class Query(Boto3Paginator):
         """
 
 
-class Scan(Boto3Paginator):
+class ScanPaginator(Boto3Paginator):
+    """
+    Paginator for `scan`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

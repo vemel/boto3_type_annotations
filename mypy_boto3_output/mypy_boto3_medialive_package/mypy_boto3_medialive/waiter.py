@@ -10,7 +10,19 @@ from mypy_boto3_medialive.type_defs import (
 )
 
 
-class ChannelCreated(Boto3Waiter):
+__all__ = (
+    "ChannelCreatedWaiter",
+    "ChannelDeletedWaiter",
+    "ChannelRunningWaiter",
+    "ChannelStoppedWaiter",
+)
+
+
+class ChannelCreatedWaiter(Boto3Waiter):
+    """
+    Waiter for `channel_created` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, ChannelId: str, WaiterConfig: ChannelCreatedWaitWaiterConfigTypeDef = None
@@ -52,7 +64,11 @@ class ChannelCreated(Boto3Waiter):
         """
 
 
-class ChannelDeleted(Boto3Waiter):
+class ChannelDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `channel_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, ChannelId: str, WaiterConfig: ChannelDeletedWaitWaiterConfigTypeDef = None
@@ -94,7 +110,11 @@ class ChannelDeleted(Boto3Waiter):
         """
 
 
-class ChannelRunning(Boto3Waiter):
+class ChannelRunningWaiter(Boto3Waiter):
+    """
+    Waiter for `channel_running` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, ChannelId: str, WaiterConfig: ChannelRunningWaitWaiterConfigTypeDef = None
@@ -136,7 +156,11 @@ class ChannelRunning(Boto3Waiter):
         """
 
 
-class ChannelStopped(Boto3Waiter):
+class ChannelStoppedWaiter(Boto3Waiter):
+    """
+    Waiter for `channel_stopped` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, ChannelId: str, WaiterConfig: ChannelStoppedWaitWaiterConfigTypeDef = None

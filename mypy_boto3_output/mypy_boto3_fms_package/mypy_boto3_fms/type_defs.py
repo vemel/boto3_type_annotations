@@ -6,6 +6,33 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientGetAdminAccountResponseTypeDef",
+    "ClientGetComplianceDetailResponsePolicyComplianceDetailViolatorsTypeDef",
+    "ClientGetComplianceDetailResponsePolicyComplianceDetailTypeDef",
+    "ClientGetComplianceDetailResponseTypeDef",
+    "ClientGetNotificationChannelResponseTypeDef",
+    "ClientGetProtectionStatusResponseTypeDef",
+    "ClientListComplianceStatusResponsePolicyComplianceStatusListEvaluationResultsTypeDef",
+    "ClientListComplianceStatusResponsePolicyComplianceStatusListTypeDef",
+    "ClientListComplianceStatusResponseTypeDef",
+    "ClientListMemberAccountsResponseTypeDef",
+    "ClientListPoliciesResponsePolicyListTypeDef",
+    "ClientListPoliciesResponseTypeDef",
+    "ClientPutPolicyPolicySecurityServicePolicyDataTypeDef",
+    "ClientPutPolicyPolicyTypeDef",
+    "ListComplianceStatusPaginatePaginationConfigTypeDef",
+    "ListComplianceStatusPaginateResponsePolicyComplianceStatusListEvaluationResultsTypeDef",
+    "ListComplianceStatusPaginateResponsePolicyComplianceStatusListTypeDef",
+    "ListComplianceStatusPaginateResponseTypeDef",
+    "ListMemberAccountsPaginatePaginationConfigTypeDef",
+    "ListMemberAccountsPaginateResponseTypeDef",
+    "ListPoliciesPaginatePaginationConfigTypeDef",
+    "ListPoliciesPaginateResponsePolicyListTypeDef",
+    "ListPoliciesPaginateResponseTypeDef",
+)
+
+
 _ClientGetAdminAccountResponseTypeDef = TypedDict(
     "_ClientGetAdminAccountResponseTypeDef",
     {"AdminAccount": str, "RoleStatus": str},
@@ -654,6 +681,112 @@ class ClientListPoliciesResponseTypeDef(_ClientListPoliciesResponseTypeDef):
       ``MaxResults`` in the request, the response includes a ``NextToken`` value. To list more
       ``PolicySummary`` objects, submit another ``ListPolicies`` request, and specify the
       ``NextToken`` value from the response in the ``NextToken`` value in the next request.
+    """
+
+
+_RequiredClientPutPolicyPolicySecurityServicePolicyDataTypeDef = TypedDict(
+    "_RequiredClientPutPolicyPolicySecurityServicePolicyDataTypeDef", {"Type": str}
+)
+_OptionalClientPutPolicyPolicySecurityServicePolicyDataTypeDef = TypedDict(
+    "_OptionalClientPutPolicyPolicySecurityServicePolicyDataTypeDef",
+    {"ManagedServiceData": str},
+    total=False,
+)
+
+
+class ClientPutPolicyPolicySecurityServicePolicyDataTypeDef(
+    _RequiredClientPutPolicyPolicySecurityServicePolicyDataTypeDef,
+    _OptionalClientPutPolicyPolicySecurityServicePolicyDataTypeDef,
+):
+    """
+    Type definition for `ClientPutPolicyPolicy` `SecurityServicePolicyData`
+
+    Details about the security service that is being used to protect the resources.
+
+    - **Type** *(string) --* **[REQUIRED]**
+
+      The service that the policy is using to protect the resources. This specifies the type of
+      policy that is created, either an AWS WAF policy, a Shield Advanced policy, or a security
+      group policy. For security group policies, Firewall Manager supports one security group for
+      each common policy and for each content audit policy. This is an adjustable limit that you
+      can increase by contacting AWS Support.
+
+    - **ManagedServiceData** *(string) --*
+
+      Details about the service that are specific to the service type, in JSON format. For service
+      type ``SHIELD_ADVANCED`` , this is an empty string.
+
+      * Example: ``WAF``    ``ManagedServiceData": "{\\"type\\": \\"WAF\\", \\"ruleGroups\\":
+      [{\\"id\\": \\"12345678-1bcd-9012-efga-0987654321ab\\", \\"overrideAction\\" : {\\"type\\":
+      \\"COUNT\\"}}], \\"defaultAction\\": {\\"type\\": \\"BLOCK\\"}}``
+
+      * Example: ``SECURITY_GROUPS_COMMON``
+      ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_COMMON\\",\\"revertManualSecurityGroupChanges\\":false,\\"exclusiveResourceSecurityGroupManagement\\":false,\\"securityGroups\\":[{\\"id\\":\\"
+      sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
+    """
+
+
+_RequiredClientPutPolicyPolicyTypeDef = TypedDict(
+    "_RequiredClientPutPolicyPolicyTypeDef",
+    {
+        "PolicyName": str,
+        "SecurityServicePolicyData": ClientPutPolicyPolicySecurityServicePolicyDataTypeDef,
+    },
+)
+_OptionalClientPutPolicyPolicyTypeDef = TypedDict(
+    "_OptionalClientPutPolicyPolicyTypeDef",
+    {"PolicyId": str, "PolicyUpdateToken": str},
+    total=False,
+)
+
+
+class ClientPutPolicyPolicyTypeDef(
+    _RequiredClientPutPolicyPolicyTypeDef, _OptionalClientPutPolicyPolicyTypeDef
+):
+    """
+    Type definition for `ClientPutPolicy` `Policy`
+
+    The details of the AWS Firewall Manager policy to be created.
+
+    - **PolicyId** *(string) --*
+
+      The ID of the AWS Firewall Manager policy.
+
+    - **PolicyName** *(string) --* **[REQUIRED]**
+
+      The friendly name of the AWS Firewall Manager policy.
+
+    - **PolicyUpdateToken** *(string) --*
+
+      A unique identifier for each update to the policy. When issuing a ``PutPolicy`` request, the
+      ``PolicyUpdateToken`` in the request must match the ``PolicyUpdateToken`` of the current policy
+      version. To get the ``PolicyUpdateToken`` of the current policy version, use a ``GetPolicy``
+      request.
+
+    - **SecurityServicePolicyData** *(dict) --* **[REQUIRED]**
+
+      Details about the security service that is being used to protect the resources.
+
+      - **Type** *(string) --* **[REQUIRED]**
+
+        The service that the policy is using to protect the resources. This specifies the type of
+        policy that is created, either an AWS WAF policy, a Shield Advanced policy, or a security
+        group policy. For security group policies, Firewall Manager supports one security group for
+        each common policy and for each content audit policy. This is an adjustable limit that you
+        can increase by contacting AWS Support.
+
+      - **ManagedServiceData** *(string) --*
+
+        Details about the service that are specific to the service type, in JSON format. For service
+        type ``SHIELD_ADVANCED`` , this is an empty string.
+
+        * Example: ``WAF``    ``ManagedServiceData": "{\\"type\\": \\"WAF\\", \\"ruleGroups\\":
+        [{\\"id\\": \\"12345678-1bcd-9012-efga-0987654321ab\\", \\"overrideAction\\" : {\\"type\\":
+        \\"COUNT\\"}}], \\"defaultAction\\": {\\"type\\": \\"BLOCK\\"}}``
+
+        * Example: ``SECURITY_GROUPS_COMMON``
+        ``"SecurityServicePolicyData":{"Type":"SECURITY_GROUPS_COMMON","ManagedServiceData":"{\\"type\\":\\"SECURITY_GROUPS_COMMON\\",\\"revertManualSecurityGroupChanges\\":false,\\"exclusiveResourceSecurityGroupManagement\\":false,\\"securityGroups\\":[{\\"id\\":\\"
+        sg-000e55995d61a06bd\\"}]}"},"RemediationEnabled":false,"ResourceType":"AWS::EC2::NetworkInterface"}``
     """
 
 

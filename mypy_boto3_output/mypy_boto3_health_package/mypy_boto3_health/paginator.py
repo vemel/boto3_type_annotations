@@ -17,7 +17,19 @@ from mypy_boto3_health.type_defs import (
 )
 
 
-class DescribeAffectedEntities(Boto3Paginator):
+__all__ = (
+    "DescribeAffectedEntitiesPaginator",
+    "DescribeEventAggregatesPaginator",
+    "DescribeEventTypesPaginator",
+    "DescribeEventsPaginator",
+)
+
+
+class DescribeAffectedEntitiesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_affected_entities`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -239,7 +251,11 @@ class DescribeAffectedEntities(Boto3Paginator):
         """
 
 
-class DescribeEventAggregates(Boto3Paginator):
+class DescribeEventAggregatesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_event_aggregates`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -522,7 +538,11 @@ class DescribeEventAggregates(Boto3Paginator):
         """
 
 
-class DescribeEventTypes(Boto3Paginator):
+class DescribeEventTypesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_event_types`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -664,7 +684,11 @@ class DescribeEventTypes(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

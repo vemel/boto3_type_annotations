@@ -45,7 +45,32 @@ from mypy_boto3_config.type_defs import (
 )
 
 
-class DescribeAggregateComplianceByConfigRules(Boto3Paginator):
+__all__ = (
+    "DescribeAggregateComplianceByConfigRulesPaginator",
+    "DescribeAggregationAuthorizationsPaginator",
+    "DescribeComplianceByConfigRulePaginator",
+    "DescribeComplianceByResourcePaginator",
+    "DescribeConfigRuleEvaluationStatusPaginator",
+    "DescribeConfigRulesPaginator",
+    "DescribeConfigurationAggregatorSourcesStatusPaginator",
+    "DescribeConfigurationAggregatorsPaginator",
+    "DescribePendingAggregationRequestsPaginator",
+    "DescribeRemediationExecutionStatusPaginator",
+    "DescribeRetentionConfigurationsPaginator",
+    "GetAggregateComplianceDetailsByConfigRulePaginator",
+    "GetComplianceDetailsByConfigRulePaginator",
+    "GetComplianceDetailsByResourcePaginator",
+    "GetResourceConfigHistoryPaginator",
+    "ListAggregateDiscoveredResourcesPaginator",
+    "ListDiscoveredResourcesPaginator",
+)
+
+
+class DescribeAggregateComplianceByConfigRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_aggregate_compliance_by_config_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -220,7 +245,11 @@ class DescribeAggregateComplianceByConfigRules(Boto3Paginator):
         """
 
 
-class DescribeAggregationAuthorizations(Boto3Paginator):
+class DescribeAggregationAuthorizationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_aggregation_authorizations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -312,7 +341,11 @@ class DescribeAggregationAuthorizations(Boto3Paginator):
         """
 
 
-class DescribeComplianceByConfigRule(Boto3Paginator):
+class DescribeComplianceByConfigRulePaginator(Boto3Paginator):
+    """
+    Paginator for `describe_compliance_by_config_rule`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -453,7 +486,11 @@ class DescribeComplianceByConfigRule(Boto3Paginator):
         """
 
 
-class DescribeComplianceByResource(Boto3Paginator):
+class DescribeComplianceByResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `describe_compliance_by_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -616,7 +653,11 @@ class DescribeComplianceByResource(Boto3Paginator):
         """
 
 
-class DescribeConfigRuleEvaluationStatus(Boto3Paginator):
+class DescribeConfigRuleEvaluationStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_config_rule_evaluation_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -767,7 +808,11 @@ class DescribeConfigRuleEvaluationStatus(Boto3Paginator):
         """
 
 
-class DescribeConfigRules(Boto3Paginator):
+class DescribeConfigRulesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_config_rules`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1066,7 +1111,11 @@ class DescribeConfigRules(Boto3Paginator):
         """
 
 
-class DescribeConfigurationAggregatorSourcesStatus(Boto3Paginator):
+class DescribeConfigurationAggregatorSourcesStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_configuration_aggregator_sources_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1204,7 +1253,11 @@ class DescribeConfigurationAggregatorSourcesStatus(Boto3Paginator):
         """
 
 
-class DescribeConfigurationAggregators(Boto3Paginator):
+class DescribeConfigurationAggregatorsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_configuration_aggregators`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1369,7 +1422,11 @@ class DescribeConfigurationAggregators(Boto3Paginator):
         """
 
 
-class DescribePendingAggregationRequests(Boto3Paginator):
+class DescribePendingAggregationRequestsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_pending_aggregation_requests`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1452,7 +1509,11 @@ class DescribePendingAggregationRequests(Boto3Paginator):
         """
 
 
-class DescribeRemediationExecutionStatus(Boto3Paginator):
+class DescribeRemediationExecutionStatusPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_remediation_execution_status`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1704,7 +1765,11 @@ class DescribeRemediationExecutionStatus(Boto3Paginator):
         """
 
 
-class DescribeRetentionConfigurations(Boto3Paginator):
+class DescribeRetentionConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_retention_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1802,7 +1867,11 @@ class DescribeRetentionConfigurations(Boto3Paginator):
         """
 
 
-class GetAggregateComplianceDetailsByConfigRule(Boto3Paginator):
+class GetAggregateComplianceDetailsByConfigRulePaginator(Boto3Paginator):
+    """
+    Paginator for `get_aggregate_compliance_details_by_config_rule`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1988,7 +2057,11 @@ class GetAggregateComplianceDetailsByConfigRule(Boto3Paginator):
         """
 
 
-class GetComplianceDetailsByConfigRule(Boto3Paginator):
+class GetComplianceDetailsByConfigRulePaginator(Boto3Paginator):
+    """
+    Paginator for `get_compliance_details_by_config_rule`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2151,7 +2224,11 @@ class GetComplianceDetailsByConfigRule(Boto3Paginator):
         """
 
 
-class GetComplianceDetailsByResource(Boto3Paginator):
+class GetComplianceDetailsByResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `get_compliance_details_by_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2313,7 +2390,11 @@ class GetComplianceDetailsByResource(Boto3Paginator):
         """
 
 
-class GetResourceConfigHistory(Boto3Paginator):
+class GetResourceConfigHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `get_resource_config_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2691,7 +2772,11 @@ class GetResourceConfigHistory(Boto3Paginator):
         """
 
 
-class ListAggregateDiscoveredResources(Boto3Paginator):
+class ListAggregateDiscoveredResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_aggregate_discovered_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2903,7 +2988,11 @@ class ListAggregateDiscoveredResources(Boto3Paginator):
         """
 
 
-class ListDiscoveredResources(Boto3Paginator):
+class ListDiscoveredResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_discovered_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

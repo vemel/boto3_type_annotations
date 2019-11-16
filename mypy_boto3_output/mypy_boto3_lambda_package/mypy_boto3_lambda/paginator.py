@@ -18,7 +18,21 @@ from mypy_boto3_lambda.type_defs import (
 )
 
 
-class ListAliases(Boto3Paginator):
+__all__ = (
+    "ListAliasesPaginator",
+    "ListEventSourceMappingsPaginator",
+    "ListFunctionsPaginator",
+    "ListLayerVersionsPaginator",
+    "ListLayersPaginator",
+    "ListVersionsByFunctionPaginator",
+)
+
+
+class ListAliasesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_aliases`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -163,7 +177,11 @@ class ListAliases(Boto3Paginator):
         """
 
 
-class ListEventSourceMappings(Boto3Paginator):
+class ListEventSourceMappingsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_event_source_mappings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -318,7 +336,11 @@ class ListEventSourceMappings(Boto3Paginator):
         """
 
 
-class ListFunctions(Boto3Paginator):
+class ListFunctionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_functions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -599,7 +621,11 @@ class ListFunctions(Boto3Paginator):
         """
 
 
-class ListLayerVersions(Boto3Paginator):
+class ListLayerVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_layer_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -730,7 +756,11 @@ class ListLayerVersions(Boto3Paginator):
         """
 
 
-class ListLayers(Boto3Paginator):
+class ListLayersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_layers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -869,7 +899,11 @@ class ListLayers(Boto3Paginator):
         """
 
 
-class ListVersionsByFunction(Boto3Paginator):
+class ListVersionsByFunctionPaginator(Boto3Paginator):
+    """
+    Paginator for `list_versions_by_function`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -2,4 +2,5 @@
 
 from mypy_boto3_firehose.client import Client
 
+
 __all__ = ("Client",)

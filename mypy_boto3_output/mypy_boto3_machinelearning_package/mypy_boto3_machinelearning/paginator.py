@@ -14,7 +14,19 @@ from mypy_boto3_machinelearning.type_defs import (
 )
 
 
-class DescribeBatchPredictions(Boto3Paginator):
+__all__ = (
+    "DescribeBatchPredictionsPaginator",
+    "DescribeDataSourcesPaginator",
+    "DescribeEvaluationsPaginator",
+    "DescribeMLModelsPaginator",
+)
+
+
+class DescribeBatchPredictionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_batch_predictions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -294,7 +306,11 @@ class DescribeBatchPredictions(Boto3Paginator):
         """
 
 
-class DescribeDataSources(Boto3Paginator):
+class DescribeDataSourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_data_sources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -666,7 +682,11 @@ class DescribeDataSources(Boto3Paginator):
         """
 
 
-class DescribeEvaluations(Boto3Paginator):
+class DescribeEvaluationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_evaluations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -956,7 +976,11 @@ class DescribeEvaluations(Boto3Paginator):
         """
 
 
-class DescribeMLModels(Boto3Paginator):
+class DescribeMLModelsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_ml_models`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

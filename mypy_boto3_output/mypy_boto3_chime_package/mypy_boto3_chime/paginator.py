@@ -10,7 +10,14 @@ from mypy_boto3_chime.type_defs import (
 )
 
 
-class ListAccounts(Boto3Paginator):
+__all__ = ("ListAccountsPaginator", "ListUsersPaginator")
+
+
+class ListAccountsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_accounts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -137,7 +144,11 @@ class ListAccounts(Boto3Paginator):
         """
 
 
-class ListUsers(Boto3Paginator):
+class ListUsersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_users`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

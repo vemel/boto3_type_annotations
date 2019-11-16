@@ -17,7 +17,29 @@ from mypy_boto3_glacier.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Account",
+    "Archive",
+    "Job",
+    "MultipartUpload",
+    "Notification",
+    "Vault",
+    "ServiceResourceVaultsCollection",
+    "AccountVaultsCollection",
+    "VaultCompletedJobsCollection",
+    "VaultFailedJobsCollection",
+    "VaultJobsCollection",
+    "VaultJobsInProgressCollection",
+    "VaultMultipartUplaodsCollection",
+    "VaultMultipartUploadsCollection",
+    "VaultSucceededJobsCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    vaults: service_resource_scope.ServiceResourceVaultsCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Account(self, id: str) -> service_resource_scope.Account:
         """
@@ -184,6 +206,7 @@ class ServiceResource(Boto3ServiceResource):
 
 class Account(Boto3ServiceResource):
     id: str
+    vaults: service_resource_scope.AccountVaultsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_vault(self, vaultName: str) -> service_resource_scope.Vault:
@@ -1104,6 +1127,13 @@ class Vault(Boto3ServiceResource):
     size_in_bytes: int
     account_id: str
     name: str
+    completed_jobs: service_resource_scope.VaultCompletedJobsCollection
+    failed_jobs: service_resource_scope.VaultFailedJobsCollection
+    jobs: service_resource_scope.VaultJobsCollection
+    jobs_in_progress: service_resource_scope.VaultJobsInProgressCollection
+    multipart_uplaods: service_resource_scope.VaultMultipartUplaodsCollection
+    multipart_uploads: service_resource_scope.VaultMultipartUploadsCollection
+    succeeded_jobs: service_resource_scope.VaultSucceededJobsCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create(self, *args: Any, **kwargs: Any) -> VaultCreateResponseTypeDef:
@@ -1408,7 +1438,7 @@ class Vault(Boto3ServiceResource):
         """
 
 
-class vaults(ResourceCollection):
+class ServiceResourceVaultsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1546,7 +1576,145 @@ class vaults(ResourceCollection):
         """
 
 
-class completed_jobs(ResourceCollection):
+class AccountVaultsCollection(ResourceCollection):
+    """
+    A group of resources. See :py:class:`Action`.
+
+    :type name: string
+    :param name: The name of the collection
+    :type definition: dict
+    :param definition: The JSON definition
+    :type resource_defs: dict
+    :param resource_defs: All resources defined in the service
+    """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def all(self) -> List[service_resource_scope.Vault]:
+        """
+        Creates an iterable of all Vault resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaults>`_
+
+        **Request Syntax**
+        ::
+
+          vault_iterator = account.vaults.all()
+
+        :rtype: list(:py:class:`glacier.Vault`)
+        :returns: A list of Vault resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def filter(
+        self, marker: str = None, limit: str = None
+    ) -> List[service_resource_scope.Vault]:
+        """
+        Creates an iterable of all Vault resources in the collection filtered by kwargs passed to method.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaults>`_
+
+        **Request Syntax**
+        ::
+
+          vault_iterator = account.vaults.filter(
+              marker='string',
+              limit='string'
+          )
+        :type marker: string
+        :param marker:
+
+          A string used for pagination. The marker specifies the vault ARN after which the listing of
+          vaults should begin.
+
+        :type limit: string
+        :param limit:
+
+          The maximum number of vaults to be returned. The default limit is 10. The number of vaults
+          returned might be fewer than the specified limit, but the number of returned vaults never exceeds
+          the limit.
+
+        :rtype: list(:py:class:`glacier.Vault`)
+        :returns: A list of Vault resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def iterator(self, **kwargs: Any) -> ResourceCollection:
+        """
+        Get a resource collection iterator from this manager.
+
+        :rtype: :py:class:`ResourceCollection`
+        :return: An iterable representing the collection of resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def limit(self, count: int) -> List[service_resource_scope.Vault]:
+        """
+        Creates an iterable up to a specified amount of Vault resources in the collection.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaults>`_
+
+        **Request Syntax**
+        ::
+
+          vault_iterator = account.vaults.limit(
+              count=123
+          )
+        :type count: integer
+        :param count: The limit to the number of resources in the iterable.
+
+        :rtype: list(:py:class:`glacier.Vault`)
+        :returns: A list of Vault resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def page_size(self, count: int) -> List[service_resource_scope.Vault]:
+        """
+        Creates an iterable of all Vault resources in the collection, but limits the number of items
+        returned by each service call by the specified amount.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/glacier-2012-06-01/ListVaults>`_
+
+        **Request Syntax**
+        ::
+
+          vault_iterator = account.vaults.page_size(
+              count=123
+          )
+        :type count: integer
+        :param count: The number of items returned by each service call
+
+        :rtype: list(:py:class:`glacier.Vault`)
+        :returns: A list of Vault resources
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def pages(self) -> List[Boto3ServiceResource]:
+        """
+        A generator which yields pages of resource instances after
+        doing the appropriate service operation calls and handling
+        any pagination on your behalf. Non-paginated calls will
+        return a single page of items.
+
+        Page size, item limit, and filter parameters are applied
+        if they have previously been set.
+
+            >>> bucket = s3.Bucket('boto3')
+            >>> for page in bucket.objects.pages():
+            ...     for obj in page:
+            ...         print(obj.key)
+            'key1'
+            'key2'
+
+        :rtype: list(:py:class:`~boto3.resources.base.ServiceResource`)
+        :return: List of resource instances
+        """
+
+
+class VaultCompletedJobsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1693,7 +1861,7 @@ class completed_jobs(ResourceCollection):
         """
 
 
-class failed_jobs(ResourceCollection):
+class VaultFailedJobsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1838,7 +2006,7 @@ class failed_jobs(ResourceCollection):
         """
 
 
-class jobs(ResourceCollection):
+class VaultJobsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1994,7 +2162,7 @@ class jobs(ResourceCollection):
         """
 
 
-class jobs_in_progress(ResourceCollection):
+class VaultJobsInProgressCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -2139,7 +2307,7 @@ class jobs_in_progress(ResourceCollection):
         """
 
 
-class multipart_uplaods(ResourceCollection):
+class VaultMultipartUplaodsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -2279,7 +2447,7 @@ class multipart_uplaods(ResourceCollection):
         """
 
 
-class multipart_uploads(ResourceCollection):
+class VaultMultipartUploadsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -2419,7 +2587,7 @@ class multipart_uploads(ResourceCollection):
         """
 
 
-class succeeded_jobs(ResourceCollection):
+class VaultSucceededJobsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

@@ -5,6 +5,36 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAssociateS3ResourcesResponsefailedS3ResourcesfailedItemTypeDef",
+    "ClientAssociateS3ResourcesResponsefailedS3ResourcesTypeDef",
+    "ClientAssociateS3ResourcesResponseTypeDef",
+    "ClientAssociateS3Resourcess3ResourcesclassificationTypeTypeDef",
+    "ClientAssociateS3Resourcess3ResourcesTypeDef",
+    "ClientDisassociateS3ResourcesResponsefailedS3ResourcesfailedItemTypeDef",
+    "ClientDisassociateS3ResourcesResponsefailedS3ResourcesTypeDef",
+    "ClientDisassociateS3ResourcesResponseTypeDef",
+    "ClientDisassociateS3ResourcesassociatedS3ResourcesTypeDef",
+    "ClientListMemberAccountsResponsememberAccountsTypeDef",
+    "ClientListMemberAccountsResponseTypeDef",
+    "ClientListS3ResourcesResponses3ResourcesclassificationTypeTypeDef",
+    "ClientListS3ResourcesResponses3ResourcesTypeDef",
+    "ClientListS3ResourcesResponseTypeDef",
+    "ClientUpdateS3ResourcesResponsefailedS3ResourcesfailedItemTypeDef",
+    "ClientUpdateS3ResourcesResponsefailedS3ResourcesTypeDef",
+    "ClientUpdateS3ResourcesResponseTypeDef",
+    "ClientUpdateS3Resourcess3ResourcesUpdateclassificationTypeUpdateTypeDef",
+    "ClientUpdateS3Resourcess3ResourcesUpdateTypeDef",
+    "ListMemberAccountsPaginatePaginationConfigTypeDef",
+    "ListMemberAccountsPaginateResponsememberAccountsTypeDef",
+    "ListMemberAccountsPaginateResponseTypeDef",
+    "ListS3ResourcesPaginatePaginationConfigTypeDef",
+    "ListS3ResourcesPaginateResponses3ResourcesclassificationTypeTypeDef",
+    "ListS3ResourcesPaginateResponses3ResourcesTypeDef",
+    "ListS3ResourcesPaginateResponseTypeDef",
+)
+
+
 _ClientAssociateS3ResourcesResponsefailedS3ResourcesfailedItemTypeDef = TypedDict(
     "_ClientAssociateS3ResourcesResponsefailedS3ResourcesfailedItemTypeDef",
     {"bucketName": str, "prefix": str},

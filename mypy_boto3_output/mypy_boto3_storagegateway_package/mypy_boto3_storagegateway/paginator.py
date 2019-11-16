@@ -24,7 +24,24 @@ from mypy_boto3_storagegateway.type_defs import (
 )
 
 
-class DescribeTapeArchives(Boto3Paginator):
+__all__ = (
+    "DescribeTapeArchivesPaginator",
+    "DescribeTapeRecoveryPointsPaginator",
+    "DescribeTapesPaginator",
+    "DescribeVTLDevicesPaginator",
+    "ListFileSharesPaginator",
+    "ListGatewaysPaginator",
+    "ListTagsForResourcePaginator",
+    "ListTapesPaginator",
+    "ListVolumesPaginator",
+)
+
+
+class DescribeTapeArchivesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_tape_archives`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -180,7 +197,11 @@ class DescribeTapeArchives(Boto3Paginator):
         """
 
 
-class DescribeTapeRecoveryPoints(Boto3Paginator):
+class DescribeTapeRecoveryPointsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_tape_recovery_points`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -296,7 +317,11 @@ class DescribeTapeRecoveryPoints(Boto3Paginator):
         """
 
 
-class DescribeTapes(Boto3Paginator):
+class DescribeTapesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_tapes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -458,7 +483,11 @@ class DescribeTapes(Boto3Paginator):
         """
 
 
-class DescribeVTLDevices(Boto3Paginator):
+class DescribeVTLDevicesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_vtl_devices`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -614,7 +643,11 @@ class DescribeVTLDevices(Boto3Paginator):
         """
 
 
-class ListFileShares(Boto3Paginator):
+class ListFileSharesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_file_shares`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -732,7 +765,11 @@ class ListFileShares(Boto3Paginator):
         """
 
 
-class ListGateways(Boto3Paginator):
+class ListGatewaysPaginator(Boto3Paginator):
+    """
+    Paginator for `list_gateways`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGatewaysPaginatePaginationConfigTypeDef = None
@@ -846,7 +883,11 @@ class ListGateways(Boto3Paginator):
         """
 
 
-class ListTagsForResource(Boto3Paginator):
+class ListTagsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -948,7 +989,11 @@ class ListTagsForResource(Boto3Paginator):
         """
 
 
-class ListTapes(Boto3Paginator):
+class ListTapesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tapes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1079,7 +1124,11 @@ class ListTapes(Boto3Paginator):
         """
 
 
-class ListVolumes(Boto3Paginator):
+class ListVolumesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_volumes`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

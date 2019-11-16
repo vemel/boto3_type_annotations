@@ -5,6 +5,57 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateGroupResourceQueryTypeDef",
+    "ClientCreateGroupResponseGroupTypeDef",
+    "ClientCreateGroupResponseResourceQueryTypeDef",
+    "ClientCreateGroupResponseTypeDef",
+    "ClientDeleteGroupResponseGroupTypeDef",
+    "ClientDeleteGroupResponseTypeDef",
+    "ClientGetGroupQueryResponseGroupQueryResourceQueryTypeDef",
+    "ClientGetGroupQueryResponseGroupQueryTypeDef",
+    "ClientGetGroupQueryResponseTypeDef",
+    "ClientGetGroupResponseGroupTypeDef",
+    "ClientGetGroupResponseTypeDef",
+    "ClientGetTagsResponseTypeDef",
+    "ClientListGroupResourcesFiltersTypeDef",
+    "ClientListGroupResourcesResponseQueryErrorsTypeDef",
+    "ClientListGroupResourcesResponseResourceIdentifiersTypeDef",
+    "ClientListGroupResourcesResponseTypeDef",
+    "ClientListGroupsFiltersTypeDef",
+    "ClientListGroupsResponseGroupIdentifiersTypeDef",
+    "ClientListGroupsResponseGroupsTypeDef",
+    "ClientListGroupsResponseTypeDef",
+    "ClientSearchResourcesResourceQueryTypeDef",
+    "ClientSearchResourcesResponseQueryErrorsTypeDef",
+    "ClientSearchResourcesResponseResourceIdentifiersTypeDef",
+    "ClientSearchResourcesResponseTypeDef",
+    "ClientTagResponseTypeDef",
+    "ClientUntagResponseTypeDef",
+    "ClientUpdateGroupQueryResourceQueryTypeDef",
+    "ClientUpdateGroupQueryResponseGroupQueryResourceQueryTypeDef",
+    "ClientUpdateGroupQueryResponseGroupQueryTypeDef",
+    "ClientUpdateGroupQueryResponseTypeDef",
+    "ClientUpdateGroupResponseGroupTypeDef",
+    "ClientUpdateGroupResponseTypeDef",
+    "ListGroupResourcesPaginateFiltersTypeDef",
+    "ListGroupResourcesPaginatePaginationConfigTypeDef",
+    "ListGroupResourcesPaginateResponseQueryErrorsTypeDef",
+    "ListGroupResourcesPaginateResponseResourceIdentifiersTypeDef",
+    "ListGroupResourcesPaginateResponseTypeDef",
+    "ListGroupsPaginateFiltersTypeDef",
+    "ListGroupsPaginatePaginationConfigTypeDef",
+    "ListGroupsPaginateResponseGroupIdentifiersTypeDef",
+    "ListGroupsPaginateResponseGroupsTypeDef",
+    "ListGroupsPaginateResponseTypeDef",
+    "SearchResourcesPaginatePaginationConfigTypeDef",
+    "SearchResourcesPaginateResourceQueryTypeDef",
+    "SearchResourcesPaginateResponseQueryErrorsTypeDef",
+    "SearchResourcesPaginateResponseResourceIdentifiersTypeDef",
+    "SearchResourcesPaginateResponseTypeDef",
+)
+
+
 _ClientCreateGroupResourceQueryTypeDef = TypedDict(
     "_ClientCreateGroupResourceQueryTypeDef", {"Type": str, "Query": str}
 )

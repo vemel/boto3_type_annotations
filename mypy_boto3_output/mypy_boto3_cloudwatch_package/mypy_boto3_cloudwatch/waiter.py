@@ -6,7 +6,14 @@ from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3_cloudwatch.type_defs import AlarmExistsWaitWaiterConfigTypeDef
 
 
-class AlarmExists(Boto3Waiter):
+__all__ = ("AlarmExistsWaiter",)
+
+
+class AlarmExistsWaiter(Boto3Waiter):
+    """
+    Waiter for `alarm_exists` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

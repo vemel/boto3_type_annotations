@@ -11,7 +11,14 @@ from mypy_boto3_cloud9.type_defs import (
 )
 
 
-class DescribeEnvironmentMemberships(Boto3Paginator):
+__all__ = ("DescribeEnvironmentMembershipsPaginator", "ListEnvironmentsPaginator")
+
+
+class DescribeEnvironmentMembershipsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_environment_memberships`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -154,7 +161,11 @@ class DescribeEnvironmentMemberships(Boto3Paginator):
         """
 
 
-class ListEnvironments(Boto3Paginator):
+class ListEnvironmentsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_environments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListEnvironmentsPaginatePaginationConfigTypeDef = None

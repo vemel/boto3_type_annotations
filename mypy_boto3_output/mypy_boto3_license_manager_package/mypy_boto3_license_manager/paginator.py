@@ -20,7 +20,20 @@ from mypy_boto3_license_manager.type_defs import (
 )
 
 
-class ListAssociationsForLicenseConfiguration(Boto3Paginator):
+__all__ = (
+    "ListAssociationsForLicenseConfigurationPaginator",
+    "ListLicenseConfigurationsPaginator",
+    "ListLicenseSpecificationsForResourcePaginator",
+    "ListResourceInventoryPaginator",
+    "ListUsageForLicenseConfigurationPaginator",
+)
+
+
+class ListAssociationsForLicenseConfigurationPaginator(Boto3Paginator):
+    """
+    Paginator for `list_associations_for_license_configuration`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -122,7 +135,11 @@ class ListAssociationsForLicenseConfiguration(Boto3Paginator):
         """
 
 
-class ListLicenseConfigurations(Boto3Paginator):
+class ListLicenseConfigurationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_license_configurations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -343,7 +360,11 @@ class ListLicenseConfigurations(Boto3Paginator):
         """
 
 
-class ListLicenseSpecificationsForResource(Boto3Paginator):
+class ListLicenseSpecificationsForResourcePaginator(Boto3Paginator):
+    """
+    Paginator for `list_license_specifications_for_resource`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -428,7 +449,11 @@ class ListLicenseSpecificationsForResource(Boto3Paginator):
         """
 
 
-class ListResourceInventory(Boto3Paginator):
+class ListResourceInventoryPaginator(Boto3Paginator):
+    """
+    Paginator for `list_resource_inventory`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -559,7 +584,11 @@ class ListResourceInventory(Boto3Paginator):
         """
 
 
-class ListUsageForLicenseConfiguration(Boto3Paginator):
+class ListUsageForLicenseConfigurationPaginator(Boto3Paginator):
+    """
+    Paginator for `list_usage_for_license_configuration`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

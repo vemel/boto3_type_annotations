@@ -8,7 +8,14 @@ from mypy_boto3_mediastore.type_defs import (
 )
 
 
-class ListContainers(Boto3Paginator):
+__all__ = ("ListContainersPaginator",)
+
+
+class ListContainersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_containers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListContainersPaginatePaginationConfigTypeDef = None

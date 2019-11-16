@@ -12,7 +12,18 @@ from mypy_boto3_globalaccelerator.type_defs import (
 )
 
 
-class ListAccelerators(Boto3Paginator):
+__all__ = (
+    "ListAcceleratorsPaginator",
+    "ListEndpointGroupsPaginator",
+    "ListListenersPaginator",
+)
+
+
+class ListAcceleratorsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_accelerators`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListAcceleratorsPaginatePaginationConfigTypeDef = None
@@ -167,7 +178,11 @@ class ListAccelerators(Boto3Paginator):
         """
 
 
-class ListEndpointGroups(Boto3Paginator):
+class ListEndpointGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_endpoint_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -380,7 +395,11 @@ class ListEndpointGroups(Boto3Paginator):
         """
 
 
-class ListListeners(Boto3Paginator):
+class ListListenersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_listeners`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

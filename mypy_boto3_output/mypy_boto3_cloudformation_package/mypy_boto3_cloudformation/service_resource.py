@@ -19,7 +19,21 @@ from mypy_boto3_cloudformation.type_defs import (
 )
 
 
+__all__ = (
+    "ServiceResource",
+    "Event",
+    "Stack",
+    "StackResource",
+    "StackResourceSummary",
+    "ServiceResourceStacksCollection",
+    "StackEventsCollection",
+    "StackResourceSummariesCollection",
+)
+
+
 class ServiceResource(Boto3ServiceResource):
+    stacks: service_resource_scope.ServiceResourceStacksCollection
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def Event(self, id: str) -> service_resource_scope.Event:
         """
@@ -567,6 +581,8 @@ class Stack(Boto3ServiceResource):
     root_id: str
     drift_information: Dict[str, Any]
     name: str
+    events: service_resource_scope.StackEventsCollection
+    resource_summaries: service_resource_scope.StackResourceSummariesCollection
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def cancel_update(self, ClientRequestToken: str = None) -> None:
@@ -1226,7 +1242,7 @@ class StackResourceSummary(Boto3ServiceResource):
         """
 
 
-class stacks(ResourceCollection):
+class ServiceResourceStacksCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1368,7 +1384,7 @@ class stacks(ResourceCollection):
         """
 
 
-class events(ResourceCollection):
+class StackEventsCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 
@@ -1495,7 +1511,7 @@ class events(ResourceCollection):
         """
 
 
-class resource_summaries(ResourceCollection):
+class StackResourceSummariesCollection(ResourceCollection):
     """
     A group of resources. See :py:class:`Action`.
 

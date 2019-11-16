@@ -21,7 +21,22 @@ from mypy_boto3_rds.type_defs import (
 )
 
 
-class DBClusterSnapshotAvailable(Boto3Waiter):
+__all__ = (
+    "DBClusterSnapshotAvailableWaiter",
+    "DBClusterSnapshotDeletedWaiter",
+    "DBInstanceAvailableWaiter",
+    "DBInstanceDeletedWaiter",
+    "DBSnapshotAvailableWaiter",
+    "DBSnapshotCompletedWaiter",
+    "DBSnapshotDeletedWaiter",
+)
+
+
+class DBClusterSnapshotAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `db_cluster_snapshot_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -217,7 +232,11 @@ class DBClusterSnapshotAvailable(Boto3Waiter):
         """
 
 
-class DBClusterSnapshotDeleted(Boto3Waiter):
+class DBClusterSnapshotDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `db_cluster_snapshot_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -413,7 +432,11 @@ class DBClusterSnapshotDeleted(Boto3Waiter):
         """
 
 
-class DBInstanceAvailable(Boto3Waiter):
+class DBInstanceAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `db_instance_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -552,7 +575,11 @@ class DBInstanceAvailable(Boto3Waiter):
         """
 
 
-class DBInstanceDeleted(Boto3Waiter):
+class DBInstanceDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `db_instance_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -691,7 +718,11 @@ class DBInstanceDeleted(Boto3Waiter):
         """
 
 
-class DBSnapshotAvailable(Boto3Waiter):
+class DBSnapshotAvailableWaiter(Boto3Waiter):
+    """
+    Waiter for `db_snapshot_available` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -901,7 +932,11 @@ class DBSnapshotAvailable(Boto3Waiter):
         """
 
 
-class DBSnapshotCompleted(Boto3Waiter):
+class DBSnapshotCompletedWaiter(Boto3Waiter):
+    """
+    Waiter for `db_snapshot_completed` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -1111,7 +1146,11 @@ class DBSnapshotCompleted(Boto3Waiter):
         """
 
 
-class DBSnapshotDeleted(Boto3Waiter):
+class DBSnapshotDeletedWaiter(Boto3Waiter):
+    """
+    Waiter for `db_snapshot_deleted` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

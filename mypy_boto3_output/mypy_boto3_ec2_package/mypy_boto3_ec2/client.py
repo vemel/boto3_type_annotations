@@ -3,9 +3,13 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Dict, List
+from typing_extensions import Literal, overload
 from botocore.client import BaseClient
-from botocore.paginate import Paginator
-from botocore.waiter import Waiter
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_ec2.paginator as paginator_scope
 from mypy_boto3_ec2.type_defs import (
     ClientAcceptReservedInstancesExchangeQuoteResponseTypeDef,
     ClientAcceptReservedInstancesExchangeQuoteTargetConfigurationsTypeDef,
@@ -509,6 +513,12 @@ from mypy_boto3_ec2.type_defs import (
     ClientUpdateSecurityGroupRuleDescriptionsIngressResponseTypeDef,
     ClientWithdrawByoipCidrResponseTypeDef,
 )
+
+# pylint: disable=import-self
+import mypy_boto3_ec2.waiter as waiter_scope
+
+
+__all__ = ("Client",)
 
 
 class Client(BaseClient):
@@ -50412,27 +50422,6 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_paginator(self, operation_name: str) -> Paginator:
-        """
-        Create a paginator for an operation.
-
-        :type operation_name: string
-        :param operation_name: The operation name.  This is the same name
-            as the method name on the client.  For example, if the
-            method name is ``create_foo``, and you'd normally invoke the
-            operation as ``client.create_foo(**kwargs)``, if the
-            ``create_foo`` operation can be paginated, you can use the
-            call ``client.get_paginator("create_foo")``.
-
-        :raise OperationNotPageableError: Raised if the operation is not
-            pageable.  You can use the ``client.can_paginate`` method to
-            check if an operation is pageable.
-
-        :rtype: L{botocore.paginate.Paginator}
-        :return: A paginator object.
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_password_data(
         self, InstanceId: str, DryRun: bool = None
     ) -> ClientGetPasswordDataResponseTypeDef:
@@ -51210,19 +51199,6 @@ class Client(BaseClient):
               The token to use to retrieve the next page of results. This value is ``null`` when there are
               no more results to return.
 
-        """
-
-    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def get_waiter(self, waiter_name: str) -> Waiter:
-        """
-        Returns an object that can wait for some condition.
-
-        :type waiter_name: str
-        :param waiter_name: The name of the waiter to get. See the waiters
-            section of the service docs for a list of available waiters.
-
-        :returns: The specified waiter object.
-        :rtype: botocore.waiter.Waiter
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67935,4 +67911,938 @@ class Client(BaseClient):
 
                 The state of the address pool.
 
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_byoip_cidrs"]
+    ) -> paginator_scope.DescribeByoipCidrsPaginator:
+        """
+        Get Paginator for `describe_byoip_cidrs` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_capacity_reservations"]
+    ) -> paginator_scope.DescribeCapacityReservationsPaginator:
+        """
+        Get Paginator for `describe_capacity_reservations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_classic_link_instances"]
+    ) -> paginator_scope.DescribeClassicLinkInstancesPaginator:
+        """
+        Get Paginator for `describe_classic_link_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_client_vpn_authorization_rules"]
+    ) -> paginator_scope.DescribeClientVpnAuthorizationRulesPaginator:
+        """
+        Get Paginator for `describe_client_vpn_authorization_rules` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_client_vpn_connections"]
+    ) -> paginator_scope.DescribeClientVpnConnectionsPaginator:
+        """
+        Get Paginator for `describe_client_vpn_connections` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_client_vpn_endpoints"]
+    ) -> paginator_scope.DescribeClientVpnEndpointsPaginator:
+        """
+        Get Paginator for `describe_client_vpn_endpoints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_client_vpn_routes"]
+    ) -> paginator_scope.DescribeClientVpnRoutesPaginator:
+        """
+        Get Paginator for `describe_client_vpn_routes` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_client_vpn_target_networks"]
+    ) -> paginator_scope.DescribeClientVpnTargetNetworksPaginator:
+        """
+        Get Paginator for `describe_client_vpn_target_networks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_dhcp_options"]
+    ) -> paginator_scope.DescribeDhcpOptionsPaginator:
+        """
+        Get Paginator for `describe_dhcp_options` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_egress_only_internet_gateways"]
+    ) -> paginator_scope.DescribeEgressOnlyInternetGatewaysPaginator:
+        """
+        Get Paginator for `describe_egress_only_internet_gateways` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_fleets"]
+    ) -> paginator_scope.DescribeFleetsPaginator:
+        """
+        Get Paginator for `describe_fleets` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_flow_logs"]
+    ) -> paginator_scope.DescribeFlowLogsPaginator:
+        """
+        Get Paginator for `describe_flow_logs` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_fpga_images"]
+    ) -> paginator_scope.DescribeFpgaImagesPaginator:
+        """
+        Get Paginator for `describe_fpga_images` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_host_reservation_offerings"]
+    ) -> paginator_scope.DescribeHostReservationOfferingsPaginator:
+        """
+        Get Paginator for `describe_host_reservation_offerings` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_host_reservations"]
+    ) -> paginator_scope.DescribeHostReservationsPaginator:
+        """
+        Get Paginator for `describe_host_reservations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_hosts"]
+    ) -> paginator_scope.DescribeHostsPaginator:
+        """
+        Get Paginator for `describe_hosts` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_iam_instance_profile_associations"]
+    ) -> paginator_scope.DescribeIamInstanceProfileAssociationsPaginator:
+        """
+        Get Paginator for `describe_iam_instance_profile_associations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_import_image_tasks"]
+    ) -> paginator_scope.DescribeImportImageTasksPaginator:
+        """
+        Get Paginator for `describe_import_image_tasks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_import_snapshot_tasks"]
+    ) -> paginator_scope.DescribeImportSnapshotTasksPaginator:
+        """
+        Get Paginator for `describe_import_snapshot_tasks` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_instance_credit_specifications"]
+    ) -> paginator_scope.DescribeInstanceCreditSpecificationsPaginator:
+        """
+        Get Paginator for `describe_instance_credit_specifications` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_instance_status"]
+    ) -> paginator_scope.DescribeInstanceStatusPaginator:
+        """
+        Get Paginator for `describe_instance_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_instances"]
+    ) -> paginator_scope.DescribeInstancesPaginator:
+        """
+        Get Paginator for `describe_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_internet_gateways"]
+    ) -> paginator_scope.DescribeInternetGatewaysPaginator:
+        """
+        Get Paginator for `describe_internet_gateways` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_launch_template_versions"]
+    ) -> paginator_scope.DescribeLaunchTemplateVersionsPaginator:
+        """
+        Get Paginator for `describe_launch_template_versions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_launch_templates"]
+    ) -> paginator_scope.DescribeLaunchTemplatesPaginator:
+        """
+        Get Paginator for `describe_launch_templates` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_moving_addresses"]
+    ) -> paginator_scope.DescribeMovingAddressesPaginator:
+        """
+        Get Paginator for `describe_moving_addresses` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_nat_gateways"]
+    ) -> paginator_scope.DescribeNatGatewaysPaginator:
+        """
+        Get Paginator for `describe_nat_gateways` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_network_acls"]
+    ) -> paginator_scope.DescribeNetworkAclsPaginator:
+        """
+        Get Paginator for `describe_network_acls` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_network_interface_permissions"]
+    ) -> paginator_scope.DescribeNetworkInterfacePermissionsPaginator:
+        """
+        Get Paginator for `describe_network_interface_permissions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_network_interfaces"]
+    ) -> paginator_scope.DescribeNetworkInterfacesPaginator:
+        """
+        Get Paginator for `describe_network_interfaces` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_prefix_lists"]
+    ) -> paginator_scope.DescribePrefixListsPaginator:
+        """
+        Get Paginator for `describe_prefix_lists` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_principal_id_format"]
+    ) -> paginator_scope.DescribePrincipalIdFormatPaginator:
+        """
+        Get Paginator for `describe_principal_id_format` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_public_ipv4_pools"]
+    ) -> paginator_scope.DescribePublicIpv4PoolsPaginator:
+        """
+        Get Paginator for `describe_public_ipv4_pools` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_instances_modifications"]
+    ) -> paginator_scope.DescribeReservedInstancesModificationsPaginator:
+        """
+        Get Paginator for `describe_reserved_instances_modifications` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_reserved_instances_offerings"]
+    ) -> paginator_scope.DescribeReservedInstancesOfferingsPaginator:
+        """
+        Get Paginator for `describe_reserved_instances_offerings` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_route_tables"]
+    ) -> paginator_scope.DescribeRouteTablesPaginator:
+        """
+        Get Paginator for `describe_route_tables` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_scheduled_instance_availability"]
+    ) -> paginator_scope.DescribeScheduledInstanceAvailabilityPaginator:
+        """
+        Get Paginator for `describe_scheduled_instance_availability` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_scheduled_instances"]
+    ) -> paginator_scope.DescribeScheduledInstancesPaginator:
+        """
+        Get Paginator for `describe_scheduled_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_security_groups"]
+    ) -> paginator_scope.DescribeSecurityGroupsPaginator:
+        """
+        Get Paginator for `describe_security_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_snapshots"]
+    ) -> paginator_scope.DescribeSnapshotsPaginator:
+        """
+        Get Paginator for `describe_snapshots` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_spot_fleet_instances"]
+    ) -> paginator_scope.DescribeSpotFleetInstancesPaginator:
+        """
+        Get Paginator for `describe_spot_fleet_instances` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_spot_fleet_requests"]
+    ) -> paginator_scope.DescribeSpotFleetRequestsPaginator:
+        """
+        Get Paginator for `describe_spot_fleet_requests` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_spot_instance_requests"]
+    ) -> paginator_scope.DescribeSpotInstanceRequestsPaginator:
+        """
+        Get Paginator for `describe_spot_instance_requests` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_spot_price_history"]
+    ) -> paginator_scope.DescribeSpotPriceHistoryPaginator:
+        """
+        Get Paginator for `describe_spot_price_history` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_stale_security_groups"]
+    ) -> paginator_scope.DescribeStaleSecurityGroupsPaginator:
+        """
+        Get Paginator for `describe_stale_security_groups` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_subnets"]
+    ) -> paginator_scope.DescribeSubnetsPaginator:
+        """
+        Get Paginator for `describe_subnets` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_tags"]
+    ) -> paginator_scope.DescribeTagsPaginator:
+        """
+        Get Paginator for `describe_tags` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_traffic_mirror_filters"]
+    ) -> paginator_scope.DescribeTrafficMirrorFiltersPaginator:
+        """
+        Get Paginator for `describe_traffic_mirror_filters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_traffic_mirror_sessions"]
+    ) -> paginator_scope.DescribeTrafficMirrorSessionsPaginator:
+        """
+        Get Paginator for `describe_traffic_mirror_sessions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_traffic_mirror_targets"]
+    ) -> paginator_scope.DescribeTrafficMirrorTargetsPaginator:
+        """
+        Get Paginator for `describe_traffic_mirror_targets` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_transit_gateway_attachments"]
+    ) -> paginator_scope.DescribeTransitGatewayAttachmentsPaginator:
+        """
+        Get Paginator for `describe_transit_gateway_attachments` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_transit_gateway_route_tables"]
+    ) -> paginator_scope.DescribeTransitGatewayRouteTablesPaginator:
+        """
+        Get Paginator for `describe_transit_gateway_route_tables` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_transit_gateway_vpc_attachments"]
+    ) -> paginator_scope.DescribeTransitGatewayVpcAttachmentsPaginator:
+        """
+        Get Paginator for `describe_transit_gateway_vpc_attachments` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_transit_gateways"]
+    ) -> paginator_scope.DescribeTransitGatewaysPaginator:
+        """
+        Get Paginator for `describe_transit_gateways` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_volume_status"]
+    ) -> paginator_scope.DescribeVolumeStatusPaginator:
+        """
+        Get Paginator for `describe_volume_status` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_volumes"]
+    ) -> paginator_scope.DescribeVolumesPaginator:
+        """
+        Get Paginator for `describe_volumes` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_volumes_modifications"]
+    ) -> paginator_scope.DescribeVolumesModificationsPaginator:
+        """
+        Get Paginator for `describe_volumes_modifications` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_classic_link_dns_support"]
+    ) -> paginator_scope.DescribeVpcClassicLinkDnsSupportPaginator:
+        """
+        Get Paginator for `describe_vpc_classic_link_dns_support` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoint_connection_notifications"]
+    ) -> paginator_scope.DescribeVpcEndpointConnectionNotificationsPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoint_connection_notifications` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoint_connections"]
+    ) -> paginator_scope.DescribeVpcEndpointConnectionsPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoint_connections` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoint_service_configurations"]
+    ) -> paginator_scope.DescribeVpcEndpointServiceConfigurationsPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoint_service_configurations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoint_service_permissions"]
+    ) -> paginator_scope.DescribeVpcEndpointServicePermissionsPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoint_service_permissions` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoint_services"]
+    ) -> paginator_scope.DescribeVpcEndpointServicesPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoint_services` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_endpoints"]
+    ) -> paginator_scope.DescribeVpcEndpointsPaginator:
+        """
+        Get Paginator for `describe_vpc_endpoints` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpc_peering_connections"]
+    ) -> paginator_scope.DescribeVpcPeeringConnectionsPaginator:
+        """
+        Get Paginator for `describe_vpc_peering_connections` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["describe_vpcs"]
+    ) -> paginator_scope.DescribeVpcsPaginator:
+        """
+        Get Paginator for `describe_vpcs` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_transit_gateway_attachment_propagations"]
+    ) -> paginator_scope.GetTransitGatewayAttachmentPropagationsPaginator:
+        """
+        Get Paginator for `get_transit_gateway_attachment_propagations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_transit_gateway_route_table_associations"]
+    ) -> paginator_scope.GetTransitGatewayRouteTableAssociationsPaginator:
+        """
+        Get Paginator for `get_transit_gateway_route_table_associations` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["get_transit_gateway_route_table_propagations"]
+    ) -> paginator_scope.GetTransitGatewayRouteTablePropagationsPaginator:
+        """
+        Get Paginator for `get_transit_gateway_route_table_propagations` operation.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(self, operation_name: str) -> Boto3Paginator:
+        """
+        Create a paginator for an operation.
+
+        :type operation_name: string
+        :param operation_name: The operation name.  This is the same name
+            as the method name on the client.  For example, if the
+            method name is ``create_foo``, and you'd normally invoke the
+            operation as ``client.create_foo(**kwargs)``, if the
+            ``create_foo`` operation can be paginated, you can use the
+            call ``client.get_paginator("create_foo")``.
+
+        :raise OperationNotPageableError: Raised if the operation is not
+            pageable.  You can use the ``client.can_paginate`` method to
+            check if an operation is pageable.
+
+        :rtype: L{botocore.paginate.Paginator}
+        :return: A paginator object.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["bundle_task_complete"]
+    ) -> waiter_scope.BundleTaskCompleteWaiter:
+        """
+        Get Waiter `bundle_task_complete`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["conversion_task_cancelled"]
+    ) -> waiter_scope.ConversionTaskCancelledWaiter:
+        """
+        Get Waiter `conversion_task_cancelled`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["conversion_task_completed"]
+    ) -> waiter_scope.ConversionTaskCompletedWaiter:
+        """
+        Get Waiter `conversion_task_completed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["conversion_task_deleted"]
+    ) -> waiter_scope.ConversionTaskDeletedWaiter:
+        """
+        Get Waiter `conversion_task_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["customer_gateway_available"]
+    ) -> waiter_scope.CustomerGatewayAvailableWaiter:
+        """
+        Get Waiter `customer_gateway_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["export_task_cancelled"]
+    ) -> waiter_scope.ExportTaskCancelledWaiter:
+        """
+        Get Waiter `export_task_cancelled`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["export_task_completed"]
+    ) -> waiter_scope.ExportTaskCompletedWaiter:
+        """
+        Get Waiter `export_task_completed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["image_available"]
+    ) -> waiter_scope.ImageAvailableWaiter:
+        """
+        Get Waiter `image_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["image_exists"]
+    ) -> waiter_scope.ImageExistsWaiter:
+        """
+        Get Waiter `image_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_exists"]
+    ) -> waiter_scope.InstanceExistsWaiter:
+        """
+        Get Waiter `instance_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_running"]
+    ) -> waiter_scope.InstanceRunningWaiter:
+        """
+        Get Waiter `instance_running`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_status_ok"]
+    ) -> waiter_scope.InstanceStatusOkWaiter:
+        """
+        Get Waiter `instance_status_ok`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_stopped"]
+    ) -> waiter_scope.InstanceStoppedWaiter:
+        """
+        Get Waiter `instance_stopped`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["instance_terminated"]
+    ) -> waiter_scope.InstanceTerminatedWaiter:
+        """
+        Get Waiter `instance_terminated`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["key_pair_exists"]
+    ) -> waiter_scope.KeyPairExistsWaiter:
+        """
+        Get Waiter `key_pair_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["nat_gateway_available"]
+    ) -> waiter_scope.NatGatewayAvailableWaiter:
+        """
+        Get Waiter `nat_gateway_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["network_interface_available"]
+    ) -> waiter_scope.NetworkInterfaceAvailableWaiter:
+        """
+        Get Waiter `network_interface_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["password_data_available"]
+    ) -> waiter_scope.PasswordDataAvailableWaiter:
+        """
+        Get Waiter `password_data_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["snapshot_completed"]
+    ) -> waiter_scope.SnapshotCompletedWaiter:
+        """
+        Get Waiter `snapshot_completed`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["spot_instance_request_fulfilled"]
+    ) -> waiter_scope.SpotInstanceRequestFulfilledWaiter:
+        """
+        Get Waiter `spot_instance_request_fulfilled`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["subnet_available"]
+    ) -> waiter_scope.SubnetAvailableWaiter:
+        """
+        Get Waiter `subnet_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["system_status_ok"]
+    ) -> waiter_scope.SystemStatusOkWaiter:
+        """
+        Get Waiter `system_status_ok`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["volume_available"]
+    ) -> waiter_scope.VolumeAvailableWaiter:
+        """
+        Get Waiter `volume_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["volume_deleted"]
+    ) -> waiter_scope.VolumeDeletedWaiter:
+        """
+        Get Waiter `volume_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["volume_in_use"]
+    ) -> waiter_scope.VolumeInUseWaiter:
+        """
+        Get Waiter `volume_in_use`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpc_available"]
+    ) -> waiter_scope.VpcAvailableWaiter:
+        """
+        Get Waiter `vpc_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpc_exists"]
+    ) -> waiter_scope.VpcExistsWaiter:
+        """
+        Get Waiter `vpc_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpc_peering_connection_deleted"]
+    ) -> waiter_scope.VpcPeeringConnectionDeletedWaiter:
+        """
+        Get Waiter `vpc_peering_connection_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpc_peering_connection_exists"]
+    ) -> waiter_scope.VpcPeeringConnectionExistsWaiter:
+        """
+        Get Waiter `vpc_peering_connection_exists`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpn_connection_available"]
+    ) -> waiter_scope.VpnConnectionAvailableWaiter:
+        """
+        Get Waiter `vpn_connection_available`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["vpn_connection_deleted"]
+    ) -> waiter_scope.VpnConnectionDeletedWaiter:
+        """
+        Get Waiter `vpn_connection_deleted`.
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(self, waiter_name: str) -> Boto3Waiter:
+        """
+        Returns an object that can wait for some condition.
+
+        :type waiter_name: str
+        :param waiter_name: The name of the waiter to get. See the waiters
+            section of the service docs for a list of available waiters.
+
+        :returns: The specified waiter object.
+        :rtype: botocore.waiter.Waiter
         """

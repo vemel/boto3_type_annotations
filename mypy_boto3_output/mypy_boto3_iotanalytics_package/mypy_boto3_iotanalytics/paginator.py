@@ -17,7 +17,20 @@ from mypy_boto3_iotanalytics.type_defs import (
 )
 
 
-class ListChannels(Boto3Paginator):
+__all__ = (
+    "ListChannelsPaginator",
+    "ListDatasetContentsPaginator",
+    "ListDatasetsPaginator",
+    "ListDatastoresPaginator",
+    "ListPipelinesPaginator",
+)
+
+
+class ListChannelsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_channels`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListChannelsPaginatePaginationConfigTypeDef = None
@@ -147,7 +160,11 @@ class ListChannels(Boto3Paginator):
         """
 
 
-class ListDatasetContents(Boto3Paginator):
+class ListDatasetContentsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dataset_contents`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -283,7 +300,11 @@ class ListDatasetContents(Boto3Paginator):
         """
 
 
-class ListDatasets(Boto3Paginator):
+class ListDatasetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_datasets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatasetsPaginatePaginationConfigTypeDef = None
@@ -440,7 +461,11 @@ class ListDatasets(Boto3Paginator):
         """
 
 
-class ListDatastores(Boto3Paginator):
+class ListDatastoresPaginator(Boto3Paginator):
+    """
+    Paginator for `list_datastores`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListDatastoresPaginatePaginationConfigTypeDef = None
@@ -570,7 +595,11 @@ class ListDatastores(Boto3Paginator):
         """
 
 
-class ListPipelines(Boto3Paginator):
+class ListPipelinesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_pipelines`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListPipelinesPaginatePaginationConfigTypeDef = None

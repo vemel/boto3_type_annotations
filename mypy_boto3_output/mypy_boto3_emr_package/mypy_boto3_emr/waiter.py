@@ -9,7 +9,14 @@ from mypy_boto3_emr.type_defs import (
 )
 
 
-class ClusterRunning(Boto3Waiter):
+__all__ = ("ClusterRunningWaiter", "ClusterTerminatedWaiter", "StepCompleteWaiter")
+
+
+class ClusterRunningWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_running` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self, ClusterId: str, WaiterConfig: ClusterRunningWaitWaiterConfigTypeDef = None
@@ -53,7 +60,11 @@ class ClusterRunning(Boto3Waiter):
         """
 
 
-class ClusterTerminated(Boto3Waiter):
+class ClusterTerminatedWaiter(Boto3Waiter):
+    """
+    Waiter for `cluster_terminated` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,
@@ -99,7 +110,11 @@ class ClusterTerminated(Boto3Waiter):
         """
 
 
-class StepComplete(Boto3Waiter):
+class StepCompleteWaiter(Boto3Waiter):
+    """
+    Waiter for `step_complete` name.
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def wait(
         self,

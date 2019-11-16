@@ -18,7 +18,20 @@ from mypy_boto3_sms.type_defs import (
 )
 
 
-class GetConnectors(Boto3Paginator):
+__all__ = (
+    "GetConnectorsPaginator",
+    "GetReplicationJobsPaginator",
+    "GetReplicationRunsPaginator",
+    "GetServersPaginator",
+    "ListAppsPaginator",
+)
+
+
+class GetConnectorsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_connectors`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: GetConnectorsPaginatePaginationConfigTypeDef = None
@@ -146,7 +159,11 @@ class GetConnectors(Boto3Paginator):
         """
 
 
-class GetReplicationJobs(Boto3Paginator):
+class GetReplicationJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_replication_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -456,7 +473,11 @@ class GetReplicationJobs(Boto3Paginator):
         """
 
 
-class GetReplicationRuns(Boto3Paginator):
+class GetReplicationRunsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_replication_runs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -849,7 +870,11 @@ class GetReplicationRuns(Boto3Paginator):
         """
 
 
-class GetServers(Boto3Paginator):
+class GetServersPaginator(Boto3Paginator):
+    """
+    Paginator for `get_servers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1020,7 +1045,11 @@ class GetServers(Boto3Paginator):
         """
 
 
-class ListApps(Boto3Paginator):
+class ListAppsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_apps`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

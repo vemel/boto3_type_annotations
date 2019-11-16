@@ -6,6 +6,40 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCancelRotateSecretResponseTypeDef",
+    "ClientCreateSecretResponseTypeDef",
+    "ClientCreateSecretTagsTypeDef",
+    "ClientDeleteResourcePolicyResponseTypeDef",
+    "ClientDeleteSecretResponseTypeDef",
+    "ClientDescribeSecretResponseRotationRulesTypeDef",
+    "ClientDescribeSecretResponseTagsTypeDef",
+    "ClientDescribeSecretResponseTypeDef",
+    "ClientGetRandomPasswordResponseTypeDef",
+    "ClientGetResourcePolicyResponseTypeDef",
+    "ClientGetSecretValueResponseTypeDef",
+    "ClientListSecretVersionIdsResponseVersionsTypeDef",
+    "ClientListSecretVersionIdsResponseTypeDef",
+    "ClientListSecretsResponseSecretListRotationRulesTypeDef",
+    "ClientListSecretsResponseSecretListTagsTypeDef",
+    "ClientListSecretsResponseSecretListTypeDef",
+    "ClientListSecretsResponseTypeDef",
+    "ClientPutResourcePolicyResponseTypeDef",
+    "ClientPutSecretValueResponseTypeDef",
+    "ClientRestoreSecretResponseTypeDef",
+    "ClientRotateSecretResponseTypeDef",
+    "ClientRotateSecretRotationRulesTypeDef",
+    "ClientTagResourceTagsTypeDef",
+    "ClientUpdateSecretResponseTypeDef",
+    "ClientUpdateSecretVersionStageResponseTypeDef",
+    "ListSecretsPaginatePaginationConfigTypeDef",
+    "ListSecretsPaginateResponseSecretListRotationRulesTypeDef",
+    "ListSecretsPaginateResponseSecretListTagsTypeDef",
+    "ListSecretsPaginateResponseSecretListTypeDef",
+    "ListSecretsPaginateResponseTypeDef",
+)
+
+
 _ClientCancelRotateSecretResponseTypeDef = TypedDict(
     "_ClientCancelRotateSecretResponseTypeDef",
     {"ARN": str, "Name": str, "VersionId": str},

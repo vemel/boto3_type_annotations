@@ -33,7 +33,28 @@ from mypy_boto3_cloudformation.type_defs import (
 )
 
 
-class DescribeAccountLimits(Boto3Paginator):
+__all__ = (
+    "DescribeAccountLimitsPaginator",
+    "DescribeChangeSetPaginator",
+    "DescribeStackEventsPaginator",
+    "DescribeStacksPaginator",
+    "ListChangeSetsPaginator",
+    "ListExportsPaginator",
+    "ListImportsPaginator",
+    "ListStackInstancesPaginator",
+    "ListStackResourcesPaginator",
+    "ListStackSetOperationResultsPaginator",
+    "ListStackSetOperationsPaginator",
+    "ListStackSetsPaginator",
+    "ListStacksPaginator",
+)
+
+
+class DescribeAccountLimitsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_account_limits`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -128,7 +149,11 @@ class DescribeAccountLimits(Boto3Paginator):
         """
 
 
-class DescribeChangeSet(Boto3Paginator):
+class DescribeChangeSetPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_change_set`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -592,7 +617,11 @@ class DescribeChangeSet(Boto3Paginator):
         """
 
 
-class DescribeStackEvents(Boto3Paginator):
+class DescribeStackEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_stack_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -749,7 +778,11 @@ class DescribeStackEvents(Boto3Paginator):
         """
 
 
-class DescribeStacks(Boto3Paginator):
+class DescribeStacksPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_stacks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1164,7 +1197,11 @@ class DescribeStacks(Boto3Paginator):
         """
 
 
-class ListChangeSets(Boto3Paginator):
+class ListChangeSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_change_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1295,7 +1332,11 @@ class ListChangeSets(Boto3Paginator):
         """
 
 
-class ListExports(Boto3Paginator):
+class ListExportsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_exports`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListExportsPaginatePaginationConfigTypeDef = None
@@ -1379,7 +1420,11 @@ class ListExports(Boto3Paginator):
         """
 
 
-class ListImports(Boto3Paginator):
+class ListImportsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_imports`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1451,7 +1496,11 @@ class ListImports(Boto3Paginator):
         """
 
 
-class ListStackInstances(Boto3Paginator):
+class ListStackInstancesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stack_instances`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1592,7 +1641,11 @@ class ListStackInstances(Boto3Paginator):
         """
 
 
-class ListStackResources(Boto3Paginator):
+class ListStackResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stack_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1753,7 +1806,11 @@ class ListStackResources(Boto3Paginator):
         """
 
 
-class ListStackSetOperationResults(Boto3Paginator):
+class ListStackSetOperationResultsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stack_set_operation_results`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1917,7 +1974,11 @@ class ListStackSetOperationResults(Boto3Paginator):
         """
 
 
-class ListStackSetOperations(Boto3Paginator):
+class ListStackSetOperationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stack_set_operations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2047,7 +2108,11 @@ class ListStackSetOperations(Boto3Paginator):
         """
 
 
-class ListStackSets(Boto3Paginator):
+class ListStackSetsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stack_sets`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2146,7 +2211,11 @@ class ListStackSets(Boto3Paginator):
         """
 
 
-class ListStacks(Boto3Paginator):
+class ListStacksPaginator(Boto3Paginator):
+    """
+    Paginator for `list_stacks`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

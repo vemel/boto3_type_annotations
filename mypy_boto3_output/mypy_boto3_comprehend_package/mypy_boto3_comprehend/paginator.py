@@ -30,7 +30,23 @@ from mypy_boto3_comprehend.type_defs import (
 )
 
 
-class ListDocumentClassificationJobs(Boto3Paginator):
+__all__ = (
+    "ListDocumentClassificationJobsPaginator",
+    "ListDocumentClassifiersPaginator",
+    "ListDominantLanguageDetectionJobsPaginator",
+    "ListEntitiesDetectionJobsPaginator",
+    "ListEntityRecognizersPaginator",
+    "ListKeyPhrasesDetectionJobsPaginator",
+    "ListSentimentDetectionJobsPaginator",
+    "ListTopicsDetectionJobsPaginator",
+)
+
+
+class ListDocumentClassificationJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_document_classification_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -292,7 +308,11 @@ class ListDocumentClassificationJobs(Boto3Paginator):
         """
 
 
-class ListDocumentClassifiers(Boto3Paginator):
+class ListDocumentClassifiersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_document_classifiers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -604,7 +624,11 @@ class ListDocumentClassifiers(Boto3Paginator):
         """
 
 
-class ListDominantLanguageDetectionJobs(Boto3Paginator):
+class ListDominantLanguageDetectionJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dominant_language_detection_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -861,7 +885,11 @@ class ListDominantLanguageDetectionJobs(Boto3Paginator):
         """
 
 
-class ListEntitiesDetectionJobs(Boto3Paginator):
+class ListEntitiesDetectionJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_entities_detection_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1127,7 +1155,11 @@ class ListEntitiesDetectionJobs(Boto3Paginator):
         """
 
 
-class ListEntityRecognizers(Boto3Paginator):
+class ListEntityRecognizersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_entity_recognizers`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1481,7 +1513,11 @@ class ListEntityRecognizers(Boto3Paginator):
         """
 
 
-class ListKeyPhrasesDetectionJobs(Boto3Paginator):
+class ListKeyPhrasesDetectionJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_key_phrases_detection_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1743,7 +1779,11 @@ class ListKeyPhrasesDetectionJobs(Boto3Paginator):
         """
 
 
-class ListSentimentDetectionJobs(Boto3Paginator):
+class ListSentimentDetectionJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_sentiment_detection_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2005,7 +2045,11 @@ class ListSentimentDetectionJobs(Boto3Paginator):
         """
 
 
-class ListTopicsDetectionJobs(Boto3Paginator):
+class ListTopicsDetectionJobsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_topics_detection_jobs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

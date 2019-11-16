@@ -10,7 +10,14 @@ from mypy_boto3_kinesisanalyticsv2.type_defs import (
 )
 
 
-class ListApplicationSnapshots(Boto3Paginator):
+__all__ = ("ListApplicationSnapshotsPaginator", "ListApplicationsPaginator")
+
+
+class ListApplicationSnapshotsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_application_snapshots`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -109,7 +116,11 @@ class ListApplicationSnapshots(Boto3Paginator):
         """
 
 
-class ListApplications(Boto3Paginator):
+class ListApplicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_applications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListApplicationsPaginatePaginationConfigTypeDef = None

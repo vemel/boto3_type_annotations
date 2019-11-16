@@ -6,6 +6,33 @@ from typing import Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateApplicationResponseApplicationInfoTypeDef",
+    "ClientCreateApplicationResponseTypeDef",
+    "ClientDescribeApplicationResponseApplicationInfoTypeDef",
+    "ClientDescribeApplicationResponseTypeDef",
+    "ClientDescribeComponentConfigurationRecommendationResponseTypeDef",
+    "ClientDescribeComponentConfigurationResponseTypeDef",
+    "ClientDescribeComponentResponseApplicationComponentTypeDef",
+    "ClientDescribeComponentResponseTypeDef",
+    "ClientDescribeObservationResponseObservationTypeDef",
+    "ClientDescribeObservationResponseTypeDef",
+    "ClientDescribeProblemObservationsResponseRelatedObservationsObservationListTypeDef",
+    "ClientDescribeProblemObservationsResponseRelatedObservationsTypeDef",
+    "ClientDescribeProblemObservationsResponseTypeDef",
+    "ClientDescribeProblemResponseProblemTypeDef",
+    "ClientDescribeProblemResponseTypeDef",
+    "ClientListApplicationsResponseApplicationInfoListTypeDef",
+    "ClientListApplicationsResponseTypeDef",
+    "ClientListComponentsResponseApplicationComponentListTypeDef",
+    "ClientListComponentsResponseTypeDef",
+    "ClientListProblemsResponseProblemListTypeDef",
+    "ClientListProblemsResponseTypeDef",
+    "ClientUpdateApplicationResponseApplicationInfoTypeDef",
+    "ClientUpdateApplicationResponseTypeDef",
+)
+
+
 _ClientCreateApplicationResponseApplicationInfoTypeDef = TypedDict(
     "_ClientCreateApplicationResponseApplicationInfoTypeDef",
     {

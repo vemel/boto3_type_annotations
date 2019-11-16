@@ -22,7 +22,22 @@ from mypy_boto3_dax.type_defs import (
 )
 
 
-class DescribeClusters(Boto3Paginator):
+__all__ = (
+    "DescribeClustersPaginator",
+    "DescribeDefaultParametersPaginator",
+    "DescribeEventsPaginator",
+    "DescribeParameterGroupsPaginator",
+    "DescribeParametersPaginator",
+    "DescribeSubnetGroupsPaginator",
+    "ListTagsPaginator",
+)
+
+
+class DescribeClustersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_clusters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -326,7 +341,11 @@ class DescribeClusters(Boto3Paginator):
         """
 
 
-class DescribeDefaultParameters(Boto3Paginator):
+class DescribeDefaultParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_default_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -467,7 +486,11 @@ class DescribeDefaultParameters(Boto3Paginator):
         """
 
 
-class DescribeEvents(Boto3Paginator):
+class DescribeEventsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_events`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -595,7 +618,11 @@ class DescribeEvents(Boto3Paginator):
         """
 
 
-class DescribeParameterGroups(Boto3Paginator):
+class DescribeParameterGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_parameter_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -687,7 +714,11 @@ class DescribeParameterGroups(Boto3Paginator):
         """
 
 
-class DescribeParameters(Boto3Paginator):
+class DescribeParametersPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_parameters`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -843,7 +874,11 @@ class DescribeParameters(Boto3Paginator):
         """
 
 
-class DescribeSubnetGroups(Boto3Paginator):
+class DescribeSubnetGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_subnet_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -967,7 +1002,11 @@ class DescribeSubnetGroups(Boto3Paginator):
         """
 
 
-class ListTags(Boto3Paginator):
+class ListTagsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_tags`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

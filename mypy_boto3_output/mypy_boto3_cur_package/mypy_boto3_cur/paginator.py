@@ -8,7 +8,14 @@ from mypy_boto3_cur.type_defs import (
 )
 
 
-class DescribeReportDefinitions(Boto3Paginator):
+__all__ = ("DescribeReportDefinitionsPaginator",)
+
+
+class DescribeReportDefinitionsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_report_definitions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

@@ -18,7 +18,21 @@ from mypy_boto3_sns.type_defs import (
 )
 
 
-class ListEndpointsByPlatformApplication(Boto3Paginator):
+__all__ = (
+    "ListEndpointsByPlatformApplicationPaginator",
+    "ListPhoneNumbersOptedOutPaginator",
+    "ListPlatformApplicationsPaginator",
+    "ListSubscriptionsPaginator",
+    "ListSubscriptionsByTopicPaginator",
+    "ListTopicsPaginator",
+)
+
+
+class ListEndpointsByPlatformApplicationPaginator(Boto3Paginator):
+    """
+    Paginator for `list_endpoints_by_platform_application`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -110,7 +124,11 @@ class ListEndpointsByPlatformApplication(Boto3Paginator):
         """
 
 
-class ListPhoneNumbersOptedOut(Boto3Paginator):
+class ListPhoneNumbersOptedOutPaginator(Boto3Paginator):
+    """
+    Paginator for `list_phone_numbers_opted_out`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -181,7 +199,11 @@ class ListPhoneNumbersOptedOut(Boto3Paginator):
         """
 
 
-class ListPlatformApplications(Boto3Paginator):
+class ListPlatformApplicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_platform_applications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -266,7 +288,11 @@ class ListPlatformApplications(Boto3Paginator):
         """
 
 
-class ListSubscriptions(Boto3Paginator):
+class ListSubscriptionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_subscriptions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSubscriptionsPaginatePaginationConfigTypeDef = None
@@ -359,7 +385,11 @@ class ListSubscriptions(Boto3Paginator):
         """
 
 
-class ListSubscriptionsByTopic(Boto3Paginator):
+class ListSubscriptionsByTopicPaginator(Boto3Paginator):
+    """
+    Paginator for `list_subscriptions_by_topic`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -460,7 +490,11 @@ class ListSubscriptionsByTopic(Boto3Paginator):
         """
 
 
-class ListTopics(Boto3Paginator):
+class ListTopicsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_topics`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListTopicsPaginatePaginationConfigTypeDef = None

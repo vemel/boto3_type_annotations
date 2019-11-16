@@ -12,7 +12,18 @@ from mypy_boto3_directconnect.type_defs import (
 )
 
 
-class DescribeDirectConnectGatewayAssociations(Boto3Paginator):
+__all__ = (
+    "DescribeDirectConnectGatewayAssociationsPaginator",
+    "DescribeDirectConnectGatewayAttachmentsPaginator",
+    "DescribeDirectConnectGatewaysPaginator",
+)
+
+
+class DescribeDirectConnectGatewayAssociationsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_direct_connect_gateway_associations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -218,7 +229,11 @@ class DescribeDirectConnectGatewayAssociations(Boto3Paginator):
         """
 
 
-class DescribeDirectConnectGatewayAttachments(Boto3Paginator):
+class DescribeDirectConnectGatewayAttachmentsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_direct_connect_gateway_attachments`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -355,7 +370,11 @@ class DescribeDirectConnectGatewayAttachments(Boto3Paginator):
         """
 
 
-class DescribeDirectConnectGateways(Boto3Paginator):
+class DescribeDirectConnectGatewaysPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_direct_connect_gateways`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

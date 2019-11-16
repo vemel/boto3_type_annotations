@@ -6,6 +6,785 @@ from typing import List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientAddSourceIdentifierToSubscriptionResponseEventSubscriptionTypeDef",
+    "ClientAddSourceIdentifierToSubscriptionResponseTypeDef",
+    "ClientAddTagsToResourceTagsTypeDef",
+    "ClientApplyPendingMaintenanceActionResponseResourcePendingMaintenanceActionsPendingMaintenanceActionDetailsTypeDef",
+    "ClientApplyPendingMaintenanceActionResponseResourcePendingMaintenanceActionsTypeDef",
+    "ClientApplyPendingMaintenanceActionResponseTypeDef",
+    "ClientAuthorizeDbSecurityGroupIngressResponseDBSecurityGroupEC2SecurityGroupsTypeDef",
+    "ClientAuthorizeDbSecurityGroupIngressResponseDBSecurityGroupIPRangesTypeDef",
+    "ClientAuthorizeDbSecurityGroupIngressResponseDBSecurityGroupTypeDef",
+    "ClientAuthorizeDbSecurityGroupIngressResponseTypeDef",
+    "ClientBacktrackDbClusterResponseTypeDef",
+    "ClientCopyDbClusterParameterGroupResponseDBClusterParameterGroupTypeDef",
+    "ClientCopyDbClusterParameterGroupResponseTypeDef",
+    "ClientCopyDbClusterParameterGroupTagsTypeDef",
+    "ClientCopyDbClusterSnapshotResponseDBClusterSnapshotTypeDef",
+    "ClientCopyDbClusterSnapshotResponseTypeDef",
+    "ClientCopyDbClusterSnapshotTagsTypeDef",
+    "ClientCopyDbParameterGroupResponseDBParameterGroupTypeDef",
+    "ClientCopyDbParameterGroupResponseTypeDef",
+    "ClientCopyDbParameterGroupTagsTypeDef",
+    "ClientCopyDbSnapshotResponseDBSnapshotProcessorFeaturesTypeDef",
+    "ClientCopyDbSnapshotResponseDBSnapshotTypeDef",
+    "ClientCopyDbSnapshotResponseTypeDef",
+    "ClientCopyDbSnapshotTagsTypeDef",
+    "ClientCopyOptionGroupResponseOptionGroupOptionsDBSecurityGroupMembershipsTypeDef",
+    "ClientCopyOptionGroupResponseOptionGroupOptionsOptionSettingsTypeDef",
+    "ClientCopyOptionGroupResponseOptionGroupOptionsVpcSecurityGroupMembershipsTypeDef",
+    "ClientCopyOptionGroupResponseOptionGroupOptionsTypeDef",
+    "ClientCopyOptionGroupResponseOptionGroupTypeDef",
+    "ClientCopyOptionGroupResponseTypeDef",
+    "ClientCopyOptionGroupTagsTypeDef",
+    "ClientCreateCustomAvailabilityZoneResponseCustomAvailabilityZoneVpnDetailsTypeDef",
+    "ClientCreateCustomAvailabilityZoneResponseCustomAvailabilityZoneTypeDef",
+    "ClientCreateCustomAvailabilityZoneResponseTypeDef",
+    "ClientCreateDbClusterEndpointResponseTypeDef",
+    "ClientCreateDbClusterParameterGroupResponseDBClusterParameterGroupTypeDef",
+    "ClientCreateDbClusterParameterGroupResponseTypeDef",
+    "ClientCreateDbClusterParameterGroupTagsTypeDef",
+    "ClientCreateDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientCreateDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientCreateDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientCreateDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientCreateDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientCreateDbClusterResponseDBClusterTypeDef",
+    "ClientCreateDbClusterResponseTypeDef",
+    "ClientCreateDbClusterScalingConfigurationTypeDef",
+    "ClientCreateDbClusterSnapshotResponseDBClusterSnapshotTypeDef",
+    "ClientCreateDbClusterSnapshotResponseTypeDef",
+    "ClientCreateDbClusterSnapshotTagsTypeDef",
+    "ClientCreateDbClusterTagsTypeDef",
+    "ClientCreateDbInstanceProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceReadReplicaProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceEndpointTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceListenerEndpointTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceStatusInfosTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseDBInstanceTypeDef",
+    "ClientCreateDbInstanceReadReplicaResponseTypeDef",
+    "ClientCreateDbInstanceReadReplicaTagsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientCreateDbInstanceResponseDBInstanceTypeDef",
+    "ClientCreateDbInstanceResponseTypeDef",
+    "ClientCreateDbInstanceTagsTypeDef",
+    "ClientCreateDbParameterGroupResponseDBParameterGroupTypeDef",
+    "ClientCreateDbParameterGroupResponseTypeDef",
+    "ClientCreateDbParameterGroupTagsTypeDef",
+    "ClientCreateDbSecurityGroupResponseDBSecurityGroupEC2SecurityGroupsTypeDef",
+    "ClientCreateDbSecurityGroupResponseDBSecurityGroupIPRangesTypeDef",
+    "ClientCreateDbSecurityGroupResponseDBSecurityGroupTypeDef",
+    "ClientCreateDbSecurityGroupResponseTypeDef",
+    "ClientCreateDbSecurityGroupTagsTypeDef",
+    "ClientCreateDbSnapshotResponseDBSnapshotProcessorFeaturesTypeDef",
+    "ClientCreateDbSnapshotResponseDBSnapshotTypeDef",
+    "ClientCreateDbSnapshotResponseTypeDef",
+    "ClientCreateDbSnapshotTagsTypeDef",
+    "ClientCreateDbSubnetGroupResponseDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientCreateDbSubnetGroupResponseDBSubnetGroupSubnetsTypeDef",
+    "ClientCreateDbSubnetGroupResponseDBSubnetGroupTypeDef",
+    "ClientCreateDbSubnetGroupResponseTypeDef",
+    "ClientCreateDbSubnetGroupTagsTypeDef",
+    "ClientCreateEventSubscriptionResponseEventSubscriptionTypeDef",
+    "ClientCreateEventSubscriptionResponseTypeDef",
+    "ClientCreateEventSubscriptionTagsTypeDef",
+    "ClientCreateGlobalClusterResponseGlobalClusterGlobalClusterMembersTypeDef",
+    "ClientCreateGlobalClusterResponseGlobalClusterTypeDef",
+    "ClientCreateGlobalClusterResponseTypeDef",
+    "ClientCreateOptionGroupResponseOptionGroupOptionsDBSecurityGroupMembershipsTypeDef",
+    "ClientCreateOptionGroupResponseOptionGroupOptionsOptionSettingsTypeDef",
+    "ClientCreateOptionGroupResponseOptionGroupOptionsVpcSecurityGroupMembershipsTypeDef",
+    "ClientCreateOptionGroupResponseOptionGroupOptionsTypeDef",
+    "ClientCreateOptionGroupResponseOptionGroupTypeDef",
+    "ClientCreateOptionGroupResponseTypeDef",
+    "ClientCreateOptionGroupTagsTypeDef",
+    "ClientDeleteCustomAvailabilityZoneResponseCustomAvailabilityZoneVpnDetailsTypeDef",
+    "ClientDeleteCustomAvailabilityZoneResponseCustomAvailabilityZoneTypeDef",
+    "ClientDeleteCustomAvailabilityZoneResponseTypeDef",
+    "ClientDeleteDbClusterEndpointResponseTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientDeleteDbClusterResponseDBClusterTypeDef",
+    "ClientDeleteDbClusterResponseTypeDef",
+    "ClientDeleteDbClusterSnapshotResponseDBClusterSnapshotTypeDef",
+    "ClientDeleteDbClusterSnapshotResponseTypeDef",
+    "ClientDeleteDbInstanceAutomatedBackupResponseDBInstanceAutomatedBackupRestoreWindowTypeDef",
+    "ClientDeleteDbInstanceAutomatedBackupResponseDBInstanceAutomatedBackupTypeDef",
+    "ClientDeleteDbInstanceAutomatedBackupResponseTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientDeleteDbInstanceResponseDBInstanceTypeDef",
+    "ClientDeleteDbInstanceResponseTypeDef",
+    "ClientDeleteDbSnapshotResponseDBSnapshotProcessorFeaturesTypeDef",
+    "ClientDeleteDbSnapshotResponseDBSnapshotTypeDef",
+    "ClientDeleteDbSnapshotResponseTypeDef",
+    "ClientDeleteEventSubscriptionResponseEventSubscriptionTypeDef",
+    "ClientDeleteEventSubscriptionResponseTypeDef",
+    "ClientDeleteGlobalClusterResponseGlobalClusterGlobalClusterMembersTypeDef",
+    "ClientDeleteGlobalClusterResponseGlobalClusterTypeDef",
+    "ClientDeleteGlobalClusterResponseTypeDef",
+    "ClientDeleteInstallationMediaResponseFailureCauseTypeDef",
+    "ClientDeleteInstallationMediaResponseTypeDef",
+    "ClientDescribeAccountAttributesResponseAccountQuotasTypeDef",
+    "ClientDescribeAccountAttributesResponseTypeDef",
+    "ClientDescribeCertificatesFiltersTypeDef",
+    "ClientDescribeCertificatesResponseCertificatesTypeDef",
+    "ClientDescribeCertificatesResponseTypeDef",
+    "ClientDescribeCustomAvailabilityZonesFiltersTypeDef",
+    "ClientDescribeCustomAvailabilityZonesResponseCustomAvailabilityZonesVpnDetailsTypeDef",
+    "ClientDescribeCustomAvailabilityZonesResponseCustomAvailabilityZonesTypeDef",
+    "ClientDescribeCustomAvailabilityZonesResponseTypeDef",
+    "ClientDescribeDbClusterBacktracksFiltersTypeDef",
+    "ClientDescribeDbClusterBacktracksResponseDBClusterBacktracksTypeDef",
+    "ClientDescribeDbClusterBacktracksResponseTypeDef",
+    "ClientDescribeDbClusterEndpointsFiltersTypeDef",
+    "ClientDescribeDbClusterEndpointsResponseDBClusterEndpointsTypeDef",
+    "ClientDescribeDbClusterEndpointsResponseTypeDef",
+    "ClientDescribeDbClusterParameterGroupsFiltersTypeDef",
+    "ClientDescribeDbClusterParameterGroupsResponseDBClusterParameterGroupsTypeDef",
+    "ClientDescribeDbClusterParameterGroupsResponseTypeDef",
+    "ClientDescribeDbClusterParametersFiltersTypeDef",
+    "ClientDescribeDbClusterParametersResponseParametersTypeDef",
+    "ClientDescribeDbClusterParametersResponseTypeDef",
+    "ClientDescribeDbClusterSnapshotAttributesResponseDBClusterSnapshotAttributesResultDBClusterSnapshotAttributesTypeDef",
+    "ClientDescribeDbClusterSnapshotAttributesResponseDBClusterSnapshotAttributesResultTypeDef",
+    "ClientDescribeDbClusterSnapshotAttributesResponseTypeDef",
+    "ClientDescribeDbClusterSnapshotsFiltersTypeDef",
+    "ClientDescribeDbClusterSnapshotsResponseDBClusterSnapshotsTypeDef",
+    "ClientDescribeDbClusterSnapshotsResponseTypeDef",
+    "ClientDescribeDbClustersFiltersTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersAssociatedRolesTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersDBClusterMembersTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersDBClusterOptionGroupMembershipsTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersScalingConfigurationInfoTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersVpcSecurityGroupsTypeDef",
+    "ClientDescribeDbClustersResponseDBClustersTypeDef",
+    "ClientDescribeDbClustersResponseTypeDef",
+    "ClientDescribeDbEngineVersionsFiltersTypeDef",
+    "ClientDescribeDbEngineVersionsResponseDBEngineVersionsDefaultCharacterSetTypeDef",
+    "ClientDescribeDbEngineVersionsResponseDBEngineVersionsSupportedCharacterSetsTypeDef",
+    "ClientDescribeDbEngineVersionsResponseDBEngineVersionsSupportedTimezonesTypeDef",
+    "ClientDescribeDbEngineVersionsResponseDBEngineVersionsValidUpgradeTargetTypeDef",
+    "ClientDescribeDbEngineVersionsResponseDBEngineVersionsTypeDef",
+    "ClientDescribeDbEngineVersionsResponseTypeDef",
+    "ClientDescribeDbInstanceAutomatedBackupsFiltersTypeDef",
+    "ClientDescribeDbInstanceAutomatedBackupsResponseDBInstanceAutomatedBackupsRestoreWindowTypeDef",
+    "ClientDescribeDbInstanceAutomatedBackupsResponseDBInstanceAutomatedBackupsTypeDef",
+    "ClientDescribeDbInstanceAutomatedBackupsResponseTypeDef",
+    "ClientDescribeDbInstancesFiltersTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesAssociatedRolesTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDBParameterGroupsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDBSecurityGroupsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDBSubnetGroupSubnetsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDBSubnetGroupTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesDomainMembershipsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesEndpointTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesListenerEndpointTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesOptionGroupMembershipsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesPendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesPendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesPendingModifiedValuesTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesProcessorFeaturesTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesStatusInfosTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesVpcSecurityGroupsTypeDef",
+    "ClientDescribeDbInstancesResponseDBInstancesTypeDef",
+    "ClientDescribeDbInstancesResponseTypeDef",
+    "ClientDescribeDbLogFilesFiltersTypeDef",
+    "ClientDescribeDbLogFilesResponseDescribeDBLogFilesTypeDef",
+    "ClientDescribeDbLogFilesResponseTypeDef",
+    "ClientDescribeDbParameterGroupsFiltersTypeDef",
+    "ClientDescribeDbParameterGroupsResponseDBParameterGroupsTypeDef",
+    "ClientDescribeDbParameterGroupsResponseTypeDef",
+    "ClientDescribeDbParametersFiltersTypeDef",
+    "ClientDescribeDbParametersResponseParametersTypeDef",
+    "ClientDescribeDbParametersResponseTypeDef",
+    "ClientDescribeDbSecurityGroupsFiltersTypeDef",
+    "ClientDescribeDbSecurityGroupsResponseDBSecurityGroupsEC2SecurityGroupsTypeDef",
+    "ClientDescribeDbSecurityGroupsResponseDBSecurityGroupsIPRangesTypeDef",
+    "ClientDescribeDbSecurityGroupsResponseDBSecurityGroupsTypeDef",
+    "ClientDescribeDbSecurityGroupsResponseTypeDef",
+    "ClientDescribeDbSnapshotAttributesResponseDBSnapshotAttributesResultDBSnapshotAttributesTypeDef",
+    "ClientDescribeDbSnapshotAttributesResponseDBSnapshotAttributesResultTypeDef",
+    "ClientDescribeDbSnapshotAttributesResponseTypeDef",
+    "ClientDescribeDbSnapshotsFiltersTypeDef",
+    "ClientDescribeDbSnapshotsResponseDBSnapshotsProcessorFeaturesTypeDef",
+    "ClientDescribeDbSnapshotsResponseDBSnapshotsTypeDef",
+    "ClientDescribeDbSnapshotsResponseTypeDef",
+    "ClientDescribeDbSubnetGroupsFiltersTypeDef",
+    "ClientDescribeDbSubnetGroupsResponseDBSubnetGroupsSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientDescribeDbSubnetGroupsResponseDBSubnetGroupsSubnetsTypeDef",
+    "ClientDescribeDbSubnetGroupsResponseDBSubnetGroupsTypeDef",
+    "ClientDescribeDbSubnetGroupsResponseTypeDef",
+    "ClientDescribeEngineDefaultClusterParametersFiltersTypeDef",
+    "ClientDescribeEngineDefaultClusterParametersResponseEngineDefaultsParametersTypeDef",
+    "ClientDescribeEngineDefaultClusterParametersResponseEngineDefaultsTypeDef",
+    "ClientDescribeEngineDefaultClusterParametersResponseTypeDef",
+    "ClientDescribeEngineDefaultParametersFiltersTypeDef",
+    "ClientDescribeEngineDefaultParametersResponseEngineDefaultsParametersTypeDef",
+    "ClientDescribeEngineDefaultParametersResponseEngineDefaultsTypeDef",
+    "ClientDescribeEngineDefaultParametersResponseTypeDef",
+    "ClientDescribeEventCategoriesFiltersTypeDef",
+    "ClientDescribeEventCategoriesResponseEventCategoriesMapListTypeDef",
+    "ClientDescribeEventCategoriesResponseTypeDef",
+    "ClientDescribeEventSubscriptionsFiltersTypeDef",
+    "ClientDescribeEventSubscriptionsResponseEventSubscriptionsListTypeDef",
+    "ClientDescribeEventSubscriptionsResponseTypeDef",
+    "ClientDescribeEventsFiltersTypeDef",
+    "ClientDescribeEventsResponseEventsTypeDef",
+    "ClientDescribeEventsResponseTypeDef",
+    "ClientDescribeGlobalClustersFiltersTypeDef",
+    "ClientDescribeGlobalClustersResponseGlobalClustersGlobalClusterMembersTypeDef",
+    "ClientDescribeGlobalClustersResponseGlobalClustersTypeDef",
+    "ClientDescribeGlobalClustersResponseTypeDef",
+    "ClientDescribeInstallationMediaFiltersTypeDef",
+    "ClientDescribeInstallationMediaResponseInstallationMediaFailureCauseTypeDef",
+    "ClientDescribeInstallationMediaResponseInstallationMediaTypeDef",
+    "ClientDescribeInstallationMediaResponseTypeDef",
+    "ClientDescribeOptionGroupOptionsFiltersTypeDef",
+    "ClientDescribeOptionGroupOptionsResponseOptionGroupOptionsOptionGroupOptionSettingsMinimumEngineVersionPerAllowedValueTypeDef",
+    "ClientDescribeOptionGroupOptionsResponseOptionGroupOptionsOptionGroupOptionSettingsTypeDef",
+    "ClientDescribeOptionGroupOptionsResponseOptionGroupOptionsOptionGroupOptionVersionsTypeDef",
+    "ClientDescribeOptionGroupOptionsResponseOptionGroupOptionsTypeDef",
+    "ClientDescribeOptionGroupOptionsResponseTypeDef",
+    "ClientDescribeOptionGroupsFiltersTypeDef",
+    "ClientDescribeOptionGroupsResponseOptionGroupsListOptionsDBSecurityGroupMembershipsTypeDef",
+    "ClientDescribeOptionGroupsResponseOptionGroupsListOptionsOptionSettingsTypeDef",
+    "ClientDescribeOptionGroupsResponseOptionGroupsListOptionsVpcSecurityGroupMembershipsTypeDef",
+    "ClientDescribeOptionGroupsResponseOptionGroupsListOptionsTypeDef",
+    "ClientDescribeOptionGroupsResponseOptionGroupsListTypeDef",
+    "ClientDescribeOptionGroupsResponseTypeDef",
+    "ClientDescribeOrderableDbInstanceOptionsFiltersTypeDef",
+    "ClientDescribeOrderableDbInstanceOptionsResponseOrderableDBInstanceOptionsAvailabilityZonesTypeDef",
+    "ClientDescribeOrderableDbInstanceOptionsResponseOrderableDBInstanceOptionsAvailableProcessorFeaturesTypeDef",
+    "ClientDescribeOrderableDbInstanceOptionsResponseOrderableDBInstanceOptionsTypeDef",
+    "ClientDescribeOrderableDbInstanceOptionsResponseTypeDef",
+    "ClientDescribePendingMaintenanceActionsFiltersTypeDef",
+    "ClientDescribePendingMaintenanceActionsResponsePendingMaintenanceActionsPendingMaintenanceActionDetailsTypeDef",
+    "ClientDescribePendingMaintenanceActionsResponsePendingMaintenanceActionsTypeDef",
+    "ClientDescribePendingMaintenanceActionsResponseTypeDef",
+    "ClientDescribeReservedDbInstancesFiltersTypeDef",
+    "ClientDescribeReservedDbInstancesOfferingsFiltersTypeDef",
+    "ClientDescribeReservedDbInstancesOfferingsResponseReservedDBInstancesOfferingsRecurringChargesTypeDef",
+    "ClientDescribeReservedDbInstancesOfferingsResponseReservedDBInstancesOfferingsTypeDef",
+    "ClientDescribeReservedDbInstancesOfferingsResponseTypeDef",
+    "ClientDescribeReservedDbInstancesResponseReservedDBInstancesRecurringChargesTypeDef",
+    "ClientDescribeReservedDbInstancesResponseReservedDBInstancesTypeDef",
+    "ClientDescribeReservedDbInstancesResponseTypeDef",
+    "ClientDescribeSourceRegionsFiltersTypeDef",
+    "ClientDescribeSourceRegionsResponseSourceRegionsTypeDef",
+    "ClientDescribeSourceRegionsResponseTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageStorageIopsToStorageRatioTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageStorageProvisionedIopsTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageStorageStorageSizeTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageStorageTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageValidProcessorFeaturesTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseValidDBInstanceModificationsMessageTypeDef",
+    "ClientDescribeValidDbInstanceModificationsResponseTypeDef",
+    "ClientDownloadDbLogFilePortionResponseTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientFailoverDbClusterResponseDBClusterTypeDef",
+    "ClientFailoverDbClusterResponseTypeDef",
+    "ClientImportInstallationMediaResponseFailureCauseTypeDef",
+    "ClientImportInstallationMediaResponseTypeDef",
+    "ClientListTagsForResourceFiltersTypeDef",
+    "ClientListTagsForResourceResponseTagListTypeDef",
+    "ClientListTagsForResourceResponseTypeDef",
+    "ClientModifyCurrentDbClusterCapacityResponseTypeDef",
+    "ClientModifyDbClusterCloudwatchLogsExportConfigurationTypeDef",
+    "ClientModifyDbClusterEndpointResponseTypeDef",
+    "ClientModifyDbClusterParameterGroupParametersTypeDef",
+    "ClientModifyDbClusterParameterGroupResponseTypeDef",
+    "ClientModifyDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientModifyDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientModifyDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientModifyDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientModifyDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientModifyDbClusterResponseDBClusterTypeDef",
+    "ClientModifyDbClusterResponseTypeDef",
+    "ClientModifyDbClusterScalingConfigurationTypeDef",
+    "ClientModifyDbClusterSnapshotAttributeResponseDBClusterSnapshotAttributesResultDBClusterSnapshotAttributesTypeDef",
+    "ClientModifyDbClusterSnapshotAttributeResponseDBClusterSnapshotAttributesResultTypeDef",
+    "ClientModifyDbClusterSnapshotAttributeResponseTypeDef",
+    "ClientModifyDbInstanceCloudwatchLogsExportConfigurationTypeDef",
+    "ClientModifyDbInstanceProcessorFeaturesTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientModifyDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientModifyDbInstanceResponseDBInstanceTypeDef",
+    "ClientModifyDbInstanceResponseTypeDef",
+    "ClientModifyDbParameterGroupParametersTypeDef",
+    "ClientModifyDbParameterGroupResponseTypeDef",
+    "ClientModifyDbSnapshotAttributeResponseDBSnapshotAttributesResultDBSnapshotAttributesTypeDef",
+    "ClientModifyDbSnapshotAttributeResponseDBSnapshotAttributesResultTypeDef",
+    "ClientModifyDbSnapshotAttributeResponseTypeDef",
+    "ClientModifyDbSnapshotResponseDBSnapshotProcessorFeaturesTypeDef",
+    "ClientModifyDbSnapshotResponseDBSnapshotTypeDef",
+    "ClientModifyDbSnapshotResponseTypeDef",
+    "ClientModifyDbSubnetGroupResponseDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientModifyDbSubnetGroupResponseDBSubnetGroupSubnetsTypeDef",
+    "ClientModifyDbSubnetGroupResponseDBSubnetGroupTypeDef",
+    "ClientModifyDbSubnetGroupResponseTypeDef",
+    "ClientModifyEventSubscriptionResponseEventSubscriptionTypeDef",
+    "ClientModifyEventSubscriptionResponseTypeDef",
+    "ClientModifyGlobalClusterResponseGlobalClusterGlobalClusterMembersTypeDef",
+    "ClientModifyGlobalClusterResponseGlobalClusterTypeDef",
+    "ClientModifyGlobalClusterResponseTypeDef",
+    "ClientModifyOptionGroupOptionsToIncludeOptionSettingsTypeDef",
+    "ClientModifyOptionGroupOptionsToIncludeTypeDef",
+    "ClientModifyOptionGroupResponseOptionGroupOptionsDBSecurityGroupMembershipsTypeDef",
+    "ClientModifyOptionGroupResponseOptionGroupOptionsOptionSettingsTypeDef",
+    "ClientModifyOptionGroupResponseOptionGroupOptionsVpcSecurityGroupMembershipsTypeDef",
+    "ClientModifyOptionGroupResponseOptionGroupOptionsTypeDef",
+    "ClientModifyOptionGroupResponseOptionGroupTypeDef",
+    "ClientModifyOptionGroupResponseTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseDBClusterTypeDef",
+    "ClientPromoteReadReplicaDbClusterResponseTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceEndpointTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceListenerEndpointTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceStatusInfosTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientPromoteReadReplicaResponseDBInstanceTypeDef",
+    "ClientPromoteReadReplicaResponseTypeDef",
+    "ClientPurchaseReservedDbInstancesOfferingResponseReservedDBInstanceRecurringChargesTypeDef",
+    "ClientPurchaseReservedDbInstancesOfferingResponseReservedDBInstanceTypeDef",
+    "ClientPurchaseReservedDbInstancesOfferingResponseTypeDef",
+    "ClientPurchaseReservedDbInstancesOfferingTagsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientRebootDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientRebootDbInstanceResponseDBInstanceTypeDef",
+    "ClientRebootDbInstanceResponseTypeDef",
+    "ClientRemoveFromGlobalClusterResponseGlobalClusterGlobalClusterMembersTypeDef",
+    "ClientRemoveFromGlobalClusterResponseGlobalClusterTypeDef",
+    "ClientRemoveFromGlobalClusterResponseTypeDef",
+    "ClientRemoveSourceIdentifierFromSubscriptionResponseEventSubscriptionTypeDef",
+    "ClientRemoveSourceIdentifierFromSubscriptionResponseTypeDef",
+    "ClientResetDbClusterParameterGroupParametersTypeDef",
+    "ClientResetDbClusterParameterGroupResponseTypeDef",
+    "ClientResetDbParameterGroupParametersTypeDef",
+    "ClientResetDbParameterGroupResponseTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterAssociatedRolesTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterDBClusterMembersTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseDBClusterTypeDef",
+    "ClientRestoreDbClusterFromS3ResponseTypeDef",
+    "ClientRestoreDbClusterFromS3TagsTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterAssociatedRolesTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterDBClusterMembersTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseDBClusterTypeDef",
+    "ClientRestoreDbClusterFromSnapshotResponseTypeDef",
+    "ClientRestoreDbClusterFromSnapshotScalingConfigurationTypeDef",
+    "ClientRestoreDbClusterFromSnapshotTagsTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterAssociatedRolesTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterDBClusterMembersTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseDBClusterTypeDef",
+    "ClientRestoreDbClusterToPointInTimeResponseTypeDef",
+    "ClientRestoreDbClusterToPointInTimeTagsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceEndpointTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceListenerEndpointTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceStatusInfosTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseDBInstanceTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotResponseTypeDef",
+    "ClientRestoreDbInstanceFromDbSnapshotTagsTypeDef",
+    "ClientRestoreDbInstanceFromS3ProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceEndpointTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceListenerEndpointTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceStatusInfosTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseDBInstanceTypeDef",
+    "ClientRestoreDbInstanceFromS3ResponseTypeDef",
+    "ClientRestoreDbInstanceFromS3TagsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceEndpointTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceListenerEndpointTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceStatusInfosTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseDBInstanceTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeResponseTypeDef",
+    "ClientRestoreDbInstanceToPointInTimeTagsTypeDef",
+    "ClientRevokeDbSecurityGroupIngressResponseDBSecurityGroupEC2SecurityGroupsTypeDef",
+    "ClientRevokeDbSecurityGroupIngressResponseDBSecurityGroupIPRangesTypeDef",
+    "ClientRevokeDbSecurityGroupIngressResponseDBSecurityGroupTypeDef",
+    "ClientRevokeDbSecurityGroupIngressResponseTypeDef",
+    "ClientStartActivityStreamResponseTypeDef",
+    "ClientStartDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientStartDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientStartDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientStartDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientStartDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientStartDbClusterResponseDBClusterTypeDef",
+    "ClientStartDbClusterResponseTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientStartDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientStartDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientStartDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientStartDbInstanceResponseDBInstanceTypeDef",
+    "ClientStartDbInstanceResponseTypeDef",
+    "ClientStopActivityStreamResponseTypeDef",
+    "ClientStopDbClusterResponseDBClusterAssociatedRolesTypeDef",
+    "ClientStopDbClusterResponseDBClusterDBClusterMembersTypeDef",
+    "ClientStopDbClusterResponseDBClusterDBClusterOptionGroupMembershipsTypeDef",
+    "ClientStopDbClusterResponseDBClusterScalingConfigurationInfoTypeDef",
+    "ClientStopDbClusterResponseDBClusterVpcSecurityGroupsTypeDef",
+    "ClientStopDbClusterResponseDBClusterTypeDef",
+    "ClientStopDbClusterResponseTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceAssociatedRolesTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDBParameterGroupsTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDBSecurityGroupsTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDBSubnetGroupSubnetsTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDBSubnetGroupTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceDomainMembershipsTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceEndpointTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceListenerEndpointTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceOptionGroupMembershipsTypeDef",
+    "ClientStopDbInstanceResponseDBInstancePendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "ClientStopDbInstanceResponseDBInstancePendingModifiedValuesProcessorFeaturesTypeDef",
+    "ClientStopDbInstanceResponseDBInstancePendingModifiedValuesTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceProcessorFeaturesTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceStatusInfosTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceVpcSecurityGroupsTypeDef",
+    "ClientStopDbInstanceResponseDBInstanceTypeDef",
+    "ClientStopDbInstanceResponseTypeDef",
+    "DbClusterSnapshotAvailableWaitFiltersTypeDef",
+    "DbClusterSnapshotAvailableWaitWaiterConfigTypeDef",
+    "DbClusterSnapshotDeletedWaitFiltersTypeDef",
+    "DbClusterSnapshotDeletedWaitWaiterConfigTypeDef",
+    "DbInstanceAvailableWaitFiltersTypeDef",
+    "DbInstanceAvailableWaitWaiterConfigTypeDef",
+    "DbInstanceDeletedWaitFiltersTypeDef",
+    "DbInstanceDeletedWaitWaiterConfigTypeDef",
+    "DbSnapshotAvailableWaitFiltersTypeDef",
+    "DbSnapshotAvailableWaitWaiterConfigTypeDef",
+    "DbSnapshotCompletedWaitFiltersTypeDef",
+    "DbSnapshotCompletedWaitWaiterConfigTypeDef",
+    "DbSnapshotDeletedWaitFiltersTypeDef",
+    "DbSnapshotDeletedWaitWaiterConfigTypeDef",
+    "DescribeCertificatesPaginateFiltersTypeDef",
+    "DescribeCertificatesPaginatePaginationConfigTypeDef",
+    "DescribeCertificatesPaginateResponseCertificatesTypeDef",
+    "DescribeCertificatesPaginateResponseTypeDef",
+    "DescribeCustomAvailabilityZonesPaginateFiltersTypeDef",
+    "DescribeCustomAvailabilityZonesPaginatePaginationConfigTypeDef",
+    "DescribeCustomAvailabilityZonesPaginateResponseCustomAvailabilityZonesVpnDetailsTypeDef",
+    "DescribeCustomAvailabilityZonesPaginateResponseCustomAvailabilityZonesTypeDef",
+    "DescribeCustomAvailabilityZonesPaginateResponseTypeDef",
+    "DescribeDBClusterBacktracksPaginateFiltersTypeDef",
+    "DescribeDBClusterBacktracksPaginatePaginationConfigTypeDef",
+    "DescribeDBClusterBacktracksPaginateResponseDBClusterBacktracksTypeDef",
+    "DescribeDBClusterBacktracksPaginateResponseTypeDef",
+    "DescribeDBClusterEndpointsPaginateFiltersTypeDef",
+    "DescribeDBClusterEndpointsPaginatePaginationConfigTypeDef",
+    "DescribeDBClusterEndpointsPaginateResponseDBClusterEndpointsTypeDef",
+    "DescribeDBClusterEndpointsPaginateResponseTypeDef",
+    "DescribeDBClusterParameterGroupsPaginateFiltersTypeDef",
+    "DescribeDBClusterParameterGroupsPaginatePaginationConfigTypeDef",
+    "DescribeDBClusterParameterGroupsPaginateResponseDBClusterParameterGroupsTypeDef",
+    "DescribeDBClusterParameterGroupsPaginateResponseTypeDef",
+    "DescribeDBClusterParametersPaginateFiltersTypeDef",
+    "DescribeDBClusterParametersPaginatePaginationConfigTypeDef",
+    "DescribeDBClusterParametersPaginateResponseParametersTypeDef",
+    "DescribeDBClusterParametersPaginateResponseTypeDef",
+    "DescribeDBClusterSnapshotsPaginateFiltersTypeDef",
+    "DescribeDBClusterSnapshotsPaginatePaginationConfigTypeDef",
+    "DescribeDBClusterSnapshotsPaginateResponseDBClusterSnapshotsTypeDef",
+    "DescribeDBClusterSnapshotsPaginateResponseTypeDef",
+    "DescribeDBClustersPaginateFiltersTypeDef",
+    "DescribeDBClustersPaginatePaginationConfigTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersAssociatedRolesTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersDBClusterMembersTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersDBClusterOptionGroupMembershipsTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersScalingConfigurationInfoTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersVpcSecurityGroupsTypeDef",
+    "DescribeDBClustersPaginateResponseDBClustersTypeDef",
+    "DescribeDBClustersPaginateResponseTypeDef",
+    "DescribeDBEngineVersionsPaginateFiltersTypeDef",
+    "DescribeDBEngineVersionsPaginatePaginationConfigTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseDBEngineVersionsDefaultCharacterSetTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseDBEngineVersionsSupportedCharacterSetsTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseDBEngineVersionsSupportedTimezonesTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseDBEngineVersionsValidUpgradeTargetTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseDBEngineVersionsTypeDef",
+    "DescribeDBEngineVersionsPaginateResponseTypeDef",
+    "DescribeDBInstanceAutomatedBackupsPaginateFiltersTypeDef",
+    "DescribeDBInstanceAutomatedBackupsPaginatePaginationConfigTypeDef",
+    "DescribeDBInstanceAutomatedBackupsPaginateResponseDBInstanceAutomatedBackupsRestoreWindowTypeDef",
+    "DescribeDBInstanceAutomatedBackupsPaginateResponseDBInstanceAutomatedBackupsTypeDef",
+    "DescribeDBInstanceAutomatedBackupsPaginateResponseTypeDef",
+    "DescribeDBInstancesPaginateFiltersTypeDef",
+    "DescribeDBInstancesPaginatePaginationConfigTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesAssociatedRolesTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDBParameterGroupsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDBSecurityGroupsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDBSubnetGroupSubnetsSubnetAvailabilityZoneTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDBSubnetGroupSubnetsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDBSubnetGroupTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesDomainMembershipsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesEndpointTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesListenerEndpointTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesOptionGroupMembershipsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesPendingModifiedValuesPendingCloudwatchLogsExportsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesPendingModifiedValuesProcessorFeaturesTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesPendingModifiedValuesTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesProcessorFeaturesTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesStatusInfosTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesVpcSecurityGroupsTypeDef",
+    "DescribeDBInstancesPaginateResponseDBInstancesTypeDef",
+    "DescribeDBInstancesPaginateResponseTypeDef",
+    "DescribeDBLogFilesPaginateFiltersTypeDef",
+    "DescribeDBLogFilesPaginatePaginationConfigTypeDef",
+    "DescribeDBLogFilesPaginateResponseDescribeDBLogFilesTypeDef",
+    "DescribeDBLogFilesPaginateResponseTypeDef",
+    "DescribeDBParameterGroupsPaginateFiltersTypeDef",
+    "DescribeDBParameterGroupsPaginatePaginationConfigTypeDef",
+    "DescribeDBParameterGroupsPaginateResponseDBParameterGroupsTypeDef",
+    "DescribeDBParameterGroupsPaginateResponseTypeDef",
+    "DescribeDBParametersPaginateFiltersTypeDef",
+    "DescribeDBParametersPaginatePaginationConfigTypeDef",
+    "DescribeDBParametersPaginateResponseParametersTypeDef",
+    "DescribeDBParametersPaginateResponseTypeDef",
+    "DescribeDBSecurityGroupsPaginateFiltersTypeDef",
+    "DescribeDBSecurityGroupsPaginatePaginationConfigTypeDef",
+    "DescribeDBSecurityGroupsPaginateResponseDBSecurityGroupsEC2SecurityGroupsTypeDef",
+    "DescribeDBSecurityGroupsPaginateResponseDBSecurityGroupsIPRangesTypeDef",
+    "DescribeDBSecurityGroupsPaginateResponseDBSecurityGroupsTypeDef",
+    "DescribeDBSecurityGroupsPaginateResponseTypeDef",
+    "DescribeDBSnapshotsPaginateFiltersTypeDef",
+    "DescribeDBSnapshotsPaginatePaginationConfigTypeDef",
+    "DescribeDBSnapshotsPaginateResponseDBSnapshotsProcessorFeaturesTypeDef",
+    "DescribeDBSnapshotsPaginateResponseDBSnapshotsTypeDef",
+    "DescribeDBSnapshotsPaginateResponseTypeDef",
+    "DescribeDBSubnetGroupsPaginateFiltersTypeDef",
+    "DescribeDBSubnetGroupsPaginatePaginationConfigTypeDef",
+    "DescribeDBSubnetGroupsPaginateResponseDBSubnetGroupsSubnetsSubnetAvailabilityZoneTypeDef",
+    "DescribeDBSubnetGroupsPaginateResponseDBSubnetGroupsSubnetsTypeDef",
+    "DescribeDBSubnetGroupsPaginateResponseDBSubnetGroupsTypeDef",
+    "DescribeDBSubnetGroupsPaginateResponseTypeDef",
+    "DescribeEngineDefaultClusterParametersPaginateFiltersTypeDef",
+    "DescribeEngineDefaultClusterParametersPaginatePaginationConfigTypeDef",
+    "DescribeEngineDefaultClusterParametersPaginateResponseEngineDefaultsParametersTypeDef",
+    "DescribeEngineDefaultClusterParametersPaginateResponseEngineDefaultsTypeDef",
+    "DescribeEngineDefaultClusterParametersPaginateResponseTypeDef",
+    "DescribeEngineDefaultParametersPaginateFiltersTypeDef",
+    "DescribeEngineDefaultParametersPaginatePaginationConfigTypeDef",
+    "DescribeEngineDefaultParametersPaginateResponseEngineDefaultsParametersTypeDef",
+    "DescribeEngineDefaultParametersPaginateResponseEngineDefaultsTypeDef",
+    "DescribeEngineDefaultParametersPaginateResponseTypeDef",
+    "DescribeEventSubscriptionsPaginateFiltersTypeDef",
+    "DescribeEventSubscriptionsPaginatePaginationConfigTypeDef",
+    "DescribeEventSubscriptionsPaginateResponseEventSubscriptionsListTypeDef",
+    "DescribeEventSubscriptionsPaginateResponseTypeDef",
+    "DescribeEventsPaginateFiltersTypeDef",
+    "DescribeEventsPaginatePaginationConfigTypeDef",
+    "DescribeEventsPaginateResponseEventsTypeDef",
+    "DescribeEventsPaginateResponseTypeDef",
+    "DescribeGlobalClustersPaginateFiltersTypeDef",
+    "DescribeGlobalClustersPaginatePaginationConfigTypeDef",
+    "DescribeGlobalClustersPaginateResponseGlobalClustersGlobalClusterMembersTypeDef",
+    "DescribeGlobalClustersPaginateResponseGlobalClustersTypeDef",
+    "DescribeGlobalClustersPaginateResponseTypeDef",
+    "DescribeInstallationMediaPaginateFiltersTypeDef",
+    "DescribeInstallationMediaPaginatePaginationConfigTypeDef",
+    "DescribeInstallationMediaPaginateResponseInstallationMediaFailureCauseTypeDef",
+    "DescribeInstallationMediaPaginateResponseInstallationMediaTypeDef",
+    "DescribeInstallationMediaPaginateResponseTypeDef",
+    "DescribeOptionGroupOptionsPaginateFiltersTypeDef",
+    "DescribeOptionGroupOptionsPaginatePaginationConfigTypeDef",
+    "DescribeOptionGroupOptionsPaginateResponseOptionGroupOptionsOptionGroupOptionSettingsMinimumEngineVersionPerAllowedValueTypeDef",
+    "DescribeOptionGroupOptionsPaginateResponseOptionGroupOptionsOptionGroupOptionSettingsTypeDef",
+    "DescribeOptionGroupOptionsPaginateResponseOptionGroupOptionsOptionGroupOptionVersionsTypeDef",
+    "DescribeOptionGroupOptionsPaginateResponseOptionGroupOptionsTypeDef",
+    "DescribeOptionGroupOptionsPaginateResponseTypeDef",
+    "DescribeOptionGroupsPaginateFiltersTypeDef",
+    "DescribeOptionGroupsPaginatePaginationConfigTypeDef",
+    "DescribeOptionGroupsPaginateResponseOptionGroupsListOptionsDBSecurityGroupMembershipsTypeDef",
+    "DescribeOptionGroupsPaginateResponseOptionGroupsListOptionsOptionSettingsTypeDef",
+    "DescribeOptionGroupsPaginateResponseOptionGroupsListOptionsVpcSecurityGroupMembershipsTypeDef",
+    "DescribeOptionGroupsPaginateResponseOptionGroupsListOptionsTypeDef",
+    "DescribeOptionGroupsPaginateResponseOptionGroupsListTypeDef",
+    "DescribeOptionGroupsPaginateResponseTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginateFiltersTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginatePaginationConfigTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginateResponseOrderableDBInstanceOptionsAvailabilityZonesTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginateResponseOrderableDBInstanceOptionsAvailableProcessorFeaturesTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginateResponseOrderableDBInstanceOptionsTypeDef",
+    "DescribeOrderableDBInstanceOptionsPaginateResponseTypeDef",
+    "DescribePendingMaintenanceActionsPaginateFiltersTypeDef",
+    "DescribePendingMaintenanceActionsPaginatePaginationConfigTypeDef",
+    "DescribePendingMaintenanceActionsPaginateResponsePendingMaintenanceActionsPendingMaintenanceActionDetailsTypeDef",
+    "DescribePendingMaintenanceActionsPaginateResponsePendingMaintenanceActionsTypeDef",
+    "DescribePendingMaintenanceActionsPaginateResponseTypeDef",
+    "DescribeReservedDBInstancesOfferingsPaginateFiltersTypeDef",
+    "DescribeReservedDBInstancesOfferingsPaginatePaginationConfigTypeDef",
+    "DescribeReservedDBInstancesOfferingsPaginateResponseReservedDBInstancesOfferingsRecurringChargesTypeDef",
+    "DescribeReservedDBInstancesOfferingsPaginateResponseReservedDBInstancesOfferingsTypeDef",
+    "DescribeReservedDBInstancesOfferingsPaginateResponseTypeDef",
+    "DescribeReservedDBInstancesPaginateFiltersTypeDef",
+    "DescribeReservedDBInstancesPaginatePaginationConfigTypeDef",
+    "DescribeReservedDBInstancesPaginateResponseReservedDBInstancesRecurringChargesTypeDef",
+    "DescribeReservedDBInstancesPaginateResponseReservedDBInstancesTypeDef",
+    "DescribeReservedDBInstancesPaginateResponseTypeDef",
+    "DescribeSourceRegionsPaginateFiltersTypeDef",
+    "DescribeSourceRegionsPaginatePaginationConfigTypeDef",
+    "DescribeSourceRegionsPaginateResponseSourceRegionsTypeDef",
+    "DescribeSourceRegionsPaginateResponseTypeDef",
+    "DownloadDBLogFilePortionPaginatePaginationConfigTypeDef",
+    "DownloadDBLogFilePortionPaginateResponseTypeDef",
+)
+
+
 _ClientAddSourceIdentifierToSubscriptionResponseEventSubscriptionTypeDef = TypedDict(
     "_ClientAddSourceIdentifierToSubscriptionResponseEventSubscriptionTypeDef",
     {
@@ -179,14 +958,14 @@ class ClientAddTagsToResourceTagsTypeDef(_ClientAddTagsToResourceTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -803,14 +1582,14 @@ class ClientCopyDbClusterParameterGroupTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -1065,14 +1844,14 @@ class ClientCopyDbClusterSnapshotTagsTypeDef(_ClientCopyDbClusterSnapshotTagsTyp
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -1171,14 +1950,14 @@ class ClientCopyDbParameterGroupTagsTypeDef(_ClientCopyDbParameterGroupTagsTypeD
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -1661,14 +2440,14 @@ class ClientCopyDbSnapshotTagsTypeDef(_ClientCopyDbSnapshotTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -2313,14 +3092,14 @@ class ClientCopyOptionGroupTagsTypeDef(_ClientCopyOptionGroupTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -2704,14 +3483,14 @@ class ClientCreateDbClusterParameterGroupTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -4062,14 +4841,14 @@ class ClientCreateDbClusterSnapshotTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -4089,14 +4868,14 @@ class ClientCreateDbClusterTagsTypeDef(_ClientCreateDbClusterTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -6499,14 +7278,14 @@ class ClientCreateDbInstanceReadReplicaTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -8785,14 +9564,14 @@ class ClientCreateDbInstanceTagsTypeDef(_ClientCreateDbInstanceTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -8891,14 +9670,14 @@ class ClientCreateDbParameterGroupTagsTypeDef(_ClientCreateDbParameterGroupTagsT
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -9180,14 +9959,14 @@ class ClientCreateDbSecurityGroupTagsTypeDef(_ClientCreateDbSecurityGroupTagsTyp
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -9670,14 +10449,14 @@ class ClientCreateDbSnapshotTagsTypeDef(_ClientCreateDbSnapshotTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -9898,14 +10677,14 @@ class ClientCreateDbSubnetGroupTagsTypeDef(_ClientCreateDbSubnetGroupTagsTypeDef
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -10084,14 +10863,14 @@ class ClientCreateEventSubscriptionTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -10949,14 +11728,14 @@ class ClientCreateOptionGroupTagsTypeDef(_ClientCreateOptionGroupTagsTypeDef):
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -29716,14 +30495,14 @@ class ClientListTagsForResourceResponseTagListTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-      '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only
       contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-      '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -29753,14 +30532,14 @@ class ClientListTagsForResourceResponseTypeDef(
           A key is the required name of the tag. The string value can be from 1 to 128 Unicode
           characters in length and can't be prefixed with "aws:" or "rds:". The string can only
           contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-          '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+          '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
         - **Value** *(string) --*
 
           A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
           characters in length and can't be prefixed with "aws:" or "rds:". The string can only
           contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+',
-          '-' (Java regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+          '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -39274,14 +40053,14 @@ class ClientPurchaseReservedDbInstancesOfferingTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -43162,14 +43941,14 @@ class ClientRestoreDbClusterFromS3TagsTypeDef(_ClientRestoreDbClusterFromS3TagsT
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -44287,14 +45066,14 @@ class ClientRestoreDbClusterFromSnapshotTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -45337,14 +46116,14 @@ class ClientRestoreDbClusterToPointInTimeTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -47689,14 +48468,14 @@ class ClientRestoreDbInstanceFromDbSnapshotTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -50039,14 +50818,14 @@ class ClientRestoreDbInstanceFromS3TagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 
@@ -52391,14 +53170,14 @@ class ClientRestoreDbInstanceToPointInTimeTagsTypeDef(
       A key is the required name of the tag. The string value can be from 1 to 128 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
     - **Value** *(string) --*
 
       A value is the optional value of the tag. The string value can be from 1 to 256 Unicode
       characters in length and can't be prefixed with "aws:" or "rds:". The string can only contain
       only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java
-      regex: "^([\\\\p{L}\\\\p{Z}\\\\p{N}_.:/=+\\\\-]*)$").
+      regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
     """
 
 

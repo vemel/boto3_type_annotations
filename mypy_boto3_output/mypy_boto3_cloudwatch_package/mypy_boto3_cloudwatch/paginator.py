@@ -20,7 +20,20 @@ from mypy_boto3_cloudwatch.type_defs import (
 )
 
 
-class DescribeAlarmHistory(Boto3Paginator):
+__all__ = (
+    "DescribeAlarmHistoryPaginator",
+    "DescribeAlarmsPaginator",
+    "GetMetricDataPaginator",
+    "ListDashboardsPaginator",
+    "ListMetricsPaginator",
+)
+
+
+class DescribeAlarmHistoryPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_alarm_history`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -145,7 +158,11 @@ class DescribeAlarmHistory(Boto3Paginator):
         """
 
 
-class DescribeAlarms(Boto3Paginator):
+class DescribeAlarmsPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_alarms`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -621,7 +638,11 @@ class DescribeAlarms(Boto3Paginator):
         """
 
 
-class GetMetricData(Boto3Paginator):
+class GetMetricDataPaginator(Boto3Paginator):
+    """
+    Paginator for `get_metric_data`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1027,7 +1048,11 @@ class GetMetricData(Boto3Paginator):
         """
 
 
-class ListDashboards(Boto3Paginator):
+class ListDashboardsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dashboards`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -1124,7 +1149,11 @@ class ListDashboards(Boto3Paginator):
         """
 
 
-class ListMetrics(Boto3Paginator):
+class ListMetricsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_metrics`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

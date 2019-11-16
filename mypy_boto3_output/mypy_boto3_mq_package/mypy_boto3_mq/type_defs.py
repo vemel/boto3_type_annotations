@@ -6,6 +6,57 @@ from typing import Any, Dict, List
 from typing_extensions import TypedDict
 
 
+__all__ = (
+    "ClientCreateBrokerConfigurationTypeDef",
+    "ClientCreateBrokerEncryptionOptionsTypeDef",
+    "ClientCreateBrokerLogsTypeDef",
+    "ClientCreateBrokerMaintenanceWindowStartTimeTypeDef",
+    "ClientCreateBrokerResponseTypeDef",
+    "ClientCreateConfigurationResponseLatestRevisionTypeDef",
+    "ClientCreateConfigurationResponseTypeDef",
+    "ClientDeleteBrokerResponseTypeDef",
+    "ClientDescribeBrokerEngineTypesResponseBrokerEngineTypesEngineVersionsTypeDef",
+    "ClientDescribeBrokerEngineTypesResponseBrokerEngineTypesTypeDef",
+    "ClientDescribeBrokerEngineTypesResponseTypeDef",
+    "ClientDescribeBrokerInstanceOptionsResponseBrokerInstanceOptionsAvailabilityZonesTypeDef",
+    "ClientDescribeBrokerInstanceOptionsResponseBrokerInstanceOptionsTypeDef",
+    "ClientDescribeBrokerInstanceOptionsResponseTypeDef",
+    "ClientDescribeBrokerResponseBrokerInstancesTypeDef",
+    "ClientDescribeBrokerResponseConfigurationsCurrentTypeDef",
+    "ClientDescribeBrokerResponseConfigurationsHistoryTypeDef",
+    "ClientDescribeBrokerResponseConfigurationsPendingTypeDef",
+    "ClientDescribeBrokerResponseConfigurationsTypeDef",
+    "ClientDescribeBrokerResponseEncryptionOptionsTypeDef",
+    "ClientDescribeBrokerResponseMaintenanceWindowStartTimeTypeDef",
+    "ClientDescribeBrokerResponseUsersTypeDef",
+    "ClientDescribeBrokerResponseTypeDef",
+    "ClientDescribeConfigurationResponseLatestRevisionTypeDef",
+    "ClientDescribeConfigurationResponseTypeDef",
+    "ClientDescribeConfigurationRevisionResponseTypeDef",
+    "ClientDescribeUserResponsePendingTypeDef",
+    "ClientDescribeUserResponseTypeDef",
+    "ClientListBrokersResponseBrokerSummariesTypeDef",
+    "ClientListBrokersResponseTypeDef",
+    "ClientListConfigurationRevisionsResponseRevisionsTypeDef",
+    "ClientListConfigurationRevisionsResponseTypeDef",
+    "ClientListConfigurationsResponseConfigurationsLatestRevisionTypeDef",
+    "ClientListConfigurationsResponseConfigurationsTypeDef",
+    "ClientListConfigurationsResponseTypeDef",
+    "ClientListTagsResponseTypeDef",
+    "ClientListUsersResponseUsersTypeDef",
+    "ClientListUsersResponseTypeDef",
+    "ClientUpdateBrokerConfigurationTypeDef",
+    "ClientUpdateBrokerLogsTypeDef",
+    "ClientUpdateBrokerResponseConfigurationTypeDef",
+    "ClientUpdateBrokerResponseTypeDef",
+    "ClientUpdateConfigurationResponseLatestRevisionTypeDef",
+    "ClientUpdateConfigurationResponseTypeDef",
+    "ListBrokersPaginatePaginationConfigTypeDef",
+    "ListBrokersPaginateResponseBrokerSummariesTypeDef",
+    "ListBrokersPaginateResponseTypeDef",
+)
+
+
 _ClientCreateBrokerConfigurationTypeDef = TypedDict(
     "_ClientCreateBrokerConfigurationTypeDef", {"Id": str, "Revision": int}, total=False
 )

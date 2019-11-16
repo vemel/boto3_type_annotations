@@ -12,7 +12,18 @@ from mypy_boto3_serverlessrepo.type_defs import (
 )
 
 
-class ListApplicationDependencies(Boto3Paginator):
+__all__ = (
+    "ListApplicationDependenciesPaginator",
+    "ListApplicationVersionsPaginator",
+    "ListApplicationsPaginator",
+)
+
+
+class ListApplicationDependenciesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_application_dependencies`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -110,7 +121,11 @@ class ListApplicationDependencies(Boto3Paginator):
         """
 
 
-class ListApplicationVersions(Boto3Paginator):
+class ListApplicationVersionsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_application_versions`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -213,7 +228,11 @@ class ListApplicationVersions(Boto3Paginator):
         """
 
 
-class ListApplications(Boto3Paginator):
+class ListApplicationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_applications`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListApplicationsPaginatePaginationConfigTypeDef = None
@@ -326,7 +345,7 @@ class ListApplications(Boto3Paginator):
 
                   Minimum length=1. Maximum length=127. Maximum number of labels: 10
 
-                  Pattern: "^[a-zA-Z0-9+\\\\-_:\\\\/@]+$";
+                  Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 
                   - *(string) --*
 
@@ -336,7 +355,7 @@ class ListApplications(Boto3Paginator):
 
                   Minimum length=1. Maximum length=140
 
-                  Pattern: "[a-zA-Z0-9\\\\-]+";
+                  Pattern: "[a-zA-Z0-9\\-]+";
 
                 - **SpdxLicenseId** *(string) --*
 

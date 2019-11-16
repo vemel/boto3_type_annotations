@@ -21,7 +21,21 @@ from mypy_boto3_securityhub.type_defs import (
 )
 
 
-class GetEnabledStandards(Boto3Paginator):
+__all__ = (
+    "GetEnabledStandardsPaginator",
+    "GetFindingsPaginator",
+    "GetInsightsPaginator",
+    "ListEnabledProductsForImportPaginator",
+    "ListInvitationsPaginator",
+    "ListMembersPaginator",
+)
+
+
+class GetEnabledStandardsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_enabled_standards`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -135,7 +149,11 @@ class GetEnabledStandards(Boto3Paginator):
         """
 
 
-class GetFindings(Boto3Paginator):
+class GetFindingsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_findings`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -2896,7 +2914,11 @@ class GetFindings(Boto3Paginator):
         """
 
 
-class GetInsights(Boto3Paginator):
+class GetInsightsPaginator(Boto3Paginator):
+    """
+    Paginator for `get_insights`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -5069,7 +5091,11 @@ class GetInsights(Boto3Paginator):
         """
 
 
-class ListEnabledProductsForImport(Boto3Paginator):
+class ListEnabledProductsForImportPaginator(Boto3Paginator):
+    """
+    Paginator for `list_enabled_products_for_import`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -5138,7 +5164,11 @@ class ListEnabledProductsForImport(Boto3Paginator):
         """
 
 
-class ListInvitations(Boto3Paginator):
+class ListInvitationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_invitations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListInvitationsPaginatePaginationConfigTypeDef = None
@@ -5229,7 +5259,11 @@ class ListInvitations(Boto3Paginator):
         """
 
 
-class ListMembers(Boto3Paginator):
+class ListMembersPaginator(Boto3Paginator):
+    """
+    Paginator for `list_members`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

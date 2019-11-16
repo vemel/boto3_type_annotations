@@ -12,7 +12,14 @@ from mypy_boto3_autoscaling_plans.type_defs import (
 )
 
 
-class DescribeScalingPlanResources(Boto3Paginator):
+__all__ = ("DescribeScalingPlanResourcesPaginator", "DescribeScalingPlansPaginator")
+
+
+class DescribeScalingPlanResourcesPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_scaling_plan_resources`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -361,7 +368,11 @@ class DescribeScalingPlanResources(Boto3Paginator):
         """
 
 
-class DescribeScalingPlans(Boto3Paginator):
+class DescribeScalingPlansPaginator(Boto3Paginator):
+    """
+    Paginator for `describe_scaling_plans`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,

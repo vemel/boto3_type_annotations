@@ -20,7 +20,21 @@ from mypy_boto3_groundstation.type_defs import (
 )
 
 
-class ListConfigs(Boto3Paginator):
+__all__ = (
+    "ListConfigsPaginator",
+    "ListContactsPaginator",
+    "ListDataflowEndpointGroupsPaginator",
+    "ListGroundStationsPaginator",
+    "ListMissionProfilesPaginator",
+    "ListSatellitesPaginator",
+)
+
+
+class ListConfigsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_configs`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListConfigsPaginatePaginationConfigTypeDef = None
@@ -117,7 +131,11 @@ class ListConfigs(Boto3Paginator):
         """
 
 
-class ListContacts(Boto3Paginator):
+class ListContactsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_contacts`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -321,7 +339,11 @@ class ListContacts(Boto3Paginator):
         """
 
 
-class ListDataflowEndpointGroups(Boto3Paginator):
+class ListDataflowEndpointGroupsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_dataflow_endpoint_groups`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -407,7 +429,11 @@ class ListDataflowEndpointGroups(Boto3Paginator):
         """
 
 
-class ListGroundStations(Boto3Paginator):
+class ListGroundStationsPaginator(Boto3Paginator):
+    """
+    Paginator for `list_ground_stations`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListGroundStationsPaginatePaginationConfigTypeDef = None
@@ -497,7 +523,11 @@ class ListGroundStations(Boto3Paginator):
         """
 
 
-class ListMissionProfiles(Boto3Paginator):
+class ListMissionProfilesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_mission_profiles`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self,
@@ -593,7 +623,11 @@ class ListMissionProfiles(Boto3Paginator):
         """
 
 
-class ListSatellites(Boto3Paginator):
+class ListSatellitesPaginator(Boto3Paginator):
+    """
+    Paginator for `list_satellites`
+    """
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def paginate(
         self, PaginationConfig: ListSatellitesPaginatePaginationConfigTypeDef = None
