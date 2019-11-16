@@ -1,3 +1,6 @@
+"""
+Enum with all AWS services.
+"""
 from __future__ import annotations
 
 import enum

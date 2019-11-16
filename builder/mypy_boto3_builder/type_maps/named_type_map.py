@@ -1,3 +1,6 @@
+"""
+String to type annotation map that find type annotation by arguemnt name and type.
+"""
 from typing import List, Union, Dict
 
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation

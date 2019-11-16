@@ -1,3 +1,6 @@
+"""
+String to type annotation map that find type annotation by argument name and type.
+"""
 from datetime import datetime
 from typing import Callable, IO, List, Dict, Union, Any
 
