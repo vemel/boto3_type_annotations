@@ -154,13 +154,16 @@ class DocstringParser:
     ) -> None:
         type_syntax: Dict[str, List[str]] = {}
         argument: Optional[Argument] = None
+        argument_line_indent = 0
 
         for doc_line in docstring.splitlines():
             doc_line = doc_line.rstrip()
+            doc_line_indent = IndentTrimmer.get_line_indent(doc_line)
             line = doc_line.strip()
             if line.startswith(":param "):
                 match = self.RE_PARAM.match(line)
                 if match:
+                    argument_line_indent = doc_line_indent
                     argument_name = match.groupdict()["name"]
                     argument = self._find_argument_or_append(argument_name, arguments)
                     if "**[REQUIRED]**" in line or "This **must** be set." in line:
@@ -169,13 +172,15 @@ class DocstringParser:
             if line.startswith(":type "):
                 match = self.RE_TYPE.match(line)
                 if match:
+                    argument_line_indent = doc_line_indent
                     argument_name = match.groupdict()["name"]
                     argument_type_str = match.groupdict()["type"]
                     argument = self._find_argument_or_append(argument_name, arguments)
                     argument.type = self.parse_type(argument_type_str, argument_name)
                 continue
-            if line.startswith(":"):
+            if line and doc_line_indent <= argument_line_indent:
                 argument = None
+                argument_line_indent = 0
             if argument:
                 if argument.name not in type_syntax:
                     type_syntax[argument.name] = []
