@@ -23,10 +23,14 @@ def s3_resource_example() -> None:
 
 
 def s3_client_example() -> None:
-    # explicitly set type to S3 Client
-    # client = Client()
-    # client.create_bucket()
+    # Use explicit types to help Python extension to get methods correctly
+    # mypy works as it should even without explicit types
     client: Client = boto3.client("s3")
+
+    bucket_exists_waiter = client.get_waiter("bucket_exists")
+
+    # (mypy) error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
+    bucket_exists_waiter.wait(bucket="bucket")
 
     # IDE autocomplete suggests function name and arguments here
     client.create_bucket(Bucket="bucket")
