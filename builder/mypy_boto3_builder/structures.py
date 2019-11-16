@@ -234,9 +234,6 @@ class ServiceResource(ClassRecord):
         for resource in self.sub_resources:
             import_records.add(ImportRecord(source, resource.name))
 
-        for collection in self.get_collections():
-            import_records.add(ImportRecord(source, collection.name))
-
         return import_records
 
     def get_collections(self) -> List[Collection]:
