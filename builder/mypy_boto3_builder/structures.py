@@ -26,6 +26,7 @@ from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
+from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.enums import ServiceModuleName
 
 
@@ -190,7 +191,7 @@ class Waiter(ClassRecord):
     waiter_name: str = "waiter_name"
     boto3_waiter: Boto3Waiter = None
     bases: List[FakeAnnotation] = field(
-        default_factory=lambda: [TypeAnnotation(Boto3Waiter)]
+        default_factory=lambda: [TypeClass(Boto3Waiter, alias="Boto3Waiter")]
     )
 
     def get_import_record(self) -> InternalImportRecord:
@@ -202,7 +203,7 @@ class Waiter(ClassRecord):
         return Method(
             name="get_waiter",
             docstring=f"Get Waiter `{self.waiter_name}`.",
-            decorators=[TypeAnnotation(overload)],
+            decorators=[TypeClass(overload)],
             arguments=[
                 Argument("self"),
                 Argument("waiter_name", TypeLiteral(self.waiter_name)),
@@ -216,11 +217,7 @@ class Paginator(ClassRecord):
     operation_name: str = "operation_name"
     boto3_paginator: Boto3Paginator = None
     bases: List[FakeAnnotation] = field(
-        default_factory=lambda: [
-            ExternalImport(
-                source="botocore.paginate", name="Paginator", alias="Boto3Paginator",
-            )
-        ]
+        default_factory=lambda: [TypeClass(Boto3Paginator, alias="Boto3Paginator")]
     )
 
     def get_import_record(self) -> InternalImportRecord:
@@ -232,7 +229,7 @@ class Paginator(ClassRecord):
         return Method(
             name="get_paginator",
             docstring=f"Get Paginator for `{self.operation_name}` operation.",
-            decorators=[TypeAnnotation(overload)],
+            decorators=[TypeClass(overload)],
             arguments=[
                 Argument("self"),
                 Argument("operation_name", TypeLiteral(self.operation_name)),

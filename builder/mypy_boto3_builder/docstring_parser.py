@@ -13,6 +13,7 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
+from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
@@ -37,11 +38,9 @@ class DocstringParser:
     DEFAULT_METHOD_ARGUMENTS = {
         "create_tags": [
             Argument("self",),
-            Argument(
-                "Resources", TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
-            ),
-            Argument("Tags", TypeSubscript(TypeAnnotation(List), [TypeDef("Tag")]),),
-            Argument("DryRun", TypeAnnotation(bool), TypeConstant(False)),
+            Argument("Resources", TypeSubscript(List, [TypeAnnotation(Any)]),),
+            Argument("Tags", TypeSubscript(List, [TypeDef("Tag")]),),
+            Argument("DryRun", TypeClass(bool), TypeConstant(False)),
         ]
     }
 
@@ -118,7 +117,7 @@ class DocstringParser:
         if argspec.defaults:
             for index, default_value in enumerate(argspec.defaults):
                 argument_index = len(arguments) - len(argspec.defaults) + index
-                arguments[argument_index].default = TypeAnnotation(default_value)
+                arguments[argument_index].default = TypeConstant(default_value)
 
         if argspec.varargs:
             arguments.append(

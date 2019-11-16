@@ -34,7 +34,7 @@ from mypy_boto3_builder.structures import (
 )
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.docstring_parser import DocstringParser
 
@@ -229,7 +229,7 @@ def parse_identifiers(resource: Boto3ServiceResource) -> List[Attribute]:
     result: List[Attribute] = []
     identifiers = resource.meta.resource_model.identifiers
     for identifier in identifiers:
-        result.append(Attribute(identifier.name, type=TypeAnnotation(str)))
+        result.append(Attribute(identifier.name, type=TypeClass(str)))
     return result
 
 
@@ -479,9 +479,9 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 docstring=clean_doc(getdoc(client.boto3_client.get_paginator)),
                 arguments=[
                     Argument("self"),
-                    Argument("operation_name", TypeAnnotation(str)),
+                    Argument("operation_name", TypeClass(str)),
                 ],
-                return_type=TypeAnnotation(Boto3Paginator, alias="Boto3Paginator"),
+                return_type=TypeClass(Boto3Paginator, alias="Boto3Paginator"),
             )
         )
 
@@ -492,11 +492,8 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             Method(
                 name="get_waiter",
                 docstring=clean_doc(getdoc(client.boto3_client.get_waiter)),
-                arguments=[
-                    Argument("self"),
-                    Argument("waiter_name", TypeAnnotation(str)),
-                ],
-                return_type=TypeAnnotation(Boto3Waiter, alias="Boto3Waiter"),
+                arguments=[Argument("self"), Argument("waiter_name", TypeClass(str)),],
+                return_type=TypeClass(Boto3Waiter, alias="Boto3Waiter"),
             )
         )
 

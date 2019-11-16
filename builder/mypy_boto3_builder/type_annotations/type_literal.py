@@ -4,11 +4,9 @@ Wrapper for `Literal` type annotations like `Literal['a', 'b']`
 from __future__ import annotations
 
 from typing import Any
-from typing_extensions import Literal
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 
 
 class TypeLiteral(FakeAnnotation):
@@ -20,7 +18,6 @@ class TypeLiteral(FakeAnnotation):
     """
 
     def __init__(self, *children: Any) -> None:
-        self.parent = TypeAnnotation(Literal)
         self.children = children
 
     def render(self) -> str:
@@ -31,13 +28,13 @@ class TypeLiteral(FakeAnnotation):
             A string with a valid type annotation.
         """
         children = ", ".join([repr(i) for i in self.children])
-        return f"{self.parent.render()}[{children}]"
+        return f"Literal[{children}]"
 
     def get_import_record(self) -> ImportRecord:
         """
         Get import record required for using type annotation.
         """
-        return self.parent.get_import_record()
+        return ImportRecord(source="typing_extensions", name="Literal")
 
     def copy(self) -> TypeLiteral:
         """
