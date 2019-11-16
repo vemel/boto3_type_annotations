@@ -66,7 +66,6 @@ def render_jinja2_template(
     )
     if output_path.exists():
         old_content = output_path.read_text()
-        print(output_path, old_content == new_content)
         if old_content == new_content:
             return False
 
