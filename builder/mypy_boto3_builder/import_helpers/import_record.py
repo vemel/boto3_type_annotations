@@ -1,3 +1,6 @@
+"""
+Helper for Python import strings.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -11,6 +14,15 @@ from mypy_boto3_builder.constants import MODULE_NAME, TYPE_DEFS_NAME
 @dataclass
 @total_ordering
 class ImportRecord:
+    """
+    Helper for Python import strings.
+
+    Arguments:
+        source -- Source of import.
+        name -- Import name.
+        alias -- Import local name.
+    """
+
     _is_internal = False
     type_defs_import_string = ImportString(TYPE_DEFS_NAME)
     builtins_import_string = ImportString("builtins")
@@ -48,13 +60,6 @@ class ImportRecord:
 
         return not self == other
 
-    @property
-    def package_name(self) -> str:
-        if not self.source:
-            return "builtins"
-
-        return self.source.parts[0]
-
     def __gt__(self, other: ImportRecord) -> bool:
         if self.source == other.source:
             return self.name > other.name
@@ -74,15 +79,27 @@ class ImportRecord:
         return self.source > other.source
 
     def get_local_name(self) -> str:
+        """
+        Get local import name.
+        """
         return self.alias or self.name or self.source.render()
 
     def is_builtins(self) -> bool:
+        """
+        Whether import is from Python `builtins` module.
+        """
         return self.source.startswith(self.builtins_import_string)
 
     def is_type_defs(self) -> bool:
+        """
+        Whether import is from `type_defs` module.
+        """
         return self.source.startswith(self.type_defs_import_string)
 
     def is_third_party(self) -> bool:
+        """
+        Whether import is from 3rd party module.
+        """
         for third_party_import_string in self.third_party_import_strings:
             if self.source.startswith(third_party_import_string):
                 return True
@@ -90,10 +107,13 @@ class ImportRecord:
         return False
 
     def is_local(self) -> bool:
+        """
+        Whether import is from local module.
+        """
         if not self.source:
             return False
 
-        if self.package_name.startswith(MODULE_NAME):
+        if self.source.master_name.startswith(MODULE_NAME):
             return True
 
         if self.is_type_defs():
@@ -102,7 +122,15 @@ class ImportRecord:
         return False
 
     def is_internal(self) -> bool:
+        """
+        Whether import is internal and requires `get_external` call before rendering.
+        """
         return self._is_internal
 
     def get_external(self, _module_name: str) -> ImportRecord:
+        """
+        Get itself.
+
+        Overriden by `InternalImportRecord`.
+        """
         return self

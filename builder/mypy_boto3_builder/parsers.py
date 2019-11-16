@@ -69,22 +69,45 @@ def get_boto3_resource(
     return session.resource(service_name.boto3_name)  # type: ignore
 
 
-def get_resource_public_methods(resource_class: Resource) -> Dict[str, FunctionType]:
-    resource_class_members = inspect.getmembers(resource_class)
-    resource_methods: Dict[str, FunctionType] = {}
-    for name, member in resource_class_members:
+def get_resource_public_methods(
+    resource_class: Boto3ResourceMeta,
+) -> Dict[str, FunctionType]:
+    """
+    Extract public methods from boto3 sub resource.
+
+    Arguments:
+        resource_class -- boto3 resource meta.
+
+    Returns:
+        A dictionary of method name and method.
+    """
+    class_members = inspect.getmembers(resource_class)
+    methods: Dict[str, FunctionType] = {}
+    for name, member in class_members:
         if name.startswith("_"):
             continue
 
         if name[0].isupper():
             continue
 
-        if is_resource_action(member):
-            resource_methods[name] = member
-    return resource_methods
+        if not is_resource_action(member):
+            continue
+
+        methods[name] = member
+
+    return methods
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
+    """
+    Extract public methods from any class.
+
+    Arguments:
+        inspect_class -- Inspect class.
+
+    Returns:
+        A dictionary of method name and method.
+    """
     class_members = inspect.getmembers(inspect_class)
     methods: Dict[str, FunctionType] = {}
     for name, member in class_members:
@@ -100,6 +123,15 @@ def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
 
 
 def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
+    """
+    Extract attributes from boto3 resource.
+
+    Arguments:
+        resource -- boto3 service resource.
+
+    Returns:
+        A list of Attribute structures.
+    """
     result: List[Attribute] = []
     service_model = resource.meta.client.meta.service_model
     if resource.meta.resource_model.shape:
@@ -114,23 +146,49 @@ def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
 
 
 def parse_client(session: Session, service_name: ServiceName) -> Client:
+    """
+    Parse boto3 client to a structure.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        Client structure.
+    """
     client = get_boto3_client(session, service_name)
+    public_methods = get_public_methods(client)
+    methods = [
+        parse_method("Client", method_name, method)
+        for method_name, method in public_methods.items()
+    ]
     return Client(
         service_name=service_name,
         boto3_client=client,
         docstring=clean_doc(getdoc(client)),
-        methods=parse_methods("Client", get_public_methods(client)),
+        methods=methods,
     )
 
 
-def parse_collections(resource: Boto3ServiceResource,) -> List[Collection]:
+def parse_collections(resource: Boto3ServiceResource) -> List[Collection]:
+    """
+    Extract collections from boto3 resource.
+
+    Arguments:
+        resource -- boto3 service resource.
+
+    Returns:
+        A list of Collection structures.
+    """
     result: List[Collection] = []
     for collection in resource.meta.resource_model.collections:
-        methods = parse_methods(
-            collection.name, get_public_methods(getattr(resource, collection.name)),
-        )
-        # for method in methods:
-        #     method.decorators.append(TypeAnnotation(classmethod))
+        collection_class = getattr(resource, collection.name)
+        public_methods = get_public_methods(collection_class)
+        methods = [
+            parse_method(collection.name, method_name, method)
+            for method_name, method in public_methods.items()
+        ]
+
         result.append(
             Collection(
                 name=collection.name,
@@ -145,7 +203,16 @@ def parse_collections(resource: Boto3ServiceResource,) -> List[Collection]:
     return result
 
 
-def parse_identifiers(resource: Boto3ServiceResource,) -> List[Attribute]:
+def parse_identifiers(resource: Boto3ServiceResource) -> List[Attribute]:
+    """
+    Extract collections from boto3 resource.
+
+    Arguments:
+        resource -- boto3 service resource.
+
+    Returns:
+        A list of Attribute structures.
+    """
     result: List[Attribute] = []
     identifiers = resource.meta.resource_model.identifiers
     for identifier in identifiers:
@@ -153,35 +220,53 @@ def parse_identifiers(resource: Boto3ServiceResource,) -> List[Attribute]:
     return result
 
 
-def parse_methods(class_name: str, public_methods: Dict[str, Any]) -> List[Method]:
-    result: List[Method] = []
-    for name, method in public_methods.items():
-        prefix = f"{get_class_prefix(class_name)}{get_class_prefix(name)}"
-        docstring_parser = DocstringParser()
-        doc = getdoc(method) or ""
-        arguments = docstring_parser.get_function_arguments(method)
-        return_type = docstring_parser.NONE_ANNOTATION
-        if doc:
-            doc = clean_doc(doc)
-            docstring_parser.enrich_arguments(doc, arguments, prefix)
-            return_type = docstring_parser.get_return_type(doc, prefix)
-        else:
-            docless_arguments = docstring_parser.get_docless_method_arguments(name)
-            if docless_arguments:
-                arguments = docless_arguments
+def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
+    """
+    Parse method to a structure.
 
-        result.append(
-            Method(
-                name=name, arguments=arguments, docstring=doc, return_type=return_type,
-            )
-        )
-    return result
+    Arguments:
+        parent_name -- Parent class name.
+        method -- Inspect method.
+
+    Returns:
+        Method structure.
+    """
+    prefix = f"{get_class_prefix(parent_name)}{get_class_prefix(name)}"
+    docstring_parser = DocstringParser()
+    doc = getdoc(method) or ""
+    arguments = docstring_parser.get_function_arguments(method)
+    return_type = docstring_parser.NONE_ANNOTATION
+    if doc:
+        doc = clean_doc(doc)
+        docstring_parser.enrich_arguments(doc, arguments, prefix)
+        return_type = docstring_parser.get_return_type(doc, prefix)
+    else:
+        docless_arguments = docstring_parser.get_docless_method_arguments(name)
+        if docless_arguments:
+            arguments = docless_arguments
+
+    return Method(
+        name=name, arguments=arguments, docstring=doc, return_type=return_type,
+    )
 
 
 def parse_resource(resource: Boto3ServiceResource) -> Resource:
+    """
+    Parse boto3 sub Resource data.
+
+    Arguments:
+        resource -- Original boto3 resource.
+
+    Returns:
+        Resource structure.
+    """
     name = resource.__class__.__name__.split(".", 1)[-1]
 
-    methods = parse_methods(name, get_resource_public_methods(resource.__class__))
+    public_methods = get_resource_public_methods(resource.__class__)
+    methods = [
+        parse_method(name, method_name, method)
+        for method_name, method in public_methods.items()
+    ]
 
     attributes: List[Attribute] = []
     attributes.extend(parse_attributes(resource))
@@ -201,12 +286,26 @@ def parse_resource(resource: Boto3ServiceResource) -> Resource:
 def parse_service_resource(
     session: Session, service_name: ServiceName
 ) -> Optional[ServiceResource]:
+    """
+    Parse boto3 ServiceResource data.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        ServiceResource structure or None if service does not have a resource.
+    """
     try:
         service_resource = get_boto3_resource(session, service_name)
     except ResourceNotExistsError:
         return None
 
-    methods = parse_methods("ServiceResource", get_public_methods(service_resource))
+    public_methods = get_public_methods(service_resource)
+    methods = [
+        parse_method("ServiceResource", method_name, method)
+        for method_name, method in public_methods.items()
+    ]
 
     attributes: List[Attribute] = []
     attributes.extend(parse_attributes(service_resource))
@@ -215,7 +314,7 @@ def parse_service_resource(
     collections = parse_collections(service_resource)
 
     sub_resources: List[Resource] = []
-    for sub_resource in parse_sub_resources(session, service_name, service_resource):
+    for sub_resource in get_sub_resources(session, service_name, service_resource):
         sub_resources.append(parse_resource(sub_resource))
 
     return ServiceResource(
@@ -229,9 +328,20 @@ def parse_service_resource(
     )
 
 
-def parse_sub_resources(
+def get_sub_resources(
     session: Session, service_name: ServiceName, resource: Boto3ResourceMeta
 ) -> List[Boto3ServiceResource]:
+    """
+    Initialize ServiceResource sub-resources with fake data.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+        resource -- Parent ServiceResource.
+
+    Returns:
+        A list of initialized `Boto3ServiceResource`.
+    """
     result: List[Boto3ServiceResource] = []
     session_session = session._session  # pylint: disable=protected-access
     loader = session_session.get_component("data_loader")
@@ -258,9 +368,7 @@ def parse_sub_resources(
             ),
         )
         identifiers = resource_class.meta.resource_model.identifiers
-        args = []
-        for _ in identifiers:
-            args.append("foo")
+        args = ["foo"] * len(identifiers)
         result.append(
             resource_class(*args, client=get_boto3_client(session, service_name))
         )
@@ -269,6 +377,16 @@ def parse_sub_resources(
 
 
 def parse_service_module(session: Session, service_name: ServiceName) -> ServiceModule:
+    """
+    Extract all data from boto3 service meodule.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        ServiceModule structure.
+    """
     client = parse_client(session, service_name)
     result = ServiceModule(
         service_name=service_name,
@@ -278,12 +396,17 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
 
     for waiter_name in client.boto3_client.waiter_names:
         waiter = client.boto3_client.get_waiter(waiter_name)
+        public_methods = get_public_methods(waiter)
+        methods = [
+            parse_method(waiter_name, method_name, method)
+            for method_name, method in public_methods.items()
+        ]
         result.waiters.append(
             Waiter(
                 name=waiter.name,
                 boto3_waiter=waiter,
                 docstring=clean_doc(getdoc(waiter)),
-                methods=parse_methods(waiter_name, get_public_methods(waiter)),
+                methods=methods,
             )
         )
 
@@ -302,15 +425,18 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         )
         for paginator_name in sorted(paginator_config):
             paginator = session_client.get_paginator(xform_name(paginator_name))
+            public_methods = get_public_methods(paginator)
+            methods = [
+                parse_method(paginator_name, method_name, method)
+                for method_name, method in public_methods.items()
+            ]
             paginator_model = paginator._model  # pylint: disable=protected-access
             result.paginators.append(
                 Paginator(
                     name=paginator_model.name,
                     boto3_paginator=paginator,
                     docstring=clean_doc(getdoc(paginator)),
-                    methods=parse_methods(
-                        paginator_name, get_public_methods(paginator)
-                    ),
+                    methods=methods,
                 )
             )
 
@@ -321,6 +447,18 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
 def parse_fake_service_module(
     session: Session, service_name: ServiceName
 ) -> ServiceModule:
+    """
+    Create fake boto3 service module structure.
+
+    Used by stubs and master package.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        ServiceModule structure.
+    """
     result = ServiceModule(service_name=service_name, client=Client())
 
     boto3_client = get_boto3_client(session, service_name)
@@ -348,6 +486,16 @@ def parse_fake_service_module(
 def parse_master_module(
     session: Session, service_names: Iterable[ServiceName]
 ) -> MasterModule:
+    """
+    Parse data for master module.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        MasterModule structure.
+    """
     result = MasterModule()
     for service_name in service_names:
         result.service_modules.append(parse_fake_service_module(session, service_name))
@@ -359,6 +507,16 @@ def parse_master_module(
 def parse_boto3_module(
     session: Session, service_names: Iterable[ServiceName]
 ) -> Boto3Module:
+    """
+    Parse data for boto3-stubs module.
+
+    Arguments:
+        session -- boto3 session.
+        service_name -- Target service name.
+
+    Returns:
+        MasterModule structure.
+    """
     result = Boto3Module()
     for service_name in service_names:
         result.service_modules.append(parse_fake_service_module(session, service_name))

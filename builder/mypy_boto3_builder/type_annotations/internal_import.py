@@ -29,6 +29,12 @@ class InternalImport(FakeAnnotation):
         self.module_name = module_name
 
     def render(self) -> str:
+        """
+        Render type annotation to a valid Python code for local usage.
+
+        Returns:
+            A string with a valid type annotation.
+        """
         return f"{self.scope}.{self.name}"
 
     @property
@@ -36,10 +42,16 @@ class InternalImport(FakeAnnotation):
         return f"{self.module_name}_scope"
 
     def get_import_record(self) -> ImportRecord:
+        """
+        Get import record required for using type annotation.
+        """
         return ImportRecord(
             source=f"{self.service_name.module_name}.{self.module_name}",
             alias=self.scope,
         )
 
     def copy(self) -> InternalImport:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return InternalImport(self.name, self.service_name, self.module_name)

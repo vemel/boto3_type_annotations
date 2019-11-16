@@ -25,6 +25,12 @@ class TypeAnnotation(FakeAnnotation):
         self.wrapped_type = wrapped_type
 
     def render(self) -> str:
+        """
+        Render type annotation to a valid Python code for local usage.
+
+        Returns:
+            A string with a valid type annotation.
+        """
         type_annotation = self.wrapped_type
         if isinstance(type_annotation, str):
             return type_annotation
@@ -59,4 +65,7 @@ class TypeAnnotation(FakeAnnotation):
         return self.wrapped_type == List
 
     def copy(self) -> TypeAnnotation:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return TypeAnnotation(self.wrapped_type)

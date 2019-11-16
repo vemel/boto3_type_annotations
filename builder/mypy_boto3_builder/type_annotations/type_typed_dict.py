@@ -29,6 +29,12 @@ class TypedDictAttribute:
         self.required = required
 
     def render(self) -> str:
+        """
+        Render attribute to use in class-based TypedDict definition.
+
+        Returns:
+            A string with arguemnt definition.
+        """
         return f"{self.name}: {self.type_annotation.render()}"
 
 
@@ -53,39 +59,79 @@ class TypeTypedDict(FakeAnnotation):
         self.docstring = docstring
 
     def render(self) -> str:
+        """
+        Render type annotation to a valid Python code for local usage.
+
+        Returns:
+            A string with a valid type annotation.
+        """
         return self.name
 
     def get_import_record(self) -> ImportRecord:
+        """
+        Get import record required for using type annotation.
+        """
         return InternalImportRecord(source=TYPE_DEFS_NAME, name=self.name)
 
     def get_types(self) -> Set[FakeAnnotation]:
+        """
+        Get set with itself.
+
+        To get child types, `get_children_types` has to be used.
+
+        Returns:
+            A set of type annotations.
+        """
         return {self}
 
     def add_attribute(
         self, name: str, type_annotation: FakeAnnotation, required: bool
     ) -> None:
+        """
+        Add new attribute to a dictionary.
+
+        Arguments:
+            name -- Argument name.
+            type_annotation -- Argument type annotation.
+            required -- Whether argument has to be set.
+        """
         self.children.append(TypedDictAttribute(name, type_annotation, required))
 
     def is_dict(self) -> bool:
+        """
+        Always True as it is a TypedDict.
+        """
         return True
 
     def render_class(self) -> str:
+        """
+        Render class-based definition for debugging.
+        """
         children = "\n".join([f"     {i.render()}" for i in self.children])
         return f"class {self.name}:\n{children}"
 
     def has_optional(self) -> bool:
+        """
+        Whether TypedDict has optional keys.
+        """
         for child in self.children:
             if not child.required:
                 return True
         return False
 
     def has_required(self) -> bool:
+        """
+        Whether TypedDict has required keys.
+        """
         for child in self.children:
             if child.required:
                 return True
         return False
 
     def has_both(self) -> bool:
+        """
+        Whether TypedDict has both optional and required keys.
+        """
         return self.has_required() and self.has_optional()
 
     def get_required(self) -> List[TypedDictAttribute]:
@@ -103,6 +149,9 @@ class TypeTypedDict(FakeAnnotation):
         return result
 
     def copy(self) -> TypeTypedDict:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return TypeTypedDict(self.name, list(self.children), docstring=self.docstring)
 
     def is_same(self, other: TypeTypedDict) -> bool:

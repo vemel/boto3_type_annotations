@@ -46,7 +46,7 @@ class FakeAnnotation:
     @abstractmethod
     def get_import_record(self) -> ImportRecord:
         """
-        Get import record required for defining type annotation.
+        Get import record required for using type annotation.
         """
 
     def get_types(self) -> Set[FakeAnnotation]:
@@ -56,11 +56,13 @@ class FakeAnnotation:
         return {self}
 
     def remove_children(self) -> None:
-        pass
+        """
+        Remove all children from `TypeSubstript` or `TypeTypedDict` annotation.
+        """
 
     def add_child(self, child: FakeAnnotation) -> None:
         """
-        Add new child to `TypeSubstript` or `TypeTypedDict` annotations.
+        Add new child to `TypeSubstript` or `TypeTypedDict` annotation.
         """
 
     def is_dict(self) -> bool:  # pylint: disable=no-self-use

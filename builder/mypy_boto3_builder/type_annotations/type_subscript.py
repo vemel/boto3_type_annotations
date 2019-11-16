@@ -29,7 +29,7 @@ class TypeSubscript(FakeAnnotation):
 
     def render(self) -> str:
         """
-        Render to string.
+        Render type annotation to a valid Python code for local usage.
 
         Returns:
             A string with a valid type annotation.
@@ -41,6 +41,9 @@ class TypeSubscript(FakeAnnotation):
         return f"{self.parent.render()}[{children}]"
 
     def get_import_record(self) -> ImportRecord:
+        """
+        Get import record required for using type annotation.
+        """
         return self.parent.get_import_record()
 
     def get_types(self) -> Set[FakeAnnotation]:
@@ -62,4 +65,7 @@ class TypeSubscript(FakeAnnotation):
         return self.parent.is_list()
 
     def copy(self) -> TypeSubscript:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return TypeSubscript(self.parent, list(self.children))

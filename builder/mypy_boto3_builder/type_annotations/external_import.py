@@ -25,10 +25,22 @@ class ExternalImport(FakeAnnotation):
         self.import_record = ImportRecord(source=source, name=name, alias=alias)
 
     def render(self) -> str:
+        """
+        Get string with local name to use.
+
+        Returns:
+            Import record local name.
+        """
         return self.import_record.get_local_name()
 
     def get_import_record(self) -> ImportRecord:
+        """
+        Get import record required for using type annotation.
+        """
         return self.import_record
 
     def copy(self) -> ExternalImport:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return ExternalImport(self.source, self.name, self.alias)

@@ -24,11 +24,23 @@ class TypeLiteral(FakeAnnotation):
         self.children = children
 
     def render(self) -> str:
+        """
+        Render type annotation to a valid Python code for local usage.
+
+        Returns:
+            A string with a valid type annotation.
+        """
         children = ", ".join([repr(i) for i in self.children])
         return f"{self.parent.render()}[{children}]"
 
     def get_import_record(self) -> ImportRecord:
+        """
+        Get import record required for using type annotation.
+        """
         return self.parent.get_import_record()
 
     def copy(self) -> TypeLiteral:
+        """
+        Create a copy of type annotation wrapper.
+        """
         return TypeLiteral(*self.children)

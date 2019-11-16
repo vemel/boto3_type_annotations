@@ -1,3 +1,6 @@
+"""
+Grouped by `source` import records for nicer rendering.
+"""
 from __future__ import annotations
 
 from typing import Iterable, List

@@ -30,19 +30,23 @@ Wrapper for type annotations imported from 3rd party libraries, like
 
 ### ExternalImport().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L33)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L42)
 
 ```python
 def copy() -> ExternalImport:
 ```
 
+Create a copy of type annotation wrapper.
+
 ### ExternalImport().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L30)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/external_import.py#L36)
 
 ```python
 def get_import_record() -> ImportRecord:
 ```
+
+Get import record required for using type annotation.
 
 ### ExternalImport().render
 
@@ -51,3 +55,9 @@ def get_import_record() -> ImportRecord:
 ```python
 def render() -> str:
 ```
+
+Get string with local name to use.
+
+#### Returns
+
+Import record local name.

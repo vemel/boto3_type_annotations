@@ -28,17 +28,17 @@ Parent class for all type annotation wrappers.
 
 ### FakeAnnotation().add_child
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L61)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L63)
 
 ```python
 def add_child(child: FakeAnnotation) -> None:
 ```
 
-Add new child to `TypeSubstript` or `TypeTypedDict` annotations.
+Add new child to `TypeSubstript` or `TypeTypedDict` annotation.
 
 ### FakeAnnotation().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L78)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L80)
 
 ```python
 @abstractmethod
@@ -56,7 +56,7 @@ Create a copy of type annotation wrapper.
 def get_import_record() -> ImportRecord:
 ```
 
-Get import record required for defining type annotation.
+Get import record required for using type annotation.
 
 ### FakeAnnotation().get_types
 
@@ -70,7 +70,7 @@ Get all used type annotations recursively including self.
 
 ### FakeAnnotation().is_dict
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L66)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L68)
 
 ```python
 def is_dict() -> bool:
@@ -80,7 +80,7 @@ Whether type annotation is `Dict` or `TypedDict`
 
 ### FakeAnnotation().is_list
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L72)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/fake_annotation.py#L74)
 
 ```python
 def is_list() -> bool:
@@ -95,6 +95,8 @@ Whether type annotation is `List`
 ```python
 def remove_children() -> None:
 ```
+
+Remove all children from `TypeSubstript` or `TypeTypedDict` annotation.
 
 ### FakeAnnotation().render
 

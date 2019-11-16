@@ -27,19 +27,23 @@ Wrapper for `Literal` type annotations like `Literal['a', 'b']`
 
 ### TypeLiteral().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L33)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L42)
 
 ```python
 def copy() -> TypeLiteral:
 ```
 
+Create a copy of type annotation wrapper.
+
 ### TypeLiteral().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L30)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L36)
 
 ```python
 def get_import_record() -> ImportRecord:
 ```
+
+Get import record required for using type annotation.
 
 ### TypeLiteral().render
 
@@ -48,3 +52,9 @@ def get_import_record() -> ImportRecord:
 ```python
 def render() -> str:
 ```
+
+Render type annotation to a valid Python code for local usage.
+
+#### Returns
+
+A string with a valid type annotation.
