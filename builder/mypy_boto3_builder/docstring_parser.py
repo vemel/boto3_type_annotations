@@ -12,6 +12,7 @@ from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_def import TypeDef
 from mypy_boto3_builder.type_maps.type_map import TYPE_MAP
 from mypy_boto3_builder.type_maps.named_type_map import NAMED_TYPE_MAP
@@ -30,7 +31,7 @@ class DocstringParser:
     )
     RE_SYNTAX_TYPE: Pattern = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
 
-    NONE_ANNOTATION: FakeAnnotation = TypeAnnotation(None)
+    NONE_ANNOTATION: FakeAnnotation = TypeConstant(None)
     ANY_ANNOTATION: FakeAnnotation = TypeAnnotation(Any)
 
     DEFAULT_METHOD_ARGUMENTS = {
@@ -40,7 +41,7 @@ class DocstringParser:
                 "Resources", TypeSubscript(TypeAnnotation(List), [TypeAnnotation(Any)]),
             ),
             Argument("Tags", TypeSubscript(TypeAnnotation(List), [TypeDef("Tag")]),),
-            Argument("DryRun", TypeAnnotation(bool), TypeAnnotation(False)),
+            Argument("DryRun", TypeAnnotation(bool), TypeConstant(False)),
         ]
     }
 
@@ -49,7 +50,7 @@ class DocstringParser:
 
     def get_return_type(self, docstring: str, prefix: str) -> FakeAnnotation:
         lines = docstring.splitlines()
-        return_type: FakeAnnotation = TypeAnnotation(None)
+        return_type: FakeAnnotation = TypeConstant(None)
         for line in lines:
             line = line.strip()
             if not line.startswith(":rtype:"):
@@ -95,7 +96,7 @@ class DocstringParser:
                 del arguments[index]
                 break
 
-        arguments.append(Argument(argument_name, default=TypeAnnotation(None)))
+        arguments.append(Argument(argument_name, default=TypeConstant(None)))
         return arguments[-1]
 
     def get_docless_method_arguments(

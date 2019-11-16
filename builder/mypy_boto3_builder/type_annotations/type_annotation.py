@@ -16,16 +16,20 @@ class TypeAnnotation(FakeAnnotation):
 
     Arguments:
         wrapped_type -- Original type annotation.
+        alias -- Local name.
     """
 
-    def __init__(self, wrapped_type: Any) -> None:
+    def __init__(self, wrapped_type: Any, alias: str = "") -> None:
         if isinstance(wrapped_type, str):
             raise ValueError(f"Cannot wrap str: {wrapped_type}")
+        if isinstance(wrapped_type, bool):
+            raise ValueError(f"Cannot wrap bool: {wrapped_type}")
 
         if isinstance(wrapped_type, FakeAnnotation):
             raise ValueError(f"Cannot wrap FakeAnnotation: {wrapped_type}")
 
         self.wrapped_type = wrapped_type
+        self.alias = alias
 
     def render(self) -> str:
         """
@@ -34,11 +38,13 @@ class TypeAnnotation(FakeAnnotation):
         Returns:
             A string with a valid type annotation.
         """
+        if self.alias:
+            return self.alias
+
+        return self.get_import_name()
+
+    def get_import_name(self) -> str:
         type_annotation = self.wrapped_type
-        if isinstance(type_annotation, str):
-            return type_annotation
-        if isinstance(type_annotation, bool):
-            return str(type_annotation)
 
         name = str(type_annotation)
         if hasattr(type_annotation, "_name"):
@@ -59,7 +65,9 @@ class TypeAnnotation(FakeAnnotation):
     def get_import_record(self) -> ImportRecord:
         module = inspect.getmodule(self.wrapped_type)
         source = module.__name__ if module else "builtins"
-        return ImportRecord(source=source, name=self.render(),)
+        return ImportRecord(
+            source=source, name=self.get_import_name(), alias=self.alias
+        )
 
     def is_dict(self) -> bool:
         return self.wrapped_type == Dict

@@ -39,7 +39,11 @@ class ImportRecord:
     def __bool__(self) -> bool:
         return bool(self.source)
 
-    def __str__(self) -> str:
+    @classmethod
+    def empty(cls) -> ImportRecord:
+        return cls("")
+
+    def render(self) -> str:
         if self.name and self.alias:
             return f"from {self.source} import {self.name} as {self.alias}"
         if self.name:
@@ -47,6 +51,9 @@ class ImportRecord:
         if self.alias:
             return f"import {self.source} as {self.alias}"
         return f"import {self.source}"
+
+    def __str__(self) -> str:
+        return self.render()
 
     def __hash__(self) -> int:
         return hash(str(self))

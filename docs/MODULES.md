@@ -59,6 +59,7 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
             - [FakeAnnotation](builder/mypy_boto3_builder/type_annotations/fake_annotation.md#fakeannotation)
             - [InternalImport](builder/mypy_boto3_builder/type_annotations/internal_import.md#internalimport)
             - [TypeAnnotation](builder/mypy_boto3_builder/type_annotations/type_annotation.md#typeannotation)
+            - [TypeConstant](builder/mypy_boto3_builder/type_annotations/type_constant.md#typeconstant)
             - [TypeDef](builder/mypy_boto3_builder/type_annotations/type_def.md#typedef)
             - [TypeLiteral](builder/mypy_boto3_builder/type_annotations/type_literal.md#typeliteral)
             - [TypeSubscript](builder/mypy_boto3_builder/type_annotations/type_subscript.md#typesubscript)

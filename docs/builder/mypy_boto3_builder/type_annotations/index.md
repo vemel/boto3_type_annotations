@@ -11,6 +11,7 @@ to a valid Python code.
         - [FakeAnnotation](fake_annotation.md#fakeannotation)
         - [InternalImport](internal_import.md#internalimport)
         - [TypeAnnotation](type_annotation.md#typeannotation)
+        - [TypeConstant](type_constant.md#typeconstant)
         - [TypeDef](type_def.md#typedef)
         - [TypeLiteral](type_literal.md#typeliteral)
         - [TypeSubscript](type_subscript.md#typesubscript)

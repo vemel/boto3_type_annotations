@@ -39,6 +39,8 @@ class ImportRecordGroup:
         """
         result: List[ImportRecordGroup] = []
         for import_record in sorted(import_records):
+            if not import_record:
+                continue
             if (
                 not result
                 or result[-1].source != import_record.source

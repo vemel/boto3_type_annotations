@@ -18,8 +18,6 @@ Structures produced by parsers.
     - [Client](#client)
         - [Client().get_all_names](#clientget_all_names)
         - [Client().get_import_records](#clientget_import_records)
-        - [Client.get_paginator_method](#clientget_paginator_method)
-        - [Client.get_waiter_method](#clientget_waiter_method)
     - [Collection](#collection)
         - [Collection().get_types](#collectionget_types)
     - [Function](#function)
@@ -52,7 +50,7 @@ Structures produced by parsers.
 
 ## Argument
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L67)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L68)
 
 ```python
 dataclass
@@ -70,7 +68,7 @@ Method or function argument.
 
 ### Argument().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L84)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L85)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -78,7 +76,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## Attribute
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L31)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L32)
 
 ```python
 dataclass
@@ -95,7 +93,7 @@ Class or module attribute.
 
 ### Attribute().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L47)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -109,7 +107,7 @@ A set of type annotations.
 
 ### Attribute().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L55)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L56)
 
 ```python
 def render() -> str:
@@ -125,7 +123,7 @@ A string with rendered attribute.
 
 ## Boto3Module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L464)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L440)
 
 ```python
 dataclass
@@ -134,7 +132,7 @@ class Boto3Module():
 
 ### Boto3Module().essential_service_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L471)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L447)
 
 ```python
 @property
@@ -143,7 +141,7 @@ def essential_service_names() -> List[ServiceName]:
 
 ## ClassRecord
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L118)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L119)
 
 ```python
 dataclass
@@ -152,7 +150,7 @@ class ClassRecord():
 
 ### ClassRecord().get_required_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L136)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L137)
 
 ```python
 def get_required_import_records() -> Set[ImportRecord]:
@@ -160,7 +158,7 @@ def get_required_import_records() -> Set[ImportRecord]:
 
 ### ClassRecord().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L126)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L127)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -168,7 +166,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## Client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L310)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L307)
 
 ```python
 dataclass
@@ -181,7 +179,7 @@ class Client(ClassRecord):
 
 ### Client().get_all_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L328)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L325)
 
 ```python
 def get_all_names() -> List[str]:
@@ -189,41 +187,15 @@ def get_all_names() -> List[str]:
 
 ### Client().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L324)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L321)
 
 ```python
 def get_import_records() -> Set[ImportRecord]:
 ```
 
-### Client.get_paginator_method
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L331)
-
-```python
-@staticmethod
-def get_paginator_method() -> Method:
-```
-
-#### See also
-
-- [Method](#method)
-
-### Client.get_waiter_method
-
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L343)
-
-```python
-@staticmethod
-def get_waiter_method() -> Method:
-```
-
-#### See also
-
-- [Method](#method)
-
 ## Collection
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L149)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L150)
 
 ```python
 dataclass
@@ -236,7 +208,7 @@ class Collection(ClassRecord):
 
 ### Collection().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L161)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L162)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -244,7 +216,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## Function
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L94)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L95)
 
 ```python
 dataclass
@@ -253,7 +225,7 @@ class Function():
 
 ### Function().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L103)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L104)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -261,7 +233,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## MasterModule
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L480)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L456)
 
 ```python
 dataclass
@@ -270,7 +242,7 @@ class MasterModule():
 
 ### MasterModule().essential_service_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L487)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L463)
 
 ```python
 @property
@@ -279,7 +251,7 @@ def essential_service_names() -> List[ServiceName]:
 
 ## Method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L113)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L114)
 
 ```python
 dataclass
@@ -292,7 +264,7 @@ class Method(Function):
 
 ## Paginator
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L217)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L214)
 
 ```python
 dataclass
@@ -305,7 +277,7 @@ class Paginator(ClassRecord):
 
 ### Paginator().get_client_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L234)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L231)
 
 ```python
 def get_client_method() -> Method:
@@ -317,7 +289,7 @@ def get_client_method() -> Method:
 
 ### Paginator().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L229)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L226)
 
 ```python
 def get_import_record() -> InternalImportRecord:
@@ -325,7 +297,7 @@ def get_import_record() -> InternalImportRecord:
 
 ## Resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L167)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L168)
 
 ```python
 dataclass
@@ -338,7 +310,7 @@ class Resource(ClassRecord):
 
 ### Resource().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L180)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L181)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -346,7 +318,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## ServiceModule
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L353)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L329)
 
 ```python
 dataclass
@@ -355,7 +327,7 @@ class ServiceModule():
 
 ### ServiceModule().extract_typed_dicts
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L362)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L338)
 
 ```python
 def extract_typed_dicts(
@@ -366,7 +338,7 @@ def extract_typed_dicts(
 
 ### ServiceModule().get_client_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L407)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L383)
 
 ```python
 def get_client_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -374,7 +346,7 @@ def get_client_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ### ServiceModule().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L398)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L374)
 
 ```python
 def get_import_records() -> List[ImportRecord]:
@@ -382,7 +354,7 @@ def get_import_records() -> List[ImportRecord]:
 
 ### ServiceModule().get_paginator_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L431)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L407)
 
 ```python
 def get_paginator_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -390,7 +362,7 @@ def get_paginator_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ### ServiceModule().get_service_resource_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L417)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L393)
 
 ```python
 def get_service_resource_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -398,7 +370,7 @@ def get_service_resource_required_import_record_groups() -> List[ImportRecordGro
 
 ### ServiceModule().get_type_defs_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L451)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L427)
 
 ```python
 def get_type_defs_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -406,7 +378,7 @@ def get_type_defs_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ### ServiceModule().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L387)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L363)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -414,7 +386,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ### ServiceModule().get_waiter_required_import_record_groups
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L441)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L417)
 
 ```python
 def get_waiter_required_import_record_groups() -> List[ImportRecordGroup]:
@@ -422,7 +394,7 @@ def get_waiter_required_import_record_groups() -> List[ImportRecordGroup]:
 
 ## ServiceResource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L249)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L246)
 
 ```python
 dataclass
@@ -435,7 +407,7 @@ class ServiceResource(ClassRecord):
 
 ### ServiceResource().get_all_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L288)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L285)
 
 ```python
 def get_all_names() -> List[str]:
@@ -443,7 +415,7 @@ def get_all_names() -> List[str]:
 
 ### ServiceResource().get_collections
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L296)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L293)
 
 ```python
 def get_collections() -> List[Collection]:
@@ -451,7 +423,7 @@ def get_collections() -> List[Collection]:
 
 ### ServiceResource().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L278)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L275)
 
 ```python
 def get_import_records() -> Set[ImportRecord]:
@@ -459,7 +431,7 @@ def get_import_records() -> Set[ImportRecord]:
 
 ### ServiceResource().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L269)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L266)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:
@@ -467,7 +439,7 @@ def get_types() -> Set[FakeAnnotation]:
 
 ## Waiter
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L187)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L188)
 
 ```python
 dataclass
@@ -480,7 +452,7 @@ class Waiter(ClassRecord):
 
 ### Waiter().get_client_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L204)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L201)
 
 ```python
 def get_client_method() -> Method:
@@ -492,7 +464,7 @@ def get_client_method() -> Method:
 
 ### Waiter().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L199)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures.py#L196)
 
 ```python
 def get_import_record() -> InternalImportRecord:

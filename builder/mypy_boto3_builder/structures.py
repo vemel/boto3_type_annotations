@@ -21,6 +21,7 @@ from mypy_boto3_builder.import_helpers.internal_import_record import (
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_typed_dict import TypeTypedDict
@@ -41,7 +42,7 @@ class Attribute:
 
     name: str
     type: FakeAnnotation
-    value: FakeAnnotation = TypeAnnotation(None)
+    value: FakeAnnotation = TypeConstant(None)
 
     def get_types(self) -> Set[FakeAnnotation]:
         """
@@ -189,11 +190,7 @@ class Waiter(ClassRecord):
     waiter_name: str = "waiter_name"
     boto3_waiter: Boto3Waiter = None
     bases: List[FakeAnnotation] = field(
-        default_factory=lambda: [
-            ExternalImport(
-                source="botocore.waiter", name="Waiter", alias="Boto3Waiter",
-            )
-        ]
+        default_factory=lambda: [TypeAnnotation(Boto3Waiter)]
     )
 
     def get_import_record(self) -> InternalImportRecord:
@@ -327,27 +324,6 @@ class Client(ClassRecord):
 
     def get_all_names(self) -> List[str]:
         return [self.name]
-
-    @staticmethod
-    def get_paginator_method() -> Method:
-        return Method(
-            name="get_paginator",
-            docstring=f"Stub for `get_paginator` method.",
-            arguments=[
-                Argument("self"),
-                Argument("operation_name", TypeAnnotation(str)),
-            ],
-            return_type=TypeAnnotation(Boto3Paginator),
-        )
-
-    @staticmethod
-    def get_waiter_method() -> Method:
-        return Method(
-            name="get_waiter",
-            docstring=f"Stub for `get_waiter` method.",
-            arguments=[Argument("self"), Argument("waiter_name", TypeAnnotation(str)),],
-            return_type=TypeAnnotation(Boto3Waiter),
-        )
 
 
 @dataclass

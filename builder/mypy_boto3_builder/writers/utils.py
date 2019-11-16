@@ -27,6 +27,8 @@ def blackify_str(content: str, fast: bool = True, is_pyi: bool = False) -> str:
         )
     except black.NothingChanged:
         return content
+    except black.InvalidInput as e:
+        raise ValueError(e)
 
 
 def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:

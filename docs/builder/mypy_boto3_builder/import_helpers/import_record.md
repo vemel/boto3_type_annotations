@@ -6,6 +6,7 @@ Helper for Python import strings.
 
 - [mypy-boto3](../../../README.md#mypy_boto3) / [Modules](../../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](../index.md#mypy-boto3-builder) / [Import Helpers](index.md#import-helpers) / ImportRecord
     - [ImportRecord](#importrecord)
+        - [ImportRecord.empty](#importrecordempty)
         - [ImportRecord().get_external](#importrecordget_external)
         - [ImportRecord().get_local_name](#importrecordget_local_name)
         - [ImportRecord().is_builtins](#importrecordis_builtins)
@@ -13,6 +14,7 @@ Helper for Python import strings.
         - [ImportRecord().is_local](#importrecordis_local)
         - [ImportRecord().is_third_party](#importrecordis_third_party)
         - [ImportRecord().is_type_defs](#importrecordis_type_defs)
+        - [ImportRecord().render](#importrecordrender)
 
 ## ImportRecord
 
@@ -33,9 +35,18 @@ Helper for Python import strings.
 - `name` - Import name.
 - `alias` - Import local name.
 
+### ImportRecord.empty
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L42)
+
+```python
+@classmethod
+def empty() -> ImportRecord:
+```
+
 ### ImportRecord().get_external
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L133)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L140)
 
 ```python
 def get_external(_module_name: str) -> ImportRecord:
@@ -47,7 +58,7 @@ Overriden by `InternalImportRecord`.
 
 ### ImportRecord().get_local_name
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L84)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L91)
 
 ```python
 def get_local_name() -> str:
@@ -57,7 +68,7 @@ Get local import name.
 
 ### ImportRecord().is_builtins
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L90)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L97)
 
 ```python
 def is_builtins() -> bool:
@@ -67,7 +78,7 @@ Whether import is from Python `builtins` module.
 
 ### ImportRecord().is_internal
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L127)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L134)
 
 ```python
 def is_internal() -> bool:
@@ -77,7 +88,7 @@ Whether import is internal and requires [ImportRecord().get_external](#importrec
 
 ### ImportRecord().is_local
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L112)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L119)
 
 ```python
 def is_local() -> bool:
@@ -87,7 +98,7 @@ Whether import is from local module.
 
 ### ImportRecord().is_third_party
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L102)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L109)
 
 ```python
 def is_third_party() -> bool:
@@ -97,10 +108,18 @@ Whether import is from 3rd party module.
 
 ### ImportRecord().is_type_defs
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L96)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L103)
 
 ```python
 def is_type_defs() -> bool:
 ```
 
 Whether import is from `type_defs` module.
+
+### ImportRecord().render
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/import_record.py#L46)
+
+```python
+def render() -> str:
+```

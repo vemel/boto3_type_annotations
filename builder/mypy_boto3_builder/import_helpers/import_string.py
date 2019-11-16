@@ -29,7 +29,7 @@ class ImportString:
     """
 
     def __init__(self, import_string: str) -> None:
-        self.parts = import_string.split(".")
+        self.parts = [i for i in import_string.split(".") if i]
 
     def __bool__(self) -> bool:
         return bool(self.parts)

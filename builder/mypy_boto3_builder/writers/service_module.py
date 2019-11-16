@@ -70,10 +70,14 @@ def write_service_module(
             service_name=service_module.service_name,
         )
         if reformat:
-            if file_path.suffix == ".py":
-                content = blackify_str(content)
-            if file_path.suffix == ".pyi":
-                content = blackify_str(content, is_pyi=True)
+            try:
+                if file_path.suffix == ".py":
+                    content = blackify_str(content)
+                if file_path.suffix == ".pyi":
+                    content = blackify_str(content, is_pyi=True)
+            except ValueError as e:
+                file_path.write_text(content)
+                raise ValueError(f"Cannot parse {file_path}: {e}")
 
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)

@@ -15,6 +15,8 @@ from boto3.utils import ServiceContext
 from botocore import xform_name
 from botocore.exceptions import UnknownServiceError
 from botocore.client import BaseClient
+from botocore.paginate import Paginator as Boto3Paginator
+from botocore.waiter import Waiter as Boto3Waiter
 
 from mypy_boto3_builder.structures import (
     Method,
@@ -28,6 +30,7 @@ from mypy_boto3_builder.structures import (
     Boto3Module,
     ServiceModule,
     MasterModule,
+    Argument,
 )
 from mypy_boto3_builder.service_name import ServiceName
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
@@ -470,12 +473,32 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
     if result.paginators:
         for paginator in result.paginators:
             result.client.methods.append(paginator.get_client_method())
-        result.client.methods.append(result.client.get_paginator_method())
+        result.client.methods.append(
+            Method(
+                name="get_paginator",
+                docstring=f"Stub for `get_paginator` method.",
+                arguments=[
+                    Argument("self"),
+                    Argument("operation_name", TypeAnnotation(str)),
+                ],
+                return_type=TypeAnnotation(Boto3Paginator, alias="Boto3Paginator"),
+            )
+        )
 
     if result.waiters:
         for waiter in result.waiters:
             result.client.methods.append(waiter.get_client_method())
-        result.client.methods.append(result.client.get_waiter_method())
+        result.client.methods.append(
+            Method(
+                name="get_waiter",
+                docstring=f"Stub for `get_waiter` method.",
+                arguments=[
+                    Argument("self"),
+                    Argument("waiter_name", TypeAnnotation(str)),
+                ],
+                return_type=TypeAnnotation(Boto3Waiter, alias="Boto3Waiter"),
+            )
+        )
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
     return result

@@ -10,6 +10,7 @@ from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 
 
 TYPE_MAP: Dict[str, FakeAnnotation] = {
@@ -64,7 +65,7 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ),
     "list(string)": TypeSubscript(TypeAnnotation(List), [TypeAnnotation(str)]),
     "list of str": TypeSubscript(TypeAnnotation(List), [TypeAnnotation(str)]),
-    "None": TypeAnnotation(None),
+    "None": TypeConstant(None),
     ":py:class:`ec2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
     ":py:class:`EC2.NetworkAcl`": InternalImport("NetworkAcl", ServiceName.ec2),
     "list(:py:class:`ec2.InternetGateway`)": TypeSubscript(
