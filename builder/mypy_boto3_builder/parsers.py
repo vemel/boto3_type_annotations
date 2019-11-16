@@ -193,7 +193,7 @@ def parse_collections(
 
         result.append(
             Collection(
-                name=f"{parent_name}{get_class_prefix(collection.name)}",
+                name=f"{parent_name}{get_class_prefix(collection.name)}Collection",
                 attribute_name=collection.name,
                 docstring=clean_doc(getdoc(collection)),
                 type=InternalImport(
