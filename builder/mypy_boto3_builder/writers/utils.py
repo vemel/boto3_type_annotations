@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Any
 
+from boto3 import __version__ as boto3_version
 import jinja2
 import black
 
@@ -38,10 +39,19 @@ def format_path(path: Path) -> None:
 
 def render_jinja2_template(
     output_path: Path, template_path: Path, **kwargs: Any
-) -> None:
-    logger.debug(
-        f"Rendering {NicePath(TEMPLATES_PATH / template_path)} to {NicePath(output_path)}"
-    )
+) -> bool:
+    """
+    Render Jinja2 template to a file.
+
+    If file content is the same - file is not overwritten.
+
+    Returns:
+        True if file was updated.
+    """
+    template_full_path = TEMPLATES_PATH / template_path
+    logger.debug(f"Rendering {template_path} to {NicePath(output_path)}")
+    if not template_full_path.exists():
+        raise ValueError(f"Template {template_path} not found")
 
     output_path.parent.parent.mkdir(exist_ok=True)
     output_path.parent.mkdir(exist_ok=True)
@@ -51,12 +61,14 @@ def render_jinja2_template(
         master_pypi_name=PYPI_NAME,
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
-        indent=0,
+        boto3_version=boto3_version,
         **kwargs,
     )
     if output_path.exists():
         old_content = output_path.read_text()
+        print(output_path, old_content == new_content)
         if old_content == new_content:
-            return
+            return False
 
     output_path.write_text(new_content)
+    return True
