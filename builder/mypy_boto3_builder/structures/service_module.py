@@ -78,6 +78,8 @@ class ServiceModule:
                 )
             )
         for helper_function in self.helper_functions:
+            if helper_function.name not in ("boto3_client", "boto3_resource"):
+                continue
             import_records.add(
                 ImportRecord(
                     f"{self.service_name.module_name}.{ServiceModuleName.helpers.value}",
@@ -92,6 +94,8 @@ class ServiceModule:
         if self.service_resource:
             result.append(self.service_resource.name)
         for helper_function in self.helper_functions:
+            if helper_function.name not in ("boto3_client", "boto3_resource"):
+                continue
             result.append(helper_function.name)
         return result
 
