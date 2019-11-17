@@ -39,7 +39,7 @@ class DocstringParser:
         "create_tags": [
             Argument("self",),
             Argument("Resources", TypeSubscript(List, [TypeAnnotation(Any)]),),
-            Argument("Tags", TypeSubscript(List, [TypeDef("Tag")]),),
+            Argument("Tags", TypeSubscript(List, [TypeDef("EC2Tag")]),),
             Argument("DryRun", TypeClass(bool), TypeConstant(False)),
         ]
     }

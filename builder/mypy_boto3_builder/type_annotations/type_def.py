@@ -14,6 +14,4 @@ class TypeDef(ExternalImport):
     """
 
     def __init__(self, name: str) -> None:
-        super().__init__(
-            source=f"{MODULE_NAME}.type_defs", name=name, alias=f"TypeDef{name}",
-        )
+        super().__init__(source=f"{MODULE_NAME}.type_defs", name=name)
