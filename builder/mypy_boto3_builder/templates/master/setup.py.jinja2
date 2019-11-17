@@ -1,10 +1,9 @@
+from os.path import abspath, dirname
+
 from setuptools import setup
-from pathlib import Path
 
 
-ROOT_PATH = Path(__file__).absolute().parent
-README_PATH = ROOT_PATH / "README.md"
-LONG_DESCRIPTION = README_PATH.read_text()
+LONG_DESCRIPTION = open(dirname(abspath(__file__)) + "/README.md", "r").read()
 
 
 setup(
