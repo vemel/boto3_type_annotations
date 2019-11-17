@@ -82,6 +82,9 @@ If your IDE supports overloaded functions, just use `boto3` as usual.
 from boto3.session import Session
 
 # Any service can be used, we use `ec2` as an example.
+# All sub modules are named like `boto3` service names with underscopes instead
+# of hyphens, e.g. `mypy_boto3.ec2_instance_connect`
+# For `lambda`, module name is `mypy_boto3.lambda_`
 from mypy_boto3.ec2 import boto3_client, boto3_resource
 from mypy_boto3.ec2.helpers import get_bundle_task_complete_waiter, get_describe_volumes_paginator
 
