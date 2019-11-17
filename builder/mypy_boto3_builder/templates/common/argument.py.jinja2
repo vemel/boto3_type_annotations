@@ -3,7 +3,7 @@
 {% if argument.type -%}
     {{ ': ' -}}
     {{ argument.type.render() -}}
-    {% if argument.default %}
+    {% if argument.default -%}
         {{ ' = ' -}}
         {{ argument.default.render() -}}
     {% endif -%}

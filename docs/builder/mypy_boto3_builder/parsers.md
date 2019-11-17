@@ -7,6 +7,7 @@ Parsers for boto3 clients and resources.
 - [mypy-boto3](../../README.md#mypy_boto3) / [Modules](../../MODULES.md#mypy-boto3-modules) / `Builder` / [Mypy Boto3 Builder](index.md#mypy-boto3-builder) / Parsers
     - [get_boto3_client](#get_boto3_client)
     - [get_boto3_resource](#get_boto3_resource)
+    - [get_helper_body](#get_helper_body)
     - [get_public_methods](#get_public_methods)
     - [get_resource_public_methods](#get_resource_public_methods)
     - [get_sub_resources](#get_sub_resources)
@@ -24,7 +25,7 @@ Parsers for boto3 clients and resources.
 
 ## get_boto3_client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L47)
 
 ```python
 def get_boto3_client(
@@ -46,7 +47,7 @@ Boto3 client.
 
 ## get_boto3_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L60)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L61)
 
 ```python
 def get_boto3_resource(
@@ -70,9 +71,21 @@ Boto3 resource.
 
 - `ResourceNotExistsError` - If service does not have ServiceResource.
 
+## get_helper_body
+
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L593)
+
+```python
+def get_helper_body(
+    arguments: Iterable[Argument],
+    function_name: Literal['resource', 'client'],
+    service_name: ServiceName,
+) -> str:
+```
+
 ## get_public_methods
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L108)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L109)
 
 ```python
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -90,7 +103,7 @@ A dictionary of method name and method.
 
 ## get_resource_public_methods
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L79)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L80)
 
 ```python
 def get_resource_public_methods(
@@ -110,7 +123,7 @@ A dictionary of method name and method.
 
 ## get_sub_resources
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L362)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L363)
 
 ```python
 def get_sub_resources(
@@ -134,7 +147,7 @@ A list of initialized `Boto3ServiceResource`.
 
 ## parse_attributes
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L132)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L133)
 
 ```python
 def parse_attributes(resource: Boto3ServiceResource) -> List[Attribute]:
@@ -152,7 +165,7 @@ A list of Attribute structures.
 
 ## parse_boto3_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L614)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L676)
 
 ```python
 def parse_boto3_module(
@@ -174,7 +187,7 @@ MasterModule structure.
 
 ## parse_client
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L155)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L156)
 
 ```python
 def parse_client(session: Session, service_name: ServiceName) -> Client:
@@ -193,7 +206,7 @@ Client structure.
 
 ## parse_collections
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L187)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L188)
 
 ```python
 def parse_collections(
@@ -214,7 +227,7 @@ A list of Collection structures.
 
 ## parse_fake_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L554)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L616)
 
 ```python
 def parse_fake_service_module(
@@ -238,7 +251,7 @@ ServiceModule structure.
 
 ## parse_identifiers
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L223)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L224)
 
 ```python
 def parse_identifiers(resource: Boto3ServiceResource) -> List[Attribute]:
@@ -256,7 +269,7 @@ A list of Attribute structures.
 
 ## parse_master_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L593)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L655)
 
 ```python
 def parse_master_module(
@@ -278,7 +291,7 @@ MasterModule structure.
 
 ## parse_method
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L240)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L241)
 
 ```python
 def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
@@ -297,7 +310,7 @@ Method structure.
 
 ## parse_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L270)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L271)
 
 ```python
 def parse_resource(
@@ -318,7 +331,7 @@ Resource structure.
 
 ## parse_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L410)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L411)
 
 ```python
 def parse_service_module(
@@ -340,7 +353,7 @@ ServiceModule structure.
 
 ## parse_service_resource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L311)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers.py#L312)
 
 ```python
 def parse_service_resource(

@@ -5,6 +5,7 @@ import inspect
 from inspect import getdoc
 from typing import List, Dict, Any, Optional, Iterable, Union
 from types import FunctionType
+from typing_extensions import Literal
 
 from boto3.exceptions import ResourceNotExistsError
 from boto3.docs.utils import is_resource_action
@@ -36,9 +37,9 @@ from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
+from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
-from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.docstring_parser import DocstringParser
 
@@ -503,18 +504,14 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
     helper_arguments = [
-        Argument(
-            "service_name",
-            TypeLiteral(service_name.boto3_name),
-            TypeConstant(service_name.boto3_name),
-        ),
+        Argument("session", TypeClass(Session), TypeConstant(None)),
         Argument("region_name", TypeClass(str), TypeConstant(None)),
         Argument("api_version", TypeClass(str), TypeConstant(None)),
-        Argument("use_ssl", TypeClass(bool), TypeConstant(True)),
+        Argument("use_ssl", TypeClass(bool), TypeConstant(None)),
         Argument(
             "verify",
             TypeSubscript(Union, [TypeClass(str), TypeClass(bool)]),
-            TypeConstant(True),
+            TypeConstant(None),
         ),
         Argument("endpoint_url", TypeClass(str), TypeConstant(None)),
         Argument("aws_access_key_id", TypeClass(str), TypeConstant(None)),
@@ -526,12 +523,11 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         name="boto3_client",
         docstring=f"Equivalent of `boto3.client('{service_name.boto3_name}')`, returns a correct type.",
         arguments=helper_arguments,
-        return_type=InternalImport(
+        return_type=ExternalImport(
+            f"{service_name.module_name}.{ServiceModuleName.client.value}",
             result.client.name,
-            service_name=service_name,
-            module_name=ServiceModuleName.client,
         ),
-        body=f"return boto3.client({', '.join([f'{i.name}={i.name}' for i in helper_arguments])})",
+        body=get_helper_body(helper_arguments, "client", service_name),
     )
     result.helper_functions.append(client_helper)
     if result.service_resource:
@@ -539,16 +535,82 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             name="boto3_resource",
             docstring=f"Equivalent of `boto3.resource('{service_name.boto3_name}')`, returns a correct type.",
             arguments=helper_arguments,
-            return_type=InternalImport(
+            return_type=ExternalImport(
+                f"{service_name.module_name}.{ServiceModuleName.service_resource.value}",
                 result.service_resource.name,
-                service_name=service_name,
-                module_name=ServiceModuleName.service_resource,
             ),
-            body=f"return boto3.resource({', '.join([f'{i.name}={i.name}' for i in helper_arguments])})",
+            body=get_helper_body(helper_arguments, "resource", service_name),
         )
         result.helper_functions.append(resource_helper)
 
+    for paginator in result.paginators:
+        result.helper_functions.append(
+            Function(
+                name=f"get_{paginator.operation_name}_paginator",
+                docstring=f"Equivalent of `client.get_paginator('{paginator.operation_name}')`, returns a correct type.",
+                arguments=[
+                    Argument(
+                        name="client",
+                        type=ExternalImport(
+                            f"{service_name.module_name}.{ServiceModuleName.client.value}",
+                            result.client.name,
+                        ),
+                    )
+                ],
+                return_type=ExternalImport(
+                    f"{service_name.module_name}.{ServiceModuleName.paginator.value}",
+                    paginator.name,
+                ),
+                body=f"return client.get_waiter('{paginator.operation_name}')",
+            )
+        )
+
+    for waiter in result.waiters:
+        result.helper_functions.append(
+            Function(
+                name=f"get_{waiter.waiter_name}_waiter",
+                docstring=f"Equivalent of `client.get_waiter('{waiter.waiter_name}')`, returns a correct type.",
+                arguments=[
+                    Argument(
+                        name="client",
+                        type=ExternalImport(
+                            f"{service_name.module_name}.{ServiceModuleName.client.value}",
+                            result.client.name,
+                        ),
+                    )
+                ],
+                return_type=ExternalImport(
+                    f"{service_name.module_name}.{ServiceModuleName.waiter.value}",
+                    waiter.name,
+                ),
+                body=f"return client.get_waiter('{waiter.waiter_name}')",
+            )
+        )
+
     return result
+
+
+def get_helper_body(
+    arguments: Iterable[Argument],
+    function_name: Literal["resource", "client"],
+    service_name: ServiceName,
+) -> str:
+    helper_body_lines = [
+        "kwargs = {}",
+    ]
+    for argument in arguments:
+        if argument.name == "session":
+            continue
+        helper_body_lines.append(f"if {argument.name} is not None:")
+        helper_body_lines.append(f'    kwargs["{argument.name}"] = {argument.name}')
+    helper_body_lines.append("if session is not None:")
+    helper_body_lines.append(
+        f"    return session.{function_name}('{service_name.boto3_name}', **kwargs)"
+    )
+    helper_body_lines.append(
+        f"return boto3.{function_name}('{service_name.boto3_name}', **kwargs)"
+    )
+    return "\n".join(helper_body_lines)
 
 
 def parse_fake_service_module(
