@@ -3,7 +3,7 @@ Parsers for boto3 clients and resources.
 """
 import inspect
 from inspect import getdoc
-from typing import List, Dict, Any, Optional, Iterable
+from typing import List, Dict, Any, Optional, Iterable, Union
 from types import FunctionType
 
 from boto3.exceptions import ResourceNotExistsError
@@ -17,8 +17,10 @@ from botocore.exceptions import UnknownServiceError
 from botocore.client import BaseClient
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+from botocore.config import Config as Boto3Config
 
 from mypy_boto3_builder.structures.method import Method
+from mypy_boto3_builder.structures.function import Function
 from mypy_boto3_builder.structures.client import Client
 from mypy_boto3_builder.structures.attribute import Attribute
 from mypy_boto3_builder.structures.resource import Resource
@@ -31,9 +33,13 @@ from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.structures.master_module import MasterModule
 from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
+from mypy_boto3_builder.type_annotations.type_literal import TypeLiteral
+from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
 from mypy_boto3_builder.docstring_parser import DocstringParser
 
 
@@ -496,6 +502,52 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         )
 
     result.typed_dicts = result.extract_typed_dicts(result.get_types(), {})
+    helper_arguments = [
+        Argument(
+            "service_name",
+            TypeLiteral(service_name.boto3_name),
+            TypeConstant(service_name.boto3_name),
+        ),
+        Argument("region_name", TypeClass(str), TypeConstant(None)),
+        Argument("api_version", TypeClass(str), TypeConstant(None)),
+        Argument("use_ssl", TypeClass(bool), TypeConstant(True)),
+        Argument(
+            "verify",
+            TypeSubscript(Union, [TypeClass(str), TypeClass(bool)]),
+            TypeConstant(True),
+        ),
+        Argument("endpoint_url", TypeClass(str), TypeConstant(None)),
+        Argument("aws_access_key_id", TypeClass(str), TypeConstant(None)),
+        Argument("aws_secret_access_key", TypeClass(str), TypeConstant(None)),
+        Argument("aws_session_token", TypeClass(str), TypeConstant(None)),
+        Argument("config", TypeClass(Boto3Config), TypeConstant(None)),
+    ]
+    client_helper = Function(
+        name="boto3_client",
+        docstring=f"Equivalent of `boto3.client('{service_name.boto3_name}')`, returns a correct type.",
+        arguments=helper_arguments,
+        return_type=InternalImport(
+            result.client.name,
+            service_name=service_name,
+            module_name=ServiceModuleName.client,
+        ),
+        body=f"return boto3.client({', '.join([f'{i.name}={i.name}' for i in helper_arguments])})",
+    )
+    result.helper_functions.append(client_helper)
+    if result.service_resource:
+        resource_helper = Function(
+            name="boto3_resource",
+            docstring=f"Equivalent of `boto3.resource('{service_name.boto3_name}')`, returns a correct type.",
+            arguments=helper_arguments,
+            return_type=InternalImport(
+                result.service_resource.name,
+                service_name=service_name,
+                module_name=ServiceModuleName.service_resource,
+            ),
+            body=f"return boto3.resource({', '.join([f'{i.name}={i.name}' for i in helper_arguments])})",
+        )
+        result.helper_functions.append(resource_helper)
+
     return result
 
 

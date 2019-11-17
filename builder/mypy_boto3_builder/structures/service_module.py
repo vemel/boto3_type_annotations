@@ -4,6 +4,7 @@ from dataclasses import dataclass, field
 from typing import List, Set, Optional, Iterable, Dict
 
 from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -12,6 +13,7 @@ from mypy_boto3_builder.structures.service_resource import ServiceResource
 from mypy_boto3_builder.structures.waiter import Waiter
 from mypy_boto3_builder.structures.paginator import Paginator
 from mypy_boto3_builder.structures.client import Client
+from mypy_boto3_builder.structures.function import Function
 
 
 @dataclass
@@ -22,6 +24,7 @@ class ServiceModule:
     waiters: List[Waiter] = field(default_factory=lambda: [])
     paginators: List[Paginator] = field(default_factory=lambda: [])
     typed_dicts: List[TypeTypedDict] = field(default_factory=lambda: [])
+    helper_functions: List[Function] = field(default_factory=lambda: [])
 
     def extract_typed_dicts(
         self,
@@ -59,13 +62,37 @@ class ServiceModule:
             types.update(paginator.get_types())
         return types
 
-    def get_import_records(self) -> List[ImportRecord]:
-        result: List[ImportRecord] = []
-        result.extend(self.client.get_import_records())
+    def get_init_import_record_groups(self) -> List[ImportRecordGroup]:
+        import_records: Set[ImportRecord] = set()
+        import_records.add(
+            ImportRecord(
+                f"{self.service_name.module_name}.{ServiceModuleName.client.value}",
+                self.client.name,
+            )
+        )
         if self.service_resource:
-            result.extend(self.service_resource.get_import_records())
+            import_records.add(
+                ImportRecord(
+                    f"{self.service_name.module_name}.{ServiceModuleName.service_resource.value}",
+                    self.service_resource.name,
+                )
+            )
+        for helper_function in self.helper_functions:
+            import_records.add(
+                ImportRecord(
+                    f"{self.service_name.module_name}.{ServiceModuleName.helpers.value}",
+                    helper_function.name,
+                )
+            )
 
-        result.sort()
+        return ImportRecordGroup.from_import_records(import_records)
+
+    def get_init_all_names(self) -> List[str]:
+        result = [self.client.name]
+        if self.service_resource:
+            result.append(self.service_resource.name)
+        for helper_function in self.helper_functions:
+            result.append(helper_function.name)
         return result
 
     def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:
@@ -120,6 +147,16 @@ class ServiceModule:
                 import_record = type_annotation.get_import_record()
                 if import_record.is_type_defs():
                     continue
+                import_records.add(import_record)
+
+        return ImportRecordGroup.from_import_records(import_records)
+
+    def get_helpers_import_record_groups(self) -> List[ImportRecordGroup]:
+        import_records: Set[ImportRecord] = set()
+        import_records.add(ImportRecord("boto3"))
+        for helper_function in self.helper_functions:
+            for type_annotation in helper_function.get_types():
+                import_record = type_annotation.get_import_record()
                 import_records.add(import_record)
 
         return ImportRecordGroup.from_import_records(import_records)

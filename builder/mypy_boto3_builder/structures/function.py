@@ -19,7 +19,7 @@ class Function:
     docstring: str
     return_type: FakeAnnotation
     decorators: List[FakeAnnotation] = field(default_factory=lambda: [])
-    body: str = "pass"
+    body: str = ""
 
     def get_types(self) -> Set[FakeAnnotation]:
         types = self.return_type.get_types()

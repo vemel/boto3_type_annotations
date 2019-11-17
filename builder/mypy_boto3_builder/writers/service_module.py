@@ -32,6 +32,10 @@ def write_service_module(
             package_path / ServiceModuleName.client.file_name,
             module_templates_path / ServiceModuleName.client.template_name,
         ),
+        (
+            package_path / ServiceModuleName.helpers.file_name,
+            module_templates_path / ServiceModuleName.helpers.template_name,
+        ),
     ]
     if service_module.service_resource:
         file_paths.append(

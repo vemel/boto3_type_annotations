@@ -2,7 +2,7 @@
 
 import boto3
 
-from mypy_boto3_s3.client import Client
+from mypy_boto3.s3 import boto3_client
 
 
 def s3_resource_example() -> None:
@@ -25,7 +25,7 @@ def s3_resource_example() -> None:
 def s3_client_example() -> None:
     # Use explicit types to help Python extension to get methods correctly
     # mypy works as it should even without explicit types
-    client: Client = boto3.client("s3")
+    client = boto3_client()
 
     bucket_exists_waiter = client.get_waiter("bucket_exists")
 

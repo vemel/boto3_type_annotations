@@ -1,16 +1,15 @@
 "Main interface for {{ module.service_name.boto3_name }} service"
 
-{% for import_record in module.get_import_records() -%}
-    {% include "common/import_record.py.jinja2" with context -%}
-    {{ '\n' -}}
-{% endfor -%}
+{% with import_record_groups=module.get_init_import_record_groups() -%}
+    {% include "common/import_groups.py.jinja2" with context -%}
+{% endwith -%}
 
 {{ "\n\n" -}}
 
 __all__ = (
-{% for import_record in module.get_import_records() -%}
+{% for name in module.get_init_all_names() -%}
     {{ '"' -}}
-    {{ import_record.get_local_name() -}}
+    {{ name -}}
     {{ '"' -}}
     {{ ",\n" if not loop.last or loop.first else "\n" }}
 {% endfor -%}
