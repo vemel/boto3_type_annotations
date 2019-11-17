@@ -1,0 +1,5 @@
+try:
+    # pylint: disable=wildcard-import, unused-wildcard-import
+    from {{ service_name.module_name }}.helpers import *
+except ImportError:
+    raise ImportError("Install {{ boto3_stubs_name }}[{{ service_name.extras_name }}] to use {{ service_name.boto3_name }} annotations")
