@@ -8,7 +8,7 @@
 
 ## get_service_module_file_paths
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L81)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L82)
 
 ```python
 def get_service_module_file_paths(
@@ -20,7 +20,7 @@ def get_service_module_file_paths(
 
 ## write_master_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L12)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L13)
 
 ```python
 def write_master_module(

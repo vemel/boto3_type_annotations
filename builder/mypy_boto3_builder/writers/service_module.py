@@ -1,13 +1,13 @@
 from pathlib import Path
 from typing import List
 
-from mypy_boto3_builder.structures import ServiceModule
+from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import (
     render_jinja2_template,
     blackify_str,
 )
-from mypy_boto3_builder.enums import ServiceModuleName
+from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 
 
 def write_service_module(

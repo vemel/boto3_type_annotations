@@ -7,7 +7,7 @@ from typing import List, Any, Pattern, Optional, Dict, Tuple
 from types import FunctionType
 
 
-from mypy_boto3_builder.structures import Argument
+from mypy_boto3_builder.structures.argument import Argument
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript

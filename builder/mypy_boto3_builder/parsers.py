@@ -18,21 +18,19 @@ from botocore.client import BaseClient
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
 
-from mypy_boto3_builder.structures import (
-    Method,
-    Client,
-    Attribute,
-    Resource,
-    Collection,
-    ServiceResource,
-    Waiter,
-    Paginator,
-    Boto3Module,
-    ServiceModule,
-    MasterModule,
-    Argument,
-)
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.structures.method import Method
+from mypy_boto3_builder.structures.client import Client
+from mypy_boto3_builder.structures.attribute import Attribute
+from mypy_boto3_builder.structures.resource import Resource
+from mypy_boto3_builder.structures.collection import Collection
+from mypy_boto3_builder.structures.service_resource import ServiceResource
+from mypy_boto3_builder.structures.waiter import Waiter
+from mypy_boto3_builder.structures.paginator import Paginator
+from mypy_boto3_builder.structures.boto3_module import Boto3Module
+from mypy_boto3_builder.structures.service_module import ServiceModule
+from mypy_boto3_builder.structures.master_module import MasterModule
+from mypy_boto3_builder.structures.argument import Argument
+from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
 from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport

@@ -9,13 +9,11 @@ from mypy_boto3_builder.parsers import (
     parse_master_module,
     parse_service_module,
 )
-from mypy_boto3_builder.structures import (
-    Boto3Module,
-    MasterModule,
-    ServiceModule,
-)
+from mypy_boto3_builder.structures.boto3_module import Boto3Module
+from mypy_boto3_builder.structures.master_module import MasterModule
+from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.utils.nice_path import NicePath
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.writers.boto3_stubs import write_boto3_stubs_module
 from mypy_boto3_builder.writers.master_module import write_master_module

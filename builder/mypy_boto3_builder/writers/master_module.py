@@ -3,7 +3,8 @@ import shutil
 import filecmp
 from typing import List, Tuple
 
-from mypy_boto3_builder.structures import MasterModule, ServiceModule
+from mypy_boto3_builder.structures.master_module import MasterModule
+from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify_str
 from mypy_boto3_builder.constants import MYPY_BOTO3_STATIC_PATH

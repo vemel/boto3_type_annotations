@@ -4,7 +4,7 @@ CLI parser.
 import argparse
 from pathlib import Path
 
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.enums.service_name import ServiceName
 
 
 def get_absolute_path(path: str) -> Path:

@@ -13,7 +13,7 @@ from mypy_boto3_builder.writers.processors import (
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.logger import get_logger
 from mypy_boto3_builder.cli_parser import get_cli_parser
-from mypy_boto3_builder.service_name import ServiceName
+from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.constants import MODULE_NAME, DUMMY_REGION, BOTO3_STUBS_NAME
 
 
