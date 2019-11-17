@@ -1,6 +1,6 @@
 "Helper functions for groundstation service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('groundstation')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_list_configs_paginator(client: Client) -> ListConfigsPaginator:
     """
     Equivalent of `client.get_paginator('list_configs')`, returns a correct type.
     """
-    return client.get_waiter("list_configs")
+    return client.get_paginator("list_configs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,7 +67,7 @@ def get_list_contacts_paginator(client: Client) -> ListContactsPaginator:
     """
     Equivalent of `client.get_paginator('list_contacts')`, returns a correct type.
     """
-    return client.get_waiter("list_contacts")
+    return client.get_paginator("list_contacts")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_list_dataflow_endpoint_groups_paginator(
     """
     Equivalent of `client.get_paginator('list_dataflow_endpoint_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_dataflow_endpoint_groups")
+    return client.get_paginator("list_dataflow_endpoint_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,7 +85,7 @@ def get_list_ground_stations_paginator(client: Client) -> ListGroundStationsPagi
     """
     Equivalent of `client.get_paginator('list_ground_stations')`, returns a correct type.
     """
-    return client.get_waiter("list_ground_stations")
+    return client.get_paginator("list_ground_stations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -93,7 +93,7 @@ def get_list_mission_profiles_paginator(client: Client) -> ListMissionProfilesPa
     """
     Equivalent of `client.get_paginator('list_mission_profiles')`, returns a correct type.
     """
-    return client.get_waiter("list_mission_profiles")
+    return client.get_paginator("list_mission_profiles")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -101,4 +101,4 @@ def get_list_satellites_paginator(client: Client) -> ListSatellitesPaginator:
     """
     Equivalent of `client.get_paginator('list_satellites')`, returns a correct type.
     """
-    return client.get_waiter("list_satellites")
+    return client.get_paginator("list_satellites")

@@ -1,6 +1,6 @@
 "Helper functions for cloudfront service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudfront')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -64,7 +64,7 @@ def get_list_cloud_front_origin_access_identities_paginator(
     """
     Equivalent of `client.get_paginator('list_cloud_front_origin_access_identities')`, returns a correct type.
     """
-    return client.get_waiter("list_cloud_front_origin_access_identities")
+    return client.get_paginator("list_cloud_front_origin_access_identities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_list_distributions_paginator(client: Client) -> ListDistributionsPaginat
     """
     Equivalent of `client.get_paginator('list_distributions')`, returns a correct type.
     """
-    return client.get_waiter("list_distributions")
+    return client.get_paginator("list_distributions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_list_invalidations_paginator(client: Client) -> ListInvalidationsPaginat
     """
     Equivalent of `client.get_paginator('list_invalidations')`, returns a correct type.
     """
-    return client.get_waiter("list_invalidations")
+    return client.get_paginator("list_invalidations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_list_streaming_distributions_paginator(
     """
     Equivalent of `client.get_paginator('list_streaming_distributions')`, returns a correct type.
     """
-    return client.get_waiter("list_streaming_distributions")
+    return client.get_paginator("list_streaming_distributions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

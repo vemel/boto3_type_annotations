@@ -1,6 +1,6 @@
 "Helper functions for appsync service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('appsync')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_list_api_keys_paginator(client: Client) -> ListApiKeysPaginator:
     """
     Equivalent of `client.get_paginator('list_api_keys')`, returns a correct type.
     """
-    return client.get_waiter("list_api_keys")
+    return client.get_paginator("list_api_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -68,7 +68,7 @@ def get_list_data_sources_paginator(client: Client) -> ListDataSourcesPaginator:
     """
     Equivalent of `client.get_paginator('list_data_sources')`, returns a correct type.
     """
-    return client.get_waiter("list_data_sources")
+    return client.get_paginator("list_data_sources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -76,7 +76,7 @@ def get_list_functions_paginator(client: Client) -> ListFunctionsPaginator:
     """
     Equivalent of `client.get_paginator('list_functions')`, returns a correct type.
     """
-    return client.get_waiter("list_functions")
+    return client.get_paginator("list_functions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -84,7 +84,7 @@ def get_list_graphql_apis_paginator(client: Client) -> ListGraphqlApisPaginator:
     """
     Equivalent of `client.get_paginator('list_graphql_apis')`, returns a correct type.
     """
-    return client.get_waiter("list_graphql_apis")
+    return client.get_paginator("list_graphql_apis")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_list_resolvers_paginator(client: Client) -> ListResolversPaginator:
     """
     Equivalent of `client.get_paginator('list_resolvers')`, returns a correct type.
     """
-    return client.get_waiter("list_resolvers")
+    return client.get_paginator("list_resolvers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -102,7 +102,7 @@ def get_list_resolvers_by_function_paginator(
     """
     Equivalent of `client.get_paginator('list_resolvers_by_function')`, returns a correct type.
     """
-    return client.get_waiter("list_resolvers_by_function")
+    return client.get_paginator("list_resolvers_by_function")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -110,4 +110,4 @@ def get_list_types_paginator(client: Client) -> ListTypesPaginator:
     """
     Equivalent of `client.get_paginator('list_types')`, returns a correct type.
     """
-    return client.get_waiter("list_types")
+    return client.get_paginator("list_types")

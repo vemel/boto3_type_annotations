@@ -1,6 +1,6 @@
 "Helper functions for resource-groups service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('resource-groups')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_group_resources_paginator(client: Client) -> ListGroupResourcesPagi
     """
     Equivalent of `client.get_paginator('list_group_resources')`, returns a correct type.
     """
-    return client.get_waiter("list_group_resources")
+    return client.get_paginator("list_group_resources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_groups_paginator(client: Client) -> ListGroupsPaginator:
     """
     Equivalent of `client.get_paginator('list_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_groups")
+    return client.get_paginator("list_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_search_resources_paginator(client: Client) -> SearchResourcesPaginator:
     """
     Equivalent of `client.get_paginator('search_resources')`, returns a correct type.
     """
-    return client.get_waiter("search_resources")
+    return client.get_paginator("search_resources")

@@ -1,6 +1,6 @@
 "Helper functions for greengrass service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -43,7 +43,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('greengrass')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -74,7 +74,7 @@ def get_list_bulk_deployment_detailed_reports_paginator(
     """
     Equivalent of `client.get_paginator('list_bulk_deployment_detailed_reports')`, returns a correct type.
     """
-    return client.get_waiter("list_bulk_deployment_detailed_reports")
+    return client.get_paginator("list_bulk_deployment_detailed_reports")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_bulk_deployments_paginator(client: Client) -> ListBulkDeploymentsPa
     """
     Equivalent of `client.get_paginator('list_bulk_deployments')`, returns a correct type.
     """
-    return client.get_waiter("list_bulk_deployments")
+    return client.get_paginator("list_bulk_deployments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_list_connector_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_connector_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_connector_definition_versions")
+    return client.get_paginator("list_connector_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -102,7 +102,7 @@ def get_list_connector_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_connector_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_connector_definitions")
+    return client.get_paginator("list_connector_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -112,7 +112,7 @@ def get_list_core_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_core_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_core_definition_versions")
+    return client.get_paginator("list_core_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -120,7 +120,7 @@ def get_list_core_definitions_paginator(client: Client) -> ListCoreDefinitionsPa
     """
     Equivalent of `client.get_paginator('list_core_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_core_definitions")
+    return client.get_paginator("list_core_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -128,7 +128,7 @@ def get_list_deployments_paginator(client: Client) -> ListDeploymentsPaginator:
     """
     Equivalent of `client.get_paginator('list_deployments')`, returns a correct type.
     """
-    return client.get_waiter("list_deployments")
+    return client.get_paginator("list_deployments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -138,7 +138,7 @@ def get_list_device_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_device_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_device_definition_versions")
+    return client.get_paginator("list_device_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -148,7 +148,7 @@ def get_list_device_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_device_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_device_definitions")
+    return client.get_paginator("list_device_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -158,7 +158,7 @@ def get_list_function_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_function_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_function_definition_versions")
+    return client.get_paginator("list_function_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -168,7 +168,7 @@ def get_list_function_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_function_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_function_definitions")
+    return client.get_paginator("list_function_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -176,7 +176,7 @@ def get_list_group_versions_paginator(client: Client) -> ListGroupVersionsPagina
     """
     Equivalent of `client.get_paginator('list_group_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_group_versions")
+    return client.get_paginator("list_group_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -184,7 +184,7 @@ def get_list_groups_paginator(client: Client) -> ListGroupsPaginator:
     """
     Equivalent of `client.get_paginator('list_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_groups")
+    return client.get_paginator("list_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -194,7 +194,7 @@ def get_list_logger_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_logger_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_logger_definition_versions")
+    return client.get_paginator("list_logger_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -204,7 +204,7 @@ def get_list_logger_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_logger_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_logger_definitions")
+    return client.get_paginator("list_logger_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -214,7 +214,7 @@ def get_list_resource_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_definition_versions")
+    return client.get_paginator("list_resource_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -224,7 +224,7 @@ def get_list_resource_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_definitions")
+    return client.get_paginator("list_resource_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -234,7 +234,7 @@ def get_list_subscription_definition_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_subscription_definition_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_subscription_definition_versions")
+    return client.get_paginator("list_subscription_definition_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -244,4 +244,4 @@ def get_list_subscription_definitions_paginator(
     """
     Equivalent of `client.get_paginator('list_subscription_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_subscription_definitions")
+    return client.get_paginator("list_subscription_definitions")

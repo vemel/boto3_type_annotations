@@ -1,6 +1,6 @@
 "Helper functions for cloudhsm service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudhsm')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_hapgs_paginator(client: Client) -> ListHapgsPaginator:
     """
     Equivalent of `client.get_paginator('list_hapgs')`, returns a correct type.
     """
-    return client.get_waiter("list_hapgs")
+    return client.get_paginator("list_hapgs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_hsms_paginator(client: Client) -> ListHsmsPaginator:
     """
     Equivalent of `client.get_paginator('list_hsms')`, returns a correct type.
     """
-    return client.get_waiter("list_hsms")
+    return client.get_paginator("list_hsms")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_list_luna_clients_paginator(client: Client) -> ListLunaClientsPaginator:
     """
     Equivalent of `client.get_paginator('list_luna_clients')`, returns a correct type.
     """
-    return client.get_waiter("list_luna_clients")
+    return client.get_paginator("list_luna_clients")

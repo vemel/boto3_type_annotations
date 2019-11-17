@@ -1,6 +1,6 @@
 "Helper functions for route53 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('route53')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_list_health_checks_paginator(client: Client) -> ListHealthChecksPaginato
     """
     Equivalent of `client.get_paginator('list_health_checks')`, returns a correct type.
     """
-    return client.get_waiter("list_health_checks")
+    return client.get_paginator("list_health_checks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,7 +67,7 @@ def get_list_hosted_zones_paginator(client: Client) -> ListHostedZonesPaginator:
     """
     Equivalent of `client.get_paginator('list_hosted_zones')`, returns a correct type.
     """
-    return client.get_waiter("list_hosted_zones")
+    return client.get_paginator("list_hosted_zones")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_list_query_logging_configs_paginator(
     """
     Equivalent of `client.get_paginator('list_query_logging_configs')`, returns a correct type.
     """
-    return client.get_waiter("list_query_logging_configs")
+    return client.get_paginator("list_query_logging_configs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_list_resource_record_sets_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_record_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_record_sets")
+    return client.get_paginator("list_resource_record_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_list_vpc_association_authorizations_paginator(
     """
     Equivalent of `client.get_paginator('list_vpc_association_authorizations')`, returns a correct type.
     """
-    return client.get_waiter("list_vpc_association_authorizations")
+    return client.get_paginator("list_vpc_association_authorizations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

@@ -1,6 +1,6 @@
 "Helper functions for docdb service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('docdb')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_describe_db_clusters_paginator(client: Client) -> DescribeDBClustersPagi
     """
     Equivalent of `client.get_paginator('describe_db_clusters')`, returns a correct type.
     """
-    return client.get_waiter("describe_db_clusters")
+    return client.get_paginator("describe_db_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_describe_db_engine_versions_paginator(
     """
     Equivalent of `client.get_paginator('describe_db_engine_versions')`, returns a correct type.
     """
-    return client.get_waiter("describe_db_engine_versions")
+    return client.get_paginator("describe_db_engine_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_describe_db_instances_paginator(client: Client) -> DescribeDBInstancesPa
     """
     Equivalent of `client.get_paginator('describe_db_instances')`, returns a correct type.
     """
-    return client.get_waiter("describe_db_instances")
+    return client.get_paginator("describe_db_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_describe_db_subnet_groups_paginator(
     """
     Equivalent of `client.get_paginator('describe_db_subnet_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_db_subnet_groups")
+    return client.get_paginator("describe_db_subnet_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -96,7 +96,7 @@ def get_describe_events_paginator(client: Client) -> DescribeEventsPaginator:
     """
     Equivalent of `client.get_paginator('describe_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_events")
+    return client.get_paginator("describe_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -106,7 +106,7 @@ def get_describe_orderable_db_instance_options_paginator(
     """
     Equivalent of `client.get_paginator('describe_orderable_db_instance_options')`, returns a correct type.
     """
-    return client.get_waiter("describe_orderable_db_instance_options")
+    return client.get_paginator("describe_orderable_db_instance_options")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

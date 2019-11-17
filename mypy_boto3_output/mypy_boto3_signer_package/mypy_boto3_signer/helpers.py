@@ -1,6 +1,6 @@
 "Helper functions for signer service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('signer')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_list_signing_jobs_paginator(client: Client) -> ListSigningJobsPaginator:
     """
     Equivalent of `client.get_paginator('list_signing_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_signing_jobs")
+    return client.get_paginator("list_signing_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,7 +67,7 @@ def get_list_signing_platforms_paginator(
     """
     Equivalent of `client.get_paginator('list_signing_platforms')`, returns a correct type.
     """
-    return client.get_waiter("list_signing_platforms")
+    return client.get_paginator("list_signing_platforms")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -75,7 +75,7 @@ def get_list_signing_profiles_paginator(client: Client) -> ListSigningProfilesPa
     """
     Equivalent of `client.get_paginator('list_signing_profiles')`, returns a correct type.
     """
-    return client.get_waiter("list_signing_profiles")
+    return client.get_paginator("list_signing_profiles")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

@@ -1,6 +1,6 @@
 "Helper functions for fsx service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('fsx')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_describe_backups_paginator(client: Client) -> DescribeBackupsPaginator:
     """
     Equivalent of `client.get_paginator('describe_backups')`, returns a correct type.
     """
-    return client.get_waiter("describe_backups")
+    return client.get_paginator("describe_backups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_describe_file_systems_paginator(client: Client) -> DescribeFileSystemsPa
     """
     Equivalent of `client.get_paginator('describe_file_systems')`, returns a correct type.
     """
-    return client.get_waiter("describe_file_systems")
+    return client.get_paginator("describe_file_systems")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")

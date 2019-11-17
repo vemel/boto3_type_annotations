@@ -1,6 +1,6 @@
 "Helper functions for directconnect service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('directconnect')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_describe_direct_connect_gateway_associations_paginator(
     """
     Equivalent of `client.get_paginator('describe_direct_connect_gateway_associations')`, returns a correct type.
     """
-    return client.get_waiter("describe_direct_connect_gateway_associations")
+    return client.get_paginator("describe_direct_connect_gateway_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -68,7 +68,7 @@ def get_describe_direct_connect_gateway_attachments_paginator(
     """
     Equivalent of `client.get_paginator('describe_direct_connect_gateway_attachments')`, returns a correct type.
     """
-    return client.get_waiter("describe_direct_connect_gateway_attachments")
+    return client.get_paginator("describe_direct_connect_gateway_attachments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,4 +78,4 @@ def get_describe_direct_connect_gateways_paginator(
     """
     Equivalent of `client.get_paginator('describe_direct_connect_gateways')`, returns a correct type.
     """
-    return client.get_waiter("describe_direct_connect_gateways")
+    return client.get_paginator("describe_direct_connect_gateways")

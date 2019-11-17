@@ -5,7 +5,7 @@ from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
 from botocore.paginate import Paginator as Boto3Paginator
-from mypy_boto3.type_defs import EC2Tag as TypeDefEC2Tag
+from mypy_boto3.type_defs import EC2Tag
 
 # pylint: disable=import-self
 import mypy_boto3_mediaconnect.paginator as paginator_scope
@@ -1970,7 +1970,7 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
-    def tag_resource(self, ResourceArn: str, Tags: List[TypeDefEC2Tag]) -> None:
+    def tag_resource(self, ResourceArn: str, Tags: List[EC2Tag]) -> None:
         """
         Associates the specified tags to a resource with the specified resourceArn. If existing tags on a
         resource are not specified in the request parameters, they are not changed. When a resource is

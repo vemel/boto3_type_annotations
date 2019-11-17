@@ -1,6 +1,6 @@
 "Helper functions for redshift service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -53,7 +53,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('redshift')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -84,7 +84,7 @@ def get_describe_cluster_db_revisions_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_db_revisions')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_db_revisions")
+    return client.get_paginator("describe_cluster_db_revisions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -94,7 +94,7 @@ def get_describe_cluster_parameter_groups_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_parameter_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_parameter_groups")
+    return client.get_paginator("describe_cluster_parameter_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -104,7 +104,7 @@ def get_describe_cluster_parameters_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_parameters')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_parameters")
+    return client.get_paginator("describe_cluster_parameters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -114,7 +114,7 @@ def get_describe_cluster_security_groups_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_security_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_security_groups")
+    return client.get_paginator("describe_cluster_security_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -124,7 +124,7 @@ def get_describe_cluster_snapshots_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_snapshots')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_snapshots")
+    return client.get_paginator("describe_cluster_snapshots")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,7 +134,7 @@ def get_describe_cluster_subnet_groups_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_subnet_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_subnet_groups")
+    return client.get_paginator("describe_cluster_subnet_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -144,7 +144,7 @@ def get_describe_cluster_tracks_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_tracks')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_tracks")
+    return client.get_paginator("describe_cluster_tracks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -154,7 +154,7 @@ def get_describe_cluster_versions_paginator(
     """
     Equivalent of `client.get_paginator('describe_cluster_versions')`, returns a correct type.
     """
-    return client.get_waiter("describe_cluster_versions")
+    return client.get_paginator("describe_cluster_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -162,7 +162,7 @@ def get_describe_clusters_paginator(client: Client) -> DescribeClustersPaginator
     """
     Equivalent of `client.get_paginator('describe_clusters')`, returns a correct type.
     """
-    return client.get_waiter("describe_clusters")
+    return client.get_paginator("describe_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -172,7 +172,7 @@ def get_describe_default_cluster_parameters_paginator(
     """
     Equivalent of `client.get_paginator('describe_default_cluster_parameters')`, returns a correct type.
     """
-    return client.get_waiter("describe_default_cluster_parameters")
+    return client.get_paginator("describe_default_cluster_parameters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -182,7 +182,7 @@ def get_describe_event_subscriptions_paginator(
     """
     Equivalent of `client.get_paginator('describe_event_subscriptions')`, returns a correct type.
     """
-    return client.get_waiter("describe_event_subscriptions")
+    return client.get_paginator("describe_event_subscriptions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -190,7 +190,7 @@ def get_describe_events_paginator(client: Client) -> DescribeEventsPaginator:
     """
     Equivalent of `client.get_paginator('describe_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_events")
+    return client.get_paginator("describe_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -200,7 +200,7 @@ def get_describe_hsm_client_certificates_paginator(
     """
     Equivalent of `client.get_paginator('describe_hsm_client_certificates')`, returns a correct type.
     """
-    return client.get_waiter("describe_hsm_client_certificates")
+    return client.get_paginator("describe_hsm_client_certificates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -210,7 +210,7 @@ def get_describe_hsm_configurations_paginator(
     """
     Equivalent of `client.get_paginator('describe_hsm_configurations')`, returns a correct type.
     """
-    return client.get_waiter("describe_hsm_configurations")
+    return client.get_paginator("describe_hsm_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -220,7 +220,7 @@ def get_describe_node_configuration_options_paginator(
     """
     Equivalent of `client.get_paginator('describe_node_configuration_options')`, returns a correct type.
     """
-    return client.get_waiter("describe_node_configuration_options")
+    return client.get_paginator("describe_node_configuration_options")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -230,7 +230,7 @@ def get_describe_orderable_cluster_options_paginator(
     """
     Equivalent of `client.get_paginator('describe_orderable_cluster_options')`, returns a correct type.
     """
-    return client.get_waiter("describe_orderable_cluster_options")
+    return client.get_paginator("describe_orderable_cluster_options")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -240,7 +240,7 @@ def get_describe_reserved_node_offerings_paginator(
     """
     Equivalent of `client.get_paginator('describe_reserved_node_offerings')`, returns a correct type.
     """
-    return client.get_waiter("describe_reserved_node_offerings")
+    return client.get_paginator("describe_reserved_node_offerings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -250,7 +250,7 @@ def get_describe_reserved_nodes_paginator(
     """
     Equivalent of `client.get_paginator('describe_reserved_nodes')`, returns a correct type.
     """
-    return client.get_waiter("describe_reserved_nodes")
+    return client.get_paginator("describe_reserved_nodes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -260,7 +260,7 @@ def get_describe_snapshot_copy_grants_paginator(
     """
     Equivalent of `client.get_paginator('describe_snapshot_copy_grants')`, returns a correct type.
     """
-    return client.get_waiter("describe_snapshot_copy_grants")
+    return client.get_paginator("describe_snapshot_copy_grants")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -270,7 +270,7 @@ def get_describe_snapshot_schedules_paginator(
     """
     Equivalent of `client.get_paginator('describe_snapshot_schedules')`, returns a correct type.
     """
-    return client.get_waiter("describe_snapshot_schedules")
+    return client.get_paginator("describe_snapshot_schedules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -280,7 +280,7 @@ def get_describe_table_restore_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_table_restore_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_table_restore_status")
+    return client.get_paginator("describe_table_restore_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -288,7 +288,7 @@ def get_describe_tags_paginator(client: Client) -> DescribeTagsPaginator:
     """
     Equivalent of `client.get_paginator('describe_tags')`, returns a correct type.
     """
-    return client.get_waiter("describe_tags")
+    return client.get_paginator("describe_tags")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -298,7 +298,7 @@ def get_get_reserved_node_exchange_offerings_paginator(
     """
     Equivalent of `client.get_paginator('get_reserved_node_exchange_offerings')`, returns a correct type.
     """
-    return client.get_waiter("get_reserved_node_exchange_offerings")
+    return client.get_paginator("get_reserved_node_exchange_offerings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

@@ -1,6 +1,6 @@
 "Helper functions for autoscaling-plans service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -26,7 +26,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('autoscaling-plans')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_describe_scaling_plan_resources_paginator(
     """
     Equivalent of `client.get_paginator('describe_scaling_plan_resources')`, returns a correct type.
     """
-    return client.get_waiter("describe_scaling_plan_resources")
+    return client.get_paginator("describe_scaling_plan_resources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,4 +67,4 @@ def get_describe_scaling_plans_paginator(
     """
     Equivalent of `client.get_paginator('describe_scaling_plans')`, returns a correct type.
     """
-    return client.get_waiter("describe_scaling_plans")
+    return client.get_paginator("describe_scaling_plans")

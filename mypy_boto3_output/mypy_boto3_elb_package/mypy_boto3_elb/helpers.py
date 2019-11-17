@@ -1,6 +1,6 @@
 "Helper functions for elb service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('elb')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -62,7 +62,7 @@ def get_describe_account_limits_paginator(
     """
     Equivalent of `client.get_paginator('describe_account_limits')`, returns a correct type.
     """
-    return client.get_waiter("describe_account_limits")
+    return client.get_paginator("describe_account_limits")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_describe_load_balancers_paginator(
     """
     Equivalent of `client.get_paginator('describe_load_balancers')`, returns a correct type.
     """
-    return client.get_waiter("describe_load_balancers")
+    return client.get_paginator("describe_load_balancers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

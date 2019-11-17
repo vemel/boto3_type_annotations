@@ -1,6 +1,6 @@
 "Helper functions for globalaccelerator service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('globalaccelerator')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_accelerators_paginator(client: Client) -> ListAcceleratorsPaginator
     """
     Equivalent of `client.get_paginator('list_accelerators')`, returns a correct type.
     """
-    return client.get_waiter("list_accelerators")
+    return client.get_paginator("list_accelerators")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_endpoint_groups_paginator(client: Client) -> ListEndpointGroupsPagi
     """
     Equivalent of `client.get_paginator('list_endpoint_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_endpoint_groups")
+    return client.get_paginator("list_endpoint_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_list_listeners_paginator(client: Client) -> ListListenersPaginator:
     """
     Equivalent of `client.get_paginator('list_listeners')`, returns a correct type.
     """
-    return client.get_waiter("list_listeners")
+    return client.get_paginator("list_listeners")

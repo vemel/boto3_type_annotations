@@ -1,6 +1,6 @@
 "Helper functions for health service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('health')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_describe_affected_entities_paginator(
     """
     Equivalent of `client.get_paginator('describe_affected_entities')`, returns a correct type.
     """
-    return client.get_waiter("describe_affected_entities")
+    return client.get_paginator("describe_affected_entities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_describe_event_aggregates_paginator(
     """
     Equivalent of `client.get_paginator('describe_event_aggregates')`, returns a correct type.
     """
-    return client.get_waiter("describe_event_aggregates")
+    return client.get_paginator("describe_event_aggregates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_describe_event_types_paginator(client: Client) -> DescribeEventTypesPagi
     """
     Equivalent of `client.get_paginator('describe_event_types')`, returns a correct type.
     """
-    return client.get_waiter("describe_event_types")
+    return client.get_paginator("describe_event_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,4 +85,4 @@ def get_describe_events_paginator(client: Client) -> DescribeEventsPaginator:
     """
     Equivalent of `client.get_paginator('describe_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_events")
+    return client.get_paginator("describe_events")

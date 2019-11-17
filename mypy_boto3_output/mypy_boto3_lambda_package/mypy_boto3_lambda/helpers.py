@@ -1,6 +1,6 @@
 "Helper functions for lambda service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('lambda')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_list_aliases_paginator(client: Client) -> ListAliasesPaginator:
     """
     Equivalent of `client.get_paginator('list_aliases')`, returns a correct type.
     """
-    return client.get_waiter("list_aliases")
+    return client.get_paginator("list_aliases")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_list_event_source_mappings_paginator(
     """
     Equivalent of `client.get_paginator('list_event_source_mappings')`, returns a correct type.
     """
-    return client.get_waiter("list_event_source_mappings")
+    return client.get_paginator("list_event_source_mappings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_list_functions_paginator(client: Client) -> ListFunctionsPaginator:
     """
     Equivalent of `client.get_paginator('list_functions')`, returns a correct type.
     """
-    return client.get_waiter("list_functions")
+    return client.get_paginator("list_functions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -86,7 +86,7 @@ def get_list_layer_versions_paginator(client: Client) -> ListLayerVersionsPagina
     """
     Equivalent of `client.get_paginator('list_layer_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_layer_versions")
+    return client.get_paginator("list_layer_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -94,7 +94,7 @@ def get_list_layers_paginator(client: Client) -> ListLayersPaginator:
     """
     Equivalent of `client.get_paginator('list_layers')`, returns a correct type.
     """
-    return client.get_waiter("list_layers")
+    return client.get_paginator("list_layers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -104,7 +104,7 @@ def get_list_versions_by_function_paginator(
     """
     Equivalent of `client.get_paginator('list_versions_by_function')`, returns a correct type.
     """
-    return client.get_waiter("list_versions_by_function")
+    return client.get_paginator("list_versions_by_function")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

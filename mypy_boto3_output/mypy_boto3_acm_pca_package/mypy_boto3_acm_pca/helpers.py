@@ -1,6 +1,6 @@
 "Helper functions for acm-pca service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -32,7 +32,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('acm-pca')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -63,7 +63,7 @@ def get_list_certificate_authorities_paginator(
     """
     Equivalent of `client.get_paginator('list_certificate_authorities')`, returns a correct type.
     """
-    return client.get_waiter("list_certificate_authorities")
+    return client.get_paginator("list_certificate_authorities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -71,7 +71,7 @@ def get_list_permissions_paginator(client: Client) -> ListPermissionsPaginator:
     """
     Equivalent of `client.get_paginator('list_permissions')`, returns a correct type.
     """
-    return client.get_waiter("list_permissions")
+    return client.get_paginator("list_permissions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_list_tags_paginator(client: Client) -> ListTagsPaginator:
     """
     Equivalent of `client.get_paginator('list_tags')`, returns a correct type.
     """
-    return client.get_waiter("list_tags")
+    return client.get_paginator("list_tags")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

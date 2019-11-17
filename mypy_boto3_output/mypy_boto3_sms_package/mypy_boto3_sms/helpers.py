@@ -1,6 +1,6 @@
 "Helper functions for sms service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('sms')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_get_connectors_paginator(client: Client) -> GetConnectorsPaginator:
     """
     Equivalent of `client.get_paginator('get_connectors')`, returns a correct type.
     """
-    return client.get_waiter("get_connectors")
+    return client.get_paginator("get_connectors")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_get_replication_jobs_paginator(client: Client) -> GetReplicationJobsPagi
     """
     Equivalent of `client.get_paginator('get_replication_jobs')`, returns a correct type.
     """
-    return client.get_waiter("get_replication_jobs")
+    return client.get_paginator("get_replication_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,7 +74,7 @@ def get_get_replication_runs_paginator(client: Client) -> GetReplicationRunsPagi
     """
     Equivalent of `client.get_paginator('get_replication_runs')`, returns a correct type.
     """
-    return client.get_waiter("get_replication_runs")
+    return client.get_paginator("get_replication_runs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_get_servers_paginator(client: Client) -> GetServersPaginator:
     """
     Equivalent of `client.get_paginator('get_servers')`, returns a correct type.
     """
-    return client.get_waiter("get_servers")
+    return client.get_paginator("get_servers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,4 +90,4 @@ def get_list_apps_paginator(client: Client) -> ListAppsPaginator:
     """
     Equivalent of `client.get_paginator('list_apps')`, returns a correct type.
     """
-    return client.get_waiter("list_apps")
+    return client.get_paginator("list_apps")

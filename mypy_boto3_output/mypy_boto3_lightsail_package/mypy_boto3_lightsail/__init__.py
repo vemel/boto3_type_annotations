@@ -1,52 +1,7 @@
 "Main interface for lightsail service"
 
 from mypy_boto3_lightsail.client import Client
-from mypy_boto3_lightsail.helpers import (
-    boto3_client,
-    get_get_active_names_paginator,
-    get_get_blueprints_paginator,
-    get_get_bundles_paginator,
-    get_get_cloud_formation_stack_records_paginator,
-    get_get_disk_snapshots_paginator,
-    get_get_disks_paginator,
-    get_get_domains_paginator,
-    get_get_export_snapshot_records_paginator,
-    get_get_instance_snapshots_paginator,
-    get_get_instances_paginator,
-    get_get_key_pairs_paginator,
-    get_get_load_balancers_paginator,
-    get_get_operations_paginator,
-    get_get_relational_database_blueprints_paginator,
-    get_get_relational_database_bundles_paginator,
-    get_get_relational_database_events_paginator,
-    get_get_relational_database_parameters_paginator,
-    get_get_relational_database_snapshots_paginator,
-    get_get_relational_databases_paginator,
-    get_get_static_ips_paginator,
-)
+from mypy_boto3_lightsail.helpers import boto3_client
 
 
-__all__ = (
-    "Client",
-    "boto3_client",
-    "get_get_active_names_paginator",
-    "get_get_blueprints_paginator",
-    "get_get_bundles_paginator",
-    "get_get_cloud_formation_stack_records_paginator",
-    "get_get_disk_snapshots_paginator",
-    "get_get_disks_paginator",
-    "get_get_domains_paginator",
-    "get_get_export_snapshot_records_paginator",
-    "get_get_instance_snapshots_paginator",
-    "get_get_instances_paginator",
-    "get_get_key_pairs_paginator",
-    "get_get_load_balancers_paginator",
-    "get_get_operations_paginator",
-    "get_get_relational_database_blueprints_paginator",
-    "get_get_relational_database_bundles_paginator",
-    "get_get_relational_database_events_paginator",
-    "get_get_relational_database_parameters_paginator",
-    "get_get_relational_database_snapshots_paginator",
-    "get_get_relational_databases_paginator",
-    "get_get_static_ips_paginator",
-)
+__all__ = ("Client", "boto3_client")

@@ -1,6 +1,6 @@
 "Helper functions for glue service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -38,7 +38,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('glue')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -67,7 +67,7 @@ def get_get_classifiers_paginator(client: Client) -> GetClassifiersPaginator:
     """
     Equivalent of `client.get_paginator('get_classifiers')`, returns a correct type.
     """
-    return client.get_waiter("get_classifiers")
+    return client.get_paginator("get_classifiers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -75,7 +75,7 @@ def get_get_connections_paginator(client: Client) -> GetConnectionsPaginator:
     """
     Equivalent of `client.get_paginator('get_connections')`, returns a correct type.
     """
-    return client.get_waiter("get_connections")
+    return client.get_paginator("get_connections")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -83,7 +83,7 @@ def get_get_crawler_metrics_paginator(client: Client) -> GetCrawlerMetricsPagina
     """
     Equivalent of `client.get_paginator('get_crawler_metrics')`, returns a correct type.
     """
-    return client.get_waiter("get_crawler_metrics")
+    return client.get_paginator("get_crawler_metrics")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -91,7 +91,7 @@ def get_get_crawlers_paginator(client: Client) -> GetCrawlersPaginator:
     """
     Equivalent of `client.get_paginator('get_crawlers')`, returns a correct type.
     """
-    return client.get_waiter("get_crawlers")
+    return client.get_paginator("get_crawlers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -99,7 +99,7 @@ def get_get_databases_paginator(client: Client) -> GetDatabasesPaginator:
     """
     Equivalent of `client.get_paginator('get_databases')`, returns a correct type.
     """
-    return client.get_waiter("get_databases")
+    return client.get_paginator("get_databases")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -107,7 +107,7 @@ def get_get_dev_endpoints_paginator(client: Client) -> GetDevEndpointsPaginator:
     """
     Equivalent of `client.get_paginator('get_dev_endpoints')`, returns a correct type.
     """
-    return client.get_waiter("get_dev_endpoints")
+    return client.get_paginator("get_dev_endpoints")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -115,7 +115,7 @@ def get_get_job_runs_paginator(client: Client) -> GetJobRunsPaginator:
     """
     Equivalent of `client.get_paginator('get_job_runs')`, returns a correct type.
     """
-    return client.get_waiter("get_job_runs")
+    return client.get_paginator("get_job_runs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_get_jobs_paginator(client: Client) -> GetJobsPaginator:
     """
     Equivalent of `client.get_paginator('get_jobs')`, returns a correct type.
     """
-    return client.get_waiter("get_jobs")
+    return client.get_paginator("get_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -131,7 +131,7 @@ def get_get_partitions_paginator(client: Client) -> GetPartitionsPaginator:
     """
     Equivalent of `client.get_paginator('get_partitions')`, returns a correct type.
     """
-    return client.get_waiter("get_partitions")
+    return client.get_paginator("get_partitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,7 +141,7 @@ def get_get_security_configurations_paginator(
     """
     Equivalent of `client.get_paginator('get_security_configurations')`, returns a correct type.
     """
-    return client.get_waiter("get_security_configurations")
+    return client.get_paginator("get_security_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -149,7 +149,7 @@ def get_get_table_versions_paginator(client: Client) -> GetTableVersionsPaginato
     """
     Equivalent of `client.get_paginator('get_table_versions')`, returns a correct type.
     """
-    return client.get_waiter("get_table_versions")
+    return client.get_paginator("get_table_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -157,7 +157,7 @@ def get_get_tables_paginator(client: Client) -> GetTablesPaginator:
     """
     Equivalent of `client.get_paginator('get_tables')`, returns a correct type.
     """
-    return client.get_waiter("get_tables")
+    return client.get_paginator("get_tables")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -165,7 +165,7 @@ def get_get_triggers_paginator(client: Client) -> GetTriggersPaginator:
     """
     Equivalent of `client.get_paginator('get_triggers')`, returns a correct type.
     """
-    return client.get_waiter("get_triggers")
+    return client.get_paginator("get_triggers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -175,4 +175,4 @@ def get_get_user_defined_functions_paginator(
     """
     Equivalent of `client.get_paginator('get_user_defined_functions')`, returns a correct type.
     """
-    return client.get_waiter("get_user_defined_functions")
+    return client.get_paginator("get_user_defined_functions")

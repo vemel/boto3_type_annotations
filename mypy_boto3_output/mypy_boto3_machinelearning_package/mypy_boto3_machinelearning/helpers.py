@@ -1,6 +1,6 @@
 "Helper functions for machinelearning service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('machinelearning')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -65,7 +65,7 @@ def get_describe_batch_predictions_paginator(
     """
     Equivalent of `client.get_paginator('describe_batch_predictions')`, returns a correct type.
     """
-    return client.get_waiter("describe_batch_predictions")
+    return client.get_paginator("describe_batch_predictions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_describe_data_sources_paginator(client: Client) -> DescribeDataSourcesPa
     """
     Equivalent of `client.get_paginator('describe_data_sources')`, returns a correct type.
     """
-    return client.get_waiter("describe_data_sources")
+    return client.get_paginator("describe_data_sources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_describe_evaluations_paginator(client: Client) -> DescribeEvaluationsPag
     """
     Equivalent of `client.get_paginator('describe_evaluations')`, returns a correct type.
     """
-    return client.get_waiter("describe_evaluations")
+    return client.get_paginator("describe_evaluations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -89,7 +89,7 @@ def get_describe_ml_models_paginator(client: Client) -> DescribeMLModelsPaginato
     """
     Equivalent of `client.get_paginator('describe_ml_models')`, returns a correct type.
     """
-    return client.get_waiter("describe_ml_models")
+    return client.get_paginator("describe_ml_models")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

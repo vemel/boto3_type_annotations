@@ -8,7 +8,7 @@ from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
-from mypy_boto3.type_defs import S3CopySource as TypeDefS3CopySource
+from mypy_boto3.type_defs import S3CopySource
 
 # pylint: disable=import-self
 import mypy_boto3_s3.paginator as paginator_scope
@@ -315,7 +315,7 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
-        CopySource: TypeDefS3CopySource,
+        CopySource: S3CopySource,
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
@@ -376,7 +376,7 @@ class Client(BaseClient):
     def copy_object(
         self,
         Bucket: str,
-        CopySource: Union[TypeDefS3CopySource, str],
+        CopySource: Union[S3CopySource, str],
         Key: str,
         ACL: str = None,
         CacheControl: str = None,
@@ -11095,7 +11095,7 @@ class Client(BaseClient):
     def upload_part_copy(
         self,
         Bucket: str,
-        CopySource: Union[TypeDefS3CopySource, str],
+        CopySource: Union[S3CopySource, str],
         Key: str,
         PartNumber: int,
         UploadId: str,

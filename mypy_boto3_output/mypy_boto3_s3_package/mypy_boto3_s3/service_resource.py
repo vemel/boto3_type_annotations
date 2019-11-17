@@ -7,7 +7,7 @@ from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
-from mypy_boto3.type_defs import S3CopySource as TypeDefS3CopySource
+from mypy_boto3.type_defs import S3CopySource
 
 # pylint: disable=import-self
 import mypy_boto3_s3.service_resource as service_resource_scope
@@ -491,7 +491,7 @@ class Bucket(Boto3ServiceResource):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
-        CopySource: TypeDefS3CopySource,
+        CopySource: S3CopySource,
         Key: str,
         ExtraArgs: Dict = None,
         Callback: Callable[Ellipsis, Any] = None,
@@ -3277,7 +3277,7 @@ class MultipartUploadPart(Boto3ServiceResource):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
-        CopySource: Union[TypeDefS3CopySource, str],
+        CopySource: Union[S3CopySource, str],
         CopySourceIfMatch: str = None,
         CopySourceIfModifiedSince: datetime = None,
         CopySourceIfNoneMatch: str = None,
@@ -3646,7 +3646,7 @@ class Object(Boto3ServiceResource):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy(
         self,
-        CopySource: TypeDefS3CopySource,
+        CopySource: S3CopySource,
         ExtraArgs: Dict = None,
         Callback: Callable[Ellipsis, Any] = None,
         SourceClient: BaseClient = None,
@@ -3700,7 +3700,7 @@ class Object(Boto3ServiceResource):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
-        CopySource: Union[TypeDefS3CopySource, str],
+        CopySource: Union[S3CopySource, str],
         ACL: str = None,
         CacheControl: str = None,
         ContentDisposition: str = None,
@@ -6052,7 +6052,7 @@ class ObjectSummary(Boto3ServiceResource):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def copy_from(
         self,
-        CopySource: Union[TypeDefS3CopySource, str],
+        CopySource: Union[S3CopySource, str],
         ACL: str = None,
         CacheControl: str = None,
         ContentDisposition: str = None,

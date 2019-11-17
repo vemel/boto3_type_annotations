@@ -1,6 +1,6 @@
 "Helper functions for cloudwatch service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudwatch')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -71,7 +71,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('cloudwatch')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -102,7 +102,7 @@ def get_describe_alarm_history_paginator(
     """
     Equivalent of `client.get_paginator('describe_alarm_history')`, returns a correct type.
     """
-    return client.get_waiter("describe_alarm_history")
+    return client.get_paginator("describe_alarm_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -110,7 +110,7 @@ def get_describe_alarms_paginator(client: Client) -> DescribeAlarmsPaginator:
     """
     Equivalent of `client.get_paginator('describe_alarms')`, returns a correct type.
     """
-    return client.get_waiter("describe_alarms")
+    return client.get_paginator("describe_alarms")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -118,7 +118,7 @@ def get_get_metric_data_paginator(client: Client) -> GetMetricDataPaginator:
     """
     Equivalent of `client.get_paginator('get_metric_data')`, returns a correct type.
     """
-    return client.get_waiter("get_metric_data")
+    return client.get_paginator("get_metric_data")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_list_dashboards_paginator(client: Client) -> ListDashboardsPaginator:
     """
     Equivalent of `client.get_paginator('list_dashboards')`, returns a correct type.
     """
-    return client.get_waiter("list_dashboards")
+    return client.get_paginator("list_dashboards")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,7 +134,7 @@ def get_list_metrics_paginator(client: Client) -> ListMetricsPaginator:
     """
     Equivalent of `client.get_paginator('list_metrics')`, returns a correct type.
     """
-    return client.get_waiter("list_metrics")
+    return client.get_paginator("list_metrics")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

@@ -1,6 +1,6 @@
 "Helper functions for lex-models service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('lex-models')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -63,7 +63,7 @@ def get_get_bot_aliases_paginator(client: Client) -> GetBotAliasesPaginator:
     """
     Equivalent of `client.get_paginator('get_bot_aliases')`, returns a correct type.
     """
-    return client.get_waiter("get_bot_aliases")
+    return client.get_paginator("get_bot_aliases")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_get_bot_channel_associations_paginator(
     """
     Equivalent of `client.get_paginator('get_bot_channel_associations')`, returns a correct type.
     """
-    return client.get_waiter("get_bot_channel_associations")
+    return client.get_paginator("get_bot_channel_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_get_bot_versions_paginator(client: Client) -> GetBotVersionsPaginator:
     """
     Equivalent of `client.get_paginator('get_bot_versions')`, returns a correct type.
     """
-    return client.get_waiter("get_bot_versions")
+    return client.get_paginator("get_bot_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -89,7 +89,7 @@ def get_get_bots_paginator(client: Client) -> GetBotsPaginator:
     """
     Equivalent of `client.get_paginator('get_bots')`, returns a correct type.
     """
-    return client.get_waiter("get_bots")
+    return client.get_paginator("get_bots")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_get_builtin_intents_paginator(client: Client) -> GetBuiltinIntentsPagina
     """
     Equivalent of `client.get_paginator('get_builtin_intents')`, returns a correct type.
     """
-    return client.get_waiter("get_builtin_intents")
+    return client.get_paginator("get_builtin_intents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -107,7 +107,7 @@ def get_get_builtin_slot_types_paginator(
     """
     Equivalent of `client.get_paginator('get_builtin_slot_types')`, returns a correct type.
     """
-    return client.get_waiter("get_builtin_slot_types")
+    return client.get_paginator("get_builtin_slot_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -115,7 +115,7 @@ def get_get_intent_versions_paginator(client: Client) -> GetIntentVersionsPagina
     """
     Equivalent of `client.get_paginator('get_intent_versions')`, returns a correct type.
     """
-    return client.get_waiter("get_intent_versions")
+    return client.get_paginator("get_intent_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_get_intents_paginator(client: Client) -> GetIntentsPaginator:
     """
     Equivalent of `client.get_paginator('get_intents')`, returns a correct type.
     """
-    return client.get_waiter("get_intents")
+    return client.get_paginator("get_intents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -133,7 +133,7 @@ def get_get_slot_type_versions_paginator(
     """
     Equivalent of `client.get_paginator('get_slot_type_versions')`, returns a correct type.
     """
-    return client.get_waiter("get_slot_type_versions")
+    return client.get_paginator("get_slot_type_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,4 +141,4 @@ def get_get_slot_types_paginator(client: Client) -> GetSlotTypesPaginator:
     """
     Equivalent of `client.get_paginator('get_slot_types')`, returns a correct type.
     """
-    return client.get_waiter("get_slot_types")
+    return client.get_paginator("get_slot_types")

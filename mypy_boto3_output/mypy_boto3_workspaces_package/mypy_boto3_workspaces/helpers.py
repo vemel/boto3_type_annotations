@@ -1,6 +1,6 @@
 "Helper functions for workspaces service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -32,7 +32,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('workspaces')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -63,7 +63,7 @@ def get_describe_account_modifications_paginator(
     """
     Equivalent of `client.get_paginator('describe_account_modifications')`, returns a correct type.
     """
-    return client.get_waiter("describe_account_modifications")
+    return client.get_paginator("describe_account_modifications")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -71,7 +71,7 @@ def get_describe_ip_groups_paginator(client: Client) -> DescribeIpGroupsPaginato
     """
     Equivalent of `client.get_paginator('describe_ip_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_ip_groups")
+    return client.get_paginator("describe_ip_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_describe_workspace_bundles_paginator(
     """
     Equivalent of `client.get_paginator('describe_workspace_bundles')`, returns a correct type.
     """
-    return client.get_waiter("describe_workspace_bundles")
+    return client.get_paginator("describe_workspace_bundles")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -91,7 +91,7 @@ def get_describe_workspace_directories_paginator(
     """
     Equivalent of `client.get_paginator('describe_workspace_directories')`, returns a correct type.
     """
-    return client.get_waiter("describe_workspace_directories")
+    return client.get_paginator("describe_workspace_directories")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -101,7 +101,7 @@ def get_describe_workspace_images_paginator(
     """
     Equivalent of `client.get_paginator('describe_workspace_images')`, returns a correct type.
     """
-    return client.get_waiter("describe_workspace_images")
+    return client.get_paginator("describe_workspace_images")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -109,7 +109,7 @@ def get_describe_workspaces_paginator(client: Client) -> DescribeWorkspacesPagin
     """
     Equivalent of `client.get_paginator('describe_workspaces')`, returns a correct type.
     """
-    return client.get_waiter("describe_workspaces")
+    return client.get_paginator("describe_workspaces")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -119,7 +119,7 @@ def get_describe_workspaces_connection_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_workspaces_connection_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_workspaces_connection_status")
+    return client.get_paginator("describe_workspaces_connection_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -129,4 +129,4 @@ def get_list_available_management_cidr_ranges_paginator(
     """
     Equivalent of `client.get_paginator('list_available_management_cidr_ranges')`, returns a correct type.
     """
-    return client.get_waiter("list_available_management_cidr_ranges")
+    return client.get_paginator("list_available_management_cidr_ranges")

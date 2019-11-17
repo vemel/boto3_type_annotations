@@ -1,6 +1,6 @@
 "Helper functions for batch service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('batch')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_describe_compute_environments_paginator(
     """
     Equivalent of `client.get_paginator('describe_compute_environments')`, returns a correct type.
     """
-    return client.get_waiter("describe_compute_environments")
+    return client.get_paginator("describe_compute_environments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_describe_job_definitions_paginator(
     """
     Equivalent of `client.get_paginator('describe_job_definitions')`, returns a correct type.
     """
-    return client.get_waiter("describe_job_definitions")
+    return client.get_paginator("describe_job_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_describe_job_queues_paginator(client: Client) -> DescribeJobQueuesPagina
     """
     Equivalent of `client.get_paginator('describe_job_queues')`, returns a correct type.
     """
-    return client.get_waiter("describe_job_queues")
+    return client.get_paginator("describe_job_queues")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,4 +85,4 @@ def get_list_jobs_paginator(client: Client) -> ListJobsPaginator:
     """
     Equivalent of `client.get_paginator('list_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_jobs")
+    return client.get_paginator("list_jobs")

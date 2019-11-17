@@ -1,6 +1,6 @@
 "Helper functions for cloudhsmv2 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudhsmv2')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_describe_backups_paginator(client: Client) -> DescribeBackupsPaginator:
     """
     Equivalent of `client.get_paginator('describe_backups')`, returns a correct type.
     """
-    return client.get_waiter("describe_backups")
+    return client.get_paginator("describe_backups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_describe_clusters_paginator(client: Client) -> DescribeClustersPaginator
     """
     Equivalent of `client.get_paginator('describe_clusters')`, returns a correct type.
     """
-    return client.get_waiter("describe_clusters")
+    return client.get_paginator("describe_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_list_tags_paginator(client: Client) -> ListTagsPaginator:
     """
     Equivalent of `client.get_paginator('list_tags')`, returns a correct type.
     """
-    return client.get_waiter("list_tags")
+    return client.get_paginator("list_tags")

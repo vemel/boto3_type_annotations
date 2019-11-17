@@ -1,6 +1,6 @@
 "Helper functions for license-manager service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('license-manager')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_list_associations_for_license_configuration_paginator(
     """
     Equivalent of `client.get_paginator('list_associations_for_license_configuration')`, returns a correct type.
     """
-    return client.get_waiter("list_associations_for_license_configuration")
+    return client.get_paginator("list_associations_for_license_configuration")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_list_license_configurations_paginator(
     """
     Equivalent of `client.get_paginator('list_license_configurations')`, returns a correct type.
     """
-    return client.get_waiter("list_license_configurations")
+    return client.get_paginator("list_license_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_list_license_specifications_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_license_specifications_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_license_specifications_for_resource")
+    return client.get_paginator("list_license_specifications_for_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_list_resource_inventory_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_inventory')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_inventory")
+    return client.get_paginator("list_resource_inventory")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -100,4 +100,4 @@ def get_list_usage_for_license_configuration_paginator(
     """
     Equivalent of `client.get_paginator('list_usage_for_license_configuration')`, returns a correct type.
     """
-    return client.get_waiter("list_usage_for_license_configuration")
+    return client.get_paginator("list_usage_for_license_configuration")

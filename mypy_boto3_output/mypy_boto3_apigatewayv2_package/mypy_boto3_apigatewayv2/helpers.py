@@ -1,6 +1,6 @@
 "Helper functions for apigatewayv2 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('apigatewayv2')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -63,7 +63,7 @@ def get_get_apis_paginator(client: Client) -> GetApisPaginator:
     """
     Equivalent of `client.get_paginator('get_apis')`, returns a correct type.
     """
-    return client.get_waiter("get_apis")
+    return client.get_paginator("get_apis")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -71,7 +71,7 @@ def get_get_authorizers_paginator(client: Client) -> GetAuthorizersPaginator:
     """
     Equivalent of `client.get_paginator('get_authorizers')`, returns a correct type.
     """
-    return client.get_waiter("get_authorizers")
+    return client.get_paginator("get_authorizers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_get_deployments_paginator(client: Client) -> GetDeploymentsPaginator:
     """
     Equivalent of `client.get_paginator('get_deployments')`, returns a correct type.
     """
-    return client.get_waiter("get_deployments")
+    return client.get_paginator("get_deployments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_get_domain_names_paginator(client: Client) -> GetDomainNamesPaginator:
     """
     Equivalent of `client.get_paginator('get_domain_names')`, returns a correct type.
     """
-    return client.get_waiter("get_domain_names")
+    return client.get_paginator("get_domain_names")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_get_integration_responses_paginator(
     """
     Equivalent of `client.get_paginator('get_integration_responses')`, returns a correct type.
     """
-    return client.get_waiter("get_integration_responses")
+    return client.get_paginator("get_integration_responses")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -105,7 +105,7 @@ def get_get_integrations_paginator(client: Client) -> GetIntegrationsPaginator:
     """
     Equivalent of `client.get_paginator('get_integrations')`, returns a correct type.
     """
-    return client.get_waiter("get_integrations")
+    return client.get_paginator("get_integrations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_get_models_paginator(client: Client) -> GetModelsPaginator:
     """
     Equivalent of `client.get_paginator('get_models')`, returns a correct type.
     """
-    return client.get_waiter("get_models")
+    return client.get_paginator("get_models")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -121,7 +121,7 @@ def get_get_route_responses_paginator(client: Client) -> GetRouteResponsesPagina
     """
     Equivalent of `client.get_paginator('get_route_responses')`, returns a correct type.
     """
-    return client.get_waiter("get_route_responses")
+    return client.get_paginator("get_route_responses")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -129,7 +129,7 @@ def get_get_routes_paginator(client: Client) -> GetRoutesPaginator:
     """
     Equivalent of `client.get_paginator('get_routes')`, returns a correct type.
     """
-    return client.get_waiter("get_routes")
+    return client.get_paginator("get_routes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -137,4 +137,4 @@ def get_get_stages_paginator(client: Client) -> GetStagesPaginator:
     """
     Equivalent of `client.get_paginator('get_stages')`, returns a correct type.
     """
-    return client.get_waiter("get_stages")
+    return client.get_paginator("get_stages")

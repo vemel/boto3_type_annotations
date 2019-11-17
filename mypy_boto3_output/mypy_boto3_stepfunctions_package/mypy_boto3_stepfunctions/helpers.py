@@ -1,6 +1,6 @@
 "Helper functions for stepfunctions service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('stepfunctions')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_get_execution_history_paginator(client: Client) -> GetExecutionHistoryPa
     """
     Equivalent of `client.get_paginator('get_execution_history')`, returns a correct type.
     """
-    return client.get_waiter("get_execution_history")
+    return client.get_paginator("get_execution_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -65,7 +65,7 @@ def get_list_activities_paginator(client: Client) -> ListActivitiesPaginator:
     """
     Equivalent of `client.get_paginator('list_activities')`, returns a correct type.
     """
-    return client.get_waiter("list_activities")
+    return client.get_paginator("list_activities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_executions_paginator(client: Client) -> ListExecutionsPaginator:
     """
     Equivalent of `client.get_paginator('list_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_executions")
+    return client.get_paginator("list_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,4 +81,4 @@ def get_list_state_machines_paginator(client: Client) -> ListStateMachinesPagina
     """
     Equivalent of `client.get_paginator('list_state_machines')`, returns a correct type.
     """
-    return client.get_waiter("list_state_machines")
+    return client.get_paginator("list_state_machines")

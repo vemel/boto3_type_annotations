@@ -1,6 +1,6 @@
 "Helper functions for elbv2 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -38,7 +38,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('elbv2')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -69,7 +69,7 @@ def get_describe_account_limits_paginator(
     """
     Equivalent of `client.get_paginator('describe_account_limits')`, returns a correct type.
     """
-    return client.get_waiter("describe_account_limits")
+    return client.get_paginator("describe_account_limits")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_describe_listener_certificates_paginator(
     """
     Equivalent of `client.get_paginator('describe_listener_certificates')`, returns a correct type.
     """
-    return client.get_waiter("describe_listener_certificates")
+    return client.get_paginator("describe_listener_certificates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_describe_listeners_paginator(client: Client) -> DescribeListenersPaginat
     """
     Equivalent of `client.get_paginator('describe_listeners')`, returns a correct type.
     """
-    return client.get_waiter("describe_listeners")
+    return client.get_paginator("describe_listeners")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_describe_load_balancers_paginator(
     """
     Equivalent of `client.get_paginator('describe_load_balancers')`, returns a correct type.
     """
-    return client.get_waiter("describe_load_balancers")
+    return client.get_paginator("describe_load_balancers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -105,7 +105,7 @@ def get_describe_rules_paginator(client: Client) -> DescribeRulesPaginator:
     """
     Equivalent of `client.get_paginator('describe_rules')`, returns a correct type.
     """
-    return client.get_waiter("describe_rules")
+    return client.get_paginator("describe_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_describe_ssl_policies_paginator(client: Client) -> DescribeSSLPoliciesPa
     """
     Equivalent of `client.get_paginator('describe_ssl_policies')`, returns a correct type.
     """
-    return client.get_waiter("describe_ssl_policies")
+    return client.get_paginator("describe_ssl_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_describe_target_groups_paginator(
     """
     Equivalent of `client.get_paginator('describe_target_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_target_groups")
+    return client.get_paginator("describe_target_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

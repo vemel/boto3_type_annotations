@@ -1,6 +1,6 @@
 "Helper functions for securityhub service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('securityhub')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_get_enabled_standards_paginator(client: Client) -> GetEnabledStandardsPa
     """
     Equivalent of `client.get_paginator('get_enabled_standards')`, returns a correct type.
     """
-    return client.get_waiter("get_enabled_standards")
+    return client.get_paginator("get_enabled_standards")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,7 +67,7 @@ def get_get_findings_paginator(client: Client) -> GetFindingsPaginator:
     """
     Equivalent of `client.get_paginator('get_findings')`, returns a correct type.
     """
-    return client.get_waiter("get_findings")
+    return client.get_paginator("get_findings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -75,7 +75,7 @@ def get_get_insights_paginator(client: Client) -> GetInsightsPaginator:
     """
     Equivalent of `client.get_paginator('get_insights')`, returns a correct type.
     """
-    return client.get_waiter("get_insights")
+    return client.get_paginator("get_insights")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,7 +85,7 @@ def get_list_enabled_products_for_import_paginator(
     """
     Equivalent of `client.get_paginator('list_enabled_products_for_import')`, returns a correct type.
     """
-    return client.get_waiter("list_enabled_products_for_import")
+    return client.get_paginator("list_enabled_products_for_import")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -93,7 +93,7 @@ def get_list_invitations_paginator(client: Client) -> ListInvitationsPaginator:
     """
     Equivalent of `client.get_paginator('list_invitations')`, returns a correct type.
     """
-    return client.get_waiter("list_invitations")
+    return client.get_paginator("list_invitations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -101,4 +101,4 @@ def get_list_members_paginator(client: Client) -> ListMembersPaginator:
     """
     Equivalent of `client.get_paginator('list_members')`, returns a correct type.
     """
-    return client.get_waiter("list_members")
+    return client.get_paginator("list_members")

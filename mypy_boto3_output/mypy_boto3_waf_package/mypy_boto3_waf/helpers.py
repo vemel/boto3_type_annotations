@@ -1,6 +1,6 @@
 "Helper functions for waf service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -40,7 +40,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('waf')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -71,7 +71,7 @@ def get_get_rate_based_rule_managed_keys_paginator(
     """
     Equivalent of `client.get_paginator('get_rate_based_rule_managed_keys')`, returns a correct type.
     """
-    return client.get_waiter("get_rate_based_rule_managed_keys")
+    return client.get_paginator("get_rate_based_rule_managed_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_list_activated_rules_in_rule_group_paginator(
     """
     Equivalent of `client.get_paginator('list_activated_rules_in_rule_group')`, returns a correct type.
     """
-    return client.get_waiter("list_activated_rules_in_rule_group")
+    return client.get_paginator("list_activated_rules_in_rule_group")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -89,7 +89,7 @@ def get_list_byte_match_sets_paginator(client: Client) -> ListByteMatchSetsPagin
     """
     Equivalent of `client.get_paginator('list_byte_match_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_byte_match_sets")
+    return client.get_paginator("list_byte_match_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_list_geo_match_sets_paginator(client: Client) -> ListGeoMatchSetsPaginat
     """
     Equivalent of `client.get_paginator('list_geo_match_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_geo_match_sets")
+    return client.get_paginator("list_geo_match_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -105,7 +105,7 @@ def get_list_ip_sets_paginator(client: Client) -> ListIPSetsPaginator:
     """
     Equivalent of `client.get_paginator('list_ip_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_ip_sets")
+    return client.get_paginator("list_ip_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -115,7 +115,7 @@ def get_list_logging_configurations_paginator(
     """
     Equivalent of `client.get_paginator('list_logging_configurations')`, returns a correct type.
     """
-    return client.get_waiter("list_logging_configurations")
+    return client.get_paginator("list_logging_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_list_rate_based_rules_paginator(client: Client) -> ListRateBasedRulesPag
     """
     Equivalent of `client.get_paginator('list_rate_based_rules')`, returns a correct type.
     """
-    return client.get_waiter("list_rate_based_rules")
+    return client.get_paginator("list_rate_based_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -131,7 +131,7 @@ def get_list_regex_match_sets_paginator(client: Client) -> ListRegexMatchSetsPag
     """
     Equivalent of `client.get_paginator('list_regex_match_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_regex_match_sets")
+    return client.get_paginator("list_regex_match_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,7 +141,7 @@ def get_list_regex_pattern_sets_paginator(
     """
     Equivalent of `client.get_paginator('list_regex_pattern_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_regex_pattern_sets")
+    return client.get_paginator("list_regex_pattern_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -149,7 +149,7 @@ def get_list_rule_groups_paginator(client: Client) -> ListRuleGroupsPaginator:
     """
     Equivalent of `client.get_paginator('list_rule_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_rule_groups")
+    return client.get_paginator("list_rule_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -157,7 +157,7 @@ def get_list_rules_paginator(client: Client) -> ListRulesPaginator:
     """
     Equivalent of `client.get_paginator('list_rules')`, returns a correct type.
     """
-    return client.get_waiter("list_rules")
+    return client.get_paginator("list_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -167,7 +167,7 @@ def get_list_size_constraint_sets_paginator(
     """
     Equivalent of `client.get_paginator('list_size_constraint_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_size_constraint_sets")
+    return client.get_paginator("list_size_constraint_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -177,7 +177,7 @@ def get_list_sql_injection_match_sets_paginator(
     """
     Equivalent of `client.get_paginator('list_sql_injection_match_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_sql_injection_match_sets")
+    return client.get_paginator("list_sql_injection_match_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -187,7 +187,7 @@ def get_list_subscribed_rule_groups_paginator(
     """
     Equivalent of `client.get_paginator('list_subscribed_rule_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_subscribed_rule_groups")
+    return client.get_paginator("list_subscribed_rule_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -195,7 +195,7 @@ def get_list_web_acls_paginator(client: Client) -> ListWebACLsPaginator:
     """
     Equivalent of `client.get_paginator('list_web_acls')`, returns a correct type.
     """
-    return client.get_waiter("list_web_acls")
+    return client.get_paginator("list_web_acls")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -203,4 +203,4 @@ def get_list_xss_match_sets_paginator(client: Client) -> ListXssMatchSetsPaginat
     """
     Equivalent of `client.get_paginator('list_xss_match_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_xss_match_sets")
+    return client.get_paginator("list_xss_match_sets")

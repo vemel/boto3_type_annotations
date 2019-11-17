@@ -1,6 +1,6 @@
 "Helper functions for gamelift service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -40,7 +40,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('gamelift')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -71,7 +71,7 @@ def get_describe_fleet_attributes_paginator(
     """
     Equivalent of `client.get_paginator('describe_fleet_attributes')`, returns a correct type.
     """
-    return client.get_waiter("describe_fleet_attributes")
+    return client.get_paginator("describe_fleet_attributes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_describe_fleet_capacity_paginator(
     """
     Equivalent of `client.get_paginator('describe_fleet_capacity')`, returns a correct type.
     """
-    return client.get_waiter("describe_fleet_capacity")
+    return client.get_paginator("describe_fleet_capacity")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -89,7 +89,7 @@ def get_describe_fleet_events_paginator(client: Client) -> DescribeFleetEventsPa
     """
     Equivalent of `client.get_paginator('describe_fleet_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_fleet_events")
+    return client.get_paginator("describe_fleet_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -99,7 +99,7 @@ def get_describe_fleet_utilization_paginator(
     """
     Equivalent of `client.get_paginator('describe_fleet_utilization')`, returns a correct type.
     """
-    return client.get_waiter("describe_fleet_utilization")
+    return client.get_paginator("describe_fleet_utilization")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -109,7 +109,7 @@ def get_describe_game_session_details_paginator(
     """
     Equivalent of `client.get_paginator('describe_game_session_details')`, returns a correct type.
     """
-    return client.get_waiter("describe_game_session_details")
+    return client.get_paginator("describe_game_session_details")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -119,7 +119,7 @@ def get_describe_game_session_queues_paginator(
     """
     Equivalent of `client.get_paginator('describe_game_session_queues')`, returns a correct type.
     """
-    return client.get_waiter("describe_game_session_queues")
+    return client.get_paginator("describe_game_session_queues")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -129,7 +129,7 @@ def get_describe_game_sessions_paginator(
     """
     Equivalent of `client.get_paginator('describe_game_sessions')`, returns a correct type.
     """
-    return client.get_waiter("describe_game_sessions")
+    return client.get_paginator("describe_game_sessions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -137,7 +137,7 @@ def get_describe_instances_paginator(client: Client) -> DescribeInstancesPaginat
     """
     Equivalent of `client.get_paginator('describe_instances')`, returns a correct type.
     """
-    return client.get_waiter("describe_instances")
+    return client.get_paginator("describe_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -147,7 +147,7 @@ def get_describe_matchmaking_configurations_paginator(
     """
     Equivalent of `client.get_paginator('describe_matchmaking_configurations')`, returns a correct type.
     """
-    return client.get_waiter("describe_matchmaking_configurations")
+    return client.get_paginator("describe_matchmaking_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -157,7 +157,7 @@ def get_describe_matchmaking_rule_sets_paginator(
     """
     Equivalent of `client.get_paginator('describe_matchmaking_rule_sets')`, returns a correct type.
     """
-    return client.get_waiter("describe_matchmaking_rule_sets")
+    return client.get_paginator("describe_matchmaking_rule_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -167,7 +167,7 @@ def get_describe_player_sessions_paginator(
     """
     Equivalent of `client.get_paginator('describe_player_sessions')`, returns a correct type.
     """
-    return client.get_waiter("describe_player_sessions")
+    return client.get_paginator("describe_player_sessions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -177,7 +177,7 @@ def get_describe_scaling_policies_paginator(
     """
     Equivalent of `client.get_paginator('describe_scaling_policies')`, returns a correct type.
     """
-    return client.get_waiter("describe_scaling_policies")
+    return client.get_paginator("describe_scaling_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -185,7 +185,7 @@ def get_list_aliases_paginator(client: Client) -> ListAliasesPaginator:
     """
     Equivalent of `client.get_paginator('list_aliases')`, returns a correct type.
     """
-    return client.get_waiter("list_aliases")
+    return client.get_paginator("list_aliases")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -193,7 +193,7 @@ def get_list_builds_paginator(client: Client) -> ListBuildsPaginator:
     """
     Equivalent of `client.get_paginator('list_builds')`, returns a correct type.
     """
-    return client.get_waiter("list_builds")
+    return client.get_paginator("list_builds")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -201,7 +201,7 @@ def get_list_fleets_paginator(client: Client) -> ListFleetsPaginator:
     """
     Equivalent of `client.get_paginator('list_fleets')`, returns a correct type.
     """
-    return client.get_waiter("list_fleets")
+    return client.get_paginator("list_fleets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -209,4 +209,4 @@ def get_search_game_sessions_paginator(client: Client) -> SearchGameSessionsPagi
     """
     Equivalent of `client.get_paginator('search_game_sessions')`, returns a correct type.
     """
-    return client.get_waiter("search_game_sessions")
+    return client.get_paginator("search_game_sessions")

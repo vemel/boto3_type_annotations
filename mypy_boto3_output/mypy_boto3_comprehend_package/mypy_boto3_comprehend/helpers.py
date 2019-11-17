@@ -1,6 +1,6 @@
 "Helper functions for comprehend service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -32,7 +32,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('comprehend')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -63,7 +63,7 @@ def get_list_document_classification_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_document_classification_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_document_classification_jobs")
+    return client.get_paginator("list_document_classification_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_document_classifiers_paginator(
     """
     Equivalent of `client.get_paginator('list_document_classifiers')`, returns a correct type.
     """
-    return client.get_waiter("list_document_classifiers")
+    return client.get_paginator("list_document_classifiers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -83,7 +83,7 @@ def get_list_dominant_language_detection_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_dominant_language_detection_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_dominant_language_detection_jobs")
+    return client.get_paginator("list_dominant_language_detection_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -93,7 +93,7 @@ def get_list_entities_detection_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_entities_detection_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_entities_detection_jobs")
+    return client.get_paginator("list_entities_detection_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,7 +103,7 @@ def get_list_entity_recognizers_paginator(
     """
     Equivalent of `client.get_paginator('list_entity_recognizers')`, returns a correct type.
     """
-    return client.get_waiter("list_entity_recognizers")
+    return client.get_paginator("list_entity_recognizers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_list_key_phrases_detection_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_key_phrases_detection_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_key_phrases_detection_jobs")
+    return client.get_paginator("list_key_phrases_detection_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_list_sentiment_detection_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_sentiment_detection_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_sentiment_detection_jobs")
+    return client.get_paginator("list_sentiment_detection_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -133,4 +133,4 @@ def get_list_topics_detection_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_topics_detection_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_topics_detection_jobs")
+    return client.get_paginator("list_topics_detection_jobs")

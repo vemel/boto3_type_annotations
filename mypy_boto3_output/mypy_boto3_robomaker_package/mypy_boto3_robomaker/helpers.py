@@ -1,6 +1,6 @@
 "Helper functions for robomaker service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('robomaker')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_list_deployment_jobs_paginator(client: Client) -> ListDeploymentJobsPagi
     """
     Equivalent of `client.get_paginator('list_deployment_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_deployment_jobs")
+    return client.get_paginator("list_deployment_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -67,7 +67,7 @@ def get_list_fleets_paginator(client: Client) -> ListFleetsPaginator:
     """
     Equivalent of `client.get_paginator('list_fleets')`, returns a correct type.
     """
-    return client.get_waiter("list_fleets")
+    return client.get_paginator("list_fleets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_list_robot_applications_paginator(
     """
     Equivalent of `client.get_paginator('list_robot_applications')`, returns a correct type.
     """
-    return client.get_waiter("list_robot_applications")
+    return client.get_paginator("list_robot_applications")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,7 +85,7 @@ def get_list_robots_paginator(client: Client) -> ListRobotsPaginator:
     """
     Equivalent of `client.get_paginator('list_robots')`, returns a correct type.
     """
-    return client.get_waiter("list_robots")
+    return client.get_paginator("list_robots")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -95,7 +95,7 @@ def get_list_simulation_applications_paginator(
     """
     Equivalent of `client.get_paginator('list_simulation_applications')`, returns a correct type.
     """
-    return client.get_waiter("list_simulation_applications")
+    return client.get_paginator("list_simulation_applications")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,4 +103,4 @@ def get_list_simulation_jobs_paginator(client: Client) -> ListSimulationJobsPagi
     """
     Equivalent of `client.get_paginator('list_simulation_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_simulation_jobs")
+    return client.get_paginator("list_simulation_jobs")

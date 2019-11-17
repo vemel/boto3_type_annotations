@@ -1,6 +1,6 @@
 "Helper functions for fms service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('fms')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_list_compliance_status_paginator(
     """
     Equivalent of `client.get_paginator('list_compliance_status')`, returns a correct type.
     """
-    return client.get_waiter("list_compliance_status")
+    return client.get_paginator("list_compliance_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_member_accounts_paginator(client: Client) -> ListMemberAccountsPagi
     """
     Equivalent of `client.get_paginator('list_member_accounts')`, returns a correct type.
     """
-    return client.get_waiter("list_member_accounts")
+    return client.get_paginator("list_member_accounts")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_policies_paginator(client: Client) -> ListPoliciesPaginator:
     """
     Equivalent of `client.get_paginator('list_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_policies")
+    return client.get_paginator("list_policies")

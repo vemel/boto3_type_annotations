@@ -1,6 +1,6 @@
 "Helper functions for pinpoint-email service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('pinpoint-email')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_get_dedicated_ips_paginator(client: Client) -> GetDedicatedIpsPaginator:
     """
     Equivalent of `client.get_paginator('get_dedicated_ips')`, returns a correct type.
     """
-    return client.get_waiter("get_dedicated_ips")
+    return client.get_paginator("get_dedicated_ips")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -68,7 +68,7 @@ def get_list_configuration_sets_paginator(
     """
     Equivalent of `client.get_paginator('list_configuration_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_configuration_sets")
+    return client.get_paginator("list_configuration_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_list_dedicated_ip_pools_paginator(
     """
     Equivalent of `client.get_paginator('list_dedicated_ip_pools')`, returns a correct type.
     """
-    return client.get_waiter("list_dedicated_ip_pools")
+    return client.get_paginator("list_dedicated_ip_pools")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_list_deliverability_test_reports_paginator(
     """
     Equivalent of `client.get_paginator('list_deliverability_test_reports')`, returns a correct type.
     """
-    return client.get_waiter("list_deliverability_test_reports")
+    return client.get_paginator("list_deliverability_test_reports")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -96,4 +96,4 @@ def get_list_email_identities_paginator(client: Client) -> ListEmailIdentitiesPa
     """
     Equivalent of `client.get_paginator('list_email_identities')`, returns a correct type.
     """
-    return client.get_waiter("list_email_identities")
+    return client.get_paginator("list_email_identities")

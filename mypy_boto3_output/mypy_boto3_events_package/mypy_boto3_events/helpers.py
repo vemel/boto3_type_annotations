@@ -1,6 +1,6 @@
 "Helper functions for events service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('events')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_list_rule_names_by_target_paginator(
     """
     Equivalent of `client.get_paginator('list_rule_names_by_target')`, returns a correct type.
     """
-    return client.get_waiter("list_rule_names_by_target")
+    return client.get_paginator("list_rule_names_by_target")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_rules_paginator(client: Client) -> ListRulesPaginator:
     """
     Equivalent of `client.get_paginator('list_rules')`, returns a correct type.
     """
-    return client.get_waiter("list_rules")
+    return client.get_paginator("list_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_targets_by_rule_paginator(client: Client) -> ListTargetsByRulePagin
     """
     Equivalent of `client.get_paginator('list_targets_by_rule')`, returns a correct type.
     """
-    return client.get_waiter("list_targets_by_rule")
+    return client.get_paginator("list_targets_by_rule")

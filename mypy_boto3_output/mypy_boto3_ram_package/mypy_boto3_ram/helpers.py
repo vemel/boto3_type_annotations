@@ -1,6 +1,6 @@
 "Helper functions for ram service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('ram')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_get_resource_policies_paginator(client: Client) -> GetResourcePoliciesPa
     """
     Equivalent of `client.get_paginator('get_resource_policies')`, returns a correct type.
     """
-    return client.get_waiter("get_resource_policies")
+    return client.get_paginator("get_resource_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_get_resource_share_associations_paginator(
     """
     Equivalent of `client.get_paginator('get_resource_share_associations')`, returns a correct type.
     """
-    return client.get_waiter("get_resource_share_associations")
+    return client.get_paginator("get_resource_share_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_get_resource_share_invitations_paginator(
     """
     Equivalent of `client.get_paginator('get_resource_share_invitations')`, returns a correct type.
     """
-    return client.get_waiter("get_resource_share_invitations")
+    return client.get_paginator("get_resource_share_invitations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_get_resource_shares_paginator(client: Client) -> GetResourceSharesPagina
     """
     Equivalent of `client.get_paginator('get_resource_shares')`, returns a correct type.
     """
-    return client.get_waiter("get_resource_shares")
+    return client.get_paginator("get_resource_shares")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -95,7 +95,7 @@ def get_list_principals_paginator(client: Client) -> ListPrincipalsPaginator:
     """
     Equivalent of `client.get_paginator('list_principals')`, returns a correct type.
     """
-    return client.get_waiter("list_principals")
+    return client.get_paginator("list_principals")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,4 +103,4 @@ def get_list_resources_paginator(client: Client) -> ListResourcesPaginator:
     """
     Equivalent of `client.get_paginator('list_resources')`, returns a correct type.
     """
-    return client.get_waiter("list_resources")
+    return client.get_paginator("list_resources")

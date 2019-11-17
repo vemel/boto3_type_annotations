@@ -1,6 +1,6 @@
 "Helper functions for codebuild service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('codebuild')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_builds_paginator(client: Client) -> ListBuildsPaginator:
     """
     Equivalent of `client.get_paginator('list_builds')`, returns a correct type.
     """
-    return client.get_waiter("list_builds")
+    return client.get_paginator("list_builds")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_builds_for_project_paginator(
     """
     Equivalent of `client.get_paginator('list_builds_for_project')`, returns a correct type.
     """
-    return client.get_waiter("list_builds_for_project")
+    return client.get_paginator("list_builds_for_project")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_projects_paginator(client: Client) -> ListProjectsPaginator:
     """
     Equivalent of `client.get_paginator('list_projects')`, returns a correct type.
     """
-    return client.get_waiter("list_projects")
+    return client.get_paginator("list_projects")

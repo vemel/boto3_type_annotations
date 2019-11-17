@@ -1,6 +1,6 @@
 "Helper functions for ecs service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -38,7 +38,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('ecs')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -67,7 +67,7 @@ def get_list_account_settings_paginator(client: Client) -> ListAccountSettingsPa
     """
     Equivalent of `client.get_paginator('list_account_settings')`, returns a correct type.
     """
-    return client.get_waiter("list_account_settings")
+    return client.get_paginator("list_account_settings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -75,7 +75,7 @@ def get_list_attributes_paginator(client: Client) -> ListAttributesPaginator:
     """
     Equivalent of `client.get_paginator('list_attributes')`, returns a correct type.
     """
-    return client.get_waiter("list_attributes")
+    return client.get_paginator("list_attributes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -83,7 +83,7 @@ def get_list_clusters_paginator(client: Client) -> ListClustersPaginator:
     """
     Equivalent of `client.get_paginator('list_clusters')`, returns a correct type.
     """
-    return client.get_waiter("list_clusters")
+    return client.get_paginator("list_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -93,7 +93,7 @@ def get_list_container_instances_paginator(
     """
     Equivalent of `client.get_paginator('list_container_instances')`, returns a correct type.
     """
-    return client.get_waiter("list_container_instances")
+    return client.get_paginator("list_container_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -101,7 +101,7 @@ def get_list_services_paginator(client: Client) -> ListServicesPaginator:
     """
     Equivalent of `client.get_paginator('list_services')`, returns a correct type.
     """
-    return client.get_waiter("list_services")
+    return client.get_paginator("list_services")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -111,7 +111,7 @@ def get_list_task_definition_families_paginator(
     """
     Equivalent of `client.get_paginator('list_task_definition_families')`, returns a correct type.
     """
-    return client.get_waiter("list_task_definition_families")
+    return client.get_paginator("list_task_definition_families")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -119,7 +119,7 @@ def get_list_task_definitions_paginator(client: Client) -> ListTaskDefinitionsPa
     """
     Equivalent of `client.get_paginator('list_task_definitions')`, returns a correct type.
     """
-    return client.get_waiter("list_task_definitions")
+    return client.get_paginator("list_task_definitions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -127,7 +127,7 @@ def get_list_tasks_paginator(client: Client) -> ListTasksPaginator:
     """
     Equivalent of `client.get_paginator('list_tasks')`, returns a correct type.
     """
-    return client.get_waiter("list_tasks")
+    return client.get_paginator("list_tasks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

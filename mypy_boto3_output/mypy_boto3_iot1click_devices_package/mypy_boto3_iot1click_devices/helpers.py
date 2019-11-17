@@ -1,6 +1,6 @@
 "Helper functions for iot1click-devices service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -26,7 +26,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('iot1click-devices')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -55,7 +55,7 @@ def get_list_device_events_paginator(client: Client) -> ListDeviceEventsPaginato
     """
     Equivalent of `client.get_paginator('list_device_events')`, returns a correct type.
     """
-    return client.get_waiter("list_device_events")
+    return client.get_paginator("list_device_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -63,4 +63,4 @@ def get_list_devices_paginator(client: Client) -> ListDevicesPaginator:
     """
     Equivalent of `client.get_paginator('list_devices')`, returns a correct type.
     """
-    return client.get_waiter("list_devices")
+    return client.get_paginator("list_devices")

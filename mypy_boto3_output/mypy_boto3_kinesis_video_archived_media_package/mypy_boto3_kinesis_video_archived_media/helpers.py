@@ -1,6 +1,6 @@
 "Helper functions for kinesis-video-archived-media service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -23,7 +23,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('kinesis-video-archived-media')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -52,4 +52,4 @@ def get_list_fragments_paginator(client: Client) -> ListFragmentsPaginator:
     """
     Equivalent of `client.get_paginator('list_fragments')`, returns a correct type.
     """
-    return client.get_waiter("list_fragments")
+    return client.get_paginator("list_fragments")

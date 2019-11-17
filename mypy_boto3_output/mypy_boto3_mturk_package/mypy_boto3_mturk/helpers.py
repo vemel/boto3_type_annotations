@@ -1,6 +1,6 @@
 "Helper functions for mturk service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('mturk')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -64,7 +64,7 @@ def get_list_assignments_for_hit_paginator(
     """
     Equivalent of `client.get_paginator('list_assignments_for_hit')`, returns a correct type.
     """
-    return client.get_waiter("list_assignments_for_hit")
+    return client.get_paginator("list_assignments_for_hit")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_list_bonus_payments_paginator(client: Client) -> ListBonusPaymentsPagina
     """
     Equivalent of `client.get_paginator('list_bonus_payments')`, returns a correct type.
     """
-    return client.get_waiter("list_bonus_payments")
+    return client.get_paginator("list_bonus_payments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_list_hits_paginator(client: Client) -> ListHITsPaginator:
     """
     Equivalent of `client.get_paginator('list_hits')`, returns a correct type.
     """
-    return client.get_waiter("list_hits")
+    return client.get_paginator("list_hits")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_list_hits_for_qualification_type_paginator(
     """
     Equivalent of `client.get_paginator('list_hits_for_qualification_type')`, returns a correct type.
     """
-    return client.get_waiter("list_hits_for_qualification_type")
+    return client.get_paginator("list_hits_for_qualification_type")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -100,7 +100,7 @@ def get_list_qualification_requests_paginator(
     """
     Equivalent of `client.get_paginator('list_qualification_requests')`, returns a correct type.
     """
-    return client.get_waiter("list_qualification_requests")
+    return client.get_paginator("list_qualification_requests")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -110,7 +110,7 @@ def get_list_qualification_types_paginator(
     """
     Equivalent of `client.get_paginator('list_qualification_types')`, returns a correct type.
     """
-    return client.get_waiter("list_qualification_types")
+    return client.get_paginator("list_qualification_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -118,7 +118,7 @@ def get_list_reviewable_hits_paginator(client: Client) -> ListReviewableHITsPagi
     """
     Equivalent of `client.get_paginator('list_reviewable_hits')`, returns a correct type.
     """
-    return client.get_waiter("list_reviewable_hits")
+    return client.get_paginator("list_reviewable_hits")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_list_worker_blocks_paginator(client: Client) -> ListWorkerBlocksPaginato
     """
     Equivalent of `client.get_paginator('list_worker_blocks')`, returns a correct type.
     """
-    return client.get_waiter("list_worker_blocks")
+    return client.get_paginator("list_worker_blocks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -136,4 +136,4 @@ def get_list_workers_with_qualification_type_paginator(
     """
     Equivalent of `client.get_paginator('list_workers_with_qualification_type')`, returns a correct type.
     """
-    return client.get_waiter("list_workers_with_qualification_type")
+    return client.get_paginator("list_workers_with_qualification_type")

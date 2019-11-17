@@ -1,6 +1,6 @@
 "Helper functions for inspector service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('inspector')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -64,7 +64,7 @@ def get_list_assessment_run_agents_paginator(
     """
     Equivalent of `client.get_paginator('list_assessment_run_agents')`, returns a correct type.
     """
-    return client.get_waiter("list_assessment_run_agents")
+    return client.get_paginator("list_assessment_run_agents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_list_assessment_runs_paginator(client: Client) -> ListAssessmentRunsPagi
     """
     Equivalent of `client.get_paginator('list_assessment_runs')`, returns a correct type.
     """
-    return client.get_waiter("list_assessment_runs")
+    return client.get_paginator("list_assessment_runs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_assessment_targets_paginator(
     """
     Equivalent of `client.get_paginator('list_assessment_targets')`, returns a correct type.
     """
-    return client.get_waiter("list_assessment_targets")
+    return client.get_paginator("list_assessment_targets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_list_assessment_templates_paginator(
     """
     Equivalent of `client.get_paginator('list_assessment_templates')`, returns a correct type.
     """
-    return client.get_waiter("list_assessment_templates")
+    return client.get_paginator("list_assessment_templates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -102,7 +102,7 @@ def get_list_event_subscriptions_paginator(
     """
     Equivalent of `client.get_paginator('list_event_subscriptions')`, returns a correct type.
     """
-    return client.get_waiter("list_event_subscriptions")
+    return client.get_paginator("list_event_subscriptions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -110,7 +110,7 @@ def get_list_exclusions_paginator(client: Client) -> ListExclusionsPaginator:
     """
     Equivalent of `client.get_paginator('list_exclusions')`, returns a correct type.
     """
-    return client.get_waiter("list_exclusions")
+    return client.get_paginator("list_exclusions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -118,7 +118,7 @@ def get_list_findings_paginator(client: Client) -> ListFindingsPaginator:
     """
     Equivalent of `client.get_paginator('list_findings')`, returns a correct type.
     """
-    return client.get_waiter("list_findings")
+    return client.get_paginator("list_findings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_list_rules_packages_paginator(client: Client) -> ListRulesPackagesPagina
     """
     Equivalent of `client.get_paginator('list_rules_packages')`, returns a correct type.
     """
-    return client.get_waiter("list_rules_packages")
+    return client.get_paginator("list_rules_packages")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,4 +134,4 @@ def get_preview_agents_paginator(client: Client) -> PreviewAgentsPaginator:
     """
     Equivalent of `client.get_paginator('preview_agents')`, returns a correct type.
     """
-    return client.get_waiter("preview_agents")
+    return client.get_paginator("preview_agents")

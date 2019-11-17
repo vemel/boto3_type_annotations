@@ -1,6 +1,6 @@
 "Helper functions for ssm service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -64,7 +64,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('ssm')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -93,7 +93,7 @@ def get_describe_activations_paginator(client: Client) -> DescribeActivationsPag
     """
     Equivalent of `client.get_paginator('describe_activations')`, returns a correct type.
     """
-    return client.get_waiter("describe_activations")
+    return client.get_paginator("describe_activations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,7 +103,7 @@ def get_describe_association_execution_targets_paginator(
     """
     Equivalent of `client.get_paginator('describe_association_execution_targets')`, returns a correct type.
     """
-    return client.get_waiter("describe_association_execution_targets")
+    return client.get_paginator("describe_association_execution_targets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_describe_association_executions_paginator(
     """
     Equivalent of `client.get_paginator('describe_association_executions')`, returns a correct type.
     """
-    return client.get_waiter("describe_association_executions")
+    return client.get_paginator("describe_association_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_describe_automation_executions_paginator(
     """
     Equivalent of `client.get_paginator('describe_automation_executions')`, returns a correct type.
     """
-    return client.get_waiter("describe_automation_executions")
+    return client.get_paginator("describe_automation_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -133,7 +133,7 @@ def get_describe_automation_step_executions_paginator(
     """
     Equivalent of `client.get_paginator('describe_automation_step_executions')`, returns a correct type.
     """
-    return client.get_waiter("describe_automation_step_executions")
+    return client.get_paginator("describe_automation_step_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -143,7 +143,7 @@ def get_describe_available_patches_paginator(
     """
     Equivalent of `client.get_paginator('describe_available_patches')`, returns a correct type.
     """
-    return client.get_waiter("describe_available_patches")
+    return client.get_paginator("describe_available_patches")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -153,7 +153,7 @@ def get_describe_effective_instance_associations_paginator(
     """
     Equivalent of `client.get_paginator('describe_effective_instance_associations')`, returns a correct type.
     """
-    return client.get_waiter("describe_effective_instance_associations")
+    return client.get_paginator("describe_effective_instance_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -163,7 +163,7 @@ def get_describe_effective_patches_for_patch_baseline_paginator(
     """
     Equivalent of `client.get_paginator('describe_effective_patches_for_patch_baseline')`, returns a correct type.
     """
-    return client.get_waiter("describe_effective_patches_for_patch_baseline")
+    return client.get_paginator("describe_effective_patches_for_patch_baseline")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -173,7 +173,7 @@ def get_describe_instance_associations_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_instance_associations_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_instance_associations_status")
+    return client.get_paginator("describe_instance_associations_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -183,7 +183,7 @@ def get_describe_instance_information_paginator(
     """
     Equivalent of `client.get_paginator('describe_instance_information')`, returns a correct type.
     """
-    return client.get_waiter("describe_instance_information")
+    return client.get_paginator("describe_instance_information")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -193,7 +193,7 @@ def get_describe_instance_patch_states_paginator(
     """
     Equivalent of `client.get_paginator('describe_instance_patch_states')`, returns a correct type.
     """
-    return client.get_waiter("describe_instance_patch_states")
+    return client.get_paginator("describe_instance_patch_states")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -203,7 +203,7 @@ def get_describe_instance_patch_states_for_patch_group_paginator(
     """
     Equivalent of `client.get_paginator('describe_instance_patch_states_for_patch_group')`, returns a correct type.
     """
-    return client.get_waiter("describe_instance_patch_states_for_patch_group")
+    return client.get_paginator("describe_instance_patch_states_for_patch_group")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -213,7 +213,7 @@ def get_describe_instance_patches_paginator(
     """
     Equivalent of `client.get_paginator('describe_instance_patches')`, returns a correct type.
     """
-    return client.get_waiter("describe_instance_patches")
+    return client.get_paginator("describe_instance_patches")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -223,7 +223,7 @@ def get_describe_inventory_deletions_paginator(
     """
     Equivalent of `client.get_paginator('describe_inventory_deletions')`, returns a correct type.
     """
-    return client.get_waiter("describe_inventory_deletions")
+    return client.get_paginator("describe_inventory_deletions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -233,7 +233,9 @@ def get_describe_maintenance_window_execution_task_invocations_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_execution_task_invocations')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_execution_task_invocations")
+    return client.get_paginator(
+        "describe_maintenance_window_execution_task_invocations"
+    )
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -243,7 +245,7 @@ def get_describe_maintenance_window_execution_tasks_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_execution_tasks')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_execution_tasks")
+    return client.get_paginator("describe_maintenance_window_execution_tasks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -253,7 +255,7 @@ def get_describe_maintenance_window_executions_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_executions')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_executions")
+    return client.get_paginator("describe_maintenance_window_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -263,7 +265,7 @@ def get_describe_maintenance_window_schedule_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_schedule')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_schedule")
+    return client.get_paginator("describe_maintenance_window_schedule")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -273,7 +275,7 @@ def get_describe_maintenance_window_targets_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_targets')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_targets")
+    return client.get_paginator("describe_maintenance_window_targets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -283,7 +285,7 @@ def get_describe_maintenance_window_tasks_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_window_tasks')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_window_tasks")
+    return client.get_paginator("describe_maintenance_window_tasks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -293,7 +295,7 @@ def get_describe_maintenance_windows_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_windows')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_windows")
+    return client.get_paginator("describe_maintenance_windows")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -303,7 +305,7 @@ def get_describe_maintenance_windows_for_target_paginator(
     """
     Equivalent of `client.get_paginator('describe_maintenance_windows_for_target')`, returns a correct type.
     """
-    return client.get_waiter("describe_maintenance_windows_for_target")
+    return client.get_paginator("describe_maintenance_windows_for_target")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -311,7 +313,7 @@ def get_describe_parameters_paginator(client: Client) -> DescribeParametersPagin
     """
     Equivalent of `client.get_paginator('describe_parameters')`, returns a correct type.
     """
-    return client.get_waiter("describe_parameters")
+    return client.get_paginator("describe_parameters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -321,7 +323,7 @@ def get_describe_patch_baselines_paginator(
     """
     Equivalent of `client.get_paginator('describe_patch_baselines')`, returns a correct type.
     """
-    return client.get_waiter("describe_patch_baselines")
+    return client.get_paginator("describe_patch_baselines")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -329,7 +331,7 @@ def get_describe_patch_groups_paginator(client: Client) -> DescribePatchGroupsPa
     """
     Equivalent of `client.get_paginator('describe_patch_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_patch_groups")
+    return client.get_paginator("describe_patch_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -337,7 +339,7 @@ def get_describe_sessions_paginator(client: Client) -> DescribeSessionsPaginator
     """
     Equivalent of `client.get_paginator('describe_sessions')`, returns a correct type.
     """
-    return client.get_waiter("describe_sessions")
+    return client.get_paginator("describe_sessions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -345,7 +347,7 @@ def get_get_inventory_paginator(client: Client) -> GetInventoryPaginator:
     """
     Equivalent of `client.get_paginator('get_inventory')`, returns a correct type.
     """
-    return client.get_waiter("get_inventory")
+    return client.get_paginator("get_inventory")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -353,7 +355,7 @@ def get_get_inventory_schema_paginator(client: Client) -> GetInventorySchemaPagi
     """
     Equivalent of `client.get_paginator('get_inventory_schema')`, returns a correct type.
     """
-    return client.get_waiter("get_inventory_schema")
+    return client.get_paginator("get_inventory_schema")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -361,7 +363,7 @@ def get_get_parameter_history_paginator(client: Client) -> GetParameterHistoryPa
     """
     Equivalent of `client.get_paginator('get_parameter_history')`, returns a correct type.
     """
-    return client.get_waiter("get_parameter_history")
+    return client.get_paginator("get_parameter_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -371,7 +373,7 @@ def get_get_parameters_by_path_paginator(
     """
     Equivalent of `client.get_paginator('get_parameters_by_path')`, returns a correct type.
     """
-    return client.get_waiter("get_parameters_by_path")
+    return client.get_paginator("get_parameters_by_path")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -381,7 +383,7 @@ def get_list_association_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_association_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_association_versions")
+    return client.get_paginator("list_association_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -389,7 +391,7 @@ def get_list_associations_paginator(client: Client) -> ListAssociationsPaginator
     """
     Equivalent of `client.get_paginator('list_associations')`, returns a correct type.
     """
-    return client.get_waiter("list_associations")
+    return client.get_paginator("list_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -399,7 +401,7 @@ def get_list_command_invocations_paginator(
     """
     Equivalent of `client.get_paginator('list_command_invocations')`, returns a correct type.
     """
-    return client.get_waiter("list_command_invocations")
+    return client.get_paginator("list_command_invocations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -407,7 +409,7 @@ def get_list_commands_paginator(client: Client) -> ListCommandsPaginator:
     """
     Equivalent of `client.get_paginator('list_commands')`, returns a correct type.
     """
-    return client.get_waiter("list_commands")
+    return client.get_paginator("list_commands")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -415,7 +417,7 @@ def get_list_compliance_items_paginator(client: Client) -> ListComplianceItemsPa
     """
     Equivalent of `client.get_paginator('list_compliance_items')`, returns a correct type.
     """
-    return client.get_waiter("list_compliance_items")
+    return client.get_paginator("list_compliance_items")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -425,7 +427,7 @@ def get_list_compliance_summaries_paginator(
     """
     Equivalent of `client.get_paginator('list_compliance_summaries')`, returns a correct type.
     """
-    return client.get_waiter("list_compliance_summaries")
+    return client.get_paginator("list_compliance_summaries")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -435,7 +437,7 @@ def get_list_document_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_document_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_document_versions")
+    return client.get_paginator("list_document_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -443,7 +445,7 @@ def get_list_documents_paginator(client: Client) -> ListDocumentsPaginator:
     """
     Equivalent of `client.get_paginator('list_documents')`, returns a correct type.
     """
-    return client.get_waiter("list_documents")
+    return client.get_paginator("list_documents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -453,7 +455,7 @@ def get_list_resource_compliance_summaries_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_compliance_summaries')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_compliance_summaries")
+    return client.get_paginator("list_resource_compliance_summaries")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -463,4 +465,4 @@ def get_list_resource_data_sync_paginator(
     """
     Equivalent of `client.get_paginator('list_resource_data_sync')`, returns a correct type.
     """
-    return client.get_waiter("list_resource_data_sync")
+    return client.get_paginator("list_resource_data_sync")

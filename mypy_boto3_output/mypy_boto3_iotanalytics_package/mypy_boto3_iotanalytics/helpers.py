@@ -1,6 +1,6 @@
 "Helper functions for iotanalytics service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('iotanalytics')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_list_channels_paginator(client: Client) -> ListChannelsPaginator:
     """
     Equivalent of `client.get_paginator('list_channels')`, returns a correct type.
     """
-    return client.get_waiter("list_channels")
+    return client.get_paginator("list_channels")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_dataset_contents_paginator(client: Client) -> ListDatasetContentsPa
     """
     Equivalent of `client.get_paginator('list_dataset_contents')`, returns a correct type.
     """
-    return client.get_waiter("list_dataset_contents")
+    return client.get_paginator("list_dataset_contents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,7 +74,7 @@ def get_list_datasets_paginator(client: Client) -> ListDatasetsPaginator:
     """
     Equivalent of `client.get_paginator('list_datasets')`, returns a correct type.
     """
-    return client.get_waiter("list_datasets")
+    return client.get_paginator("list_datasets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_datastores_paginator(client: Client) -> ListDatastoresPaginator:
     """
     Equivalent of `client.get_paginator('list_datastores')`, returns a correct type.
     """
-    return client.get_waiter("list_datastores")
+    return client.get_paginator("list_datastores")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,4 +90,4 @@ def get_list_pipelines_paginator(client: Client) -> ListPipelinesPaginator:
     """
     Equivalent of `client.get_paginator('list_pipelines')`, returns a correct type.
     """
-    return client.get_waiter("list_pipelines")
+    return client.get_paginator("list_pipelines")

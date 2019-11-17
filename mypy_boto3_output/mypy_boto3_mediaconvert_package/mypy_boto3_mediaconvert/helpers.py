@@ -1,6 +1,6 @@
 "Helper functions for mediaconvert service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('mediaconvert')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_describe_endpoints_paginator(client: Client) -> DescribeEndpointsPaginat
     """
     Equivalent of `client.get_paginator('describe_endpoints')`, returns a correct type.
     """
-    return client.get_waiter("describe_endpoints")
+    return client.get_paginator("describe_endpoints")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_job_templates_paginator(client: Client) -> ListJobTemplatesPaginato
     """
     Equivalent of `client.get_paginator('list_job_templates')`, returns a correct type.
     """
-    return client.get_waiter("list_job_templates")
+    return client.get_paginator("list_job_templates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,7 +74,7 @@ def get_list_jobs_paginator(client: Client) -> ListJobsPaginator:
     """
     Equivalent of `client.get_paginator('list_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_jobs")
+    return client.get_paginator("list_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_presets_paginator(client: Client) -> ListPresetsPaginator:
     """
     Equivalent of `client.get_paginator('list_presets')`, returns a correct type.
     """
-    return client.get_waiter("list_presets")
+    return client.get_paginator("list_presets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,4 +90,4 @@ def get_list_queues_paginator(client: Client) -> ListQueuesPaginator:
     """
     Equivalent of `client.get_paginator('list_queues')`, returns a correct type.
     """
-    return client.get_waiter("list_queues")
+    return client.get_paginator("list_queues")

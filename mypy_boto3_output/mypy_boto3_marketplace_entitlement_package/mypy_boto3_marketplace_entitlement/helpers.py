@@ -1,6 +1,6 @@
 "Helper functions for marketplace-entitlement service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -23,7 +23,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('marketplace-entitlement')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -52,4 +52,4 @@ def get_get_entitlements_paginator(client: Client) -> GetEntitlementsPaginator:
     """
     Equivalent of `client.get_paginator('get_entitlements')`, returns a correct type.
     """
-    return client.get_waiter("get_entitlements")
+    return client.get_paginator("get_entitlements")

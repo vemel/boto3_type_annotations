@@ -1,6 +1,6 @@
 "Helper functions for codepipeline service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('codepipeline')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -61,7 +61,7 @@ def get_list_action_executions_paginator(
     """
     Equivalent of `client.get_paginator('list_action_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_action_executions")
+    return client.get_paginator("list_action_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_list_action_types_paginator(client: Client) -> ListActionTypesPaginator:
     """
     Equivalent of `client.get_paginator('list_action_types')`, returns a correct type.
     """
-    return client.get_waiter("list_action_types")
+    return client.get_paginator("list_action_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_list_pipeline_executions_paginator(
     """
     Equivalent of `client.get_paginator('list_pipeline_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_pipeline_executions")
+    return client.get_paginator("list_pipeline_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_list_pipelines_paginator(client: Client) -> ListPipelinesPaginator:
     """
     Equivalent of `client.get_paginator('list_pipelines')`, returns a correct type.
     """
-    return client.get_waiter("list_pipelines")
+    return client.get_paginator("list_pipelines")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -97,7 +97,7 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -105,4 +105,4 @@ def get_list_webhooks_paginator(client: Client) -> ListWebhooksPaginator:
     """
     Equivalent of `client.get_paginator('list_webhooks')`, returns a correct type.
     """
-    return client.get_waiter("list_webhooks")
+    return client.get_paginator("list_webhooks")

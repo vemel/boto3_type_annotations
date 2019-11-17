@@ -1,6 +1,6 @@
 "Helper functions for sns service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('sns')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -71,7 +71,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('sns')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -102,7 +102,7 @@ def get_list_endpoints_by_platform_application_paginator(
     """
     Equivalent of `client.get_paginator('list_endpoints_by_platform_application')`, returns a correct type.
     """
-    return client.get_waiter("list_endpoints_by_platform_application")
+    return client.get_paginator("list_endpoints_by_platform_application")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -112,7 +112,7 @@ def get_list_phone_numbers_opted_out_paginator(
     """
     Equivalent of `client.get_paginator('list_phone_numbers_opted_out')`, returns a correct type.
     """
-    return client.get_waiter("list_phone_numbers_opted_out")
+    return client.get_paginator("list_phone_numbers_opted_out")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -122,7 +122,7 @@ def get_list_platform_applications_paginator(
     """
     Equivalent of `client.get_paginator('list_platform_applications')`, returns a correct type.
     """
-    return client.get_waiter("list_platform_applications")
+    return client.get_paginator("list_platform_applications")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -130,7 +130,7 @@ def get_list_subscriptions_paginator(client: Client) -> ListSubscriptionsPaginat
     """
     Equivalent of `client.get_paginator('list_subscriptions')`, returns a correct type.
     """
-    return client.get_waiter("list_subscriptions")
+    return client.get_paginator("list_subscriptions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -140,7 +140,7 @@ def get_list_subscriptions_by_topic_paginator(
     """
     Equivalent of `client.get_paginator('list_subscriptions_by_topic')`, returns a correct type.
     """
-    return client.get_waiter("list_subscriptions_by_topic")
+    return client.get_paginator("list_subscriptions_by_topic")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -148,4 +148,4 @@ def get_list_topics_paginator(client: Client) -> ListTopicsPaginator:
     """
     Equivalent of `client.get_paginator('list_topics')`, returns a correct type.
     """
-    return client.get_waiter("list_topics")
+    return client.get_paginator("list_topics")

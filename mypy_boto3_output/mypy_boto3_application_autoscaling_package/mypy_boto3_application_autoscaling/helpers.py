@@ -1,6 +1,6 @@
 "Helper functions for application-autoscaling service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('application-autoscaling')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_describe_scalable_targets_paginator(
     """
     Equivalent of `client.get_paginator('describe_scalable_targets')`, returns a correct type.
     """
-    return client.get_waiter("describe_scalable_targets")
+    return client.get_paginator("describe_scalable_targets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_describe_scaling_activities_paginator(
     """
     Equivalent of `client.get_paginator('describe_scaling_activities')`, returns a correct type.
     """
-    return client.get_waiter("describe_scaling_activities")
+    return client.get_paginator("describe_scaling_activities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -79,7 +79,7 @@ def get_describe_scaling_policies_paginator(
     """
     Equivalent of `client.get_paginator('describe_scaling_policies')`, returns a correct type.
     """
-    return client.get_waiter("describe_scaling_policies")
+    return client.get_paginator("describe_scaling_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -89,4 +89,4 @@ def get_describe_scheduled_actions_paginator(
     """
     Equivalent of `client.get_paginator('describe_scheduled_actions')`, returns a correct type.
     """
-    return client.get_waiter("describe_scheduled_actions")
+    return client.get_paginator("describe_scheduled_actions")

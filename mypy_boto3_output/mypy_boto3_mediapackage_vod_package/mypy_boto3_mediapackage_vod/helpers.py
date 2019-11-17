@@ -1,6 +1,6 @@
 "Helper functions for mediapackage-vod service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('mediapackage-vod')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_assets_paginator(client: Client) -> ListAssetsPaginator:
     """
     Equivalent of `client.get_paginator('list_assets')`, returns a correct type.
     """
-    return client.get_waiter("list_assets")
+    return client.get_paginator("list_assets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_packaging_configurations_paginator(
     """
     Equivalent of `client.get_paginator('list_packaging_configurations')`, returns a correct type.
     """
-    return client.get_waiter("list_packaging_configurations")
+    return client.get_paginator("list_packaging_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_packaging_groups_paginator(client: Client) -> ListPackagingGroupsPa
     """
     Equivalent of `client.get_paginator('list_packaging_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_packaging_groups")
+    return client.get_paginator("list_packaging_groups")

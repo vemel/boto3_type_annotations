@@ -1,6 +1,6 @@
 "Helper functions for config service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -41,7 +41,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('config')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -72,7 +72,7 @@ def get_describe_aggregate_compliance_by_config_rules_paginator(
     """
     Equivalent of `client.get_paginator('describe_aggregate_compliance_by_config_rules')`, returns a correct type.
     """
-    return client.get_waiter("describe_aggregate_compliance_by_config_rules")
+    return client.get_paginator("describe_aggregate_compliance_by_config_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_describe_aggregation_authorizations_paginator(
     """
     Equivalent of `client.get_paginator('describe_aggregation_authorizations')`, returns a correct type.
     """
-    return client.get_waiter("describe_aggregation_authorizations")
+    return client.get_paginator("describe_aggregation_authorizations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_describe_compliance_by_config_rule_paginator(
     """
     Equivalent of `client.get_paginator('describe_compliance_by_config_rule')`, returns a correct type.
     """
-    return client.get_waiter("describe_compliance_by_config_rule")
+    return client.get_paginator("describe_compliance_by_config_rule")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -102,7 +102,7 @@ def get_describe_compliance_by_resource_paginator(
     """
     Equivalent of `client.get_paginator('describe_compliance_by_resource')`, returns a correct type.
     """
-    return client.get_waiter("describe_compliance_by_resource")
+    return client.get_paginator("describe_compliance_by_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -112,7 +112,7 @@ def get_describe_config_rule_evaluation_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_config_rule_evaluation_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_config_rule_evaluation_status")
+    return client.get_paginator("describe_config_rule_evaluation_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -120,7 +120,7 @@ def get_describe_config_rules_paginator(client: Client) -> DescribeConfigRulesPa
     """
     Equivalent of `client.get_paginator('describe_config_rules')`, returns a correct type.
     """
-    return client.get_waiter("describe_config_rules")
+    return client.get_paginator("describe_config_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -130,7 +130,7 @@ def get_describe_configuration_aggregator_sources_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_configuration_aggregator_sources_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_configuration_aggregator_sources_status")
+    return client.get_paginator("describe_configuration_aggregator_sources_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -140,7 +140,7 @@ def get_describe_configuration_aggregators_paginator(
     """
     Equivalent of `client.get_paginator('describe_configuration_aggregators')`, returns a correct type.
     """
-    return client.get_waiter("describe_configuration_aggregators")
+    return client.get_paginator("describe_configuration_aggregators")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -150,7 +150,7 @@ def get_describe_pending_aggregation_requests_paginator(
     """
     Equivalent of `client.get_paginator('describe_pending_aggregation_requests')`, returns a correct type.
     """
-    return client.get_waiter("describe_pending_aggregation_requests")
+    return client.get_paginator("describe_pending_aggregation_requests")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -160,7 +160,7 @@ def get_describe_remediation_execution_status_paginator(
     """
     Equivalent of `client.get_paginator('describe_remediation_execution_status')`, returns a correct type.
     """
-    return client.get_waiter("describe_remediation_execution_status")
+    return client.get_paginator("describe_remediation_execution_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -170,7 +170,7 @@ def get_describe_retention_configurations_paginator(
     """
     Equivalent of `client.get_paginator('describe_retention_configurations')`, returns a correct type.
     """
-    return client.get_waiter("describe_retention_configurations")
+    return client.get_paginator("describe_retention_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -180,7 +180,7 @@ def get_get_aggregate_compliance_details_by_config_rule_paginator(
     """
     Equivalent of `client.get_paginator('get_aggregate_compliance_details_by_config_rule')`, returns a correct type.
     """
-    return client.get_waiter("get_aggregate_compliance_details_by_config_rule")
+    return client.get_paginator("get_aggregate_compliance_details_by_config_rule")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -190,7 +190,7 @@ def get_get_compliance_details_by_config_rule_paginator(
     """
     Equivalent of `client.get_paginator('get_compliance_details_by_config_rule')`, returns a correct type.
     """
-    return client.get_waiter("get_compliance_details_by_config_rule")
+    return client.get_paginator("get_compliance_details_by_config_rule")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -200,7 +200,7 @@ def get_get_compliance_details_by_resource_paginator(
     """
     Equivalent of `client.get_paginator('get_compliance_details_by_resource')`, returns a correct type.
     """
-    return client.get_waiter("get_compliance_details_by_resource")
+    return client.get_paginator("get_compliance_details_by_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -210,7 +210,7 @@ def get_get_resource_config_history_paginator(
     """
     Equivalent of `client.get_paginator('get_resource_config_history')`, returns a correct type.
     """
-    return client.get_waiter("get_resource_config_history")
+    return client.get_paginator("get_resource_config_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -220,7 +220,7 @@ def get_list_aggregate_discovered_resources_paginator(
     """
     Equivalent of `client.get_paginator('list_aggregate_discovered_resources')`, returns a correct type.
     """
-    return client.get_waiter("list_aggregate_discovered_resources")
+    return client.get_paginator("list_aggregate_discovered_resources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -230,4 +230,4 @@ def get_list_discovered_resources_paginator(
     """
     Equivalent of `client.get_paginator('list_discovered_resources')`, returns a correct type.
     """
-    return client.get_waiter("list_discovered_resources")
+    return client.get_paginator("list_discovered_resources")

@@ -1,6 +1,6 @@
 "Helper functions for es service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('es')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_describe_reserved_elasticsearch_instance_offerings_paginator(
     """
     Equivalent of `client.get_paginator('describe_reserved_elasticsearch_instance_offerings')`, returns a correct type.
     """
-    return client.get_waiter("describe_reserved_elasticsearch_instance_offerings")
+    return client.get_paginator("describe_reserved_elasticsearch_instance_offerings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_describe_reserved_elasticsearch_instances_paginator(
     """
     Equivalent of `client.get_paginator('describe_reserved_elasticsearch_instances')`, returns a correct type.
     """
-    return client.get_waiter("describe_reserved_elasticsearch_instances")
+    return client.get_paginator("describe_reserved_elasticsearch_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_get_upgrade_history_paginator(client: Client) -> GetUpgradeHistoryPagina
     """
     Equivalent of `client.get_paginator('get_upgrade_history')`, returns a correct type.
     """
-    return client.get_waiter("get_upgrade_history")
+    return client.get_paginator("get_upgrade_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_list_elasticsearch_instance_types_paginator(
     """
     Equivalent of `client.get_paginator('list_elasticsearch_instance_types')`, returns a correct type.
     """
-    return client.get_waiter("list_elasticsearch_instance_types")
+    return client.get_paginator("list_elasticsearch_instance_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,4 +98,4 @@ def get_list_elasticsearch_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_elasticsearch_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_elasticsearch_versions")
+    return client.get_paginator("list_elasticsearch_versions")

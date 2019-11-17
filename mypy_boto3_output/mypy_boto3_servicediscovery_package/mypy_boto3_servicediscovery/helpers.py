@@ -1,6 +1,6 @@
 "Helper functions for servicediscovery service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('servicediscovery')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_list_instances_paginator(client: Client) -> ListInstancesPaginator:
     """
     Equivalent of `client.get_paginator('list_instances')`, returns a correct type.
     """
-    return client.get_waiter("list_instances")
+    return client.get_paginator("list_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -65,7 +65,7 @@ def get_list_namespaces_paginator(client: Client) -> ListNamespacesPaginator:
     """
     Equivalent of `client.get_paginator('list_namespaces')`, returns a correct type.
     """
-    return client.get_waiter("list_namespaces")
+    return client.get_paginator("list_namespaces")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_operations_paginator(client: Client) -> ListOperationsPaginator:
     """
     Equivalent of `client.get_paginator('list_operations')`, returns a correct type.
     """
-    return client.get_waiter("list_operations")
+    return client.get_paginator("list_operations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,4 +81,4 @@ def get_list_services_paginator(client: Client) -> ListServicesPaginator:
     """
     Equivalent of `client.get_paginator('list_services')`, returns a correct type.
     """
-    return client.get_waiter("list_services")
+    return client.get_paginator("list_services")

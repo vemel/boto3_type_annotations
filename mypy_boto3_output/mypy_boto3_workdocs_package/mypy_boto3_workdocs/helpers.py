@@ -1,6 +1,6 @@
 "Helper functions for workdocs service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('workdocs')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -62,7 +62,7 @@ def get_describe_activities_paginator(client: Client) -> DescribeActivitiesPagin
     """
     Equivalent of `client.get_paginator('describe_activities')`, returns a correct type.
     """
-    return client.get_waiter("describe_activities")
+    return client.get_paginator("describe_activities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_describe_comments_paginator(client: Client) -> DescribeCommentsPaginator
     """
     Equivalent of `client.get_paginator('describe_comments')`, returns a correct type.
     """
-    return client.get_waiter("describe_comments")
+    return client.get_paginator("describe_comments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_describe_document_versions_paginator(
     """
     Equivalent of `client.get_paginator('describe_document_versions')`, returns a correct type.
     """
-    return client.get_waiter("describe_document_versions")
+    return client.get_paginator("describe_document_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_describe_folder_contents_paginator(
     """
     Equivalent of `client.get_paginator('describe_folder_contents')`, returns a correct type.
     """
-    return client.get_waiter("describe_folder_contents")
+    return client.get_paginator("describe_folder_contents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,7 +98,7 @@ def get_describe_groups_paginator(client: Client) -> DescribeGroupsPaginator:
     """
     Equivalent of `client.get_paginator('describe_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_groups")
+    return client.get_paginator("describe_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -108,7 +108,7 @@ def get_describe_notification_subscriptions_paginator(
     """
     Equivalent of `client.get_paginator('describe_notification_subscriptions')`, returns a correct type.
     """
-    return client.get_waiter("describe_notification_subscriptions")
+    return client.get_paginator("describe_notification_subscriptions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -118,7 +118,7 @@ def get_describe_resource_permissions_paginator(
     """
     Equivalent of `client.get_paginator('describe_resource_permissions')`, returns a correct type.
     """
-    return client.get_waiter("describe_resource_permissions")
+    return client.get_paginator("describe_resource_permissions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_describe_root_folders_paginator(client: Client) -> DescribeRootFoldersPa
     """
     Equivalent of `client.get_paginator('describe_root_folders')`, returns a correct type.
     """
-    return client.get_waiter("describe_root_folders")
+    return client.get_paginator("describe_root_folders")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,4 +134,4 @@ def get_describe_users_paginator(client: Client) -> DescribeUsersPaginator:
     """
     Equivalent of `client.get_paginator('describe_users')`, returns a correct type.
     """
-    return client.get_waiter("describe_users")
+    return client.get_paginator("describe_users")

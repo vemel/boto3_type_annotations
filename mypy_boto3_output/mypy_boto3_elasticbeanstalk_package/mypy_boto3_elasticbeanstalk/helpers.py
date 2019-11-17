@@ -1,6 +1,6 @@
 "Helper functions for elasticbeanstalk service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('elasticbeanstalk')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_describe_application_versions_paginator(
     """
     Equivalent of `client.get_paginator('describe_application_versions')`, returns a correct type.
     """
-    return client.get_waiter("describe_application_versions")
+    return client.get_paginator("describe_application_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_describe_environment_managed_action_history_paginator(
     """
     Equivalent of `client.get_paginator('describe_environment_managed_action_history')`, returns a correct type.
     """
-    return client.get_waiter("describe_environment_managed_action_history")
+    return client.get_paginator("describe_environment_managed_action_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_describe_environments_paginator(
     """
     Equivalent of `client.get_paginator('describe_environments')`, returns a correct type.
     """
-    return client.get_waiter("describe_environments")
+    return client.get_paginator("describe_environments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_describe_events_paginator(client: Client) -> DescribeEventsPaginator:
     """
     Equivalent of `client.get_paginator('describe_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_events")
+    return client.get_paginator("describe_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,4 +98,4 @@ def get_list_platform_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_platform_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_platform_versions")
+    return client.get_paginator("list_platform_versions")

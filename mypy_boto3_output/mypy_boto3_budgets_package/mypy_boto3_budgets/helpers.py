@@ -1,6 +1,6 @@
 "Helper functions for budgets service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('budgets')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_describe_budgets_paginator(client: Client) -> DescribeBudgetsPaginator:
     """
     Equivalent of `client.get_paginator('describe_budgets')`, returns a correct type.
     """
-    return client.get_waiter("describe_budgets")
+    return client.get_paginator("describe_budgets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_describe_notifications_for_budget_paginator(
     """
     Equivalent of `client.get_paginator('describe_notifications_for_budget')`, returns a correct type.
     """
-    return client.get_waiter("describe_notifications_for_budget")
+    return client.get_paginator("describe_notifications_for_budget")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -76,4 +76,4 @@ def get_describe_subscribers_for_notification_paginator(
     """
     Equivalent of `client.get_paginator('describe_subscribers_for_notification')`, returns a correct type.
     """
-    return client.get_waiter("describe_subscribers_for_notification")
+    return client.get_paginator("describe_subscribers_for_notification")

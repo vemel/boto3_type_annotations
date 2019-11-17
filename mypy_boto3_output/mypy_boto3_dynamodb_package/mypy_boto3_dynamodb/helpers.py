@@ -1,6 +1,6 @@
 "Helper functions for dynamodb service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('dynamodb')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -71,7 +71,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('dynamodb')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -100,7 +100,7 @@ def get_list_backups_paginator(client: Client) -> ListBackupsPaginator:
     """
     Equivalent of `client.get_paginator('list_backups')`, returns a correct type.
     """
-    return client.get_waiter("list_backups")
+    return client.get_paginator("list_backups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -108,7 +108,7 @@ def get_list_tables_paginator(client: Client) -> ListTablesPaginator:
     """
     Equivalent of `client.get_paginator('list_tables')`, returns a correct type.
     """
-    return client.get_waiter("list_tables")
+    return client.get_paginator("list_tables")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -116,7 +116,7 @@ def get_list_tags_of_resource_paginator(client: Client) -> ListTagsOfResourcePag
     """
     Equivalent of `client.get_paginator('list_tags_of_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_of_resource")
+    return client.get_paginator("list_tags_of_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -124,7 +124,7 @@ def get_query_paginator(client: Client) -> QueryPaginator:
     """
     Equivalent of `client.get_paginator('query')`, returns a correct type.
     """
-    return client.get_waiter("query")
+    return client.get_paginator("query")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -132,7 +132,7 @@ def get_scan_paginator(client: Client) -> ScanPaginator:
     """
     Equivalent of `client.get_paginator('scan')`, returns a correct type.
     """
-    return client.get_waiter("scan")
+    return client.get_paginator("scan")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

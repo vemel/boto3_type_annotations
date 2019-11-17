@@ -1,6 +1,6 @@
 "Helper functions for codecommit service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('codecommit')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -62,7 +62,7 @@ def get_describe_pull_request_events_paginator(
     """
     Equivalent of `client.get_paginator('describe_pull_request_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_pull_request_events")
+    return client.get_paginator("describe_pull_request_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_get_comments_for_compared_commit_paginator(
     """
     Equivalent of `client.get_paginator('get_comments_for_compared_commit')`, returns a correct type.
     """
-    return client.get_waiter("get_comments_for_compared_commit")
+    return client.get_paginator("get_comments_for_compared_commit")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_get_comments_for_pull_request_paginator(
     """
     Equivalent of `client.get_paginator('get_comments_for_pull_request')`, returns a correct type.
     """
-    return client.get_waiter("get_comments_for_pull_request")
+    return client.get_paginator("get_comments_for_pull_request")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_get_differences_paginator(client: Client) -> GetDifferencesPaginator:
     """
     Equivalent of `client.get_paginator('get_differences')`, returns a correct type.
     """
-    return client.get_waiter("get_differences")
+    return client.get_paginator("get_differences")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,7 +98,7 @@ def get_list_branches_paginator(client: Client) -> ListBranchesPaginator:
     """
     Equivalent of `client.get_paginator('list_branches')`, returns a correct type.
     """
-    return client.get_waiter("list_branches")
+    return client.get_paginator("list_branches")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -106,7 +106,7 @@ def get_list_pull_requests_paginator(client: Client) -> ListPullRequestsPaginato
     """
     Equivalent of `client.get_paginator('list_pull_requests')`, returns a correct type.
     """
-    return client.get_waiter("list_pull_requests")
+    return client.get_paginator("list_pull_requests")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -114,4 +114,4 @@ def get_list_repositories_paginator(client: Client) -> ListRepositoriesPaginator
     """
     Equivalent of `client.get_paginator('list_repositories')`, returns a correct type.
     """
-    return client.get_waiter("list_repositories")
+    return client.get_paginator("list_repositories")

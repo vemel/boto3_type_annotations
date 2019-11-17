@@ -1,6 +1,6 @@
 "Helper functions for iotthingsgraph service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('iotthingsgraph')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -65,7 +65,7 @@ def get_get_flow_template_revisions_paginator(
     """
     Equivalent of `client.get_paginator('get_flow_template_revisions')`, returns a correct type.
     """
-    return client.get_waiter("get_flow_template_revisions")
+    return client.get_paginator("get_flow_template_revisions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -75,7 +75,7 @@ def get_get_system_template_revisions_paginator(
     """
     Equivalent of `client.get_paginator('get_system_template_revisions')`, returns a correct type.
     """
-    return client.get_waiter("get_system_template_revisions")
+    return client.get_paginator("get_system_template_revisions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -85,7 +85,7 @@ def get_list_flow_execution_messages_paginator(
     """
     Equivalent of `client.get_paginator('list_flow_execution_messages')`, returns a correct type.
     """
-    return client.get_waiter("list_flow_execution_messages")
+    return client.get_paginator("list_flow_execution_messages")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -95,7 +95,7 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,7 +103,7 @@ def get_search_entities_paginator(client: Client) -> SearchEntitiesPaginator:
     """
     Equivalent of `client.get_paginator('search_entities')`, returns a correct type.
     """
-    return client.get_waiter("search_entities")
+    return client.get_paginator("search_entities")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_search_flow_executions_paginator(
     """
     Equivalent of `client.get_paginator('search_flow_executions')`, returns a correct type.
     """
-    return client.get_waiter("search_flow_executions")
+    return client.get_paginator("search_flow_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -121,7 +121,7 @@ def get_search_flow_templates_paginator(client: Client) -> SearchFlowTemplatesPa
     """
     Equivalent of `client.get_paginator('search_flow_templates')`, returns a correct type.
     """
-    return client.get_waiter("search_flow_templates")
+    return client.get_paginator("search_flow_templates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -131,7 +131,7 @@ def get_search_system_instances_paginator(
     """
     Equivalent of `client.get_paginator('search_system_instances')`, returns a correct type.
     """
-    return client.get_waiter("search_system_instances")
+    return client.get_paginator("search_system_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,7 +141,7 @@ def get_search_system_templates_paginator(
     """
     Equivalent of `client.get_paginator('search_system_templates')`, returns a correct type.
     """
-    return client.get_waiter("search_system_templates")
+    return client.get_paginator("search_system_templates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -149,4 +149,4 @@ def get_search_things_paginator(client: Client) -> SearchThingsPaginator:
     """
     Equivalent of `client.get_paginator('search_things')`, returns a correct type.
     """
-    return client.get_waiter("search_things")
+    return client.get_paginator("search_things")

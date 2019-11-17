@@ -1,6 +1,6 @@
 "Helper functions for clouddirectory service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -43,7 +43,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('clouddirectory')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -74,7 +74,7 @@ def get_list_applied_schema_arns_paginator(
     """
     Equivalent of `client.get_paginator('list_applied_schema_arns')`, returns a correct type.
     """
-    return client.get_waiter("list_applied_schema_arns")
+    return client.get_paginator("list_applied_schema_arns")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_attached_indices_paginator(client: Client) -> ListAttachedIndicesPa
     """
     Equivalent of `client.get_paginator('list_attached_indices')`, returns a correct type.
     """
-    return client.get_waiter("list_attached_indices")
+    return client.get_paginator("list_attached_indices")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_list_development_schema_arns_paginator(
     """
     Equivalent of `client.get_paginator('list_development_schema_arns')`, returns a correct type.
     """
-    return client.get_waiter("list_development_schema_arns")
+    return client.get_paginator("list_development_schema_arns")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -100,7 +100,7 @@ def get_list_directories_paginator(client: Client) -> ListDirectoriesPaginator:
     """
     Equivalent of `client.get_paginator('list_directories')`, returns a correct type.
     """
-    return client.get_waiter("list_directories")
+    return client.get_paginator("list_directories")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -108,7 +108,7 @@ def get_list_facet_attributes_paginator(client: Client) -> ListFacetAttributesPa
     """
     Equivalent of `client.get_paginator('list_facet_attributes')`, returns a correct type.
     """
-    return client.get_waiter("list_facet_attributes")
+    return client.get_paginator("list_facet_attributes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -116,7 +116,7 @@ def get_list_facet_names_paginator(client: Client) -> ListFacetNamesPaginator:
     """
     Equivalent of `client.get_paginator('list_facet_names')`, returns a correct type.
     """
-    return client.get_waiter("list_facet_names")
+    return client.get_paginator("list_facet_names")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_list_incoming_typed_links_paginator(
     """
     Equivalent of `client.get_paginator('list_incoming_typed_links')`, returns a correct type.
     """
-    return client.get_waiter("list_incoming_typed_links")
+    return client.get_paginator("list_incoming_typed_links")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,7 +134,7 @@ def get_list_index_paginator(client: Client) -> ListIndexPaginator:
     """
     Equivalent of `client.get_paginator('list_index')`, returns a correct type.
     """
-    return client.get_waiter("list_index")
+    return client.get_paginator("list_index")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -144,7 +144,7 @@ def get_list_managed_schema_arns_paginator(
     """
     Equivalent of `client.get_paginator('list_managed_schema_arns')`, returns a correct type.
     """
-    return client.get_waiter("list_managed_schema_arns")
+    return client.get_paginator("list_managed_schema_arns")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -154,7 +154,7 @@ def get_list_object_attributes_paginator(
     """
     Equivalent of `client.get_paginator('list_object_attributes')`, returns a correct type.
     """
-    return client.get_waiter("list_object_attributes")
+    return client.get_paginator("list_object_attributes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -164,7 +164,7 @@ def get_list_object_parent_paths_paginator(
     """
     Equivalent of `client.get_paginator('list_object_parent_paths')`, returns a correct type.
     """
-    return client.get_waiter("list_object_parent_paths")
+    return client.get_paginator("list_object_parent_paths")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -172,7 +172,7 @@ def get_list_object_policies_paginator(client: Client) -> ListObjectPoliciesPagi
     """
     Equivalent of `client.get_paginator('list_object_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_object_policies")
+    return client.get_paginator("list_object_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -182,7 +182,7 @@ def get_list_outgoing_typed_links_paginator(
     """
     Equivalent of `client.get_paginator('list_outgoing_typed_links')`, returns a correct type.
     """
-    return client.get_waiter("list_outgoing_typed_links")
+    return client.get_paginator("list_outgoing_typed_links")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -192,7 +192,7 @@ def get_list_policy_attachments_paginator(
     """
     Equivalent of `client.get_paginator('list_policy_attachments')`, returns a correct type.
     """
-    return client.get_waiter("list_policy_attachments")
+    return client.get_paginator("list_policy_attachments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -202,7 +202,7 @@ def get_list_published_schema_arns_paginator(
     """
     Equivalent of `client.get_paginator('list_published_schema_arns')`, returns a correct type.
     """
-    return client.get_waiter("list_published_schema_arns")
+    return client.get_paginator("list_published_schema_arns")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -212,7 +212,7 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -222,7 +222,7 @@ def get_list_typed_link_facet_attributes_paginator(
     """
     Equivalent of `client.get_paginator('list_typed_link_facet_attributes')`, returns a correct type.
     """
-    return client.get_waiter("list_typed_link_facet_attributes")
+    return client.get_paginator("list_typed_link_facet_attributes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -232,7 +232,7 @@ def get_list_typed_link_facet_names_paginator(
     """
     Equivalent of `client.get_paginator('list_typed_link_facet_names')`, returns a correct type.
     """
-    return client.get_waiter("list_typed_link_facet_names")
+    return client.get_paginator("list_typed_link_facet_names")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -240,4 +240,4 @@ def get_lookup_policy_paginator(client: Client) -> LookupPolicyPaginator:
     """
     Equivalent of `client.get_paginator('lookup_policy')`, returns a correct type.
     """
-    return client.get_waiter("lookup_policy")
+    return client.get_paginator("lookup_policy")

@@ -1,6 +1,6 @@
 "Helper functions for rekognition service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('rekognition')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_collections_paginator(client: Client) -> ListCollectionsPaginator:
     """
     Equivalent of `client.get_paginator('list_collections')`, returns a correct type.
     """
-    return client.get_waiter("list_collections")
+    return client.get_paginator("list_collections")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_faces_paginator(client: Client) -> ListFacesPaginator:
     """
     Equivalent of `client.get_paginator('list_faces')`, returns a correct type.
     """
-    return client.get_waiter("list_faces")
+    return client.get_paginator("list_faces")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_stream_processors_paginator(
     """
     Equivalent of `client.get_paginator('list_stream_processors')`, returns a correct type.
     """
-    return client.get_waiter("list_stream_processors")
+    return client.get_paginator("list_stream_processors")

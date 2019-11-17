@@ -1,6 +1,6 @@
 "Helper functions for datasync service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('datasync')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_list_agents_paginator(client: Client) -> ListAgentsPaginator:
     """
     Equivalent of `client.get_paginator('list_agents')`, returns a correct type.
     """
-    return client.get_waiter("list_agents")
+    return client.get_paginator("list_agents")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_locations_paginator(client: Client) -> ListLocationsPaginator:
     """
     Equivalent of `client.get_paginator('list_locations')`, returns a correct type.
     """
-    return client.get_waiter("list_locations")
+    return client.get_paginator("list_locations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -76,7 +76,7 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -84,7 +84,7 @@ def get_list_task_executions_paginator(client: Client) -> ListTaskExecutionsPagi
     """
     Equivalent of `client.get_paginator('list_task_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_task_executions")
+    return client.get_paginator("list_task_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,4 +92,4 @@ def get_list_tasks_paginator(client: Client) -> ListTasksPaginator:
     """
     Equivalent of `client.get_paginator('list_tasks')`, returns a correct type.
     """
-    return client.get_waiter("list_tasks")
+    return client.get_paginator("list_tasks")

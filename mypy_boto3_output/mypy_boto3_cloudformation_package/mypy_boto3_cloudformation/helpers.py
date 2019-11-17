@@ -1,6 +1,6 @@
 "Helper functions for cloudformation service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -46,7 +46,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudformation')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -86,7 +86,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('cloudformation')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -117,7 +117,7 @@ def get_describe_account_limits_paginator(
     """
     Equivalent of `client.get_paginator('describe_account_limits')`, returns a correct type.
     """
-    return client.get_waiter("describe_account_limits")
+    return client.get_paginator("describe_account_limits")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -125,7 +125,7 @@ def get_describe_change_set_paginator(client: Client) -> DescribeChangeSetPagina
     """
     Equivalent of `client.get_paginator('describe_change_set')`, returns a correct type.
     """
-    return client.get_waiter("describe_change_set")
+    return client.get_paginator("describe_change_set")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -133,7 +133,7 @@ def get_describe_stack_events_paginator(client: Client) -> DescribeStackEventsPa
     """
     Equivalent of `client.get_paginator('describe_stack_events')`, returns a correct type.
     """
-    return client.get_waiter("describe_stack_events")
+    return client.get_paginator("describe_stack_events")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,7 +141,7 @@ def get_describe_stacks_paginator(client: Client) -> DescribeStacksPaginator:
     """
     Equivalent of `client.get_paginator('describe_stacks')`, returns a correct type.
     """
-    return client.get_waiter("describe_stacks")
+    return client.get_paginator("describe_stacks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -149,7 +149,7 @@ def get_list_change_sets_paginator(client: Client) -> ListChangeSetsPaginator:
     """
     Equivalent of `client.get_paginator('list_change_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_change_sets")
+    return client.get_paginator("list_change_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -157,7 +157,7 @@ def get_list_exports_paginator(client: Client) -> ListExportsPaginator:
     """
     Equivalent of `client.get_paginator('list_exports')`, returns a correct type.
     """
-    return client.get_waiter("list_exports")
+    return client.get_paginator("list_exports")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -165,7 +165,7 @@ def get_list_imports_paginator(client: Client) -> ListImportsPaginator:
     """
     Equivalent of `client.get_paginator('list_imports')`, returns a correct type.
     """
-    return client.get_waiter("list_imports")
+    return client.get_paginator("list_imports")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -173,7 +173,7 @@ def get_list_stack_instances_paginator(client: Client) -> ListStackInstancesPagi
     """
     Equivalent of `client.get_paginator('list_stack_instances')`, returns a correct type.
     """
-    return client.get_waiter("list_stack_instances")
+    return client.get_paginator("list_stack_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -181,7 +181,7 @@ def get_list_stack_resources_paginator(client: Client) -> ListStackResourcesPagi
     """
     Equivalent of `client.get_paginator('list_stack_resources')`, returns a correct type.
     """
-    return client.get_waiter("list_stack_resources")
+    return client.get_paginator("list_stack_resources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -191,7 +191,7 @@ def get_list_stack_set_operation_results_paginator(
     """
     Equivalent of `client.get_paginator('list_stack_set_operation_results')`, returns a correct type.
     """
-    return client.get_waiter("list_stack_set_operation_results")
+    return client.get_paginator("list_stack_set_operation_results")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -201,7 +201,7 @@ def get_list_stack_set_operations_paginator(
     """
     Equivalent of `client.get_paginator('list_stack_set_operations')`, returns a correct type.
     """
-    return client.get_waiter("list_stack_set_operations")
+    return client.get_paginator("list_stack_set_operations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -209,7 +209,7 @@ def get_list_stack_sets_paginator(client: Client) -> ListStackSetsPaginator:
     """
     Equivalent of `client.get_paginator('list_stack_sets')`, returns a correct type.
     """
-    return client.get_waiter("list_stack_sets")
+    return client.get_paginator("list_stack_sets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -217,7 +217,7 @@ def get_list_stacks_paginator(client: Client) -> ListStacksPaginator:
     """
     Equivalent of `client.get_paginator('list_stacks')`, returns a correct type.
     """
-    return client.get_waiter("list_stacks")
+    return client.get_paginator("list_stacks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

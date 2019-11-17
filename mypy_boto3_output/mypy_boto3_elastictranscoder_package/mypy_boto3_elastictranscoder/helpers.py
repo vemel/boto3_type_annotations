@@ -1,6 +1,6 @@
 "Helper functions for elastictranscoder service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('elastictranscoder')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -58,7 +58,7 @@ def get_list_jobs_by_pipeline_paginator(client: Client) -> ListJobsByPipelinePag
     """
     Equivalent of `client.get_paginator('list_jobs_by_pipeline')`, returns a correct type.
     """
-    return client.get_waiter("list_jobs_by_pipeline")
+    return client.get_paginator("list_jobs_by_pipeline")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_jobs_by_status_paginator(client: Client) -> ListJobsByStatusPaginat
     """
     Equivalent of `client.get_paginator('list_jobs_by_status')`, returns a correct type.
     """
-    return client.get_waiter("list_jobs_by_status")
+    return client.get_paginator("list_jobs_by_status")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,7 +74,7 @@ def get_list_pipelines_paginator(client: Client) -> ListPipelinesPaginator:
     """
     Equivalent of `client.get_paginator('list_pipelines')`, returns a correct type.
     """
-    return client.get_waiter("list_pipelines")
+    return client.get_paginator("list_pipelines")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_list_presets_paginator(client: Client) -> ListPresetsPaginator:
     """
     Equivalent of `client.get_paginator('list_presets')`, returns a correct type.
     """
-    return client.get_waiter("list_presets")
+    return client.get_paginator("list_presets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

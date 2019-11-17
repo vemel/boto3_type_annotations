@@ -1,6 +1,6 @@
 "Helper functions for eks service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -24,7 +24,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('eks')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -53,7 +53,7 @@ def get_list_clusters_paginator(client: Client) -> ListClustersPaginator:
     """
     Equivalent of `client.get_paginator('list_clusters')`, returns a correct type.
     """
-    return client.get_waiter("list_clusters")
+    return client.get_paginator("list_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -61,7 +61,7 @@ def get_list_updates_paginator(client: Client) -> ListUpdatesPaginator:
     """
     Equivalent of `client.get_paginator('list_updates')`, returns a correct type.
     """
-    return client.get_waiter("list_updates")
+    return client.get_paginator("list_updates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

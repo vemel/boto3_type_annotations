@@ -1,6 +1,6 @@
 "Helper functions for cur service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -23,7 +23,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cur')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -54,4 +54,4 @@ def get_describe_report_definitions_paginator(
     """
     Equivalent of `client.get_paginator('describe_report_definitions')`, returns a correct type.
     """
-    return client.get_waiter("describe_report_definitions")
+    return client.get_paginator("describe_report_definitions")

@@ -1,6 +1,6 @@
 "Helper functions for datapipeline service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('datapipeline')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_describe_objects_paginator(client: Client) -> DescribeObjectsPaginator:
     """
     Equivalent of `client.get_paginator('describe_objects')`, returns a correct type.
     """
-    return client.get_waiter("describe_objects")
+    return client.get_paginator("describe_objects")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_pipelines_paginator(client: Client) -> ListPipelinesPaginator:
     """
     Equivalent of `client.get_paginator('list_pipelines')`, returns a correct type.
     """
-    return client.get_waiter("list_pipelines")
+    return client.get_paginator("list_pipelines")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_query_objects_paginator(client: Client) -> QueryObjectsPaginator:
     """
     Equivalent of `client.get_paginator('query_objects')`, returns a correct type.
     """
-    return client.get_waiter("query_objects")
+    return client.get_paginator("query_objects")

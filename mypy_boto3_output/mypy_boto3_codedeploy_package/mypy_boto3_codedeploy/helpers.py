@@ -1,6 +1,6 @@
 "Helper functions for codedeploy service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('codedeploy')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -65,7 +65,7 @@ def get_list_application_revisions_paginator(
     """
     Equivalent of `client.get_paginator('list_application_revisions')`, returns a correct type.
     """
-    return client.get_waiter("list_application_revisions")
+    return client.get_paginator("list_application_revisions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_applications_paginator(client: Client) -> ListApplicationsPaginator
     """
     Equivalent of `client.get_paginator('list_applications')`, returns a correct type.
     """
-    return client.get_waiter("list_applications")
+    return client.get_paginator("list_applications")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -83,7 +83,7 @@ def get_list_deployment_configs_paginator(
     """
     Equivalent of `client.get_paginator('list_deployment_configs')`, returns a correct type.
     """
-    return client.get_waiter("list_deployment_configs")
+    return client.get_paginator("list_deployment_configs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -93,7 +93,7 @@ def get_list_deployment_groups_paginator(
     """
     Equivalent of `client.get_paginator('list_deployment_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_deployment_groups")
+    return client.get_paginator("list_deployment_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,7 +103,7 @@ def get_list_deployment_instances_paginator(
     """
     Equivalent of `client.get_paginator('list_deployment_instances')`, returns a correct type.
     """
-    return client.get_waiter("list_deployment_instances")
+    return client.get_paginator("list_deployment_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_list_deployment_targets_paginator(
     """
     Equivalent of `client.get_paginator('list_deployment_targets')`, returns a correct type.
     """
-    return client.get_waiter("list_deployment_targets")
+    return client.get_paginator("list_deployment_targets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -121,7 +121,7 @@ def get_list_deployments_paginator(client: Client) -> ListDeploymentsPaginator:
     """
     Equivalent of `client.get_paginator('list_deployments')`, returns a correct type.
     """
-    return client.get_waiter("list_deployments")
+    return client.get_paginator("list_deployments")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -131,7 +131,7 @@ def get_list_git_hub_account_token_names_paginator(
     """
     Equivalent of `client.get_paginator('list_git_hub_account_token_names')`, returns a correct type.
     """
-    return client.get_waiter("list_git_hub_account_token_names")
+    return client.get_paginator("list_git_hub_account_token_names")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,7 +141,7 @@ def get_list_on_premises_instances_paginator(
     """
     Equivalent of `client.get_paginator('list_on_premises_instances')`, returns a correct type.
     """
-    return client.get_waiter("list_on_premises_instances")
+    return client.get_paginator("list_on_premises_instances")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

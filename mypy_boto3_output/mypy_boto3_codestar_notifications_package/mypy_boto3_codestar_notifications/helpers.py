@@ -1,6 +1,6 @@
 "Helper functions for codestar-notifications service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('codestar-notifications')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_event_types_paginator(client: Client) -> ListEventTypesPaginator:
     """
     Equivalent of `client.get_paginator('list_event_types')`, returns a correct type.
     """
-    return client.get_waiter("list_event_types")
+    return client.get_paginator("list_event_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -66,7 +66,7 @@ def get_list_notification_rules_paginator(
     """
     Equivalent of `client.get_paginator('list_notification_rules')`, returns a correct type.
     """
-    return client.get_waiter("list_notification_rules")
+    return client.get_paginator("list_notification_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,4 +74,4 @@ def get_list_targets_paginator(client: Client) -> ListTargetsPaginator:
     """
     Equivalent of `client.get_paginator('list_targets')`, returns a correct type.
     """
-    return client.get_waiter("list_targets")
+    return client.get_paginator("list_targets")

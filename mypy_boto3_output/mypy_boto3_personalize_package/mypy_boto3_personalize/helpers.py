@@ -1,6 +1,6 @@
 "Helper functions for personalize service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -34,7 +34,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('personalize')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -65,7 +65,7 @@ def get_list_batch_inference_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_batch_inference_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_batch_inference_jobs")
+    return client.get_paginator("list_batch_inference_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_campaigns_paginator(client: Client) -> ListCampaignsPaginator:
     """
     Equivalent of `client.get_paginator('list_campaigns')`, returns a correct type.
     """
-    return client.get_waiter("list_campaigns")
+    return client.get_paginator("list_campaigns")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_list_dataset_groups_paginator(client: Client) -> ListDatasetGroupsPagina
     """
     Equivalent of `client.get_paginator('list_dataset_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_dataset_groups")
+    return client.get_paginator("list_dataset_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -91,7 +91,7 @@ def get_list_dataset_import_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_dataset_import_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_dataset_import_jobs")
+    return client.get_paginator("list_dataset_import_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -99,7 +99,7 @@ def get_list_datasets_paginator(client: Client) -> ListDatasetsPaginator:
     """
     Equivalent of `client.get_paginator('list_datasets')`, returns a correct type.
     """
-    return client.get_waiter("list_datasets")
+    return client.get_paginator("list_datasets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -107,7 +107,7 @@ def get_list_event_trackers_paginator(client: Client) -> ListEventTrackersPagina
     """
     Equivalent of `client.get_paginator('list_event_trackers')`, returns a correct type.
     """
-    return client.get_waiter("list_event_trackers")
+    return client.get_paginator("list_event_trackers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -115,7 +115,7 @@ def get_list_recipes_paginator(client: Client) -> ListRecipesPaginator:
     """
     Equivalent of `client.get_paginator('list_recipes')`, returns a correct type.
     """
-    return client.get_waiter("list_recipes")
+    return client.get_paginator("list_recipes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_list_schemas_paginator(client: Client) -> ListSchemasPaginator:
     """
     Equivalent of `client.get_paginator('list_schemas')`, returns a correct type.
     """
-    return client.get_waiter("list_schemas")
+    return client.get_paginator("list_schemas")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -133,7 +133,7 @@ def get_list_solution_versions_paginator(
     """
     Equivalent of `client.get_paginator('list_solution_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_solution_versions")
+    return client.get_paginator("list_solution_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -141,4 +141,4 @@ def get_list_solutions_paginator(client: Client) -> ListSolutionsPaginator:
     """
     Equivalent of `client.get_paginator('list_solutions')`, returns a correct type.
     """
-    return client.get_waiter("list_solutions")
+    return client.get_paginator("list_solutions")

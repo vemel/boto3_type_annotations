@@ -1,6 +1,6 @@
 "Helper functions for kafka service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('kafka')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_list_cluster_operations_paginator(
     """
     Equivalent of `client.get_paginator('list_cluster_operations')`, returns a correct type.
     """
-    return client.get_waiter("list_cluster_operations")
+    return client.get_paginator("list_cluster_operations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -68,7 +68,7 @@ def get_list_clusters_paginator(client: Client) -> ListClustersPaginator:
     """
     Equivalent of `client.get_paginator('list_clusters')`, returns a correct type.
     """
-    return client.get_waiter("list_clusters")
+    return client.get_paginator("list_clusters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_list_configuration_revisions_paginator(
     """
     Equivalent of `client.get_paginator('list_configuration_revisions')`, returns a correct type.
     """
-    return client.get_waiter("list_configuration_revisions")
+    return client.get_paginator("list_configuration_revisions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -86,7 +86,7 @@ def get_list_configurations_paginator(client: Client) -> ListConfigurationsPagin
     """
     Equivalent of `client.get_paginator('list_configurations')`, returns a correct type.
     """
-    return client.get_waiter("list_configurations")
+    return client.get_paginator("list_configurations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -94,4 +94,4 @@ def get_list_nodes_paginator(client: Client) -> ListNodesPaginator:
     """
     Equivalent of `client.get_paginator('list_nodes')`, returns a correct type.
     """
-    return client.get_waiter("list_nodes")
+    return client.get_paginator("list_nodes")

@@ -1,6 +1,6 @@
 "Helper functions for athena service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('athena')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_get_query_results_paginator(client: Client) -> GetQueryResultsPaginator:
     """
     Equivalent of `client.get_paginator('get_query_results')`, returns a correct type.
     """
-    return client.get_waiter("get_query_results")
+    return client.get_paginator("get_query_results")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_named_queries_paginator(client: Client) -> ListNamedQueriesPaginato
     """
     Equivalent of `client.get_paginator('list_named_queries')`, returns a correct type.
     """
-    return client.get_waiter("list_named_queries")
+    return client.get_paginator("list_named_queries")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_list_query_executions_paginator(client: Client) -> ListQueryExecutionsPa
     """
     Equivalent of `client.get_paginator('list_query_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_query_executions")
+    return client.get_paginator("list_query_executions")

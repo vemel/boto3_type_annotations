@@ -1,6 +1,6 @@
 "Helper functions for logs service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('logs')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -64,7 +64,7 @@ def get_describe_destinations_paginator(
     """
     Equivalent of `client.get_paginator('describe_destinations')`, returns a correct type.
     """
-    return client.get_waiter("describe_destinations")
+    return client.get_paginator("describe_destinations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_describe_export_tasks_paginator(client: Client) -> DescribeExportTasksPa
     """
     Equivalent of `client.get_paginator('describe_export_tasks')`, returns a correct type.
     """
-    return client.get_waiter("describe_export_tasks")
+    return client.get_paginator("describe_export_tasks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_describe_log_groups_paginator(client: Client) -> DescribeLogGroupsPagina
     """
     Equivalent of `client.get_paginator('describe_log_groups')`, returns a correct type.
     """
-    return client.get_waiter("describe_log_groups")
+    return client.get_paginator("describe_log_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_describe_log_streams_paginator(client: Client) -> DescribeLogStreamsPagi
     """
     Equivalent of `client.get_paginator('describe_log_streams')`, returns a correct type.
     """
-    return client.get_waiter("describe_log_streams")
+    return client.get_paginator("describe_log_streams")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,7 +98,7 @@ def get_describe_metric_filters_paginator(
     """
     Equivalent of `client.get_paginator('describe_metric_filters')`, returns a correct type.
     """
-    return client.get_waiter("describe_metric_filters")
+    return client.get_paginator("describe_metric_filters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -106,7 +106,7 @@ def get_describe_queries_paginator(client: Client) -> DescribeQueriesPaginator:
     """
     Equivalent of `client.get_paginator('describe_queries')`, returns a correct type.
     """
-    return client.get_waiter("describe_queries")
+    return client.get_paginator("describe_queries")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -116,7 +116,7 @@ def get_describe_resource_policies_paginator(
     """
     Equivalent of `client.get_paginator('describe_resource_policies')`, returns a correct type.
     """
-    return client.get_waiter("describe_resource_policies")
+    return client.get_paginator("describe_resource_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_describe_subscription_filters_paginator(
     """
     Equivalent of `client.get_paginator('describe_subscription_filters')`, returns a correct type.
     """
-    return client.get_waiter("describe_subscription_filters")
+    return client.get_paginator("describe_subscription_filters")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -134,4 +134,4 @@ def get_filter_log_events_paginator(client: Client) -> FilterLogEventsPaginator:
     """
     Equivalent of `client.get_paginator('filter_log_events')`, returns a correct type.
     """
-    return client.get_waiter("filter_log_events")
+    return client.get_paginator("filter_log_events")

@@ -1,6 +1,6 @@
 "Helper functions for route53domains service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('route53domains')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_domains_paginator(client: Client) -> ListDomainsPaginator:
     """
     Equivalent of `client.get_paginator('list_domains')`, returns a correct type.
     """
-    return client.get_waiter("list_domains")
+    return client.get_paginator("list_domains")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_operations_paginator(client: Client) -> ListOperationsPaginator:
     """
     Equivalent of `client.get_paginator('list_operations')`, returns a correct type.
     """
-    return client.get_waiter("list_operations")
+    return client.get_paginator("list_operations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_view_billing_paginator(client: Client) -> ViewBillingPaginator:
     """
     Equivalent of `client.get_paginator('view_billing')`, returns a correct type.
     """
-    return client.get_waiter("view_billing")
+    return client.get_paginator("view_billing")

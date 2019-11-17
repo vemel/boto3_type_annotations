@@ -1,6 +1,6 @@
 "Helper functions for forecast service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('forecast')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -59,7 +59,7 @@ def get_list_dataset_groups_paginator(client: Client) -> ListDatasetGroupsPagina
     """
     Equivalent of `client.get_paginator('list_dataset_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_dataset_groups")
+    return client.get_paginator("list_dataset_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_list_dataset_import_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_dataset_import_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_dataset_import_jobs")
+    return client.get_paginator("list_dataset_import_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_list_datasets_paginator(client: Client) -> ListDatasetsPaginator:
     """
     Equivalent of `client.get_paginator('list_datasets')`, returns a correct type.
     """
-    return client.get_waiter("list_datasets")
+    return client.get_paginator("list_datasets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_list_forecast_export_jobs_paginator(
     """
     Equivalent of `client.get_paginator('list_forecast_export_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_forecast_export_jobs")
+    return client.get_paginator("list_forecast_export_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -95,7 +95,7 @@ def get_list_forecasts_paginator(client: Client) -> ListForecastsPaginator:
     """
     Equivalent of `client.get_paginator('list_forecasts')`, returns a correct type.
     """
-    return client.get_waiter("list_forecasts")
+    return client.get_paginator("list_forecasts")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -103,4 +103,4 @@ def get_list_predictors_paginator(client: Client) -> ListPredictorsPaginator:
     """
     Equivalent of `client.get_paginator('list_predictors')`, returns a correct type.
     """
-    return client.get_waiter("list_predictors")
+    return client.get_paginator("list_predictors")

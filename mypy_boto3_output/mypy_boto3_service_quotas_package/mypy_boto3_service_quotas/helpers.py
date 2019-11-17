@@ -1,6 +1,6 @@
 "Helper functions for service-quotas service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -30,7 +30,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('service-quotas')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -61,7 +61,7 @@ def get_list_aws_default_service_quotas_paginator(
     """
     Equivalent of `client.get_paginator('list_aws_default_service_quotas')`, returns a correct type.
     """
-    return client.get_waiter("list_aws_default_service_quotas")
+    return client.get_paginator("list_aws_default_service_quotas")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -71,7 +71,7 @@ def get_list_requested_service_quota_change_history_paginator(
     """
     Equivalent of `client.get_paginator('list_requested_service_quota_change_history')`, returns a correct type.
     """
-    return client.get_waiter("list_requested_service_quota_change_history")
+    return client.get_paginator("list_requested_service_quota_change_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,7 +81,7 @@ def get_list_requested_service_quota_change_history_by_quota_paginator(
     """
     Equivalent of `client.get_paginator('list_requested_service_quota_change_history_by_quota')`, returns a correct type.
     """
-    return client.get_waiter("list_requested_service_quota_change_history_by_quota")
+    return client.get_paginator("list_requested_service_quota_change_history_by_quota")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -91,7 +91,7 @@ def get_list_service_quota_increase_requests_in_template_paginator(
     """
     Equivalent of `client.get_paginator('list_service_quota_increase_requests_in_template')`, returns a correct type.
     """
-    return client.get_waiter("list_service_quota_increase_requests_in_template")
+    return client.get_paginator("list_service_quota_increase_requests_in_template")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -99,7 +99,7 @@ def get_list_service_quotas_paginator(client: Client) -> ListServiceQuotasPagina
     """
     Equivalent of `client.get_paginator('list_service_quotas')`, returns a correct type.
     """
-    return client.get_waiter("list_service_quotas")
+    return client.get_paginator("list_service_quotas")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -107,4 +107,4 @@ def get_list_services_paginator(client: Client) -> ListServicesPaginator:
     """
     Equivalent of `client.get_paginator('list_services')`, returns a correct type.
     """
-    return client.get_waiter("list_services")
+    return client.get_paginator("list_services")

@@ -1,6 +1,6 @@
 "Helper functions for ecr service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -29,7 +29,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('ecr')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -60,7 +60,7 @@ def get_describe_image_scan_findings_paginator(
     """
     Equivalent of `client.get_paginator('describe_image_scan_findings')`, returns a correct type.
     """
-    return client.get_waiter("describe_image_scan_findings")
+    return client.get_paginator("describe_image_scan_findings")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -68,7 +68,7 @@ def get_describe_images_paginator(client: Client) -> DescribeImagesPaginator:
     """
     Equivalent of `client.get_paginator('describe_images')`, returns a correct type.
     """
-    return client.get_waiter("describe_images")
+    return client.get_paginator("describe_images")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -78,7 +78,7 @@ def get_describe_repositories_paginator(
     """
     Equivalent of `client.get_paginator('describe_repositories')`, returns a correct type.
     """
-    return client.get_waiter("describe_repositories")
+    return client.get_paginator("describe_repositories")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_get_lifecycle_policy_preview_paginator(
     """
     Equivalent of `client.get_paginator('get_lifecycle_policy_preview')`, returns a correct type.
     """
-    return client.get_waiter("get_lifecycle_policy_preview")
+    return client.get_paginator("get_lifecycle_policy_preview")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -96,4 +96,4 @@ def get_list_images_paginator(client: Client) -> ListImagesPaginator:
     """
     Equivalent of `client.get_paginator('list_images')`, returns a correct type.
     """
-    return client.get_waiter("list_images")
+    return client.get_paginator("list_images")

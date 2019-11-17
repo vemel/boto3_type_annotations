@@ -1,6 +1,6 @@
 "Helper functions for appstream service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -35,7 +35,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('appstream')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -66,7 +66,7 @@ def get_describe_directory_configs_paginator(
     """
     Equivalent of `client.get_paginator('describe_directory_configs')`, returns a correct type.
     """
-    return client.get_waiter("describe_directory_configs")
+    return client.get_paginator("describe_directory_configs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -74,7 +74,7 @@ def get_describe_fleets_paginator(client: Client) -> DescribeFleetsPaginator:
     """
     Equivalent of `client.get_paginator('describe_fleets')`, returns a correct type.
     """
-    return client.get_waiter("describe_fleets")
+    return client.get_paginator("describe_fleets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -84,7 +84,7 @@ def get_describe_image_builders_paginator(
     """
     Equivalent of `client.get_paginator('describe_image_builders')`, returns a correct type.
     """
-    return client.get_waiter("describe_image_builders")
+    return client.get_paginator("describe_image_builders")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -92,7 +92,7 @@ def get_describe_images_paginator(client: Client) -> DescribeImagesPaginator:
     """
     Equivalent of `client.get_paginator('describe_images')`, returns a correct type.
     """
-    return client.get_waiter("describe_images")
+    return client.get_paginator("describe_images")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -100,7 +100,7 @@ def get_describe_sessions_paginator(client: Client) -> DescribeSessionsPaginator
     """
     Equivalent of `client.get_paginator('describe_sessions')`, returns a correct type.
     """
-    return client.get_waiter("describe_sessions")
+    return client.get_paginator("describe_sessions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -108,7 +108,7 @@ def get_describe_stacks_paginator(client: Client) -> DescribeStacksPaginator:
     """
     Equivalent of `client.get_paginator('describe_stacks')`, returns a correct type.
     """
-    return client.get_waiter("describe_stacks")
+    return client.get_paginator("describe_stacks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -118,7 +118,7 @@ def get_describe_user_stack_associations_paginator(
     """
     Equivalent of `client.get_paginator('describe_user_stack_associations')`, returns a correct type.
     """
-    return client.get_waiter("describe_user_stack_associations")
+    return client.get_paginator("describe_user_stack_associations")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_describe_users_paginator(client: Client) -> DescribeUsersPaginator:
     """
     Equivalent of `client.get_paginator('describe_users')`, returns a correct type.
     """
-    return client.get_waiter("describe_users")
+    return client.get_paginator("describe_users")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -136,7 +136,7 @@ def get_list_associated_fleets_paginator(
     """
     Equivalent of `client.get_paginator('list_associated_fleets')`, returns a correct type.
     """
-    return client.get_waiter("list_associated_fleets")
+    return client.get_paginator("list_associated_fleets")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -146,7 +146,7 @@ def get_list_associated_stacks_paginator(
     """
     Equivalent of `client.get_paginator('list_associated_stacks')`, returns a correct type.
     """
-    return client.get_waiter("list_associated_stacks")
+    return client.get_paginator("list_associated_stacks")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

@@ -1,6 +1,6 @@
 "Helper functions for ds service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -33,7 +33,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('ds')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -62,7 +62,7 @@ def get_describe_directories_paginator(client: Client) -> DescribeDirectoriesPag
     """
     Equivalent of `client.get_paginator('describe_directories')`, returns a correct type.
     """
-    return client.get_waiter("describe_directories")
+    return client.get_paginator("describe_directories")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,7 +72,7 @@ def get_describe_domain_controllers_paginator(
     """
     Equivalent of `client.get_paginator('describe_domain_controllers')`, returns a correct type.
     """
-    return client.get_waiter("describe_domain_controllers")
+    return client.get_paginator("describe_domain_controllers")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -82,7 +82,7 @@ def get_describe_shared_directories_paginator(
     """
     Equivalent of `client.get_paginator('describe_shared_directories')`, returns a correct type.
     """
-    return client.get_waiter("describe_shared_directories")
+    return client.get_paginator("describe_shared_directories")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -90,7 +90,7 @@ def get_describe_snapshots_paginator(client: Client) -> DescribeSnapshotsPaginat
     """
     Equivalent of `client.get_paginator('describe_snapshots')`, returns a correct type.
     """
-    return client.get_waiter("describe_snapshots")
+    return client.get_paginator("describe_snapshots")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,7 +98,7 @@ def get_describe_trusts_paginator(client: Client) -> DescribeTrustsPaginator:
     """
     Equivalent of `client.get_paginator('describe_trusts')`, returns a correct type.
     """
-    return client.get_waiter("describe_trusts")
+    return client.get_paginator("describe_trusts")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -106,7 +106,7 @@ def get_list_ip_routes_paginator(client: Client) -> ListIpRoutesPaginator:
     """
     Equivalent of `client.get_paginator('list_ip_routes')`, returns a correct type.
     """
-    return client.get_waiter("list_ip_routes")
+    return client.get_paginator("list_ip_routes")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -116,7 +116,7 @@ def get_list_log_subscriptions_paginator(
     """
     Equivalent of `client.get_paginator('list_log_subscriptions')`, returns a correct type.
     """
-    return client.get_waiter("list_log_subscriptions")
+    return client.get_paginator("list_log_subscriptions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -126,7 +126,7 @@ def get_list_schema_extensions_paginator(
     """
     Equivalent of `client.get_paginator('list_schema_extensions')`, returns a correct type.
     """
-    return client.get_waiter("list_schema_extensions")
+    return client.get_paginator("list_schema_extensions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -136,4 +136,4 @@ def get_list_tags_for_resource_paginator(
     """
     Equivalent of `client.get_paginator('list_tags_for_resource')`, returns a correct type.
     """
-    return client.get_waiter("list_tags_for_resource")
+    return client.get_paginator("list_tags_for_resource")

@@ -1,6 +1,6 @@
 "Helper functions for mediapackage service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('mediapackage')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_list_channels_paginator(client: Client) -> ListChannelsPaginator:
     """
     Equivalent of `client.get_paginator('list_channels')`, returns a correct type.
     """
-    return client.get_waiter("list_channels")
+    return client.get_paginator("list_channels")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_list_harvest_jobs_paginator(client: Client) -> ListHarvestJobsPaginator:
     """
     Equivalent of `client.get_paginator('list_harvest_jobs')`, returns a correct type.
     """
-    return client.get_waiter("list_harvest_jobs")
+    return client.get_paginator("list_harvest_jobs")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_list_origin_endpoints_paginator(client: Client) -> ListOriginEndpointsPa
     """
     Equivalent of `client.get_paginator('list_origin_endpoints')`, returns a correct type.
     """
-    return client.get_waiter("list_origin_endpoints")
+    return client.get_paginator("list_origin_endpoints")

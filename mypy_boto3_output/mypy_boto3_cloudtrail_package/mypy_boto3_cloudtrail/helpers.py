@@ -1,6 +1,6 @@
 "Helper functions for cloudtrail service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -28,7 +28,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloudtrail')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_list_public_keys_paginator(client: Client) -> ListPublicKeysPaginator:
     """
     Equivalent of `client.get_paginator('list_public_keys')`, returns a correct type.
     """
-    return client.get_waiter("list_public_keys")
+    return client.get_paginator("list_public_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -65,7 +65,7 @@ def get_list_tags_paginator(client: Client) -> ListTagsPaginator:
     """
     Equivalent of `client.get_paginator('list_tags')`, returns a correct type.
     """
-    return client.get_waiter("list_tags")
+    return client.get_paginator("list_tags")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -73,7 +73,7 @@ def get_list_trails_paginator(client: Client) -> ListTrailsPaginator:
     """
     Equivalent of `client.get_paginator('list_trails')`, returns a correct type.
     """
-    return client.get_waiter("list_trails")
+    return client.get_paginator("list_trails")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -81,4 +81,4 @@ def get_lookup_events_paginator(client: Client) -> LookupEventsPaginator:
     """
     Equivalent of `client.get_paginator('lookup_events')`, returns a correct type.
     """
-    return client.get_waiter("lookup_events")
+    return client.get_paginator("lookup_events")

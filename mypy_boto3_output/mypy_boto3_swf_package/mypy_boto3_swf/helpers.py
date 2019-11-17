@@ -1,6 +1,6 @@
 "Helper functions for swf service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -31,7 +31,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('swf')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -62,7 +62,7 @@ def get_get_workflow_execution_history_paginator(
     """
     Equivalent of `client.get_paginator('get_workflow_execution_history')`, returns a correct type.
     """
-    return client.get_waiter("get_workflow_execution_history")
+    return client.get_paginator("get_workflow_execution_history")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -70,7 +70,7 @@ def get_list_activity_types_paginator(client: Client) -> ListActivityTypesPagina
     """
     Equivalent of `client.get_paginator('list_activity_types')`, returns a correct type.
     """
-    return client.get_waiter("list_activity_types")
+    return client.get_paginator("list_activity_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -80,7 +80,7 @@ def get_list_closed_workflow_executions_paginator(
     """
     Equivalent of `client.get_paginator('list_closed_workflow_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_closed_workflow_executions")
+    return client.get_paginator("list_closed_workflow_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -88,7 +88,7 @@ def get_list_domains_paginator(client: Client) -> ListDomainsPaginator:
     """
     Equivalent of `client.get_paginator('list_domains')`, returns a correct type.
     """
-    return client.get_waiter("list_domains")
+    return client.get_paginator("list_domains")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -98,7 +98,7 @@ def get_list_open_workflow_executions_paginator(
     """
     Equivalent of `client.get_paginator('list_open_workflow_executions')`, returns a correct type.
     """
-    return client.get_waiter("list_open_workflow_executions")
+    return client.get_paginator("list_open_workflow_executions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -106,7 +106,7 @@ def get_list_workflow_types_paginator(client: Client) -> ListWorkflowTypesPagina
     """
     Equivalent of `client.get_paginator('list_workflow_types')`, returns a correct type.
     """
-    return client.get_waiter("list_workflow_types")
+    return client.get_paginator("list_workflow_types")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -116,4 +116,4 @@ def get_poll_for_decision_task_paginator(
     """
     Equivalent of `client.get_paginator('poll_for_decision_task')`, returns a correct type.
     """
-    return client.get_waiter("poll_for_decision_task")
+    return client.get_paginator("poll_for_decision_task")

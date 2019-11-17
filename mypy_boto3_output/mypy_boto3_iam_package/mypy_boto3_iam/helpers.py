@@ -1,6 +1,6 @@
 "Helper functions for iam service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -57,7 +57,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('iam')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -97,7 +97,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('iam')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -128,7 +128,7 @@ def get_get_account_authorization_details_paginator(
     """
     Equivalent of `client.get_paginator('get_account_authorization_details')`, returns a correct type.
     """
-    return client.get_waiter("get_account_authorization_details")
+    return client.get_paginator("get_account_authorization_details")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -136,7 +136,7 @@ def get_get_group_paginator(client: Client) -> GetGroupPaginator:
     """
     Equivalent of `client.get_paginator('get_group')`, returns a correct type.
     """
-    return client.get_waiter("get_group")
+    return client.get_paginator("get_group")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -144,7 +144,7 @@ def get_list_access_keys_paginator(client: Client) -> ListAccessKeysPaginator:
     """
     Equivalent of `client.get_paginator('list_access_keys')`, returns a correct type.
     """
-    return client.get_waiter("list_access_keys")
+    return client.get_paginator("list_access_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -152,7 +152,7 @@ def get_list_account_aliases_paginator(client: Client) -> ListAccountAliasesPagi
     """
     Equivalent of `client.get_paginator('list_account_aliases')`, returns a correct type.
     """
-    return client.get_waiter("list_account_aliases")
+    return client.get_paginator("list_account_aliases")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -162,7 +162,7 @@ def get_list_attached_group_policies_paginator(
     """
     Equivalent of `client.get_paginator('list_attached_group_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_attached_group_policies")
+    return client.get_paginator("list_attached_group_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -172,7 +172,7 @@ def get_list_attached_role_policies_paginator(
     """
     Equivalent of `client.get_paginator('list_attached_role_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_attached_role_policies")
+    return client.get_paginator("list_attached_role_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -182,7 +182,7 @@ def get_list_attached_user_policies_paginator(
     """
     Equivalent of `client.get_paginator('list_attached_user_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_attached_user_policies")
+    return client.get_paginator("list_attached_user_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -192,7 +192,7 @@ def get_list_entities_for_policy_paginator(
     """
     Equivalent of `client.get_paginator('list_entities_for_policy')`, returns a correct type.
     """
-    return client.get_waiter("list_entities_for_policy")
+    return client.get_paginator("list_entities_for_policy")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -200,7 +200,7 @@ def get_list_group_policies_paginator(client: Client) -> ListGroupPoliciesPagina
     """
     Equivalent of `client.get_paginator('list_group_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_group_policies")
+    return client.get_paginator("list_group_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -208,7 +208,7 @@ def get_list_groups_paginator(client: Client) -> ListGroupsPaginator:
     """
     Equivalent of `client.get_paginator('list_groups')`, returns a correct type.
     """
-    return client.get_waiter("list_groups")
+    return client.get_paginator("list_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -216,7 +216,7 @@ def get_list_groups_for_user_paginator(client: Client) -> ListGroupsForUserPagin
     """
     Equivalent of `client.get_paginator('list_groups_for_user')`, returns a correct type.
     """
-    return client.get_waiter("list_groups_for_user")
+    return client.get_paginator("list_groups_for_user")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -226,7 +226,7 @@ def get_list_instance_profiles_paginator(
     """
     Equivalent of `client.get_paginator('list_instance_profiles')`, returns a correct type.
     """
-    return client.get_waiter("list_instance_profiles")
+    return client.get_paginator("list_instance_profiles")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -236,7 +236,7 @@ def get_list_instance_profiles_for_role_paginator(
     """
     Equivalent of `client.get_paginator('list_instance_profiles_for_role')`, returns a correct type.
     """
-    return client.get_waiter("list_instance_profiles_for_role")
+    return client.get_paginator("list_instance_profiles_for_role")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -244,7 +244,7 @@ def get_list_mfa_devices_paginator(client: Client) -> ListMFADevicesPaginator:
     """
     Equivalent of `client.get_paginator('list_mfa_devices')`, returns a correct type.
     """
-    return client.get_waiter("list_mfa_devices")
+    return client.get_paginator("list_mfa_devices")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -252,7 +252,7 @@ def get_list_policies_paginator(client: Client) -> ListPoliciesPaginator:
     """
     Equivalent of `client.get_paginator('list_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_policies")
+    return client.get_paginator("list_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -260,7 +260,7 @@ def get_list_policy_versions_paginator(client: Client) -> ListPolicyVersionsPagi
     """
     Equivalent of `client.get_paginator('list_policy_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_policy_versions")
+    return client.get_paginator("list_policy_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -268,7 +268,7 @@ def get_list_role_policies_paginator(client: Client) -> ListRolePoliciesPaginato
     """
     Equivalent of `client.get_paginator('list_role_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_role_policies")
+    return client.get_paginator("list_role_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -276,7 +276,7 @@ def get_list_roles_paginator(client: Client) -> ListRolesPaginator:
     """
     Equivalent of `client.get_paginator('list_roles')`, returns a correct type.
     """
-    return client.get_waiter("list_roles")
+    return client.get_paginator("list_roles")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -284,7 +284,7 @@ def get_list_ssh_public_keys_paginator(client: Client) -> ListSSHPublicKeysPagin
     """
     Equivalent of `client.get_paginator('list_ssh_public_keys')`, returns a correct type.
     """
-    return client.get_waiter("list_ssh_public_keys")
+    return client.get_paginator("list_ssh_public_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -294,7 +294,7 @@ def get_list_server_certificates_paginator(
     """
     Equivalent of `client.get_paginator('list_server_certificates')`, returns a correct type.
     """
-    return client.get_waiter("list_server_certificates")
+    return client.get_paginator("list_server_certificates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -304,7 +304,7 @@ def get_list_signing_certificates_paginator(
     """
     Equivalent of `client.get_paginator('list_signing_certificates')`, returns a correct type.
     """
-    return client.get_waiter("list_signing_certificates")
+    return client.get_paginator("list_signing_certificates")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -312,7 +312,7 @@ def get_list_user_policies_paginator(client: Client) -> ListUserPoliciesPaginato
     """
     Equivalent of `client.get_paginator('list_user_policies')`, returns a correct type.
     """
-    return client.get_waiter("list_user_policies")
+    return client.get_paginator("list_user_policies")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -320,7 +320,7 @@ def get_list_users_paginator(client: Client) -> ListUsersPaginator:
     """
     Equivalent of `client.get_paginator('list_users')`, returns a correct type.
     """
-    return client.get_waiter("list_users")
+    return client.get_paginator("list_users")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -330,7 +330,7 @@ def get_list_virtual_mfa_devices_paginator(
     """
     Equivalent of `client.get_paginator('list_virtual_mfa_devices')`, returns a correct type.
     """
-    return client.get_waiter("list_virtual_mfa_devices")
+    return client.get_paginator("list_virtual_mfa_devices")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -340,7 +340,7 @@ def get_simulate_custom_policy_paginator(
     """
     Equivalent of `client.get_paginator('simulate_custom_policy')`, returns a correct type.
     """
-    return client.get_waiter("simulate_custom_policy")
+    return client.get_paginator("simulate_custom_policy")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -350,7 +350,7 @@ def get_simulate_principal_policy_paginator(
     """
     Equivalent of `client.get_paginator('simulate_principal_policy')`, returns a correct type.
     """
-    return client.get_waiter("simulate_principal_policy")
+    return client.get_paginator("simulate_principal_policy")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

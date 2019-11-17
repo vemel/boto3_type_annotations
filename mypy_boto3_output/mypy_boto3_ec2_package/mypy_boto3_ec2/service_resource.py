@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any, Dict, List
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.collection import ResourceCollection
-from mypy_boto3.type_defs import Tag as TypeDefTag
+from mypy_boto3.type_defs import EC2Tag
 
 # pylint: disable=import-self
 import mypy_boto3_ec2.service_resource as service_resource_scope
@@ -2361,7 +2361,7 @@ class ServiceResource(Boto3ServiceResource):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_tags(
-        self, Resources: List[Any], Tags: List[TypeDefTag], DryRun: bool = False
+        self, Resources: List[Any], Tags: List[EC2Tag], DryRun: bool = False
     ) -> None:
         pass
 

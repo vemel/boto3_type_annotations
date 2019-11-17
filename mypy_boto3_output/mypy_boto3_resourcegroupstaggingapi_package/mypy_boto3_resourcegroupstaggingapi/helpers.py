@@ -1,6 +1,6 @@
 "Helper functions for resourcegroupstaggingapi service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -27,7 +27,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('resourcegroupstaggingapi')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -56,7 +56,7 @@ def get_get_resources_paginator(client: Client) -> GetResourcesPaginator:
     """
     Equivalent of `client.get_paginator('get_resources')`, returns a correct type.
     """
-    return client.get_waiter("get_resources")
+    return client.get_paginator("get_resources")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -64,7 +64,7 @@ def get_get_tag_keys_paginator(client: Client) -> GetTagKeysPaginator:
     """
     Equivalent of `client.get_paginator('get_tag_keys')`, returns a correct type.
     """
-    return client.get_waiter("get_tag_keys")
+    return client.get_paginator("get_tag_keys")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -72,4 +72,4 @@ def get_get_tag_values_paginator(client: Client) -> GetTagValuesPaginator:
     """
     Equivalent of `client.get_paginator('get_tag_values')`, returns a correct type.
     """
-    return client.get_waiter("get_tag_values")
+    return client.get_paginator("get_tag_values")

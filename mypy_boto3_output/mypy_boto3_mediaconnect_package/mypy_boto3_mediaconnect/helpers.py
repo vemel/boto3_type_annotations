@@ -1,6 +1,6 @@
 "Helper functions for mediaconnect service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -26,7 +26,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('mediaconnect')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -55,7 +55,7 @@ def get_list_entitlements_paginator(client: Client) -> ListEntitlementsPaginator
     """
     Equivalent of `client.get_paginator('list_entitlements')`, returns a correct type.
     """
-    return client.get_waiter("list_entitlements")
+    return client.get_paginator("list_entitlements")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -63,4 +63,4 @@ def get_list_flows_paginator(client: Client) -> ListFlowsPaginator:
     """
     Equivalent of `client.get_paginator('list_flows')`, returns a correct type.
     """
-    return client.get_waiter("list_flows")
+    return client.get_paginator("list_flows")

@@ -1,6 +1,6 @@
 "Helper functions for xray service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -32,7 +32,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('xray')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -61,7 +61,7 @@ def get_batch_get_traces_paginator(client: Client) -> BatchGetTracesPaginator:
     """
     Equivalent of `client.get_paginator('batch_get_traces')`, returns a correct type.
     """
-    return client.get_waiter("batch_get_traces")
+    return client.get_paginator("batch_get_traces")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -69,7 +69,7 @@ def get_get_groups_paginator(client: Client) -> GetGroupsPaginator:
     """
     Equivalent of `client.get_paginator('get_groups')`, returns a correct type.
     """
-    return client.get_waiter("get_groups")
+    return client.get_paginator("get_groups")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -77,7 +77,7 @@ def get_get_sampling_rules_paginator(client: Client) -> GetSamplingRulesPaginato
     """
     Equivalent of `client.get_paginator('get_sampling_rules')`, returns a correct type.
     """
-    return client.get_waiter("get_sampling_rules")
+    return client.get_paginator("get_sampling_rules")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -87,7 +87,7 @@ def get_get_sampling_statistic_summaries_paginator(
     """
     Equivalent of `client.get_paginator('get_sampling_statistic_summaries')`, returns a correct type.
     """
-    return client.get_waiter("get_sampling_statistic_summaries")
+    return client.get_paginator("get_sampling_statistic_summaries")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -95,7 +95,7 @@ def get_get_service_graph_paginator(client: Client) -> GetServiceGraphPaginator:
     """
     Equivalent of `client.get_paginator('get_service_graph')`, returns a correct type.
     """
-    return client.get_waiter("get_service_graph")
+    return client.get_paginator("get_service_graph")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -105,7 +105,7 @@ def get_get_time_series_service_statistics_paginator(
     """
     Equivalent of `client.get_paginator('get_time_series_service_statistics')`, returns a correct type.
     """
-    return client.get_waiter("get_time_series_service_statistics")
+    return client.get_paginator("get_time_series_service_statistics")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -113,7 +113,7 @@ def get_get_trace_graph_paginator(client: Client) -> GetTraceGraphPaginator:
     """
     Equivalent of `client.get_paginator('get_trace_graph')`, returns a correct type.
     """
-    return client.get_waiter("get_trace_graph")
+    return client.get_paginator("get_trace_graph")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -121,4 +121,4 @@ def get_get_trace_summaries_paginator(client: Client) -> GetTraceSummariesPagina
     """
     Equivalent of `client.get_paginator('get_trace_summaries')`, returns a correct type.
     """
-    return client.get_waiter("get_trace_summaries")
+    return client.get_paginator("get_trace_summaries")

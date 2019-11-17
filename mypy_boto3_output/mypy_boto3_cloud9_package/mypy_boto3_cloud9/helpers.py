@@ -1,6 +1,6 @@
 "Helper functions for cloud9 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -26,7 +26,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('cloud9')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -57,7 +57,7 @@ def get_describe_environment_memberships_paginator(
     """
     Equivalent of `client.get_paginator('describe_environment_memberships')`, returns a correct type.
     """
-    return client.get_waiter("describe_environment_memberships")
+    return client.get_paginator("describe_environment_memberships")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -65,4 +65,4 @@ def get_list_environments_paginator(client: Client) -> ListEnvironmentsPaginator
     """
     Equivalent of `client.get_paginator('list_environments')`, returns a correct type.
     """
-    return client.get_waiter("list_environments")
+    return client.get_paginator("list_environments")

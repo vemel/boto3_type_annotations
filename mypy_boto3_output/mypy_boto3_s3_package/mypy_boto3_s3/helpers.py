@@ -1,6 +1,6 @@
 "Helper functions for s3 service"
 
-from typing import Union
+from typing import Any, Dict, Union
 import boto3
 from boto3.session import Session
 from botocore.config import Config
@@ -36,7 +36,7 @@ def boto3_client(
     """
     Equivalent of `boto3.client('s3')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -76,7 +76,7 @@ def boto3_resource(
     """
     Equivalent of `boto3.resource('s3')`, returns a correct type.
     """
-    kwargs = {}
+    kwargs: Dict[str, Any] = {}
     if region_name is not None:
         kwargs["region_name"] = region_name
     if api_version is not None:
@@ -107,7 +107,7 @@ def get_list_multipart_uploads_paginator(
     """
     Equivalent of `client.get_paginator('list_multipart_uploads')`, returns a correct type.
     """
-    return client.get_waiter("list_multipart_uploads")
+    return client.get_paginator("list_multipart_uploads")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -115,7 +115,7 @@ def get_list_object_versions_paginator(client: Client) -> ListObjectVersionsPagi
     """
     Equivalent of `client.get_paginator('list_object_versions')`, returns a correct type.
     """
-    return client.get_waiter("list_object_versions")
+    return client.get_paginator("list_object_versions")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -123,7 +123,7 @@ def get_list_objects_paginator(client: Client) -> ListObjectsPaginator:
     """
     Equivalent of `client.get_paginator('list_objects')`, returns a correct type.
     """
-    return client.get_waiter("list_objects")
+    return client.get_paginator("list_objects")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -131,7 +131,7 @@ def get_list_objects_v2_paginator(client: Client) -> ListObjectsV2Paginator:
     """
     Equivalent of `client.get_paginator('list_objects_v2')`, returns a correct type.
     """
-    return client.get_waiter("list_objects_v2")
+    return client.get_paginator("list_objects_v2")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -139,7 +139,7 @@ def get_list_parts_paginator(client: Client) -> ListPartsPaginator:
     """
     Equivalent of `client.get_paginator('list_parts')`, returns a correct type.
     """
-    return client.get_waiter("list_parts")
+    return client.get_paginator("list_parts")
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
