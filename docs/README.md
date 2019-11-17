@@ -15,6 +15,7 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [If IDE autocomplete does not work](#if-ide-autocomplete-does-not-work)
   - [How to build](#how-to-build)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
   - [Thank you](#thank-you)
@@ -28,13 +29,13 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
 ```bash
 # install `boto3` type annotations 
 # ec2, s3, rds, lambda, sqs, dynamo and cloudformation are included by default
-pip install boto3-stubs
+pip install boto3-stubs[essential]
 
-# install annotations for other service
+# install annotations for other services
 pip install boto3-stubs[acm, apigateway]
 
 # or install all services
-# WARNING: this will eat ~40 MB of space
+# WARNING: this will eat ~100 MB of space
 pip install boto3-stubs[all]
 ```
 
@@ -65,6 +66,45 @@ bucket = resource.Bucket("bucket")
 
 # (mypy) error: Unexpected keyword argument "key" for "upload_file" of "Bucket"
 bucket.upload_file(Filename="my.txt", key="my-txt")
+```
+
+## If IDE autocomplete does not work
+
+`mypy` correctly reveal types for `boto3-stubs`, but autocomplete in your IDE probably does not support
+overloaded functions, so methods and arguments autocomplete will not be very useful.
+
+To help IDE to resolve types correctly, there are some helper functions that return correct types with
+no function overloads.
+
+If your IDE supports overloaded functions, just use `boto3` as usual.
+
+```python
+from boto3.session import Session
+
+# Any service can be used, we use `ec2` as an example.
+from mypy_boto3.ec2 import boto3_client, boto3_resource
+from mypy_boto3.ec2.helpers import get_bundle_task_complete_waiter, get_describe_volumes_paginator
+
+session = boto3.session.Session(region_name="us-west-1")
+
+# equivalent of `boto3.client("ec2", region_name="us-west-1")` but return type is correct
+ec2_client = boto3_client(region_name="us-west-1")
+
+# equivalent of `session.client("ec2")`
+ec2_client = boto3_client(session)
+
+# same for `boto3.resource("ec2") or `session.resource("ec2")`
+ec2_resource = boto3_resource(session)
+
+# equivalent of `ec2_client.get_waiter("bundle_task_complete")`
+bundle_task_complete_waiter = get_bundle_task_complete_waiter(ec2_client)
+
+# equivalent of `ec2_client.get_paginator("describe_volumes")`
+describe_volumes_paginator = get_describe_volumes_paginator(ec2_client)
+
+# ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
+# now have correct type so IDE automoplete for methods, arguments and return types
+# works as expected
 ```
 
 ## How to build
