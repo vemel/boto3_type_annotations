@@ -5,6 +5,7 @@ from typing_extensions import Literal
 
 from boto3.session import Session
 from botocore.client import Client
+from botocore.config import Config
 from botocore.service_resource import ServiceResource
 
 try:

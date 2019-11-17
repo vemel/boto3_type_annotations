@@ -1,52 +1,76 @@
 "Main interface for iam service"
 
 from mypy_boto3_iam.client import Client
-from mypy_boto3_iam.service_resource import AccessKey
-from mypy_boto3_iam.service_resource import AccessKeyPair
-from mypy_boto3_iam.service_resource import AccountPasswordPolicy
-from mypy_boto3_iam.service_resource import AccountSummary
-from mypy_boto3_iam.service_resource import AssumeRolePolicy
-from mypy_boto3_iam.service_resource import CurrentUser
-from mypy_boto3_iam.service_resource import Group
-from mypy_boto3_iam.service_resource import GroupPolicy
-from mypy_boto3_iam.service_resource import InstanceProfile
-from mypy_boto3_iam.service_resource import LoginProfile
-from mypy_boto3_iam.service_resource import MfaDevice
-from mypy_boto3_iam.service_resource import Policy
-from mypy_boto3_iam.service_resource import PolicyVersion
-from mypy_boto3_iam.service_resource import Role
-from mypy_boto3_iam.service_resource import RolePolicy
-from mypy_boto3_iam.service_resource import SamlProvider
-from mypy_boto3_iam.service_resource import ServerCertificate
+from mypy_boto3_iam.helpers import (
+    boto3_client,
+    boto3_resource,
+    get_get_account_authorization_details_paginator,
+    get_get_group_paginator,
+    get_instance_profile_exists_waiter,
+    get_list_access_keys_paginator,
+    get_list_account_aliases_paginator,
+    get_list_attached_group_policies_paginator,
+    get_list_attached_role_policies_paginator,
+    get_list_attached_user_policies_paginator,
+    get_list_entities_for_policy_paginator,
+    get_list_group_policies_paginator,
+    get_list_groups_for_user_paginator,
+    get_list_groups_paginator,
+    get_list_instance_profiles_for_role_paginator,
+    get_list_instance_profiles_paginator,
+    get_list_mfa_devices_paginator,
+    get_list_policies_paginator,
+    get_list_policy_versions_paginator,
+    get_list_role_policies_paginator,
+    get_list_roles_paginator,
+    get_list_server_certificates_paginator,
+    get_list_signing_certificates_paginator,
+    get_list_ssh_public_keys_paginator,
+    get_list_user_policies_paginator,
+    get_list_users_paginator,
+    get_list_virtual_mfa_devices_paginator,
+    get_policy_exists_waiter,
+    get_role_exists_waiter,
+    get_simulate_custom_policy_paginator,
+    get_simulate_principal_policy_paginator,
+    get_user_exists_waiter,
+)
 from mypy_boto3_iam.service_resource import ServiceResource
-from mypy_boto3_iam.service_resource import SigningCertificate
-from mypy_boto3_iam.service_resource import User
-from mypy_boto3_iam.service_resource import UserPolicy
-from mypy_boto3_iam.service_resource import VirtualMfaDevice
 
 
 __all__ = (
     "Client",
-    "AccessKey",
-    "AccessKeyPair",
-    "AccountPasswordPolicy",
-    "AccountSummary",
-    "AssumeRolePolicy",
-    "CurrentUser",
-    "Group",
-    "GroupPolicy",
-    "InstanceProfile",
-    "LoginProfile",
-    "MfaDevice",
-    "Policy",
-    "PolicyVersion",
-    "Role",
-    "RolePolicy",
-    "SamlProvider",
-    "ServerCertificate",
     "ServiceResource",
-    "SigningCertificate",
-    "User",
-    "UserPolicy",
-    "VirtualMfaDevice",
+    "boto3_client",
+    "boto3_resource",
+    "get_get_account_authorization_details_paginator",
+    "get_get_group_paginator",
+    "get_list_access_keys_paginator",
+    "get_list_account_aliases_paginator",
+    "get_list_attached_group_policies_paginator",
+    "get_list_attached_role_policies_paginator",
+    "get_list_attached_user_policies_paginator",
+    "get_list_entities_for_policy_paginator",
+    "get_list_group_policies_paginator",
+    "get_list_groups_paginator",
+    "get_list_groups_for_user_paginator",
+    "get_list_instance_profiles_paginator",
+    "get_list_instance_profiles_for_role_paginator",
+    "get_list_mfa_devices_paginator",
+    "get_list_policies_paginator",
+    "get_list_policy_versions_paginator",
+    "get_list_role_policies_paginator",
+    "get_list_roles_paginator",
+    "get_list_ssh_public_keys_paginator",
+    "get_list_server_certificates_paginator",
+    "get_list_signing_certificates_paginator",
+    "get_list_user_policies_paginator",
+    "get_list_users_paginator",
+    "get_list_virtual_mfa_devices_paginator",
+    "get_simulate_custom_policy_paginator",
+    "get_simulate_principal_policy_paginator",
+    "get_instance_profile_exists_waiter",
+    "get_policy_exists_waiter",
+    "get_role_exists_waiter",
+    "get_user_exists_waiter",
 )

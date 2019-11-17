@@ -1,22 +1,28 @@
 "Main interface for glacier service"
 
 from mypy_boto3_glacier.client import Client
-from mypy_boto3_glacier.service_resource import Account
-from mypy_boto3_glacier.service_resource import Archive
-from mypy_boto3_glacier.service_resource import Job
-from mypy_boto3_glacier.service_resource import MultipartUpload
-from mypy_boto3_glacier.service_resource import Notification
+from mypy_boto3_glacier.helpers import (
+    boto3_client,
+    boto3_resource,
+    get_list_jobs_paginator,
+    get_list_multipart_uploads_paginator,
+    get_list_parts_paginator,
+    get_list_vaults_paginator,
+    get_vault_exists_waiter,
+    get_vault_not_exists_waiter,
+)
 from mypy_boto3_glacier.service_resource import ServiceResource
-from mypy_boto3_glacier.service_resource import Vault
 
 
 __all__ = (
     "Client",
-    "Account",
-    "Archive",
-    "Job",
-    "MultipartUpload",
-    "Notification",
     "ServiceResource",
-    "Vault",
+    "boto3_client",
+    "boto3_resource",
+    "get_list_jobs_paginator",
+    "get_list_multipart_uploads_paginator",
+    "get_list_parts_paginator",
+    "get_list_vaults_paginator",
+    "get_vault_exists_waiter",
+    "get_vault_not_exists_waiter",
 )

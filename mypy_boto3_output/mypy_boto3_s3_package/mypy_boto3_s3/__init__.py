@@ -1,46 +1,34 @@
 "Main interface for s3 service"
 
 from mypy_boto3_s3.client import Client
-from mypy_boto3_s3.service_resource import Bucket
-from mypy_boto3_s3.service_resource import BucketAcl
-from mypy_boto3_s3.service_resource import BucketCors
-from mypy_boto3_s3.service_resource import BucketLifecycle
-from mypy_boto3_s3.service_resource import BucketLifecycleConfiguration
-from mypy_boto3_s3.service_resource import BucketLogging
-from mypy_boto3_s3.service_resource import BucketNotification
-from mypy_boto3_s3.service_resource import BucketPolicy
-from mypy_boto3_s3.service_resource import BucketRequestPayment
-from mypy_boto3_s3.service_resource import BucketTagging
-from mypy_boto3_s3.service_resource import BucketVersioning
-from mypy_boto3_s3.service_resource import BucketWebsite
-from mypy_boto3_s3.service_resource import MultipartUpload
-from mypy_boto3_s3.service_resource import MultipartUploadPart
-from mypy_boto3_s3.service_resource import Object
-from mypy_boto3_s3.service_resource import ObjectAcl
-from mypy_boto3_s3.service_resource import ObjectSummary
-from mypy_boto3_s3.service_resource import ObjectVersion
+from mypy_boto3_s3.helpers import (
+    boto3_client,
+    boto3_resource,
+    get_bucket_exists_waiter,
+    get_bucket_not_exists_waiter,
+    get_list_multipart_uploads_paginator,
+    get_list_object_versions_paginator,
+    get_list_objects_paginator,
+    get_list_objects_v2_paginator,
+    get_list_parts_paginator,
+    get_object_exists_waiter,
+    get_object_not_exists_waiter,
+)
 from mypy_boto3_s3.service_resource import ServiceResource
 
 
 __all__ = (
     "Client",
-    "Bucket",
-    "BucketAcl",
-    "BucketCors",
-    "BucketLifecycle",
-    "BucketLifecycleConfiguration",
-    "BucketLogging",
-    "BucketNotification",
-    "BucketPolicy",
-    "BucketRequestPayment",
-    "BucketTagging",
-    "BucketVersioning",
-    "BucketWebsite",
-    "MultipartUpload",
-    "MultipartUploadPart",
-    "Object",
-    "ObjectAcl",
-    "ObjectSummary",
-    "ObjectVersion",
     "ServiceResource",
+    "boto3_client",
+    "boto3_resource",
+    "get_list_multipart_uploads_paginator",
+    "get_list_object_versions_paginator",
+    "get_list_objects_paginator",
+    "get_list_objects_v2_paginator",
+    "get_list_parts_paginator",
+    "get_bucket_exists_waiter",
+    "get_bucket_not_exists_waiter",
+    "get_object_exists_waiter",
+    "get_object_not_exists_waiter",
 )

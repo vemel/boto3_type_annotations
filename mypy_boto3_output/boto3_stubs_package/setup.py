@@ -35,7 +35,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     package_data={"boto3-stubs": ["py.typed", "*.pyi", "*/*.pyi"]},
-    install_requires=["mypy-boto3[essential]==0.2.2",],
+    install_requires=["mypy-boto3==0.2.2",],
     extras_require={
         "all": [
             "mypy-boto3-acm==0.2.2",
@@ -231,6 +231,15 @@ setup(
             "mypy-boto3-workmailmessageflow==0.2.2",
             "mypy-boto3-workspaces==0.2.2",
             "mypy-boto3-xray==0.2.2",
+        ],
+        "essential": [
+            "mypy-boto3-cloudformation==0.2.2",
+            "mypy-boto3-dynamodb==0.2.2",
+            "mypy-boto3-ec2==0.2.2",
+            "mypy-boto3-lambda==0.2.2",
+            "mypy-boto3-rds==0.2.2",
+            "mypy-boto3-s3==0.2.2",
+            "mypy-boto3-sqs==0.2.2",
         ],
         "acm": ["mypy-boto3-acm==0.2.2"],
         "acm-pca": ["mypy-boto3-acm-pca==0.2.2"],

@@ -1,6 +1,50 @@
 "Main interface for clouddirectory service"
 
 from mypy_boto3_clouddirectory.client import Client
+from mypy_boto3_clouddirectory.helpers import (
+    boto3_client,
+    get_list_applied_schema_arns_paginator,
+    get_list_attached_indices_paginator,
+    get_list_development_schema_arns_paginator,
+    get_list_directories_paginator,
+    get_list_facet_attributes_paginator,
+    get_list_facet_names_paginator,
+    get_list_incoming_typed_links_paginator,
+    get_list_index_paginator,
+    get_list_managed_schema_arns_paginator,
+    get_list_object_attributes_paginator,
+    get_list_object_parent_paths_paginator,
+    get_list_object_policies_paginator,
+    get_list_outgoing_typed_links_paginator,
+    get_list_policy_attachments_paginator,
+    get_list_published_schema_arns_paginator,
+    get_list_tags_for_resource_paginator,
+    get_list_typed_link_facet_attributes_paginator,
+    get_list_typed_link_facet_names_paginator,
+    get_lookup_policy_paginator,
+)
 
 
-__all__ = ("Client",)
+__all__ = (
+    "Client",
+    "boto3_client",
+    "get_list_applied_schema_arns_paginator",
+    "get_list_attached_indices_paginator",
+    "get_list_development_schema_arns_paginator",
+    "get_list_directories_paginator",
+    "get_list_facet_attributes_paginator",
+    "get_list_facet_names_paginator",
+    "get_list_incoming_typed_links_paginator",
+    "get_list_index_paginator",
+    "get_list_managed_schema_arns_paginator",
+    "get_list_object_attributes_paginator",
+    "get_list_object_parent_paths_paginator",
+    "get_list_object_policies_paginator",
+    "get_list_outgoing_typed_links_paginator",
+    "get_list_policy_attachments_paginator",
+    "get_list_published_schema_arns_paginator",
+    "get_list_tags_for_resource_paginator",
+    "get_list_typed_link_facet_attributes_paginator",
+    "get_list_typed_link_facet_names_paginator",
+    "get_lookup_policy_paginator",
+)
