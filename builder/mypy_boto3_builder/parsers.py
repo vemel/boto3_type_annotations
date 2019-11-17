@@ -561,7 +561,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                     f"{service_name.module_name}.{ServiceModuleName.paginator.value}",
                     paginator.name,
                 ),
-                body=f"return client.get_waiter('{paginator.operation_name}')",
+                body=f"return client.get_paginator('{paginator.operation_name}')",
             )
         )
 
@@ -596,7 +596,7 @@ def get_helper_body(
     service_name: ServiceName,
 ) -> str:
     helper_body_lines = [
-        "kwargs = {}",
+        "kwargs: Dict[str, Any] = {}",
     ]
     for argument in arguments:
         if argument.name == "session":

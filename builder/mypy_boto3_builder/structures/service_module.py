@@ -154,6 +154,8 @@ class ServiceModule:
     def get_helpers_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = set()
         import_records.add(ImportRecord("boto3"))
+        import_records.add(ImportRecord("typing", "Dict"))
+        import_records.add(ImportRecord("typing", "Any"))
         for helper_function in self.helper_functions:
             for type_annotation in helper_function.get_types():
                 import_record = type_annotation.get_import_record()
