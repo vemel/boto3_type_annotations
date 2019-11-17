@@ -146,13 +146,16 @@ python setup.py install
 
 ## Differences from boto3-type-annotations
 
-- Fully type annotated
 - `mypy` compatibility
+- Fully type annotated
+- No need to set types explicitly
 - Generated types for return values and arguments
-- Added ServiceResource sub-collections
+- Added `ServiceResource` sub-collections
 - Support service-specific sub-modules
 - Modules documentation
-- Type annotations for return structuress
+- Type annotations for return structures
+- Correct annotations for `client.get_waiter` and `client.get_paginator`
+- Helper functions for IDEs with no `overload` support (Hi, VSCode!)
 
 ## Thank you
 
