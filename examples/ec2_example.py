@@ -2,11 +2,13 @@
 
 import boto3
 
+from mypy_boto3.ec2 import boto3_client, boto3_resource
+
 
 def ec2_resource_example() -> None:
     session = boto3.session.Session(region_name="us-west-1")
 
-    resource = session.resource("ec2")
+    resource = boto3_resource(session)
 
     # (mypy) error: Missing positional argument "Resources" in call
     #   to "create_tags" of "ServiceResource"
@@ -16,7 +18,7 @@ def ec2_resource_example() -> None:
 
 
 def ec2_client_example() -> None:
-    client = boto3.client("ec2")
+    client = boto3_client()
 
     # (mypy) error: Incompatible types (expression has type "int", TypedDict item
     #   "Key" has type "str")
