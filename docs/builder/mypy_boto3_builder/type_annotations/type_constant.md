@@ -27,7 +27,7 @@ Wrapper for constant like `False` or `"test"`.
 
 ### TypeConstant().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L35)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L38)
 
 ```python
 def copy() -> TypeConstant:
@@ -37,7 +37,7 @@ Create a copy of type annotation wrapper.
 
 ### TypeConstant().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L32)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_constant.py#L35)
 
 ```python
 def get_import_record() -> ImportRecord:

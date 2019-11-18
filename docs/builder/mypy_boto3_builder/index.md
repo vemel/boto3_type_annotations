@@ -14,7 +14,7 @@ Builder for `mypy_boto3`.
         - [Import Helpers](import_helpers/index.md#import-helpers)
         - [Logger](logger.md#logger)
         - [Main](main.md#main)
-        - [Parsers](parsers.md#parsers)
+        - [Parsers](parsers/index.md#parsers)
         - [Structures](structures/index.md#structures)
         - [Type Annotations](type_annotations/index.md#type-annotations)
         - [Type Maps](type_maps/index.md#type-maps)

@@ -9,7 +9,7 @@
 
 ## process_boto3_stubs
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L26)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L24)
 
 ```python
 def process_boto3_stubs(
@@ -22,7 +22,7 @@ def process_boto3_stubs(
 
 ## process_master
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L43)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L41)
 
 ```python
 def process_master(
@@ -35,7 +35,7 @@ def process_master(
 
 ## process_service
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L60)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/processors.py#L58)
 
 ```python
 def process_service(

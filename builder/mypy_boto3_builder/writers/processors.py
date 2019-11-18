@@ -4,11 +4,9 @@ from typing import Iterable
 from boto3.session import Session
 
 from mypy_boto3_builder.version import __version__ as version
-from mypy_boto3_builder.parsers import (
-    parse_boto3_module,
-    parse_master_module,
-    parse_service_module,
-)
+from mypy_boto3_builder.parsers.master_module import parse_master_module
+from mypy_boto3_builder.parsers.boto3_module import parse_boto3_module
+from mypy_boto3_builder.parsers.service_module import parse_service_module
 from mypy_boto3_builder.structures.boto3_module import Boto3Module
 from mypy_boto3_builder.structures.master_module import MasterModule
 from mypy_boto3_builder.structures.service_module import ServiceModule
