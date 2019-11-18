@@ -39,7 +39,7 @@ def s3_client_example() -> None:
     client.get_object(Bucket="bucket")
 
     # (mypy) error: TypedDict "ClientGetObjectResponseTypeDef" has no key 'expiration'
-    client.get_object(Bucket="bucket", Key="key")["expiration"]
+    expiration = client.get_object(Bucket="bucket", Key="key")["expiration"]
 
     # (mypy) error: Extra key 'Allowedorigins' for TypedDict "ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef"
     client.put_bucket_cors(
