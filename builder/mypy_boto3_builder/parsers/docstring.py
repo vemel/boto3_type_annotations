@@ -113,7 +113,7 @@ class DocstringParser:
             if argument_name == "factory_self":
                 argument_name = "self"
             type_annotation: Optional[TypeAnnotation] = TypeAnnotation.Any()
-            if argument_name in ("self", "cls"):
+            if not arguments and argument_name in ("self", "cls"):
                 type_annotation = None
             arguments.append(Argument(argument_name, type_annotation))
         if argspec.defaults:
