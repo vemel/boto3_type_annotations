@@ -6,8 +6,6 @@
 
 Mypy-friendly type annotations for `boto3`.
 
-Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-boto3-modules)
-
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
   - [Usage](#usage)
@@ -40,7 +38,7 @@ pip install boto3-stubs[all]
 
 - Install [mypy](https://github.com/python/mypy) and optionally enable it in your IDE
 - Install [boto3](https://github.com/boto/boto3)
-- Now imports from `boto3` and `boto3.session` are annotated automatically
+- Now imports from `boto3` and `boto3.session` have correct types and code autocomplete
 
 ```python
 import boto3
@@ -67,7 +65,7 @@ bucket.upload_file(Filename="my.txt", key="my-txt")
 
 ## If IDE autocomplete does not work
 
-`mypy` correctly reveal types for `boto3-stubs`, but autocomplete in your IDE probably does not support
+`mypy` correctly reveals types for `boto3-stubs`, but autocomplete in your IDE probably does not support
 overloaded functions, so methods and arguments autocomplete will not be very useful.
 
 To help IDE to resolve types correctly, there are some helper functions that return correct types with
