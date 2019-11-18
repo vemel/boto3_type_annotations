@@ -17,12 +17,14 @@ do
     twine upload dist/* > /dev/null || true
 done
 
+echo Publishing master package
 cd ${OUTPUT_PATH}/master_package
 rm -rf build *.egg-info dist/* > /dev/null
 python setup.py build sdist bdist_wheel 1>/dev/null 2>/dev/null
 twine upload dist/* > /dev/null
 rm -rf build *.egg-info dist/* > /dev/null
 
+echo Publishing boto3-stubs package
 cd ${OUTPUT_PATH}/boto3_stubs_package
 rm -rf build *.egg-info dist/* > /dev/null
 python setup.py build sdist bdist_wheel 1>/dev/null 2>/dev/null
