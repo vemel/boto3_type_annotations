@@ -17,6 +17,8 @@ Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-
   - [Usage](#usage)
   - [If IDE autocomplete does not work](#if-ide-autocomplete-does-not-work)
   - [How to build](#how-to-build)
+    - [Locally](#locally)
+    - [With Docker image](#with-docker-image)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
   - [Thank you](#thank-you)
   - [Submodules](#submodules)
@@ -112,6 +114,8 @@ describe_volumes_paginator = get_describe_volumes_paginator(ec2_client)
 
 ## How to build
 
+### Locally
+
 `mypy-boto3` is built for the latest version of `boto3`. If you need type annotations for another
 version of `boto3`, you can use `mypy-boto3-builder`.
 
@@ -146,6 +150,33 @@ python setup.py install
 cd ${OUTPUT_PATH}/boto3_stubs_package
 python setup.py install
 ```
+
+### With Docker image
+
+- Install [Docker](https://docs.docker.com/install/)
+- Pull latest `mypy_boto3_builder` version and tag it
+
+```bash
+docker pull docker.pkg.github.com/vemel/mypy_boto3/mypy_boto3_builder:latest
+docker tag docker.pkg.github.com/vemel/mypy_boto3/mypy_boto3_builder:latest mypy_boto3_builder
+```
+
+- Generate stubs in `output` directory
+
+```bash
+mkdir output
+
+# generate stubs for all services
+docker run -v `pwd`/output:/output -ti mypy_boto3_builder
+
+# generate stubs for s3 service
+docker run -v `pwd`/output:/output -ti mypy_boto3_builder -s s3
+
+# generate stubs for a specific boto3 version
+docker run -e BOTO3_VERSION=1.10.18 -v `pwd`/output:/output -ti mypy_boto3_builder
+```
+
+- Install packages from `output` directory as described above
 
 ## Differences from boto3-type-annotations
 

@@ -7,8 +7,12 @@ from mypy_boto3_builder.version import __version__ as version
 
 ROOT_PATH = Path(__file__).absolute().parent
 README_PATH = ROOT_PATH.parent / "README.md"
+REQUIREMENTS_PATH = ROOT_PATH / "requirements.txt"
 
-long_description = README_PATH.read_text()
+
+LONG_DESCRIPTION = README_PATH.read_text()
+INSTALL_REQUIRES = REQUIREMENTS_PATH.read_text().split("\n")
+
 
 setup(
     name="mypy-boto3-builder",
@@ -44,10 +48,11 @@ setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Typing :: Typed",
     ],
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     entry_points={
         "console_scripts": ["mypy_boto3_builder = mypy_boto3_builder.main:main"]
     },
-    install_requires=["black==19.10b0", "mypy>=0.740", "boto3", "jinja2"],
+    install_requires=INSTALL_REQUIRES,
+    zip_safe=False,
 )

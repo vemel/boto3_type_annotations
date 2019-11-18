@@ -6,5 +6,3 @@ cd ${ROOT_PATH}
 
 mypy_boto3_builder mypy_boto3_output --skip-master -f --skip-stubs $@
 mypy_boto3_builder mypy_boto3_output --skip-services -f
-
-# mypy mypy_boto3_output/mypy_boto3_package
