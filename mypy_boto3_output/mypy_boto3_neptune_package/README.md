@@ -1,4 +1,4 @@
 # mypy-boto3-neptune
 
-Mypy-friendly type annotations for `boto3` 1.10.18 `neptune` service.
+Mypy-friendly type annotations for `boto3` 1.10.19 `neptune` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

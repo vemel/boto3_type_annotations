@@ -11,6 +11,9 @@ __all__ = (
     "ClientAssociatePhoneNumbersWithVoiceConnectorGroupResponseTypeDef",
     "ClientAssociatePhoneNumbersWithVoiceConnectorResponsePhoneNumberErrorsTypeDef",
     "ClientAssociatePhoneNumbersWithVoiceConnectorResponseTypeDef",
+    "ClientBatchCreateRoomMembershipMembershipItemListTypeDef",
+    "ClientBatchCreateRoomMembershipResponseErrorsTypeDef",
+    "ClientBatchCreateRoomMembershipResponseTypeDef",
     "ClientBatchDeletePhoneNumberResponsePhoneNumberErrorsTypeDef",
     "ClientBatchDeletePhoneNumberResponseTypeDef",
     "ClientBatchSuspendUserResponseUserErrorsTypeDef",
@@ -30,6 +33,11 @@ __all__ = (
     "ClientCreatePhoneNumberOrderResponsePhoneNumberOrderOrderedPhoneNumbersTypeDef",
     "ClientCreatePhoneNumberOrderResponsePhoneNumberOrderTypeDef",
     "ClientCreatePhoneNumberOrderResponseTypeDef",
+    "ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef",
+    "ClientCreateRoomMembershipResponseRoomMembershipTypeDef",
+    "ClientCreateRoomMembershipResponseTypeDef",
+    "ClientCreateRoomResponseRoomTypeDef",
+    "ClientCreateRoomResponseTypeDef",
     "ClientCreateVoiceConnectorGroupResponseVoiceConnectorGroupVoiceConnectorItemsTypeDef",
     "ClientCreateVoiceConnectorGroupResponseVoiceConnectorGroupTypeDef",
     "ClientCreateVoiceConnectorGroupResponseTypeDef",
@@ -59,6 +67,8 @@ __all__ = (
     "ClientGetPhoneNumberResponsePhoneNumberTypeDef",
     "ClientGetPhoneNumberResponseTypeDef",
     "ClientGetPhoneNumberSettingsResponseTypeDef",
+    "ClientGetRoomResponseRoomTypeDef",
+    "ClientGetRoomResponseTypeDef",
     "ClientGetUserResponseUserTypeDef",
     "ClientGetUserResponseTypeDef",
     "ClientGetUserSettingsResponseUserSettingsTelephonyTypeDef",
@@ -93,6 +103,11 @@ __all__ = (
     "ClientListPhoneNumbersResponsePhoneNumbersCapabilitiesTypeDef",
     "ClientListPhoneNumbersResponsePhoneNumbersTypeDef",
     "ClientListPhoneNumbersResponseTypeDef",
+    "ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef",
+    "ClientListRoomMembershipsResponseRoomMembershipsTypeDef",
+    "ClientListRoomMembershipsResponseTypeDef",
+    "ClientListRoomsResponseRoomsTypeDef",
+    "ClientListRoomsResponseTypeDef",
     "ClientListUsersResponseUsersTypeDef",
     "ClientListUsersResponseTypeDef",
     "ClientListVoiceConnectorGroupsResponseVoiceConnectorGroupsVoiceConnectorItemsTypeDef",
@@ -138,6 +153,11 @@ __all__ = (
     "ClientUpdatePhoneNumberResponsePhoneNumberCapabilitiesTypeDef",
     "ClientUpdatePhoneNumberResponsePhoneNumberTypeDef",
     "ClientUpdatePhoneNumberResponseTypeDef",
+    "ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef",
+    "ClientUpdateRoomMembershipResponseRoomMembershipTypeDef",
+    "ClientUpdateRoomMembershipResponseTypeDef",
+    "ClientUpdateRoomResponseRoomTypeDef",
+    "ClientUpdateRoomResponseTypeDef",
     "ClientUpdateUserResponseUserTypeDef",
     "ClientUpdateUserResponseTypeDef",
     "ClientUpdateUserSettingsUserSettingsTelephonyTypeDef",
@@ -288,6 +308,96 @@ class ClientAssociatePhoneNumbersWithVoiceConnectorResponseTypeDef(
         - **PhoneNumberId** *(string) --*
 
           The phone number ID for which the action failed.
+
+        - **ErrorCode** *(string) --*
+
+          The error code.
+
+        - **ErrorMessage** *(string) --*
+
+          The error message.
+    """
+
+
+_ClientBatchCreateRoomMembershipMembershipItemListTypeDef = TypedDict(
+    "_ClientBatchCreateRoomMembershipMembershipItemListTypeDef",
+    {"MemberId": str, "Role": str},
+    total=False,
+)
+
+
+class ClientBatchCreateRoomMembershipMembershipItemListTypeDef(
+    _ClientBatchCreateRoomMembershipMembershipItemListTypeDef
+):
+    """
+    Type definition for `ClientBatchCreateRoomMembership` `MembershipItemList`
+
+    Membership details, such as member ID and member role.
+
+    - **MemberId** *(string) --*
+
+      The member ID.
+
+    - **Role** *(string) --*
+
+      The member role.
+    """
+
+
+_ClientBatchCreateRoomMembershipResponseErrorsTypeDef = TypedDict(
+    "_ClientBatchCreateRoomMembershipResponseErrorsTypeDef",
+    {"MemberId": str, "ErrorCode": str, "ErrorMessage": str},
+    total=False,
+)
+
+
+class ClientBatchCreateRoomMembershipResponseErrorsTypeDef(
+    _ClientBatchCreateRoomMembershipResponseErrorsTypeDef
+):
+    """
+    Type definition for `ClientBatchCreateRoomMembershipResponse` `Errors`
+
+    The list of errors returned when a member action results in an error.
+
+    - **MemberId** *(string) --*
+
+      The member ID.
+
+    - **ErrorCode** *(string) --*
+
+      The error code.
+
+    - **ErrorMessage** *(string) --*
+
+      The error message.
+    """
+
+
+_ClientBatchCreateRoomMembershipResponseTypeDef = TypedDict(
+    "_ClientBatchCreateRoomMembershipResponseTypeDef",
+    {"Errors": List[ClientBatchCreateRoomMembershipResponseErrorsTypeDef]},
+    total=False,
+)
+
+
+class ClientBatchCreateRoomMembershipResponseTypeDef(
+    _ClientBatchCreateRoomMembershipResponseTypeDef
+):
+    """
+    Type definition for `ClientBatchCreateRoomMembership` `Response`
+
+    - **Errors** *(list) --*
+
+      If the action fails for one or more of the member IDs in the request, a list of the member
+      IDs is returned, along with error codes and error messages.
+
+      - *(dict) --*
+
+        The list of errors returned when a member action results in an error.
+
+        - **MemberId** *(string) --*
+
+          The member ID.
 
         - **ErrorCode** *(string) --*
 
@@ -1069,6 +1179,258 @@ class ClientCreatePhoneNumberOrderResponseTypeDef(
       - **UpdatedTimestamp** *(datetime) --*
 
         The updated phone number order timestamp, in ISO 8601 format.
+    """
+
+
+_ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef = TypedDict(
+    "_ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef",
+    {
+        "MemberId": str,
+        "MemberType": str,
+        "Email": str,
+        "FullName": str,
+        "AccountId": str,
+    },
+    total=False,
+)
+
+
+class ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef(
+    _ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef
+):
+    """
+    Type definition for `ClientCreateRoomMembershipResponseRoomMembership` `Member`
+
+    The member details, such as email address, name, member ID, and member type.
+
+    - **MemberId** *(string) --*
+
+      The member ID (user ID or bot ID).
+
+    - **MemberType** *(string) --*
+
+      The member type.
+
+    - **Email** *(string) --*
+
+      The member email address.
+
+    - **FullName** *(string) --*
+
+      The member name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+    """
+
+
+_ClientCreateRoomMembershipResponseRoomMembershipTypeDef = TypedDict(
+    "_ClientCreateRoomMembershipResponseRoomMembershipTypeDef",
+    {
+        "RoomId": str,
+        "Member": ClientCreateRoomMembershipResponseRoomMembershipMemberTypeDef,
+        "Role": str,
+        "InvitedBy": str,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientCreateRoomMembershipResponseRoomMembershipTypeDef(
+    _ClientCreateRoomMembershipResponseRoomMembershipTypeDef
+):
+    """
+    Type definition for `ClientCreateRoomMembershipResponse` `RoomMembership`
+
+    The room membership details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Member** *(dict) --*
+
+      The member details, such as email address, name, member ID, and member type.
+
+      - **MemberId** *(string) --*
+
+        The member ID (user ID or bot ID).
+
+      - **MemberType** *(string) --*
+
+        The member type.
+
+      - **Email** *(string) --*
+
+        The member email address.
+
+      - **FullName** *(string) --*
+
+        The member name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+    - **Role** *(string) --*
+
+      The membership role.
+
+    - **InvitedBy** *(string) --*
+
+      The identifier of the user that invited the room member.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room membership update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientCreateRoomMembershipResponseTypeDef = TypedDict(
+    "_ClientCreateRoomMembershipResponseTypeDef",
+    {"RoomMembership": ClientCreateRoomMembershipResponseRoomMembershipTypeDef},
+    total=False,
+)
+
+
+class ClientCreateRoomMembershipResponseTypeDef(
+    _ClientCreateRoomMembershipResponseTypeDef
+):
+    """
+    Type definition for `ClientCreateRoomMembership` `Response`
+
+    - **RoomMembership** *(dict) --*
+
+      The room membership details.
+
+      - **RoomId** *(string) --*
+
+        The room ID.
+
+      - **Member** *(dict) --*
+
+        The member details, such as email address, name, member ID, and member type.
+
+        - **MemberId** *(string) --*
+
+          The member ID (user ID or bot ID).
+
+        - **MemberType** *(string) --*
+
+          The member type.
+
+        - **Email** *(string) --*
+
+          The member email address.
+
+        - **FullName** *(string) --*
+
+          The member name.
+
+        - **AccountId** *(string) --*
+
+          The Amazon Chime account ID.
+
+      - **Role** *(string) --*
+
+        The membership role.
+
+      - **InvitedBy** *(string) --*
+
+        The identifier of the user that invited the room member.
+
+      - **UpdatedTimestamp** *(datetime) --*
+
+        The room membership update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientCreateRoomResponseRoomTypeDef = TypedDict(
+    "_ClientCreateRoomResponseRoomTypeDef",
+    {
+        "RoomId": str,
+        "Name": str,
+        "AccountId": str,
+        "CreatedBy": str,
+        "CreatedTimestamp": datetime,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientCreateRoomResponseRoomTypeDef(_ClientCreateRoomResponseRoomTypeDef):
+    """
+    Type definition for `ClientCreateRoomResponse` `Room`
+
+    The room details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Name** *(string) --*
+
+      The room name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+
+    - **CreatedBy** *(string) --*
+
+      The identifier of the room creator.
+
+    - **CreatedTimestamp** *(datetime) --*
+
+      The room creation timestamp, in ISO 8601 format.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientCreateRoomResponseTypeDef = TypedDict(
+    "_ClientCreateRoomResponseTypeDef",
+    {"Room": ClientCreateRoomResponseRoomTypeDef},
+    total=False,
+)
+
+
+class ClientCreateRoomResponseTypeDef(_ClientCreateRoomResponseTypeDef):
+    """
+    Type definition for `ClientCreateRoom` `Response`
+
+    - **Room** *(dict) --*
+
+      The room details.
+
+      - **RoomId** *(string) --*
+
+        The room ID.
+
+      - **Name** *(string) --*
+
+        The room name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+      - **CreatedBy** *(string) --*
+
+        The identifier of the room creator.
+
+      - **CreatedTimestamp** *(datetime) --*
+
+        The room creation timestamp, in ISO 8601 format.
+
+      - **UpdatedTimestamp** *(datetime) --*
+
+        The room update timestamp, in ISO 8601 format.
     """
 
 
@@ -2370,6 +2732,93 @@ class ClientGetPhoneNumberSettingsResponseTypeDef(
     """
 
 
+_ClientGetRoomResponseRoomTypeDef = TypedDict(
+    "_ClientGetRoomResponseRoomTypeDef",
+    {
+        "RoomId": str,
+        "Name": str,
+        "AccountId": str,
+        "CreatedBy": str,
+        "CreatedTimestamp": datetime,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientGetRoomResponseRoomTypeDef(_ClientGetRoomResponseRoomTypeDef):
+    """
+    Type definition for `ClientGetRoomResponse` `Room`
+
+    The room details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Name** *(string) --*
+
+      The room name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+
+    - **CreatedBy** *(string) --*
+
+      The identifier of the room creator.
+
+    - **CreatedTimestamp** *(datetime) --*
+
+      The room creation timestamp, in ISO 8601 format.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientGetRoomResponseTypeDef = TypedDict(
+    "_ClientGetRoomResponseTypeDef",
+    {"Room": ClientGetRoomResponseRoomTypeDef},
+    total=False,
+)
+
+
+class ClientGetRoomResponseTypeDef(_ClientGetRoomResponseTypeDef):
+    """
+    Type definition for `ClientGetRoom` `Response`
+
+    - **Room** *(dict) --*
+
+      The room details.
+
+      - **RoomId** *(string) --*
+
+        The room ID.
+
+      - **Name** *(string) --*
+
+        The room name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+      - **CreatedBy** *(string) --*
+
+        The identifier of the room creator.
+
+      - **CreatedTimestamp** *(datetime) --*
+
+        The room creation timestamp, in ISO 8601 format.
+
+      - **UpdatedTimestamp** *(datetime) --*
+
+        The room update timestamp, in ISO 8601 format.
+    """
+
+
 _ClientGetUserResponseUserTypeDef = TypedDict(
     "_ClientGetUserResponseUserTypeDef",
     {
@@ -3065,7 +3514,7 @@ class ClientGetVoiceConnectorStreamingConfigurationResponseStreamingConfiguratio
 
     - **DataRetentionInHours** *(integer) --*
 
-      The retention period for the Amazon Kinesis data, in hours.
+      The retention period, in hours, for the Amazon Kinesis data.
 
     - **Disabled** *(boolean) --*
 
@@ -3094,7 +3543,7 @@ class ClientGetVoiceConnectorStreamingConfigurationResponseTypeDef(
 
       - **DataRetentionInHours** *(integer) --*
 
-        The retention period for the Amazon Kinesis data, in hours.
+        The retention period, in hours, for the Amazon Kinesis data.
 
       - **Disabled** *(boolean) --*
 
@@ -3291,7 +3740,7 @@ class ClientInviteUsersResponseTypeDef(_ClientInviteUsersResponseTypeDef):
 
     - **Invites** *(list) --*
 
-      The invite details.
+      The email invitation details.
 
       - *(dict) --*
 
@@ -4025,6 +4474,279 @@ class ClientListPhoneNumbersResponseTypeDef(_ClientListPhoneNumbersResponseTypeD
         - **DeletionTimestamp** *(datetime) --*
 
           The deleted phone number timestamp, in ISO 8601 format.
+
+    - **NextToken** *(string) --*
+
+      The token to use to retrieve the next page of results.
+    """
+
+
+_ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef = TypedDict(
+    "_ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef",
+    {
+        "MemberId": str,
+        "MemberType": str,
+        "Email": str,
+        "FullName": str,
+        "AccountId": str,
+    },
+    total=False,
+)
+
+
+class ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef(
+    _ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef
+):
+    """
+    Type definition for `ClientListRoomMembershipsResponseRoomMemberships` `Member`
+
+    The member details, such as email address, name, member ID, and member type.
+
+    - **MemberId** *(string) --*
+
+      The member ID (user ID or bot ID).
+
+    - **MemberType** *(string) --*
+
+      The member type.
+
+    - **Email** *(string) --*
+
+      The member email address.
+
+    - **FullName** *(string) --*
+
+      The member name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+    """
+
+
+_ClientListRoomMembershipsResponseRoomMembershipsTypeDef = TypedDict(
+    "_ClientListRoomMembershipsResponseRoomMembershipsTypeDef",
+    {
+        "RoomId": str,
+        "Member": ClientListRoomMembershipsResponseRoomMembershipsMemberTypeDef,
+        "Role": str,
+        "InvitedBy": str,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientListRoomMembershipsResponseRoomMembershipsTypeDef(
+    _ClientListRoomMembershipsResponseRoomMembershipsTypeDef
+):
+    """
+    Type definition for `ClientListRoomMembershipsResponse` `RoomMemberships`
+
+    The room membership details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Member** *(dict) --*
+
+      The member details, such as email address, name, member ID, and member type.
+
+      - **MemberId** *(string) --*
+
+        The member ID (user ID or bot ID).
+
+      - **MemberType** *(string) --*
+
+        The member type.
+
+      - **Email** *(string) --*
+
+        The member email address.
+
+      - **FullName** *(string) --*
+
+        The member name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+    - **Role** *(string) --*
+
+      The membership role.
+
+    - **InvitedBy** *(string) --*
+
+      The identifier of the user that invited the room member.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room membership update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientListRoomMembershipsResponseTypeDef = TypedDict(
+    "_ClientListRoomMembershipsResponseTypeDef",
+    {
+        "RoomMemberships": List[
+            ClientListRoomMembershipsResponseRoomMembershipsTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientListRoomMembershipsResponseTypeDef(
+    _ClientListRoomMembershipsResponseTypeDef
+):
+    """
+    Type definition for `ClientListRoomMemberships` `Response`
+
+    - **RoomMemberships** *(list) --*
+
+      The room membership details.
+
+      - *(dict) --*
+
+        The room membership details.
+
+        - **RoomId** *(string) --*
+
+          The room ID.
+
+        - **Member** *(dict) --*
+
+          The member details, such as email address, name, member ID, and member type.
+
+          - **MemberId** *(string) --*
+
+            The member ID (user ID or bot ID).
+
+          - **MemberType** *(string) --*
+
+            The member type.
+
+          - **Email** *(string) --*
+
+            The member email address.
+
+          - **FullName** *(string) --*
+
+            The member name.
+
+          - **AccountId** *(string) --*
+
+            The Amazon Chime account ID.
+
+        - **Role** *(string) --*
+
+          The membership role.
+
+        - **InvitedBy** *(string) --*
+
+          The identifier of the user that invited the room member.
+
+        - **UpdatedTimestamp** *(datetime) --*
+
+          The room membership update timestamp, in ISO 8601 format.
+
+    - **NextToken** *(string) --*
+
+      The token to use to retrieve the next page of results.
+    """
+
+
+_ClientListRoomsResponseRoomsTypeDef = TypedDict(
+    "_ClientListRoomsResponseRoomsTypeDef",
+    {
+        "RoomId": str,
+        "Name": str,
+        "AccountId": str,
+        "CreatedBy": str,
+        "CreatedTimestamp": datetime,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientListRoomsResponseRoomsTypeDef(_ClientListRoomsResponseRoomsTypeDef):
+    """
+    Type definition for `ClientListRoomsResponse` `Rooms`
+
+    The Amazon Chime chat room details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Name** *(string) --*
+
+      The room name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+
+    - **CreatedBy** *(string) --*
+
+      The identifier of the room creator.
+
+    - **CreatedTimestamp** *(datetime) --*
+
+      The room creation timestamp, in ISO 8601 format.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientListRoomsResponseTypeDef = TypedDict(
+    "_ClientListRoomsResponseTypeDef",
+    {"Rooms": List[ClientListRoomsResponseRoomsTypeDef], "NextToken": str},
+    total=False,
+)
+
+
+class ClientListRoomsResponseTypeDef(_ClientListRoomsResponseTypeDef):
+    """
+    Type definition for `ClientListRooms` `Response`
+
+    - **Rooms** *(list) --*
+
+      The room details.
+
+      - *(dict) --*
+
+        The Amazon Chime chat room details.
+
+        - **RoomId** *(string) --*
+
+          The room ID.
+
+        - **Name** *(string) --*
+
+          The room name.
+
+        - **AccountId** *(string) --*
+
+          The Amazon Chime account ID.
+
+        - **CreatedBy** *(string) --*
+
+          The identifier of the room creator.
+
+        - **CreatedTimestamp** *(datetime) --*
+
+          The room creation timestamp, in ISO 8601 format.
+
+        - **UpdatedTimestamp** *(datetime) --*
+
+          The room update timestamp, in ISO 8601 format.
 
     - **NextToken** *(string) --*
 
@@ -4881,7 +5603,7 @@ class ClientPutVoiceConnectorStreamingConfigurationResponseStreamingConfiguratio
 
     - **DataRetentionInHours** *(integer) --*
 
-      The retention period for the Amazon Kinesis data, in hours.
+      The retention period, in hours, for the Amazon Kinesis data.
 
     - **Disabled** *(boolean) --*
 
@@ -4910,7 +5632,7 @@ class ClientPutVoiceConnectorStreamingConfigurationResponseTypeDef(
 
       - **DataRetentionInHours** *(integer) --*
 
-        The retention period for the Amazon Kinesis data, in hours.
+        The retention period, in hours, for the Amazon Kinesis data.
 
       - **Disabled** *(boolean) --*
 
@@ -4940,7 +5662,7 @@ class ClientPutVoiceConnectorStreamingConfigurationStreamingConfigurationTypeDef
 
     - **DataRetentionInHours** *(integer) --* **[REQUIRED]**
 
-      The retention period for the Amazon Kinesis data, in hours.
+      The retention period, in hours, for the Amazon Kinesis data.
 
     - **Disabled** *(boolean) --*
 
@@ -6285,6 +7007,258 @@ class ClientUpdatePhoneNumberResponseTypeDef(_ClientUpdatePhoneNumberResponseTyp
       - **DeletionTimestamp** *(datetime) --*
 
         The deleted phone number timestamp, in ISO 8601 format.
+    """
+
+
+_ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef = TypedDict(
+    "_ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef",
+    {
+        "MemberId": str,
+        "MemberType": str,
+        "Email": str,
+        "FullName": str,
+        "AccountId": str,
+    },
+    total=False,
+)
+
+
+class ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef(
+    _ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef
+):
+    """
+    Type definition for `ClientUpdateRoomMembershipResponseRoomMembership` `Member`
+
+    The member details, such as email address, name, member ID, and member type.
+
+    - **MemberId** *(string) --*
+
+      The member ID (user ID or bot ID).
+
+    - **MemberType** *(string) --*
+
+      The member type.
+
+    - **Email** *(string) --*
+
+      The member email address.
+
+    - **FullName** *(string) --*
+
+      The member name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+    """
+
+
+_ClientUpdateRoomMembershipResponseRoomMembershipTypeDef = TypedDict(
+    "_ClientUpdateRoomMembershipResponseRoomMembershipTypeDef",
+    {
+        "RoomId": str,
+        "Member": ClientUpdateRoomMembershipResponseRoomMembershipMemberTypeDef,
+        "Role": str,
+        "InvitedBy": str,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientUpdateRoomMembershipResponseRoomMembershipTypeDef(
+    _ClientUpdateRoomMembershipResponseRoomMembershipTypeDef
+):
+    """
+    Type definition for `ClientUpdateRoomMembershipResponse` `RoomMembership`
+
+    The room membership details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Member** *(dict) --*
+
+      The member details, such as email address, name, member ID, and member type.
+
+      - **MemberId** *(string) --*
+
+        The member ID (user ID or bot ID).
+
+      - **MemberType** *(string) --*
+
+        The member type.
+
+      - **Email** *(string) --*
+
+        The member email address.
+
+      - **FullName** *(string) --*
+
+        The member name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+    - **Role** *(string) --*
+
+      The membership role.
+
+    - **InvitedBy** *(string) --*
+
+      The identifier of the user that invited the room member.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room membership update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientUpdateRoomMembershipResponseTypeDef = TypedDict(
+    "_ClientUpdateRoomMembershipResponseTypeDef",
+    {"RoomMembership": ClientUpdateRoomMembershipResponseRoomMembershipTypeDef},
+    total=False,
+)
+
+
+class ClientUpdateRoomMembershipResponseTypeDef(
+    _ClientUpdateRoomMembershipResponseTypeDef
+):
+    """
+    Type definition for `ClientUpdateRoomMembership` `Response`
+
+    - **RoomMembership** *(dict) --*
+
+      The room membership details.
+
+      - **RoomId** *(string) --*
+
+        The room ID.
+
+      - **Member** *(dict) --*
+
+        The member details, such as email address, name, member ID, and member type.
+
+        - **MemberId** *(string) --*
+
+          The member ID (user ID or bot ID).
+
+        - **MemberType** *(string) --*
+
+          The member type.
+
+        - **Email** *(string) --*
+
+          The member email address.
+
+        - **FullName** *(string) --*
+
+          The member name.
+
+        - **AccountId** *(string) --*
+
+          The Amazon Chime account ID.
+
+      - **Role** *(string) --*
+
+        The membership role.
+
+      - **InvitedBy** *(string) --*
+
+        The identifier of the user that invited the room member.
+
+      - **UpdatedTimestamp** *(datetime) --*
+
+        The room membership update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientUpdateRoomResponseRoomTypeDef = TypedDict(
+    "_ClientUpdateRoomResponseRoomTypeDef",
+    {
+        "RoomId": str,
+        "Name": str,
+        "AccountId": str,
+        "CreatedBy": str,
+        "CreatedTimestamp": datetime,
+        "UpdatedTimestamp": datetime,
+    },
+    total=False,
+)
+
+
+class ClientUpdateRoomResponseRoomTypeDef(_ClientUpdateRoomResponseRoomTypeDef):
+    """
+    Type definition for `ClientUpdateRoomResponse` `Room`
+
+    The room details.
+
+    - **RoomId** *(string) --*
+
+      The room ID.
+
+    - **Name** *(string) --*
+
+      The room name.
+
+    - **AccountId** *(string) --*
+
+      The Amazon Chime account ID.
+
+    - **CreatedBy** *(string) --*
+
+      The identifier of the room creator.
+
+    - **CreatedTimestamp** *(datetime) --*
+
+      The room creation timestamp, in ISO 8601 format.
+
+    - **UpdatedTimestamp** *(datetime) --*
+
+      The room update timestamp, in ISO 8601 format.
+    """
+
+
+_ClientUpdateRoomResponseTypeDef = TypedDict(
+    "_ClientUpdateRoomResponseTypeDef",
+    {"Room": ClientUpdateRoomResponseRoomTypeDef},
+    total=False,
+)
+
+
+class ClientUpdateRoomResponseTypeDef(_ClientUpdateRoomResponseTypeDef):
+    """
+    Type definition for `ClientUpdateRoom` `Response`
+
+    - **Room** *(dict) --*
+
+      The room details.
+
+      - **RoomId** *(string) --*
+
+        The room ID.
+
+      - **Name** *(string) --*
+
+        The room name.
+
+      - **AccountId** *(string) --*
+
+        The Amazon Chime account ID.
+
+      - **CreatedBy** *(string) --*
+
+        The identifier of the room creator.
+
+      - **CreatedTimestamp** *(datetime) --*
+
+        The room creation timestamp, in ISO 8601 format.
+
+      - **UpdatedTimestamp** *(datetime) --*
+
+        The room update timestamp, in ISO 8601 format.
     """
 
 

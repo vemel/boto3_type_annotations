@@ -237,7 +237,7 @@ class Client(BaseClient):
         """
         Creates a log group with the specified name.
 
-        You can create up to 5000 log groups per account.
+        You can create up to 20,000 log groups per account.
 
         You must use the following guidelines when naming a log group:
 
@@ -246,7 +246,7 @@ class Client(BaseClient):
         * Log group names can be between 1 and 512 characters long.
 
         * Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-'
-        (hyphen), '/' (forward slash), and '.' (period).
+        (hyphen), '/' (forward slash), '.' (period), and '#' (number sign)
 
         If you associate a AWS Key Management Service (AWS KMS) customer master key (CMK) with the log
         group, ingested data is encrypted using the CMK. This association is stored as long as the data
@@ -1005,9 +1005,9 @@ class Client(BaseClient):
 
                   The number of bytes stored.
 
-                   **IMPORTANT:** Starting on June 17, 2019, this parameter will be deprecated for log
-                   streams, and will be reported as zero. This change applies only to log streams. The
-                   ``storedBytes`` parameter for log groups is not affected.
+                   **IMPORTANT:** On June 17, 2019, this parameter was deprecated for log streams, and is
+                   always reported as zero. This change applies only to log streams. The ``storedBytes``
+                   parameter for log groups is not affected.
 
             - **nextToken** *(string) --*
 
@@ -1767,6 +1767,8 @@ class Client(BaseClient):
 
           The token for the next set of items to return. (You received this token from a previous call.)
 
+          Using this token works only when you specify ``true`` for ``startFromHead`` .
+
         :type limit: integer
         :param limit:
 
@@ -2127,10 +2129,12 @@ class Client(BaseClient):
         self, destinationName: str, targetArn: str, roleArn: str
     ) -> ClientPutDestinationResponseTypeDef:
         """
-        Creates or updates a destination. A destination encapsulates a physical resource (such as an Amazon
-        Kinesis stream) and enables you to subscribe to a real-time stream of log events for a different
-        account, ingested using  PutLogEvents . A destination can be an Amazon Kinesis stream, Amazon
-        Kinesis Data Firehose strea, or an AWS Lambda function.
+        Creates or updates a destination. This operation is used only to create destinations for
+        cross-account subscriptions.
+
+        A destination encapsulates a physical resource (such as an Amazon Kinesis stream) and enables you
+        to subscribe to a real-time stream of log events for a different account, ingested using
+        PutLogEvents .
 
         Through an access policy, a destination controls what is written to it. By default,
         ``PutDestination`` does not set any access policy with the destination, which means a cross-account
@@ -2739,7 +2743,7 @@ class Client(BaseClient):
         :param limit:
 
           The maximum number of log events to return in the query. If the query string uses the ``fields``
-          command, only the specified fields and their values are returned.
+          command, only the specified fields and their values are returned. The default is 1000.
 
         :rtype: dict
         :returns:

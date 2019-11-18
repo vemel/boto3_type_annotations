@@ -5,8 +5,17 @@ import boto3
 from boto3.session import Session
 from botocore.config import Config
 from mypy_boto3_eks.client import Client
-from mypy_boto3_eks.paginator import ListClustersPaginator, ListUpdatesPaginator
-from mypy_boto3_eks.waiter import ClusterActiveWaiter, ClusterDeletedWaiter
+from mypy_boto3_eks.paginator import (
+    ListClustersPaginator,
+    ListNodegroupsPaginator,
+    ListUpdatesPaginator,
+)
+from mypy_boto3_eks.waiter import (
+    ClusterActiveWaiter,
+    ClusterDeletedWaiter,
+    NodegroupActiveWaiter,
+    NodegroupDeletedWaiter,
+)
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 def boto3_client(
@@ -57,6 +66,14 @@ def get_list_clusters_paginator(client: Client) -> ListClustersPaginator:
 
 
 # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+def get_list_nodegroups_paginator(client: Client) -> ListNodegroupsPaginator:
+    """
+    Equivalent of `client.get_paginator('list_nodegroups')`, returns a correct type.
+    """
+    return client.get_paginator("list_nodegroups")
+
+
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
 def get_list_updates_paginator(client: Client) -> ListUpdatesPaginator:
     """
     Equivalent of `client.get_paginator('list_updates')`, returns a correct type.
@@ -78,3 +95,19 @@ def get_cluster_deleted_waiter(client: Client) -> ClusterDeletedWaiter:
     Equivalent of `client.get_waiter('cluster_deleted')`, returns a correct type.
     """
     return client.get_waiter("cluster_deleted")
+
+
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+def get_nodegroup_active_waiter(client: Client) -> NodegroupActiveWaiter:
+    """
+    Equivalent of `client.get_waiter('nodegroup_active')`, returns a correct type.
+    """
+    return client.get_waiter("nodegroup_active")
+
+
+# pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+def get_nodegroup_deleted_waiter(client: Client) -> NodegroupDeletedWaiter:
+    """
+    Equivalent of `client.get_waiter('nodegroup_deleted')`, returns a correct type.
+    """
+    return client.get_waiter("nodegroup_deleted")

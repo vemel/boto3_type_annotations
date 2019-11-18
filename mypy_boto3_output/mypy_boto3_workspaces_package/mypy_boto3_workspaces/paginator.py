@@ -107,7 +107,7 @@ class DescribeAccountModificationsPaginator(Boto3Paginator):
 
               - *(dict) --*
 
-                Describes a modification to the configuration of bring your own license (BYOL) for the
+                Describes a modification to the configuration of Bring Your Own License (BYOL) for the
                 specified account.
 
                 - **ModificationState** *(string) --*
@@ -420,6 +420,7 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
     def paginate(
         self,
         DirectoryIds: List[str] = None,
+        Limit: int = None,
         PaginationConfig: DescribeWorkspaceDirectoriesPaginatePaginationConfigTypeDef = None,
     ) -> DescribeWorkspaceDirectoriesPaginateResponseTypeDef:
         """
@@ -436,6 +437,7 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
               DirectoryIds=[
                   'string',
               ],
+              Limit=123,
               PaginationConfig={
                   'MaxItems': 123,
                   'StartingToken': 'string'
@@ -447,6 +449,11 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
           The identifiers of the directories. If the value is null, all directories are retrieved.
 
           - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of directories to return.
 
         :type PaginationConfig: dict
         :param PaginationConfig:
@@ -494,11 +501,29 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
                             'EnableInternetAccess': True|False,
                             'DefaultOu': 'string',
                             'CustomSecurityGroupId': 'string',
-                            'UserEnabledAsLocalAdministrator': True|False
+                            'UserEnabledAsLocalAdministrator': True|False,
+                            'EnableMaintenanceMode': True|False
                         },
                         'ipGroupIds': [
                             'string',
-                        ]
+                        ],
+                        'WorkspaceAccessProperties': {
+                            'DeviceTypeWindows': 'ALLOW'|'DENY',
+                            'DeviceTypeOsx': 'ALLOW'|'DENY',
+                            'DeviceTypeWeb': 'ALLOW'|'DENY',
+                            'DeviceTypeIos': 'ALLOW'|'DENY',
+                            'DeviceTypeAndroid': 'ALLOW'|'DENY',
+                            'DeviceTypeChromeOs': 'ALLOW'|'DENY',
+                            'DeviceTypeZeroClient': 'ALLOW'|'DENY'
+                        },
+                        'Tenancy': 'DEDICATED'|'SHARED',
+                        'SelfservicePermissions': {
+                            'RestartWorkspace': 'ENABLED'|'DISABLED',
+                            'IncreaseVolumeSize': 'ENABLED'|'DISABLED',
+                            'ChangeComputeType': 'ENABLED'|'DISABLED',
+                            'SwitchRunningMode': 'ENABLED'|'DISABLED',
+                            'RebuildWorkspace': 'ENABLED'|'DISABLED'
+                        }
                     },
                 ],
 
@@ -513,7 +538,7 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
 
               - *(dict) --*
 
-                Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+                Describes a directory that is used with Amazon WorkSpaces.
 
                 - **DirectoryId** *(string) --*
 
@@ -563,7 +588,7 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
 
                 - **State** *(string) --*
 
-                  The state of the directory's registration with Amazon WorkSpaces
+                  The state of the directory's registration with Amazon WorkSpaces.
 
                 - **WorkspaceCreationProperties** *(dict) --*
 
@@ -597,13 +622,92 @@ class DescribeWorkspaceDirectoriesPaginator(Boto3Paginator):
 
                   - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-                    Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+                    Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+                  - **EnableMaintenanceMode** *(boolean) --*
+
+                    Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+                    `WorkSpace Maintenance
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+                    .
 
                 - **ipGroupIds** *(list) --*
 
                   The identifiers of the IP access control groups associated with the directory.
 
                   - *(string) --*
+
+                - **WorkspaceAccessProperties** *(dict) --*
+
+                  The devices and operating systems that users can use to access Workspaces.
+
+                  - **DeviceTypeWindows** *(string) --*
+
+                    Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+                    WorkSpaces access to trusted devices (also known as managed devices) with valid
+                    certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+                    WorkSpaces Access to Trusted Devices
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+                  - **DeviceTypeOsx** *(string) --*
+
+                    Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+                    WorkSpaces access to trusted devices (also known as managed devices) with valid
+                    certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+                    WorkSpaces Access to Trusted Devices
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+                  - **DeviceTypeWeb** *(string) --*
+
+                    Indicates whether users can access their WorkSpaces through a web browser.
+
+                  - **DeviceTypeIos** *(string) --*
+
+                    Indicates whether users can use iOS devices to access their WorkSpaces.
+
+                  - **DeviceTypeAndroid** *(string) --*
+
+                    Indicates whether users can use Android devices to access their WorkSpaces.
+
+                  - **DeviceTypeChromeOs** *(string) --*
+
+                    Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+                  - **DeviceTypeZeroClient** *(string) --*
+
+                    Indicates whether users can use zero client devices to access their WorkSpaces.
+
+                - **Tenancy** *(string) --*
+
+                  Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+                  (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+                  Own Windows Desktop Images
+                  <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+                - **SelfservicePermissions** *(dict) --*
+
+                  The default self-service permissions for WorkSpaces in the directory.
+
+                  - **RestartWorkspace** *(string) --*
+
+                    Specifies whether users can restart their WorkSpace.
+
+                  - **IncreaseVolumeSize** *(string) --*
+
+                    Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+                  - **ChangeComputeType** *(string) --*
+
+                    Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+                  - **SwitchRunningMode** *(string) --*
+
+                    Specifies whether users can switch the running mode of their WorkSpace.
+
+                  - **RebuildWorkspace** *(string) --*
+
+                    Specifies whether users can rebuild the operating system of a WorkSpace to its original
+                    state.
 
         """
 
@@ -728,8 +832,10 @@ class DescribeWorkspaceImagesPaginator(Boto3Paginator):
 
                 - **RequiredTenancy** *(string) --*
 
-                  Specifies whether the image is running on dedicated hardware. When bring your own license
-                  (BYOL) is enabled, this value is set to DEDICATED.
+                  Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+                  (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+                  Your Own Windows Desktop Images
+                  <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
                 - **ErrorCode** *(string) --*
 

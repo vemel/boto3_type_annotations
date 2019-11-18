@@ -18,6 +18,16 @@ __all__ = (
     "ClientCreateClusterloggingclusterLoggingTypeDef",
     "ClientCreateClusterloggingTypeDef",
     "ClientCreateClusterresourcesVpcConfigTypeDef",
+    "ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef",
+    "ClientCreateNodegroupResponsenodegrouphealthTypeDef",
+    "ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef",
+    "ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    "ClientCreateNodegroupResponsenodegroupresourcesTypeDef",
+    "ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef",
+    "ClientCreateNodegroupResponsenodegroupTypeDef",
+    "ClientCreateNodegroupResponseTypeDef",
+    "ClientCreateNodegroupremoteAccessTypeDef",
+    "ClientCreateNodegroupscalingConfigTypeDef",
     "ClientDeleteClusterResponseclustercertificateAuthorityTypeDef",
     "ClientDeleteClusterResponseclusteridentityoidcTypeDef",
     "ClientDeleteClusterResponseclusteridentityTypeDef",
@@ -26,6 +36,14 @@ __all__ = (
     "ClientDeleteClusterResponseclusterresourcesVpcConfigTypeDef",
     "ClientDeleteClusterResponseclusterTypeDef",
     "ClientDeleteClusterResponseTypeDef",
+    "ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef",
+    "ClientDeleteNodegroupResponsenodegrouphealthTypeDef",
+    "ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef",
+    "ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    "ClientDeleteNodegroupResponsenodegroupresourcesTypeDef",
+    "ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef",
+    "ClientDeleteNodegroupResponsenodegroupTypeDef",
+    "ClientDeleteNodegroupResponseTypeDef",
     "ClientDescribeClusterResponseclustercertificateAuthorityTypeDef",
     "ClientDescribeClusterResponseclusteridentityoidcTypeDef",
     "ClientDescribeClusterResponseclusteridentityTypeDef",
@@ -34,11 +52,20 @@ __all__ = (
     "ClientDescribeClusterResponseclusterresourcesVpcConfigTypeDef",
     "ClientDescribeClusterResponseclusterTypeDef",
     "ClientDescribeClusterResponseTypeDef",
+    "ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef",
+    "ClientDescribeNodegroupResponsenodegrouphealthTypeDef",
+    "ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef",
+    "ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    "ClientDescribeNodegroupResponsenodegroupresourcesTypeDef",
+    "ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef",
+    "ClientDescribeNodegroupResponsenodegroupTypeDef",
+    "ClientDescribeNodegroupResponseTypeDef",
     "ClientDescribeUpdateResponseupdateerrorsTypeDef",
     "ClientDescribeUpdateResponseupdateparamsTypeDef",
     "ClientDescribeUpdateResponseupdateTypeDef",
     "ClientDescribeUpdateResponseTypeDef",
     "ClientListClustersResponseTypeDef",
+    "ClientListNodegroupsResponseTypeDef",
     "ClientListTagsForResourceResponseTypeDef",
     "ClientListUpdatesResponseTypeDef",
     "ClientUpdateClusterConfigResponseupdateerrorsTypeDef",
@@ -52,12 +79,26 @@ __all__ = (
     "ClientUpdateClusterVersionResponseupdateparamsTypeDef",
     "ClientUpdateClusterVersionResponseupdateTypeDef",
     "ClientUpdateClusterVersionResponseTypeDef",
+    "ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef",
+    "ClientUpdateNodegroupConfigResponseupdateparamsTypeDef",
+    "ClientUpdateNodegroupConfigResponseupdateTypeDef",
+    "ClientUpdateNodegroupConfigResponseTypeDef",
+    "ClientUpdateNodegroupConfiglabelsTypeDef",
+    "ClientUpdateNodegroupConfigscalingConfigTypeDef",
+    "ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef",
+    "ClientUpdateNodegroupVersionResponseupdateparamsTypeDef",
+    "ClientUpdateNodegroupVersionResponseupdateTypeDef",
+    "ClientUpdateNodegroupVersionResponseTypeDef",
     "ClusterActiveWaitWaiterConfigTypeDef",
     "ClusterDeletedWaitWaiterConfigTypeDef",
     "ListClustersPaginatePaginationConfigTypeDef",
     "ListClustersPaginateResponseTypeDef",
+    "ListNodegroupsPaginatePaginationConfigTypeDef",
+    "ListNodegroupsPaginateResponseTypeDef",
     "ListUpdatesPaginatePaginationConfigTypeDef",
     "ListUpdatesPaginateResponseTypeDef",
+    "NodegroupActiveWaitWaiterConfigTypeDef",
+    "NodegroupDeletedWaitWaiterConfigTypeDef",
 )
 
 
@@ -208,6 +249,7 @@ _ClientCreateClusterResponseclusterresourcesVpcConfigTypeDef = TypedDict(
     {
         "subnetIds": List[str],
         "securityGroupIds": List[str],
+        "clusterSecurityGroupId": str,
         "vpcId": str,
         "endpointPublicAccess": bool,
         "endpointPrivateAccess": bool,
@@ -241,6 +283,11 @@ class ClientCreateClusterResponseclusterresourcesVpcConfigTypeDef(
       used to allow communication between your worker nodes and the Kubernetes control plane.
 
       - *(string) --*
+
+    - **clusterSecurityGroupId** *(string) --*
+
+      The cluster security group that was created by Amazon EKS for the cluster. Managed node
+      groups use this security group for control plane to data plane communication.
 
     - **vpcId** *(string) --*
 
@@ -338,6 +385,11 @@ class ClientCreateClusterResponseclusterTypeDef(
 
         - *(string) --*
 
+      - **clusterSecurityGroupId** *(string) --*
+
+        The cluster security group that was created by Amazon EKS for the cluster. Managed node
+        groups use this security group for control plane to data plane communication.
+
       - **vpcId** *(string) --*
 
         The VPC associated with your cluster.
@@ -419,7 +471,8 @@ class ClientCreateClusterResponseclusterTypeDef(
     - **tags** *(dict) --*
 
       The metadata that you apply to the cluster to assist with categorization and organization.
-      Each tag consists of a key and an optional value, both of which you define.
+      Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+      not propagate to any other resources associated with the cluster.
 
       - *(string) --*
 
@@ -488,6 +541,11 @@ class ClientCreateClusterResponseTypeDef(_ClientCreateClusterResponseTypeDef):
           used to allow communication between your worker nodes and the Kubernetes control plane.
 
           - *(string) --*
+
+        - **clusterSecurityGroupId** *(string) --*
+
+          The cluster security group that was created by Amazon EKS for the cluster. Managed node
+          groups use this security group for control plane to data plane communication.
 
         - **vpcId** *(string) --*
 
@@ -570,7 +628,8 @@ class ClientCreateClusterResponseTypeDef(_ClientCreateClusterResponseTypeDef):
       - **tags** *(dict) --*
 
         The metadata that you apply to the cluster to assist with categorization and organization.
-        Each tag consists of a key and an optional value, both of which you define.
+        Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+        not propagate to any other resources associated with the cluster.
 
         - *(string) --*
 
@@ -714,6 +773,863 @@ class ClientCreateClusterresourcesVpcConfigTypeDef(
       Cluster Endpoint Access Control
       <https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html>`__ in the * *Amazon
       EKS User Guide* * .
+    """
+
+
+_ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef",
+    {"code": str, "message": str, "resourceIds": List[str]},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef(
+    _ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegrouphealth` `issues`
+
+    An object representing an issue with an Amazon EKS resource.
+
+    - **code** *(string) --*
+
+      A brief description of the error.
+
+      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+      with the managed node group. You may be able to recreate an Auto Scaling group with
+      the same settings to recover.
+
+      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+      cluster. You must recreate your cluster.
+
+      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+      security group for your managed node group. Remove any dependencies from the security
+      group.
+
+      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+      your managed node group. You may be able to recreate a launch template with the same
+      settings to recover.
+
+      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+      your managed node group does not match the version that Amazon EKS created. You may
+      be able to revert to the Amazon EKS-created version to recover.
+
+      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+      managed node group. You may be able to recreate an instance profile with the same
+      settings to recover.
+
+      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+      group. You may be able to recreate an IAM role with the same settings to recover.
+
+      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+      while attempting to launch instances.
+
+      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+      of the specified instance type. You may be able to request an Amazon EC2 instance
+      limit increase to recover.
+
+      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+      managed node group does not have enough available IP addresses for new nodes.
+
+      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+      communicate with your cluster API server.
+
+      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+      issue.
+
+    - **message** *(string) --*
+
+      The error message associated with the issue.
+
+    - **resourceIds** *(list) --*
+
+      The AWS resources that are afflicted by this issue.
+
+      - *(string) --*
+    """
+
+
+_ClientCreateNodegroupResponsenodegrouphealthTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegrouphealthTypeDef",
+    {"issues": List[ClientCreateNodegroupResponsenodegrouphealthissuesTypeDef]},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegrouphealthTypeDef(
+    _ClientCreateNodegroupResponsenodegrouphealthTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegroup` `health`
+
+    The health status of the node group. If there are issues with your node group's health,
+    they are listed here.
+
+    - **issues** *(list) --*
+
+      Any issues that are associated with the node group.
+
+      - *(dict) --*
+
+        An object representing an issue with an Amazon EKS resource.
+
+        - **code** *(string) --*
+
+          A brief description of the error.
+
+          * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+          with the managed node group. You may be able to recreate an Auto Scaling group with
+          the same settings to recover.
+
+          * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+          cluster. You must recreate your cluster.
+
+          * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+          security group for your managed node group. Remove any dependencies from the security
+          group.
+
+          * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+          your managed node group. You may be able to recreate a launch template with the same
+          settings to recover.
+
+          * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+          your managed node group does not match the version that Amazon EKS created. You may
+          be able to revert to the Amazon EKS-created version to recover.
+
+          * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+          managed node group. You may be able to recreate an instance profile with the same
+          settings to recover.
+
+          * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+          group. You may be able to recreate an IAM role with the same settings to recover.
+
+          * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+          while attempting to launch instances.
+
+          * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+          of the specified instance type. You may be able to request an Amazon EC2 instance
+          limit increase to recover.
+
+          * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+          managed node group does not have enough available IP addresses for new nodes.
+
+          * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+          communicate with your cluster API server.
+
+          * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+          issue.
+
+        - **message** *(string) --*
+
+          The error message associated with the issue.
+
+        - **resourceIds** *(list) --*
+
+          The AWS resources that are afflicted by this issue.
+
+          - *(string) --*
+    """
+
+
+_ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef",
+    {"ec2SshKey": str, "sourceSecurityGroups": List[str]},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef(
+    _ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegroup` `remoteAccess`
+
+    The remote access (SSH) configuration that is associated with the node group.
+
+    - **ec2SshKey** *(string) --*
+
+      The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+      in the managed node group. For more information, see `Amazon EC2 Key Pairs
+      <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+      *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+    - **sourceSecurityGroups** *(list) --*
+
+      The security groups to allow SSH access (port 22) from on the worker nodes. If you
+      specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+      create a managed node group, port 22 on the worker nodes is opened to the internet
+      (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+      <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+      *Amazon Virtual Private Cloud User Guide* .
+
+      - *(string) --*
+    """
+
+
+_ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    {"name": str},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef(
+    _ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegroupresources` `autoScalingGroups`
+
+    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+    - **name** *(string) --*
+
+      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+    """
+
+
+_ClientCreateNodegroupResponsenodegroupresourcesTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegroupresourcesTypeDef",
+    {
+        "autoScalingGroups": List[
+            ClientCreateNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+        ],
+        "remoteAccessSecurityGroup": str,
+    },
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegroupresourcesTypeDef(
+    _ClientCreateNodegroupResponsenodegroupresourcesTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegroup` `resources`
+
+    The resources associated with the nodegroup, such as AutoScaling groups and security groups
+    for remote access.
+
+    - **autoScalingGroups** *(list) --*
+
+      The autoscaling groups associated with the node group.
+
+      - *(dict) --*
+
+        An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+        - **name** *(string) --*
+
+          The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+    - **remoteAccessSecurityGroup** *(string) --*
+
+      The remote access security group associated with the node group. This security group
+      controls SSH access to the worker nodes.
+    """
+
+
+_ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef",
+    {"minSize": int, "maxSize": int, "desiredSize": int},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef(
+    _ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponsenodegroup` `scalingConfig`
+
+    The scaling configuration details for the AutoScaling group that is associated with your
+    node group.
+
+    - **minSize** *(integer) --*
+
+      The minimum number of worker nodes that the managed node group can scale in to. This
+      number must be greater than zero.
+
+    - **maxSize** *(integer) --*
+
+      The maximum number of worker nodes that the managed node group can scale out to. Managed
+      node groups can support up to 100 nodes by default.
+
+    - **desiredSize** *(integer) --*
+
+      The current number of worker nodes that the managed node group should maintain.
+    """
+
+
+_ClientCreateNodegroupResponsenodegroupTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponsenodegroupTypeDef",
+    {
+        "nodegroupName": str,
+        "nodegroupArn": str,
+        "clusterName": str,
+        "version": str,
+        "releaseVersion": str,
+        "createdAt": datetime,
+        "modifiedAt": datetime,
+        "status": str,
+        "scalingConfig": ClientCreateNodegroupResponsenodegroupscalingConfigTypeDef,
+        "instanceTypes": List[str],
+        "subnets": List[str],
+        "remoteAccess": ClientCreateNodegroupResponsenodegroupremoteAccessTypeDef,
+        "amiType": str,
+        "nodeRole": str,
+        "labels": Dict[str, str],
+        "resources": ClientCreateNodegroupResponsenodegroupresourcesTypeDef,
+        "diskSize": int,
+        "health": ClientCreateNodegroupResponsenodegrouphealthTypeDef,
+        "tags": Dict[str, str],
+    },
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponsenodegroupTypeDef(
+    _ClientCreateNodegroupResponsenodegroupTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroupResponse` `nodegroup`
+
+    The full description of your new node group.
+
+    - **nodegroupName** *(string) --*
+
+      The name associated with an Amazon EKS managed node group.
+
+    - **nodegroupArn** *(string) --*
+
+      The Amazon Resource Name (ARN) associated with the managed node group.
+
+    - **clusterName** *(string) --*
+
+      The name of the cluster that the managed node group resides in.
+
+    - **version** *(string) --*
+
+      The Kubernetes version of the managed node group.
+
+    - **releaseVersion** *(string) --*
+
+      The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+      Linux AMI Versions
+      <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+      *Amazon EKS User Guide* .
+
+    - **createdAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was created.
+
+    - **modifiedAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+    - **status** *(string) --*
+
+      The current status of the managed node group.
+
+    - **scalingConfig** *(dict) --*
+
+      The scaling configuration details for the AutoScaling group that is associated with your
+      node group.
+
+      - **minSize** *(integer) --*
+
+        The minimum number of worker nodes that the managed node group can scale in to. This
+        number must be greater than zero.
+
+      - **maxSize** *(integer) --*
+
+        The maximum number of worker nodes that the managed node group can scale out to. Managed
+        node groups can support up to 100 nodes by default.
+
+      - **desiredSize** *(integer) --*
+
+        The current number of worker nodes that the managed node group should maintain.
+
+    - **instanceTypes** *(list) --*
+
+      The instance types associated with your node group.
+
+      - *(string) --*
+
+    - **subnets** *(list) --*
+
+      The subnets allowed for the AutoScaling group that is associated with your node group.
+      These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+      ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+      - *(string) --*
+
+    - **remoteAccess** *(dict) --*
+
+      The remote access (SSH) configuration that is associated with the node group.
+
+      - **ec2SshKey** *(string) --*
+
+        The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+        in the managed node group. For more information, see `Amazon EC2 Key Pairs
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+        *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+      - **sourceSecurityGroups** *(list) --*
+
+        The security groups to allow SSH access (port 22) from on the worker nodes. If you
+        specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+        create a managed node group, port 22 on the worker nodes is opened to the internet
+        (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+        <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+        *Amazon Virtual Private Cloud User Guide* .
+
+        - *(string) --*
+
+    - **amiType** *(string) --*
+
+      The AMI type associated with your node group. GPU instance types should use the
+      ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+      support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+      EKS-optimized Linux AMI.
+
+    - **nodeRole** *(string) --*
+
+      The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+      makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+      calls through an IAM instance profile and associated policies. Before you can launch worker
+      nodes and register them into a cluster, you must create an IAM role for those worker nodes
+      to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+      <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+      *Amazon EKS User Guide* * .
+
+    - **labels** *(dict) --*
+
+      The Kubernetes labels applied to the nodes in the node group.
+
+      .. note::
+
+        Only labels that are applied with the Amazon EKS API are shown here. There may be other
+        Kubernetes labels applied to the nodes in this group.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **resources** *(dict) --*
+
+      The resources associated with the nodegroup, such as AutoScaling groups and security groups
+      for remote access.
+
+      - **autoScalingGroups** *(list) --*
+
+        The autoscaling groups associated with the node group.
+
+        - *(dict) --*
+
+          An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+          - **name** *(string) --*
+
+            The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+      - **remoteAccessSecurityGroup** *(string) --*
+
+        The remote access security group associated with the node group. This security group
+        controls SSH access to the worker nodes.
+
+    - **diskSize** *(integer) --*
+
+      The root device disk size (in GiB) for your node group instances. The default disk size is
+      20 GiB.
+
+    - **health** *(dict) --*
+
+      The health status of the node group. If there are issues with your node group's health,
+      they are listed here.
+
+      - **issues** *(list) --*
+
+        Any issues that are associated with the node group.
+
+        - *(dict) --*
+
+          An object representing an issue with an Amazon EKS resource.
+
+          - **code** *(string) --*
+
+            A brief description of the error.
+
+            * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+            with the managed node group. You may be able to recreate an Auto Scaling group with
+            the same settings to recover.
+
+            * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+            cluster. You must recreate your cluster.
+
+            * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+            security group for your managed node group. Remove any dependencies from the security
+            group.
+
+            * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+            your managed node group. You may be able to recreate a launch template with the same
+            settings to recover.
+
+            * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+            your managed node group does not match the version that Amazon EKS created. You may
+            be able to revert to the Amazon EKS-created version to recover.
+
+            * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+            managed node group. You may be able to recreate an instance profile with the same
+            settings to recover.
+
+            * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+            group. You may be able to recreate an IAM role with the same settings to recover.
+
+            * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+            while attempting to launch instances.
+
+            * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+            of the specified instance type. You may be able to request an Amazon EC2 instance
+            limit increase to recover.
+
+            * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+            managed node group does not have enough available IP addresses for new nodes.
+
+            * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+            communicate with your cluster API server.
+
+            * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+            issue.
+
+          - **message** *(string) --*
+
+            The error message associated with the issue.
+
+          - **resourceIds** *(list) --*
+
+            The AWS resources that are afflicted by this issue.
+
+            - *(string) --*
+
+    - **tags** *(dict) --*
+
+      The metadata applied the node group to assist with categorization and organization. Each
+      tag consists of a key and an optional value, both of which you define. Node group tags do
+      not propagate to any other resources associated with the node group, such as the Amazon EC2
+      instances or subnets.
+
+      - *(string) --*
+
+        - *(string) --*
+    """
+
+
+_ClientCreateNodegroupResponseTypeDef = TypedDict(
+    "_ClientCreateNodegroupResponseTypeDef",
+    {"nodegroup": ClientCreateNodegroupResponsenodegroupTypeDef},
+    total=False,
+)
+
+
+class ClientCreateNodegroupResponseTypeDef(_ClientCreateNodegroupResponseTypeDef):
+    """
+    Type definition for `ClientCreateNodegroup` `Response`
+
+    - **nodegroup** *(dict) --*
+
+      The full description of your new node group.
+
+      - **nodegroupName** *(string) --*
+
+        The name associated with an Amazon EKS managed node group.
+
+      - **nodegroupArn** *(string) --*
+
+        The Amazon Resource Name (ARN) associated with the managed node group.
+
+      - **clusterName** *(string) --*
+
+        The name of the cluster that the managed node group resides in.
+
+      - **version** *(string) --*
+
+        The Kubernetes version of the managed node group.
+
+      - **releaseVersion** *(string) --*
+
+        The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+        Linux AMI Versions
+        <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+        *Amazon EKS User Guide* .
+
+      - **createdAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was created.
+
+      - **modifiedAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+      - **status** *(string) --*
+
+        The current status of the managed node group.
+
+      - **scalingConfig** *(dict) --*
+
+        The scaling configuration details for the AutoScaling group that is associated with your
+        node group.
+
+        - **minSize** *(integer) --*
+
+          The minimum number of worker nodes that the managed node group can scale in to. This
+          number must be greater than zero.
+
+        - **maxSize** *(integer) --*
+
+          The maximum number of worker nodes that the managed node group can scale out to. Managed
+          node groups can support up to 100 nodes by default.
+
+        - **desiredSize** *(integer) --*
+
+          The current number of worker nodes that the managed node group should maintain.
+
+      - **instanceTypes** *(list) --*
+
+        The instance types associated with your node group.
+
+        - *(string) --*
+
+      - **subnets** *(list) --*
+
+        The subnets allowed for the AutoScaling group that is associated with your node group.
+        These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+        ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+        - *(string) --*
+
+      - **remoteAccess** *(dict) --*
+
+        The remote access (SSH) configuration that is associated with the node group.
+
+        - **ec2SshKey** *(string) --*
+
+          The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+          in the managed node group. For more information, see `Amazon EC2 Key Pairs
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+        - **sourceSecurityGroups** *(list) --*
+
+          The security groups to allow SSH access (port 22) from on the worker nodes. If you
+          specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+          create a managed node group, port 22 on the worker nodes is opened to the internet
+          (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+          <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+          *Amazon Virtual Private Cloud User Guide* .
+
+          - *(string) --*
+
+      - **amiType** *(string) --*
+
+        The AMI type associated with your node group. GPU instance types should use the
+        ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+        support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+        EKS-optimized Linux AMI.
+
+      - **nodeRole** *(string) --*
+
+        The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+        makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+        calls through an IAM instance profile and associated policies. Before you can launch worker
+        nodes and register them into a cluster, you must create an IAM role for those worker nodes
+        to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+        <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+        *Amazon EKS User Guide* * .
+
+      - **labels** *(dict) --*
+
+        The Kubernetes labels applied to the nodes in the node group.
+
+        .. note::
+
+          Only labels that are applied with the Amazon EKS API are shown here. There may be other
+          Kubernetes labels applied to the nodes in this group.
+
+        - *(string) --*
+
+          - *(string) --*
+
+      - **resources** *(dict) --*
+
+        The resources associated with the nodegroup, such as AutoScaling groups and security groups
+        for remote access.
+
+        - **autoScalingGroups** *(list) --*
+
+          The autoscaling groups associated with the node group.
+
+          - *(dict) --*
+
+            An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+            - **name** *(string) --*
+
+              The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+        - **remoteAccessSecurityGroup** *(string) --*
+
+          The remote access security group associated with the node group. This security group
+          controls SSH access to the worker nodes.
+
+      - **diskSize** *(integer) --*
+
+        The root device disk size (in GiB) for your node group instances. The default disk size is
+        20 GiB.
+
+      - **health** *(dict) --*
+
+        The health status of the node group. If there are issues with your node group's health,
+        they are listed here.
+
+        - **issues** *(list) --*
+
+          Any issues that are associated with the node group.
+
+          - *(dict) --*
+
+            An object representing an issue with an Amazon EKS resource.
+
+            - **code** *(string) --*
+
+              A brief description of the error.
+
+              * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+              with the managed node group. You may be able to recreate an Auto Scaling group with
+              the same settings to recover.
+
+              * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+              cluster. You must recreate your cluster.
+
+              * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+              security group for your managed node group. Remove any dependencies from the security
+              group.
+
+              * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+              your managed node group. You may be able to recreate a launch template with the same
+              settings to recover.
+
+              * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+              your managed node group does not match the version that Amazon EKS created. You may
+              be able to revert to the Amazon EKS-created version to recover.
+
+              * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+              managed node group. You may be able to recreate an instance profile with the same
+              settings to recover.
+
+              * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+              group. You may be able to recreate an IAM role with the same settings to recover.
+
+              * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+              while attempting to launch instances.
+
+              * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+              of the specified instance type. You may be able to request an Amazon EC2 instance
+              limit increase to recover.
+
+              * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+              managed node group does not have enough available IP addresses for new nodes.
+
+              * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+              communicate with your cluster API server.
+
+              * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+              issue.
+
+            - **message** *(string) --*
+
+              The error message associated with the issue.
+
+            - **resourceIds** *(list) --*
+
+              The AWS resources that are afflicted by this issue.
+
+              - *(string) --*
+
+      - **tags** *(dict) --*
+
+        The metadata applied the node group to assist with categorization and organization. Each
+        tag consists of a key and an optional value, both of which you define. Node group tags do
+        not propagate to any other resources associated with the node group, such as the Amazon EC2
+        instances or subnets.
+
+        - *(string) --*
+
+          - *(string) --*
+    """
+
+
+_ClientCreateNodegroupremoteAccessTypeDef = TypedDict(
+    "_ClientCreateNodegroupremoteAccessTypeDef",
+    {"ec2SshKey": str, "sourceSecurityGroups": List[str]},
+    total=False,
+)
+
+
+class ClientCreateNodegroupremoteAccessTypeDef(
+    _ClientCreateNodegroupremoteAccessTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroup` `remoteAccess`
+
+    The remote access (SSH) configuration to use with your node group.
+
+    - **ec2SshKey** *(string) --*
+
+      The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes in the
+      managed node group. For more information, see `Amazon EC2 Key Pairs
+      <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the *Amazon
+      Elastic Compute Cloud User Guide for Linux Instances* .
+
+    - **sourceSecurityGroups** *(list) --*
+
+      The security groups to allow SSH access (port 22) from on the worker nodes. If you specify an
+      Amazon EC2 SSH key, but you do not specify a source security group when you create a managed
+      node group, port 22 on the worker nodes is opened to the internet (0.0.0.0/0). For more
+      information, see `Security Groups for Your VPC
+      <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the *Amazon
+      Virtual Private Cloud User Guide* .
+
+      - *(string) --*
+    """
+
+
+_ClientCreateNodegroupscalingConfigTypeDef = TypedDict(
+    "_ClientCreateNodegroupscalingConfigTypeDef",
+    {"minSize": int, "maxSize": int, "desiredSize": int},
+    total=False,
+)
+
+
+class ClientCreateNodegroupscalingConfigTypeDef(
+    _ClientCreateNodegroupscalingConfigTypeDef
+):
+    """
+    Type definition for `ClientCreateNodegroup` `scalingConfig`
+
+    The scaling configuration details for the AutoScaling group that is created for your node group.
+
+    - **minSize** *(integer) --*
+
+      The minimum number of worker nodes that the managed node group can scale in to. This number
+      must be greater than zero.
+
+    - **maxSize** *(integer) --*
+
+      The maximum number of worker nodes that the managed node group can scale out to. Managed node
+      groups can support up to 100 nodes by default.
+
+    - **desiredSize** *(integer) --*
+
+      The current number of worker nodes that the managed node group should maintain.
     """
 
 
@@ -864,6 +1780,7 @@ _ClientDeleteClusterResponseclusterresourcesVpcConfigTypeDef = TypedDict(
     {
         "subnetIds": List[str],
         "securityGroupIds": List[str],
+        "clusterSecurityGroupId": str,
         "vpcId": str,
         "endpointPublicAccess": bool,
         "endpointPrivateAccess": bool,
@@ -897,6 +1814,11 @@ class ClientDeleteClusterResponseclusterresourcesVpcConfigTypeDef(
       used to allow communication between your worker nodes and the Kubernetes control plane.
 
       - *(string) --*
+
+    - **clusterSecurityGroupId** *(string) --*
+
+      The cluster security group that was created by Amazon EKS for the cluster. Managed node
+      groups use this security group for control plane to data plane communication.
 
     - **vpcId** *(string) --*
 
@@ -994,6 +1916,11 @@ class ClientDeleteClusterResponseclusterTypeDef(
 
         - *(string) --*
 
+      - **clusterSecurityGroupId** *(string) --*
+
+        The cluster security group that was created by Amazon EKS for the cluster. Managed node
+        groups use this security group for control plane to data plane communication.
+
       - **vpcId** *(string) --*
 
         The VPC associated with your cluster.
@@ -1075,7 +2002,8 @@ class ClientDeleteClusterResponseclusterTypeDef(
     - **tags** *(dict) --*
 
       The metadata that you apply to the cluster to assist with categorization and organization.
-      Each tag consists of a key and an optional value, both of which you define.
+      Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+      not propagate to any other resources associated with the cluster.
 
       - *(string) --*
 
@@ -1144,6 +2072,11 @@ class ClientDeleteClusterResponseTypeDef(_ClientDeleteClusterResponseTypeDef):
           used to allow communication between your worker nodes and the Kubernetes control plane.
 
           - *(string) --*
+
+        - **clusterSecurityGroupId** *(string) --*
+
+          The cluster security group that was created by Amazon EKS for the cluster. Managed node
+          groups use this security group for control plane to data plane communication.
 
         - **vpcId** *(string) --*
 
@@ -1226,7 +2159,799 @@ class ClientDeleteClusterResponseTypeDef(_ClientDeleteClusterResponseTypeDef):
       - **tags** *(dict) --*
 
         The metadata that you apply to the cluster to assist with categorization and organization.
-        Each tag consists of a key and an optional value, both of which you define.
+        Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+        not propagate to any other resources associated with the cluster.
+
+        - *(string) --*
+
+          - *(string) --*
+    """
+
+
+_ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef",
+    {"code": str, "message": str, "resourceIds": List[str]},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef(
+    _ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegrouphealth` `issues`
+
+    An object representing an issue with an Amazon EKS resource.
+
+    - **code** *(string) --*
+
+      A brief description of the error.
+
+      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+      with the managed node group. You may be able to recreate an Auto Scaling group with
+      the same settings to recover.
+
+      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+      cluster. You must recreate your cluster.
+
+      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+      security group for your managed node group. Remove any dependencies from the security
+      group.
+
+      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+      your managed node group. You may be able to recreate a launch template with the same
+      settings to recover.
+
+      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+      your managed node group does not match the version that Amazon EKS created. You may
+      be able to revert to the Amazon EKS-created version to recover.
+
+      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+      managed node group. You may be able to recreate an instance profile with the same
+      settings to recover.
+
+      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+      group. You may be able to recreate an IAM role with the same settings to recover.
+
+      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+      while attempting to launch instances.
+
+      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+      of the specified instance type. You may be able to request an Amazon EC2 instance
+      limit increase to recover.
+
+      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+      managed node group does not have enough available IP addresses for new nodes.
+
+      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+      communicate with your cluster API server.
+
+      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+      issue.
+
+    - **message** *(string) --*
+
+      The error message associated with the issue.
+
+    - **resourceIds** *(list) --*
+
+      The AWS resources that are afflicted by this issue.
+
+      - *(string) --*
+    """
+
+
+_ClientDeleteNodegroupResponsenodegrouphealthTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegrouphealthTypeDef",
+    {"issues": List[ClientDeleteNodegroupResponsenodegrouphealthissuesTypeDef]},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegrouphealthTypeDef(
+    _ClientDeleteNodegroupResponsenodegrouphealthTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegroup` `health`
+
+    The health status of the node group. If there are issues with your node group's health,
+    they are listed here.
+
+    - **issues** *(list) --*
+
+      Any issues that are associated with the node group.
+
+      - *(dict) --*
+
+        An object representing an issue with an Amazon EKS resource.
+
+        - **code** *(string) --*
+
+          A brief description of the error.
+
+          * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+          with the managed node group. You may be able to recreate an Auto Scaling group with
+          the same settings to recover.
+
+          * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+          cluster. You must recreate your cluster.
+
+          * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+          security group for your managed node group. Remove any dependencies from the security
+          group.
+
+          * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+          your managed node group. You may be able to recreate a launch template with the same
+          settings to recover.
+
+          * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+          your managed node group does not match the version that Amazon EKS created. You may
+          be able to revert to the Amazon EKS-created version to recover.
+
+          * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+          managed node group. You may be able to recreate an instance profile with the same
+          settings to recover.
+
+          * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+          group. You may be able to recreate an IAM role with the same settings to recover.
+
+          * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+          while attempting to launch instances.
+
+          * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+          of the specified instance type. You may be able to request an Amazon EC2 instance
+          limit increase to recover.
+
+          * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+          managed node group does not have enough available IP addresses for new nodes.
+
+          * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+          communicate with your cluster API server.
+
+          * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+          issue.
+
+        - **message** *(string) --*
+
+          The error message associated with the issue.
+
+        - **resourceIds** *(list) --*
+
+          The AWS resources that are afflicted by this issue.
+
+          - *(string) --*
+    """
+
+
+_ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef",
+    {"ec2SshKey": str, "sourceSecurityGroups": List[str]},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef(
+    _ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegroup` `remoteAccess`
+
+    The remote access (SSH) configuration that is associated with the node group.
+
+    - **ec2SshKey** *(string) --*
+
+      The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+      in the managed node group. For more information, see `Amazon EC2 Key Pairs
+      <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+      *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+    - **sourceSecurityGroups** *(list) --*
+
+      The security groups to allow SSH access (port 22) from on the worker nodes. If you
+      specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+      create a managed node group, port 22 on the worker nodes is opened to the internet
+      (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+      <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+      *Amazon Virtual Private Cloud User Guide* .
+
+      - *(string) --*
+    """
+
+
+_ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    {"name": str},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef(
+    _ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegroupresources` `autoScalingGroups`
+
+    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+    - **name** *(string) --*
+
+      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+    """
+
+
+_ClientDeleteNodegroupResponsenodegroupresourcesTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegroupresourcesTypeDef",
+    {
+        "autoScalingGroups": List[
+            ClientDeleteNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+        ],
+        "remoteAccessSecurityGroup": str,
+    },
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegroupresourcesTypeDef(
+    _ClientDeleteNodegroupResponsenodegroupresourcesTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegroup` `resources`
+
+    The resources associated with the nodegroup, such as AutoScaling groups and security groups
+    for remote access.
+
+    - **autoScalingGroups** *(list) --*
+
+      The autoscaling groups associated with the node group.
+
+      - *(dict) --*
+
+        An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+        - **name** *(string) --*
+
+          The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+    - **remoteAccessSecurityGroup** *(string) --*
+
+      The remote access security group associated with the node group. This security group
+      controls SSH access to the worker nodes.
+    """
+
+
+_ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef",
+    {"minSize": int, "maxSize": int, "desiredSize": int},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef(
+    _ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponsenodegroup` `scalingConfig`
+
+    The scaling configuration details for the AutoScaling group that is associated with your
+    node group.
+
+    - **minSize** *(integer) --*
+
+      The minimum number of worker nodes that the managed node group can scale in to. This
+      number must be greater than zero.
+
+    - **maxSize** *(integer) --*
+
+      The maximum number of worker nodes that the managed node group can scale out to. Managed
+      node groups can support up to 100 nodes by default.
+
+    - **desiredSize** *(integer) --*
+
+      The current number of worker nodes that the managed node group should maintain.
+    """
+
+
+_ClientDeleteNodegroupResponsenodegroupTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponsenodegroupTypeDef",
+    {
+        "nodegroupName": str,
+        "nodegroupArn": str,
+        "clusterName": str,
+        "version": str,
+        "releaseVersion": str,
+        "createdAt": datetime,
+        "modifiedAt": datetime,
+        "status": str,
+        "scalingConfig": ClientDeleteNodegroupResponsenodegroupscalingConfigTypeDef,
+        "instanceTypes": List[str],
+        "subnets": List[str],
+        "remoteAccess": ClientDeleteNodegroupResponsenodegroupremoteAccessTypeDef,
+        "amiType": str,
+        "nodeRole": str,
+        "labels": Dict[str, str],
+        "resources": ClientDeleteNodegroupResponsenodegroupresourcesTypeDef,
+        "diskSize": int,
+        "health": ClientDeleteNodegroupResponsenodegrouphealthTypeDef,
+        "tags": Dict[str, str],
+    },
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponsenodegroupTypeDef(
+    _ClientDeleteNodegroupResponsenodegroupTypeDef
+):
+    """
+    Type definition for `ClientDeleteNodegroupResponse` `nodegroup`
+
+    The full description of your deleted node group.
+
+    - **nodegroupName** *(string) --*
+
+      The name associated with an Amazon EKS managed node group.
+
+    - **nodegroupArn** *(string) --*
+
+      The Amazon Resource Name (ARN) associated with the managed node group.
+
+    - **clusterName** *(string) --*
+
+      The name of the cluster that the managed node group resides in.
+
+    - **version** *(string) --*
+
+      The Kubernetes version of the managed node group.
+
+    - **releaseVersion** *(string) --*
+
+      The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+      Linux AMI Versions
+      <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+      *Amazon EKS User Guide* .
+
+    - **createdAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was created.
+
+    - **modifiedAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+    - **status** *(string) --*
+
+      The current status of the managed node group.
+
+    - **scalingConfig** *(dict) --*
+
+      The scaling configuration details for the AutoScaling group that is associated with your
+      node group.
+
+      - **minSize** *(integer) --*
+
+        The minimum number of worker nodes that the managed node group can scale in to. This
+        number must be greater than zero.
+
+      - **maxSize** *(integer) --*
+
+        The maximum number of worker nodes that the managed node group can scale out to. Managed
+        node groups can support up to 100 nodes by default.
+
+      - **desiredSize** *(integer) --*
+
+        The current number of worker nodes that the managed node group should maintain.
+
+    - **instanceTypes** *(list) --*
+
+      The instance types associated with your node group.
+
+      - *(string) --*
+
+    - **subnets** *(list) --*
+
+      The subnets allowed for the AutoScaling group that is associated with your node group.
+      These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+      ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+      - *(string) --*
+
+    - **remoteAccess** *(dict) --*
+
+      The remote access (SSH) configuration that is associated with the node group.
+
+      - **ec2SshKey** *(string) --*
+
+        The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+        in the managed node group. For more information, see `Amazon EC2 Key Pairs
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+        *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+      - **sourceSecurityGroups** *(list) --*
+
+        The security groups to allow SSH access (port 22) from on the worker nodes. If you
+        specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+        create a managed node group, port 22 on the worker nodes is opened to the internet
+        (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+        <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+        *Amazon Virtual Private Cloud User Guide* .
+
+        - *(string) --*
+
+    - **amiType** *(string) --*
+
+      The AMI type associated with your node group. GPU instance types should use the
+      ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+      support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+      EKS-optimized Linux AMI.
+
+    - **nodeRole** *(string) --*
+
+      The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+      makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+      calls through an IAM instance profile and associated policies. Before you can launch worker
+      nodes and register them into a cluster, you must create an IAM role for those worker nodes
+      to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+      <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+      *Amazon EKS User Guide* * .
+
+    - **labels** *(dict) --*
+
+      The Kubernetes labels applied to the nodes in the node group.
+
+      .. note::
+
+        Only labels that are applied with the Amazon EKS API are shown here. There may be other
+        Kubernetes labels applied to the nodes in this group.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **resources** *(dict) --*
+
+      The resources associated with the nodegroup, such as AutoScaling groups and security groups
+      for remote access.
+
+      - **autoScalingGroups** *(list) --*
+
+        The autoscaling groups associated with the node group.
+
+        - *(dict) --*
+
+          An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+          - **name** *(string) --*
+
+            The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+      - **remoteAccessSecurityGroup** *(string) --*
+
+        The remote access security group associated with the node group. This security group
+        controls SSH access to the worker nodes.
+
+    - **diskSize** *(integer) --*
+
+      The root device disk size (in GiB) for your node group instances. The default disk size is
+      20 GiB.
+
+    - **health** *(dict) --*
+
+      The health status of the node group. If there are issues with your node group's health,
+      they are listed here.
+
+      - **issues** *(list) --*
+
+        Any issues that are associated with the node group.
+
+        - *(dict) --*
+
+          An object representing an issue with an Amazon EKS resource.
+
+          - **code** *(string) --*
+
+            A brief description of the error.
+
+            * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+            with the managed node group. You may be able to recreate an Auto Scaling group with
+            the same settings to recover.
+
+            * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+            cluster. You must recreate your cluster.
+
+            * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+            security group for your managed node group. Remove any dependencies from the security
+            group.
+
+            * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+            your managed node group. You may be able to recreate a launch template with the same
+            settings to recover.
+
+            * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+            your managed node group does not match the version that Amazon EKS created. You may
+            be able to revert to the Amazon EKS-created version to recover.
+
+            * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+            managed node group. You may be able to recreate an instance profile with the same
+            settings to recover.
+
+            * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+            group. You may be able to recreate an IAM role with the same settings to recover.
+
+            * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+            while attempting to launch instances.
+
+            * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+            of the specified instance type. You may be able to request an Amazon EC2 instance
+            limit increase to recover.
+
+            * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+            managed node group does not have enough available IP addresses for new nodes.
+
+            * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+            communicate with your cluster API server.
+
+            * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+            issue.
+
+          - **message** *(string) --*
+
+            The error message associated with the issue.
+
+          - **resourceIds** *(list) --*
+
+            The AWS resources that are afflicted by this issue.
+
+            - *(string) --*
+
+    - **tags** *(dict) --*
+
+      The metadata applied the node group to assist with categorization and organization. Each
+      tag consists of a key and an optional value, both of which you define. Node group tags do
+      not propagate to any other resources associated with the node group, such as the Amazon EC2
+      instances or subnets.
+
+      - *(string) --*
+
+        - *(string) --*
+    """
+
+
+_ClientDeleteNodegroupResponseTypeDef = TypedDict(
+    "_ClientDeleteNodegroupResponseTypeDef",
+    {"nodegroup": ClientDeleteNodegroupResponsenodegroupTypeDef},
+    total=False,
+)
+
+
+class ClientDeleteNodegroupResponseTypeDef(_ClientDeleteNodegroupResponseTypeDef):
+    """
+    Type definition for `ClientDeleteNodegroup` `Response`
+
+    - **nodegroup** *(dict) --*
+
+      The full description of your deleted node group.
+
+      - **nodegroupName** *(string) --*
+
+        The name associated with an Amazon EKS managed node group.
+
+      - **nodegroupArn** *(string) --*
+
+        The Amazon Resource Name (ARN) associated with the managed node group.
+
+      - **clusterName** *(string) --*
+
+        The name of the cluster that the managed node group resides in.
+
+      - **version** *(string) --*
+
+        The Kubernetes version of the managed node group.
+
+      - **releaseVersion** *(string) --*
+
+        The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+        Linux AMI Versions
+        <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+        *Amazon EKS User Guide* .
+
+      - **createdAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was created.
+
+      - **modifiedAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+      - **status** *(string) --*
+
+        The current status of the managed node group.
+
+      - **scalingConfig** *(dict) --*
+
+        The scaling configuration details for the AutoScaling group that is associated with your
+        node group.
+
+        - **minSize** *(integer) --*
+
+          The minimum number of worker nodes that the managed node group can scale in to. This
+          number must be greater than zero.
+
+        - **maxSize** *(integer) --*
+
+          The maximum number of worker nodes that the managed node group can scale out to. Managed
+          node groups can support up to 100 nodes by default.
+
+        - **desiredSize** *(integer) --*
+
+          The current number of worker nodes that the managed node group should maintain.
+
+      - **instanceTypes** *(list) --*
+
+        The instance types associated with your node group.
+
+        - *(string) --*
+
+      - **subnets** *(list) --*
+
+        The subnets allowed for the AutoScaling group that is associated with your node group.
+        These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+        ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+        - *(string) --*
+
+      - **remoteAccess** *(dict) --*
+
+        The remote access (SSH) configuration that is associated with the node group.
+
+        - **ec2SshKey** *(string) --*
+
+          The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+          in the managed node group. For more information, see `Amazon EC2 Key Pairs
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+        - **sourceSecurityGroups** *(list) --*
+
+          The security groups to allow SSH access (port 22) from on the worker nodes. If you
+          specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+          create a managed node group, port 22 on the worker nodes is opened to the internet
+          (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+          <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+          *Amazon Virtual Private Cloud User Guide* .
+
+          - *(string) --*
+
+      - **amiType** *(string) --*
+
+        The AMI type associated with your node group. GPU instance types should use the
+        ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+        support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+        EKS-optimized Linux AMI.
+
+      - **nodeRole** *(string) --*
+
+        The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+        makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+        calls through an IAM instance profile and associated policies. Before you can launch worker
+        nodes and register them into a cluster, you must create an IAM role for those worker nodes
+        to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+        <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+        *Amazon EKS User Guide* * .
+
+      - **labels** *(dict) --*
+
+        The Kubernetes labels applied to the nodes in the node group.
+
+        .. note::
+
+          Only labels that are applied with the Amazon EKS API are shown here. There may be other
+          Kubernetes labels applied to the nodes in this group.
+
+        - *(string) --*
+
+          - *(string) --*
+
+      - **resources** *(dict) --*
+
+        The resources associated with the nodegroup, such as AutoScaling groups and security groups
+        for remote access.
+
+        - **autoScalingGroups** *(list) --*
+
+          The autoscaling groups associated with the node group.
+
+          - *(dict) --*
+
+            An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+            - **name** *(string) --*
+
+              The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+        - **remoteAccessSecurityGroup** *(string) --*
+
+          The remote access security group associated with the node group. This security group
+          controls SSH access to the worker nodes.
+
+      - **diskSize** *(integer) --*
+
+        The root device disk size (in GiB) for your node group instances. The default disk size is
+        20 GiB.
+
+      - **health** *(dict) --*
+
+        The health status of the node group. If there are issues with your node group's health,
+        they are listed here.
+
+        - **issues** *(list) --*
+
+          Any issues that are associated with the node group.
+
+          - *(dict) --*
+
+            An object representing an issue with an Amazon EKS resource.
+
+            - **code** *(string) --*
+
+              A brief description of the error.
+
+              * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+              with the managed node group. You may be able to recreate an Auto Scaling group with
+              the same settings to recover.
+
+              * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+              cluster. You must recreate your cluster.
+
+              * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+              security group for your managed node group. Remove any dependencies from the security
+              group.
+
+              * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+              your managed node group. You may be able to recreate a launch template with the same
+              settings to recover.
+
+              * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+              your managed node group does not match the version that Amazon EKS created. You may
+              be able to revert to the Amazon EKS-created version to recover.
+
+              * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+              managed node group. You may be able to recreate an instance profile with the same
+              settings to recover.
+
+              * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+              group. You may be able to recreate an IAM role with the same settings to recover.
+
+              * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+              while attempting to launch instances.
+
+              * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+              of the specified instance type. You may be able to request an Amazon EC2 instance
+              limit increase to recover.
+
+              * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+              managed node group does not have enough available IP addresses for new nodes.
+
+              * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+              communicate with your cluster API server.
+
+              * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+              issue.
+
+            - **message** *(string) --*
+
+              The error message associated with the issue.
+
+            - **resourceIds** *(list) --*
+
+              The AWS resources that are afflicted by this issue.
+
+              - *(string) --*
+
+      - **tags** *(dict) --*
+
+        The metadata applied the node group to assist with categorization and organization. Each
+        tag consists of a key and an optional value, both of which you define. Node group tags do
+        not propagate to any other resources associated with the node group, such as the Amazon EC2
+        instances or subnets.
 
         - *(string) --*
 
@@ -1381,6 +3106,7 @@ _ClientDescribeClusterResponseclusterresourcesVpcConfigTypeDef = TypedDict(
     {
         "subnetIds": List[str],
         "securityGroupIds": List[str],
+        "clusterSecurityGroupId": str,
         "vpcId": str,
         "endpointPublicAccess": bool,
         "endpointPrivateAccess": bool,
@@ -1414,6 +3140,11 @@ class ClientDescribeClusterResponseclusterresourcesVpcConfigTypeDef(
       used to allow communication between your worker nodes and the Kubernetes control plane.
 
       - *(string) --*
+
+    - **clusterSecurityGroupId** *(string) --*
+
+      The cluster security group that was created by Amazon EKS for the cluster. Managed node
+      groups use this security group for control plane to data plane communication.
 
     - **vpcId** *(string) --*
 
@@ -1511,6 +3242,11 @@ class ClientDescribeClusterResponseclusterTypeDef(
 
         - *(string) --*
 
+      - **clusterSecurityGroupId** *(string) --*
+
+        The cluster security group that was created by Amazon EKS for the cluster. Managed node
+        groups use this security group for control plane to data plane communication.
+
       - **vpcId** *(string) --*
 
         The VPC associated with your cluster.
@@ -1592,7 +3328,8 @@ class ClientDescribeClusterResponseclusterTypeDef(
     - **tags** *(dict) --*
 
       The metadata that you apply to the cluster to assist with categorization and organization.
-      Each tag consists of a key and an optional value, both of which you define.
+      Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+      not propagate to any other resources associated with the cluster.
 
       - *(string) --*
 
@@ -1661,6 +3398,11 @@ class ClientDescribeClusterResponseTypeDef(_ClientDescribeClusterResponseTypeDef
           used to allow communication between your worker nodes and the Kubernetes control plane.
 
           - *(string) --*
+
+        - **clusterSecurityGroupId** *(string) --*
+
+          The cluster security group that was created by Amazon EKS for the cluster. Managed node
+          groups use this security group for control plane to data plane communication.
 
         - **vpcId** *(string) --*
 
@@ -1743,7 +3485,799 @@ class ClientDescribeClusterResponseTypeDef(_ClientDescribeClusterResponseTypeDef
       - **tags** *(dict) --*
 
         The metadata that you apply to the cluster to assist with categorization and organization.
-        Each tag consists of a key and an optional value, both of which you define.
+        Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+        not propagate to any other resources associated with the cluster.
+
+        - *(string) --*
+
+          - *(string) --*
+    """
+
+
+_ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef",
+    {"code": str, "message": str, "resourceIds": List[str]},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef(
+    _ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegrouphealth` `issues`
+
+    An object representing an issue with an Amazon EKS resource.
+
+    - **code** *(string) --*
+
+      A brief description of the error.
+
+      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+      with the managed node group. You may be able to recreate an Auto Scaling group with
+      the same settings to recover.
+
+      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+      cluster. You must recreate your cluster.
+
+      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+      security group for your managed node group. Remove any dependencies from the security
+      group.
+
+      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+      your managed node group. You may be able to recreate a launch template with the same
+      settings to recover.
+
+      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+      your managed node group does not match the version that Amazon EKS created. You may
+      be able to revert to the Amazon EKS-created version to recover.
+
+      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+      managed node group. You may be able to recreate an instance profile with the same
+      settings to recover.
+
+      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+      group. You may be able to recreate an IAM role with the same settings to recover.
+
+      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+      while attempting to launch instances.
+
+      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+      of the specified instance type. You may be able to request an Amazon EC2 instance
+      limit increase to recover.
+
+      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+      managed node group does not have enough available IP addresses for new nodes.
+
+      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+      communicate with your cluster API server.
+
+      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+      issue.
+
+    - **message** *(string) --*
+
+      The error message associated with the issue.
+
+    - **resourceIds** *(list) --*
+
+      The AWS resources that are afflicted by this issue.
+
+      - *(string) --*
+    """
+
+
+_ClientDescribeNodegroupResponsenodegrouphealthTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegrouphealthTypeDef",
+    {"issues": List[ClientDescribeNodegroupResponsenodegrouphealthissuesTypeDef]},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegrouphealthTypeDef(
+    _ClientDescribeNodegroupResponsenodegrouphealthTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegroup` `health`
+
+    The health status of the node group. If there are issues with your node group's health,
+    they are listed here.
+
+    - **issues** *(list) --*
+
+      Any issues that are associated with the node group.
+
+      - *(dict) --*
+
+        An object representing an issue with an Amazon EKS resource.
+
+        - **code** *(string) --*
+
+          A brief description of the error.
+
+          * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+          with the managed node group. You may be able to recreate an Auto Scaling group with
+          the same settings to recover.
+
+          * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+          cluster. You must recreate your cluster.
+
+          * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+          security group for your managed node group. Remove any dependencies from the security
+          group.
+
+          * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+          your managed node group. You may be able to recreate a launch template with the same
+          settings to recover.
+
+          * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+          your managed node group does not match the version that Amazon EKS created. You may
+          be able to revert to the Amazon EKS-created version to recover.
+
+          * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+          managed node group. You may be able to recreate an instance profile with the same
+          settings to recover.
+
+          * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+          group. You may be able to recreate an IAM role with the same settings to recover.
+
+          * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+          while attempting to launch instances.
+
+          * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+          of the specified instance type. You may be able to request an Amazon EC2 instance
+          limit increase to recover.
+
+          * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+          managed node group does not have enough available IP addresses for new nodes.
+
+          * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+          communicate with your cluster API server.
+
+          * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+          issue.
+
+        - **message** *(string) --*
+
+          The error message associated with the issue.
+
+        - **resourceIds** *(list) --*
+
+          The AWS resources that are afflicted by this issue.
+
+          - *(string) --*
+    """
+
+
+_ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef",
+    {"ec2SshKey": str, "sourceSecurityGroups": List[str]},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef(
+    _ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegroup` `remoteAccess`
+
+    The remote access (SSH) configuration that is associated with the node group.
+
+    - **ec2SshKey** *(string) --*
+
+      The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+      in the managed node group. For more information, see `Amazon EC2 Key Pairs
+      <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+      *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+    - **sourceSecurityGroups** *(list) --*
+
+      The security groups to allow SSH access (port 22) from on the worker nodes. If you
+      specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+      create a managed node group, port 22 on the worker nodes is opened to the internet
+      (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+      <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+      *Amazon Virtual Private Cloud User Guide* .
+
+      - *(string) --*
+    """
+
+
+_ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef",
+    {"name": str},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef(
+    _ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegroupresources` `autoScalingGroups`
+
+    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+    - **name** *(string) --*
+
+      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+    """
+
+
+_ClientDescribeNodegroupResponsenodegroupresourcesTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegroupresourcesTypeDef",
+    {
+        "autoScalingGroups": List[
+            ClientDescribeNodegroupResponsenodegroupresourcesautoScalingGroupsTypeDef
+        ],
+        "remoteAccessSecurityGroup": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegroupresourcesTypeDef(
+    _ClientDescribeNodegroupResponsenodegroupresourcesTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegroup` `resources`
+
+    The resources associated with the nodegroup, such as AutoScaling groups and security groups
+    for remote access.
+
+    - **autoScalingGroups** *(list) --*
+
+      The autoscaling groups associated with the node group.
+
+      - *(dict) --*
+
+        An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+        - **name** *(string) --*
+
+          The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+    - **remoteAccessSecurityGroup** *(string) --*
+
+      The remote access security group associated with the node group. This security group
+      controls SSH access to the worker nodes.
+    """
+
+
+_ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef",
+    {"minSize": int, "maxSize": int, "desiredSize": int},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef(
+    _ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponsenodegroup` `scalingConfig`
+
+    The scaling configuration details for the AutoScaling group that is associated with your
+    node group.
+
+    - **minSize** *(integer) --*
+
+      The minimum number of worker nodes that the managed node group can scale in to. This
+      number must be greater than zero.
+
+    - **maxSize** *(integer) --*
+
+      The maximum number of worker nodes that the managed node group can scale out to. Managed
+      node groups can support up to 100 nodes by default.
+
+    - **desiredSize** *(integer) --*
+
+      The current number of worker nodes that the managed node group should maintain.
+    """
+
+
+_ClientDescribeNodegroupResponsenodegroupTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponsenodegroupTypeDef",
+    {
+        "nodegroupName": str,
+        "nodegroupArn": str,
+        "clusterName": str,
+        "version": str,
+        "releaseVersion": str,
+        "createdAt": datetime,
+        "modifiedAt": datetime,
+        "status": str,
+        "scalingConfig": ClientDescribeNodegroupResponsenodegroupscalingConfigTypeDef,
+        "instanceTypes": List[str],
+        "subnets": List[str],
+        "remoteAccess": ClientDescribeNodegroupResponsenodegroupremoteAccessTypeDef,
+        "amiType": str,
+        "nodeRole": str,
+        "labels": Dict[str, str],
+        "resources": ClientDescribeNodegroupResponsenodegroupresourcesTypeDef,
+        "diskSize": int,
+        "health": ClientDescribeNodegroupResponsenodegrouphealthTypeDef,
+        "tags": Dict[str, str],
+    },
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponsenodegroupTypeDef(
+    _ClientDescribeNodegroupResponsenodegroupTypeDef
+):
+    """
+    Type definition for `ClientDescribeNodegroupResponse` `nodegroup`
+
+    The full description of your node group.
+
+    - **nodegroupName** *(string) --*
+
+      The name associated with an Amazon EKS managed node group.
+
+    - **nodegroupArn** *(string) --*
+
+      The Amazon Resource Name (ARN) associated with the managed node group.
+
+    - **clusterName** *(string) --*
+
+      The name of the cluster that the managed node group resides in.
+
+    - **version** *(string) --*
+
+      The Kubernetes version of the managed node group.
+
+    - **releaseVersion** *(string) --*
+
+      The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+      Linux AMI Versions
+      <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+      *Amazon EKS User Guide* .
+
+    - **createdAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was created.
+
+    - **modifiedAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+    - **status** *(string) --*
+
+      The current status of the managed node group.
+
+    - **scalingConfig** *(dict) --*
+
+      The scaling configuration details for the AutoScaling group that is associated with your
+      node group.
+
+      - **minSize** *(integer) --*
+
+        The minimum number of worker nodes that the managed node group can scale in to. This
+        number must be greater than zero.
+
+      - **maxSize** *(integer) --*
+
+        The maximum number of worker nodes that the managed node group can scale out to. Managed
+        node groups can support up to 100 nodes by default.
+
+      - **desiredSize** *(integer) --*
+
+        The current number of worker nodes that the managed node group should maintain.
+
+    - **instanceTypes** *(list) --*
+
+      The instance types associated with your node group.
+
+      - *(string) --*
+
+    - **subnets** *(list) --*
+
+      The subnets allowed for the AutoScaling group that is associated with your node group.
+      These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+      ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+      - *(string) --*
+
+    - **remoteAccess** *(dict) --*
+
+      The remote access (SSH) configuration that is associated with the node group.
+
+      - **ec2SshKey** *(string) --*
+
+        The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+        in the managed node group. For more information, see `Amazon EC2 Key Pairs
+        <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+        *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+      - **sourceSecurityGroups** *(list) --*
+
+        The security groups to allow SSH access (port 22) from on the worker nodes. If you
+        specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+        create a managed node group, port 22 on the worker nodes is opened to the internet
+        (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+        <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+        *Amazon Virtual Private Cloud User Guide* .
+
+        - *(string) --*
+
+    - **amiType** *(string) --*
+
+      The AMI type associated with your node group. GPU instance types should use the
+      ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+      support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+      EKS-optimized Linux AMI.
+
+    - **nodeRole** *(string) --*
+
+      The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+      makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+      calls through an IAM instance profile and associated policies. Before you can launch worker
+      nodes and register them into a cluster, you must create an IAM role for those worker nodes
+      to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+      <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+      *Amazon EKS User Guide* * .
+
+    - **labels** *(dict) --*
+
+      The Kubernetes labels applied to the nodes in the node group.
+
+      .. note::
+
+        Only labels that are applied with the Amazon EKS API are shown here. There may be other
+        Kubernetes labels applied to the nodes in this group.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **resources** *(dict) --*
+
+      The resources associated with the nodegroup, such as AutoScaling groups and security groups
+      for remote access.
+
+      - **autoScalingGroups** *(list) --*
+
+        The autoscaling groups associated with the node group.
+
+        - *(dict) --*
+
+          An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+          - **name** *(string) --*
+
+            The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+      - **remoteAccessSecurityGroup** *(string) --*
+
+        The remote access security group associated with the node group. This security group
+        controls SSH access to the worker nodes.
+
+    - **diskSize** *(integer) --*
+
+      The root device disk size (in GiB) for your node group instances. The default disk size is
+      20 GiB.
+
+    - **health** *(dict) --*
+
+      The health status of the node group. If there are issues with your node group's health,
+      they are listed here.
+
+      - **issues** *(list) --*
+
+        Any issues that are associated with the node group.
+
+        - *(dict) --*
+
+          An object representing an issue with an Amazon EKS resource.
+
+          - **code** *(string) --*
+
+            A brief description of the error.
+
+            * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+            with the managed node group. You may be able to recreate an Auto Scaling group with
+            the same settings to recover.
+
+            * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+            cluster. You must recreate your cluster.
+
+            * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+            security group for your managed node group. Remove any dependencies from the security
+            group.
+
+            * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+            your managed node group. You may be able to recreate a launch template with the same
+            settings to recover.
+
+            * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+            your managed node group does not match the version that Amazon EKS created. You may
+            be able to revert to the Amazon EKS-created version to recover.
+
+            * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+            managed node group. You may be able to recreate an instance profile with the same
+            settings to recover.
+
+            * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+            group. You may be able to recreate an IAM role with the same settings to recover.
+
+            * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+            while attempting to launch instances.
+
+            * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+            of the specified instance type. You may be able to request an Amazon EC2 instance
+            limit increase to recover.
+
+            * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+            managed node group does not have enough available IP addresses for new nodes.
+
+            * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+            communicate with your cluster API server.
+
+            * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+            issue.
+
+          - **message** *(string) --*
+
+            The error message associated with the issue.
+
+          - **resourceIds** *(list) --*
+
+            The AWS resources that are afflicted by this issue.
+
+            - *(string) --*
+
+    - **tags** *(dict) --*
+
+      The metadata applied the node group to assist with categorization and organization. Each
+      tag consists of a key and an optional value, both of which you define. Node group tags do
+      not propagate to any other resources associated with the node group, such as the Amazon EC2
+      instances or subnets.
+
+      - *(string) --*
+
+        - *(string) --*
+    """
+
+
+_ClientDescribeNodegroupResponseTypeDef = TypedDict(
+    "_ClientDescribeNodegroupResponseTypeDef",
+    {"nodegroup": ClientDescribeNodegroupResponsenodegroupTypeDef},
+    total=False,
+)
+
+
+class ClientDescribeNodegroupResponseTypeDef(_ClientDescribeNodegroupResponseTypeDef):
+    """
+    Type definition for `ClientDescribeNodegroup` `Response`
+
+    - **nodegroup** *(dict) --*
+
+      The full description of your node group.
+
+      - **nodegroupName** *(string) --*
+
+        The name associated with an Amazon EKS managed node group.
+
+      - **nodegroupArn** *(string) --*
+
+        The Amazon Resource Name (ARN) associated with the managed node group.
+
+      - **clusterName** *(string) --*
+
+        The name of the cluster that the managed node group resides in.
+
+      - **version** *(string) --*
+
+        The Kubernetes version of the managed node group.
+
+      - **releaseVersion** *(string) --*
+
+        The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+        Linux AMI Versions
+        <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+        *Amazon EKS User Guide* .
+
+      - **createdAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was created.
+
+      - **modifiedAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+      - **status** *(string) --*
+
+        The current status of the managed node group.
+
+      - **scalingConfig** *(dict) --*
+
+        The scaling configuration details for the AutoScaling group that is associated with your
+        node group.
+
+        - **minSize** *(integer) --*
+
+          The minimum number of worker nodes that the managed node group can scale in to. This
+          number must be greater than zero.
+
+        - **maxSize** *(integer) --*
+
+          The maximum number of worker nodes that the managed node group can scale out to. Managed
+          node groups can support up to 100 nodes by default.
+
+        - **desiredSize** *(integer) --*
+
+          The current number of worker nodes that the managed node group should maintain.
+
+      - **instanceTypes** *(list) --*
+
+        The instance types associated with your node group.
+
+        - *(string) --*
+
+      - **subnets** *(list) --*
+
+        The subnets allowed for the AutoScaling group that is associated with your node group.
+        These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+        ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+        - *(string) --*
+
+      - **remoteAccess** *(dict) --*
+
+        The remote access (SSH) configuration that is associated with the node group.
+
+        - **ec2SshKey** *(string) --*
+
+          The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+          in the managed node group. For more information, see `Amazon EC2 Key Pairs
+          <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+          *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+        - **sourceSecurityGroups** *(list) --*
+
+          The security groups to allow SSH access (port 22) from on the worker nodes. If you
+          specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+          create a managed node group, port 22 on the worker nodes is opened to the internet
+          (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+          <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+          *Amazon Virtual Private Cloud User Guide* .
+
+          - *(string) --*
+
+      - **amiType** *(string) --*
+
+        The AMI type associated with your node group. GPU instance types should use the
+        ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+        support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+        EKS-optimized Linux AMI.
+
+      - **nodeRole** *(string) --*
+
+        The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+        makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+        calls through an IAM instance profile and associated policies. Before you can launch worker
+        nodes and register them into a cluster, you must create an IAM role for those worker nodes
+        to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+        <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+        *Amazon EKS User Guide* * .
+
+      - **labels** *(dict) --*
+
+        The Kubernetes labels applied to the nodes in the node group.
+
+        .. note::
+
+          Only labels that are applied with the Amazon EKS API are shown here. There may be other
+          Kubernetes labels applied to the nodes in this group.
+
+        - *(string) --*
+
+          - *(string) --*
+
+      - **resources** *(dict) --*
+
+        The resources associated with the nodegroup, such as AutoScaling groups and security groups
+        for remote access.
+
+        - **autoScalingGroups** *(list) --*
+
+          The autoscaling groups associated with the node group.
+
+          - *(dict) --*
+
+            An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+            - **name** *(string) --*
+
+              The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+        - **remoteAccessSecurityGroup** *(string) --*
+
+          The remote access security group associated with the node group. This security group
+          controls SSH access to the worker nodes.
+
+      - **diskSize** *(integer) --*
+
+        The root device disk size (in GiB) for your node group instances. The default disk size is
+        20 GiB.
+
+      - **health** *(dict) --*
+
+        The health status of the node group. If there are issues with your node group's health,
+        they are listed here.
+
+        - **issues** *(list) --*
+
+          Any issues that are associated with the node group.
+
+          - *(dict) --*
+
+            An object representing an issue with an Amazon EKS resource.
+
+            - **code** *(string) --*
+
+              A brief description of the error.
+
+              * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+              with the managed node group. You may be able to recreate an Auto Scaling group with
+              the same settings to recover.
+
+              * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+              cluster. You must recreate your cluster.
+
+              * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+              security group for your managed node group. Remove any dependencies from the security
+              group.
+
+              * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+              your managed node group. You may be able to recreate a launch template with the same
+              settings to recover.
+
+              * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+              your managed node group does not match the version that Amazon EKS created. You may
+              be able to revert to the Amazon EKS-created version to recover.
+
+              * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+              managed node group. You may be able to recreate an instance profile with the same
+              settings to recover.
+
+              * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+              group. You may be able to recreate an IAM role with the same settings to recover.
+
+              * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+              while attempting to launch instances.
+
+              * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+              of the specified instance type. You may be able to request an Amazon EC2 instance
+              limit increase to recover.
+
+              * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+              managed node group does not have enough available IP addresses for new nodes.
+
+              * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+              communicate with your cluster API server.
+
+              * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+              issue.
+
+            - **message** *(string) --*
+
+              The error message associated with the issue.
+
+            - **resourceIds** *(list) --*
+
+              The AWS resources that are afflicted by this issue.
+
+              - *(string) --*
+
+      - **tags** *(dict) --*
+
+        The metadata applied the node group to assist with categorization and organization. Each
+        tag consists of a key and an optional value, both of which you define. Node group tags do
+        not propagate to any other resources associated with the node group, such as the Amazon EC2
+        instances or subnets.
 
         - *(string) --*
 
@@ -2032,6 +4566,31 @@ class ClientListClustersResponseTypeDef(_ClientListClustersResponseTypeDef):
       The ``nextToken`` value to include in a future ``ListClusters`` request. When the results of
       a ``ListClusters`` request exceed ``maxResults`` , you can use this value to retrieve the
       next page of results. This value is ``null`` when there are no more results to return.
+    """
+
+
+_ClientListNodegroupsResponseTypeDef = TypedDict(
+    "_ClientListNodegroupsResponseTypeDef",
+    {"nodegroups": List[str], "nextToken": str},
+    total=False,
+)
+
+
+class ClientListNodegroupsResponseTypeDef(_ClientListNodegroupsResponseTypeDef):
+    """
+    Type definition for `ClientListNodegroups` `Response`
+
+    - **nodegroups** *(list) --*
+
+      A list of all of the node groups associated with the specified cluster.
+
+      - *(string) --*
+
+    - **nextToken** *(string) --*
+
+      The ``nextToken`` value to include in a future ``ListNodegroups`` request. When the results
+      of a ``ListNodegroups`` request exceed ``maxResults`` , you can use this value to retrieve
+      the next page of results. This value is ``null`` when there are no more results to return.
     """
 
 
@@ -2736,6 +5295,590 @@ class ClientUpdateClusterVersionResponseTypeDef(
     """
 
 
+_ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef",
+    {"errorCode": str, "errorMessage": str, "resourceIds": List[str]},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef(
+    _ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfigResponseupdate` `errors`
+
+    An object representing an error when an asynchronous operation fails.
+
+    - **errorCode** *(string) --*
+
+      A brief description of the error.
+
+      * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+      * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+      with the cluster.
+
+      * **EniLimitReached** : You have reached the elastic network interface limit for your
+      account.
+
+      * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+      addresses.
+
+      * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+      * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+      the required access permissions for Amazon EKS.
+
+      * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+    - **errorMessage** *(string) --*
+
+      A more complete description of the error.
+
+    - **resourceIds** *(list) --*
+
+      An optional field that contains the resource IDs associated with the error.
+
+      - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupConfigResponseupdateparamsTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfigResponseupdateparamsTypeDef",
+    {"type": str, "value": str},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfigResponseupdateparamsTypeDef(
+    _ClientUpdateNodegroupConfigResponseupdateparamsTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfigResponseupdate` `params`
+
+    An object representing the details of an update request.
+
+    - **type** *(string) --*
+
+      The keys associated with an update request.
+
+    - **value** *(string) --*
+
+      The value of the keys submitted as part of an update request.
+    """
+
+
+_ClientUpdateNodegroupConfigResponseupdateTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfigResponseupdateTypeDef",
+    {
+        "id": str,
+        "status": str,
+        "type": str,
+        "params": List[ClientUpdateNodegroupConfigResponseupdateparamsTypeDef],
+        "createdAt": datetime,
+        "errors": List[ClientUpdateNodegroupConfigResponseupdateerrorsTypeDef],
+    },
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfigResponseupdateTypeDef(
+    _ClientUpdateNodegroupConfigResponseupdateTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfigResponse` `update`
+
+    An object representing an asynchronous update.
+
+    - **id** *(string) --*
+
+      A UUID that is used to track the update.
+
+    - **status** *(string) --*
+
+      The current status of the update.
+
+    - **type** *(string) --*
+
+      The type of the update.
+
+    - **params** *(list) --*
+
+      A key-value map that contains the parameters associated with the update.
+
+      - *(dict) --*
+
+        An object representing the details of an update request.
+
+        - **type** *(string) --*
+
+          The keys associated with an update request.
+
+        - **value** *(string) --*
+
+          The value of the keys submitted as part of an update request.
+
+    - **createdAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the update was created.
+
+    - **errors** *(list) --*
+
+      Any errors associated with a ``Failed`` update.
+
+      - *(dict) --*
+
+        An object representing an error when an asynchronous operation fails.
+
+        - **errorCode** *(string) --*
+
+          A brief description of the error.
+
+          * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+          * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+          with the cluster.
+
+          * **EniLimitReached** : You have reached the elastic network interface limit for your
+          account.
+
+          * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+          addresses.
+
+          * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+          * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+          the required access permissions for Amazon EKS.
+
+          * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+        - **errorMessage** *(string) --*
+
+          A more complete description of the error.
+
+        - **resourceIds** *(list) --*
+
+          An optional field that contains the resource IDs associated with the error.
+
+          - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupConfigResponseTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfigResponseTypeDef",
+    {"update": ClientUpdateNodegroupConfigResponseupdateTypeDef},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfigResponseTypeDef(
+    _ClientUpdateNodegroupConfigResponseTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfig` `Response`
+
+    - **update** *(dict) --*
+
+      An object representing an asynchronous update.
+
+      - **id** *(string) --*
+
+        A UUID that is used to track the update.
+
+      - **status** *(string) --*
+
+        The current status of the update.
+
+      - **type** *(string) --*
+
+        The type of the update.
+
+      - **params** *(list) --*
+
+        A key-value map that contains the parameters associated with the update.
+
+        - *(dict) --*
+
+          An object representing the details of an update request.
+
+          - **type** *(string) --*
+
+            The keys associated with an update request.
+
+          - **value** *(string) --*
+
+            The value of the keys submitted as part of an update request.
+
+      - **createdAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the update was created.
+
+      - **errors** *(list) --*
+
+        Any errors associated with a ``Failed`` update.
+
+        - *(dict) --*
+
+          An object representing an error when an asynchronous operation fails.
+
+          - **errorCode** *(string) --*
+
+            A brief description of the error.
+
+            * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+            * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+            with the cluster.
+
+            * **EniLimitReached** : You have reached the elastic network interface limit for your
+            account.
+
+            * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+            addresses.
+
+            * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+            * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+            the required access permissions for Amazon EKS.
+
+            * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+          - **errorMessage** *(string) --*
+
+            A more complete description of the error.
+
+          - **resourceIds** *(list) --*
+
+            An optional field that contains the resource IDs associated with the error.
+
+            - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupConfiglabelsTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfiglabelsTypeDef",
+    {"addOrUpdateLabels": Dict[str, str], "removeLabels": List[str]},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfiglabelsTypeDef(
+    _ClientUpdateNodegroupConfiglabelsTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfig` `labels`
+
+    The Kubernetes labels to be applied to the nodes in the node group after the update.
+
+    - **addOrUpdateLabels** *(dict) --*
+
+      Kubernetes labels to be added or updated.
+
+      - *(string) --*
+
+        - *(string) --*
+
+    - **removeLabels** *(list) --*
+
+      Kubernetes labels to be removed.
+
+      - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupConfigscalingConfigTypeDef = TypedDict(
+    "_ClientUpdateNodegroupConfigscalingConfigTypeDef",
+    {"minSize": int, "maxSize": int, "desiredSize": int},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupConfigscalingConfigTypeDef(
+    _ClientUpdateNodegroupConfigscalingConfigTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupConfig` `scalingConfig`
+
+    The scaling configuration details for the AutoScaling group after the update.
+
+    - **minSize** *(integer) --*
+
+      The minimum number of worker nodes that the managed node group can scale in to. This number
+      must be greater than zero.
+
+    - **maxSize** *(integer) --*
+
+      The maximum number of worker nodes that the managed node group can scale out to. Managed node
+      groups can support up to 100 nodes by default.
+
+    - **desiredSize** *(integer) --*
+
+      The current number of worker nodes that the managed node group should maintain.
+    """
+
+
+_ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef = TypedDict(
+    "_ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef",
+    {"errorCode": str, "errorMessage": str, "resourceIds": List[str]},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef(
+    _ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupVersionResponseupdate` `errors`
+
+    An object representing an error when an asynchronous operation fails.
+
+    - **errorCode** *(string) --*
+
+      A brief description of the error.
+
+      * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+      * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+      with the cluster.
+
+      * **EniLimitReached** : You have reached the elastic network interface limit for your
+      account.
+
+      * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+      addresses.
+
+      * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+      * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+      the required access permissions for Amazon EKS.
+
+      * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+    - **errorMessage** *(string) --*
+
+      A more complete description of the error.
+
+    - **resourceIds** *(list) --*
+
+      An optional field that contains the resource IDs associated with the error.
+
+      - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupVersionResponseupdateparamsTypeDef = TypedDict(
+    "_ClientUpdateNodegroupVersionResponseupdateparamsTypeDef",
+    {"type": str, "value": str},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupVersionResponseupdateparamsTypeDef(
+    _ClientUpdateNodegroupVersionResponseupdateparamsTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupVersionResponseupdate` `params`
+
+    An object representing the details of an update request.
+
+    - **type** *(string) --*
+
+      The keys associated with an update request.
+
+    - **value** *(string) --*
+
+      The value of the keys submitted as part of an update request.
+    """
+
+
+_ClientUpdateNodegroupVersionResponseupdateTypeDef = TypedDict(
+    "_ClientUpdateNodegroupVersionResponseupdateTypeDef",
+    {
+        "id": str,
+        "status": str,
+        "type": str,
+        "params": List[ClientUpdateNodegroupVersionResponseupdateparamsTypeDef],
+        "createdAt": datetime,
+        "errors": List[ClientUpdateNodegroupVersionResponseupdateerrorsTypeDef],
+    },
+    total=False,
+)
+
+
+class ClientUpdateNodegroupVersionResponseupdateTypeDef(
+    _ClientUpdateNodegroupVersionResponseupdateTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupVersionResponse` `update`
+
+    An object representing an asynchronous update.
+
+    - **id** *(string) --*
+
+      A UUID that is used to track the update.
+
+    - **status** *(string) --*
+
+      The current status of the update.
+
+    - **type** *(string) --*
+
+      The type of the update.
+
+    - **params** *(list) --*
+
+      A key-value map that contains the parameters associated with the update.
+
+      - *(dict) --*
+
+        An object representing the details of an update request.
+
+        - **type** *(string) --*
+
+          The keys associated with an update request.
+
+        - **value** *(string) --*
+
+          The value of the keys submitted as part of an update request.
+
+    - **createdAt** *(datetime) --*
+
+      The Unix epoch timestamp in seconds for when the update was created.
+
+    - **errors** *(list) --*
+
+      Any errors associated with a ``Failed`` update.
+
+      - *(dict) --*
+
+        An object representing an error when an asynchronous operation fails.
+
+        - **errorCode** *(string) --*
+
+          A brief description of the error.
+
+          * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+          * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+          with the cluster.
+
+          * **EniLimitReached** : You have reached the elastic network interface limit for your
+          account.
+
+          * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+          addresses.
+
+          * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+          * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+          the required access permissions for Amazon EKS.
+
+          * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+        - **errorMessage** *(string) --*
+
+          A more complete description of the error.
+
+        - **resourceIds** *(list) --*
+
+          An optional field that contains the resource IDs associated with the error.
+
+          - *(string) --*
+    """
+
+
+_ClientUpdateNodegroupVersionResponseTypeDef = TypedDict(
+    "_ClientUpdateNodegroupVersionResponseTypeDef",
+    {"update": ClientUpdateNodegroupVersionResponseupdateTypeDef},
+    total=False,
+)
+
+
+class ClientUpdateNodegroupVersionResponseTypeDef(
+    _ClientUpdateNodegroupVersionResponseTypeDef
+):
+    """
+    Type definition for `ClientUpdateNodegroupVersion` `Response`
+
+    - **update** *(dict) --*
+
+      An object representing an asynchronous update.
+
+      - **id** *(string) --*
+
+        A UUID that is used to track the update.
+
+      - **status** *(string) --*
+
+        The current status of the update.
+
+      - **type** *(string) --*
+
+        The type of the update.
+
+      - **params** *(list) --*
+
+        A key-value map that contains the parameters associated with the update.
+
+        - *(dict) --*
+
+          An object representing the details of an update request.
+
+          - **type** *(string) --*
+
+            The keys associated with an update request.
+
+          - **value** *(string) --*
+
+            The value of the keys submitted as part of an update request.
+
+      - **createdAt** *(datetime) --*
+
+        The Unix epoch timestamp in seconds for when the update was created.
+
+      - **errors** *(list) --*
+
+        Any errors associated with a ``Failed`` update.
+
+        - *(dict) --*
+
+          An object representing an error when an asynchronous operation fails.
+
+          - **errorCode** *(string) --*
+
+            A brief description of the error.
+
+            * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+            * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+            with the cluster.
+
+            * **EniLimitReached** : You have reached the elastic network interface limit for your
+            account.
+
+            * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+            addresses.
+
+            * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+            * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+            the required access permissions for Amazon EKS.
+
+            * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+          - **errorMessage** *(string) --*
+
+            A more complete description of the error.
+
+          - **resourceIds** *(list) --*
+
+            An optional field that contains the resource IDs associated with the error.
+
+            - *(string) --*
+    """
+
+
 _ClusterActiveWaitWaiterConfigTypeDef = TypedDict(
     "_ClusterActiveWaitWaiterConfigTypeDef",
     {"Delay": int, "MaxAttempts": int},
@@ -2837,6 +5980,61 @@ class ListClustersPaginateResponseTypeDef(_ListClustersPaginateResponseTypeDef):
     """
 
 
+_ListNodegroupsPaginatePaginationConfigTypeDef = TypedDict(
+    "_ListNodegroupsPaginatePaginationConfigTypeDef",
+    {"MaxItems": int, "PageSize": int, "StartingToken": str},
+    total=False,
+)
+
+
+class ListNodegroupsPaginatePaginationConfigTypeDef(
+    _ListNodegroupsPaginatePaginationConfigTypeDef
+):
+    """
+    Type definition for `ListNodegroupsPaginate` `PaginationConfig`
+
+    A dictionary that provides parameters to control pagination.
+
+    - **MaxItems** *(integer) --*
+
+      The total number of items to return. If the total number of items available is more than the
+      value specified in max-items then a ``NextToken`` will be provided in the output that you can
+      use to resume pagination.
+
+    - **PageSize** *(integer) --*
+
+      The size of each page.
+
+    - **StartingToken** *(string) --*
+
+      A token to specify where to start paginating. This is the ``NextToken`` from a previous
+      response.
+    """
+
+
+_ListNodegroupsPaginateResponseTypeDef = TypedDict(
+    "_ListNodegroupsPaginateResponseTypeDef",
+    {"nodegroups": List[str], "NextToken": str},
+    total=False,
+)
+
+
+class ListNodegroupsPaginateResponseTypeDef(_ListNodegroupsPaginateResponseTypeDef):
+    """
+    Type definition for `ListNodegroupsPaginate` `Response`
+
+    - **nodegroups** *(list) --*
+
+      A list of all of the node groups associated with the specified cluster.
+
+      - *(string) --*
+
+    - **NextToken** *(string) --*
+
+      A token to resume pagination.
+    """
+
+
 _ListUpdatesPaginatePaginationConfigTypeDef = TypedDict(
     "_ListUpdatesPaginatePaginationConfigTypeDef",
     {"MaxItems": int, "PageSize": int, "StartingToken": str},
@@ -2889,4 +6087,50 @@ class ListUpdatesPaginateResponseTypeDef(_ListUpdatesPaginateResponseTypeDef):
     - **NextToken** *(string) --*
 
       A token to resume pagination.
+    """
+
+
+_NodegroupActiveWaitWaiterConfigTypeDef = TypedDict(
+    "_NodegroupActiveWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NodegroupActiveWaitWaiterConfigTypeDef(_NodegroupActiveWaitWaiterConfigTypeDef):
+    """
+    Type definition for `NodegroupActiveWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 80
+    """
+
+
+_NodegroupDeletedWaitWaiterConfigTypeDef = TypedDict(
+    "_NodegroupDeletedWaitWaiterConfigTypeDef",
+    {"Delay": int, "MaxAttempts": int},
+    total=False,
+)
+
+
+class NodegroupDeletedWaitWaiterConfigTypeDef(_NodegroupDeletedWaitWaiterConfigTypeDef):
+    """
+    Type definition for `NodegroupDeletedWait` `WaiterConfig`
+
+    A dictionary that provides parameters to control waiting behavior.
+
+    - **Delay** *(integer) --*
+
+      The amount of time in seconds to wait between attempts. Default: 30
+
+    - **MaxAttempts** *(integer) --*
+
+      The maximum number of attempts to be made. Default: 40
     """

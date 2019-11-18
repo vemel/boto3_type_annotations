@@ -14,6 +14,8 @@ __all__ = (
     "ClientCreateMembersAccountDetailsTypeDef",
     "ClientCreateMembersResponseUnprocessedAccountsTypeDef",
     "ClientCreateMembersResponseTypeDef",
+    "ClientCreatePublishingDestinationDestinationPropertiesTypeDef",
+    "ClientCreatePublishingDestinationResponseTypeDef",
     "ClientCreateThreatIntelSetResponseTypeDef",
     "ClientDeclineInvitationsResponseUnprocessedAccountsTypeDef",
     "ClientDeclineInvitationsResponseTypeDef",
@@ -21,6 +23,8 @@ __all__ = (
     "ClientDeleteInvitationsResponseTypeDef",
     "ClientDeleteMembersResponseUnprocessedAccountsTypeDef",
     "ClientDeleteMembersResponseTypeDef",
+    "ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef",
+    "ClientDescribePublishingDestinationResponseTypeDef",
     "ClientDisassociateMembersResponseUnprocessedAccountsTypeDef",
     "ClientDisassociateMembersResponseTypeDef",
     "ClientGetDetectorResponseTypeDef",
@@ -92,6 +96,8 @@ __all__ = (
     "ClientListIpSetsResponseTypeDef",
     "ClientListMembersResponseMembersTypeDef",
     "ClientListMembersResponseTypeDef",
+    "ClientListPublishingDestinationsResponseDestinationsTypeDef",
+    "ClientListPublishingDestinationsResponseTypeDef",
     "ClientListTagsForResourceResponseTypeDef",
     "ClientListThreatIntelSetsResponseTypeDef",
     "ClientStartMonitoringMembersResponseUnprocessedAccountsTypeDef",
@@ -101,6 +107,7 @@ __all__ = (
     "ClientUpdateFilterFindingCriteriaCriterionTypeDef",
     "ClientUpdateFilterFindingCriteriaTypeDef",
     "ClientUpdateFilterResponseTypeDef",
+    "ClientUpdatePublishingDestinationDestinationPropertiesTypeDef",
     "ListDetectorsPaginatePaginationConfigTypeDef",
     "ListDetectorsPaginateResponseTypeDef",
     "ListFiltersPaginatePaginationConfigTypeDef",
@@ -168,37 +175,36 @@ class ClientCreateFilterFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when querying
-      for findings.
+      Represents the equal condition to be applied to a single field when querying for findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field when
-      querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying for
+      findings.
 
     - **Equals** *(list) --*
 
@@ -264,37 +270,36 @@ class ClientCreateFilterFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when querying
-            for findings.
+            Represents the equal condition to be applied to a single field when querying for findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field when
-            querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying for
+            findings.
 
           - **Equals** *(list) --*
 
@@ -441,6 +446,51 @@ class ClientCreateMembersResponseTypeDef(_ClientCreateMembersResponseTypeDef):
         - **Result** *(string) --*
 
           A reason why the account hasn't been processed.
+    """
+
+
+_ClientCreatePublishingDestinationDestinationPropertiesTypeDef = TypedDict(
+    "_ClientCreatePublishingDestinationDestinationPropertiesTypeDef",
+    {"DestinationArn": str, "KmsKeyArn": str},
+    total=False,
+)
+
+
+class ClientCreatePublishingDestinationDestinationPropertiesTypeDef(
+    _ClientCreatePublishingDestinationDestinationPropertiesTypeDef
+):
+    """
+    Type definition for `ClientCreatePublishingDestination` `DestinationProperties`
+
+    Properties of the publishing destination, including the ARNs for the destination and the KMS key
+    used for encryption.
+
+    - **DestinationArn** *(string) --*
+
+      The ARN of the resource to publish to.
+
+    - **KmsKeyArn** *(string) --*
+
+      The ARN of the KMS key to use for encryption.
+    """
+
+
+_ClientCreatePublishingDestinationResponseTypeDef = TypedDict(
+    "_ClientCreatePublishingDestinationResponseTypeDef",
+    {"DestinationId": str},
+    total=False,
+)
+
+
+class ClientCreatePublishingDestinationResponseTypeDef(
+    _ClientCreatePublishingDestinationResponseTypeDef
+):
+    """
+    Type definition for `ClientCreatePublishingDestination` `Response`
+
+    - **DestinationId** *(string) --*
+
+      The ID of the publishing destination created.
     """
 
 
@@ -637,6 +687,83 @@ class ClientDeleteMembersResponseTypeDef(_ClientDeleteMembersResponseTypeDef):
     """
 
 
+_ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef = TypedDict(
+    "_ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef",
+    {"DestinationArn": str, "KmsKeyArn": str},
+    total=False,
+)
+
+
+class ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef(
+    _ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef
+):
+    """
+    Type definition for `ClientDescribePublishingDestinationResponse` `DestinationProperties`
+
+    A ``DestinationProperties`` object that includes the ``DestinationArn`` and ``KmsKeyArn`` of
+    the publishing destination.
+
+    - **DestinationArn** *(string) --*
+
+      The ARN of the resource to publish to.
+
+    - **KmsKeyArn** *(string) --*
+
+      The ARN of the KMS key to use for encryption.
+    """
+
+
+_ClientDescribePublishingDestinationResponseTypeDef = TypedDict(
+    "_ClientDescribePublishingDestinationResponseTypeDef",
+    {
+        "DestinationId": str,
+        "DestinationType": str,
+        "Status": str,
+        "PublishingFailureStartTimestamp": int,
+        "DestinationProperties": ClientDescribePublishingDestinationResponseDestinationPropertiesTypeDef,
+    },
+    total=False,
+)
+
+
+class ClientDescribePublishingDestinationResponseTypeDef(
+    _ClientDescribePublishingDestinationResponseTypeDef
+):
+    """
+    Type definition for `ClientDescribePublishingDestination` `Response`
+
+    - **DestinationId** *(string) --*
+
+      The ID of the publishing destination.
+
+    - **DestinationType** *(string) --*
+
+      The type of the publishing destination. Currently, only S3 is supported.
+
+    - **Status** *(string) --*
+
+      The status of the publishing destination.
+
+    - **PublishingFailureStartTimestamp** *(integer) --*
+
+      The time, in epoch millisecond format, at which GuardDuty was first unable to publish
+      findings to the destination.
+
+    - **DestinationProperties** *(dict) --*
+
+      A ``DestinationProperties`` object that includes the ``DestinationArn`` and ``KmsKeyArn`` of
+      the publishing destination.
+
+      - **DestinationArn** *(string) --*
+
+        The ARN of the resource to publish to.
+
+      - **KmsKeyArn** *(string) --*
+
+        The ARN of the KMS key to use for encryption.
+    """
+
+
 _ClientDisassociateMembersResponseUnprocessedAccountsTypeDef = TypedDict(
     "_ClientDisassociateMembersResponseUnprocessedAccountsTypeDef",
     {"AccountId": str, "Result": str},
@@ -776,37 +903,37 @@ class ClientGetFilterResponseFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when
-      querying for findings.
+      Represents the equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when
+      querying for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Equals** *(list) --*
 
@@ -872,37 +999,37 @@ class ClientGetFilterResponseFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when
-            querying for findings.
+            Represents the equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when
+            querying for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Equals** *(list) --*
 
@@ -992,37 +1119,37 @@ class ClientGetFilterResponseTypeDef(_ClientGetFilterResponseTypeDef):
 
             - **Eq** *(list) --*
 
-              Deprecated. Represents the equal condition to be applied to a single field when
-              querying for findings.
+              Represents the equal condition to be applied to a single field when querying for
+              findings.
 
               - *(string) --*
 
             - **Neq** *(list) --*
 
-              Deprecated. Represents the not equal condition to be applied to a single field when
-              querying for findings.
+              Represents the not equal condition to be applied to a single field when querying for
+              findings.
 
               - *(string) --*
 
             - **Gt** *(integer) --*
 
-              Deprecated. Represents a greater than condition to be applied to a single field when
-              querying for findings.
+              Represents a greater than condition to be applied to a single field when querying for
+              findings.
 
             - **Gte** *(integer) --*
 
-              Deprecated. Represents a greater than equal condition to be applied to a single field
-              when querying for findings.
+              Represents a greater than equal condition to be applied to a single field when
+              querying for findings.
 
             - **Lt** *(integer) --*
 
-              Deprecated. Represents a less than condition to be applied to a single field when
-              querying for findings.
+              Represents a less than condition to be applied to a single field when querying for
+              findings.
 
             - **Lte** *(integer) --*
 
-              Deprecated. Represents a less than equal condition to be applied to a single field
-              when querying for findings.
+              Represents a less than equal condition to be applied to a single field when querying
+              for findings.
 
             - **Equals** *(list) --*
 
@@ -1140,7 +1267,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfacesP
     """
     Type definition for `ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfaces` `PrivateIpAddresses`
 
-    Contains information about the private IP address.
+    Contains other private IP address information of the EC2 instance.
 
     - **PrivateDnsName** *(string) --*
 
@@ -1165,7 +1292,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfacesS
     """
     Type definition for `ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfaces` `SecurityGroups`
 
-    Contains information about the security group.
+    Contains information about the security groups associated with the EC2 instance.
 
     - **GroupId** *(string) --*
 
@@ -1205,7 +1332,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfacesT
     """
     Type definition for `ClientGetFindingsResponseFindingsResourceInstanceDetails` `NetworkInterfaces`
 
-    Contains information about the network interface.
+    Contains information about the network interface of the Ec2 instance.
 
     - **Ipv6Addresses** *(list) --*
 
@@ -1231,7 +1358,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfacesT
 
       - *(dict) --*
 
-        Contains information about the private IP address.
+        Contains other private IP address information of the EC2 instance.
 
         - **PrivateDnsName** *(string) --*
 
@@ -1255,7 +1382,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsNetworkInterfacesT
 
       - *(dict) --*
 
-        Contains information about the security group.
+        Contains information about the security groups associated with the EC2 instance.
 
         - **GroupId** *(string) --*
 
@@ -1288,7 +1415,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsProductCodesTypeDe
     """
     Type definition for `ClientGetFindingsResponseFindingsResourceInstanceDetails` `ProductCodes`
 
-    Contains information about the product code.
+    Contains information about the product code for the Ec2 instance.
 
     - **Code** *(string) --*
 
@@ -1313,7 +1440,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTagsTypeDef(
     """
     Type definition for `ClientGetFindingsResponseFindingsResourceInstanceDetails` `Tags`
 
-    Contains information about the tag associated with the resource.
+    Contains information about a tag associated with the Ec2 instance.
 
     - **Key** *(string) --*
 
@@ -1406,7 +1533,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTypeDef(
 
       - *(dict) --*
 
-        Contains information about the network interface.
+        Contains information about the network interface of the Ec2 instance.
 
         - **Ipv6Addresses** *(list) --*
 
@@ -1432,7 +1559,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTypeDef(
 
           - *(dict) --*
 
-            Contains information about the private IP address.
+            Contains other private IP address information of the EC2 instance.
 
             - **PrivateDnsName** *(string) --*
 
@@ -1456,7 +1583,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTypeDef(
 
           - *(dict) --*
 
-            Contains information about the security group.
+            Contains information about the security groups associated with the EC2 instance.
 
             - **GroupId** *(string) --*
 
@@ -1484,7 +1611,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTypeDef(
 
       - *(dict) --*
 
-        Contains information about the product code.
+        Contains information about the product code for the Ec2 instance.
 
         - **Code** *(string) --*
 
@@ -1500,7 +1627,7 @@ class ClientGetFindingsResponseFindingsResourceInstanceDetailsTypeDef(
 
       - *(dict) --*
 
-        Contains information about the tag associated with the resource.
+        Contains information about a tag associated with the Ec2 instance.
 
         - **Key** *(string) --*
 
@@ -1529,7 +1656,8 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
     """
     Type definition for `ClientGetFindingsResponseFindings` `Resource`
 
-    Contains information about the resource.
+    Contains information about the AWS resource associated with the activity that prompted
+    GuardDuty to generate a finding.
 
     - **AccessKeyDetails** *(dict) --*
 
@@ -1603,7 +1731,7 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
 
         - *(dict) --*
 
-          Contains information about the network interface.
+          Contains information about the network interface of the Ec2 instance.
 
           - **Ipv6Addresses** *(list) --*
 
@@ -1629,7 +1757,7 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
 
             - *(dict) --*
 
-              Contains information about the private IP address.
+              Contains other private IP address information of the EC2 instance.
 
               - **PrivateDnsName** *(string) --*
 
@@ -1653,7 +1781,7 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
 
             - *(dict) --*
 
-              Contains information about the security group.
+              Contains information about the security groups associated with the EC2 instance.
 
               - **GroupId** *(string) --*
 
@@ -1681,7 +1809,7 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
 
         - *(dict) --*
 
-          Contains information about the product code.
+          Contains information about the product code for the Ec2 instance.
 
           - **Code** *(string) --*
 
@@ -1697,7 +1825,7 @@ class ClientGetFindingsResponseFindingsResourceTypeDef(
 
         - *(dict) --*
 
-          Contains information about the tag associated with the resource.
+          Contains information about a tag associated with the Ec2 instance.
 
           - **Key** *(string) --*
 
@@ -2037,7 +2165,7 @@ class ClientGetFindingsResponseFindingsServiceActionDnsRequestActionTypeDef(
 
     - **Domain** *(string) --*
 
-      Domain information for the DNS request.
+      Domain information for the API request.
     """
 
 
@@ -2915,7 +3043,7 @@ class ClientGetFindingsResponseFindingsServiceActionTypeDef(
 
       - **Domain** *(string) --*
 
-        Domain information for the DNS request.
+        Domain information for the API request.
 
     - **NetworkConnectionAction** *(dict) --*
 
@@ -3201,7 +3329,7 @@ class ClientGetFindingsResponseFindingsServiceTypeDef(
     """
     Type definition for `ClientGetFindingsResponseFindings` `Service`
 
-    Contains information about the service.
+    Contains additional information about the generated finding.
 
     - **Action** *(dict) --*
 
@@ -3301,7 +3429,7 @@ class ClientGetFindingsResponseFindingsServiceTypeDef(
 
         - **Domain** *(string) --*
 
-          Domain information for the DNS request.
+          Domain information for the API request.
 
       - **NetworkConnectionAction** *(dict) --*
 
@@ -3578,7 +3706,8 @@ class ClientGetFindingsResponseFindingsTypeDef(
     """
     Type definition for `ClientGetFindingsResponse` `Findings`
 
-    Contains information about the finding.
+    Contains information about the finding, which is generated when abnormal or suspicious
+    activity is detected.
 
     - **AccountId** *(string) --*
 
@@ -3614,7 +3743,8 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
     - **Resource** *(dict) --*
 
-      Contains information about the resource.
+      Contains information about the AWS resource associated with the activity that prompted
+      GuardDuty to generate a finding.
 
       - **AccessKeyDetails** *(dict) --*
 
@@ -3688,7 +3818,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
           - *(dict) --*
 
-            Contains information about the network interface.
+            Contains information about the network interface of the Ec2 instance.
 
             - **Ipv6Addresses** *(list) --*
 
@@ -3714,7 +3844,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
               - *(dict) --*
 
-                Contains information about the private IP address.
+                Contains other private IP address information of the EC2 instance.
 
                 - **PrivateDnsName** *(string) --*
 
@@ -3738,7 +3868,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
               - *(dict) --*
 
-                Contains information about the security group.
+                Contains information about the security groups associated with the EC2 instance.
 
                 - **GroupId** *(string) --*
 
@@ -3766,7 +3896,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
           - *(dict) --*
 
-            Contains information about the product code.
+            Contains information about the product code for the Ec2 instance.
 
             - **Code** *(string) --*
 
@@ -3782,7 +3912,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
           - *(dict) --*
 
-            Contains information about the tag associated with the resource.
+            Contains information about a tag associated with the Ec2 instance.
 
             - **Key** *(string) --*
 
@@ -3802,7 +3932,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
     - **Service** *(dict) --*
 
-      Contains information about the service.
+      Contains additional information about the generated finding.
 
       - **Action** *(dict) --*
 
@@ -3902,7 +4032,7 @@ class ClientGetFindingsResponseFindingsTypeDef(
 
           - **Domain** *(string) --*
 
-            Domain information for the DNS request.
+            Domain information for the API request.
 
         - **NetworkConnectionAction** *(dict) --*
 
@@ -4183,7 +4313,8 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
       - *(dict) --*
 
-        Contains information about the finding.
+        Contains information about the finding, which is generated when abnormal or suspicious
+        activity is detected.
 
         - **AccountId** *(string) --*
 
@@ -4219,7 +4350,8 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
         - **Resource** *(dict) --*
 
-          Contains information about the resource.
+          Contains information about the AWS resource associated with the activity that prompted
+          GuardDuty to generate a finding.
 
           - **AccessKeyDetails** *(dict) --*
 
@@ -4293,7 +4425,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
               - *(dict) --*
 
-                Contains information about the network interface.
+                Contains information about the network interface of the Ec2 instance.
 
                 - **Ipv6Addresses** *(list) --*
 
@@ -4319,7 +4451,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
                   - *(dict) --*
 
-                    Contains information about the private IP address.
+                    Contains other private IP address information of the EC2 instance.
 
                     - **PrivateDnsName** *(string) --*
 
@@ -4343,7 +4475,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
                   - *(dict) --*
 
-                    Contains information about the security group.
+                    Contains information about the security groups associated with the EC2 instance.
 
                     - **GroupId** *(string) --*
 
@@ -4371,7 +4503,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
               - *(dict) --*
 
-                Contains information about the product code.
+                Contains information about the product code for the Ec2 instance.
 
                 - **Code** *(string) --*
 
@@ -4387,7 +4519,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
               - *(dict) --*
 
-                Contains information about the tag associated with the resource.
+                Contains information about a tag associated with the Ec2 instance.
 
                 - **Key** *(string) --*
 
@@ -4407,7 +4539,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
         - **Service** *(dict) --*
 
-          Contains information about the service.
+          Contains additional information about the generated finding.
 
           - **Action** *(dict) --*
 
@@ -4507,7 +4639,7 @@ class ClientGetFindingsResponseTypeDef(_ClientGetFindingsResponseTypeDef):
 
               - **Domain** *(string) --*
 
-                Domain information for the DNS request.
+                Domain information for the API request.
 
             - **NetworkConnectionAction** *(dict) --*
 
@@ -4824,37 +4956,36 @@ class ClientGetFindingsStatisticsFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when querying
-      for findings.
+      Represents the equal condition to be applied to a single field when querying for findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field when
-      querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying for
+      findings.
 
     - **Equals** *(list) --*
 
@@ -4924,37 +5055,36 @@ class ClientGetFindingsStatisticsFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when querying
-            for findings.
+            Represents the equal condition to be applied to a single field when querying for findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field when
-            querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying for
+            findings.
 
           - **Equals** *(list) --*
 
@@ -5080,8 +5210,7 @@ class ClientGetIpSetResponseTypeDef(_ClientGetIpSetResponseTypeDef):
 
     - **Name** *(string) --*
 
-      The user friendly name to identify the IPSet. This name is displayed in all findings that are
-      triggered by activity that involves IP addresses included in this IPSet.
+      The user friendly name for the IPSet.
 
     - **Format** *(string) --*
 
@@ -5502,37 +5631,36 @@ class ClientListFindingsFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when querying
-      for findings.
+      Represents the equal condition to be applied to a single field when querying for findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field when
-      querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying for
+      findings.
 
     - **Equals** *(list) --*
 
@@ -5583,7 +5711,107 @@ class ClientListFindingsFindingCriteriaTypeDef(
     """
     Type definition for `ClientListFindings` `FindingCriteria`
 
-    Represents the criteria used for querying findings.
+    Represents the criteria used for querying findings. Valid values include:
+
+    * JSON field name
+
+    * accountId
+
+    * region
+
+    * confidence
+
+    * id
+
+    * resource.accessKeyDetails.accessKeyId
+
+    * resource.accessKeyDetails.principalId
+
+    * resource.accessKeyDetails.userName
+
+    * resource.accessKeyDetails.userType
+
+    * resource.instanceDetails.iamInstanceProfile.id
+
+    * resource.instanceDetails.imageId
+
+    * resource.instanceDetails.instanceId
+
+    * resource.instanceDetails.networkInterfaces.ipv6Addresses
+
+    * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+
+    * resource.instanceDetails.networkInterfaces.publicDnsName
+
+    * resource.instanceDetails.networkInterfaces.publicIp
+
+    * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+
+    * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+
+    * resource.instanceDetails.networkInterfaces.subnetId
+
+    * resource.instanceDetails.networkInterfaces.vpcId
+
+    * resource.instanceDetails.tags.key
+
+    * resource.instanceDetails.tags.value
+
+    * resource.resourceType
+
+    * service.action.actionType
+
+    * service.action.awsApiCallAction.api
+
+    * service.action.awsApiCallAction.callerType
+
+    * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+
+    * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+
+    * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+
+    * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+
+    * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+
+    * service.action.awsApiCallAction.serviceName
+
+    * service.action.dnsRequestAction.domain
+
+    * service.action.networkConnectionAction.blocked
+
+    * service.action.networkConnectionAction.connectionDirection
+
+    * service.action.networkConnectionAction.localPortDetails.port
+
+    * service.action.networkConnectionAction.protocol
+
+    * service.action.networkConnectionAction.remoteIpDetails.city.cityName
+
+    * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+
+    * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+
+    * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+
+    * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+
+    * service.action.networkConnectionAction.remotePortDetails.port
+
+    * service.additionalInfo.threatListName
+
+    * service.archived When this attribute is set to 'true', only archived findings are listed. When
+    it's set to 'false', only unarchived findings are listed. When this attribute is not set, all
+    existing findings are listed.
+
+    * service.resourceRole
+
+    * severity
+
+    * type
+
+    * updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 
     - **Criterion** *(dict) --*
 
@@ -5598,37 +5826,36 @@ class ClientListFindingsFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when querying
-            for findings.
+            Represents the equal condition to be applied to a single field when querying for findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field when
-            querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying for
+            findings.
 
           - **Equals** *(list) --*
 
@@ -5730,15 +5957,16 @@ class ClientListInvitationsResponseInvitationsTypeDef(
     """
     Type definition for `ClientListInvitationsResponse` `Invitations`
 
-    Contains information about the invitation.
+    Contains information about the invitation to become a member account.
 
     - **AccountId** *(string) --*
 
-      Inviter account ID
+      The ID of the account from which the invitations was sent.
 
     - **InvitationId** *(string) --*
 
-      This value is used to validate the inviter account to the member account.
+      The ID of the invitation. This value is used to validate the inviter account to the
+      member account.
 
     - **RelationshipStatus** *(string) --*
 
@@ -5746,7 +5974,7 @@ class ClientListInvitationsResponseInvitationsTypeDef(
 
     - **InvitedAt** *(string) --*
 
-      Timestamp at which the invitation was sent
+      Timestamp at which the invitation was sent.
     """
 
 
@@ -5770,15 +5998,16 @@ class ClientListInvitationsResponseTypeDef(_ClientListInvitationsResponseTypeDef
 
       - *(dict) --*
 
-        Contains information about the invitation.
+        Contains information about the invitation to become a member account.
 
         - **AccountId** *(string) --*
 
-          Inviter account ID
+          The ID of the account from which the invitations was sent.
 
         - **InvitationId** *(string) --*
 
-          This value is used to validate the inviter account to the member account.
+          The ID of the invitation. This value is used to validate the inviter account to the
+          member account.
 
         - **RelationshipStatus** *(string) --*
 
@@ -5786,7 +6015,7 @@ class ClientListInvitationsResponseTypeDef(_ClientListInvitationsResponseTypeDef
 
         - **InvitedAt** *(string) --*
 
-          Timestamp at which the invitation was sent
+          Timestamp at which the invitation was sent.
 
     - **NextToken** *(string) --*
 
@@ -5918,6 +6147,82 @@ class ClientListMembersResponseTypeDef(_ClientListMembersResponseTypeDef):
     - **NextToken** *(string) --*
 
       Pagination parameter to be used on the next list operation to retrieve more items.
+    """
+
+
+_ClientListPublishingDestinationsResponseDestinationsTypeDef = TypedDict(
+    "_ClientListPublishingDestinationsResponseDestinationsTypeDef",
+    {"DestinationId": str, "DestinationType": str, "Status": str},
+    total=False,
+)
+
+
+class ClientListPublishingDestinationsResponseDestinationsTypeDef(
+    _ClientListPublishingDestinationsResponseDestinationsTypeDef
+):
+    """
+    Type definition for `ClientListPublishingDestinationsResponse` `Destinations`
+
+    Contains information about a publishing destination, including the ID, type, and status.
+
+    - **DestinationId** *(string) --*
+
+      The unique ID of the publishing destination.
+
+    - **DestinationType** *(string) --*
+
+      The type of resource used for the publishing destination. Currently, only S3 is supported.
+
+    - **Status** *(string) --*
+
+      The status of the publishing destination.
+    """
+
+
+_ClientListPublishingDestinationsResponseTypeDef = TypedDict(
+    "_ClientListPublishingDestinationsResponseTypeDef",
+    {
+        "Destinations": List[
+            ClientListPublishingDestinationsResponseDestinationsTypeDef
+        ],
+        "NextToken": str,
+    },
+    total=False,
+)
+
+
+class ClientListPublishingDestinationsResponseTypeDef(
+    _ClientListPublishingDestinationsResponseTypeDef
+):
+    """
+    Type definition for `ClientListPublishingDestinations` `Response`
+
+    - **Destinations** *(list) --*
+
+      A ``Destinations`` obect that includes information about each publishing destination returned.
+
+      - *(dict) --*
+
+        Contains information about a publishing destination, including the ID, type, and status.
+
+        - **DestinationId** *(string) --*
+
+          The unique ID of the publishing destination.
+
+        - **DestinationType** *(string) --*
+
+          The type of resource used for the publishing destination. Currently, only S3 is supported.
+
+        - **Status** *(string) --*
+
+          The status of the publishing destination.
+
+    - **NextToken** *(string) --*
+
+      A token to use for paginating results returned in the repsonse. Set the value of this
+      parameter to null for the first request to a list action. For subsequent calls, use the
+      ``NextToken`` value returned from the previous request to continue listing results after the
+      first page.
     """
 
 
@@ -6119,37 +6424,36 @@ class ClientUpdateFilterFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when querying
-      for findings.
+      Represents the equal condition to be applied to a single field when querying for findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field when
-      querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying for
+      findings.
 
     - **Equals** *(list) --*
 
@@ -6215,37 +6519,36 @@ class ClientUpdateFilterFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when querying
-            for findings.
+            Represents the equal condition to be applied to a single field when querying for findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field when
-            querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying for
+            findings.
 
           - **Equals** *(list) --*
 
@@ -6295,6 +6598,32 @@ class ClientUpdateFilterResponseTypeDef(_ClientUpdateFilterResponseTypeDef):
     - **Name** *(string) --*
 
       The name of the filter.
+    """
+
+
+_ClientUpdatePublishingDestinationDestinationPropertiesTypeDef = TypedDict(
+    "_ClientUpdatePublishingDestinationDestinationPropertiesTypeDef",
+    {"DestinationArn": str, "KmsKeyArn": str},
+    total=False,
+)
+
+
+class ClientUpdatePublishingDestinationDestinationPropertiesTypeDef(
+    _ClientUpdatePublishingDestinationDestinationPropertiesTypeDef
+):
+    """
+    Type definition for `ClientUpdatePublishingDestination` `DestinationProperties`
+
+    A ``DestinationProperties`` object that includes the ``DestinationArn`` and ``KmsKeyArn`` of the
+    publishing destination.
+
+    - **DestinationArn** *(string) --*
+
+      The ARN of the resource to publish to.
+
+    - **KmsKeyArn** *(string) --*
+
+      The ARN of the KMS key to use for encryption.
     """
 
 
@@ -6426,37 +6755,36 @@ class ListFindingsPaginateFindingCriteriaCriterionTypeDef(
 
     - **Eq** *(list) --*
 
-      Deprecated. Represents the equal condition to be applied to a single field when querying
-      for findings.
+      Represents the equal condition to be applied to a single field when querying for findings.
 
       - *(string) --*
 
     - **Neq** *(list) --*
 
-      Deprecated. Represents the not equal condition to be applied to a single field when
-      querying for findings.
+      Represents the not equal condition to be applied to a single field when querying for
+      findings.
 
       - *(string) --*
 
     - **Gt** *(integer) --*
 
-      Deprecated. Represents a greater than condition to be applied to a single field when
-      querying for findings.
+      Represents a greater than condition to be applied to a single field when querying for
+      findings.
 
     - **Gte** *(integer) --*
 
-      Deprecated. Represents a greater than equal condition to be applied to a single field
-      when querying for findings.
+      Represents a greater than equal condition to be applied to a single field when querying
+      for findings.
 
     - **Lt** *(integer) --*
 
-      Deprecated. Represents a less than condition to be applied to a single field when
-      querying for findings.
+      Represents a less than condition to be applied to a single field when querying for
+      findings.
 
     - **Lte** *(integer) --*
 
-      Deprecated. Represents a less than equal condition to be applied to a single field when
-      querying for findings.
+      Represents a less than equal condition to be applied to a single field when querying for
+      findings.
 
     - **Equals** *(list) --*
 
@@ -6507,7 +6835,107 @@ class ListFindingsPaginateFindingCriteriaTypeDef(
     """
     Type definition for `ListFindingsPaginate` `FindingCriteria`
 
-    Represents the criteria used for querying findings.
+    Represents the criteria used for querying findings. Valid values include:
+
+    * JSON field name
+
+    * accountId
+
+    * region
+
+    * confidence
+
+    * id
+
+    * resource.accessKeyDetails.accessKeyId
+
+    * resource.accessKeyDetails.principalId
+
+    * resource.accessKeyDetails.userName
+
+    * resource.accessKeyDetails.userType
+
+    * resource.instanceDetails.iamInstanceProfile.id
+
+    * resource.instanceDetails.imageId
+
+    * resource.instanceDetails.instanceId
+
+    * resource.instanceDetails.networkInterfaces.ipv6Addresses
+
+    * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+
+    * resource.instanceDetails.networkInterfaces.publicDnsName
+
+    * resource.instanceDetails.networkInterfaces.publicIp
+
+    * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+
+    * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+
+    * resource.instanceDetails.networkInterfaces.subnetId
+
+    * resource.instanceDetails.networkInterfaces.vpcId
+
+    * resource.instanceDetails.tags.key
+
+    * resource.instanceDetails.tags.value
+
+    * resource.resourceType
+
+    * service.action.actionType
+
+    * service.action.awsApiCallAction.api
+
+    * service.action.awsApiCallAction.callerType
+
+    * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+
+    * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+
+    * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+
+    * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+
+    * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+
+    * service.action.awsApiCallAction.serviceName
+
+    * service.action.dnsRequestAction.domain
+
+    * service.action.networkConnectionAction.blocked
+
+    * service.action.networkConnectionAction.connectionDirection
+
+    * service.action.networkConnectionAction.localPortDetails.port
+
+    * service.action.networkConnectionAction.protocol
+
+    * service.action.networkConnectionAction.remoteIpDetails.city.cityName
+
+    * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+
+    * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+
+    * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+
+    * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+
+    * service.action.networkConnectionAction.remotePortDetails.port
+
+    * service.additionalInfo.threatListName
+
+    * service.archived When this attribute is set to 'true', only archived findings are listed. When
+    it's set to 'false', only unarchived findings are listed. When this attribute is not set, all
+    existing findings are listed.
+
+    * service.resourceRole
+
+    * severity
+
+    * type
+
+    * updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 
     - **Criterion** *(dict) --*
 
@@ -6522,37 +6950,36 @@ class ListFindingsPaginateFindingCriteriaTypeDef(
 
           - **Eq** *(list) --*
 
-            Deprecated. Represents the equal condition to be applied to a single field when querying
-            for findings.
+            Represents the equal condition to be applied to a single field when querying for findings.
 
             - *(string) --*
 
           - **Neq** *(list) --*
 
-            Deprecated. Represents the not equal condition to be applied to a single field when
-            querying for findings.
+            Represents the not equal condition to be applied to a single field when querying for
+            findings.
 
             - *(string) --*
 
           - **Gt** *(integer) --*
 
-            Deprecated. Represents a greater than condition to be applied to a single field when
-            querying for findings.
+            Represents a greater than condition to be applied to a single field when querying for
+            findings.
 
           - **Gte** *(integer) --*
 
-            Deprecated. Represents a greater than equal condition to be applied to a single field
-            when querying for findings.
+            Represents a greater than equal condition to be applied to a single field when querying
+            for findings.
 
           - **Lt** *(integer) --*
 
-            Deprecated. Represents a less than condition to be applied to a single field when
-            querying for findings.
+            Represents a less than condition to be applied to a single field when querying for
+            findings.
 
           - **Lte** *(integer) --*
 
-            Deprecated. Represents a less than equal condition to be applied to a single field when
-            querying for findings.
+            Represents a less than equal condition to be applied to a single field when querying for
+            findings.
 
           - **Equals** *(list) --*
 
@@ -6761,15 +7188,16 @@ class ListInvitationsPaginateResponseInvitationsTypeDef(
     """
     Type definition for `ListInvitationsPaginateResponse` `Invitations`
 
-    Contains information about the invitation.
+    Contains information about the invitation to become a member account.
 
     - **AccountId** *(string) --*
 
-      Inviter account ID
+      The ID of the account from which the invitations was sent.
 
     - **InvitationId** *(string) --*
 
-      This value is used to validate the inviter account to the member account.
+      The ID of the invitation. This value is used to validate the inviter account to the
+      member account.
 
     - **RelationshipStatus** *(string) --*
 
@@ -6777,7 +7205,7 @@ class ListInvitationsPaginateResponseInvitationsTypeDef(
 
     - **InvitedAt** *(string) --*
 
-      Timestamp at which the invitation was sent
+      Timestamp at which the invitation was sent.
     """
 
 
@@ -6798,15 +7226,16 @@ class ListInvitationsPaginateResponseTypeDef(_ListInvitationsPaginateResponseTyp
 
       - *(dict) --*
 
-        Contains information about the invitation.
+        Contains information about the invitation to become a member account.
 
         - **AccountId** *(string) --*
 
-          Inviter account ID
+          The ID of the account from which the invitations was sent.
 
         - **InvitationId** *(string) --*
 
-          This value is used to validate the inviter account to the member account.
+          The ID of the invitation. This value is used to validate the inviter account to the
+          member account.
 
         - **RelationshipStatus** *(string) --*
 
@@ -6814,7 +7243,7 @@ class ListInvitationsPaginateResponseTypeDef(_ListInvitationsPaginateResponseTyp
 
         - **InvitedAt** *(string) --*
 
-          Timestamp at which the invitation was sent
+          Timestamp at which the invitation was sent.
     """
 
 

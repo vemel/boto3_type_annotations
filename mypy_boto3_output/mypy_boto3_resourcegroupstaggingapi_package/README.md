@@ -1,4 +1,4 @@
 # mypy-boto3-resourcegroupstaggingapi
 
-Mypy-friendly type annotations for `boto3` 1.10.18 `resourcegroupstaggingapi` service.
+Mypy-friendly type annotations for `boto3` 1.10.19 `resourcegroupstaggingapi` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

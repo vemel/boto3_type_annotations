@@ -901,7 +901,7 @@ class ClientAddInstanceFleetInstanceFleetTypeDef(
 
 _ClientAddInstanceFleetResponseTypeDef = TypedDict(
     "_ClientAddInstanceFleetResponseTypeDef",
-    {"ClusterId": str, "InstanceFleetId": str},
+    {"ClusterId": str, "InstanceFleetId": str, "ClusterArn": str},
     total=False,
 )
 
@@ -917,6 +917,10 @@ class ClientAddInstanceFleetResponseTypeDef(_ClientAddInstanceFleetResponseTypeD
     - **InstanceFleetId** *(string) --*
 
       The unique identifier of the instance fleet.
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -1128,9 +1132,9 @@ class ClientAddInstanceGroupsInstanceGroupsAutoScalingPolicyRulesTriggerCloudWat
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the
-      alarm condition must exist before the alarm triggers automatic scaling activity.
-      The default value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm condition
+      must exist before the alarm triggers automatic scaling activity. The default value
+      is ``1`` .
 
     - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -1212,9 +1216,9 @@ class ClientAddInstanceGroupsInstanceGroupsAutoScalingPolicyRulesTriggerTypeDef(
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the
-        alarm condition must exist before the alarm triggers automatic scaling activity.
-        The default value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm condition
+        must exist before the alarm triggers automatic scaling activity. The default value
+        is ``1`` .
 
       - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -1363,9 +1367,9 @@ class ClientAddInstanceGroupsInstanceGroupsAutoScalingPolicyRulesTypeDef(
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the
-          alarm condition must exist before the alarm triggers automatic scaling activity.
-          The default value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm condition
+          must exist before the alarm triggers automatic scaling activity. The default value
+          is ``1`` .
 
         - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -1536,9 +1540,9 @@ class ClientAddInstanceGroupsInstanceGroupsAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the
-              alarm condition must exist before the alarm triggers automatic scaling activity.
-              The default value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm condition
+              must exist before the alarm triggers automatic scaling activity. The default value
+              is ``1`` .
 
             - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -1819,11 +1823,9 @@ class ClientAddInstanceGroupsInstanceGroupsTypeDef(
 
     - **BidPrice** *(string) --*
 
-      The maximum Spot price your are willing to pay for EC2 instances.
-
-      An optional, nullable field that applies if the ``MarketType`` for the instance group is
-      specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-      ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+      The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed in
+      USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+      ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
     - **InstanceType** *(string) --* **[REQUIRED]**
 
@@ -2015,9 +2017,9 @@ class ClientAddInstanceGroupsInstanceGroupsTypeDef(
 
               - **EvaluationPeriods** *(integer) --*
 
-                The number of periods, expressed in seconds using ``Period`` , during which the
-                alarm condition must exist before the alarm triggers automatic scaling activity.
-                The default value is ``1`` .
+                The number of periods, in five-minute increments, during which the alarm condition
+                must exist before the alarm triggers automatic scaling activity. The default value
+                is ``1`` .
 
               - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -2072,7 +2074,7 @@ class ClientAddInstanceGroupsInstanceGroupsTypeDef(
 
 _ClientAddInstanceGroupsResponseTypeDef = TypedDict(
     "_ClientAddInstanceGroupsResponseTypeDef",
-    {"JobFlowId": str, "InstanceGroupIds": List[str]},
+    {"JobFlowId": str, "InstanceGroupIds": List[str], "ClusterArn": str},
     total=False,
 )
 
@@ -2092,6 +2094,10 @@ class ClientAddInstanceGroupsResponseTypeDef(_ClientAddInstanceGroupsResponseTyp
       Instance group IDs of the newly created instance groups.
 
       - *(string) --*
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -2794,6 +2800,7 @@ _ClientDescribeClusterResponseClusterTypeDef = TypedDict(
         "EbsRootVolumeSize": int,
         "RepoUpgradeOnBoot": str,
         "KerberosAttributes": ClientDescribeClusterResponseClusterKerberosAttributesTypeDef,
+        "ClusterArn": str,
     },
     total=False,
 )
@@ -2972,13 +2979,13 @@ class ClientDescribeClusterResponseClusterTypeDef(
 
     - **VisibleToAllUsers** *(boolean) --*
 
-       *This member will be deprecated.*
-
       Indicates whether the cluster is visible to all IAM users of the AWS account associated
-      with the cluster. If this value is set to ``true`` , all IAM users of that AWS account can
-      view and manage the cluster if they have the proper policy permissions set. If this value
-      is ``false`` , only the IAM user that created the cluster can view and manage it. This
-      value can be changed using the  SetVisibleToAllUsers action.
+      with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+      account can perform cluster actions if they have the proper IAM policy permissions. If this
+      value is ``false`` , only the IAM user that created the cluster can perform actions. This
+      value can be changed on a running cluster by using the  SetVisibleToAllUsers action. You
+      can override the default value of ``true`` when you create a cluster by using the
+      ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
     - **Applications** *(list) --*
 
@@ -3167,6 +3174,10 @@ class ClientDescribeClusterResponseClusterTypeDef(
       - **ADDomainJoinPassword** *(string) --*
 
         The Active Directory password for ``ADDomainJoinUser`` .
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -3352,13 +3363,13 @@ class ClientDescribeClusterResponseTypeDef(_ClientDescribeClusterResponseTypeDef
 
       - **VisibleToAllUsers** *(boolean) --*
 
-         *This member will be deprecated.*
-
         Indicates whether the cluster is visible to all IAM users of the AWS account associated
-        with the cluster. If this value is set to ``true`` , all IAM users of that AWS account can
-        view and manage the cluster if they have the proper policy permissions set. If this value
-        is ``false`` , only the IAM user that created the cluster can view and manage it. This
-        value can be changed using the  SetVisibleToAllUsers action.
+        with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+        account can perform cluster actions if they have the proper IAM policy permissions. If this
+        value is ``false`` , only the IAM user that created the cluster can perform actions. This
+        value can be changed on a running cluster by using the  SetVisibleToAllUsers action. You
+        can override the default value of ``true`` when you create a cluster by using the
+        ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
       - **Applications** *(list) --*
 
@@ -3547,6 +3558,10 @@ class ClientDescribeClusterResponseTypeDef(_ClientDescribeClusterResponseTypeDef
         - **ADDomainJoinPassword** *(string) --*
 
           The Active Directory password for ``ADDomainJoinUser`` .
+
+      - **ClusterArn** *(string) --*
+
+        The Amazon Resource Name of the cluster.
     """
 
 
@@ -3755,11 +3770,10 @@ class ClientDescribeJobFlowsResponseJobFlowsInstancesInstanceGroupsTypeDef(
 
     - **BidPrice** *(string) --*
 
-      The maximum Spot price your are willing to pay for EC2 instances.
-
-      An optional, nullable field that applies if the ``MarketType`` for the instance
-      group is specified as ``SPOT`` . Specified in USD. If the value is NULL and
-      ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+      The bid price for each EC2 Spot instance type as defined by ``InstanceType`` .
+      Expressed in USD. If neither ``BidPrice`` nor
+      ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+      ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
     - **InstanceType** *(string) --*
 
@@ -3917,11 +3931,10 @@ class ClientDescribeJobFlowsResponseJobFlowsInstancesTypeDef(
 
         - **BidPrice** *(string) --*
 
-          The maximum Spot price your are willing to pay for EC2 instances.
-
-          An optional, nullable field that applies if the ``MarketType`` for the instance
-          group is specified as ``SPOT`` . Specified in USD. If the value is NULL and
-          ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+          The bid price for each EC2 Spot instance type as defined by ``InstanceType`` .
+          Expressed in USD. If neither ``BidPrice`` nor
+          ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+          ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
         - **InstanceType** *(string) --*
 
@@ -4434,11 +4447,10 @@ class ClientDescribeJobFlowsResponseJobFlowsTypeDef(
 
           - **BidPrice** *(string) --*
 
-            The maximum Spot price your are willing to pay for EC2 instances.
-
-            An optional, nullable field that applies if the ``MarketType`` for the instance
-            group is specified as ``SPOT`` . Specified in USD. If the value is NULL and
-            ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+            The bid price for each EC2 Spot instance type as defined by ``InstanceType`` .
+            Expressed in USD. If neither ``BidPrice`` nor
+            ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+            ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
           - **InstanceType** *(string) --*
 
@@ -4654,13 +4666,13 @@ class ClientDescribeJobFlowsResponseJobFlowsTypeDef(
 
     - **VisibleToAllUsers** *(boolean) --*
 
-       *This member will be deprecated.*
-
-      Specifies whether the cluster is visible to all IAM users of the AWS account associated
-      with the cluster. If this value is set to ``true`` , all IAM users of that AWS account
-      can view and (if they have the proper policy permissions set) manage the cluster. If it
-      is set to ``false`` , only the IAM user that created the cluster can view and manage it.
-      This value can be changed using the  SetVisibleToAllUsers action.
+      Indicates whether the cluster is visible to all IAM users of the AWS account associated
+      with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+      account can perform cluster actions if they have the proper IAM policy permissions. If
+      this value is ``false`` , only the IAM user that created the cluster can perform actions.
+      This value can be changed on a running cluster by using the  SetVisibleToAllUsers action.
+      You can override the default value of ``true`` when you create a cluster by using the
+      ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
     - **JobFlowRole** *(string) --*
 
@@ -4814,11 +4826,10 @@ class ClientDescribeJobFlowsResponseTypeDef(_ClientDescribeJobFlowsResponseTypeD
 
               - **BidPrice** *(string) --*
 
-                The maximum Spot price your are willing to pay for EC2 instances.
-
-                An optional, nullable field that applies if the ``MarketType`` for the instance
-                group is specified as ``SPOT`` . Specified in USD. If the value is NULL and
-                ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+                The bid price for each EC2 Spot instance type as defined by ``InstanceType`` .
+                Expressed in USD. If neither ``BidPrice`` nor
+                ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+                ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
               - **InstanceType** *(string) --*
 
@@ -5034,13 +5045,13 @@ class ClientDescribeJobFlowsResponseTypeDef(_ClientDescribeJobFlowsResponseTypeD
 
         - **VisibleToAllUsers** *(boolean) --*
 
-           *This member will be deprecated.*
-
-          Specifies whether the cluster is visible to all IAM users of the AWS account associated
-          with the cluster. If this value is set to ``true`` , all IAM users of that AWS account
-          can view and (if they have the proper policy permissions set) manage the cluster. If it
-          is set to ``false`` , only the IAM user that created the cluster can view and manage it.
-          This value can be changed using the  SetVisibleToAllUsers action.
+          Indicates whether the cluster is visible to all IAM users of the AWS account associated
+          with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+          account can perform cluster actions if they have the proper IAM policy permissions. If
+          this value is ``false`` , only the IAM user that created the cluster can perform actions.
+          This value can be changed on a running cluster by using the  SetVisibleToAllUsers action.
+          You can override the default value of ``true`` when you create a cluster by using the
+          ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
         - **JobFlowRole** *(string) --*
 
@@ -5927,6 +5938,7 @@ _ClientListClustersResponseClustersTypeDef = TypedDict(
         "Name": str,
         "Status": ClientListClustersResponseClustersStatusTypeDef,
         "NormalizedInstanceHours": int,
+        "ClusterArn": str,
     },
     total=False,
 )
@@ -5991,6 +6003,10 @@ class ClientListClustersResponseClustersTypeDef(
       weighted more, so an EC2 instance that is roughly four times more expensive would result
       in the normalized instance hours being incremented by four. This result is only an
       approximation and does not reflect the actual billing rate.
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -6067,6 +6083,10 @@ class ClientListClustersResponseTypeDef(_ClientListClustersResponseTypeDef):
           weighted more, so an EC2 instance that is roughly four times more expensive would result
           in the normalized instance hours being incremented by four. This result is only an
           approximation and does not reflect the actual billing rate.
+
+        - **ClusterArn** *(string) --*
+
+          The Amazon Resource Name of the cluster.
 
     - **Marker** *(string) --*
 
@@ -7345,9 +7365,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsAutoScalingPolicyRulesTrigge
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the
-      alarm condition must exist before the alarm triggers automatic scaling
-      activity. The default value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm
+      condition must exist before the alarm triggers automatic scaling activity. The
+      default value is ``1`` .
 
     - **MetricName** *(string) --*
 
@@ -7432,9 +7452,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsAutoScalingPolicyRulesTrigge
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the
-        alarm condition must exist before the alarm triggers automatic scaling
-        activity. The default value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm
+        condition must exist before the alarm triggers automatic scaling activity. The
+        default value is ``1`` .
 
       - **MetricName** *(string) --*
 
@@ -7582,9 +7602,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsAutoScalingPolicyRulesTypeDe
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the
-          alarm condition must exist before the alarm triggers automatic scaling
-          activity. The default value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm
+          condition must exist before the alarm triggers automatic scaling activity. The
+          default value is ``1`` .
 
         - **MetricName** *(string) --*
 
@@ -7854,9 +7874,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the
-              alarm condition must exist before the alarm triggers automatic scaling
-              activity. The default value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm
+              condition must exist before the alarm triggers automatic scaling activity. The
+              default value is ``1`` .
 
             - **MetricName** *(string) --*
 
@@ -8319,11 +8339,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsTypeDef(
 
     - **BidPrice** *(string) --*
 
-      The maximum Spot price your are willing to pay for EC2 instances.
-
-      An optional, nullable field that applies if the ``MarketType`` for the instance group is
-      specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-      ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+      The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+      in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+      ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
     - **InstanceType** *(string) --*
 
@@ -8650,9 +8668,9 @@ class ClientListInstanceGroupsResponseInstanceGroupsTypeDef(
 
               - **EvaluationPeriods** *(integer) --*
 
-                The number of periods, expressed in seconds using ``Period`` , during which the
-                alarm condition must exist before the alarm triggers automatic scaling
-                activity. The default value is ``1`` .
+                The number of periods, in five-minute increments, during which the alarm
+                condition must exist before the alarm triggers automatic scaling activity. The
+                default value is ``1`` .
 
               - **MetricName** *(string) --*
 
@@ -8750,11 +8768,9 @@ class ClientListInstanceGroupsResponseTypeDef(_ClientListInstanceGroupsResponseT
 
         - **BidPrice** *(string) --*
 
-          The maximum Spot price your are willing to pay for EC2 instances.
-
-          An optional, nullable field that applies if the ``MarketType`` for the instance group is
-          specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-          ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+          The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+          in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+          ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
         - **InstanceType** *(string) --*
 
@@ -9081,9 +9097,9 @@ class ClientListInstanceGroupsResponseTypeDef(_ClientListInstanceGroupsResponseT
 
                   - **EvaluationPeriods** *(integer) --*
 
-                    The number of periods, expressed in seconds using ``Period`` , during which the
-                    alarm condition must exist before the alarm triggers automatic scaling
-                    activity. The default value is ``1`` .
+                    The number of periods, in five-minute increments, during which the alarm
+                    condition must exist before the alarm triggers automatic scaling activity. The
+                    default value is ``1`` .
 
                   - **MetricName** *(string) --*
 
@@ -10509,9 +10525,8 @@ class ClientPutAutoScalingPolicyAutoScalingPolicyRulesTriggerCloudWatchAlarmDefi
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the alarm
-      condition must exist before the alarm triggers automatic scaling activity. The default
-      value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm condition must
+      exist before the alarm triggers automatic scaling activity. The default value is ``1`` .
 
     - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -10592,9 +10607,8 @@ class ClientPutAutoScalingPolicyAutoScalingPolicyRulesTriggerTypeDef(
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the alarm
-        condition must exist before the alarm triggers automatic scaling activity. The default
-        value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm condition must
+        exist before the alarm triggers automatic scaling activity. The default value is ``1`` .
 
       - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -10741,9 +10755,8 @@ class ClientPutAutoScalingPolicyAutoScalingPolicyRulesTypeDef(
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the alarm
-          condition must exist before the alarm triggers automatic scaling activity. The default
-          value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm condition must
+          exist before the alarm triggers automatic scaling activity. The default value is ``1`` .
 
         - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -10906,9 +10919,8 @@ class ClientPutAutoScalingPolicyAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the alarm
-              condition must exist before the alarm triggers automatic scaling activity. The default
-              value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm condition must
+              exist before the alarm triggers automatic scaling activity. The default value is ``1`` .
 
             - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -11159,9 +11171,9 @@ class ClientPutAutoScalingPolicyResponseAutoScalingPolicyRulesTriggerCloudWatchA
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the
-      alarm condition must exist before the alarm triggers automatic scaling activity.
-      The default value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm condition
+      must exist before the alarm triggers automatic scaling activity. The default value
+      is ``1`` .
 
     - **MetricName** *(string) --*
 
@@ -11244,9 +11256,9 @@ class ClientPutAutoScalingPolicyResponseAutoScalingPolicyRulesTriggerTypeDef(
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the
-        alarm condition must exist before the alarm triggers automatic scaling activity.
-        The default value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm condition
+        must exist before the alarm triggers automatic scaling activity. The default value
+        is ``1`` .
 
       - **MetricName** *(string) --*
 
@@ -11391,9 +11403,9 @@ class ClientPutAutoScalingPolicyResponseAutoScalingPolicyRulesTypeDef(
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the
-          alarm condition must exist before the alarm triggers automatic scaling activity.
-          The default value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm condition
+          must exist before the alarm triggers automatic scaling activity. The default value
+          is ``1`` .
 
         - **MetricName** *(string) --*
 
@@ -11654,9 +11666,9 @@ class ClientPutAutoScalingPolicyResponseAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the
-              alarm condition must exist before the alarm triggers automatic scaling activity.
-              The default value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm condition
+              must exist before the alarm triggers automatic scaling activity. The default value
+              is ``1`` .
 
             - **MetricName** *(string) --*
 
@@ -11715,6 +11727,7 @@ _ClientPutAutoScalingPolicyResponseTypeDef = TypedDict(
         "ClusterId": str,
         "InstanceGroupId": str,
         "AutoScalingPolicy": ClientPutAutoScalingPolicyResponseAutoScalingPolicyTypeDef,
+        "ClusterArn": str,
     },
     total=False,
 )
@@ -11859,9 +11872,9 @@ class ClientPutAutoScalingPolicyResponseTypeDef(
 
               - **EvaluationPeriods** *(integer) --*
 
-                The number of periods, expressed in seconds using ``Period`` , during which the
-                alarm condition must exist before the alarm triggers automatic scaling activity.
-                The default value is ``1`` .
+                The number of periods, in five-minute increments, during which the alarm condition
+                must exist before the alarm triggers automatic scaling activity. The default value
+                is ``1`` .
 
               - **MetricName** *(string) --*
 
@@ -11911,6 +11924,10 @@ class ClientPutAutoScalingPolicyResponseTypeDef(
                   - **Value** *(string) --*
 
                     The dimension value.
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -13028,9 +13045,9 @@ class ClientRunJobFlowInstancesInstanceGroupsAutoScalingPolicyRulesTriggerCloudW
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the
-      alarm condition must exist before the alarm triggers automatic scaling activity.
-      The default value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm
+      condition must exist before the alarm triggers automatic scaling activity. The
+      default value is ``1`` .
 
     - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -13112,9 +13129,9 @@ class ClientRunJobFlowInstancesInstanceGroupsAutoScalingPolicyRulesTriggerTypeDe
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the
-        alarm condition must exist before the alarm triggers automatic scaling activity.
-        The default value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm
+        condition must exist before the alarm triggers automatic scaling activity. The
+        default value is ``1`` .
 
       - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -13263,9 +13280,9 @@ class ClientRunJobFlowInstancesInstanceGroupsAutoScalingPolicyRulesTypeDef(
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the
-          alarm condition must exist before the alarm triggers automatic scaling activity.
-          The default value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm
+          condition must exist before the alarm triggers automatic scaling activity. The
+          default value is ``1`` .
 
         - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -13437,9 +13454,9 @@ class ClientRunJobFlowInstancesInstanceGroupsAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the
-              alarm condition must exist before the alarm triggers automatic scaling activity.
-              The default value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm
+              condition must exist before the alarm triggers automatic scaling activity. The
+              default value is ``1`` .
 
             - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -13720,11 +13737,9 @@ class ClientRunJobFlowInstancesInstanceGroupsTypeDef(
 
     - **BidPrice** *(string) --*
 
-      The maximum Spot price your are willing to pay for EC2 instances.
-
-      An optional, nullable field that applies if the ``MarketType`` for the instance group is
-      specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-      ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+      The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed in
+      USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+      ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
     - **InstanceType** *(string) --* **[REQUIRED]**
 
@@ -13917,9 +13932,9 @@ class ClientRunJobFlowInstancesInstanceGroupsTypeDef(
 
               - **EvaluationPeriods** *(integer) --*
 
-                The number of periods, expressed in seconds using ``Period`` , during which the
-                alarm condition must exist before the alarm triggers automatic scaling activity.
-                The default value is ``1`` .
+                The number of periods, in five-minute increments, during which the alarm
+                condition must exist before the alarm triggers automatic scaling activity. The
+                default value is ``1`` .
 
               - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -14072,11 +14087,9 @@ class ClientRunJobFlowInstancesTypeDef(_ClientRunJobFlowInstancesTypeDef):
 
         - **BidPrice** *(string) --*
 
-          The maximum Spot price your are willing to pay for EC2 instances.
-
-          An optional, nullable field that applies if the ``MarketType`` for the instance group is
-          specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-          ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+          The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed in
+          USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+          ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
         - **InstanceType** *(string) --* **[REQUIRED]**
 
@@ -14269,9 +14282,9 @@ class ClientRunJobFlowInstancesTypeDef(_ClientRunJobFlowInstancesTypeDef):
 
                   - **EvaluationPeriods** *(integer) --*
 
-                    The number of periods, expressed in seconds using ``Period`` , during which the
-                    alarm condition must exist before the alarm triggers automatic scaling activity.
-                    The default value is ``1`` .
+                    The number of periods, in five-minute increments, during which the alarm
+                    condition must exist before the alarm triggers automatic scaling activity. The
+                    default value is ``1`` .
 
                   - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -14712,7 +14725,9 @@ class ClientRunJobFlowNewSupportedProductsTypeDef(
 
 
 _ClientRunJobFlowResponseTypeDef = TypedDict(
-    "_ClientRunJobFlowResponseTypeDef", {"JobFlowId": str}, total=False
+    "_ClientRunJobFlowResponseTypeDef",
+    {"JobFlowId": str, "ClusterArn": str},
+    total=False,
 )
 
 
@@ -14725,6 +14740,10 @@ class ClientRunJobFlowResponseTypeDef(_ClientRunJobFlowResponseTypeDef):
     - **JobFlowId** *(string) --*
 
       An unique identifier for the job flow.
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -15199,6 +15218,7 @@ _ListClustersPaginateResponseClustersTypeDef = TypedDict(
         "Name": str,
         "Status": ListClustersPaginateResponseClustersStatusTypeDef,
         "NormalizedInstanceHours": int,
+        "ClusterArn": str,
     },
     total=False,
 )
@@ -15263,6 +15283,10 @@ class ListClustersPaginateResponseClustersTypeDef(
       weighted more, so an EC2 instance that is roughly four times more expensive would result
       in the normalized instance hours being incremented by four. This result is only an
       approximation and does not reflect the actual billing rate.
+
+    - **ClusterArn** *(string) --*
+
+      The Amazon Resource Name of the cluster.
     """
 
 
@@ -15339,6 +15363,10 @@ class ListClustersPaginateResponseTypeDef(_ListClustersPaginateResponseTypeDef):
           weighted more, so an EC2 instance that is roughly four times more expensive would result
           in the normalized instance hours being incremented by four. This result is only an
           approximation and does not reflect the actual billing rate.
+
+        - **ClusterArn** *(string) --*
+
+          The Amazon Resource Name of the cluster.
 
     - **NextToken** *(string) --*
 
@@ -16675,9 +16703,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsAutoScalingPolicyRulesTrig
 
     - **EvaluationPeriods** *(integer) --*
 
-      The number of periods, expressed in seconds using ``Period`` , during which the
-      alarm condition must exist before the alarm triggers automatic scaling
-      activity. The default value is ``1`` .
+      The number of periods, in five-minute increments, during which the alarm
+      condition must exist before the alarm triggers automatic scaling activity. The
+      default value is ``1`` .
 
     - **MetricName** *(string) --*
 
@@ -16762,9 +16790,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsAutoScalingPolicyRulesTrig
 
       - **EvaluationPeriods** *(integer) --*
 
-        The number of periods, expressed in seconds using ``Period`` , during which the
-        alarm condition must exist before the alarm triggers automatic scaling
-        activity. The default value is ``1`` .
+        The number of periods, in five-minute increments, during which the alarm
+        condition must exist before the alarm triggers automatic scaling activity. The
+        default value is ``1`` .
 
       - **MetricName** *(string) --*
 
@@ -16912,9 +16940,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsAutoScalingPolicyRulesType
 
         - **EvaluationPeriods** *(integer) --*
 
-          The number of periods, expressed in seconds using ``Period`` , during which the
-          alarm condition must exist before the alarm triggers automatic scaling
-          activity. The default value is ``1`` .
+          The number of periods, in five-minute increments, during which the alarm
+          condition must exist before the alarm triggers automatic scaling activity. The
+          default value is ``1`` .
 
         - **MetricName** *(string) --*
 
@@ -17184,9 +17212,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsAutoScalingPolicyTypeDef(
 
             - **EvaluationPeriods** *(integer) --*
 
-              The number of periods, expressed in seconds using ``Period`` , during which the
-              alarm condition must exist before the alarm triggers automatic scaling
-              activity. The default value is ``1`` .
+              The number of periods, in five-minute increments, during which the alarm
+              condition must exist before the alarm triggers automatic scaling activity. The
+              default value is ``1`` .
 
             - **MetricName** *(string) --*
 
@@ -17649,11 +17677,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsTypeDef(
 
     - **BidPrice** *(string) --*
 
-      The maximum Spot price your are willing to pay for EC2 instances.
-
-      An optional, nullable field that applies if the ``MarketType`` for the instance group is
-      specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-      ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+      The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+      in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+      ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
     - **InstanceType** *(string) --*
 
@@ -17980,9 +18006,9 @@ class ListInstanceGroupsPaginateResponseInstanceGroupsTypeDef(
 
               - **EvaluationPeriods** *(integer) --*
 
-                The number of periods, expressed in seconds using ``Period`` , during which the
-                alarm condition must exist before the alarm triggers automatic scaling
-                activity. The default value is ``1`` .
+                The number of periods, in five-minute increments, during which the alarm
+                condition must exist before the alarm triggers automatic scaling activity. The
+                default value is ``1`` .
 
               - **MetricName** *(string) --*
 
@@ -18082,11 +18108,9 @@ class ListInstanceGroupsPaginateResponseTypeDef(
 
         - **BidPrice** *(string) --*
 
-          The maximum Spot price your are willing to pay for EC2 instances.
-
-          An optional, nullable field that applies if the ``MarketType`` for the instance group is
-          specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-          ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+          The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+          in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+          ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
         - **InstanceType** *(string) --*
 
@@ -18413,9 +18437,9 @@ class ListInstanceGroupsPaginateResponseTypeDef(
 
                   - **EvaluationPeriods** *(integer) --*
 
-                    The number of periods, expressed in seconds using ``Period`` , during which the
-                    alarm condition must exist before the alarm triggers automatic scaling
-                    activity. The default value is ``1`` .
+                    The number of periods, in five-minute increments, during which the alarm
+                    condition must exist before the alarm triggers automatic scaling activity. The
+                    default value is ``1`` .
 
                   - **MetricName** *(string) --*
 

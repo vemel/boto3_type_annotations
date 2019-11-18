@@ -232,7 +232,8 @@ class ListClustersPaginator(Boto3Paginator):
                                 'EndDateTime': datetime(2015, 1, 1)
                             }
                         },
-                        'NormalizedInstanceHours': 123
+                        'NormalizedInstanceHours': 123,
+                        'ClusterArn': 'string'
                     },
                 ],
                 'NextToken': 'string'
@@ -303,6 +304,10 @@ class ListClustersPaginator(Boto3Paginator):
                   weighted more, so an EC2 instance that is roughly four times more expensive would result
                   in the normalized instance hours being incremented by four. This result is only an
                   approximation and does not reflect the actual billing rate.
+
+                - **ClusterArn** *(string) --*
+
+                  The Amazon Resource Name of the cluster.
 
             - **NextToken** *(string) --*
 
@@ -943,11 +948,9 @@ class ListInstanceGroupsPaginator(Boto3Paginator):
 
                 - **BidPrice** *(string) --*
 
-                  The maximum Spot price your are willing to pay for EC2 instances.
-
-                  An optional, nullable field that applies if the ``MarketType`` for the instance group is
-                  specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-                  ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+                  The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+                  in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+                  ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
                 - **InstanceType** *(string) --*
 
@@ -1274,9 +1277,9 @@ class ListInstanceGroupsPaginator(Boto3Paginator):
 
                           - **EvaluationPeriods** *(integer) --*
 
-                            The number of periods, expressed in seconds using ``Period`` , during which the
-                            alarm condition must exist before the alarm triggers automatic scaling
-                            activity. The default value is ``1`` .
+                            The number of periods, in five-minute increments, during which the alarm
+                            condition must exist before the alarm triggers automatic scaling activity. The
+                            default value is ``1`` .
 
                           - **MetricName** *(string) --*
 
@@ -1720,7 +1723,8 @@ class ListStepsPaginator(Boto3Paginator):
         :type StepIds: list
         :param StepIds:
 
-          The filter to limit the step list based on the identifier of the steps.
+          The filter to limit the step list based on the identifier of the steps. You can specify a maximum
+          of ten Step IDs. The character constraint applies to the overall length of the array.
 
           - *(string) --*
 

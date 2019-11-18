@@ -14,7 +14,7 @@ setup(
     license="MIT License",
     author="Vlad Emelianov",
     author_email="vlad.emelianov.nz@gmail.com",
-    description="Boto3 1.10.18 stubs powered by `mypy-boto3`.",
+    description="Boto3 1.10.19 stubs powered by `mypy-boto3`.",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

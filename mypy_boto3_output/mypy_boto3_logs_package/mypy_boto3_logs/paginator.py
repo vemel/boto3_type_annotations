@@ -607,9 +607,9 @@ class DescribeLogStreamsPaginator(Boto3Paginator):
 
                   The number of bytes stored.
 
-                   **IMPORTANT:** Starting on June 17, 2019, this parameter will be deprecated for log
-                   streams, and will be reported as zero. This change applies only to log streams. The
-                   ``storedBytes`` parameter for log groups is not affected.
+                   **IMPORTANT:** On June 17, 2019, this parameter was deprecated for log streams, and is
+                   always reported as zero. This change applies only to log streams. The ``storedBytes``
+                   parameter for log groups is not affected.
 
             - **NextToken** *(string) --*
 

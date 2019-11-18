@@ -106,6 +106,7 @@ from mypy_boto3_ec2.type_defs import (
     ServiceResourceCreateVolumeTagSpecificationsTypeDef,
     ServiceResourceRegisterImageBlockDeviceMappingsTypeDef,
     SnapshotCopyResponseTypeDef,
+    SnapshotCopyTagSpecificationsTypeDef,
     SnapshotCreateTagsTagsTypeDef,
     SnapshotDescribeAttributeResponseTypeDef,
     SnapshotModifyAttributeCreateVolumePermissionTypeDef,
@@ -11484,6 +11485,7 @@ class Snapshot(Boto3ServiceResource):
         Encrypted: bool = None,
         KmsKeyId: str = None,
         PresignedUrl: str = None,
+        TagSpecifications: List[SnapshotCopyTagSpecificationsTypeDef] = None,
         DryRun: bool = None,
     ) -> SnapshotCopyResponseTypeDef:
         """
@@ -11517,6 +11519,25 @@ class Snapshot(Boto3ServiceResource):
               Encrypted=True|False,
               KmsKeyId='string',
               SourceRegion='string',
+              TagSpecifications=[
+                  {
+                      'ResourceType':
+                      'client-vpn-endpoint'|'customer-gateway'|'dedicated-host'|'dhcp-options'|'elastic-ip'
+                      |'fleet'|'fpga-image'|'host-reservation'|'image'|'instance'|'internet-gateway'
+                      |'launch-template'|'natgateway'|'network-acl'|'network-interface'
+                      |'reserved-instances'|'route-table'|'security-group'|'snapshot'
+                      |'spot-instances-request'|'subnet'|'traffic-mirror-filter'|'traffic-mirror-session'
+                      |'traffic-mirror-target'|'transit-gateway'|'transit-gateway-attachment'
+                      |'transit-gateway-route-table'|'volume'|'vpc'|'vpc-peering-connection'
+                      |'vpn-connection'|'vpn-gateway',
+                      'Tags': [
+                          {
+                              'Key': 'string',
+                              'Value': 'string'
+                          },
+                      ]
+                  },
+              ],
               DryRun=True|False
           )
         :type Description: string
@@ -11593,6 +11614,46 @@ class Snapshot(Boto3ServiceResource):
 
           The ID of the Region that contains the snapshot to be copied.
 
+        :type TagSpecifications: list
+        :param TagSpecifications:
+
+          - *(dict) --*
+
+            The tags to apply to a resource when the resource is being created.
+
+            - **ResourceType** *(string) --*
+
+              The type of resource to tag. Currently, the resource types that support tagging on creation
+              are: ``capacity-reservation`` | ``client-vpn-endpoint`` | ``dedicated-host`` | ``fleet`` |
+              ``fpga-image`` | ``instance`` | ``launch-template`` | ``snapshot`` |
+              ``traffic-mirror-filter`` | ``traffic-mirror-session`` | ``traffic-mirror-target`` |
+              ``transit-gateway`` | ``transit-gateway-attachment`` | ``transit-gateway-route-table`` |
+              ``volume`` .
+
+              To tag a resource after it has been created, see `CreateTags
+              <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html>`__ .
+
+            - **Tags** *(list) --*
+
+              The tags to apply to the resource.
+
+              - *(dict) --*
+
+                Describes a tag.
+
+                - **Key** *(string) --*
+
+                  The key of the tag.
+
+                  Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters.
+                  May not begin with ``aws:`` .
+
+                - **Value** *(string) --*
+
+                  The value of the tag.
+
+                  Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
+
         :type DryRun: boolean
         :param DryRun:
 
@@ -11608,7 +11669,13 @@ class Snapshot(Boto3ServiceResource):
           ::
 
             {
-                'SnapshotId': 'string'
+                'SnapshotId': 'string',
+                'Tags': [
+                    {
+                        'Key': 'string',
+                        'Value': 'string'
+                    },
+                ]
             }
           **Response Structure**
 
@@ -11619,6 +11686,25 @@ class Snapshot(Boto3ServiceResource):
             - **SnapshotId** *(string) --*
 
               The ID of the new snapshot.
+
+            - **Tags** *(list) --*
+
+              - *(dict) --*
+
+                Describes a tag.
+
+                - **Key** *(string) --*
+
+                  The key of the tag.
+
+                  Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters.
+                  May not begin with ``aws:`` .
+
+                - **Value** *(string) --*
+
+                  The value of the tag.
+
+                  Constraints: Tag values are case-sensitive and accept a maximum of 255 Unicode characters.
 
         """
 

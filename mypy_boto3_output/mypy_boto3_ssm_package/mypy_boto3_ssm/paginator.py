@@ -931,18 +931,11 @@ class DescribeAutomationExecutionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1350,18 +1343,11 @@ class DescribeAutomationStepExecutionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3633,17 +3619,9 @@ class DescribeMaintenanceWindowSchedulePaginator(Boto3Paginator):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -3926,18 +3904,11 @@ class DescribeMaintenanceWindowTargetsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4165,18 +4136,11 @@ class DescribeMaintenanceWindowTasksPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4509,17 +4473,9 @@ class DescribeMaintenanceWindowsForTargetPaginator(Boto3Paginator):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4653,7 +4609,7 @@ class DescribeParametersPaginator(Boto3Paginator):
         :type Filters: list
         :param Filters:
 
-          One or more filters. Use a filter to return a more specific list of results.
+          This data type is deprecated. Instead, use ``ParameterFilters`` .
 
           - *(dict) --*
 
@@ -4678,10 +4634,22 @@ class DescribeParametersPaginator(Boto3Paginator):
 
             One or more filters. Use a filter to return a more specific list of results.
 
-            .. note::
+            .. warning::
 
-              The ``Name`` and ``Tier`` filter keys can't be used with the  GetParametersByPath API action.
-              Also, the ``Label`` filter key can't be used with the  DescribeParameters API action.
+              The ``ParameterStringFilter`` object is used by the  DescribeParameters and
+              GetParametersByPath API actions. However, not all of the pattern values listed for ``Key``
+              can be used with both actions.
+
+              For ``DescribeActions`` , all of the listed patterns are valid, with the exception of
+              ``Label`` .
+
+              For ``GetParametersByPath`` , the following patterns listed for ``Key`` are not valid:
+              ``Name`` , ``Path`` , and ``Tier`` .
+
+              For examples of CLI commands demonstrating valid parameter filter constructions, see
+              `Searching for Systems Manager Parameters
+              <http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html>`__ in the
+              *AWS Systems Manager User Guide* .
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -4689,8 +4657,14 @@ class DescribeParametersPaginator(Boto3Paginator):
 
             - **Option** *(string) --*
 
-              Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and
-              OneLevel.
+              For all filters used with  DescribeParameters , valid options include ``Equals`` and
+              ``BeginsWith`` . The ``Name`` filter additionally supports the ``Contains`` option.
+              (Exception: For filters using the key ``Path`` , valid options include ``Recursive`` and
+              ``OneLevel`` .)
+
+              For filters used with  GetParametersByPath , valid options include ``Equals`` and
+              ``BeginsWith`` . (Exception: For filters using the key ``Label`` , the only valid option is
+              ``Equals`` .)
 
             - **Values** *(list) --*
 
@@ -5968,18 +5942,26 @@ class GetParametersByPathPaginator(Boto3Paginator):
 
           Filters to limit the request results.
 
-          .. note::
-
-            You can't filter using the parameter name.
-
           - *(dict) --*
 
             One or more filters. Use a filter to return a more specific list of results.
 
-            .. note::
+            .. warning::
 
-              The ``Name`` and ``Tier`` filter keys can't be used with the  GetParametersByPath API action.
-              Also, the ``Label`` filter key can't be used with the  DescribeParameters API action.
+              The ``ParameterStringFilter`` object is used by the  DescribeParameters and
+              GetParametersByPath API actions. However, not all of the pattern values listed for ``Key``
+              can be used with both actions.
+
+              For ``DescribeActions`` , all of the listed patterns are valid, with the exception of
+              ``Label`` .
+
+              For ``GetParametersByPath`` , the following patterns listed for ``Key`` are not valid:
+              ``Name`` , ``Path`` , and ``Tier`` .
+
+              For examples of CLI commands demonstrating valid parameter filter constructions, see
+              `Searching for Systems Manager Parameters
+              <http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html>`__ in the
+              *AWS Systems Manager User Guide* .
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -5987,8 +5969,14 @@ class GetParametersByPathPaginator(Boto3Paginator):
 
             - **Option** *(string) --*
 
-              Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and
-              OneLevel.
+              For all filters used with  DescribeParameters , valid options include ``Equals`` and
+              ``BeginsWith`` . The ``Name`` filter additionally supports the ``Contains`` option.
+              (Exception: For filters using the key ``Path`` , valid options include ``Recursive`` and
+              ``OneLevel`` .)
+
+              For filters used with  GetParametersByPath , valid options include ``Equals`` and
+              ``BeginsWith`` . (Exception: For filters using the key ``Label`` , the only valid option is
+              ``Equals`` .)
 
             - **Values** *(list) --*
 
@@ -6269,18 +6257,11 @@ class ListAssociationVersionsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -6541,18 +6522,11 @@ class ListAssociationsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -7333,18 +7307,11 @@ class ListCommandsPaginator(Boto3Paginator):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet

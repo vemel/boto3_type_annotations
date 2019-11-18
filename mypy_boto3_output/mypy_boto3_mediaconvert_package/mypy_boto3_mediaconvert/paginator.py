@@ -413,12 +413,25 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                     'Name': 'string',
                                     'OutputGroupSettings': {
                                         'CmafGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'BaseUrl': 'string',
                                             'ClientCache': 'DISABLED'|'ENABLED',
                                             'CodecSpecification': 'RFC_6381'|'RFC_4281',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -463,10 +476,23 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                             'WriteHlsManifest': 'DISABLED'|'ENABLED'
                                         },
                                         'DashIsoGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'BaseUrl': 'string',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -498,6 +524,11 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -510,6 +541,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                         'HlsGroupSettings': {
                                             'AdMarkers': [
                                                 'ELEMENTAL'|'ELEMENTAL_SCTE35',
+                                            ],
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
                                             ],
                                             'BaseUrl': 'string',
                                             'CaptionLanguageMappings': [
@@ -548,6 +587,11 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -595,10 +639,23 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                             'TimestampDeltaMilliseconds': 123
                                         },
                                         'MsSmoothGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'AudioDeduplication': 'COMBINE_DUPLICATE_STREAMS'|'NONE',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -860,7 +917,7 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                                         },
                                                         'SccDestinationSettings': {
                                                             'Framerate':
-                                                            'FRAMERATE_23_97'|'FRAMERATE_24'
+                                                            'FRAMERATE_23_97'|'FRAMERATE_24'|'FRAMERATE_25'
                                                             |'FRAMERATE_29_97_DROPFRAME'
                                                             |'FRAMERATE_29_97_NON_DROPFRAME'
                                                         },
@@ -1004,6 +1061,11 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                                     'FreeSpaceBox': 'INCLUDE'|'EXCLUDE',
                                                     'MoovPlacement': 'PROGRESSIVE_DOWNLOAD'|'NORMAL',
                                                     'Mp4MajorBrand': 'string'
+                                                },
+                                                'MpdSettings': {
+                                                    'CaptionContainerType': 'RAW'|'FRAGMENTED_MP4',
+                                                    'Scte35Esam': 'INSERT'|'NONE',
+                                                    'Scte35Source': 'PASSTHROUGH'|'NONE'
                                                 }
                                             },
                                             'Extension': 'string',
@@ -1265,6 +1327,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                                         |'BLEND_TICKER',
                                                         'Control': 'FORCE_ALL_FRAMES'|'NORMAL',
                                                         'Mode': 'DEINTERLACE'|'INVERSE_TELECINE'|'ADAPTIVE'
+                                                    },
+                                                    'DolbyVision': {
+                                                        'L6Metadata': {
+                                                            'MaxCll': 123,
+                                                            'MaxFall': 123
+                                                        },
+                                                        'L6Mode': 'PASSTHROUGH'|'RECALCULATE'|'SPECIFY',
+                                                        'Profile': 'PROFILE_5'
                                                     },
                                                     'ImageInserter': {
                                                         'InsertableImages': [
@@ -2010,6 +2080,33 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                         (OutputGroups)>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each output in a CMAF
                         Output Group may only contain a single video, audio, or caption output.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one
+                          top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each CMAF
+                          output group in your job. These default manifests reference every output in the
+                          output group. To create additional top-level manifests that reference a subset of
+                          the outputs in the output group, specify a list of them here. For each additional
+                          manifest that you specify, the service creates one HLS manifest and one DASH
+                          manifest.
+
+                            - *(dict) --* Specify the details for each pair of HLS and DASH additional
+                            manifests that you want the service to generate for this CMAF output group.
+                            Each pair of manifests can reference a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your HLS group is film-name.m3u8. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.m3u8. For HLS output groups,
+                              specify a manifestNameModifier that is different from the nameModifier of the
+                              output. The service uses the output name modifier to create unique names for
+                              the individual variant manifests.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be put in the manifest
                           file at the top level BaseURL element. Can be used if streams are delivered from
                           a different URL than the manifest file.
@@ -2030,6 +2127,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -2183,6 +2288,28 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                         - **DashIsoGroupSettings** *(dict) --* Required when you set (Type) under
                         (OutputGroups)>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one .mpd
+                          DASH manifest for each DASH ISO output group in your job. This default manifest
+                          references every output in the output group. To create additional DASH manifests
+                          that reference a subset of the outputs in the output group, specify a list of
+                          them here.
+
+                            - *(dict) --* Specify the details for each additional DASH manifest that you
+                            want the service to generate for this output group. Each manifest can reference
+                            a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your DASH group is film-name.mpd. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.mpd.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be put in the manifest
                           (.mpd) file at the top level BaseURL element. Can be used if streams are
                           delivered from a different URL than the manifest file.
@@ -2197,6 +2324,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -2308,6 +2443,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
 
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
+
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
 
@@ -2341,6 +2484,31 @@ class ListJobTemplatesPaginator(Boto3Paginator):
 
                             - *(string) --*
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one
+                          top-level .m3u8 HLS manifest for each HLS output group in your job. This default
+                          manifest references every output in the output group. To create additional
+                          top-level manifests that reference a subset of the outputs in the output group,
+                          specify a list of them here.
+
+                            - *(dict) --* Specify the details for each additional HLS manifest that you
+                            want the service to generate for this output group. Each manifest can reference
+                            a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your HLS group is film-name.m3u8. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.m3u8. For HLS output groups,
+                              specify a manifestNameModifier that is different from the nameModifier of the
+                              output. The service uses the output name modifier to create unique names for
+                              the individual variant manifests.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be prepended to each
                           output in the media .m3u8 file. Can be used if base manifest is delivered from a
                           different URL than the main .m3u8 file.
@@ -2351,7 +2519,7 @@ class ListJobTemplatesPaginator(Boto3Paginator):
 
                               - **CaptionChannel** *(integer) --* Caption channel.
 
-                              - **CustomLanguageCode** *(string) --* Specify the language for this caption
+                              - **CustomLanguageCode** *(string) --* Specify the language for this captions
                               channel, using the ISO 639-2 or ISO 639-3 three-letter language code
 
                               - **LanguageCode** *(string) --* Specify the language, using the ISO 639-2
@@ -2386,6 +2554,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -2538,6 +2714,28 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                         - **MsSmoothGroupSettings** *(dict) --* Required when you set (Type) under
                         (OutputGroups)>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one .ism
+                          Microsoft Smooth Streaming manifest for each Microsoft Smooth Streaming output
+                          group in your job. This default manifest references every output in the output
+                          group. To create additional manifests that reference a subset of the outputs in
+                          the output group, specify a list of them here.
+
+                            - *(dict) --* Specify the details for each additional Microsoft Smooth
+                            Streaming manifest that you want the service to generate for this output group.
+                            Each manifest can reference a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your Microsoft Smooth group is film-name.ismv.
+                              If you enter "-no-premium" for this setting, then the file name the service
+                              generates for this top-level manifest is film-name-no-premium.ismv.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **AudioDeduplication** *(string) --* COMBINE_DUPLICATE_STREAMS combines
                           identical audio encoding settings across a Microsoft Smooth output group into a
                           single audio stream.
@@ -2552,6 +2750,14 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -3005,10 +3211,15 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                   - **SampleRate** *(integer) --* Sample rate in Hz.
 
                               - **CustomLanguageCode** *(string) --* Specify the language for this audio
-                              output track, using the ISO 639-2 or ISO 639-3 three-letter language code.
-                              The language specified will be used when 'Follow Input Language Code' is not
-                              selected or when 'Follow Input Language Code' is selected but there is no ISO
-                              639 language code specified by the input.
+                              output track. The service puts this language code into your output audio
+                              track when you set Language code control (AudioLanguageCodeControl) to Use
+                              configured (USE_CONFIGURED). The service also uses your specified custom
+                              language code when you set Language code control (AudioLanguageCodeControl)
+                              to Follow input (FOLLOW_INPUT), but your input file doesn't specify a
+                              language code. For all outputs, you can use an ISO 639-2 or ISO 639-3 code.
+                              For streaming outputs, you can also use any other code in the full RFC-5646
+                              specification. Streaming outputs are those that are in one of the following
+                              output groups: CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                               - **LanguageCode** *(string) --* Indicates the language of the audio output
                               track. The ISO 639 language specified in the 'Language Code' drop down will
@@ -3016,11 +3227,13 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                               Input Language Code' is selected but there is no ISO 639 language code
                               specified by the input.
 
-                              - **LanguageCodeControl** *(string) --* Choosing FOLLOW_INPUT will cause the
-                              ISO 639 language code of the output to follow the ISO 639 language code of
-                              the input. The language specified for languageCode' will be used when
-                              USE_CONFIGURED is selected or when FOLLOW_INPUT is selected but there is no
-                              ISO 639 language code specified by the input.
+                              - **LanguageCodeControl** *(string) --* Specify which source for language
+                              code takes precedence for this audio track. When you choose Follow input
+                              (FOLLOW_INPUT), the service uses the language code from the input track if
+                              it's present. If there's no languge code on the input track, the service uses
+                              the code that you specify in the setting Language code (languageCode or
+                              customLanguageCode). When you choose Use configured (USE_CONFIGURED), the
+                              service uses the language code that you specify.
 
                               - **RemixSettings** *(dict) --* Advanced audio remixing settings.
 
@@ -3065,12 +3278,15 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                               captions. The name should be of the format "Caption Selector ", which denotes
                               that the Nth Caption Selector will be used from each input.
 
-                              - **CustomLanguageCode** *(string) --* Indicates the language of the caption
-                              output track, using the ISO 639-2 or ISO 639-3 three-letter language code.
-                              For most captions output formats, the encoder puts this language information
-                              in the output captions metadata. If your output captions format is DVB-Sub or
-                              Burn in, the encoder uses this language information to choose the font
-                              language for rendering the captions text.
+                              - **CustomLanguageCode** *(string) --* Specify the language for this captions
+                              output track. For most captions output formats, the encoder puts this
+                              language information in the output captions metadata. If your output captions
+                              format is DVB-Sub or Burn in, the encoder uses this language information when
+                              automatically selecting the font script for rendering the captions text. For
+                              all outputs, you can use an ISO 639-2 or ISO 639-3 code. For streaming
+                              outputs, you can also use any other code in the full RFC-5646 specification.
+                              Streaming outputs are those that are in one of the following output groups:
+                              CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                               - **DestinationSettings** *(dict) --* Specific settings required by
                               destination type. Note that burnin_destination_settings are not available if
@@ -3686,6 +3902,26 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                               - **Mp4MajorBrand** *(string) --* Overrides the "Major Brand" field in the
                               output file. Usually not necessary to specify.
 
+                            - **MpdSettings** *(dict) --* Settings for MP4 segments in DASH
+
+                              - **CaptionContainerType** *(string) --* Use this setting only in DASH output
+                              groups that include sidecar TTML or IMSC captions. You specify sidecar
+                              captions in a separate output from your audio and video. Choose Raw (RAW) for
+                              captions in a single XML file in a raw container. Choose Fragmented MPEG-4
+                              (FRAGMENTED_MP4) for captions in XML format contained within fragmented MP4
+                              files. This set of fragmented MP4 files is separate from your video and audio
+                              fragmented MP4 files.
+
+                              - **Scte35Esam** *(string) --* Use this setting only when you specify SCTE-35
+                              markers from ESAM. Choose INSERT to put SCTE-35 markers in this output at the
+                              insertion points that you specify in an ESAM XML document. Provide the
+                              document in the setting SCC XML (sccXml).
+
+                              - **Scte35Source** *(string) --* Ignore this setting unless you have SCTE-35
+                              markers in your input video file. Choose Passthrough (PASSTHROUGH) if you
+                              want SCTE-35 markers that appear in your input to also appear in this output.
+                              Choose None (NONE) if you don't want those SCTE-35 markers in this output.
+
                           - **Extension** *(string) --* Use Extension (Extension) to specify the file
                           extension for outputs in File output groups. If you do not specify a value, the
                           service will use default extensions by container type as follows * MPEG-2
@@ -4185,15 +4421,16 @@ class ListJobTemplatesPaginator(Boto3Paginator):
 
                                 - **WriteMp4PackagingType** *(string) --* If the location of parameter set
                                 NAL units doesn't matter in your workflow, ignore this setting. Use this
-                                setting in your CMAF, DASH, or file MP4 output. For file MP4 outputs,
-                                choosing HVC1 can create video that doesn't work properly with some
-                                downstream systems and video players. Choose HVC1 to mark your output as
-                                HVC1. This makes your output compliant with the following specification:
-                                ISO IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15 3rd Edition. For these
+                                setting only with CMAF or DASH outputs, or with standalone file outputs in
+                                an MPEG-4 container (MP4 outputs). Choose HVC1 to mark your output as HVC1.
+                                This makes your output compliant with the following specification: ISO
+                                IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15 3rd Edition. For these
                                 outputs, the service stores parameter set NAL units in the sample headers
-                                but not in the samples directly. The service defaults to marking your
-                                output as HEV1. For these outputs, the service writes parameter set NAL
-                                units directly into the samples.
+                                but not in the samples directly. For MP4 outputs, when you choose HVC1,
+                                your output video might not work properly with some downstream systems and
+                                video players. The service defaults to marking your output as HEV1. For
+                                these outputs, the service writes parameter set NAL units directly into the
+                                samples.
 
                               - **Mpeg2Settings** *(dict) --* Required when you set (Codec) under
                               (VideoDescription)>(CodecSettings) to the value MPEG2.
@@ -4600,6 +4837,28 @@ class ListJobTemplatesPaginator(Boto3Paginator):
                                 converts interlaced to progressive. - Inverse telecine converts Hard
                                 Telecine 29.97i to progressive 23.976p. - Adaptive auto-detects and
                                 converts to progressive.
+
+                              - **DolbyVision** *(dict) --* Enable Dolby Vision feature to produce Dolby
+                              Vision compatible video output.
+
+                                - **L6Metadata** *(dict) --* Use these settings when you set
+                                DolbyVisionLevel6Mode to SPECIFY to override the MaxCLL and MaxFALL values
+                                in your input with new values.
+
+                                  - **MaxCll** *(integer) --* Maximum Content Light Level. Static HDR
+                                  metadata that corresponds to the brightest pixel in the entire stream.
+                                  Measured in nits.
+
+                                  - **MaxFall** *(integer) --* Maximum Frame-Average Light Level. Static
+                                  HDR metadata that corresponds to the highest frame-average brightness in
+                                  the entire stream. Measured in nits.
+
+                                - **L6Mode** *(string) --* Use Dolby Vision Mode to choose how the service
+                                will handle Dolby Vision MaxCLL and MaxFALL properies.
+
+                                - **Profile** *(string) --* In the current MediaConvert implementation, the
+                                Dolby Vision profile is always 5 (PROFILE_5). Therefore, all of your inputs
+                                must contain Dolby Vision frame interleaved data.
 
                               - **ImageInserter** *(dict) --* Enable the Image inserter (ImageInserter)
                               feature to include a graphic overlay on your video. Enable or disable this
@@ -5143,12 +5402,25 @@ class ListJobsPaginator(Boto3Paginator):
                                     'Name': 'string',
                                     'OutputGroupSettings': {
                                         'CmafGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'BaseUrl': 'string',
                                             'ClientCache': 'DISABLED'|'ENABLED',
                                             'CodecSpecification': 'RFC_6381'|'RFC_4281',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -5193,10 +5465,23 @@ class ListJobsPaginator(Boto3Paginator):
                                             'WriteHlsManifest': 'DISABLED'|'ENABLED'
                                         },
                                         'DashIsoGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'BaseUrl': 'string',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -5228,6 +5513,11 @@ class ListJobsPaginator(Boto3Paginator):
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -5240,6 +5530,14 @@ class ListJobsPaginator(Boto3Paginator):
                                         'HlsGroupSettings': {
                                             'AdMarkers': [
                                                 'ELEMENTAL'|'ELEMENTAL_SCTE35',
+                                            ],
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
                                             ],
                                             'BaseUrl': 'string',
                                             'CaptionLanguageMappings': [
@@ -5278,6 +5576,11 @@ class ListJobsPaginator(Boto3Paginator):
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -5325,10 +5628,23 @@ class ListJobsPaginator(Boto3Paginator):
                                             'TimestampDeltaMilliseconds': 123
                                         },
                                         'MsSmoothGroupSettings': {
+                                            'AdditionalManifests': [
+                                                {
+                                                    'ManifestNameModifier': 'string',
+                                                    'SelectedOutputs': [
+                                                        'string',
+                                                    ]
+                                                },
+                                            ],
                                             'AudioDeduplication': 'COMBINE_DUPLICATE_STREAMS'|'NONE',
                                             'Destination': 'string',
                                             'DestinationSettings': {
                                                 'S3Settings': {
+                                                    'AccessControl': {
+                                                        'CannedAcl':
+                                                        'PUBLIC_READ'|'AUTHENTICATED_READ'
+                                                        |'BUCKET_OWNER_READ'|'BUCKET_OWNER_FULL_CONTROL'
+                                                    },
                                                     'Encryption': {
                                                         'EncryptionType':
                                                         'SERVER_SIDE_ENCRYPTION_S3'
@@ -5590,7 +5906,7 @@ class ListJobsPaginator(Boto3Paginator):
                                                         },
                                                         'SccDestinationSettings': {
                                                             'Framerate':
-                                                            'FRAMERATE_23_97'|'FRAMERATE_24'
+                                                            'FRAMERATE_23_97'|'FRAMERATE_24'|'FRAMERATE_25'
                                                             |'FRAMERATE_29_97_DROPFRAME'
                                                             |'FRAMERATE_29_97_NON_DROPFRAME'
                                                         },
@@ -5734,6 +6050,11 @@ class ListJobsPaginator(Boto3Paginator):
                                                     'FreeSpaceBox': 'INCLUDE'|'EXCLUDE',
                                                     'MoovPlacement': 'PROGRESSIVE_DOWNLOAD'|'NORMAL',
                                                     'Mp4MajorBrand': 'string'
+                                                },
+                                                'MpdSettings': {
+                                                    'CaptionContainerType': 'RAW'|'FRAGMENTED_MP4',
+                                                    'Scte35Esam': 'INSERT'|'NONE',
+                                                    'Scte35Source': 'PASSTHROUGH'|'NONE'
                                                 }
                                             },
                                             'Extension': 'string',
@@ -5995,6 +6316,14 @@ class ListJobsPaginator(Boto3Paginator):
                                                         |'BLEND_TICKER',
                                                         'Control': 'FORCE_ALL_FRAMES'|'NORMAL',
                                                         'Mode': 'DEINTERLACE'|'INVERSE_TELECINE'|'ADAPTIVE'
+                                                    },
+                                                    'DolbyVision': {
+                                                        'L6Metadata': {
+                                                            'MaxCll': 123,
+                                                            'MaxFall': 123
+                                                        },
+                                                        'L6Mode': 'PASSTHROUGH'|'RECALCULATE'|'SPECIFY',
+                                                        'Profile': 'PROFILE_5'
                                                     },
                                                     'ImageInserter': {
                                                         'InsertableImages': [
@@ -6857,6 +7186,33 @@ class ListJobsPaginator(Boto3Paginator):
                         (OutputGroups)>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each output in a CMAF
                         Output Group may only contain a single video, audio, or caption output.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one
+                          top-level .m3u8 HLS manifest and one top -level .mpd DASH manifest for each CMAF
+                          output group in your job. These default manifests reference every output in the
+                          output group. To create additional top-level manifests that reference a subset of
+                          the outputs in the output group, specify a list of them here. For each additional
+                          manifest that you specify, the service creates one HLS manifest and one DASH
+                          manifest.
+
+                            - *(dict) --* Specify the details for each pair of HLS and DASH additional
+                            manifests that you want the service to generate for this CMAF output group.
+                            Each pair of manifests can reference a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your HLS group is film-name.m3u8. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.m3u8. For HLS output groups,
+                              specify a manifestNameModifier that is different from the nameModifier of the
+                              output. The service uses the output name modifier to create unique names for
+                              the individual variant manifests.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be put in the manifest
                           file at the top level BaseURL element. Can be used if streams are delivered from
                           a different URL than the manifest file.
@@ -6877,6 +7233,14 @@ class ListJobsPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -7030,6 +7394,28 @@ class ListJobsPaginator(Boto3Paginator):
                         - **DashIsoGroupSettings** *(dict) --* Required when you set (Type) under
                         (OutputGroups)>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one .mpd
+                          DASH manifest for each DASH ISO output group in your job. This default manifest
+                          references every output in the output group. To create additional DASH manifests
+                          that reference a subset of the outputs in the output group, specify a list of
+                          them here.
+
+                            - *(dict) --* Specify the details for each additional DASH manifest that you
+                            want the service to generate for this output group. Each manifest can reference
+                            a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your DASH group is film-name.mpd. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.mpd.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be put in the manifest
                           (.mpd) file at the top level BaseURL element. Can be used if streams are
                           delivered from a different URL than the manifest file.
@@ -7044,6 +7430,14 @@ class ListJobsPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -7155,6 +7549,14 @@ class ListJobsPaginator(Boto3Paginator):
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
 
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
+
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
 
@@ -7188,6 +7590,31 @@ class ListJobsPaginator(Boto3Paginator):
 
                             - *(string) --*
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one
+                          top-level .m3u8 HLS manifest for each HLS output group in your job. This default
+                          manifest references every output in the output group. To create additional
+                          top-level manifests that reference a subset of the outputs in the output group,
+                          specify a list of them here.
+
+                            - *(dict) --* Specify the details for each additional HLS manifest that you
+                            want the service to generate for this output group. Each manifest can reference
+                            a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your HLS group is film-name.m3u8. If you enter
+                              "-no-premium" for this setting, then the file name the service generates for
+                              this top-level manifest is film-name-no-premium.m3u8. For HLS output groups,
+                              specify a manifestNameModifier that is different from the nameModifier of the
+                              output. The service uses the output name modifier to create unique names for
+                              the individual variant manifests.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **BaseUrl** *(string) --* A partial URI prefix that will be prepended to each
                           output in the media .m3u8 file. Can be used if base manifest is delivered from a
                           different URL than the main .m3u8 file.
@@ -7198,7 +7625,7 @@ class ListJobsPaginator(Boto3Paginator):
 
                               - **CaptionChannel** *(integer) --* Caption channel.
 
-                              - **CustomLanguageCode** *(string) --* Specify the language for this caption
+                              - **CustomLanguageCode** *(string) --* Specify the language for this captions
                               channel, using the ISO 639-2 or ISO 639-3 three-letter language code
 
                               - **LanguageCode** *(string) --* Specify the language, using the ISO 639-2
@@ -7233,6 +7660,14 @@ class ListJobsPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -7385,6 +7820,28 @@ class ListJobsPaginator(Boto3Paginator):
                         - **MsSmoothGroupSettings** *(dict) --* Required when you set (Type) under
                         (OutputGroups)>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 
+                          - **AdditionalManifests** *(list) --* By default, the service creates one .ism
+                          Microsoft Smooth Streaming manifest for each Microsoft Smooth Streaming output
+                          group in your job. This default manifest references every output in the output
+                          group. To create additional manifests that reference a subset of the outputs in
+                          the output group, specify a list of them here.
+
+                            - *(dict) --* Specify the details for each additional Microsoft Smooth
+                            Streaming manifest that you want the service to generate for this output group.
+                            Each manifest can reference a different subset of outputs in the group.
+
+                              - **ManifestNameModifier** *(string) --* Specify a name modifier that the
+                              service adds to the name of this manifest to make it different from the file
+                              names of the other main manifests in the output group. For example, say that
+                              the default main manifest for your Microsoft Smooth group is film-name.ismv.
+                              If you enter "-no-premium" for this setting, then the file name the service
+                              generates for this top-level manifest is film-name-no-premium.ismv.
+
+                              - **SelectedOutputs** *(list) --* Specify the outputs that you want this
+                              additional top-level manifest to reference.
+
+                                - *(string) --*
+
                           - **AudioDeduplication** *(string) --* COMBINE_DUPLICATE_STREAMS combines
                           identical audio encoding settings across a Microsoft Smooth output group into a
                           single audio stream.
@@ -7399,6 +7856,14 @@ class ListJobsPaginator(Boto3Paginator):
                           Will vary based on the type of destination
 
                             - **S3Settings** *(dict) --* Settings associated with S3 destination
+
+                              - **AccessControl** *(dict) --* Optional. Have MediaConvert automatically
+                              apply Amazon S3 access control for the outputs in this output group. When you
+                              don't use this setting, S3 automatically applies the default access control
+                              list PRIVATE.
+
+                                - **CannedAcl** *(string) --* Choose an Amazon S3 canned ACL for
+                                MediaConvert to apply to this output.
 
                               - **Encryption** *(dict) --* Settings for how your job outputs are encrypted
                               as they are uploaded to Amazon S3.
@@ -7852,10 +8317,15 @@ class ListJobsPaginator(Boto3Paginator):
                                   - **SampleRate** *(integer) --* Sample rate in Hz.
 
                               - **CustomLanguageCode** *(string) --* Specify the language for this audio
-                              output track, using the ISO 639-2 or ISO 639-3 three-letter language code.
-                              The language specified will be used when 'Follow Input Language Code' is not
-                              selected or when 'Follow Input Language Code' is selected but there is no ISO
-                              639 language code specified by the input.
+                              output track. The service puts this language code into your output audio
+                              track when you set Language code control (AudioLanguageCodeControl) to Use
+                              configured (USE_CONFIGURED). The service also uses your specified custom
+                              language code when you set Language code control (AudioLanguageCodeControl)
+                              to Follow input (FOLLOW_INPUT), but your input file doesn't specify a
+                              language code. For all outputs, you can use an ISO 639-2 or ISO 639-3 code.
+                              For streaming outputs, you can also use any other code in the full RFC-5646
+                              specification. Streaming outputs are those that are in one of the following
+                              output groups: CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                               - **LanguageCode** *(string) --* Indicates the language of the audio output
                               track. The ISO 639 language specified in the 'Language Code' drop down will
@@ -7863,11 +8333,13 @@ class ListJobsPaginator(Boto3Paginator):
                               Input Language Code' is selected but there is no ISO 639 language code
                               specified by the input.
 
-                              - **LanguageCodeControl** *(string) --* Choosing FOLLOW_INPUT will cause the
-                              ISO 639 language code of the output to follow the ISO 639 language code of
-                              the input. The language specified for languageCode' will be used when
-                              USE_CONFIGURED is selected or when FOLLOW_INPUT is selected but there is no
-                              ISO 639 language code specified by the input.
+                              - **LanguageCodeControl** *(string) --* Specify which source for language
+                              code takes precedence for this audio track. When you choose Follow input
+                              (FOLLOW_INPUT), the service uses the language code from the input track if
+                              it's present. If there's no languge code on the input track, the service uses
+                              the code that you specify in the setting Language code (languageCode or
+                              customLanguageCode). When you choose Use configured (USE_CONFIGURED), the
+                              service uses the language code that you specify.
 
                               - **RemixSettings** *(dict) --* Advanced audio remixing settings.
 
@@ -7912,12 +8384,15 @@ class ListJobsPaginator(Boto3Paginator):
                               captions. The name should be of the format "Caption Selector ", which denotes
                               that the Nth Caption Selector will be used from each input.
 
-                              - **CustomLanguageCode** *(string) --* Indicates the language of the caption
-                              output track, using the ISO 639-2 or ISO 639-3 three-letter language code.
-                              For most captions output formats, the encoder puts this language information
-                              in the output captions metadata. If your output captions format is DVB-Sub or
-                              Burn in, the encoder uses this language information to choose the font
-                              language for rendering the captions text.
+                              - **CustomLanguageCode** *(string) --* Specify the language for this captions
+                              output track. For most captions output formats, the encoder puts this
+                              language information in the output captions metadata. If your output captions
+                              format is DVB-Sub or Burn in, the encoder uses this language information when
+                              automatically selecting the font script for rendering the captions text. For
+                              all outputs, you can use an ISO 639-2 or ISO 639-3 code. For streaming
+                              outputs, you can also use any other code in the full RFC-5646 specification.
+                              Streaming outputs are those that are in one of the following output groups:
+                              CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                               - **DestinationSettings** *(dict) --* Specific settings required by
                               destination type. Note that burnin_destination_settings are not available if
@@ -8533,6 +9008,26 @@ class ListJobsPaginator(Boto3Paginator):
                               - **Mp4MajorBrand** *(string) --* Overrides the "Major Brand" field in the
                               output file. Usually not necessary to specify.
 
+                            - **MpdSettings** *(dict) --* Settings for MP4 segments in DASH
+
+                              - **CaptionContainerType** *(string) --* Use this setting only in DASH output
+                              groups that include sidecar TTML or IMSC captions. You specify sidecar
+                              captions in a separate output from your audio and video. Choose Raw (RAW) for
+                              captions in a single XML file in a raw container. Choose Fragmented MPEG-4
+                              (FRAGMENTED_MP4) for captions in XML format contained within fragmented MP4
+                              files. This set of fragmented MP4 files is separate from your video and audio
+                              fragmented MP4 files.
+
+                              - **Scte35Esam** *(string) --* Use this setting only when you specify SCTE-35
+                              markers from ESAM. Choose INSERT to put SCTE-35 markers in this output at the
+                              insertion points that you specify in an ESAM XML document. Provide the
+                              document in the setting SCC XML (sccXml).
+
+                              - **Scte35Source** *(string) --* Ignore this setting unless you have SCTE-35
+                              markers in your input video file. Choose Passthrough (PASSTHROUGH) if you
+                              want SCTE-35 markers that appear in your input to also appear in this output.
+                              Choose None (NONE) if you don't want those SCTE-35 markers in this output.
+
                           - **Extension** *(string) --* Use Extension (Extension) to specify the file
                           extension for outputs in File output groups. If you do not specify a value, the
                           service will use default extensions by container type as follows * MPEG-2
@@ -9032,15 +9527,16 @@ class ListJobsPaginator(Boto3Paginator):
 
                                 - **WriteMp4PackagingType** *(string) --* If the location of parameter set
                                 NAL units doesn't matter in your workflow, ignore this setting. Use this
-                                setting in your CMAF, DASH, or file MP4 output. For file MP4 outputs,
-                                choosing HVC1 can create video that doesn't work properly with some
-                                downstream systems and video players. Choose HVC1 to mark your output as
-                                HVC1. This makes your output compliant with the following specification:
-                                ISO IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15 3rd Edition. For these
+                                setting only with CMAF or DASH outputs, or with standalone file outputs in
+                                an MPEG-4 container (MP4 outputs). Choose HVC1 to mark your output as HVC1.
+                                This makes your output compliant with the following specification: ISO
+                                IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15 3rd Edition. For these
                                 outputs, the service stores parameter set NAL units in the sample headers
-                                but not in the samples directly. The service defaults to marking your
-                                output as HEV1. For these outputs, the service writes parameter set NAL
-                                units directly into the samples.
+                                but not in the samples directly. For MP4 outputs, when you choose HVC1,
+                                your output video might not work properly with some downstream systems and
+                                video players. The service defaults to marking your output as HEV1. For
+                                these outputs, the service writes parameter set NAL units directly into the
+                                samples.
 
                               - **Mpeg2Settings** *(dict) --* Required when you set (Codec) under
                               (VideoDescription)>(CodecSettings) to the value MPEG2.
@@ -9447,6 +9943,28 @@ class ListJobsPaginator(Boto3Paginator):
                                 converts interlaced to progressive. - Inverse telecine converts Hard
                                 Telecine 29.97i to progressive 23.976p. - Adaptive auto-detects and
                                 converts to progressive.
+
+                              - **DolbyVision** *(dict) --* Enable Dolby Vision feature to produce Dolby
+                              Vision compatible video output.
+
+                                - **L6Metadata** *(dict) --* Use these settings when you set
+                                DolbyVisionLevel6Mode to SPECIFY to override the MaxCLL and MaxFALL values
+                                in your input with new values.
+
+                                  - **MaxCll** *(integer) --* Maximum Content Light Level. Static HDR
+                                  metadata that corresponds to the brightest pixel in the entire stream.
+                                  Measured in nits.
+
+                                  - **MaxFall** *(integer) --* Maximum Frame-Average Light Level. Static
+                                  HDR metadata that corresponds to the highest frame-average brightness in
+                                  the entire stream. Measured in nits.
+
+                                - **L6Mode** *(string) --* Use Dolby Vision Mode to choose how the service
+                                will handle Dolby Vision MaxCLL and MaxFALL properies.
+
+                                - **Profile** *(string) --* In the current MediaConvert implementation, the
+                                Dolby Vision profile is always 5 (PROFILE_5). Therefore, all of your inputs
+                                must contain Dolby Vision frame interleaved data.
 
                               - **ImageInserter** *(dict) --* Enable the Image inserter (ImageInserter)
                               feature to include a graphic overlay on your video. Enable or disable this
@@ -9964,8 +10482,8 @@ class ListPresetsPaginator(Boto3Paginator):
                                         },
                                         'SccDestinationSettings': {
                                             'Framerate':
-                                            'FRAMERATE_23_97'|'FRAMERATE_24'|'FRAMERATE_29_97_DROPFRAME'
-                                            |'FRAMERATE_29_97_NON_DROPFRAME'
+                                            'FRAMERATE_23_97'|'FRAMERATE_24'|'FRAMERATE_25'
+                                            |'FRAMERATE_29_97_DROPFRAME'|'FRAMERATE_29_97_NON_DROPFRAME'
                                         },
                                         'TeletextDestinationSettings': {
                                             'PageNumber': 'string',
@@ -10096,6 +10614,11 @@ class ListPresetsPaginator(Boto3Paginator):
                                     'FreeSpaceBox': 'INCLUDE'|'EXCLUDE',
                                     'MoovPlacement': 'PROGRESSIVE_DOWNLOAD'|'NORMAL',
                                     'Mp4MajorBrand': 'string'
+                                },
+                                'MpdSettings': {
+                                    'CaptionContainerType': 'RAW'|'FRAGMENTED_MP4',
+                                    'Scte35Esam': 'INSERT'|'NONE',
+                                    'Scte35Source': 'PASSTHROUGH'|'NONE'
                                 }
                             },
                             'VideoDescription': {
@@ -10317,6 +10840,14 @@ class ListPresetsPaginator(Boto3Paginator):
                                         'INTERPOLATE'|'INTERPOLATE_TICKER'|'BLEND'|'BLEND_TICKER',
                                         'Control': 'FORCE_ALL_FRAMES'|'NORMAL',
                                         'Mode': 'DEINTERLACE'|'INVERSE_TELECINE'|'ADAPTIVE'
+                                    },
+                                    'DolbyVision': {
+                                        'L6Metadata': {
+                                            'MaxCll': 123,
+                                            'MaxFall': 123
+                                        },
+                                        'L6Mode': 'PASSTHROUGH'|'RECALCULATE'|'SPECIFY',
+                                        'Profile': 'PROFILE_5'
                                     },
                                     'ImageInserter': {
                                         'InsertableImages': [
@@ -10753,21 +11284,26 @@ class ListPresetsPaginator(Boto3Paginator):
                           - **SampleRate** *(integer) --* Sample rate in Hz.
 
                       - **CustomLanguageCode** *(string) --* Specify the language for this audio output
-                      track, using the ISO 639-2 or ISO 639-3 three-letter language code. The language
-                      specified will be used when 'Follow Input Language Code' is not selected or when
-                      'Follow Input Language Code' is selected but there is no ISO 639 language code
-                      specified by the input.
+                      track. The service puts this language code into your output audio track when you set
+                      Language code control (AudioLanguageCodeControl) to Use configured (USE_CONFIGURED).
+                      The service also uses your specified custom language code when you set Language code
+                      control (AudioLanguageCodeControl) to Follow input (FOLLOW_INPUT), but your input
+                      file doesn't specify a language code. For all outputs, you can use an ISO 639-2 or
+                      ISO 639-3 code. For streaming outputs, you can also use any other code in the full
+                      RFC-5646 specification. Streaming outputs are those that are in one of the following
+                      output groups: CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                       - **LanguageCode** *(string) --* Indicates the language of the audio output track.
                       The ISO 639 language specified in the 'Language Code' drop down will be used when
                       'Follow Input Language Code' is not selected or when 'Follow Input Language Code' is
                       selected but there is no ISO 639 language code specified by the input.
 
-                      - **LanguageCodeControl** *(string) --* Choosing FOLLOW_INPUT will cause the ISO 639
-                      language code of the output to follow the ISO 639 language code of the input. The
-                      language specified for languageCode' will be used when USE_CONFIGURED is selected or
-                      when FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the
-                      input.
+                      - **LanguageCodeControl** *(string) --* Specify which source for language code takes
+                      precedence for this audio track. When you choose Follow input (FOLLOW_INPUT), the
+                      service uses the language code from the input track if it's present. If there's no
+                      languge code on the input track, the service uses the code that you specify in the
+                      setting Language code (languageCode or customLanguageCode). When you choose Use
+                      configured (USE_CONFIGURED), the service uses the language code that you specify.
 
                       - **RemixSettings** *(dict) --* Advanced audio remixing settings.
 
@@ -10804,11 +11340,14 @@ class ListPresetsPaginator(Boto3Paginator):
 
                     - *(dict) --* Caption Description for preset
 
-                      - **CustomLanguageCode** *(string) --* Indicates the language of the caption output
-                      track, using the ISO 639-2 or ISO 639-3 three-letter language code. For most captions
-                      output formats, the encoder puts this language information in the output captions
-                      metadata. If your output captions format is DVB-Sub or Burn in, the encoder uses this
-                      language information to choose the font language for rendering the captions text.
+                      - **CustomLanguageCode** *(string) --* Specify the language for this captions output
+                      track. For most captions output formats, the encoder puts this language information
+                      in the output captions metadata. If your output captions format is DVB-Sub or Burn
+                      in, the encoder uses this language information when automatically selecting the font
+                      script for rendering the captions text. For all outputs, you can use an ISO 639-2 or
+                      ISO 639-3 code. For streaming outputs, you can also use any other code in the full
+                      RFC-5646 specification. Streaming outputs are those that are in one of the following
+                      output groups: CMAF, DASH ISO, Apple HLS, or Microsoft Smooth Streaming.
 
                       - **DestinationSettings** *(dict) --* Specific settings required by destination type.
                       Note that burnin_destination_settings are not available if the source of the caption
@@ -11381,6 +11920,25 @@ class ListPresetsPaginator(Boto3Paginator):
                       - **Mp4MajorBrand** *(string) --* Overrides the "Major Brand" field in the output
                       file. Usually not necessary to specify.
 
+                    - **MpdSettings** *(dict) --* Settings for MP4 segments in DASH
+
+                      - **CaptionContainerType** *(string) --* Use this setting only in DASH output groups
+                      that include sidecar TTML or IMSC captions. You specify sidecar captions in a
+                      separate output from your audio and video. Choose Raw (RAW) for captions in a single
+                      XML file in a raw container. Choose Fragmented MPEG-4 (FRAGMENTED_MP4) for captions
+                      in XML format contained within fragmented MP4 files. This set of fragmented MP4 files
+                      is separate from your video and audio fragmented MP4 files.
+
+                      - **Scte35Esam** *(string) --* Use this setting only when you specify SCTE-35 markers
+                      from ESAM. Choose INSERT to put SCTE-35 markers in this output at the insertion
+                      points that you specify in an ESAM XML document. Provide the document in the setting
+                      SCC XML (sccXml).
+
+                      - **Scte35Source** *(string) --* Ignore this setting unless you have SCTE-35 markers
+                      in your input video file. Choose Passthrough (PASSTHROUGH) if you want SCTE-35
+                      markers that appear in your input to also appear in this output. Choose None (NONE)
+                      if you don't want those SCTE-35 markers in this output.
+
                   - **VideoDescription** *(dict) --* (VideoDescription) contains a group of video encoding
                   settings. The specific video settings depend on the video codec that you choose when you
                   specify a value for Video codec (codec). Include one instance of (VideoDescription) per
@@ -11791,15 +12349,15 @@ class ListPresetsPaginator(Boto3Paginator):
                         bytes of an unregistered SEI message.
 
                         - **WriteMp4PackagingType** *(string) --* If the location of parameter set NAL
-                        units doesn't matter in your workflow, ignore this setting. Use this setting in
-                        your CMAF, DASH, or file MP4 output. For file MP4 outputs, choosing HVC1 can create
-                        video that doesn't work properly with some downstream systems and video players.
-                        Choose HVC1 to mark your output as HVC1. This makes your output compliant with the
-                        following specification: ISO IECJTC1 SC29 N13798 Text ISO/IEC FDIS 14496-15 3rd
-                        Edition. For these outputs, the service stores parameter set NAL units in the
-                        sample headers but not in the samples directly. The service defaults to marking
-                        your output as HEV1. For these outputs, the service writes parameter set NAL units
-                        directly into the samples.
+                        units doesn't matter in your workflow, ignore this setting. Use this setting only
+                        with CMAF or DASH outputs, or with standalone file outputs in an MPEG-4 container
+                        (MP4 outputs). Choose HVC1 to mark your output as HVC1. This makes your output
+                        compliant with the following specification: ISO IECJTC1 SC29 N13798 Text ISO/IEC
+                        FDIS 14496-15 3rd Edition. For these outputs, the service stores parameter set NAL
+                        units in the sample headers but not in the samples directly. For MP4 outputs, when
+                        you choose HVC1, your output video might not work properly with some downstream
+                        systems and video players. The service defaults to marking your output as HEV1. For
+                        these outputs, the service writes parameter set NAL units directly into the samples.
 
                       - **Mpeg2Settings** *(dict) --* Required when you set (Codec) under
                       (VideoDescription)>(CodecSettings) to the value MPEG2.
@@ -12180,6 +12738,26 @@ class ListPresetsPaginator(Boto3Paginator):
                         service will do deinterlacing. Default is Deinterlace. - Deinterlace converts
                         interlaced to progressive. - Inverse telecine converts Hard Telecine 29.97i to
                         progressive 23.976p. - Adaptive auto-detects and converts to progressive.
+
+                      - **DolbyVision** *(dict) --* Enable Dolby Vision feature to produce Dolby Vision
+                      compatible video output.
+
+                        - **L6Metadata** *(dict) --* Use these settings when you set DolbyVisionLevel6Mode
+                        to SPECIFY to override the MaxCLL and MaxFALL values in your input with new values.
+
+                          - **MaxCll** *(integer) --* Maximum Content Light Level. Static HDR metadata that
+                          corresponds to the brightest pixel in the entire stream. Measured in nits.
+
+                          - **MaxFall** *(integer) --* Maximum Frame-Average Light Level. Static HDR
+                          metadata that corresponds to the highest frame-average brightness in the entire
+                          stream. Measured in nits.
+
+                        - **L6Mode** *(string) --* Use Dolby Vision Mode to choose how the service will
+                        handle Dolby Vision MaxCLL and MaxFALL properies.
+
+                        - **Profile** *(string) --* In the current MediaConvert implementation, the Dolby
+                        Vision profile is always 5 (PROFILE_5). Therefore, all of your inputs must contain
+                        Dolby Vision frame interleaved data.
 
                       - **ImageInserter** *(dict) --* Enable the Image inserter (ImageInserter) feature to
                       include a graphic overlay on your video. Enable or disable this feature for each

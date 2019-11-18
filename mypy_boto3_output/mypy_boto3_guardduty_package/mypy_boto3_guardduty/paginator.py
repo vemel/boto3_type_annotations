@@ -254,7 +254,107 @@ class ListFindingsPaginator(Boto3Paginator):
         :type FindingCriteria: dict
         :param FindingCriteria:
 
-          Represents the criteria used for querying findings.
+          Represents the criteria used for querying findings. Valid values include:
+
+          * JSON field name
+
+          * accountId
+
+          * region
+
+          * confidence
+
+          * id
+
+          * resource.accessKeyDetails.accessKeyId
+
+          * resource.accessKeyDetails.principalId
+
+          * resource.accessKeyDetails.userName
+
+          * resource.accessKeyDetails.userType
+
+          * resource.instanceDetails.iamInstanceProfile.id
+
+          * resource.instanceDetails.imageId
+
+          * resource.instanceDetails.instanceId
+
+          * resource.instanceDetails.networkInterfaces.ipv6Addresses
+
+          * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+
+          * resource.instanceDetails.networkInterfaces.publicDnsName
+
+          * resource.instanceDetails.networkInterfaces.publicIp
+
+          * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+
+          * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+
+          * resource.instanceDetails.networkInterfaces.subnetId
+
+          * resource.instanceDetails.networkInterfaces.vpcId
+
+          * resource.instanceDetails.tags.key
+
+          * resource.instanceDetails.tags.value
+
+          * resource.resourceType
+
+          * service.action.actionType
+
+          * service.action.awsApiCallAction.api
+
+          * service.action.awsApiCallAction.callerType
+
+          * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+
+          * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+
+          * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+
+          * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+
+          * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+
+          * service.action.awsApiCallAction.serviceName
+
+          * service.action.dnsRequestAction.domain
+
+          * service.action.networkConnectionAction.blocked
+
+          * service.action.networkConnectionAction.connectionDirection
+
+          * service.action.networkConnectionAction.localPortDetails.port
+
+          * service.action.networkConnectionAction.protocol
+
+          * service.action.networkConnectionAction.remoteIpDetails.city.cityName
+
+          * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+
+          * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+
+          * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+
+          * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+
+          * service.action.networkConnectionAction.remotePortDetails.port
+
+          * service.additionalInfo.threatListName
+
+          * service.archived When this attribute is set to 'true', only archived findings are listed. When
+          it's set to 'false', only unarchived findings are listed. When this attribute is not set, all
+          existing findings are listed.
+
+          * service.resourceRole
+
+          * severity
+
+          * type
+
+          * updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 
           - **Criterion** *(dict) --*
 
@@ -269,37 +369,36 @@ class ListFindingsPaginator(Boto3Paginator):
 
                 - **Eq** *(list) --*
 
-                  Deprecated. Represents the equal condition to be applied to a single field when querying
-                  for findings.
+                  Represents the equal condition to be applied to a single field when querying for findings.
 
                   - *(string) --*
 
                 - **Neq** *(list) --*
 
-                  Deprecated. Represents the not equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents the not equal condition to be applied to a single field when querying for
+                  findings.
 
                   - *(string) --*
 
                 - **Gt** *(integer) --*
 
-                  Deprecated. Represents a greater than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a greater than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Gte** *(integer) --*
 
-                  Deprecated. Represents a greater than equal condition to be applied to a single field
-                  when querying for findings.
+                  Represents a greater than equal condition to be applied to a single field when querying
+                  for findings.
 
                 - **Lt** *(integer) --*
 
-                  Deprecated. Represents a less than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Lte** *(integer) --*
 
-                  Deprecated. Represents a less than equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than equal condition to be applied to a single field when querying for
+                  findings.
 
                 - **Equals** *(list) --*
 
@@ -548,15 +647,16 @@ class ListInvitationsPaginator(Boto3Paginator):
 
               - *(dict) --*
 
-                Contains information about the invitation.
+                Contains information about the invitation to become a member account.
 
                 - **AccountId** *(string) --*
 
-                  Inviter account ID
+                  The ID of the account from which the invitations was sent.
 
                 - **InvitationId** *(string) --*
 
-                  This value is used to validate the inviter account to the member account.
+                  The ID of the invitation. This value is used to validate the inviter account to the
+                  member account.
 
                 - **RelationshipStatus** *(string) --*
 
@@ -564,7 +664,7 @@ class ListInvitationsPaginator(Boto3Paginator):
 
                 - **InvitedAt** *(string) --*
 
-                  Timestamp at which the invitation was sent
+                  Timestamp at which the invitation was sent.
 
         """
 

@@ -341,7 +341,8 @@ class Client(BaseClient):
 
             {
                 'ClusterId': 'string',
-                'InstanceFleetId': 'string'
+                'InstanceFleetId': 'string',
+                'ClusterArn': 'string'
             }
           **Response Structure**
 
@@ -354,6 +355,10 @@ class Client(BaseClient):
             - **InstanceFleetId** *(string) --*
 
               The unique identifier of the instance fleet.
+
+            - **ClusterArn** *(string) --*
+
+              The Amazon Resource Name of the cluster.
 
         """
 
@@ -480,11 +485,9 @@ class Client(BaseClient):
 
             - **BidPrice** *(string) --*
 
-              The maximum Spot price your are willing to pay for EC2 instances.
-
-              An optional, nullable field that applies if the ``MarketType`` for the instance group is
-              specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-              ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+              The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed in
+              USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+              ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
             - **InstanceType** *(string) --* **[REQUIRED]**
 
@@ -676,9 +679,9 @@ class Client(BaseClient):
 
                       - **EvaluationPeriods** *(integer) --*
 
-                        The number of periods, expressed in seconds using ``Period`` , during which the
-                        alarm condition must exist before the alarm triggers automatic scaling activity.
-                        The default value is ``1`` .
+                        The number of periods, in five-minute increments, during which the alarm condition
+                        must exist before the alarm triggers automatic scaling activity. The default value
+                        is ``1`` .
 
                       - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -745,7 +748,8 @@ class Client(BaseClient):
                 'JobFlowId': 'string',
                 'InstanceGroupIds': [
                     'string',
-                ]
+                ],
+                'ClusterArn': 'string'
             }
           **Response Structure**
 
@@ -762,6 +766,10 @@ class Client(BaseClient):
               Instance group IDs of the newly created instance groups.
 
               - *(string) --*
+
+            - **ClusterArn** *(string) --*
+
+              The Amazon Resource Name of the cluster.
 
         """
 
@@ -1283,7 +1291,8 @@ class Client(BaseClient):
                         'CrossRealmTrustPrincipalPassword': 'string',
                         'ADDomainJoinUser': 'string',
                         'ADDomainJoinPassword': 'string'
-                    }
+                    },
+                    'ClusterArn': 'string'
                 }
             }
           **Response Structure**
@@ -1461,13 +1470,13 @@ class Client(BaseClient):
 
               - **VisibleToAllUsers** *(boolean) --*
 
-                 *This member will be deprecated.*
-
                 Indicates whether the cluster is visible to all IAM users of the AWS account associated
-                with the cluster. If this value is set to ``true`` , all IAM users of that AWS account can
-                view and manage the cluster if they have the proper policy permissions set. If this value
-                is ``false`` , only the IAM user that created the cluster can view and manage it. This
-                value can be changed using the  SetVisibleToAllUsers action.
+                with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+                account can perform cluster actions if they have the proper IAM policy permissions. If this
+                value is ``false`` , only the IAM user that created the cluster can perform actions. This
+                value can be changed on a running cluster by using the  SetVisibleToAllUsers action. You
+                can override the default value of ``true`` when you create a cluster by using the
+                ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
               - **Applications** *(list) --*
 
@@ -1656,6 +1665,10 @@ class Client(BaseClient):
                 - **ADDomainJoinPassword** *(string) --*
 
                   The Active Directory password for ``ADDomainJoinUser`` .
+
+              - **ClusterArn** *(string) --*
+
+                The Amazon Resource Name of the cluster.
 
         """
 
@@ -1966,11 +1979,10 @@ class Client(BaseClient):
 
                       - **BidPrice** *(string) --*
 
-                        The maximum Spot price your are willing to pay for EC2 instances.
-
-                        An optional, nullable field that applies if the ``MarketType`` for the instance
-                        group is specified as ``SPOT`` . Specified in USD. If the value is NULL and
-                        ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+                        The bid price for each EC2 Spot instance type as defined by ``InstanceType`` .
+                        Expressed in USD. If neither ``BidPrice`` nor
+                        ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+                        ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
                       - **InstanceType** *(string) --*
 
@@ -2186,13 +2198,13 @@ class Client(BaseClient):
 
                 - **VisibleToAllUsers** *(boolean) --*
 
-                   *This member will be deprecated.*
-
-                  Specifies whether the cluster is visible to all IAM users of the AWS account associated
-                  with the cluster. If this value is set to ``true`` , all IAM users of that AWS account
-                  can view and (if they have the proper policy permissions set) manage the cluster. If it
-                  is set to ``false`` , only the IAM user that created the cluster can view and manage it.
-                  This value can be changed using the  SetVisibleToAllUsers action.
+                  Indicates whether the cluster is visible to all IAM users of the AWS account associated
+                  with the cluster. The default value, ``true`` , indicates that all IAM users in the AWS
+                  account can perform cluster actions if they have the proper IAM policy permissions. If
+                  this value is ``false`` , only the IAM user that created the cluster can perform actions.
+                  This value can be changed on a running cluster by using the  SetVisibleToAllUsers action.
+                  You can override the default value of ``true`` when you create a cluster by using the
+                  ``VisibleToAllUsers`` parameter of the ``RunJobFlow`` action.
 
                 - **JobFlowRole** *(string) --*
 
@@ -2753,7 +2765,8 @@ class Client(BaseClient):
                                 'EndDateTime': datetime(2015, 1, 1)
                             }
                         },
-                        'NormalizedInstanceHours': 123
+                        'NormalizedInstanceHours': 123,
+                        'ClusterArn': 'string'
                     },
                 ],
                 'Marker': 'string'
@@ -2824,6 +2837,10 @@ class Client(BaseClient):
                   weighted more, so an EC2 instance that is roughly four times more expensive would result
                   in the normalized instance hours being incremented by four. This result is only an
                   approximation and does not reflect the actual billing rate.
+
+                - **ClusterArn** *(string) --*
+
+                  The Amazon Resource Name of the cluster.
 
             - **Marker** *(string) --*
 
@@ -3423,11 +3440,9 @@ class Client(BaseClient):
 
                 - **BidPrice** *(string) --*
 
-                  The maximum Spot price your are willing to pay for EC2 instances.
-
-                  An optional, nullable field that applies if the ``MarketType`` for the instance group is
-                  specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-                  ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+                  The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed
+                  in USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+                  ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
                 - **InstanceType** *(string) --*
 
@@ -3754,9 +3769,9 @@ class Client(BaseClient):
 
                           - **EvaluationPeriods** *(integer) --*
 
-                            The number of periods, expressed in seconds using ``Period`` , during which the
-                            alarm condition must exist before the alarm triggers automatic scaling
-                            activity. The default value is ``1`` .
+                            The number of periods, in five-minute increments, during which the alarm
+                            condition must exist before the alarm triggers automatic scaling activity. The
+                            default value is ``1`` .
 
                           - **MetricName** *(string) --*
 
@@ -4121,8 +4136,8 @@ class Client(BaseClient):
         Marker: str = None,
     ) -> ClientListStepsResponseTypeDef:
         """
-        Provides a list of steps for the cluster in reverse order unless you specify stepIds with the
-        request.
+        Provides a list of steps for the cluster in reverse order unless you specify ``stepIds`` with the
+        request of filter by ``StepStates`` . You can specify a maximum of ten ``stepIDs`` .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/ListSteps>`_
@@ -4155,7 +4170,8 @@ class Client(BaseClient):
         :type StepIds: list
         :param StepIds:
 
-          The filter to limit the step list based on the identifier of the steps.
+          The filter to limit the step list based on the identifier of the steps. You can specify a maximum
+          of ten Step IDs. The character constraint applies to the overall length of the array.
 
           - *(string) --*
 
@@ -4714,9 +4730,8 @@ class Client(BaseClient):
 
                   - **EvaluationPeriods** *(integer) --*
 
-                    The number of periods, expressed in seconds using ``Period`` , during which the alarm
-                    condition must exist before the alarm triggers automatic scaling activity. The default
-                    value is ``1`` .
+                    The number of periods, in five-minute increments, during which the alarm condition must
+                    exist before the alarm triggers automatic scaling activity. The default value is ``1`` .
 
                   - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -4829,7 +4844,8 @@ class Client(BaseClient):
                             }
                         },
                     ]
-                }
+                },
+                'ClusterArn': 'string'
             }
           **Response Structure**
 
@@ -4968,9 +4984,9 @@ class Client(BaseClient):
 
                       - **EvaluationPeriods** *(integer) --*
 
-                        The number of periods, expressed in seconds using ``Period`` , during which the
-                        alarm condition must exist before the alarm triggers automatic scaling activity.
-                        The default value is ``1`` .
+                        The number of periods, in five-minute increments, during which the alarm condition
+                        must exist before the alarm triggers automatic scaling activity. The default value
+                        is ``1`` .
 
                       - **MetricName** *(string) --*
 
@@ -5020,6 +5036,10 @@ class Client(BaseClient):
                           - **Value** *(string) --*
 
                             The dimension value.
+
+            - **ClusterArn** *(string) --*
+
+              The Amazon Resource Name of the cluster.
 
         """
 
@@ -5582,11 +5602,9 @@ class Client(BaseClient):
 
               - **BidPrice** *(string) --*
 
-                The maximum Spot price your are willing to pay for EC2 instances.
-
-                An optional, nullable field that applies if the ``MarketType`` for the instance group is
-                specified as ``SPOT`` . Specify the maximum spot price in USD. If the value is NULL and
-                ``SPOT`` is specified, the maximum Spot price is set equal to the On-Demand price.
+                The bid price for each EC2 Spot instance type as defined by ``InstanceType`` . Expressed in
+                USD. If neither ``BidPrice`` nor ``BidPriceAsPercentageOfOnDemandPrice`` is provided,
+                ``BidPriceAsPercentageOfOnDemandPrice`` defaults to 100%.
 
               - **InstanceType** *(string) --* **[REQUIRED]**
 
@@ -5779,9 +5797,9 @@ class Client(BaseClient):
 
                         - **EvaluationPeriods** *(integer) --*
 
-                          The number of periods, expressed in seconds using ``Period`` , during which the
-                          alarm condition must exist before the alarm triggers automatic scaling activity.
-                          The default value is ``1`` .
+                          The number of periods, in five-minute increments, during which the alarm
+                          condition must exist before the alarm triggers automatic scaling activity. The
+                          default value is ``1`` .
 
                         - **MetricName** *(string) --* **[REQUIRED]**
 
@@ -6365,12 +6383,9 @@ class Client(BaseClient):
         :type VisibleToAllUsers: boolean
         :param VisibleToAllUsers:
 
-           *This member will be deprecated.*
-
-          Whether the cluster is visible to all IAM users of the AWS account associated with the cluster.
-          If this value is set to ``true`` , all IAM users of that AWS account can view and (if they have
-          the proper policy permissions set) manage the cluster. If it is set to ``false`` , only the IAM
-          user that created the cluster can view and manage it.
+          A value of ``true`` indicates that all IAM users in the AWS account can perform cluster actions
+          if they have the proper IAM policy permissions. This is the default. A value of ``false``
+          indicates that only the IAM user who created the cluster can perform actions.
 
         :type JobFlowRole: string
         :param JobFlowRole:
@@ -6504,7 +6519,8 @@ class Client(BaseClient):
           ::
 
             {
-                'JobFlowId': 'string'
+                'JobFlowId': 'string',
+                'ClusterArn': 'string'
             }
           **Response Structure**
 
@@ -6515,6 +6531,10 @@ class Client(BaseClient):
             - **JobFlowId** *(string) --*
 
               An unique identifier for the job flow.
+
+            - **ClusterArn** *(string) --*
+
+              The Amazon Resource Name of the cluster.
 
         """
 
@@ -6575,13 +6595,13 @@ class Client(BaseClient):
         self, JobFlowIds: List[str], VisibleToAllUsers: bool
     ) -> None:
         """
-         *This member will be deprecated.*
-
-        Sets whether all AWS Identity and Access Management (IAM) users under your account can access the
-        specified clusters (job flows). This action works on running clusters. You can also set the
-        visibility of a cluster when you launch it using the ``VisibleToAllUsers`` parameter of  RunJobFlow
-        . The SetVisibleToAllUsers action can be called only by an IAM user who created the cluster or the
-        AWS account that owns the cluster.
+        Sets the  Cluster$VisibleToAllUsers value, which determines whether the cluster is visible to all
+        IAM users of the AWS account associated with the cluster. Only the IAM user who created the cluster
+        or the AWS account root user can call this action. The default value, ``true`` , indicates that all
+        IAM users in the AWS account can perform cluster actions if they have the proper IAM policy
+        permissions. If set to ``false`` , only the IAM user that created the cluster can perform actions.
+        This action works on running clusters. You can override the default ``true`` setting when you
+        create a cluster by using the ``VisibleToAllUsers`` parameter with ``RunJobFlow`` .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31/SetVisibleToAllUsers>`_
@@ -6598,19 +6618,16 @@ class Client(BaseClient):
         :type JobFlowIds: list
         :param JobFlowIds: **[REQUIRED]**
 
-          Identifiers of the job flows to receive the new visibility setting.
+          The unique identifier of the job flow (cluster).
 
           - *(string) --*
 
         :type VisibleToAllUsers: boolean
         :param VisibleToAllUsers: **[REQUIRED]**
 
-           *This member will be deprecated.*
-
-          Whether the specified clusters are visible to all IAM users of the AWS account associated with
-          the cluster. If this value is set to True, all IAM users of that AWS account can view and, if
-          they have the proper IAM policy permissions set, manage the clusters. If it is set to False, only
-          the IAM user that created a cluster can view and manage it.
+          A value of ``true`` indicates that all IAM users in the AWS account can perform cluster actions
+          if they have the proper IAM policy permissions. This is the default. A value of ``false``
+          indicates that only the IAM user who created the cluster can perform actions.
 
         :returns: None
         """

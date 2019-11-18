@@ -19,10 +19,13 @@ from mypy_boto3_guardduty.type_defs import (
     ClientCreateIpSetResponseTypeDef,
     ClientCreateMembersAccountDetailsTypeDef,
     ClientCreateMembersResponseTypeDef,
+    ClientCreatePublishingDestinationDestinationPropertiesTypeDef,
+    ClientCreatePublishingDestinationResponseTypeDef,
     ClientCreateThreatIntelSetResponseTypeDef,
     ClientDeclineInvitationsResponseTypeDef,
     ClientDeleteInvitationsResponseTypeDef,
     ClientDeleteMembersResponseTypeDef,
+    ClientDescribePublishingDestinationResponseTypeDef,
     ClientDisassociateMembersResponseTypeDef,
     ClientGetDetectorResponseTypeDef,
     ClientGetFilterResponseTypeDef,
@@ -44,12 +47,14 @@ from mypy_boto3_guardduty.type_defs import (
     ClientListInvitationsResponseTypeDef,
     ClientListIpSetsResponseTypeDef,
     ClientListMembersResponseTypeDef,
+    ClientListPublishingDestinationsResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientListThreatIntelSetsResponseTypeDef,
     ClientStartMonitoringMembersResponseTypeDef,
     ClientStopMonitoringMembersResponseTypeDef,
     ClientUpdateFilterFindingCriteriaTypeDef,
     ClientUpdateFilterResponseTypeDef,
+    ClientUpdatePublishingDestinationDestinationPropertiesTypeDef,
 )
 
 
@@ -346,37 +351,36 @@ class Client(BaseClient):
 
                 - **Eq** *(list) --*
 
-                  Deprecated. Represents the equal condition to be applied to a single field when querying
-                  for findings.
+                  Represents the equal condition to be applied to a single field when querying for findings.
 
                   - *(string) --*
 
                 - **Neq** *(list) --*
 
-                  Deprecated. Represents the not equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents the not equal condition to be applied to a single field when querying for
+                  findings.
 
                   - *(string) --*
 
                 - **Gt** *(integer) --*
 
-                  Deprecated. Represents a greater than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a greater than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Gte** *(integer) --*
 
-                  Deprecated. Represents a greater than equal condition to be applied to a single field
-                  when querying for findings.
+                  Represents a greater than equal condition to be applied to a single field when querying
+                  for findings.
 
                 - **Lt** *(integer) --*
 
-                  Deprecated. Represents a less than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Lte** *(integer) --*
 
-                  Deprecated. Represents a less than equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than equal condition to be applied to a single field when querying for
+                  findings.
 
                 - **Equals** *(list) --*
 
@@ -460,8 +464,10 @@ class Client(BaseClient):
         Tags: List[str] = None,
     ) -> ClientCreateIpSetResponseTypeDef:
         """
-        Creates a new IPSet - a list of trusted IP addresses that have been whitelisted for secure
-        communication with AWS infrastructure and applications.
+        Creates a new IPSet, called Trusted IP list in the consoler user interface. An IPSet is a list IP
+        addresses trusted for secure communication with AWS infrastructure and applications. GuardDuty does
+        not generate findings for IP addresses included in IPSets. Only users from the master account can
+        use this operation.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateIPSet>`_
@@ -631,12 +637,90 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_publishing_destination(
+        self,
+        DetectorId: str,
+        DestinationType: str,
+        DestinationProperties: ClientCreatePublishingDestinationDestinationPropertiesTypeDef,
+        ClientToken: str = None,
+    ) -> ClientCreatePublishingDestinationResponseTypeDef:
+        """
+        Creates a publishing destination to send findings to. The resource to send findings to must exist
+        before you use this operation.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreatePublishingDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_publishing_destination(
+              DetectorId='string',
+              DestinationType='S3',
+              DestinationProperties={
+                  'DestinationArn': 'string',
+                  'KmsKeyArn': 'string'
+              },
+              ClientToken='string'
+          )
+        :type DetectorId: string
+        :param DetectorId: **[REQUIRED]**
+
+          The ID of the GuardDuty detector associated with the publishing destination.
+
+        :type DestinationType: string
+        :param DestinationType: **[REQUIRED]**
+
+          The type of resource for the publishing destination. Currently only S3 is supported.
+
+        :type DestinationProperties: dict
+        :param DestinationProperties: **[REQUIRED]**
+
+          Properties of the publishing destination, including the ARNs for the destination and the KMS key
+          used for encryption.
+
+          - **DestinationArn** *(string) --*
+
+            The ARN of the resource to publish to.
+
+          - **KmsKeyArn** *(string) --*
+
+            The ARN of the KMS key to use for encryption.
+
+        :type ClientToken: string
+        :param ClientToken:
+
+          The idempotency token for the request.
+
+          This field is autopopulated if not provided.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'DestinationId': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **DestinationId** *(string) --*
+
+              The ID of the publishing destination created.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_sample_findings(
         self, DetectorId: str, FindingTypes: List[str] = None
     ) -> Dict[str, Any]:
         """
         Generates example findings of types specified by the list of finding types. If 'NULL' is specified
-        for findingTypes, the API generates example findings of all supported finding types.
+        for ``findingTypes`` , the API generates example findings of all supported finding types.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateSampleFindings>`_
@@ -658,7 +742,7 @@ class Client(BaseClient):
         :type FindingTypes: list
         :param FindingTypes:
 
-          Types of sample findings that you want to generate.
+          Types of sample findings to generate.
 
           - *(string) --*
 
@@ -688,7 +772,8 @@ class Client(BaseClient):
     ) -> ClientCreateThreatIntelSetResponseTypeDef:
         """
         Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty
-        generates findings based on ThreatIntelSets.
+        generates findings based on ThreatIntelSets. Only users of the master account can use this
+        operation.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/CreateThreatIntelSet>`_
@@ -974,7 +1059,8 @@ class Client(BaseClient):
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_ip_set(self, DetectorId: str, IpSetId: str) -> Dict[str, Any]:
         """
-        Deletes the IPSet specified by the IPSet ID.
+        Deletes the IPSet specified by the ``ipSetId`` . IPSets are called Trusted IP lists in the console
+        user interface.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeleteIPSet>`_
@@ -989,12 +1075,12 @@ class Client(BaseClient):
         :type DetectorId: string
         :param DetectorId: **[REQUIRED]**
 
-          The unique ID of the detector the ipSet is associated with.
+          The unique ID of the detector associated with the IPSet.
 
         :type IpSetId: string
         :param IpSetId: **[REQUIRED]**
 
-          The unique ID of the ipSet you want to delete.
+          The unique ID of the IPSet to delete.
 
         :rtype: dict
         :returns:
@@ -1079,6 +1165,46 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_publishing_destination(
+        self, DetectorId: str, DestinationId: str
+    ) -> Dict[str, Any]:
+        """
+        Deletes the publishing definition with the specified ``destinationId`` .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DeletePublishingDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_publishing_destination(
+              DetectorId='string',
+              DestinationId='string'
+          )
+        :type DetectorId: string
+        :param DetectorId: **[REQUIRED]**
+
+          The unique ID of the detector associated with the publishing destination to delete.
+
+        :type DestinationId: string
+        :param DestinationId: **[REQUIRED]**
+
+          The ID of the publishing destination to delete.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def delete_threat_intel_set(
         self, DetectorId: str, ThreatIntelSetId: str
     ) -> Dict[str, Any]:
@@ -1116,6 +1242,87 @@ class Client(BaseClient):
           **Response Structure**
 
           - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_publishing_destination(
+        self, DetectorId: str, DestinationId: str
+    ) -> ClientDescribePublishingDestinationResponseTypeDef:
+        """
+        Returns information about the publishing destination specified by the provided ``destinationId`` .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/DescribePublishingDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_publishing_destination(
+              DetectorId='string',
+              DestinationId='string'
+          )
+        :type DetectorId: string
+        :param DetectorId: **[REQUIRED]**
+
+          The unique ID of the detector associated with the publishing destination to retrieve.
+
+        :type DestinationId: string
+        :param DestinationId: **[REQUIRED]**
+
+          The ID of the publishing destination to retrieve.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'DestinationId': 'string',
+                'DestinationType': 'S3',
+                'Status':
+                'PENDING_VERIFICATION'|'PUBLISHING'|'UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY'|'STOPPED',
+                'PublishingFailureStartTimestamp': 123,
+                'DestinationProperties': {
+                    'DestinationArn': 'string',
+                    'KmsKeyArn': 'string'
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **DestinationId** *(string) --*
+
+              The ID of the publishing destination.
+
+            - **DestinationType** *(string) --*
+
+              The type of the publishing destination. Currently, only S3 is supported.
+
+            - **Status** *(string) --*
+
+              The status of the publishing destination.
+
+            - **PublishingFailureStartTimestamp** *(integer) --*
+
+              The time, in epoch millisecond format, at which GuardDuty was first unable to publish
+              findings to the destination.
+
+            - **DestinationProperties** *(dict) --*
+
+              A ``DestinationProperties`` object that includes the ``DestinationArn`` and ``KmsKeyArn`` of
+              the publishing destination.
+
+              - **DestinationArn** *(string) --*
+
+                The ARN of the resource to publish to.
+
+              - **KmsKeyArn** *(string) --*
+
+                The ARN of the KMS key to use for encryption.
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -1427,37 +1634,37 @@ class Client(BaseClient):
 
                     - **Eq** *(list) --*
 
-                      Deprecated. Represents the equal condition to be applied to a single field when
-                      querying for findings.
+                      Represents the equal condition to be applied to a single field when querying for
+                      findings.
 
                       - *(string) --*
 
                     - **Neq** *(list) --*
 
-                      Deprecated. Represents the not equal condition to be applied to a single field when
-                      querying for findings.
+                      Represents the not equal condition to be applied to a single field when querying for
+                      findings.
 
                       - *(string) --*
 
                     - **Gt** *(integer) --*
 
-                      Deprecated. Represents a greater than condition to be applied to a single field when
-                      querying for findings.
+                      Represents a greater than condition to be applied to a single field when querying for
+                      findings.
 
                     - **Gte** *(integer) --*
 
-                      Deprecated. Represents a greater than equal condition to be applied to a single field
-                      when querying for findings.
+                      Represents a greater than equal condition to be applied to a single field when
+                      querying for findings.
 
                     - **Lt** *(integer) --*
 
-                      Deprecated. Represents a less than condition to be applied to a single field when
-                      querying for findings.
+                      Represents a less than condition to be applied to a single field when querying for
+                      findings.
 
                     - **Lte** *(integer) --*
 
-                      Deprecated. Represents a less than equal condition to be applied to a single field
-                      when querying for findings.
+                      Represents a less than equal condition to be applied to a single field when querying
+                      for findings.
 
                     - **Equals** *(list) --*
 
@@ -1769,7 +1976,8 @@ class Client(BaseClient):
 
               - *(dict) --*
 
-                Contains information about the finding.
+                Contains information about the finding, which is generated when abnormal or suspicious
+                activity is detected.
 
                 - **AccountId** *(string) --*
 
@@ -1805,7 +2013,8 @@ class Client(BaseClient):
 
                 - **Resource** *(dict) --*
 
-                  Contains information about the resource.
+                  Contains information about the AWS resource associated with the activity that prompted
+                  GuardDuty to generate a finding.
 
                   - **AccessKeyDetails** *(dict) --*
 
@@ -1879,7 +2088,7 @@ class Client(BaseClient):
 
                       - *(dict) --*
 
-                        Contains information about the network interface.
+                        Contains information about the network interface of the Ec2 instance.
 
                         - **Ipv6Addresses** *(list) --*
 
@@ -1905,7 +2114,7 @@ class Client(BaseClient):
 
                           - *(dict) --*
 
-                            Contains information about the private IP address.
+                            Contains other private IP address information of the EC2 instance.
 
                             - **PrivateDnsName** *(string) --*
 
@@ -1929,7 +2138,7 @@ class Client(BaseClient):
 
                           - *(dict) --*
 
-                            Contains information about the security group.
+                            Contains information about the security groups associated with the EC2 instance.
 
                             - **GroupId** *(string) --*
 
@@ -1957,7 +2166,7 @@ class Client(BaseClient):
 
                       - *(dict) --*
 
-                        Contains information about the product code.
+                        Contains information about the product code for the Ec2 instance.
 
                         - **Code** *(string) --*
 
@@ -1973,7 +2182,7 @@ class Client(BaseClient):
 
                       - *(dict) --*
 
-                        Contains information about the tag associated with the resource.
+                        Contains information about a tag associated with the Ec2 instance.
 
                         - **Key** *(string) --*
 
@@ -1993,7 +2202,7 @@ class Client(BaseClient):
 
                 - **Service** *(dict) --*
 
-                  Contains information about the service.
+                  Contains additional information about the generated finding.
 
                   - **Action** *(dict) --*
 
@@ -2093,7 +2302,7 @@ class Client(BaseClient):
 
                       - **Domain** *(string) --*
 
-                        Domain information for the DNS request.
+                        Domain information for the API request.
 
                     - **NetworkConnectionAction** *(dict) --*
 
@@ -2436,37 +2645,36 @@ class Client(BaseClient):
 
                 - **Eq** *(list) --*
 
-                  Deprecated. Represents the equal condition to be applied to a single field when querying
-                  for findings.
+                  Represents the equal condition to be applied to a single field when querying for findings.
 
                   - *(string) --*
 
                 - **Neq** *(list) --*
 
-                  Deprecated. Represents the not equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents the not equal condition to be applied to a single field when querying for
+                  findings.
 
                   - *(string) --*
 
                 - **Gt** *(integer) --*
 
-                  Deprecated. Represents a greater than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a greater than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Gte** *(integer) --*
 
-                  Deprecated. Represents a greater than equal condition to be applied to a single field
-                  when querying for findings.
+                  Represents a greater than equal condition to be applied to a single field when querying
+                  for findings.
 
                 - **Lt** *(integer) --*
 
-                  Deprecated. Represents a less than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Lte** *(integer) --*
 
-                  Deprecated. Represents a less than equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than equal condition to be applied to a single field when querying for
+                  findings.
 
                 - **Equals** *(list) --*
 
@@ -2575,7 +2783,7 @@ class Client(BaseClient):
         self, DetectorId: str, IpSetId: str
     ) -> ClientGetIpSetResponseTypeDef:
         """
-        Retrieves the IPSet specified by the IPSet ID.
+        Retrieves the IPSet specified by the ``ipSetId`` .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/GetIPSet>`_
@@ -2595,7 +2803,7 @@ class Client(BaseClient):
         :type IpSetId: string
         :param IpSetId: **[REQUIRED]**
 
-          The unique ID of the ipSet you want to get.
+          The unique ID of the IPSet to retrieve.
 
         :rtype: dict
         :returns:
@@ -2620,8 +2828,7 @@ class Client(BaseClient):
 
             - **Name** *(string) --*
 
-              The user friendly name to identify the IPSet. This name is displayed in all findings that are
-              triggered by activity that involves IP addresses included in this IPSet.
+              The user friendly name for the IPSet.
 
             - **Format** *(string) --*
 
@@ -3176,7 +3383,107 @@ class Client(BaseClient):
         :type FindingCriteria: dict
         :param FindingCriteria:
 
-          Represents the criteria used for querying findings.
+          Represents the criteria used for querying findings. Valid values include:
+
+          * JSON field name
+
+          * accountId
+
+          * region
+
+          * confidence
+
+          * id
+
+          * resource.accessKeyDetails.accessKeyId
+
+          * resource.accessKeyDetails.principalId
+
+          * resource.accessKeyDetails.userName
+
+          * resource.accessKeyDetails.userType
+
+          * resource.instanceDetails.iamInstanceProfile.id
+
+          * resource.instanceDetails.imageId
+
+          * resource.instanceDetails.instanceId
+
+          * resource.instanceDetails.networkInterfaces.ipv6Addresses
+
+          * resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
+
+          * resource.instanceDetails.networkInterfaces.publicDnsName
+
+          * resource.instanceDetails.networkInterfaces.publicIp
+
+          * resource.instanceDetails.networkInterfaces.securityGroups.groupId
+
+          * resource.instanceDetails.networkInterfaces.securityGroups.groupName
+
+          * resource.instanceDetails.networkInterfaces.subnetId
+
+          * resource.instanceDetails.networkInterfaces.vpcId
+
+          * resource.instanceDetails.tags.key
+
+          * resource.instanceDetails.tags.value
+
+          * resource.resourceType
+
+          * service.action.actionType
+
+          * service.action.awsApiCallAction.api
+
+          * service.action.awsApiCallAction.callerType
+
+          * service.action.awsApiCallAction.remoteIpDetails.city.cityName
+
+          * service.action.awsApiCallAction.remoteIpDetails.country.countryName
+
+          * service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
+
+          * service.action.awsApiCallAction.remoteIpDetails.organization.asn
+
+          * service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
+
+          * service.action.awsApiCallAction.serviceName
+
+          * service.action.dnsRequestAction.domain
+
+          * service.action.networkConnectionAction.blocked
+
+          * service.action.networkConnectionAction.connectionDirection
+
+          * service.action.networkConnectionAction.localPortDetails.port
+
+          * service.action.networkConnectionAction.protocol
+
+          * service.action.networkConnectionAction.remoteIpDetails.city.cityName
+
+          * service.action.networkConnectionAction.remoteIpDetails.country.countryName
+
+          * service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
+
+          * service.action.networkConnectionAction.remoteIpDetails.organization.asn
+
+          * service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
+
+          * service.action.networkConnectionAction.remotePortDetails.port
+
+          * service.additionalInfo.threatListName
+
+          * service.archived When this attribute is set to 'true', only archived findings are listed. When
+          it's set to 'false', only unarchived findings are listed. When this attribute is not set, all
+          existing findings are listed.
+
+          * service.resourceRole
+
+          * severity
+
+          * type
+
+          * updatedAt Type: Timestamp in Unix Epoch millisecond format: 1486685375000
 
           - **Criterion** *(dict) --*
 
@@ -3191,37 +3498,36 @@ class Client(BaseClient):
 
                 - **Eq** *(list) --*
 
-                  Deprecated. Represents the equal condition to be applied to a single field when querying
-                  for findings.
+                  Represents the equal condition to be applied to a single field when querying for findings.
 
                   - *(string) --*
 
                 - **Neq** *(list) --*
 
-                  Deprecated. Represents the not equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents the not equal condition to be applied to a single field when querying for
+                  findings.
 
                   - *(string) --*
 
                 - **Gt** *(integer) --*
 
-                  Deprecated. Represents a greater than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a greater than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Gte** *(integer) --*
 
-                  Deprecated. Represents a greater than equal condition to be applied to a single field
-                  when querying for findings.
+                  Represents a greater than equal condition to be applied to a single field when querying
+                  for findings.
 
                 - **Lt** *(integer) --*
 
-                  Deprecated. Represents a less than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Lte** *(integer) --*
 
-                  Deprecated. Represents a less than equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than equal condition to be applied to a single field when querying for
+                  findings.
 
                 - **Equals** *(list) --*
 
@@ -3370,15 +3676,16 @@ class Client(BaseClient):
 
               - *(dict) --*
 
-                Contains information about the invitation.
+                Contains information about the invitation to become a member account.
 
                 - **AccountId** *(string) --*
 
-                  Inviter account ID
+                  The ID of the account from which the invitations was sent.
 
                 - **InvitationId** *(string) --*
 
-                  This value is used to validate the inviter account to the member account.
+                  The ID of the invitation. This value is used to validate the inviter account to the
+                  member account.
 
                 - **RelationshipStatus** *(string) --*
 
@@ -3386,7 +3693,7 @@ class Client(BaseClient):
 
                 - **InvitedAt** *(string) --*
 
-                  Timestamp at which the invitation was sent
+                  Timestamp at which the invitation was sent.
 
             - **NextToken** *(string) --*
 
@@ -3399,7 +3706,8 @@ class Client(BaseClient):
         self, DetectorId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListIpSetsResponseTypeDef:
         """
-        Lists the IPSets of the GuardDuty service specified by the detector ID.
+        Lists the IPSets of the GuardDuty service specified by the detector ID. If you use this operation
+        from a member account, the IPSets returned are the IPSets from the associated master account.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListIPSets>`_
@@ -3574,6 +3882,93 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_publishing_destinations(
+        self, DetectorId: str, MaxResults: int = None, NextToken: str = None
+    ) -> ClientListPublishingDestinationsResponseTypeDef:
+        """
+        Returns a list of publishing destinations associated with the specified ``dectectorId`` .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListPublishingDestinations>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_publishing_destinations(
+              DetectorId='string',
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type DetectorId: string
+        :param DetectorId: **[REQUIRED]**
+
+          The ID of the detector to retrieve publishing destinations for.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in the response.
+
+        :type NextToken: string
+        :param NextToken:
+
+          A token to use for paginating results returned in the repsonse. Set the value of this parameter
+          to null for the first request to a list action. For subsequent calls, use the ``NextToken`` value
+          returned from the previous request to continue listing results after the first page.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Destinations': [
+                    {
+                        'DestinationId': 'string',
+                        'DestinationType': 'S3',
+                        'Status':
+                        'PENDING_VERIFICATION'|'PUBLISHING'|'UNABLE_TO_PUBLISH_FIX_DESTINATION_PROPERTY'
+                        |'STOPPED'
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Destinations** *(list) --*
+
+              A ``Destinations`` obect that includes information about each publishing destination returned.
+
+              - *(dict) --*
+
+                Contains information about a publishing destination, including the ID, type, and status.
+
+                - **DestinationId** *(string) --*
+
+                  The unique ID of the publishing destination.
+
+                - **DestinationType** *(string) --*
+
+                  The type of resource used for the publishing destination. Currently, only S3 is supported.
+
+                - **Status** *(string) --*
+
+                  The status of the publishing destination.
+
+            - **NextToken** *(string) --*
+
+              A token to use for paginating results returned in the repsonse. Set the value of this
+              parameter to null for the first request to a list action. For subsequent calls, use the
+              ``NextToken`` value returned from the previous request to continue listing results after the
+              first page.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, ResourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -3627,7 +4022,9 @@ class Client(BaseClient):
         self, DetectorId: str, MaxResults: int = None, NextToken: str = None
     ) -> ClientListThreatIntelSetsResponseTypeDef:
         """
-        Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
+        Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID. If you use this
+        operation from a member account, the ThreatIntelSets associated with the master account are
+        returned.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/ListThreatIntelSets>`_
@@ -3654,9 +4051,9 @@ class Client(BaseClient):
         :type NextToken: string
         :param NextToken:
 
-          You can use this parameter when paginating results. Set the value of this parameter to null on
-          your first call to the list action. For subsequent calls to the action fill nextToken in the
-          request with the value of NextToken from the previous response to continue listing data.
+          You can use this parameter to paginate results in the response. Set the value of this parameter
+          to null on your first call to the list action. For subsequent calls to the action fill nextToken
+          in the request with the value of NextToken from the previous response to continue listing data.
 
         :rtype: dict
         :returns:
@@ -3692,9 +4089,8 @@ class Client(BaseClient):
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientStartMonitoringMembersResponseTypeDef:
         """
-        Re-enables GuardDuty to monitor findings of the member accounts specified by the account IDs. A
-        master GuardDuty account can run this command after disabling GuardDuty from monitoring these
-        members' findings by running StopMonitoringMembers.
+        Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart
+        monitoring of accounts that you stopped monitoring with the ``StopMonitoringMembers`` operation.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StartMonitoringMembers>`_
@@ -3711,14 +4107,13 @@ class Client(BaseClient):
         :type DetectorId: string
         :param DetectorId: **[REQUIRED]**
 
-          The unique ID of the detector of the GuardDuty account whom you want to re-enable to monitor
-          members' findings.
+          The unique ID of the detector of the GuardDuty master account associated with the member accounts
+          to monitor.
 
         :type AccountIds: list
         :param AccountIds: **[REQUIRED]**
 
-          A list of account IDs of the GuardDuty member accounts whose findings you want the master account
-          to monitor.
+          A list of account IDs of the GuardDuty member accounts to start monitoring.
 
           - *(string) --*
 
@@ -3765,9 +4160,8 @@ class Client(BaseClient):
         self, DetectorId: str, AccountIds: List[str]
     ) -> ClientStopMonitoringMembersResponseTypeDef:
         """
-        Disables GuardDuty from monitoring findings of the member accounts specified by the account IDs.
-        After running this command, a master GuardDuty account can run StartMonitoringMembers to re-enable
-        GuardDuty to monitor these members’ findings.
+        Stops GuardDuty monitoring for the specified member accounnts. Use the ``StartMonitoringMembers``
+        to restart monitoring for those accounts.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/StopMonitoringMembers>`_
@@ -3853,7 +4247,7 @@ class Client(BaseClient):
         :type ResourceArn: string
         :param ResourceArn: **[REQUIRED]**
 
-          The Amazon Resource Name (ARN) for the given GuardDuty resource
+          The Amazon Resource Name (ARN) for the GuardDuty resource to apply a tag to.
 
         :type Tags: dict
         :param Tags: **[REQUIRED]**
@@ -3882,7 +4276,7 @@ class Client(BaseClient):
         self, DetectorId: str, FindingIds: List[str]
     ) -> Dict[str, Any]:
         """
-        Unarchives Amazon GuardDuty findings specified by the list of finding IDs.
+        Unarchives GuardDuty findings specified by the ``findingIds`` .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UnarchiveFindings>`_
@@ -3899,12 +4293,12 @@ class Client(BaseClient):
         :type DetectorId: string
         :param DetectorId: **[REQUIRED]**
 
-          The ID of the detector that specifies the GuardDuty service whose findings you want to unarchive.
+          The ID of the detector associated with the findings to unarchive.
 
         :type FindingIds: list
         :param FindingIds: **[REQUIRED]**
 
-          IDs of the findings that you want to unarchive.
+          IDs of the findings to unarchive.
 
           - *(string) --*
 
@@ -3941,12 +4335,12 @@ class Client(BaseClient):
         :type ResourceArn: string
         :param ResourceArn: **[REQUIRED]**
 
-          The Amazon Resource Name (ARN) for the given GuardDuty resource
+          The Amazon Resource Name (ARN) for the resource to remove tags from.
 
         :type TagKeys: list
         :param TagKeys: **[REQUIRED]**
 
-          The tag keys to remove from a resource.
+          The tag keys to remove from the resource.
 
           - *(string) --*
 
@@ -3971,7 +4365,7 @@ class Client(BaseClient):
         FindingPublishingFrequency: str = None,
     ) -> Dict[str, Any]:
         """
-        Updates an Amazon GuardDuty detector specified by the detectorId.
+        Updates the Amazon GuardDuty detector specified by the detectorId.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateDetector>`_
@@ -3987,17 +4381,17 @@ class Client(BaseClient):
         :type DetectorId: string
         :param DetectorId: **[REQUIRED]**
 
-          The unique ID of the detector that you want to update.
+          The unique ID of the detector to update.
 
         :type Enable: boolean
         :param Enable:
 
-          Updated boolean value for the detector that specifies whether the detector is enabled.
+          Specifies whether the detector is enabled or not enabled.
 
         :type FindingPublishingFrequency: string
         :param FindingPublishingFrequency:
 
-          A enum value that specifies how frequently customer got Finding updates published.
+          A enum value that specifies how frequently findings are exported, such as to CloudWatch Events.
 
         :rtype: dict
         :returns:
@@ -4109,37 +4503,36 @@ class Client(BaseClient):
 
                 - **Eq** *(list) --*
 
-                  Deprecated. Represents the equal condition to be applied to a single field when querying
-                  for findings.
+                  Represents the equal condition to be applied to a single field when querying for findings.
 
                   - *(string) --*
 
                 - **Neq** *(list) --*
 
-                  Deprecated. Represents the not equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents the not equal condition to be applied to a single field when querying for
+                  findings.
 
                   - *(string) --*
 
                 - **Gt** *(integer) --*
 
-                  Deprecated. Represents a greater than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a greater than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Gte** *(integer) --*
 
-                  Deprecated. Represents a greater than equal condition to be applied to a single field
-                  when querying for findings.
+                  Represents a greater than equal condition to be applied to a single field when querying
+                  for findings.
 
                 - **Lt** *(integer) --*
 
-                  Deprecated. Represents a less than condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than condition to be applied to a single field when querying for
+                  findings.
 
                 - **Lte** *(integer) --*
 
-                  Deprecated. Represents a less than equal condition to be applied to a single field when
-                  querying for findings.
+                  Represents a less than equal condition to be applied to a single field when querying for
+                  findings.
 
                 - **Equals** *(list) --*
 
@@ -4204,7 +4597,7 @@ class Client(BaseClient):
         Comments: str = None,
     ) -> Dict[str, Any]:
         """
-        Marks specified Amazon GuardDuty findings as useful or not useful.
+        Marks the specified GuardDuty findings as useful or not useful.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdateFindingsFeedback>`_
@@ -4223,8 +4616,7 @@ class Client(BaseClient):
         :type DetectorId: string
         :param DetectorId: **[REQUIRED]**
 
-          The ID of the detector that specifies the GuardDuty service whose findings you want to mark as
-          useful or not useful.
+          The ID of the detector associated with the findings to update feedback for.
 
         :type FindingIds: list
         :param FindingIds: **[REQUIRED]**
@@ -4236,7 +4628,7 @@ class Client(BaseClient):
         :type Feedback: string
         :param Feedback: **[REQUIRED]**
 
-          Valid values: USEFUL | NOT_USEFUL
+          The feedback for the finding.
 
         :type Comments: string
         :param Comments:
@@ -4306,6 +4698,67 @@ class Client(BaseClient):
         :param Activate:
 
           The updated boolean value that specifies whether the IPSet is active or not.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_publishing_destination(
+        self,
+        DetectorId: str,
+        DestinationId: str,
+        DestinationProperties: ClientUpdatePublishingDestinationDestinationPropertiesTypeDef = None,
+    ) -> Dict[str, Any]:
+        """
+        Updates information about the publishing destination specified by the ``destinationId`` .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UpdatePublishingDestination>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_publishing_destination(
+              DetectorId='string',
+              DestinationId='string',
+              DestinationProperties={
+                  'DestinationArn': 'string',
+                  'KmsKeyArn': 'string'
+              }
+          )
+        :type DetectorId: string
+        :param DetectorId: **[REQUIRED]**
+
+          The ID of the
+
+        :type DestinationId: string
+        :param DestinationId: **[REQUIRED]**
+
+          The ID of the detector associated with the publishing destinations to update.
+
+        :type DestinationProperties: dict
+        :param DestinationProperties:
+
+          A ``DestinationProperties`` object that includes the ``DestinationArn`` and ``KmsKeyArn`` of the
+          publishing destination.
+
+          - **DestinationArn** *(string) --*
+
+            The ARN of the resource to publish to.
+
+          - **KmsKeyArn** *(string) --*
+
+            The ARN of the KMS key to use for encryption.
 
         :rtype: dict
         :returns:

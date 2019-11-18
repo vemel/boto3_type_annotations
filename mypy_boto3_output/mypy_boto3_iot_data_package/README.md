@@ -1,4 +1,4 @@
 # mypy-boto3-iot-data
 
-Mypy-friendly type annotations for `boto3` 1.10.18 `iot-data` service.
+Mypy-friendly type annotations for `boto3` 1.10.19 `iot-data` service.
 More information can be found [here](https://github.com/vemel/mypy_boto3).

@@ -41,6 +41,8 @@ __all__ = (
     "ClientDescribeWorkspaceBundlesResponseBundlesUserStorageTypeDef",
     "ClientDescribeWorkspaceBundlesResponseBundlesTypeDef",
     "ClientDescribeWorkspaceBundlesResponseTypeDef",
+    "ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef",
+    "ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef",
     "ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationPropertiesTypeDef",
     "ClientDescribeWorkspaceDirectoriesResponseDirectoriesTypeDef",
     "ClientDescribeWorkspaceDirectoriesResponseTypeDef",
@@ -60,6 +62,9 @@ __all__ = (
     "ClientImportWorkspaceImageTagsTypeDef",
     "ClientListAvailableManagementCidrRangesResponseTypeDef",
     "ClientModifyClientPropertiesClientPropertiesTypeDef",
+    "ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef",
+    "ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef",
+    "ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef",
     "ClientModifyWorkspacePropertiesWorkspacePropertiesTypeDef",
     "ClientRebootWorkspacesRebootWorkspaceRequestsTypeDef",
     "ClientRebootWorkspacesResponseFailedRequestsTypeDef",
@@ -67,6 +72,7 @@ __all__ = (
     "ClientRebuildWorkspacesRebuildWorkspaceRequestsTypeDef",
     "ClientRebuildWorkspacesResponseFailedRequestsTypeDef",
     "ClientRebuildWorkspacesResponseTypeDef",
+    "ClientRegisterWorkspaceDirectoryTagsTypeDef",
     "ClientStartWorkspacesResponseFailedRequestsTypeDef",
     "ClientStartWorkspacesResponseTypeDef",
     "ClientStartWorkspacesStartWorkspaceRequestsTypeDef",
@@ -91,6 +97,8 @@ __all__ = (
     "DescribeWorkspaceBundlesPaginateResponseBundlesTypeDef",
     "DescribeWorkspaceBundlesPaginateResponseTypeDef",
     "DescribeWorkspaceDirectoriesPaginatePaginationConfigTypeDef",
+    "DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef",
+    "DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef",
     "DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPropertiesTypeDef",
     "DescribeWorkspaceDirectoriesPaginateResponseDirectoriesTypeDef",
     "DescribeWorkspaceDirectoriesPaginateResponseTypeDef",
@@ -370,7 +378,7 @@ class ClientCreateWorkspacesResponseFailedRequestsWorkspaceRequestTypeDef(
 
     - **UserName** *(string) --*
 
-      The username of the user for the WorkSpace. This username must exist in the AWS
+      The user name of the user for the WorkSpace. This user name must exist in the AWS
       Directory Service directory for the WorkSpace.
 
     - **BundleId** *(string) --*
@@ -465,7 +473,7 @@ class ClientCreateWorkspacesResponseFailedRequestsTypeDef(
 
       - **UserName** *(string) --*
 
-        The username of the user for the WorkSpace. This username must exist in the AWS
+        The user name of the user for the WorkSpace. This user name must exist in the AWS
         Directory Service directory for the WorkSpace.
 
       - **BundleId** *(string) --*
@@ -772,7 +780,7 @@ class ClientCreateWorkspacesResponseTypeDef(_ClientCreateWorkspacesResponseTypeD
 
           - **UserName** *(string) --*
 
-            The username of the user for the WorkSpace. This username must exist in the AWS
+            The user name of the user for the WorkSpace. This user name must exist in the AWS
             Directory Service directory for the WorkSpace.
 
           - **BundleId** *(string) --*
@@ -1058,7 +1066,7 @@ class ClientCreateWorkspacesWorkspacesTypeDef(
 
     - **UserName** *(string) --* **[REQUIRED]**
 
-      The username of the user for the WorkSpace. This username must exist in the AWS Directory
+      The user name of the user for the WorkSpace. This user name must exist in the AWS Directory
       Service directory for the WorkSpace.
 
     - **BundleId** *(string) --* **[REQUIRED]**
@@ -1143,7 +1151,7 @@ class ClientDescribeAccountModificationsResponseAccountModificationsTypeDef(
     """
     Type definition for `ClientDescribeAccountModificationsResponse` `AccountModifications`
 
-    Describes a modification to the configuration of bring your own license (BYOL) for the
+    Describes a modification to the configuration of Bring Your Own License (BYOL) for the
     specified account.
 
     - **ModificationState** *(string) --*
@@ -1198,7 +1206,7 @@ class ClientDescribeAccountModificationsResponseTypeDef(
 
       - *(dict) --*
 
-        Describes a modification to the configuration of bring your own license (BYOL) for the
+        Describes a modification to the configuration of Bring Your Own License (BYOL) for the
         specified account.
 
         - **ModificationState** *(string) --*
@@ -1743,6 +1751,111 @@ class ClientDescribeWorkspaceBundlesResponseTypeDef(
     """
 
 
+_ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef = TypedDict(
+    "_ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef",
+    {
+        "RestartWorkspace": str,
+        "IncreaseVolumeSize": str,
+        "ChangeComputeType": str,
+        "SwitchRunningMode": str,
+        "RebuildWorkspace": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef(
+    _ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef
+):
+    """
+    Type definition for `ClientDescribeWorkspaceDirectoriesResponseDirectories` `SelfservicePermissions`
+
+    The default self-service permissions for WorkSpaces in the directory.
+
+    - **RestartWorkspace** *(string) --*
+
+      Specifies whether users can restart their WorkSpace.
+
+    - **IncreaseVolumeSize** *(string) --*
+
+      Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+    - **ChangeComputeType** *(string) --*
+
+      Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+    - **SwitchRunningMode** *(string) --*
+
+      Specifies whether users can switch the running mode of their WorkSpace.
+
+    - **RebuildWorkspace** *(string) --*
+
+      Specifies whether users can rebuild the operating system of a WorkSpace to its original
+      state.
+    """
+
+
+_ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef = TypedDict(
+    "_ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef",
+    {
+        "DeviceTypeWindows": str,
+        "DeviceTypeOsx": str,
+        "DeviceTypeWeb": str,
+        "DeviceTypeIos": str,
+        "DeviceTypeAndroid": str,
+        "DeviceTypeChromeOs": str,
+        "DeviceTypeZeroClient": str,
+    },
+    total=False,
+)
+
+
+class ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef(
+    _ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef
+):
+    """
+    Type definition for `ClientDescribeWorkspaceDirectoriesResponseDirectories` `WorkspaceAccessProperties`
+
+    The devices and operating systems that users can use to access Workspaces.
+
+    - **DeviceTypeWindows** *(string) --*
+
+      Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid
+      certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+      WorkSpaces Access to Trusted Devices
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeOsx** *(string) --*
+
+      Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid
+      certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+      WorkSpaces Access to Trusted Devices
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeWeb** *(string) --*
+
+      Indicates whether users can access their WorkSpaces through a web browser.
+
+    - **DeviceTypeIos** *(string) --*
+
+      Indicates whether users can use iOS devices to access their WorkSpaces.
+
+    - **DeviceTypeAndroid** *(string) --*
+
+      Indicates whether users can use Android devices to access their WorkSpaces.
+
+    - **DeviceTypeChromeOs** *(string) --*
+
+      Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+    - **DeviceTypeZeroClient** *(string) --*
+
+      Indicates whether users can use zero client devices to access their WorkSpaces.
+    """
+
+
 _ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationPropertiesTypeDef = TypedDict(
     "_ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationPropertiesTypeDef",
     {
@@ -1751,6 +1864,7 @@ _ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationPropertie
         "DefaultOu": str,
         "CustomSecurityGroupId": str,
         "UserEnabledAsLocalAdministrator": bool,
+        "EnableMaintenanceMode": bool,
     },
     total=False,
 )
@@ -1792,7 +1906,14 @@ class ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationProp
 
     - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-      Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+      Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+    - **EnableMaintenanceMode** *(boolean) --*
+
+      Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+      `WorkSpace Maintenance
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+      .
     """
 
 
@@ -1812,6 +1933,9 @@ _ClientDescribeWorkspaceDirectoriesResponseDirectoriesTypeDef = TypedDict(
         "State": str,
         "WorkspaceCreationProperties": ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceCreationPropertiesTypeDef,
         "ipGroupIds": List[str],
+        "WorkspaceAccessProperties": ClientDescribeWorkspaceDirectoriesResponseDirectoriesWorkspaceAccessPropertiesTypeDef,
+        "Tenancy": str,
+        "SelfservicePermissions": ClientDescribeWorkspaceDirectoriesResponseDirectoriesSelfservicePermissionsTypeDef,
     },
     total=False,
 )
@@ -1823,7 +1947,7 @@ class ClientDescribeWorkspaceDirectoriesResponseDirectoriesTypeDef(
     """
     Type definition for `ClientDescribeWorkspaceDirectoriesResponse` `Directories`
 
-    Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+    Describes a directory that is used with Amazon WorkSpaces.
 
     - **DirectoryId** *(string) --*
 
@@ -1873,7 +1997,7 @@ class ClientDescribeWorkspaceDirectoriesResponseDirectoriesTypeDef(
 
     - **State** *(string) --*
 
-      The state of the directory's registration with Amazon WorkSpaces
+      The state of the directory's registration with Amazon WorkSpaces.
 
     - **WorkspaceCreationProperties** *(dict) --*
 
@@ -1907,13 +2031,92 @@ class ClientDescribeWorkspaceDirectoriesResponseDirectoriesTypeDef(
 
       - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-        Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+        Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+      - **EnableMaintenanceMode** *(boolean) --*
+
+        Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+        `WorkSpace Maintenance
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+        .
 
     - **ipGroupIds** *(list) --*
 
       The identifiers of the IP access control groups associated with the directory.
 
       - *(string) --*
+
+    - **WorkspaceAccessProperties** *(dict) --*
+
+      The devices and operating systems that users can use to access Workspaces.
+
+      - **DeviceTypeWindows** *(string) --*
+
+        Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+        WorkSpaces access to trusted devices (also known as managed devices) with valid
+        certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+        WorkSpaces Access to Trusted Devices
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+      - **DeviceTypeOsx** *(string) --*
+
+        Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+        WorkSpaces access to trusted devices (also known as managed devices) with valid
+        certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+        WorkSpaces Access to Trusted Devices
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+      - **DeviceTypeWeb** *(string) --*
+
+        Indicates whether users can access their WorkSpaces through a web browser.
+
+      - **DeviceTypeIos** *(string) --*
+
+        Indicates whether users can use iOS devices to access their WorkSpaces.
+
+      - **DeviceTypeAndroid** *(string) --*
+
+        Indicates whether users can use Android devices to access their WorkSpaces.
+
+      - **DeviceTypeChromeOs** *(string) --*
+
+        Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+      - **DeviceTypeZeroClient** *(string) --*
+
+        Indicates whether users can use zero client devices to access their WorkSpaces.
+
+    - **Tenancy** *(string) --*
+
+      Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+      (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+      Own Windows Desktop Images
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+    - **SelfservicePermissions** *(dict) --*
+
+      The default self-service permissions for WorkSpaces in the directory.
+
+      - **RestartWorkspace** *(string) --*
+
+        Specifies whether users can restart their WorkSpace.
+
+      - **IncreaseVolumeSize** *(string) --*
+
+        Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+      - **ChangeComputeType** *(string) --*
+
+        Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+      - **SwitchRunningMode** *(string) --*
+
+        Specifies whether users can switch the running mode of their WorkSpace.
+
+      - **RebuildWorkspace** *(string) --*
+
+        Specifies whether users can rebuild the operating system of a WorkSpace to its original
+        state.
     """
 
 
@@ -1941,7 +2144,7 @@ class ClientDescribeWorkspaceDirectoriesResponseTypeDef(
 
       - *(dict) --*
 
-        Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+        Describes a directory that is used with Amazon WorkSpaces.
 
         - **DirectoryId** *(string) --*
 
@@ -1991,7 +2194,7 @@ class ClientDescribeWorkspaceDirectoriesResponseTypeDef(
 
         - **State** *(string) --*
 
-          The state of the directory's registration with Amazon WorkSpaces
+          The state of the directory's registration with Amazon WorkSpaces.
 
         - **WorkspaceCreationProperties** *(dict) --*
 
@@ -2025,13 +2228,92 @@ class ClientDescribeWorkspaceDirectoriesResponseTypeDef(
 
           - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-            Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+            Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+          - **EnableMaintenanceMode** *(boolean) --*
+
+            Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+            `WorkSpace Maintenance
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+            .
 
         - **ipGroupIds** *(list) --*
 
           The identifiers of the IP access control groups associated with the directory.
 
           - *(string) --*
+
+        - **WorkspaceAccessProperties** *(dict) --*
+
+          The devices and operating systems that users can use to access Workspaces.
+
+          - **DeviceTypeWindows** *(string) --*
+
+            Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid
+            certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+            WorkSpaces Access to Trusted Devices
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeOsx** *(string) --*
+
+            Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid
+            certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+            WorkSpaces Access to Trusted Devices
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeWeb** *(string) --*
+
+            Indicates whether users can access their WorkSpaces through a web browser.
+
+          - **DeviceTypeIos** *(string) --*
+
+            Indicates whether users can use iOS devices to access their WorkSpaces.
+
+          - **DeviceTypeAndroid** *(string) --*
+
+            Indicates whether users can use Android devices to access their WorkSpaces.
+
+          - **DeviceTypeChromeOs** *(string) --*
+
+            Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+          - **DeviceTypeZeroClient** *(string) --*
+
+            Indicates whether users can use zero client devices to access their WorkSpaces.
+
+        - **Tenancy** *(string) --*
+
+          Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+          (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+          Own Windows Desktop Images
+          <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+        - **SelfservicePermissions** *(dict) --*
+
+          The default self-service permissions for WorkSpaces in the directory.
+
+          - **RestartWorkspace** *(string) --*
+
+            Specifies whether users can restart their WorkSpace.
+
+          - **IncreaseVolumeSize** *(string) --*
+
+            Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+          - **ChangeComputeType** *(string) --*
+
+            Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+          - **SwitchRunningMode** *(string) --*
+
+            Specifies whether users can switch the running mode of their WorkSpace.
+
+          - **RebuildWorkspace** *(string) --*
+
+            Specifies whether users can rebuild the operating system of a WorkSpace to its original
+            state.
 
     - **NextToken** *(string) --*
 
@@ -2111,8 +2393,10 @@ class ClientDescribeWorkspaceImagesResponseImagesTypeDef(
 
     - **RequiredTenancy** *(string) --*
 
-      Specifies whether the image is running on dedicated hardware. When bring your own license
-      (BYOL) is enabled, this value is set to DEDICATED.
+      Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+      (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+      Your Own Windows Desktop Images
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
     - **ErrorCode** *(string) --*
 
@@ -2174,8 +2458,10 @@ class ClientDescribeWorkspaceImagesResponseTypeDef(
 
         - **RequiredTenancy** *(string) --*
 
-          Specifies whether the image is running on dedicated hardware. When bring your own license
-          (BYOL) is enabled, this value is set to DEDICATED.
+          Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+          (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+          Your Own Windows Desktop Images
+          <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
         - **ErrorCode** *(string) --*
 
@@ -2792,6 +3078,153 @@ class ClientModifyClientPropertiesClientPropertiesTypeDef(
     """
 
 
+_ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef = TypedDict(
+    "_ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef",
+    {
+        "RestartWorkspace": str,
+        "IncreaseVolumeSize": str,
+        "ChangeComputeType": str,
+        "SwitchRunningMode": str,
+        "RebuildWorkspace": str,
+    },
+    total=False,
+)
+
+
+class ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef(
+    _ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef
+):
+    """
+    Type definition for `ClientModifySelfservicePermissions` `SelfservicePermissions`
+
+    The permissions to enable or disable self-service capabilities.
+
+    - **RestartWorkspace** *(string) --*
+
+      Specifies whether users can restart their WorkSpace.
+
+    - **IncreaseVolumeSize** *(string) --*
+
+      Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+    - **ChangeComputeType** *(string) --*
+
+      Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+    - **SwitchRunningMode** *(string) --*
+
+      Specifies whether users can switch the running mode of their WorkSpace.
+
+    - **RebuildWorkspace** *(string) --*
+
+      Specifies whether users can rebuild the operating system of a WorkSpace to its original state.
+    """
+
+
+_ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef = TypedDict(
+    "_ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef",
+    {
+        "DeviceTypeWindows": str,
+        "DeviceTypeOsx": str,
+        "DeviceTypeWeb": str,
+        "DeviceTypeIos": str,
+        "DeviceTypeAndroid": str,
+        "DeviceTypeChromeOs": str,
+        "DeviceTypeZeroClient": str,
+    },
+    total=False,
+)
+
+
+class ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef(
+    _ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef
+):
+    """
+    Type definition for `ClientModifyWorkspaceAccessProperties` `WorkspaceAccessProperties`
+
+    The device types and operating systems to enable or disable for access.
+
+    - **DeviceTypeWindows** *(string) --*
+
+      Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid certificates,
+      specify a value of ``TRUST`` . For more information, see `Restrict WorkSpaces Access to Trusted
+      Devices <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeOsx** *(string) --*
+
+      Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid certificates,
+      specify a value of ``TRUST`` . For more information, see `Restrict WorkSpaces Access to Trusted
+      Devices <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeWeb** *(string) --*
+
+      Indicates whether users can access their WorkSpaces through a web browser.
+
+    - **DeviceTypeIos** *(string) --*
+
+      Indicates whether users can use iOS devices to access their WorkSpaces.
+
+    - **DeviceTypeAndroid** *(string) --*
+
+      Indicates whether users can use Android devices to access their WorkSpaces.
+
+    - **DeviceTypeChromeOs** *(string) --*
+
+      Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+    - **DeviceTypeZeroClient** *(string) --*
+
+      Indicates whether users can use zero client devices to access their WorkSpaces.
+    """
+
+
+_ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef = TypedDict(
+    "_ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef",
+    {
+        "EnableInternetAccess": bool,
+        "DefaultOu": str,
+        "CustomSecurityGroupId": str,
+        "UserEnabledAsLocalAdministrator": bool,
+        "EnableMaintenanceMode": bool,
+    },
+    total=False,
+)
+
+
+class ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef(
+    _ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef
+):
+    """
+    Type definition for `ClientModifyWorkspaceCreationProperties` `WorkspaceCreationProperties`
+
+    The default properties for creating WorkSpaces.
+
+    - **EnableInternetAccess** *(boolean) --*
+
+      Indicates whether internet access is enabled for your WorkSpaces.
+
+    - **DefaultOu** *(string) --*
+
+      The default organizational unit (OU) for your WorkSpace directories.
+
+    - **CustomSecurityGroupId** *(string) --*
+
+      The identifier of your custom security group.
+
+    - **UserEnabledAsLocalAdministrator** *(boolean) --*
+
+      Indicates whether users are local administrators of their WorkSpaces.
+
+    - **EnableMaintenanceMode** *(boolean) --*
+
+      Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see
+      `WorkSpace Maintenance
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__ .
+    """
+
+
 _ClientModifyWorkspacePropertiesWorkspacePropertiesTypeDef = TypedDict(
     "_ClientModifyWorkspacePropertiesWorkspacePropertiesTypeDef",
     {
@@ -3005,6 +3438,33 @@ class ClientRebuildWorkspacesResponseTypeDef(_ClientRebuildWorkspacesResponseTyp
         - **ErrorMessage** *(string) --*
 
           The text of the error message that is returned if the WorkSpace cannot be rebooted.
+    """
+
+
+_RequiredClientRegisterWorkspaceDirectoryTagsTypeDef = TypedDict(
+    "_RequiredClientRegisterWorkspaceDirectoryTagsTypeDef", {"Key": str}
+)
+_OptionalClientRegisterWorkspaceDirectoryTagsTypeDef = TypedDict(
+    "_OptionalClientRegisterWorkspaceDirectoryTagsTypeDef", {"Value": str}, total=False
+)
+
+
+class ClientRegisterWorkspaceDirectoryTagsTypeDef(
+    _RequiredClientRegisterWorkspaceDirectoryTagsTypeDef,
+    _OptionalClientRegisterWorkspaceDirectoryTagsTypeDef,
+):
+    """
+    Type definition for `ClientRegisterWorkspaceDirectory` `Tags`
+
+    Describes a tag.
+
+    - **Key** *(string) --* **[REQUIRED]**
+
+      The key of the tag.
+
+    - **Value** *(string) --*
+
+      The value of the tag.
     """
 
 
@@ -3342,7 +3802,7 @@ class DescribeAccountModificationsPaginateResponseAccountModificationsTypeDef(
     """
     Type definition for `DescribeAccountModificationsPaginateResponse` `AccountModifications`
 
-    Describes a modification to the configuration of bring your own license (BYOL) for the
+    Describes a modification to the configuration of Bring Your Own License (BYOL) for the
     specified account.
 
     - **ModificationState** *(string) --*
@@ -3396,7 +3856,7 @@ class DescribeAccountModificationsPaginateResponseTypeDef(
 
       - *(dict) --*
 
-        Describes a modification to the configuration of bring your own license (BYOL) for the
+        Describes a modification to the configuration of Bring Your Own License (BYOL) for the
         specified account.
 
         - **ModificationState** *(string) --*
@@ -3835,6 +4295,111 @@ class DescribeWorkspaceDirectoriesPaginatePaginationConfigTypeDef(
     """
 
 
+_DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef = TypedDict(
+    "_DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef",
+    {
+        "RestartWorkspace": str,
+        "IncreaseVolumeSize": str,
+        "ChangeComputeType": str,
+        "SwitchRunningMode": str,
+        "RebuildWorkspace": str,
+    },
+    total=False,
+)
+
+
+class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef(
+    _DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef
+):
+    """
+    Type definition for `DescribeWorkspaceDirectoriesPaginateResponseDirectories` `SelfservicePermissions`
+
+    The default self-service permissions for WorkSpaces in the directory.
+
+    - **RestartWorkspace** *(string) --*
+
+      Specifies whether users can restart their WorkSpace.
+
+    - **IncreaseVolumeSize** *(string) --*
+
+      Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+    - **ChangeComputeType** *(string) --*
+
+      Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+    - **SwitchRunningMode** *(string) --*
+
+      Specifies whether users can switch the running mode of their WorkSpace.
+
+    - **RebuildWorkspace** *(string) --*
+
+      Specifies whether users can rebuild the operating system of a WorkSpace to its original
+      state.
+    """
+
+
+_DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef = TypedDict(
+    "_DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef",
+    {
+        "DeviceTypeWindows": str,
+        "DeviceTypeOsx": str,
+        "DeviceTypeWeb": str,
+        "DeviceTypeIos": str,
+        "DeviceTypeAndroid": str,
+        "DeviceTypeChromeOs": str,
+        "DeviceTypeZeroClient": str,
+    },
+    total=False,
+)
+
+
+class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef(
+    _DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef
+):
+    """
+    Type definition for `DescribeWorkspaceDirectoriesPaginateResponseDirectories` `WorkspaceAccessProperties`
+
+    The devices and operating systems that users can use to access Workspaces.
+
+    - **DeviceTypeWindows** *(string) --*
+
+      Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid
+      certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+      WorkSpaces Access to Trusted Devices
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeOsx** *(string) --*
+
+      Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+      WorkSpaces access to trusted devices (also known as managed devices) with valid
+      certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+      WorkSpaces Access to Trusted Devices
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+    - **DeviceTypeWeb** *(string) --*
+
+      Indicates whether users can access their WorkSpaces through a web browser.
+
+    - **DeviceTypeIos** *(string) --*
+
+      Indicates whether users can use iOS devices to access their WorkSpaces.
+
+    - **DeviceTypeAndroid** *(string) --*
+
+      Indicates whether users can use Android devices to access their WorkSpaces.
+
+    - **DeviceTypeChromeOs** *(string) --*
+
+      Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+    - **DeviceTypeZeroClient** *(string) --*
+
+      Indicates whether users can use zero client devices to access their WorkSpaces.
+    """
+
+
 _DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPropertiesTypeDef = TypedDict(
     "_DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPropertiesTypeDef",
     {
@@ -3843,6 +4408,7 @@ _DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPropert
         "DefaultOu": str,
         "CustomSecurityGroupId": str,
         "UserEnabledAsLocalAdministrator": bool,
+        "EnableMaintenanceMode": bool,
     },
     total=False,
 )
@@ -3884,7 +4450,14 @@ class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPr
 
     - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-      Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+      Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+    - **EnableMaintenanceMode** *(boolean) --*
+
+      Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+      `WorkSpace Maintenance
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+      .
     """
 
 
@@ -3904,6 +4477,9 @@ _DescribeWorkspaceDirectoriesPaginateResponseDirectoriesTypeDef = TypedDict(
         "State": str,
         "WorkspaceCreationProperties": DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceCreationPropertiesTypeDef,
         "ipGroupIds": List[str],
+        "WorkspaceAccessProperties": DescribeWorkspaceDirectoriesPaginateResponseDirectoriesWorkspaceAccessPropertiesTypeDef,
+        "Tenancy": str,
+        "SelfservicePermissions": DescribeWorkspaceDirectoriesPaginateResponseDirectoriesSelfservicePermissionsTypeDef,
     },
     total=False,
 )
@@ -3915,7 +4491,7 @@ class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesTypeDef(
     """
     Type definition for `DescribeWorkspaceDirectoriesPaginateResponse` `Directories`
 
-    Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+    Describes a directory that is used with Amazon WorkSpaces.
 
     - **DirectoryId** *(string) --*
 
@@ -3965,7 +4541,7 @@ class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesTypeDef(
 
     - **State** *(string) --*
 
-      The state of the directory's registration with Amazon WorkSpaces
+      The state of the directory's registration with Amazon WorkSpaces.
 
     - **WorkspaceCreationProperties** *(dict) --*
 
@@ -3999,13 +4575,92 @@ class DescribeWorkspaceDirectoriesPaginateResponseDirectoriesTypeDef(
 
       - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-        Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+        Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+      - **EnableMaintenanceMode** *(boolean) --*
+
+        Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+        `WorkSpace Maintenance
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+        .
 
     - **ipGroupIds** *(list) --*
 
       The identifiers of the IP access control groups associated with the directory.
 
       - *(string) --*
+
+    - **WorkspaceAccessProperties** *(dict) --*
+
+      The devices and operating systems that users can use to access Workspaces.
+
+      - **DeviceTypeWindows** *(string) --*
+
+        Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+        WorkSpaces access to trusted devices (also known as managed devices) with valid
+        certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+        WorkSpaces Access to Trusted Devices
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+      - **DeviceTypeOsx** *(string) --*
+
+        Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+        WorkSpaces access to trusted devices (also known as managed devices) with valid
+        certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+        WorkSpaces Access to Trusted Devices
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+      - **DeviceTypeWeb** *(string) --*
+
+        Indicates whether users can access their WorkSpaces through a web browser.
+
+      - **DeviceTypeIos** *(string) --*
+
+        Indicates whether users can use iOS devices to access their WorkSpaces.
+
+      - **DeviceTypeAndroid** *(string) --*
+
+        Indicates whether users can use Android devices to access their WorkSpaces.
+
+      - **DeviceTypeChromeOs** *(string) --*
+
+        Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+      - **DeviceTypeZeroClient** *(string) --*
+
+        Indicates whether users can use zero client devices to access their WorkSpaces.
+
+    - **Tenancy** *(string) --*
+
+      Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+      (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+      Own Windows Desktop Images
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+    - **SelfservicePermissions** *(dict) --*
+
+      The default self-service permissions for WorkSpaces in the directory.
+
+      - **RestartWorkspace** *(string) --*
+
+        Specifies whether users can restart their WorkSpace.
+
+      - **IncreaseVolumeSize** *(string) --*
+
+        Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+      - **ChangeComputeType** *(string) --*
+
+        Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+      - **SwitchRunningMode** *(string) --*
+
+        Specifies whether users can switch the running mode of their WorkSpace.
+
+      - **RebuildWorkspace** *(string) --*
+
+        Specifies whether users can rebuild the operating system of a WorkSpace to its original
+        state.
     """
 
 
@@ -4032,7 +4687,7 @@ class DescribeWorkspaceDirectoriesPaginateResponseTypeDef(
 
       - *(dict) --*
 
-        Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+        Describes a directory that is used with Amazon WorkSpaces.
 
         - **DirectoryId** *(string) --*
 
@@ -4082,7 +4737,7 @@ class DescribeWorkspaceDirectoriesPaginateResponseTypeDef(
 
         - **State** *(string) --*
 
-          The state of the directory's registration with Amazon WorkSpaces
+          The state of the directory's registration with Amazon WorkSpaces.
 
         - **WorkspaceCreationProperties** *(dict) --*
 
@@ -4116,13 +4771,92 @@ class DescribeWorkspaceDirectoriesPaginateResponseTypeDef(
 
           - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-            Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+            Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+          - **EnableMaintenanceMode** *(boolean) --*
+
+            Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+            `WorkSpace Maintenance
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+            .
 
         - **ipGroupIds** *(list) --*
 
           The identifiers of the IP access control groups associated with the directory.
 
           - *(string) --*
+
+        - **WorkspaceAccessProperties** *(dict) --*
+
+          The devices and operating systems that users can use to access Workspaces.
+
+          - **DeviceTypeWindows** *(string) --*
+
+            Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid
+            certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+            WorkSpaces Access to Trusted Devices
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeOsx** *(string) --*
+
+            Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid
+            certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+            WorkSpaces Access to Trusted Devices
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeWeb** *(string) --*
+
+            Indicates whether users can access their WorkSpaces through a web browser.
+
+          - **DeviceTypeIos** *(string) --*
+
+            Indicates whether users can use iOS devices to access their WorkSpaces.
+
+          - **DeviceTypeAndroid** *(string) --*
+
+            Indicates whether users can use Android devices to access their WorkSpaces.
+
+          - **DeviceTypeChromeOs** *(string) --*
+
+            Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+          - **DeviceTypeZeroClient** *(string) --*
+
+            Indicates whether users can use zero client devices to access their WorkSpaces.
+
+        - **Tenancy** *(string) --*
+
+          Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+          (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+          Own Windows Desktop Images
+          <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+        - **SelfservicePermissions** *(dict) --*
+
+          The default self-service permissions for WorkSpaces in the directory.
+
+          - **RestartWorkspace** *(string) --*
+
+            Specifies whether users can restart their WorkSpace.
+
+          - **IncreaseVolumeSize** *(string) --*
+
+            Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+          - **ChangeComputeType** *(string) --*
+
+            Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+          - **SwitchRunningMode** *(string) --*
+
+            Specifies whether users can switch the running mode of their WorkSpace.
+
+          - **RebuildWorkspace** *(string) --*
+
+            Specifies whether users can rebuild the operating system of a WorkSpace to its original
+            state.
     """
 
 
@@ -4229,8 +4963,10 @@ class DescribeWorkspaceImagesPaginateResponseImagesTypeDef(
 
     - **RequiredTenancy** *(string) --*
 
-      Specifies whether the image is running on dedicated hardware. When bring your own license
-      (BYOL) is enabled, this value is set to DEDICATED.
+      Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+      (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+      Your Own Windows Desktop Images
+      <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
     - **ErrorCode** *(string) --*
 
@@ -4289,8 +5025,10 @@ class DescribeWorkspaceImagesPaginateResponseTypeDef(
 
         - **RequiredTenancy** *(string) --*
 
-          Specifies whether the image is running on dedicated hardware. When bring your own license
-          (BYOL) is enabled, this value is set to DEDICATED.
+          Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+          (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+          Your Own Windows Desktop Images
+          <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
         - **ErrorCode** *(string) --*
 

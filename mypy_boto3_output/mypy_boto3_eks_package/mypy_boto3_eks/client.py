@@ -17,16 +17,26 @@ from mypy_boto3_eks.type_defs import (
     ClientCreateClusterResponseTypeDef,
     ClientCreateClusterloggingTypeDef,
     ClientCreateClusterresourcesVpcConfigTypeDef,
+    ClientCreateNodegroupResponseTypeDef,
+    ClientCreateNodegroupremoteAccessTypeDef,
+    ClientCreateNodegroupscalingConfigTypeDef,
     ClientDeleteClusterResponseTypeDef,
+    ClientDeleteNodegroupResponseTypeDef,
     ClientDescribeClusterResponseTypeDef,
+    ClientDescribeNodegroupResponseTypeDef,
     ClientDescribeUpdateResponseTypeDef,
     ClientListClustersResponseTypeDef,
+    ClientListNodegroupsResponseTypeDef,
     ClientListTagsForResourceResponseTypeDef,
     ClientListUpdatesResponseTypeDef,
     ClientUpdateClusterConfigResponseTypeDef,
     ClientUpdateClusterConfigloggingTypeDef,
     ClientUpdateClusterConfigresourcesVpcConfigTypeDef,
     ClientUpdateClusterVersionResponseTypeDef,
+    ClientUpdateNodegroupConfigResponseTypeDef,
+    ClientUpdateNodegroupConfiglabelsTypeDef,
+    ClientUpdateNodegroupConfigscalingConfigTypeDef,
+    ClientUpdateNodegroupVersionResponseTypeDef,
 )
 
 # pylint: disable=import-self
@@ -285,6 +295,7 @@ class Client(BaseClient):
                         'securityGroupIds': [
                             'string',
                         ],
+                        'clusterSecurityGroupId': 'string',
                         'vpcId': 'string',
                         'endpointPublicAccess': True|False,
                         'endpointPrivateAccess': True|False
@@ -304,7 +315,7 @@ class Client(BaseClient):
                             'issuer': 'string'
                         }
                     },
-                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED',
+                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED'|'UPDATING',
                     'certificateAuthority': {
                         'data': 'string'
                     },
@@ -370,6 +381,11 @@ class Client(BaseClient):
 
                   - *(string) --*
 
+                - **clusterSecurityGroupId** *(string) --*
+
+                  The cluster security group that was created by Amazon EKS for the cluster. Managed node
+                  groups use this security group for control plane to data plane communication.
+
                 - **vpcId** *(string) --*
 
                   The VPC associated with your cluster.
@@ -451,7 +467,520 @@ class Client(BaseClient):
               - **tags** *(dict) --*
 
                 The metadata that you apply to the cluster to assist with categorization and organization.
-                Each tag consists of a key and an optional value, both of which you define.
+                Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+                not propagate to any other resources associated with the cluster.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_nodegroup(
+        self,
+        clusterName: str,
+        nodegroupName: str,
+        subnets: List[str],
+        nodeRole: str,
+        scalingConfig: ClientCreateNodegroupscalingConfigTypeDef = None,
+        diskSize: int = None,
+        instanceTypes: List[str] = None,
+        amiType: str = None,
+        remoteAccess: ClientCreateNodegroupremoteAccessTypeDef = None,
+        labels: Dict[str, str] = None,
+        tags: Dict[str, str] = None,
+        clientRequestToken: str = None,
+        version: str = None,
+        releaseVersion: str = None,
+    ) -> ClientCreateNodegroupResponseTypeDef:
+        """
+        Creates a managed worker node group for an Amazon EKS cluster. You can only create a node group for
+        your cluster that is equal to the current Kubernetes version for the cluster. All node groups are
+        created with the latest AMI release version for the respective minor Kubernetes version of the
+        cluster.
+
+        An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and associated Amazon EC2
+        instances that are managed by AWS for an Amazon EKS cluster. Each node group uses a version of the
+        Amazon EKS-optimized Amazon Linux 2 AMI. For more information, see `Managed Node Groups
+        <https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html>`__ in the *Amazon EKS
+        User Guide* .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/CreateNodegroup>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_nodegroup(
+              clusterName='string',
+              nodegroupName='string',
+              scalingConfig={
+                  'minSize': 123,
+                  'maxSize': 123,
+                  'desiredSize': 123
+              },
+              diskSize=123,
+              subnets=[
+                  'string',
+              ],
+              instanceTypes=[
+                  'string',
+              ],
+              amiType='AL2_x86_64'|'AL2_x86_64_GPU',
+              remoteAccess={
+                  'ec2SshKey': 'string',
+                  'sourceSecurityGroups': [
+                      'string',
+                  ]
+              },
+              nodeRole='string',
+              labels={
+                  'string': 'string'
+              },
+              tags={
+                  'string': 'string'
+              },
+              clientRequestToken='string',
+              version='string',
+              releaseVersion='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the cluster to create the node group in.
+
+        :type nodegroupName: string
+        :param nodegroupName: **[REQUIRED]**
+
+          The unique name to give your node group.
+
+        :type scalingConfig: dict
+        :param scalingConfig:
+
+          The scaling configuration details for the AutoScaling group that is created for your node group.
+
+          - **minSize** *(integer) --*
+
+            The minimum number of worker nodes that the managed node group can scale in to. This number
+            must be greater than zero.
+
+          - **maxSize** *(integer) --*
+
+            The maximum number of worker nodes that the managed node group can scale out to. Managed node
+            groups can support up to 100 nodes by default.
+
+          - **desiredSize** *(integer) --*
+
+            The current number of worker nodes that the managed node group should maintain.
+
+        :type diskSize: integer
+        :param diskSize:
+
+          The root device disk size (in GiB) for your node group instances. The default disk size is 20 GiB.
+
+        :type subnets: list
+        :param subnets: **[REQUIRED]**
+
+          The subnets to use for the AutoScaling group that is created for your node group. These subnets
+          must have the tag key ``kubernetes.io/cluster/CLUSTER_NAME`` with a value of ``shared`` , where
+          ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+          - *(string) --*
+
+        :type instanceTypes: list
+        :param instanceTypes:
+
+          The instance type to use for your node group. Currently, you can specify a single instance type
+          for a node group. The default value for this parameter is ``t3.medium`` . If you choose a GPU
+          instance type, be sure to specify the ``AL2_x86_64_GPU`` with the ``amiType`` parameter.
+
+          - *(string) --*
+
+        :type amiType: string
+        :param amiType:
+
+          The AMI type for your node group. GPU instance types should use the ``AL2_x86_64_GPU`` AMI type,
+          which uses the Amazon EKS-optimized Linux AMI with GPU support; non-GPU instances should use the
+          ``AL2_x86_64`` AMI type, which uses the Amazon EKS-optimized Linux AMI.
+
+        :type remoteAccess: dict
+        :param remoteAccess:
+
+          The remote access (SSH) configuration to use with your node group.
+
+          - **ec2SshKey** *(string) --*
+
+            The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes in the
+            managed node group. For more information, see `Amazon EC2 Key Pairs
+            <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the *Amazon
+            Elastic Compute Cloud User Guide for Linux Instances* .
+
+          - **sourceSecurityGroups** *(list) --*
+
+            The security groups to allow SSH access (port 22) from on the worker nodes. If you specify an
+            Amazon EC2 SSH key, but you do not specify a source security group when you create a managed
+            node group, port 22 on the worker nodes is opened to the internet (0.0.0.0/0). For more
+            information, see `Security Groups for Your VPC
+            <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the *Amazon
+            Virtual Private Cloud User Guide* .
+
+            - *(string) --*
+
+        :type nodeRole: string
+        :param nodeRole: **[REQUIRED]**
+
+          The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon makes
+          calls to AWS APIs on your behalf. Worker nodes receive permissions for these API calls through an
+          IAM instance profile and associated policies. Before you can launch worker nodes and register
+          them into a cluster, you must create an IAM role for those worker nodes to use when they are
+          launched. For more information, see `Amazon EKS Worker Node IAM Role
+          <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the * *Amazon
+          EKS User Guide* * .
+
+        :type labels: dict
+        :param labels:
+
+          The Kubernetes labels to be applied to the nodes in the node group when they are created.
+
+          - *(string) --*
+
+            - *(string) --*
+
+        :type tags: dict
+        :param tags:
+
+          The metadata to apply to the node group to assist with categorization and organization. Each tag
+          consists of a key and an optional value, both of which you define. Node group tags do not
+          propagate to any other resources associated with the node group, such as the Amazon EC2 instances
+          or subnets.
+
+          - *(string) --*
+
+            - *(string) --*
+
+        :type clientRequestToken: string
+        :param clientRequestToken:
+
+          Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+
+          This field is autopopulated if not provided.
+
+        :type version: string
+        :param version:
+
+          The Kubernetes version to use for your managed nodes. By default, the Kubernetes version of the
+          cluster is used, and this is the only accepted specified value.
+
+        :type releaseVersion: string
+        :param releaseVersion:
+
+          The AMI version of the Amazon EKS-optimized AMI to use with your node group. By default, the
+          latest available AMI version for the node group's current Kubernetes version is used. For more
+          information, see `Amazon EKS-Optimized Linux AMI Versions
+          <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the *Amazon
+          EKS User Guide* .
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'nodegroup': {
+                    'nodegroupName': 'string',
+                    'nodegroupArn': 'string',
+                    'clusterName': 'string',
+                    'version': 'string',
+                    'releaseVersion': 'string',
+                    'createdAt': datetime(2015, 1, 1),
+                    'modifiedAt': datetime(2015, 1, 1),
+                    'status':
+                    'CREATING'|'ACTIVE'|'UPDATING'|'DELETING'|'CREATE_FAILED'|'DELETE_FAILED'|'DEGRADED',
+                    'scalingConfig': {
+                        'minSize': 123,
+                        'maxSize': 123,
+                        'desiredSize': 123
+                    },
+                    'instanceTypes': [
+                        'string',
+                    ],
+                    'subnets': [
+                        'string',
+                    ],
+                    'remoteAccess': {
+                        'ec2SshKey': 'string',
+                        'sourceSecurityGroups': [
+                            'string',
+                        ]
+                    },
+                    'amiType': 'AL2_x86_64'|'AL2_x86_64_GPU',
+                    'nodeRole': 'string',
+                    'labels': {
+                        'string': 'string'
+                    },
+                    'resources': {
+                        'autoScalingGroups': [
+                            {
+                                'name': 'string'
+                            },
+                        ],
+                        'remoteAccessSecurityGroup': 'string'
+                    },
+                    'diskSize': 123,
+                    'health': {
+                        'issues': [
+                            {
+                                'code':
+                                'AutoScalingGroupNotFound'|'Ec2SecurityGroupNotFound'
+                                |'Ec2SecurityGroupDeletionFailure'|'Ec2LaunchTemplateNotFound'
+                                |'Ec2LaunchTemplateVersionMismatch'|'IamInstanceProfileNotFound'
+                                |'IamNodeRoleNotFound'|'AsgInstanceLaunchFailures'|'InstanceLimitExceeded'
+                                |'InsufficientFreeAddresses'|'AccessDenied'|'InternalFailure',
+                                'message': 'string',
+                                'resourceIds': [
+                                    'string',
+                                ]
+                            },
+                        ]
+                    },
+                    'tags': {
+                        'string': 'string'
+                    }
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **nodegroup** *(dict) --*
+
+              The full description of your new node group.
+
+              - **nodegroupName** *(string) --*
+
+                The name associated with an Amazon EKS managed node group.
+
+              - **nodegroupArn** *(string) --*
+
+                The Amazon Resource Name (ARN) associated with the managed node group.
+
+              - **clusterName** *(string) --*
+
+                The name of the cluster that the managed node group resides in.
+
+              - **version** *(string) --*
+
+                The Kubernetes version of the managed node group.
+
+              - **releaseVersion** *(string) --*
+
+                The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+                Linux AMI Versions
+                <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+                *Amazon EKS User Guide* .
+
+              - **createdAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was created.
+
+              - **modifiedAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+              - **status** *(string) --*
+
+                The current status of the managed node group.
+
+              - **scalingConfig** *(dict) --*
+
+                The scaling configuration details for the AutoScaling group that is associated with your
+                node group.
+
+                - **minSize** *(integer) --*
+
+                  The minimum number of worker nodes that the managed node group can scale in to. This
+                  number must be greater than zero.
+
+                - **maxSize** *(integer) --*
+
+                  The maximum number of worker nodes that the managed node group can scale out to. Managed
+                  node groups can support up to 100 nodes by default.
+
+                - **desiredSize** *(integer) --*
+
+                  The current number of worker nodes that the managed node group should maintain.
+
+              - **instanceTypes** *(list) --*
+
+                The instance types associated with your node group.
+
+                - *(string) --*
+
+              - **subnets** *(list) --*
+
+                The subnets allowed for the AutoScaling group that is associated with your node group.
+                These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+                ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+                - *(string) --*
+
+              - **remoteAccess** *(dict) --*
+
+                The remote access (SSH) configuration that is associated with the node group.
+
+                - **ec2SshKey** *(string) --*
+
+                  The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+                  in the managed node group. For more information, see `Amazon EC2 Key Pairs
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+                  *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+                - **sourceSecurityGroups** *(list) --*
+
+                  The security groups to allow SSH access (port 22) from on the worker nodes. If you
+                  specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+                  create a managed node group, port 22 on the worker nodes is opened to the internet
+                  (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+                  <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+                  *Amazon Virtual Private Cloud User Guide* .
+
+                  - *(string) --*
+
+              - **amiType** *(string) --*
+
+                The AMI type associated with your node group. GPU instance types should use the
+                ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+                support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+                EKS-optimized Linux AMI.
+
+              - **nodeRole** *(string) --*
+
+                The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+                makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+                calls through an IAM instance profile and associated policies. Before you can launch worker
+                nodes and register them into a cluster, you must create an IAM role for those worker nodes
+                to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+                <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+                *Amazon EKS User Guide* * .
+
+              - **labels** *(dict) --*
+
+                The Kubernetes labels applied to the nodes in the node group.
+
+                .. note::
+
+                  Only labels that are applied with the Amazon EKS API are shown here. There may be other
+                  Kubernetes labels applied to the nodes in this group.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+              - **resources** *(dict) --*
+
+                The resources associated with the nodegroup, such as AutoScaling groups and security groups
+                for remote access.
+
+                - **autoScalingGroups** *(list) --*
+
+                  The autoscaling groups associated with the node group.
+
+                  - *(dict) --*
+
+                    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+                    - **name** *(string) --*
+
+                      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+                - **remoteAccessSecurityGroup** *(string) --*
+
+                  The remote access security group associated with the node group. This security group
+                  controls SSH access to the worker nodes.
+
+              - **diskSize** *(integer) --*
+
+                The root device disk size (in GiB) for your node group instances. The default disk size is
+                20 GiB.
+
+              - **health** *(dict) --*
+
+                The health status of the node group. If there are issues with your node group's health,
+                they are listed here.
+
+                - **issues** *(list) --*
+
+                  Any issues that are associated with the node group.
+
+                  - *(dict) --*
+
+                    An object representing an issue with an Amazon EKS resource.
+
+                    - **code** *(string) --*
+
+                      A brief description of the error.
+
+                      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+                      with the managed node group. You may be able to recreate an Auto Scaling group with
+                      the same settings to recover.
+
+                      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+                      cluster. You must recreate your cluster.
+
+                      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+                      security group for your managed node group. Remove any dependencies from the security
+                      group.
+
+                      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+                      your managed node group. You may be able to recreate a launch template with the same
+                      settings to recover.
+
+                      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+                      your managed node group does not match the version that Amazon EKS created. You may
+                      be able to revert to the Amazon EKS-created version to recover.
+
+                      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+                      managed node group. You may be able to recreate an instance profile with the same
+                      settings to recover.
+
+                      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+                      group. You may be able to recreate an IAM role with the same settings to recover.
+
+                      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+                      while attempting to launch instances.
+
+                      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+                      of the specified instance type. You may be able to request an Amazon EC2 instance
+                      limit increase to recover.
+
+                      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+                      managed node group does not have enough available IP addresses for new nodes.
+
+                      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+                      communicate with your cluster API server.
+
+                      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+                      issue.
+
+                    - **message** *(string) --*
+
+                      The error message associated with the issue.
+
+                    - **resourceIds** *(list) --*
+
+                      The AWS resources that are afflicted by this issue.
+
+                      - *(string) --*
+
+              - **tags** *(dict) --*
+
+                The metadata applied the node group to assist with categorization and organization. Each
+                tag consists of a key and an optional value, both of which you define. Node group tags do
+                not propagate to any other resources associated with the node group, such as the Amazon EC2
+                instances or subnets.
 
                 - *(string) --*
 
@@ -464,14 +993,15 @@ class Client(BaseClient):
         """
         Deletes the Amazon EKS cluster control plane.
 
-        .. note::
+        If you have active services in your cluster that are associated with a load balancer, you must
+        delete those services before deleting the cluster so that the load balancers are deleted properly.
+        Otherwise, you can have orphaned resources in your VPC that prevent you from being able to delete
+        the VPC. For more information, see `Deleting a Cluster
+        <https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html>`__ in the *Amazon EKS User
+        Guide* .
 
-          If you have active services in your cluster that are associated with a load balancer, you must
-          delete those services before deleting the cluster so that the load balancers are deleted
-          properly. Otherwise, you can have orphaned resources in your VPC that prevent you from being able
-          to delete the VPC. For more information, see `Deleting a Cluster
-          <https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html>`__ in the *Amazon EKS User
-          Guide* .
+        If you have managed node groups attached to the cluster, you must delete them first. For more
+        information, see  DeleteNodegroup .
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteCluster>`_
@@ -509,6 +1039,7 @@ class Client(BaseClient):
                         'securityGroupIds': [
                             'string',
                         ],
+                        'clusterSecurityGroupId': 'string',
                         'vpcId': 'string',
                         'endpointPublicAccess': True|False,
                         'endpointPrivateAccess': True|False
@@ -528,7 +1059,7 @@ class Client(BaseClient):
                             'issuer': 'string'
                         }
                     },
-                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED',
+                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED'|'UPDATING',
                     'certificateAuthority': {
                         'data': 'string'
                     },
@@ -594,6 +1125,11 @@ class Client(BaseClient):
 
                   - *(string) --*
 
+                - **clusterSecurityGroupId** *(string) --*
+
+                  The cluster security group that was created by Amazon EKS for the cluster. Managed node
+                  groups use this security group for control plane to data plane communication.
+
                 - **vpcId** *(string) --*
 
                   The VPC associated with your cluster.
@@ -675,7 +1211,342 @@ class Client(BaseClient):
               - **tags** *(dict) --*
 
                 The metadata that you apply to the cluster to assist with categorization and organization.
-                Each tag consists of a key and an optional value, both of which you define.
+                Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+                not propagate to any other resources associated with the cluster.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_nodegroup(
+        self, clusterName: str, nodegroupName: str
+    ) -> ClientDeleteNodegroupResponseTypeDef:
+        """
+        Deletes an Amazon EKS node group for a cluster.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DeleteNodegroup>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_nodegroup(
+              clusterName='string',
+              nodegroupName='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the Amazon EKS cluster that is associated with your node group.
+
+        :type nodegroupName: string
+        :param nodegroupName: **[REQUIRED]**
+
+          The name of the node group to delete.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'nodegroup': {
+                    'nodegroupName': 'string',
+                    'nodegroupArn': 'string',
+                    'clusterName': 'string',
+                    'version': 'string',
+                    'releaseVersion': 'string',
+                    'createdAt': datetime(2015, 1, 1),
+                    'modifiedAt': datetime(2015, 1, 1),
+                    'status':
+                    'CREATING'|'ACTIVE'|'UPDATING'|'DELETING'|'CREATE_FAILED'|'DELETE_FAILED'|'DEGRADED',
+                    'scalingConfig': {
+                        'minSize': 123,
+                        'maxSize': 123,
+                        'desiredSize': 123
+                    },
+                    'instanceTypes': [
+                        'string',
+                    ],
+                    'subnets': [
+                        'string',
+                    ],
+                    'remoteAccess': {
+                        'ec2SshKey': 'string',
+                        'sourceSecurityGroups': [
+                            'string',
+                        ]
+                    },
+                    'amiType': 'AL2_x86_64'|'AL2_x86_64_GPU',
+                    'nodeRole': 'string',
+                    'labels': {
+                        'string': 'string'
+                    },
+                    'resources': {
+                        'autoScalingGroups': [
+                            {
+                                'name': 'string'
+                            },
+                        ],
+                        'remoteAccessSecurityGroup': 'string'
+                    },
+                    'diskSize': 123,
+                    'health': {
+                        'issues': [
+                            {
+                                'code':
+                                'AutoScalingGroupNotFound'|'Ec2SecurityGroupNotFound'
+                                |'Ec2SecurityGroupDeletionFailure'|'Ec2LaunchTemplateNotFound'
+                                |'Ec2LaunchTemplateVersionMismatch'|'IamInstanceProfileNotFound'
+                                |'IamNodeRoleNotFound'|'AsgInstanceLaunchFailures'|'InstanceLimitExceeded'
+                                |'InsufficientFreeAddresses'|'AccessDenied'|'InternalFailure',
+                                'message': 'string',
+                                'resourceIds': [
+                                    'string',
+                                ]
+                            },
+                        ]
+                    },
+                    'tags': {
+                        'string': 'string'
+                    }
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **nodegroup** *(dict) --*
+
+              The full description of your deleted node group.
+
+              - **nodegroupName** *(string) --*
+
+                The name associated with an Amazon EKS managed node group.
+
+              - **nodegroupArn** *(string) --*
+
+                The Amazon Resource Name (ARN) associated with the managed node group.
+
+              - **clusterName** *(string) --*
+
+                The name of the cluster that the managed node group resides in.
+
+              - **version** *(string) --*
+
+                The Kubernetes version of the managed node group.
+
+              - **releaseVersion** *(string) --*
+
+                The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+                Linux AMI Versions
+                <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+                *Amazon EKS User Guide* .
+
+              - **createdAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was created.
+
+              - **modifiedAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+              - **status** *(string) --*
+
+                The current status of the managed node group.
+
+              - **scalingConfig** *(dict) --*
+
+                The scaling configuration details for the AutoScaling group that is associated with your
+                node group.
+
+                - **minSize** *(integer) --*
+
+                  The minimum number of worker nodes that the managed node group can scale in to. This
+                  number must be greater than zero.
+
+                - **maxSize** *(integer) --*
+
+                  The maximum number of worker nodes that the managed node group can scale out to. Managed
+                  node groups can support up to 100 nodes by default.
+
+                - **desiredSize** *(integer) --*
+
+                  The current number of worker nodes that the managed node group should maintain.
+
+              - **instanceTypes** *(list) --*
+
+                The instance types associated with your node group.
+
+                - *(string) --*
+
+              - **subnets** *(list) --*
+
+                The subnets allowed for the AutoScaling group that is associated with your node group.
+                These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+                ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+                - *(string) --*
+
+              - **remoteAccess** *(dict) --*
+
+                The remote access (SSH) configuration that is associated with the node group.
+
+                - **ec2SshKey** *(string) --*
+
+                  The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+                  in the managed node group. For more information, see `Amazon EC2 Key Pairs
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+                  *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+                - **sourceSecurityGroups** *(list) --*
+
+                  The security groups to allow SSH access (port 22) from on the worker nodes. If you
+                  specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+                  create a managed node group, port 22 on the worker nodes is opened to the internet
+                  (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+                  <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+                  *Amazon Virtual Private Cloud User Guide* .
+
+                  - *(string) --*
+
+              - **amiType** *(string) --*
+
+                The AMI type associated with your node group. GPU instance types should use the
+                ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+                support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+                EKS-optimized Linux AMI.
+
+              - **nodeRole** *(string) --*
+
+                The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+                makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+                calls through an IAM instance profile and associated policies. Before you can launch worker
+                nodes and register them into a cluster, you must create an IAM role for those worker nodes
+                to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+                <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+                *Amazon EKS User Guide* * .
+
+              - **labels** *(dict) --*
+
+                The Kubernetes labels applied to the nodes in the node group.
+
+                .. note::
+
+                  Only labels that are applied with the Amazon EKS API are shown here. There may be other
+                  Kubernetes labels applied to the nodes in this group.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+              - **resources** *(dict) --*
+
+                The resources associated with the nodegroup, such as AutoScaling groups and security groups
+                for remote access.
+
+                - **autoScalingGroups** *(list) --*
+
+                  The autoscaling groups associated with the node group.
+
+                  - *(dict) --*
+
+                    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+                    - **name** *(string) --*
+
+                      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+                - **remoteAccessSecurityGroup** *(string) --*
+
+                  The remote access security group associated with the node group. This security group
+                  controls SSH access to the worker nodes.
+
+              - **diskSize** *(integer) --*
+
+                The root device disk size (in GiB) for your node group instances. The default disk size is
+                20 GiB.
+
+              - **health** *(dict) --*
+
+                The health status of the node group. If there are issues with your node group's health,
+                they are listed here.
+
+                - **issues** *(list) --*
+
+                  Any issues that are associated with the node group.
+
+                  - *(dict) --*
+
+                    An object representing an issue with an Amazon EKS resource.
+
+                    - **code** *(string) --*
+
+                      A brief description of the error.
+
+                      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+                      with the managed node group. You may be able to recreate an Auto Scaling group with
+                      the same settings to recover.
+
+                      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+                      cluster. You must recreate your cluster.
+
+                      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+                      security group for your managed node group. Remove any dependencies from the security
+                      group.
+
+                      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+                      your managed node group. You may be able to recreate a launch template with the same
+                      settings to recover.
+
+                      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+                      your managed node group does not match the version that Amazon EKS created. You may
+                      be able to revert to the Amazon EKS-created version to recover.
+
+                      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+                      managed node group. You may be able to recreate an instance profile with the same
+                      settings to recover.
+
+                      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+                      group. You may be able to recreate an IAM role with the same settings to recover.
+
+                      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+                      while attempting to launch instances.
+
+                      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+                      of the specified instance type. You may be able to request an Amazon EC2 instance
+                      limit increase to recover.
+
+                      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+                      managed node group does not have enough available IP addresses for new nodes.
+
+                      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+                      communicate with your cluster API server.
+
+                      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+                      issue.
+
+                    - **message** *(string) --*
+
+                      The error message associated with the issue.
+
+                    - **resourceIds** *(list) --*
+
+                      The AWS resources that are afflicted by this issue.
+
+                      - *(string) --*
+
+              - **tags** *(dict) --*
+
+                The metadata applied the node group to assist with categorization and organization. Each
+                tag consists of a key and an optional value, both of which you define. Node group tags do
+                not propagate to any other resources associated with the node group, such as the Amazon EC2
+                instances or subnets.
 
                 - *(string) --*
 
@@ -734,6 +1605,7 @@ class Client(BaseClient):
                         'securityGroupIds': [
                             'string',
                         ],
+                        'clusterSecurityGroupId': 'string',
                         'vpcId': 'string',
                         'endpointPublicAccess': True|False,
                         'endpointPrivateAccess': True|False
@@ -753,7 +1625,7 @@ class Client(BaseClient):
                             'issuer': 'string'
                         }
                     },
-                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED',
+                    'status': 'CREATING'|'ACTIVE'|'DELETING'|'FAILED'|'UPDATING',
                     'certificateAuthority': {
                         'data': 'string'
                     },
@@ -819,6 +1691,11 @@ class Client(BaseClient):
 
                   - *(string) --*
 
+                - **clusterSecurityGroupId** *(string) --*
+
+                  The cluster security group that was created by Amazon EKS for the cluster. Managed node
+                  groups use this security group for control plane to data plane communication.
+
                 - **vpcId** *(string) --*
 
                   The VPC associated with your cluster.
@@ -900,7 +1777,342 @@ class Client(BaseClient):
               - **tags** *(dict) --*
 
                 The metadata that you apply to the cluster to assist with categorization and organization.
-                Each tag consists of a key and an optional value, both of which you define.
+                Each tag consists of a key and an optional value, both of which you define. Cluster tags do
+                not propagate to any other resources associated with the cluster.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def describe_nodegroup(
+        self, clusterName: str, nodegroupName: str
+    ) -> ClientDescribeNodegroupResponseTypeDef:
+        """
+        Returns descriptive information about an Amazon EKS node group.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/DescribeNodegroup>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.describe_nodegroup(
+              clusterName='string',
+              nodegroupName='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the Amazon EKS cluster associated with the node group.
+
+        :type nodegroupName: string
+        :param nodegroupName: **[REQUIRED]**
+
+          The name of the node group to describe.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'nodegroup': {
+                    'nodegroupName': 'string',
+                    'nodegroupArn': 'string',
+                    'clusterName': 'string',
+                    'version': 'string',
+                    'releaseVersion': 'string',
+                    'createdAt': datetime(2015, 1, 1),
+                    'modifiedAt': datetime(2015, 1, 1),
+                    'status':
+                    'CREATING'|'ACTIVE'|'UPDATING'|'DELETING'|'CREATE_FAILED'|'DELETE_FAILED'|'DEGRADED',
+                    'scalingConfig': {
+                        'minSize': 123,
+                        'maxSize': 123,
+                        'desiredSize': 123
+                    },
+                    'instanceTypes': [
+                        'string',
+                    ],
+                    'subnets': [
+                        'string',
+                    ],
+                    'remoteAccess': {
+                        'ec2SshKey': 'string',
+                        'sourceSecurityGroups': [
+                            'string',
+                        ]
+                    },
+                    'amiType': 'AL2_x86_64'|'AL2_x86_64_GPU',
+                    'nodeRole': 'string',
+                    'labels': {
+                        'string': 'string'
+                    },
+                    'resources': {
+                        'autoScalingGroups': [
+                            {
+                                'name': 'string'
+                            },
+                        ],
+                        'remoteAccessSecurityGroup': 'string'
+                    },
+                    'diskSize': 123,
+                    'health': {
+                        'issues': [
+                            {
+                                'code':
+                                'AutoScalingGroupNotFound'|'Ec2SecurityGroupNotFound'
+                                |'Ec2SecurityGroupDeletionFailure'|'Ec2LaunchTemplateNotFound'
+                                |'Ec2LaunchTemplateVersionMismatch'|'IamInstanceProfileNotFound'
+                                |'IamNodeRoleNotFound'|'AsgInstanceLaunchFailures'|'InstanceLimitExceeded'
+                                |'InsufficientFreeAddresses'|'AccessDenied'|'InternalFailure',
+                                'message': 'string',
+                                'resourceIds': [
+                                    'string',
+                                ]
+                            },
+                        ]
+                    },
+                    'tags': {
+                        'string': 'string'
+                    }
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **nodegroup** *(dict) --*
+
+              The full description of your node group.
+
+              - **nodegroupName** *(string) --*
+
+                The name associated with an Amazon EKS managed node group.
+
+              - **nodegroupArn** *(string) --*
+
+                The Amazon Resource Name (ARN) associated with the managed node group.
+
+              - **clusterName** *(string) --*
+
+                The name of the cluster that the managed node group resides in.
+
+              - **version** *(string) --*
+
+                The Kubernetes version of the managed node group.
+
+              - **releaseVersion** *(string) --*
+
+                The AMI version of the managed node group. For more information, see `Amazon EKS-Optimized
+                Linux AMI Versions
+                <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the
+                *Amazon EKS User Guide* .
+
+              - **createdAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was created.
+
+              - **modifiedAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the managed node group was last modified.
+
+              - **status** *(string) --*
+
+                The current status of the managed node group.
+
+              - **scalingConfig** *(dict) --*
+
+                The scaling configuration details for the AutoScaling group that is associated with your
+                node group.
+
+                - **minSize** *(integer) --*
+
+                  The minimum number of worker nodes that the managed node group can scale in to. This
+                  number must be greater than zero.
+
+                - **maxSize** *(integer) --*
+
+                  The maximum number of worker nodes that the managed node group can scale out to. Managed
+                  node groups can support up to 100 nodes by default.
+
+                - **desiredSize** *(integer) --*
+
+                  The current number of worker nodes that the managed node group should maintain.
+
+              - **instanceTypes** *(list) --*
+
+                The instance types associated with your node group.
+
+                - *(string) --*
+
+              - **subnets** *(list) --*
+
+                The subnets allowed for the AutoScaling group that is associated with your node group.
+                These subnets must have the following tag: ``kubernetes.io/cluster/CLUSTER_NAME`` , where
+                ``CLUSTER_NAME`` is replaced with the name of your cluster.
+
+                - *(string) --*
+
+              - **remoteAccess** *(dict) --*
+
+                The remote access (SSH) configuration that is associated with the node group.
+
+                - **ec2SshKey** *(string) --*
+
+                  The Amazon EC2 SSH key that provides access for SSH communication with the worker nodes
+                  in the managed node group. For more information, see `Amazon EC2 Key Pairs
+                  <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html>`__ in the
+                  *Amazon Elastic Compute Cloud User Guide for Linux Instances* .
+
+                - **sourceSecurityGroups** *(list) --*
+
+                  The security groups to allow SSH access (port 22) from on the worker nodes. If you
+                  specify an Amazon EC2 SSH key, but you do not specify a source security group when you
+                  create a managed node group, port 22 on the worker nodes is opened to the internet
+                  (0.0.0.0/0). For more information, see `Security Groups for Your VPC
+                  <https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html>`__ in the
+                  *Amazon Virtual Private Cloud User Guide* .
+
+                  - *(string) --*
+
+              - **amiType** *(string) --*
+
+                The AMI type associated with your node group. GPU instance types should use the
+                ``AL2_x86_64_GPU`` AMI type, which uses the Amazon EKS-optimized Linux AMI with GPU
+                support; non-GPU instances should use the ``AL2_x86_64`` AMI type, which uses the Amazon
+                EKS-optimized Linux AMI.
+
+              - **nodeRole** *(string) --*
+
+                The IAM role associated with your node group. The Amazon EKS worker node ``kubelet`` daemon
+                makes calls to AWS APIs on your behalf. Worker nodes receive permissions for these API
+                calls through an IAM instance profile and associated policies. Before you can launch worker
+                nodes and register them into a cluster, you must create an IAM role for those worker nodes
+                to use when they are launched. For more information, see `Amazon EKS Worker Node IAM Role
+                <https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html>`__ in the *
+                *Amazon EKS User Guide* * .
+
+              - **labels** *(dict) --*
+
+                The Kubernetes labels applied to the nodes in the node group.
+
+                .. note::
+
+                  Only labels that are applied with the Amazon EKS API are shown here. There may be other
+                  Kubernetes labels applied to the nodes in this group.
+
+                - *(string) --*
+
+                  - *(string) --*
+
+              - **resources** *(dict) --*
+
+                The resources associated with the nodegroup, such as AutoScaling groups and security groups
+                for remote access.
+
+                - **autoScalingGroups** *(list) --*
+
+                  The autoscaling groups associated with the node group.
+
+                  - *(dict) --*
+
+                    An AutoScaling group that is associated with an Amazon EKS managed node group.
+
+                    - **name** *(string) --*
+
+                      The name of the AutoScaling group associated with an Amazon EKS managed node group.
+
+                - **remoteAccessSecurityGroup** *(string) --*
+
+                  The remote access security group associated with the node group. This security group
+                  controls SSH access to the worker nodes.
+
+              - **diskSize** *(integer) --*
+
+                The root device disk size (in GiB) for your node group instances. The default disk size is
+                20 GiB.
+
+              - **health** *(dict) --*
+
+                The health status of the node group. If there are issues with your node group's health,
+                they are listed here.
+
+                - **issues** *(list) --*
+
+                  Any issues that are associated with the node group.
+
+                  - *(dict) --*
+
+                    An object representing an issue with an Amazon EKS resource.
+
+                    - **code** *(string) --*
+
+                      A brief description of the error.
+
+                      * **AutoScalingGroupNotFound** : We couldn't find the Auto Scaling group associated
+                      with the managed node group. You may be able to recreate an Auto Scaling group with
+                      the same settings to recover.
+
+                      * **Ec2SecurityGroupNotFound** : We couldn't find the cluster security group for the
+                      cluster. You must recreate your cluster.
+
+                      * **Ec2SecurityGroupDeletionFailure** : We could not delete the remote access
+                      security group for your managed node group. Remove any dependencies from the security
+                      group.
+
+                      * **Ec2LaunchTemplateNotFound** : We couldn't find the Amazon EC2 launch template for
+                      your managed node group. You may be able to recreate a launch template with the same
+                      settings to recover.
+
+                      * **Ec2LaunchTemplateVersionMismatch** : The Amazon EC2 launch template version for
+                      your managed node group does not match the version that Amazon EKS created. You may
+                      be able to revert to the Amazon EKS-created version to recover.
+
+                      * **IamInstanceProfileNotFound** : We couldn't find the IAM instance profile for your
+                      managed node group. You may be able to recreate an instance profile with the same
+                      settings to recover.
+
+                      * **IamNodeRoleNotFound** : We couldn't find the IAM role for your managed node
+                      group. You may be able to recreate an IAM role with the same settings to recover.
+
+                      * **AsgInstanceLaunchFailures** : Your Auto Scaling group is experiencing failures
+                      while attempting to launch instances.
+
+                      * **InstanceLimitExceeded** : Your AWS account is unable to launch any more instances
+                      of the specified instance type. You may be able to request an Amazon EC2 instance
+                      limit increase to recover.
+
+                      * **InsufficientFreeAddresses** : One or more of the subnets associated with your
+                      managed node group does not have enough available IP addresses for new nodes.
+
+                      * **AccessDenied** : Amazon EKS and or one or more of your managed nodes is unable to
+                      communicate with your cluster API server.
+
+                      * **InternalFailure** : These errors are usually caused by an Amazon EKS server-side
+                      issue.
+
+                    - **message** *(string) --*
+
+                      The error message associated with the issue.
+
+                    - **resourceIds** *(list) --*
+
+                      The AWS resources that are afflicted by this issue.
+
+                      - *(string) --*
+
+              - **tags** *(dict) --*
+
+                The metadata applied the node group to assist with categorization and organization. Each
+                tag consists of a key and an optional value, both of which you define. Node group tags do
+                not propagate to any other resources associated with the node group, such as the Amazon EC2
+                instances or subnets.
 
                 - *(string) --*
 
@@ -910,10 +2122,11 @@ class Client(BaseClient):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_update(
-        self, name: str, updateId: str
+        self, name: str, updateId: str, nodegroupName: str = None
     ) -> ClientDescribeUpdateResponseTypeDef:
         """
-        Returns descriptive information about an update against your Amazon EKS cluster.
+        Returns descriptive information about an update against your Amazon EKS cluster or associated
+        managed node group.
 
         When the status of the update is ``Succeeded`` , the update is complete. If an update fails, the
         status is ``Failed`` , and an error detail explains the reason for the failure.
@@ -926,17 +2139,23 @@ class Client(BaseClient):
 
           response = client.describe_update(
               name='string',
-              updateId='string'
+              updateId='string',
+              nodegroupName='string'
           )
         :type name: string
         :param name: **[REQUIRED]**
 
-          The name of the Amazon EKS cluster to update.
+          The name of the Amazon EKS cluster associated with the update.
 
         :type updateId: string
         :param updateId: **[REQUIRED]**
 
           The ID of the update to describe.
+
+        :type nodegroupName: string
+        :param nodegroupName:
+
+          The name of the Amazon EKS node group associated with the update.
 
         :rtype: dict
         :returns:
@@ -949,12 +2168,13 @@ class Client(BaseClient):
                 'update': {
                     'id': 'string',
                     'status': 'InProgress'|'Failed'|'Cancelled'|'Successful',
-                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate',
+                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate'|'ConfigUpdate',
                     'params': [
                         {
                             'type':
                             'Version'|'PlatformVersion'|'EndpointPrivateAccess'|'EndpointPublicAccess'
-                            |'ClusterLogging',
+                            |'ClusterLogging'|'DesiredSize'|'LabelsToAdd'|'LabelsToRemove'|'MaxSize'
+                            |'MinSize'|'ReleaseVersion',
                             'value': 'string'
                         },
                     ],
@@ -963,7 +2183,8 @@ class Client(BaseClient):
                         {
                             'errorCode':
                             'SubnetNotFound'|'SecurityGroupNotFound'|'EniLimitReached'|'IpNotAvailable'
-                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown',
+                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown'
+                            |'NodeCreationFailure'|'PodEvictionFailure'|'InsufficientFreeAddresses',
                             'errorMessage': 'string',
                             'resourceIds': [
                                 'string',
@@ -1154,6 +2375,78 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_nodegroups(
+        self, clusterName: str, maxResults: int = None, nextToken: str = None
+    ) -> ClientListNodegroupsResponseTypeDef:
+        """
+        Lists the Amazon EKS node groups associated with the specified cluster in your AWS account in the
+        specified Region.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListNodegroups>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_nodegroups(
+              clusterName='string',
+              maxResults=123,
+              nextToken='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the Amazon EKS cluster that you would like to list node groups in.
+
+        :type maxResults: integer
+        :param maxResults:
+
+          The maximum number of node group results returned by ``ListNodegroups`` in paginated output. When
+          you use this parameter, ``ListNodegroups`` returns only ``maxResults`` results in a single page
+          along with a ``nextToken`` response element. You can see the remaining results of the initial
+          request by sending another ``ListNodegroups`` request with the returned ``nextToken`` value. This
+          value can be between 1 and 100. If you don't use this parameter, ``ListNodegroups`` returns up to
+          100 results and a ``nextToken`` value if applicable.
+
+        :type nextToken: string
+        :param nextToken:
+
+          The ``nextToken`` value returned from a previous paginated ``ListNodegroups`` request where
+          ``maxResults`` was used and the results exceeded the value of that parameter. Pagination
+          continues from the end of the previous results that returned the ``nextToken`` value.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'nodegroups': [
+                    'string',
+                ],
+                'nextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **nodegroups** *(list) --*
+
+              A list of all of the node groups associated with the specified cluster.
+
+              - *(string) --*
+
+            - **nextToken** *(string) --*
+
+              The ``nextToken`` value to include in a future ``ListNodegroups`` request. When the results
+              of a ``ListNodegroups`` request exceed ``maxResults`` , you can use this value to retrieve
+              the next page of results. This value is ``null`` when there are no more results to return.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_tags_for_resource(
         self, resourceArn: str
     ) -> ClientListTagsForResourceResponseTypeDef:
@@ -1173,7 +2466,7 @@ class Client(BaseClient):
         :param resourceArn: **[REQUIRED]**
 
           The Amazon Resource Name (ARN) that identifies the resource for which to list the tags.
-          Currently, the supported resources are Amazon EKS clusters.
+          Currently, the supported resources are Amazon EKS clusters and managed node groups.
 
         :rtype: dict
         :returns:
@@ -1203,11 +2496,15 @@ class Client(BaseClient):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def list_updates(
-        self, name: str, nextToken: str = None, maxResults: int = None
+        self,
+        name: str,
+        nodegroupName: str = None,
+        nextToken: str = None,
+        maxResults: int = None,
     ) -> ClientListUpdatesResponseTypeDef:
         """
-        Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified
-        Region.
+        Lists the updates associated with an Amazon EKS cluster or managed node group in your AWS account,
+        in the specified Region.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListUpdates>`_
@@ -1217,6 +2514,7 @@ class Client(BaseClient):
 
           response = client.list_updates(
               name='string',
+              nodegroupName='string',
               nextToken='string',
               maxResults=123
           )
@@ -1224,6 +2522,11 @@ class Client(BaseClient):
         :param name: **[REQUIRED]**
 
           The name of the Amazon EKS cluster to list updates for.
+
+        :type nodegroupName: string
+        :param nodegroupName:
+
+          The name of the Amazon EKS managed node group to list updates for.
 
         :type nextToken: string
         :param nextToken:
@@ -1278,7 +2581,10 @@ class Client(BaseClient):
         """
         Associates the specified tags to a resource with the specified ``resourceArn`` . If existing tags
         on a resource are not specified in the request parameters, they are not changed. When a resource is
-        deleted, the tags associated with that resource are deleted as well.
+        deleted, the tags associated with that resource are deleted as well. Tags that you create for
+        Amazon EKS resources do not propagate to any other resources associated with the cluster. For
+        example, if you tag a cluster with this operation, that tag does not automatically propagate to the
+        subnets and worker nodes associated with the cluster.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource>`_
@@ -1296,7 +2602,7 @@ class Client(BaseClient):
         :param resourceArn: **[REQUIRED]**
 
           The Amazon Resource Name (ARN) of the resource to which to add tags. Currently, the supported
-          resources are Amazon EKS clusters.
+          resources are Amazon EKS clusters and managed node groups.
 
         :type tags: dict
         :param tags: **[REQUIRED]**
@@ -1341,7 +2647,7 @@ class Client(BaseClient):
         :param resourceArn: **[REQUIRED]**
 
           The Amazon Resource Name (ARN) of the resource from which to delete tags. Currently, the
-          supported resources are Amazon EKS clusters.
+          supported resources are Amazon EKS clusters and managed node groups.
 
         :type tagKeys: list
         :param tagKeys: **[REQUIRED]**
@@ -1533,12 +2839,13 @@ class Client(BaseClient):
                 'update': {
                     'id': 'string',
                     'status': 'InProgress'|'Failed'|'Cancelled'|'Successful',
-                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate',
+                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate'|'ConfigUpdate',
                     'params': [
                         {
                             'type':
                             'Version'|'PlatformVersion'|'EndpointPrivateAccess'|'EndpointPublicAccess'
-                            |'ClusterLogging',
+                            |'ClusterLogging'|'DesiredSize'|'LabelsToAdd'|'LabelsToRemove'|'MaxSize'
+                            |'MinSize'|'ReleaseVersion',
                             'value': 'string'
                         },
                     ],
@@ -1547,7 +2854,8 @@ class Client(BaseClient):
                         {
                             'errorCode':
                             'SubnetNotFound'|'SecurityGroupNotFound'|'EniLimitReached'|'IpNotAvailable'
-                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown',
+                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown'
+                            |'NodeCreationFailure'|'PodEvictionFailure'|'InsufficientFreeAddresses',
                             'errorMessage': 'string',
                             'resourceIds': [
                                 'string',
@@ -1652,6 +2960,10 @@ class Client(BaseClient):
         the update is complete (either ``Failed`` or ``Successful`` ), the cluster status moves to
         ``Active`` .
 
+        If your cluster has managed node groups attached to it, all of your node groups’ Kubernetes
+        versions must match the cluster’s Kubernetes version in order to update the cluster to a new
+        Kubernetes version.
+
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateClusterVersion>`_
 
@@ -1691,12 +3003,13 @@ class Client(BaseClient):
                 'update': {
                     'id': 'string',
                     'status': 'InProgress'|'Failed'|'Cancelled'|'Successful',
-                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate',
+                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate'|'ConfigUpdate',
                     'params': [
                         {
                             'type':
                             'Version'|'PlatformVersion'|'EndpointPrivateAccess'|'EndpointPublicAccess'
-                            |'ClusterLogging',
+                            |'ClusterLogging'|'DesiredSize'|'LabelsToAdd'|'LabelsToRemove'|'MaxSize'
+                            |'MinSize'|'ReleaseVersion',
                             'value': 'string'
                         },
                     ],
@@ -1705,7 +3018,8 @@ class Client(BaseClient):
                         {
                             'errorCode':
                             'SubnetNotFound'|'SecurityGroupNotFound'|'EniLimitReached'|'IpNotAvailable'
-                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown',
+                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown'
+                            |'NodeCreationFailure'|'PodEvictionFailure'|'InsufficientFreeAddresses',
                             'errorMessage': 'string',
                             'resourceIds': [
                                 'string',
@@ -1796,6 +3110,418 @@ class Client(BaseClient):
 
         """
 
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_nodegroup_config(
+        self,
+        clusterName: str,
+        nodegroupName: str,
+        labels: ClientUpdateNodegroupConfiglabelsTypeDef = None,
+        scalingConfig: ClientUpdateNodegroupConfigscalingConfigTypeDef = None,
+        clientRequestToken: str = None,
+    ) -> ClientUpdateNodegroupConfigResponseTypeDef:
+        """
+        Updates an Amazon EKS managed node group configuration. Your node group continues to function
+        during the update. The response output includes an update ID that you can use to track the status
+        of your node group update with the  DescribeUpdate API operation. Currently you can update the
+        Kubernetes labels for a node group or the scaling configuration.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupConfig>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_nodegroup_config(
+              clusterName='string',
+              nodegroupName='string',
+              labels={
+                  'addOrUpdateLabels': {
+                      'string': 'string'
+                  },
+                  'removeLabels': [
+                      'string',
+                  ]
+              },
+              scalingConfig={
+                  'minSize': 123,
+                  'maxSize': 123,
+                  'desiredSize': 123
+              },
+              clientRequestToken='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the Amazon EKS cluster that the managed node group resides in.
+
+        :type nodegroupName: string
+        :param nodegroupName: **[REQUIRED]**
+
+          The name of the managed node group to update.
+
+        :type labels: dict
+        :param labels:
+
+          The Kubernetes labels to be applied to the nodes in the node group after the update.
+
+          - **addOrUpdateLabels** *(dict) --*
+
+            Kubernetes labels to be added or updated.
+
+            - *(string) --*
+
+              - *(string) --*
+
+          - **removeLabels** *(list) --*
+
+            Kubernetes labels to be removed.
+
+            - *(string) --*
+
+        :type scalingConfig: dict
+        :param scalingConfig:
+
+          The scaling configuration details for the AutoScaling group after the update.
+
+          - **minSize** *(integer) --*
+
+            The minimum number of worker nodes that the managed node group can scale in to. This number
+            must be greater than zero.
+
+          - **maxSize** *(integer) --*
+
+            The maximum number of worker nodes that the managed node group can scale out to. Managed node
+            groups can support up to 100 nodes by default.
+
+          - **desiredSize** *(integer) --*
+
+            The current number of worker nodes that the managed node group should maintain.
+
+        :type clientRequestToken: string
+        :param clientRequestToken:
+
+          Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+
+          This field is autopopulated if not provided.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'update': {
+                    'id': 'string',
+                    'status': 'InProgress'|'Failed'|'Cancelled'|'Successful',
+                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate'|'ConfigUpdate',
+                    'params': [
+                        {
+                            'type':
+                            'Version'|'PlatformVersion'|'EndpointPrivateAccess'|'EndpointPublicAccess'
+                            |'ClusterLogging'|'DesiredSize'|'LabelsToAdd'|'LabelsToRemove'|'MaxSize'
+                            |'MinSize'|'ReleaseVersion',
+                            'value': 'string'
+                        },
+                    ],
+                    'createdAt': datetime(2015, 1, 1),
+                    'errors': [
+                        {
+                            'errorCode':
+                            'SubnetNotFound'|'SecurityGroupNotFound'|'EniLimitReached'|'IpNotAvailable'
+                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown'
+                            |'NodeCreationFailure'|'PodEvictionFailure'|'InsufficientFreeAddresses',
+                            'errorMessage': 'string',
+                            'resourceIds': [
+                                'string',
+                            ]
+                        },
+                    ]
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **update** *(dict) --*
+
+              An object representing an asynchronous update.
+
+              - **id** *(string) --*
+
+                A UUID that is used to track the update.
+
+              - **status** *(string) --*
+
+                The current status of the update.
+
+              - **type** *(string) --*
+
+                The type of the update.
+
+              - **params** *(list) --*
+
+                A key-value map that contains the parameters associated with the update.
+
+                - *(dict) --*
+
+                  An object representing the details of an update request.
+
+                  - **type** *(string) --*
+
+                    The keys associated with an update request.
+
+                  - **value** *(string) --*
+
+                    The value of the keys submitted as part of an update request.
+
+              - **createdAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the update was created.
+
+              - **errors** *(list) --*
+
+                Any errors associated with a ``Failed`` update.
+
+                - *(dict) --*
+
+                  An object representing an error when an asynchronous operation fails.
+
+                  - **errorCode** *(string) --*
+
+                    A brief description of the error.
+
+                    * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+                    * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+                    with the cluster.
+
+                    * **EniLimitReached** : You have reached the elastic network interface limit for your
+                    account.
+
+                    * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+                    addresses.
+
+                    * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+                    * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+                    the required access permissions for Amazon EKS.
+
+                    * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+                  - **errorMessage** *(string) --*
+
+                    A more complete description of the error.
+
+                  - **resourceIds** *(list) --*
+
+                    An optional field that contains the resource IDs associated with the error.
+
+                    - *(string) --*
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_nodegroup_version(
+        self,
+        clusterName: str,
+        nodegroupName: str,
+        version: str = None,
+        releaseVersion: str = None,
+        force: bool = None,
+        clientRequestToken: str = None,
+    ) -> ClientUpdateNodegroupVersionResponseTypeDef:
+        """
+        Updates the Kubernetes version or AMI version of an Amazon EKS managed node group.
+
+        You can update to the latest available AMI version of a node group's current Kubernetes version by
+        not specifying a Kubernetes version in the request. You can update to the latest AMI version of
+        your cluster's current Kubernetes version by specifying your cluster's Kubernetes version in the
+        request. For more information, see `Amazon EKS-Optimized Linux AMI Versions
+        <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the *Amazon
+        EKS User Guide* .
+
+        You cannot roll back a node group to an earlier Kubernetes version or AMI version.
+
+        When a node in a managed node group is terminated due to a scaling action or update, the pods in
+        that node are drained first. Amazon EKS attempts to drain the nodes gracefully and will fail if it
+        is unable to do so. You can ``force`` the update if Amazon EKS is unable to drain the nodes as a
+        result of a pod disruption budget issue.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateNodegroupVersion>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_nodegroup_version(
+              clusterName='string',
+              nodegroupName='string',
+              version='string',
+              releaseVersion='string',
+              force=True|False,
+              clientRequestToken='string'
+          )
+        :type clusterName: string
+        :param clusterName: **[REQUIRED]**
+
+          The name of the Amazon EKS cluster that is associated with the managed node group to update.
+
+        :type nodegroupName: string
+        :param nodegroupName: **[REQUIRED]**
+
+          The name of the managed node group to update.
+
+        :type version: string
+        :param version:
+
+          The Kubernetes version to update to. If no version is specified, then the Kubernetes version of
+          the node group does not change. You can specify the Kubernetes version of the cluster to update
+          the node group to the latest AMI version of the cluster's Kubernetes version.
+
+        :type releaseVersion: string
+        :param releaseVersion:
+
+          The AMI version of the Amazon EKS-optimized AMI to use for the update. By default, the latest
+          available AMI version for the node group's Kubernetes version is used. For more information, see
+          `Amazon EKS-Optimized Linux AMI Versions
+          <https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html>`__ in the *Amazon
+          EKS User Guide* .
+
+        :type force: boolean
+        :param force:
+
+          Force the update if the existing node group's pods are unable to be drained due to a pod
+          disruption budget issue. If a previous update fails because pods could not be drained, you can
+          force the update after it fails to terminate the old node regardless of whether or not any pods
+          are running on the node.
+
+        :type clientRequestToken: string
+        :param clientRequestToken:
+
+          Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
+
+          This field is autopopulated if not provided.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'update': {
+                    'id': 'string',
+                    'status': 'InProgress'|'Failed'|'Cancelled'|'Successful',
+                    'type': 'VersionUpdate'|'EndpointAccessUpdate'|'LoggingUpdate'|'ConfigUpdate',
+                    'params': [
+                        {
+                            'type':
+                            'Version'|'PlatformVersion'|'EndpointPrivateAccess'|'EndpointPublicAccess'
+                            |'ClusterLogging'|'DesiredSize'|'LabelsToAdd'|'LabelsToRemove'|'MaxSize'
+                            |'MinSize'|'ReleaseVersion',
+                            'value': 'string'
+                        },
+                    ],
+                    'createdAt': datetime(2015, 1, 1),
+                    'errors': [
+                        {
+                            'errorCode':
+                            'SubnetNotFound'|'SecurityGroupNotFound'|'EniLimitReached'|'IpNotAvailable'
+                            |'AccessDenied'|'OperationNotPermitted'|'VpcIdNotFound'|'Unknown'
+                            |'NodeCreationFailure'|'PodEvictionFailure'|'InsufficientFreeAddresses',
+                            'errorMessage': 'string',
+                            'resourceIds': [
+                                'string',
+                            ]
+                        },
+                    ]
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **update** *(dict) --*
+
+              An object representing an asynchronous update.
+
+              - **id** *(string) --*
+
+                A UUID that is used to track the update.
+
+              - **status** *(string) --*
+
+                The current status of the update.
+
+              - **type** *(string) --*
+
+                The type of the update.
+
+              - **params** *(list) --*
+
+                A key-value map that contains the parameters associated with the update.
+
+                - *(dict) --*
+
+                  An object representing the details of an update request.
+
+                  - **type** *(string) --*
+
+                    The keys associated with an update request.
+
+                  - **value** *(string) --*
+
+                    The value of the keys submitted as part of an update request.
+
+              - **createdAt** *(datetime) --*
+
+                The Unix epoch timestamp in seconds for when the update was created.
+
+              - **errors** *(list) --*
+
+                Any errors associated with a ``Failed`` update.
+
+                - *(dict) --*
+
+                  An object representing an error when an asynchronous operation fails.
+
+                  - **errorCode** *(string) --*
+
+                    A brief description of the error.
+
+                    * **SubnetNotFound** : We couldn't find one of the subnets associated with the cluster.
+
+                    * **SecurityGroupNotFound** : We couldn't find one of the security groups associated
+                    with the cluster.
+
+                    * **EniLimitReached** : You have reached the elastic network interface limit for your
+                    account.
+
+                    * **IpNotAvailable** : A subnet associated with the cluster doesn't have any free IP
+                    addresses.
+
+                    * **AccessDenied** : You don't have permissions to perform the specified operation.
+
+                    * **OperationNotPermitted** : The service role associated with the cluster doesn't have
+                    the required access permissions for Amazon EKS.
+
+                    * **VpcIdNotFound** : We couldn't find the VPC associated with the cluster.
+
+                  - **errorMessage** *(string) --*
+
+                    A more complete description of the error.
+
+                  - **resourceIds** *(list) --*
+
+                    An optional field that contains the resource IDs associated with the error.
+
+                    - *(string) --*
+
+        """
+
     @overload
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_paginator(
@@ -1803,6 +3529,15 @@ class Client(BaseClient):
     ) -> paginator_scope.ListClustersPaginator:
         """
         Get Paginator for `list_clusters` operation.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_paginator(
+        self, operation_name: Literal["list_nodegroups"]
+    ) -> paginator_scope.ListNodegroupsPaginator:
+        """
+        Get Paginator for `list_nodegroups` operation.
         """
 
     @overload
@@ -1851,6 +3586,24 @@ class Client(BaseClient):
     ) -> waiter_scope.ClusterDeletedWaiter:
         """
         Get Waiter `cluster_deleted`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["nodegroup_active"]
+    ) -> waiter_scope.NodegroupActiveWaiter:
+        """
+        Get Waiter `nodegroup_active`.
+        """
+
+    @overload
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_waiter(
+        self, waiter_name: Literal["nodegroup_deleted"]
+    ) -> waiter_scope.NodegroupDeletedWaiter:
+        """
+        Get Waiter `nodegroup_deleted`.
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

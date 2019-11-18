@@ -15,6 +15,8 @@ import mypy_boto3_chime.paginator as paginator_scope
 from mypy_boto3_chime.type_defs import (
     ClientAssociatePhoneNumbersWithVoiceConnectorGroupResponseTypeDef,
     ClientAssociatePhoneNumbersWithVoiceConnectorResponseTypeDef,
+    ClientBatchCreateRoomMembershipMembershipItemListTypeDef,
+    ClientBatchCreateRoomMembershipResponseTypeDef,
     ClientBatchDeletePhoneNumberResponseTypeDef,
     ClientBatchSuspendUserResponseTypeDef,
     ClientBatchUnsuspendUserResponseTypeDef,
@@ -25,6 +27,8 @@ from mypy_boto3_chime.type_defs import (
     ClientCreateAccountResponseTypeDef,
     ClientCreateBotResponseTypeDef,
     ClientCreatePhoneNumberOrderResponseTypeDef,
+    ClientCreateRoomMembershipResponseTypeDef,
+    ClientCreateRoomResponseTypeDef,
     ClientCreateVoiceConnectorGroupResponseTypeDef,
     ClientCreateVoiceConnectorGroupVoiceConnectorItemsTypeDef,
     ClientCreateVoiceConnectorResponseTypeDef,
@@ -38,6 +42,7 @@ from mypy_boto3_chime.type_defs import (
     ClientGetPhoneNumberOrderResponseTypeDef,
     ClientGetPhoneNumberResponseTypeDef,
     ClientGetPhoneNumberSettingsResponseTypeDef,
+    ClientGetRoomResponseTypeDef,
     ClientGetUserResponseTypeDef,
     ClientGetUserSettingsResponseTypeDef,
     ClientGetVoiceConnectorGroupResponseTypeDef,
@@ -52,6 +57,8 @@ from mypy_boto3_chime.type_defs import (
     ClientListBotsResponseTypeDef,
     ClientListPhoneNumberOrdersResponseTypeDef,
     ClientListPhoneNumbersResponseTypeDef,
+    ClientListRoomMembershipsResponseTypeDef,
+    ClientListRoomsResponseTypeDef,
     ClientListUsersResponseTypeDef,
     ClientListVoiceConnectorGroupsResponseTypeDef,
     ClientListVoiceConnectorTerminationCredentialsResponseTypeDef,
@@ -76,6 +83,8 @@ from mypy_boto3_chime.type_defs import (
     ClientUpdateGlobalSettingsBusinessCallingTypeDef,
     ClientUpdateGlobalSettingsVoiceConnectorTypeDef,
     ClientUpdatePhoneNumberResponseTypeDef,
+    ClientUpdateRoomMembershipResponseTypeDef,
+    ClientUpdateRoomResponseTypeDef,
     ClientUpdateUserResponseTypeDef,
     ClientUpdateUserSettingsUserSettingsTypeDef,
     ClientUpdateVoiceConnectorGroupResponseTypeDef,
@@ -306,6 +315,109 @@ class Client(BaseClient):
                 - **PhoneNumberId** *(string) --*
 
                   The phone number ID for which the action failed.
+
+                - **ErrorCode** *(string) --*
+
+                  The error code.
+
+                - **ErrorMessage** *(string) --*
+
+                  The error message.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def batch_create_room_membership(
+        self,
+        AccountId: str,
+        RoomId: str,
+        MembershipItemList: List[
+            ClientBatchCreateRoomMembershipMembershipItemListTypeDef
+        ],
+    ) -> ClientBatchCreateRoomMembershipResponseTypeDef:
+        """
+        Adds up to 50 members to a chat room. Members can be either users or bots. The member role
+        designates whether the member is a chat room administrator or a general chat room member.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/BatchCreateRoomMembership>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.batch_create_room_membership(
+              AccountId='string',
+              RoomId='string',
+              MembershipItemList=[
+                  {
+                      'MemberId': 'string',
+                      'Role': 'Administrator'|'Member'
+                  },
+              ]
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type MembershipItemList: list
+        :param MembershipItemList: **[REQUIRED]**
+
+          The list of membership items.
+
+          - *(dict) --*
+
+            Membership details, such as member ID and member role.
+
+            - **MemberId** *(string) --*
+
+              The member ID.
+
+            - **Role** *(string) --*
+
+              The member role.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Errors': [
+                    {
+                        'MemberId': 'string',
+                        'ErrorCode':
+                        'BadRequest'|'Conflict'|'Forbidden'|'NotFound'|'PreconditionFailed'
+                        |'ResourceLimitExceeded'|'ServiceFailure'|'AccessDenied'|'ServiceUnavailable'
+                        |'Throttled'|'Unauthorized'|'Unprocessable'|'VoiceConnectorGroupAssociationsExist'
+                        |'PhoneNumberAssociationsExist',
+                        'ErrorMessage': 'string'
+                    },
+                ]
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Errors** *(list) --*
+
+              If the action fails for one or more of the member IDs in the request, a list of the member
+              IDs is returned, along with error codes and error messages.
+
+              - *(dict) --*
+
+                The list of errors returned when a member action results in an error.
+
+                - **MemberId** *(string) --*
+
+                  The member ID.
 
                 - **ErrorCode** *(string) --*
 
@@ -1079,6 +1191,204 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_room(
+        self, AccountId: str, Name: str, ClientRequestToken: str = None
+    ) -> ClientCreateRoomResponseTypeDef:
+        """
+        Creates a chat room for the specified Amazon Chime account.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/CreateRoom>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_room(
+              AccountId='string',
+              Name='string',
+              ClientRequestToken='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type Name: string
+        :param Name: **[REQUIRED]**
+
+          The room name.
+
+        :type ClientRequestToken: string
+        :param ClientRequestToken:
+
+          The idempotency token for the request.
+
+          This field is autopopulated if not provided.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Room': {
+                    'RoomId': 'string',
+                    'Name': 'string',
+                    'AccountId': 'string',
+                    'CreatedBy': 'string',
+                    'CreatedTimestamp': datetime(2015, 1, 1),
+                    'UpdatedTimestamp': datetime(2015, 1, 1)
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Room** *(dict) --*
+
+              The room details.
+
+              - **RoomId** *(string) --*
+
+                The room ID.
+
+              - **Name** *(string) --*
+
+                The room name.
+
+              - **AccountId** *(string) --*
+
+                The Amazon Chime account ID.
+
+              - **CreatedBy** *(string) --*
+
+                The identifier of the room creator.
+
+              - **CreatedTimestamp** *(datetime) --*
+
+                The room creation timestamp, in ISO 8601 format.
+
+              - **UpdatedTimestamp** *(datetime) --*
+
+                The room update timestamp, in ISO 8601 format.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def create_room_membership(
+        self, AccountId: str, RoomId: str, MemberId: str, Role: str = None
+    ) -> ClientCreateRoomMembershipResponseTypeDef:
+        """
+        Adds a member to a chat room. A member can be either a user or a bot. The member role designates
+        whether the member is a chat room administrator or a general chat room member.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/CreateRoomMembership>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.create_room_membership(
+              AccountId='string',
+              RoomId='string',
+              MemberId='string',
+              Role='Administrator'|'Member'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type MemberId: string
+        :param MemberId: **[REQUIRED]**
+
+          The Amazon Chime member ID (user ID or bot ID).
+
+        :type Role: string
+        :param Role:
+
+          The role of the member.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'RoomMembership': {
+                    'RoomId': 'string',
+                    'Member': {
+                        'MemberId': 'string',
+                        'MemberType': 'User'|'Bot'|'Webhook',
+                        'Email': 'string',
+                        'FullName': 'string',
+                        'AccountId': 'string'
+                    },
+                    'Role': 'Administrator'|'Member',
+                    'InvitedBy': 'string',
+                    'UpdatedTimestamp': datetime(2015, 1, 1)
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **RoomMembership** *(dict) --*
+
+              The room membership details.
+
+              - **RoomId** *(string) --*
+
+                The room ID.
+
+              - **Member** *(dict) --*
+
+                The member details, such as email address, name, member ID, and member type.
+
+                - **MemberId** *(string) --*
+
+                  The member ID (user ID or bot ID).
+
+                - **MemberType** *(string) --*
+
+                  The member type.
+
+                - **Email** *(string) --*
+
+                  The member email address.
+
+                - **FullName** *(string) --*
+
+                  The member name.
+
+                - **AccountId** *(string) --*
+
+                  The Amazon Chime account ID.
+
+              - **Role** *(string) --*
+
+                The membership role.
+
+              - **InvitedBy** *(string) --*
+
+                The identifier of the user that invited the room member.
+
+              - **UpdatedTimestamp** *(datetime) --*
+
+                The room membership update timestamp, in ISO 8601 format.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def create_voice_connector(
         self, Name: str, RequireEncryption: bool, AwsRegion: str = None
     ) -> ClientCreateVoiceConnectorResponseTypeDef:
@@ -1388,6 +1698,70 @@ class Client(BaseClient):
         :param PhoneNumberId: **[REQUIRED]**
 
           The phone number ID.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_room(self, AccountId: str, RoomId: str) -> None:
+        """
+        Deletes a chat room.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/DeleteRoom>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_room(
+              AccountId='string',
+              RoomId='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The chat room ID.
+
+        :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def delete_room_membership(
+        self, AccountId: str, RoomId: str, MemberId: str
+    ) -> None:
+        """
+        Removes a member from a chat room.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/DeleteRoomMembership>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.delete_room_membership(
+              AccountId='string',
+              RoomId='string',
+              MemberId='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type MemberId: string
+        :param MemberId: **[REQUIRED]**
+
+          The member ID (user ID or bot ID).
 
         :returns: None
         """
@@ -2413,6 +2787,82 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def get_room(self, AccountId: str, RoomId: str) -> ClientGetRoomResponseTypeDef:
+        """
+        Retrieves room details, such as name.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/GetRoom>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.get_room(
+              AccountId='string',
+              RoomId='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Room': {
+                    'RoomId': 'string',
+                    'Name': 'string',
+                    'AccountId': 'string',
+                    'CreatedBy': 'string',
+                    'CreatedTimestamp': datetime(2015, 1, 1),
+                    'UpdatedTimestamp': datetime(2015, 1, 1)
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Room** *(dict) --*
+
+              The room details.
+
+              - **RoomId** *(string) --*
+
+                The room ID.
+
+              - **Name** *(string) --*
+
+                The room name.
+
+              - **AccountId** *(string) --*
+
+                The Amazon Chime account ID.
+
+              - **CreatedBy** *(string) --*
+
+                The identifier of the room creator.
+
+              - **CreatedTimestamp** *(datetime) --*
+
+                The room creation timestamp, in ISO 8601 format.
+
+              - **UpdatedTimestamp** *(datetime) --*
+
+                The room update timestamp, in ISO 8601 format.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def get_user(self, AccountId: str, UserId: str) -> ClientGetUserResponseTypeDef:
         """
         Retrieves details for the specified user ID, such as primary email address, license type, and
@@ -2898,8 +3348,8 @@ class Client(BaseClient):
     ) -> ClientGetVoiceConnectorStreamingConfigurationResponseTypeDef:
         """
         Retrieves the streaming configuration details for the specified Amazon Chime Voice Connector. Shows
-        whether media streaming is enabled for sending to Amazon Kinesis, and shows the retention period
-        for the Amazon Kinesis data, in hours.
+        whether media streaming is enabled for sending to Amazon Kinesis. It also shows the retention
+        period, in hours, for the Amazon Kinesis data.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/GetVoiceConnectorStreamingConfiguration>`_
@@ -2938,7 +3388,7 @@ class Client(BaseClient):
 
               - **DataRetentionInHours** *(integer) --*
 
-                The retention period for the Amazon Kinesis data, in hours.
+                The retention period, in hours, for the Amazon Kinesis data.
 
               - **Disabled** *(boolean) --*
 
@@ -3079,8 +3529,8 @@ class Client(BaseClient):
         self, AccountId: str, UserEmailList: List[str]
     ) -> ClientInviteUsersResponseTypeDef:
         """
-        Sends email invites to as many as 50 users, inviting them to the specified Amazon Chime ``Team``
-        account. Only ``Team`` account types are currently supported for this action.
+        Sends email to a maximum of 50 users, inviting them to the specified Amazon Chime ``Team`` account.
+        Only ``Team`` account types are currently supported for this action.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/InviteUsers>`_
@@ -3102,7 +3552,7 @@ class Client(BaseClient):
         :type UserEmailList: list
         :param UserEmailList: **[REQUIRED]**
 
-          The user email addresses to which to send the invite.
+          The user email addresses to which to send the email invitation.
 
           - *(string) --*
 
@@ -3129,7 +3579,7 @@ class Client(BaseClient):
 
             - **Invites** *(list) --*
 
-              The invite details.
+              The email invitation details.
 
               - *(dict) --*
 
@@ -3299,7 +3749,7 @@ class Client(BaseClient):
         :type MaxResults: integer
         :param MaxResults:
 
-          The maximum number of results to return in a single call. Default is 10.
+          The maximum number of results to return in a single call. The default is 10.
 
         :type NextToken: string
         :param NextToken:
@@ -3694,6 +4144,235 @@ class Client(BaseClient):
                 - **DeletionTimestamp** *(datetime) --*
 
                   The deleted phone number timestamp, in ISO 8601 format.
+
+            - **NextToken** *(string) --*
+
+              The token to use to retrieve the next page of results.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_room_memberships(
+        self, AccountId: str, RoomId: str, MaxResults: int = None, NextToken: str = None
+    ) -> ClientListRoomMembershipsResponseTypeDef:
+        """
+        Lists the membership details for the specified room, such as member IDs, member email addresses,
+        and member names.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/ListRoomMemberships>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_room_memberships(
+              AccountId='string',
+              RoomId='string',
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to use to retrieve the next page of results.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'RoomMemberships': [
+                    {
+                        'RoomId': 'string',
+                        'Member': {
+                            'MemberId': 'string',
+                            'MemberType': 'User'|'Bot'|'Webhook',
+                            'Email': 'string',
+                            'FullName': 'string',
+                            'AccountId': 'string'
+                        },
+                        'Role': 'Administrator'|'Member',
+                        'InvitedBy': 'string',
+                        'UpdatedTimestamp': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **RoomMemberships** *(list) --*
+
+              The room membership details.
+
+              - *(dict) --*
+
+                The room membership details.
+
+                - **RoomId** *(string) --*
+
+                  The room ID.
+
+                - **Member** *(dict) --*
+
+                  The member details, such as email address, name, member ID, and member type.
+
+                  - **MemberId** *(string) --*
+
+                    The member ID (user ID or bot ID).
+
+                  - **MemberType** *(string) --*
+
+                    The member type.
+
+                  - **Email** *(string) --*
+
+                    The member email address.
+
+                  - **FullName** *(string) --*
+
+                    The member name.
+
+                  - **AccountId** *(string) --*
+
+                    The Amazon Chime account ID.
+
+                - **Role** *(string) --*
+
+                  The membership role.
+
+                - **InvitedBy** *(string) --*
+
+                  The identifier of the user that invited the room member.
+
+                - **UpdatedTimestamp** *(datetime) --*
+
+                  The room membership update timestamp, in ISO 8601 format.
+
+            - **NextToken** *(string) --*
+
+              The token to use to retrieve the next page of results.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def list_rooms(
+        self,
+        AccountId: str,
+        MemberId: str = None,
+        MaxResults: int = None,
+        NextToken: str = None,
+    ) -> ClientListRoomsResponseTypeDef:
+        """
+        Lists the room details for the specified Amazon Chime account. Optionally, filter the results by a
+        member ID (user ID or bot ID) to see a list of rooms that the member belongs to.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/ListRooms>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.list_rooms(
+              AccountId='string',
+              MemberId='string',
+              MaxResults=123,
+              NextToken='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type MemberId: string
+        :param MemberId:
+
+          The member ID (user ID or bot ID).
+
+        :type MaxResults: integer
+        :param MaxResults:
+
+          The maximum number of results to return in a single call.
+
+        :type NextToken: string
+        :param NextToken:
+
+          The token to use to retrieve the next page of results.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Rooms': [
+                    {
+                        'RoomId': 'string',
+                        'Name': 'string',
+                        'AccountId': 'string',
+                        'CreatedBy': 'string',
+                        'CreatedTimestamp': datetime(2015, 1, 1),
+                        'UpdatedTimestamp': datetime(2015, 1, 1)
+                    },
+                ],
+                'NextToken': 'string'
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Rooms** *(list) --*
+
+              The room details.
+
+              - *(dict) --*
+
+                The Amazon Chime chat room details.
+
+                - **RoomId** *(string) --*
+
+                  The room ID.
+
+                - **Name** *(string) --*
+
+                  The room name.
+
+                - **AccountId** *(string) --*
+
+                  The Amazon Chime account ID.
+
+                - **CreatedBy** *(string) --*
+
+                  The identifier of the room creator.
+
+                - **CreatedTimestamp** *(datetime) --*
+
+                  The room creation timestamp, in ISO 8601 format.
+
+                - **UpdatedTimestamp** *(datetime) --*
+
+                  The room update timestamp, in ISO 8601 format.
 
             - **NextToken** *(string) --*
 
@@ -4419,8 +5098,8 @@ class Client(BaseClient):
     ) -> ClientPutVoiceConnectorStreamingConfigurationResponseTypeDef:
         """
         Adds a streaming configuration for the specified Amazon Chime Voice Connector. The streaming
-        configuration specifies whether media streaming is enabled for sending to Amazon Kinesis, and sets
-        the retention period for the Amazon Kinesis data, in hours.
+        configuration specifies whether media streaming is enabled for sending to Amazon Kinesis. It also
+        sets the retention period, in hours, for the Amazon Kinesis data.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/PutVoiceConnectorStreamingConfiguration>`_
@@ -4447,7 +5126,7 @@ class Client(BaseClient):
 
           - **DataRetentionInHours** *(integer) --* **[REQUIRED]**
 
-            The retention period for the Amazon Kinesis data, in hours.
+            The retention period, in hours, for the Amazon Kinesis data.
 
           - **Disabled** *(boolean) --*
 
@@ -4476,7 +5155,7 @@ class Client(BaseClient):
 
               - **DataRetentionInHours** *(integer) --*
 
-                The retention period for the Amazon Kinesis data, in hours.
+                The retention period, in hours, for the Amazon Kinesis data.
 
               - **Disabled** *(boolean) --*
 
@@ -5574,7 +6253,7 @@ class Client(BaseClient):
         """
         Updates the phone number settings for the administrator's AWS account, such as the default outbound
         calling name. You can update the default outbound calling name once every seven days. Outbound
-        calling names can take up to 72 hours to be updated.
+        calling names can take up to 72 hours to update.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/UpdatePhoneNumberSettings>`_
@@ -5591,6 +6270,203 @@ class Client(BaseClient):
           The default outbound calling name for the account.
 
         :returns: None
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_room(
+        self, AccountId: str, RoomId: str, Name: str = None
+    ) -> ClientUpdateRoomResponseTypeDef:
+        """
+        Updates room details, such as the room name.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/UpdateRoom>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_room(
+              AccountId='string',
+              RoomId='string',
+              Name='string'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type Name: string
+        :param Name:
+
+          The room name.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'Room': {
+                    'RoomId': 'string',
+                    'Name': 'string',
+                    'AccountId': 'string',
+                    'CreatedBy': 'string',
+                    'CreatedTimestamp': datetime(2015, 1, 1),
+                    'UpdatedTimestamp': datetime(2015, 1, 1)
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **Room** *(dict) --*
+
+              The room details.
+
+              - **RoomId** *(string) --*
+
+                The room ID.
+
+              - **Name** *(string) --*
+
+                The room name.
+
+              - **AccountId** *(string) --*
+
+                The Amazon Chime account ID.
+
+              - **CreatedBy** *(string) --*
+
+                The identifier of the room creator.
+
+              - **CreatedTimestamp** *(datetime) --*
+
+                The room creation timestamp, in ISO 8601 format.
+
+              - **UpdatedTimestamp** *(datetime) --*
+
+                The room update timestamp, in ISO 8601 format.
+
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def update_room_membership(
+        self, AccountId: str, RoomId: str, MemberId: str, Role: str = None
+    ) -> ClientUpdateRoomMembershipResponseTypeDef:
+        """
+        Updates room membership details, such as member role. The member role designates whether the member
+        is a chat room administrator or a general chat room member. Member role can only be updated for
+        user IDs.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/chime-2018-05-01/UpdateRoomMembership>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.update_room_membership(
+              AccountId='string',
+              RoomId='string',
+              MemberId='string',
+              Role='Administrator'|'Member'
+          )
+        :type AccountId: string
+        :param AccountId: **[REQUIRED]**
+
+          The Amazon Chime account ID.
+
+        :type RoomId: string
+        :param RoomId: **[REQUIRED]**
+
+          The room ID.
+
+        :type MemberId: string
+        :param MemberId: **[REQUIRED]**
+
+          The member ID.
+
+        :type Role: string
+        :param Role:
+
+          The role of the member.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {
+                'RoomMembership': {
+                    'RoomId': 'string',
+                    'Member': {
+                        'MemberId': 'string',
+                        'MemberType': 'User'|'Bot'|'Webhook',
+                        'Email': 'string',
+                        'FullName': 'string',
+                        'AccountId': 'string'
+                    },
+                    'Role': 'Administrator'|'Member',
+                    'InvitedBy': 'string',
+                    'UpdatedTimestamp': datetime(2015, 1, 1)
+                }
+            }
+          **Response Structure**
+
+          - *(dict) --*
+
+            - **RoomMembership** *(dict) --*
+
+              The room membership details.
+
+              - **RoomId** *(string) --*
+
+                The room ID.
+
+              - **Member** *(dict) --*
+
+                The member details, such as email address, name, member ID, and member type.
+
+                - **MemberId** *(string) --*
+
+                  The member ID (user ID or bot ID).
+
+                - **MemberType** *(string) --*
+
+                  The member type.
+
+                - **Email** *(string) --*
+
+                  The member email address.
+
+                - **FullName** *(string) --*
+
+                  The member name.
+
+                - **AccountId** *(string) --*
+
+                  The Amazon Chime account ID.
+
+              - **Role** *(string) --*
+
+                The membership role.
+
+              - **InvitedBy** *(string) --*
+
+                The identifier of the user that invited the room member.
+
+              - **UpdatedTimestamp** *(datetime) --*
+
+                The room membership update timestamp, in ISO 8601 format.
+
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin

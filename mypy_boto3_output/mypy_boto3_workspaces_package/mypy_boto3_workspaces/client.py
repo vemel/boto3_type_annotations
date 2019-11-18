@@ -37,11 +37,15 @@ from mypy_boto3_workspaces.type_defs import (
     ClientImportWorkspaceImageTagsTypeDef,
     ClientListAvailableManagementCidrRangesResponseTypeDef,
     ClientModifyClientPropertiesClientPropertiesTypeDef,
+    ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef,
+    ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef,
+    ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef,
     ClientModifyWorkspacePropertiesWorkspacePropertiesTypeDef,
     ClientRebootWorkspacesRebootWorkspaceRequestsTypeDef,
     ClientRebootWorkspacesResponseTypeDef,
     ClientRebuildWorkspacesRebuildWorkspaceRequestsTypeDef,
     ClientRebuildWorkspacesResponseTypeDef,
+    ClientRegisterWorkspaceDirectoryTagsTypeDef,
     ClientStartWorkspacesResponseTypeDef,
     ClientStartWorkspacesStartWorkspaceRequestsTypeDef,
     ClientStopWorkspacesResponseTypeDef,
@@ -488,7 +492,7 @@ class Client(BaseClient):
 
             - **UserName** *(string) --* **[REQUIRED]**
 
-              The username of the user for the WorkSpace. This username must exist in the AWS Directory
+              The user name of the user for the WorkSpace. This user name must exist in the AWS Directory
               Service directory for the WorkSpace.
 
             - **BundleId** *(string) --* **[REQUIRED]**
@@ -645,7 +649,7 @@ class Client(BaseClient):
 
                   - **UserName** *(string) --*
 
-                    The username of the user for the WorkSpace. This username must exist in the AWS
+                    The user name of the user for the WorkSpace. This user name must exist in the AWS
                     Directory Service directory for the WorkSpace.
 
                   - **BundleId** *(string) --*
@@ -937,11 +941,47 @@ class Client(BaseClient):
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def deregister_workspace_directory(self, DirectoryId: str) -> Dict[str, Any]:
+        """
+        Deregisters the specified directory. This operation is asynchronous and returns before the
+        WorkSpace directory is deregistered. If any WorkSpaces are registered to this directory, you must
+        remove them before you can deregister the directory.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DeregisterWorkspaceDirectory>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.deregister_workspace_directory(
+              DirectoryId='string'
+          )
+        :type DirectoryId: string
+        :param DirectoryId: **[REQUIRED]**
+
+          The identifier of the directory. If any WorkSpaces are registered to this directory, you must
+          remove them before you deregister the directory, or you will receive an
+          OperationNotSupportedException error.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_account(
         self, *args: Any, **kwargs: Any
     ) -> ClientDescribeAccountResponseTypeDef:
         """
-        Retrieves a list that describes the configuration of bring your own license (BYOL) for the
+        Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the
         specified account.
 
         See also: `AWS API Documentation
@@ -987,7 +1027,7 @@ class Client(BaseClient):
         self, NextToken: str = None
     ) -> ClientDescribeAccountModificationsResponseTypeDef:
         """
-        Retrieves a list that describes modifications to the configuration of bring your own license (BYOL)
+        Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL)
         for the specified account.
 
         See also: `AWS API Documentation
@@ -1035,7 +1075,7 @@ class Client(BaseClient):
 
               - *(dict) --*
 
-                Describes a modification to the configuration of bring your own license (BYOL) for the
+                Describes a modification to the configuration of Bring Your Own License (BYOL) for the
                 specified account.
 
                 - **ModificationState** *(string) --*
@@ -1439,11 +1479,10 @@ class Client(BaseClient):
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def describe_workspace_directories(
-        self, DirectoryIds: List[str] = None, NextToken: str = None
+        self, DirectoryIds: List[str] = None, Limit: int = None, NextToken: str = None
     ) -> ClientDescribeWorkspaceDirectoriesResponseTypeDef:
         """
-        Describes the available AWS Directory Service directories that are registered with Amazon
-        WorkSpaces.
+        Describes the available directories that are registered with Amazon WorkSpaces.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/DescribeWorkspaceDirectories>`_
@@ -1455,6 +1494,7 @@ class Client(BaseClient):
               DirectoryIds=[
                   'string',
               ],
+              Limit=123,
               NextToken='string'
           )
         :type DirectoryIds: list
@@ -1463,6 +1503,11 @@ class Client(BaseClient):
           The identifiers of the directories. If the value is null, all directories are retrieved.
 
           - *(string) --*
+
+        :type Limit: integer
+        :param Limit:
+
+          The maximum number of directories to return.
 
         :type NextToken: string
         :param NextToken:
@@ -1500,11 +1545,29 @@ class Client(BaseClient):
                             'EnableInternetAccess': True|False,
                             'DefaultOu': 'string',
                             'CustomSecurityGroupId': 'string',
-                            'UserEnabledAsLocalAdministrator': True|False
+                            'UserEnabledAsLocalAdministrator': True|False,
+                            'EnableMaintenanceMode': True|False
                         },
                         'ipGroupIds': [
                             'string',
-                        ]
+                        ],
+                        'WorkspaceAccessProperties': {
+                            'DeviceTypeWindows': 'ALLOW'|'DENY',
+                            'DeviceTypeOsx': 'ALLOW'|'DENY',
+                            'DeviceTypeWeb': 'ALLOW'|'DENY',
+                            'DeviceTypeIos': 'ALLOW'|'DENY',
+                            'DeviceTypeAndroid': 'ALLOW'|'DENY',
+                            'DeviceTypeChromeOs': 'ALLOW'|'DENY',
+                            'DeviceTypeZeroClient': 'ALLOW'|'DENY'
+                        },
+                        'Tenancy': 'DEDICATED'|'SHARED',
+                        'SelfservicePermissions': {
+                            'RestartWorkspace': 'ENABLED'|'DISABLED',
+                            'IncreaseVolumeSize': 'ENABLED'|'DISABLED',
+                            'ChangeComputeType': 'ENABLED'|'DISABLED',
+                            'SwitchRunningMode': 'ENABLED'|'DISABLED',
+                            'RebuildWorkspace': 'ENABLED'|'DISABLED'
+                        }
                     },
                 ],
                 'NextToken': 'string'
@@ -1519,7 +1582,7 @@ class Client(BaseClient):
 
               - *(dict) --*
 
-                Describes an AWS Directory Service directory that is used with Amazon WorkSpaces.
+                Describes a directory that is used with Amazon WorkSpaces.
 
                 - **DirectoryId** *(string) --*
 
@@ -1569,7 +1632,7 @@ class Client(BaseClient):
 
                 - **State** *(string) --*
 
-                  The state of the directory's registration with Amazon WorkSpaces
+                  The state of the directory's registration with Amazon WorkSpaces.
 
                 - **WorkspaceCreationProperties** *(dict) --*
 
@@ -1603,13 +1666,92 @@ class Client(BaseClient):
 
                   - **UserEnabledAsLocalAdministrator** *(boolean) --*
 
-                    Specifies whether the WorkSpace user is an administrator on the WorkSpace.
+                    Specifies whether WorkSpace users are local administrators on their WorkSpaces.
+
+                  - **EnableMaintenanceMode** *(boolean) --*
+
+                    Specifies whether maintenance mode is enabled for WorkSpaces. For more information, see
+                    `WorkSpace Maintenance
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__
+                    .
 
                 - **ipGroupIds** *(list) --*
 
                   The identifiers of the IP access control groups associated with the directory.
 
                   - *(string) --*
+
+                - **WorkspaceAccessProperties** *(dict) --*
+
+                  The devices and operating systems that users can use to access Workspaces.
+
+                  - **DeviceTypeWindows** *(string) --*
+
+                    Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+                    WorkSpaces access to trusted devices (also known as managed devices) with valid
+                    certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+                    WorkSpaces Access to Trusted Devices
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+                  - **DeviceTypeOsx** *(string) --*
+
+                    Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+                    WorkSpaces access to trusted devices (also known as managed devices) with valid
+                    certificates, specify a value of ``TRUST`` . For more information, see `Restrict
+                    WorkSpaces Access to Trusted Devices
+                    <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+                  - **DeviceTypeWeb** *(string) --*
+
+                    Indicates whether users can access their WorkSpaces through a web browser.
+
+                  - **DeviceTypeIos** *(string) --*
+
+                    Indicates whether users can use iOS devices to access their WorkSpaces.
+
+                  - **DeviceTypeAndroid** *(string) --*
+
+                    Indicates whether users can use Android devices to access their WorkSpaces.
+
+                  - **DeviceTypeChromeOs** *(string) --*
+
+                    Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+                  - **DeviceTypeZeroClient** *(string) --*
+
+                    Indicates whether users can use zero client devices to access their WorkSpaces.
+
+                - **Tenancy** *(string) --*
+
+                  Specifies whether the directory is dedicated or shared. To use Bring Your Own License
+                  (BYOL), this value must be set to ``DEDICATED`` . For more information, see `Bring Your
+                  Own Windows Desktop Images
+                  <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+                - **SelfservicePermissions** *(dict) --*
+
+                  The default self-service permissions for WorkSpaces in the directory.
+
+                  - **RestartWorkspace** *(string) --*
+
+                    Specifies whether users can restart their WorkSpace.
+
+                  - **IncreaseVolumeSize** *(string) --*
+
+                    Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+                  - **ChangeComputeType** *(string) --*
+
+                    Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+                  - **SwitchRunningMode** *(string) --*
+
+                    Specifies whether users can switch the running mode of their WorkSpace.
+
+                  - **RebuildWorkspace** *(string) --*
+
+                    Specifies whether users can rebuild the operating system of a WorkSpace to its original
+                    state.
 
             - **NextToken** *(string) --*
 
@@ -1719,8 +1861,10 @@ class Client(BaseClient):
 
                 - **RequiredTenancy** *(string) --*
 
-                  Specifies whether the image is running on dedicated hardware. When bring your own license
-                  (BYOL) is enabled, this value is set to DEDICATED.
+                  Specifies whether the image is running on dedicated hardware. When Bring Your Own License
+                  (BYOL) is enabled, this value is set to ``DEDICATED`` . For more information, see `Bring
+                  Your Own Windows Desktop Images
+                  <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
 
                 - **ErrorCode** *(string) --*
 
@@ -2210,7 +2354,7 @@ class Client(BaseClient):
         Tags: List[ClientImportWorkspaceImageTagsTypeDef] = None,
     ) -> ClientImportWorkspaceImageResponseTypeDef:
         """
-        Imports the specified Windows 7 or Windows 10 bring your own license (BYOL) image into Amazon
+        Imports the specified Windows 7 or Windows 10 Bring Your Own License (BYOL) image into Amazon
         WorkSpaces. The image must be an already licensed EC2 image that is in your AWS account, and you
         must own the image.
 
@@ -2298,7 +2442,7 @@ class Client(BaseClient):
     ) -> ClientListAvailableManagementCidrRangesResponseTypeDef:
         """
         Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the
-        network management interface when you enable bring your own license (BYOL).
+        network management interface when you enable Bring Your Own License (BYOL).
 
         The management network interface is connected to a secure Amazon WorkSpaces management network. It
         is used for interactive streaming of the WorkSpace desktop to Amazon WorkSpaces clients, and to
@@ -2369,7 +2513,7 @@ class Client(BaseClient):
         DedicatedTenancyManagementCidrRange: str = None,
     ) -> Dict[str, Any]:
         """
-        Modifies the configuration of bring your own license (BYOL) for the specified account.
+        Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyAccount>`_
@@ -2444,6 +2588,234 @@ class Client(BaseClient):
             Specifies whether users can cache their credentials on the Amazon WorkSpaces client. When
             enabled, users can choose to reconnect to their WorkSpaces without re-entering their
             credentials.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def modify_selfservice_permissions(
+        self,
+        ResourceId: str,
+        SelfservicePermissions: ClientModifySelfservicePermissionsSelfservicePermissionsTypeDef,
+    ) -> Dict[str, Any]:
+        """
+        Modifies the self-service WorkSpace management capabilities for your users. For more information,
+        see `Enable Self-Service WorkSpace Management Capabilities for Your Users
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html>`__
+        .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifySelfservicePermissions>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.modify_selfservice_permissions(
+              ResourceId='string',
+              SelfservicePermissions={
+                  'RestartWorkspace': 'ENABLED'|'DISABLED',
+                  'IncreaseVolumeSize': 'ENABLED'|'DISABLED',
+                  'ChangeComputeType': 'ENABLED'|'DISABLED',
+                  'SwitchRunningMode': 'ENABLED'|'DISABLED',
+                  'RebuildWorkspace': 'ENABLED'|'DISABLED'
+              }
+          )
+        :type ResourceId: string
+        :param ResourceId: **[REQUIRED]**
+
+          The identifier of the directory.
+
+        :type SelfservicePermissions: dict
+        :param SelfservicePermissions: **[REQUIRED]**
+
+          The permissions to enable or disable self-service capabilities.
+
+          - **RestartWorkspace** *(string) --*
+
+            Specifies whether users can restart their WorkSpace.
+
+          - **IncreaseVolumeSize** *(string) --*
+
+            Specifies whether users can increase the volume size of the drives on their WorkSpace.
+
+          - **ChangeComputeType** *(string) --*
+
+            Specifies whether users can change the compute type (bundle) for their WorkSpace.
+
+          - **SwitchRunningMode** *(string) --*
+
+            Specifies whether users can switch the running mode of their WorkSpace.
+
+          - **RebuildWorkspace** *(string) --*
+
+            Specifies whether users can rebuild the operating system of a WorkSpace to its original state.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def modify_workspace_access_properties(
+        self,
+        ResourceId: str,
+        WorkspaceAccessProperties: ClientModifyWorkspaceAccessPropertiesWorkspaceAccessPropertiesTypeDef,
+    ) -> Dict[str, Any]:
+        """
+        Specifies which devices and operating systems users can use to access their Workspaces. For more
+        information, see `Control Device Access
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access>`__
+        .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceAccessProperties>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.modify_workspace_access_properties(
+              ResourceId='string',
+              WorkspaceAccessProperties={
+                  'DeviceTypeWindows': 'ALLOW'|'DENY',
+                  'DeviceTypeOsx': 'ALLOW'|'DENY',
+                  'DeviceTypeWeb': 'ALLOW'|'DENY',
+                  'DeviceTypeIos': 'ALLOW'|'DENY',
+                  'DeviceTypeAndroid': 'ALLOW'|'DENY',
+                  'DeviceTypeChromeOs': 'ALLOW'|'DENY',
+                  'DeviceTypeZeroClient': 'ALLOW'|'DENY'
+              }
+          )
+        :type ResourceId: string
+        :param ResourceId: **[REQUIRED]**
+
+          The identifier of the directory.
+
+        :type WorkspaceAccessProperties: dict
+        :param WorkspaceAccessProperties: **[REQUIRED]**
+
+          The device types and operating systems to enable or disable for access.
+
+          - **DeviceTypeWindows** *(string) --*
+
+            Indicates whether users can use Windows clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid certificates,
+            specify a value of ``TRUST`` . For more information, see `Restrict WorkSpaces Access to Trusted
+            Devices <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeOsx** *(string) --*
+
+            Indicates whether users can use macOS clients to access their WorkSpaces. To restrict
+            WorkSpaces access to trusted devices (also known as managed devices) with valid certificates,
+            specify a value of ``TRUST`` . For more information, see `Restrict WorkSpaces Access to Trusted
+            Devices <https://docs.aws.amazon.com/workspaces/latest/adminguide/trusted-devices.html>`__ .
+
+          - **DeviceTypeWeb** *(string) --*
+
+            Indicates whether users can access their WorkSpaces through a web browser.
+
+          - **DeviceTypeIos** *(string) --*
+
+            Indicates whether users can use iOS devices to access their WorkSpaces.
+
+          - **DeviceTypeAndroid** *(string) --*
+
+            Indicates whether users can use Android devices to access their WorkSpaces.
+
+          - **DeviceTypeChromeOs** *(string) --*
+
+            Indicates whether users can use Chromebooks to access their WorkSpaces.
+
+          - **DeviceTypeZeroClient** *(string) --*
+
+            Indicates whether users can use zero client devices to access their WorkSpaces.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def modify_workspace_creation_properties(
+        self,
+        ResourceId: str,
+        WorkspaceCreationProperties: ClientModifyWorkspaceCreationPropertiesWorkspaceCreationPropertiesTypeDef,
+    ) -> Dict[str, Any]:
+        """
+        Modify the default properties used to create WorkSpaces.
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/ModifyWorkspaceCreationProperties>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.modify_workspace_creation_properties(
+              ResourceId='string',
+              WorkspaceCreationProperties={
+                  'EnableInternetAccess': True|False,
+                  'DefaultOu': 'string',
+                  'CustomSecurityGroupId': 'string',
+                  'UserEnabledAsLocalAdministrator': True|False,
+                  'EnableMaintenanceMode': True|False
+              }
+          )
+        :type ResourceId: string
+        :param ResourceId: **[REQUIRED]**
+
+          The identifier of the directory.
+
+        :type WorkspaceCreationProperties: dict
+        :param WorkspaceCreationProperties: **[REQUIRED]**
+
+          The default properties for creating WorkSpaces.
+
+          - **EnableInternetAccess** *(boolean) --*
+
+            Indicates whether internet access is enabled for your WorkSpaces.
+
+          - **DefaultOu** *(string) --*
+
+            The default organizational unit (OU) for your WorkSpace directories.
+
+          - **CustomSecurityGroupId** *(string) --*
+
+            The identifier of your custom security group.
+
+          - **UserEnabledAsLocalAdministrator** *(boolean) --*
+
+            Indicates whether users are local administrators of their WorkSpaces.
+
+          - **EnableMaintenanceMode** *(boolean) --*
+
+            Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see
+            `WorkSpace Maintenance
+            <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html>`__ .
 
         :rtype: dict
         :returns:
@@ -2745,6 +3117,116 @@ class Client(BaseClient):
 
                   The text of the error message that is returned if the WorkSpace cannot be rebooted.
 
+        """
+
+    # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
+    def register_workspace_directory(
+        self,
+        DirectoryId: str,
+        EnableWorkDocs: bool,
+        SubnetIds: List[str] = None,
+        EnableSelfService: bool = None,
+        Tenancy: str = None,
+        Tags: List[ClientRegisterWorkspaceDirectoryTagsTypeDef] = None,
+    ) -> Dict[str, Any]:
+        """
+        Registers the specified directory. This operation is asynchronous and returns before the WorkSpace
+        directory is registered. If this is the first time you are registering a directory, you will need
+        to create the workspaces_DefaultRole role before you can register a directory. For more
+        information, see `Creating the workspaces_DefaultRole Role
+        <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role>`__
+        .
+
+        See also: `AWS API Documentation
+        <https://docs.aws.amazon.com/goto/WebAPI/workspaces-2015-04-08/RegisterWorkspaceDirectory>`_
+
+        **Request Syntax**
+        ::
+
+          response = client.register_workspace_directory(
+              DirectoryId='string',
+              SubnetIds=[
+                  'string',
+              ],
+              EnableWorkDocs=True|False,
+              EnableSelfService=True|False,
+              Tenancy='DEDICATED'|'SHARED',
+              Tags=[
+                  {
+                      'Key': 'string',
+                      'Value': 'string'
+                  },
+              ]
+          )
+        :type DirectoryId: string
+        :param DirectoryId: **[REQUIRED]**
+
+          The identifier of the directory. You cannot register a directory if it does not have a status of
+          Active. If the directory does not have a status of Active, you will receive an
+          InvalidResourceStateException error. If you have already registered the maximum number of
+          directories that you can register with Amazon WorkSpaces, you will receive a
+          ResourceLimitExceededException error. Deregister directories that you are not using for
+          WorkSpaces, and try again.
+
+        :type SubnetIds: list
+        :param SubnetIds:
+
+          The identifiers of the subnets for your virtual private cloud (VPC). Make sure that the subnets
+          are in supported Availability Zones. The subnets must also be in separate Availability Zones. If
+          these conditions are not met, you will receive an OperationNotSupportedException error.
+
+          - *(string) --*
+
+        :type EnableWorkDocs: boolean
+        :param EnableWorkDocs: **[REQUIRED]**
+
+          Indicates whether Amazon WorkDocs is enabled or disabled. If you have enabled this parameter and
+          WorkDocs is not available in the Region, you will receive an OperationNotSupportedException
+          error. Set ``EnableWorkDocs`` to disabled, and try again.
+
+        :type EnableSelfService: boolean
+        :param EnableSelfService:
+
+          Indicates whether self-service capabilities are enabled or disabled.
+
+        :type Tenancy: string
+        :param Tenancy:
+
+          Indicates whether your WorkSpace directory is dedicated or shared. To use Bring Your Own License
+          (BYOL) images, this value must be set to ``DEDICATED`` and your AWS account must be enabled for
+          BYOL. If your account has not been enabled for BYOL, you will receive an
+          InvalidParameterValuesException error. For more information about BYOL images, see `Bring Your
+          Own Windows Desktop Images
+          <https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html>`__ .
+
+        :type Tags: list
+        :param Tags:
+
+          The tags associated with the directory.
+
+          - *(dict) --*
+
+            Describes a tag.
+
+            - **Key** *(string) --* **[REQUIRED]**
+
+              The key of the tag.
+
+            - **Value** *(string) --*
+
+              The value of the tag.
+
+        :rtype: dict
+        :returns:
+
+          **Response Syntax**
+
+          ::
+
+            {}
+          **Response Structure**
+
+          - *(dict) --*
         """
 
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
@@ -3244,4 +3726,6 @@ class Exceptions:
     ResourceLimitExceededException: Boto3ClientError
     ResourceNotFoundException: Boto3ClientError
     ResourceUnavailableException: Boto3ClientError
+    UnsupportedNetworkConfigurationException: Boto3ClientError
     UnsupportedWorkspaceConfigurationException: Boto3ClientError
+    WorkspacesDefaultRoleNotFoundException: Boto3ClientError

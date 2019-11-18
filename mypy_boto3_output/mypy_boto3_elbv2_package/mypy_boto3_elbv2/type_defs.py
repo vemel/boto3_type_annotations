@@ -6671,7 +6671,7 @@ class ClientDescribeLoadBalancerAttributesResponseAttributesTypeDef(
 
       * ``routing.http.drop_invalid_header_fields.enabled`` - Indicates whether HTTP headers
       with invalid header fields are removed by the load balancer (``true`` ) or routed to
-      targets (``false`` ). The default is ``true`` .
+      targets (``false`` ). The default is ``false`` .
 
       * ``routing.http2.enabled`` - Indicates whether HTTP/2 is enabled. The value is ``true``
       or ``false`` . The default is ``true`` .
@@ -6736,7 +6736,7 @@ class ClientDescribeLoadBalancerAttributesResponseTypeDef(
 
           * ``routing.http.drop_invalid_header_fields.enabled`` - Indicates whether HTTP headers
           with invalid header fields are removed by the load balancer (``true`` ) or routed to
-          targets (``false`` ). The default is ``true`` .
+          targets (``false`` ). The default is ``false`` .
 
           * ``routing.http2.enabled`` - Indicates whether HTTP/2 is enabled. The value is ``true``
           or ``false`` . The default is ``true`` .
@@ -11596,7 +11596,7 @@ class ClientModifyLoadBalancerAttributesAttributesTypeDef(
 
       * ``routing.http.drop_invalid_header_fields.enabled`` - Indicates whether HTTP headers with
       invalid header fields are removed by the load balancer (``true`` ) or routed to targets
-      (``false`` ). The default is ``true`` .
+      (``false`` ). The default is ``false`` .
 
       * ``routing.http2.enabled`` - Indicates whether HTTP/2 is enabled. The value is ``true`` or
       ``false`` . The default is ``true`` .
@@ -11655,7 +11655,7 @@ class ClientModifyLoadBalancerAttributesResponseAttributesTypeDef(
 
       * ``routing.http.drop_invalid_header_fields.enabled`` - Indicates whether HTTP headers
       with invalid header fields are removed by the load balancer (``true`` ) or routed to
-      targets (``false`` ). The default is ``true`` .
+      targets (``false`` ). The default is ``false`` .
 
       * ``routing.http2.enabled`` - Indicates whether HTTP/2 is enabled. The value is ``true``
       or ``false`` . The default is ``true`` .
@@ -11720,7 +11720,7 @@ class ClientModifyLoadBalancerAttributesResponseTypeDef(
 
           * ``routing.http.drop_invalid_header_fields.enabled`` - Indicates whether HTTP headers
           with invalid header fields are removed by the load balancer (``true`` ) or routed to
-          targets (``false`` ). The default is ``true`` .
+          targets (``false`` ). The default is ``false`` .
 
           * ``routing.http2.enabled`` - Indicates whether HTTP/2 is enabled. The value is ``true``
           or ``false`` . The default is ``true`` .

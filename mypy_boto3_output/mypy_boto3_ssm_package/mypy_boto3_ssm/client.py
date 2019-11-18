@@ -719,17 +719,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1003,18 +995,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1240,18 +1224,10 @@ class Client(BaseClient):
                 * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                 * (Maintenance window targets only)
-                ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
-                to target all resources in the resource group **ProductionResourceGroup** in your
-                maintenance window.
+                ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                 * (Maintenance window targets only)
                 ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                maintenance window.
-
-                * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                demonstrates how to target all managed instances in the AWS Region where the association
-                was created.
 
                 For information about how to send commands that target instances using ``Key,Value``
                 parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1556,18 +1532,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -1744,18 +1713,11 @@ class Client(BaseClient):
                       * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                       * (Maintenance window targets only)
-                      ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
-                      demonstrates how to target all resources in the resource group
-                      **ProductionResourceGroup** in your maintenance window.
+                      ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                       * (Maintenance window targets only)
                       ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-                      ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
-                      instances and VPCs in your maintenance window.
-
-                      * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
-                      example demonstrates how to target all managed instances in the AWS Region where the
-                      association was created.
+                      ,*AWS::EC2::VPC* ``
 
                       For information about how to send commands that target instances using ``Key,Value``
                       parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4088,18 +4050,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -4730,18 +4684,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -5136,18 +5083,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -7548,17 +7488,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -7818,18 +7750,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -8044,18 +7969,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -8372,17 +8290,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -8676,12 +8586,14 @@ class Client(BaseClient):
         """
         Get information about a parameter.
 
-        Request results are returned on a best-effort basis. If you specify ``MaxResults`` in the request,
-        the response includes information up to the limit specified. The number of items returned, however,
-        can be between zero and the value of ``MaxResults`` . If the service reaches an internal limit
-        while processing the results, it stops the operation and returns the matching values up to that
-        point and a ``NextToken`` . You can specify the ``NextToken`` in a subsequent call to get the next
-        set of results.
+        .. note::
+
+          Request results are returned on a best-effort basis. If you specify ``MaxResults`` in the
+          request, the response includes information up to the limit specified. The number of items
+          returned, however, can be between zero and the value of ``MaxResults`` . If the service reaches
+          an internal limit while processing the results, it stops the operation and returns the matching
+          values up to that point and a ``NextToken`` . You can specify the ``NextToken`` in a subsequent
+          call to get the next set of results.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/DescribeParameters>`_
@@ -8713,7 +8625,7 @@ class Client(BaseClient):
         :type Filters: list
         :param Filters:
 
-          One or more filters. Use a filter to return a more specific list of results.
+          This data type is deprecated. Instead, use ``ParameterFilters`` .
 
           - *(dict) --*
 
@@ -8738,10 +8650,22 @@ class Client(BaseClient):
 
             One or more filters. Use a filter to return a more specific list of results.
 
-            .. note::
+            .. warning::
 
-              The ``Name`` and ``Tier`` filter keys can't be used with the  GetParametersByPath API action.
-              Also, the ``Label`` filter key can't be used with the  DescribeParameters API action.
+              The ``ParameterStringFilter`` object is used by the  DescribeParameters and
+              GetParametersByPath API actions. However, not all of the pattern values listed for ``Key``
+              can be used with both actions.
+
+              For ``DescribeActions`` , all of the listed patterns are valid, with the exception of
+              ``Label`` .
+
+              For ``GetParametersByPath`` , the following patterns listed for ``Key`` are not valid:
+              ``Name`` , ``Path`` , and ``Tier`` .
+
+              For examples of CLI commands demonstrating valid parameter filter constructions, see
+              `Searching for Systems Manager Parameters
+              <http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html>`__ in the
+              *AWS Systems Manager User Guide* .
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -8749,8 +8673,14 @@ class Client(BaseClient):
 
             - **Option** *(string) --*
 
-              Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and
-              OneLevel.
+              For all filters used with  DescribeParameters , valid options include ``Equals`` and
+              ``BeginsWith`` . The ``Name`` filter additionally supports the ``Contains`` option.
+              (Exception: For filters using the key ``Path`` , valid options include ``Recursive`` and
+              ``OneLevel`` .)
+
+              For filters used with  GetParametersByPath , valid options include ``Equals`` and
+              ``BeginsWith`` . (Exception: For filters using the key ``Label`` , the only valid option is
+              ``Equals`` .)
 
             - **Values** *(list) --*
 
@@ -9920,18 +9850,11 @@ class Client(BaseClient):
                       * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                       * (Maintenance window targets only)
-                      ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example
-                      demonstrates how to target all resources in the resource group
-                      **ProductionResourceGroup** in your maintenance window.
+                      ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                       * (Maintenance window targets only)
                       ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE*
-                      ,*AWS::EC2::VPC* ``   This example demonstrates how to target only Amazon EC2
-                      instances and VPCs in your maintenance window.
-
-                      * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This
-                      example demonstrates how to target all managed instances in the AWS Region where the
-                      association was created.
+                      ,*AWS::EC2::VPC* ``
 
                       For information about how to send commands that target instances using ``Key,Value``
                       parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -10069,18 +9992,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -11697,18 +11612,10 @@ class Client(BaseClient):
                 * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                 * (Maintenance window targets only)
-                ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
-                to target all resources in the resource group **ProductionResourceGroup** in your
-                maintenance window.
+                ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                 * (Maintenance window targets only)
                 ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                maintenance window.
-
-                * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                demonstrates how to target all managed instances in the AWS Region where the association
-                was created.
 
                 For information about how to send commands that target instances using ``Key,Value``
                 parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -12755,21 +12662,16 @@ class Client(BaseClient):
         NextToken: str = None,
     ) -> ClientGetParametersByPathResponseTypeDef:
         """
-        Retrieve parameters in a specific hierarchy. For more information, see `Working with Systems
-        Manager Parameters
-        <http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html>`__ in
-        the *AWS Systems Manager User Guide* .
-
-        Request results are returned on a best-effort basis. If you specify ``MaxResults`` in the request,
-        the response includes information up to the limit specified. The number of items returned, however,
-        can be between zero and the value of ``MaxResults`` . If the service reaches an internal limit
-        while processing the results, it stops the operation and returns the matching values up to that
-        point and a ``NextToken`` . You can specify the ``NextToken`` in a subsequent call to get the next
-        set of results.
+        Retrieve information about one or more parameters in a specific hierarchy.
 
         .. note::
 
-          This API action doesn't support filtering by tags.
+          Request results are returned on a best-effort basis. If you specify ``MaxResults`` in the
+          request, the response includes information up to the limit specified. The number of items
+          returned, however, can be between zero and the value of ``MaxResults`` . If the service reaches
+          an internal limit while processing the results, it stops the operation and returns the matching
+          values up to that point and a ``NextToken`` . You can specify the ``NextToken`` in a subsequent
+          call to get the next set of results.
 
         See also: `AWS API Documentation
         <https://docs.aws.amazon.com/goto/WebAPI/ssm-2014-11-06/GetParametersByPath>`_
@@ -12817,18 +12719,26 @@ class Client(BaseClient):
 
           Filters to limit the request results.
 
-          .. note::
-
-            You can't filter using the parameter name.
-
           - *(dict) --*
 
             One or more filters. Use a filter to return a more specific list of results.
 
-            .. note::
+            .. warning::
 
-              The ``Name`` and ``Tier`` filter keys can't be used with the  GetParametersByPath API action.
-              Also, the ``Label`` filter key can't be used with the  DescribeParameters API action.
+              The ``ParameterStringFilter`` object is used by the  DescribeParameters and
+              GetParametersByPath API actions. However, not all of the pattern values listed for ``Key``
+              can be used with both actions.
+
+              For ``DescribeActions`` , all of the listed patterns are valid, with the exception of
+              ``Label`` .
+
+              For ``GetParametersByPath`` , the following patterns listed for ``Key`` are not valid:
+              ``Name`` , ``Path`` , and ``Tier`` .
+
+              For examples of CLI commands demonstrating valid parameter filter constructions, see
+              `Searching for Systems Manager Parameters
+              <http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html>`__ in the
+              *AWS Systems Manager User Guide* .
 
             - **Key** *(string) --* **[REQUIRED]**
 
@@ -12836,8 +12746,14 @@ class Client(BaseClient):
 
             - **Option** *(string) --*
 
-              Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and
-              OneLevel.
+              For all filters used with  DescribeParameters , valid options include ``Equals`` and
+              ``BeginsWith`` . The ``Name`` filter additionally supports the ``Contains`` option.
+              (Exception: For filters using the key ``Path`` , valid options include ``Recursive`` and
+              ``OneLevel`` .)
+
+              For filters used with  GetParametersByPath , valid options include ``Equals`` and
+              ``BeginsWith`` . (Exception: For filters using the key ``Label`` , the only valid option is
+              ``Equals`` .)
 
             - **Values** *(list) --*
 
@@ -13646,18 +13562,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -13904,18 +13813,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -14676,18 +14578,11 @@ class Client(BaseClient):
                     * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                     * (Maintenance window targets only)
-                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                    how to target all resources in the resource group **ProductionResourceGroup** in your
-                    maintenance window.
+                    ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                     * (Maintenance window targets only)
                     ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC*
-                    ``   This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                    * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                    demonstrates how to target all managed instances in the AWS Region where the
-                    association was created.
+                    ``
 
                     For information about how to send commands that target instances using ``Key,Value``
                     parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -17033,17 +16928,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -17251,17 +17138,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -17979,17 +17858,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -18286,18 +18157,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -18633,17 +18496,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19112,17 +18967,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19376,18 +19223,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -19716,18 +19555,10 @@ class Client(BaseClient):
                   * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                   * (Maintenance window targets only)
-                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates
-                  how to target all resources in the resource group **ProductionResourceGroup** in your
-                  maintenance window.
+                  ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                   * (Maintenance window targets only)
                   ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                    This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                    maintenance window.
-
-                  * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                  demonstrates how to target all managed instances in the AWS Region where the association
-                  was created.
 
                   For information about how to send commands that target instances using ``Key,Value``
                   parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20469,17 +20300,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20586,18 +20409,10 @@ class Client(BaseClient):
                 * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                 * (Maintenance window targets only)
-                ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
-                to target all resources in the resource group **ProductionResourceGroup** in your
-                maintenance window.
+                ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                 * (Maintenance window targets only)
                 ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                maintenance window.
-
-                * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                demonstrates how to target all managed instances in the AWS Region where the association
-                was created.
 
                 For information about how to send commands that target instances using ``Key,Value``
                 parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -20793,17 +20608,9 @@ class Client(BaseClient):
             * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
             * (Maintenance window targets only) ``Key=resource-groups:Name,Values=ProductionResourceGroup``
-              This example demonstrates how to target all resources in the resource group
-              **ProductionResourceGroup** in your maintenance window.
 
             * (Maintenance window targets only)
             ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-            This example demonstrates how to target only Amazon EC2 instances and VPCs in your maintenance
-            window.
-
-            * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-            demonstrates how to target all managed instances in the AWS Region where the association was
-            created.
 
             For information about how to send commands that target instances using ``Key,Value``
             parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
@@ -21200,18 +21007,10 @@ class Client(BaseClient):
                 * ``Key=tag-key,Values=Name,Instance-Type,CostCenter``
 
                 * (Maintenance window targets only)
-                ``Key=resource-groups:Name,Values=ProductionResourceGroup``   This example demonstrates how
-                to target all resources in the resource group **ProductionResourceGroup** in your
-                maintenance window.
+                ``Key=resource-groups:Name,Values=ProductionResourceGroup``
 
                 * (Maintenance window targets only)
                 ``Key=resource-groups:ResourceTypeFilters,Values=*AWS::EC2::INSTANCE* ,*AWS::EC2::VPC* ``
-                This example demonstrates how to target only Amazon EC2 instances and VPCs in your
-                maintenance window.
-
-                * (State Manager association targets only) ``Key=InstanceIds,Values=*``   This example
-                demonstrates how to target all managed instances in the AWS Region where the association
-                was created.
 
                 For information about how to send commands that target instances using ``Key,Value``
                 parameters, see `Using Targets and Rate Controls to Send Commands to a Fleet
