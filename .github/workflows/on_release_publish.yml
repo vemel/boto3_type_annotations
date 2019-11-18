@@ -23,7 +23,7 @@ jobs:
       - name: Build packages
         run: |
           rm -rf mypy_boto3_output/*
-          scripts/buildall.sh
+          scripts/build.sh
       - name: Install dependencies
         run: |
           pip install setuptools wheel twine
