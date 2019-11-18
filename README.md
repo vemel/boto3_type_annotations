@@ -128,8 +128,8 @@ OUTPUT_PATH=`pwd`/output
 
 # Build all packages
 # You can specify required services explicitly like
-# mypy_boto3_builder ${OUTPUT_PATH} -f -s ec2 s3
-mypy_boto3_builder ${OUTPUT_PATH} -f
+# mypy_boto3_builder ${OUTPUT_PATH} -s ec2 s3
+mypy_boto3_builder ${OUTPUT_PATH}
 
 # Install custom `mypy-boto3` service packages
 PACKAGES=${OUTPUT_PATH}/mypy_boto3_*

@@ -8,4 +8,4 @@ if [[ "$BOTO3_VERSION" != "" ]]; then
     pip install --user boto3==${BOTO3_VERSION}
 fi
 
-mypy_boto3_builder . -f $@
+mypy_boto3_builder . $@

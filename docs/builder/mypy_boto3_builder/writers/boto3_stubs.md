@@ -15,6 +15,5 @@ boto3-stubs module writer.
 def write_boto3_stubs_module(
     boto3_module: Boto3Module,
     output_path: Path,
-    reformat: bool,
 ) -> List[Path]:
 ```

@@ -15,6 +15,5 @@ Service module writer.
 def write_service_module(
     service_module: ServiceModule,
     output_path: Path,
-    reformat: bool,
 ) -> List[Path]:
 ```

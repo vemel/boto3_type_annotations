@@ -52,9 +52,6 @@ def get_cli_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument(
-        "-f", "--format", action="store_true", help="Format output with black"
-    )
-    parser.add_argument(
         "--skip-master", action="store_true", help="Whether to skip master module"
     )
     parser.add_argument(

@@ -23,20 +23,43 @@ jinja2_env = jinja2.Environment(
 )
 
 
-def blackify_str(content: str, fast: bool = True, is_pyi: bool = False) -> str:
+def blackify(content: str, file_path: Path, fast: bool = True) -> str:
+    """
+    Format `content` with `black` if `file_path` is `*.py` or `*.pyi`.
+
+    On error writes invalid `content` to `file_path` to check for errors.
+
+    Arguments:
+        content -- Python code to format.
+        file_path -- Target file path.
+        fast -- Whether to skip AST post-check.
+
+    Returns:
+        Formatted python code.
+
+    Raises:
+        ValueError -- If `content` is not a valid Python code.
+    """
+    if file_path.suffix not in (".py", ".pyi"):
+        return content
+
+    file_mode = black.FileMode(is_pyi=file_path.suffix == ".pyi")
     try:
-        return black.format_file_contents(
-            content, fast=fast, mode=black.FileMode(is_pyi=is_pyi)
-        )
+        return black.format_file_contents(content, fast=fast, mode=file_mode)
     except black.NothingChanged:
         return content
     except black.InvalidInput as e:
-        raise ValueError(e)
+        file_path.write_text(content)
+        raise ValueError(f"Cannot parse {file_path}: {e}")
 
 
 def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:
     """
     Render Jinja2 template to a string.
+
+    Arguments:
+        template_path -- Relative path to template in `TEMPLATES_PATH`
+        kwargs -- Format arguments.
 
     Returns:
         A rendered template.

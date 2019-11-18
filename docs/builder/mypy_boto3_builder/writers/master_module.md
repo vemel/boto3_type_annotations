@@ -10,7 +10,7 @@ Master module writer.
 
 ## get_service_module_file_paths
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L85)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/master_module.py#L81)
 
 ```python
 def get_service_module_file_paths(
@@ -28,6 +28,5 @@ def get_service_module_file_paths(
 def write_master_module(
     master_module: MasterModule,
     output_path: Path,
-    reformat: bool,
 ) -> List[Path]:
 ```

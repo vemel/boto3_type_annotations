@@ -10,12 +10,12 @@ from boto3 import __version__ as boto3_version
 
 from mypy_boto3_builder.structures.boto3_module import Boto3Module
 from mypy_boto3_builder.version import __version__ as version
-from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify_str
+from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify
 from mypy_boto3_builder.constants import BOTO3_STUBS_STATIC_PATH
 
 
 def write_boto3_stubs_module(
-    boto3_module: Boto3Module, output_path: Path, reformat: bool
+    boto3_module: Boto3Module, output_path: Path
 ) -> List[Path]:
     modified_paths: List[Path] = []
     package_path = output_path / boto3_module.package_name
@@ -37,12 +37,7 @@ def write_boto3_stubs_module(
 
     for file_path, template_path in file_paths:
         content = render_jinja2_template(template_path, module=boto3_module)
-        if reformat:
-            if file_path.suffix == ".py":
-                content = blackify_str(content)
-            if file_path.suffix == ".pyi":
-                content = blackify_str(content, is_pyi=True)
-
+        content = blackify(content, file_path)
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
             file_path.write_text(content)

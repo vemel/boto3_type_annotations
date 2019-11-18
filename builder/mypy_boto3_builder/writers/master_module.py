@@ -9,13 +9,11 @@ from typing import List, Tuple
 from mypy_boto3_builder.structures.master_module import MasterModule
 from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
-from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify_str
+from mypy_boto3_builder.writers.utils import render_jinja2_template, blackify
 from mypy_boto3_builder.constants import MYPY_BOTO3_STATIC_PATH
 
 
-def write_master_module(
-    master_module: MasterModule, output_path: Path, reformat: bool
-) -> List[Path]:
+def write_master_module(master_module: MasterModule, output_path: Path) -> List[Path]:
     modified_paths: List[Path] = []
     package_path = output_path / master_module.package_name
 
@@ -40,8 +38,7 @@ def write_master_module(
 
     for file_path, template_path in file_paths:
         content = render_jinja2_template(template_path, module=master_module)
-        if reformat and file_path.suffix == ".py":
-            content = blackify_str(content)
+        content = blackify(content, file_path)
 
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
@@ -56,8 +53,7 @@ def write_master_module(
             content = render_jinja2_template(
                 template_path, service_name=service_module.service_name
             )
-            if reformat and file_path.suffix == ".py":
-                content = blackify_str(content)
+            content = blackify(content, file_path)
 
             if not file_path.exists() or file_path.read_text() != content:
                 modified_paths.append(file_path)

@@ -23,10 +23,6 @@ def main() -> None:
     """
     parser = get_cli_parser()
     args = parser.parse_args()
-    if args.version:
-        print(version)
-        return
-
     logger = get_logger(verbose=args.debug)
     session = Session(region_name=DUMMY_REGION)
     args.output_path.mkdir(exist_ok=True)
@@ -44,30 +40,21 @@ def main() -> None:
             logger.info(f"Generating {service_name.module_name} module")
             output_path = args.output_path / f"{service_name.module_name}_package"
             process_service(
-                session=session,
-                output_path=output_path,
-                service_name=service_name,
-                reformat=args.format,
+                session=session, output_path=output_path, service_name=service_name
             )
 
     if not args.skip_master:
         logger.info(f"Generating {MODULE_NAME} module")
         output_path = args.output_path / "master_package"
         process_master(
-            session=session,
-            output_path=output_path,
-            service_names=service_names,
-            reformat=args.format,
+            session=session, output_path=output_path, service_names=service_names
         )
 
     if not args.skip_stubs:
         logger.info(f"Generating {BOTO3_STUBS_NAME} module")
         output_path = args.output_path / "boto3_stubs_package"
         process_boto3_stubs(
-            session=session,
-            output_path=output_path,
-            service_names=service_names,
-            reformat=args.format,
+            session=session, output_path=output_path, service_names=service_names
         )
 
 

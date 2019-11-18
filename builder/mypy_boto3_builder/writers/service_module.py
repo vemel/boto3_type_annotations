@@ -8,13 +8,13 @@ from mypy_boto3_builder.structures.service_module import ServiceModule
 from mypy_boto3_builder.version import __version__ as version
 from mypy_boto3_builder.writers.utils import (
     render_jinja2_template,
-    blackify_str,
+    blackify,
 )
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 
 
 def write_service_module(
-    service_module: ServiceModule, output_path: Path, reformat: bool
+    service_module: ServiceModule, output_path: Path
 ) -> List[Path]:
     modified_paths: List[Path] = []
     package_path = output_path / service_module.service_name.module_name
@@ -76,15 +76,7 @@ def write_service_module(
             module=service_module,
             service_name=service_module.service_name,
         )
-        if reformat:
-            try:
-                if file_path.suffix == ".py":
-                    content = blackify_str(content)
-                if file_path.suffix == ".pyi":
-                    content = blackify_str(content, is_pyi=True)
-            except ValueError as e:
-                file_path.write_text(content)
-                raise ValueError(f"Cannot parse {file_path}: {e}")
+        content = blackify(content, file_path)
 
         if not file_path.exists() or file_path.read_text() != content:
             modified_paths.append(file_path)
