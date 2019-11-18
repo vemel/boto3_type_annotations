@@ -8,7 +8,7 @@ See [mypy_boto3](https://pypi.org/project/mypy-boto3/) for more info.
 
 setup(
     name="mypy-boto3-rds",
-    version="0.2.2",
+    version="0.2.3",
     packages=["mypy_boto3_rds"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",

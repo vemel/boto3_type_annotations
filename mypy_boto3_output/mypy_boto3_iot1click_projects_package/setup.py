@@ -8,7 +8,7 @@ See [mypy_boto3](https://pypi.org/project/mypy-boto3/) for more info.
 
 setup(
     name="mypy-boto3-iot1click-projects",
-    version="0.2.2",
+    version="0.2.3",
     packages=["mypy_boto3_iot1click_projects"],
     url="https://github.com/vemel/mypy_boto3",
     license="MIT License",
