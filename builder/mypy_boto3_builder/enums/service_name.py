@@ -234,7 +234,7 @@ class ServiceName(enum.Enum):
         """
         Extras name for subpackage installation.
         """
-        return self.value
+        return str(self.value)
 
     @property
     def import_name(self) -> str:
@@ -269,7 +269,7 @@ class ServiceName(enum.Enum):
         """
         Boto3 service name.
         """
-        return self.value
+        return str(self.value)
 
     @property
     def class_prefix(self) -> str:

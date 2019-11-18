@@ -53,7 +53,7 @@ class TypeAnnotation(FakeAnnotation):
             return "Callable"
         if self.wrapped_type is overload:
             return "overload"
-        return getattr(self.wrapped_type, "_name")
+        return str(getattr(self.wrapped_type, "_name"))
 
     def get_import_record(self) -> ImportRecord:
         source = "typing"
@@ -62,10 +62,10 @@ class TypeAnnotation(FakeAnnotation):
         return ImportRecord(source=source, name=self.get_import_name())
 
     def is_dict(self) -> bool:
-        return self.wrapped_type == Dict
+        return self.wrapped_type is Dict
 
     def is_list(self) -> bool:
-        return self.wrapped_type == List
+        return self.wrapped_type is List
 
     def copy(self) -> TypeAnnotation:
         """

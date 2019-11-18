@@ -45,12 +45,14 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
 
     file_mode = black.FileMode(is_pyi=file_path.suffix == ".pyi")
     try:
-        return black.format_file_contents(content, fast=fast, mode=file_mode)
+        content = black.format_file_contents(content, fast=fast, mode=file_mode)
     except black.NothingChanged:
-        return content
+        pass
     except black.InvalidInput as e:
         file_path.write_text(content)
         raise ValueError(f"Cannot parse {file_path}: {e}")
+
+    return content
 
 
 def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:

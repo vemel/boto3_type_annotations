@@ -23,14 +23,14 @@ from mypy_boto3_builder.utils.indent_trimmer import IndentTrimmer
 
 
 class DocstringParser:
-    RE_PARAM: Pattern = re.compile(r":param\s+(?P<name>\S+):")
-    RE_TYPE: Pattern = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
-    RE_RTYPE: Pattern = re.compile(r":rtype:\s+(?P<type>.+)")
+    RE_PARAM: Pattern[str] = re.compile(r":param\s+(?P<name>\S+):")
+    RE_TYPE: Pattern[str] = re.compile(r":type\s+(?P<name>\S+):\s+(?P<type>.+)")
+    RE_RTYPE: Pattern[str] = re.compile(r":rtype:\s+(?P<type>.+)")
 
-    RE_SYNTAX_DICT_KEY: Pattern = re.compile(
+    RE_SYNTAX_DICT_KEY: Pattern[str] = re.compile(
         r"\- \*\*(?P<name>\S+)\*\* \*\((?P<type>.+)\) \-\-\*"
     )
-    RE_SYNTAX_TYPE: Pattern = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
+    RE_SYNTAX_TYPE: Pattern[str] = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
 
     NONE_ANNOTATION: FakeAnnotation = TypeConstant(None)
     ANY_ANNOTATION: FakeAnnotation = TypeAnnotation(Any)
