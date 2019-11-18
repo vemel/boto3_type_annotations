@@ -10,7 +10,7 @@ def s3_resource_example() -> None:
     # optionally use Session type from botocore
     session = boto3.session.Session(region_name="us-west-1")
 
-    # explicitly set type to S3 ServiceResource
+    # equivalent of `session.resource('s3')`
     resource = boto3_resource(session)
 
     # IDE autocomplete suggests function name and arguments here
@@ -24,8 +24,7 @@ def s3_resource_example() -> None:
 
 
 def s3_client_example() -> None:
-    # Use explicit types to help Python extension to get methods correctly
-    # mypy works as it should even without explicit types
+    # equivalent of `boto3.client('s3')`
     client = boto3_client()
 
     bucket_exists_waiter = get_bucket_exists_waiter(client)
