@@ -2,16 +2,16 @@
 
 import boto3
 
-from mypy_boto3.s3 import boto3_client, boto3_resource
+from mypy_boto3.s3 import Client, ServiceResource, boto3_client, boto3_resource
 from mypy_boto3.s3.helpers import get_bucket_exists_waiter
+from mypy_boto3.s3.waiter import BucketExistsWaiter
 
 
 def s3_resource_example() -> None:
     # optionally use Session type from botocore
     session = boto3.session.Session(region_name="us-west-1")
 
-    # equivalent of `session.resource('s3')`
-    resource = boto3_resource(session)
+    resource: ServiceResource = session.resource("s3")
 
     # IDE autocomplete suggests function name and arguments here
     bucket = resource.Bucket("bucket")
@@ -25,7 +25,38 @@ def s3_resource_example() -> None:
 
 def s3_client_example() -> None:
     # equivalent of `boto3.client('s3')`
+    client: Client = boto3.client("s3")
+
+    bucket_exists_waiter: BucketExistsWaiter = client.get_waiter("bucket_exists")
+
+    # (mypy) error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
+    bucket_exists_waiter.wait(bucket="bucket")
+
+    # IDE autocomplete suggests function name and arguments here
+    client.create_bucket(Bucket="bucket")
+
+    # (mypy) error: Missing positional argument "Key" in call to "get_object" of "Client"
+    client.get_object(Bucket="bucket")
+
+    # (mypy) error: TypedDict "ClientGetObjectResponseTypeDef" has no key 'expiration'
+    _expiration = client.get_object(Bucket="bucket", Key="key")["expiration"]
+
+    # (mypy) error: Extra key 'Allowedorigins' for TypedDict "ClientPutBucketCorsCORSConfigurationCORSRulesTypeDef"
+    client.put_bucket_cors(
+        "Bucket",
+        {"CORSRules": [{"AllowedMethods": ["get"], "Allowedorigins": ["localhost"]}]},
+    )
+
+    # (mypy) error: Argument "Key" to "get_object" of "Client" has incompatible type "None"; expected "str"
+    client.get_object(Bucket="bucket", Key=None)
+
+
+def helpers_example() -> None:
+    session = boto3.session.Session(region_name="us-west-1")
+
+    # equivalent of `boto3.client('s3')`
     client = boto3_client()
+    resource = boto3_resource(session)
 
     bucket_exists_waiter = get_bucket_exists_waiter(client)
 
