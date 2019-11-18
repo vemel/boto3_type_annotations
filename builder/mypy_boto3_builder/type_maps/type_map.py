@@ -2,7 +2,7 @@
 String to type annotation map that find type annotation by argument name and type.
 """
 from datetime import datetime
-from typing import Callable, IO, List, Dict, Union, Any
+from typing import Callable, IO, List, Dict, Union
 
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -18,25 +18,25 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "bytes": TypeClass(bytes),
     "blob": TypeClass(bytes),
     "boolean": TypeClass(bool),
-    "function": TypeSubscript(Callable, [TypeConstant(...), TypeAnnotation(Any)]),
+    "function": TypeSubscript(Callable, [TypeConstant(...), TypeAnnotation.Any()]),
     "botocore or boto3 Client": ExternalImport(
         source="botocore.client", name="BaseClient"
     ),
     "datetime": TypeClass(datetime),
     "timestamp": TypeClass(datetime),
-    "dict": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation(Any)]),
-    "structure": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation(Any)]),
-    "map": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation(Any)]),
+    "dict": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation.Any()]),
+    "structure": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation.Any()]),
+    "map": TypeSubscript(Dict, [TypeClass(str), TypeAnnotation.Any()]),
     "float": TypeClass(float),
     "double": TypeClass(float),
     "int": TypeClass(int),
     "integer": TypeClass(int),
     "long": TypeClass(int),
-    "a file-like object": TypeSubscript(IO, [TypeAnnotation(Any)]),
+    "a file-like object": TypeSubscript(IO, [TypeAnnotation.Any()]),
     "seekable file-like object": TypeSubscript(
-        IO, [TypeAnnotation(Any)]
+        IO, [TypeAnnotation.Any()]
     ),
-    "list": TypeSubscript(List, [TypeAnnotation(Any)]),
+    "list": TypeSubscript(List, [TypeAnnotation.Any()]),
     "L{botocore.paginate.Paginator}": ExternalImport(
         source="botocore.paginate", name="Paginator"
     ),
@@ -452,6 +452,6 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
         source="botocore.waiter", name="SingleWaiterConfig"
     ),
     "callable": TypeSubscript(
-        Callable, [TypeConstant(...), TypeAnnotation(Any)]
+        Callable, [TypeConstant(...), TypeAnnotation.Any()]
     ),
 }

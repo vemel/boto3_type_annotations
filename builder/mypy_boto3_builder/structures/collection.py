@@ -2,7 +2,7 @@
 Boto3 ServiceResource or Resource collection.
 """
 from dataclasses import dataclass, field
-from typing import Set, List, Any
+from typing import Set, List
 
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
@@ -17,7 +17,7 @@ class Collection(ClassRecord):
     """
 
     attribute_name: str = "collection"
-    type: FakeAnnotation = TypeAnnotation(Any)
+    type: FakeAnnotation = TypeAnnotation.Any()
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
             ExternalImport(

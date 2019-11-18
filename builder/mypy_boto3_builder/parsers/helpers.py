@@ -2,7 +2,7 @@
 Helpers for parsing methods and attributes.
 """
 import inspect
-from typing import List, Dict, Any
+from typing import List, Dict
 from types import FunctionType
 
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
@@ -15,7 +15,7 @@ from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
 from mypy_boto3_builder.parsers.docstring import DocstringParser
 
 
-def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
+def get_public_methods(inspect_class: type) -> Dict[str, FunctionType]:
     """
     Extract public methods from any class.
 
