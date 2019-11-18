@@ -2,7 +2,8 @@
 
 import boto3
 
-from mypy_boto3.s3 import boto3_client, boto3_resource, get_bucket_exists_waiter
+from mypy_boto3.s3 import boto3_client, boto3_resource
+from mypy_boto3.s3.helpers import get_bucket_exists_waiter
 
 
 def s3_resource_example() -> None:
