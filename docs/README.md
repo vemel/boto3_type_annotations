@@ -6,22 +6,22 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mypy-boto3.svg?color=blue&style=for-the-badge)](https://pypi.org/project/mypy-boto3)
 [![Docs](https://img.shields.io/readthedocs/mypy-boto3.svg?color=blue&style=for-the-badge)](https://mypy-boto3.readthedocs.io/)
 
-Mypy-friendly type annotations for `boto3`.
+`mypy`-friendly type annotations for `boto3`.
 
 Full mypy-boto3 project documentation can be found in [Modules](MODULES.md#mypy-boto3-modules)
 
 - [mypy_boto3](#mypyboto3)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [If IDE autocomplete does not work](#if-ide-autocomplete-does-not-work)
+  - [If IDE auto-complete does not work](#if-ide-auto-complete-does-not-work)
   - [How to build](#how-to-build)
     - [Locally](#locally)
     - [With Docker image](#with-docker-image)
   - [Differences from boto3-type-annotations](#differences-from-boto3-type-annotations)
   - [Thank you](#thank-you)
-  - [Submodules](#submodules)
+  - [Sub-modules](#sub-modules)
     - [Examples](#examples)
-    - [List of all submodules](#list-of-all-submodules)
+    - [List of all sub-modules](#list-of-all-sub-modules)
   - [mypy-boto3 Modules](MODULES.md#mypy-boto3-modules)
 
 ## Installation
@@ -68,10 +68,10 @@ bucket = resource.Bucket("bucket")
 bucket.upload_file(Filename="my.txt", key="my-txt")
 ```
 
-## If IDE autocomplete does not work
+## If IDE auto-complete does not work
 
-`mypy` correctly reveals types for `boto3-stubs`, but autocomplete in your IDE probably does not support
-overloaded functions, so methods and arguments autocomplete will not be very useful.
+`mypy` correctly reveals types for `boto3-stubs`, but auto-complete in your IDE probably does not support
+overloaded functions, so methods and arguments auto-complete will not be very useful.
 
 To help IDE to resolve types correctly, there are some helper functions that return correct types with
 no function overloads.
@@ -82,7 +82,7 @@ If your IDE supports overloaded functions, just use `boto3` as usual.
 from boto3.session import Session
 
 # Any service can be used, we use `ec2` as an example.
-# All sub modules are named like `boto3` service names with underscopes instead
+# All sub modules are named like `boto3` service names with underscores instead
 # of hyphens, e.g. `mypy_boto3.ec2_instance_connect`
 # For `lambda`, module name is `mypy_boto3.lambda_`
 from mypy_boto3.ec2 import boto3_client, boto3_resource
@@ -196,11 +196,11 @@ docker run -e BOTO3_VERSION=1.10.18 -v `pwd`/output:/output -ti mypy_boto3_build
 - [black](https://github.com/psf/black) developers for awesome formatting tool
 - [mypy](https://github.com/python/mypy) for doing all dirty work for us
 
-## Submodules
+## Sub-modules
 
 ### Examples
 
-You can install any submodules using `pip`
+You can install any sub-modules using `pip`
 
 ```bash
 # pip install boto3-stubs[<submodule_name>, ...]
@@ -212,7 +212,7 @@ pip install boto3-stubs[s3, ec2, sqs]
 pip install boto3-stubs[all]
 ```
 
-### List of all submodules
+### List of all sub-modules
 
 - `all` - Type annotations for all `boto3` services.
 - `essential` - Type annotations for `ec2`, `s3`, `rds`, `lambda`, `sqs`, `dynamodb` and `cloudformation` services.
