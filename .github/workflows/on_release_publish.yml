@@ -18,7 +18,7 @@ jobs:
           cd builder
           python setup.py install
           cd -
-      - name: Build pacakges
+      - name: Build packages
         run: |
           pip install -U boto3
           rm -rf mypy_boto3_output/*
