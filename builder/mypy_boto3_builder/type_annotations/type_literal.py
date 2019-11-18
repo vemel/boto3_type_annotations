@@ -19,6 +19,8 @@ class TypeLiteral(FakeAnnotation):
     """
 
     def __init__(self, *children: Any) -> None:
+        if not children:
+            raise ValueError(f"Empty children for literal: {children}")
         self.children = children
 
     def render(self) -> str:
