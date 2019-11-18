@@ -74,7 +74,7 @@ no function overloads.
 If your IDE supports overloaded functions, just use `boto3` as usual.
 
 ```python
-from boto3.session import Session
+import boto3
 
 # Any service can be used, we use `ec2` as an example.
 # All sub modules are named like `boto3` service names with underscores instead
@@ -103,6 +103,34 @@ describe_volumes_paginator = get_describe_volumes_paginator(ec2_client)
 # ec2_client, ec2_resource, bundle_task_complete_waiter and describe_volumes_paginator
 # now have correct type so IDE automoplete for methods, arguments and return types
 # works as expected
+```
+
+Alterntively, you can just set types manually. The same code with type anntations to get
+correct auto-complete:
+
+```python
+import boto3
+
+# Any service can be used, we use `ec2` as an example.
+# All sub modules are named like `boto3` service names with underscores instead
+# of hyphens, e.g. `mypy_boto3.ec2_instance_connect`
+# For `lambda`, module name is `mypy_boto3.lambda_`
+from mypy_boto3.ec2 import Client, ServiceResource
+from mypy_boto3.ec2.helpers import get_bundle_task_complete_waiter, get_describe_volumes_paginator
+from mypy_boto3.ec2.waiters import BundleTaskCompleteWaiter
+from mypy_boto3.ec2.paginators import DescribeVolumesPaginator
+
+session = boto3.session.Session(region_name="us-west-1")
+
+ec2_client: Client = boto3.client("ec2", region_name="us-west-1")
+
+ec2_client: Client = session.client("ec2")
+
+ec2_resource: ServiceResource = session.resource("ec2")
+
+bundle_task_complete_waiter: BundleTaskCompleteWaiter = ec2_client.get_waiter("bundle_task_complete")
+
+describe_volumes_paginator: DescribeVolumesPaginator = ec2_client.get_paginator("describe_volumes")
 ```
 
 ## How to build
