@@ -13,6 +13,16 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.7"
+      - name: Install builder
+        run: |
+          cd builder
+          python setup.py install
+          cd -
+      - name: Build pacakges
+        run: |
+          pip install -U boto3
+          rm -rf mypy_boto3_output/*
+          scripts/buildall.sh
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
