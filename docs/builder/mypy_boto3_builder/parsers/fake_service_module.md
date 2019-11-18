@@ -9,7 +9,7 @@ Fake parser that produces `structures.ServiceModule` for master module and stubs
 
 ## parse_fake_service_module
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/fake_service_module.py#L18)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/parsers/fake_service_module.py#L17)
 
 ```python
 def parse_fake_service_module(

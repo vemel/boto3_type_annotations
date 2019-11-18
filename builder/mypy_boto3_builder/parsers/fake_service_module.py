@@ -3,7 +3,6 @@ Fake parser that produces `structures.ServiceModule` for master module and stubs
 """
 from typing import Optional
 
-from boto3.exceptions import ResourceNotExistsError
 from boto3.session import Session
 
 from mypy_boto3_builder.structures.client import Client
@@ -34,12 +33,9 @@ def parse_fake_service_module(
 
     boto3_client = get_boto3_client(session, service_name)
     boto3_resource: Optional[ServiceResource] = None
-    try:
-        boto3_resource = get_boto3_resource(session, service_name)
-    except ResourceNotExistsError:
-        pass
+    boto3_resource = get_boto3_resource(session, service_name)
 
-    if boto3_resource:
+    if boto3_resource is not None:
         result.service_resource = ServiceResource()
 
     if boto3_client.waiter_names:

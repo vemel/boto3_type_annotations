@@ -1,3 +1,9 @@
+"""
+Getters for boto3 client and resource from session.
+"""
+from typing import Optional
+
+from boto3.exceptions import ResourceNotExistsError
 from boto3.session import Session
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from botocore.client import BaseClient
@@ -21,7 +27,7 @@ def get_boto3_client(session: Session, service_name: ServiceName) -> BaseClient:
 
 def get_boto3_resource(
     session: Session, service_name: ServiceName
-) -> Boto3ServiceResource:
+) -> Optional[Boto3ServiceResource]:
     """
     Get boto3 resource from `session`.
 
@@ -30,9 +36,9 @@ def get_boto3_resource(
         service_name -- ServiceName instance.
 
     Returns:
-        Boto3 resource.
-
-    Raises:
-        ResourceNotExistsError -- If service does not have ServiceResource.
+        Boto3 resource or None.
     """
-    return session.resource(service_name.boto3_name)  # type: ignore
+    try:
+        return session.resource(service_name.boto3_name)  # type: ignore
+    except ResourceNotExistsError:
+        return None

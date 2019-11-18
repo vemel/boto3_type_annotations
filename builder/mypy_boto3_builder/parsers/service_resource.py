@@ -4,7 +4,6 @@ Parser for Boto3 ServiceResource, produces `structires.ServiceResource`.
 import inspect
 from typing import List, Optional
 
-from boto3.exceptions import ResourceNotExistsError
 from boto3.resources.base import ServiceResource as Boto3ServiceResource
 from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 from boto3.session import Session
@@ -42,9 +41,8 @@ def parse_service_resource(
     Returns:
         ServiceResource structure or None if service does not have a resource.
     """
-    try:
-        service_resource = get_boto3_resource(session, service_name)
-    except ResourceNotExistsError:
+    service_resource = get_boto3_resource(session, service_name)
+    if service_resource is None:
         return None
 
     public_methods = get_public_methods(service_resource)
