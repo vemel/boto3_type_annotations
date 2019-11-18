@@ -5,6 +5,7 @@ import argparse
 from pathlib import Path
 
 from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.version import __version__ as version
 
 
 def get_absolute_path(path: str) -> Path:
@@ -49,9 +50,7 @@ def get_cli_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "-d", "--debug", action="store_true", help="Show debug messages"
     )
-    parser.add_argument(
-        "-v", "--version", action="store_true", help="Show package version"
-    )
+    parser.add_argument("-v", "--version", action="version", version=version)
     parser.add_argument(
         "-f", "--format", action="store_true", help="Format output with black"
     )
