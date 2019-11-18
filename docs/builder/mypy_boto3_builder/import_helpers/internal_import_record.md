@@ -23,11 +23,15 @@ class InternalImportRecord(ImportRecord):
 
 Helper for Python import strings with not set master module name.
 
-Used in TypeDef.
+#### Arguments
+
+- `service_module_name` - Service module name.
+- `name` - Import name.
+- `alias` - Import local name.
 
 ### InternalImportRecord().get_external
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/internal_import_record.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/import_helpers/internal_import_record.py#L26)
 
 ```python
 def get_external(module_name: str) -> ImportRecord:

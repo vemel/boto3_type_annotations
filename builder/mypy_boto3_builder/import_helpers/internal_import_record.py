@@ -10,7 +10,10 @@ class InternalImportRecord(ImportRecord):
     """
     Helper for Python import strings with not set master module name.
 
-    Used in TypeDef.
+    Arguments:
+        service_module_name -- Service module name.
+        name -- Import name.
+        alias -- Import local name.
     """
 
     _is_internal = True
