@@ -44,7 +44,7 @@ class Waiter(ClassRecord):
             docstring=f"Get Waiter `{self.waiter_name}`.",
             decorators=[TypeAnnotation(overload)],
             arguments=[
-                Argument("self"),
+                Argument("self", None),
                 Argument("waiter_name", TypeLiteral(self.waiter_name)),
             ],
             return_type=InternalImport(self.name, module_name=ServiceModuleName.waiter),

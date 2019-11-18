@@ -44,7 +44,7 @@ class Paginator(ClassRecord):
             docstring=f"Get Paginator for `{self.operation_name}` operation.",
             decorators=[TypeAnnotation(overload)],
             arguments=[
-                Argument("self"),
+                Argument("self", None),
                 Argument("operation_name", TypeLiteral(self.operation_name)),
             ],
             return_type=InternalImport(

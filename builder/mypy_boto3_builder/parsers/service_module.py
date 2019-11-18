@@ -105,7 +105,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                 name="get_paginator",
                 docstring=clean_doc(inspect.getdoc(client.boto3_client.get_paginator)),
                 arguments=[
-                    Argument("self"),
+                    Argument("self", None),
                     Argument("operation_name", TypeClass(str)),
                 ],
                 return_type=TypeClass(Boto3Paginator, alias="Boto3Paginator"),
@@ -119,7 +119,10 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             Method(
                 name="get_waiter",
                 docstring=clean_doc(inspect.getdoc(client.boto3_client.get_waiter)),
-                arguments=[Argument("self"), Argument("waiter_name", TypeClass(str)),],
+                arguments=[
+                    Argument("self", None),
+                    Argument("waiter_name", TypeClass(str)),
+                ],
                 return_type=TypeClass(Boto3Waiter, alias="Boto3Waiter"),
             )
         )

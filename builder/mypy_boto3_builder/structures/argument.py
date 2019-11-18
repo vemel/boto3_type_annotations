@@ -5,7 +5,6 @@ from dataclasses import dataclass
 from typing import Set, Optional
 
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
-from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 
 
@@ -22,13 +21,14 @@ class Argument:
     """
 
     name: str
-    type: FakeAnnotation = TypeAnnotation.Any()
+    type: Optional[FakeAnnotation]
     default: Optional[TypeConstant] = None
     prefix: str = ""
 
     def get_types(self) -> Set[FakeAnnotation]:
         types: Set[FakeAnnotation] = set()
-        types.update(self.type.get_types())
+        if self.type is not None:
+            types.update(self.type.get_types())
         if self.default is not None:
             types.update(self.default.get_types())
 

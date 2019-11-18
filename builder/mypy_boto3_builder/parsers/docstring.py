@@ -34,7 +34,7 @@ class DocstringParser:
 
     DEFAULT_METHOD_ARGUMENTS = {
         "create_tags": [
-            Argument("self",),
+            Argument("self", None),
             Argument("Resources", TypeSubscript(List, [TypeAnnotation.Any()]),),
             Argument("Tags", TypeSubscript(List, [TypeDef("EC2Tag")]),),
             Argument("DryRun", TypeClass(bool), TypeConstant(False)),
@@ -92,7 +92,9 @@ class DocstringParser:
                 del arguments[index]
                 break
 
-        arguments.append(Argument(argument_name, default=TypeConstant(None)))
+        arguments.append(
+            Argument(argument_name, TypeAnnotation.Any(), TypeConstant(None))
+        )
         return arguments[-1]
 
     def get_docless_method_arguments(
@@ -110,16 +112,21 @@ class DocstringParser:
         for argument_name in argspec.args:
             if argument_name == "factory_self":
                 argument_name = "self"
-            arguments.append(Argument(argument_name))
+            type_annotation: Optional[TypeAnnotation] = TypeAnnotation.Any()
+            if argument_name in ("self", "cls"):
+                type_annotation = None
+            arguments.append(Argument(argument_name, type_annotation))
         if argspec.defaults:
             for index, default_value in enumerate(argspec.defaults):
                 argument_index = len(arguments) - len(argspec.defaults) + index
                 arguments[argument_index].default = TypeConstant(default_value)
 
         if argspec.varargs:
-            arguments.append(Argument(argspec.varargs, prefix="*"))
+            arguments.append(
+                Argument(argspec.varargs, TypeAnnotation.Any(), prefix="*")
+            )
         for argument_name in argspec.kwonlyargs:
-            arguments.append(Argument(argument_name))
+            arguments.append(Argument(argument_name, TypeAnnotation.Any()))
         if argspec.kwonlydefaults:
             for argument_name, default_value in argspec.kwonlydefaults:
                 for argument in arguments:
@@ -128,7 +135,7 @@ class DocstringParser:
                     argument.default = TypeConstant(default_value)
                     break
         if argspec.varkw:
-            arguments.append(Argument(argspec.varkw, prefix="**"))
+            arguments.append(Argument(argspec.varkw, TypeAnnotation.Any(), prefix="**"))
         return arguments
 
     def get_function_arguments(self, func: FunctionType) -> List[Argument]:
