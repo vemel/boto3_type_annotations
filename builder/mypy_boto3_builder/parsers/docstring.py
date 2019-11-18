@@ -1,9 +1,9 @@
 """
-Boto3 docstring parser for arguemnts and return type annotations.
+Boto3 docstring parser for arguments and return type annotations.
 """
 import re
 import inspect
-from typing import List, Any, Pattern, Optional, Dict, Tuple
+from typing import List, Pattern, Optional, Dict, Tuple
 from types import FunctionType
 
 
@@ -32,13 +32,10 @@ class DocstringParser:
     )
     RE_SYNTAX_TYPE: Pattern[str] = re.compile(r"\- \*\((?P<type>.+)\) \-\-\*")
 
-    NONE_ANNOTATION: FakeAnnotation = TypeConstant(None)
-    ANY_ANNOTATION: FakeAnnotation = TypeAnnotation(Any)
-
     DEFAULT_METHOD_ARGUMENTS = {
         "create_tags": [
             Argument("self",),
-            Argument("Resources", TypeSubscript(List, [TypeAnnotation(Any)]),),
+            Argument("Resources", TypeSubscript(List, [TypeAnnotation.Any()]),),
             Argument("Tags", TypeSubscript(List, [TypeDef("EC2Tag")]),),
             Argument("DryRun", TypeClass(bool), TypeConstant(False)),
         ]
@@ -73,7 +70,7 @@ class DocstringParser:
         syntax_return_type = self.parse_any_syntax(
             name="Response", lines=type_syntax, prefix=prefix
         )
-        if syntax_return_type != self.ANY_ANNOTATION:
+        if syntax_return_type is not TypeAnnotation.Any():
             return_type = syntax_return_type
         return return_type
 
@@ -120,9 +117,7 @@ class DocstringParser:
                 arguments[argument_index].default = TypeConstant(default_value)
 
         if argspec.varargs:
-            arguments.append(
-                Argument(argspec.varargs, prefix="*", type=TypeAnnotation(Any))
-            )
+            arguments.append(Argument(argspec.varargs, prefix="*"))
         for argument_name in argspec.kwonlyargs:
             arguments.append(Argument(argument_name))
         if argspec.kwonlydefaults:
@@ -130,12 +125,10 @@ class DocstringParser:
                 for argument in arguments:
                     if argument.name != argument_name:
                         continue
-                    argument.default = TypeAnnotation(default_value)
+                    argument.default = TypeConstant(default_value)
                     break
         if argspec.varkw:
-            arguments.append(
-                Argument(argspec.varkw, prefix="**", type=TypeAnnotation(Any))
-            )
+            arguments.append(Argument(argspec.varkw, prefix="**"))
         return arguments
 
     def get_function_arguments(self, func: FunctionType) -> List[Argument]:
@@ -230,7 +223,7 @@ class DocstringParser:
                     )
                 return type_annotation
 
-        return self.ANY_ANNOTATION
+        return TypeAnnotation.Any()
 
     def parse_syntax(
         self, name: str, parent_type: FakeAnnotation, lines: List[str], prefix: str
@@ -240,7 +233,7 @@ class DocstringParser:
             return self.parse_dict_syntax(name, parent_type, lines, prefix)
 
         child = self.parse_any_syntax(name, lines, prefix)
-        if child is not self.ANY_ANNOTATION:
+        if child is not TypeAnnotation.Any():
             if parent_type.is_list():
                 parent_type.remove_children()
             parent_type.add_child(child)

@@ -10,7 +10,7 @@ Method or function argument.
 
 ## Argument
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/argument.py#L10)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/argument.py#L12)
 
 ```python
 dataclass
@@ -28,7 +28,7 @@ Method or function argument.
 
 ### Argument().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/argument.py#L27)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/argument.py#L29)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:

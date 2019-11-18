@@ -1,5 +1,5 @@
 """
-String to type annotation map that find type annotation by arguemnt name and type.
+String to type annotation map that find type annotation by argument name and type.
 """
 from typing import List, Union, Dict
 

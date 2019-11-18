@@ -9,7 +9,6 @@ Builder for `mypy_boto3`.
         - [Module](module.md#module)
         - [Cli Parser](cli_parser.md#cli-parser)
         - [Constants](constants.md#constants)
-        - [DocstringParser](docstring_parser.md#docstringparser)
         - [Enums](enums/index.md#enums)
         - [Import Helpers](import_helpers/index.md#import-helpers)
         - [Logger](logger.md#logger)

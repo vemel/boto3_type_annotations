@@ -9,8 +9,10 @@ from boto3.resources.base import ServiceResource as Boto3ServiceResource
 
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.attribute import Attribute
-from mypy_boto3_builder.docstring_parser import DocstringParser
+from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
+from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.utils.strings import clean_doc, get_class_prefix
+from mypy_boto3_builder.parsers.docstring import DocstringParser
 
 
 def get_public_methods(inspect_class: Any) -> Dict[str, FunctionType]:
@@ -75,7 +77,7 @@ def parse_method(parent_name: str, name: str, method: FunctionType) -> Method:
     docstring_parser = DocstringParser()
     doc = inspect.getdoc(method) or ""
     arguments = docstring_parser.get_function_arguments(method)
-    return_type = docstring_parser.NONE_ANNOTATION
+    return_type: FakeAnnotation = TypeConstant(None)
     if doc:
         doc = clean_doc(doc)
         docstring_parser.enrich_arguments(doc, arguments, prefix)

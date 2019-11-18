@@ -2,7 +2,7 @@
 Class or module attribute.
 """
 from dataclasses import dataclass
-from typing import Set
+from typing import Set, Optional
 
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
@@ -21,7 +21,7 @@ class Attribute:
 
     name: str
     type: FakeAnnotation
-    value: FakeAnnotation = TypeConstant(None)
+    value: Optional[TypeConstant] = None
 
     def get_types(self) -> Set[FakeAnnotation]:
         """

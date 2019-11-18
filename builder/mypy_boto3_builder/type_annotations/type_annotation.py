@@ -28,6 +28,7 @@ class TypeAnnotation(FakeAnnotation):
         IO,
         overload,
     ]
+    _Any: Optional[TypeAnnotation] = None
 
     def __init__(self, wrapped_type: Any) -> None:
         if isinstance(wrapped_type, FakeAnnotation):
@@ -36,6 +37,12 @@ class TypeAnnotation(FakeAnnotation):
             raise ValueError(f"Cannot wrap {wrapped_type}")
 
         self.wrapped_type = wrapped_type
+
+    @classmethod
+    def Any(cls) -> TypeAnnotation:
+        if not cls._Any:
+            cls._Any = cls(Any)
+        return cls._Any
 
     def render(self) -> str:
         """

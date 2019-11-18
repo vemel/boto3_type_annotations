@@ -33,7 +33,7 @@ class TypedDictAttribute:
         Render attribute to use in class-based TypedDict definition.
 
         Returns:
-            A string with arguemnt definition.
+            A string with argument definition.
         """
         return f"{self.name}: {self.type_annotation.render()}"
 

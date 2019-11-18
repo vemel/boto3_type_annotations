@@ -10,6 +10,7 @@ Parsers for boto3 clients and resources.
         - [Boto3 Utils](boto3_utils.md#boto3-utils)
         - [Client](client.md#client)
         - [Collections](collections.md#collections)
+        - [Docstring](docstring.md#docstring)
         - [Fake Service Module](fake_service_module.md#fake-service-module)
         - [Helpers](helpers.md#helpers)
         - [Identifiers](identifiers.md#identifiers)
