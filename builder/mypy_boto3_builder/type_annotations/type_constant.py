@@ -27,6 +27,9 @@ class TypeConstant(FakeAnnotation):
         Returns:
             A string with a valid type annotation.
         """
+        if self.value is Ellipsis:
+            return "..."
+
         return repr(self.value)
 
     def get_import_record(self) -> ImportRecord:
