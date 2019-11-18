@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from mypy_boto3.type_defs import EC2Tag
+
+# pylint: disable=import-self
+import mypy_boto3_mediaconnect.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_mediaconnect.paginator as paginator_scope
@@ -38,6 +42,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_flow_outputs(
         self, FlowArn: str, Outputs: List[ClientAddFlowOutputsOutputsTypeDef]
@@ -2770,3 +2776,16 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AddFlowOutputs420Exception: Boto3ClientError
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    CreateFlow420Exception: Boto3ClientError
+    ForbiddenException: Boto3ClientError
+    GrantFlowEntitlements420Exception: Boto3ClientError
+    InternalServerErrorException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError

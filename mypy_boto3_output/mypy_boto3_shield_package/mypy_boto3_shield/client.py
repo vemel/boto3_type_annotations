@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_shield.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_shield.paginator as paginator_scope
@@ -28,6 +32,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_drt_log_bucket(self, LogBucket: str) -> Dict[str, Any]:
         """
@@ -1440,3 +1446,20 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    AccessDeniedForDependencyException: Boto3ClientError
+    ClientError: Boto3ClientError
+    InternalErrorException: Boto3ClientError
+    InvalidOperationException: Boto3ClientError
+    InvalidPaginationTokenException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidResourceException: Boto3ClientError
+    LimitsExceededException: Boto3ClientError
+    LockedSubscriptionException: Boto3ClientError
+    NoAssociatedRoleException: Boto3ClientError
+    OptimisticLockException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

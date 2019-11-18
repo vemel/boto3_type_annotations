@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_lakeformation.client as client_scope
 from mypy_boto3_lakeformation.type_defs import (
     ClientBatchGrantPermissionsEntriesTypeDef,
     ClientBatchGrantPermissionsResponseTypeDef,
@@ -28,6 +32,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_grant_permissions(
         self,
@@ -2288,3 +2294,13 @@ class Client(BaseClient):
 
           - *(dict) --*
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    EntityNotFoundException: Boto3ClientError
+    InternalServiceException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    OperationTimeoutException: Boto3ClientError

@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_autoscaling.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_autoscaling.paginator as paginator_scope
@@ -56,6 +60,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def attach_instances(
         self, AutoScalingGroupName: str, InstanceIds: List[str] = None
@@ -6753,3 +6759,14 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AlreadyExistsFault: Boto3ClientError
+    ClientError: Boto3ClientError
+    InvalidNextToken: Boto3ClientError
+    LimitExceededFault: Boto3ClientError
+    ResourceContentionFault: Boto3ClientError
+    ResourceInUseFault: Boto3ClientError
+    ScalingActivityInProgressFault: Boto3ClientError
+    ServiceLinkedRoleFailure: Boto3ClientError

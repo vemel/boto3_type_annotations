@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_dms.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_dms.paginator as paginator_scope
@@ -92,6 +96,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceArn: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
@@ -12024,3 +12030,27 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccessDeniedFault: Boto3ClientError
+    ClientError: Boto3ClientError
+    InsufficientResourceCapacityFault: Boto3ClientError
+    InvalidCertificateFault: Boto3ClientError
+    InvalidResourceStateFault: Boto3ClientError
+    InvalidSubnet: Boto3ClientError
+    KMSAccessDeniedFault: Boto3ClientError
+    KMSDisabledFault: Boto3ClientError
+    KMSInvalidStateFault: Boto3ClientError
+    KMSKeyNotAccessibleFault: Boto3ClientError
+    KMSNotFoundFault: Boto3ClientError
+    KMSThrottlingFault: Boto3ClientError
+    ReplicationSubnetGroupDoesNotCoverEnoughAZs: Boto3ClientError
+    ResourceAlreadyExistsFault: Boto3ClientError
+    ResourceNotFoundFault: Boto3ClientError
+    ResourceQuotaExceededFault: Boto3ClientError
+    SNSInvalidTopicFault: Boto3ClientError
+    SNSNoAuthorizationFault: Boto3ClientError
+    StorageQuotaExceededFault: Boto3ClientError
+    SubnetAlreadyInUse: Boto3ClientError
+    UpgradeDependencyFailureFault: Boto3ClientError

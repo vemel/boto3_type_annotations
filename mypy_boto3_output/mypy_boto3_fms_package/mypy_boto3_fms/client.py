@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_fms.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_fms.paginator as paginator_scope
@@ -25,6 +29,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_admin_account(self, AdminAccount: str) -> None:
         """
@@ -1550,3 +1556,13 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalErrorException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    InvalidOperationException: Boto3ClientError
+    InvalidTypeException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

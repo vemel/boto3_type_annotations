@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_qldb_session.client as client_scope
 from mypy_boto3_qldb_session.type_defs import (
     ClientSendCommandCommitTransactionTypeDef,
     ClientSendCommandExecuteStatementTypeDef,
@@ -16,6 +20,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -346,3 +352,12 @@ class Client(BaseClient):
                   The token of the next page.
 
         """
+
+
+class Exceptions:
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    InvalidSessionException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    OccConflictException: Boto3ClientError
+    RateExceededException: Boto3ClientError

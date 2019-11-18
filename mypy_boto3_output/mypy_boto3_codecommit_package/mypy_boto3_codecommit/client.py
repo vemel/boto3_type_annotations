@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_codecommit.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_codecommit.paginator as paginator_scope
@@ -77,6 +81,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_describe_merge_conflicts(
         self,
@@ -7861,3 +7867,157 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ActorDoesNotExistException: Boto3ClientError
+    AuthorDoesNotExistException: Boto3ClientError
+    BeforeCommitIdAndAfterCommitIdAreSameException: Boto3ClientError
+    BlobIdDoesNotExistException: Boto3ClientError
+    BlobIdRequiredException: Boto3ClientError
+    BranchDoesNotExistException: Boto3ClientError
+    BranchNameExistsException: Boto3ClientError
+    BranchNameIsTagNameException: Boto3ClientError
+    BranchNameRequiredException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClientRequestTokenRequiredException: Boto3ClientError
+    CommentContentRequiredException: Boto3ClientError
+    CommentContentSizeLimitExceededException: Boto3ClientError
+    CommentDeletedException: Boto3ClientError
+    CommentDoesNotExistException: Boto3ClientError
+    CommentIdRequiredException: Boto3ClientError
+    CommentNotCreatedByCallerException: Boto3ClientError
+    CommitDoesNotExistException: Boto3ClientError
+    CommitIdDoesNotExistException: Boto3ClientError
+    CommitIdRequiredException: Boto3ClientError
+    CommitIdsLimitExceededException: Boto3ClientError
+    CommitIdsListRequiredException: Boto3ClientError
+    CommitMessageLengthExceededException: Boto3ClientError
+    CommitRequiredException: Boto3ClientError
+    ConcurrentReferenceUpdateException: Boto3ClientError
+    DefaultBranchCannotBeDeletedException: Boto3ClientError
+    DirectoryNameConflictsWithFileNameException: Boto3ClientError
+    EncryptionIntegrityChecksFailedException: Boto3ClientError
+    EncryptionKeyAccessDeniedException: Boto3ClientError
+    EncryptionKeyDisabledException: Boto3ClientError
+    EncryptionKeyNotFoundException: Boto3ClientError
+    EncryptionKeyUnavailableException: Boto3ClientError
+    FileContentAndSourceFileSpecifiedException: Boto3ClientError
+    FileContentRequiredException: Boto3ClientError
+    FileContentSizeLimitExceededException: Boto3ClientError
+    FileDoesNotExistException: Boto3ClientError
+    FileEntryRequiredException: Boto3ClientError
+    FileModeRequiredException: Boto3ClientError
+    FileNameConflictsWithDirectoryNameException: Boto3ClientError
+    FilePathConflictsWithSubmodulePathException: Boto3ClientError
+    FileTooLargeException: Boto3ClientError
+    FolderContentSizeLimitExceededException: Boto3ClientError
+    FolderDoesNotExistException: Boto3ClientError
+    IdempotencyParameterMismatchException: Boto3ClientError
+    InvalidActorArnException: Boto3ClientError
+    InvalidAuthorArnException: Boto3ClientError
+    InvalidBlobIdException: Boto3ClientError
+    InvalidBranchNameException: Boto3ClientError
+    InvalidClientRequestTokenException: Boto3ClientError
+    InvalidCommentIdException: Boto3ClientError
+    InvalidCommitException: Boto3ClientError
+    InvalidCommitIdException: Boto3ClientError
+    InvalidConflictDetailLevelException: Boto3ClientError
+    InvalidConflictResolutionException: Boto3ClientError
+    InvalidConflictResolutionStrategyException: Boto3ClientError
+    InvalidContinuationTokenException: Boto3ClientError
+    InvalidDeletionParameterException: Boto3ClientError
+    InvalidDescriptionException: Boto3ClientError
+    InvalidDestinationCommitSpecifierException: Boto3ClientError
+    InvalidEmailException: Boto3ClientError
+    InvalidFileLocationException: Boto3ClientError
+    InvalidFileModeException: Boto3ClientError
+    InvalidFilePositionException: Boto3ClientError
+    InvalidMaxConflictFilesException: Boto3ClientError
+    InvalidMaxMergeHunksException: Boto3ClientError
+    InvalidMaxResultsException: Boto3ClientError
+    InvalidMergeOptionException: Boto3ClientError
+    InvalidOrderException: Boto3ClientError
+    InvalidParentCommitIdException: Boto3ClientError
+    InvalidPathException: Boto3ClientError
+    InvalidPullRequestEventTypeException: Boto3ClientError
+    InvalidPullRequestIdException: Boto3ClientError
+    InvalidPullRequestStatusException: Boto3ClientError
+    InvalidPullRequestStatusUpdateException: Boto3ClientError
+    InvalidReferenceNameException: Boto3ClientError
+    InvalidRelativeFileVersionEnumException: Boto3ClientError
+    InvalidReplacementContentException: Boto3ClientError
+    InvalidReplacementTypeException: Boto3ClientError
+    InvalidRepositoryDescriptionException: Boto3ClientError
+    InvalidRepositoryNameException: Boto3ClientError
+    InvalidRepositoryTriggerBranchNameException: Boto3ClientError
+    InvalidRepositoryTriggerCustomDataException: Boto3ClientError
+    InvalidRepositoryTriggerDestinationArnException: Boto3ClientError
+    InvalidRepositoryTriggerEventsException: Boto3ClientError
+    InvalidRepositoryTriggerNameException: Boto3ClientError
+    InvalidRepositoryTriggerRegionException: Boto3ClientError
+    InvalidResourceArnException: Boto3ClientError
+    InvalidSortByException: Boto3ClientError
+    InvalidSourceCommitSpecifierException: Boto3ClientError
+    InvalidSystemTagUsageException: Boto3ClientError
+    InvalidTagKeysListException: Boto3ClientError
+    InvalidTagsMapException: Boto3ClientError
+    InvalidTargetBranchException: Boto3ClientError
+    InvalidTargetException: Boto3ClientError
+    InvalidTargetsException: Boto3ClientError
+    InvalidTitleException: Boto3ClientError
+    ManualMergeRequiredException: Boto3ClientError
+    MaximumBranchesExceededException: Boto3ClientError
+    MaximumConflictResolutionEntriesExceededException: Boto3ClientError
+    MaximumFileContentToLoadExceededException: Boto3ClientError
+    MaximumFileEntriesExceededException: Boto3ClientError
+    MaximumItemsToCompareExceededException: Boto3ClientError
+    MaximumOpenPullRequestsExceededException: Boto3ClientError
+    MaximumRepositoryNamesExceededException: Boto3ClientError
+    MaximumRepositoryTriggersExceededException: Boto3ClientError
+    MergeOptionRequiredException: Boto3ClientError
+    MultipleConflictResolutionEntriesException: Boto3ClientError
+    MultipleRepositoriesInPullRequestException: Boto3ClientError
+    NameLengthExceededException: Boto3ClientError
+    NoChangeException: Boto3ClientError
+    ParentCommitDoesNotExistException: Boto3ClientError
+    ParentCommitIdOutdatedException: Boto3ClientError
+    ParentCommitIdRequiredException: Boto3ClientError
+    PathDoesNotExistException: Boto3ClientError
+    PathRequiredException: Boto3ClientError
+    PullRequestAlreadyClosedException: Boto3ClientError
+    PullRequestDoesNotExistException: Boto3ClientError
+    PullRequestIdRequiredException: Boto3ClientError
+    PullRequestStatusRequiredException: Boto3ClientError
+    PutFileEntryConflictException: Boto3ClientError
+    ReferenceDoesNotExistException: Boto3ClientError
+    ReferenceNameRequiredException: Boto3ClientError
+    ReferenceTypeNotSupportedException: Boto3ClientError
+    ReplacementContentRequiredException: Boto3ClientError
+    ReplacementTypeRequiredException: Boto3ClientError
+    RepositoryDoesNotExistException: Boto3ClientError
+    RepositoryLimitExceededException: Boto3ClientError
+    RepositoryNameExistsException: Boto3ClientError
+    RepositoryNameRequiredException: Boto3ClientError
+    RepositoryNamesRequiredException: Boto3ClientError
+    RepositoryNotAssociatedWithPullRequestException: Boto3ClientError
+    RepositoryTriggerBranchNameListRequiredException: Boto3ClientError
+    RepositoryTriggerDestinationArnRequiredException: Boto3ClientError
+    RepositoryTriggerEventsListRequiredException: Boto3ClientError
+    RepositoryTriggerNameRequiredException: Boto3ClientError
+    RepositoryTriggersListRequiredException: Boto3ClientError
+    ResourceArnRequiredException: Boto3ClientError
+    RestrictedSourceFileException: Boto3ClientError
+    SameFileContentException: Boto3ClientError
+    SamePathRequestException: Boto3ClientError
+    SourceAndDestinationAreSameException: Boto3ClientError
+    SourceFileOrContentRequiredException: Boto3ClientError
+    TagKeysListRequiredException: Boto3ClientError
+    TagPolicyException: Boto3ClientError
+    TagsMapRequiredException: Boto3ClientError
+    TargetRequiredException: Boto3ClientError
+    TargetsRequiredException: Boto3ClientError
+    TipOfSourceReferenceIsDifferentException: Boto3ClientError
+    TipsDivergenceExceededException: Boto3ClientError
+    TitleRequiredException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError

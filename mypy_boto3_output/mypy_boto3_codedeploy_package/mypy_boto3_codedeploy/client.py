@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_codedeploy.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_codedeploy.paginator as paginator_scope
@@ -91,6 +95,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_on_premises_instances(
         self,
@@ -10186,3 +10192,119 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AlarmsLimitExceededException: Boto3ClientError
+    ApplicationAlreadyExistsException: Boto3ClientError
+    ApplicationDoesNotExistException: Boto3ClientError
+    ApplicationLimitExceededException: Boto3ClientError
+    ApplicationNameRequiredException: Boto3ClientError
+    ArnNotSupportedException: Boto3ClientError
+    BatchLimitExceededException: Boto3ClientError
+    BucketNameFilterRequiredException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DeploymentAlreadyCompletedException: Boto3ClientError
+    DeploymentAlreadyStartedException: Boto3ClientError
+    DeploymentConfigAlreadyExistsException: Boto3ClientError
+    DeploymentConfigDoesNotExistException: Boto3ClientError
+    DeploymentConfigInUseException: Boto3ClientError
+    DeploymentConfigLimitExceededException: Boto3ClientError
+    DeploymentConfigNameRequiredException: Boto3ClientError
+    DeploymentDoesNotExistException: Boto3ClientError
+    DeploymentGroupAlreadyExistsException: Boto3ClientError
+    DeploymentGroupDoesNotExistException: Boto3ClientError
+    DeploymentGroupLimitExceededException: Boto3ClientError
+    DeploymentGroupNameRequiredException: Boto3ClientError
+    DeploymentIdRequiredException: Boto3ClientError
+    DeploymentIsNotInReadyStateException: Boto3ClientError
+    DeploymentLimitExceededException: Boto3ClientError
+    DeploymentNotStartedException: Boto3ClientError
+    DeploymentTargetDoesNotExistException: Boto3ClientError
+    DeploymentTargetIdRequiredException: Boto3ClientError
+    DeploymentTargetListSizeExceededException: Boto3ClientError
+    DescriptionTooLongException: Boto3ClientError
+    ECSServiceMappingLimitExceededException: Boto3ClientError
+    GitHubAccountTokenDoesNotExistException: Boto3ClientError
+    GitHubAccountTokenNameRequiredException: Boto3ClientError
+    IamArnRequiredException: Boto3ClientError
+    IamSessionArnAlreadyRegisteredException: Boto3ClientError
+    IamUserArnAlreadyRegisteredException: Boto3ClientError
+    IamUserArnRequiredException: Boto3ClientError
+    InstanceDoesNotExistException: Boto3ClientError
+    InstanceIdRequiredException: Boto3ClientError
+    InstanceLimitExceededException: Boto3ClientError
+    InstanceNameAlreadyRegisteredException: Boto3ClientError
+    InstanceNameRequiredException: Boto3ClientError
+    InstanceNotRegisteredException: Boto3ClientError
+    InvalidAlarmConfigException: Boto3ClientError
+    InvalidApplicationNameException: Boto3ClientError
+    InvalidArnException: Boto3ClientError
+    InvalidAutoRollbackConfigException: Boto3ClientError
+    InvalidAutoScalingGroupException: Boto3ClientError
+    InvalidBlueGreenDeploymentConfigurationException: Boto3ClientError
+    InvalidBucketNameFilterException: Boto3ClientError
+    InvalidComputePlatformException: Boto3ClientError
+    InvalidDeployedStateFilterException: Boto3ClientError
+    InvalidDeploymentConfigIdException: Boto3ClientError
+    InvalidDeploymentConfigNameException: Boto3ClientError
+    InvalidDeploymentGroupNameException: Boto3ClientError
+    InvalidDeploymentIdException: Boto3ClientError
+    InvalidDeploymentInstanceTypeException: Boto3ClientError
+    InvalidDeploymentStatusException: Boto3ClientError
+    InvalidDeploymentStyleException: Boto3ClientError
+    InvalidDeploymentTargetIdException: Boto3ClientError
+    InvalidDeploymentWaitTypeException: Boto3ClientError
+    InvalidEC2TagCombinationException: Boto3ClientError
+    InvalidEC2TagException: Boto3ClientError
+    InvalidECSServiceException: Boto3ClientError
+    InvalidFileExistsBehaviorException: Boto3ClientError
+    InvalidGitHubAccountTokenException: Boto3ClientError
+    InvalidGitHubAccountTokenNameException: Boto3ClientError
+    InvalidIamSessionArnException: Boto3ClientError
+    InvalidIamUserArnException: Boto3ClientError
+    InvalidIgnoreApplicationStopFailuresValueException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    InvalidInstanceIdException: Boto3ClientError
+    InvalidInstanceNameException: Boto3ClientError
+    InvalidInstanceStatusException: Boto3ClientError
+    InvalidInstanceTypeException: Boto3ClientError
+    InvalidKeyPrefixFilterException: Boto3ClientError
+    InvalidLifecycleEventHookExecutionIdException: Boto3ClientError
+    InvalidLifecycleEventHookExecutionStatusException: Boto3ClientError
+    InvalidLoadBalancerInfoException: Boto3ClientError
+    InvalidMinimumHealthyHostValueException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidOnPremisesTagCombinationException: Boto3ClientError
+    InvalidOperationException: Boto3ClientError
+    InvalidRegistrationStatusException: Boto3ClientError
+    InvalidRevisionException: Boto3ClientError
+    InvalidRoleException: Boto3ClientError
+    InvalidSortByException: Boto3ClientError
+    InvalidSortOrderException: Boto3ClientError
+    InvalidTagException: Boto3ClientError
+    InvalidTagFilterException: Boto3ClientError
+    InvalidTagsToAddException: Boto3ClientError
+    InvalidTargetException: Boto3ClientError
+    InvalidTargetFilterNameException: Boto3ClientError
+    InvalidTargetGroupPairException: Boto3ClientError
+    InvalidTargetInstancesException: Boto3ClientError
+    InvalidTimeRangeException: Boto3ClientError
+    InvalidTrafficRoutingConfigurationException: Boto3ClientError
+    InvalidTriggerConfigException: Boto3ClientError
+    InvalidUpdateOutdatedInstancesOnlyValueException: Boto3ClientError
+    LifecycleEventAlreadyCompletedException: Boto3ClientError
+    LifecycleHookLimitExceededException: Boto3ClientError
+    MultipleIamArnsProvidedException: Boto3ClientError
+    OperationNotSupportedException: Boto3ClientError
+    ResourceArnRequiredException: Boto3ClientError
+    ResourceValidationException: Boto3ClientError
+    RevisionDoesNotExistException: Boto3ClientError
+    RevisionRequiredException: Boto3ClientError
+    RoleRequiredException: Boto3ClientError
+    TagLimitExceededException: Boto3ClientError
+    TagRequiredException: Boto3ClientError
+    TagSetListLimitExceededException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    TriggerTargetsLimitExceededException: Boto3ClientError
+    UnsupportedActionForDeploymentTypeException: Boto3ClientError

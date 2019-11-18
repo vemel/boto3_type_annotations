@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_organizations.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_organizations.paginator as paginator_scope
@@ -54,6 +58,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_handshake(
         self, HandshakeId: str
@@ -6031,3 +6037,47 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AWSOrganizationsNotInUseException: Boto3ClientError
+    AccessDeniedException: Boto3ClientError
+    AccessDeniedForDependencyException: Boto3ClientError
+    AccountNotFoundException: Boto3ClientError
+    AccountOwnerNotVerifiedException: Boto3ClientError
+    AlreadyInOrganizationException: Boto3ClientError
+    ChildNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    ConstraintViolationException: Boto3ClientError
+    CreateAccountStatusNotFoundException: Boto3ClientError
+    DestinationParentNotFoundException: Boto3ClientError
+    DuplicateAccountException: Boto3ClientError
+    DuplicateHandshakeException: Boto3ClientError
+    DuplicateOrganizationalUnitException: Boto3ClientError
+    DuplicatePolicyAttachmentException: Boto3ClientError
+    DuplicatePolicyException: Boto3ClientError
+    FinalizingOrganizationException: Boto3ClientError
+    HandshakeAlreadyInStateException: Boto3ClientError
+    HandshakeConstraintViolationException: Boto3ClientError
+    HandshakeNotFoundException: Boto3ClientError
+    InvalidHandshakeTransitionException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    MalformedPolicyDocumentException: Boto3ClientError
+    MasterCannotLeaveOrganizationException: Boto3ClientError
+    OrganizationNotEmptyException: Boto3ClientError
+    OrganizationalUnitNotEmptyException: Boto3ClientError
+    OrganizationalUnitNotFoundException: Boto3ClientError
+    ParentNotFoundException: Boto3ClientError
+    PolicyInUseException: Boto3ClientError
+    PolicyNotAttachedException: Boto3ClientError
+    PolicyNotFoundException: Boto3ClientError
+    PolicyTypeAlreadyEnabledException: Boto3ClientError
+    PolicyTypeNotAvailableForOrganizationException: Boto3ClientError
+    PolicyTypeNotEnabledException: Boto3ClientError
+    RootNotFoundException: Boto3ClientError
+    ServiceException: Boto3ClientError
+    SourceParentNotFoundException: Boto3ClientError
+    TargetNotFoundException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError
+    UnsupportedAPIEndpointException: Boto3ClientError

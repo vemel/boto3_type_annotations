@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_elbv2.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_elbv2.paginator as paginator_scope
@@ -67,6 +71,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_listener_certificates(
         self,
@@ -8551,3 +8557,42 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AllocationIdNotFoundException: Boto3ClientError
+    AvailabilityZoneNotSupportedException: Boto3ClientError
+    CertificateNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DuplicateListenerException: Boto3ClientError
+    DuplicateLoadBalancerNameException: Boto3ClientError
+    DuplicateTagKeysException: Boto3ClientError
+    DuplicateTargetGroupNameException: Boto3ClientError
+    HealthUnavailableException: Boto3ClientError
+    IncompatibleProtocolsException: Boto3ClientError
+    InvalidConfigurationRequestException: Boto3ClientError
+    InvalidLoadBalancerActionException: Boto3ClientError
+    InvalidSchemeException: Boto3ClientError
+    InvalidSecurityGroupException: Boto3ClientError
+    InvalidSubnetException: Boto3ClientError
+    InvalidTargetException: Boto3ClientError
+    ListenerNotFoundException: Boto3ClientError
+    LoadBalancerNotFoundException: Boto3ClientError
+    OperationNotPermittedException: Boto3ClientError
+    PriorityInUseException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    RuleNotFoundException: Boto3ClientError
+    SSLPolicyNotFoundException: Boto3ClientError
+    SubnetNotFoundException: Boto3ClientError
+    TargetGroupAssociationLimitException: Boto3ClientError
+    TargetGroupNotFoundException: Boto3ClientError
+    TooManyActionsException: Boto3ClientError
+    TooManyCertificatesException: Boto3ClientError
+    TooManyListenersException: Boto3ClientError
+    TooManyLoadBalancersException: Boto3ClientError
+    TooManyRegistrationsForTargetIdException: Boto3ClientError
+    TooManyRulesException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    TooManyTargetGroupsException: Boto3ClientError
+    TooManyTargetsException: Boto3ClientError
+    UnsupportedProtocolException: Boto3ClientError

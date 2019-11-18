@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_savingsplans.client as client_scope
 from mypy_boto3_savingsplans.type_defs import (
     ClientCreateSavingsPlanResponseTypeDef,
     ClientDescribeSavingsPlanRatesResponseTypeDef,
@@ -21,6 +25,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1200,3 +1206,11 @@ class Client(BaseClient):
 
           - *(dict) --*
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalServerException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServiceQuotaExceededException: Boto3ClientError
+    ValidationException: Boto3ClientError

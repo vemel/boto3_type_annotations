@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_iot.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_iot.paginator as paginator_scope
@@ -189,6 +193,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_certificate_transfer(
         self, certificateId: str, setAsActive: bool = None
@@ -19476,3 +19482,36 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    CertificateConflictException: Boto3ClientError
+    CertificateStateException: Boto3ClientError
+    CertificateValidationException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConflictingResourceUpdateException: Boto3ClientError
+    DeleteConflictException: Boto3ClientError
+    IndexNotReadyException: Boto3ClientError
+    InternalException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    InvalidAggregationException: Boto3ClientError
+    InvalidQueryException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    InvalidResponseException: Boto3ClientError
+    InvalidStateTransitionException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MalformedPolicyException: Boto3ClientError
+    NotConfiguredException: Boto3ClientError
+    RegistrationCodeValidationException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceRegistrationFailureException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    SqlParseException: Boto3ClientError
+    TaskAlreadyExistsException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    TransferAlreadyCompletedException: Boto3ClientError
+    TransferConflictException: Boto3ClientError
+    UnauthorizedException: Boto3ClientError
+    VersionConflictException: Boto3ClientError
+    VersionsLimitExceededException: Boto3ClientError

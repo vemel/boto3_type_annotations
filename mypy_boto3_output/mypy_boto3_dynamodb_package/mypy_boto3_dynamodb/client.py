@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_dynamodb.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_dynamodb.paginator as paginator_scope
@@ -104,6 +108,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_item(
         self,
@@ -23033,3 +23039,32 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    BackupInUseException: Boto3ClientError
+    BackupNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConditionalCheckFailedException: Boto3ClientError
+    ContinuousBackupsUnavailableException: Boto3ClientError
+    GlobalTableAlreadyExistsException: Boto3ClientError
+    GlobalTableNotFoundException: Boto3ClientError
+    IdempotentParameterMismatchException: Boto3ClientError
+    IndexNotFoundException: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    InvalidRestoreTimeException: Boto3ClientError
+    ItemCollectionSizeLimitExceededException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    PointInTimeRecoveryUnavailableException: Boto3ClientError
+    ProvisionedThroughputExceededException: Boto3ClientError
+    ReplicaAlreadyExistsException: Boto3ClientError
+    ReplicaNotFoundException: Boto3ClientError
+    RequestLimitExceeded: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    TableAlreadyExistsException: Boto3ClientError
+    TableInUseException: Boto3ClientError
+    TableNotFoundException: Boto3ClientError
+    TransactionCanceledException: Boto3ClientError
+    TransactionConflictException: Boto3ClientError
+    TransactionInProgressException: Boto3ClientError

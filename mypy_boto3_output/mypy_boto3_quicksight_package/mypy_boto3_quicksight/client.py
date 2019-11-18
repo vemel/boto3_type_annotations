@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_quicksight.client as client_scope
 from mypy_boto3_quicksight.type_defs import (
     ClientCreateGroupMembershipResponseTypeDef,
     ClientCreateGroupResponseTypeDef,
@@ -27,6 +31,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1788,3 +1794,22 @@ class Client(BaseClient):
               The http status of the request.
 
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DomainNotWhitelistedException: Boto3ClientError
+    IdentityTypeNotSupportedException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    PreconditionNotMetException: Boto3ClientError
+    QuickSightUserNotFoundException: Boto3ClientError
+    ResourceExistsException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceUnavailableException: Boto3ClientError
+    SessionLifetimeInMinutesInvalidException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    UnsupportedUserEditionException: Boto3ClientError

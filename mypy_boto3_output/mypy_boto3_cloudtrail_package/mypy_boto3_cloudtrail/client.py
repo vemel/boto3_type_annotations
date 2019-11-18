@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_cloudtrail.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_cloudtrail.paginator as paginator_scope
@@ -33,6 +37,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, ResourceId: str, TagsList: List[ClientAddTagsTagsListTypeDef] = None
@@ -2473,3 +2479,46 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    CloudTrailARNInvalidException: Boto3ClientError
+    CloudTrailAccessNotEnabledException: Boto3ClientError
+    CloudWatchLogsDeliveryUnavailableException: Boto3ClientError
+    InsufficientDependencyServiceAccessPermissionException: Boto3ClientError
+    InsufficientEncryptionPolicyException: Boto3ClientError
+    InsufficientS3BucketPolicyException: Boto3ClientError
+    InsufficientSnsTopicPolicyException: Boto3ClientError
+    InvalidCloudWatchLogsLogGroupArnException: Boto3ClientError
+    InvalidCloudWatchLogsRoleArnException: Boto3ClientError
+    InvalidEventSelectorsException: Boto3ClientError
+    InvalidHomeRegionException: Boto3ClientError
+    InvalidKmsKeyIdException: Boto3ClientError
+    InvalidLookupAttributesException: Boto3ClientError
+    InvalidMaxResultsException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidParameterCombinationException: Boto3ClientError
+    InvalidS3BucketNameException: Boto3ClientError
+    InvalidS3PrefixException: Boto3ClientError
+    InvalidSnsTopicNameException: Boto3ClientError
+    InvalidTagParameterException: Boto3ClientError
+    InvalidTimeRangeException: Boto3ClientError
+    InvalidTokenException: Boto3ClientError
+    InvalidTrailNameException: Boto3ClientError
+    KmsException: Boto3ClientError
+    KmsKeyDisabledException: Boto3ClientError
+    KmsKeyNotFoundException: Boto3ClientError
+    MaximumNumberOfTrailsExceededException: Boto3ClientError
+    NotOrganizationMasterAccountException: Boto3ClientError
+    OperationNotPermittedException: Boto3ClientError
+    OrganizationNotInAllFeaturesModeException: Boto3ClientError
+    OrganizationsNotInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceTypeNotSupportedException: Boto3ClientError
+    S3BucketDoesNotExistException: Boto3ClientError
+    TagsLimitExceededException: Boto3ClientError
+    TrailAlreadyExistsException: Boto3ClientError
+    TrailNotFoundException: Boto3ClientError
+    TrailNotProvidedException: Boto3ClientError
+    UnsupportedOperationException: Boto3ClientError

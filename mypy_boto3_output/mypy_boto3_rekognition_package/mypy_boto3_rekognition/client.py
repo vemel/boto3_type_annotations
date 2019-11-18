@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_rekognition.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_rekognition.paginator as paginator_scope
@@ -71,6 +75,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -7599,3 +7605,22 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    IdempotentParameterMismatchException: Boto3ClientError
+    ImageTooLargeException: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    InvalidImageFormatException: Boto3ClientError
+    InvalidPaginationTokenException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidS3ObjectException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ProvisionedThroughputExceededException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    VideoTooLargeException: Boto3ClientError

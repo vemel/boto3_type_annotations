@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_alexaforbusiness.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_alexaforbusiness.paginator as paginator_scope
@@ -96,6 +100,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def approve_skill(self, SkillId: str) -> Dict[str, Any]:
         """
@@ -7295,3 +7301,22 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    DeviceNotRegisteredException: Boto3ClientError
+    InvalidCertificateAuthorityException: Boto3ClientError
+    InvalidDeviceException: Boto3ClientError
+    InvalidSecretsManagerResourceException: Boto3ClientError
+    InvalidServiceLinkedRoleStateException: Boto3ClientError
+    InvalidUserStatusException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NameInUseException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    ResourceAssociatedException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    SkillNotLinkedException: Boto3ClientError
+    UnauthorizedException: Boto3ClientError

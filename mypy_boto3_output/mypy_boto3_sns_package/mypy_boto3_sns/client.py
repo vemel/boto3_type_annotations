@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_sns.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_sns.paginator as paginator_scope
@@ -38,6 +42,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
         self, TopicArn: str, Label: str, AWSAccountId: List[str], ActionName: List[str]
@@ -2448,3 +2454,30 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AuthorizationErrorException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentAccessException: Boto3ClientError
+    EndpointDisabledException: Boto3ClientError
+    FilterPolicyLimitExceededException: Boto3ClientError
+    InternalErrorException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    InvalidSecurityException: Boto3ClientError
+    KMSAccessDeniedException: Boto3ClientError
+    KMSDisabledException: Boto3ClientError
+    KMSInvalidStateException: Boto3ClientError
+    KMSNotFoundException: Boto3ClientError
+    KMSOptInRequired: Boto3ClientError
+    KMSThrottlingException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    PlatformApplicationDisabledException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    StaleTagException: Boto3ClientError
+    SubscriptionLimitExceededException: Boto3ClientError
+    TagLimitExceededException: Boto3ClientError
+    TagPolicyException: Boto3ClientError
+    ThrottledException: Boto3ClientError
+    TopicLimitExceededException: Boto3ClientError

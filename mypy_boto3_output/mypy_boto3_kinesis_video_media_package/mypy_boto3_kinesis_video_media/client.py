@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_kinesis_video_media.client as client_scope
 from mypy_boto3_kinesis_video_media.type_defs import (
     ClientGetMediaResponseTypeDef,
     ClientGetMediaStartSelectorTypeDef,
@@ -13,6 +17,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -249,3 +255,13 @@ class Client(BaseClient):
               * 5000 - Internal error
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ClientLimitExceededException: Boto3ClientError
+    ConnectionLimitExceededException: Boto3ClientError
+    InvalidArgumentException: Boto3ClientError
+    InvalidEndpointException: Boto3ClientError
+    NotAuthorizedException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

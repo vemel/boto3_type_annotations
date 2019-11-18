@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_sts.client as client_scope
 from mypy_boto3_sts.type_defs import (
     ClientAssumeRolePolicyArnsTypeDef,
     ClientAssumeRoleResponseTypeDef,
@@ -23,6 +27,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def assume_role(
         self,
@@ -1752,3 +1758,15 @@ class Client(BaseClient):
                 The date on which the current credentials expire.
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ExpiredTokenException: Boto3ClientError
+    IDPCommunicationErrorException: Boto3ClientError
+    IDPRejectedClaimException: Boto3ClientError
+    InvalidAuthorizationMessageException: Boto3ClientError
+    InvalidIdentityTokenException: Boto3ClientError
+    MalformedPolicyDocumentException: Boto3ClientError
+    PackedPolicyTooLargeException: Boto3ClientError
+    RegionDisabledException: Boto3ClientError

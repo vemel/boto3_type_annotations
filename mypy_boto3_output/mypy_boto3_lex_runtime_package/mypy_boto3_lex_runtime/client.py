@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, IO, List, Union
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_lex_runtime.client as client_scope
 from mypy_boto3_lex_runtime.type_defs import (
     ClientDeleteSessionResponseTypeDef,
     ClientGetSessionResponseTypeDef,
@@ -18,6 +22,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1424,3 +1430,18 @@ class Client(BaseClient):
               A unique identifier for the session.
 
         """
+
+
+class Exceptions:
+    BadGatewayException: Boto3ClientError
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConflictException: Boto3ClientError
+    DependencyFailedException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    LoopDetectedException: Boto3ClientError
+    NotAcceptableException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    RequestTimeoutException: Boto3ClientError
+    UnsupportedMediaTypeException: Boto3ClientError

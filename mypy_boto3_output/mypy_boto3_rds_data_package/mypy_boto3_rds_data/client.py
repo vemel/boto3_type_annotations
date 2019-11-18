@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_rds_data.client as client_scope
 from mypy_boto3_rds_data.type_defs import (
     ClientBatchExecuteStatementResponseTypeDef,
     ClientBatchExecuteStatementparameterSetsTypeDef,
@@ -20,6 +24,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_execute_statement(
         self,
@@ -1367,3 +1373,13 @@ class Client(BaseClient):
               The status of the rollback operation.
 
         """
+
+
+class Exceptions:
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ForbiddenException: Boto3ClientError
+    InternalServerErrorException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    ServiceUnavailableError: Boto3ClientError
+    StatementTimeoutException: Boto3ClientError

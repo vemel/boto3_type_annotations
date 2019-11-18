@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, IO, Union
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_cloudsearchdomain.client as client_scope
 from mypy_boto3_cloudsearchdomain.type_defs import (
     ClientSearchResponseTypeDef,
     ClientSuggestResponseTypeDef,
@@ -14,6 +18,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -885,3 +891,9 @@ class Client(BaseClient):
                   The description for a warning returned by the document service.
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    DocumentServiceException: Boto3ClientError
+    SearchException: Boto3ClientError

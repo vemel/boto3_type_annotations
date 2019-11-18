@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_iot_jobs_data.client as client_scope
 from mypy_boto3_iot_jobs_data.type_defs import (
     ClientDescribeJobExecutionResponseTypeDef,
     ClientGetPendingJobExecutionsResponseTypeDef,
@@ -15,6 +19,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -597,3 +603,14 @@ class Client(BaseClient):
               The contents of the Job Documents.
 
         """
+
+
+class Exceptions:
+    CertificateValidationException: Boto3ClientError
+    ClientError: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    InvalidStateTransitionException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    TerminalStateException: Boto3ClientError
+    ThrottlingException: Boto3ClientError

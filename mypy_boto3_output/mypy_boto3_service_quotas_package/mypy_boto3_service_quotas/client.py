@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_service_quotas.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_service_quotas.paginator as paginator_scope
@@ -29,6 +33,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_service_quota_template(
         self, *args: Any, **kwargs: Any
@@ -2090,3 +2096,22 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AWSServiceAccessNotEnabledException: Boto3ClientError
+    AccessDeniedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DependencyAccessDeniedException: Boto3ClientError
+    IllegalArgumentException: Boto3ClientError
+    InvalidPaginationTokenException: Boto3ClientError
+    InvalidResourceStateException: Boto3ClientError
+    NoAvailableOrganizationException: Boto3ClientError
+    NoSuchResourceException: Boto3ClientError
+    OrganizationNotInAllFeaturesModeException: Boto3ClientError
+    QuotaExceededException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ServiceException: Boto3ClientError
+    ServiceQuotaTemplateNotInUseException: Boto3ClientError
+    TemplatesNotAvailableInRegionException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError

@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_elasticache.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_elasticache.paginator as paginator_scope
@@ -76,6 +80,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self, ResourceName: str, Tags: List[ClientAddTagsToResourceTagsTypeDef]
@@ -13779,3 +13785,59 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    APICallRateForCustomerExceededFault: Boto3ClientError
+    AuthorizationAlreadyExistsFault: Boto3ClientError
+    AuthorizationNotFoundFault: Boto3ClientError
+    CacheClusterAlreadyExistsFault: Boto3ClientError
+    CacheClusterNotFoundFault: Boto3ClientError
+    CacheParameterGroupAlreadyExistsFault: Boto3ClientError
+    CacheParameterGroupNotFoundFault: Boto3ClientError
+    CacheParameterGroupQuotaExceededFault: Boto3ClientError
+    CacheSecurityGroupAlreadyExistsFault: Boto3ClientError
+    CacheSecurityGroupNotFoundFault: Boto3ClientError
+    CacheSecurityGroupQuotaExceededFault: Boto3ClientError
+    CacheSubnetGroupAlreadyExistsFault: Boto3ClientError
+    CacheSubnetGroupInUse: Boto3ClientError
+    CacheSubnetGroupNotFoundFault: Boto3ClientError
+    CacheSubnetGroupQuotaExceededFault: Boto3ClientError
+    CacheSubnetQuotaExceededFault: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClusterQuotaForCustomerExceededFault: Boto3ClientError
+    InsufficientCacheClusterCapacityFault: Boto3ClientError
+    InvalidARNFault: Boto3ClientError
+    InvalidCacheClusterStateFault: Boto3ClientError
+    InvalidCacheParameterGroupStateFault: Boto3ClientError
+    InvalidCacheSecurityGroupStateFault: Boto3ClientError
+    InvalidKMSKeyFault: Boto3ClientError
+    InvalidParameterCombinationException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    InvalidReplicationGroupStateFault: Boto3ClientError
+    InvalidSnapshotStateFault: Boto3ClientError
+    InvalidSubnet: Boto3ClientError
+    InvalidVPCNetworkStateFault: Boto3ClientError
+    NoOperationFault: Boto3ClientError
+    NodeGroupNotFoundFault: Boto3ClientError
+    NodeGroupsPerReplicationGroupQuotaExceededFault: Boto3ClientError
+    NodeQuotaForClusterExceededFault: Boto3ClientError
+    NodeQuotaForCustomerExceededFault: Boto3ClientError
+    ReplicationGroupAlreadyExistsFault: Boto3ClientError
+    ReplicationGroupAlreadyUnderMigrationFault: Boto3ClientError
+    ReplicationGroupNotFoundFault: Boto3ClientError
+    ReplicationGroupNotUnderMigrationFault: Boto3ClientError
+    ReservedCacheNodeAlreadyExistsFault: Boto3ClientError
+    ReservedCacheNodeNotFoundFault: Boto3ClientError
+    ReservedCacheNodeQuotaExceededFault: Boto3ClientError
+    ReservedCacheNodesOfferingNotFoundFault: Boto3ClientError
+    ServiceLinkedRoleNotFoundFault: Boto3ClientError
+    ServiceUpdateNotFoundFault: Boto3ClientError
+    SnapshotAlreadyExistsFault: Boto3ClientError
+    SnapshotFeatureNotSupportedFault: Boto3ClientError
+    SnapshotNotFoundFault: Boto3ClientError
+    SnapshotQuotaExceededFault: Boto3ClientError
+    SubnetInUse: Boto3ClientError
+    TagNotFoundFault: Boto3ClientError
+    TagQuotaPerResourceExceeded: Boto3ClientError
+    TestFailoverNotAvailableFault: Boto3ClientError

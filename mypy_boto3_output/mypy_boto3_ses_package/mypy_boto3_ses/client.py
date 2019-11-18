@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_ses.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_ses.paginator as paginator_scope
@@ -73,6 +77,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -7687,3 +7693,41 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccountSendingPausedException: Boto3ClientError
+    AlreadyExistsException: Boto3ClientError
+    CannotDeleteException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConfigurationSetAlreadyExistsException: Boto3ClientError
+    ConfigurationSetDoesNotExistException: Boto3ClientError
+    ConfigurationSetSendingPausedException: Boto3ClientError
+    CustomVerificationEmailInvalidContentException: Boto3ClientError
+    CustomVerificationEmailTemplateAlreadyExistsException: Boto3ClientError
+    CustomVerificationEmailTemplateDoesNotExistException: Boto3ClientError
+    EventDestinationAlreadyExistsException: Boto3ClientError
+    EventDestinationDoesNotExistException: Boto3ClientError
+    FromEmailAddressNotVerifiedException: Boto3ClientError
+    InvalidCloudWatchDestinationException: Boto3ClientError
+    InvalidConfigurationSetException: Boto3ClientError
+    InvalidDeliveryOptionsException: Boto3ClientError
+    InvalidFirehoseDestinationException: Boto3ClientError
+    InvalidLambdaFunctionException: Boto3ClientError
+    InvalidPolicyException: Boto3ClientError
+    InvalidRenderingParameterException: Boto3ClientError
+    InvalidS3ConfigurationException: Boto3ClientError
+    InvalidSNSDestinationException: Boto3ClientError
+    InvalidSnsTopicException: Boto3ClientError
+    InvalidTemplateException: Boto3ClientError
+    InvalidTrackingOptionsException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MailFromDomainNotVerifiedException: Boto3ClientError
+    MessageRejected: Boto3ClientError
+    MissingRenderingAttributeException: Boto3ClientError
+    ProductionAccessNotGrantedException: Boto3ClientError
+    RuleDoesNotExistException: Boto3ClientError
+    RuleSetDoesNotExistException: Boto3ClientError
+    TemplateDoesNotExistException: Boto3ClientError
+    TrackingOptionsAlreadyExistsException: Boto3ClientError
+    TrackingOptionsDoesNotExistException: Boto3ClientError

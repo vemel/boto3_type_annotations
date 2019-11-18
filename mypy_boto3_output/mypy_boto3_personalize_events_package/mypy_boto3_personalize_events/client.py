@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_personalize_events.client as client_scope
 from mypy_boto3_personalize_events.type_defs import ClientPutEventseventListTypeDef
 
 
@@ -10,6 +14,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -149,3 +155,8 @@ class Client(BaseClient):
 
         :returns: None
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InvalidInputException: Boto3ClientError

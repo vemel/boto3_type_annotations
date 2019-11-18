@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_sdb.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_sdb.paginator as paginator_scope
@@ -23,6 +27,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_delete_attributes(
         self, DomainName: str, Items: List[ClientBatchDeleteAttributesItemsTypeDef]
@@ -793,3 +799,24 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AttributeDoesNotExist: Boto3ClientError
+    ClientError: Boto3ClientError
+    DuplicateItemName: Boto3ClientError
+    InvalidNextToken: Boto3ClientError
+    InvalidNumberPredicates: Boto3ClientError
+    InvalidNumberValueTests: Boto3ClientError
+    InvalidParameterValue: Boto3ClientError
+    InvalidQueryExpression: Boto3ClientError
+    MissingParameter: Boto3ClientError
+    NoSuchDomain: Boto3ClientError
+    NumberDomainAttributesExceeded: Boto3ClientError
+    NumberDomainBytesExceeded: Boto3ClientError
+    NumberDomainsExceeded: Boto3ClientError
+    NumberItemAttributesExceeded: Boto3ClientError
+    NumberSubmittedAttributesExceeded: Boto3ClientError
+    NumberSubmittedItemsExceeded: Boto3ClientError
+    RequestTimeout: Boto3ClientError
+    TooManyRequestedAttributes: Boto3ClientError

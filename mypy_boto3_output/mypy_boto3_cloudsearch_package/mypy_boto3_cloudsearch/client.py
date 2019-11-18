@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_cloudsearch.client as client_scope
 from mypy_boto3_cloudsearch.type_defs import (
     ClientBuildSuggestersResponseTypeDef,
     ClientCreateDomainResponseTypeDef,
@@ -43,6 +47,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def build_suggesters(self, DomainName: str) -> ClientBuildSuggestersResponseTypeDef:
         """
@@ -5289,3 +5295,14 @@ class Client(BaseClient):
                   Indicates that the option will be deleted once processing is complete.
 
         """
+
+
+class Exceptions:
+    BaseException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DisabledOperationException: Boto3ClientError
+    InternalException: Boto3ClientError
+    InvalidTypeException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ValidationException: Boto3ClientError

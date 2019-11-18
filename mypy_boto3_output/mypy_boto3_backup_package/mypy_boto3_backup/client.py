@@ -4,6 +4,10 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_backup.client as client_scope
 from mypy_boto3_backup.type_defs import (
     ClientCreateBackupPlanBackupPlanTypeDef,
     ClientCreateBackupPlanResponseTypeDef,
@@ -50,6 +54,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -4311,3 +4317,15 @@ class Client(BaseClient):
                 A timestamp that specifies when to delete a recovery point.
 
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DependencyFailureException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MissingParameterValueException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError

@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_iotevents_data.client as client_scope
 from mypy_boto3_iotevents_data.type_defs import (
     ClientBatchPutMessageResponseTypeDef,
     ClientBatchPutMessagemessagesTypeDef,
@@ -17,6 +21,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_put_message(
         self, messages: List[ClientBatchPutMessagemessagesTypeDef]
@@ -545,3 +551,12 @@ class Client(BaseClient):
               A token to retrieve the next set of results, or ``null`` if there are no additional results.
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    ThrottlingException: Boto3ClientError

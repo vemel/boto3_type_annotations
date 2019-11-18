@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_cloudfront.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_cloudfront.paginator as paginator_scope
@@ -67,6 +71,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -25690,3 +25696,88 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccessDenied: Boto3ClientError
+    BatchTooLarge: Boto3ClientError
+    CNAMEAlreadyExists: Boto3ClientError
+    CannotChangeImmutablePublicKeyFields: Boto3ClientError
+    ClientError: Boto3ClientError
+    CloudFrontOriginAccessIdentityAlreadyExists: Boto3ClientError
+    CloudFrontOriginAccessIdentityInUse: Boto3ClientError
+    DistributionAlreadyExists: Boto3ClientError
+    DistributionNotDisabled: Boto3ClientError
+    FieldLevelEncryptionConfigAlreadyExists: Boto3ClientError
+    FieldLevelEncryptionConfigInUse: Boto3ClientError
+    FieldLevelEncryptionProfileAlreadyExists: Boto3ClientError
+    FieldLevelEncryptionProfileInUse: Boto3ClientError
+    FieldLevelEncryptionProfileSizeExceeded: Boto3ClientError
+    IllegalFieldLevelEncryptionConfigAssociationWithCacheBehavior: Boto3ClientError
+    IllegalUpdate: Boto3ClientError
+    InconsistentQuantities: Boto3ClientError
+    InvalidArgument: Boto3ClientError
+    InvalidDefaultRootObject: Boto3ClientError
+    InvalidErrorCode: Boto3ClientError
+    InvalidForwardCookies: Boto3ClientError
+    InvalidGeoRestrictionParameter: Boto3ClientError
+    InvalidHeadersForS3Origin: Boto3ClientError
+    InvalidIfMatchVersion: Boto3ClientError
+    InvalidLambdaFunctionAssociation: Boto3ClientError
+    InvalidLocationCode: Boto3ClientError
+    InvalidMinimumProtocolVersion: Boto3ClientError
+    InvalidOrigin: Boto3ClientError
+    InvalidOriginAccessIdentity: Boto3ClientError
+    InvalidOriginKeepaliveTimeout: Boto3ClientError
+    InvalidOriginReadTimeout: Boto3ClientError
+    InvalidProtocolSettings: Boto3ClientError
+    InvalidQueryStringParameters: Boto3ClientError
+    InvalidRelativePath: Boto3ClientError
+    InvalidRequiredProtocol: Boto3ClientError
+    InvalidResponseCode: Boto3ClientError
+    InvalidTTLOrder: Boto3ClientError
+    InvalidTagging: Boto3ClientError
+    InvalidViewerCertificate: Boto3ClientError
+    InvalidWebACLId: Boto3ClientError
+    MissingBody: Boto3ClientError
+    NoSuchCloudFrontOriginAccessIdentity: Boto3ClientError
+    NoSuchDistribution: Boto3ClientError
+    NoSuchFieldLevelEncryptionConfig: Boto3ClientError
+    NoSuchFieldLevelEncryptionProfile: Boto3ClientError
+    NoSuchInvalidation: Boto3ClientError
+    NoSuchOrigin: Boto3ClientError
+    NoSuchPublicKey: Boto3ClientError
+    NoSuchResource: Boto3ClientError
+    NoSuchStreamingDistribution: Boto3ClientError
+    PreconditionFailed: Boto3ClientError
+    PublicKeyAlreadyExists: Boto3ClientError
+    PublicKeyInUse: Boto3ClientError
+    QueryArgProfileEmpty: Boto3ClientError
+    StreamingDistributionAlreadyExists: Boto3ClientError
+    StreamingDistributionNotDisabled: Boto3ClientError
+    TooManyCacheBehaviors: Boto3ClientError
+    TooManyCertificates: Boto3ClientError
+    TooManyCloudFrontOriginAccessIdentities: Boto3ClientError
+    TooManyCookieNamesInWhiteList: Boto3ClientError
+    TooManyDistributionCNAMEs: Boto3ClientError
+    TooManyDistributions: Boto3ClientError
+    TooManyDistributionsAssociatedToFieldLevelEncryptionConfig: Boto3ClientError
+    TooManyDistributionsWithLambdaAssociations: Boto3ClientError
+    TooManyFieldLevelEncryptionConfigs: Boto3ClientError
+    TooManyFieldLevelEncryptionContentTypeProfiles: Boto3ClientError
+    TooManyFieldLevelEncryptionEncryptionEntities: Boto3ClientError
+    TooManyFieldLevelEncryptionFieldPatterns: Boto3ClientError
+    TooManyFieldLevelEncryptionProfiles: Boto3ClientError
+    TooManyFieldLevelEncryptionQueryArgProfiles: Boto3ClientError
+    TooManyHeadersInForwardedValues: Boto3ClientError
+    TooManyInvalidationsInProgress: Boto3ClientError
+    TooManyLambdaFunctionAssociations: Boto3ClientError
+    TooManyOriginCustomHeaders: Boto3ClientError
+    TooManyOriginGroupsPerDistribution: Boto3ClientError
+    TooManyOrigins: Boto3ClientError
+    TooManyPublicKeys: Boto3ClientError
+    TooManyQueryStringParameters: Boto3ClientError
+    TooManyStreamingDistributionCNAMEs: Boto3ClientError
+    TooManyStreamingDistributions: Boto3ClientError
+    TooManyTrustedSigners: Boto3ClientError
+    TrustedSignerDoesNotExist: Boto3ClientError

@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_sms_voice.client as client_scope
 from mypy_boto3_sms_voice.type_defs import (
     ClientCreateConfigurationSetEventDestinationEventDestinationTypeDef,
     ClientGetConfigurationSetEventDestinationsResponseTypeDef,
@@ -16,6 +20,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -601,3 +607,13 @@ class Client(BaseClient):
 
           - *(dict) --* UpdateConfigurationSetEventDestinationResponse
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    InternalServiceErrorException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError

@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_config.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_config.paginator as paginator_scope
@@ -89,6 +93,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_aggregate_resource_config(
         self,
@@ -9199,3 +9205,50 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InsufficientDeliveryPolicyException: Boto3ClientError
+    InsufficientPermissionsException: Boto3ClientError
+    InvalidConfigurationRecorderNameException: Boto3ClientError
+    InvalidDeliveryChannelNameException: Boto3ClientError
+    InvalidExpressionException: Boto3ClientError
+    InvalidLimitException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    InvalidRecordingGroupException: Boto3ClientError
+    InvalidResultTokenException: Boto3ClientError
+    InvalidRoleException: Boto3ClientError
+    InvalidS3KeyPrefixException: Boto3ClientError
+    InvalidSNSTopicARNException: Boto3ClientError
+    InvalidTimeRangeException: Boto3ClientError
+    LastDeliveryChannelDeleteFailedException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MaxNumberOfConfigRulesExceededException: Boto3ClientError
+    MaxNumberOfConfigurationRecordersExceededException: Boto3ClientError
+    MaxNumberOfDeliveryChannelsExceededException: Boto3ClientError
+    MaxNumberOfOrganizationConfigRulesExceededException: Boto3ClientError
+    MaxNumberOfRetentionConfigurationsExceededException: Boto3ClientError
+    NoAvailableConfigurationRecorderException: Boto3ClientError
+    NoAvailableDeliveryChannelException: Boto3ClientError
+    NoAvailableOrganizationException: Boto3ClientError
+    NoRunningConfigurationRecorderException: Boto3ClientError
+    NoSuchBucketException: Boto3ClientError
+    NoSuchConfigRuleException: Boto3ClientError
+    NoSuchConfigurationAggregatorException: Boto3ClientError
+    NoSuchConfigurationRecorderException: Boto3ClientError
+    NoSuchDeliveryChannelException: Boto3ClientError
+    NoSuchOrganizationConfigRuleException: Boto3ClientError
+    NoSuchRemediationConfigurationException: Boto3ClientError
+    NoSuchRemediationExceptionException: Boto3ClientError
+    NoSuchRetentionConfigurationException: Boto3ClientError
+    OrganizationAccessDeniedException: Boto3ClientError
+    OrganizationAllFeaturesNotEnabledException: Boto3ClientError
+    OversizedConfigurationItemException: Boto3ClientError
+    RemediationInProgressException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotDiscoveredException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    ValidationException: Boto3ClientError

@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_polly.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_polly.paginator as paginator_scope
@@ -23,6 +27,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1338,3 +1344,28 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    EngineNotSupportedException: Boto3ClientError
+    InvalidLexiconException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidS3BucketException: Boto3ClientError
+    InvalidS3KeyException: Boto3ClientError
+    InvalidSampleRateException: Boto3ClientError
+    InvalidSnsTopicArnException: Boto3ClientError
+    InvalidSsmlException: Boto3ClientError
+    InvalidTaskIdException: Boto3ClientError
+    LanguageNotSupportedException: Boto3ClientError
+    LexiconNotFoundException: Boto3ClientError
+    LexiconSizeExceededException: Boto3ClientError
+    MarksNotSupportedForFormatException: Boto3ClientError
+    MaxLexemeLengthExceededException: Boto3ClientError
+    MaxLexiconsNumberExceededException: Boto3ClientError
+    ServiceFailureException: Boto3ClientError
+    SsmlMarksNotSupportedForTextTypeException: Boto3ClientError
+    SynthesisTaskNotFoundException: Boto3ClientError
+    TextLengthExceededException: Boto3ClientError
+    UnsupportedPlsAlphabetException: Boto3ClientError
+    UnsupportedPlsLanguageException: Boto3ClientError

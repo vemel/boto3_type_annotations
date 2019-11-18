@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_s3control.client as client_scope
 from mypy_boto3_s3control.type_defs import (
     ClientCreateJobManifestTypeDef,
     ClientCreateJobOperationTypeDef,
@@ -21,6 +25,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1328,3 +1334,16 @@ class Client(BaseClient):
               The reason that the specified job's status was updated.
 
         """
+
+
+class Exceptions:
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    IdempotencyException: Boto3ClientError
+    InternalServiceException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    JobStatusException: Boto3ClientError
+    NoSuchPublicAccessBlockConfiguration: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError

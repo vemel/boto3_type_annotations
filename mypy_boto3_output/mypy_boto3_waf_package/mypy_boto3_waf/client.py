@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_waf.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_waf.paginator as paginator_scope
@@ -108,6 +112,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -10989,3 +10995,25 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    WAFBadRequestException: Boto3ClientError
+    WAFDisallowedNameException: Boto3ClientError
+    WAFInternalErrorException: Boto3ClientError
+    WAFInvalidAccountException: Boto3ClientError
+    WAFInvalidOperationException: Boto3ClientError
+    WAFInvalidParameterException: Boto3ClientError
+    WAFInvalidPermissionPolicyException: Boto3ClientError
+    WAFInvalidRegexPatternException: Boto3ClientError
+    WAFLimitsExceededException: Boto3ClientError
+    WAFNonEmptyEntityException: Boto3ClientError
+    WAFNonexistentContainerException: Boto3ClientError
+    WAFNonexistentItemException: Boto3ClientError
+    WAFReferencedItemException: Boto3ClientError
+    WAFServiceLinkedRoleErrorException: Boto3ClientError
+    WAFStaleDataException: Boto3ClientError
+    WAFSubscriptionNotFoundException: Boto3ClientError
+    WAFTagOperationException: Boto3ClientError
+    WAFTagOperationInternalErrorException: Boto3ClientError

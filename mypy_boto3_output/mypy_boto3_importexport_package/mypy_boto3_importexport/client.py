@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_importexport.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_importexport.paginator as paginator_scope
@@ -22,6 +26,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -602,3 +608,27 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    BucketPermissionException: Boto3ClientError
+    CanceledJobIdException: Boto3ClientError
+    ClientError: Boto3ClientError
+    CreateJobQuotaExceededException: Boto3ClientError
+    ExpiredJobIdException: Boto3ClientError
+    InvalidAccessKeyIdException: Boto3ClientError
+    InvalidAddressException: Boto3ClientError
+    InvalidCustomsException: Boto3ClientError
+    InvalidFileSystemException: Boto3ClientError
+    InvalidJobIdException: Boto3ClientError
+    InvalidManifestFieldException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidVersionException: Boto3ClientError
+    MalformedManifestException: Boto3ClientError
+    MissingCustomsException: Boto3ClientError
+    MissingManifestFieldException: Boto3ClientError
+    MissingParameterException: Boto3ClientError
+    MultipleRegionsException: Boto3ClientError
+    NoSuchBucketException: Boto3ClientError
+    UnableToCancelJobIdException: Boto3ClientError
+    UnableToUpdateJobIdException: Boto3ClientError

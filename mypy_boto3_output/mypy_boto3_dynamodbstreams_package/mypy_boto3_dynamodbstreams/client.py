@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_dynamodbstreams.client as client_scope
 from mypy_boto3_dynamodbstreams.type_defs import (
     ClientDescribeStreamResponseTypeDef,
     ClientGetRecordsResponseTypeDef,
@@ -15,6 +19,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -963,3 +969,12 @@ class Client(BaseClient):
               is when ``LastEvaluatedStreamArn`` is empty.
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ExpiredIteratorException: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    TrimmedDataAccessException: Boto3ClientError

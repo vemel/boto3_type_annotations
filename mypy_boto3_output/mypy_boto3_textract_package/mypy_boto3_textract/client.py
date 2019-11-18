@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_textract.client as client_scope
 from mypy_boto3_textract.type_defs import (
     ClientAnalyzeDocumentDocumentTypeDef,
     ClientAnalyzeDocumentResponseTypeDef,
@@ -23,6 +27,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def analyze_document(
         self, Document: ClientAnalyzeDocumentDocumentTypeDef, FeatureTypes: List[str]
@@ -1770,3 +1776,19 @@ class Client(BaseClient):
               subsequent call to ``GetDocumentTextDetection`` .
 
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    BadDocumentException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DocumentTooLargeException: Boto3ClientError
+    IdempotentParameterMismatchException: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    InvalidJobIdException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidS3ObjectException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ProvisionedThroughputExceededException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    UnsupportedDocumentException: Boto3ClientError

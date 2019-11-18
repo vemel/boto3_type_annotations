@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_transcribe.client as client_scope
 from mypy_boto3_transcribe.type_defs import (
     ClientCreateVocabularyResponseTypeDef,
     ClientGetTranscriptionJobResponseTypeDef,
@@ -20,6 +24,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1201,3 +1207,12 @@ class Client(BaseClient):
               the vocabulary is ready to be used in a ``StartTranscriptionJob`` request.
 
         """
+
+
+class Exceptions:
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConflictException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NotFoundException: Boto3ClientError

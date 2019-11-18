@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_route53.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_route53.paginator as paginator_scope
@@ -78,6 +82,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_vpc_with_hosted_zone(
         self,
@@ -10975,3 +10981,58 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModification: Boto3ClientError
+    ConflictingDomainExists: Boto3ClientError
+    ConflictingTypes: Boto3ClientError
+    DelegationSetAlreadyCreated: Boto3ClientError
+    DelegationSetAlreadyReusable: Boto3ClientError
+    DelegationSetInUse: Boto3ClientError
+    DelegationSetNotAvailable: Boto3ClientError
+    DelegationSetNotReusable: Boto3ClientError
+    HealthCheckAlreadyExists: Boto3ClientError
+    HealthCheckInUse: Boto3ClientError
+    HealthCheckVersionMismatch: Boto3ClientError
+    HostedZoneAlreadyExists: Boto3ClientError
+    HostedZoneNotEmpty: Boto3ClientError
+    HostedZoneNotFound: Boto3ClientError
+    HostedZoneNotPrivate: Boto3ClientError
+    IncompatibleVersion: Boto3ClientError
+    InsufficientCloudWatchLogsResourcePolicy: Boto3ClientError
+    InvalidArgument: Boto3ClientError
+    InvalidChangeBatch: Boto3ClientError
+    InvalidDomainName: Boto3ClientError
+    InvalidInput: Boto3ClientError
+    InvalidPaginationToken: Boto3ClientError
+    InvalidTrafficPolicyDocument: Boto3ClientError
+    InvalidVPCId: Boto3ClientError
+    LastVPCAssociation: Boto3ClientError
+    LimitsExceeded: Boto3ClientError
+    NoSuchChange: Boto3ClientError
+    NoSuchCloudWatchLogsLogGroup: Boto3ClientError
+    NoSuchDelegationSet: Boto3ClientError
+    NoSuchGeoLocation: Boto3ClientError
+    NoSuchHealthCheck: Boto3ClientError
+    NoSuchHostedZone: Boto3ClientError
+    NoSuchQueryLoggingConfig: Boto3ClientError
+    NoSuchTrafficPolicy: Boto3ClientError
+    NoSuchTrafficPolicyInstance: Boto3ClientError
+    NotAuthorizedException: Boto3ClientError
+    PriorRequestNotComplete: Boto3ClientError
+    PublicZoneVPCAssociation: Boto3ClientError
+    QueryLoggingConfigAlreadyExists: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    TooManyHealthChecks: Boto3ClientError
+    TooManyHostedZones: Boto3ClientError
+    TooManyTrafficPolicies: Boto3ClientError
+    TooManyTrafficPolicyInstances: Boto3ClientError
+    TooManyTrafficPolicyVersionsForCurrentPolicy: Boto3ClientError
+    TooManyVPCAssociationAuthorizations: Boto3ClientError
+    TrafficPolicyAlreadyExists: Boto3ClientError
+    TrafficPolicyInUse: Boto3ClientError
+    TrafficPolicyInstanceAlreadyExists: Boto3ClientError
+    VPCAssociationAuthorizationNotFound: Boto3ClientError
+    VPCAssociationNotFound: Boto3ClientError

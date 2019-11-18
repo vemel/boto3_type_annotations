@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_rds.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_rds.paginator as paginator_scope
@@ -199,6 +203,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_role_to_db_cluster(
         self, DBClusterIdentifier: str, RoleArn: str, FeatureName: str = None
@@ -39501,3 +39507,105 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AuthorizationAlreadyExistsFault: Boto3ClientError
+    AuthorizationNotFoundFault: Boto3ClientError
+    AuthorizationQuotaExceededFault: Boto3ClientError
+    BackupPolicyNotFoundFault: Boto3ClientError
+    CertificateNotFoundFault: Boto3ClientError
+    ClientError: Boto3ClientError
+    CustomAvailabilityZoneAlreadyExistsFault: Boto3ClientError
+    CustomAvailabilityZoneNotFoundFault: Boto3ClientError
+    CustomAvailabilityZoneQuotaExceededFault: Boto3ClientError
+    DBClusterAlreadyExistsFault: Boto3ClientError
+    DBClusterBacktrackNotFoundFault: Boto3ClientError
+    DBClusterEndpointAlreadyExistsFault: Boto3ClientError
+    DBClusterEndpointNotFoundFault: Boto3ClientError
+    DBClusterEndpointQuotaExceededFault: Boto3ClientError
+    DBClusterNotFoundFault: Boto3ClientError
+    DBClusterParameterGroupNotFoundFault: Boto3ClientError
+    DBClusterQuotaExceededFault: Boto3ClientError
+    DBClusterRoleAlreadyExistsFault: Boto3ClientError
+    DBClusterRoleNotFoundFault: Boto3ClientError
+    DBClusterRoleQuotaExceededFault: Boto3ClientError
+    DBClusterSnapshotAlreadyExistsFault: Boto3ClientError
+    DBClusterSnapshotNotFoundFault: Boto3ClientError
+    DBInstanceAlreadyExistsFault: Boto3ClientError
+    DBInstanceAutomatedBackupNotFoundFault: Boto3ClientError
+    DBInstanceAutomatedBackupQuotaExceededFault: Boto3ClientError
+    DBInstanceNotFoundFault: Boto3ClientError
+    DBInstanceRoleAlreadyExistsFault: Boto3ClientError
+    DBInstanceRoleNotFoundFault: Boto3ClientError
+    DBInstanceRoleQuotaExceededFault: Boto3ClientError
+    DBLogFileNotFoundFault: Boto3ClientError
+    DBParameterGroupAlreadyExistsFault: Boto3ClientError
+    DBParameterGroupNotFoundFault: Boto3ClientError
+    DBParameterGroupQuotaExceededFault: Boto3ClientError
+    DBSecurityGroupAlreadyExistsFault: Boto3ClientError
+    DBSecurityGroupNotFoundFault: Boto3ClientError
+    DBSecurityGroupNotSupportedFault: Boto3ClientError
+    DBSecurityGroupQuotaExceededFault: Boto3ClientError
+    DBSnapshotAlreadyExistsFault: Boto3ClientError
+    DBSnapshotNotFoundFault: Boto3ClientError
+    DBSubnetGroupAlreadyExistsFault: Boto3ClientError
+    DBSubnetGroupDoesNotCoverEnoughAZs: Boto3ClientError
+    DBSubnetGroupNotAllowedFault: Boto3ClientError
+    DBSubnetGroupNotFoundFault: Boto3ClientError
+    DBSubnetGroupQuotaExceededFault: Boto3ClientError
+    DBSubnetQuotaExceededFault: Boto3ClientError
+    DBUpgradeDependencyFailureFault: Boto3ClientError
+    DomainNotFoundFault: Boto3ClientError
+    EventSubscriptionQuotaExceededFault: Boto3ClientError
+    GlobalClusterAlreadyExistsFault: Boto3ClientError
+    GlobalClusterNotFoundFault: Boto3ClientError
+    GlobalClusterQuotaExceededFault: Boto3ClientError
+    InstallationMediaAlreadyExistsFault: Boto3ClientError
+    InstallationMediaNotFoundFault: Boto3ClientError
+    InstanceQuotaExceededFault: Boto3ClientError
+    InsufficientDBClusterCapacityFault: Boto3ClientError
+    InsufficientDBInstanceCapacityFault: Boto3ClientError
+    InsufficientStorageClusterCapacityFault: Boto3ClientError
+    InvalidDBClusterCapacityFault: Boto3ClientError
+    InvalidDBClusterEndpointStateFault: Boto3ClientError
+    InvalidDBClusterSnapshotStateFault: Boto3ClientError
+    InvalidDBClusterStateFault: Boto3ClientError
+    InvalidDBInstanceAutomatedBackupStateFault: Boto3ClientError
+    InvalidDBInstanceStateFault: Boto3ClientError
+    InvalidDBParameterGroupStateFault: Boto3ClientError
+    InvalidDBSecurityGroupStateFault: Boto3ClientError
+    InvalidDBSnapshotStateFault: Boto3ClientError
+    InvalidDBSubnetGroupFault: Boto3ClientError
+    InvalidDBSubnetGroupStateFault: Boto3ClientError
+    InvalidDBSubnetStateFault: Boto3ClientError
+    InvalidEventSubscriptionStateFault: Boto3ClientError
+    InvalidGlobalClusterStateFault: Boto3ClientError
+    InvalidOptionGroupStateFault: Boto3ClientError
+    InvalidRestoreFault: Boto3ClientError
+    InvalidS3BucketFault: Boto3ClientError
+    InvalidSubnet: Boto3ClientError
+    InvalidVPCNetworkStateFault: Boto3ClientError
+    KMSKeyNotAccessibleFault: Boto3ClientError
+    OptionGroupAlreadyExistsFault: Boto3ClientError
+    OptionGroupNotFoundFault: Boto3ClientError
+    OptionGroupQuotaExceededFault: Boto3ClientError
+    PointInTimeRestoreNotEnabledFault: Boto3ClientError
+    ProvisionedIopsNotAvailableInAZFault: Boto3ClientError
+    ReservedDBInstanceAlreadyExistsFault: Boto3ClientError
+    ReservedDBInstanceNotFoundFault: Boto3ClientError
+    ReservedDBInstanceQuotaExceededFault: Boto3ClientError
+    ReservedDBInstancesOfferingNotFoundFault: Boto3ClientError
+    ResourceNotFoundFault: Boto3ClientError
+    SNSInvalidTopicFault: Boto3ClientError
+    SNSNoAuthorizationFault: Boto3ClientError
+    SNSTopicArnNotFoundFault: Boto3ClientError
+    SharedSnapshotQuotaExceededFault: Boto3ClientError
+    SnapshotQuotaExceededFault: Boto3ClientError
+    SourceNotFoundFault: Boto3ClientError
+    StorageQuotaExceededFault: Boto3ClientError
+    StorageTypeNotSupportedFault: Boto3ClientError
+    SubnetAlreadyInUse: Boto3ClientError
+    SubscriptionAlreadyExistFault: Boto3ClientError
+    SubscriptionCategoryNotFoundFault: Boto3ClientError
+    SubscriptionNotFoundFault: Boto3ClientError

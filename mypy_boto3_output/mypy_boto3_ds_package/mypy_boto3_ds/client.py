@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_ds.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_ds.paginator as paginator_scope
@@ -59,6 +63,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_shared_directory(
         self, SharedDirectoryId: str
@@ -4360,3 +4366,30 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    AuthenticationFailedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClientException: Boto3ClientError
+    DirectoryAlreadySharedException: Boto3ClientError
+    DirectoryLimitExceededException: Boto3ClientError
+    DirectoryNotSharedException: Boto3ClientError
+    DirectoryUnavailableException: Boto3ClientError
+    DomainControllerLimitExceededException: Boto3ClientError
+    EntityAlreadyExistsException: Boto3ClientError
+    EntityDoesNotExistException: Boto3ClientError
+    InsufficientPermissionsException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidPasswordException: Boto3ClientError
+    InvalidTargetException: Boto3ClientError
+    IpRouteLimitExceededException: Boto3ClientError
+    OrganizationsException: Boto3ClientError
+    ServiceException: Boto3ClientError
+    ShareLimitExceededException: Boto3ClientError
+    SnapshotLimitExceededException: Boto3ClientError
+    TagLimitExceededException: Boto3ClientError
+    UnsupportedOperationException: Boto3ClientError
+    UserDoesNotExistException: Boto3ClientError

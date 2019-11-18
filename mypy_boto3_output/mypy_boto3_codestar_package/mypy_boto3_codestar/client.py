@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_codestar.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_codestar.paginator as paginator_scope
@@ -33,6 +37,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_team_member(
         self,
@@ -1577,3 +1583,20 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidServiceRoleException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ProjectAlreadyExistsException: Boto3ClientError
+    ProjectConfigurationException: Boto3ClientError
+    ProjectCreationFailedException: Boto3ClientError
+    ProjectNotFoundException: Boto3ClientError
+    TeamMemberAlreadyAssociatedException: Boto3ClientError
+    TeamMemberNotFoundException: Boto3ClientError
+    UserProfileAlreadyExistsException: Boto3ClientError
+    UserProfileNotFoundException: Boto3ClientError
+    ValidationException: Boto3ClientError

@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_elasticbeanstalk.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_elasticbeanstalk.paginator as paginator_scope
@@ -77,6 +81,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_environment_update(
         self, EnvironmentId: str = None, EnvironmentName: str = None
@@ -7507,3 +7513,26 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    CodeBuildNotInServiceRegionException: Boto3ClientError
+    ElasticBeanstalkServiceException: Boto3ClientError
+    InsufficientPrivilegesException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    ManagedActionInvalidStateException: Boto3ClientError
+    OperationInProgressException: Boto3ClientError
+    PlatformVersionStillReferencedException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceTypeNotSupportedException: Boto3ClientError
+    S3LocationNotInServiceRegionException: Boto3ClientError
+    S3SubscriptionRequiredException: Boto3ClientError
+    SourceBundleDeletionException: Boto3ClientError
+    TooManyApplicationVersionsException: Boto3ClientError
+    TooManyApplicationsException: Boto3ClientError
+    TooManyBucketsException: Boto3ClientError
+    TooManyConfigurationTemplatesException: Boto3ClientError
+    TooManyEnvironmentsException: Boto3ClientError
+    TooManyPlatformsException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError

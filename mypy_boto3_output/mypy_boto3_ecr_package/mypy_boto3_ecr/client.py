@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_ecr.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_ecr.paginator as paginator_scope
@@ -56,6 +60,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_check_layer_availability(
         self, repositoryName: str, layerDigests: List[str], registryId: str = None
@@ -3148,3 +3154,31 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    EmptyUploadException: Boto3ClientError
+    ImageAlreadyExistsException: Boto3ClientError
+    ImageNotFoundException: Boto3ClientError
+    ImageTagAlreadyExistsException: Boto3ClientError
+    InvalidLayerException: Boto3ClientError
+    InvalidLayerPartException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidTagParameterException: Boto3ClientError
+    LayerAlreadyExistsException: Boto3ClientError
+    LayerInaccessibleException: Boto3ClientError
+    LayerPartTooSmallException: Boto3ClientError
+    LayersNotFoundException: Boto3ClientError
+    LifecyclePolicyNotFoundException: Boto3ClientError
+    LifecyclePolicyPreviewInProgressException: Boto3ClientError
+    LifecyclePolicyPreviewNotFoundException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    RepositoryAlreadyExistsException: Boto3ClientError
+    RepositoryNotEmptyException: Boto3ClientError
+    RepositoryNotFoundException: Boto3ClientError
+    RepositoryPolicyNotFoundException: Boto3ClientError
+    ScanNotFoundException: Boto3ClientError
+    ServerException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    UploadNotFoundException: Boto3ClientError

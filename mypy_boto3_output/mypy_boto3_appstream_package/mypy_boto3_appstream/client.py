@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_appstream.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_appstream.paginator as paginator_scope
@@ -72,6 +76,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_fleet(self, FleetName: str, StackName: str) -> Dict[str, Any]:
         """
@@ -7317,3 +7323,18 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    IncompatibleImageException: Boto3ClientError
+    InvalidAccountStatusException: Boto3ClientError
+    InvalidParameterCombinationException: Boto3ClientError
+    InvalidRoleException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    OperationNotPermittedException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotAvailableException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

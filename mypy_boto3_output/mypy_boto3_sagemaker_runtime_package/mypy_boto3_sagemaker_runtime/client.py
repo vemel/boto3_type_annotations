@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, IO, Union
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_sagemaker_runtime.client as client_scope
 from mypy_boto3_sagemaker_runtime.type_defs import ClientInvokeEndpointResponseTypeDef
 
 
@@ -10,6 +14,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -163,3 +169,11 @@ class Client(BaseClient):
             - **CustomAttributes** *(string) --*
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalFailure: Boto3ClientError
+    ModelError: Boto3ClientError
+    ServiceUnavailable: Boto3ClientError
+    ValidationError: Boto3ClientError

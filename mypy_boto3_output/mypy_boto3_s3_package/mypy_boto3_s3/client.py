@@ -6,9 +6,13 @@ from typing import Any, Callable, Dict, IO, List, Union
 from typing_extensions import Literal, overload
 from boto3.s3.transfer import TransferConfig
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
 from mypy_boto3.type_defs import S3CopySource
+
+# pylint: disable=import-self
+import mypy_boto3_s3.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_s3.paginator as paginator_scope
@@ -109,6 +113,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_multipart_upload(
         self, Bucket: str, Key: str, UploadId: str, RequestPayer: str = None
@@ -319,7 +325,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -1730,7 +1736,7 @@ class Client(BaseClient):
         Key: str,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1775,7 +1781,7 @@ class Client(BaseClient):
         Key: str,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -10844,7 +10850,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -10889,7 +10895,7 @@ class Client(BaseClient):
         Bucket: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -11422,3 +11428,14 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    BucketAlreadyExists: Boto3ClientError
+    BucketAlreadyOwnedByYou: Boto3ClientError
+    ClientError: Boto3ClientError
+    NoSuchBucket: Boto3ClientError
+    NoSuchKey: Boto3ClientError
+    NoSuchUpload: Boto3ClientError
+    ObjectAlreadyInActiveTierError: Boto3ClientError
+    ObjectNotInActiveTierError: Boto3ClientError

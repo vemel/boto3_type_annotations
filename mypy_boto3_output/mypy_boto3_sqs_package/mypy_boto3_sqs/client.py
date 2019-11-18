@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_sqs.client as client_scope
 from mypy_boto3_sqs.type_defs import (
     ClientChangeMessageVisibilityBatchEntriesTypeDef,
     ClientChangeMessageVisibilityBatchResponseTypeDef,
@@ -27,6 +31,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_permission(
         self, QueueUrl: str, Label: str, AWSAccountIds: List[str], Actions: List[str]
@@ -2789,3 +2795,23 @@ class Client(BaseClient):
 
         :returns: None
         """
+
+
+class Exceptions:
+    BatchEntryIdsNotDistinct: Boto3ClientError
+    BatchRequestTooLong: Boto3ClientError
+    ClientError: Boto3ClientError
+    EmptyBatchRequest: Boto3ClientError
+    InvalidAttributeName: Boto3ClientError
+    InvalidBatchEntryId: Boto3ClientError
+    InvalidIdFormat: Boto3ClientError
+    InvalidMessageContents: Boto3ClientError
+    MessageNotInflight: Boto3ClientError
+    OverLimit: Boto3ClientError
+    PurgeQueueInProgress: Boto3ClientError
+    QueueDeletedRecently: Boto3ClientError
+    QueueDoesNotExist: Boto3ClientError
+    QueueNameExists: Boto3ClientError
+    ReceiptHandleIsInvalid: Boto3ClientError
+    TooManyEntriesInBatchRequest: Boto3ClientError
+    UnsupportedOperation: Boto3ClientError

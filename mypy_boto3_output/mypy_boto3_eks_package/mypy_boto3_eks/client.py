@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_eks.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_eks.paginator as paginator_scope
@@ -33,6 +37,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1859,3 +1865,18 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClientException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceLimitExceededException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServerException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    UnsupportedAvailabilityZoneException: Boto3ClientError

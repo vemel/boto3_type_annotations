@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_es.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_es.paginator as paginator_scope
@@ -53,6 +57,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(self, ARN: str, TagList: List[ClientAddTagsTagListTypeDef]) -> None:
         """
@@ -5871,3 +5877,15 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    BaseException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DisabledOperationException: Boto3ClientError
+    InternalException: Boto3ClientError
+    InvalidTypeException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ValidationException: Boto3ClientError

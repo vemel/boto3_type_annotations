@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_iam.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_iam.paginator as paginator_scope
@@ -102,6 +106,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_client_id_to_open_id_connect_provider(
         self, OpenIDConnectProviderArn: str, ClientID: str
@@ -15764,3 +15770,34 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    CredentialReportExpiredException: Boto3ClientError
+    CredentialReportNotPresentException: Boto3ClientError
+    CredentialReportNotReadyException: Boto3ClientError
+    DeleteConflictException: Boto3ClientError
+    DuplicateCertificateException: Boto3ClientError
+    DuplicateSSHPublicKeyException: Boto3ClientError
+    EntityAlreadyExistsException: Boto3ClientError
+    EntityTemporarilyUnmodifiableException: Boto3ClientError
+    InvalidAuthenticationCodeException: Boto3ClientError
+    InvalidCertificateException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    InvalidPublicKeyException: Boto3ClientError
+    InvalidUserTypeException: Boto3ClientError
+    KeyPairMismatchException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MalformedCertificateException: Boto3ClientError
+    MalformedPolicyDocumentException: Boto3ClientError
+    NoSuchEntityException: Boto3ClientError
+    PasswordPolicyViolationException: Boto3ClientError
+    PolicyEvaluationException: Boto3ClientError
+    PolicyNotAttachableException: Boto3ClientError
+    ReportGenerationLimitExceededException: Boto3ClientError
+    ServiceFailureException: Boto3ClientError
+    ServiceNotSupportedException: Boto3ClientError
+    UnmodifiableEntityException: Boto3ClientError
+    UnrecognizedPublicKeyEncodingException: Boto3ClientError

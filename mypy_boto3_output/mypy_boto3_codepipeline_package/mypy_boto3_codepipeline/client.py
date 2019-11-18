@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_codepipeline.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_codepipeline.paginator as paginator_scope
@@ -61,6 +65,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def acknowledge_job(
         self, jobId: str, nonce: str
@@ -6413,3 +6419,39 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ActionNotFoundException: Boto3ClientError
+    ActionTypeNotFoundException: Boto3ClientError
+    ApprovalAlreadyCompletedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    InvalidActionDeclarationException: Boto3ClientError
+    InvalidApprovalTokenException: Boto3ClientError
+    InvalidArnException: Boto3ClientError
+    InvalidBlockerDeclarationException: Boto3ClientError
+    InvalidClientTokenException: Boto3ClientError
+    InvalidJobException: Boto3ClientError
+    InvalidJobStateException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidNonceException: Boto3ClientError
+    InvalidStageDeclarationException: Boto3ClientError
+    InvalidStructureException: Boto3ClientError
+    InvalidTagsException: Boto3ClientError
+    InvalidWebhookAuthenticationParametersException: Boto3ClientError
+    InvalidWebhookFilterPatternException: Boto3ClientError
+    JobNotFoundException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NotLatestPipelineExecutionException: Boto3ClientError
+    OutputVariablesSizeExceededException: Boto3ClientError
+    PipelineExecutionNotFoundException: Boto3ClientError
+    PipelineNameInUseException: Boto3ClientError
+    PipelineNotFoundException: Boto3ClientError
+    PipelineVersionNotFoundException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    StageNotFoundException: Boto3ClientError
+    StageNotRetryableException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    ValidationException: Boto3ClientError
+    WebhookNotFoundException: Boto3ClientError

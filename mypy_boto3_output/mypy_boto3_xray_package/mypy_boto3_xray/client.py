@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_xray.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_xray.paginator as paginator_scope
@@ -40,6 +44,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_get_traces(
         self, TraceIds: List[str], NextToken: str = None
@@ -3567,3 +3573,10 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    RuleLimitExceededException: Boto3ClientError
+    ThrottledException: Boto3ClientError

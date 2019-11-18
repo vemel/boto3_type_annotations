@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_route53resolver.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_route53resolver.paginator as paginator_scope
@@ -47,6 +51,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_resolver_endpoint_ip_address(
         self,
@@ -2887,3 +2893,20 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalServiceErrorException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    InvalidPolicyDocument: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    InvalidTagException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceExistsException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceUnavailableException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    UnknownResourceException: Boto3ClientError

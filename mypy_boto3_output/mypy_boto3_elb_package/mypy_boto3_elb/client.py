@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_elb.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_elb.paginator as paginator_scope
@@ -48,6 +52,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags(
         self, LoadBalancerNames: List[str], Tags: List[ClientAddTagsTagsTypeDef]
@@ -3163,3 +3169,29 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccessPointNotFoundException: Boto3ClientError
+    CertificateNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DependencyThrottleException: Boto3ClientError
+    DuplicateAccessPointNameException: Boto3ClientError
+    DuplicateListenerException: Boto3ClientError
+    DuplicatePolicyNameException: Boto3ClientError
+    DuplicateTagKeysException: Boto3ClientError
+    InvalidConfigurationRequestException: Boto3ClientError
+    InvalidEndPointException: Boto3ClientError
+    InvalidSchemeException: Boto3ClientError
+    InvalidSecurityGroupException: Boto3ClientError
+    InvalidSubnetException: Boto3ClientError
+    ListenerNotFoundException: Boto3ClientError
+    LoadBalancerAttributeNotFoundException: Boto3ClientError
+    OperationNotPermittedException: Boto3ClientError
+    PolicyNotFoundException: Boto3ClientError
+    PolicyTypeNotFoundException: Boto3ClientError
+    SubnetNotFoundException: Boto3ClientError
+    TooManyAccessPointsException: Boto3ClientError
+    TooManyPoliciesException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    UnsupportedProtocolException: Boto3ClientError

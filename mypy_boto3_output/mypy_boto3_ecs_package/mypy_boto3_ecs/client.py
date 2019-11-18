@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_ecs.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_ecs.paginator as paginator_scope
@@ -108,6 +112,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -25540,3 +25546,28 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    AttributeLimitExceededException: Boto3ClientError
+    BlockedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClientException: Boto3ClientError
+    ClusterContainsContainerInstancesException: Boto3ClientError
+    ClusterContainsServicesException: Boto3ClientError
+    ClusterContainsTasksException: Boto3ClientError
+    ClusterNotFoundException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    MissingVersionException: Boto3ClientError
+    NoUpdateAvailableException: Boto3ClientError
+    PlatformTaskDefinitionIncompatibilityException: Boto3ClientError
+    PlatformUnknownException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServerException: Boto3ClientError
+    ServiceNotActiveException: Boto3ClientError
+    ServiceNotFoundException: Boto3ClientError
+    TargetNotFoundException: Boto3ClientError
+    TaskSetNotFoundException: Boto3ClientError
+    UnsupportedFeatureException: Boto3ClientError
+    UpdateInProgressException: Boto3ClientError

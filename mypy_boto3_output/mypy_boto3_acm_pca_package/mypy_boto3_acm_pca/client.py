@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_acm_pca.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_acm_pca.paginator as paginator_scope
@@ -38,6 +42,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -2152,3 +2158,25 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    CertificateMismatchException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    InvalidArgsException: Boto3ClientError
+    InvalidArnException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidPolicyException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    InvalidStateException: Boto3ClientError
+    InvalidTagException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    MalformedCSRException: Boto3ClientError
+    MalformedCertificateException: Boto3ClientError
+    PermissionAlreadyExistsException: Boto3ClientError
+    RequestAlreadyProcessedException: Boto3ClientError
+    RequestFailedException: Boto3ClientError
+    RequestInProgressException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError

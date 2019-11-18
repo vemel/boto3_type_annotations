@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_ssm.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_ssm.paginator as paginator_scope
@@ -205,6 +209,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_resource(
         self,
@@ -22682,3 +22688,117 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    AssociatedInstances: Boto3ClientError
+    AssociationAlreadyExists: Boto3ClientError
+    AssociationDoesNotExist: Boto3ClientError
+    AssociationExecutionDoesNotExist: Boto3ClientError
+    AssociationLimitExceeded: Boto3ClientError
+    AssociationVersionLimitExceeded: Boto3ClientError
+    AutomationDefinitionNotFoundException: Boto3ClientError
+    AutomationDefinitionVersionNotFoundException: Boto3ClientError
+    AutomationExecutionLimitExceededException: Boto3ClientError
+    AutomationExecutionNotFoundException: Boto3ClientError
+    AutomationStepNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ComplianceTypeCountLimitExceededException: Boto3ClientError
+    CustomSchemaCountLimitExceededException: Boto3ClientError
+    DocumentAlreadyExists: Boto3ClientError
+    DocumentLimitExceeded: Boto3ClientError
+    DocumentPermissionLimit: Boto3ClientError
+    DocumentVersionLimitExceeded: Boto3ClientError
+    DoesNotExistException: Boto3ClientError
+    DuplicateDocumentContent: Boto3ClientError
+    DuplicateDocumentVersionName: Boto3ClientError
+    DuplicateInstanceId: Boto3ClientError
+    FeatureNotAvailableException: Boto3ClientError
+    HierarchyLevelLimitExceededException: Boto3ClientError
+    HierarchyTypeMismatchException: Boto3ClientError
+    IdempotentParameterMismatch: Boto3ClientError
+    IncompatiblePolicyException: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    InvalidActivation: Boto3ClientError
+    InvalidActivationId: Boto3ClientError
+    InvalidAggregatorException: Boto3ClientError
+    InvalidAllowedPatternException: Boto3ClientError
+    InvalidAssociation: Boto3ClientError
+    InvalidAssociationVersion: Boto3ClientError
+    InvalidAutomationExecutionParametersException: Boto3ClientError
+    InvalidAutomationSignalException: Boto3ClientError
+    InvalidAutomationStatusUpdateException: Boto3ClientError
+    InvalidCommandId: Boto3ClientError
+    InvalidDeleteInventoryParametersException: Boto3ClientError
+    InvalidDeletionIdException: Boto3ClientError
+    InvalidDocument: Boto3ClientError
+    InvalidDocumentContent: Boto3ClientError
+    InvalidDocumentOperation: Boto3ClientError
+    InvalidDocumentSchemaVersion: Boto3ClientError
+    InvalidDocumentVersion: Boto3ClientError
+    InvalidFilter: Boto3ClientError
+    InvalidFilterKey: Boto3ClientError
+    InvalidFilterOption: Boto3ClientError
+    InvalidFilterValue: Boto3ClientError
+    InvalidInstanceId: Boto3ClientError
+    InvalidInstanceInformationFilterValue: Boto3ClientError
+    InvalidInventoryGroupException: Boto3ClientError
+    InvalidInventoryItemContextException: Boto3ClientError
+    InvalidInventoryRequestException: Boto3ClientError
+    InvalidItemContentException: Boto3ClientError
+    InvalidKeyId: Boto3ClientError
+    InvalidNextToken: Boto3ClientError
+    InvalidNotificationConfig: Boto3ClientError
+    InvalidOptionException: Boto3ClientError
+    InvalidOutputFolder: Boto3ClientError
+    InvalidOutputLocation: Boto3ClientError
+    InvalidParameters: Boto3ClientError
+    InvalidPermissionType: Boto3ClientError
+    InvalidPluginName: Boto3ClientError
+    InvalidPolicyAttributeException: Boto3ClientError
+    InvalidPolicyTypeException: Boto3ClientError
+    InvalidResourceId: Boto3ClientError
+    InvalidResourceType: Boto3ClientError
+    InvalidResultAttributeException: Boto3ClientError
+    InvalidRole: Boto3ClientError
+    InvalidSchedule: Boto3ClientError
+    InvalidTarget: Boto3ClientError
+    InvalidTypeNameException: Boto3ClientError
+    InvalidUpdate: Boto3ClientError
+    InvocationDoesNotExist: Boto3ClientError
+    ItemContentMismatchException: Boto3ClientError
+    ItemSizeLimitExceededException: Boto3ClientError
+    MaxDocumentSizeExceeded: Boto3ClientError
+    OpsItemAlreadyExistsException: Boto3ClientError
+    OpsItemInvalidParameterException: Boto3ClientError
+    OpsItemLimitExceededException: Boto3ClientError
+    OpsItemNotFoundException: Boto3ClientError
+    ParameterAlreadyExists: Boto3ClientError
+    ParameterLimitExceeded: Boto3ClientError
+    ParameterMaxVersionLimitExceeded: Boto3ClientError
+    ParameterNotFound: Boto3ClientError
+    ParameterPatternMismatchException: Boto3ClientError
+    ParameterVersionLabelLimitExceeded: Boto3ClientError
+    ParameterVersionNotFound: Boto3ClientError
+    PoliciesLimitExceededException: Boto3ClientError
+    ResourceDataSyncAlreadyExistsException: Boto3ClientError
+    ResourceDataSyncCountExceededException: Boto3ClientError
+    ResourceDataSyncInvalidConfigurationException: Boto3ClientError
+    ResourceDataSyncNotFoundException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceLimitExceededException: Boto3ClientError
+    ServiceSettingNotFound: Boto3ClientError
+    StatusUnchanged: Boto3ClientError
+    SubTypeCountLimitExceededException: Boto3ClientError
+    TargetInUseException: Boto3ClientError
+    TargetNotConnected: Boto3ClientError
+    TooManyTagsError: Boto3ClientError
+    TooManyUpdates: Boto3ClientError
+    TotalSizeLimitExceededException: Boto3ClientError
+    UnsupportedFeatureRequiredException: Boto3ClientError
+    UnsupportedInventoryItemContextException: Boto3ClientError
+    UnsupportedInventorySchemaVersionException: Boto3ClientError
+    UnsupportedOperatingSystem: Boto3ClientError
+    UnsupportedParameterType: Boto3ClientError
+    UnsupportedPlatformType: Boto3ClientError

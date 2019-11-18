@@ -4,8 +4,12 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_cloudformation.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_cloudformation.paginator as paginator_scope
@@ -76,6 +80,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -7895,3 +7901,23 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AlreadyExistsException: Boto3ClientError
+    ChangeSetNotFoundException: Boto3ClientError
+    ClientError: Boto3ClientError
+    CreatedButModifiedException: Boto3ClientError
+    InsufficientCapabilitiesException: Boto3ClientError
+    InvalidChangeSetStatusException: Boto3ClientError
+    InvalidOperationException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NameAlreadyExistsException: Boto3ClientError
+    OperationIdAlreadyExistsException: Boto3ClientError
+    OperationInProgressException: Boto3ClientError
+    OperationNotFoundException: Boto3ClientError
+    StackInstanceNotFoundException: Boto3ClientError
+    StackSetNotEmptyException: Boto3ClientError
+    StackSetNotFoundException: Boto3ClientError
+    StaleRequestException: Boto3ClientError
+    TokenAlreadyExistsException: Boto3ClientError

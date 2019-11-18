@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_emr.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_emr.paginator as paginator_scope
@@ -56,6 +60,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_instance_fleet(
         self, ClusterId: str, InstanceFleet: ClientAddInstanceFleetInstanceFleetTypeDef
@@ -6765,3 +6771,10 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalServerError: Boto3ClientError
+    InternalServerException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError

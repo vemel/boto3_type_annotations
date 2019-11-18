@@ -4,6 +4,10 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_marketplacecommerceanalytics.client as client_scope
 from mypy_boto3_marketplacecommerceanalytics.type_defs import (
     ClientGenerateDataSetResponseTypeDef,
     ClientStartSupportDataExportResponseTypeDef,
@@ -14,6 +18,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -354,3 +360,8 @@ class Client(BaseClient):
             StartSupportDataExport operation. This identifier can be used to correlate a request with
             notifications from the SNS topic.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    MarketplaceCommerceAnalyticsException: Boto3ClientError

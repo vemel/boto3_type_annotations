@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_glue.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_glue.paginator as paginator_scope
@@ -160,6 +164,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def batch_create_partition(
         self,
@@ -22652,3 +22658,29 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    AlreadyExistsException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    ConcurrentRunsExceededException: Boto3ClientError
+    ConditionCheckFailureException: Boto3ClientError
+    CrawlerNotRunningException: Boto3ClientError
+    CrawlerRunningException: Boto3ClientError
+    CrawlerStoppingException: Boto3ClientError
+    EntityNotFoundException: Boto3ClientError
+    GlueEncryptionException: Boto3ClientError
+    IdempotentParameterMismatchException: Boto3ClientError
+    InternalServiceException: Boto3ClientError
+    InvalidInputException: Boto3ClientError
+    MLTransformNotReadyException: Boto3ClientError
+    NoScheduleException: Boto3ClientError
+    OperationTimeoutException: Boto3ClientError
+    ResourceNumberLimitExceededException: Boto3ClientError
+    SchedulerNotRunningException: Boto3ClientError
+    SchedulerRunningException: Boto3ClientError
+    SchedulerTransitioningException: Boto3ClientError
+    ValidationException: Boto3ClientError
+    VersionMismatchException: Boto3ClientError

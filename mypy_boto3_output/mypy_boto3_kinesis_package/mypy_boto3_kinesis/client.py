@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_kinesis.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_kinesis.paginator as paginator_scope
@@ -39,6 +43,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_tags_to_stream(self, StreamName: str, Tags: List[str]) -> None:
         """
@@ -3048,3 +3054,21 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ExpiredIteratorException: Boto3ClientError
+    ExpiredNextTokenException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    InvalidArgumentException: Boto3ClientError
+    KMSAccessDeniedException: Boto3ClientError
+    KMSDisabledException: Boto3ClientError
+    KMSInvalidStateException: Boto3ClientError
+    KMSNotFoundException: Boto3ClientError
+    KMSOptInRequired: Boto3ClientError
+    KMSThrottlingException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ProvisionedThroughputExceededException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

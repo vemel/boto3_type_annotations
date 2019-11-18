@@ -494,7 +494,7 @@ class Bucket(Boto3ServiceResource):
         CopySource: S3CopySource,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -796,7 +796,7 @@ class Bucket(Boto3ServiceResource):
         Key: str,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -837,7 +837,7 @@ class Bucket(Boto3ServiceResource):
         Key: str,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1152,7 +1152,7 @@ class Bucket(Boto3ServiceResource):
         Filename: str,
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -1193,7 +1193,7 @@ class Bucket(Boto3ServiceResource):
         Fileobj: IO[Any],
         Key: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -3648,7 +3648,7 @@ class Object(Boto3ServiceResource):
         self,
         CopySource: S3CopySource,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         SourceClient: BaseClient = None,
         Config: TransferConfig = None,
     ) -> None:
@@ -4156,7 +4156,7 @@ class Object(Boto3ServiceResource):
         self,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -4193,7 +4193,7 @@ class Object(Boto3ServiceResource):
         self,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -5526,7 +5526,7 @@ class Object(Boto3ServiceResource):
         self,
         Filename: str,
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """
@@ -5563,7 +5563,7 @@ class Object(Boto3ServiceResource):
         self,
         Fileobj: IO[Any],
         ExtraArgs: Dict = None,
-        Callback: Callable[Ellipsis, Any] = None,
+        Callback: Callable[..., Any] = None,
         Config: TransferConfig = None,
     ) -> None:
         """

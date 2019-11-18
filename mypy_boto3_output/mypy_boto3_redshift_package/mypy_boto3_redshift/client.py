@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_redshift.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_redshift.paginator as paginator_scope
@@ -108,6 +112,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def accept_reserved_node_exchange(
         self, ReservedNodeId: str, TargetReservedNodeOfferingId: str
@@ -23072,3 +23078,106 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    AccessToSnapshotDeniedFault: Boto3ClientError
+    AuthorizationAlreadyExistsFault: Boto3ClientError
+    AuthorizationNotFoundFault: Boto3ClientError
+    AuthorizationQuotaExceededFault: Boto3ClientError
+    BatchDeleteRequestSizeExceededFault: Boto3ClientError
+    BatchModifyClusterSnapshotsLimitExceededFault: Boto3ClientError
+    BucketNotFoundFault: Boto3ClientError
+    ClientError: Boto3ClientError
+    ClusterAlreadyExistsFault: Boto3ClientError
+    ClusterNotFoundFault: Boto3ClientError
+    ClusterOnLatestRevisionFault: Boto3ClientError
+    ClusterParameterGroupAlreadyExistsFault: Boto3ClientError
+    ClusterParameterGroupNotFoundFault: Boto3ClientError
+    ClusterParameterGroupQuotaExceededFault: Boto3ClientError
+    ClusterQuotaExceededFault: Boto3ClientError
+    ClusterSecurityGroupAlreadyExistsFault: Boto3ClientError
+    ClusterSecurityGroupNotFoundFault: Boto3ClientError
+    ClusterSecurityGroupQuotaExceededFault: Boto3ClientError
+    ClusterSnapshotAlreadyExistsFault: Boto3ClientError
+    ClusterSnapshotNotFoundFault: Boto3ClientError
+    ClusterSnapshotQuotaExceededFault: Boto3ClientError
+    ClusterSubnetGroupAlreadyExistsFault: Boto3ClientError
+    ClusterSubnetGroupNotFoundFault: Boto3ClientError
+    ClusterSubnetGroupQuotaExceededFault: Boto3ClientError
+    ClusterSubnetQuotaExceededFault: Boto3ClientError
+    CopyToRegionDisabledFault: Boto3ClientError
+    DependentServiceRequestThrottlingFault: Boto3ClientError
+    DependentServiceUnavailableFault: Boto3ClientError
+    EventSubscriptionQuotaExceededFault: Boto3ClientError
+    HsmClientCertificateAlreadyExistsFault: Boto3ClientError
+    HsmClientCertificateNotFoundFault: Boto3ClientError
+    HsmClientCertificateQuotaExceededFault: Boto3ClientError
+    HsmConfigurationAlreadyExistsFault: Boto3ClientError
+    HsmConfigurationNotFoundFault: Boto3ClientError
+    HsmConfigurationQuotaExceededFault: Boto3ClientError
+    InProgressTableRestoreQuotaExceededFault: Boto3ClientError
+    IncompatibleOrderableOptions: Boto3ClientError
+    InsufficientClusterCapacityFault: Boto3ClientError
+    InsufficientS3BucketPolicyFault: Boto3ClientError
+    InvalidClusterParameterGroupStateFault: Boto3ClientError
+    InvalidClusterSecurityGroupStateFault: Boto3ClientError
+    InvalidClusterSnapshotScheduleStateFault: Boto3ClientError
+    InvalidClusterSnapshotStateFault: Boto3ClientError
+    InvalidClusterStateFault: Boto3ClientError
+    InvalidClusterSubnetGroupStateFault: Boto3ClientError
+    InvalidClusterSubnetStateFault: Boto3ClientError
+    InvalidClusterTrackFault: Boto3ClientError
+    InvalidElasticIpFault: Boto3ClientError
+    InvalidHsmClientCertificateStateFault: Boto3ClientError
+    InvalidHsmConfigurationStateFault: Boto3ClientError
+    InvalidReservedNodeStateFault: Boto3ClientError
+    InvalidRestoreFault: Boto3ClientError
+    InvalidRetentionPeriodFault: Boto3ClientError
+    InvalidS3BucketNameFault: Boto3ClientError
+    InvalidS3KeyPrefixFault: Boto3ClientError
+    InvalidScheduleFault: Boto3ClientError
+    InvalidSnapshotCopyGrantStateFault: Boto3ClientError
+    InvalidSubnet: Boto3ClientError
+    InvalidSubscriptionStateFault: Boto3ClientError
+    InvalidTableRestoreArgumentFault: Boto3ClientError
+    InvalidTagFault: Boto3ClientError
+    InvalidVPCNetworkStateFault: Boto3ClientError
+    LimitExceededFault: Boto3ClientError
+    NumberOfNodesPerClusterLimitExceededFault: Boto3ClientError
+    NumberOfNodesQuotaExceededFault: Boto3ClientError
+    ReservedNodeAlreadyExistsFault: Boto3ClientError
+    ReservedNodeAlreadyMigratedFault: Boto3ClientError
+    ReservedNodeNotFoundFault: Boto3ClientError
+    ReservedNodeOfferingNotFoundFault: Boto3ClientError
+    ReservedNodeQuotaExceededFault: Boto3ClientError
+    ResizeNotFoundFault: Boto3ClientError
+    ResourceNotFoundFault: Boto3ClientError
+    SNSInvalidTopicFault: Boto3ClientError
+    SNSNoAuthorizationFault: Boto3ClientError
+    SNSTopicArnNotFoundFault: Boto3ClientError
+    ScheduleDefinitionTypeUnsupportedFault: Boto3ClientError
+    SnapshotCopyAlreadyDisabledFault: Boto3ClientError
+    SnapshotCopyAlreadyEnabledFault: Boto3ClientError
+    SnapshotCopyDisabledFault: Boto3ClientError
+    SnapshotCopyGrantAlreadyExistsFault: Boto3ClientError
+    SnapshotCopyGrantNotFoundFault: Boto3ClientError
+    SnapshotCopyGrantQuotaExceededFault: Boto3ClientError
+    SnapshotScheduleAlreadyExistsFault: Boto3ClientError
+    SnapshotScheduleNotFoundFault: Boto3ClientError
+    SnapshotScheduleQuotaExceededFault: Boto3ClientError
+    SnapshotScheduleUpdateInProgressFault: Boto3ClientError
+    SourceNotFoundFault: Boto3ClientError
+    SubnetAlreadyInUse: Boto3ClientError
+    SubscriptionAlreadyExistFault: Boto3ClientError
+    SubscriptionCategoryNotFoundFault: Boto3ClientError
+    SubscriptionEventIdNotFoundFault: Boto3ClientError
+    SubscriptionNotFoundFault: Boto3ClientError
+    SubscriptionSeverityNotFoundFault: Boto3ClientError
+    TableLimitExceededFault: Boto3ClientError
+    TableRestoreNotFoundFault: Boto3ClientError
+    TagLimitExceededFault: Boto3ClientError
+    UnauthorizedOperation: Boto3ClientError
+    UnknownSnapshotCopyRegionFault: Boto3ClientError
+    UnsupportedOperationFault: Boto3ClientError
+    UnsupportedOptionFault: Boto3ClientError

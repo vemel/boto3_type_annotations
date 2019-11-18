@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_appsync.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_appsync.paginator as paginator_scope
@@ -63,6 +67,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -5190,3 +5196,18 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    ApiKeyLimitExceededException: Boto3ClientError
+    ApiKeyValidityOutOfBoundsException: Boto3ClientError
+    ApiLimitExceededException: Boto3ClientError
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    GraphQLSchemaException: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    UnauthorizedException: Boto3ClientError

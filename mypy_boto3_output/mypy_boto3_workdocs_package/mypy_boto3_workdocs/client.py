@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_workdocs.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_workdocs.paginator as paginator_scope
@@ -45,6 +49,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def abort_document_version_upload(
         self, DocumentId: str, VersionId: str, AuthenticationToken: str = None
@@ -5290,3 +5296,32 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    ConflictingOperationException: Boto3ClientError
+    CustomMetadataLimitExceededException: Boto3ClientError
+    DeactivatingLastSystemUserException: Boto3ClientError
+    DocumentLockedForCommentsException: Boto3ClientError
+    DraftUploadOutOfSyncException: Boto3ClientError
+    EntityAlreadyExistsException: Boto3ClientError
+    EntityNotExistsException: Boto3ClientError
+    FailedDependencyException: Boto3ClientError
+    IllegalUserStateException: Boto3ClientError
+    InvalidArgumentException: Boto3ClientError
+    InvalidCommentOperationException: Boto3ClientError
+    InvalidOperationException: Boto3ClientError
+    InvalidPasswordException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ProhibitedStateException: Boto3ClientError
+    RequestedEntityTooLargeException: Boto3ClientError
+    ResourceAlreadyCheckedOutException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    StorageLimitExceededException: Boto3ClientError
+    StorageLimitWillExceedException: Boto3ClientError
+    TooManyLabelsException: Boto3ClientError
+    TooManySubscriptionsException: Boto3ClientError
+    UnauthorizedOperationException: Boto3ClientError
+    UnauthorizedResourceAccessException: Boto3ClientError

@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_dax.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_dax.paginator as paginator_scope
@@ -42,6 +46,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -3662,3 +3668,33 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ClusterAlreadyExistsFault: Boto3ClientError
+    ClusterNotFoundFault: Boto3ClientError
+    ClusterQuotaForCustomerExceededFault: Boto3ClientError
+    InsufficientClusterCapacityFault: Boto3ClientError
+    InvalidARNFault: Boto3ClientError
+    InvalidClusterStateFault: Boto3ClientError
+    InvalidParameterCombinationException: Boto3ClientError
+    InvalidParameterGroupStateFault: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    InvalidSubnet: Boto3ClientError
+    InvalidVPCNetworkStateFault: Boto3ClientError
+    NodeNotFoundFault: Boto3ClientError
+    NodeQuotaForClusterExceededFault: Boto3ClientError
+    NodeQuotaForCustomerExceededFault: Boto3ClientError
+    ParameterGroupAlreadyExistsFault: Boto3ClientError
+    ParameterGroupNotFoundFault: Boto3ClientError
+    ParameterGroupQuotaExceededFault: Boto3ClientError
+    ServiceLinkedRoleNotFoundFault: Boto3ClientError
+    SubnetGroupAlreadyExistsFault: Boto3ClientError
+    SubnetGroupInUseFault: Boto3ClientError
+    SubnetGroupNotFoundFault: Boto3ClientError
+    SubnetGroupQuotaExceededFault: Boto3ClientError
+    SubnetInUse: Boto3ClientError
+    SubnetQuotaExceededFault: Boto3ClientError
+    TagNotFoundFault: Boto3ClientError
+    TagQuotaPerResourceExceeded: Boto3ClientError

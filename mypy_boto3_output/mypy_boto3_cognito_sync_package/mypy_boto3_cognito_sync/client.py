@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_cognito_sync.client as client_scope
 from mypy_boto3_cognito_sync.type_defs import (
     ClientBulkPublishResponseTypeDef,
     ClientDeleteDatasetResponseTypeDef,
@@ -28,6 +32,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def bulk_publish(self, IdentityPoolId: str) -> ClientBulkPublishResponseTypeDef:
         """
@@ -1407,3 +1413,20 @@ class Client(BaseClient):
                 - **DeviceLastModifiedDate** *(datetime) --* The last modified date of the client device.
 
         """
+
+
+class Exceptions:
+    AlreadyStreamedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    DuplicateRequestException: Boto3ClientError
+    InternalErrorException: Boto3ClientError
+    InvalidConfigurationException: Boto3ClientError
+    InvalidLambdaFunctionOutputException: Boto3ClientError
+    InvalidParameterException: Boto3ClientError
+    LambdaThrottledException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    NotAuthorizedException: Boto3ClientError
+    ResourceConflictException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    TooManyRequestsException: Boto3ClientError

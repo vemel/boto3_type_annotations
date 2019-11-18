@@ -5,7 +5,11 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_kinesisanalyticsv2.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_kinesisanalyticsv2.paginator as paginator_scope
@@ -50,6 +54,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_application_cloud_watch_logging_option(
         self,
@@ -6656,3 +6662,20 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    CodeValidationException: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    InvalidApplicationConfigurationException: Boto3ClientError
+    InvalidArgumentException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceProvisionedThroughputExceededException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    TooManyTagsException: Boto3ClientError
+    UnableToDetectSchemaException: Boto3ClientError
+    UnsupportedOperationException: Boto3ClientError

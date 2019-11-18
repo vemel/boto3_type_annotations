@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_iotevents.client as client_scope
 from mypy_boto3_iotevents.type_defs import (
     ClientCreateDetectorModelResponseTypeDef,
     ClientCreateDetectorModeldetectorModelDefinitionTypeDef,
@@ -30,6 +34,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -3748,3 +3754,16 @@ class Client(BaseClient):
                 The status of the input.
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    InternalFailureException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceInUseException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    ThrottlingException: Boto3ClientError
+    UnsupportedOperationException: Boto3ClientError

@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_chime.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_chime.paginator as paginator_scope
@@ -84,6 +88,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_phone_number_with_user(
         self, AccountId: str, UserId: str, E164PhoneNumber: str
@@ -6012,3 +6018,18 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    BadRequestException: Boto3ClientError
+    ClientError: Boto3ClientError
+    ConflictException: Boto3ClientError
+    ForbiddenException: Boto3ClientError
+    NotFoundException: Boto3ClientError
+    ResourceLimitExceededException: Boto3ClientError
+    ServiceFailureException: Boto3ClientError
+    ServiceUnavailableException: Boto3ClientError
+    ThrottledClientException: Boto3ClientError
+    UnauthorizedClientException: Boto3ClientError
+    UnprocessableEntityException: Boto3ClientError

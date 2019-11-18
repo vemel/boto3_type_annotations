@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_managedblockchain.client as client_scope
 from mypy_boto3_managedblockchain.type_defs import (
     ClientCreateMemberMemberConfigurationTypeDef,
     ClientCreateMemberResponseTypeDef,
@@ -31,6 +35,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -1992,3 +1998,16 @@ class Client(BaseClient):
 
           - *(dict) --*
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    ClientError: Boto3ClientError
+    IllegalActionException: Boto3ClientError
+    InternalServiceErrorException: Boto3ClientError
+    InvalidRequestException: Boto3ClientError
+    ResourceAlreadyExistsException: Boto3ClientError
+    ResourceLimitExceededException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    ResourceNotReadyException: Boto3ClientError
+    ThrottlingException: Boto3ClientError

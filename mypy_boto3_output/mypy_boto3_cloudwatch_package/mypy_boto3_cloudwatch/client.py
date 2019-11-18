@@ -5,8 +5,12 @@ from datetime import datetime
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
+
+# pylint: disable=import-self
+import mypy_boto3_cloudwatch.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_cloudwatch.paginator as paginator_scope
@@ -46,6 +50,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -3960,3 +3966,20 @@ class Client(BaseClient):
         :returns: The specified waiter object.
         :rtype: botocore.waiter.Waiter
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    ConcurrentModificationException: Boto3ClientError
+    DashboardInvalidInputError: Boto3ClientError
+    DashboardNotFoundError: Boto3ClientError
+    InternalServiceFault: Boto3ClientError
+    InvalidFormatFault: Boto3ClientError
+    InvalidNextToken: Boto3ClientError
+    InvalidParameterCombinationException: Boto3ClientError
+    InvalidParameterValueException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    LimitExceededFault: Boto3ClientError
+    MissingRequiredParameterException: Boto3ClientError
+    ResourceNotFound: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError

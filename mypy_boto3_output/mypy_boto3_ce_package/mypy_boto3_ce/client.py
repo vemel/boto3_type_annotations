@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_ce.client as client_scope
 from mypy_boto3_ce.type_defs import (
     ClientGetCostAndUsageFilterTypeDef,
     ClientGetCostAndUsageGroupByTypeDef,
@@ -52,6 +56,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def can_paginate(self, operation_name: str) -> None:
         """
@@ -5910,3 +5916,13 @@ class Client(BaseClient):
                   The upper limit for the prediction interval.
 
         """
+
+
+class Exceptions:
+    BillExpirationException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DataUnavailableException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    RequestChangedException: Boto3ClientError
+    UnresolvableUsageUnitException: Boto3ClientError

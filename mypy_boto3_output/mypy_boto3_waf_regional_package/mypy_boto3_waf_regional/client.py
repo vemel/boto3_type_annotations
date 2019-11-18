@@ -3,6 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
+
+# pylint: disable=import-self
+import mypy_boto3_waf_regional.client as client_scope
 from mypy_boto3_waf_regional.type_defs import (
     ClientCreateByteMatchSetResponseTypeDef,
     ClientCreateGeoMatchSetResponseTypeDef,
@@ -105,6 +109,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def associate_web_acl(self, WebACLId: str, ResourceArn: str) -> Dict[str, Any]:
         """
@@ -11034,3 +11040,26 @@ class Client(BaseClient):
               GetChangeTokenStatus .
 
         """
+
+
+class Exceptions:
+    ClientError: Boto3ClientError
+    WAFBadRequestException: Boto3ClientError
+    WAFDisallowedNameException: Boto3ClientError
+    WAFInternalErrorException: Boto3ClientError
+    WAFInvalidAccountException: Boto3ClientError
+    WAFInvalidOperationException: Boto3ClientError
+    WAFInvalidParameterException: Boto3ClientError
+    WAFInvalidPermissionPolicyException: Boto3ClientError
+    WAFInvalidRegexPatternException: Boto3ClientError
+    WAFLimitsExceededException: Boto3ClientError
+    WAFNonEmptyEntityException: Boto3ClientError
+    WAFNonexistentContainerException: Boto3ClientError
+    WAFNonexistentItemException: Boto3ClientError
+    WAFReferencedItemException: Boto3ClientError
+    WAFServiceLinkedRoleErrorException: Boto3ClientError
+    WAFStaleDataException: Boto3ClientError
+    WAFSubscriptionNotFoundException: Boto3ClientError
+    WAFTagOperationException: Boto3ClientError
+    WAFTagOperationInternalErrorException: Boto3ClientError
+    WAFUnavailableEntityException: Boto3ClientError

@@ -4,7 +4,11 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from typing_extensions import Literal, overload
 from botocore.client import BaseClient
+from botocore.exceptions import ClientError as Boto3ClientError
 from botocore.paginate import Paginator as Boto3Paginator
+
+# pylint: disable=import-self
+import mypy_boto3_clouddirectory.client as client_scope
 
 # pylint: disable=import-self
 import mypy_boto3_clouddirectory.paginator as paginator_scope
@@ -126,6 +130,8 @@ __all__ = ("Client",)
 
 
 class Client(BaseClient):
+    exceptions: client_scope.Exceptions
+
     # pylint: disable=arguments-differ,redefined-outer-name,redefined-builtin
     def add_facet_to_object(
         self,
@@ -11314,3 +11320,42 @@ class Client(BaseClient):
         :rtype: L{botocore.paginate.Paginator}
         :return: A paginator object.
         """
+
+
+class Exceptions:
+    AccessDeniedException: Boto3ClientError
+    BatchWriteException: Boto3ClientError
+    CannotListParentOfRootException: Boto3ClientError
+    ClientError: Boto3ClientError
+    DirectoryAlreadyExistsException: Boto3ClientError
+    DirectoryDeletedException: Boto3ClientError
+    DirectoryNotDisabledException: Boto3ClientError
+    DirectoryNotEnabledException: Boto3ClientError
+    FacetAlreadyExistsException: Boto3ClientError
+    FacetInUseException: Boto3ClientError
+    FacetNotFoundException: Boto3ClientError
+    FacetValidationException: Boto3ClientError
+    IncompatibleSchemaException: Boto3ClientError
+    IndexedAttributeMissingException: Boto3ClientError
+    InternalServiceException: Boto3ClientError
+    InvalidArnException: Boto3ClientError
+    InvalidAttachmentException: Boto3ClientError
+    InvalidFacetUpdateException: Boto3ClientError
+    InvalidNextTokenException: Boto3ClientError
+    InvalidRuleException: Boto3ClientError
+    InvalidSchemaDocException: Boto3ClientError
+    InvalidTaggingRequestException: Boto3ClientError
+    LimitExceededException: Boto3ClientError
+    LinkNameAlreadyInUseException: Boto3ClientError
+    NotIndexException: Boto3ClientError
+    NotNodeException: Boto3ClientError
+    NotPolicyException: Boto3ClientError
+    ObjectAlreadyDetachedException: Boto3ClientError
+    ObjectNotDetachedException: Boto3ClientError
+    ResourceNotFoundException: Boto3ClientError
+    RetryableConflictException: Boto3ClientError
+    SchemaAlreadyExistsException: Boto3ClientError
+    SchemaAlreadyPublishedException: Boto3ClientError
+    StillContainsLinksException: Boto3ClientError
+    UnsupportedIndexTypeException: Boto3ClientError
+    ValidationException: Boto3ClientError
