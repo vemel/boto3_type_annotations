@@ -34,9 +34,7 @@ class Waiter(ClassRecord):
     )
 
     def get_import_record(self) -> InternalImportRecord:
-        return InternalImportRecord(
-            source=ServiceModuleName.waiter.value, name=self.name,
-        )
+        return InternalImportRecord(ServiceModuleName.waiter, name=self.name)
 
     def get_client_method(self) -> Method:
         return Method(

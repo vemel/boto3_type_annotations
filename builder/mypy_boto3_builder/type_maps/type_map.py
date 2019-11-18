@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Callable, IO, List, Dict, Union
 
 from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.internal_import import InternalImport
@@ -20,7 +21,7 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     "boolean": TypeClass(bool),
     "function": TypeSubscript(Callable, [TypeConstant(...), TypeAnnotation.Any()]),
     "botocore or boto3 Client": ExternalImport(
-        source="botocore.client", name="BaseClient"
+        source=ImportString("botocore", "client"), name="BaseClient"
     ),
     "datetime": TypeClass(datetime),
     "timestamp": TypeClass(datetime),
@@ -38,18 +39,18 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
     ),
     "list": TypeSubscript(List, [TypeAnnotation.Any()]),
     "L{botocore.paginate.Paginator}": ExternalImport(
-        source="botocore.paginate", name="Paginator"
+        source=ImportString("botocore", "paginate"), name="Paginator"
     ),
     ":py:class:`ResourceCollection`": ExternalImport(
-        source="boto3.resources.collection", name="ResourceCollection"
+        source=ImportString("boto3", "resources", "collection"), name="ResourceCollection"
     ),
     "JSON serializable": TypeClass(str),
     "string": TypeClass(str),
     "str": TypeClass(str),
     "boto3.s3.transfer.TransferConfig": ExternalImport(
-        source="boto3.s3.transfer", name="TransferConfig"
+        source=ImportString("boto3", "s3", "transfer"), name="TransferConfig"
     ),
-    "botocore.waiter.Waiter": ExternalImport(source="botocore.waiter", name="Waiter"),
+    "botocore.waiter.Waiter": ExternalImport(source=ImportString("botocore", "waiter"), name="Waiter"),
     "bytes or seekable file-like object": TypeSubscript(
         Union, [TypeClass(bytes), TypeAnnotation(IO)]
     ),
@@ -201,7 +202,7 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
         List,
         [
             ExternalImport(
-                source="boto3.resources.base",
+                ImportString("boto3", "resources", "base"),
                 name="ServiceResource",
                 alias="Boto3ServiceResource",
             )
@@ -449,7 +450,7 @@ TYPE_MAP: Dict[str, FakeAnnotation] = {
         List, [InternalImport("ObjectSummary", ServiceName.s3)]
     ),
     "botocore.waiter.SingleWaiterConfig": ExternalImport(
-        source="botocore.waiter", name="SingleWaiterConfig"
+        source=ImportString("botocore", "waiter"), name="SingleWaiterConfig"
     ),
     "callable": TypeSubscript(
         Callable, [TypeConstant(...), TypeAnnotation.Any()]

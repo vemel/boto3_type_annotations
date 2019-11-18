@@ -12,7 +12,7 @@ Wrapper for `Literal` type annotations like `Literal['a', 'b']`
 
 ## TypeLiteral
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L12)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L13)
 
 ```python
 class TypeLiteral(FakeAnnotation):
@@ -27,7 +27,7 @@ Wrapper for `Literal` type annotations like `Literal['a', 'b']`
 
 ### TypeLiteral().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L39)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L40)
 
 ```python
 def copy() -> TypeLiteral:
@@ -37,7 +37,7 @@ Create a copy of type annotation wrapper.
 
 ### TypeLiteral().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L33)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L34)
 
 ```python
 def get_import_record() -> ImportRecord:
@@ -47,7 +47,7 @@ Get import record required for using type annotation.
 
 ### TypeLiteral().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L23)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_literal.py#L24)
 
 ```python
 def render() -> str:

@@ -5,6 +5,7 @@ from typing import List, Set, Optional, Iterable, Dict
 
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.import_record_group import ImportRecordGroup
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
@@ -67,14 +68,19 @@ class ServiceModule(ModuleRecord):
         import_records: Set[ImportRecord] = set()
         import_records.add(
             ImportRecord(
-                f"{self.service_name.module_name}.{ServiceModuleName.client.value}",
+                ImportString(
+                    self.service_name.module_name, ServiceModuleName.client.name
+                ),
                 self.client.name,
             )
         )
         if self.service_resource:
             import_records.add(
                 ImportRecord(
-                    f"{self.service_name.module_name}.{ServiceModuleName.service_resource.value}",
+                    ImportString(
+                        self.service_name.module_name,
+                        ServiceModuleName.service_resource.name,
+                    ),
                     self.service_resource.name,
                 )
             )
@@ -83,7 +89,9 @@ class ServiceModule(ModuleRecord):
                 continue
             import_records.add(
                 ImportRecord(
-                    f"{self.service_name.module_name}.{ServiceModuleName.helpers.value}",
+                    ImportString(
+                        self.service_name.module_name, ServiceModuleName.helpers.name
+                    ),
                     helper_function.name,
                 )
             )
@@ -149,7 +157,9 @@ class ServiceModule(ModuleRecord):
 
     def get_type_defs_required_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = set()
-        import_records.add(ImportRecord(source="typing_extensions", name="TypedDict"))
+        import_records.add(
+            ImportRecord(source=ImportString("typing_extensions"), name="TypedDict")
+        )
         for type_dict in self.typed_dicts:
             for type_annotation in type_dict.get_children_types():
                 import_record = type_annotation.get_import_record()
@@ -161,9 +171,9 @@ class ServiceModule(ModuleRecord):
 
     def get_helpers_import_record_groups(self) -> List[ImportRecordGroup]:
         import_records: Set[ImportRecord] = set()
-        import_records.add(ImportRecord("boto3"))
-        import_records.add(ImportRecord("typing", "Dict"))
-        import_records.add(ImportRecord("typing", "Any"))
+        import_records.add(ImportRecord(ImportString("boto3")))
+        import_records.add(ImportRecord(ImportString("typing"), "Dict"))
+        import_records.add(ImportRecord(ImportString("typing"), "Any"))
         for helper_function in self.helper_functions:
             for type_annotation in helper_function.get_types():
                 import_record = type_annotation.get_import_record()

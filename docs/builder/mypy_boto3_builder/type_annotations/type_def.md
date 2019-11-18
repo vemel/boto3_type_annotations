@@ -9,7 +9,7 @@ Wrapper for type annotations defined in `mypy_boto3.type_defs` module.
 
 ## TypeDef
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_def.py#L8)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/type_def.py#L10)
 
 ```python
 class TypeDef(ExternalImport):

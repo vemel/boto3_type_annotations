@@ -1,7 +1,9 @@
 """
 Helper for Python import strings with not set master module name.
 """
+from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 
 
 class InternalImportRecord(ImportRecord):
@@ -13,6 +15,11 @@ class InternalImportRecord(ImportRecord):
 
     _is_internal = True
 
+    def __init__(
+        self, service_module_name: ServiceModuleName, name: str = "", alias: str = ""
+    ):
+        super().__init__(ImportString(service_module_name.name), name=name, alias=alias)
+
     def get_external(self, module_name: str) -> ImportRecord:
         """
         Get full import record with `module_name` set as master module.
@@ -23,5 +30,5 @@ class InternalImportRecord(ImportRecord):
         Returns:
             A new non-internal ImportRecord.
         """
-        source = f"{module_name}.{self.source}"
+        source = ImportString(module_name) + self.source
         return ImportRecord(source=source, name=self.name, alias=self.alias,)

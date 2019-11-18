@@ -3,7 +3,7 @@ Wrapper for Python import strings.
 """
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, List
 
 
 class ImportString:
@@ -28,8 +28,23 @@ class ImportString:
         'my.name.test'
     """
 
-    def __init__(self, import_string: str) -> None:
-        self.parts = [i for i in import_string.split(".") if i]
+    def __init__(self, master_name: str, *parts: str) -> None:
+        self.parts: List[str] = []
+        all_parts = [master_name, *parts]
+        for part in all_parts:
+            if not part or "." in part:
+                raise ValueError(f"Invalid ImportString parts: {parts}")
+            self.parts.append(part)
+
+    @classmethod
+    def from_str(cls, import_string: str) -> ImportString:
+        return cls(*import_string.split("."))
+
+    @classmethod
+    def empty(cls) -> ImportString:
+        result = cls("fake")
+        result.parts.clear()
+        return result
 
     def __bool__(self) -> bool:
         return bool(self.parts)
@@ -45,6 +60,10 @@ class ImportString:
 
     def __gt__(self, other: Any) -> bool:
         return str(self) > str(other)
+
+    def __add__(self, other: ImportString) -> ImportString:
+        parts = self.parts + other.parts
+        return ImportString(*parts)
 
     def startswith(self, other: ImportString) -> bool:
         """

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
@@ -34,7 +35,7 @@ class TypeLiteral(FakeAnnotation):
         """
         Get import record required for using type annotation.
         """
-        return ImportRecord(source="typing_extensions", name="Literal")
+        return ImportRecord(source=ImportString("typing_extensions"), name="Literal")
 
     def copy(self) -> TypeLiteral:
         """

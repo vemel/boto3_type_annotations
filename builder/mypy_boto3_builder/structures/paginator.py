@@ -34,9 +34,7 @@ class Paginator(ClassRecord):
     )
 
     def get_import_record(self) -> InternalImportRecord:
-        return InternalImportRecord(
-            source=ServiceModuleName.paginator.value, name=self.name,
-        )
+        return InternalImportRecord(ServiceModuleName.paginator, name=self.name)
 
     def get_client_method(self) -> Method:
         return Method(

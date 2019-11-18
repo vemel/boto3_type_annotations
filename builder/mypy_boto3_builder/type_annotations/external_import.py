@@ -4,6 +4,7 @@ Wrapper for type annotations imported from 3rd party libraries, like `boto3.serv
 from __future__ import annotations
 
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
 
@@ -18,7 +19,7 @@ class ExternalImport(FakeAnnotation):
         alias -- Import local name.
     """
 
-    def __init__(self, source: str, name: str = "", alias: str = "") -> None:
+    def __init__(self, source: ImportString, name: str = "", alias: str = "") -> None:
         self.source = source
         self.name = name
         self.alias = alias

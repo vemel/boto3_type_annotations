@@ -31,8 +31,8 @@ class ImportRecord:
         ImportString("botocore"),
     )
 
-    def __init__(self, source: str, name: str = "", alias: str = "") -> None:
-        self.source = ImportString(source)
+    def __init__(self, source: ImportString, name: str = "", alias: str = "") -> None:
+        self.source = source
         self.name = name
         self.alias = alias
 
@@ -41,7 +41,7 @@ class ImportRecord:
 
     @classmethod
     def empty(cls) -> ImportRecord:
-        return cls("")
+        return cls(ImportString.empty())
 
     def render(self) -> str:
         if self.name and self.alias:

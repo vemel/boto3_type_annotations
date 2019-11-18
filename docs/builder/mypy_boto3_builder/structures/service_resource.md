@@ -13,7 +13,7 @@ Boto3 ServiceResource.
 
 ## ServiceResource
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L18)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L20)
 
 ```python
 dataclass
@@ -24,7 +24,7 @@ Boto3 ServiceResource.
 
 ### ServiceResource().get_all_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L61)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L65)
 
 ```python
 def get_all_names() -> List[str]:
@@ -32,7 +32,7 @@ def get_all_names() -> List[str]:
 
 ### ServiceResource().get_collections
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L69)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L73)
 
 ```python
 def get_collections() -> List[Collection]:
@@ -40,7 +40,7 @@ def get_collections() -> List[Collection]:
 
 ### ServiceResource().get_import_records
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L51)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L53)
 
 ```python
 def get_import_records() -> Set[ImportRecord]:
@@ -48,7 +48,7 @@ def get_import_records() -> Set[ImportRecord]:
 
 ### ServiceResource().get_types
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L42)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/service_resource.py#L44)
 
 ```python
 def get_types() -> Set[FakeAnnotation]:

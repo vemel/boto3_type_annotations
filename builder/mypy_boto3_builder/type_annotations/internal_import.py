@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Optional
 
 from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.internal_import_record import (
     InternalImportRecord,
@@ -45,7 +46,7 @@ class InternalImport(FakeAnnotation):
 
     @property
     def scope(self) -> str:
-        return f"{self.module_name.value}_scope"
+        return f"{self.module_name.name}_scope"
 
     def get_import_record(self) -> ImportRecord:
         """
@@ -53,10 +54,12 @@ class InternalImport(FakeAnnotation):
         """
         if self.service_name is not None:
             return ImportRecord(
-                source=f"{self.service_name.module_name}.{self.module_name.value}",
+                source=ImportString(
+                    self.service_name.module_name, self.module_name.name
+                ),
                 alias=self.scope,
             )
-        return InternalImportRecord(source=self.module_name.value, alias=self.scope,)
+        return InternalImportRecord(self.module_name, alias=self.scope)
 
     def copy(self) -> InternalImport:
         """

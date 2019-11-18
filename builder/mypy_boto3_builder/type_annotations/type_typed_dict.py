@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from typing import Iterable, Set, List
 
-from mypy_boto3_builder.constants import TYPE_DEFS_NAME
+from mypy_boto3_builder.enums.service_module_name import ServiceModuleName
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.import_helpers.internal_import_record import (
     InternalImportRecord,
@@ -71,7 +71,7 @@ class TypeTypedDict(FakeAnnotation):
         """
         Get import record required for using type annotation.
         """
-        return InternalImportRecord(source=TYPE_DEFS_NAME, name=self.name)
+        return InternalImportRecord(ServiceModuleName.type_defs, name=self.name)
 
     def get_types(self) -> Set[FakeAnnotation]:
         """

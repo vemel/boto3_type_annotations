@@ -13,7 +13,7 @@ Wrapper for simple type annotations from this module.
 
 ## InternalImport
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L17)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L18)
 
 ```python
 class InternalImport(FakeAnnotation):
@@ -34,7 +34,7 @@ Wrapper for simple type annotations from this module.
 
 ### InternalImport().copy
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L61)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L64)
 
 ```python
 def copy() -> InternalImport:
@@ -44,7 +44,7 @@ Create a copy of type annotation wrapper.
 
 ### InternalImport().get_import_record
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L50)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L51)
 
 ```python
 def get_import_record() -> ImportRecord:
@@ -54,7 +54,7 @@ Get import record required for using type annotation.
 
 ### InternalImport().render
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L37)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L38)
 
 ```python
 def render() -> str:
@@ -68,7 +68,7 @@ A string with a valid type annotation.
 
 ### InternalImport().scope
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L46)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/type_annotations/internal_import.py#L47)
 
 ```python
 @property

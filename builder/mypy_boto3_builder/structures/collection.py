@@ -4,6 +4,7 @@ Boto3 ServiceResource or Resource collection.
 from dataclasses import dataclass, field
 from typing import Set, List
 
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.type_annotation import TypeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
@@ -21,7 +22,8 @@ class Collection(ClassRecord):
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
             ExternalImport(
-                source="boto3.resources.collection", name="ResourceCollection",
+                source=ImportString("boto3", "resources", "collection"),
+                name="ResourceCollection",
             )
         ]
     )

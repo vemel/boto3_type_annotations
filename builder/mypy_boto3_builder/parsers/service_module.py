@@ -23,6 +23,7 @@ from mypy_boto3_builder.type_annotations.type_class import TypeClass
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.type_annotations.type_constant import TypeConstant
 from mypy_boto3_builder.type_annotations.type_subscript import TypeSubscript
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.utils.strings import clean_doc
 from mypy_boto3_builder.parsers.client import parse_client
 from mypy_boto3_builder.parsers.service_resource import parse_service_resource
@@ -149,7 +150,7 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
         docstring=f"Equivalent of `boto3.client('{service_name.boto3_name}')`, returns a correct type.",
         arguments=helper_arguments,
         return_type=ExternalImport(
-            f"{service_name.module_name}.{ServiceModuleName.client.value}",
+            ImportString(service_name.module_name, ServiceModuleName.client.name),
             result.client.name,
         ),
         body=get_helper_body(helper_arguments, "client", service_name),
@@ -161,7 +162,9 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
             docstring=f"Equivalent of `boto3.resource('{service_name.boto3_name}')`, returns a correct type.",
             arguments=helper_arguments,
             return_type=ExternalImport(
-                f"{service_name.module_name}.{ServiceModuleName.service_resource.value}",
+                ImportString(
+                    service_name.module_name, ServiceModuleName.service_resource.name
+                ),
                 result.service_resource.name,
             ),
             body=get_helper_body(helper_arguments, "resource", service_name),
@@ -177,13 +180,17 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                     Argument(
                         name="client",
                         type=ExternalImport(
-                            f"{service_name.module_name}.{ServiceModuleName.client.value}",
+                            ImportString(
+                                service_name.module_name, ServiceModuleName.client.name
+                            ),
                             result.client.name,
                         ),
                     )
                 ],
                 return_type=ExternalImport(
-                    f"{service_name.module_name}.{ServiceModuleName.paginator.value}",
+                    ImportString(
+                        service_name.module_name, ServiceModuleName.paginator.name
+                    ),
                     paginator.name,
                 ),
                 body=f"return client.get_paginator('{paginator.operation_name}')",
@@ -199,13 +206,17 @@ def parse_service_module(session: Session, service_name: ServiceName) -> Service
                     Argument(
                         name="client",
                         type=ExternalImport(
-                            f"{service_name.module_name}.{ServiceModuleName.client.value}",
+                            ImportString(
+                                service_name.module_name, ServiceModuleName.client.name
+                            ),
                             result.client.name,
                         ),
                     )
                 ],
                 return_type=ExternalImport(
-                    f"{service_name.module_name}.{ServiceModuleName.waiter.value}",
+                    ImportString(
+                        service_name.module_name, ServiceModuleName.waiter.name
+                    ),
                     waiter.name,
                 ),
                 body=f"return client.get_waiter('{waiter.waiter_name}')",

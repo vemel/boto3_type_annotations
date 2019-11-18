@@ -6,6 +6,7 @@ from __future__ import annotations
 from typing import Union, Optional, Any, Dict, List, Callable, IO
 from typing_extensions import overload
 
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.import_helpers.import_record import ImportRecord
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 
@@ -66,7 +67,7 @@ class TypeAnnotation(FakeAnnotation):
         source = "typing"
         if self.wrapped_type is overload:
             source = "typing_extensions"
-        return ImportRecord(source=source, name=self.get_import_name())
+        return ImportRecord(source=ImportString(source), name=self.get_import_name())
 
     def is_dict(self) -> bool:
         return self.wrapped_type is Dict

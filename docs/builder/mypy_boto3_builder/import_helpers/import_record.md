@@ -24,7 +24,11 @@ Helper for Python import strings.
 dataclass
 total_ordering
 class ImportRecord():
-    def __init__(source: str, name: str = '', alias: str = '') -> None:
+    def __init__(
+        source: ImportString,
+        name: str = '',
+        alias: str = '',
+    ) -> None:
 ```
 
 Helper for Python import strings.

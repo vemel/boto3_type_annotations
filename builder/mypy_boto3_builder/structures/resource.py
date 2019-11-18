@@ -4,6 +4,7 @@ Boto3 ServiceResource sub-Resource.
 from dataclasses import dataclass, field
 from typing import Set, List
 
+from mypy_boto3_builder.import_helpers.import_string import ImportString
 from mypy_boto3_builder.type_annotations.fake_annotation import FakeAnnotation
 from mypy_boto3_builder.type_annotations.external_import import ExternalImport
 from mypy_boto3_builder.structures.class_record import ClassRecord
@@ -19,7 +20,7 @@ class Resource(ClassRecord):
     bases: List[FakeAnnotation] = field(
         default_factory=lambda: [
             ExternalImport(
-                source="boto3.resources.base",
+                source=ImportString("boto3", "resources", "base"),
                 name="ServiceResource",
                 alias="Boto3ServiceResource",
             )
