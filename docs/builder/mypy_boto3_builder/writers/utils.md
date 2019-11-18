@@ -10,7 +10,7 @@ Jinja2 renderer and black formatter.
 
 ## blackify
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L26)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L28)
 
 ```python
 def blackify(content: str, file_path: Path, fast: bool = True) -> str:
@@ -36,10 +36,14 @@ Formatted python code.
 
 ## render_jinja2_template
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L58)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/writers/utils.py#L60)
 
 ```python
-def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:
+def render_jinja2_template(
+    template_path: Path,
+    module: Optional[ModuleRecord] = None,
+    service_name: Optional[ServiceName] = None,
+) -> str:
 ```
 
 Render Jinja2 template to a string.
@@ -47,7 +51,8 @@ Render Jinja2 template to a string.
 #### Arguments
 
 - `template_path` - Relative path to template in `TEMPLATES_PATH`
-- `kwargs` - Format arguments.
+- `module` - Module record.
+- `service_name` - ServiceName instance.
 
 #### Returns
 

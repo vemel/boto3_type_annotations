@@ -8,10 +8,11 @@ from typing import List
 from mypy_boto3_builder.enums.service_name import ServiceName
 from mypy_boto3_builder.constants import PYPI_NAME, MODULE_NAME
 from mypy_boto3_builder.structures.service_module import ServiceModule
+from mypy_boto3_builder.structures.module_record import ModuleRecord
 
 
 @dataclass
-class MasterModule:
+class MasterModule(ModuleRecord):
     """
     Structure for boto3-stubs module.
     """

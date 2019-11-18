@@ -15,6 +15,7 @@ Structures produced by parsers.
         - [Function](function.md#function)
         - [MasterModule](master_module.md#mastermodule)
         - [Method](method.md#method)
+        - [ModuleRecord](module_record.md#modulerecord)
         - [Paginator](paginator.md#paginator)
         - [Resource](resource.md#resource)
         - [ServiceModule](service_module.md#servicemodule)

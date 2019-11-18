@@ -10,18 +10,18 @@ Structure for boto3-stubs module.
 
 ## MasterModule
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_module.py#L13)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_module.py#L14)
 
 ```python
 dataclass
-class MasterModule():
+class MasterModule(ModuleRecord):
 ```
 
 Structure for boto3-stubs module.
 
 ### MasterModule().essential_service_names
 
-[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_module.py#L24)
+[[find in source code]](https://github.com/vemel/mypy_boto3/blob/master/builder/mypy_boto3_builder/structures/master_module.py#L25)
 
 ```python
 @property

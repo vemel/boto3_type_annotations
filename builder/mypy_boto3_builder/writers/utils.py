@@ -2,7 +2,7 @@
 Jinja2 renderer and black formatter.
 """
 from pathlib import Path
-from typing import Any
+from typing import Optional
 
 from boto3 import __version__ as boto3_version
 import jinja2
@@ -14,6 +14,8 @@ from mypy_boto3_builder.constants import (
     PYPI_NAME,
     BOTO3_STUBS_NAME,
 )
+from mypy_boto3_builder.enums.service_name import ServiceName
+from mypy_boto3_builder.structures.module_record import ModuleRecord
 from mypy_boto3_builder.version import __version__ as version
 
 
@@ -55,13 +57,18 @@ def blackify(content: str, file_path: Path, fast: bool = True) -> str:
     return content
 
 
-def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:
+def render_jinja2_template(
+    template_path: Path,
+    module: Optional[ModuleRecord] = None,
+    service_name: Optional[ServiceName] = None,
+) -> str:
     """
     Render Jinja2 template to a string.
 
     Arguments:
         template_path -- Relative path to template in `TEMPLATES_PATH`
-        kwargs -- Format arguments.
+        module -- Module record.
+        service_name -- ServiceName instance.
 
     Returns:
         A rendered template.
@@ -77,5 +84,6 @@ def render_jinja2_template(template_path: Path, **kwargs: Any) -> str:
         master_module_name=MODULE_NAME,
         boto3_stubs_name=BOTO3_STUBS_NAME,
         boto3_version=boto3_version,
-        **kwargs,
+        module=module,
+        service_name=service_name,
     )

@@ -119,6 +119,7 @@ Full list of [mypy-boto3](README.md#mypy_boto3) project modules.
             - [Function](builder/mypy_boto3_builder/structures/function.md#function)
             - [MasterModule](builder/mypy_boto3_builder/structures/master_module.md#mastermodule)
             - [Method](builder/mypy_boto3_builder/structures/method.md#method)
+            - [ModuleRecord](builder/mypy_boto3_builder/structures/module_record.md#modulerecord)
             - [Paginator](builder/mypy_boto3_builder/structures/paginator.md#paginator)
             - [Resource](builder/mypy_boto3_builder/structures/resource.md#resource)
             - [ServiceModule](builder/mypy_boto3_builder/structures/service_module.md#servicemodule)
