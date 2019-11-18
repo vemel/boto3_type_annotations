@@ -58,6 +58,8 @@ def helpers_example() -> None:
     client = boto3_client()
     resource = boto3_resource(session)
 
+    _bucket = resource.Bucket("bucket")
+
     bucket_exists_waiter = get_bucket_exists_waiter(client)
 
     # (mypy) error: Unexpected keyword argument "bucket" for "wait" of "BucketExistsWaiter"
