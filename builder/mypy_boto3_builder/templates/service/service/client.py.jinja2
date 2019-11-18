@@ -21,3 +21,9 @@ __all__ = (
 {% with class=module.client -%}
     {% include "common/class.py.jinja2" with context -%}
 {% endwith -%}
+
+{{ "\n\n" -}}
+
+{% with class=module.client.exceptions_class -%}
+    {% include "common/class.py.jinja2" with context -%}
+{% endwith -%}

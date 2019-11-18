@@ -100,9 +100,12 @@ class ServiceModule:
         return result
 
     def get_client_required_import_record_groups(self) -> List[ImportRecordGroup]:
-        class_import_records = self.client.get_required_import_records()
         import_records: Set[ImportRecord] = set()
-        for import_record in class_import_records:
+        for import_record in self.client.get_required_import_records():
+            import_records.add(
+                import_record.get_external(self.service_name.module_name)
+            )
+        for import_record in self.client.exceptions_class.get_required_import_records():
             import_records.add(
                 import_record.get_external(self.service_name.module_name)
             )

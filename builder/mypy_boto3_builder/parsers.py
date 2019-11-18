@@ -14,11 +14,12 @@ from boto3.resources.base import ResourceMeta as Boto3ResourceMeta
 from boto3.session import Session
 from boto3.utils import ServiceContext
 from botocore import xform_name
-from botocore.exceptions import UnknownServiceError
+from botocore.exceptions import UnknownServiceError, ClientError
 from botocore.client import BaseClient
 from botocore.paginate import Paginator as Boto3Paginator
 from botocore.waiter import Waiter as Boto3Waiter
 from botocore.config import Config as Boto3Config
+from botocore.errorfactory import ClientExceptionsFactory
 
 from mypy_boto3_builder.structures.method import Method
 from mypy_boto3_builder.structures.function import Function
@@ -177,12 +178,37 @@ def parse_client(session: Session, service_name: ServiceName) -> Client:
         parse_method("Client", method_name, method)
         for method_name, method in public_methods.items()
     ]
-    return Client(
+    result = Client(
         service_name=service_name,
         boto3_client=client,
         docstring=clean_doc(getdoc(client)),
         methods=methods,
     )
+
+    service_model = client.meta.service_model
+    client_exceptions = ClientExceptionsFactory().create_client_exceptions(
+        service_model
+    )
+    for exception_class_name in dir(client_exceptions):
+        if exception_class_name.startswith("_"):
+            continue
+        if not exception_class_name[0].isupper():
+            continue
+        result.exceptions_class.attributes.append(
+            Attribute(exception_class_name, TypeClass(ClientError, alias="Boto3ClientError"))
+        )
+
+    result.attributes.append(
+        Attribute(
+            "exceptions",
+            InternalImport(
+                name=result.exceptions_class.name,
+                module_name=ServiceModuleName.client,
+                service_name=service_name,
+            ),
+        )
+    )
+    return result
 
 
 def parse_collections(
