@@ -17,17 +17,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
-      #     cd builder
-      #     python setup.py install
-      #     cd ..
-      # - name: Build
-      #   run: |
-      #     scripts/build.sh -f
-      # - name: Smoke test
-      #   run: |
-      #     mypy mypy_boto3_output/master_package
-      #     scripts/install.sh
-      - name: Publish
+      - name: Publish to PyPI
         env:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
