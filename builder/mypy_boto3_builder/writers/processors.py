@@ -1,3 +1,6 @@
+"""
+Processors for parsing and writing modules.
+"""
 from pathlib import Path
 from typing import Iterable
 
@@ -27,7 +30,7 @@ def process_boto3_stubs(
     output_path: Path,
     reformat: bool,
 ) -> Boto3Module:
-    logger.debug(f"Parsing boto3")
+    logger.debug(f"Parsing boto3 stubs")
     boto3_module = parse_boto3_module(session, service_names)
     logger.debug(f"Writing boto3 stubs to {NicePath(output_path)}")
 

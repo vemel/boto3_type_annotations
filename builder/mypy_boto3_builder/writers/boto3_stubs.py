@@ -1,3 +1,6 @@
+"""
+boto3-stubs module writer.
+"""
 from pathlib import Path
 import shutil
 from typing import List

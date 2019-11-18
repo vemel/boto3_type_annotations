@@ -1,3 +1,6 @@
+"""
+Master module writer.
+"""
 from pathlib import Path
 import shutil
 import filecmp

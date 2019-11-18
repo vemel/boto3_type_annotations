@@ -1,3 +1,6 @@
+"""
+Jinja2 renderer and black formatter.
+"""
 from pathlib import Path
 from typing import Any
 
