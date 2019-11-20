@@ -4,8 +4,12 @@ set -e
 ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 cd ${ROOT_PATH}
 
-GITHUB_ACTOR=${GITHUB_ACTOR:-vemel}
 VERSION="$1"
+
+if [[ "$GITHUB_ACTOR" == "" ]]; then
+    echo "No GITHUB_ACTOR specified"
+    exit 1
+fi
 
 if [[ "$VERSION" == "" ]]; then
     echo "No version specified"
@@ -13,7 +17,7 @@ if [[ "$VERSION" == "" ]]; then
 fi
 
 echo "Bumping version to ${VERSION}"
-echo '"""Source of truth for version."""' > builder/mypy_boto3_builder/version.py
+echo '"Source of truth for version."' > builder/mypy_boto3_builder/version.py
 echo "__version__ = \"${VERSION}\"" >> builder/mypy_boto3_builder/version.py
 
 if [[ `git diff-index HEAD --` != "" ]]; then
