@@ -15,7 +15,7 @@ jobs:
           echo "GitHub ref ${GITHUB_REF}"
           TAG=`echo "${GITHUB_REF}" | cut -f 3 -d "/" | cut -f 1 -d "-"`
           echo "Got version ${VERSION}"
-          echo "##[set-output name=version;]$(echo ${VERSION})
+          echo "##[set-output name=version;]$(echo ${VERSION})"
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
