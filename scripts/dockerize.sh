@@ -4,7 +4,12 @@ set -e
 ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 cd ${ROOT_PATH}
 
-VERSION=`python -c 'from mypy_boto3_builder.version import __version__ as v; print(v, end="");'`
+VERSION="$1"
+
+if [[ "$VERSION" == "" ]]; then
+    echo "No version specified"
+    exit 1
+fi
 
 echo "Dockerizing mypy_boto3_builder ${VERSION}"
 docker login docker.pkg.github.com --username vemel -p ${GITHUB_TOKEN}
