@@ -5,7 +5,7 @@ ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 cd ${ROOT_PATH}
 
 if [[ "$VERSION" == "" ]]; then
-    echo "No version specified"
+    echo "No VERSION specified"
     exit 1
 fi
 

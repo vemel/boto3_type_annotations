@@ -22,6 +22,7 @@ jobs:
           python-version: "3.7"
       - name: Bump version
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ steps.vars.outputs.version }}
         run: |
           scripts/bump_version.sh

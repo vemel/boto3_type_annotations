@@ -9,8 +9,13 @@ if [[ "$GITHUB_ACTOR" == "" ]]; then
     exit 1
 fi
 
+if [[ "$GITHUB_TOKEN" == "" ]]; then
+    echo "No GITHUB_TOKEN specified"
+    exit 1
+fi
+
 if [[ "$VERSION" == "" ]]; then
-    echo "No version specified"
+    echo "No VERSION specified"
     exit 1
 fi
 
