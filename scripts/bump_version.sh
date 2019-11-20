@@ -4,8 +4,6 @@ set -e
 ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 cd ${ROOT_PATH}
 
-VERSION="$1"
-
 if [[ "$GITHUB_ACTOR" == "" ]]; then
     echo "No GITHUB_ACTOR specified"
     exit 1

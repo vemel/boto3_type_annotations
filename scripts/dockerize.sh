@@ -4,8 +4,6 @@ set -e
 ROOT_PATH=$(dirname $(dirname $(realpath $0)))
 cd ${ROOT_PATH}
 
-VERSION="$1"
-
 if [[ "$VERSION" == "" ]]; then
     echo "No version specified"
     exit 1
