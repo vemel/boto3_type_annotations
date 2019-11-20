@@ -15,7 +15,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            return context.payload.ref.replace(/\/refs\/tags\//, '').substr(1);
+            return context.payload.ref.split('/').pop().split('-')[0];
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
