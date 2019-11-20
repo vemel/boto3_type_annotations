@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Extract version from tags
-        id: version
+      - name: Extract variables from env
+        id: vars
         run: |
           echo "GitHub ref ${GITHUB_REF}"
           TAG=`echo "${GITHUB_REF}" | cut -f 3 -d "/" | cut -f 1 -d "-"`
@@ -22,7 +22,7 @@ jobs:
           python-version: "3.7"
       - name: Bump version
         run: |
-          scripts/bump_version.sh ${{ steps.version.outputs.result }}
+          scripts/bump_version.sh ${{ steps.vars.outputs.version }}
       - name: Install builder
         run: |
           python -m pip install --upgrade pip
@@ -34,7 +34,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          scripts/dockerize.sh ${{ steps.version.outputs.result }}
+          scripts/dockerize.sh ${{ steps.vars.outputs.version }}
       - name: Build packages
         run: |
           rm -rf mypy_boto3_output/*
